@@ -69,5 +69,11 @@
   },
   "INVALID_CATALOG_NUMBER": {
     "en": "Catalog number must be 6 or 8 digits"
-  }
+  },
+  "INVALID_LATITUDE": {
+    "en": "Invalid latitude"
+  },
+  "INVALID_LONGITUDE": {
+    "en": "Invalid longitude"
+  } 
 }

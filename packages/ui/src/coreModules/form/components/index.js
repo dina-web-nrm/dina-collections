@@ -15,6 +15,7 @@ export { default as InputText } from './inputs/Input/Text'
 export {
   default as MultipleSearchSelectionDropdown,
 } from './fields/MultipleSearchSelectionDropdown'
+export { default as Radio } from './fields/Radio'
 export { default as RangeDate } from './fields/Date/RangeDate'
 export { default as Remarks } from './fields/Remarks'
 export { default as Search } from './fields/Search'

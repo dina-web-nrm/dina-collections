@@ -1,3 +1,5 @@
+const model = 'collectingInformation'
+
 const parts = [
   {
     componentName: 'TranslatedHeader',
@@ -9,12 +11,12 @@ const parts = [
   {
     componentName: 'TextArea',
     componentProps: {
-      columnProps: { width: 11 },
+      columnProps: { width: 10 },
       rows: 2,
       type: 'text',
     },
     name:
-      'individual.collectingInformation.event.locationInformation.localityV',
+      'individual.collectingInformation.0.event.locationInformation.localityI',
     wrapInField: true,
   },
   {
@@ -28,25 +30,30 @@ const parts = [
     initiallyShown: true,
   },
   {
-    componentName: 'TextArea',
+    componentName: 'Input',
     componentProps: {
-      columnProps: { width: 13 },
-      rows: 2,
-      style: { width: '83.2%' },
+      columnProps: { width: 5 },
+      fluid: true,
       type: 'text',
     },
     name:
-      'individual.collectingInformation.event.locationInformation.localityI',
+      'individual.collectingInformation.0.event.locationInformation.swedishGrid5km',
     wrapInField: true,
   },
   {
-    componentName: 'Input',
+    componentName: 'EstablishmentMeansTypeRadioGroup',
+    label: 'other.appearanceAtCollecting',
+    name: 'individual.collectingInformation.0.establishmentMeansType.id',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Remarks',
     componentProps: {
-      columnProps: { width: 4 },
-      fluid: true,
-      name: 'individual.collectingInformation.event.locationInformation.rt90',
-      type: 'text',
+      emptyStateTextKey: 'remarks.emptyState.collectingLocationRemarks',
+      model,
+      resultPrefixTextKey: 'remarks.resultPrefix.collectingLocationRemarks',
     },
+    name: 'individual.collectingInformation.0.remarks',
     wrapInField: true,
   },
 ]
