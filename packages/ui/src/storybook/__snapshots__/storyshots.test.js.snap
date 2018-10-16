@@ -6201,6 +6201,30 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
           </div>
         </div>
       </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Remarks
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
