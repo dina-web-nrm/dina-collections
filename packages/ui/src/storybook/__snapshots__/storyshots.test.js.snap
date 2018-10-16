@@ -694,7 +694,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
           <input
             checked={false}
             className="hidden"
-            disabled={false}
             id={undefined}
             name="test"
             onClick={[Function]}
@@ -3305,7 +3304,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={true}
             className="hidden"
-            disabled={undefined}
             id={undefined}
             name="radioGroup"
             onClick={[Function]}
@@ -3329,7 +3327,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={false}
             className="hidden"
-            disabled={undefined}
             id={undefined}
             name="radioGroup"
             onClick={[Function]}
@@ -3353,7 +3350,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={false}
             className="hidden"
-            disabled={undefined}
             id={undefined}
             name="radioGroup"
             onClick={[Function]}
@@ -5678,79 +5674,94 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
         </label>
         <div
           className="ui buttons"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
         >
           <div
-            aria-busy={false}
-            aria-disabled={undefined}
-            aria-expanded={false}
-            autoComplete={undefined}
-            className="ui button multiple search selection dropdown"
-            name="searchCollectingLocation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            role="combobox"
             style={
               Object {
-                "background": "white",
-                "borderRadius": 0,
-                "fontWeight": "normal",
-                "maxWidth": "75%",
+                "display": "inline-block",
+                "position": "relative",
+                "width": "100%",
               }
             }
-            tabIndex={undefined}
           >
-            <input
-              aria-autocomplete="list"
-              autoComplete="off"
-              className="search"
+            <div
+              aria-busy={false}
+              aria-disabled={undefined}
+              aria-expanded={false}
+              autoComplete={undefined}
+              className="ui button fluid multiple search selection dropdown"
+              name="searchCollectingLocation"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              role="combobox"
               style={
                 Object {
-                  "width": undefined,
+                  "background": "white",
+                  "borderRadius": 0,
+                  "fontWeight": "normal",
+                  "widht": "100%",
                 }
               }
-              tabIndex={0}
-              type="text"
-              value=""
-            />
-            <span
-              className="sizer"
-            />
-            <div
-              aria-live="polite"
-              className="text"
-              role="alert"
+              tabIndex={undefined}
             >
-              
-            </div>
-            <i
-              aria-hidden="true"
-              className="search icon"
-              onClick={[Function]}
-            />
-            <div
-              aria-multiselectable={true}
-              className="menu transition"
-              role="listbox"
-            >
+              <input
+                aria-autocomplete="list"
+                autoComplete="off"
+                className="search"
+                onChange={[Function]}
+                style={
+                  Object {
+                    "width": undefined,
+                  }
+                }
+                tabIndex={0}
+                type="text"
+                value=""
+              />
+              <span
+                className="sizer"
+              />
               <div
-                className="message"
+                aria-live="polite"
+                className="text"
+                role="alert"
               >
-                Type query and press Enter
+                
+              </div>
+              <i
+                aria-hidden="true"
+                className="search icon"
+                onClick={[Function]}
+              />
+              <div
+                aria-multiselectable={true}
+                className="menu transition"
+                role="listbox"
+              >
+                <div
+                  className="message"
+                >
+                  Type query and press Enter
+                </div>
               </div>
             </div>
+            <input
+              className="hidden"
+              name="searchCollectingLocation.hidden"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="hidden"
+              value={Array []}
+            />
           </div>
-          <input
-            className="hidden"
-            name="searchCollectingLocation.hidden"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="hidden"
-            value={Array []}
-          />
           <button
             className="ui disabled button"
             disabled={true}
