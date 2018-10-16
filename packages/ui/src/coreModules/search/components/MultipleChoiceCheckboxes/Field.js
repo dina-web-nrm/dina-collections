@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Grid, Loader } from 'semantic-ui-react'
 import { formValueSelector } from 'redux-form'
+import { debounce } from 'lodash'
 
 import Checkbox from 'coreModules/form/components/inputs/Checkbox'
 import wrapInFieldTemplate from 'coreModules/form/higherOrderComponents/wrapInFieldTemplate'
@@ -16,31 +17,23 @@ const mapStateToProps = (state, { meta: { form }, input: { name } }) => {
 }
 
 const propTypes = {
-  aggregationFunctionName: PropTypes.string,
-  aggregationKey: PropTypes.string,
-  aggregationLimit: PropTypes.number,
+  buildLocalAggregationQuery: PropTypes.func.isRequired,
   checkedValues: PropTypes.arrayOf(PropTypes.string),
   displayCount: PropTypes.bool,
-  drillDownQuery: PropTypes.shape({
-    and: PropTypes.array.isRequired,
-  }),
-  filterFunctionName: PropTypes.string.isRequired,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   }).isRequired,
   meta: PropTypes.object.isRequired,
   onCheckboxChange: PropTypes.func,
+  otherFieldFilters: PropTypes.object,
   search: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  aggregationFunctionName: undefined,
-  aggregationKey: undefined,
-  aggregationLimit: 10000,
   checkedValues: [],
   displayCount: false,
-  drillDownQuery: undefined,
   onCheckboxChange: undefined,
+  otherFieldFilters: undefined,
 }
 
 class MultipleChoiceCheckboxes extends Component {
@@ -52,16 +45,29 @@ class MultipleChoiceCheckboxes extends Component {
       loading: true,
     }
 
-    this.buildQuery = this.buildQuery.bind(this)
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.handleDrillDownSearchResult = this.handleDrillDownSearchResult.bind(
       this
+    )
+
+    this.debounceSearch = debounce(
+      () => {
+        this.props
+          .search(this.props.buildLocalAggregationQuery())
+          .then(this.handleDrillDownSearchResult)
+      },
+      400,
+      {
+        maxWait: 800,
+      }
     )
   }
 
   componentDidMount() {
     return this.props
-      .search(this.buildQuery(undefined, { getAll: true }))
+      .search(
+        this.props.buildLocalAggregationQuery({ input: { getAll: true } })
+      )
       .then(allSearchResults => {
         const allIds = allSearchResults.map(({ id }) => id).sort()
         this.setState({
@@ -69,7 +75,7 @@ class MultipleChoiceCheckboxes extends Component {
         })
 
         return this.props
-          .search(this.buildQuery(allIds))
+          .search(this.props.buildLocalAggregationQuery())
           .then(this.handleDrillDownSearchResult)
       })
       .then(() => {
@@ -80,67 +86,13 @@ class MultipleChoiceCheckboxes extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.drillDownQuery !== nextProps.drillDownQuery) {
-      this.props
-        .search(
-          this.buildQuery(this.state.allIds, {
-            drillDownQuery: nextProps.drillDownQuery,
-          })
-        )
-        .then(this.handleDrillDownSearchResult)
+    if (this.props.otherFieldFilters !== nextProps.otherFieldFilters) {
+      this.debounceSearch()
     }
   }
 
-  buildQuery(
-    filterValues = [],
-    { drillDownQuery: nextPropsDrillDownQuery, getAll = false } = {}
-  ) {
-    const {
-      aggregationFunctionName,
-      aggregationKey,
-      aggregationLimit,
-      drillDownQuery: currentDrillDownQuery,
-      filterFunctionName,
-    } = this.props
-
-    const drillDownQuery = nextPropsDrillDownQuery || currentDrillDownQuery
-
-    const searchQuery = {
-      includeFields: ['id'],
-      query: {},
-    }
-
-    if (!getAll) {
-      searchQuery.query = {
-        and: [
-          ...((drillDownQuery && drillDownQuery.and) || []),
-          {
-            or: filterValues.map(filterValue => {
-              return {
-                filter: {
-                  filterFunction: filterFunctionName,
-                  input: {
-                    value: filterValue,
-                  },
-                },
-              }
-            }),
-          },
-        ],
-      }
-    }
-
-    if (aggregationFunctionName) {
-      searchQuery.aggregations = [
-        {
-          aggregationFunction: aggregationFunctionName,
-          key: aggregationKey,
-          options: { limit: aggregationLimit },
-        },
-      ]
-    }
-
-    return searchQuery
+  componentWillUnmount() {
+    this.debounceSearch.cancel()
   }
 
   handleCheckboxChange(key, isChecked) {

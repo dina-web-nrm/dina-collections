@@ -39,18 +39,20 @@ const TagGroup = ({
       </Grid.Column>
       <Grid.Column width={16}>
         <Label.Group>
-          {results.map(({ attributes, id, selected }) => (
-            <Label
-              as="a"
-              color={selected ? 'green' : undefined}
-              key={id}
-              onClick={() => handleToggleTagSelected({ id, searchQuery })}
-            >{`${id}${
-              attributes && attributes.count !== undefined
-                ? ` (${attributes.count})`
-                : ''
-            }`}</Label>
-          ))}
+          {results.map(({ attributes, id, selected }) => {
+            return (
+              <Label
+                as="a"
+                color={selected ? 'green' : undefined}
+                key={id}
+                onClick={() => handleToggleTagSelected({ id, searchQuery })}
+              >{`${attributes.tagValue} (${attributes.tagType}) ${
+                attributes && attributes.count !== undefined
+                  ? ` (${attributes.count})`
+                  : ''
+              }`}</Label>
+            )
+          })}
         </Label.Group>
       </Grid.Column>
     </Grid>

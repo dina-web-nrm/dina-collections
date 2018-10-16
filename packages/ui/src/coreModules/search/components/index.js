@@ -1,6 +1,9 @@
 export {
   default as MultipleChoiceCheckboxes,
 } from './MultipleChoiceCheckboxes/Local'
+
+export { default as SearchPreviewField } from './SearchPreview/Field'
+
 export {
   default as MultipleChoiceCheckboxesField,
 } from './MultipleChoiceCheckboxes/Field'
