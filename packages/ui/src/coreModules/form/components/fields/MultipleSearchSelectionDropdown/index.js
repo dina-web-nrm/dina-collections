@@ -51,7 +51,7 @@ function MultipleSearchSelectionDropdownField(props) {
   return (
     <FieldTemplate {...fieldTemplateProps} name={input.name}>
       {displayAsButton ? (
-        <Button.Group>
+        <Button.Group style={{ width: '100%' }}>
           {leftButton}
 
           <Component
