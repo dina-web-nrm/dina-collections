@@ -77,7 +77,7 @@ const defaultProps = {
   autoComplete: undefined,
   disableClearValue: false,
   displayAsButton: false,
-  fluid: false,
+  fluid: true,
   focusOnMount: false,
   icon: undefined,
   initialText: '',

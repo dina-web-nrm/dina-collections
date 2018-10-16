@@ -41,6 +41,13 @@ const propTypes = {
   ),
   text: PropTypes.string,
 }
+
+const containerStyle = {
+  display: 'inline-block',
+  position: 'relative',
+  width: '100%',
+}
+
 const defaultProps = {
   autoComplete: undefined,
   displayAsButton: false,
@@ -111,14 +118,15 @@ class MultipleSearchSelectionDropdownInput extends Component {
           background: 'white',
           borderRadius: 0,
           fontWeight: 'normal',
-          maxWidth: '75%',
+          widht: '100%',
         }
       : undefined
     return (
-      <React.Fragment>
+      <div style={containerStyle}>
         <Dropdown
           autoComplete={autoComplete}
           button={displayAsButton}
+          fluid
           icon={icon}
           loading={isLoading}
           multiple
@@ -150,7 +158,7 @@ class MultipleSearchSelectionDropdownInput extends Component {
             value={input.value || ''}
           />
         )}
-      </React.Fragment>
+      </div>
     )
   }
 }
