@@ -3,13 +3,10 @@ module.exports = function buildElasticAggregations({
   aggregationSpecification,
 }) {
   const { aggregations } = aggregationSpecification
-
-  return aggregationsInput.reduce(
-    (
-      elasticAggregations,
-      { aggregationFunction: aggregationFunctionName, options }
-    ) => {
-      const { elasticsearch: aggregationFunction, key } =
+  let highlight
+  const elasticAggregations = aggregationsInput.reduce(
+    (obj, { aggregationFunction: aggregationFunctionName, input }) => {
+      const { elasticsearch: aggregationFunction, createHighlight, key } =
         aggregations[aggregationFunctionName] || {}
       if (!aggregationFunction) {
         throw new Error(
@@ -19,13 +16,28 @@ module.exports = function buildElasticAggregations({
       if (!key) {
         throw new Error('Aggregation missing required key')
       }
+
+      if (createHighlight) {
+        highlight = createHighlight({ highlight, input })
+      }
+
+      const aggregation = aggregationFunction({
+        input,
+      })
+
+      if (!aggregation) {
+        return obj
+      }
+
       return {
-        ...elasticAggregations,
-        [key]: aggregationFunction({
-          options,
-        }),
+        ...obj,
+        [key]: aggregation,
       }
     },
     {}
   )
+  return {
+    elasticAggregations,
+    highlight,
+  }
 }

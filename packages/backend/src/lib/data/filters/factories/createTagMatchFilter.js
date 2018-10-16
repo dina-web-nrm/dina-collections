@@ -3,12 +3,12 @@ module.exports = function createTagMatchFilter({
   fieldPath,
   key,
 }) {
-  const typePath = `${fieldPath}.tagType`
-  const valuePath = `${fieldPath}.tagValue`
+  const typePath = `${fieldPath}.tagType.raw`
+  const valuePath = `${fieldPath}.tagValue.raw`
 
   return {
     description: description || `Search ${fieldPath}`,
-    elasticsearch: ({ value }) => {
+    elasticsearch: ({ tagType, tagValue }) => {
       const baseQuery = {
         nested: {
           path: fieldPath,
@@ -20,22 +20,18 @@ module.exports = function createTagMatchFilter({
         },
       }
 
-      if (value.tagType) {
+      if (tagType) {
         baseQuery.nested.query.bool.must.push({
-          match: {
-            [typePath]: {
-              query: value.tagType,
-            },
+          term: {
+            [typePath]: tagType,
           },
         })
       }
 
-      if (value.tagValue) {
+      if (tagValue) {
         baseQuery.nested.query.bool.must.push({
-          match: {
-            [valuePath]: {
-              query: value.tagValue,
-            },
+          term: {
+            [valuePath]: tagValue.toLowerCase(),
           },
         })
       }

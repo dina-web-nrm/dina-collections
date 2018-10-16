@@ -19,6 +19,8 @@ const tagTypeAggregationName = 'aggregateIdentifierTagTypes'
 const searchFilterName = 'searchIdentifierTags'
 const matchFilterName = 'matchIdentifierTags'
 
+const delimiter = 'ddaadd'
+
 const transformation = ({ migrator, src, target }) => {
   const identifiers = migrator.getValue({
     obj: src,
@@ -36,7 +38,7 @@ const transformation = ({ migrator, src, target }) => {
       } = identifier
       if (tagType && tagValue) {
         return {
-          key: `${tagType}-${tagValue}`,
+          key: `${tagType}${delimiter}${tagValue}`,
           tagType,
           tagValue,
         }
@@ -66,6 +68,7 @@ module.exports = {
       resource,
     }),
     [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),

@@ -1,9 +1,9 @@
-module.exports = function createKeywordMapping({ fieldPath }) {
+module.exports = function createFeatureRangeMapping({ fieldPath }) {
   return {
     elasticsearch: () => {
       return {
         properties: {
-          key: {
+          rangeType: {
             fields: {
               raw: {
                 ignore_above: 256,
@@ -13,7 +13,7 @@ module.exports = function createKeywordMapping({ fieldPath }) {
             },
             type: 'text',
           },
-          tagType: {
+          rangeUnit: {
             fields: {
               raw: {
                 ignore_above: 256,
@@ -23,15 +23,9 @@ module.exports = function createKeywordMapping({ fieldPath }) {
             },
             type: 'text',
           },
-          tagValue: {
-            fields: {
-              raw: {
-                ignore_above: 256,
-                normalizer: 'lowerCaseNormalizer',
-                type: 'keyword',
-              },
-            },
-            type: 'text',
+          rangeValue: {
+            scaling_factor: 100,
+            type: 'scaled_float',
           },
         },
         type: 'nested',

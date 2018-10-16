@@ -1,6 +1,11 @@
 module.exports = {
   additionalProperties: false,
   properties: {
+    createHighlight: {
+      not: {
+        type: 'string',
+      },
+    },
     description: {
       type: 'string',
     },
@@ -9,6 +14,12 @@ module.exports = {
         type: 'string',
       },
     },
+    extractItems: {
+      not: {
+        type: 'string',
+      },
+    },
+
     inputSchema: {
       type: 'object',
     },

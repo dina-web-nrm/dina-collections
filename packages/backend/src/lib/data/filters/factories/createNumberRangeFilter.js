@@ -1,5 +1,5 @@
 module.exports = function createNumberRangeFilter({ description, fieldPath }) {
-  const rawPath = `${fieldPath}.raw`
+  const rawPath = `${fieldPath}`
   return {
     description: description || `Match for ${fieldPath}`,
     elasticsearch: ({ value }) => {

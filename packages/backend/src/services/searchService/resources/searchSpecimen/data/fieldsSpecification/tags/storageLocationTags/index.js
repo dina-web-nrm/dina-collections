@@ -14,10 +14,12 @@ const {
 const fieldPath = 'attributes.tags.storageLocationTags'
 const key = 'storageLocationTags'
 const resource = 'storageLocationTag'
-const tagValueAggregationName = 'aggregateStorageLocationValues'
-const tagTypeAggregationName = 'aggregateStorageLocationTypes'
+const tagValueAggregationName = 'aggregateStorageLocationTagValues'
+const tagTypeAggregationName = 'aggregateStorageLocationTagTypes'
 const searchFilterName = 'searchStorageLocationTags'
 const matchFilterName = 'matchStorageLocationTags'
+
+const delimiter = 'ddaadd'
 
 const transformation = ({ migrator, target, locals }) => {
   const { storageLocations = [], storageLocationTexts = [] } = locals
@@ -28,7 +30,7 @@ const transformation = ({ migrator, target, locals }) => {
     const tagValue = name
 
     tags.push({
-      key: `${tagType}-${tagValue}`,
+      key: `${tagType}${delimiter}${tagValue}`,
       tagType,
       tagValue,
     })
@@ -39,7 +41,7 @@ const transformation = ({ migrator, target, locals }) => {
     const tagValue = storageLocationText
 
     tags.push({
-      key: `${tagType}-${tagValue}`,
+      key: `${tagType}${delimiter}${tagValue}`,
       tagType,
       tagValue,
     })
@@ -59,6 +61,7 @@ module.exports = {
       resource,
     }),
     [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),

@@ -14,7 +14,7 @@ const buildWhere = ({
   filterSpecification,
   query,
 }) => {
-  if (query) {
+  if (query || aggregations) {
     return buildWhereQuery({
       aggregations,
       aggregationSpecification,
@@ -67,7 +67,6 @@ module.exports = function getWhereFactory({
         let options = {
           scroll: scroll ? '30s' : undefined,
         }
-
         let methodName
         if (scrollId) {
           methodName = 'scroll'
@@ -80,7 +79,7 @@ module.exports = function getWhereFactory({
             sortableFields,
             sortInput,
           })
-          let sort = '_id:desc'
+          let sort
 
           if (sortObjects && sortObjects.length) {
             sort = sortObjects.map(sortObject => {
@@ -93,7 +92,6 @@ module.exports = function getWhereFactory({
               includeFieldsInput,
               selectableFields,
             }) || []
-
           const sourceOptions = {
             _sourceExclude: excludeFieldsInput.length
               ? excludeFieldsInput

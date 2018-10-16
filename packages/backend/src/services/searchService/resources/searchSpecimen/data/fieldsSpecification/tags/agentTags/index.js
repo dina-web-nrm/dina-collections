@@ -19,6 +19,8 @@ const tagTypeAggregationName = 'aggregateAgentTagTypes'
 const searchFilterName = 'searchAgentTags'
 const matchFilterName = 'matchAgentTags'
 
+const delimiter = 'ddaadd'
+
 const transformation = ({ migrator, src, target }) => {
   const collectingInformation = migrator.getValue({
     obj: src,
@@ -33,14 +35,14 @@ const transformation = ({ migrator, src, target }) => {
   collectingInformation.forEach(collectingInformationItem => {
     const collectorFullName = migrator.getValue({
       obj: collectingInformationItem,
-      path: 'collectedByAgent.fullName',
+      path: 'collectedByAgent.normalized.fullName',
     })
 
     if (collectorFullName) {
       const tagType = 'Collector'
       const tagValue = collectorFullName
       tags.push({
-        key: `${tagType}-${tagValue}`,
+        key: `${tagType}${delimiter}${tagValue}`,
         tagType,
         tagValue,
       })
@@ -63,6 +65,7 @@ module.exports = {
       resource,
     }),
     [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),

@@ -19,6 +19,8 @@ const tagTypeAggregationName = 'aggregateTaxonomyTagTypes'
 const searchFilterName = 'searchTaxonomyTags'
 const matchFilterName = 'matchTaxonomyTags'
 
+const delimiter = 'ddaadd'
+
 const transformation = ({ migrator, target, locals }) => {
   const { acceptedTaxonNames } = locals
   if (!(acceptedTaxonNames && acceptedTaxonNames.length)) {
@@ -29,7 +31,7 @@ const transformation = ({ migrator, target, locals }) => {
     const tagType = rank
     const tagValue = name
     return {
-      key: `${tagType}-${tagValue}`,
+      key: `${tagType}${delimiter}${tagValue}`,
       tagType,
       tagValue,
     }
@@ -50,6 +52,7 @@ module.exports = {
       resource,
     }),
     [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),

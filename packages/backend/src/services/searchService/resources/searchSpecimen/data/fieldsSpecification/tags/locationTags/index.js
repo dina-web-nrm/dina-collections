@@ -19,6 +19,8 @@ const tagTypeAggregationName = 'aggregateLocationTagTypes'
 const searchFilterName = 'searchLocationTags'
 const matchFilterName = 'matchLocationTags'
 
+const delimiter = 'ddaadd'
+
 const transformation = ({ migrator, target, locals }) => {
   const {
     collectingPlaces,
@@ -34,7 +36,7 @@ const transformation = ({ migrator, target, locals }) => {
       const tagType = group
       const tagValue = name
       tags.push({
-        key: `${tagType}-${tagValue}`,
+        key: `${tagType}${delimiter}${tagValue}`,
         tagType,
         tagValue,
       })
@@ -46,7 +48,7 @@ const transformation = ({ migrator, target, locals }) => {
       const tagType = 'collecting, interpreted'
       const tagValue = normalizedLocality
       tags.push({
-        key: `${tagType}-${tagValue}`,
+        key: `${tagType}${delimiter}${tagValue}`,
         tagType,
         tagValue,
       })
@@ -58,7 +60,7 @@ const transformation = ({ migrator, target, locals }) => {
       const tagType = 'collecting, stated'
       const tagValue = transcribedLocality
       tags.push({
-        key: `${tagType}-${tagValue}`,
+        key: `${tagType}${delimiter}${tagValue}`,
         tagType,
         tagValue,
       })
@@ -70,7 +72,7 @@ const transformation = ({ migrator, target, locals }) => {
       const tagType = 'origin'
       const tagValue = originLocality
       tags.push({
-        key: `${tagType}-${tagValue}`,
+        key: `${tagType}${delimiter}${tagValue}`,
         tagType,
         tagValue,
       })
@@ -95,6 +97,7 @@ module.exports = {
       resource,
     }),
     [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),

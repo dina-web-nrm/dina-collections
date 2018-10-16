@@ -1,40 +1,43 @@
 module.exports = function createTagValueAggregation({
+  delimiter = 'dddd',
   description,
   fieldPath,
   resource,
 }) {
-  const typeRawPath = `${fieldPath}.tagType.raw`
-  const valueRawPath = `${fieldPath}.tagValue.raw`
+  const keyRawPath = `${fieldPath}.key.raw`
 
   return {
     description: description || `Aggregation for: ${fieldPath}`,
-    elasticsearch: ({ options = {} }) => {
-      const { containsTagType, containsTagValue, limit = 10 } = options
+    elasticsearch: ({ input = {} }) => {
+      const { tagTypes, tagValue, limit = 10 } = input
 
-      const identifierTypeFilter = {
-        field: typeRawPath,
-      }
-
-      if (containsTagType) {
-        identifierTypeFilter.include = `.*${containsTagType}.*`
-      }
-
-      const identifierValueFilter = {
-        field: valueRawPath,
+      const identifierKeyFilter = {
+        field: keyRawPath,
         size: limit,
       }
 
-      if (containsTagValue) {
-        identifierValueFilter.include = `.*${containsTagValue}.*`
+      if (tagValue && tagTypes) {
+        if (tagTypes.length === 1) {
+          identifierKeyFilter.include = `${tagTypes[0]}${
+            delimiter
+          }${tagValue.toLowerCase()}.*`
+        } else {
+          identifierKeyFilter.include = `.*(${tagTypes.join('|')})${
+            delimiter
+          }${tagValue.toLowerCase()}.*`
+        }
+      } else if (tagValue) {
+        identifierKeyFilter.include = `.*${
+          delimiter
+        }${tagValue.toLowerCase()}.*`
+      } else if (tagTypes) {
+        identifierKeyFilter.include = `.*${tagTypes}${delimiter}.*`
       }
 
       return {
         aggs: {
-          tagTypes: {
-            aggs: {
-              tagValues: { terms: identifierValueFilter },
-            },
-            terms: identifierTypeFilter,
+          tagKeys: {
+            terms: identifierKeyFilter,
           },
         },
         nested: {
@@ -44,18 +47,22 @@ module.exports = function createTagValueAggregation({
     },
     extractItems: ({ key, result }) => {
       const rootAggregations = result.aggregations[key]
+      const tagKeys = rootAggregations.tagKeys.buckets
 
-      const tagTypes = rootAggregations.tagTypes.buckets
       const items = []
+      tagKeys.forEach(tagKey => {
+        const sections = tagKey.key.split(delimiter)
+        if (sections.length !== 2) {
+          throw new Error(`Unexpected sections for: ${tagKey}`)
+        }
 
-      tagTypes.forEach(tagType => {
-        const tagValues = tagType.tagValues.buckets
-        tagValues.forEach(tagValue => {
-          items.push({
-            key: `${tagType.key}-${tagValue.key}`,
-            tagType: tagType.key,
-            tagValue: tagValue.key,
-          })
+        const tagType = sections[0]
+        const tagValue = sections[1]
+        items.push({
+          count: tagKey.doc_count,
+          key: `${tagType}-${tagValue}`,
+          tagType,
+          tagValue,
         })
       })
 

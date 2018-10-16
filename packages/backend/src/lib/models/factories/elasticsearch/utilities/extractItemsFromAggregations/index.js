@@ -35,18 +35,16 @@ module.exports = function extractItemsFromAggregations({
 
       const aggregation = result.aggregations && result.aggregations[key]
 
-      if (aggregation) {
-        let items = []
-        if (extractItems) {
-          items = extractItems({ key, result })
-        } else {
-          items = aggregation.buckets
-        }
-
-        items.forEach(item => {
-          aggregationResult.push(buildItemFromElasticsearch({ item, resource }))
-        })
+      let items = []
+      if (extractItems) {
+        items = extractItems({ key, result })
+      } else if (aggregation) {
+        items = aggregation.buckets
       }
+
+      items.forEach(item => {
+        aggregationResult.push(buildItemFromElasticsearch({ item, resource }))
+      })
     }
   )
   return aggregationResult

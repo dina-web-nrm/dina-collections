@@ -3,12 +3,12 @@ module.exports = function createTagSearchFilter({
   fieldPath,
   key,
 }) {
-  const typePath = `${fieldPath}.tagType`
+  const typePath = `${fieldPath}.tagType.raw`
   const valuePath = `${fieldPath}.tagValue`
 
   return {
     description: description || `Search ${fieldPath}`,
-    elasticsearch: ({ value }) => {
+    elasticsearch: ({ tagType, tagValue }) => {
       const baseQuery = {
         nested: {
           path: fieldPath,
@@ -19,26 +19,23 @@ module.exports = function createTagSearchFilter({
           },
         },
       }
-      if (value.tagType) {
+      if (tagType) {
         baseQuery.nested.query.bool.must.push({
-          match_phrase_prefix: {
-            [typePath]: {
-              query: value.tagType,
-            },
+          match: {
+            [typePath]: tagType,
           },
         })
       }
 
-      if (value.tagValue) {
+      if (tagValue) {
         baseQuery.nested.query.bool.must.push({
           match_phrase_prefix: {
             [valuePath]: {
-              query: value.tagValue,
+              query: tagValue.toLowerCase(),
             },
           },
         })
       }
-
       return baseQuery
     },
     inputSchema: {
@@ -47,46 +44,3 @@ module.exports = function createTagSearchFilter({
     key,
   }
 }
-
-// const searchFilter = {
-//   description: 'test',
-//   elasticsearch: ({ value }) => {
-//     console.log('value', value)
-
-//     const baseQuery = {
-//       nested: {
-//         path: fieldPath,
-//         query: {
-//           bool: {
-//             must: [],
-//           },
-//         },
-//       },
-//     }
-//     if (value.tagType) {
-//       baseQuery.nested.query.bool.must.push({
-//         match_phrase_prefix: {
-//           'attributes.tags.testIdentifierTags.tagType': {
-//             query: value.tagType,
-//           },
-//         },
-//       })
-//     }
-
-//     if (value.tagValue) {
-//       baseQuery.nested.query.bool.must.push({
-//         match_phrase_prefix: {
-//           'attributes.tags.testIdentifierTags.tagValue': {
-//             query: value.tagValue,
-//           },
-//         },
-//       })
-//     }
-
-//     return baseQuery
-//   },
-//   inputSchema: {
-//     type: 'object',
-//   },
-//   key: searchFilterName,
-// }

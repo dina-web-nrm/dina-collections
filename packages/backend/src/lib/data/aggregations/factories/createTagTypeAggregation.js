@@ -1,39 +1,29 @@
+const objectPath = require('object-path')
+
 module.exports = function createTagValueAggregation({
   description,
   fieldPath,
   resource,
 }) {
   const typeRawPath = `${fieldPath}.tagType.raw`
-  const valueRawPath = `${fieldPath}.tagValue.raw`
 
   return {
     description: description || `Aggregation for: ${fieldPath}`,
-    elasticsearch: ({ options = {} }) => {
-      const { containsTagType, containsTagValue, limit = 10 } = options
+    elasticsearch: ({ input = {} }) => {
+      const { tagType, limit = 10 } = input
 
       const identifierTypeFilter = {
         field: typeRawPath,
-      }
-
-      if (containsTagType) {
-        identifierTypeFilter.include = `.*${containsTagType}.*`
-      }
-
-      const identifierValueFilter = {
-        field: valueRawPath,
         size: limit,
       }
 
-      if (containsTagValue) {
-        identifierValueFilter.include = `.*${containsTagValue}.*`
+      if (tagType) {
+        identifierTypeFilter.include = `.*${tagType.toLowerCase()}.*`
       }
 
       return {
         aggs: {
           tagTypes: {
-            aggs: {
-              tagValues: { terms: identifierValueFilter },
-            },
             terms: identifierTypeFilter,
           },
         },
@@ -43,13 +33,18 @@ module.exports = function createTagValueAggregation({
       }
     },
     extractItems: ({ key, result }) => {
-      const rootAggregations = result.aggregations[key]
-
-      const tagTypes = rootAggregations.tagTypes.buckets
+      const tagTypes = objectPath.get(
+        result,
+        `aggregations.${key}.tagTypes.buckets`
+      )
+      if (!(tagTypes && tagTypes.length)) {
+        return []
+      }
       const items = []
 
       tagTypes.forEach(tagType => {
         items.push({
+          count: tagType.doc_count,
           key: tagType.key,
           tagType: tagType.key,
         })
