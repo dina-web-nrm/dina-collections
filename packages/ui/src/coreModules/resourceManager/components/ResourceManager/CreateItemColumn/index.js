@@ -18,6 +18,7 @@ const defaultProps = {}
 const rows = [
   {
     key: 'itemCreateForm',
+    style: { overflow: 'auto' },
   },
   {
     height: emToPixels(4.625),

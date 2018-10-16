@@ -22,6 +22,7 @@ const defaultProps = {
 const rows = [
   {
     key: 'itemEditForm',
+    style: { overflow: 'auto' },
   },
   {
     height: emToPixels(4.625),
