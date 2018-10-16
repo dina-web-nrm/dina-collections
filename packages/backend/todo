@@ -1,3 +1,31 @@
+* Add option to manipulate root query FE specification
+** Add sorting to score for text search
+** Add limit for text search (instead of limit = 0 use limit 10 or so)
+
+
+* Fix singular and plural of FE filter specifications
+
+
+
+
+* Add validator in hock that verifies that spec is added
+* Add some test for the specification
+* Add schema for tag type
+* Extract spec in hoc
+* Add sectionPath to spec and inject section form values in aggregations and in filters
+* Dont use key in for text but use tagValue and tagType
+* Create factories for fe filters
+* Implement specimen search for identifier filter
+* Add new filter approach to all places in backend
+* Add all new identifiers in FE
+* Add other identifiers
+
+
+
+
+
+
+
 * Deactivate all FE filters
 * Activate new filters frontend
 * Implement FE support for new filters
