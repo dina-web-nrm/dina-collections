@@ -78,7 +78,7 @@
       "collectedByAgent": {
         "en": "Collected by (agent)",
         "textV": {
-          "en": "Handed in by (stated)"
+          "en": "Collected by (stated)"
         }
       },
       "collectorsText": {
@@ -88,7 +88,7 @@
         "en": "Establishment means"
       },
       "isDeathDate": {
-        "en": "Death at collecting",
+        "en": "Died at collecting",
         "sv": ""
       }
     },
@@ -208,6 +208,10 @@
       }
     },
     "locationInformation": {
+      "coordinatesVerbatim": {
+        "en": "Coordinate (stated)",
+        "sv": ""
+      },
       "localityV": {
         "en": "Stated locality",
         "sv": "Angiven (verbatim) lokalitet"
@@ -216,7 +220,7 @@
         "en": "Interpreted locality",
         "sv": ""
       },
-      "rt90": {
+      "swedishGrid5km": {
         "en": "RT90 Index 5km",
         "sv": ""
       },
@@ -232,6 +236,10 @@
       },
       "georeferenceSourcesText": {
         "en": "Georeference sources"
+      },
+      "places": {
+        "en": "Higher geography",
+        "sv": ""
       }
     },
     "originInformation": {
@@ -268,9 +276,9 @@
         "en": "Swedish map"
       }
     },
-    "position": {
+    "position": { 
       "uncertaintyInMeters": {
-        "en": "Uncertainty (m)",
+        "en": "Uncertainty estimate (m)",
         "sv": ""
       },
       "geodeticDatum": {
@@ -339,7 +347,7 @@
         "en": "Old local name"
       }
     },
-    "verticalPosition": {
+    "verticalPosition": { 
       "maximumDepthInMeters": {
         "en": "Depth max (m)",
         "sv": "Max"
@@ -380,17 +388,14 @@
     },
     "collectingInformation": {
       "en": "collecting information"
-    },
-    "localityOrigin": {
-      "en": "collecting location and origin"
-    },
+    }, 
     "death": {
       "en": "Death",
       "sv": ""
     },
     "collecintLocality": {
       "en": "collecting locality"
-    },
+    }, 
     "curatorialAssessments": {
       "en": "Curatorial assessments",
       "sv": ""
@@ -412,6 +417,13 @@
     "identifiers": {
       "en": "identifiers",
       "sv": ""
+    },
+    "localityOrigin": {
+      "en": "collecting location and origin"
+    },
+    "localityPosition": { 
+      "en": "Position of collecting locality",
+      "sv": ""  
     },
     "newSpecimen": {
       "en": "New specimen",
@@ -782,6 +794,10 @@
         "en": "add determination remarks...",
         "sv": ""
       },
+      "collectingLocationRemarks": {
+        "en": "Add collecting location remarks",
+        "sv": ""
+      },
       "origin": {
         "en": "Add origin remarks...",
         "sv": ""
@@ -809,6 +825,10 @@
       },
       "death": {
         "en": "death remarks",
+        "sv": ""
+      },
+      "collectingLocationRemarks": {
+        "en": "collecting location remarks",
         "sv": ""
       },
       "origin": {
@@ -881,7 +901,7 @@
       },
       "complete-body-weight": {
         "en": "Complete body"
-      },
+      },  
       "skinned-weight": {
         "en": "Skinned"
       },
@@ -1042,6 +1062,14 @@
     "agent": {
       "en": "Observed by (agent)"
     },
+    "appearanceAtCollecting": {
+      "en": "Appearance at the collecting locality?",
+      "sv": ""
+    },
+    "appearanceAtOrigin": {
+      "en": "Appearance at the origin locality?",
+      "sv": ""
+    },
     "by": {
       "en": "by",
       "sv": ""
@@ -1064,6 +1092,17 @@
     },
     "createNewSpecimen": {
       "en": "Creating a new specimen record",
+      "sv": ""
+    },
+    "coordinates": {
+      "en": "Coordinate (interpreted, decimal degrees WGS84)"
+    },
+    "depth": {
+      "en": "Depth min / max (m)",
+      "sv": ""
+    },
+    "elevation": {
+      "en": "Elevation min / max (m)",
       "sv": ""
     },
     "back": {
@@ -1094,7 +1133,7 @@
       "en": "Date"
     },
     "done": {
-      "en": "done",
+      "en": "Done",
       "sv": ""
     },
     "edit": {
@@ -1119,11 +1158,11 @@
     "loading": {
       "en": "loading",
       "sv": "laddar"
-    },
+    }, 
     "method": {
       "en": "Method",
       "sv": "Metod"
-    },
+    }, 
     "physicalObjects": {
       "addSkeleton": {
         "en": "Add a skeleton",
@@ -1191,6 +1230,18 @@
     },
     "selectKindOfName": {
       "en": "select kind of name",
+      "sv": ""
+    },
+    "selectiveBreeding": {
+      "en": "Has the animal been affected by selective breeding?",
+      "sv": ""
+    },
+    "wildAnimal": {
+      "en": "No (wild animal)",
+      "sv": ""
+    },
+    "zooAnimal": {
+      "en": "Yes (zoo animal or similar)",
       "sv": ""
     },
     "sixOrEightDigits": {

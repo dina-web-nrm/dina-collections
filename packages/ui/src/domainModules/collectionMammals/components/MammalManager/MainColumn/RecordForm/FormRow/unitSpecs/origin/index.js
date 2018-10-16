@@ -1,3 +1,5 @@
+const model = 'originInformation'
+
 const parts = [
   {
     componentName: 'TranslatedHeader',
@@ -16,22 +18,37 @@ const parts = [
   {
     componentName: 'TextArea',
     componentProps: {
-      columnProps: { width: 11 },
+      columnProps: { width: 10 },
       rows: 2,
       type: 'text',
     },
     initiallyHidden: true,
-    name: 'originInformation.originLocality',
+    name: 'individual.originInformation.0.originLocality',
+    wrapInField: true,
+  },
+  {
+    componentName: 'EstablishmentMeansTypeRadioGroup',
+    initiallyHidden: true,
+    label: 'other.appearanceAtOrigin',
+    name: 'individual.originInformation.0.establishmentMeansType.id',
+    wrapInField: true,
+  },
+  {
+    componentName: 'SelectiveBreeding',
+    initiallyHidden: true,
+    label: 'other.selectiveBreeding',
+    name: 'individual.originInformation.0.isResultOfSelectiveBreeding',
     wrapInField: true,
   },
   {
     componentName: 'Remarks',
     componentProps: {
       emptyStateTextKey: 'remarks.emptyState.origin',
+      model,
       resultPrefixTextKey: 'remarks.resultPrefix.origin',
     },
     initiallyHidden: true,
-    name: 'remarks',
+    name: 'individual.originInformation.0.remarks',
     wrapInField: true,
   },
 ]

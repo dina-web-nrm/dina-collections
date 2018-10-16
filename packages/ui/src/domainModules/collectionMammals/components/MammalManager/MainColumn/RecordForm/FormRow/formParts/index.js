@@ -8,6 +8,7 @@ import FeatureObservations from './FeatureObservations'
 import IdentifiersTable from './IdentifiersTable'
 import PhysicalObjectsAccordion from './PhysicalObjectsAccordion'
 import RecordHistoryExternalEvents from './RecordHistoryExternalEvents'
+import SelectiveBreeding from './SelectiveBreeding'
 
 export default {
   ...agentParts,
@@ -19,4 +20,5 @@ export default {
   IdentifiersTable,
   PhysicalObjectsAccordion,
   RecordHistoryExternalEvents,
+  SelectiveBreeding,
 }
