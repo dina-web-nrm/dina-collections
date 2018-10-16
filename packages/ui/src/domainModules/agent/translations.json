@@ -1,19 +1,45 @@
 {
   "fieldLabels": {
-    "agent": {
-      "fullName": { "en": "Full name" },
-      "disambiguatingDescription": { "en": "Disambiguating description" },
-      "givenName": { "en": "Given name" },
-      "familyName": { "en": "Family name" },
-      "additionalName": { "en": "Additional name" },
-      "abbreviation": { "en": "Abbreviation" },
-      "alsoKnownAs": { "en": "Also known as" },
-      "remarks": { "en": "Remarks" },
-      "telephone": { "en": "Telephone" },
-      "email": { "en": "Email" },
-      "postalAddress": { "en": "Postal address" },
-      "readOnly": { "en": "Read only" },
-      "user": { "en": "User" }
+    "fullName": { "en": "Full name" },
+    "disambiguatingDescription": { "en": "Disambiguating description" },
+    "givenName": { "en": "Given name" },
+    "familyName": { "en": "Family name" },
+    "additionalName": { "en": "Additional name" },
+    "abbreviation": { "en": "Abbreviation" },
+    "alsoKnownAs": { "en": "Also known as" },
+    "remarks": { "en": "Remarks" },
+    "telephone": { "en": "Telephone" },
+    "email": { "en": "Email" },
+    "postalAddress": { "en": "Postal address" },
+    "readOnly": { "en": "Read only" },
+    "user": { "en": "User" }
+  },
+  "headers": {
+    "contactDetails": {
+      "en": "contact information",
+      "sv": ""
+    },
+    "nameDetails": {
+      "en": "name details and abbreviation",
+      "sv": ""
+    }
+  },
+  "buttons": {
+    "contactDetails": {
+      "en": "add contact information",
+      "sv": ""
+    },
+    "nameDetails": {
+      "en": "add name details and abbreviation",
+      "sv": ""
+    }
+  },
+  "remarks": {
+    "emptyState": {
+      "agent": {
+        "en": "add agent remarks",
+        "sv": ""
+      }
     }
   },
   "agent": {
@@ -23,6 +49,10 @@
   "name": {
     "en": "Role name",
     "sv": "Rollnamn"
+  },
+  "newAgent": {
+    "en": "new agent",
+    "sv": ""
   },
   "fromDate": {
     "en": "From date",
