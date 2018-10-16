@@ -9,7 +9,10 @@ up:
 	@docker-compose up -d
 
 up-dev:
-	docker-compose -f docker-compose.dev.yaml up -d
+	@docker-compose -f docker-compose.dev.yaml up -d
+
+up-pgAdmin:
+	@docker-compose -f docker-compose.dev.yaml up -d pgadmin
 
 stop:
 	@docker-compose stop

@@ -80,14 +80,24 @@ services:
       - 5601:5601
 
   postgres:
-    image: postgres
+    image: postgres:10.5
     container_name: postgres
     ports:
-    - "5432:5432"
+    - 5432:5432
     env_file:
       - ./env/.postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:3.4
+    container_name: pgadmin4
+    ports:
+      - 19090:80
+    env_file:
+      - ./env/.pgadmin
+    volumes:
+      - pgadmin_vol:/var/lib/pgadmin
 
   proxy:
     image: jwilder/nginx-proxy:alpine
@@ -100,3 +110,4 @@ services:
 volumes:
   postgres_data:
   es_data:
+  pgadmin_vol:
