@@ -21,11 +21,15 @@ const transformation = ({ migrator, src, target }) => {
   const dates = []
 
   if (collectingEventDateRange.startDate) {
-    const timestamp = getTimestampFromYMD(collectingEventDateRange.startDate)
-    if (timestamp) {
+    const startTimestamp = getTimestampFromYMD(
+      collectingEventDateRange.startDate
+    )
+    const endTimestamp = getTimestampFromYMD(collectingEventDateRange.endDate)
+    if (startTimestamp || endTimestamp) {
       dates.push({
         dateType: 'collectingEventStartDate',
-        timestamp,
+        endTimestamp,
+        startTimestamp,
       })
     }
   }
@@ -45,11 +49,20 @@ const searchFilter = {
     const { start, end, dateType } = value
 
     const must = []
-    if (start || end) {
+    if (start) {
       must.push({
         range: {
-          [`${fieldPath}.timestamp`]: {
+          [`${fieldPath}.startTimestamp`]: {
             gte: start || undefined,
+          },
+        },
+      })
+    }
+
+    if (end) {
+      must.push({
+        range: {
+          [`${fieldPath}.endTimestamp`]: {
             lte: end || undefined,
           },
         },

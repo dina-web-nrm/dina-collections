@@ -62,6 +62,17 @@ module.exports = function collectingInformation({
       },
     })
 
+    migrator.setValue({
+      obj: target,
+      path:
+        'attributes.individual.collectingInformation.0.event.dateRange.endDate',
+      value: {
+        day: collectingDay,
+        month: collectingMonth,
+        year: collectingYear,
+      },
+    })
+
     /* event.locationInformation */
     // localityRemarks
     const localityRemarks = migrator.getValue({
