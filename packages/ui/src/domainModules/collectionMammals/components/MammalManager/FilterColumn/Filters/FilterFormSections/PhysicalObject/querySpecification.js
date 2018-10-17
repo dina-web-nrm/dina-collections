@@ -21,8 +21,16 @@ const wetPreparationCheckboxSpecification = createCheckboxSpecification({
   sectionName: 'physicalObject',
 })
 
+const otherPreparationCheckboxSpecification = createCheckboxSpecification({
+  aggregationFunctionName: 'aggregateOtherPreparationTags',
+  fieldName: 'physicalObject.otherPreparation',
+  matchFilterFunctionName: 'matchOtherPreparationTags',
+  sectionName: 'physicalObject',
+})
+
 export default [
   ...skeletonCheckboxSpecification,
   ...skinCheckboxSpecification,
   ...wetPreparationCheckboxSpecification,
+  ...otherPreparationCheckboxSpecification,
 ]
