@@ -6011,7 +6011,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Collector
+              Agent/name
             </span>
           </div>
           <div
@@ -8182,20 +8182,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       }
     }
   >
-    <div
-      className="right aligned column"
-      style={
-        Object {
-          "width": 80,
-        }
-      }
-    >
-      <div
-        className="ui small header"
-      >
-        Row #
-      </div>
-    </div>
     <div
       className="column"
       style={
