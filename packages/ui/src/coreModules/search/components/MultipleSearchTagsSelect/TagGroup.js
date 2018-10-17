@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Button, Grid, Header, Label } from 'semantic-ui-react'
 
 const propTypes = {
+  addTagTypeToText: PropTypes.bool.isRequired,
   onDeselectAllForSearchQuery: PropTypes.func.isRequired,
   onSelectAllForSearchQuery: PropTypes.func.isRequired,
   onToggleTagSelected: PropTypes.func.isRequired,
@@ -15,11 +16,12 @@ const propTypes = {
   searchQuery: PropTypes.string.isRequired,
 }
 const TagGroup = ({
-  onToggleTagSelected: handleToggleTagSelected,
+  addTagTypeToText,
   onDeselectAllForSearchQuery: handleDeselectAllForSearchQuery,
   onSelectAllForSearchQuery: handleSelectAllForSearchQuery,
-  searchQuery,
+  onToggleTagSelected: handleToggleTagSelected,
   results,
+  searchQuery,
 }) => {
   return (
     <Grid verticalAlign="middle">
@@ -40,13 +42,16 @@ const TagGroup = ({
       <Grid.Column width={16}>
         <Label.Group>
           {results.map(({ attributes, id, selected }) => {
+            const tagTypeText = addTagTypeToText
+              ? ` (${attributes.tagType}) `
+              : ' '
             return (
               <Label
                 as="a"
                 color={selected ? 'green' : undefined}
                 key={id}
                 onClick={() => handleToggleTagSelected({ id, searchQuery })}
-              >{`${attributes.tagValue} (${attributes.tagType}) ${
+              >{`${attributes.tagValue}${tagTypeText}${
                 attributes && attributes.count !== undefined
                   ? ` (${attributes.count})`
                   : ''

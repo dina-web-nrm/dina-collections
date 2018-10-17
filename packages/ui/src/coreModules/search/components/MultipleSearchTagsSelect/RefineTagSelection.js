@@ -5,6 +5,7 @@ import { Header, Modal } from 'semantic-ui-react'
 import TagGroup from './TagGroup'
 
 const propTypes = {
+  addTagTypeToText: PropTypes.bool.isRequired,
   inline: PropTypes.bool.isRequired,
   numberOfSearchResults: PropTypes.number.isRequired,
   numberOfSelectedResults: PropTypes.number.isRequired,
@@ -22,6 +23,7 @@ const propTypes = {
 }
 
 const RefineTagSelection = ({
+  addTagTypeToText,
   inline,
   numberOfSearchResults,
   numberOfSelectedResults,
@@ -40,6 +42,7 @@ const RefineTagSelection = ({
         {Object.keys(reduxFormValues).map(searchQuery => {
           return (
             <TagGroup
+              addTagTypeToText={addTagTypeToText}
               key={searchQuery}
               onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
               onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
@@ -63,6 +66,7 @@ const RefineTagSelection = ({
           {Object.keys(reduxFormValues).map(searchQuery => {
             return (
               <TagGroup
+                addTagTypeToText={addTagTypeToText}
                 key={searchQuery}
                 onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
                 onSelectAllForSearchQuery={handleSelectAllForSearchQuery}

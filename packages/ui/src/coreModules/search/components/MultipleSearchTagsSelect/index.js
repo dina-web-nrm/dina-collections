@@ -13,6 +13,7 @@ import RefineTagSelection from './RefineTagSelection'
 import * as selectors from './selectors'
 
 const propTypes = {
+  addTagTypeToText: PropTypes.bool,
   buildLocalAggregationQuery: PropTypes.func.isRequired,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
@@ -35,6 +36,7 @@ const propTypes = {
   search: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  addTagTypeToText: true,
   inlineRefine: false,
 }
 
@@ -236,16 +238,16 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   }
 
   createOptions({ searchQuery, items }) {
+    const { addTagTypeToText } = this.props
     const itemOptions = items.map(({ attributes }) => {
+      const tagTypeText = addTagTypeToText ? ` (${attributes.tagType}) ` : ' '
       return {
         key: attributes.key,
         other: {
           tagType: attributes.tagType,
           tagValue: attributes.tagValue,
         },
-        text: `${attributes.tagValue} (${attributes.tagType}) (${
-          attributes.count
-        })`,
+        text: `${attributes.tagValue}${tagTypeText}(${attributes.count})`,
 
         type: 'string',
         value: attributes.key,
@@ -295,6 +297,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
 
   render() {
     const {
+      addTagTypeToText,
       i18n: { moduleTranslate },
       inlineRefine,
       input,
@@ -347,6 +350,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         />
         {refineOpen && (
           <RefineTagSelection
+            addTagTypeToText={addTagTypeToText}
             inline={inlineRefine}
             numberOfSearchResults={numberOfSearchResults}
             numberOfSelectedResults={numberOfSelectedResults}
