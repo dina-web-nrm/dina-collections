@@ -16,3 +16,7 @@ export const getShortcutsList = createSelector(
 export const getShowInfo = state => {
   return state.showInfo
 }
+
+export const getLayer = state => {
+  return state.layer
+}
