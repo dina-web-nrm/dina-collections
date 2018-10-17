@@ -136,7 +136,7 @@ export const getTableWidth = (includedTableColumns = tableColumnNames) => {
     }
 
     return totalWidth
-  }, 80) // "Row #"" is always visible with this width
+  }, 0)
 }
 
 export default tableColumnSpecifications

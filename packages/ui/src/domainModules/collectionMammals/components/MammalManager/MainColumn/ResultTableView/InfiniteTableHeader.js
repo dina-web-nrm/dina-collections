@@ -113,7 +113,6 @@ class InfiniteTableHeader extends PureComponent {
       tableColumnsToShow,
       width,
     } = this.props
-
     return (
       <React.Fragment>
         <Grid
@@ -128,9 +127,6 @@ class InfiniteTableHeader extends PureComponent {
           textAlign="left"
           verticalAlign="middle"
         >
-          <Grid.Column style={{ width: 80 }} textAlign="right">
-            <Header size="small">Row #</Header>
-          </Grid.Column>
           {tableColumnSpecifications.map(({ name, width: columnWidth }) => {
             if (tableColumnsToShow.includes(name)) {
               return this.renderColumnHeader(columnWidth, name)
