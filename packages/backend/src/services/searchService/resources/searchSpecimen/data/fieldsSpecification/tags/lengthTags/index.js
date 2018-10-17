@@ -2,7 +2,6 @@ const {
   createTagTypeAggregation,
 } = require('../../../../../../../../lib/data/aggregations/factories')
 const {
-  createTagMatchFilter,
   createFeatureRangeFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 

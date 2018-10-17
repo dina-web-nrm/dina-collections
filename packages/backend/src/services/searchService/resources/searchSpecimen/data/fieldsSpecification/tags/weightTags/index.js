@@ -7,7 +7,6 @@ const {
 
 const {
   createFeatureRangeFilter,
-  createTagMatchFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
 const fieldPath = 'attributes.searchOnlyFields.weightObject'

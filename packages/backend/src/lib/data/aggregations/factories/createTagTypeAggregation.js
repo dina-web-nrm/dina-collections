@@ -23,17 +23,6 @@ module.exports = function createTagTypeAggregation({
         identifierTypeFilter.include = `.*${tagType.toLowerCase()}.*`
       }
 
-      const agg = {
-        aggs: {
-          [tagTypesPath]: {
-            terms: identifierTypeFilter,
-          },
-        },
-        nested: {
-          path: fieldPath,
-        },
-      }
-
       return {
         aggs: {
           [tagTypesPath]: {
