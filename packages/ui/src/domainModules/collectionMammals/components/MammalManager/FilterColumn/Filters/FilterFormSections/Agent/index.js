@@ -25,7 +25,7 @@ class AgentFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
-            label="Name"
+            label="Agent/name"
             name="agent.tagValues"
             resource="searchSpecimen"
           />
@@ -34,7 +34,7 @@ class AgentFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Agent type"
+            label="Role"
             name="agent.tagTypes"
             resource="searchSpecimen"
           />

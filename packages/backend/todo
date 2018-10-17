@@ -1,2 +1,96 @@
 * Make click row select not go to form
 * Fix date search
+* Go through all and pickers, search and detect whats not done and fix bugs
+
+
+* Fix edits (link diff with changes table)
+Username, Date, created / last modified
+
+
+
+
+
+
+
+Filter Review
+* Comments -> Search design improvements 2018-10-09
+** Slow search input fixed
+** Dont know what "Search should always displays result in list, not detail" means
+** Type is no longer part of the field when searching
+** Removed row number in specimen list
+** Checkboxes order in alphabetic order
+
+
+* General comments to different filter sections
+** General translations are missing for all 'tags'. Can we live without this in the first step? Not a huge thing to fix
+** All 'tags' are in alphabetic order. If we want to change this it makes sense to do it when we fix translations
+** Number of matching tags are now displayed in autocomplete -> can be removed if not wanted
+** All checkboxes are in 1 column not 2. We can change this but would be nice to postpone
+
+in -> Specimen filters- weight length condition remarks
+* Weight
+** Units not working atm because of no migrated data
+** Some weight types missing because missing migrated data. Will appear when data is migrated
+** Explain how weight, length and date search works
+
+
+* Length
+** Same as for Weight
+
+* Carcass condition
+** Some types are missing from specification because not there in data
+
+
+* Remarks
+** Search for remarks that will expanded when more remarks are added.
+** Using input instead of text area for input
+** Added preview section (can be removed but found it hard to use without)
+** Search becomes fuzzy when adding ~ (can use some input to controller this if we want)
+** Specimen result will be presented in order based on matching, if no sorting is provided
+
+
+in -> Specimen filters - physical object age sex bones
+* Preparation type
+** Other preparation added but right no no exist in data
+** Order not changed
+
+* Storage
+** Added level filter
+** For level 1 added sufix "on level 1"
+** For level 2 added sufix "in nrm zoology" (or whatever the name is on level 1)
+** For level 3 and below added corresponding level 2 name ex (in bone room)
+** All these sufixes are in lowercase and without the parentheses. Right now this is what we can do and its a bit of a stretch as it is
+
+* Age and development
+** Seams ok
+
+* Sex
+** Removed label above checkboxes
+
+* Bones
+** Removed label above checkboxes
+** bacculum is added but dont exist due to no data
+
+
+in -> Specimen filters - locality
+* Locality
+** Use tag search for higher
+** Note that there is 3 different locality types instead of 3
+** In higher geography non unique names are merged. Should we add id or should we add parent like in storageLocation?
+** Appearance at locality not added. Need to migrate date first
+
+in -> Specimen filters - identifier taxonomy
+* Identifier
+** Updated label
+
+* Taxonomy
+** Only accepted name atm
+** We dont have any subspiecies due to no migrated data. We have class. Should that be removed? 
+
+in -> Specimen filters - agent date
+* Date
+** Only one date type available now. More will come with migrated data
+
+* Agent
+** Right now only collector as role. Other roles will appear with more migrated data
+

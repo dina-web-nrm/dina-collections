@@ -40,6 +40,15 @@ class BonesFilterForm extends PureComponent {
             resource="searchSpecimen"
           />
         </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Other preparation"
+            name="physicalObject.otherPreparation"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
       </Grid>
     )
   }

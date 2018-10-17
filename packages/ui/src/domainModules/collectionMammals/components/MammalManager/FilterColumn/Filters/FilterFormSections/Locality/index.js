@@ -6,8 +6,6 @@ import {
   MultipleChoiceCheckboxesField,
 } from 'coreModules/search/components'
 
-import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
-
 import { higherOrderComponents } from '../../../queryBuilder'
 
 const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
@@ -22,16 +20,23 @@ class LocalityFilterForm extends PureComponent {
   render() {
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Column mobile={16}>
+        <Grid.Column width={16}>
           <Field
             autoComplete="off"
-            component={LocalityDropdownSearch}
+            component={WrappedMultipleSearchTagsSelectField}
             fluid
-            label="Higher geography"
-            model="place"
-            module="locality"
-            name="locality.higherGeography"
-            type="text"
+            label="Higher Geography"
+            name="locality.higherGeography.tagValues"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Higher geography level"
+            name="locality.higherGeography.tagTypes"
+            resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Column width={16}>
@@ -40,7 +45,7 @@ class LocalityFilterForm extends PureComponent {
             component={WrappedMultipleSearchTagsSelectField}
             fluid
             label="Locality"
-            name="locality.tagValues"
+            name="locality.localities.tagValues"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -48,8 +53,8 @@ class LocalityFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Locality types"
-            name="locality.tagTypes"
+            label="Locality type"
+            name="locality.localities.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>

@@ -4,8 +4,6 @@ const taxonomy = require('./decorators/taxonomy')
 
 const searchAge = require('./searchOnlyFields/searchAge')
 const searchDate = require('./searchOnlyFields/searchDate')
-const searchLength = require('./searchOnlyFields/searchLength')
-const searchWeight = require('./searchOnlyFields/searchWeight')
 const searchRemarks = require('./searchOnlyFields/searchRemarks')
 
 const agentTags = require('./tags/agentTags')
@@ -16,7 +14,8 @@ const dateTags = require('./tags/dateTags')
 const identifierTags = require('./tags/identifierTags')
 const lengthTags = require('./tags/lengthTags')
 const locationTags = require('./tags/locationTags')
-const placeIdTags = require('./tags/placeIdTags')
+const otherPreparationTags = require('./tags/otherPreparationTags')
+const higherGeographyTags = require('./tags/higherGeographyTags')
 const sexTags = require('./tags/sexTags')
 const skeletonTags = require('./tags/skeletonTags')
 const skinTags = require('./tags/skinTags')
@@ -63,8 +62,6 @@ module.exports = {
   fields: [
     searchAge,
     searchDate,
-    searchLength,
-    searchWeight,
     searchRemarks,
 
     agentTags,
@@ -75,7 +72,8 @@ module.exports = {
     identifierTags,
     lengthTags,
     locationTags,
-    placeIdTags,
+    otherPreparationTags,
+    higherGeographyTags,
     sexTags,
     skeletonTags,
     skinTags,

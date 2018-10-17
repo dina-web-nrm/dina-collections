@@ -44,9 +44,6 @@ const InfiniteTableRow = ({
   if (!item) {
     return (
       <Grid.Row style={{ height: emToPixels(3.5), width }}>
-        <Grid.Column style={{ width: 80 }} textAlign="right">
-          {rowNumber}
-        </Grid.Column>
         <Grid.Column style={{ width: 60 }}>
           <Dimmer active inverted>
             <Loader inverted size="mini" />
@@ -64,9 +61,6 @@ const InfiniteTableRow = ({
       }}
       style={{ background, cursor: 'pointer', height: emToPixels(3.5), width }}
     >
-      <Grid.Column key="rowNumber" style={{ width: 80 }} textAlign="right">
-        {rowNumber}
-      </Grid.Column>
       {tableColumnSpecifications.map(({ name, width: columnWidth }) => {
         if (tableColumnsToShow.includes(name)) {
           let value = objectPath.get(item, `attributes.${name}`)

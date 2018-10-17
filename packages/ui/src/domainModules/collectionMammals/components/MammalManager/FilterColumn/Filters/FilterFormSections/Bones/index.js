@@ -17,7 +17,8 @@ class BonesFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Bones"
+            enableHelpNotifications={false}
+            label=""
             name="bones.bones"
             resource="searchSpecimen"
           />

@@ -1,11 +1,12 @@
 export default function createTagSpecification({
   sectionName,
-  tagValuesFieldName,
+  includeTagTypesInAggregation = true,
+  matchFilterFunctionName,
+  searchFilterFunctionName,
+  tagTypeAggregationFunctionName,
   tagTypesFieldName,
   tagValuesAggregationFunctionName,
-  tagTypeAggregationFunctionName,
-  searchFilterFunctionName,
-  matchFilterFunctionName,
+  tagValuesFieldName,
 }) {
   const tagValuesAggregation = ({ input = {}, sectionValues }) => {
     const selectedTagTypes = sectionValues && sectionValues.tagTypes
@@ -18,7 +19,7 @@ export default function createTagSpecification({
       aggregationFunction: tagValuesAggregationFunctionName,
       input: {
         limit,
-        tagTypes,
+        tagTypes: includeTagTypesInAggregation ? tagTypes : undefined,
         tagValue,
       },
     }

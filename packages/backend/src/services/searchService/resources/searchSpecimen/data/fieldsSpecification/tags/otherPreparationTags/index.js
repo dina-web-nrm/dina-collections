@@ -1,4 +1,4 @@
-const extractFeatureText = require('../../utilities/extractFeatureText')
+const extractPhysicalUnitStrings = require('../../utilities/extractPhysicalUnitStrings')
 const createStringAggregation = require('../../../../../../../../lib/data/aggregations/factories/createStringAggregation')
 const {
   createTagMatchFilter,
@@ -9,26 +9,38 @@ const {
   createKeywordAndRawMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
-const fieldPath = 'attributes.tags.sexTags'
-const key = 'sexTags'
-const resource = 'sexTag'
-const aggregationName = 'aggregateSexTags'
-const searchFilterName = 'searchSexTags'
-const matchFilterName = 'matchSexTags'
+const fieldPath = 'attributes.tags.otherPreparationTags'
+const key = 'otherPreparationTags'
+const resource = 'otherPreparationTag'
+const aggregationName = 'aggregateOtherPreparationTags'
+const searchFilterName = 'searchOtherPreparationTags'
+const matchFilterName = 'matchOtherPreparationTags'
 
-const FEATURE_TYPE = 'sex'
+const CATEGORY = 'other-preparation'
 
 const transformation = ({ migrator, src, target }) => {
-  const featureTexts = extractFeatureText({
-    featureTypeKey: FEATURE_TYPE,
+  const tags = extractPhysicalUnitStrings({
+    includePreparationType: preparationType => {
+      return preparationType && preparationType.category === CATEGORY
+    },
+    includeStorageLocation: false,
     migrator,
     src,
   })
-  migrator.setValue({
-    obj: target,
-    path: fieldPath,
-    value: featureTexts,
-  })
+
+  if (tags && tags.length) {
+    migrator.setValue({
+      obj: target,
+      path: fieldPath,
+      value: tags,
+    })
+  } else {
+    migrator.setValue({
+      obj: target,
+      path: fieldPath,
+      value: ['no other preparation'],
+    })
+  }
 
   return null
 }

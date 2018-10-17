@@ -21,14 +21,43 @@ const matchFilterName = 'matchStorageLocationTags'
 
 const delimiter = 'ddaadd'
 
+const findLevel2ParentSufix = storageLocation => {
+  const isLevel2 = storageLocation.group === 'Level 2'
+  if (isLevel2) {
+    return ` ${storageLocation.name}`
+  }
+
+  if (!storageLocation.parent) {
+    return ` ${storageLocation.group}`
+  }
+
+  return findLevel2ParentSufix(storageLocation.parent)
+}
+
+const fetchSufix = storageLocation => {
+  if (storageLocation.group === 'Level 1') {
+    return ' on level 1'
+  }
+
+  if (storageLocation.group === 'Level 2') {
+    if (storageLocation.parent) {
+      return ` in ${storageLocation.parent.name}`
+    }
+    return ' on level 2'
+  }
+
+  return findLevel2ParentSufix(storageLocation)
+}
+
 const transformation = ({ migrator, target, locals }) => {
   const { storageLocations = [], storageLocationTexts = [] } = locals
 
   const tags = []
-  storageLocations.forEach(({ name, group }) => {
+  storageLocations.forEach(storageLocation => {
+    const { name, group } = storageLocation
     const tagType = group
-    const tagValue = name
-
+    const sufix = fetchSufix(storageLocation)
+    const tagValue = `${name}${sufix}`
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
       tagType,

@@ -25,7 +25,7 @@ class IdentifierFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
-            label="Identifier"
+            label="Identifier value"
             name="identifier.tagValues"
             resource="searchSpecimen"
           />

@@ -17,7 +17,8 @@ class CollectingConditionFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Collecting condition"
+            enableHelpNotifications={false}
+            label=""
             name="collectingCondition.collectingConditions"
             resource="searchSpecimen"
           />

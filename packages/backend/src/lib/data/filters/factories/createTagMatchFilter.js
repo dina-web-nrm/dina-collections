@@ -2,26 +2,29 @@ module.exports = function createTagMatchFilter({
   description,
   fieldPath,
   key,
+  nested = true,
+  tagTypePath = 'tagType',
 }) {
-  const typePath = `${fieldPath}.tagType.raw`
-  const valuePath = `${fieldPath}.tagValue.raw`
+  const typePath = nested
+    ? `${fieldPath}.${tagTypePath}.raw`
+    : `${fieldPath}.raw`
+  const valuePath = nested ? `${fieldPath}.tagValue.raw` : `${fieldPath}.raw`
 
   return {
     description: description || `Search ${fieldPath}`,
-    elasticsearch: ({ tagType, tagValue }) => {
-      const baseQuery = {
-        nested: {
-          path: fieldPath,
-          query: {
-            bool: {
-              must: [],
-            },
+    elasticsearch: ({ tagType, tagTypes, tagValue }) => {
+      const must = []
+
+      if (tagTypes) {
+        must.push({
+          terms: {
+            [typePath]: tagTypes,
           },
-        },
+        })
       }
 
       if (tagType) {
-        baseQuery.nested.query.bool.must.push({
+        must.push({
           term: {
             [typePath]: tagType,
           },
@@ -29,14 +32,30 @@ module.exports = function createTagMatchFilter({
       }
 
       if (tagValue) {
-        baseQuery.nested.query.bool.must.push({
+        must.push({
           term: {
             [valuePath]: tagValue.toLowerCase(),
           },
         })
       }
 
-      return baseQuery
+      if (nested) {
+        return {
+          nested: {
+            path: fieldPath,
+            query: {
+              bool: {
+                must,
+              },
+            },
+          },
+        }
+      }
+      return {
+        bool: {
+          must,
+        },
+      }
     },
     inputSchema: {
       type: 'object',

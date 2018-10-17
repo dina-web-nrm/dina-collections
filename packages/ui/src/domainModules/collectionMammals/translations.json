@@ -276,7 +276,7 @@
         "en": "Swedish map"
       }
     },
-    "position": { 
+    "position": {
       "uncertaintyInMeters": {
         "en": "Uncertainty estimate (m)",
         "sv": ""
@@ -347,7 +347,7 @@
         "en": "Old local name"
       }
     },
-    "verticalPosition": { 
+    "verticalPosition": {
       "maximumDepthInMeters": {
         "en": "Depth max (m)",
         "sv": "Max"
@@ -388,14 +388,14 @@
     },
     "collectingInformation": {
       "en": "collecting information"
-    }, 
+    },
     "death": {
       "en": "Death",
       "sv": ""
     },
     "collecintLocality": {
       "en": "collecting locality"
-    }, 
+    },
     "curatorialAssessments": {
       "en": "Curatorial assessments",
       "sv": ""
@@ -421,9 +421,9 @@
     "localityOrigin": {
       "en": "collecting location and origin"
     },
-    "localityPosition": { 
+    "localityPosition": {
       "en": "Position of collecting locality",
-      "sv": ""  
+      "sv": ""
     },
     "newSpecimen": {
       "en": "New specimen",
@@ -544,7 +544,7 @@
       "sv": ""
     },
     "agent": {
-      "en": "Collector",
+      "en": "Agent/name",
       "sv": ""
     },
     "physicalObject": {
@@ -901,7 +901,7 @@
       },
       "complete-body-weight": {
         "en": "Complete body"
-      },  
+      },
       "skinned-weight": {
         "en": "Skinned"
       },
@@ -1158,11 +1158,11 @@
     "loading": {
       "en": "loading",
       "sv": "laddar"
-    }, 
+    },
     "method": {
       "en": "Method",
       "sv": "Metod"
-    }, 
+    },
     "physicalObjects": {
       "addSkeleton": {
         "en": "Add a skeleton",

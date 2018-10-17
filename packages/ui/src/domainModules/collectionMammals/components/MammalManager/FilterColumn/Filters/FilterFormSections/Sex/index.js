@@ -17,7 +17,8 @@ class SexFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Sex"
+            enableHelpNotifications={false}
+            label=""
             name="sex.sex"
             resource="searchSpecimen"
           />

@@ -1,11 +1,13 @@
 const objectPath = require('object-path')
 
-module.exports = function createTagValueAggregation({
+module.exports = function createTagTypeAggregation({
   description,
   fieldPath,
   resource,
+  tagTypePath = 'tagType',
 }) {
-  const typeRawPath = `${fieldPath}.tagType.raw`
+  const tagTypesPath = `${tagTypePath}s`
+  const typeRawPath = `${fieldPath}.${tagTypePath}.raw`
 
   return {
     description: description || `Aggregation for: ${fieldPath}`,
@@ -23,7 +25,7 @@ module.exports = function createTagValueAggregation({
 
       return {
         aggs: {
-          tagTypes: {
+          [tagTypesPath]: {
             terms: identifierTypeFilter,
           },
         },
@@ -35,7 +37,7 @@ module.exports = function createTagValueAggregation({
     extractItems: ({ key, result }) => {
       const tagTypes = objectPath.get(
         result,
-        `aggregations.${key}.tagTypes.buckets`
+        `aggregations.${key}.${tagTypesPath}.buckets`
       )
       if (!(tagTypes && tagTypes.length)) {
         return []
