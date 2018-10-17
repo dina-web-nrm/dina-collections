@@ -1,20 +1,23 @@
 import createTagSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagSpecification'
-import createIdSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/idSpecification'
 
 const tagSpecifications = createTagSpecification({
   matchFilterFunctionName: 'matchLocationTags',
   searchFilterFunctionName: 'searchLocationTags',
-  sectionName: 'locality',
+  sectionName: 'locality.localities',
   tagTypeAggregationFunctionName: 'aggregateLocationTagTypes',
-  tagTypesFieldName: 'locality.tagTypes',
+  tagTypesFieldName: 'locality.localities.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateLocationTagValues',
-  tagValuesFieldName: 'locality.tagValues',
+  tagValuesFieldName: 'locality.localities.tagValues',
 })
 
-const placeIdSpecification = createIdSpecification({
-  fieldName: 'locality.higherGeography',
-  idMatchFilterFunctionName: 'matchPlaceIdTags',
-  sectionName: 'locality',
+const higherGeographySpecifications = createTagSpecification({
+  matchFilterFunctionName: 'matchHigherGeographyTags',
+  searchFilterFunctionName: 'searchHigherGeographyTags',
+  sectionName: 'locality.higherGeography',
+  tagTypeAggregationFunctionName: 'aggregateHigherGeographyTagTypes',
+  tagTypesFieldName: 'locality.higherGeography.tagTypes',
+  tagValuesAggregationFunctionName: 'aggregateHigherGeographyTagValues',
+  tagValuesFieldName: 'locality.higherGeography.tagValues',
 })
 
-export default [...tagSpecifications, ...placeIdSpecification]
+export default [...tagSpecifications, ...higherGeographySpecifications]
