@@ -29,8 +29,8 @@ export default function featureRangeSpecification({
           value: {
             max,
             min,
-            rangeTypes,
             rangeUnit,
+            tagTypes: rangeTypes,
           },
         },
       },

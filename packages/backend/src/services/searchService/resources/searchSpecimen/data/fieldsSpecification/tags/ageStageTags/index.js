@@ -1,7 +1,7 @@
 const extractFeatureText = require('../../utilities/extractFeatureText')
 const createStringAggregation = require('../../../../../../../../lib/data/aggregations/factories/createStringAggregation')
 const {
-  createStringMatchFilter,
+  createTagMatchFilter,
   createStringSearchFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
@@ -42,8 +42,9 @@ module.exports = {
   },
   fieldPath,
   filters: {
-    [matchFilterName]: createStringMatchFilter({
+    [matchFilterName]: createTagMatchFilter({
       fieldPath,
+      nested: false,
     }),
     [searchFilterName]: createStringSearchFilter({
       fieldPath,

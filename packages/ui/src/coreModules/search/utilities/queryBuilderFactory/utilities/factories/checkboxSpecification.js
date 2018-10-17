@@ -14,19 +14,14 @@ export default function createCheckboxSpecification({
     if (!(fieldValue && fieldValue.length)) {
       return null
     }
-    const stringFilters = fieldValue.map(value => {
-      return {
-        filter: {
-          filterFunction: matchFilterFunctionName,
-          input: {
-            value,
-          },
-        },
-      }
-    })
 
     return {
-      or: stringFilters,
+      filter: {
+        filterFunction: matchFilterFunctionName,
+        input: {
+          tagTypes: fieldValue,
+        },
+      },
     }
   }
 

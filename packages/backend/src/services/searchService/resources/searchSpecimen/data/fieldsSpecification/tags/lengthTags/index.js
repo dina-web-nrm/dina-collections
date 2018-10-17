@@ -1,7 +1,7 @@
 const extractFeatureText = require('../../utilities/extractFeatureText')
 const createStringAggregation = require('../../../../../../../../lib/data/aggregations/factories/createStringAggregation')
 const {
-  createStringMatchFilter,
+  createTagMatchFilter,
   createStringSearchFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
@@ -21,6 +21,7 @@ const FEATURE_GROUP = 'length'
 const transformation = ({ migrator, src, target }) => {
   const featureTexts = extractFeatureText({
     extractKey: true,
+    fallbackUnit: 'unknown-length-type',
     featureGroupKey: FEATURE_GROUP,
     migrator,
     src,
@@ -44,8 +45,9 @@ module.exports = {
   },
   fieldPath,
   filters: {
-    [matchFilterName]: createStringMatchFilter({
+    [matchFilterName]: createTagMatchFilter({
       fieldPath,
+      nested: false,
     }),
     [searchFilterName]: createStringSearchFilter({
       fieldPath,

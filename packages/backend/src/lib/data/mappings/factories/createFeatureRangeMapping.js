@@ -13,7 +13,12 @@ module.exports = function createFeatureRangeMapping({ fieldPath }) {
             },
             type: 'text',
           },
-          rangeUnit: {
+
+          rangeValue: {
+            scaling_factor: 100,
+            type: 'scaled_float',
+          },
+          tagType: {
             fields: {
               raw: {
                 ignore_above: 256,
@@ -22,10 +27,6 @@ module.exports = function createFeatureRangeMapping({ fieldPath }) {
               },
             },
             type: 'text',
-          },
-          rangeValue: {
-            scaling_factor: 100,
-            type: 'scaled_float',
           },
         },
         type: 'nested',

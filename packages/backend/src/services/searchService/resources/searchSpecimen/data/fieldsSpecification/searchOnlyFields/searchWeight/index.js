@@ -1,14 +1,20 @@
+const createTagTypeAggregation = require('../../../../../../../../lib/data/aggregations/factories/createTagTypeAggregation')
 const {
   createFeatureRangeMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
 const {
   createFeatureRangeFilter,
+  createTagMatchFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
 const fieldPath = 'attributes.searchOnlyFields.weightObject'
 const key = 'searchWeight'
 const searchFilterName = 'rangeWeight'
+
+const resource = 'weightTag'
+const aggregationName = 'aggregateWeightTags'
+const matchFilterName = 'matchWeightTags'
 
 const transformation = ({ migrator, src, target }) => {
   const featureObservations = migrator.getValue({
@@ -34,9 +40,9 @@ const transformation = ({ migrator, src, target }) => {
       const rangeUnit = featureObservation.featureObservationUnit
 
       weightObjects.push({
-        rangeType: featureType.key,
         rangeUnit,
         rangeValue,
+        tagType: featureType.key,
       })
     }
   })
@@ -51,8 +57,17 @@ const transformation = ({ migrator, src, target }) => {
 }
 
 module.exports = {
+  aggregations: {
+    [aggregationName]: createTagTypeAggregation({
+      fieldPath,
+      resource,
+    }),
+  },
   fieldPath,
   filters: {
+    [matchFilterName]: createTagMatchFilter({
+      fieldPath,
+    }),
     [searchFilterName]: createFeatureRangeFilter({
       fieldPath,
     }),
