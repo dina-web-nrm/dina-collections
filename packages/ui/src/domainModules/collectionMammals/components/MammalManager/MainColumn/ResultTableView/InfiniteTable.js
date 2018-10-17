@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import PropTypes from 'prop-types'
 import ReactList from 'react-list'
-import { push } from 'react-router-redux'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
@@ -43,7 +42,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  push,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
 }
@@ -52,7 +50,6 @@ const propTypes = {
   currentTableRowNumber: PropTypes.number.isRequired,
   fetchItemById: PropTypes.func.isRequired,
   language: PropTypes.string.isRequired,
-  push: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
   setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFocusedSpecimenId: PropTypes.func.isRequired,
@@ -120,7 +117,6 @@ export class InfiniteTable extends Component {
   }
 
   handleRowClick(rowNumber, specimenId) {
-    this.props.push(`/app/specimens/mammals/${specimenId}/edit/sections/0`)
     this.props.setFocusedSpecimenId(specimenId)
     this.props.setCurrentTableRowNumber(rowNumber)
   }

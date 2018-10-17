@@ -6,6 +6,7 @@ describe('coreModules/keyboardShortcuts/selectors', () => {
   describe('getLocalState', () => {
     it('returns local state', () => {
       const localState = {
+        layer: '',
         shortcuts: {},
         showInfo: false,
       }
@@ -23,6 +24,7 @@ describe('coreModules/keyboardShortcuts/selectors', () => {
   describe('getShowInfo', () => {
     it('returns true when showInfo: true', () => {
       const localState = {
+        layer: '',
         shortcuts: {},
         showInfo: true,
       }
@@ -33,6 +35,7 @@ describe('coreModules/keyboardShortcuts/selectors', () => {
     })
     it('returns false when showInfo: true', () => {
       const localState = {
+        layer: '',
         shortcuts: {},
         showInfo: false,
       }

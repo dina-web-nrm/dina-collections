@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
+import { createShortcutLayer } from 'coreModules/keyboardShortcuts/higherOrderComponents'
 import memoize from 'memoize-one'
 import {
   ColumnLayout,
@@ -318,5 +319,6 @@ ResourceManager.defaultProps = defaultProps
 export default compose(
   createResourceManagerWrapper(),
   injectWindowHeight,
-  connect(mapStateToProps)
+  connect(mapStateToProps),
+  createShortcutLayer({ layer: 'resourceManager' })
 )(ResourceManager)

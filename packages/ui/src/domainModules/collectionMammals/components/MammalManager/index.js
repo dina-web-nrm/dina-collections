@@ -9,10 +9,12 @@ import { push } from 'react-router-redux'
 import objectPath from 'object-path'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
+import { createShortcutLayer } from 'coreModules/keyboardShortcuts/higherOrderComponents'
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
 import userSelectors from 'coreModules/user/globalSelectors'
+
 import {
   createInjectSearch,
   createInjectSearchResult,
@@ -248,6 +250,18 @@ class MammalManager extends Component {
 
     this.shortcuts = [
       {
+        activeInLayer: 'mammalManager',
+        command: 'down',
+        description: 'Move focus to next record',
+        onPress: this.handleSelectNextRecord,
+      },
+      {
+        activeInLayer: 'mammalManager',
+        command: 'up',
+        description: 'Move focus to previous record',
+        onPress: this.handleSelectPreviousRecord,
+      },
+      {
         command: 'n n',
         description: 'Open new record form',
         onPress: this.handleOpenNewRecordForm,
@@ -259,10 +273,13 @@ class MammalManager extends Component {
       },
     ]
   }
-
   componentWillMount() {
     this.handleSectionIdUpdate()
     this.handleSpecimenIdUpdate()
+  }
+
+  componentDidMount() {
+    this.handleSearchSpecimens()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -510,5 +527,6 @@ export default compose(
     resource: 'searchSpecimen',
   }),
   higherOrderComponents.createFormHoc(),
+  createShortcutLayer({ layer: 'mammalManager' }),
   connect(mapStateToProps, mapDispatchToProps)
 )(MammalManager)

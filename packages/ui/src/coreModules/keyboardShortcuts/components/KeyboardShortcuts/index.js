@@ -5,12 +5,21 @@ import { push } from 'react-router-redux'
 import Mousetrap from 'mousetrap'
 
 import createLog from 'utilities/log'
+
+import globalSelectors from '../../globalSelectors'
+
 import {
   registerKeyboardShortcut,
   unregisterKeyboardShortcut,
 } from '../../actionCreators'
 
 const log = createLog('modules:keyboardShortcuts:DisplayShortcuts')
+
+const mapStateToProps = state => {
+  return {
+    layer: globalSelectors.getLayer(state),
+  }
+}
 
 const mapDispatchToProps = {
   push,
@@ -20,6 +29,7 @@ const mapDispatchToProps = {
 
 const propTypes = {
   children: PropTypes.node,
+  layer: PropTypes.string,
   onPress: PropTypes.func,
   push: PropTypes.func.isRequired,
   registerKeyboardShortcut: PropTypes.func.isRequired,
@@ -34,6 +44,7 @@ const propTypes = {
 }
 const defaultProps = {
   children: undefined,
+  layer: undefined,
   onPress: undefined,
 }
 
@@ -79,10 +90,22 @@ class KeyboardShortcuts extends Component {
   }
 
   getHandler(shortcut) {
-    const { onPress } = shortcut
+    const { activeInLayer, onPress } = shortcut
     const { onPress: onPressSwitch } = this.props
 
-    return onPress || onPressSwitch || this.getParamsHandler(shortcut)
+    const handler = onPress || onPressSwitch || this.getParamsHandler(shortcut)
+
+    if (!activeInLayer) {
+      return handler
+    }
+
+    return (...args) => {
+      const { layer } = this.props
+      if (layer !== activeInLayer) {
+        return null
+      }
+      return handler(...args)
+    }
   }
 
   getParamsHandler({ command, params, type }) {
@@ -134,4 +157,4 @@ class KeyboardShortcuts extends Component {
 KeyboardShortcuts.propTypes = propTypes
 KeyboardShortcuts.defaultProps = defaultProps
 
-export default connect(undefined, mapDispatchToProps)(KeyboardShortcuts)
+export default connect(mapStateToProps, mapDispatchToProps)(KeyboardShortcuts)

@@ -12,6 +12,7 @@ describe('coreModules/keyboardShortcuts', () => {
     it('returns initial state', () => {
       const testValue = reducer(undefined, {})
       const expectedResult = {
+        layer: '',
         shortcuts: {},
         showInfo: false,
       }
@@ -37,6 +38,7 @@ describe('coreModules/keyboardShortcuts', () => {
         type: KEYBOARD_SHORTCUTS_SET_MODAL_VISIBLE,
       }
       const expectedResult = {
+        layer: '',
         shortcuts: {},
         showInfo: true,
       }
@@ -45,6 +47,7 @@ describe('coreModules/keyboardShortcuts', () => {
     })
     it('set showInfo to true when state', () => {
       const state = {
+        layer: '',
         shortcuts: {
           a: 123,
         },
@@ -55,6 +58,7 @@ describe('coreModules/keyboardShortcuts', () => {
       }
 
       const expectedResult = {
+        layer: '',
         shortcuts: {
           a: 123,
         },
@@ -73,6 +77,7 @@ describe('coreModules/keyboardShortcuts', () => {
         type: KEYBOARD_SHORTCUTS_SET_MODAL_HIDDEN,
       }
       const expectedResult = {
+        layer: '',
         shortcuts: {},
         showInfo: false,
       }
@@ -81,6 +86,7 @@ describe('coreModules/keyboardShortcuts', () => {
     })
     it('set showInfo to false when state', () => {
       const state = {
+        layer: '',
         shortcuts: {
           a: 123,
         },
@@ -91,6 +97,7 @@ describe('coreModules/keyboardShortcuts', () => {
       }
 
       const expectedResult = {
+        layer: '',
         shortcuts: {
           a: 123,
         },
