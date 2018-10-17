@@ -250,6 +250,18 @@ class MammalManager extends Component {
 
     this.shortcuts = [
       {
+        activeInLayer: 'mammalManager',
+        command: 'down',
+        description: 'Move focus to next record',
+        onPress: this.handleSelectNextRecord,
+      },
+      {
+        activeInLayer: 'mammalManager',
+        command: 'up',
+        description: 'Move focus to previous record',
+        onPress: this.handleSelectPreviousRecord,
+      },
+      {
         command: 'n n',
         description: 'Open new record form',
         onPress: this.handleOpenNewRecordForm,
