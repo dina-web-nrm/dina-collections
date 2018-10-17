@@ -90,9 +90,6 @@ class ResultTableView extends PureComponent {
       },
     ]
   }
-  componentDidMount() {
-    this.props.onSearchSpecimens()
-  }
 
   handleSaveTableColumnsToSort(columnsToSort) {
     return this.props.updateUserPreference(

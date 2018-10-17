@@ -273,10 +273,13 @@ class MammalManager extends Component {
       },
     ]
   }
-
   componentWillMount() {
     this.handleSectionIdUpdate()
     this.handleSpecimenIdUpdate()
+  }
+
+  componentDidMount() {
+    this.handleSearchSpecimens()
   }
 
   componentWillReceiveProps(nextProps) {
