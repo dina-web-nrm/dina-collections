@@ -14,6 +14,7 @@ const dateTags = require('./tags/dateTags')
 const identifierTags = require('./tags/identifierTags')
 const lengthTags = require('./tags/lengthTags')
 const locationTags = require('./tags/locationTags')
+const otherPreparationTags = require('./tags/otherPreparationTags')
 const placeIdTags = require('./tags/placeIdTags')
 const sexTags = require('./tags/sexTags')
 const skeletonTags = require('./tags/skeletonTags')
@@ -71,6 +72,7 @@ module.exports = {
     identifierTags,
     lengthTags,
     locationTags,
+    otherPreparationTags,
     placeIdTags,
     sexTags,
     skeletonTags,
