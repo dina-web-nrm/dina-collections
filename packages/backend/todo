@@ -1,2 +1,21 @@
 * Make click row select not go to form
 * Fix date search
+* Go through all and pickers, search and detect whats not done and fix bugs
+
+
+* Fix edits (link diff with changes table)
+Username, Date, created / last modified
+
+
+
+
+
+
+
+Review
+Weight length condition
+* Weight
+** Units not working atm because of no migrated data
+** Weight types missing because missing migrated data
+
+* Length
