@@ -1,3 +1,26 @@
+* Rename logService to historyService
+* modify createHook to optionally store snapshots, diffs, and nestedShapshots? nestedDiffs?
+* bubble up diff to hook level
+* Create required indexes
+* Make sure user id (potentially also user string) is preserved
+* Add batch execute to add items during migration
+* Evaluate how to solve
+
+
+
+
+* store diffs in separate table
+* afterHook
+** Aggregate diff up to afterhook
+** Use diff to create history record (use simple sql?)
+** Transfere updated at flag from specimen?
+*** id, resourceId, diff, resource, snapshot?, userId,...
+*** create index on id, resource, userId
+
+
+
+
+
 * Make click row select not go to form
 * Fix date search
 * Go through all and pickers, search and detect whats not done and fix bugs
