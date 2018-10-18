@@ -472,7 +472,7 @@ const createResourceManagerWrapper = (
       return null
     }
 
-    handleUpdateFilterValues(filters) {
+    handleUpdateFilterValues(filters = {}) {
       const { resource } = this.props
       this.props.setFilterValues(filters, { resource })
     }
@@ -532,7 +532,6 @@ const createResourceManagerWrapper = (
 
     handleClickRow(_, itemId) {
       this.focusRowWithId(itemId)
-      this.handleInteraction(ITEM_SELECT, { itemId })
     }
 
     handleFormTabClick() {
@@ -656,7 +655,6 @@ const createResourceManagerWrapper = (
       const { filterValues, focusedItemId, resource } = this.props
       if (focusedItemId) {
         this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
-        this.expandAncestorsForItemId(focusedItemId)
       }
 
       this.tableSearch(filterValues)

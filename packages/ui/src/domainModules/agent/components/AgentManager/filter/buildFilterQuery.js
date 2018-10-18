@@ -12,6 +12,17 @@ export default function buildFilterQuery({ values = {} }) {
     })
   }
 
+  if (values.agentType) {
+    and.push({
+      filter: {
+        filterFunction: 'matchAgentType',
+        input: {
+          value: values.agentType,
+        },
+      },
+    })
+  }
+
   if (!and.length) {
     return {}
   }

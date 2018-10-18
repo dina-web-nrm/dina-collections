@@ -6,7 +6,8 @@ import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
-import { Input } from 'coreModules/form/components'
+import { DropdownSearch, Input } from 'coreModules/form/components'
+import { DROPDOWN_FILTER_OPTIONS } from '../../../constants'
 
 export const FORM_NAME = 'taxonFilter'
 
@@ -37,9 +38,35 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    label="Accepted name"
                     model="taxonName"
                     module="taxon"
                     name="name"
+                    type="text"
+                  />
+                </Grid.Column>
+
+                <Grid.Column width={16}>
+                  <FieldWrapper
+                    autoComplete="off"
+                    component={DropdownSearch}
+                    fluid
+                    label="Accepted name rank"
+                    model="taxonName"
+                    module="taxon"
+                    name="rank"
+                    options={DROPDOWN_FILTER_OPTIONS}
+                    type="dropdown-search-local"
+                  />
+                </Grid.Column>
+                <Grid.Column width={16}>
+                  <FieldWrapper
+                    autoComplete="off"
+                    component={Input}
+                    label="Vernacular name"
+                    model="taxonName"
+                    module="taxon"
+                    name="vernacularName"
                     type="text"
                   />
                 </Grid.Column>

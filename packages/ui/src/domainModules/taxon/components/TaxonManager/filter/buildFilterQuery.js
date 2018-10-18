@@ -12,6 +12,28 @@ export default function buildFilterQuery({ values }) {
     })
   }
 
+  if (values.rank) {
+    and.push({
+      filter: {
+        filterFunction: 'nameRank',
+        input: {
+          value: values.rank,
+        },
+      },
+    })
+  }
+
+  if (values.vernacularName) {
+    and.push({
+      filter: {
+        filterFunction: 'vernacularNameSearch',
+        input: {
+          value: values.vernacularName,
+        },
+      },
+    })
+  }
+
   if (!and.length) {
     return {}
   }
