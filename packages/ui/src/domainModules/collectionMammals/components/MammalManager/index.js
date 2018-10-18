@@ -406,6 +406,10 @@ class MammalManager extends Component {
   }
 
   handleSearchSpecimens(props = this.props) {
+    if (!props.isTableView) {
+      this.handleOpenTableView()
+    }
+
     const { buildQuery, tableColumnsToSort } = props
 
     const sort =
