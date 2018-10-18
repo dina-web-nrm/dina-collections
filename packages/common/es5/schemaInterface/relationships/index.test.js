@@ -121,6 +121,7 @@ describe('schemaInterface/relationships', function () {
         path: 'game.points',
         sourceResource: 'game',
         storeInDocument: false,
+        storeInExternalDocument: false,
         targetAs: 'card',
         targetResource: 'card'
       };
@@ -141,6 +142,7 @@ describe('schemaInterface/relationships', function () {
         path: 'game.points',
         sourceResource: 'game',
         storeInDocument: false,
+        storeInExternalDocument: false,
         targetAs: 'card',
         targetResource: 'card'
       }, {
@@ -153,6 +155,7 @@ describe('schemaInterface/relationships', function () {
         path: undefined,
         sourceResource: 'game',
         storeInDocument: true,
+        storeInExternalDocument: false,
         targetAs: 'die',
         targetResource: 'dice'
       }];
@@ -173,6 +176,7 @@ describe('schemaInterface/relationships', function () {
         path: 'game.points',
         sourceResource: 'game',
         storeInDocument: false,
+        storeInExternalDocument: false,
         targetAs: 'card',
         targetResource: 'card'
       }, {
@@ -185,6 +189,7 @@ describe('schemaInterface/relationships', function () {
         path: undefined,
         sourceResource: 'game',
         storeInDocument: true,
+        storeInExternalDocument: false,
         targetAs: 'die',
         targetResource: 'dice'
       }, {
@@ -197,6 +202,7 @@ describe('schemaInterface/relationships', function () {
         path: undefined,
         sourceResource: 'score',
         storeInDocument: false,
+        storeInExternalDocument: false,
         targetAs: 'tally',
         targetResource: 'tally'
       }];
@@ -219,6 +225,7 @@ describe('schemaInterface/relationships', function () {
             path: 'game.points',
             sourceResource: 'game',
             storeInDocument: false,
+            storeInExternalDocument: false,
             targetAs: 'card',
             targetResource: 'card'
           },
@@ -232,6 +239,7 @@ describe('schemaInterface/relationships', function () {
             path: undefined,
             sourceResource: 'game',
             storeInDocument: true,
+            storeInExternalDocument: false,
             targetAs: 'die',
             targetResource: 'dice'
           }
@@ -247,6 +255,7 @@ describe('schemaInterface/relationships', function () {
             path: undefined,
             sourceResource: 'score',
             storeInDocument: false,
+            storeInExternalDocument: false,
             targetAs: 'tally',
             targetResource: 'tally'
           }

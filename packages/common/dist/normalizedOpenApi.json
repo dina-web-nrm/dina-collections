@@ -264,6 +264,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -1043,6 +1058,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -1235,6 +1265,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -1721,6 +1766,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -2203,6 +2263,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -2681,6 +2756,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -3175,6 +3265,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -3657,6 +3762,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -4135,6 +4255,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -4904,6 +5039,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -5391,8 +5541,35 @@
           },
           {
             "in": "query",
-            "name": "filter[service]",
-            "description": "Filter by service. Provide true to check existance. null to check no existance",
+            "name": "filter[action]",
+            "description": "Filter by action. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[relationshipId]",
+            "description": "Filter by relationshipId. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[relationshipType]",
+            "description": "Filter by relationshipType. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[requestId]",
+            "description": "Filter by requestId. Provide true to check existance. null to check no existance",
             "required": false,
             "schema": {
               "type": "string"
@@ -5418,8 +5595,8 @@
           },
           {
             "in": "query",
-            "name": "filter[action]",
-            "description": "Filter by action. Provide true to check existance. null to check no existance",
+            "name": "filter[service]",
+            "description": "Filter by service. Provide true to check existance. null to check no existance",
             "required": false,
             "schema": {
               "type": "string"
@@ -5429,15 +5606,6 @@
             "in": "query",
             "name": "filter[userId]",
             "description": "Filter by userId. Provide true to check existance. null to check no existance",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[requestId]",
-            "description": "Filter by requestId. Provide true to check existance. null to check no existance",
             "required": false,
             "schema": {
               "type": "string"
@@ -5459,6 +5627,75 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.action",
+                  "attributes.diff",
+                  "attributes.requestId",
+                  "attributes.resource",
+                  "attributes.resourceId",
+                  "attributes.service",
+                  "attributes.snapshot",
+                  "attributes.srcCreatedAt",
+                  "attributes.srcDeactivatedAt",
+                  "attributes.srcUpdatedAt",
+                  "attributes.userId",
+                  "attributes.userName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.action",
+                  "attributes.diff",
+                  "attributes.requestId",
+                  "attributes.resource",
+                  "attributes.resourceId",
+                  "attributes.service",
+                  "attributes.snapshot",
+                  "attributes.srcCreatedAt",
+                  "attributes.srcDeactivatedAt",
+                  "attributes.srcUpdatedAt",
+                  "attributes.userId",
+                  "attributes.userName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -5522,6 +5759,63 @@
         ]
       }
     },
+    "/api/log/v01/resourceActivitys/actions/bulkCreate": {
+      "post": {
+        "operationId": "resourceActivityBulkCreate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/resourceActivityBulkCreateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/resourceActivityBulkCreateResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/resourceActivityBulkCreate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/resourceActivityBulkCreate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Bulk create multiple resourceActivity",
+        "tags": [
+          "historyService"
+        ]
+      }
+    },
     "/api/log/v01/resourceActivitys/{id}": {
       "get": {
         "operationId": "resourceActivityGetOne",
@@ -5547,12 +5841,150 @@
           },
           {
             "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
             "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[action]",
+            "description": "Filter by action. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[relationshipId]",
+            "description": "Filter by relationshipId. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[relationshipType]",
+            "description": "Filter by relationshipType. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[requestId]",
+            "description": "Filter by requestId. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[resource]",
+            "description": "Filter by resource. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[resourceId]",
+            "description": "Filter by resourceId. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[service]",
+            "description": "Filter by service. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[userId]",
+            "description": "Filter by userId. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.action",
+                  "attributes.diff",
+                  "attributes.requestId",
+                  "attributes.resource",
+                  "attributes.resourceId",
+                  "attributes.service",
+                  "attributes.snapshot",
+                  "attributes.srcCreatedAt",
+                  "attributes.srcDeactivatedAt",
+                  "attributes.srcUpdatedAt",
+                  "attributes.userId",
+                  "attributes.userName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.action",
+                  "attributes.diff",
+                  "attributes.requestId",
+                  "attributes.resource",
+                  "attributes.resourceId",
+                  "attributes.service",
+                  "attributes.snapshot",
+                  "attributes.srcCreatedAt",
+                  "attributes.srcDeactivatedAt",
+                  "attributes.srcUpdatedAt",
+                  "attributes.userId",
+                  "attributes.userName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -6013,6 +6445,7 @@
             "schema": {
               "items": {
                 "enum": [
+                  "relevance",
                   "number:asc",
                   "number:desc",
                   "attributes.identifier:asc",
@@ -6627,6 +7060,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -7379,6 +7827,7 @@
             "schema": {
               "items": {
                 "enum": [
+                  "relevance",
                   "id:asc",
                   "id:desc",
                   "attributes.name:asc",
@@ -8246,6 +8695,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -9587,6 +10051,7 @@
             "schema": {
               "items": {
                 "enum": [
+                  "relevance",
                   "attributes.collectingEventCollectors:asc",
                   "attributes.collectingEventCollectors:desc",
                   "attributes.collectingEventCountry:asc",
@@ -10089,6 +10554,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -10622,6 +11102,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -11147,6 +11642,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -11680,6 +12190,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -12205,6 +12730,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -12738,6 +13278,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -13263,6 +13818,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -13796,6 +14366,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -14290,6 +14875,7 @@
                   "physicalObjects",
                   "places",
                   "preparationTypes",
+                  "resourceActivities",
                   "taxonNames",
                   "typeSpecimenType"
                 ],
@@ -14354,6 +14940,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -14447,6 +15048,7 @@
                   "physicalObjects",
                   "places",
                   "preparationTypes",
+                  "resourceActivities",
                   "taxonNames",
                   "typeSpecimenType"
                 ],
@@ -14774,6 +15376,7 @@
                   "physicalObjects",
                   "places",
                   "preparationTypes",
+                  "resourceActivities",
                   "taxonNames",
                   "typeSpecimenType"
                 ],
@@ -16426,6 +17029,21 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "schema": {
@@ -17079,6 +17697,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -18173,6 +18806,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -19539,6 +20187,21 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -21359,6 +22022,89 @@
         "x-modelType": "model",
         "x-summary": ""
       },
+      "resourceActivity": {
+        "additionalProperties": false,
+        "description": "Representing resourceActivity",
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/id",
+            "x-summary": ""
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "schemaVersion": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "service": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "resource": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "resourceId": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "action": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "userId": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "userName": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "requestId": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "snapshot": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "diff": {
+            "type": "array",
+            "x-summary": ""
+          },
+          "srcCreatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "srcUpdatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "srcDeactivatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "type": {
+            "$ref": "#/components/schemas/type",
+            "x-summary": ""
+          }
+        },
+        "x-category": "historyService",
+        "x-modelType": "model",
+        "x-summary": ""
+      },
       "catalogNumber": {
         "additionalProperties": false,
         "description": "A model for catalogNumber",
@@ -21491,62 +22237,6 @@
           }
         },
         "x-category": "jobService",
-        "x-modelType": "model",
-        "x-summary": ""
-      },
-      "resourceActivity": {
-        "additionalProperties": false,
-        "description": "Representing resourceActivity",
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/id",
-            "x-summary": ""
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string",
-            "x-summary": ""
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string",
-            "x-summary": ""
-          },
-          "schemaVersion": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "service": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "resource": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "resourceId": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "action": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "userId": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "requestId": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "type": {
-            "$ref": "#/components/schemas/type",
-            "x-summary": ""
-          }
-        },
-        "x-category": "logService",
         "x-modelType": "model",
         "x-summary": ""
       },
@@ -22416,6 +23106,13 @@
             "x-summary": ""
           },
           "preparationTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/externalModelReference"
+            },
+            "x-summary": ""
+          },
+          "resourceActivities": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/externalModelReference"
@@ -26912,6 +27609,60 @@
         "type": "object"
       },
       "resourceActivityCreate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "resourceActivityBulkCreate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "resourceActivityBulkCreate-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -39398,6 +40149,16 @@
                   "scrollId": {
                     "description": "Elastic search scroll id",
                     "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 }
               }
@@ -40512,6 +41273,59 @@
         "x-summary": "",
         "description": ""
       },
+      "resourceActivityBulkCreateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "default": "resourceActivity",
+                  "enum": [
+                    "resourceActivity"
+                  ],
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "attributes": {
+                  "$ref": "#/components/schemas/resourceActivity"
+                }
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": [
+              {
+                "attributes": {},
+                "type": "resourceActivity"
+              }
+            ]
+          }
+        },
+        "example": {
+          "data": [
+            {
+              "attributes": {},
+              "type": "resourceActivity"
+            }
+          ]
+        },
+        "x-summary": "",
+        "description": ""
+      },
       "resourceActivityUpdateRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -41172,6 +41986,16 @@
                   "scrollId": {
                     "description": "Elastic search scroll id",
                     "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 }
               }
@@ -41700,6 +42524,7 @@
                     "description": "When provided response will be sorted",
                     "items": {
                       "enum": [
+                        "relevance",
                         "attributes.collectingEventCollectors:asc",
                         "attributes.collectingEventCollectors:desc",
                         "attributes.collectingEventCountry:asc",
@@ -42864,6 +43689,32 @@
                         },
                         "type": "object"
                       },
+                      "resourceActivities": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "resourceActivity"
+                                  ],
+                                  "example": "resourceActivity",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
                       "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
@@ -43283,6 +44134,16 @@
                   "scrollId": {
                     "description": "Elastic search scroll id",
                     "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 }
               }
@@ -43523,6 +44384,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "resourceActivities": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "resourceActivity"
+                                  ],
+                                  "example": "resourceActivity",
                                   "type": "string"
                                 }
                               },
@@ -44404,6 +45291,16 @@
                   "scrollId": {
                     "description": "Elastic search scroll id",
                     "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 }
               }
@@ -44965,6 +45862,16 @@
                   "scrollId": {
                     "description": "Elastic search scroll id",
                     "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 }
               }
@@ -45564,6 +46471,16 @@
                   "scrollId": {
                     "description": "Elastic search scroll id",
                     "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 }
               }
@@ -49465,6 +50382,57 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/log/v01/resourceActivitys",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "resourceActivityBulkCreateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/resourceActivity"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "resourceActivity",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/log/v01/resourceActivitys/actions/bulkCreate",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -55731,6 +56699,32 @@
                         },
                         "type": "object"
                       },
+                      "resourceActivities": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "resourceActivity"
+                                  ],
+                                  "example": "resourceActivity",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
                       "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
@@ -56044,6 +57038,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "resourceActivities": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "resourceActivity"
+                                  ],
+                                  "example": "resourceActivity",
                                   "type": "string"
                                 }
                               },
@@ -56377,6 +57397,32 @@
                       },
                       "type": "object"
                     },
+                    "resourceActivities": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "resourceActivity"
+                                ],
+                                "example": "resourceActivity",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "taxonNames": {
                       "additionalProperties": false,
                       "properties": {
@@ -56687,6 +57733,32 @@
                                   "preparationType"
                                 ],
                                 "example": "preparationType",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "resourceActivities": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "resourceActivity"
+                                ],
+                                "example": "resourceActivity",
                                 "type": "string"
                               }
                             },
@@ -57017,6 +58089,32 @@
                         },
                         "type": "object"
                       },
+                      "resourceActivities": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "resourceActivity"
+                                  ],
+                                  "example": "resourceActivity",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
                       "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
@@ -57330,6 +58428,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "resourceActivities": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "resourceActivity"
+                                  ],
+                                  "example": "resourceActivity",
                                   "type": "string"
                                 }
                               },
