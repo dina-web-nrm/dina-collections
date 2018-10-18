@@ -20,7 +20,7 @@ const rows = [
   {
     height: emToPixels(3.5),
     key: 'infiniteTableHeader',
-    style: { borderBottom: '1px solid #b5b5b5' },
+    style: { borderBottom: '1px solid #b5b5b5', position: 'relative' },
   },
   {
     id: 'tableScrollContainer',

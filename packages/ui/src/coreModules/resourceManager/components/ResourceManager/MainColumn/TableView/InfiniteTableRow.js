@@ -34,9 +34,6 @@ const InfiniteTableRow = ({
   if (!nestedItem) {
     return (
       <Grid.Row style={{ height: emToPixels(3.5), width }}>
-        <Grid.Column style={{ width: 80 }} textAlign="right">
-          {rowNumber}
-        </Grid.Column>
         <Grid.Column style={{ width: 60 }}>
           <Dimmer active inverted>
             <Loader inverted size="mini" />
@@ -54,9 +51,6 @@ const InfiniteTableRow = ({
       }}
       style={{ background, height: emToPixels(3.5), width }}
     >
-      <Grid.Column key="rowNumber" style={{ width: 80 }} textAlign="right">
-        {rowNumber}
-      </Grid.Column>
       {tableColumnSpecifications.map(
         ({ buildText, fieldPath, label, width: columnWidth }) => {
           let value = objectPath.get(nestedItem, fieldPath)
