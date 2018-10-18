@@ -31,18 +31,17 @@ class InfiniteTableHeader extends PureComponent {
           textAlign="left"
           verticalAlign="middle"
         >
-          <Grid.Column style={{ width: 80 }} textAlign="right">
-            <Header size="small">Row #</Header>
-          </Grid.Column>
-          {tableColumnSpecifications.map(({ label, width: columnWidth }) => {
-            return (
-              <Grid.Column key={label} style={{ width: columnWidth }}>
-                <Header size="small">
-                  <Translate capitalize textKey={label} />
-                </Header>
-              </Grid.Column>
-            )
-          })}
+          <Grid.Row>
+            {tableColumnSpecifications.map(({ label, width: columnWidth }) => {
+              return (
+                <Grid.Column key={label} style={{ width: columnWidth }}>
+                  <Header size="small">
+                    <Translate capitalize textKey={label} />
+                  </Header>
+                </Grid.Column>
+              )
+            })}
+          </Grid.Row>
         </Grid>
       </React.Fragment>
     )
