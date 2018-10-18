@@ -12,6 +12,28 @@ export default function buildFilterQuery({ values }) {
     })
   }
 
+  if (values.rank) {
+    and.push({
+      filter: {
+        filterFunction: 'rank',
+        input: {
+          value: values.rank,
+        },
+      },
+    })
+  }
+
+  if (values.rubinNumber) {
+    and.push({
+      filter: {
+        filterFunction: 'rubinNumber',
+        input: {
+          value: values.rubinNumber,
+        },
+      },
+    })
+  }
+
   if (!and.length) {
     return {}
   }

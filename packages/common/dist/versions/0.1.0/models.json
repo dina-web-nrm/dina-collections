@@ -6389,6 +6389,273 @@
     "x-summary": "",
     "description": ""
   },
+  "resourceActivityCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "resourceActivity"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "resourceActivity",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/log/v01/resourceActivitys",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "resourceActivityGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "resourceActivity"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "resourceActivity",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/log/v01/resourceActivitys/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "resourceActivityGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "resourceActivity"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "resourceActivity",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/log/v01/resourceActivitys",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "resourceActivityUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "resourceActivity"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "resourceActivity",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/log/v01/resourceActivitys/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "resourceActivityDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "resourceActivity"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "resourceActivity",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/log/v01/resourceActivitys/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
   "catalogNumberGenerateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -7227,273 +7494,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/jobs/v01/jobs/actions/{id}/setJobSuccess",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityCreateResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "resourceActivity"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "resourceActivity",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/log/v01/resourceActivitys",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityGetOneResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "resourceActivity"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "resourceActivity",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/log/v01/resourceActivitys/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityGetManyResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "resourceActivity"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "type": {
-              "default": "resourceActivity",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/log/v01/resourceActivitys",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityUpdateResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "resourceActivity"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "resourceActivity",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/log/v01/resourceActivitys/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityDelResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "resourceActivity"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "resourceActivity",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/log/v01/resourceActivitys/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -21823,6 +21823,98 @@
     "x-summary": "",
     "description": ""
   },
+  "resourceActivityCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "resourceActivity",
+                "enum": [
+                  "resourceActivity"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "resourceActivity"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {},
+          "type": "resourceActivity"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {},
+        "type": "resourceActivity"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "resourceActivityUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "resourceActivity",
+                "enum": [
+                  "resourceActivity"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "resourceActivity"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
   "catalogNumberGenerateRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -22208,98 +22300,6 @@
       }
     },
     "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityCreateRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "type": "null"
-          },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "resourceActivity",
-                "enum": [
-                  "resourceActivity"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "resourceActivity"
-              }
-            }
-          }
-        ],
-        "x-summary": ""
-      }
-    },
-    "x-examples": {
-      "primary": {
-        "data": {
-          "attributes": {},
-          "type": "resourceActivity"
-        }
-      }
-    },
-    "example": {
-      "data": {
-        "attributes": {},
-        "type": "resourceActivity"
-      }
-    },
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityUpdateRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "type": "null"
-          },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "resourceActivity",
-                "enum": [
-                  "resourceActivity"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "resourceActivity"
-              }
-            }
-          }
-        ],
-        "x-summary": ""
-      }
-    },
     "x-summary": "",
     "description": ""
   },
@@ -22916,8 +22916,6 @@
                   "enum": [
                     "attributes.searchOnlyFields.searchAge",
                     "attributes.searchOnlyFields.searchDate",
-                    "attributes.searchOnlyFields.lengthObject",
-                    "attributes.searchOnlyFields.weightObject",
                     "attributes.searchOnlyFields.remarksObject",
                     "attributes.tags.agentTags",
                     "attributes.tags.ageStageTags",
@@ -22927,13 +22925,14 @@
                     "attributes.tags.identifierTags",
                     "attributes.tags.lengthTags",
                     "attributes.tags.locationTags",
-                    "attributes.tags.placeIdTags",
+                    "attributes.tags.otherPreparationTags",
+                    "attributes.tags.higherGeographyTags",
                     "attributes.tags.sexTags",
                     "attributes.tags.skeletonTags",
                     "attributes.tags.skinTags",
                     "attributes.tags.storageLocationTags",
                     "attributes.tags.taxonomyTags",
-                    "attributes.tags.weightTags",
+                    "attributes.searchOnlyFields.weightObject",
                     "attributes.tags.wetPreparationTags",
                     "attributes.collectingEventCollectors",
                     "attributes.collectingEventCountry",
@@ -22978,8 +22977,6 @@
                   "enum": [
                     "attributes.searchOnlyFields.searchAge",
                     "attributes.searchOnlyFields.searchDate",
-                    "attributes.searchOnlyFields.lengthObject",
-                    "attributes.searchOnlyFields.weightObject",
                     "attributes.searchOnlyFields.remarksObject",
                     "attributes.tags.agentTags",
                     "attributes.tags.ageStageTags",
@@ -22989,13 +22986,14 @@
                     "attributes.tags.identifierTags",
                     "attributes.tags.lengthTags",
                     "attributes.tags.locationTags",
-                    "attributes.tags.placeIdTags",
+                    "attributes.tags.otherPreparationTags",
+                    "attributes.tags.higherGeographyTags",
                     "attributes.tags.sexTags",
                     "attributes.tags.skeletonTags",
                     "attributes.tags.skinTags",
                     "attributes.tags.storageLocationTags",
                     "attributes.tags.taxonomyTags",
-                    "attributes.tags.weightTags",
+                    "attributes.searchOnlyFields.weightObject",
                     "attributes.tags.wetPreparationTags",
                     "attributes.collectingEventCollectors",
                     "attributes.collectingEventCountry",

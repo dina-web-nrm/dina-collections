@@ -24,8 +24,9 @@ DONE
 * Separate date tags with dash
 * In taxon search remove class
 * Make click row select not go to edit in tree data
+* Remove row column in tree data
+* Added agent type filter and changed labels
 
 NOW
-* Remove row column in tree data
 * Add missing filters in tree data (keep dropdown)
 * Go through all and pickers, search and detect whats not done and fix bugs

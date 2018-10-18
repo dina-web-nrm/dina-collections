@@ -1,3 +1,4 @@
+const createStringMatchFilter = require('../../../../../../lib/data/filters/factories/createStringMatchFilter')
 const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
 const isAcceptedToTaxon = {
@@ -18,9 +19,21 @@ const isAcceptedToTaxon = {
   },
 }
 
+const rank = createStringMatchFilter({
+  fieldPath: 'rank',
+  key: 'rank',
+})
+
+const rubinNumber = createStringMatchFilter({
+  fieldPath: 'rubinNumber',
+  key: 'rubinNumber',
+})
+
 const filterSpec = createGetManyFilterSpecifications({
   custom: {
     isAcceptedToTaxon,
+    rank,
+    rubinNumber,
   },
   include: ['id', 'ids', 'updatedAfter', 'nameSearch'],
 })
