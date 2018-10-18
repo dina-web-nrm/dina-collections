@@ -27,15 +27,22 @@ const transformation = ({ migrator, target, locals }) => {
     return null
   }
 
-  const tags = acceptedTaxonNames.map(({ attributes: { name, rank } }) => {
-    const tagType = rank
-    const tagValue = name
-    return {
-      key: `${tagType}${delimiter}${tagValue}`,
-      tagType,
-      tagValue,
-    }
-  })
+  const tags = acceptedTaxonNames
+    .map(({ attributes: { name, rank } }) => {
+      if (rank === 'class') {
+        return null
+      }
+      const tagType = rank
+      const tagValue = name
+      return {
+        key: `${tagType}${delimiter}${tagValue}`,
+        tagType,
+        tagValue,
+      }
+    })
+    .filter(tag => {
+      return !!tag
+    })
 
   migrator.setValue({
     obj: target,
