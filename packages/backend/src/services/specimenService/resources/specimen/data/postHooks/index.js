@@ -23,6 +23,8 @@ exports.create = [
   indexHook,
   createRegisterResourceActivityHook({
     action: 'create',
+    includeDiff: true,
+    includeSnapshot: true,
     service: 'specimenService',
   }),
 ]
@@ -31,6 +33,8 @@ exports.update = [
   indexHook,
   createRegisterResourceActivityHook({
     action: 'update',
+    includeDiff: true,
+    includeSnapshot: true,
     service: 'specimenService',
   }),
 ]
@@ -39,6 +43,8 @@ exports.del = [
   indexHook,
   createRegisterResourceActivityHook({
     action: 'delete',
+    includeDiff: true,
+    includeSnapshot: true,
     service: 'specimenService',
   }),
 ]

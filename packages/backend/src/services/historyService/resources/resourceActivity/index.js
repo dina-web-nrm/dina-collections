@@ -8,10 +8,15 @@ module.exports = {
   model: {
     columns: {
       action: { type: Sequelize.STRING },
+      diff: { type: Sequelize.JSONB },
       requestId: { type: Sequelize.STRING },
       resource: { type: Sequelize.STRING },
       resourceId: { type: Sequelize.STRING },
       service: { type: Sequelize.STRING },
+      snapshot: { type: Sequelize.JSONB },
+      srcCreatedAt: { type: Sequelize.DATE },
+      srcDeactivatedAt: { type: Sequelize.DATE },
+      srcUpdatedAt: { type: Sequelize.DATE },
       userId: { type: Sequelize.STRING },
     },
     indexes: [

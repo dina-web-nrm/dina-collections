@@ -39,7 +39,7 @@
       "type": "object"
     },
     "diff": {
-      "type": "object"
+      "type": "array"
     },
     "srcCreatedAt": {
       "format": "date-time",
