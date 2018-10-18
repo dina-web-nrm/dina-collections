@@ -1,9 +1,10 @@
 {
   "name": "dina-collections",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "version": "echo hej",
     "build:common": "cd ./packages/common && yarn build",
     "build:trees": "yarn build:trees:ui && yarn build:trees:common && yarn build:trees:backend",
     "build:trees:ui": "cd ./packages/ui && yarn build:trees",
