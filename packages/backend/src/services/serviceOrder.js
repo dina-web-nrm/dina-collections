@@ -12,7 +12,7 @@ module.exports = [
   'specimenService',
   'statusService',
   'jobService',
-  'logService',
+  'historyService',
   'exportService',
   'identifierService',
 ]
