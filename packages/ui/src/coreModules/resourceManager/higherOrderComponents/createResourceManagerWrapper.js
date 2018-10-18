@@ -655,7 +655,6 @@ const createResourceManagerWrapper = (
       const { filterValues, focusedItemId, resource } = this.props
       if (focusedItemId) {
         this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
-        this.expandAncestorsForItemId(focusedItemId)
       }
 
       this.tableSearch(filterValues)
