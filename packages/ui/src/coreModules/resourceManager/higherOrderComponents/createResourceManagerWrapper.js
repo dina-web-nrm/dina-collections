@@ -472,7 +472,7 @@ const createResourceManagerWrapper = (
       return null
     }
 
-    handleUpdateFilterValues(filters) {
+    handleUpdateFilterValues(filters = {}) {
       const { resource } = this.props
       this.props.setFilterValues(filters, { resource })
     }
