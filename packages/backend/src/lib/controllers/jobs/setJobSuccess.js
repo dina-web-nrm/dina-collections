@@ -11,6 +11,7 @@ module.exports = function setJobSuccess(options) {
       ...input,
       attributes: {
         ...(input.attributes || {}),
+        operationRequest: {},
         succeededAt: getCurrentUTCTimestamp(),
       },
     }
