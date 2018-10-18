@@ -49,6 +49,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    label="Storage location name"
                     model="storageLocation"
                     module="storage"
                     name="name"
@@ -60,6 +61,7 @@ export class BaseForm extends Component {
                     autoComplete="off"
                     component={DropdownSearch}
                     fluid
+                    label="Level"
                     model="storageLocation"
                     module="storage"
                     name="group"
