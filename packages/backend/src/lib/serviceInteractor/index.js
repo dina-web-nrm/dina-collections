@@ -1,3 +1,4 @@
+const buildOperationId = require('common/src/buildOperationId')
 const createLog = require('../../utilities/log')
 const callController = require('./callController')
 
@@ -39,7 +40,21 @@ module.exports = function createServiceInteractor() {
     })
   }
 
-  const detachedCall = ({ operationId, request = {}, requestId, user }) => {
+  const detachedCall = ({
+    operationId: operationIdInput,
+    operationType,
+    request = {},
+    requestId,
+    resource,
+    user,
+  }) => {
+    const operationId =
+      operationIdInput ||
+      buildOperationId({
+        operationType,
+        resource,
+      })
+
     return Promise.resolve().then(() => {
       return callController({
         connectors,
