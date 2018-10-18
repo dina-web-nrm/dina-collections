@@ -532,7 +532,6 @@ const createResourceManagerWrapper = (
 
     handleClickRow(_, itemId) {
       this.focusRowWithId(itemId)
-      this.handleInteraction(ITEM_SELECT, { itemId })
     }
 
     handleFormTabClick() {
