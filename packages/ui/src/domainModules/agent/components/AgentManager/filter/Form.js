@@ -6,7 +6,8 @@ import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
-import { Input } from 'coreModules/form/components'
+import { Input, DropdownSearch } from 'coreModules/form/components'
+import { DROPDOWN_FILTER_OPTIONS } from '../../../constants'
 
 const log = createLog('modules:locality:BaseForm')
 
@@ -35,10 +36,24 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    label="Full agent name"
                     model="agent"
                     module="agent"
                     name="fullName"
                     type="text"
+                  />
+                </Grid.Column>
+                <Grid.Column width={16}>
+                  <FieldWrapper
+                    autoComplete="off"
+                    component={DropdownSearch}
+                    fluid
+                    label="Agent type"
+                    model="agent"
+                    module="agent"
+                    name="agentType"
+                    options={DROPDOWN_FILTER_OPTIONS}
+                    type="dropdown-search-local"
                   />
                 </Grid.Column>
               </Grid.Row>
