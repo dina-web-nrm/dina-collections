@@ -35,6 +35,24 @@
     "requestId": {
       "type": "string"
     },
+    "snapshot": {
+      "type": "object"
+    },
+    "diff": {
+      "type": "object"
+    },
+    "srcCreatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "srcUpdatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "srcDeactivatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
     "id": {
       "$ref": "__ROOT__id"
     },
