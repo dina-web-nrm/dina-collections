@@ -7,6 +7,7 @@ module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
+    defaultFields: selectableFields,
     filterSpecification,
     includeRelations: {
       type: 'boolean',

@@ -5,6 +5,7 @@ module.exports = function getMany(options) {
   const {
     models,
     operation: {
+      defaultFields = [],
       filterSpecification,
       includeRelations,
       relations,
@@ -52,7 +53,10 @@ module.exports = function getMany(options) {
         filterSpecification,
         include,
         includeDeactivated,
-        includeFieldsInput,
+        includeFieldsInput:
+          includeFieldsInput && includeFieldsInput.length
+            ? includeFieldsInput
+            : defaultFields,
         limit,
         offset,
         selectableFields,
