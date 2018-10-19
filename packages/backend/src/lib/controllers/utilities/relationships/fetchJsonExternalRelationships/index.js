@@ -9,13 +9,15 @@ module.exports = function fetchJsonExternalRelationships({
 }) {
   const remoteRelations = Object.keys(relations)
     .map(relationKey => {
-      const { storeInDocument, keyType } = relations[relationKey]
+      const { keyType, storeInDocument, storeInExternalDocument } = relations[
+        relationKey
+      ]
 
       if (!shouldIncludeRelation({ queryParamRelationships, relationKey })) {
         return null
       }
 
-      if (!storeInDocument && keyType === 'json') {
+      if (storeInExternalDocument) {
         return relations[relationKey]
       }
       return null
