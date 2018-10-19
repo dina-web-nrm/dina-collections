@@ -59,7 +59,6 @@ class EditSpecimen extends PureComponent {
     })
     log.render()
     log.debug('initialValues', initialValues)
-
     return (
       <RecordForm
         form="editSpecimen"
@@ -98,10 +97,15 @@ export default compose(
       'normalizedAgents',
       'physicalObjects.storageLocation',
       'places',
+      'resourceActivities',
       'taxonNames',
     ],
     relationships: ['all'],
-    resolveRelationships: ['physicalObject', 'storageLocation'],
+    resolveRelationships: [
+      'physicalObject',
+      'storageLocation',
+      'resourceActivity',
+    ],
     resource: 'specimen',
   }),
   connect(mapStateToProps, mapDispatchToProps)
