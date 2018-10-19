@@ -21,6 +21,7 @@ module.exports = function createRegisterResourceActivityHook({
         resourceId: id,
         service,
         userId: user && user.id,
+        userName: user && user.name,
       }
       if (internals.createdAt) {
         attributes.srcCreatedAt = formatAsTimestamp(internals.createdAt)
