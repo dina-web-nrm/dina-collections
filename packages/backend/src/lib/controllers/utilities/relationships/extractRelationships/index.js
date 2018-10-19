@@ -2,9 +2,14 @@ const extractRelationship = require('./extractRelationship')
 const addEmptyRelationships = require('./addEmptyRelationships')
 
 module.exports = function extractRelationships(
-  { item, queryParamRelationships, relations = {} } = {}
+  {
+    externalJsonRelationships,
+    item,
+    queryParamRelationships,
+    relations = {},
+  } = {}
 ) {
-  const relationshipsData = Object.keys(relations).reduce(
+  let relationshipsData = Object.keys(relations).reduce(
     (relationships, relationKey) => {
       const relation = relations[relationKey]
       const relationshipData = extractRelationship({
@@ -23,6 +28,17 @@ module.exports = function extractRelationships(
     },
     {}
   )
+
+  if (
+    externalJsonRelationships &&
+    Object.keys(externalJsonRelationships).length
+  ) {
+    relationshipsData = {
+      ...relationshipsData,
+      ...externalJsonRelationships,
+    }
+  }
+
   const res = addEmptyRelationships({
     queryParamRelationships,
     relations,

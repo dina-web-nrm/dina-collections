@@ -9,10 +9,16 @@ module.exports = function buildIncludeArray(
 
   return Object.keys(relations)
     .map(relationKey => {
-      const { targetResource: relationResource, storeInDocument } = relations[
-        relationKey
-      ]
+      const {
+        targetResource: relationResource,
+        storeInDocument,
+        keyType,
+      } = relations[relationKey]
       if (storeInDocument) {
+        return null
+      }
+
+      if (!storeInDocument && keyType === 'json') {
         return null
       }
 
