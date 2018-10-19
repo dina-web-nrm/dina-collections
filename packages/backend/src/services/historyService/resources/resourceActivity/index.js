@@ -3,6 +3,33 @@ const {
   getMany: getManyFilterSpecification,
 } = require('./data/filterSpecifications')
 
+const selectableFields = [
+  'id',
+  'attributes.action',
+  'attributes.diff',
+  'attributes.requestId',
+  'attributes.resource',
+  'attributes.resourceId',
+  'attributes.service',
+  'attributes.snapshot',
+  'attributes.srcCreatedAt',
+  'attributes.srcDeactivatedAt',
+  'attributes.srcUpdatedAt',
+  'attributes.userId',
+]
+
+const defaultFields = [
+  'id',
+  'attributes.action',
+  'attributes.resource',
+  'attributes.resourceId',
+  'attributes.service',
+  'attributes.srcCreatedAt',
+  'attributes.srcDeactivatedAt',
+  'attributes.srcUpdatedAt',
+  'attributes.userId',
+]
+
 module.exports = {
   basePath: '/api/log/v01',
   model: {
@@ -46,10 +73,15 @@ module.exports = {
       type: 'create',
     },
     {
+      defaultFields,
+      filterSpecification: getManyFilterSpecification,
+      selectableFields,
       type: 'getOne',
     },
     {
+      defaultFields,
       filterSpecification: getManyFilterSpecification,
+      selectableFields,
       type: 'getMany',
     },
     {

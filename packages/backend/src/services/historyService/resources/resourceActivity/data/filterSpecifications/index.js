@@ -2,19 +2,29 @@ const createGetManyFilterSpecifications = require('../../../../../../lib/data/fi
 const createEqualFilter = require('../../../../../../lib/data/filters/factories/createEqualFilter')
 
 const equalFilterStringParameters = [
-  'service',
+  'action',
+  'relationshipId',
+  'relationshipType',
+  'requestId',
   'resource',
   'resourceId',
-  'action',
+  'service',
   'userId',
-  'requestId',
 ]
 
 const customFilters = equalFilterStringParameters.reduce(
   (obj, filterParameter) => {
+    let fieldPath = filterParameter
+    if (filterParameter === 'relationshipId') {
+      fieldPath = 'resourceId'
+    }
+    if (filterParameter === 'relationshipType') {
+      fieldPath = 'resource'
+    }
+
     const filter = createEqualFilter(
       {
-        fieldPath: filterParameter,
+        fieldPath,
         filterParameter,
       },
       {}
