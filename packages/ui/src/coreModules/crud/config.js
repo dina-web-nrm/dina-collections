@@ -210,6 +210,18 @@ const config = {
         },
       ],
     },
+    resourceActivity: {
+      operations: [
+        {
+          operationId: 'resourceActivityGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'resourceActivityGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
     searchSpecimen: {
       operations: [
         {
