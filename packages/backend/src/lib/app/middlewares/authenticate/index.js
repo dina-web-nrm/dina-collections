@@ -1,3 +1,4 @@
+const objectPath = require('object-path')
 const createLog = require('../../../../utilities/log')
 
 const log = createLog('authenticateMiddleware')
@@ -14,6 +15,18 @@ const authPreLogMiddleware = (req, res, next) => {
 }
 
 const authPostLogMiddleware = (req, res, next) => {
+  const authTokenContent = objectPath.get(
+    req,
+    'kauth.grant.access_token.content'
+  )
+  if (authTokenContent) {
+    res.locals.user = {
+      email: authTokenContent.email,
+      id: authTokenContent.sub,
+      name: authTokenContent.name,
+    }
+  }
+
   log.info('Authenticate done')
   next()
 }
