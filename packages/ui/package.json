@@ -13,7 +13,7 @@
       "changeOrigin": true
     },
     "/auth": {
-      "target": "https://alpha-cm.dina-web.net",
+      "target": "http://127.0.0.1:8080",
       "xfwd": true,
       "changeOrigin": true
     }
