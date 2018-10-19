@@ -22,3 +22,6 @@ stop-dev:
 
 rm:
 	@docker-compose rm -vf
+
+loadAll:
+	@docker-compose -f docker-compose.data.yaml up loadData

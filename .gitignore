@@ -9,7 +9,7 @@ yarn-error.log*
 .vscode/
 
 env/.*
-data/.*
+data/*.json
 userFiles/*
 
 .DS_Store
