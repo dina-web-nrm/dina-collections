@@ -1036,6 +1036,10 @@
         "type": "object",
         "x-summary": ""
       },
+      "srcSchemaVersion": {
+        "type": "string",
+        "x-summary": ""
+      },
       "diff": {
         "type": "array",
         "x-summary": ""
