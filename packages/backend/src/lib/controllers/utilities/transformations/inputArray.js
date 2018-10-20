@@ -6,6 +6,6 @@ module.exports = function inputArray({ items, relations, sourceResource }) {
       input: item,
       relations,
       sourceResource,
-    })
+    }).item
   })
 }

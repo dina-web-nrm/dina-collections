@@ -87,7 +87,7 @@ exports.createRegisterResourceActivityHook = function createRegisterResourceActi
   }
 }
 
-exports.batchCreateResourceActivities = ({
+exports.bulkCreateResourceActivities = ({
   action,
   includeDiff = false,
   includeSnapshot = false,
@@ -119,7 +119,7 @@ exports.batchCreateResourceActivities = ({
 
     return serviceInteractor
       .call({
-        operationId: 'resourceActivityBatchCreate',
+        operationId: 'resourceActivityBulkCreate',
         request,
       })
       .catch(err => {
