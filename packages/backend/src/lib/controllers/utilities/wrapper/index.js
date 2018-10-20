@@ -112,7 +112,6 @@ module.exports = function createControllerWrapper({
             }) => {
               if (responseIsArray && itemsFromInterceptors) {
                 return Promise.resolve({
-                  externalJsonRelationships,
                   items: itemsFromInterceptors,
                   meta: metaFromInterceptors,
                   request,

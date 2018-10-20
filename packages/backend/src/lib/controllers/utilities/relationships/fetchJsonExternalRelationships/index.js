@@ -9,9 +9,7 @@ module.exports = function fetchJsonExternalRelationships({
 }) {
   const remoteRelations = Object.keys(relations)
     .map(relationKey => {
-      const { keyType, storeInDocument, storeInExternalDocument } = relations[
-        relationKey
-      ]
+      const { storeInExternalDocument } = relations[relationKey]
 
       if (!shouldIncludeRelation({ queryParamRelationships, relationKey })) {
         return null
