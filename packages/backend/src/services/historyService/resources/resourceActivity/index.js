@@ -45,6 +45,7 @@ module.exports = {
       snapshot: { type: Sequelize.JSONB },
       srcCreatedAt: { type: Sequelize.DATE },
       srcDeactivatedAt: { type: Sequelize.DATE },
+      srcSchemaVersion: { type: Sequelize.STRING },
       srcUpdatedAt: { type: Sequelize.DATE },
       userId: { type: Sequelize.STRING },
       userName: { type: Sequelize.STRING },

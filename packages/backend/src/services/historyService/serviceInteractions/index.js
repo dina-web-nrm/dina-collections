@@ -22,6 +22,7 @@ const createResourceActivity = ({
     resource,
     resourceId: id,
     service,
+    srcSchemaVersion: internals.schemaVersion,
     userId: user && user.id,
     userName: user && user.name,
   }
