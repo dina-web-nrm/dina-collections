@@ -1,7 +1,16 @@
+const {
+  bulkCreateResourceActivities,
+} = require('../../../../../historyService/serviceInteractions')
+
 // TODO make it possible for bulkCreate to create its own ids and then remove this
 let physicalObjectId = 0
 
-module.exports = function execute({ models, items, reporter }) {
+module.exports = function execute({
+  items,
+  models,
+  reporter,
+  serviceInteractor,
+}) {
   const coreSpecimens = items.filter(item => {
     if (!item) {
       return false
@@ -72,8 +81,19 @@ module.exports = function execute({ models, items, reporter }) {
 
   return models.physicalObject
     .bulkCreate({ items: mappedPhysicalObjects })
-    .then(() => {
-      return specimensWithPhysicalObjects
+    .then(({ items: createdPhysicalObjects }) => {
+      return bulkCreateResourceActivities({
+        // user,
+        action: 'create',
+        includeDiff: false,
+        includeSnapshot: true,
+        items: createdPhysicalObjects,
+        resource: 'physicalObject',
+        service: 'specimenService',
+        serviceInteractor,
+      }).then(() => {
+        return specimensWithPhysicalObjects
+      })
     })
 
     .then(mappedSpecimens => {
@@ -87,6 +107,19 @@ module.exports = function execute({ models, items, reporter }) {
         }
       )
 
-      return models.specimen.bulkCreate({ items: specimens })
+      return models.specimen
+        .bulkCreate({ items: specimens })
+        .then(({ items: createdSpecimens }) => {
+          return bulkCreateResourceActivities({
+            // user,
+            action: 'create',
+            includeDiff: false,
+            includeSnapshot: true,
+            items: createdSpecimens,
+            resource: 'specimen',
+            service: 'specimenService',
+            serviceInteractor,
+          })
+        })
     })
 }
