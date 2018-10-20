@@ -91,6 +91,7 @@ export default function createPreviewSearchSpecification({
     return {
       ...rootQuery,
       limit: 50,
+      sort: ['relevance'],
     }
   }
 
