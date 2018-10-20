@@ -1,4 +1,6 @@
-const createRegisterResourceActivityHook = require('../../../../../../lib/data/hooks/factories/createRegisterResourceActivityHook')
+const {
+  createRegisterResourceActivityHook,
+} = require('../../../../../historyService/serviceInteractions')
 
 exports.create = [
   createRegisterResourceActivityHook({

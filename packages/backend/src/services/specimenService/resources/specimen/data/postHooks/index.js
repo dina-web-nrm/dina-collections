@@ -1,4 +1,6 @@
-const createRegisterResourceActivityHook = require('../../../../../../lib/data/hooks/factories/createRegisterResourceActivityHook')
+const {
+  createRegisterResourceActivityHook,
+} = require('../../../../../historyService/serviceInteractions')
 
 const indexHook = ({ item, serviceInteractor }) => {
   return Promise.resolve().then(() => {
