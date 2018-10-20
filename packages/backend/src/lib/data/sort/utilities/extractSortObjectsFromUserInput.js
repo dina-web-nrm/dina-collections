@@ -14,6 +14,12 @@ module.exports = function extractSortObjectsFromUserInput(
 
   return sortInput
     .map(sortString => {
+      if (sortString === 'relevance') {
+        return {
+          order: 'relevance',
+          path: '',
+        }
+      }
       const sortSegments = sortString.split(':')
       if (sortSegments.length !== 2) {
         backendError400({
