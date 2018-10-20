@@ -75,6 +75,21 @@ module.exports = {
       },
       type: 'create',
     },
+
+    {
+      exampleRequests: {
+        primary: {
+          data: [
+            {
+              attributes: {},
+              type: 'resourceActivity',
+            },
+          ],
+        },
+      },
+      type: 'bulkCreate',
+    },
+
     {
       defaultFields,
       filterSpecification: getManyFilterSpecification,
