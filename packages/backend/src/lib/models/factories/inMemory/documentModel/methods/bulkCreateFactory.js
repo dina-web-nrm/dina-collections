@@ -6,8 +6,12 @@ const log = createLog(
 )
 
 module.exports = function bulkCreateFactory({ Model }) {
-  return bulkCreateWrapper(({ items, collidingIdPrefix }) => {
+  return bulkCreateWrapper(({ items, collidingIdPrefix, requireId }) => {
     return Promise.resolve().then(() => {
+      if (requireId === false) {
+        throw new Error('Id required for in memory model')
+      }
+
       const currentItems = Model.get()
       const updatedItems = {
         ...currentItems,

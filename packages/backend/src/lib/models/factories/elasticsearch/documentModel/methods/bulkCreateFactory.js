@@ -13,8 +13,12 @@ module.exports = function bulkCreateFactory(
   }
 
   // This should only be used to create test initialData
-  return bulkCreateWrapper(({ items }) => {
+  return bulkCreateWrapper(({ items, requireId }) => {
     log.debug(`Start create ${items.length} items for: ${Model.name}`)
+
+    if (requireId === false) {
+      throw new Error('Id required for elasticsearch model')
+    }
 
     if (items.length === 0) {
       log.debug('No items added: input empty')
