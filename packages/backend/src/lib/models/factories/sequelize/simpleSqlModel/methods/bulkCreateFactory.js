@@ -1,3 +1,4 @@
+const formatModelItemsResponse = require('../../utilities/formatModelItemsResponse')
 const bulkCreateWrapper = require('../../../wrappers/methods/bulkCreate')
 const createLog = require('../../../../../../utilities/log')
 
@@ -29,13 +30,18 @@ module.exports = function bulkCreateFactory(
         }
 
         return { id: item.id, ...(item.attributes || {}), schemaVersion }
-      })
-    ).then(() => {
-      log.debug(`Successfully created ${items.length} items`)
-      const lastId = Number(items[items.length - 1].id)
+      }),
+      { returning: true }
+    ).then(res => {
+      const resultItems = formatModelItemsResponse({ input: res })
+      log.debug(`Successfully created ${resultItems.length} items`)
+      const lastId = Number(resultItems[resultItems.length - 1].id)
       const newId = lastId + 1
       return updatePrimaryKey(newId).then(() => {
-        return { meta: { count: items && items.length } }
+        return {
+          items: resultItems,
+          meta: { count: resultItems && resultItems.length },
+        }
       })
     })
   })

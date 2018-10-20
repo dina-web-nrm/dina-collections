@@ -1,3 +1,4 @@
+exports.bulkCreate = require('./bulkCreate')
 exports.create = require('./create')
 exports.del = require('./del')
 exports.getMany = require('./getMany')
