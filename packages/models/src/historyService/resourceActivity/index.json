@@ -41,6 +41,9 @@
     "snapshot": {
       "type": "object"
     },
+    "srcSchemaVersion": {
+      "type": "string"
+    },
     "diff": {
       "type": "array"
     },
