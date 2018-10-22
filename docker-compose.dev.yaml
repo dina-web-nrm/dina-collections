@@ -41,13 +41,44 @@ services:
     volumes:
       - pgadmin_vol:/var/lib/pgadmin
 
-    ports:
-      - "80:80"
-      - "443:443"
+  mysql:
+    image: mysql:5.7
+    container_name: keycloak-mysql
+    env_file: ./env/.local.mysql
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - mysql-keycloak-accounts:/var/lib/mysql
+  keycloak:
+    image: jboss/keycloak:3.2.1.Final #this is the latest
+    container_name: keycloak
+    links:
+      - mysql:mysql # No need for this??
+
+    # Username & password to use the database
+    env_file: ./env/.local.keycloak
+
+    environment:
+      # Select database
+      - DB_VENDOR=MYSQL
+      # proxy address forwarding, needed when running Keycloak behind a proxy
+      - PROXY_ADDRESS_FORWARDING=true
+      - TZ=Europe/Stockholm
+      # URL for proxy server
+    ports:
+      - 8080:8080
+    volumes:
+      - ./packages/keycloak/configuration/standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
+      - ./packages/keycloak/themes/dina:/opt/jboss/keycloak/themes/dina
+    depends_on:
+      - mysql
 
 volumes:
   postgres_data:
   es_data:
   pgadmin_vol:
+  mysql-keycloak-accounts:
+
+
+
+
+
+
