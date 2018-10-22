@@ -63,8 +63,7 @@ const propTypes = {
   moduleName: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   resourceIdPathParamKey: PropTypes.string,
-  sectionId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-    .isRequired,
+  sectionId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -81,6 +80,7 @@ const defaultProps = {
   customParts: undefined,
   formSectionNavigationSubHeader: undefined,
   resourceIdPathParamKey: 'itemId',
+  sectionId: undefined,
   showAllFormSections: undefined,
   showSectionsInNavigation: false,
 }
@@ -183,7 +183,6 @@ class FormRow extends PureComponent {
   render() {
     log.render()
     const {
-      availableHeight,
       activeFormSectionIndex,
       customParts,
       match,

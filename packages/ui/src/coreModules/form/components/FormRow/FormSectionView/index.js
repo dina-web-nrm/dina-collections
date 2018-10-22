@@ -7,25 +7,29 @@ import Section from '../../Section'
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
-  changeFieldValue: PropTypes.func.isRequired,
+  changeFieldValue: PropTypes.func,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
+  formValueSelector: PropTypes.func,
   moduleName: PropTypes.string.isRequired,
   onGoToNextSection: PropTypes.func.isRequired,
   onGoToPreviousSection: PropTypes.func.isRequired,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  removeArrayFieldByIndex: PropTypes.func,
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  showAllFormSections: PropTypes.bool.isRequired,
+  showAllFormSections: PropTypes.bool,
   showSectionsInNavigation: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
+  changeFieldValue: undefined,
   customParts: undefined,
+  formValueSelector: undefined,
+  removeArrayFieldByIndex: undefined,
+  showAllFormSections: undefined,
 }
 
 class FormSectionView extends PureComponent {

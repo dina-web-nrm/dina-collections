@@ -26,13 +26,13 @@ const mapStateToProps = (state, { formName, formValueSelector, unitSpec }) => {
 }
 
 const propTypes = {
-  changeFieldValue: PropTypes.func.isRequired,
+  changeFieldValue: PropTypes.func,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
+  formValueSelector: PropTypes.func,
   initiallyHiddenFieldsHaveValue: PropTypes.bool,
   moduleName: PropTypes.string.isRequired,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  removeArrayFieldByIndex: PropTypes.func,
   unitSpec: PropTypes.shape({
     name: PropTypes.string.isRequired,
     parts: PropTypes.arrayOf(
@@ -43,8 +43,11 @@ const propTypes = {
   }).isRequired,
 }
 const defaultProps = {
+  changeFieldValue: undefined,
   customParts: {},
+  formValueSelector: undefined,
   initiallyHiddenFieldsHaveValue: undefined,
+  removeArrayFieldByIndex: undefined,
 }
 
 class Unit extends PureComponent {

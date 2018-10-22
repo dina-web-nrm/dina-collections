@@ -23,7 +23,7 @@ const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   header: PropTypes.node.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   module: PropTypes.string.isRequired,
   onSetActiveFormSection: PropTypes.func.isRequired,
   onShowAllFormSections: PropTypes.func.isRequired,
@@ -32,12 +32,14 @@ const propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  showAllFormSections: PropTypes.bool.isRequired,
+  showAllFormSections: PropTypes.bool,
   showSectionsInNavigation: PropTypes.bool,
   subHeader: PropTypes.node,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
+  loading: false,
+  showAllFormSections: false,
   showSectionsInNavigation: false,
   subHeader: undefined,
 }
