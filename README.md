@@ -11,24 +11,71 @@ Its a monorepo containing both frontend, api and related resources. Subrepos can
 * [Keycloak-dev](packages/keycloak)
 
 ## Run locally
-At the moment running fully in docker is not supported when running locally. 
-
-
-### Allocated ports
-At the moment the local setup will use specific ports that are not configurable. Setting up the application locally will result in the following port allocation:
-
-* Ui -> 3000
-* Api -> 4444
-* Elasticsearch -> 9200
-* Postgres -> 5432
-* Kibana -> 5601
-* Keycloak -> 8080
-* PgAdmin -> 19090
-
-
-### Development setup
+Either the system can be run fully with docker or partly with docker. When running partly with docker all services but the API (backend) and UI (frontend) is run in docker. Running the API and UI outside docker is prefered when doing development.
 
 This guide assumes you have `git` installed
+
+### Run everything in docker
+1. Clone the repository
+
+   ```
+   git clone https://github.com/DINA-Web/dina-collections.git
+   ```
+
+2. Move into directory
+
+   ```
+   cd dina-collections
+   ```
+3. Setup env-files
+
+	```
+	make setup-env
+	
+	```
+	This will setup default env variables. Suitable for most local dev environments but not suitable for any server environments. If you want to look at them or change them go into ./env.
+	
+4. Edit your /etc/hosts file and add the following entries if you are using the default .env files create from the sample files
+
+   ```
+   127.0.0.1 local-ui.dina-web.net
+   127.0.0.1 local-style.dina-web.net
+   127.0.0.1 local-api.dina-web.net
+   127.0.0.1 local-keycloak.dina-web.net
+   ```	
+
+5. Start services in dev mode:
+
+	```
+	make up-local
+
+	```
+
+6. [Configure keycloak for local development](#run-and-configure-keycloak)
+
+7. Load sample data
+
+	Add sample data to the ./data folder. Right now no checked in sample data is available so the core team has to be contacted
+
+	```
+	make load-sample-data
+
+	```
+8. Explore services: 
+  * UI - [http://local-ui.dina-web.net](http://local-ui.dina-web.net)
+  * API - [http://local-api.dina-web.net/docs](local-api.dina-web.net/docs)
+  * STYLE - [http://local-style.dina-web.net](local-style.dina-web.net)
+
+
+9. Stop on your local machine
+
+   ```
+   make stop-local
+   ```
+
+
+
+### Run API and UI outside docker
 
 1. [Install nvm](https://github.com/creationix/nvm#installation)
 2. Install Node.js version 8.9.1
@@ -68,17 +115,45 @@ This guide assumes you have `git` installed
 
    This requires access to test data. Contact someone i core team to get test data.
 
-	When test data places in data folder run:
-	
-	```
-   yarn start:dbs
-	```
+	When test data places in data folder run:	
 	
    ```
    yarn setup:loadTestData
    ```
 
-### Run and configure keycloak
+9. Start api
+
+   ```
+	yarn start:backend
+   ```
+   This will start elasticsearch and postgres before starting the api service. Elasticsearch might not be ready fast enough. In that case you will see and error in the api logs and you will have to close the api process and run yarn start:backend again.
+   If you get an error from `nodemon` about no space, then you might need to [change the number of file watches allowed](https://stackoverflow.com/a/34664097/3707092).
+10. Start ui
+
+   Note that the ui and the api will not run in the background so run them in different tabs. The ui will take a while to render the first time because all files need to be compiled.
+   
+   ```
+	yarn start:ui
+   ```
+
+11. [Configure keycloak for local development](#run-and-configure-keycloak)
+
+12. Explore services: 
+  * UI - [http://127.0.0.1:3000](http://127.0.0.1:3000)
+  * API - [http://127.0.0.1:4444/docs](http://127.0.0.1:4444/docs)
+
+
+At the moment the local setup will use specific ports that are not configurable. Setting up the application locally will result in the following port allocation:
+
+* Ui -> 3000
+* Api -> 4444
+* Elasticsearch -> 9200
+* Postgres -> 5432
+* Kibana -> 5601
+* Keycloak -> 8080
+* PgAdmin -> 19090
+
+## Run and configure keycloak
  1. Start keycloak
 
 	```
@@ -93,6 +168,7 @@ This guide assumes you have `git` installed
   * Import file located at ./packages/keycloak/dev-export.json
 
  
+
  3. Add test user
   * Navigate to users. press "Users" under "Manage" section in left nav. (Make sure the imported Dina realm is selected)
   * Add user with the following params:
@@ -108,27 +184,6 @@ This guide assumes you have `git` installed
    * Press the red save button
 
  
-
-### Run application
-
-1. Start backend
-
-
-   ```
-   yarn start:backend
-   ```
-
-   If you get an error from `nodemon` about no space, then you might need to [change the number of file watches allowed](https://stackoverflow.com/a/34664097/3707092).
-
-2. Start frontend server
-
-   ```
-   yarn start:ui
-   ```
-
-### Run fully in docker
-Will be updated shortly
-
 ## Server setup
 ### Run with docker
 ATM depricated - Will be updated shortly
