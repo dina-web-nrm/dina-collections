@@ -1,4 +1,5 @@
 import AcceptedTaxonNameDropdownPickerSearch from './AcceptedTaxonNameDropdownPickerSearch'
+import RankDropdown from './RankDropdown'
 import TaxonDropdownPickerSearch from './TaxonDropdownPickerSearch'
 import TaxonDropdownSearch from './TaxonDropdownSearch'
 import TaxonManager from './TaxonManager/Query'
@@ -9,6 +10,7 @@ import TogglableAcceptedTaxonNameDropdownPickerSearch from './TogglableAcceptedT
 
 export {
   AcceptedTaxonNameDropdownPickerSearch,
+  RankDropdown,
   TaxonDropdownPickerSearch,
   TaxonDropdownSearch,
   TaxonManager,
