@@ -1,16 +1,5 @@
 version: '3.3'
 services:
-  dockerhub-hook:
-    image: maccyber/micro-dockerhub-hook
-    ports:
-      - "8004:3000"
-    env_file:
-      - ./env/.docker-hook
-    volumes:
-      - ./docker-hooks:/src/scripts
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/var/dina-collections
-
   ui:
     image: dina/dina-collections-ui
     container_name: dina-collections-ui
