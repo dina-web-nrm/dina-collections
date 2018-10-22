@@ -7,7 +7,7 @@ import { reduxForm, reset } from 'redux-form'
 import formValidator from 'common/es5/error/validators/formValidator'
 import { Form, FormRow } from 'coreModules/form/components'
 import { emToPixels } from 'coreModules/layout/utilities'
-import customParts from 'domainModules/locality/components/formParts'
+import customParts from '../../../formParts'
 import sectionSpecs from './sectionSpecs'
 
 const formActionBarHeight = emToPixels(4.625)
