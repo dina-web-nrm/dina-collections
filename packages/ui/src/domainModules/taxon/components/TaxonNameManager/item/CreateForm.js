@@ -3,17 +3,18 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
-import crudActionCreators from 'coreModules/crud/actionCreators'
 
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 import BaseForm from './BaseForm'
 
 const mapDispatchToProps = {
-  createPlace: crudActionCreators.taxonName.create,
+  createTaxonName: crudActionCreators.taxonName.create,
   destroy,
 }
 
 const propTypes = {
-  createPlace: PropTypes.func.isRequired,
+  createTaxonName: PropTypes.func.isRequired,
   destroy: PropTypes.func.isRequired,
   itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
@@ -33,6 +34,13 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form="taxonNameCreate"
+        formSectionNavigationHeader={
+          <ModuleTranslate
+            capitalize
+            module="taxon"
+            textKey="newScientificName"
+          />
+        }
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()
@@ -40,7 +48,7 @@ export class Create extends PureComponent {
         }}
         onSubmit={data => {
           this.props
-            .createPlace({
+            .createTaxonName({
               item: data,
               nested: true,
             })
