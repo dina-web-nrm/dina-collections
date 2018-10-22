@@ -59,6 +59,7 @@ export class Edit extends PureComponent {
       nestedItem: initialValues,
       onInteraction,
       itemId,
+      ...rest
     } = this.props
 
     if (!initialValues) {
@@ -67,6 +68,7 @@ export class Edit extends PureComponent {
 
     return (
       <BaseForm
+        {...rest}
         displayBackButton
         displayResetButton
         form={form}

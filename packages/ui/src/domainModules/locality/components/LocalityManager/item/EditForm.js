@@ -45,7 +45,12 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const { nestedItem: initialValues, onInteraction, itemId } = this.props
+    const {
+      nestedItem: initialValues,
+      onInteraction,
+      itemId,
+      ...rest
+    } = this.props
 
     if (!initialValues) {
       return null
@@ -54,6 +59,7 @@ export class Edit extends PureComponent {
     return (
       <React.Fragment>
         <BaseForm
+          {...rest}
           displayBackButton
           displayResetButton
           form="placeEdit"
