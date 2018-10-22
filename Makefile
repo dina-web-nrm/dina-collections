@@ -8,7 +8,7 @@ setup-env:
 up:
 	@docker-compose up -d
 
-up-dev:
+up-local:
 	@docker-compose -f docker-compose.dev.yaml up -d
 
 up-pgAdmin:
@@ -17,11 +17,14 @@ up-pgAdmin:
 stop:
 	@docker-compose stop
 
-stop-dev:
+stop-local:
 	docker-compose -f docker-compose.dev.yaml stop
 
 rm:
 	@docker-compose rm -vf
 
-loadAll:
+load-sample-data:
 	@docker-compose -f docker-compose.data.yaml up loadData
+
+load-local-sample-data:
+	@docker-compose -f docker-compose.data-dev.yaml up loadData
