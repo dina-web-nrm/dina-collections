@@ -1,29 +1,19 @@
 * Rename logService to historyService
-
 * bubble up diff to hook level
 * modify createHook to optionally store snapshots, diffs, and nestedShapshots? nestedDiffs?
-* Create required indexes
+* Fix fetching in FE (should be as a relationship from specimen)
 * Make sure user id (potentially also user string) is preserved
 * Add batch execute to add items during migration
-* Evaluate how to solve
+** Add to all execute
+
 * Fix preservation of request id (use header?)
 
+* Create required indexes
 
 
-* store diffs in separate table
-* afterHook
-** Aggregate diff up to afterhook
-** Use diff to create history record (use simple sql?)
-** Transfere updated at flag from specimen?
-*** id, resourceId, diff, resource, snapshot?, userId,...
-*** create index on id, resource, userId
+* How to deal with sorting remarks vs columnsorting?
+** Add button to reset sorting?
 
+* Enable auth on server
+* Enable fetch reverse relationships for getMany
 
-
-DONE
-* Separate date tags with dash
-* In taxon search remove class
-* Make click row select not go to edit in tree data
-* Remove row column in tree data
-* Add missing filters in tree data (keep dropdowns)
-* Navigate to table when searching

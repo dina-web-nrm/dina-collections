@@ -3,5 +3,6 @@ const allFromSrcWithIndexId = require('../../../../../../lib/data/transformation
 exports.importDataFromFile = {
   description: 'Importing agents from file',
   srcFileName: 'agents',
+  storeResourceActivity: true,
   transformationFunctions: [allFromSrcWithIndexId],
 }

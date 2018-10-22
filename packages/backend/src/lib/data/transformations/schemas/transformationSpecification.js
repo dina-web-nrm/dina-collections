@@ -40,7 +40,9 @@ module.exports = {
     srcResource: {
       type: 'string',
     },
-
+    storeResourceActivity: {
+      type: 'boolean',
+    },
     transformationFunctions: {
       type: 'array',
     },

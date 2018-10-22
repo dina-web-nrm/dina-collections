@@ -79,12 +79,22 @@ module.exports = function getWhereFactory({
             sortableFields,
             sortInput,
           })
-          let sort
+          let sort = '_id:desc'
 
-          if (sortObjects && sortObjects.length) {
-            sort = sortObjects.map(sortObject => {
-              return `${sortObject.path}:${sortObject.order}`
-            })
+          if (
+            sortObjects &&
+            sortObjects.length === 1 &&
+            sortObjects[0].order === 'relevance'
+          ) {
+            sort = undefined
+          } else if (sortObjects && sortObjects.length) {
+            sort = sortObjects
+              .filter(({ order: sortOrder }) => {
+                return sortOrder !== 'relevance'
+              })
+              .map(sortObject => {
+                return `${sortObject.path}:${sortObject.order}`
+              })
           }
 
           const fields =

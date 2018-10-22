@@ -35,6 +35,8 @@ const getRelationshipParamsFromRelationshipsSchemaItem = ({
       path: getPath(relationshipsSchemaItem),
       sourceResource: modelName,
       storeInDocument: keyType === 'json' && keyStoredInModel === modelName,
+      storeInExternalDocument:
+        keyType === 'json' && keyStoredInModel !== modelName,
       targetAs: relationshipKey,
       targetResource: getTargetModel(relationshipsSchemaItem),
     }

@@ -70,12 +70,16 @@ module.exports = function getWhereFactory({
         let order = [['id', 'DESC']]
 
         if (order && sortObjects.length) {
-          order = sortObjects.map(sortObject => {
-            if (sortObject.order === 'asc') {
-              return sortObject.path
-            }
-            return [sortObject.path, sortObject.order]
-          })
+          order = sortObjects
+            .filter(({ order: sortOrder }) => {
+              return sortOrder !== 'relevance'
+            })
+            .map(sortObject => {
+              if (sortObject.order === 'asc') {
+                return sortObject.path
+              }
+              return [sortObject.path, sortObject.order]
+            })
         }
 
         const options = {

@@ -32,7 +32,31 @@
     "userId": {
       "type": "string"
     },
+    "userName": {
+      "type": "string"
+    },
     "requestId": {
+      "type": "string"
+    },
+    "snapshot": {
+      "type": "object"
+    },
+    "srcSchemaVersion": {
+      "type": "string"
+    },
+    "diff": {
+      "type": "array"
+    },
+    "srcCreatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "srcUpdatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "srcDeactivatedAt": {
+      "format": "date-time",
       "type": "string"
     },
     "id": {

@@ -31,6 +31,7 @@ module.exports = function rebuildView({
       srcFileName,
       srcRelationships = ['all'],
       srcResource,
+      storeResourceActivity = false,
       transformationFunction = applyTransformations,
       transformationFunctions = defaultTransformationFunctions,
       warmViews,
@@ -64,6 +65,9 @@ module.exports = function rebuildView({
         model,
         models,
         reporter,
+        resource,
+        serviceInteractor,
+        storeResourceActivity,
       })
     }
 

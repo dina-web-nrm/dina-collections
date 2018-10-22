@@ -105,8 +105,8 @@ module.exports = function createControllerWrapper({
             serviceInteractor,
           }).then(
             ({
-              items: itemsFromInterceptors,
               item: itemFromInterceptors,
+              items: itemsFromInterceptors,
               meta: metaFromInterceptors,
               request,
             }) => {
@@ -145,7 +145,7 @@ module.exports = function createControllerWrapper({
             }
           )
         })
-        .then(({ item, items, meta, request }) => {
+        .then(({ externalJsonRelationships, item, items, meta, request }) => {
           return applyHooks({
             fileInteractor,
             hooks: postHooks,
@@ -165,6 +165,7 @@ module.exports = function createControllerWrapper({
               const relationships =
                 includeRelations &&
                 extractRelationships({
+                  externalJsonRelationships,
                   item,
                   queryParamRelationships,
                   relations,

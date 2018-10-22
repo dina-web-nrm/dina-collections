@@ -5,7 +5,7 @@ const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
 const createLogIncomingMiddleware = require('./middlewares/logIncoming')
 const createDocsMiddleware = require('./middlewares/docs')
 const createPingRouteMiddleware = require('./middlewares/pingRoute')
-const createAuthenticateMiddleware = require('./middlewares/authenticate')
+const createAuthenticateMiddleware = require('../auth/middleware')
 
 module.exports = function createApp(
   { auth, config, openApiSpec, routers } = {}

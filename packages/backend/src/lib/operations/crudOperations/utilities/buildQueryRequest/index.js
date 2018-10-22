@@ -8,8 +8,7 @@ module.exports = function buildQueryRequest({
   selectableFields = [],
   sortableFields = [],
 }) {
-  const sortEnum = []
-
+  const sortEnum = ['relevance']
   sortableFields.forEach(field => {
     sortEnum.push(`${field}:asc`)
     sortEnum.push(`${field}:desc`)
