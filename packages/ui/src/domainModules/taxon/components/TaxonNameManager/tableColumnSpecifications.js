@@ -1,22 +1,22 @@
 const tableColumnSpecifications = [
   {
     fieldPath: 'name',
-    label: 'modules.taxon.fieldLabels.taxonName.name',
+    label: 'modules.taxon.fieldLabels.name',
     width: 250,
   },
   {
     fieldPath: 'taxonNameType',
-    label: 'modules.taxon.fieldLabels.taxonName.taxonNameType',
+    label: 'modules.taxon.fieldLabels.taxonNameType',
     width: 250,
   },
   {
     fieldPath: 'rank',
-    label: 'modules.taxon.fieldLabels.taxonName.rank',
+    label: 'modules.taxon.fieldLabels.rank',
     width: 250,
   },
   {
     fieldPath: 'rubinNumber',
-    label: 'modules.taxon.fieldLabels.taxonName.rubinNumber',
+    label: 'modules.taxon.fieldLabels.rubinNumber',
     width: 250,
   },
 ]
