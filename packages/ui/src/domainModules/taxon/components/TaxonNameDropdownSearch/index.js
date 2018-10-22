@@ -1,12 +1,48 @@
 import React, { Component } from 'react'
-import { DropdownSearch } from 'coreModules/form/components'
+import PropTypes from 'prop-types'
 
-class StorageLocationDropdownSearch extends Component {
+import { DropdownSearch } from 'coreModules/form/components'
+import { ALL, SCIENTIFIC, VERNACULAR } from '../../constants'
+
+const propTypes = {
+  taxonNameType: PropTypes.oneOf([ALL, SCIENTIFIC, VERNACULAR]),
+}
+const defaultProps = {
+  taxonNameType: SCIENTIFIC,
+}
+
+class TaxonNameDropdownSearch extends Component {
   render() {
-    const { ...rest } = this.props
+    const { taxonNameType, ...rest } = this.props
+
+    let baseFilter
+    switch (taxonNameType) {
+      case ALL: {
+        break
+      }
+      case SCIENTIFIC: {
+        baseFilter = {
+          filterFunctionName: 'taxonNameType',
+          value: SCIENTIFIC,
+        }
+        break
+      }
+      case VERNACULAR: {
+        baseFilter = {
+          filterFunctionName: 'taxonNameType',
+          value: VERNACULAR,
+        }
+        break
+      }
+      default: {
+        throw new Error(`Unknown taxonNameType: ${taxonNameType}`)
+      }
+    }
+
     return (
       <DropdownSearch
         {...rest}
+        baseFilter={baseFilter}
         resource="taxonName"
         type="dropdown-search-resource"
       />
@@ -14,4 +50,7 @@ class StorageLocationDropdownSearch extends Component {
   }
 }
 
-export default StorageLocationDropdownSearch
+TaxonNameDropdownSearch.propTypes = propTypes
+TaxonNameDropdownSearch.defaultProps = defaultProps
+
+export default TaxonNameDropdownSearch
