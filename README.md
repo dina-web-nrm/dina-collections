@@ -23,6 +23,7 @@ At the moment the local setup will use specific ports that are not configurable.
 * Postgres -> 5432
 * Kibana -> 5601
 * Keycloak -> 8080
+* PgAdmin -> 19090
 
 
 ### Development setup
@@ -103,7 +104,8 @@ This guide assumes you have `git` installed
 	 Last Name = Doe
 	```
    * Press save
-   * Navigate to credentials and set password (switch temporary to off first)
+   * Navigate to credentials and set password and confirm (switch temporary to off first)
+   * Press the red save button
 
  
 
