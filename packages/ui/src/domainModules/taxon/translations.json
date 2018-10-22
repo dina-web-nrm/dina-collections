@@ -63,6 +63,21 @@
       "sv": ""
     }
   },
+  "acceptedNameForTaxon": {
+    "en": "accepted name for taxon",
+    "sv": ""
+  },
+  "name": {
+    "en": "name"
+  },
+  "notAssociatedWithTaxon": {
+    "en": "this name is not associated with any taxon",
+    "sv": ""
+  },
+  "synonymForTaxon": {
+    "en": "synonym of",
+    "sv": ""
+  },
   "save": {
     "en": "Save",
     "sv": "Spara"
