@@ -139,7 +139,6 @@ class FormSectionView extends PureComponent {
         className="ui fluid dina background"
         style={{
           height,
-          overflow: 'auto',
         }}
       >
         <Grid className="text" container padded>

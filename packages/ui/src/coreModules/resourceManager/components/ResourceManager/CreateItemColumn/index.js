@@ -42,8 +42,8 @@ class CreateItemColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'itemCreateForm': {
-        const { renderCreateForm } = this.props
-        return renderCreateForm()
+        const { availableHeight, renderCreateForm } = this.props
+        return renderCreateForm({ availableHeight })
       }
       case 'bottomBar': {
         const { extractedProps } = extractProps({

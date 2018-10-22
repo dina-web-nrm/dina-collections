@@ -45,8 +45,8 @@ class EditItemColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'itemEditForm': {
-        const { itemId, renderEditForm } = this.props
-        return renderEditForm({ itemId })
+        const { availableHeight, itemId, renderEditForm } = this.props
+        return renderEditForm({ availableHeight, itemId })
       }
       case 'bottomBar': {
         const { extractedProps } = extractProps({

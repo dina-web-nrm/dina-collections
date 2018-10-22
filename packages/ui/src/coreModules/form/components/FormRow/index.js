@@ -20,7 +20,7 @@ const log = createLog('coreModules/form/components/FormRow')
 
 const columns = [
   { key: 'formSectionNavigation', width: emToPixels(25) },
-  { key: 'formSectionView' },
+  { key: 'formSectionView', style: { overflow: 'auto' } },
 ]
 
 const mapStateToProps = (state, { formName, match }) => {
@@ -183,6 +183,7 @@ class FormRow extends PureComponent {
   render() {
     log.render()
     const {
+      availableHeight,
       activeFormSectionIndex,
       customParts,
       match,
@@ -200,7 +201,6 @@ class FormRow extends PureComponent {
     ) {
       return null
     }
-
     return (
       <React.Fragment>
         <ColumnLayout
