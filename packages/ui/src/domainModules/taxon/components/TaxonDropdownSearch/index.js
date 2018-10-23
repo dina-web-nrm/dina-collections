@@ -16,7 +16,7 @@ const extractText = nestedItem => {
   return `${acceptedTaxonName.name} (${acceptedTaxonName.rank})`
 }
 
-class TaxonDropdownSearchDropdownSearch extends Component {
+class TaxonDropdownSearch extends Component {
   render() {
     const { ...rest } = this.props
     return (
@@ -34,4 +34,4 @@ class TaxonDropdownSearchDropdownSearch extends Component {
   }
 }
 
-export default TaxonDropdownSearchDropdownSearch
+export default TaxonDropdownSearch
