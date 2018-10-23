@@ -84,5 +84,5 @@ const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
 
 export default reduxForm({
   enableReinitialize: true,
-  validate: formValidator({ model: 'place' }),
+  validate: formValidator({ model: 'taxonName' }),
 })(EnhancedForm)

@@ -40,38 +40,36 @@ export class Edit extends PureComponent {
     }
 
     return (
-      <React.Fragment>
-        <BaseForm
-          {...rest}
-          displayBackButton
-          displayResetButton
-          form="taxonNameEdit"
-          formSectionNavigationHeader={`${
-            initialValues.name
-          } (${moduleTranslate({ textKey: 'name' })})`}
-          initialValues={initialValues}
-          onClose={event => {
-            event.preventDefault()
-            onInteraction('FORM_CANCEL')
-          }}
-          onInteraction={onInteraction}
-          onSubmit={formOutput => {
-            this.props
-              .updateTaxonName({
-                item: {
-                  id: itemId,
-                  ...formOutput,
-                },
-                nested: true,
+      <BaseForm
+        {...rest}
+        displayBackButton
+        displayResetButton
+        form="taxonNameEdit"
+        formSectionNavigationHeader={`${initialValues.name} (${moduleTranslate({
+          textKey: 'name',
+        })})`}
+        initialValues={initialValues}
+        onClose={event => {
+          event.preventDefault()
+          onInteraction('FORM_CANCEL')
+        }}
+        onInteraction={onInteraction}
+        onSubmit={formOutput => {
+          this.props
+            .updateTaxonName({
+              item: {
+                id: itemId,
+                ...formOutput,
+              },
+              nested: true,
+            })
+            .then(result => {
+              onInteraction('FORM_EDIT_SUCCESS', {
+                itemId: result.id,
               })
-              .then(result => {
-                onInteraction('FORM_EDIT_SUCCESS', {
-                  itemId: result.id,
-                })
-              })
-          }}
-        />
-      </React.Fragment>
+            })
+        }}
+      />
     )
   }
 }
