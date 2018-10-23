@@ -1,19 +1,80 @@
-* Rename logService to historyService
-* bubble up diff to hook level
-* modify createHook to optionally store snapshots, diffs, and nestedShapshots? nestedDiffs?
-* Fix fetching in FE (should be as a relationship from specimen)
-* Make sure user id (potentially also user string) is preserved
-* Add batch execute to add items during migration
-** Add to all execute
-
-* Fix preservation of request id (use header?)
-
-* Create required indexes
-
-
 * How to deal with sorting remarks vs columnsorting?
 ** Add button to reset sorting?
 
+
+
+1. commit
+2. create scripts in separate package
+
+
+1. Test everything in docker
+2. Test everything but api and ui in docker
+3. Test load data locally with docker
+4. test keycloak through docker
+
+
+
+
+
+
+ENV cleanup
+* Dont use .local env files
+
+
+README
+* Fix inconsistancies in auth url (sufix with auth or not)
+
+
+
 * Enable auth on server
-* Enable fetch reverse relationships for getMany
+
+
+
+
+
+
+
+
+Developer new feature
+1. create new branch anton/feature-to-implement
+2. developer submits pull request and target master
+3. Travis runs tests (basically current travis file without after success)
+4. If branch is up to date with master and tests are passing someone can merge it into master through github interface (this is managed by github settings)
+
+Developer releases new version
+1. Developer check out master and pull latest
+2. Developer run version script (yarn version)
+  * in preversion hook run yarn test + ensure-master-is-clean.sh
+  * "native" version behavior (pick patch, minor or major)
+  * in postversion script git push and git push --tags
+3. Travis detects a push with tags( look at http://grailsblog.objectcomputing.com/posts/2016/10/03/how-to-use-travis-to-build-and-deploy-your-plugin.html) and run build-docker.sh with git tag as input
+
+Deploy specific version
+1. Developer run script locally (different for stage, production, local and test) and enters wanted version. The script ssh into correct machine and fetches latest docker versions and run script that restart the servers
+
+
+to add to package.json
+* preversino
+* postversion
+
+scripts to implement:
+packages/scripts/src/bash/ensure-master-is-clean.sh
+bash script that ensures that git is clean and branch is up to date with remote
+
+
+packages/scripts/src/bash/build-docker.sh
+takes version as input and basically does what is done in current travis after success but with correct version
+
+
+packages/scripts/src/bash/deploy.sh
+takes version as input and does correct docker-compose pull and restarts
+later this script also has to trigger schema migrations
+
+
+scripts (put in ./scripts)
+- ensure-master-is-clean.sh
+- build-docker.sh (or .js if implemented in node)
+- deploy.sh
+- service-status.sh
+- service-status-remote.sh (use servie-status)
 
