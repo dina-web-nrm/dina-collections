@@ -3,7 +3,7 @@ ME=$(USER)
 all:  up
 
 setup-env:
-	./scripts/create-env.sh
+	./packages/scripts/src/bash/create-env.sh
 
 up:
 	@docker-compose up -d
