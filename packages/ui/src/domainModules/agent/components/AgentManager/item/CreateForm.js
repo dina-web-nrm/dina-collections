@@ -2,19 +2,18 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { destroy } from 'redux-form'
-import crudActionCreators from 'coreModules/crud/actionCreators'
+import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 import BaseForm from './BaseForm'
 
 const mapDispatchToProps = {
   createAgent: crudActionCreators.normalizedAgent.create,
-  destroy,
 }
 
 const propTypes = {
   createAgent: PropTypes.func.isRequired,
-  destroy: PropTypes.func.isRequired,
   form: PropTypes.string.isRequired,
   itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
@@ -24,6 +23,11 @@ const defaultProps = {
 }
 
 export class Create extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.formValueSelector = formValueSelectorFactory(props.form)
+  }
+
   render() {
     const { form, itemId, onInteraction, ...rest } = this.props
     const initialValues = itemId ? { parent: { id: itemId } } : {}
@@ -34,6 +38,10 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form={form}
+        formSectionNavigationHeader={
+          <ModuleTranslate capitalize module="agent" textKey="newAgent" />
+        }
+        formValueSelector={this.formValueSelector}
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()

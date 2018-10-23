@@ -6,11 +6,12 @@ import { Grid, Segment } from 'semantic-ui-react'
 import Unit from '../Unit'
 
 const propTypes = {
-  changeFieldValue: PropTypes.func.isRequired,
+  changeFieldValue: PropTypes.func,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  formValueSelector: PropTypes.func,
+  moduleName: PropTypes.string.isRequired,
+  removeArrayFieldByIndex: PropTypes.func,
   sectionSpec: PropTypes.shape({
     name: PropTypes.string.isRequired,
     units: PropTypes.arrayOf(
@@ -21,7 +22,10 @@ const propTypes = {
   }).isRequired,
 }
 const defaultProps = {
+  changeFieldValue: undefined,
   customParts: undefined,
+  formValueSelector: undefined,
+  removeArrayFieldByIndex: undefined,
 }
 
 class Section extends PureComponent {
@@ -31,6 +35,7 @@ class Section extends PureComponent {
       customParts,
       formName,
       formValueSelector,
+      moduleName,
       removeArrayFieldByIndex,
       sectionSpec,
     } = this.props
@@ -46,6 +51,7 @@ class Section extends PureComponent {
                 formName={formName}
                 formValueSelector={formValueSelector}
                 key={unit.name}
+                moduleName={moduleName}
                 name={unit.name}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
                 unitSpec={unit}

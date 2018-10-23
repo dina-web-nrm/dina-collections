@@ -1,49 +1,45 @@
 {
   "fieldLabels": {
-    "taxon": {
+    "acceptedTaxonName": {
+      "name": {
+        "en": "Accepted name"
+      },
+      "rank": {
+        "en": "Accepted name rank"
+      }
+    },
+    "curatorialName": {
+      "en": "Curatorial taxon name",
+      "sv": ""
+    },
+    "vernacularNames": {
+      "name": {
+        "en": "Vernacular names"
+      }
+    },
+    "synonyms": {
+      "name": {
+        "en": "Synonyms"
+      }
+    },
+    "parent": {
       "acceptedTaxonName": {
         "name": {
-          "en": "Accepted name"
-        },
-        "rank": {
-          "en": "Accepted name rank"
-        }
-      },
-      "curatorialName": {
-        "en": "Curatorial taxon name",
-        "sv": ""
-      },
-      "vernacularNames": {
-        "name": {
-          "en": "Vernacular names"
-        }
-      },
-      "synonyms": {
-        "name": {
-          "en": "Synonyms"
-        }
-      },
-      "parent": {
-        "acceptedTaxonName": {
-          "name": {
-            "en": "Parent accepted name"
-          }
+          "en": "Parent accepted name"
         }
       }
     },
-    "taxonName": {
-      "name": {
-        "en": "Name"
-      },
-      "taxonNameType": {
-        "en": "Name type"
-      },
-      "rank": {
-        "en": "Rank"
-      },
-      "rubinNumber": {
-        "en": "Rubin number"
-      }
+    "name": {
+      "en": "Scientific name"
+    },
+    "taxonNameType": {
+      "en": "Name type"
+    },
+    "rank": {
+      "en": "Rank"
+    },
+    "rubinNumber": {
+      "en": "RUBIN"
     },
     "order": {
       "en": "order"
@@ -60,6 +56,27 @@
     "subspecies": {
       "en": "subspecies"
     }
+  },
+  "headers": {
+    "status": {
+      "en": "status",
+      "sv": ""
+    }
+  },
+  "acceptedNameForTaxon": {
+    "en": "accepted name for taxon",
+    "sv": ""
+  },
+  "name": {
+    "en": "name"
+  },
+  "notAssociatedWithTaxon": {
+    "en": "this name is not associated with any taxon",
+    "sv": ""
+  },
+  "synonymForTaxon": {
+    "en": "synonym of",
+    "sv": ""
   },
   "save": {
     "en": "Save",

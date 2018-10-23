@@ -19,12 +19,12 @@ const findParentWithSpecificRank = (item, rank) => {
 const tableColumnSpecifications = [
   {
     fieldPath: 'acceptedTaxonName.name',
-    label: 'modules.taxon.fieldLabels.taxon.acceptedTaxonName.name',
+    label: 'modules.taxon.fieldLabels.acceptedTaxonName.name',
     width: 350,
   },
   {
     fieldPath: 'acceptedTaxonName.rank',
-    label: 'modules.taxon.fieldLabels.taxon.acceptedTaxonName.rank',
+    label: 'modules.taxon.fieldLabels.acceptedTaxonName.rank',
     width: 350,
   },
 
@@ -168,7 +168,7 @@ const tableColumnSpecifications = [
         .join(', ')
     },
     fieldPath: 'vernacularNames',
-    label: 'modules.taxon.fieldLabels.taxon.vernacularNames.name',
+    label: 'modules.taxon.fieldLabels.vernacularNames.name',
     width: 350,
   },
   {
@@ -180,7 +180,7 @@ const tableColumnSpecifications = [
         .join(', ')
     },
     fieldPath: 'synonyms',
-    label: 'modules.taxon.fieldLabels.taxon.synonyms.name',
+    label: 'modules.taxon.fieldLabels.synonyms.name',
     width: 350,
   },
 ]

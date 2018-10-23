@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { CLOSE_ITEM_VIEW } from 'coreModules/resourceManager/constants'
 import extractProps from 'utilities/extractProps'
-import Header from './Header'
 import BottomBar from './BottomBar'
 
 const propTypes = {
@@ -20,14 +21,11 @@ const defaultProps = {
 }
 const rows = [
   {
-    height: '50px',
-    key: 'header',
-  },
-  {
     key: 'itemEditForm',
+    style: { overflow: 'auto' },
   },
   {
-    height: '60px',
+    height: emToPixels(4.625),
     key: 'bottomBar',
   },
 ]
@@ -46,23 +44,9 @@ class EditItemColumn extends Component {
 
   renderRow(key) {
     switch (key) {
-      case 'header': {
-        const { extractedProps } = extractProps({
-          keys: ['itemId', 'ItemTitle', 'resource'],
-          props: this.props,
-        })
-        const { itemFetchOptions } = this.props
-        return (
-          <Header
-            {...extractedProps}
-            {...itemFetchOptions}
-            onClose={this.handleClose}
-          />
-        )
-      }
       case 'itemEditForm': {
-        const { itemId, renderEditForm } = this.props
-        return renderEditForm({ itemId })
+        const { availableHeight, itemId, renderEditForm } = this.props
+        return renderEditForm({ availableHeight, itemId })
       }
       case 'bottomBar': {
         const { extractedProps } = extractProps({

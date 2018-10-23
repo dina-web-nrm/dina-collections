@@ -26,12 +26,13 @@ const mapStateToProps = (state, { formName, formValueSelector, unitSpec }) => {
 }
 
 const propTypes = {
-  changeFieldValue: PropTypes.func.isRequired,
+  changeFieldValue: PropTypes.func,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
+  formValueSelector: PropTypes.func,
   initiallyHiddenFieldsHaveValue: PropTypes.bool,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  moduleName: PropTypes.string.isRequired,
+  removeArrayFieldByIndex: PropTypes.func,
   unitSpec: PropTypes.shape({
     name: PropTypes.string.isRequired,
     parts: PropTypes.arrayOf(
@@ -42,8 +43,11 @@ const propTypes = {
   }).isRequired,
 }
 const defaultProps = {
+  changeFieldValue: undefined,
   customParts: {},
+  formValueSelector: undefined,
   initiallyHiddenFieldsHaveValue: undefined,
+  removeArrayFieldByIndex: undefined,
 }
 
 class Unit extends PureComponent {
@@ -81,6 +85,7 @@ class Unit extends PureComponent {
       customParts,
       formName,
       formValueSelector,
+      moduleName,
       removeArrayFieldByIndex,
       unitSpec,
     } = this.props
@@ -128,7 +133,7 @@ class Unit extends PureComponent {
                   formName={formName}
                   formValueSelector={formValueSelector}
                   key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
-                  module="collectionMammals"
+                  module={moduleName}
                   name={name}
                   onClick={this.showInitiallyHiddenParts}
                   removeArrayFieldByIndex={removeArrayFieldByIndex}
@@ -144,7 +149,7 @@ class Unit extends PureComponent {
                   autoComplete="off"
                   component={Component}
                   key={name}
-                  module="collectionMammals"
+                  module={moduleName}
                   name={name}
                   {...componentProps}
                   {...rest}
@@ -156,7 +161,7 @@ class Unit extends PureComponent {
               <Component
                 formValueSelector={formValueSelector}
                 key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
-                module="collectionMammals"
+                module={moduleName}
                 name={name}
                 onClick={this.showInitiallyHiddenParts}
                 {...componentProps}

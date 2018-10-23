@@ -7,8 +7,24 @@
     "en": "click to add",
     "sv": "klicka för att lägga till"
   },
+  "formContainsErrors": {
+    "en": "Form contains errors",
+    "sv": "Formuläret innehåller fel"
+  },
   "plainText": {
     "en": "plain text",
     "sv": "fritext"
+  },
+  "save": {
+    "en": "Save",
+    "sv": "Spara"
+  },
+  "saved": {
+    "en": "Saved",
+    "sv": "Sparat"
+  },
+  "submitFailed": {
+    "en": "Could not save",
+    "sv": "Kunde inte spara"
   }
 }

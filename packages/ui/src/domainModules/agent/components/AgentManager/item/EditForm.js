@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { formValueSelector as formValueSelectorFactory } from 'redux-form'
+
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
@@ -45,12 +48,18 @@ const defaultProps = {
 }
 
 export class Edit extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.formValueSelector = formValueSelectorFactory(props.form)
+  }
+
   render() {
     const {
       form,
       nestedItem: initialValues,
       onInteraction,
       itemId,
+      ...rest
     } = this.props
 
     if (!initialValues) {
@@ -59,9 +68,15 @@ export class Edit extends PureComponent {
 
     return (
       <BaseForm
+        {...rest}
         displayBackButton
         displayResetButton
         form={form}
+        formSectionNavigationHeader={initialValues.fullName}
+        formSectionNavigationSubHeader={capitalizeFirstLetter(
+          initialValues.agentType
+        )}
+        formValueSelector={this.formValueSelector}
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()

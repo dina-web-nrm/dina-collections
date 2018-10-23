@@ -7,7 +7,7 @@ import { storiesOf } from '@storybook/react' // eslint-disable-line
 import { FormSectionNavigation } from './index'
 
 const catalogNumber = '1234567'
-const taxonName = { attributes: { name: 'Phoca vitulina' } }
+const taxonName = 'Phoca vitulina'
 
 const sectionSpecs = [
   {
@@ -44,39 +44,45 @@ storiesOf(
   module
 )
   .addDecorator(createStoryDecorator({ wrap: false }))
-  .add('withTaxonName', () => (
+  .add('with header', () => (
     <FormSectionNavigation
       activeFormSectionIndex={0}
       availableHeight={700}
-      catalogNumber={catalogNumber}
+      header={catalogNumber}
       loading={false}
+      module="collectionMammals"
       onSetActiveFormSection={action('onSetActiveFormSection')}
       onShowAllFormSections={action('onShowAllFormSections')}
       sectionSpecs={sectionSpecs}
       showAllFormSections={false}
-      taxonName={taxonName}
+      showSectionsInNavigation
     />
   ))
-  .add('withoutTaxonName', () => (
+  .add('with header and subHeader', () => (
     <FormSectionNavigation
       activeFormSectionIndex={0}
       availableHeight={700}
-      catalogNumber={catalogNumber}
+      header={catalogNumber}
       loading={false}
+      module="collectionMammals"
       onSetActiveFormSection={action('onSetActiveFormSection')}
       onShowAllFormSections={action('onShowAllFormSections')}
       sectionSpecs={sectionSpecs}
       showAllFormSections={false}
+      showSectionsInNavigation
+      subHeader={taxonName}
     />
   ))
-  .add('withoutCatalogNumber', () => (
+  .add('without section steps', () => (
     <FormSectionNavigation
       activeFormSectionIndex={0}
       availableHeight={700}
       loading={false}
+      module="collectionMammals"
       onSetActiveFormSection={action('onSetActiveFormSection')}
       onShowAllFormSections={action('onShowAllFormSections')}
       sectionSpecs={sectionSpecs}
       showAllFormSections={false}
+      showSectionsInNavigation={false}
     />
   ))

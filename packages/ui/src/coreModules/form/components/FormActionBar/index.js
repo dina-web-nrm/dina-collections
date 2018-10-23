@@ -5,12 +5,12 @@ import { Button, Grid, Message } from 'semantic-ui-react'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('form')
 
 const propTypes = {
   editMode: PropTypes.bool.isRequired,
   error: PropTypes.string,
-  form: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
   invalid: PropTypes.bool.isRequired,
   onUndoChanges: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -23,12 +23,12 @@ const defaultProps = {
   error: '',
 }
 
-export class RecordActionBar extends PureComponent {
+export class FormActionBar extends PureComponent {
   render() {
     const {
       editMode,
       error,
-      form,
+      formName,
       invalid,
       pristine,
       onUndoChanges: handleUndoChanges,
@@ -45,7 +45,7 @@ export class RecordActionBar extends PureComponent {
             size="large"
             type="submit"
           >
-            <ModuleTranslate textKey="other.save" />
+            <ModuleTranslate textKey="save" />
           </Button>
           <Button
             basic
@@ -60,13 +60,13 @@ export class RecordActionBar extends PureComponent {
             <span style={{ marginLeft: '15px' }}>*New record*</span>
           )}
           {!pristine && <em style={{ marginLeft: '10px' }}>Unsaved changes</em>}
-          <ConnectedFormSchemaError form={form} />
+          <ConnectedFormSchemaError form={formName} />
           {invalid &&
             !error &&
             submitFailed && (
               <Message
                 error
-                header={<ModuleTranslate textKey="other.formContainsErrors" />}
+                header={<ModuleTranslate textKey="formContainsErrors" />}
               />
             )}
           {submitFailed &&
@@ -74,14 +74,11 @@ export class RecordActionBar extends PureComponent {
               <Message
                 content={error}
                 error
-                header={<ModuleTranslate textKey="other.submitFailed" />}
+                header={<ModuleTranslate textKey="submitFailed" />}
               />
             )}
           {submitSucceeded && (
-            <Message
-              header={<ModuleTranslate textKey="other.saved" />}
-              success
-            />
+            <Message header={<ModuleTranslate textKey="saved" />} success />
           )}
         </Grid.Column>
       </Grid>
@@ -89,7 +86,7 @@ export class RecordActionBar extends PureComponent {
   }
 }
 
-RecordActionBar.propTypes = propTypes
-RecordActionBar.defaultProps = defaultProps
+FormActionBar.propTypes = propTypes
+FormActionBar.defaultProps = defaultProps
 
-export default RecordActionBar
+export default FormActionBar

@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
@@ -43,7 +45,12 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const { nestedItem: initialValues, onInteraction, itemId } = this.props
+    const {
+      nestedItem: initialValues,
+      onInteraction,
+      itemId,
+      ...rest
+    } = this.props
 
     if (!initialValues) {
       return null
@@ -52,9 +59,14 @@ export class Edit extends PureComponent {
     return (
       <React.Fragment>
         <BaseForm
+          {...rest}
           displayBackButton
           displayResetButton
           form="placeEdit"
+          formSectionNavigationHeader={initialValues.name}
+          formSectionNavigationSubHeader={capitalizeFirstLetter(
+            initialValues.group
+          )}
           initialValues={initialValues}
           onClose={event => {
             event.preventDefault()

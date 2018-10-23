@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { CLOSE_ITEM_VIEW } from 'coreModules/resourceManager/constants'
 import extractProps from 'utilities/extractProps'
-import Header from './Header'
 import BottomBar from './BottomBar'
 
 const propTypes = {
@@ -16,14 +17,11 @@ const propTypes = {
 const defaultProps = {}
 const rows = [
   {
-    height: '50px',
-    key: 'header',
-  },
-  {
     key: 'itemCreateForm',
+    style: { overflow: 'auto' },
   },
   {
-    height: '60px',
+    height: emToPixels(4.625),
     key: 'bottomBar',
   },
 ]
@@ -43,16 +41,9 @@ class CreateItemColumn extends Component {
 
   renderRow(key) {
     switch (key) {
-      case 'header': {
-        const { extractedProps } = extractProps({
-          keys: ['resource'],
-          props: this.props,
-        })
-        return <Header {...extractedProps} onClose={this.handleClose} />
-      }
       case 'itemCreateForm': {
-        const { renderCreateForm } = this.props
-        return renderCreateForm()
+        const { availableHeight, renderCreateForm } = this.props
+        return renderCreateForm({ availableHeight })
       }
       case 'bottomBar': {
         const { extractedProps } = extractProps({

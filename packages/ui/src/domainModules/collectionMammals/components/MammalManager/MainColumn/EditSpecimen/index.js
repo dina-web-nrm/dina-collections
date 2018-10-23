@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
+import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
 import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import createLog from 'utilities/log'
@@ -15,6 +16,10 @@ import RecordForm from '../RecordForm'
 const log = createLog(
   'modules:collectionMammals:components:MammalManager:EditSpecimen'
 )
+
+const FORM_NAME = 'editSpecimen'
+
+const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
 const mapStateToProps = state => {
   return {
@@ -61,7 +66,8 @@ class EditSpecimen extends PureComponent {
     log.debug('initialValues', initialValues)
     return (
       <RecordForm
-        form="editSpecimen"
+        form={FORM_NAME}
+        formValueSelector={formValueSelector}
         handleFormSubmit={formOutput => {
           const item = nestedToCoreSync({
             item: formOutput,

@@ -2,27 +2,34 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Grid, Icon } from 'semantic-ui-react'
 
-import { Section } from 'coreModules/form/components'
-import customParts from '../formParts'
+import Section from '../../Section'
 
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
-  changeFieldValue: PropTypes.func.isRequired,
+  changeFieldValue: PropTypes.func,
+  customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
+  formValueSelector: PropTypes.func,
+  moduleName: PropTypes.string.isRequired,
   onGoToNextSection: PropTypes.func.isRequired,
   onGoToPreviousSection: PropTypes.func.isRequired,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  removeArrayFieldByIndex: PropTypes.func,
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  showAllFormSections: PropTypes.bool.isRequired,
+  showAllFormSections: PropTypes.bool,
+  showSectionsInNavigation: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
+  changeFieldValue: undefined,
+  customParts: undefined,
+  formValueSelector: undefined,
+  removeArrayFieldByIndex: undefined,
+  showAllFormSections: undefined,
 }
 
 class FormSectionView extends PureComponent {
@@ -36,18 +43,21 @@ class FormSectionView extends PureComponent {
     const {
       activeFormSectionIndex,
       changeFieldValue,
+      customParts,
       formName,
       formValueSelector,
+      moduleName,
       removeArrayFieldByIndex,
       sectionSpecs,
+      showSectionsInNavigation,
     } = this.props
 
-    const sectionSpec = sectionSpecs[activeFormSectionIndex]
+    const sectionIndex = showSectionsInNavigation ? activeFormSectionIndex : 0
+
+    const sectionSpec = sectionSpecs[sectionIndex]
 
     if (!sectionSpec) {
-      throw new Error(
-        `Missing form section with index ${activeFormSectionIndex}`
-      )
+      throw new Error(`Missing form section with index ${sectionIndex}`)
     }
 
     const { name, units } = sectionSpec
@@ -67,7 +77,8 @@ class FormSectionView extends PureComponent {
           customParts={customParts}
           formName={formName}
           formValueSelector={formValueSelector}
-          module="collectionMammals"
+          module={moduleName}
+          moduleName={moduleName}
           name={name}
           removeArrayFieldByIndex={removeArrayFieldByIndex}
           sectionSpec={sectionSpec}
@@ -79,8 +90,10 @@ class FormSectionView extends PureComponent {
   renderAllSections() {
     const {
       changeFieldValue,
+      customParts,
       formName,
       formValueSelector,
+      moduleName,
       removeArrayFieldByIndex,
       sectionSpecs,
     } = this.props
@@ -101,7 +114,8 @@ class FormSectionView extends PureComponent {
                 customParts={customParts}
                 formName={formName}
                 formValueSelector={formValueSelector}
-                module="collectionMammals"
+                module={moduleName}
+                moduleName={moduleName}
                 name={name}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
                 sectionSpec={sectionSpec}
@@ -121,6 +135,7 @@ class FormSectionView extends PureComponent {
       onGoToPreviousSection: handleGoToPreviousSection,
       sectionSpecs,
       showAllFormSections,
+      showSectionsInNavigation,
     } = this.props
 
     return (
@@ -128,39 +143,38 @@ class FormSectionView extends PureComponent {
         className="ui fluid dina background"
         style={{
           height,
-          overflow: 'auto',
         }}
       >
         <Grid className="text" container padded>
-          {!showAllFormSections
-            ? this.renderActiveSection()
-            : this.renderAllSections()}
+          {showAllFormSections
+            ? this.renderAllSections()
+            : this.renderActiveSection()}
+          {showSectionsInNavigation &&
+            !showAllFormSections && (
+              <Grid.Column textAlign="right" width={16}>
+                <Button
+                  disabled={activeFormSectionIndex === 0}
+                  icon
+                  labelPosition="left"
+                  onClick={handleGoToPreviousSection}
+                  type="button"
+                >
+                  <Icon name="left arrow" />
+                  Previous
+                </Button>
 
-          {!showAllFormSections && (
-            <Grid.Column textAlign="right" width={16}>
-              <Button
-                disabled={activeFormSectionIndex === 0}
-                icon
-                labelPosition="left"
-                onClick={handleGoToPreviousSection}
-                type="button"
-              >
-                <Icon name="left arrow" />
-                Previous
-              </Button>
-
-              <Button
-                disabled={activeFormSectionIndex === sectionSpecs.length - 1}
-                icon
-                labelPosition="right"
-                onClick={handleGoToNextSection}
-                type="button"
-              >
-                Next
-                <Icon name="right arrow" />
-              </Button>
-            </Grid.Column>
-          )}
+                <Button
+                  disabled={activeFormSectionIndex === sectionSpecs.length - 1}
+                  icon
+                  labelPosition="right"
+                  onClick={handleGoToNextSection}
+                  type="button"
+                >
+                  Next
+                  <Icon name="right arrow" />
+                </Button>
+              </Grid.Column>
+            )}
         </Grid>
       </div>
     )

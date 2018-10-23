@@ -26,7 +26,6 @@ import {
   SPECIMENS_MAMMALS_TABLE_COLUMNS,
   SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
 } from '../../constants'
-
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
@@ -176,11 +175,9 @@ const mapStateToProps = (
 const mapDispatchToProps = {
   push,
   reset,
-  setActiveFormSectionIndex: keyObjectActionCreators.set.activeFormSectionIndex,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
   setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
-  setShowAllFormSections: keyObjectActionCreators.set.showAllFormSections,
 }
 
 const propTypes = {
@@ -206,11 +203,9 @@ const propTypes = {
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   search: PropTypes.func.isRequired,
   searchResult: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
-  setActiveFormSectionIndex: PropTypes.func.isRequired,
   setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setFocusedSpecimenId: PropTypes.func.isRequired,
-  setShowAllFormSections: PropTypes.func.isRequired,
   showSelectNextRecordButton: PropTypes.bool.isRequired,
   showSelectPreviousRecordButton: PropTypes.bool.isRequired,
   tableColumnsToSort: PropTypes.array, // eslint-disable-line react/no-unused-prop-types
@@ -231,7 +226,6 @@ class MammalManager extends Component {
     super(props)
 
     this.getColumns = this.getColumns.bind(this)
-    this.handleSectionIdUpdate = this.handleSectionIdUpdate.bind(this)
     this.handleSpecimenIdUpdate = this.handleSpecimenIdUpdate.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
     this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
@@ -274,7 +268,6 @@ class MammalManager extends Component {
     ]
   }
   componentWillMount() {
-    this.handleSectionIdUpdate()
     this.handleSpecimenIdUpdate()
   }
 
@@ -283,13 +276,6 @@ class MammalManager extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      objectPath.get(this.props, 'match.params.sectionId') !==
-      objectPath.get(nextProps, 'match.params.sectionId')
-    ) {
-      this.handleSectionIdUpdate(nextProps)
-    }
-
     if (
       objectPath.get(this.props, 'tableColumnsToSort') !==
       objectPath.get(nextProps, 'tableColumnsToSort')
@@ -317,19 +303,6 @@ class MammalManager extends Component {
 
   getColumns() {
     return getColumns(this.props)
-  }
-
-  handleSectionIdUpdate(props = this.props) {
-    const sectionId = objectPath.get(props, 'match.params.sectionId')
-    const sectionIndex = Number(sectionId)
-
-    if (Number.isInteger(sectionIndex)) {
-      this.props.setActiveFormSectionIndex(sectionIndex)
-      this.props.setShowAllFormSections(false)
-    } else if (sectionId === 'all') {
-      this.props.setActiveFormSectionIndex(null)
-      this.props.setShowAllFormSections(true)
-    }
   }
 
   handleSpecimenIdUpdate(props = this.props) {

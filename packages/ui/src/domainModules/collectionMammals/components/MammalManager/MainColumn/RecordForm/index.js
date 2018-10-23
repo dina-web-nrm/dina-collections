@@ -4,49 +4,50 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
-import {
-  arrayRemove,
-  change,
-  formValueSelector as formValueSelectorFactory,
-  reduxForm,
-  reset,
-  submit,
-} from 'redux-form'
+import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
+import objectPath from 'object-path'
 
-import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
-import { Form } from 'coreModules/form/components'
+import {
+  createEnsureAllItemsFetched,
+  createGetItemById,
+} from 'coreModules/crud/higherOrderComponents'
+import { Form, FormActionBar, FormRow } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
+import { createModuleTranslate } from 'coreModules/i18n/components'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import CatalogNumberModal from 'domainModules/collectionMammals/components/CatalogNumberModal'
+import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
-import RecordActionBar from './RecordActionBar'
-import sectionSpecs from './FormRow/sectionSpecs'
-import FormRow from './FormRow'
+import sectionSpecs from './sectionSpecs'
+import customParts from './formParts'
+
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const recordActionBarHeight = emToPixels(4.625)
-const recordActionBar = {
-  height: `${recordActionBarHeight}px`,
-  key: 'recordActionBar',
-  renderRow: props => <RecordActionBar {...props} />,
-  style: { borderTop: '1px solid #D4D4D5' },
-}
 
-/* eslint-disable react/prop-types */
-const formRow = {
-  key: 'formRow',
-  renderRow: props => (
-    <FormRow
-      {...props}
-      availableHeight={props.availableHeight - recordActionBarHeight}
-    />
-  ),
-}
-/* eslint-enable react/prop-types */
+const rows = [
+  { key: 'formRow' },
+  {
+    height: `${recordActionBarHeight}px`,
+    key: 'recordActionBar',
+    style: { borderTop: '1px solid #D4D4D5' },
+  },
+]
 
-const rows = [formRow, recordActionBar]
+const mapStateToProps = (state, { form, formValueSelector }) => {
+  return {
+    catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(form)(
+      state
+    ),
+    taxonNameId: formValueSelector(
+      state,
+      'individual.taxonInformation.curatorialTaxonName.id'
+    ),
+  }
+}
 
 const mapDispatchToProps = {
   changeFormValue: change,
@@ -58,9 +59,11 @@ const mapDispatchToProps = {
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  catalogNumber: PropTypes.string,
   changeFormValue: PropTypes.func.isRequired,
   error: PropTypes.string,
   form: PropTypes.string.isRequired,
+  formValueSelector: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool,
@@ -78,25 +81,31 @@ const propTypes = {
   submit: PropTypes.func.isRequired,
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
+  taxonName: PropTypes.shape({
+    attributes: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }),
 }
 const defaultProps = {
+  catalogNumber: undefined,
   error: '',
   loading: false,
   mode: 'register',
   redirectOnSuccess: false,
+  taxonName: undefined,
 }
 
 class RecordForm extends Component {
   constructor(props) {
     super(props)
-    this.formValueSelector = formValueSelectorFactory(props.form)
-
     this.setFormRef = this.setFormRef.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.changeFieldValue = this.changeFieldValue.bind(this)
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
     this.handleSubmitFromModal = this.handleSubmitFromModal.bind(this)
+    this.renderRow = this.renderRow.bind(this)
   }
 
   setFormRef(element) {
@@ -148,8 +157,57 @@ class RecordForm extends Component {
     this.props.reset(this.props.form)
   }
 
+  renderRow(key, props) {
+    switch (key) {
+      case 'formRow': {
+        const { availableHeight, catalogNumber, taxonName } = this.props
+
+        const curatorialTaxonName = objectPath.get(taxonName, 'attributes.name')
+
+        return (
+          <FormRow
+            {...this.props}
+            {...props}
+            availableHeight={availableHeight - recordActionBarHeight}
+            customParts={customParts}
+            formSectionNavigationHeader={
+              catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
+            }
+            formSectionNavigationSubHeader={curatorialTaxonName}
+            resourceIdPathParamKey="specimenId"
+            showSectionsInNavigation
+          />
+        )
+      }
+
+      case 'recordActionBar': {
+        const { mode } = this.props
+
+        return (
+          <FormActionBar
+            {...this.props}
+            {...props}
+            editMode={mode === 'edit'}
+            onUndoChanges={this.handleUndoChanges}
+          />
+        )
+      }
+
+      default: {
+        throw new Error(`Unknown row: ${key}`)
+      }
+    }
+  }
+
   render() {
-    const { availableHeight, form, handleSubmit, mode, ...rest } = this.props
+    const {
+      availableHeight,
+      catalogNumber,
+      form,
+      handleSubmit,
+      mode,
+      ...rest
+    } = this.props
 
     return (
       <React.Fragment>
@@ -161,14 +219,12 @@ class RecordForm extends Component {
         >
           <RowLayout
             {...rest}
-            availableHeight={availableHeight}
             changeFieldValue={this.changeFieldValue}
-            editMode={mode === 'edit'}
-            form={form}
             formName={form}
-            formValueSelector={this.formValueSelector}
-            onUndoChanges={this.handleUndoChanges}
+            module="collectionMammals" // to be deprecated in favor of moduleName
+            moduleName="collectionMammals"
             removeArrayFieldByIndex={this.removeArrayFieldByIndex}
+            renderRow={this.renderRow}
             rows={rows}
             sectionSpecs={sectionSpecs}
           />
@@ -198,7 +254,12 @@ const EnhancedForm = compose(
   createEnsureAllItemsFetched({
     resource: 'featureType',
   }),
-  connect(undefined, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
+  createGetItemById({
+    idPath: 'taxonNameId',
+    itemKey: 'taxonName',
+    resource: 'taxonName',
+  })
 )(RecordForm)
 
 export default reduxForm({

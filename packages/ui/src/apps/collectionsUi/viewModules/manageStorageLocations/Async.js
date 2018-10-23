@@ -7,6 +7,7 @@ export default createAsyncView({
       import('domainModules/taxon'),
       import('domainModules/storage'),
       import('coreModules/form'),
+      import('coreModules/formSupport'),
     ]
   },
   name: MODULE_NAME,

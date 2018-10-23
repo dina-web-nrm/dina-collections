@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
+
 import crudActionCreators from 'coreModules/crud/actionCreators'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 import BaseForm from './BaseForm'
 
 const mapDispatchToProps = {
@@ -32,6 +34,9 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form="placeCreate"
+        formSectionNavigationHeader={
+          <ModuleTranslate capitalize module="locality" textKey="newLocality" />
+        }
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()

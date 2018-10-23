@@ -245,6 +245,7 @@ class ResourceManager extends Component {
       }
     }
   }
+
   renderRow(key) {
     switch (key) {
       case 'main': {
