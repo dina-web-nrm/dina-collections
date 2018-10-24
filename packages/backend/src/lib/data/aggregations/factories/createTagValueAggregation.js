@@ -9,14 +9,15 @@ module.exports = function createTagValueAggregation({
   return {
     description: description || `Aggregation for: ${fieldPath}`,
     elasticsearch: ({ input = {} }) => {
-      const { tagTypes, tagValue, limit = 10 } = input
+      const { exact, tagTypes, tagValue, limit = 10 } = input
 
       const identifierKeyFilter = {
         field: keyRawPath,
         size: limit,
       }
-
-      if (tagValue && tagTypes) {
+      if (exact) {
+        identifierKeyFilter.include = `${tagTypes[0]}${delimiter}${tagValue}`
+      } else if (tagValue && tagTypes) {
         if (tagTypes.length === 1) {
           identifierKeyFilter.include = `${tagTypes[0]}${
             delimiter
