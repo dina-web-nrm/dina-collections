@@ -1,22 +1,20 @@
 {
   "fieldLabels": {
-    "storageLocation": {
-      "group": {
-        "en": "group",
-        "sv": "grupp"
-      },
-      "name": {
-        "en": "name",
-        "sv": "namn"
-      },
-      "parentId": {
-        "en": "parent",
-        "sv": "förälder"
-      },
-      "description": {
-        "en": "description",
-        "sv": "beskrivning"
-      }
+    "group": {
+      "en": "level",
+      "sv": ""
+    },
+    "name": {
+      "en": "name",
+      "sv": "namn"
+    },
+    "parent": {
+      "en": "parent",
+      "sv": "förälder"
+    },
+    "description": {
+      "en": "description",
+      "sv": "beskrivning"
     },
     "level1": {
       "en": "level 1"
@@ -30,6 +28,28 @@
     "level4": {
       "en": "level 4"
     }
+  },
+  "headers": {
+    "connectedPreparationTypes": {
+      "en": "connected preparation types",
+      "sv": ""
+    },
+    "connectedTaxa": {
+      "en": "connected taxa",
+      "sv": ""
+    },
+    "newStorageLocation": {
+      "en": "new storage",
+      "sv": ""
+    }
+  },
+  "connectPreparationType": {
+    "en": "connect preparation type",
+    "sv": ""
+  },
+  "connectTaxon": {
+    "en": "connect taxon",
+    "sv": ""
   },
   "save": {
     "en": "Save",
