@@ -7,7 +7,7 @@ export default function createDateRangeSpecification({
     const { fieldValue: { startDate, endDate } = {} } = input
 
     const start = startDate && startDate.interpretedTimestamp
-    const end = startDate && endDate.interpretedTimestamp
+    const end = endDate && endDate.interpretedTimestamp
 
     if (start === undefined && end === undefined) {
       return null
