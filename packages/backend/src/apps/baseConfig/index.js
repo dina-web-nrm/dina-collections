@@ -57,7 +57,7 @@ const auth = {
   active: true,
   'auth-server-url': readKey('KEYCLOAK_AUTH_BASE_URL'),
   'bearer-only': true,
-  realm: 'dina',
+  realm: readKey('KEYCLOAK_REALM_NAME'),
   resource: 'collections',
   'ssl-required': 'none',
   'use-resource-role-mappings': true,
