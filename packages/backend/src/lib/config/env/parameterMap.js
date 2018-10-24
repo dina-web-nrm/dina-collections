@@ -3,7 +3,7 @@ const parameterMap = {
     port: 'API_PORT',
   },
   auth: {
-    'auth-server-url': 'AUTH_BASE_URL',
+    'auth-server-url': 'KEYCLOAK_AUTH_BASE_URL',
     disableAuth: 'DISABLE_AUTH',
   },
   db: {
