@@ -23,7 +23,6 @@ const propTypes = {
   formSectionNavigationSubHeader: PropTypes.node,
   formValueSelector: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
 }
 const defaultProps = {
@@ -48,13 +47,14 @@ class BaseForm extends Component {
       formSectionNavigationSubHeader,
       formValueSelector,
       handleSubmit,
-      onSubmit,
     } = this.props
 
     return (
       <Form
         formName={form}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(() => {
+          /* submit handled in resource manager */
+        })}
         sectionSpecs={sectionSpecs}
         setFormRef={this.setFormRef}
       >
