@@ -33,7 +33,7 @@ This guide assumes you have `git` installed
 	make setup-env
 	
 	```
-	This will setup default env variables. Suitable for most local dev environments but not suitable for any server environments. If you want to look at them or change them go into ./env.
+	This will setup default env variables. Suitable for most local dev environments but not suitable for any server environments. If you want to look at them or change them go into ./env and inspect [./env/README.md](./env/README.md)
 	
 4. Edit your /etc/hosts file and add the following entries if you are using the default .env files create from the sample files
 

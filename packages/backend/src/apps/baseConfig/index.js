@@ -21,7 +21,7 @@ const services = {
 const integrations = {
   keycloakAdmin: {
     active: readBoolKey('KEYCLOAK_ADMIN_ACTIVE'),
-    baseUrl: readKey('KEYCLOAK_AUTH_BASE_URL'),
+    baseUrl: `${readKey('KEYCLOAK_AUTH_BASE_URL')}/auth`,
     password: readKey('KEYCLOAK_ADMIN_PASSWORD'),
     realmName: readKey('KEYCLOAK_REALM_NAME'),
     username: readKey('KEYCLOAK_ADMIN_USERNAME'),
@@ -55,9 +55,9 @@ const db = {
 
 const auth = {
   active: true,
-  'auth-server-url': readKey('AUTH_BASE_URL'),
+  'auth-server-url': `${readKey('KEYCLOAK_AUTH_BASE_URL')}/auth`,
   'bearer-only': true,
-  realm: 'dina',
+  realm: readKey('KEYCLOAK_REALM_NAME'),
   resource: 'collections',
   'ssl-required': 'none',
   'use-resource-role-mappings': true,

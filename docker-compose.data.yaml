@@ -17,7 +17,7 @@ services:
 networks:
   default:
     external:
-      name: proxy-docker_default
+      name: dinacollections_default
 
 volumes:
   postgres_data:
