@@ -1,6 +1,5 @@
 const requiredEnvVariables = [
   'API_PORT',
-  'AUTH_BASE_URL',
   'DB_DATABASE',
   'DB_PASSWORD',
   'DB_URL',

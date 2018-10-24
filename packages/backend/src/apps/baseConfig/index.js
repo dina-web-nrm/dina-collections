@@ -55,7 +55,7 @@ const db = {
 
 const auth = {
   active: true,
-  'auth-server-url': readKey('AUTH_BASE_URL'),
+  'auth-server-url': readKey('KEYCLOAK_AUTH_BASE_URL'),
   'bearer-only': true,
   realm: 'dina',
   resource: 'collections',
