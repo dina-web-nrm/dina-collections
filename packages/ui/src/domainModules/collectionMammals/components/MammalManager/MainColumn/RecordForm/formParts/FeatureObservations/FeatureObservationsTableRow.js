@@ -38,6 +38,20 @@ const getPlaceholder = (group, key) => {
   return placeholderKey && `featureObservations.placeholders.${placeholderKey}`
 }
 
+const getColumnWidth = group => {
+  switch (group) {
+    case 'bone-count': {
+      return 3
+    }
+    case 'age-and-stage': {
+      return 6
+    }
+    default: {
+      return 4
+    }
+  }
+}
+
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   featureType: PropTypes.object.isRequired,
@@ -82,6 +96,8 @@ class FeatureObservationTableRow extends PureComponent {
 
     const moreThanTwoColumns = hasSelectableUnits || hasSelectableMethods
 
+    const columnWidth = getColumnWidth(group)
+
     log.render()
     return (
       <Table.Row key={index}>
@@ -101,18 +117,24 @@ class FeatureObservationTableRow extends PureComponent {
               component={FeatureObservationDropdownSearch}
               displayLabel={false}
               module={module}
-              name={placeholderKey && getPath('featureObservationText')}
-              placeholder={moduleTranslate({
-                capitalize: true,
-                module,
-                textKey: placeholderKey,
-              })}
+              name={getPath('featureObservationText')}
+              placeholder={
+                placeholderKey &&
+                moduleTranslate({
+                  capitalize: true,
+                  module,
+                  textKey: placeholderKey,
+                })
+              }
               rawOptions={selectableValues}
               type="text"
             />
           </Table.Cell>
         ) : (
-          <Table.Cell key={getPath('featureObservationText')} width={6}>
+          <Table.Cell
+            key={getPath('featureObservationText')}
+            width={columnWidth}
+          >
             <Field
               autoComplete="off"
               className="transparent"
