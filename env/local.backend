@@ -1,5 +1,4 @@
 API_PORT=4444
-AUTH_BASE_URL=http://127.0.0.1:8080
 DB_DATABASE=postgres
 DB_PASSWORD=mysecretpassword
 DB_URL=127.0.0.1:5432
