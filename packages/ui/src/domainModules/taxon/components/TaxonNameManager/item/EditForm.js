@@ -1,15 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
-import crudActionCreators from 'coreModules/crud/actionCreators'
+
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import BaseForm from './BaseForm'
-
-const mapDispatchToProps = {
-  updateTaxonName: crudActionCreators.place.update,
-}
 
 const propTypes = {
   i18n: PropTypes.shape({
@@ -18,7 +13,6 @@ const propTypes = {
   itemId: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
-  updateTaxonName: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -54,21 +48,6 @@ export class Edit extends PureComponent {
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
-        onSubmit={formOutput => {
-          this.props
-            .updateTaxonName({
-              item: {
-                id: itemId,
-                ...formOutput,
-              },
-              nested: true,
-            })
-            .then(result => {
-              onInteraction('FORM_EDIT_SUCCESS', {
-                itemId: result.id,
-              })
-            })
-        }}
       />
     )
   }
@@ -82,6 +61,5 @@ export default compose(
   createGetNestedItemById({
     nestedItemKey: 'taxonName',
     resource: 'taxonName',
-  }),
-  connect(null, mapDispatchToProps)
+  })
 )(Edit)

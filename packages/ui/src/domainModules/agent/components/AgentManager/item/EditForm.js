@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
-import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
@@ -31,16 +30,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = {
-  updatePlace: crudActionCreators.normalizedAgent.update,
-}
-
 const propTypes = {
   form: PropTypes.string.isRequired,
   itemId: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
-  updatePlace: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -83,21 +77,6 @@ export class Edit extends PureComponent {
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
-        onSubmit={formOutput => {
-          this.props
-            .updatePlace({
-              item: {
-                id: itemId,
-                ...formOutput,
-              },
-              nested: true,
-            })
-            .then(result => {
-              onInteraction('FORM_EDIT_SUCCESS', {
-                itemId: result.id,
-              })
-            })
-        }}
       />
     )
   }
@@ -111,5 +90,5 @@ export default compose(
     relationships: ['all'],
     resource: 'normalizedAgent',
   }),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps)
 )(Edit)

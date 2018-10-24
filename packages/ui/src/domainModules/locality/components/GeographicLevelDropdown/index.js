@@ -20,10 +20,8 @@ class GeographicLevelDropdown extends Component {
     return (
       <DropdownSearch
         {...rest}
-        model="place"
         module="locality"
         options={dropdownOptions}
-        resource="place"
         type="dropdown-search-local"
       />
     )
