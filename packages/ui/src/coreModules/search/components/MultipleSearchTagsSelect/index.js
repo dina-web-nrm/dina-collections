@@ -96,9 +96,10 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.debouncedGetItemsForSearchQuery.cancel()
   }
 
-  getItemsForSearchQuery({ tagType, tagValue, limit = 10 }) {
+  getItemsForSearchQuery({ exact, tagType, tagValue, limit = 10 }) {
     const query = this.props.buildLocalAggregationQuery({
       input: {
+        exact,
         limit,
         tagType,
         tagValue,
@@ -177,8 +178,10 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       const searchOption = this.state.options.find(option => {
         return option.key === queryString
       })
+      const { key } = searchOption
       const { tagType, tagValue } = searchOption.other
       return this.getItemsForSearchQuery({
+        exact: !!(tagType && key),
         limit: 1000,
         tagType,
         tagValue,
@@ -247,7 +250,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
           tagType: attributes.tagType,
           tagValue: attributes.tagValue,
         },
-        text: `${attributes.tagValue}${tagTypeText}(${attributes.count})`,
+        text: `${attributes.tagValue}${tagTypeText}`,
 
         type: 'string',
         value: attributes.key,
