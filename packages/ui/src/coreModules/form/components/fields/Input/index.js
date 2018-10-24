@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import extractProps from 'utilities/extractProps'
+import DropdownInput from '../../inputs/Input/DropdownInput'
 import TextInput from '../../inputs/Input/Text'
 import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 
@@ -14,6 +15,7 @@ const propTypes = {
 
 function Input(props) {
   const { input, type } = props
+
   let Component
   let castType
   switch (type) {
@@ -37,7 +39,11 @@ function Input(props) {
       castType = 'password'
       break
     }
-
+    case 'dropdown': {
+      Component = DropdownInput
+      castType = 'dropdown'
+      break
+    }
     default: {
       throw new Error(`Type: ${type} is not supported`)
     }

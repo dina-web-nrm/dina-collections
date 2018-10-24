@@ -6,13 +6,17 @@
     },
     "originLocality": {
       "type": "string"
+    }, 
+    "establishmentMeansType": {
+      "$ref": "__ROOT__establishmentMeansType",
+      "x-reference-type": "external"
     },
     "remarks": {
       "type": "string"
     },
     "isAffectedByManagement": {
       "type": "boolean"
-    },
+    }, 
     "isResultOfSelectiveBreeding": {
       "type": "boolean"
     },
