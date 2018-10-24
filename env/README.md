@@ -34,6 +34,9 @@ __KEYCLOAK\_ADMIN_USERNAME__ - See above
 
 __KEYCLOAK\_AUTH\_BASE_URL__ - This is the url to keycloak that is used both for admin access and to veryfi user access
 
+__AUTH\_BASE\_URL__ - Depricated. Will be removed in next release
+
+
 __KEYCLOAK\_REALM_NAME__ - Keycloak realm name used both for admin access and to verify user access.
 
 
