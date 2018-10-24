@@ -12,7 +12,14 @@ env/.*
 data/*.json
 userFiles/*
 
-.DS_Store
-
-
+# certs
 certs
+
+# junk
+.DS_Store
+*~
+.*~
+.Rhistory
+README.html
+
+
