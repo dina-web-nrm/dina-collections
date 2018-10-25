@@ -114,6 +114,4 @@ services:
 volumes:
   postgres_data:
   es_data:
-  pgadmin_vol:
   mysql-keycloak-accounts:
-
