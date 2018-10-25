@@ -2,6 +2,7 @@
 
 var extractObjectRelationship = function extractObjectRelationship(_ref) {
   var item = _ref.item,
+      nestedToCoreSync = _ref.nestedToCoreSync,
       relationshipKey = _ref.relationshipKey,
       relationshipType = _ref.relationshipType;
 
@@ -9,7 +10,15 @@ var extractObjectRelationship = function extractObjectRelationship(_ref) {
     return null;
   }
 
-  return item[relationshipKey] && item[relationshipKey].id ? { id: item[relationshipKey].id, type: relationshipType } : undefined;
+  if (!item[relationshipKey]) {
+    return undefined;
+  }
+
+  return nestedToCoreSync ? nestedToCoreSync({
+    item: item[relationshipKey],
+    normalize: true,
+    type: relationshipType
+  }) : item[relationshipKey];
 };
 
 module.exports = { extractObjectRelationship: extractObjectRelationship };

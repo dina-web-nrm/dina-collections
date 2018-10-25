@@ -36,7 +36,7 @@ var defaultLog = createLog('common:jsonApiClient:modifyRelatedResourceItem');
 
 function modifyRelatedResourceItem() {
   var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      item = _ref2.item,
+      itemInput = _ref2.item,
       _ref2$log = _ref2.log,
       log = _ref2$log === undefined ? defaultLog : _ref2$log,
       openApiClient = _ref2.openApiClient,
@@ -44,13 +44,21 @@ function modifyRelatedResourceItem() {
       resourcesToModify = _ref2.resourcesToModify;
 
   return _promise2.default.resolve().then(function () {
-    if (item === null) {
+    if (itemInput === null) {
       log.debug('Not updating relation: ' + relationKey + ', it is null');
       return null;
     }
 
-    if (!item) {
+    if (!itemInput) {
       throw new Error('missing item and it is not null');
+    }
+
+    var item = itemInput;
+    if (!resourcesToModify.includes(itemInput.type)) {
+      item = {
+        id: itemInput.id,
+        type: itemInput.type
+      };
     }
 
     if (item.id) {
