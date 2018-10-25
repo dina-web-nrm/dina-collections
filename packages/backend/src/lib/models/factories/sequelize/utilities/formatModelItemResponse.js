@@ -12,16 +12,16 @@ module.exports = function formatModelItemResponse({
   let attributes = input.document
   const relationships =
     (input.dataValues && input.dataValues.relationships) ||
-    attributes.relationships
+    (attributes && attributes.relationships)
 
-  if (attributes.id) {
+  if (attributes && attributes.id) {
     attributes = {
       ...attributes,
     }
     delete attributes.id
   }
 
-  if (attributes.relationships) {
+  if (attributes && attributes.relationships) {
     attributes = {
       ...attributes,
     }
@@ -30,7 +30,7 @@ module.exports = function formatModelItemResponse({
 
   const item = {
     attributes,
-    id: `${input.dataValues.id}`,
+    id: `${input.dataValues && input.dataValues.id}`,
   }
 
   if (relationships) {
