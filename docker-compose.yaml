@@ -32,9 +32,6 @@ services:
   keycloak:
     image: jboss/keycloak:4.5.0.Final #this is the latest
     container_name: keycloak
-    links:
-      - mysql:mysql # No need for this??
-
     # Username & password to use the database
     env_file: ./env/.keycloak
 
