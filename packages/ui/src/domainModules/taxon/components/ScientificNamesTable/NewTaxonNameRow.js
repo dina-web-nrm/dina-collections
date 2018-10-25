@@ -17,7 +17,6 @@ export class NewTaxonNameRow extends Component {
   }
 
   handleChange(itemId) {
-    console.log('handleChange itemId', itemId)
     this.props.onInteraction(ADD_SYNONYM, {
       itemId,
     })

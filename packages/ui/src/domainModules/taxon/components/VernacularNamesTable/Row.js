@@ -24,7 +24,6 @@ const languageOptions = [
 ]
 
 const propTypes = {
-  changeFieldValue: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   getTranslationPath: PropTypes.func.isRequired,
   i18n: PropTypes.shape({
@@ -32,11 +31,6 @@ const propTypes = {
   }).isRequired,
   index: PropTypes.number.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
-  vernacularName: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    language: PropTypes.string,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
 }
 
 class VernacularNamesTableRow extends PureComponent {
