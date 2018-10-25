@@ -29,20 +29,6 @@
     "relationships": {
       "type": "object",
       "properties": {
-        "acceptedTaxonNames": {
-          "type": "object",
-          "x-key-stored-in-model": "storageLocation",
-          "x-key-type": "json",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__taxonName",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
         "children": {
           "type": "object",
           "x-key-allow-null": true,
@@ -96,14 +82,21 @@
               }
             }
           }
+        },
+        "taxa": {
+          "type": "object",
+          "x-key-stored-in-model": "storageLocation",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__taxon",
+                "x-reference-type": "external"
+              }
+            }
+          }
         }
-      }
-    },
-    "acceptedTaxonNames": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__taxonName",
-        "x-reference-type": "external"
       }
     },
     "children": {
@@ -128,6 +121,13 @@
       "type": "array",
       "items": {
         "$ref": "__ROOT__preparationType",
+        "x-reference-type": "external"
+      }
+    },
+    "taxa": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxon",
         "x-reference-type": "external"
       }
     }
