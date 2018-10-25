@@ -32,9 +32,6 @@ services:
   keycloak:
     image: jboss/keycloak:4.5.0.Final #this is the latest
     container_name: keycloak
-    links:
-      - mysql:mysql # No need for this??
-
     # Username & password to use the database
     env_file: ./env/.keycloak
 
@@ -58,17 +55,18 @@ services:
 
   postgres:
     image: postgres:10.5
+    container_name: postgres
     env_file:
       - ./env/.postgres
-    restart: always
-    container_name: postgres
+    restart: always    
     ports:
       - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   proxy:
-    image: jwilder/nginx-proxy
+    image: jwilder/nginx-proxy:latest
+    container_name: proxy
     environment:
       - NGINX_MAX_BODY_SZ=100m
     ports:
@@ -117,6 +115,4 @@ services:
 volumes:
   postgres_data:
   es_data:
-  pgadmin_vol:
   mysql-keycloak-accounts:
-

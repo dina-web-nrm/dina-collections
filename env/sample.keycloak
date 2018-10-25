@@ -1,4 +1,3 @@
-DB_ADDR=mysql
 DB_DATABASE=keycloak
 DB_PASSWORD=password
 DB_USER=keycloak
