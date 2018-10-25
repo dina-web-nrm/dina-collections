@@ -18,7 +18,6 @@ class LocalityDropdownSearch extends Component {
       <DropdownSearch
         {...rest}
         extractText={extractText}
-        icon="search"
         resource="place"
         type="dropdown-search-resource"
       />
