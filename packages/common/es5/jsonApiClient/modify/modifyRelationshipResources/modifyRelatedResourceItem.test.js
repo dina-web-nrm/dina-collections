@@ -93,13 +93,14 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
           attributes: {
             name: 'coding'
           },
-          id: 1234
+          id: 1234,
+          type: 'project'
         };
         return modifyRelatedResourceItem({
           item: item,
           openApiClient: openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['projects']
+          resourcesToModify: ['project']
         }).then(function () {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(1);
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0);
@@ -108,7 +109,8 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
             item: item,
             log: testLog.scope(),
             openApiClient: openApiClient,
-            resourcesToModify: ['projects']
+            resourcesToModify: ['project'],
+            resourceType: 'project'
           }));
         });
       });
@@ -120,13 +122,14 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
               id: 123,
               type: 'user'
             }
-          }
+          },
+          type: 'project'
         };
         return modifyRelatedResourceItem({
           item: item,
           openApiClient: openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['projects']
+          resourcesToModify: ['project']
         }).then(function () {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(1);
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0);
@@ -135,7 +138,8 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
             item: item,
             log: testLog.scope(),
             openApiClient: openApiClient,
-            resourcesToModify: ['projects']
+            resourcesToModify: ['project'],
+            resourceType: 'project'
           }));
         });
       });
@@ -145,13 +149,14 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
         var item = {
           attributes: {
             name: 'coding'
-          }
+          },
+          type: 'project'
         };
         return modifyRelatedResourceItem({
           item: item,
           openApiClient: openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['projects']
+          resourcesToModify: ['project']
         }).then(function () {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(0);
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(1);
@@ -160,7 +165,8 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
             item: item,
             log: testLog.scope(),
             openApiClient: openApiClient,
-            resourcesToModify: ['projects']
+            resourcesToModify: ['project'],
+            resourceType: 'project'
           }));
         });
       });
