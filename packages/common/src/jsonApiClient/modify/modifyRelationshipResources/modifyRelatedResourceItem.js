@@ -26,16 +26,30 @@ const setDependencies = (
 const defaultLog = createLog('common:jsonApiClient:modifyRelatedResourceItem')
 
 function modifyRelatedResourceItem(
-  { item, log = defaultLog, openApiClient, relationKey, resourcesToModify } = {}
+  {
+    item: itemInput,
+    log = defaultLog,
+    openApiClient,
+    relationKey,
+    resourcesToModify,
+  } = {}
 ) {
   return Promise.resolve().then(() => {
-    if (item === null) {
+    if (itemInput === null) {
       log.debug(`Not updating relation: ${relationKey}, it is null`)
       return null
     }
 
-    if (!item) {
+    if (!itemInput) {
       throw new Error('missing item and it is not null')
+    }
+
+    let item = itemInput
+    if (!resourcesToModify.includes(itemInput.type)) {
+      item = {
+        id: itemInput.id,
+        type: itemInput.type,
+      }
     }
 
     if (item.id) {
