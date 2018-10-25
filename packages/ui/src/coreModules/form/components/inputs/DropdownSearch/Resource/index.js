@@ -95,7 +95,7 @@ class DropdownSearchResource extends Component {
   }
 
   render() {
-    return <DropdownSearchBase {...this.props} />
+    return <DropdownSearchBase icon="search" {...this.props} />
   }
 }
 

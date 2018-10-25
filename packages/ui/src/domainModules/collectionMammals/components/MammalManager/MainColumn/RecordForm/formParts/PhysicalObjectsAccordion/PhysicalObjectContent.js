@@ -72,7 +72,6 @@ function PhysicalObjectContent({
             autoComplete="off"
             component={StorageLocationDropdownPickerSearch}
             group={ALL}
-            icon="search"
             module="collectionMammals"
             name={getPath('physicalObject.storageLocation.id')}
             showParentName
