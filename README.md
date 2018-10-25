@@ -27,6 +27,7 @@ This guide assumes you have `git` installed
    ```
    cd dina-collections
    ```
+   
 3. Setup env-files
 
 	```
@@ -159,6 +160,7 @@ At the moment the local setup will use specific ports that are not configurable.
 	```
 	yarn start:keycloak
    ```
+   
  2. Import keycloak dev configuration
 
   * Open keycloak admin interface (http://127.0.0.1:8080)
@@ -186,7 +188,7 @@ At the moment the local setup will use specific ports that are not configurable.
  
 ## Server setup
 ### Run with docker
-ATM depricated - Will be updated shortly
+ATM deprecated - Will be updated shortly
 
 1. [Install docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/)
 
