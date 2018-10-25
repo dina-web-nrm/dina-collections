@@ -5,6 +5,9 @@
       "format": "date-time",
       "type": "string"
     },
+    "language": {
+      "type": "string"
+    },
     "versionId": {
       "type": "string"
     },
