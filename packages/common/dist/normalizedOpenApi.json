@@ -17585,11 +17585,11 @@
               "items": {
                 "enum": [
                   "all",
-                  "acceptedTaxonNames",
                   "children",
                   "parent",
                   "physicalObjects",
-                  "preparationTypes"
+                  "preparationTypes",
+                  "taxa"
                 ],
                 "type": "string"
               },
@@ -17797,11 +17797,11 @@
               "items": {
                 "enum": [
                   "all",
-                  "acceptedTaxonNames",
                   "children",
                   "parent",
                   "physicalObjects",
-                  "preparationTypes"
+                  "preparationTypes",
+                  "taxa"
                 ],
                 "type": "string"
               },
@@ -23264,13 +23264,6 @@
             "$ref": "#/components/schemas/type",
             "x-summary": ""
           },
-          "acceptedTaxonNames": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/externalModelReference"
-            },
-            "x-summary": ""
-          },
           "children": {
             "type": "array",
             "items": {
@@ -23290,6 +23283,13 @@
             "x-summary": ""
           },
           "preparationTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/externalModelReference"
+            },
+            "x-summary": ""
+          },
+          "taxa": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/externalModelReference"
@@ -45054,32 +45054,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "acceptedTaxonNames": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "taxonName"
-                                  ],
-                                  "example": "taxonName",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "children": {
                         "additionalProperties": false,
                         "properties": {
@@ -45178,6 +45152,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
@@ -45351,32 +45351,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "acceptedTaxonNames": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "taxonName"
-                                  ],
-                                  "example": "taxonName",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "children": {
                         "additionalProperties": false,
                         "properties": {
@@ -45475,6 +45449,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
@@ -60237,32 +60237,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "acceptedTaxonNames": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "taxonName"
-                                  ],
-                                  "example": "taxonName",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "children": {
                         "additionalProperties": false,
                         "properties": {
@@ -60361,6 +60335,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
@@ -60430,32 +60430,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "acceptedTaxonNames": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "taxonName"
-                                  ],
-                                  "example": "taxonName",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "children": {
                         "additionalProperties": false,
                         "properties": {
@@ -60554,6 +60528,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
@@ -60623,32 +60623,6 @@
                 },
                 "relationships": {
                   "properties": {
-                    "acceptedTaxonNames": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "taxonName"
-                                ],
-                                "example": "taxonName",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
                     "children": {
                       "additionalProperties": false,
                       "properties": {
@@ -60747,6 +60721,32 @@
                                   "preparationType"
                                 ],
                                 "example": "preparationType",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "taxa": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "taxon"
+                                ],
+                                "example": "taxon",
                                 "type": "string"
                               }
                             },
@@ -60813,32 +60813,6 @@
                 },
                 "relationships": {
                   "properties": {
-                    "acceptedTaxonNames": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "taxonName"
-                                ],
-                                "example": "taxonName",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
                     "children": {
                       "additionalProperties": false,
                       "properties": {
@@ -60946,6 +60920,32 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "taxa": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "taxon"
+                                ],
+                                "example": "taxon",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
                     }
                   },
                   "type": "object"
@@ -61003,32 +61003,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "acceptedTaxonNames": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "taxonName"
-                                  ],
-                                  "example": "taxonName",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "children": {
                         "additionalProperties": false,
                         "properties": {
@@ -61127,6 +61101,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
@@ -61196,32 +61196,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "acceptedTaxonNames": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "taxonName"
-                                  ],
-                                  "example": "taxonName",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "children": {
                         "additionalProperties": false,
                         "properties": {
@@ -61320,6 +61294,32 @@
                                     "preparationType"
                                   ],
                                   "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
