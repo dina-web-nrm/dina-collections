@@ -55,17 +55,18 @@ services:
 
   postgres:
     image: postgres:10.5
+    container_name: postgres
     env_file:
       - ./env/.postgres
-    restart: always
-    container_name: postgres
+    restart: always    
     ports:
       - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   proxy:
-    image: jwilder/nginx-proxy
+    image: jwilder/nginx-proxy:latest
+    container_name: proxy
     environment:
       - NGINX_MAX_BODY_SZ=100m
     ports:
