@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import extractProps from 'utilities/extractProps'
-import DropdownInput from '../../inputs/Input/DropdownInput'
 import TextInput from '../../inputs/Input/Text'
 import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 
@@ -37,11 +36,6 @@ function Input(props) {
     case 'password': {
       Component = TextInput
       castType = 'password'
-      break
-    }
-    case 'dropdown': {
-      Component = DropdownInput
-      castType = 'dropdown'
       break
     }
     default: {
