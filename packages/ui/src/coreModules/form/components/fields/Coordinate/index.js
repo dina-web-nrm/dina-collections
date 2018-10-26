@@ -15,10 +15,11 @@ const longitudeOptions = [
   { key: 'west', text: 'W', value: 'W' },
 ]
 
+const latRegex = /^(\+|-)?(?:90(?:(?:\.0{1,99})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,99})?))$/
+const lonRegex = /^(\+|-)?(?:180(?:(?:\.0{1,99})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,99})?))$/
+
 const latitudeValidation = [
   value => {
-    const latRegex = /^(\+|-)?(?:90(?:(?:\.0{1,99})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,99})?))$/
-
     if (value && !value.match(latRegex)) {
       return {
         errorCode: 'INVALID_LATITUDE',
@@ -30,8 +31,6 @@ const latitudeValidation = [
 
 const longitudeValidation = [
   value => {
-    const lonRegex = /^(\+|-)?(?:180(?:(?:\.0{1,99})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,99})?))$/
-
     if (value && !value.match(lonRegex)) {
       return {
         errorCode: 'INVALID_LONGITUDE',
@@ -41,17 +40,17 @@ const longitudeValidation = [
   },
 ]
 
-const getInitialDirection = (direction, value) => {
-  const coordinate = objectPath.get(value, `${direction}`) || ''
+const getInitialDirection = (coordinateType, value) => {
+  const coordinate = objectPath.get(value, coordinateType) || ''
 
-  if (direction === 'latitude') {
+  if (coordinateType === 'latitude') {
     return coordinate.startsWith('-') ? 'S' : 'N'
   }
   return coordinate.startsWith('-') ? 'W' : 'E'
 }
 
-const getIntialValue = (direction, value) => {
-  const coordinate = objectPath.get(value, `${direction}`) || ''
+const getIntialValue = (coordinateType, value) => {
+  const coordinate = objectPath.get(value, coordinateType) || ''
 
   return coordinate.startsWith('-') ? coordinate.slice(1) : coordinate
 }
@@ -66,12 +65,11 @@ const propTypes = {
   label: PropTypes.object,
   latitudeLabel: PropTypes.object.isRequired,
   longitudeLabel: PropTypes.object.isRequired,
-  module: PropTypes.string,
+  module: PropTypes.string.isRequired,
 }
 
 export const defaultProps = {
   label: undefined,
-  module: 'collectionMammals',
 }
 
 class Coordinate extends Component {
@@ -100,7 +98,6 @@ class Coordinate extends Component {
             module={module}
             name={`${name}.latitude`}
             options={latitudeOptions}
-            setCoordinateInputRef={this.setLatitudeInputRef}
             validate={latitudeValidation}
           />
         </Grid.Column>
