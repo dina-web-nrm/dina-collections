@@ -9,6 +9,11 @@ const parts = [
     },
   },
   {
+    componentName: 'CollectingLocality',
+    containsReduxFormField: true,
+    name: 'individual.collectingInformation.0.event.locationInformation',
+  },
+  {
     componentName: 'TextArea',
     componentProps: {
       columnProps: { width: 10 },
@@ -20,19 +25,18 @@ const parts = [
     wrapInField: true,
   },
   {
-    componentName: 'IconButton',
+    componentName: 'LocalityDropdownPickerSearch',
     componentProps: {
-      columnProps: { float: 'left', width: 5 },
-      icon: 'marker',
-      style: { float: 'left' },
-      textKey: 'other.addPosition',
+      columnProps: { width: 10 },
     },
-    initiallyShown: true,
+    name:
+      'individual.collectingInformation.0.event.locationInformation.places.0.id',
+    wrapInField: true,
   },
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 5 },
+      columnProps: { width: 7 },
       fluid: true,
       type: 'text',
     },
@@ -49,6 +53,7 @@ const parts = [
   {
     componentName: 'Remarks',
     componentProps: {
+      columnProps: { width: 10 },
       emptyStateTextKey: 'remarks.emptyState.collectingLocationRemarks',
       model,
       resultPrefixTextKey: 'remarks.resultPrefix.collectingLocationRemarks',

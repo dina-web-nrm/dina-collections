@@ -71,9 +71,9 @@
     "en": "Catalog number must be 6 or 8 digits"
   },
   "INVALID_LATITUDE": {
-    "en": "Invalid latitude"
+    "en": "Latitude must be number between 0 to 90"
   },
   "INVALID_LONGITUDE": {
-    "en": "Invalid longitude"
+    "en": "Longitude must be number between 0 to 180"
   } 
 }

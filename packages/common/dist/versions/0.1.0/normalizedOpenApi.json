@@ -22962,6 +22962,10 @@
             "type": "string",
             "x-summary": ""
           },
+          "establishmentMeansType": {
+            "$ref": "#/components/schemas/externalModelReference",
+            "x-summary": ""
+          },
           "remarks": {
             "type": "string",
             "x-summary": ""

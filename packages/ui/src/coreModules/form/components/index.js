@@ -1,5 +1,6 @@
 export { default as ButtonCopyPasteField } from './migrate/ButtonCopyPasteField'
 export { default as Checkbox } from './fields/Checkbox'
+export { default as Coordinates } from './fields/Coordinates'
 export { default as CustomData } from './fields/CustomData'
 export { default as DisplaySearchResult } from './migrate/DisplaySearchResult'
 export { default as DropdownSearch } from './fields/DropdownSearch'
@@ -18,6 +19,7 @@ export {
   default as MultipleSearchSelectionDropdown,
 } from './fields/MultipleSearchSelectionDropdown'
 export { default as Radio } from './fields/Radio'
+export { default as RadioBoolean } from './fields/RadioBoolean'
 export { default as RangeDate } from './fields/Date/RangeDate'
 export { default as Remarks } from './fields/Remarks'
 export { default as Search } from './fields/Search'

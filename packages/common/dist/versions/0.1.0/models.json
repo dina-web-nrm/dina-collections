@@ -1997,6 +1997,10 @@
         "type": "string",
         "x-summary": ""
       },
+      "establishmentMeansType": {
+        "$ref": "establishmentMeansType",
+        "x-summary": ""
+      },
       "remarks": {
         "type": "string",
         "x-summary": ""

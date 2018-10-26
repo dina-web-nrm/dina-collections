@@ -1155,6 +1155,14 @@
     "id": {
       "en": "id"
     },
+    "latitude": {
+      "en": "Latitude",
+      "sv": ""
+    }, 
+    "longitude": {
+      "en": "Longitude",
+      "sv": ""
+    },
     "loading": {
       "en": "loading",
       "sv": "laddar"

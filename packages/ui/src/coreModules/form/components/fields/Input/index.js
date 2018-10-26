@@ -14,6 +14,7 @@ const propTypes = {
 
 function Input(props) {
   const { input, type } = props
+
   let Component
   let castType
   switch (type) {
@@ -37,7 +38,6 @@ function Input(props) {
       castType = 'password'
       break
     }
-
     default: {
       throw new Error(`Type: ${type} is not supported`)
     }

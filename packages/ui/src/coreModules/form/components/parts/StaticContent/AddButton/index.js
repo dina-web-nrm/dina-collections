@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'redux'
 import { Button } from 'semantic-ui-react'
 
-import { wrapInColumn } from 'coreModules/form/higherOrderComponents'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 
 const propTypes = {
@@ -34,4 +32,4 @@ function AddButton({ id, onClick: handleClick, module, textKey }) {
 AddButton.propTypes = propTypes
 AddButton.defaultProps = defaultProps
 
-export default compose(wrapInColumn)(AddButton)
+export default AddButton
