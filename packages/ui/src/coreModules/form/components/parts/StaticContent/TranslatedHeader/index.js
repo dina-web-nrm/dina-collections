@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'redux'
 import { Header } from 'semantic-ui-react'
 
-import { wrapInColumn } from 'coreModules/form/higherOrderComponents'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 
 const propTypes = {
@@ -31,4 +29,4 @@ const TranslatedHeader = ({ as, module, textKey }) => {
 TranslatedHeader.propTypes = propTypes
 TranslatedHeader.defaultProps = defaultProps
 
-export default compose(wrapInColumn)(TranslatedHeader)
+export default TranslatedHeader

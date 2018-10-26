@@ -5,11 +5,13 @@ import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import AddButton from 'coreModules/form/components/parts/StaticContent/AddButton'
+import formParts from 'coreModules/form/components/parts'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { globalSelectors as crudKeyObjectSelectors } from 'coreModules/crud/keyObjectModule'
 import IdentifiersTableRow from './Row'
+
+const { AddButton } = formParts
 
 const log = createLog(
   'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/IdentifiersTable'
