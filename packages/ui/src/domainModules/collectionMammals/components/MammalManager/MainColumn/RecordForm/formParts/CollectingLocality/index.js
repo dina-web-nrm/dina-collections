@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -19,13 +19,12 @@ const buttonStyle = {
   marginBottom: '1em',
 }
 
-const module = 'collectionMammals'
-
 const propTypes = {
   formName: PropTypes.string.isRequired,
   getPath: PropTypes.func.isRequired,
   latitude: PropTypes.string,
   longitude: PropTypes.string,
+  module: PropTypes.string.isRequired,
 }
 
 const defaultProps = {
@@ -33,20 +32,14 @@ const defaultProps = {
   longitude: undefined,
 }
 
-const mapStateToProps = (state, { formValueSelector }) => {
+const mapStateToProps = (state, { formValueSelector, getPath }) => {
   return {
-    latitude: formValueSelector(
-      state,
-      'individual.collectingInformation.0.event.locationInformation.position.latitude'
-    ),
-    longitude: formValueSelector(
-      state,
-      'individual.collectingInformation.0.event.locationInformation.position.longitude'
-    ),
+    latitude: formValueSelector(state, getPath('position.latitude')),
+    longitude: formValueSelector(state, getPath('position.longitude')),
   }
 }
 
-class CollectingLocality extends Component {
+class CollectingLocality extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -67,7 +60,7 @@ class CollectingLocality extends Component {
   }
 
   render() {
-    const { formName, getPath, latitude, longitude } = this.props
+    const { formName, getPath, latitude, longitude, module } = this.props
 
     const { open } = this.state
     const hasCoordinates = latitude || longitude
@@ -125,6 +118,6 @@ class CollectingLocality extends Component {
 CollectingLocality.propTypes = propTypes
 CollectingLocality.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps), pathBuilder())(
+export default compose(pathBuilder(), connect(mapStateToProps))(
   CollectingLocality
 )

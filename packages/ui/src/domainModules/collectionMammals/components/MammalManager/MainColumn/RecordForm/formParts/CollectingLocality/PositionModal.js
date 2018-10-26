@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Grid, Modal } from 'semantic-ui-react'
@@ -34,17 +34,13 @@ const mapStateToProps = (state, { formName, getPath }) => {
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,
-  isInvalid: PropTypes.object,
+  isInvalid: PropTypes.bool.isRequired,
   module: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
 }
 
-const defaultProps = {
-  isInvalid: undefined,
-}
-
-class PositionModal extends Component {
+class PositionModal extends PureComponent {
   render() {
     const {
       isInvalid,
@@ -108,6 +104,7 @@ class PositionModal extends Component {
                   label={<ModuleTranslate textKey="other.elevation" />}
                   max={getPath('verticalPosition.maximumElevationInMeters')}
                   min={getPath('verticalPosition.minimumElevationInMeters')}
+                  module={module}
                   name={getPath('verticalPosition')}
                 />
               </Grid.Column>
@@ -116,6 +113,7 @@ class PositionModal extends Component {
                   label={<ModuleTranslate textKey="other.depth" />}
                   max={getPath('verticalPosition.maximumDepthInMeters')}
                   min={getPath('verticalPosition.minimumDepthInMeters')}
+                  module={module}
                   name={getPath('verticalPosition')}
                 />
               </Grid.Column>
@@ -133,6 +131,5 @@ class PositionModal extends Component {
 }
 
 PositionModal.propTypes = propTypes
-PositionModal.defaultProps = defaultProps
 
 export default connect(mapStateToProps)(PositionModal)

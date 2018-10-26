@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import { Field, FieldTemplate, Input } from 'coreModules/form/components'
@@ -13,6 +13,7 @@ const propTypes = {
   label: PropTypes.object,
   max: PropTypes.string.isRequired,
   min: PropTypes.string.isRequired,
+  module: PropTypes.string.isRequired,
   name: PropTypes.string,
 }
 
@@ -21,59 +22,57 @@ export const defaultProps = {
   name: undefined,
 }
 
-class VerticalPosition extends Component {
+class VerticalPosition extends PureComponent {
   render() {
-    const { label, name, max, min } = this.props
+    const { label, name, max, min, module } = this.props
 
     return (
-      <React.Fragment>
-        <FieldTemplate
-          enableHelpNotifications={false}
-          float="left"
-          label={label}
-          meta={{}}
-          name={name}
+      <FieldTemplate
+        enableHelpNotifications={false}
+        float="left"
+        label={label}
+        meta={{}}
+        name={name}
+      >
+        <div style={inputStyle}>
+          <Field
+            autoComplete="off"
+            className="transparent"
+            component={Input}
+            displayLabel={false}
+            displaySubLabels={false}
+            fluid
+            labelPosition="right"
+            module={module}
+            name={min}
+            type="number"
+          />
+        </div>
+        <div
+          style={{
+            float: 'left',
+            marginTop: '0.5em',
+            textAlign: 'center',
+            width: '2em',
+          }}
         >
-          <div style={inputStyle}>
-            <Field
-              autoComplete="off"
-              className="transparent"
-              component={Input}
-              displayLabel={false}
-              displaySubLabels={false}
-              fluid
-              labelPosition="right"
-              module="collectionMammals"
-              name={min}
-              type="number"
-            />
-          </div>
-          <div
-            style={{
-              float: 'left',
-              marginTop: '0.5em',
-              textAlign: 'center',
-              width: '2em',
-            }}
-          >
-            {'/'}
-          </div>
-          <div style={inputStyle}>
-            <Field
-              autoComplete="off"
-              className="transparent"
-              component={Input}
-              displayLabel={false}
-              displaySubLabels={false}
-              fluid
-              labelPosition="right"
-              module="collectionMammals"
-              name={max}
-              type="number"
-            />
-          </div>
-        </FieldTemplate>
-      </React.Fragment>
+          {'/'}
+        </div>
+        <div style={inputStyle}>
+          <Field
+            autoComplete="off"
+            className="transparent"
+            component={Input}
+            displayLabel={false}
+            displaySubLabels={false}
+            fluid
+            labelPosition="right"
+            module={module}
+            name={max}
+            type="number"
+          />
+        </div>
+      </FieldTemplate>
     )
   }
 }

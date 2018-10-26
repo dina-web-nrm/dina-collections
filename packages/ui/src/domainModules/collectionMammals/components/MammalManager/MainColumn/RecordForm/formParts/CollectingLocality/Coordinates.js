@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from 'semantic-ui-react'
 import GeoPoint from 'common/es5/coordinatesConverter'
@@ -45,7 +45,7 @@ const getCoordinates = (latitude, longitude) => {
   return `${lonCoordinate}, WGS84...`
 }
 
-class Coordinates extends Component {
+class Coordinates extends PureComponent {
   render() {
     const { latitude, longitude, onEdit: handleEditCoordinate } = this.props
 
