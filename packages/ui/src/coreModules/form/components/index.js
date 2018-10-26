@@ -1,6 +1,6 @@
 export { default as ButtonCopyPasteField } from './migrate/ButtonCopyPasteField'
 export { default as Checkbox } from './fields/Checkbox'
-export { default as Coordinate } from './fields/Coordinate'
+export { default as Coordinates } from './fields/Coordinates'
 export { default as CustomData } from './fields/CustomData'
 export { default as DisplaySearchResult } from './migrate/DisplaySearchResult'
 export { default as DropdownSearch } from './fields/DropdownSearch'

@@ -72,7 +72,7 @@ export const defaultProps = {
   label: undefined,
 }
 
-class Coordinate extends Component {
+class Coordinates extends Component {
   render() {
     const {
       input: { name, value },
@@ -119,7 +119,7 @@ class Coordinate extends Component {
   }
 }
 
-Coordinate.propTypes = propTypes
-Coordinate.defaultProps = defaultProps
+Coordinates.propTypes = propTypes
+Coordinates.defaultProps = defaultProps
 
-export default Coordinate
+export default Coordinates

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Button, Grid, Modal } from 'semantic-ui-react'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { Coordinate, Field, Input } from 'coreModules/form/components'
+import { Coordinates, Field, Input } from 'coreModules/form/components'
 import VerticalPosition from './VerticalPosition'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -48,7 +48,7 @@ class PositionModal extends Component {
               <Grid.Column width={16}>
                 <Field
                   autoComplete="off"
-                  component={Coordinate}
+                  component={Coordinates}
                   label={<ModuleTranslate textKey="other.coordinates" />}
                   latitudeLabel={<ModuleTranslate textKey="other.latitude" />}
                   longitudeLabel={<ModuleTranslate textKey="other.longitude" />}
