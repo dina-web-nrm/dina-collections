@@ -17,7 +17,7 @@ const longitudeOptions = [
 
 const latitudeValidation = [
   value => {
-    const latRegex = /^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/
+    const latRegex = /^(\+|-)?(?:90(?:(?:\.0{1,99})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,99})?))$/
 
     if (value && !value.match(latRegex)) {
       return {
@@ -30,7 +30,7 @@ const latitudeValidation = [
 
 const longitudeValidation = [
   value => {
-    const lonRegex = /^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/
+    const lonRegex = /^(\+|-)?(?:180(?:(?:\.0{1,99})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,99})?))$/
 
     if (value && !value.match(lonRegex)) {
       return {
