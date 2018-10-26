@@ -48,7 +48,7 @@
     "react-rangeslider": "^2.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "next",
+    "react-router-redux": "5.0.0-alpha.9",
     "react-scripts": "1.0.17",
     "react-sizeme": "^2.4.4",
     "react-sortable-tree": "^2.1.0",
