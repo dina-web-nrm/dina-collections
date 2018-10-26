@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
+import createLog from 'utilities/log'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import { RadioBoolean } from 'coreModules/form/components'
+import formParts from 'coreModules/form/components/parts'
 
-import createLog from 'utilities/log'
+const { RadioBoolean } = formParts
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:OriginInformation:SelectiveBreeding'

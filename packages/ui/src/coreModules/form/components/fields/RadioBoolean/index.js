@@ -50,7 +50,6 @@ class RadioBoolean extends Component {
         label={label}
         meta={{}}
         name={name}
-        style={{ marginBottom: '0.5em', marginLeft: '1.5em', width: '100%' }}
       >
         {radioOptions.map(({ key, text, value }) => {
           const checked =
