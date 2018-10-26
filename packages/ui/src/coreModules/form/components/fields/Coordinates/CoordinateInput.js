@@ -79,11 +79,11 @@ class CoordinateInput extends Component {
 
     const updatedCoordinate = updateCoordinateWithDirection(number, direction)
 
-    this.setState({
+    onChange(updatedCoordinate)
+
+    return this.setState({
       direction,
     })
-
-    onChange(updatedCoordinate)
   }
 
   handleNumberChange({ target: { value: number } }) {
@@ -92,11 +92,11 @@ class CoordinateInput extends Component {
 
     const updatedCoordinate = updateCoordinateWithDirection(number, direction)
 
-    this.setState({
+    onChange(updatedCoordinate)
+
+    return this.setState({
       number,
     })
-
-    onChange(updatedCoordinate)
   }
 
   render() {
