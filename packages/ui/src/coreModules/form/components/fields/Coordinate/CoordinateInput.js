@@ -40,7 +40,7 @@ const propTypes = {
     error: PropTypes.object,
     touched: PropTypes.bool.isRequired,
   }).isRequired,
-  module: PropTypes.string,
+  module: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
@@ -52,39 +52,32 @@ const propTypes = {
 const defaultProps = {
   initialDirection: undefined,
   initialValue: undefined,
-  module: 'collectionMammals',
 }
 
 class CoordinateInput extends Component {
   constructor(props) {
     super(props)
-    this.handleOnChange = this.handleOnChange.bind(this)
-    this.handleOnBlur = this.handleOnBlur.bind(this)
-
     this.handleDirectionChange = this.handleDirectionChange.bind(this)
+    this.handleNumberBlur = this.handleNumberBlur.bind(this)
+    this.handleNumberChange = this.handleNumberChange.bind(this)
 
     this.state = {
-      coordinate: this.props.initialValue,
       direction: this.props.initialDirection,
+      number: this.props.initialValue,
     }
   }
 
-  handleOnBlur() {
-    const { onBlur } = this.props.input
+  handleNumberBlur() {
+    const { onBlur, value } = this.props.input
 
-    onBlur(this.props.input.value)
+    onBlur(value)
   }
 
-  handleDirectionChange(_, data) {
+  handleDirectionChange(_, { value: direction }) {
     const { input: { onChange } } = this.props
+    const { number } = this.state
 
-    const { value: direction } = data
-    const { coordinate } = this.state
-
-    const updatedCoordinate = updateCoordinateWithDirection(
-      coordinate,
-      direction
-    )
+    const updatedCoordinate = updateCoordinateWithDirection(number, direction)
 
     this.setState({
       direction,
@@ -93,19 +86,16 @@ class CoordinateInput extends Component {
     onChange(updatedCoordinate)
   }
 
-  handleOnChange(event) {
+  handleNumberChange({ target: { value: number } }) {
     const { input: { onChange } } = this.props
-    const coordinate = event.target.value
-
     const { direction } = this.state
-    const updatedCoordinate = updateCoordinateWithDirection(
-      coordinate,
-      direction
-    )
+
+    const updatedCoordinate = updateCoordinateWithDirection(number, direction)
 
     this.setState({
-      coordinate,
+      number,
     })
+
     onChange(updatedCoordinate)
   }
 
@@ -113,13 +103,17 @@ class CoordinateInput extends Component {
     const {
       coordinateLabel,
       initialDirection,
-      input: { name, value },
+      input: { name, value: coordinate },
       meta,
       module,
       options,
     } = this.props
 
-    const coordinate = value && value.startsWith('-') ? value.slice(1) : value
+    const number =
+      coordinate && coordinate.startsWith('-')
+        ? coordinate.slice(1)
+        : coordinate
+
     return (
       <div style={style}>
         <FieldTemplate
@@ -140,10 +134,10 @@ class CoordinateInput extends Component {
               />
             }
             labelPosition="right"
-            onBlur={this.handleOnBlur}
-            onChange={this.handleOnChange}
+            onBlur={this.handleNumberBlur}
+            onChange={this.handleNumberChange}
             type="text"
-            value={coordinate || ''}
+            value={number || ''}
           />
         </FieldTemplate>
       </div>
