@@ -22,6 +22,7 @@ const buttonStyle = {
 const module = 'collectionMammals'
 
 const propTypes = {
+  formName: PropTypes.string.isRequired,
   getPath: PropTypes.func.isRequired,
   latitude: PropTypes.string,
   longitude: PropTypes.string,
@@ -66,7 +67,7 @@ class CollectingLocality extends Component {
   }
 
   render() {
-    const { getPath, latitude, longitude } = this.props
+    const { formName, getPath, latitude, longitude } = this.props
 
     const { open } = this.state
     const hasCoordinates = latitude || longitude
@@ -109,6 +110,7 @@ class CollectingLocality extends Component {
         )}
 
         <PositionModal
+          formName={formName}
           getPath={getPath}
           module={module}
           name={getPath('position')}

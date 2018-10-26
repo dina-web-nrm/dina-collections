@@ -1,31 +1,58 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { getFormSyncErrors } from 'redux-form'
 import { connect } from 'react-redux'
 import { Button, Grid, Modal } from 'semantic-ui-react'
+import memoize from 'memoize-one'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Coordinates, Field, Input } from 'coreModules/form/components'
+import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import VerticalPosition from './VerticalPosition'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
+const getFieldNames = memoize(getPath => {
+  return [
+    getPath('coordinatesVerbatim'),
+    getPath('position.latitude'),
+    getPath('position.longitude'),
+    getPath('georeferenceSourcesText'),
+    getPath('position.uncertaintyInMeters'),
+    getPath('verticalPosition'),
+    getPath('verticalPosition'),
+  ]
+})
+
+const mapStateToProps = (state, { formName, getPath }) => {
+  return {
+    isInvalid: formSupportSelectors.getAnyFieldIsInvalid(state, {
+      fieldNames: getFieldNames(getPath),
+      formName,
+    }),
+  }
+}
+
 const propTypes = {
-  errors: PropTypes.object,
   getPath: PropTypes.func.isRequired,
+  isInvalid: PropTypes.object,
   module: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
 }
 
 const defaultProps = {
-  errors: undefined,
+  isInvalid: undefined,
 }
 
 class PositionModal extends Component {
   render() {
-    const { errors, getPath, module, onClose: handleClose, open } = this.props
-    const disableButton = Object.keys(errors).length > 0
+    const {
+      isInvalid,
+      getPath,
+      module,
+      onClose: handleClose,
+      open,
+    } = this.props
 
     return (
       <Modal open={open} size="small">
@@ -96,7 +123,7 @@ class PositionModal extends Component {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions style={{ textAlign: 'left' }}>
-          <Button basic disabled={disableButton} onClick={handleClose}>
+          <Button basic disabled={isInvalid} onClick={handleClose}>
             <ModuleTranslate textKey="other.done" />
           </Button>
         </Modal.Actions>
@@ -108,8 +135,4 @@ class PositionModal extends Component {
 PositionModal.propTypes = propTypes
 PositionModal.defaultProps = defaultProps
 
-export default connect(state => {
-  return {
-    errors: getFormSyncErrors('editSpecimen')(state),
-  }
-})(PositionModal)
+export default connect(mapStateToProps)(PositionModal)
