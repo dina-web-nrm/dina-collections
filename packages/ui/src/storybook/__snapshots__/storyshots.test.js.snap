@@ -4062,11 +4062,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks emptyState 1`] = 
       <form>
         <div
           className="ui padded grid"
-          style={
-            Object {
-              "height": 36,
-            }
-          }
         >
           <div
             className="column"
@@ -4128,11 +4123,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
       <form>
         <div
           className="ui padded grid"
-          style={
-            Object {
-              "height": 36,
-            }
-          }
         >
           <div
             className="column"
@@ -4193,11 +4183,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
       <form>
         <div
           className="ui padded grid"
-          style={
-            Object {
-              "height": 36,
-            }
-          }
         >
           <div
             className="column"
