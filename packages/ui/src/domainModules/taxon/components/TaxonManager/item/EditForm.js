@@ -9,6 +9,13 @@ import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 import BaseForm from './BaseForm'
 
+export const include = [
+  'acceptedTaxonName',
+  'parent',
+  'synonyms',
+  'vernacularNames',
+]
+
 const propTypes = {
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
@@ -32,10 +39,14 @@ export class Edit extends PureComponent {
       ...rest
     } = this.props
 
-    const initialValues = taxon
-
-    if (!initialValues) {
+    if (!taxon) {
       return null
+    }
+
+    const initialValues = { ...taxon }
+
+    if (objectPath.get(initialValues, 'parent.acceptedTaxonName')) {
+      delete initialValues.parent.acceptedTaxonName
     }
 
     const name = objectPath.get(initialValues, 'acceptedTaxonName.name')
@@ -71,10 +82,16 @@ Edit.defaultProps = defaultProps
 export default compose(
   withI18n({ module: 'taxon' }),
   createGetNestedItemById({
-    include: ['acceptedTaxonName', 'synonyms', 'vernacularNames'],
+    include,
     nestedItemKey: 'taxon',
-    relationships: ['acceptedTaxonName', 'synonyms', 'vernacularNames'],
-    resolveRelationships: ['taxonName'],
+    refresh: true,
+    relationships: [
+      'acceptedTaxonName',
+      'parent',
+      'synonyms',
+      'vernacularNames',
+    ],
+    resolveRelationships: ['taxon', 'taxonName'],
     resource: 'taxon',
   })
 )(Edit)
