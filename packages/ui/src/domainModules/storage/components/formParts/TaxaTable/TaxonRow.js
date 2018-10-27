@@ -52,7 +52,7 @@ TaxonNameRow.defaultProps = defaultProps
 export default compose(
   createGetNestedItemById({
     include: ['acceptedTaxonName'],
-    refresh: false,
+    refresh: true,
     relationships: ['acceptedTaxonName'],
     resolveRelationships: ['taxonName'],
     resource: 'taxon',
