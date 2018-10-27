@@ -9,7 +9,11 @@ const {
   query: queryFilterSpecification,
 } = require('./data/filterSpecifications')
 
-const { clearAcceptedToTaxon, clearSynonymToTaxon } = require('./data/preHooks')
+const {
+  clearAcceptedToTaxon,
+  clearSynonymToTaxon,
+  clearOtherTaxonNamesFromTaxon,
+} = require('./data/preHooks')
 
 const {
   create: createPostHooks,
@@ -61,7 +65,7 @@ module.exports = {
       type: 'importDataFromFile',
     },
     {
-      preHooks: clearSynonymToTaxon,
+      preHooks: [clearOtherTaxonNamesFromTaxon, clearSynonymToTaxon],
       relationKey: 'acceptedToTaxon',
       type: 'updateRelationship',
     },
@@ -70,7 +74,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
-      preHooks: clearAcceptedToTaxon,
+      preHooks: [clearOtherTaxonNamesFromTaxon, clearAcceptedToTaxon],
       relationKey: 'synonymToTaxon',
       type: 'updateRelationship',
     },
