@@ -39,6 +39,7 @@
           "x-key-allow-null": true,
           "x-key-name": "acceptedToTaxonId",
           "x-key-stored-in-model": "taxonName",
+          "x-key-unique": true,
           "x-key-type": "sql",
           "properties": {
             "data": {
