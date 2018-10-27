@@ -14,6 +14,9 @@ exports.getKeyStoredInModel = function (relationshipsSchemaItem) {
 exports.getKeyType = function (relationshipsSchemaItem) {
   return relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, 'x-key-type');
 };
+exports.getKeyUnique = function (relationshipsSchemaItem) {
+  return relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, 'x-key-unique');
+};
 exports.getPath = function (relationshipsSchemaItem) {
   return relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, 'x-path');
 };

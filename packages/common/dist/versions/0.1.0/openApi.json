@@ -20128,6 +20128,15 @@
           },
           {
             "in": "query",
+            "name": "filter[acceptedToTaxonId]",
+            "description": "Find taxon names that are accepted to taxon id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[isAcceptedToTaxon]",
             "description": "Find taxon names that are accepted to any taxon",
             "required": false,
@@ -20157,6 +20166,15 @@
             "in": "query",
             "name": "filter[rubinNumber]",
             "description": "Match for rubinNumber",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[synonymToTaxonId]",
+            "description": "Find taxon names that are synonym to taxon id",
             "required": false,
             "schema": {
               "type": "string"
@@ -20550,7 +20568,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***updatedAfter*** <br/> Filter by updatedAt after specificed timestamp <br/> <br/>  ***nameSearch*** <br/> Filter by string search, example swe <br/> <br/>  ***isAcceptedToTaxon*** <br/> Find taxon names that are accepted to any taxon <br/> <br/>  ***isVernacularToTaxon*** <br/> Find taxon names that are venacular to any taxon <br/> <br/>  ***rank*** <br/> Match for rank <br/> <br/>  ***rubinNumber*** <br/> Match for rubinNumber <br/> <br/>  ***taxonNameType*** <br/> Match for taxonNameType <br/>\n\n  \n  <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***updatedAfter*** <br/> Filter by updatedAt after specificed timestamp <br/> <br/>  ***nameSearch*** <br/> Filter by string search, example swe <br/> <br/>  ***acceptedToTaxonId*** <br/> Find taxon names that are accepted to taxon id <br/> <br/>  ***isAcceptedToTaxon*** <br/> Find taxon names that are accepted to any taxon <br/> <br/>  ***isVernacularToTaxon*** <br/> Find taxon names that are venacular to any taxon <br/> <br/>  ***rank*** <br/> Match for rank <br/> <br/>  ***rubinNumber*** <br/> Match for rubinNumber <br/> <br/>  ***synonymToTaxonId*** <br/> Find taxon names that are synonym to taxon id <br/> <br/>  ***taxonNameType*** <br/> Match for taxonNameType <br/>\n\n  \n  <br/>\n\n  "
         },
         "responses": {
           "200": {

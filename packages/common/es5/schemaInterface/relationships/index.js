@@ -21,6 +21,7 @@ var _require3 = require('./relationshipsSchemaSelectors'),
     getKeyName = _require3.getKeyName,
     getKeyStoredInModel = _require3.getKeyStoredInModel,
     getKeyType = _require3.getKeyType,
+    getKeyUnique = _require3.getKeyUnique,
     getPath = _require3.getPath,
     getTargetFormat = _require3.getTargetFormat,
     getTargetModel = _require3.getTargetModel,
@@ -46,7 +47,8 @@ var getRelationshipParamsFromRelationshipsSchemaItem = function getRelationshipP
     storeInDocument: keyType === 'json' && keyStoredInModel === modelName,
     storeInExternalDocument: keyType === 'json' && keyStoredInModel !== modelName,
     targetAs: relationshipKey,
-    targetResource: getTargetModel(relationshipsSchemaItem)
+    targetResource: getTargetModel(relationshipsSchemaItem),
+    unique: getKeyUnique(relationshipsSchemaItem)
   };
 };
 
