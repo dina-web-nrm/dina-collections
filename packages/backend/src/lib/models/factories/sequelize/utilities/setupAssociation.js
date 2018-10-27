@@ -1,7 +1,11 @@
+const createDeleteProperties = require('common/src/createDeleteProperties')
+
 const createLog = require('../../../../../utilities/log')
 const getForeignKeyName = require('./getForeignKeyName')
 
 const log = createLog('lib/sequelize', 2)
+
+const deleteUndefinedProperties = createDeleteProperties(undefined)
 
 const getAssociationType = ({
   keyStoredInModelName,
@@ -41,6 +45,14 @@ const getAssociationType = ({
   )
 }
 
+const getForeignKeyOptions = ({ allowNull, foreignKeyName, unique }) => {
+  return deleteUndefinedProperties({
+    allowNull: allowNull || undefined,
+    name: foreignKeyName,
+    unique: unique || undefined,
+  })
+}
+
 const getAssociationOptions = ({
   allowNull,
   associationType,
@@ -50,6 +62,7 @@ const getAssociationOptions = ({
   targetAs,
   targetKey,
   targetModelName,
+  unique,
 }) => {
   if (associationType === 'belongsTo') {
     const foreignKeyName = getForeignKeyName({
@@ -62,12 +75,11 @@ const getAssociationOptions = ({
 
     return {
       as: targetAs,
-      foreignKey: allowNull
-        ? {
-            allowNull: true,
-            name: foreignKeyName,
-          }
-        : foreignKeyName,
+      foreignKey: getForeignKeyOptions({
+        allowNull,
+        foreignKeyName,
+        unique,
+      }),
       targetKey: targetKey || 'id',
     }
   }
@@ -80,12 +92,11 @@ const getAssociationOptions = ({
 
   return {
     as: targetAs,
-    foreignKey: allowNull
-      ? {
-          allowNull: true,
-          name: foreignKeyName,
-        }
-      : foreignKeyName,
+    foreignKey: getForeignKeyOptions({
+      allowNull,
+      foreignKeyName,
+      unique,
+    }),
   }
 }
 
@@ -100,6 +111,7 @@ module.exports = function setupAssociation(
     targetAs,
     targetKey,
     targetResource: targetModelName,
+    unique,
   } = {}
 ) {
   const sourceModel = models[sourceModelName]
@@ -130,6 +142,7 @@ module.exports = function setupAssociation(
     targetAs,
     targetKey,
     targetModelName,
+    unique,
   })
 
   log.debug(`${sourceModelName} ${associationType} ${targetAs}`)
