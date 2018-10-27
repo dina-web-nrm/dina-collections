@@ -24,6 +24,8 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
+  fetchAfterUpdate: PropTypes.bool.isRequired,
+  include: PropTypes.arrayOf(PropTypes.string),
   isPicker: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
@@ -37,6 +39,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  include: undefined,
   recordNavigationHeight: emToPixels(4.25),
   recordOptionsHeight: emToPixels(3.5625),
 }
@@ -198,6 +201,8 @@ class MainColumn extends Component {
         } = this.props
         const { extractedProps } = extractProps({
           keys: [
+            'fetchAfterUpdate',
+            'include',
             'itemId',
             'ItemTitle',
             'onInteraction',
