@@ -76,6 +76,7 @@ describe('schemaInterface/relationships', () => {
                 'x-key-allow-null': true,
                 'x-key-stored-in-model': 'tally',
                 'x-key-type': 'sql',
+                'x-key-unique': true,
                 properties: {
                   data: {
                     type: 'array',
@@ -147,6 +148,7 @@ describe('schemaInterface/relationships', () => {
           storeInExternalDocument: false,
           targetAs: 'card',
           targetResource: 'card',
+          unique: undefined,
         },
         {
           allowNull: undefined,
@@ -161,6 +163,7 @@ describe('schemaInterface/relationships', () => {
           storeInExternalDocument: false,
           targetAs: 'die',
           targetResource: 'dice',
+          unique: undefined,
         },
       ]
 
@@ -184,6 +187,7 @@ describe('schemaInterface/relationships', () => {
           storeInExternalDocument: false,
           targetAs: 'card',
           targetResource: 'card',
+          unique: undefined,
         },
         {
           allowNull: undefined,
@@ -198,6 +202,7 @@ describe('schemaInterface/relationships', () => {
           storeInExternalDocument: false,
           targetAs: 'die',
           targetResource: 'dice',
+          unique: undefined,
         },
         {
           allowNull: true,
@@ -212,6 +217,7 @@ describe('schemaInterface/relationships', () => {
           storeInExternalDocument: false,
           targetAs: 'tally',
           targetResource: 'tally',
+          unique: true,
         },
       ]
 
@@ -236,6 +242,7 @@ describe('schemaInterface/relationships', () => {
             storeInExternalDocument: false,
             targetAs: 'card',
             targetResource: 'card',
+            unique: undefined,
           },
           die: {
             allowNull: undefined,
@@ -250,6 +257,7 @@ describe('schemaInterface/relationships', () => {
             storeInExternalDocument: false,
             targetAs: 'die',
             targetResource: 'dice',
+            unique: undefined,
           },
         },
         score: {
@@ -266,6 +274,7 @@ describe('schemaInterface/relationships', () => {
             storeInExternalDocument: false,
             targetAs: 'tally',
             targetResource: 'tally',
+            unique: true,
           },
         },
       }

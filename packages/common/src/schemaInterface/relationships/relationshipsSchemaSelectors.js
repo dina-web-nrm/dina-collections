@@ -24,6 +24,12 @@ exports.getKeyType = relationshipsSchemaItem => {
     objectPath.get(relationshipsSchemaItem, `x-key-type`)
   )
 }
+exports.getKeyUnique = relationshipsSchemaItem => {
+  return (
+    relationshipsSchemaItem &&
+    objectPath.get(relationshipsSchemaItem, `x-key-unique`)
+  )
+}
 exports.getPath = relationshipsSchemaItem => {
   return (
     relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, `x-path`)

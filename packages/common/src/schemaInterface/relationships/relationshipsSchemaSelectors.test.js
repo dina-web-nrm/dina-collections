@@ -3,6 +3,7 @@ const {
   getKeyName,
   getKeyStoredInModel,
   getKeyType,
+  getKeyUnique,
   getPath,
   getTargetFormat,
   getTargetModel,
@@ -19,6 +20,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', () => {
       'x-key-name': 'customKey',
       'x-key-stored-in-model': 'game',
       'x-key-type': 'json',
+      'x-key-unique': true,
       'x-path': ['somePath', 'someOtherPath'],
       properties: {
         data: {
@@ -72,6 +74,18 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', () => {
     it('returns json', () => {
       const testValue = getKeyType(schemaItem)
       const expectedResult = 'json'
+
+      expect(testValue).toEqual(expectedResult)
+    })
+  })
+
+  describe('getKeyUnique', () => {
+    it('returns undefined for empty schema', () => {
+      expect(getKeyUnique(undefined)).toEqual(undefined)
+    })
+    it('returns true', () => {
+      const testValue = getKeyUnique(schemaItem)
+      const expectedResult = true
 
       expect(testValue).toEqual(expectedResult)
     })
