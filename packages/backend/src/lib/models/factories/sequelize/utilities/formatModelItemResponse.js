@@ -9,19 +9,19 @@ module.exports = function formatModelItemResponse({
     }
   }
 
-  let attributes = input.document
+  let attributes = input.document || {}
   const relationships =
     (input.dataValues && input.dataValues.relationships) ||
-    (attributes && attributes.relationships)
+    attributes.relationships
 
-  if (attributes && attributes.id) {
+  if (attributes.id) {
     attributes = {
       ...attributes,
     }
     delete attributes.id
   }
 
-  if (attributes && attributes.relationships) {
+  if (attributes.relationships) {
     attributes = {
       ...attributes,
     }
