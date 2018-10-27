@@ -32,7 +32,7 @@ class TaxonNameRow extends PureComponent {
 
     return (
       <Table.Row>
-        <Table.Cell>{`${name} (${rank})`}</Table.Cell>
+        <Table.Cell width={14}>{`${name} (${rank})`}</Table.Cell>
         <Table.Cell>
           <Icon
             name="trash"

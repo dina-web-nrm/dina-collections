@@ -30,7 +30,7 @@ class PreparationTypeRow extends PureComponent {
 
     return (
       <Table.Row>
-        <Table.Cell>{name}</Table.Cell>
+        <Table.Cell width={14}>{name}</Table.Cell>
         <Table.Cell>
           <Icon
             name="trash"
