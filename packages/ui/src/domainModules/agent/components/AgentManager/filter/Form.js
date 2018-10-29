@@ -7,7 +7,7 @@ import formValidator from 'common/es5/error/validators/formValidator'
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
-import { DROPDOWN_FILTER_OPTIONS } from '../../../constants'
+import { AGENT_TYPE_OPTIONS } from '../../../constants'
 
 const log = createLog('modules:locality:BaseForm')
 
@@ -52,7 +52,7 @@ export class BaseForm extends Component {
                     model="agent"
                     module="agent"
                     name="agentType"
-                    options={DROPDOWN_FILTER_OPTIONS}
+                    options={AGENT_TYPE_OPTIONS}
                     type="dropdown-search-local"
                   />
                 </Grid.Column>
