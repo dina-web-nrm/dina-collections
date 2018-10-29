@@ -1,4 +1,15 @@
+import { AGENT_TYPE_OPTIONS } from 'domainModules/agent/constants'
+
 const parts = [
+  {
+    componentName: 'Radio',
+    componentProps: {
+      labelKey: 'modules.agent.fieldLabels.agentType',
+      radioOptions: AGENT_TYPE_OPTIONS,
+    },
+    name: 'agentType',
+    wrapInField: true,
+  },
   {
     componentName: 'Input',
     componentProps: {
@@ -22,13 +33,12 @@ const parts = [
     componentProps: {
       emptyStateTextKey: 'remarks.emptyState.agent',
     },
-    initiallyHidden: true,
     name: 'remarks',
     wrapInField: true,
   },
 ]
 
 export default {
-  name: 'place',
+  name: 'agentBase',
   parts,
 }
