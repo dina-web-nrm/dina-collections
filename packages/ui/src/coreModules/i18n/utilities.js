@@ -107,7 +107,7 @@ export const asyncImportRenderer = () => {
 
 export const markdownToHtmlAsync = markdown => {
   return asyncImportRenderer().then(renderer => {
-    return renderer(markdown)
+    return renderer.default(markdown)
   })
 }
 

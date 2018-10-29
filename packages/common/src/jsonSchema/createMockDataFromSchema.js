@@ -7,7 +7,7 @@ module.exports = function createMockDataFromSchema({
     const modelsToUse = Object.keys(models).map(moduleKey => {
       return models[moduleKey]
     })
-    const mock = jsf(schema, modelsToUse)
+    const mock = jsf.default(schema, modelsToUse)
     return mock
   })
 }
