@@ -72,7 +72,7 @@
     "test:unit:watch": "jest --env=node --watch"
   },
   "engines": {
-    "node": "8.9.1",
+    "node": "8.12.0",
     "yarn": "^1.3.2"
   }
 }
