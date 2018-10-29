@@ -127,6 +127,7 @@ This guide assumes you have `git` installed
    ```
 	yarn start:backend
    ```
+   
    This will start elasticsearch and postgres before starting the api service. Elasticsearch might not be ready fast enough. In that case you will see and error in the api logs and you will have to close the api process and run yarn start:backend again.
    If you get an error from `nodemon` about no space, then you might need to [change the number of file watches allowed](https://stackoverflow.com/a/34664097/3707092).
 10. Start ui
@@ -155,39 +156,48 @@ At the moment the local setup will use specific ports that are not configurable.
 * PgAdmin -> 19090
 
 ## Run and configure keycloak
+
  1. Start keycloak
 
-	```
+   ```
 	yarn start:keycloak
    ```
    
  2. Import keycloak dev configuration
+ 
+ * Open keycloak admin interface (http://127.0.0.1:8080)
+ * Navigate to Administration Console
+ * Login (user: admin, password: admin) if you have not changed the ./env/.keycloak
+ * Hover top left nav item (should be master if keycloak is not configured) and press add realm
+ * Import file located at ./packages/keycloak/dev-export.json
+ 
+3. Add test user
 
-  * Open keycloak admin interface (http://127.0.0.1:8080)
-  * Navigate to Administration Console
-  * Login (user: admin, password: admin) if you have not changed keycloak env
-  * Hover top left nav item (should be master if keycloak is not configured) and press add realm
-  * Import file located at ./packages/keycloak/dev-export.json
+* Navigate to users. press "Users" under "Manage" section in left nav. (Make sure the imported Dina realm is selected)
+* Add user with the following params:
 
+   ```
+	username = john doe	
+	Email = johndoe@nrm.se 
+	First Name = John
+	Last Name = Doe
+   ```
+   
+ * Press save
+ * Navigate to credentials and set password and confirm (switch temporary to off first)
+ * Press the red save button
  
 
- 3. Add test user
-  * Navigate to users. press "Users" under "Manage" section in left nav. (Make sure the imported Dina realm is selected)
-  * Add user with the following params:
+4. Role Mapppings
 
-	```
-	 username = john doe	
-	 Email = johndoe@nrm.se 
-	 First Name = John
-	 Last Name = Doe
-	```
-   * Press save
-   * Navigate to credentials and set password and confirm (switch temporary to off first)
-   * Press the red save button
+* Navigate to users. press "Users" under "Manage" section in left nav.
+* Select the user you added.
+* Choose the tab 'Role Mappings', select all Roles in the 'Available Roles'-list and press 'Add selected'-button
 
- 
 ## Server setup
+
 ### Run with docker
+
 ATM deprecated - Will be updated shortly
 
 1. [Install docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/)
@@ -195,51 +205,51 @@ ATM deprecated - Will be updated shortly
 2. Clone the repository
 
    ```
-   git clone https://github.com/DINA-Web/dina-collections.git
+   	git clone https://github.com/DINA-Web/dina-collections.git
    ```
 
 3. Move into directory
 
    ```
-   cd dina-collections
+   	cd dina-collections
    ```
 
 4. create sample .env-files
 
    ```
-   make setup-env
+   	make setup-env
    ```
 
 5. Edit your /etc/hosts file and add the following entries if you are using the default .env files create from the sample files
 
    ```
-   127.0.0.1 local-cm-mock.dina-web.net
-   127.0.0.1 local-cm.dina-web.net
-   127.0.0.1 local-api-docs.dina-web.net
-   127.0.0.1 local-style.dina-web.net
-   127.0.0.1 local-api.dina-web.net
+   	127.0.0.1 local-cm-mock.dina-web.net
+   	127.0.0.1 local-cm.dina-web.net
+   	127.0.0.1 local-api-docs.dina-web.net
+   	127.0.0.1 local-style.dina-web.net
+   	127.0.0.1 local-api.dina-web.net
    ```
 
 6. Start on your local machine with docker compose
 
    ```
-   make up-dev
+   	make up-dev
    ```
 
 7. Stop on your local machine with docker compose
 
    ```
-   make stop-dev
+   	make stop-dev
    ```
    
-## Create new release
+## Create a new release
 
 Pull latest master and run:
 
 	
-```
-yarn version
-```
+   ```
+	yarn version
+   ```
 
  
   
@@ -247,13 +257,16 @@ yarn version
 
 To deploy specific version run
 
-```
-yarn deploy:local -v 123
-```
+   ```
+	yarn deploy:local -v 123
+   ```
 
 To deploy latest version run
 
-```
-yarn deploy:local:latest
-```
+   ```
+	yarn deploy:local:latest
+   ```
+
 Local can be replaced by test, stage and production for remote deploys
+
+
