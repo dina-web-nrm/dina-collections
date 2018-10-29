@@ -103,7 +103,7 @@ const defaultProps = {
   recordHistoryEvents: [],
 }
 
-class CatalogCardInformationModal extends Component {
+class RecordHistoryExternalEvents extends Component {
   constructor(props) {
     super(props)
     this.handleClose = this.handleClose.bind(this)
@@ -229,7 +229,7 @@ class CatalogCardInformationModal extends Component {
   }
 }
 
-CatalogCardInformationModal.propTypes = propTypes
-CatalogCardInformationModal.defaultProps = defaultProps
+RecordHistoryExternalEvents.propTypes = propTypes
+RecordHistoryExternalEvents.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps))(CatalogCardInformationModal)
+export default compose(connect(mapStateToProps))(RecordHistoryExternalEvents)
