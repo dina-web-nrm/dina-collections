@@ -78,7 +78,7 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   fieldsBaseName: PropTypes.string.isRequired,
   hasAgentOrDate: PropTypes.bool,
-  invalidInput: PropTypes.bool.isRequired,
+  invalidInput: PropTypes.bool,
   name: PropTypes.string.isRequired,
   otherEvents: PropTypes.arrayOf(
     PropTypes.shape({
@@ -99,6 +99,7 @@ const defaultProps = {
   catalogCardCreationEvent: undefined,
   catalogCardCreationEventIndex: undefined,
   hasAgentOrDate: false,
+  invalidInput: undefined,
   otherEvents: undefined,
   recordHistoryEvents: [],
 }
