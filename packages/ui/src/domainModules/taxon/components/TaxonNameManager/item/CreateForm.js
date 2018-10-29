@@ -27,7 +27,7 @@ export class Create extends PureComponent {
           <ModuleTranslate
             capitalize
             module="taxon"
-            textKey="newScientificName"
+            textKey="headers.newScientificName"
           />
         }
         initialValues={initialValues}
