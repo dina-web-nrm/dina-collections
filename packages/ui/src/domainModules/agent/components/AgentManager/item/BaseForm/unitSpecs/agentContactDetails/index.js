@@ -16,6 +16,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
+      columnProps: { width: 8 },
       fluid: true,
       type: 'text',
     },
@@ -26,6 +27,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
+      columnProps: { width: 8 },
       fluid: true,
       type: 'text',
     },
@@ -34,12 +36,69 @@ const parts = [
     wrapInField: true,
   },
   {
-    componentName: 'TextArea',
+    componentName: 'Input',
     componentProps: {
+      columnProps: { width: 12 },
       fluid: true,
+      type: 'text',
     },
     initiallyHidden: true,
-    name: 'postalAddress',
+    name: 'streetAddress',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Input',
+    componentProps: {
+      columnProps: { width: 4 },
+      fluid: true,
+      type: 'text',
+    },
+    initiallyHidden: true,
+    name: 'postOfficeBoxNumber',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Input',
+    componentProps: {
+      columnProps: { width: 4 },
+      fluid: true,
+      type: 'text',
+    },
+    initiallyHidden: true,
+    name: 'postalCode',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Input',
+    componentProps: {
+      columnProps: { width: 6 },
+      fluid: true,
+      type: 'text',
+    },
+    initiallyHidden: true,
+    name: 'city',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Input',
+    componentProps: {
+      columnProps: { width: 6 },
+      fluid: true,
+      type: 'text',
+    },
+    initiallyHidden: true,
+    name: 'stateProvince',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Input',
+    componentProps: {
+      columnProps: { width: 6 },
+      fluid: true,
+      type: 'text',
+    },
+    initiallyHidden: true,
+    name: 'country',
     wrapInField: true,
   },
 ]

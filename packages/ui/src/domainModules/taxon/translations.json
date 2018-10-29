@@ -71,6 +71,10 @@
       "en": "new taxon",
       "sv": ""
     },
+    "newScientificName": {
+      "en": "new scientific name",
+      "sv": ""
+    },
     "vernacularNames": {
       "en": "vernacular names",
       "sv": ""

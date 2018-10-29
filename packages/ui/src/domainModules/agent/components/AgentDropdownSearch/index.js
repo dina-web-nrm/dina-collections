@@ -6,14 +6,14 @@ import createDeleteProperties from 'common/es5/createDeleteProperties'
 import { DropdownSearch } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
-import { ALL, PERSON, ORGANIZATION } from '../../constants'
+import { ALL, PERSON, ORGANIZATION, OTHER, UNKNOWN } from '../../constants'
 
 const deleteUndefinedProperties = createDeleteProperties(undefined)
 
 const includeFields = ['id', 'attributes.fullName', 'attributes.agentType']
 
 const propTypes = {
-  group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION]),
+  group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION, OTHER, UNKNOWN]),
 }
 
 const defaultProps = {
@@ -55,6 +55,20 @@ class AgentDropdownSearch extends Component {
         baseFilter = {
           filterFunctionName: 'matchAgentType',
           value: ORGANIZATION,
+        }
+        break
+      }
+      case OTHER: {
+        baseFilter = {
+          filterFunctionName: 'matchAgentType',
+          value: OTHER,
+        }
+        break
+      }
+      case UNKNOWN: {
+        baseFilter = {
+          filterFunctionName: 'matchAgentType',
+          value: UNKNOWN,
         }
         break
       }

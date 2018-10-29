@@ -57,7 +57,27 @@
         "type": "string",
         "x-summary": ""
       },
-      "postalAddress": {
+      "city": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "country": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "postalCode": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "postOfficeBoxNumber": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "streetAddress": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "stateProvince": {
         "type": "string",
         "x-summary": ""
       },
@@ -69,11 +89,21 @@
         "type": "string",
         "x-summary": ""
       },
+      "birthDate": {
+        "$ref": "dateRange",
+        "x-summary": ""
+      },
+      "deathDate": {
+        "$ref": "dateRange",
+        "x-summary": ""
+      },
       "agentType": {
         "type": "string",
         "enum": [
           "person",
-          "organization"
+          "organization",
+          "other",
+          "unknown"
         ],
         "x-summary": ""
       },

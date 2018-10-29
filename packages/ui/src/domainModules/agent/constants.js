@@ -1,20 +1,17 @@
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+
 export const ALL = 'all'
 export const PERSON = 'person'
 export const ORGANIZATION = 'organization'
+export const OTHER = 'other'
+export const UNKNOWN = 'unknown'
 
-const groups = [PERSON, ORGANIZATION]
+const agentTypes = [PERSON, ORGANIZATION, OTHER, UNKNOWN]
 
-export const DROPDOWN_FILTER_OPTIONS = [
-  {
-    key: ALL,
-    text: ALL,
-    value: '',
-  },
-  ...groups.map(group => {
-    return {
-      key: group,
-      text: group,
-      value: group,
-    }
-  }),
-]
+export const AGENT_TYPE_OPTIONS = agentTypes.map(agentType => {
+  return {
+    key: agentType,
+    text: capitalizeFirstLetter(agentType),
+    value: agentType,
+  }
+})

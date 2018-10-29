@@ -15,6 +15,7 @@ export const propTypes = {
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  labelKey: PropTypes.string,
   meta: PropTypes.shape({
     error: PropTypes.object,
     touched: PropTypes.bool,
@@ -37,6 +38,7 @@ export const defaultProps = {
   helpNotificationProps: undefined,
   helpText: undefined,
   label: undefined,
+  labelKey: undefined,
   meta: {},
   model: undefined,
   module: undefined,
@@ -59,6 +61,7 @@ const FieldTemplate = ({
   helpNotificationProps,
   helpText,
   label,
+  labelKey,
   meta,
   module,
   name,
@@ -91,6 +94,7 @@ const FieldTemplate = ({
           helpText={helpText}
           htmlFor={name}
           label={label}
+          labelKey={labelKey}
           module={module}
           parameterKey={parameterKey}
           subLabel={subLabel}

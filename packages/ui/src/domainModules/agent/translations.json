@@ -12,9 +12,40 @@
     "email": { "en": "Email" },
     "postalAddress": { "en": "Postal address" },
     "readOnly": { "en": "Read only" },
-    "user": { "en": "User" }
+    "user": { "en": "User" },
+    "agentType": {
+      "en": "agent type"
+    },
+    "city": {
+      "en": "city"
+    },
+    "country": {
+      "en": "country"
+    },
+    "postalCode": {
+      "en": "postal code"
+    },
+    "postOfficeBoxNumber": {
+      "en": "P.O. box"
+    },
+    "streetAddress": {
+      "en": "street address"
+    },
+    "stateProvince": {
+      "en": "state or province"
+    },
+    "birthDate": {
+      "en": "birth date"
+    },
+    "deathDate": {
+      "en": "death date"
+    }
   },
   "headers": {
+    "birthAndDeath": {
+      "en": "birth and death",
+      "sv": ""
+    },
     "contactDetails": {
       "en": "contact information",
       "sv": ""
@@ -25,6 +56,10 @@
     }
   },
   "buttons": {
+    "birthAndDeath": {
+      "en": "add birth and death",
+      "sv": ""
+    },
     "contactDetails": {
       "en": "add contact information",
       "sv": ""
