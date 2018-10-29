@@ -2,7 +2,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 8 },
+      columnProps: { width: 9 },
       fluid: true,
       type: 'text',
     },
@@ -11,11 +11,17 @@ const parts = [
   },
   {
     componentName: 'StorageLocationLevelDropdown',
+    componentProps: {
+      columnProps: { width: 9 },
+    },
     name: 'group',
     wrapInField: true,
   },
   {
     componentName: 'StorageLocationDropdownSearch',
+    componentProps: {
+      columnProps: { width: 9 },
+    },
     name: 'parent.id',
     wrapInField: true,
   },
