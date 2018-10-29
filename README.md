@@ -91,56 +91,55 @@ This guide assumes you have `git` installed
    nvm alias default v8.12.0
    ```
 
-4. [Install yarn](https://yarnpkg.com/lang/en/docs/install/)
-5. Clone the repository
+4. Clone the repository
 
    ```
    git clone https://github.com/DINA-Web/dina-collections.git
    ```
 
-6. Move into directory
+5. Move into directory
 
    ```
    cd dina-collections
    ```
 
-7. Install dependencies, links and env and run tests
+6. Install dependencies, links and env and run tests
 
    ```
-   yarn setup
+   npm run setup
    ```
 
-   Then create your own `.env` file in ./packages/backend (see the `sample.env` file in the same location for available values).
+7. Load sample data
 
-8. Load sample data
+   This requires access to test data. Contact someone in the core team to get test data.
 
-   This requires access to test data. Contact someone i core team to get test data.
-
-	When test data places in data folder run:	
-	
-   ```
-   yarn setup:loadTestData
-   ```
-
-9. Start api
+	When you have the test data placed in a folder called "data" in the root, run:
 
    ```
-	yarn start:backend
+   npm run setup:loadTestData
+   ```
+
+8. Start api
+
+   ```
+   npm run start:backend
    ```
    
-   This will start elasticsearch and postgres before starting the api service. Elasticsearch might not be ready fast enough. In that case you will see and error in the api logs and you will have to close the api process and run yarn start:backend again.
+   This will start elasticsearch and postgres before starting the api service. Elasticsearch might not be ready fast enough. In that case you will see and error in the api logs and you will have to close the api process and run npm run start:backend again.
+
    If you get an error from `nodemon` about no space, then you might need to [change the number of file watches allowed](https://stackoverflow.com/a/34664097/3707092).
-10. Start ui
 
-   Note that the ui and the api will not run in the background so run them in different tabs. The ui will take a while to render the first time because all files need to be compiled.
-   
-   ```
-	yarn start:ui
-   ```
+  9. Start ui
 
-11. [Configure keycloak for local development](#run-and-configure-keycloak)
+      Note that the ui and the api will not run in the background so run them in different tabs. The ui will take a while to render the first time because all files need to be compiled.
 
-12. Explore services: 
+      ```
+      npm run start:ui
+      ```
+
+10. [Configure keycloak for local development](#run-and-configure-keycloak)
+
+11. Explore services:
   * UI - [http://127.0.0.1:3000](http://127.0.0.1:3000)
   * API - [http://127.0.0.1:4444/docs](http://127.0.0.1:4444/docs)
 
@@ -160,7 +159,7 @@ At the moment the local setup will use specific ports that are not configurable.
  1. Start keycloak
 
    ```
-	yarn start:keycloak
+	npm run start:keycloak
    ```
    
  2. Import keycloak dev configuration
@@ -182,7 +181,7 @@ At the moment the local setup will use specific ports that are not configurable.
 	First Name = John
 	Last Name = Doe
    ```
-   
+
  * Press save
  * Navigate to credentials and set password and confirm (switch temporary to off first)
  * Press the red save button
@@ -244,11 +243,11 @@ ATM deprecated - Will be updated shortly
    
 ## Create a new release
 
-Pull latest master and run:
+Pull latest master and run the [appropriate version command](https://docs.npmjs.com/cli/version):
 
 	
    ```
-	yarn version
+	npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]
    ```
 
  
@@ -258,13 +257,13 @@ Pull latest master and run:
 To deploy specific version run
 
    ```
-	yarn deploy:local -v 123
+	npm run deploy:local -v 123
    ```
 
 To deploy latest version run
 
    ```
-	yarn deploy:local:latest
+	npm run deploy:local:latest
    ```
 
 Local can be replaced by test, stage and production for remote deploys
