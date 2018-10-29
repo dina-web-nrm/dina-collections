@@ -67,6 +67,7 @@ class EditSpecimen extends PureComponent {
     return (
       <RecordForm
         form={FORM_NAME}
+        formName={FORM_NAME}
         formValueSelector={formValueSelector}
         handleFormSubmit={formOutput => {
           const item = nestedToCoreSync({
