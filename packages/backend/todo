@@ -1,19 +1,4 @@
-* Rename logService to historyService
-* bubble up diff to hook level
-* modify createHook to optionally store snapshots, diffs, and nestedShapshots? nestedDiffs?
-* Fix fetching in FE (should be as a relationship from specimen)
-* Make sure user id (potentially also user string) is preserved
-* Add batch execute to add items during migration
-** Add to all execute
-
-* Fix preservation of request id (use header?)
-
-* Create required indexes
-
-
 * How to deal with sorting remarks vs columnsorting?
 ** Add button to reset sorting?
 
-* Enable auth on server
-* Enable fetch reverse relationships for getMany
 

@@ -2,26 +2,27 @@ ME=$(USER)
 
 all:  up
 
-setup-env:
-	./scripts/create-env.sh
+setup:
+	./packages/scripts/src/bash/create-env.sh
 
 up:
 	@docker-compose up -d
 
-up-dev:
-	@docker-compose -f docker-compose.dev.yaml up -d
-
-up-pgAdmin:
-	@docker-compose -f docker-compose.dev.yaml up -d pgadmin
-
 stop:
 	@docker-compose stop
-
-stop-dev:
-	docker-compose -f docker-compose.dev.yaml stop
 
 rm:
 	@docker-compose rm -vf
 
-loadAll:
+up-utils:
+	@docker-compose -f docker-compose.dev-utils.yaml up -d
+
+stop-utils:
+	@docker-compose -f docker-compose.dev-utils.yaml stop
+
+rm-utils:
+	@docker-compose -f docker-compose.dev-utils.yaml rm -vf
+
+
+load-sample-data:
 	@docker-compose -f docker-compose.data.yaml up loadData

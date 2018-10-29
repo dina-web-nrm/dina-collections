@@ -1,0 +1,10 @@
+DB_DATABASE=keycloak
+DB_PASSWORD=password
+DB_USER=keycloak
+KEYCLOAK_LOGLEVEL=DEBUG
+KEYCLOAK_PASSWORD=admin
+KEYCLOAK_USER=admin
+NGINX_PORT=8080
+PROXY_ADDRESS_FORWARDING=true
+TZ=Europe/Stockholm
+VIRTUAL_HOST=local-keycloak.dina-web.net

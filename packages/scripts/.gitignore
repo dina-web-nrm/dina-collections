@@ -8,12 +8,3 @@ yarn-error.log*
 # Editor settings
 .vscode/
 
-env/.*
-data/*.json
-userFiles/*
-
-.DS_Store
-
-#certs
-certs/*.crt
-certs/*.key

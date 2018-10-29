@@ -1,48 +1,5 @@
 version: '3.3'
 services:
-  dockerhub-hook:
-    image: maccyber/micro-dockerhub-hook
-    ports:
-      - "8004:3000"
-    env_file:
-      - ./env/.docker-hook
-    volumes:
-      - ./docker-hooks:/src/scripts
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/var/dina-collections
-
-  ui:
-    image: dina/dina-collections-ui
-    container_name: dina-collections-ui
-    expose:
-    - "80"
-    env_file:
-      - ./env/.ui
-    command: /bin/bash -c "envsubst '$$NGINX_TAXONOMY_API_BASE_URL $$NGINX_API_BASE_URL $$NGINX_HOST $$NGINX_PORT $$NGINX_AUTH_BASE_URL' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
-    depends_on:
-      - api
-
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
-    container_name: elasticsearch
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-    env_file:
-      - ./env/.elasticsearch
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-
-  style:
-    image: dina/dina-semantic-ui-docs
-    container_name: dina-semantic-ui-docs
-    expose:
-    - "80"
-    env_file:
-      - ./env/.style
-    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
-
   api:
     image: dina/dina-collections-api
     container_name: dina-api
@@ -58,6 +15,92 @@ services:
       - ./data:/data
       - ./userFiles:/userFiles
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
+    container_name: elasticsearch
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    env_file:
+      - ./env/.elasticsearch
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+
+  keycloak:
+    image: jboss/keycloak:4.5.0.Final #this is the latest
+    container_name: keycloak
+    # Username & password to use the database
+    env_file: ./env/.keycloak
+
+    environment:
+      DB_VENDOR: MYSQL
+      DB_ADDR: mysql
+    ports:
+      - 8080:8080
+    volumes:
+      - ./packages/keycloak/themes/dina:/opt/jboss/keycloak/themes/dina
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: keycloak-mysql
+    env_file: ./env/.mysql
+    volumes:
+      - mysql-keycloak-accounts:/var/lib/mysql
+
+
+  postgres:
+    image: postgres:10.5
+    container_name: postgres
+    env_file:
+      - ./env/.postgres
+    restart: always    
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  proxy:
+    image: jwilder/nginx-proxy:latest
+    container_name: proxy
+    environment:
+      - NGINX_MAX_BODY_SZ=100m
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./packages/proxy/site.template:/etc/nginx/conf.d/site.template
+      #- /etc/localtime:/etc/localtime
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/dina.conf && forego start -r"
+
+
+  style:
+    image: dina/dina-semantic-ui-docs
+    container_name: dina-semantic-ui-docs
+    expose:
+    - "80"
+    env_file:
+      - ./env/.style
+    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
+  ui:
+    image: dina/dina-collections-ui
+    container_name: dina-collections-ui
+    expose:
+    - "80"
+    env_file:
+      - ./env/.ui
+    command: /bin/bash -c "envsubst '$$NGINX_TAXONOMY_API_BASE_URL $$NGINX_API_BASE_URL $$NGINX_HOST $$NGINX_PORT $$NGINX_AUTH_BASE_URL' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    depends_on:
+      - api
+      - keycloak
+
   worker:
     image: dina/dina-collections-api
     container_name: dina-worker
@@ -71,24 +114,7 @@ services:
       - ./data:/data
       - ./userFiles:/userFiles
 
-  postgres:
-    image: postgres:10.5
-    env_file:
-      - ./env/.postgres
-    restart: always
-    container_name: postgres
-    ports:
-      - 5432:5432
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-networks:
-  default:
-    external:
-      name: proxy-docker_default 
-
 volumes:
   postgres_data:
   es_data:
-
-
+  mysql-keycloak-accounts:
