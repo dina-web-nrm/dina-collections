@@ -66,6 +66,7 @@ class EditSpecimen extends PureComponent {
     log.debug('initialValues', initialValues)
     return (
       <RecordForm
+        {...rest}
         form={FORM_NAME}
         formName={FORM_NAME}
         formValueSelector={formValueSelector}
@@ -86,7 +87,6 @@ class EditSpecimen extends PureComponent {
         initialValues={initialValues}
         loading={!nestedItem}
         mode="edit"
-        {...rest}
       />
     )
   }
