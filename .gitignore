@@ -14,5 +14,6 @@ userFiles/*
 
 .DS_Store
 
-
-certs
+#certs
+certs/*.crt
+certs/*.key
