@@ -32,7 +32,22 @@
     "remarks": {
       "type": "string"
     },
-    "postalAddress": {
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "postOfficeBoxNumber": {
+      "type": "string"
+    },
+    "streetAddress": {
+      "type": "string"
+    },
+    "stateProvince": {
       "type": "string"
     },
     "telephone": {
@@ -41,9 +56,15 @@
     "email": {
       "type": "string"
     },
+    "birthDate": {
+      "$ref": "__ROOT__dateRange"
+    },
+    "deathDate": {
+      "$ref": "__ROOT__dateRange"
+    },
     "agentType": {
       "type": "string",
-      "enum": ["person", "organization"]
+      "enum": ["person", "organization", "other", "unknown"]
     },
     "roles": {
       "type": "array",
