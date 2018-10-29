@@ -61,7 +61,7 @@
     "production:start:worker": "NODE_ENV=production DEBUG='DINA*' node src/apps/production/worker/index.js",
     "start": "NODE_ENV=development DEBUG='DINA*,-DINA:LOG_INFO:lib/jobs/worker, -DINA:LOG_DEBUG:controller/jobGetMany' nodemon src/apps/development/api/index.js",
     "start:inspect": "NODE_ENV=development DEBUG='DINA*,-DINA:LOG_INFO:lib/jobs/worker' node --inspect src/apps/development/api/index.js",
-    "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
+    "test": "npm run test:unit && npm run lint:js && npm run test:depcheck",
     "test:api": "DEBUG='TEST:DINA*' API_TESTS=true jest --env=node --watch",
     "test:batch": "DEBUG='TEST:DINA*' BATCH_TESTS=true jest --env=node --watch",
     "test:db": "DEBUG='TEST:DINA*' DB_TESTS=true jest --env=node --watch",

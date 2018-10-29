@@ -10,8 +10,8 @@
     "lint:js": "eslint 'src/**/*.js'",
     "lint:js:fix": "eslint 'src/**/*.js' --fix",
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
-    "test": "yarn test:lint && yarn test:unit",
-    "test:lint": "yarn lint:js",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "npm run lint:js",
     "test:unit": "NODE_ENV=test jest --env=node",
     "test:unit:watch": "NODE_ENV=test jest --env=node --watch"
   },
