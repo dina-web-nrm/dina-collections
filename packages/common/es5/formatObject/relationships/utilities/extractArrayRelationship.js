@@ -2,6 +2,7 @@
 
 var extractArrayRelationship = function extractArrayRelationship(_ref) {
   var item = _ref.item,
+      nestedToCoreSync = _ref.nestedToCoreSync,
       relationshipKey = _ref.relationshipKey,
       relationshipType = _ref.relationshipType;
 
@@ -10,7 +11,11 @@ var extractArrayRelationship = function extractArrayRelationship(_ref) {
   }
 
   var relationshipArray = item[relationshipKey].map(function (element) {
-    return element && element.id ? { id: element.id, type: relationshipType } : null;
+    return nestedToCoreSync ? nestedToCoreSync({
+      item: element,
+      normalize: true,
+      type: relationshipType
+    }) : element;
   }).filter(function (element) {
     return !!element;
   });

@@ -10,6 +10,12 @@ const {
 } = require('./data/filterSpecifications')
 
 const {
+  clearAcceptedToTaxon,
+  clearSynonymToTaxon,
+  clearOtherTaxonNamesFromTaxon,
+} = require('./data/preHooks')
+
+const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
@@ -59,6 +65,7 @@ module.exports = {
       type: 'importDataFromFile',
     },
     {
+      preHooks: [clearOtherTaxonNamesFromTaxon, clearSynonymToTaxon],
       relationKey: 'acceptedToTaxon',
       type: 'updateRelationship',
     },
@@ -67,6 +74,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      preHooks: [clearOtherTaxonNamesFromTaxon, clearAcceptedToTaxon],
       relationKey: 'synonymToTaxon',
       type: 'updateRelationship',
     },

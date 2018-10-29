@@ -10,6 +10,7 @@ const {
   getKeyName,
   getKeyStoredInModel,
   getKeyType,
+  getKeyUnique,
   getPath,
   getTargetFormat,
   getTargetModel,
@@ -39,6 +40,7 @@ const getRelationshipParamsFromRelationshipsSchemaItem = ({
         keyType === 'json' && keyStoredInModel !== modelName,
       targetAs: relationshipKey,
       targetResource: getTargetModel(relationshipsSchemaItem),
+      unique: getKeyUnique(relationshipsSchemaItem),
     }
   )
 }

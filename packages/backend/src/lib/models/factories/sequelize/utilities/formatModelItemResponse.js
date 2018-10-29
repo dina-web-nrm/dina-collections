@@ -9,7 +9,7 @@ module.exports = function formatModelItemResponse({
     }
   }
 
-  let attributes = input.document
+  let attributes = input.document || {}
   const relationships =
     (input.dataValues && input.dataValues.relationships) ||
     attributes.relationships
@@ -30,7 +30,7 @@ module.exports = function formatModelItemResponse({
 
   const item = {
     attributes,
-    id: `${input.dataValues.id}`,
+    id: `${input.dataValues && input.dataValues.id}`,
   }
 
   if (relationships) {

@@ -1,73 +1,76 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
-import {
-  createGetNestedItemById,
-  createEnsureAllItemsFetched,
-} from 'coreModules/crud/higherOrderComponents'
+import objectPath from 'object-path'
 
-import crudActionCreators from 'coreModules/crud/actionCreators'
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 import BaseForm from './BaseForm'
 
-const mapDispatchToProps = {
-  updateTaxonName: crudActionCreators.taxonName.update,
-}
+export const include = [
+  'acceptedTaxonName',
+  'parent',
+  'synonyms',
+  'vernacularNames',
+]
 
 const propTypes = {
-  allTaxonNamesFetched: PropTypes.bool,
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
   itemId: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
-  taxonName: PropTypes.object,
-  updateTaxonName: PropTypes.func.isRequired,
+  taxon: PropTypes.object,
 }
 
 const defaultProps = {
-  allTaxonNamesFetched: undefined,
-  taxonName: undefined,
+  taxon: undefined,
 }
 
 export class Edit extends PureComponent {
   render() {
     const {
-      allTaxonNamesFetched,
-      taxonName,
+      i18n: { moduleTranslate },
       onInteraction,
       itemId,
+      taxon,
+      ...rest
     } = this.props
 
-    const initialValues = taxonName
-    if (!initialValues || !allTaxonNamesFetched) {
+    if (!taxon) {
       return null
     }
 
+    const initialValues = { ...taxon }
+
+    if (objectPath.get(initialValues, 'parent.acceptedTaxonName')) {
+      delete initialValues.parent.acceptedTaxonName
+    }
+
+    const name = objectPath.get(initialValues, 'acceptedTaxonName.name')
+    const rank = objectPath.get(initialValues, 'acceptedTaxonName.rank')
+
     return (
       <BaseForm
+        {...rest}
         displayBackButton
         displayResetButton
         form="taxonEdit"
+        formSectionNavigationHeader={
+          name &&
+          `${name} (${moduleTranslate({
+            textKey: 'taxon',
+          })})`
+        }
+        formSectionNavigationSubHeader={capitalizeFirstLetter(rank)}
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
-        onSubmit={data => {
-          this.props
-            .updateTaxonName({
-              item: {
-                id: itemId,
-                ...data,
-              },
-              nested: true,
-            })
-            .then(result => {
-              onInteraction('FORM_EDIT_SUCCESS', {
-                itemId: result.id,
-              })
-            })
-        }}
       />
     )
   }
@@ -77,13 +80,18 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
+  withI18n({ module: 'taxon' }),
   createGetNestedItemById({
-    nestedItemKey: 'taxonName',
-    resource: 'taxonName',
-  }),
-  createEnsureAllItemsFetched({
-    allFetchedKey: 'allTaxonNamesFetched',
-    resource: 'taxonName',
-  }),
-  connect(null, mapDispatchToProps)
+    include,
+    nestedItemKey: 'taxon',
+    refresh: true,
+    relationships: [
+      'acceptedTaxonName',
+      'parent',
+      'synonyms',
+      'vernacularNames',
+    ],
+    resolveRelationships: ['taxon', 'taxonName'],
+    resource: 'taxon',
+  })
 )(Edit)

@@ -23,6 +23,7 @@
       }
     },
     "parent": {
+      "en": "parent",
       "acceptedTaxonName": {
         "name": {
           "en": "Parent accepted name"
@@ -58,13 +59,37 @@
     }
   },
   "headers": {
+    "connectedScientificNames": {
+      "en": "connected scientific names",
+      "sv": ""
+    },
     "status": {
       "en": "status",
+      "sv": ""
+    },
+    "newTaxon": {
+      "en": "new taxon",
+      "sv": ""
+    },
+    "vernacularNames": {
+      "en": "vernacular names",
       "sv": ""
     }
   },
   "acceptedNameForTaxon": {
     "en": "accepted name for taxon",
+    "sv": ""
+  },
+  "addNameOrNames": {
+    "en": "enter vernacular name(s)",
+    "sv": ""
+  },
+  "addVernacularName": {
+    "en": "add vernacular name",
+    "sv": ""
+  },
+  "connectScientificName": {
+    "en": "connect scientific name",
     "sv": ""
   },
   "name": {
@@ -74,8 +99,16 @@
     "en": "this name is not associated with any taxon",
     "sv": ""
   },
+  "selectLanguage": {
+    "en": "select language",
+    "sv": ""
+  },
   "synonymForTaxon": {
     "en": "synonym of",
+    "sv": ""
+  },
+  "taxon": {
+    "en": "taxon",
     "sv": ""
   },
   "save": {

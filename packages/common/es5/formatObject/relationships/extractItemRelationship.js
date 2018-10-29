@@ -38,12 +38,14 @@ module.exports = function extractItemRelationship(_ref) {
     if (relationshipFormat === 'object') {
       relationshipObject = extractObjectRelationship({
         item: item,
+        nestedToCoreSync: nestedToCoreSync,
         relationshipKey: relationshipKey,
         relationshipType: relationshipType
       });
     } else {
       relationshipArray = extractArrayRelationship({
         item: item,
+        nestedToCoreSync: nestedToCoreSync,
         relationshipKey: relationshipKey,
         relationshipType: relationshipType
       });

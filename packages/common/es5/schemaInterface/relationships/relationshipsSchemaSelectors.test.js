@@ -5,6 +5,7 @@ var _require = require('./relationshipsSchemaSelectors'),
     getKeyName = _require.getKeyName,
     getKeyStoredInModel = _require.getKeyStoredInModel,
     getKeyType = _require.getKeyType,
+    getKeyUnique = _require.getKeyUnique,
     getPath = _require.getPath,
     getTargetFormat = _require.getTargetFormat,
     getTargetModel = _require.getTargetModel,
@@ -19,6 +20,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', function 
       'x-key-name': 'customKey',
       'x-key-stored-in-model': 'game',
       'x-key-type': 'json',
+      'x-key-unique': true,
       'x-path': ['somePath', 'someOtherPath'],
       properties: {
         data: {
@@ -72,6 +74,18 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', function 
     it('returns json', function () {
       var testValue = getKeyType(schemaItem);
       var expectedResult = 'json';
+
+      expect(testValue).toEqual(expectedResult);
+    });
+  });
+
+  describe('getKeyUnique', function () {
+    it('returns undefined for empty schema', function () {
+      expect(getKeyUnique(undefined)).toEqual(undefined);
+    });
+    it('returns true', function () {
+      var testValue = getKeyUnique(schemaItem);
+      var expectedResult = true;
 
       expect(testValue).toEqual(expectedResult);
     });

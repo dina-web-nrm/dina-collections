@@ -308,6 +308,9 @@ const config = {
         },
         {
           operationId: 'taxonCreate',
+          options: {
+            resourcesToModify: ['taxon', 'taxonName'],
+          },
           type: 'create',
         },
         {
@@ -316,6 +319,9 @@ const config = {
         },
         {
           operationId: 'taxonUpdate',
+          options: {
+            resourcesToModify: ['taxon', 'taxonName'],
+          },
           type: 'update',
         },
         {

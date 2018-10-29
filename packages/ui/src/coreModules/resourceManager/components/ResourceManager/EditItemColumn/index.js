@@ -9,16 +9,19 @@ import BottomBar from './BottomBar'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  fetchAfterUpdate: PropTypes.bool.isRequired,
+  include: PropTypes.arrayOf(PropTypes.string),
   itemFetchOptions: PropTypes.object.isRequired,
   itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
   renderEditForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
 }
-
 const defaultProps = {
+  include: undefined,
   itemId: undefined,
 }
+
 const rows = [
   {
     key: 'itemEditForm',
@@ -50,7 +53,13 @@ class EditItemColumn extends Component {
       }
       case 'bottomBar': {
         const { extractedProps } = extractProps({
-          keys: ['itemId', 'resource', 'onInteraction'],
+          keys: [
+            'fetchAfterUpdate',
+            'include',
+            'itemId',
+            'resource',
+            'onInteraction',
+          ],
           props: this.props,
         })
 

@@ -1,5 +1,6 @@
 const extractArrayRelationship = ({
   item,
+  nestedToCoreSync,
   relationshipKey,
   relationshipType,
 }) => {
@@ -9,9 +10,13 @@ const extractArrayRelationship = ({
 
   const relationshipArray = item[relationshipKey]
     .map(element => {
-      return element && element.id
-        ? { id: element.id, type: relationshipType }
-        : null
+      return nestedToCoreSync
+        ? nestedToCoreSync({
+            item: element,
+            normalize: true,
+            type: relationshipType,
+          })
+        : element
     })
     .filter(element => !!element)
 

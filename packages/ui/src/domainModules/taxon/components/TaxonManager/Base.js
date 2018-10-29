@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 
 import CreateForm from './item/CreateForm'
-import EditForm from './item/EditForm'
+import EditForm, { include } from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
 import tableColumnSpecifications from './tableColumnSpecifications'
@@ -88,6 +88,8 @@ class TaxonManager extends Component {
         {...this.props}
         baseTreeFilter={baseTreeFilter}
         buildFilterQuery={buildFilterQuery}
+        fetchAfterUpdate
+        include={include}
         itemFetchOptions={itemFetchOptions}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}

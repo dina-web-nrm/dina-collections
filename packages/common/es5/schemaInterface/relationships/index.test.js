@@ -76,6 +76,7 @@ describe('schemaInterface/relationships', function () {
                 'x-key-allow-null': true,
                 'x-key-stored-in-model': 'tally',
                 'x-key-type': 'sql',
+                'x-key-unique': true,
                 properties: {
                   data: {
                     type: 'array',
@@ -144,7 +145,8 @@ describe('schemaInterface/relationships', function () {
         storeInDocument: false,
         storeInExternalDocument: false,
         targetAs: 'card',
-        targetResource: 'card'
+        targetResource: 'card',
+        unique: undefined
       }, {
         allowNull: undefined,
         format: 'object',
@@ -157,7 +159,8 @@ describe('schemaInterface/relationships', function () {
         storeInDocument: true,
         storeInExternalDocument: false,
         targetAs: 'die',
-        targetResource: 'dice'
+        targetResource: 'dice',
+        unique: undefined
       }];
 
       expect(testValue).toEqual(expectedResult);
@@ -178,7 +181,8 @@ describe('schemaInterface/relationships', function () {
         storeInDocument: false,
         storeInExternalDocument: false,
         targetAs: 'card',
-        targetResource: 'card'
+        targetResource: 'card',
+        unique: undefined
       }, {
         allowNull: undefined,
         format: 'object',
@@ -191,7 +195,8 @@ describe('schemaInterface/relationships', function () {
         storeInDocument: true,
         storeInExternalDocument: false,
         targetAs: 'die',
-        targetResource: 'dice'
+        targetResource: 'dice',
+        unique: undefined
       }, {
         allowNull: true,
         format: 'array',
@@ -204,7 +209,8 @@ describe('schemaInterface/relationships', function () {
         storeInDocument: false,
         storeInExternalDocument: false,
         targetAs: 'tally',
-        targetResource: 'tally'
+        targetResource: 'tally',
+        unique: true
       }];
 
       expect(testValue).toEqual(expectedResult);
@@ -227,7 +233,8 @@ describe('schemaInterface/relationships', function () {
             storeInDocument: false,
             storeInExternalDocument: false,
             targetAs: 'card',
-            targetResource: 'card'
+            targetResource: 'card',
+            unique: undefined
           },
           die: {
             allowNull: undefined,
@@ -241,7 +248,8 @@ describe('schemaInterface/relationships', function () {
             storeInDocument: true,
             storeInExternalDocument: false,
             targetAs: 'die',
-            targetResource: 'dice'
+            targetResource: 'dice',
+            unique: undefined
           }
         },
         score: {
@@ -257,7 +265,8 @@ describe('schemaInterface/relationships', function () {
             storeInDocument: false,
             storeInExternalDocument: false,
             targetAs: 'tally',
-            targetResource: 'tally'
+            targetResource: 'tally',
+            unique: true
           }
         }
       };

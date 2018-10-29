@@ -79,7 +79,7 @@ module.exports = function transformInput({
 
   let output = { attributes: input.attributes }
 
-  if (output.attributes.deactivatedAt) {
+  if (output.attributes && output.attributes.deactivatedAt) {
     delete output.attributes.deactivatedAt
   }
 

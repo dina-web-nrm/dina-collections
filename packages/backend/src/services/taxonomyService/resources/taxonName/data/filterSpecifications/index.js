@@ -1,5 +1,18 @@
+const createForeignKeyMatchFilter = require('../../../../../../lib/data/filters/factories/createForeignKeyMatchFilter')
 const createStringMatchFilter = require('../../../../../../lib/data/filters/factories/createStringMatchFilter')
 const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
+
+const acceptedToTaxonId = createForeignKeyMatchFilter({
+  description: 'Find taxon names that are accepted to taxon id',
+  fieldPath: 'acceptedToTaxonId',
+  key: 'acceptedToTaxonId',
+})
+
+const synonymToTaxonId = createForeignKeyMatchFilter({
+  description: 'Find taxon names that are synonym to taxon id',
+  fieldPath: 'synonymToTaxonId',
+  key: 'synonymToTaxonId',
+})
 
 const isAcceptedToTaxon = {
   description: 'Find taxon names that are accepted to any taxon',
@@ -54,10 +67,12 @@ const taxonNameType = createStringMatchFilter({
 
 const filterSpec = createGetManyFilterSpecifications({
   custom: {
+    acceptedToTaxonId,
     isAcceptedToTaxon,
     isVernacularToTaxon,
     rank,
     rubinNumber,
+    synonymToTaxonId,
     taxonNameType,
   },
   include: ['id', 'ids', 'updatedAfter', 'nameSearch'],
