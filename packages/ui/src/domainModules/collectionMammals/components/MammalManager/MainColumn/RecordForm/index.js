@@ -219,6 +219,7 @@ class RecordForm extends Component {
         >
           <RowLayout
             {...rest}
+            availableHeight={availableHeight}
             changeFieldValue={this.changeFieldValue}
             formName={form}
             module="collectionMammals" // to be deprecated in favor of moduleName
