@@ -11,7 +11,8 @@ const propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
   }).isRequired,
-  label: PropTypes.object.isRequired,
+  label: PropTypes.node,
+  labelKey: PropTypes.string,
   radioOptions: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
@@ -23,6 +24,8 @@ const propTypes = {
 
 const defaultProps = {
   enableHelpNotifications: undefined,
+  label: undefined,
+  labelKey: undefined,
 }
 
 class RadioField extends Component {
@@ -41,6 +44,7 @@ class RadioField extends Component {
       enableHelpNotifications,
       input: { name, value: selectedValue },
       label,
+      labelKey,
       radioOptions,
     } = this.props
 
@@ -48,6 +52,7 @@ class RadioField extends Component {
       <FieldTemplate
         enableHelpNotifications={enableHelpNotifications}
         label={label}
+        labelKey={labelKey}
         meta={{}}
         name={name}
         style={{ marginBottom: '0.5em', width: '100%' }}
