@@ -5649,7 +5649,7 @@
                   "attributes.srcDeactivatedAt",
                   "attributes.srcUpdatedAt",
                   "attributes.userId",
-                  "attributes.userName"
+                  "attributes.username"
                 ],
                 "type": "string"
               },
@@ -5676,7 +5676,7 @@
                   "attributes.srcDeactivatedAt",
                   "attributes.srcUpdatedAt",
                   "attributes.userId",
-                  "attributes.userName"
+                  "attributes.username"
                 ],
                 "type": "string"
               },
@@ -5953,7 +5953,7 @@
                   "attributes.srcDeactivatedAt",
                   "attributes.srcUpdatedAt",
                   "attributes.userId",
-                  "attributes.userName"
+                  "attributes.username"
                 ],
                 "type": "string"
               },
@@ -5980,7 +5980,7 @@
                   "attributes.srcDeactivatedAt",
                   "attributes.srcUpdatedAt",
                   "attributes.userId",
-                  "attributes.userName"
+                  "attributes.username"
                 ],
                 "type": "string"
               },
@@ -22113,7 +22113,7 @@
             "type": "string",
             "x-summary": ""
           },
-          "userName": {
+          "username": {
             "type": "string",
             "x-summary": ""
           },
