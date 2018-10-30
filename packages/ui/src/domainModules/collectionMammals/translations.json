@@ -1166,7 +1166,7 @@
     "latitude": {
       "en": "Latitude",
       "sv": ""
-    }, 
+    },
     "longitude": {
       "en": "Longitude",
       "sv": ""
@@ -1287,7 +1287,7 @@
     "unit": {
       "en": "Unit",
       "sv": "Enhet"
-    }, 
+    },
     "value": {
       "en": "Value",
       "sv": "Värde"
