@@ -272,7 +272,7 @@ class MammalManager extends Component {
   }
 
   componentDidMount() {
-    this.handleSearchSpecimens()
+    this.handleSearchSpecimens(this.props, false)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -378,8 +378,8 @@ class MammalManager extends Component {
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
-  handleSearchSpecimens(props = this.props) {
-    if (!props.isTableView) {
+  handleSearchSpecimens(props = this.props, openTableView = true) {
+    if (!props.isTableView && openTableView) {
       this.handleOpenTableView()
     }
 
