@@ -16,7 +16,7 @@ const selectableFields = [
   'attributes.srcDeactivatedAt',
   'attributes.srcUpdatedAt',
   'attributes.userId',
-  'attributes.userName',
+  'attributes.username',
 ]
 
 const defaultFields = [
@@ -29,7 +29,7 @@ const defaultFields = [
   'attributes.srcDeactivatedAt',
   'attributes.srcUpdatedAt',
   'attributes.userId',
-  'attributes.userName',
+  'attributes.username',
 ]
 
 module.exports = {
@@ -48,7 +48,7 @@ module.exports = {
       srcSchemaVersion: { type: Sequelize.STRING },
       srcUpdatedAt: { type: Sequelize.DATE },
       userId: { type: Sequelize.STRING },
-      userName: { type: Sequelize.STRING },
+      username: { type: Sequelize.STRING },
     },
     indexes: [
       {
