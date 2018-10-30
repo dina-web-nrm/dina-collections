@@ -7,21 +7,21 @@ import { getYMDHMSFromTimestamp } from 'common/es5/date'
 const propTypes = {
   actionType: PropTypes.string.isRequired,
   timestamp: PropTypes.string.isRequired,
-  userName: PropTypes.string,
+  username: PropTypes.string,
 }
 
 const defaultProps = {
-  userName: '',
+  username: '',
 }
 
 class EventRow extends PureComponent {
   render() {
-    const { actionType, timestamp, userName } = this.props
+    const { actionType, timestamp, username } = this.props
 
     const eventTimestamp = getYMDHMSFromTimestamp(timestamp)
     return (
       <Grid.Column width={10}>
-        {actionType} {userName} {eventTimestamp}
+        {actionType} {username} {eventTimestamp}
       </Grid.Column>
     )
   }

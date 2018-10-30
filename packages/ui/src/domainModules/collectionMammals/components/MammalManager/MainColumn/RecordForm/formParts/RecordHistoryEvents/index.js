@@ -23,7 +23,7 @@ const propTypes = {
       action: PropTypes.string,
       srcCreatedAt: PropTypes.string,
       srcUpdatedAt: PropTypes.string,
-      userName: PropTypes.string,
+      username: PropTypes.string,
     })
   ),
 }
@@ -61,7 +61,7 @@ class RecordHistoryEvents extends Component {
               textKey: 'other.createdBy',
             })}
             timestamp={createdEvent.srcCreatedAt}
-            userName={createdEvent.userName}
+            username={createdEvent.username}
           />
         )}
 
@@ -72,7 +72,7 @@ class RecordHistoryEvents extends Component {
               textKey: 'other.lastModifiedBy',
             })}
             timestamp={lastModifiedEvent.srcUpdatedAt}
-            userName={lastModifiedEvent.userName}
+            username={lastModifiedEvent.username}
           />
         )}
       </Grid.Column>

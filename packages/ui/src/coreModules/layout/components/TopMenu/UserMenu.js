@@ -12,25 +12,25 @@ const ModuleTranslate = createModuleTranslate('commonUi')
 
 const mapStateToProps = state => {
   return {
-    userName: userSelectors.getUserName(state),
+    username: userSelectors.getUserName(state),
   }
 }
 
 const propTypes = {
   onClick: PropTypes.func.isRequired,
   onLogout: PropTypes.func.isRequired,
-  userName: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
 }
 
 const UserMenu = ({
   onLogout: handleLogout,
   onClick: handleClick,
-  userName,
+  username,
 }) => {
   return (
     <Grid padded textAlign="left" verticalAlign="middle">
       <Grid.Row>
-        <Header>{userName}</Header>
+        <Header>{username}</Header>
       </Grid.Row>
       <Divider style={{ margin: 0 }} />
       <Grid.Row>
