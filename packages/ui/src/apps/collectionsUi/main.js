@@ -16,6 +16,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import { Provider as ReduxProvider } from 'react-redux'
 import registerServiceWorker from 'registerServiceWorker'
 
+import { ErrorBoundary } from 'coreModules/error/components'
 import { moduleOrder } from './viewModules'
 import App from './viewModules/app/Async'
 import Docs from './viewModules/docs/Async'
@@ -29,14 +30,16 @@ ReactDOM.render(
   <ReduxProvider store={store}>
     <ConnectedRouter history={config.routing}>
       <I18nProvider>
-        <React.Fragment>
-          <Switch>
-            <Route component={App} path="/app" />
-            <Route component={Docs} path="/docs" />
-            <Route component={Public} />
-          </Switch>
-          <NotificationDisplay displayType="fixed" />
-        </React.Fragment>
+        <ErrorBoundary>
+          <React.Fragment>
+            <Switch>
+              <Route component={App} path="/app" />
+              <Route component={Docs} path="/docs" />
+              <Route component={Public} />
+            </Switch>
+            <NotificationDisplay displayType="fixed" />
+          </React.Fragment>
+        </ErrorBoundary>
       </I18nProvider>
     </ConnectedRouter>
   </ReduxProvider>,
