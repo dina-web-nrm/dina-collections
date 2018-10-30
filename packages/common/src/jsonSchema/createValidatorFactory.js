@@ -2,17 +2,18 @@ const objectPath = require('object-path')
 const Ajv = require('ajv')
 
 module.exports = function createValidatorFactory({ models }) {
+const defaultOptions = {
+  // errorDataPath: 'property',
+  allErrors: true,
+  format: 'full',
+  jsonPointers: true, // -> /members/0
+  logger: false,
+  useDefaults: true, // e.g.to may have default empty array
+  verbose: false, // to have information about the error.parentSchema
+}
+
   const rawModels = JSON.parse(JSON.stringify(models))
 
-  const defaultOptions = {
-    // errorDataPath: 'property',
-    allErrors: true,
-    format: 'full',
-    jsonPointers: true, // -> /members/0
-    logger: false,
-    useDefaults: true, // e.g.to may have default empty array
-    verbose: false, // to have information about the error.parentSchema
-  }
 
   const createAjv = options => {
     const ajv = new Ajv({ ...options, format: 'full' })
