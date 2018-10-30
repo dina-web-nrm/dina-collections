@@ -146,7 +146,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
             >
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -158,7 +157,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="home icon"
                   />
                   <a
-                    aria-current="true"
+                    aria-current="page"
                     className="active"
                     href="/"
                     onClick={[Function]}
@@ -170,7 +169,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -182,11 +180,9 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="user icon"
                   />
                   <a
-                    aria-current={false}
-                    className={undefined}
+                    aria-current={null}
                     href="/login"
                     onClick={[Function]}
-                    style={undefined}
                   >
                     Login
                   </a>
@@ -194,7 +190,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -206,11 +201,9 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="database icon"
                   />
                   <a
-                    aria-current={false}
-                    className={undefined}
+                    aria-current={null}
                     href="/docs"
                     onClick={[Function]}
-                    style={undefined}
                   >
                     Data model
                   </a>
@@ -232,7 +225,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
             >
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -252,7 +244,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -264,11 +255,9 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="database icon"
                   />
                   <a
-                    aria-current={false}
-                    className={undefined}
+                    aria-current={null}
                     href="/docs"
                     onClick={[Function]}
-                    style={undefined}
                   >
                     Data model
                   </a>
@@ -290,7 +279,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
             >
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -310,7 +298,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -330,7 +317,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -350,7 +336,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -370,7 +355,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -390,7 +374,6 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
               </div>
               <div
                 className="item"
-                data-value={undefined}
                 onClick={[Function]}
                 role="listitem"
               >
@@ -429,7 +412,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
     }
   >
     <a
-      aria-current={false}
+      aria-current={null}
       className="item"
       href="/app"
       onClick={[Function]}
@@ -448,7 +431,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       </span>
     </a>
     <a
-      aria-current={false}
+      aria-current={null}
       className="item"
       href="/app/mammals/register"
       onClick={[Function]}
@@ -467,7 +450,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       </span>
     </a>
     <a
-      aria-current={false}
+      aria-current={null}
       className="item"
       href="/app/mammals/lookup"
       onClick={[Function]}
@@ -486,7 +469,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       </span>
     </a>
     <a
-      aria-current={false}
+      aria-current={null}
       className="item push bottom"
       href="/app/settings"
       onClick={[Function]}
@@ -695,17 +678,13 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
             checked={false}
             className="hidden"
             disabled={false}
-            id={undefined}
             name="test"
             onClick={[Function]}
             readOnly={true}
             tabIndex={0}
             type="checkbox"
-            value={undefined}
           />
-          <label
-            htmlFor={undefined}
-          />
+          <label />
         </div>
       </div>
     </div>
@@ -778,7 +757,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -829,7 +807,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -879,7 +856,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -939,7 +915,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -990,7 +965,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1040,7 +1014,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1305,7 +1278,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1356,7 +1328,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1406,7 +1377,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1498,7 +1468,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1549,7 +1518,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1599,7 +1567,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1671,7 +1638,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1722,7 +1688,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1772,7 +1737,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1864,7 +1828,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1915,7 +1878,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -1965,7 +1927,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -2025,7 +1986,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -2076,7 +2036,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -2126,7 +2085,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -2391,7 +2349,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1900}
               />
@@ -2442,7 +2399,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={12}
               />
@@ -2492,7 +2448,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={24}
               />
@@ -2587,7 +2542,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1899}
               />
@@ -2638,7 +2592,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1}
               />
@@ -2688,7 +2641,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1}
               />
@@ -2760,7 +2712,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1900}
               />
@@ -2811,7 +2762,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={12}
               />
@@ -2861,7 +2811,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={24}
               />
@@ -2961,7 +2910,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1899}
               />
@@ -3012,7 +2960,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1}
               />
@@ -3062,7 +3009,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1}
               />
@@ -3122,7 +3068,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={1900}
               />
@@ -3173,7 +3118,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={12}
               />
@@ -3223,7 +3167,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value={24}
               />
@@ -3305,8 +3248,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={true}
             className="hidden"
-            disabled={undefined}
-            id={undefined}
             name="radioGroup"
             onClick={[Function]}
             readOnly={true}
@@ -3314,9 +3255,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             type="radio"
             value="single"
           />
-          <label
-            htmlFor={undefined}
-          >
+          <label>
             single
           </label>
         </div>
@@ -3329,8 +3268,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={false}
             className="hidden"
-            disabled={undefined}
-            id={undefined}
             name="radioGroup"
             onClick={[Function]}
             readOnly={true}
@@ -3338,9 +3275,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             type="radio"
             value="range"
           />
-          <label
-            htmlFor={undefined}
-          >
+          <label>
             range
           </label>
         </div>
@@ -3353,8 +3288,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={false}
             className="hidden"
-            disabled={undefined}
-            id={undefined}
             name="radioGroup"
             onClick={[Function]}
             readOnly={true}
@@ -3362,9 +3295,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             type="radio"
             value="latest"
           />
-          <label
-            htmlFor={undefined}
-          >
+          <label>
             latest
           </label>
         </div>
@@ -3421,7 +3352,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -3472,7 +3402,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -3522,7 +3451,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -3582,7 +3510,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -3633,7 +3560,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -3683,7 +3609,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                tabIndex={undefined}
                 type="number"
                 value=""
               />
@@ -3765,7 +3690,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              tabIndex={undefined}
               type="number"
               value=""
             />
@@ -3816,7 +3740,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              tabIndex={undefined}
               type="number"
               value=""
             />
@@ -3866,7 +3789,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              tabIndex={undefined}
               type="number"
               value=""
             />
@@ -3933,7 +3855,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              tabIndex={undefined}
               type="number"
               value={1801}
             />
@@ -3984,7 +3905,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              tabIndex={undefined}
               type="number"
               value={12}
             />
@@ -4034,7 +3954,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              tabIndex={undefined}
               type="number"
               value={24}
             />
@@ -4264,10 +4183,7 @@ exports[`storyshots Storyshots coreModules/i18n/LanguageSelect Default 1`] = `
       className="ui green segment"
     >
       <div
-        aria-busy={undefined}
-        aria-disabled={undefined}
         aria-expanded={false}
-        aria-multiselectable={undefined}
         className="ui button floating labeled dropdown icon"
         onBlur={[Function]}
         onChange={[Function]}
@@ -4294,7 +4210,6 @@ exports[`storyshots Storyshots coreModules/i18n/LanguageSelect Default 1`] = `
         >
           <div
             aria-checked={true}
-            aria-disabled={undefined}
             aria-selected={true}
             className="active selected item"
             onClick={[Function]}
@@ -4313,7 +4228,6 @@ exports[`storyshots Storyshots coreModules/i18n/LanguageSelect Default 1`] = `
           </div>
           <div
             aria-checked={false}
-            aria-disabled={undefined}
             aria-selected={false}
             className="item"
             onClick={[Function]}
@@ -4351,10 +4265,7 @@ exports[`storyshots Storyshots coreModules/i18n/LanguageSelect Green color 1`] =
       className="ui green segment"
     >
       <div
-        aria-busy={undefined}
-        aria-disabled={undefined}
         aria-expanded={false}
-        aria-multiselectable={undefined}
         className="ui button floating labeled dropdown icon green"
         onBlur={[Function]}
         onChange={[Function]}
@@ -4381,7 +4292,6 @@ exports[`storyshots Storyshots coreModules/i18n/LanguageSelect Green color 1`] =
         >
           <div
             aria-checked={true}
-            aria-disabled={undefined}
             aria-selected={true}
             className="active selected item"
             onClick={[Function]}
@@ -4400,7 +4310,6 @@ exports[`storyshots Storyshots coreModules/i18n/LanguageSelect Green color 1`] =
           </div>
           <div
             aria-checked={false}
-            aria-disabled={undefined}
             aria-selected={false}
             className="item"
             onClick={[Function]}
@@ -4746,7 +4655,6 @@ exports[`storyshots Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay De
 exports[`storyshots Storyshots coreModules/layout/ColumnLayout One full-width column 1`] = `
 <div>
   <div
-    className={undefined}
     style={
       Object {
         "display": "flex",
@@ -4754,7 +4662,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout One full-width co
     }
   >
     <div
-      className={undefined}
       style={
         Object {
           "flex": "none",
@@ -4788,7 +4695,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
     }
   >
     <div
-      className={undefined}
       style={
         Object {
           "display": "flex",
@@ -4796,7 +4702,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
       }
     >
       <div
-        className={undefined}
         style={
           Object {
             "flex": "none",
@@ -4817,7 +4722,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
         </div>
       </div>
       <div
-        className={undefined}
         style={
           Object {
             "flex": "auto",
@@ -4839,7 +4743,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
         </div>
       </div>
       <div
-        className={undefined}
         style={
           Object {
             "flex": "none",
@@ -4867,7 +4770,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
 exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with fixed widths 1`] = `
 <div>
   <div
-    className={undefined}
     style={
       Object {
         "display": "flex",
@@ -4875,7 +4777,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
     }
   >
     <div
-      className={undefined}
       style={
         Object {
           "flex": "none",
@@ -4896,7 +4797,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
       </div>
     </div>
     <div
-      className={undefined}
       style={
         Object {
           "flex": "none",
@@ -4923,7 +4823,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
 exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with relative widths 1`] = `
 <div>
   <div
-    className={undefined}
     style={
       Object {
         "display": "flex",
@@ -4931,7 +4830,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
     }
   >
     <div
-      className={undefined}
       style={
         Object {
           "flex": "none",
@@ -4952,7 +4850,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
       </div>
     </div>
     <div
-      className={undefined}
       style={
         Object {
           "flex": "none",
@@ -4979,8 +4876,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
 exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height column (wrapper has height 600px) 1`] = `
 <div>
   <div
-    className={undefined}
-    id={undefined}
     style={
       Object {
         "display": "flex",
@@ -4991,8 +4886,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height colu
     }
   >
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5020,8 +4913,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height colu
 exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one filling the rest (wrapper has height 600px) 1`] = `
 <div>
   <div
-    className={undefined}
-    id={undefined}
     style={
       Object {
         "display": "flex",
@@ -5032,8 +4923,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
     }
   >
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5055,8 +4944,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       </div>
     </div>
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "auto",
@@ -5078,8 +4965,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       </div>
     </div>
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5116,8 +5001,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
     }
   >
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "display": "flex",
@@ -5128,8 +5011,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       }
     >
       <div
-        className={undefined}
-        id={undefined}
         style={
           Object {
             "flex": "none",
@@ -5151,8 +5032,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
         </div>
       </div>
       <div
-        className={undefined}
-        id={undefined}
         style={
           Object {
             "flex": "auto",
@@ -5175,8 +5054,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
         </div>
       </div>
       <div
-        className={undefined}
-        id={undefined}
         style={
           Object {
             "flex": "none",
@@ -5205,8 +5082,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
 exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed heights (wrapper has height 600px) 1`] = `
 <div>
   <div
-    className={undefined}
-    id={undefined}
     style={
       Object {
         "display": "flex",
@@ -5217,8 +5092,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
     }
   >
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5240,8 +5113,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
       </div>
     </div>
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5269,8 +5140,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
 exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relative heights (wrapper has height 600px) 1`] = `
 <div>
   <div
-    className={undefined}
-    id={undefined}
     style={
       Object {
         "display": "flex",
@@ -5281,8 +5150,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relati
     }
   >
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5304,8 +5171,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relati
       </div>
     </div>
     <div
-      className={undefined}
-      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5680,9 +5545,7 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
           >
             <div
               aria-busy={false}
-              aria-disabled={undefined}
               aria-expanded={false}
-              autoComplete={undefined}
               className="ui button fluid multiple search selection dropdown"
               name="searchCollectingLocation"
               onBlur={[Function]}
@@ -5699,7 +5562,6 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
                   "widht": "100%",
                 }
               }
-              tabIndex={undefined}
             >
               <input
                 aria-autocomplete="list"
@@ -5781,7 +5643,6 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
       className="ui green segment"
     >
       <form
-        action={undefined}
         className="ui form"
         onSubmit={[Function]}
       >
@@ -5800,7 +5661,6 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
           >
             <div
               className="ui left icon input"
-              style={undefined}
             >
               <input
                 autoComplete="off"
@@ -5812,7 +5672,6 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
                 onDrop={[Function]}
                 onFocus={[Function]}
                 placeholder="Username"
-                tabIndex={undefined}
                 type="text"
                 value=""
               />
@@ -5834,7 +5693,6 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
           >
             <div
               className="ui left icon input"
-              style={undefined}
             >
               <input
                 autoComplete="off"
@@ -5846,7 +5704,6 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
                 onDrop={[Function]}
                 onFocus={[Function]}
                 placeholder="Password"
-                tabIndex={undefined}
                 type="password"
                 value=""
               />
@@ -6265,7 +6122,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <a
           className="active step"
-          href={undefined}
           onClick={[Function]}
           style={
             Object {
@@ -6294,7 +6150,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </a>
         <a
           className="step"
-          href={undefined}
           onClick={[Function]}
           style={
             Object {
@@ -6323,7 +6178,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </a>
         <a
           className="step"
-          href={undefined}
           onClick={[Function]}
           style={
             Object {
@@ -6413,7 +6267,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <a
           className="active step"
-          href={undefined}
           onClick={[Function]}
           style={
             Object {
@@ -6442,7 +6295,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </a>
         <a
           className="step"
-          href={undefined}
           onClick={[Function]}
           style={
             Object {
@@ -6471,7 +6323,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </a>
         <a
           className="step"
-          href={undefined}
           onClick={[Function]}
           style={
             Object {
@@ -6566,10 +6417,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -6612,7 +6461,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50001}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={50001}
           />
@@ -6640,10 +6488,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -6653,10 +6499,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -6690,10 +6534,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -6702,10 +6544,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           </button>
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -6736,7 +6576,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={30000}
           />
@@ -6764,10 +6603,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -6777,10 +6614,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -6814,10 +6649,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -6826,10 +6659,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           </button>
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -6860,7 +6691,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={30000}
           />
@@ -6888,10 +6718,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -6901,10 +6729,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -6950,10 +6776,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           </button>
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -6984,7 +6808,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={1}
           />
@@ -7012,10 +6835,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7025,10 +6846,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7062,10 +6881,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7108,7 +6925,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={50000}
           />
@@ -7136,10 +6952,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7149,10 +6963,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7186,10 +6998,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7198,10 +7008,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           </button>
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7232,7 +7040,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={30001}
           />
@@ -7260,10 +7067,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7273,10 +7078,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7310,10 +7113,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7322,10 +7123,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           </button>
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7356,7 +7155,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={30000}
           />
@@ -7384,10 +7182,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7397,10 +7193,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7562,10 +7356,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7574,10 +7366,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           </button>
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7608,7 +7398,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={29999}
           />
@@ -7636,10 +7425,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7649,10 +7436,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7686,10 +7471,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7698,10 +7481,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           </button>
           <button
             className="ui icon button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
           >
             <i
               aria-hidden="true"
@@ -7732,7 +7513,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             max={50000}
             min={1}
             onChange={[Function]}
-            tabIndex={undefined}
             type="number"
             value={30000}
           />
@@ -7760,10 +7540,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
@@ -7773,10 +7551,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         </button>
         <button
           className="ui tiny icon button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
