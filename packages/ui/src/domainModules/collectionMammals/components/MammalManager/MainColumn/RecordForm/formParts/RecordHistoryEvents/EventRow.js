@@ -11,7 +11,7 @@ const propTypes = {
 }
 
 const defaultProps = {
-  username: '',
+  username: undefined,
 }
 
 class EventRow extends PureComponent {
@@ -19,11 +19,11 @@ class EventRow extends PureComponent {
     const { actionType, timestamp, username } = this.props
 
     const eventTimestamp = getYMDHMSFromTimestamp(timestamp)
-    return (
-      <Grid.Column width={10}>
-        {actionType} {username} {eventTimestamp}
-      </Grid.Column>
-    )
+    const eventRow = username
+      ? `${actionType} ${username} ${eventTimestamp}`
+      : `${actionType} ${eventTimestamp}`
+
+    return <Grid.Column width={10}>{eventRow}</Grid.Column>
   }
 }
 
