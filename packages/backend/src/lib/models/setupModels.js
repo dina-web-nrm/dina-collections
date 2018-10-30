@@ -1,5 +1,4 @@
 const createLog = require('../../utilities/log')
-const synchronizeModels = require('./synchronizeModels')
 const createModels = require('./createModels')
 const createRelations = require('./createRelations')
 
@@ -25,16 +24,9 @@ module.exports = function setupModels({
       services,
     }).then(({ modelArray, modelObject: models }) => {
       log.info('Setup relations:')
-      return createRelations({ modelArray, models })
-        .then(() => {
-          return synchronizeModels({
-            config,
-            modelArray,
-          })
-        })
-        .then(() => {
-          return { models }
-        })
+      return createRelations({ modelArray, models }).then(() => {
+        return { models }
+      })
     })
   })
 }
