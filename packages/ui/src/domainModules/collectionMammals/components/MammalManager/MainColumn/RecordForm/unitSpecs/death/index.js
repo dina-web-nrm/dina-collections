@@ -11,7 +11,6 @@ const parts = [
   {
     componentName: 'Checkbox',
     componentProps: {
-      columnProps: { width: 12 },
       inline: true,
       textKey: 'diedAtColleting',
     },
