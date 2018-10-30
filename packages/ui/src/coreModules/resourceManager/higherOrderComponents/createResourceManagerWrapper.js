@@ -22,6 +22,7 @@ import {
   ITEM_SELECT,
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
+  NAVIGATE_LIST,
   PICKER_CLOSE,
   PICKER_PICK_ITEM,
 } from 'coreModules/resourceManager/constants'
@@ -473,7 +474,10 @@ const createResourceManagerWrapper = (
     }
 
     handleUpdateFilterValues(filters = {}) {
-      const { resource } = this.props
+      const { resource, tableActive } = this.props
+      if (!tableActive) {
+        this.props.onInteraction(NAVIGATE_LIST)
+      }
       this.props.setFilterValues(filters, { resource })
     }
 
@@ -665,7 +669,6 @@ const createResourceManagerWrapper = (
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),
       })
-      this.resetFilters()
     }
 
     viewUpdateTreeView(prevProps) {
@@ -710,6 +713,7 @@ const createResourceManagerWrapper = (
     }
     transitionToTreeView() {
       log.debug('transition to view: Tree')
+      this.resetFilters()
       const { focusedItemId, resource } = this.props
       if (focusedItemId) {
         this.props.setFocusIdWhenLoaded(focusedItemId, { resource })

@@ -11,13 +11,14 @@ export default function createTagSpecification({
   const tagValuesAggregation = ({ input = {}, sectionValues }) => {
     const selectedTagTypes = sectionValues && sectionValues.tagTypes
 
-    const { tagType: tagInputType, tagValue, limit = 10 } = input
+    const { exact, tagType: tagInputType, tagValue, limit = 10 } = input
 
     const tagTypes = tagInputType ? [tagInputType] : selectedTagTypes
 
     return {
       aggregationFunction: tagValuesAggregationFunctionName,
       input: {
+        exact,
         limit,
         tagTypes: includeTagTypesInAggregation ? tagTypes : undefined,
         tagValue,

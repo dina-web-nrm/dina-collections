@@ -137,7 +137,7 @@ class SearchPreview extends Component {
             <Segment
               style={{ background: 'white', height: 300, overflowY: 'scroll' }}
             >
-              {!displayPreview && <p> Preview</p>}
+              {!displayPreview && <p> preview (top 50 matches)</p>}
               {!displayPreview
                 ? null
                 : previews.map(item => {
