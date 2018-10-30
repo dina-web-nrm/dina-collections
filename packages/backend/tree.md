@@ -7,6 +7,7 @@
 ├── documentation
 │   └── terminology
 ├── index.js
+├── package-lock.json
 ├── package.json
 ├── src
 │   ├── apps
@@ -18,9 +19,7 @@
 │   ├── tree.md
 │   └── utilities
 ├── todo
-├── tree.md
-├── yarn-error.log
-└── yarn.lock
+└── tree.md
 
 ```
 

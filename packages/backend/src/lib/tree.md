@@ -4,8 +4,6 @@
 ├── app
 │   ├── index.js
 │   └── middlewares
-│       ├── authenticate
-│       │   └── index.js
 │       ├── docs
 │       │   ├── index.html
 │       │   └── index.js
@@ -13,7 +11,9 @@
 │       ├── logIncoming.js
 │       └── pingRoute.js
 ├── auth
-│   └── index.js
+│   ├── createUser.js
+│   ├── index.js
+│   └── middleware.js
 ├── bootstrap
 │   └── index.js
 ├── config
@@ -30,6 +30,7 @@
 │   └── index.js
 ├── controllers
 │   ├── crud
+│   │   ├── bulkCreate.js
 │   │   ├── create.js
 │   │   ├── del.js
 │   │   ├── getMany.js
@@ -54,6 +55,7 @@
 │   │   ├── setJobFailed.js
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
+│   ├── relationshipsUtilities
 │   ├── utilities
 │   │   ├── applyHooks
 │   │   │   └── index.js
@@ -65,6 +67,7 @@
 │   │   │   ├── buildIncludeArray.js
 │   │   │   ├── buildIncludeArray.spec.js
 │   │   │   ├── extractRelationships
+│   │   │   ├── fetchJsonExternalRelationships
 │   │   │   ├── getFormatOutput.js
 │   │   │   ├── getJsonRelationship
 │   │   │   ├── getSqlRelationship
@@ -75,6 +78,7 @@
 │   │   │   ├── createObjectResponse.js
 │   │   │   ├── createRelationshipsArrayResponse.js
 │   │   │   ├── createRelationshipsObjectResponse.js
+│   │   │   ├── inputArray.js
 │   │   │   ├── inputObject.js
 │   │   │   ├── outputArray.js
 │   │   │   └── outputObject.js
@@ -102,6 +106,9 @@
 │   ├── aggregations
 │   │   ├── factories
 │   │   │   ├── createStringAggregation.js
+│   │   │   ├── createTagTypeAggregation.js
+│   │   │   ├── createTagValueAggregation.js
+│   │   │   ├── createTextPreviewAggregation.js
 │   │   │   └── index.js
 │   │   └── schemas
 │   │       ├── aggregation.js
@@ -121,9 +128,14 @@
 │   ├── filters
 │   │   ├── factories
 │   │   │   ├── createEqualFilter.js
+│   │   │   ├── createFeatureRangeFilter.js
+│   │   │   ├── createForeignKeyMatchFilter.js
 │   │   │   ├── createNumberRangeFilter.js
 │   │   │   ├── createStringMatchFilter.js
 │   │   │   ├── createStringSearchFilter.js
+│   │   │   ├── createTagMatchFilter.js
+│   │   │   ├── createTagSearchFilter.js
+│   │   │   ├── createTextSearch
 │   │   │   └── index.js
 │   │   ├── schemas
 │   │   │   ├── filter.js
@@ -145,8 +157,6 @@
 │   │       ├── createGetManyFilterSpecifications.js
 │   │       └── createGetOneFilterSpecifications.js
 │   ├── hooks
-│   │   ├── factories
-│   │   │   └── createRegisterResourceActivityHook.js
 │   │   └── sharedHooks
 │   │       └── ensureNoCircularAncestorsPreHook.js
 │   ├── interceptors
@@ -156,11 +166,13 @@
 │   ├── mappings
 │   │   ├── factories
 │   │   │   ├── createDateMapping.js
+│   │   │   ├── createFeatureRangeMapping.js
 │   │   │   ├── createIntegerMapping.js
 │   │   │   ├── createKeywordAndRawMapping.js
 │   │   │   ├── createKeywordMapping.js
 │   │   │   ├── createNestedMapping.js
 │   │   │   ├── createNumberMapping.js
+│   │   │   ├── createValueTagMapping.js
 │   │   │   └── index.js
 │   │   └── utilities
 │   │       └── extractMappingsFromFieldSpecification.js
@@ -260,6 +272,7 @@
 │       └── parseFilterValue.js
 ├── operations
 │   ├── crudOperations
+│   │   ├── bulkCreate.js
 │   │   ├── create.js
 │   │   ├── del.js
 │   │   ├── getMany.js
@@ -269,6 +282,7 @@
 │   │   ├── query.js
 │   │   ├── schemas
 │   │   │   ├── base.js
+│   │   │   ├── bulkCreate.js
 │   │   │   ├── create.js
 │   │   │   ├── del.js
 │   │   │   ├── getMany.js

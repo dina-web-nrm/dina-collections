@@ -23,12 +23,12 @@
 │   ├── lcov-report
 │   └── lcov.info
 ├── nginx.conf
+├── package-lock.json
 ├── package.json
 ├── public
 │   ├── favicon.ico
 │   ├── index.html
 │   └── manifest.json
-├── sample.config.scripts.js
 ├── src
 │   ├── apps
 │   ├── config
@@ -38,6 +38,7 @@
 │   ├── mock
 │   ├── registerServiceWorker.js
 │   ├── scripts
+│   ├── setupProxy.js
 │   ├── setupTests.js
 │   ├── snippets
 │   ├── store
@@ -45,10 +46,11 @@
 │   ├── test
 │   ├── tree.md
 │   └── utilities
+├── storybook-static
+│   └── static
 ├── test
 │   └── __mocks__
-├── tree.md
-└── yarn.lock
+└── tree.md
 
 ```
 

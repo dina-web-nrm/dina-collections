@@ -61,6 +61,8 @@
 │   └── index.js
 ├── chainPromises
 │   └── index.js
+├── coordinatesConverter
+│   └── index.js
 ├── createDeleteProperties
 │   ├── index.js
 │   └── index.test.js

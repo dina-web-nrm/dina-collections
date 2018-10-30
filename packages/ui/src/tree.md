@@ -16,6 +16,7 @@
 │   ├── documentation
 │   ├── error
 │   ├── form
+│   ├── formSupport
 │   ├── i18n
 │   ├── index.js
 │   ├── keyboardShortcuts
@@ -50,6 +51,7 @@
 │   ├── mockFs
 │   ├── snippets
 │   └── storybook
+├── setupProxy.js
 ├── setupTests.js
 ├── snippets
 │   ├── enhance-default-export-with-compose.js
@@ -60,7 +62,6 @@
 │   ├── import-named-export.js
 │   ├── import-namespace.js
 │   ├── print-to-console.js
-│   ├── private
 │   └── test-setup-test-reducer.js
 ├── store
 │   └── index.js

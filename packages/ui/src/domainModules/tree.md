@@ -46,8 +46,6 @@
 │   ├── components
 │   │   ├── CatalogNumberModal
 │   │   │   └── index.js
-│   │   ├── MammalForm
-│   │   │   └── SegmentEvents
 │   │   ├── MammalManager
 │   │   │   ├── FilterColumn
 │   │   │   ├── MainColumn
@@ -68,9 +66,17 @@
 │       └── index.js
 ├── curatedList
 │   ├── components
+│   │   ├── CauseOfDeathDropdownSearch
+│   │   │   └── index.js
+│   │   ├── EstablishmentMeansTypeRadioGroup
+│   │   │   └── index.js
 │   │   ├── FeatureObservationDropdownSearch
 │   │   │   └── index.js
 │   │   ├── PreparationTypeDropdownSearch
+│   │   │   └── index.js
+│   │   ├── TypeSpecimenTypeDropdownSearch
+│   │   │   └── index.js
+│   │   ├── formParts
 │   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
@@ -82,6 +88,8 @@
 ├── index.js
 ├── locality
 │   ├── components
+│   │   ├── GeographicLevelDropdown
+│   │   │   └── index.js
 │   │   ├── LocalityDropdownPickerSearch
 │   │   │   └── index.js
 │   │   ├── LocalityDropdownSearch
@@ -93,6 +101,8 @@
 │   │   │   ├── filter
 │   │   │   ├── item
 │   │   │   └── tableColumnSpecifications.js
+│   │   ├── formParts
+│   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
@@ -108,6 +118,8 @@
 │   │   │   └── index.js
 │   │   ├── StorageLocationDropdownSearch
 │   │   │   └── index.js
+│   │   ├── StorageLocationLevelDropdown
+│   │   │   └── index.js
 │   │   ├── StorageLocationManager
 │   │   │   ├── Base.js
 │   │   │   ├── Local.js
@@ -115,6 +127,10 @@
 │   │   │   ├── filter
 │   │   │   ├── item
 │   │   │   └── tableColumnSpecifications.js
+│   │   ├── formParts
+│   │   │   ├── PreparationTypesTable
+│   │   │   ├── TaxaTable
+│   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
@@ -129,6 +145,12 @@
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── AcceptedTaxonNameDropdownPickerSearch
+│   │   │   └── index.js
+│   │   ├── RankDropdown
+│   │   │   └── index.js
+│   │   ├── ScientificNamesTable
+│   │   │   ├── NewTaxonNameRow.js
+│   │   │   ├── TaxonNameRow.js
 │   │   │   └── index.js
 │   │   ├── TaxonDropdownPickerSearch
 │   │   │   └── index.js
@@ -153,6 +175,17 @@
 │   │   │   ├── filter
 │   │   │   ├── item
 │   │   │   └── tableColumnSpecifications.js
+│   │   ├── TaxonNameResult
+│   │   │   └── index.js
+│   │   ├── TaxonNameTaxonStatus
+│   │   │   └── index.js
+│   │   ├── TogglableAcceptedTaxonNameDropdownPickerSearch
+│   │   │   └── index.js
+│   │   ├── VernacularNamesTable
+│   │   │   ├── Row.js
+│   │   │   └── index.js
+│   │   ├── formParts
+│   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
