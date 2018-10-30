@@ -1,5 +1,6 @@
 const path = require('path')
-const { readKey, readBoolKey } = require('../../lib/config/env')
+const { ensureNodeEnv, readKey, readBoolKey } = require('../../lib/config/env')
+const createPostgresDbConfig = require('./createPostgresDbConfig')
 
 const services = {
   agentService: true,
@@ -41,16 +42,7 @@ const api = {
 }
 
 const initialData = {
-  numberOfSpecimens: 0,
-}
-
-const db = {
-  database: readKey('DB_DATABASE'),
-  flushOnRestart: false,
-  importData: false,
-  password: readKey('DB_PASSWORD'),
-  url: readKey('DB_URL'),
-  username: readKey('DB_USERNAME'),
+  numberOfSpecimens: readKey('IMPORT_DATA_NUMBER_OF_SPECIMENS'),
 }
 
 const auth = {
@@ -82,6 +74,7 @@ const test = {
 }
 
 const env = {
+  env: readKey('NODE_ENV'),
   isDevelopment: readKey('NODE_ENV') === 'development',
   isProduction: readKey('NODE_ENV') === 'production',
   isTest: readKey('NODE_ENV') === 'test',
@@ -94,7 +87,6 @@ const jobs = {
 }
 
 const elasticsearch = {
-  flushOnRestart: false,
   url: readKey('ELASTICSEARCH_URL'),
 }
 
@@ -102,10 +94,9 @@ const fileInteractor = {
   rootPath: path.join(__dirname, '../../../../../userFiles'),
 }
 
-module.exports = {
+const baseConfig = {
   api,
   auth,
-  db,
   elasticsearch,
   env,
   fileInteractor,
@@ -115,4 +106,30 @@ module.exports = {
   log,
   services,
   test,
+}
+
+module.exports = function createBaseConfig({ env: nodeEnv }) {
+  let envConfig = baseConfig
+  ensureNodeEnv(nodeEnv)
+  const db = createPostgresDbConfig({
+    env: readKey('NODE_ENV'),
+  })
+
+  if (env === 'dev') {
+    const disableAuth = readBoolKey('DISABLE_AUTH')
+    if (readBoolKey('DISABLE_AUTH')) {
+      envConfig = {
+        ...envConfig,
+        auth: {
+          ...envConfig.auth,
+          active: !disableAuth,
+        },
+      }
+    }
+  }
+
+  return {
+    ...envConfig,
+    db,
+  }
 }

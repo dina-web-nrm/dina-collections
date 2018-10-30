@@ -8,14 +8,12 @@ const parameterMap = {
   },
   db: {
     database: 'DB_DATABASE',
-    flushOnRestart: 'FLUSH_ON_RESTART',
     importData: 'IMPORT_DATA',
     password: 'DB_PASSWORD',
     url: 'DB_URL',
     username: 'DB_USERNAME',
   },
   elasticsearch: {
-    flushOnRestart: 'FLUSH_ON_RESTART',
     url: 'ELASTICSEARCH_URL',
   },
   env: {

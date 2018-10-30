@@ -1,10 +1,11 @@
-const bootstrap = require('../../../lib/bootstrap')
-const config = require('./config')
+const bootstrapApi = require('../../../lib/bootstrap/bootstrapApi')
 const serviceDefinitions = require('../../../services')
 const serviceOrder = require('../../../services/serviceOrder')
 
-bootstrap({
-  config,
+bootstrapApi({
+  env: 'development',
+  schedulerActive: false,
   serviceDefinitions,
   serviceOrder,
+  workerActive: true,
 })

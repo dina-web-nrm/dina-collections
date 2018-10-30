@@ -1,10 +1,9 @@
-const bootstrap = require('../../../lib/bootstrap')
-const config = require('./config')
+const bootstrapWorker = require('../../../lib/bootstrap/bootstrapWorker')
 const serviceDefinitions = require('../../../services')
 const serviceOrder = require('../../../services/serviceOrder')
 
-bootstrap({
-  config,
+bootstrapWorker({
+  env: 'production',
   serviceDefinitions,
   serviceOrder,
 })
