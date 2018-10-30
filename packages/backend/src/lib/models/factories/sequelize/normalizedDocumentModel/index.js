@@ -4,6 +4,7 @@ const createGetters = require('../utilities/createGetters')
 const createSetters = require('../utilities/createSetters')
 
 module.exports = function createModel({
+  config,
   customMethodFactories,
   loadInitialData,
   name,
@@ -74,6 +75,7 @@ module.exports = function createModel({
     }
   )
   const methods = setupMethods({
+    config,
     customMethodFactories,
     loadInitialData,
     Model,

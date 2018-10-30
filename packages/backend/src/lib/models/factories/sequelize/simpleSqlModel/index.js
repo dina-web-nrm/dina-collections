@@ -3,6 +3,7 @@ const Sequelize = require('sequelize')
 const createGetters = require('./utilities/createGetters')
 
 module.exports = function createModel({
+  config,
   columns,
   indexes = [],
   name,
@@ -42,6 +43,7 @@ module.exports = function createModel({
   )
 
   const methods = setupMethods({
+    config,
     Model,
     schemaModelName,
     schemaVersion,

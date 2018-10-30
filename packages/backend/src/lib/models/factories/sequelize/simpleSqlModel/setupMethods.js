@@ -12,6 +12,7 @@ const updateFactory = require('./methods/updateFactory')
 const updatePrimaryKeyFactory = require('../sharedMethods/updatePrimaryKeyFactory')
 
 module.exports = function setupMethods({
+  config,
   Model,
   schemaModelName,
   schemaVersion,
@@ -34,7 +35,7 @@ module.exports = function setupMethods({
     getOneWhere,
   })
 
-  const synchronize = synchronizeFactory({ Model })
+  const synchronize = synchronizeFactory({ config, Model })
 
   const getCount = getCountFactory({ Model })
 
