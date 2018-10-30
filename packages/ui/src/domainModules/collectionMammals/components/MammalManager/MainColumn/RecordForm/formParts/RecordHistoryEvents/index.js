@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -9,40 +9,42 @@ import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import EventRow from './EventRow'
 
 const mapStateToProps = (state, { formValueSelector, name }) => {
+  const recordHistoryEvents = formValueSelector(state, name)
+
+  if (!recordHistoryEvents || !recordHistoryEvents.length) {
+    return {}
+  }
+
   return {
-    recordHistoryEvents: formValueSelector(state, name),
+    createdEvent: recordHistoryEvents.find(({ action }) => action === 'create'),
+    lastModifiedEvent: recordHistoryEvents.find(
+      ({ action }) => action === 'update'
+    ),
   }
 }
 
 const propTypes = {
+  createdEvent: PropTypes.object,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
-  recordHistoryEvents: PropTypes.arrayOf(
-    PropTypes.shape({
-      action: PropTypes.string,
-      srcCreatedAt: PropTypes.string,
-      srcUpdatedAt: PropTypes.string,
-      username: PropTypes.string,
-    })
-  ),
+  lastModifiedEvent: PropTypes.object,
 }
 const defaultProps = {
-  recordHistoryEvents: [],
+  createdEvent: undefined,
+  lastModifiedEvent: undefined,
 }
 
-class RecordHistoryEvents extends Component {
+class RecordHistoryEvents extends PureComponent {
   render() {
-    const { i18n: { moduleTranslate }, recordHistoryEvents } = this.props
+    const {
+      createdEvent,
+      lastModifiedEvent,
+      i18n: { moduleTranslate },
+    } = this.props
 
-    const createdEvent = recordHistoryEvents.find(
-      ({ action }) => action === 'create'
-    )
-    const lastModifiedEvent = recordHistoryEvents.find(
-      ({ action }) => action === 'update'
-    )
+    const hasEvents = createdEvent || lastModifiedEvent
 
-    const hasEvents = recordHistoryEvents.length > 0
     return (
       <Grid.Column width={16}>
         {hasEvents && (
