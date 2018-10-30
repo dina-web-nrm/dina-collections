@@ -49,6 +49,15 @@ Object.defineProperty(exports, 'getTimestampFromYMD', {
   }
 });
 
+var _getYMDHMSFromTimestamp = require('./getYMDHMSFromTimestamp');
+
+Object.defineProperty(exports, 'getYMDHMSFromTimestamp', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_getYMDHMSFromTimestamp).default;
+  }
+});
+
 var _getYYYYMMDDFromTimestamp = require('./getYYYYMMDDFromTimestamp');
 
 Object.defineProperty(exports, 'getYYYYMMDDFromTimestamp', {

@@ -32,7 +32,7 @@
     "userId": {
       "type": "string"
     },
-    "userName": {
+    "username": {
       "type": "string"
     },
     "requestId": {

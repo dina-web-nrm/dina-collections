@@ -7,7 +7,7 @@ import BaseForm from './Base'
 
 const mapStateToProps = state => {
   return {
-    userName: userSelectors.getUserName(state),
+    username: userSelectors.getUserName(state),
   }
 }
 
@@ -23,7 +23,7 @@ const propTypes = {
   isInStorage: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
-  userName: PropTypes.string,
+  username: PropTypes.string,
 }
 const defaultProps = {
   agent: undefined,
@@ -33,7 +33,7 @@ const defaultProps = {
   date: undefined,
   inventoryStatusRemarks: undefined,
   isInStorage: undefined,
-  userName: undefined,
+  username: undefined,
 }
 
 export class EditCuratorialAssessment extends PureComponent {

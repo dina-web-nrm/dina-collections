@@ -9,7 +9,7 @@ import BaseForm from './Base'
 
 const mapStateToProps = state => {
   return {
-    userName: userSelectors.getUserName(state),
+    username: userSelectors.getUserName(state),
   }
 }
 
@@ -17,10 +17,10 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   fieldName: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
-  userName: PropTypes.string,
+  username: PropTypes.string,
 }
 const defaultProps = {
-  userName: undefined,
+  username: undefined,
 }
 
 export class CreateCuratorialAssessment extends PureComponent {
@@ -29,7 +29,7 @@ export class CreateCuratorialAssessment extends PureComponent {
       changeFieldValue,
       fieldName,
       onClose: handleClose,
-      userName,
+      username,
       ...rest
     } = this.props
 

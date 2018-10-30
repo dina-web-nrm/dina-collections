@@ -14,6 +14,7 @@ import physicalObjectsRoot from './physicalObjectsRoot'
 import physicalObjectsSkeleton from './physicalObjectsSkeleton'
 import physicalObjectsSkin from './physicalObjectsSkin'
 import physicalObjectsWetPreparation from './physicalObjectsWetPreparation'
+import recordHistoryEvents from './recordHistoryEvents'
 import recordHistoryExternalEvents from './recordHistoryExternalEvents'
 import specimenRoot from './specimenRoot'
 import taxonomyRoot from './taxonomyRoot'
@@ -38,6 +39,7 @@ export default {
   physicalObjectsSkeleton,
   physicalObjectsSkin,
   physicalObjectsWetPreparation,
+  recordHistoryEvents,
   recordHistoryExternalEvents,
   specimenRoot,
   taxonomyRoot,

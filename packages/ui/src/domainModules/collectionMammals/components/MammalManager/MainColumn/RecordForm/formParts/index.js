@@ -10,6 +10,7 @@ import DeterminationsAccordion from './DeterminationsAccordion'
 import FeatureObservations from './FeatureObservations'
 import IdentifiersTable from './IdentifiersTable'
 import PhysicalObjectsAccordion from './PhysicalObjectsAccordion'
+import RecordHistoryEvents from './RecordHistoryEvents'
 import RecordHistoryExternalEvents from './RecordHistoryExternalEvents'
 import SelectiveBreeding from './SelectiveBreeding'
 
@@ -24,6 +25,7 @@ export default {
   FeatureObservations,
   IdentifiersTable,
   PhysicalObjectsAccordion,
+  RecordHistoryEvents,
   RecordHistoryExternalEvents,
   SelectiveBreeding,
 }

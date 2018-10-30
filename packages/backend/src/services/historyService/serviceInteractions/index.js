@@ -24,7 +24,7 @@ const createResourceActivity = ({
     service,
     srcSchemaVersion: internals.schemaVersion,
     userId: user && user.id,
-    userName: user && user.name,
+    username: user && user.name,
   }
   if (internals.createdAt) {
     attributes.srcCreatedAt = formatAsTimestamp(internals.createdAt)
