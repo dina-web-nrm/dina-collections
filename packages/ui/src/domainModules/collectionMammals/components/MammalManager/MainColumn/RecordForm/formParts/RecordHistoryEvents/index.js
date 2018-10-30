@@ -26,11 +26,17 @@ const mapStateToProps = (state, { formValueSelector, name }) => {
 }
 
 const propTypes = {
-  createdEvent: PropTypes.object,
+  createdEvent: PropTypes.shape({
+    srcCreatedAt: PropTypes.string,
+    username: PropTypes.string,
+  }),
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
-  lastModifiedEvent: PropTypes.object,
+  lastModifiedEvent: PropTypes.shape({
+    srcUpdatedAt: PropTypes.string,
+    username: PropTypes.string,
+  }),
   module: PropTypes.string.isRequired,
 }
 const defaultProps = {
