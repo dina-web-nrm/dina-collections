@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Grid, Header } from 'semantic-ui-react'
 
+import formParts from 'coreModules/form/components/parts'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 import EventRow from './EventRow'
+
+const { TranslatedHeader } = formParts
 
 const mapStateToProps = (state, { formValueSelector, name }) => {
   const recordHistoryEvents = formValueSelector(state, name)
@@ -29,6 +31,7 @@ const propTypes = {
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
   lastModifiedEvent: PropTypes.object,
+  module: PropTypes.string.isRequired,
 }
 const defaultProps = {
   createdEvent: undefined,
@@ -41,19 +44,19 @@ class RecordHistoryEvents extends PureComponent {
       createdEvent,
       lastModifiedEvent,
       i18n: { moduleTranslate },
+      module,
     } = this.props
 
     const hasEvents = createdEvent || lastModifiedEvent
 
     return (
-      <Grid.Column width={16}>
+      <React.Fragment>
         {hasEvents && (
-          <Header as="h3">
-            {moduleTranslate({
-              capitalize: true,
-              textKey: 'headers.recordHistory',
-            })}
-          </Header>
+          <TranslatedHeader
+            as="h3"
+            module={module}
+            textKey="headers.recordHistory"
+          />
         )}
 
         {createdEvent && (
@@ -77,7 +80,7 @@ class RecordHistoryEvents extends PureComponent {
             username={lastModifiedEvent.username}
           />
         )}
-      </Grid.Column>
+      </React.Fragment>
     )
   }
 }
