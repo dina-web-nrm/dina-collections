@@ -23,7 +23,7 @@ class EventRow extends PureComponent {
       ? `${actionType} ${username} ${eventTimestamp}`
       : `${actionType} ${eventTimestamp}`
 
-    return <Grid.Column width={10}>{eventRow}</Grid.Column>
+    return <Grid.Column width={16}>{eventRow}</Grid.Column>
   }
 }
 
