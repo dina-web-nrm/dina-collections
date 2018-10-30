@@ -43,6 +43,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^22.1.4",
+    "memwatch-next": "^0.3.0",
     "nodemon": "^1.14.12",
     "prettier": "1.8.2"
   },
