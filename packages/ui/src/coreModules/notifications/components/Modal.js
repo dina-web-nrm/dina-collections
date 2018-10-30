@@ -62,7 +62,7 @@ export const NotificationModal = ({
           {linkTextKey &&
             linkTo && (
               <p key="link">
-                <a href={linkTo} target="_blank">
+                <a href={linkTo} rel="noopener noreferrer" target="_blank">
                   <Translate textKey={linkTextKey} />
                 </a>
               </p>
