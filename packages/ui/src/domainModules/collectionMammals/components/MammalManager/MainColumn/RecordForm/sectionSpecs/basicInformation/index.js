@@ -4,6 +4,7 @@ const {
   specimenRoot,
   identifiers,
   acquisition,
+  recordHistoryEvents,
   recordHistoryExternalEvents,
 } = unitSpecs
 
@@ -12,6 +13,7 @@ const units = [
   identifiers,
   acquisition,
   recordHistoryExternalEvents,
+  recordHistoryEvents,
 ]
 
 export default {

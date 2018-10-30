@@ -76,7 +76,7 @@
     },
     "collectingInformation": {
       "collectedByAgent": {
-        "en": "Collected by (agent)",
+        "en": "Interpreted name or agent",
         "textV": {
           "en": "Collected by (stated)"
         }
@@ -1090,6 +1090,10 @@
       "en": "Cancel",
       "sv": "Avbryt"
     },
+    "createdBy": {
+      "en": "Created by",
+      "sv": ""
+    },
     "createNewSpecimen": {
       "en": "Creating a new specimen record",
       "sv": ""
@@ -1154,6 +1158,10 @@
     },
     "id": {
       "en": "id"
+    },
+    "lastModifiedBy": {
+      "en": "Last modified by",
+      "sv": ""
     },
     "latitude": {
       "en": "Latitude",
@@ -1279,7 +1287,7 @@
     "unit": {
       "en": "Unit",
       "sv": "Enhet"
-    },
+    }, 
     "value": {
       "en": "Value",
       "sv": "Värde"
