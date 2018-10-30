@@ -22,6 +22,7 @@
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── coordinatesConverter
 │   ├── createDeleteProperties
 │   ├── createLid
 │   ├── date
@@ -42,6 +43,7 @@
 │   ├── stringFormatters
 │   ├── testUtilities
 │   └── tree.md
+├── package-lock.json
 ├── package.json
 ├── src
 │   ├── Dependor
@@ -51,6 +53,7 @@
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── coordinatesConverter
 │   ├── createDeleteProperties
 │   ├── createLid
 │   ├── date
@@ -71,8 +74,7 @@
 │   ├── stringFormatters
 │   ├── testUtilities
 │   └── tree.md
-├── tree.md
-└── yarn.lock
+└── tree.md
 
 ```
 

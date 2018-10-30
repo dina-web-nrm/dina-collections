@@ -65,6 +65,18 @@
 │       │   ├── data
 │       │   └── index.js
 │       └── index.js
+├── historyService
+│   ├── index.js
+│   ├── info
+│   │   ├── description.md
+│   │   └── index.js
+│   ├── resources
+│   │   ├── index.js
+│   │   └── resourceActivity
+│   │       ├── data
+│   │       └── index.js
+│   └── serviceInteractions
+│       └── index.js
 ├── identifierService
 │   ├── index.js
 │   ├── info
@@ -85,16 +97,6 @@
 │       ├── data
 │       │   └── filterSpecifications
 │       └── index.js
-├── logService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   └── resources
-│       ├── index.js
-│       └── resourceActivity
-│           ├── data
-│           └── index.js
 ├── placeService
 │   ├── e2e.spec.js
 │   ├── index.js

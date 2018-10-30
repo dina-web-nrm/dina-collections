@@ -39,10 +39,10 @@
 │   ├── authService
 │   ├── curatedListService
 │   ├── exportService
+│   ├── historyService
 │   ├── identifierService
 │   ├── index.js
 │   ├── jobService
-│   ├── logService
 │   ├── placeService
 │   ├── searchService
 │   ├── serviceOrder.js
