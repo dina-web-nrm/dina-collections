@@ -1,7 +1,7 @@
 const objectPath = require('object-path')
 const Ajv = require('ajv')
 
-module.exports = function createValidatorFactory(models) {
+module.exports = function createValidatorFactory({ models }) {
   const rawModels = JSON.parse(JSON.stringify(models))
 
   const defaultOptions = {
