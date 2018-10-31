@@ -1,4 +1,70 @@
+[] Commit
+
+Setup test scenario
+[ ] new migration
+[ ] Manipulating data (ex splitting names)
+
+Test flow
+[ ] clean test db
+[ ] dump dev db
+[ ] load dev db to test db
+[ ] run migrations on test db
+[ ] run tests on test db
+[ ] run downgrate on test db
+[ ] run tests on test db
+
+
+
+
+* scenarios (should be ok)
+** Dump remote db
+** Load remote db to test
+** Run migrations
+
+* scenarios (ok)
+** Dump local db
+** Load local db to test
+** Run migrations
+
+
+* scenarios (server migrations dump and test)
+** potentially install
+** test https://packages.ubuntu.com/trusty/postgresql-client
+
+
+
+
+* Require no console in scripts and in migrations
+* Test docker dump with non standard passwords
+
+
+
+
+
+
+
+
+
+* Make databases.js create dbs config using backend/config
+* Make import work for different dbs
+* Create separate user for postgres test, dev and production?
+
+* Create postgres export script (using env variables)
+* Create postgres import script (using env variables) (force specific envs)
+* Possible to dump remote db through docker exec?
+** https://stackoverflow.com/questions/24718706/backup-restore-a-dockerized-postgresql-database
+
+This is the maximum number if digits allowed for a commit ffefefefefefeffeffefe
+
+
+
 * How to deal with sorting remarks vs columnsorting?
 ** Add button to reset sorting?
 
 
+
+
+PGPASSWORD=mysecretpassword pg_dump -c -U postgres -d dina_dev -h 127.0.0.1 > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+
+
+PGPASSWORD=mysecretpassword cat dump_30-10-2018_13_24_21.sql | psql -U postgres -d dina_test -h 127.0.0.1
