@@ -52,7 +52,12 @@ const TextAreaInput = ({
       rows={rows}
       type={type}
       {...input}
-      style={{ width: '100%', ...style }}
+      style={{
+        border: '1px solid rgba(34, 36, 38, 0.15)',
+        borderRadius: '0.28571429rem',
+        width: '100%',
+        ...style,
+      }}
       width={width}
     />
   )
