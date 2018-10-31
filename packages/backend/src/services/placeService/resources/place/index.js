@@ -1,3 +1,4 @@
+const migrations = require('./data/migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
 } = require('./data/transformationSpecifications')
@@ -22,6 +23,7 @@ const {
 
 module.exports = {
   basePath: '/api/locality/v01',
+  migrations,
   model: {
     modelFactory: 'sequelizeDocumentModel',
     name: 'place',

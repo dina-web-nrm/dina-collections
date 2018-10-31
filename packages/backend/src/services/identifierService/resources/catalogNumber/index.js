@@ -1,3 +1,4 @@
+const migrations = require('./data/migrations')
 const Sequelize = require('sequelize')
 const fieldsSpecification = require('./data/fieldsSpecification')
 const extractSortableFields = require('../../../../lib/data/fields/utilities/extractSortableFields')
@@ -26,6 +27,7 @@ const selectableFields = extractSelectableFields({ fieldsSpecification })
 
 module.exports = {
   basePath: '/api/identifiers/v01',
+  migrations,
   model: {
     columns: {
       identifier: { type: Sequelize.STRING, unique: true },
