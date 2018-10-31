@@ -1,5 +1,4 @@
 #!/bin/bash
-# break the build if npm fails?
 # ./packages/scripts/src/bash/build-docker.sh  -t 4.5.2
 echo "Info: This script builds docker-images"
 TAG=latest
