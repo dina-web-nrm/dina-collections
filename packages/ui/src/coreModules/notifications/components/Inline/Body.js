@@ -35,7 +35,7 @@ const InlineNotificationBody = ({
         {linkTextKey &&
           linkTo && (
             <p key="link">
-              <a href={linkTo} rel="noopener noreferrer" target="_blank">
+              <a href={linkTo} target="_blank">
                 <Translate textKey={linkTextKey} />
               </a>
             </p>

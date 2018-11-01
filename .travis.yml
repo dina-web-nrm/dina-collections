@@ -3,33 +3,37 @@ language: node_js
 services:
   - docker
 
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.10.1
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
 cache:
-  - npm
+  - yarn install
 
 before_script:
   - export PUSH_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo ""; fi)
   - echo "PUSH_BRANCH=$PUSH_BRANCH, TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST, TRAVIS_BRANCH=$TRAVIS_BRANCH"
 
 script:
-  - npm run test
+  - yarn test
 
 after_success:
   - echo "After success"
   - if [ "$PUSH_BRANCH" == "master" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-    npm run build:ui;
+    yarn build:ui;
     echo "Start dina-collections-ui build";
     docker build -f ./packages/ui/Dockerfile -t dina-collections-ui ./packages/ui;
     docker tag dina-collections-ui dina/dina-collections-ui;
     docker push dina/dina-collections-ui;
 
     echo "Start dina-semantic-ui build";
-    npm run build:semantic-ui;
+    yarn build:semantic-ui;
     docker build -f ./packages/dina-style/Dockerfile -t dina-semantic-ui-docs ./packages/dina-style;
     docker tag dina-semantic-ui-docs dina/dina-semantic-ui-docs;
     docker push dina/dina-semantic-ui-docs;
 
-    npm run uninstall;
+    yarn uninstall;
     echo "Start dina-collections-api build";
     docker build -f ./packages/backend/Dockerfile -t dina-collections-api ./packages;
     docker tag dina-collections-api dina/dina-collections-api;
