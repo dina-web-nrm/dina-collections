@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import { DropdownSearch } from 'coreModules/form/components'
 import {
+  CLASS,
   FAMILY,
   GENUS,
   MISSING_RANK,
@@ -11,7 +12,7 @@ import {
   SUBSPECIES,
 } from '../../constants'
 
-const ranks = [ORDER, FAMILY, GENUS, SPECIES, SUBSPECIES, MISSING_RANK]
+const ranks = [CLASS, ORDER, FAMILY, GENUS, SPECIES, SUBSPECIES, MISSING_RANK]
 
 const dropdownOptions = ranks.map(rank => {
   return {

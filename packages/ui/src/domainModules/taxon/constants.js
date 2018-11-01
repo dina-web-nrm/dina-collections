@@ -1,5 +1,6 @@
 export const ACCEPTED = 'accepted'
 export const ALL = 'all'
+export const CLASS = 'class'
 export const FAMILY = 'family'
 export const GENUS = 'genus'
 export const MISSING_RANK = 'missing rank'
@@ -20,7 +21,7 @@ export const SET_TAXON_NAME_AS_SYNONYM = 'SET_TAXON_NAME_AS_SYNONYM'
 export const ADD_SYNONYM = 'ADD_SYNONYM'
 export const ADD_VERNACULAR_NAME = 'ADD_VERNACULAR_NAME'
 
-const groups = [ORDER, FAMILY, GENUS, SPECIES, SUBSPECIES]
+const groups = [CLASS, ORDER, FAMILY, GENUS, SPECIES, SUBSPECIES]
 
 export const DROPDOWN_FILTER_OPTIONS = [
   {

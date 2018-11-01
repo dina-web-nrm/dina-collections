@@ -30,6 +30,32 @@ const tableColumnSpecifications = [
 
   {
     buildText: ({ value }) => {
+      const parent = findParentWithSpecificRank(value, 'class')
+      if (!parent) {
+        return ''
+      }
+
+      const { acceptedTaxonName } = parent
+      if (!acceptedTaxonName) {
+        return ''
+      }
+
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${
+            acceptedTaxonName.name
+          } (removed)`}</span>
+        )
+      }
+
+      return acceptedTaxonName.name
+    },
+    fieldPath: '',
+    label: 'modules.taxon.fieldLabels.class',
+    width: 250,
+  },
+  {
+    buildText: ({ value }) => {
       const parent = findParentWithSpecificRank(value, 'order')
       if (!parent) {
         return ''
