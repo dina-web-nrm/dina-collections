@@ -1,7 +1,7 @@
 #!/bin/bash
-# check npm version, npm run uninstall, should be greater than 5.5.1 
-# break the build if npm fails ...
-echo "Info: This script Builds docker-images"
+# break the build if npm fails?
+# ./packages/scripts/src/bash/build-docker.sh  -t 4.5.2
+echo "Info: This script builds docker-images"
 TAG=latest
 
 while getopts t: option

@@ -10,6 +10,7 @@ while getopts t: option
  done
 
 echo "pulling TAG=$TAG and deploying locally using 'make up'"
-echo "TAG=$TAG" > .env #  docker-compose.yml fetches the TAG from this file
+echo "TAG=$TAG" > .env #  the docker-compose.yml-file fetches the TAG from the .env-file (OBS: defaults to .env)
 
+# uses local images if they exist, otherwise fetches the images from hub.docker.com
 make up

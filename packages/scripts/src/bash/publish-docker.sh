@@ -1,5 +1,6 @@
 #!/bin/bash
-# login with docker-hub credentials, set in ~/.docker/config
+# OBS:login with docker-hub credentials, set in ~/.docker/config
+# failsafe: check if that tag/version has already been published before pushing?
 # ./packages/scripts/src/bash/publish-docker.sh  -t 4.5.2
 
 echo "Info: This script publishes images to Docker"
@@ -20,5 +21,5 @@ docker login
 #push to docker hub
 docker push dina/dina-collections-api:$TAG
 docker push dina/dina-collections-ui:$TAG
-#docker push dina/dina-semantic-ui-docs:$TAG
+docker push dina/dina-semantic-ui-docs:$TAG
 
