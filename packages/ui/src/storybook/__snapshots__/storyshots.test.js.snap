@@ -158,7 +158,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="home icon"
                   />
                   <a
-                    aria-current="page"
+                    aria-current="true"
                     className="active"
                     href="/"
                     onClick={[Function]}
@@ -182,7 +182,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="user icon"
                   />
                   <a
-                    aria-current={null}
+                    aria-current={false}
                     className={undefined}
                     href="/login"
                     onClick={[Function]}
@@ -206,7 +206,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="database icon"
                   />
                   <a
-                    aria-current={null}
+                    aria-current={false}
                     className={undefined}
                     href="/docs"
                     onClick={[Function]}
@@ -264,7 +264,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="database icon"
                   />
                   <a
-                    aria-current={null}
+                    aria-current={false}
                     className={undefined}
                     href="/docs"
                     onClick={[Function]}
@@ -429,7 +429,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
     }
   >
     <a
-      aria-current={null}
+      aria-current={false}
       className="item"
       href="/app"
       onClick={[Function]}
@@ -448,7 +448,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       </span>
     </a>
     <a
-      aria-current={null}
+      aria-current={false}
       className="item"
       href="/app/mammals/register"
       onClick={[Function]}
@@ -467,7 +467,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       </span>
     </a>
     <a
-      aria-current={null}
+      aria-current={false}
       className="item"
       href="/app/mammals/lookup"
       onClick={[Function]}
@@ -486,7 +486,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       </span>
     </a>
     <a
-      aria-current={null}
+      aria-current={false}
       className="item push bottom"
       href="/app/settings"
       onClick={[Function]}

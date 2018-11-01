@@ -40,15 +40,15 @@
     "prettier": "1.8.2",
     "prop-types": "^15.6.0",
     "query-string": "5",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-infinite": "^0.13.0",
     "react-json-inspector": "^7.1.1",
     "react-list": "^0.8.8",
     "react-rangeslider": "^2.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "5.0.0-alpha.9",
+    "react-router-redux": "next",
     "react-scripts": "1.0.17",
     "react-sizeme": "^2.4.4",
     "react-sortable-tree": "^2.1.0",
@@ -64,11 +64,11 @@
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
-    "build": "npm run build-css && npm run markdown:build && REACT_APP_ENABLE_MOCK=false react-scripts build",
+    "build": "yarn build-css && yarn markdown:build && REACT_APP_ENABLE_MOCK=false react-scripts build",
     "build-css": "node-less-chokidar src/ -o src/",
     "build-snippets": "node ./src/scripts/snippets/index.js",
-    "build:mock": "npm run build-css && npm run markdown:build && REACT_APP_ENABLE_MOCK=true react-scripts build",
-    "build:storybook": "npm run update-storybook-imports && build-storybook -c .storybook -o build-storybook",
+    "build:mock": "yarn build-css && yarn markdown:build && REACT_APP_ENABLE_MOCK=true react-scripts build",
+    "build:storybook": "yarn update-storybook-imports && build-storybook -c .storybook -o build-storybook",
     "build:trees": "node ./src/scripts/buildFileStructureTrees.js",
     "eject": "react-scripts eject",
     "ensure-no-diff": "git diff --exit-code",
@@ -81,15 +81,15 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
     "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
     "start-js": "react-scripts start",
-    "start:mock": "REACT_APP_ENABLE_MOCK=true npm start",
-    "storybook": "npm run update-storybook-imports && start-storybook -p 9009 -s public",
-    "test": "npm run update-storybook-imports && npm run lint:js && react-scripts test --env=jsdom",
+    "start:mock": "REACT_APP_ENABLE_MOCK=true yarn start",
+    "storybook": "yarn update-storybook-imports && start-storybook -p 9009 -s public",
+    "test": "yarn update-storybook-imports && yarn lint:js && react-scripts test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
     "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --env=jsdom --watch",
     "test:unit:watch": "react-scripts test --env=jsdom --watch",
-    "update-git-dependencies": "npm update models && npm update semantic-ui",
+    "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
     "update-storybook-imports": "node ./src/scripts/storybook/createStorybookImports",
-    "watch-css": "npm run build-css && node-less-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
     "@storybook/addon-actions": "3.2.12",
@@ -121,6 +121,6 @@
   },
   "engines": {
     "node": "8.9.1",
-    "npm": "5.5.1"
+    "yarn": "^1.3.2"
   }
 }

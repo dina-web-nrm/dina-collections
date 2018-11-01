@@ -31,43 +31,45 @@ import 'semantic-ui/dist/semantic.css'
 
 1. Install NodeJS through `nvm`. Follow the `nvm` install instructions in [DINA Collections UI](https://github.com/DINA-Web/ui)
 
-2. Clone repository
+2. Install `yarn`. Follow the `yarn` install instructions in [DINA Collections UI](https://github.com/DINA-Web/ui)
+
+3. Clone repository
 
 ```
 git clone https://github.com/DINA-Web/dina-style.git
 ```
 
-3. Install `gulp` globally
+4. Install `gulp` globally
 
 ```
-npm install --global gulp
+yarn global add gulp
 ```
 
-4. Install local dependencies
+5. Install local dependencies
 
 ```
-npm install
+yarn
 ```
 
-5. Setup docpad
+6. Setup docpad
 
 ```
-npm install --global docpad
+yarn global add docpad
 docpad install eco
 docpad update
 docpad upgrade
 ```
 
-6. Start docpad
+7. Start docpad
 
 ```
 docpad run
 ```
 
-7. Compile styles (without shutting down docpad, e.g. run the command in another terminal window)
+8. Compile styles (without shutting down docpad, e.g. run the command in another terminal window)
 
 ```
 gulp build-docs
 ```
 
-8. Visit docpad port (displayed in docpad run output) defaults to http://127.0.0.1:9778
+9. Visit docpad port (displayed in docpad run output) defaults to http://127.0.0.1:9778
