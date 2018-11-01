@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "gulp build",
-    "build:docs": "yarn global add gulp && yarn global add docpad && docpad install eco && docpad update && docpad upgrade && docpad generate --env static && gulp build-docs"
+    "build:docs": "yarn global add gulp@3.9.1 && yarn global add docpad@6.79.4 && docpad generate --env static && gulp build-docs"
   },
   "peerDependencies": {
     "better-console": "*",

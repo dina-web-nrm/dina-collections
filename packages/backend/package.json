@@ -65,7 +65,7 @@
     "test:api": "DEBUG='TEST:DINA*' API_TESTS=true jest --env=node --watch",
     "test:batch": "DEBUG='TEST:DINA*' BATCH_TESTS=true jest --env=node --watch",
     "test:db": "DEBUG='TEST:DINA*' DB_TESTS=true jest --env=node --watch",
-    "test:depcheck": "depcheck . --ignores=pg",
+    "test:depcheck": "depcheck . --ignores='pg,memwatch-next'",
     "test:integration": "DEBUG='TEST:DINA*' API_TESTS=true jest --env=node && DEBUG='TEST:DINA*' DB_TESTS=true jest --env=node",
     "test:performance": "DEBUG='DINA:*:performance*' node src/performance/index.js",
     "test:unit": "jest --env=node",
@@ -73,6 +73,6 @@
   },
   "engines": {
     "node": "8.9.1",
-    "yarn": "^1.3.2"
+    "yarn": "^1.10.1"
   }
 }
