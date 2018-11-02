@@ -27,8 +27,8 @@ const propTypes = {
   showRecordInput: PropTypes.bool,
   showShowAllButton: PropTypes.bool,
   showSlider: PropTypes.bool,
-  showTotalRecords: PropTypes.bool,
   totalNumberOfRecords: PropTypes.number,
+  treeActive: PropTypes.bool,
 }
 const defaultProps = {
   currentTableRowNumber: undefined,
@@ -41,8 +41,8 @@ const defaultProps = {
   showRecordInput: true,
   showShowAllButton: true,
   showSlider: true,
-  showTotalRecords: true,
   totalNumberOfRecords: undefined,
+  treeActive: false,
 }
 
 export class RecordNavigationBar extends Component {
@@ -63,8 +63,8 @@ export class RecordNavigationBar extends Component {
       showNewRecordButton,
       showRecordInput,
       showShowAllButton,
-      showTotalRecords,
       showSlider,
+      treeActive,
       totalNumberOfRecords,
     } = this.props
 
@@ -156,14 +156,14 @@ export class RecordNavigationBar extends Component {
                 />
               </div>
             )}
-          {showTotalRecords &&
+          {!treeActive &&
             (handleOpenNewRecordForm ? (
               <div style={{ float: 'left', marginLeft: 15, marginTop: 5 }}>
-                {totalNumberOfRecords} total records
+                {totalNumberOfRecords} records
               </div>
             ) : (
               <div style={{ float: 'left', marginLeft: 15, marginTop: -3 }}>
-                {totalNumberOfRecords} total records
+                {totalNumberOfRecords} records
                 <br />
                 <i>*Adding new*</i>
               </div>
