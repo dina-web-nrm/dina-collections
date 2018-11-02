@@ -1,5 +1,5 @@
 #! /bin/sh -
-# ./packages/scripts/src/bash/deploy.sh  -t 4.5.2
+# ./packages/scripts/src/bash/deploy-docker.sh  -t 4.5.2
 TAG=latest
 while getopts t: option
  do
