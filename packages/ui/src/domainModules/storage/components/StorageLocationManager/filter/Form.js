@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Form, Grid } from 'semantic-ui-react'
 import { reduxForm } from 'redux-form'
-import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
@@ -85,5 +84,4 @@ export default reduxForm({
   destroyOnUnmount: true, // to keep values when switching layout
   enableReinitialize: true,
   form: FORM_NAME,
-  validate: formValidator({ model: 'storageLocation' }),
 })(BaseForm)
