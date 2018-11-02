@@ -48,7 +48,7 @@ module.exports = {
         srcSchemaVersion: { type: Sequelize.STRING },
         srcUpdatedAt: { type: Sequelize.DATE },
         userId: { type: Sequelize.STRING },
-        userName: { type: Sequelize.STRING },
+        username: { type: Sequelize.STRING },
       })
       .then(() => {
         const indexes = [
