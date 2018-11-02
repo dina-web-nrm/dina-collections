@@ -81,6 +81,24 @@ const tableColumnSpecifications = [
     label: 'modules.locality.fieldLabels.province',
     width: 250,
   },
+  {
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificGroup(value.parent, 'district')
+      if (!parent) {
+        return ''
+      }
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
+        )
+      }
+
+      return parent.name
+    },
+    fieldPath: '',
+    label: 'modules.locality.fieldLabels.district',
+    width: 250,
+  },
 ]
 
 export default tableColumnSpecifications

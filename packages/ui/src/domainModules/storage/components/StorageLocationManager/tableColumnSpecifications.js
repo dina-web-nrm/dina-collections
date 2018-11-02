@@ -19,12 +19,12 @@ const findParentWithSpecificGroup = (item, group) => {
 const tableColumnSpecifications = [
   {
     fieldPath: 'name',
-    label: 'modules.storage.fieldLabels.storageLocation.name',
+    label: 'modules.storage.fieldLabels.name',
     width: 350,
   },
   {
     fieldPath: 'group',
-    label: 'modules.storage.fieldLabels.storageLocation.group',
+    label: 'modules.storage.fieldLabels.group',
     width: 250,
   },
   {
@@ -101,7 +101,7 @@ const tableColumnSpecifications = [
   },
   {
     fieldPath: 'description',
-    label: 'modules.storage.fieldLabels.storageLocation.description',
+    label: 'modules.storage.fieldLabels.description',
     width: 350,
   },
 ]

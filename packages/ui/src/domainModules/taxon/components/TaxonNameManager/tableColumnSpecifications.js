@@ -5,11 +5,6 @@ const tableColumnSpecifications = [
     width: 250,
   },
   {
-    fieldPath: 'taxonNameType',
-    label: 'modules.taxon.fieldLabels.taxonNameType',
-    width: 250,
-  },
-  {
     fieldPath: 'rank',
     label: 'modules.taxon.fieldLabels.rank',
     width: 250,
