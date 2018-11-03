@@ -5,11 +5,13 @@ const createModels = require('./build/models')
 const buildEndpoints = require('./build/buildEndpoints')
 
 function buildModels({
-  modelBasePath,
   apiBasePath,
+  modelBasePath,
+  modelPackagePath,
   normalize,
-  version = '0.1.0',
 }) {
+  const modelVersion = require(modelPackagePath).version // eslint-disable-line
+
   const { endpoints: endpointsInput, models } = read({
     apiBasePath,
     modelBasePath,
@@ -21,18 +23,12 @@ function buildModels({
     endpoints,
     models,
     normalize,
-    version,
+    version: modelVersion,
   })
 
   write({
     models: cleanModels,
-    normalize,
-    setCurrent: true,
-    version,
-  })
-
-  write({
-    models: cleanModels,
+    modelVersion,
     normalize,
   })
 }
@@ -40,11 +36,13 @@ function buildModels({
 buildModels({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
+  modelPackagePath: path.join(__dirname, '../../../models/package.json'),
   normalize: false,
 })
 
 buildModels({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
+  modelPackagePath: path.join(__dirname, '../../../models/package.json'),
   normalize: true,
 })

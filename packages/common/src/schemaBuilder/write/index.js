@@ -2,53 +2,6 @@
 const fs = require('fs')
 const path = require('path')
 
-const createIndexFile = ({ available, versionIndexFilePath }) => {
-  const indexFile =
-    available // eslint-disable-line prefer-template
-      .map(availableVersion => {
-        return `exports['${availableVersion}'] = {
-  models: require('./${availableVersion}/models.json'),
-  normalizedModels: require('./${availableVersion}/normalizedModels.json'),
-  openApi: require('./${availableVersion}/openApi.json'),
-  normalizedOpenApi: require('./${availableVersion}/normalizedOpenApi.json'),
-}`
-      })
-      .join('\n') + '\n'
-
-  fs.writeFileSync(versionIndexFilePath, indexFile)
-}
-
-const updateVersionsIndex = ({
-  setCurrent,
-  version,
-  versionsBaseDirectory,
-}) => {
-  const versionsInfoFilePath = path.join(versionsBaseDirectory, 'info.json')
-  const versionIndexFilePath = path.join(versionsBaseDirectory, 'index.js')
-
-  const versions = fs
-    .readdirSync(versionsBaseDirectory)
-    .filter(fileName => fileName !== 'info.json')
-    .filter(fileName => fileName !== 'index.js')
-    .filter(filename => filename[0] !== '.')
-
-  const versionFile = fs.existsSync(versionsInfoFilePath)
-    ? require(versionsInfoFilePath)
-    : {}
-
-  const versionsInfo = {
-    available: versions,
-    current: setCurrent ? version : versionFile.current,
-    latest: versions.sort()[0],
-  }
-  fs.writeFileSync(versionsInfoFilePath, JSON.stringify(versionsInfo, null, 2))
-
-  createIndexFile({
-    available: versionsInfo.available,
-    versionIndexFilePath,
-  })
-}
-
 const ensureDirectoryExistence = dirPath => {
   if (fs.existsSync(dirPath)) {
     return true
@@ -57,46 +10,118 @@ const ensureDirectoryExistence = dirPath => {
   return true
 }
 
-const getOpenApiFileName = normalize => {
-  return normalize ? 'normalizedOpenApi.json' : 'openApi.json'
-}
-
 const getModelsFileName = normalize => {
   return normalize ? 'normalizedModels.json' : 'models.json'
 }
 
 module.exports = function write(
-  { models, normalize, openApi, setCurrent, version = '' } = {}
+  { apiVersion, modelVersion, models, normalize, openApi } = {}
 ) {
-  const buildDirectory = path.join(__dirname, '../../../../common/dist')
-  const versionsBaseDirectory = path.join(buildDirectory, 'versions')
-  const baseDirectory = version
-    ? path.join(versionsBaseDirectory, version)
-    : path.join(buildDirectory)
+  const buildDirectory = path.join(__dirname, '../../../../common/dist/schemas')
 
   ensureDirectoryExistence(buildDirectory)
-  ensureDirectoryExistence(versionsBaseDirectory)
-  ensureDirectoryExistence(baseDirectory)
-
   if (openApi) {
+    const apiVersionPath = path.join(buildDirectory, 'apiVersions', apiVersion)
+    const infoPath = path.join(apiVersionPath, 'info.json')
+
+    let currentInfo
+    try {
+      currentInfo = require(infoPath)
+    } catch (err) {
+      currentInfo = {
+        candidate: true,
+      }
+    }
+
+    if (!currentInfo.candidate) {
+      throw new Error(
+        `Not allowed to override non candidate schema. Tried to override apiVersion: ${
+          apiVersion
+        }`
+      )
+    }
+
+    const info = {
+      apiVersion,
+      candidate: true,
+      modelVersion,
+    }
+
+    ensureDirectoryExistence(apiVersionPath)
     fs.writeFileSync(
-      path.join(baseDirectory, getOpenApiFileName(normalize)),
+      path.join(apiVersionPath, 'openApi.json'),
       JSON.stringify(openApi, null, 2)
+    )
+    fs.writeFileSync(
+      path.join(apiVersionPath, 'info.json'),
+      JSON.stringify(info, null, 2)
+    )
+
+    const apiCurrentPath = path.join(buildDirectory, 'apiVersions', 'current')
+    ensureDirectoryExistence(apiCurrentPath)
+    fs.writeFileSync(
+      path.join(apiCurrentPath, 'openApi.json'),
+      JSON.stringify(openApi, null, 2)
+    )
+    fs.writeFileSync(
+      path.join(apiCurrentPath, 'info.json'),
+      JSON.stringify(info, null, 2)
     )
   }
 
   if (models) {
+    const modelVersionPath = path.join(
+      buildDirectory,
+      'modelVersions',
+      modelVersion
+    )
+
+    const infoPath = path.join(modelVersionPath, 'info.json')
+
+    let currentInfo
+    try {
+      currentInfo = require(infoPath)
+    } catch (err) {
+      currentInfo = {
+        candidate: true,
+      }
+    }
+
+    if (!currentInfo.candidate) {
+      throw new Error(
+        `Not allowed to override non candidate schema. Tried to override modelVersion: ${
+          modelVersion
+        }`
+      )
+    }
+    const info = {
+      candidate: true,
+      modelVersion,
+    }
+
+    ensureDirectoryExistence(modelVersionPath)
     fs.writeFileSync(
-      path.join(baseDirectory, getModelsFileName(normalize)),
+      path.join(modelVersionPath, getModelsFileName(normalize)),
       JSON.stringify(models, null, 2)
     )
-  }
+    fs.writeFileSync(
+      path.join(modelVersionPath, 'info.json'),
+      JSON.stringify(info, null, 2)
+    )
 
-  if (version) {
-    updateVersionsIndex({
-      setCurrent,
-      version,
-      versionsBaseDirectory,
-    })
+    const modelCurrentPath = path.join(
+      buildDirectory,
+      'modelVersions',
+      'current'
+    )
+    ensureDirectoryExistence(modelCurrentPath)
+    fs.writeFileSync(
+      path.join(modelCurrentPath, getModelsFileName(normalize)),
+      JSON.stringify(models, null, 2)
+    )
+    fs.writeFileSync(
+      path.join(modelCurrentPath, 'info.json'),
+      JSON.stringify(info, null, 2)
+    )
   }
 }
