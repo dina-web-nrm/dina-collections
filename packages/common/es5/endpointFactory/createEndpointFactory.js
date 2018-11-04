@@ -10,16 +10,13 @@ var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var buildOperationIdPathnameMap = require('./utilities/buildOperationIdPathnameMap');
+var schemaInterface = require('../schemaInterface');
 var createBodyValidator = require('./utilities/createBodyValidator');
 var createGetExample = require('./utilities/createGetExample');
 var createMock = require('./utilities/createMock');
 var createQueryParamValidator = require('./utilities/createQueryParamValidator');
 var createResponseValidator = require('./utilities/createResponseValidator');
 var createMapQueryParams = require('./utilities/createMapQueryParams');
-var openApiSpec = require('../../dist/openApi.json');
-
-var map = buildOperationIdPathnameMap(openApiSpec);
 
 module.exports = function createEndpointFactory(_ref) {
   var createApiClientValidator = _ref.createApiClientValidator,
@@ -29,14 +26,12 @@ module.exports = function createEndpointFactory(_ref) {
     var operationId = _ref2.operationId,
         rest = (0, _objectWithoutProperties3.default)(_ref2, ['operationId']);
 
-    if (!map[operationId]) {
-      throw new Error('Operation id: ' + operationId + ' unknown');
-    }
+    var openApiSpec = schemaInterface.getOpenApiSpec();
 
-    var _map$operationId = map[operationId],
-        methodName = _map$operationId.methodName,
-        methodSpecification = _map$operationId.methodSpecification,
-        pathname = _map$operationId.pathname;
+    var _schemaInterface$getM = schemaInterface.getMethodByOperationId(operationId),
+        methodName = _schemaInterface$getM.methodName,
+        methodSpecification = _schemaInterface$getM.methodSpecification,
+        pathname = _schemaInterface$getM.pathname;
 
     return (0, _extends3.default)({
       getExample: createGetExample({

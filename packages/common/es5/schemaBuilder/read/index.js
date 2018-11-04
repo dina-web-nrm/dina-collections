@@ -23,7 +23,9 @@ module.exports = function read(_ref) {
   var info = readInfo(infoPath);
   var models = readModels(modelBasePath);
 
-  var schemaInterface = createSchemaInterface({ models: models });
+  var schemaInterface = createSchemaInterface({ getModels: function getModels() {
+      return models;
+    } });
   var resourceRelationshipParamsMap = schemaInterface.getResourceRelationshipParamsMap();
 
   var serviceDefinitions = require(servicesPath);

@@ -7,11 +7,16 @@ var createOpenApi = require('./build/openApi');
 var buildEndpoints = require('./build/buildEndpoints');
 
 function buildOpenApi(_ref) {
-  var modelBasePath = _ref.modelBasePath,
-      apiBasePath = _ref.apiBasePath,
-      normalize = _ref.normalize,
-      _ref$version = _ref.version,
-      version = _ref$version === undefined ? '0.1.0' : _ref$version;
+  var apiBasePath = _ref.apiBasePath,
+      backendPackagePath = _ref.backendPackagePath,
+      modelBasePath = _ref.modelBasePath,
+      modelPackagePath = _ref.modelPackagePath,
+      normalize = _ref.normalize;
+
+  var modelVersion = require(modelPackagePath).version;
+  var backendVersion = require(backendPackagePath).version;
+
+  var apiVersion = modelVersion + '-' + backendVersion;
 
   var _read = read({
     apiBasePath: apiBasePath,
@@ -38,17 +43,12 @@ function buildOpenApi(_ref) {
     parameters: parameters,
     security: security,
     servers: servers,
-    version: version
+    version: apiVersion
   });
 
   write({
-    normalize: normalize,
-    openApi: openApi,
-    setCurrent: true,
-    version: version
-  });
-
-  write({
+    apiVersion: apiVersion,
+    modelVersion: modelVersion,
     normalize: normalize,
     openApi: openApi
   });
@@ -56,12 +56,8 @@ function buildOpenApi(_ref) {
 
 buildOpenApi({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
+  backendPackagePath: path.join(__dirname, '../../../backend/package.json'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
-  normalize: false
-});
-
-buildOpenApi({
-  apiBasePath: path.join(__dirname, '../../../backend/src'),
-  modelBasePath: path.join(__dirname, '../../../models/src'),
+  modelPackagePath: path.join(__dirname, '../../../models/package.json'),
   normalize: true
 });

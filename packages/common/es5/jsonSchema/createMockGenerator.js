@@ -1,7 +1,9 @@
 'use strict';
 
-var models = require('../../dist/normalizedModels.json');
+var schemaInterface = require('../schemaInterface');
 var createMockDataFromSchema = require('./createMockDataFromSchema');
+
+var models = schemaInterface.getNormalizedModels();
 
 module.exports = function createMockGenerator(_ref) {
   var importFaker = _ref.importFaker,

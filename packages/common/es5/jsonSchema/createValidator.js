@@ -1,6 +1,8 @@
 'use strict';
 
-var models = require('../../dist/models.json');
+var schemaInterface = require('../schemaInterface');
 var createValidatorFactory = require('./createValidatorFactory');
+
+var models = schemaInterface.getModels();
 
 module.exports = createValidatorFactory({ models: models });

@@ -7,12 +7,12 @@ var createModels = require('./build/models');
 var buildEndpoints = require('./build/buildEndpoints');
 
 function buildModels(_ref) {
-  var modelBasePath = _ref.modelBasePath,
-      apiBasePath = _ref.apiBasePath,
-      normalize = _ref.normalize,
-      _ref$version = _ref.version,
-      version = _ref$version === undefined ? '0.1.0' : _ref$version;
+  var apiBasePath = _ref.apiBasePath,
+      modelBasePath = _ref.modelBasePath,
+      modelPackagePath = _ref.modelPackagePath,
+      normalize = _ref.normalize;
 
+  var modelVersion = require(modelPackagePath).version;
   var _read = read({
     apiBasePath: apiBasePath,
     modelBasePath: modelBasePath
@@ -26,18 +26,12 @@ function buildModels(_ref) {
     endpoints: endpoints,
     models: models,
     normalize: normalize,
-    version: version
+    version: modelVersion
   });
 
   write({
     models: cleanModels,
-    normalize: normalize,
-    setCurrent: true,
-    version: version
-  });
-
-  write({
-    models: cleanModels,
+    modelVersion: modelVersion,
     normalize: normalize
   });
 }
@@ -45,11 +39,13 @@ function buildModels(_ref) {
 buildModels({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
+  modelPackagePath: path.join(__dirname, '../../../models/package.json'),
   normalize: false
 });
 
 buildModels({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
+  modelPackagePath: path.join(__dirname, '../../../models/package.json'),
   normalize: true
 });

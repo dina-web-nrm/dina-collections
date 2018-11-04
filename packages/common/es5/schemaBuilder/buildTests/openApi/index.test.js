@@ -1,8 +1,10 @@
 'use strict';
 
+var schemaInterface = require('../../../schemaInterface');
 var Ajv = require('ajv');
 var openApiSchema = require('../schemas/openApi.json');
-var openApi = require('../../../../dist/openApi.json');
+
+var openApiSpec = schemaInterface.getOpenApiSpec();
 
 describe('buildTests/openApi', function () {
   var ajv = void 0;
@@ -15,7 +17,7 @@ describe('buildTests/openApi', function () {
   });
 
   it('passes schema', function () {
-    var valid = validate(openApi);
+    var valid = validate(openApiSpec);
     expect(validate.errors).toBe(null);
     expect(valid).toBeTruthy();
   });
