@@ -1,9 +1,11 @@
 const bootstrapBase = require('./bootstrapBase')
-const openApiSpec = require('common/dist/openApi.json')
+const schemaInterface = require('common/src/schemaInterface')
 const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')
 const setupJobs = require('./setupJobs')
 const createAuth = require('../auth')
+
+const openApiSpec = schemaInterface.getOpenApiSpec()
 
 module.exports = function bootstrapApi({
   env,
