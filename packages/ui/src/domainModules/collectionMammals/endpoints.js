@@ -1,5 +1,4 @@
 import createEndpoint from 'utilities/endpointFactory/client'
-import { createLookupMammalsResponse, getSpecimen } from './mockData'
 
 const extractData = result => {
   return result.data
@@ -28,32 +27,24 @@ export const GET_INDIVIDUAL_GROUP_BY_CATALOG_NUMBER = createEndpoint({
     const firstDataItem = data && data[0] // should only be one result, which holds for mammals
     return flattenDataAttributes(firstDataItem)
   },
-  mock: ({ request: { queryParams } }) => {
-    return { data: [getSpecimen({ queryParams })] }
-  },
+
   operationId: 'specimenGetMany',
 })
 
 export const GET_SPECIMEN = createEndpoint({
-  mock: ({ request: { pathParams, queryParams } }) => {
-    return { data: getSpecimen({ pathParams, queryParams }) }
-  },
   operationId: 'specimenGetOne',
 })
 
 export const LOOKUP_MAMMALS = createEndpoint({
-  mock: createLookupMammalsResponse,
   operationId: 'specimenGetMany',
 })
 
 export const REGISTER_MAMMAL = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
-  mock: () => ({ data: getSpecimen() }),
   operationId: 'specimenCreate',
 })
 
 export const UPDATE_SPECIMEN = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
-  mock: () => ({ data: getSpecimen() }),
   operationId: 'specimenUpdate',
 })

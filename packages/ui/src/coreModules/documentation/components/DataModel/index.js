@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import schemaInterface from 'common/es5/schemaInterface'
 
 import extractModelFromSpecification from '../../utilities/extractModelFromSpecification'
 import Model from './Model'
 import Property from './Property'
 
-const specifications = require('common/dist/versions')
+const specification = schemaInterface.getOpenApiSpec()
 
 const propTypes = {
   match: PropTypes.shape({
@@ -26,8 +27,6 @@ class DataModel extends Component {
     if (!schemaVersion) {
       return <div>Unknown version: {schemaVersion}</div>
     }
-
-    const specification = specifications[schemaVersion].openApi
 
     const model = extractModelFromSpecification({
       modelId,

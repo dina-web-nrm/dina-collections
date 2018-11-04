@@ -1,6 +1,7 @@
 import immutable from 'object-path-immutable'
+import schemaInterface from 'common/es5/schemaInterface'
 
-import models from 'common/dist/models.json'
+const models = schemaInterface.getModels()
 
 const createMammalFormModels = () => {
   let updatedModels = immutable.set(models, 'collectionItem', {
