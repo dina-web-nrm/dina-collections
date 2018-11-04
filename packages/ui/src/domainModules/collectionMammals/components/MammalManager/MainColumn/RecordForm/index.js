@@ -210,34 +210,32 @@ class RecordForm extends Component {
     } = this.props
 
     return (
-      <React.Fragment>
-        <Form
+      <Form
+        formName={form}
+        onSubmit={handleSubmit(this.handleFormSubmit)}
+        sectionSpecs={sectionSpecs}
+        setFormRef={this.setFormRef}
+      >
+        <RowLayout
+          {...rest}
+          availableHeight={availableHeight}
+          changeFieldValue={this.changeFieldValue}
           formName={form}
-          onSubmit={handleSubmit(this.handleFormSubmit)}
+          module="collectionMammals" // to be deprecated in favor of moduleName
+          moduleName="collectionMammals"
+          removeArrayFieldByIndex={this.removeArrayFieldByIndex}
+          renderRow={this.renderRow}
+          rows={rows}
           sectionSpecs={sectionSpecs}
-          setFormRef={this.setFormRef}
-        >
-          <RowLayout
-            {...rest}
-            availableHeight={availableHeight}
-            changeFieldValue={this.changeFieldValue}
+        />
+        {mode === 'register' && (
+          <CatalogNumberModal
             formName={form}
-            module="collectionMammals" // to be deprecated in favor of moduleName
-            moduleName="collectionMammals"
-            removeArrayFieldByIndex={this.removeArrayFieldByIndex}
-            renderRow={this.renderRow}
-            rows={rows}
-            sectionSpecs={sectionSpecs}
+            handleSubmit={this.handleSubmitFromModal}
+            {...rest}
           />
-          {mode === 'register' && (
-            <CatalogNumberModal
-              formName={form}
-              handleSubmit={this.handleSubmitFromModal}
-              {...rest}
-            />
-          )}
-        </Form>
-      </React.Fragment>
+        )}
+      </Form>
     )
   }
 }
@@ -266,6 +264,23 @@ const EnhancedForm = compose(
 export default reduxForm({
   enableReinitialize: true,
   keepDirtyOnReinitialize: false,
+  shouldError: params => {
+    if (params) {
+      const { initialRender, props, nextProps } = params
+
+      if (initialRender) {
+        return false
+      }
+
+      return (
+        (props && props.registeredFields) !==
+          (nextProps && nextProps.registeredFields) ||
+        (props && props.values) !== (nextProps && nextProps.values)
+      )
+    }
+
+    return false
+  },
   updateUnregisteredFields: true,
   validate: customFormValidator({
     model: 'specimen',
