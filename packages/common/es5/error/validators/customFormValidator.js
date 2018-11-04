@@ -5,11 +5,12 @@ var transformToReduxFormError = require('../errorFactories/transformToReduxFormE
 var createParameterErrorsFromAjv = require('../errorFactories/createParameterErrorsFromAjv');
 
 module.exports = function formValidator(_ref) {
-  var model = _ref.model,
+  var keywords = _ref.keywords,
+      model = _ref.model,
       models = _ref.models,
       schema = _ref.schema;
 
-  var createSchemaValidator = createValidatorFactory(models);
+  var createSchemaValidator = createValidatorFactory({ keywords: keywords, models: models });
   var validator = createSchemaValidator({ model: model, schema: schema });
 
   return function validate(obj) {
