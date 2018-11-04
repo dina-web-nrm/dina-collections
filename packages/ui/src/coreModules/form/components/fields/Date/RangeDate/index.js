@@ -1,29 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
+
 import config from 'config'
 import extractProps from 'utilities/extractProps'
 import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 import { emToPixels } from 'coreModules/layout/utilities'
 import FieldTemplate, { fieldTemplatePropKeys } from '../../../FieldTemplate'
-import {
-  bothStartAndEndDateRequiredIfOneProvided,
-  dateRangeStartDateNotAfterEndDate,
-  noOrphanDayOrMonthInRange,
-  pastDateRange,
-  validIfNotEmptyRange,
-} from '../validationFunctions'
 import DatePart from '../DatePart'
 import { getRangeValue, getRangeValueAfterDateTypeChange } from '../utilities'
 import DateTypeRadios from './DateTypeRadios'
-
-export const defaultValidate = [
-  noOrphanDayOrMonthInRange,
-  validIfNotEmptyRange,
-  bothStartAndEndDateRequiredIfOneProvided,
-  dateRangeStartDateNotAfterEndDate,
-  pastDateRange,
-]
 
 const DATE_TYPES = [SINGLE, RANGE, LATEST]
 
