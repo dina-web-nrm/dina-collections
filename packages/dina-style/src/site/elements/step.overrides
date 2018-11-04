@@ -1,3 +1,13 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.steps .step.error {
+  background-color: @negativeBackgroundColor;
+  color: @negativeTextColor;
+  box-shadow: @negativeBoxShadow;
+}
+
+.ui.steps .step.error .title {
+  color: @negativeHeaderColor;
+}
