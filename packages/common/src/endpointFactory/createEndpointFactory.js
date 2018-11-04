@@ -1,3 +1,4 @@
+const schemaInterface = require('../schemaInterface')
 const buildOperationIdPathnameMap = require('./utilities/buildOperationIdPathnameMap')
 const createBodyValidator = require('./utilities/createBodyValidator')
 const createGetExample = require('./utilities/createGetExample')
@@ -5,7 +6,8 @@ const createMock = require('./utilities/createMock')
 const createQueryParamValidator = require('./utilities/createQueryParamValidator')
 const createResponseValidator = require('./utilities/createResponseValidator')
 const createMapQueryParams = require('./utilities/createMapQueryParams')
-const openApiSpec = require('../../dist/openApi.json')
+
+const openApiSpec = schemaInterface.getOpenApiSpec()
 
 const map = buildOperationIdPathnameMap(openApiSpec)
 

@@ -1,8 +1,13 @@
 const createSchemaInterface = require('./index')
 
 const expectedFunctions = [
+  'getDataModelVersion',
+  'getMethodByOperationId',
   'getModelKeyColumnMap',
+  'getModels',
+  'getNormalizedModels',
   'getNormalizeSpecifications',
+  'getOpenApiSpec',
   'getRelationshipParamsForModelNames',
   'getResourceRelationshipKeysToIncludeInBodyMap',
   'getResourceRelationshipParamsMap',
