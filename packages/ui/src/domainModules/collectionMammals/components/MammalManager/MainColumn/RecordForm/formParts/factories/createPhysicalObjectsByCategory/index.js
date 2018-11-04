@@ -18,6 +18,11 @@ export default function createPhysicalObjectsByCategory(category) {
       },
       containsReduxFormField: true,
       name: 'individual.collectionItems',
+      relativeNames: [
+        'preparationType.id',
+        'physicalObject.storageLocation.id',
+        'description',
+      ],
     },
   ]
 }

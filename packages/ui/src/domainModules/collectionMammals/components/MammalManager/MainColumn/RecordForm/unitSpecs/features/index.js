@@ -10,6 +10,12 @@ const parts = [
     componentName: 'FeatureObservations',
     containsReduxFormField: true,
     name: 'individual.featureObservations',
+    relativeNames: [
+      'featureType.id',
+      'featureObservationText',
+      'featureObservationUnit',
+      'methodText',
+    ],
   },
 ]
 
