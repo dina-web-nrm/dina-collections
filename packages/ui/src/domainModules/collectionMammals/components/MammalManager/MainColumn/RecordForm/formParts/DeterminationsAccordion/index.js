@@ -37,7 +37,6 @@ const propTypes = {
   ),
   formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
-  isSmallScreen: PropTypes.bool.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
