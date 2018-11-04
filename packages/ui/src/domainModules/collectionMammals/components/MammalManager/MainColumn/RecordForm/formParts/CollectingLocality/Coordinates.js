@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from 'semantic-ui-react'
-import GeoPoint from 'common/es5/coordinatesConverter'
+import GeoPoint from 'common/es5/coordinates/Converter'
 
 const iconStyle = {
   float: 'left',
