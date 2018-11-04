@@ -1,5 +1,11 @@
 import reduceFieldSpecsToNodeFieldNamesMap from './reduceFieldSpecsToNodeFieldNamesMap'
 
-export default function reduceFieldSpecsToSectionFieldNamesMap(fieldSpecs) {
-  return reduceFieldSpecsToNodeFieldNamesMap(fieldSpecs, { bySection: true })
+export default function reduceFieldSpecsToSectionFieldNamesMap(
+  fieldSpecs,
+  useBaseName
+) {
+  return reduceFieldSpecsToNodeFieldNamesMap(fieldSpecs, {
+    bySection: true,
+    useBaseName,
+  })
 }

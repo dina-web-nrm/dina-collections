@@ -26,7 +26,7 @@ export const getUnitInitiallyHiddenFieldNamesMap = createSelector(
       ({ initiallyHidden }) => initiallyHidden
     )
 
-    return reduceFieldSpecsToUnitFieldNamesMap(initiallyHiddenFields)
+    return reduceFieldSpecsToUnitFieldNamesMap(initiallyHiddenFields, true)
   }
 )
 

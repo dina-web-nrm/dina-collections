@@ -1,5 +1,11 @@
 import reduceFieldSpecsToNodeFieldNamesMap from './reduceFieldSpecsToNodeFieldNamesMap'
 
-export default function reduceFieldSpecsToUnitFieldNamesMap(fieldSpecs) {
-  return reduceFieldSpecsToNodeFieldNamesMap(fieldSpecs, { byUnit: true })
+export default function reduceFieldSpecsToUnitFieldNamesMap(
+  fieldSpecs,
+  useBaseName
+) {
+  return reduceFieldSpecsToNodeFieldNamesMap(fieldSpecs, {
+    byUnit: true,
+    useBaseName,
+  })
 }
