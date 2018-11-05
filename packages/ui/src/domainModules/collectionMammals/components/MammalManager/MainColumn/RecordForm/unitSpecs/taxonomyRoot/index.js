@@ -15,7 +15,7 @@ const parts = [
       model,
       resultPrefixTextKey: 'remarks.resultPrefix.taxonomy',
     },
-    name: 'remarks',
+    name: 'individual.taxonInformation.taxonRemarks',
     wrapInField: true,
   },
 ]
