@@ -48,6 +48,7 @@ storiesOf(
     <FormSectionNavigation
       activeFormSectionIndex={0}
       availableHeight={700}
+      formName="test"
       header={catalogNumber}
       loading={false}
       module="collectionMammals"
@@ -62,6 +63,7 @@ storiesOf(
     <FormSectionNavigation
       activeFormSectionIndex={0}
       availableHeight={700}
+      formName="test"
       header={catalogNumber}
       loading={false}
       module="collectionMammals"
@@ -77,6 +79,7 @@ storiesOf(
     <FormSectionNavigation
       activeFormSectionIndex={0}
       availableHeight={700}
+      formName="test"
       loading={false}
       module="collectionMammals"
       onSetActiveFormSection={action('onSetActiveFormSection')}

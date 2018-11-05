@@ -16,22 +16,39 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var objectPath = require('object-path');
 var Ajv = require('ajv');
+var ajvKeywords = require('ajv-keywords');
 
-module.exports = function createValidatorFactory(models) {
+var defaultValidatorKeywords = require('./defaultValidatorKeywords');
+
+var defaultOptions = {
+  allErrors: true,
+  format: 'full',
+  jsonPointers: true,
+  logger: false,
+  useDefaults: true,
+  verbose: false };
+
+var createValidatorFactory = function createValidatorFactory() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$keywords = _ref.keywords,
+      keywordsInput = _ref$keywords === undefined ? {} : _ref$keywords,
+      models = _ref.models;
+
   var rawModels = JSON.parse((0, _stringify2.default)(models));
-
-  var defaultOptions = {
-    allErrors: true,
-    format: 'full',
-    jsonPointers: true,
-    logger: false,
-    useDefaults: true,
-    verbose: false };
 
   var createAjv = function createAjv(options) {
     var ajv = new Ajv((0, _extends3.default)({}, options, { format: 'full' }));
+
+    ajvKeywords(ajv, 'deepRequired');
+
     (0, _keys2.default)(models).forEach(function (key) {
       ajv.addSchema(models[key], key);
+    });
+
+    var keywords = (0, _extends3.default)({}, defaultValidatorKeywords, keywordsInput);
+
+    (0, _keys2.default)(keywords).forEach(function (keyword) {
+      ajv.addKeyword(keyword, keywords[keyword]);
     });
 
     return ajv;
@@ -39,13 +56,13 @@ module.exports = function createValidatorFactory(models) {
 
   var defaultAjv = createAjv(defaultOptions);
 
-  return function createModelSchemaValidator(_ref) {
-    var dataPath = _ref.dataPath,
-        customSchema = _ref.schema,
-        model = _ref.model,
-        errorHandler = _ref.errorHandler,
-        throwError = _ref.throwError,
-        options = _ref.options;
+  return function createModelSchemaValidator(_ref2) {
+    var dataPath = _ref2.dataPath,
+        customSchema = _ref2.schema,
+        model = _ref2.model,
+        errorHandler = _ref2.errorHandler,
+        throwError = _ref2.throwError,
+        options = _ref2.options;
 
     var ajv = options ? createAjv(options) : defaultAjv;
     if (model && !models[model]) {
@@ -75,3 +92,5 @@ module.exports = function createValidatorFactory(models) {
     };
   };
 };
+
+module.exports = createValidatorFactory;

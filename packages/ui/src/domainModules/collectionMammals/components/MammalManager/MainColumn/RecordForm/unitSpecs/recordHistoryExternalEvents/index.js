@@ -10,6 +10,7 @@ const parts = [
     componentName: 'RecordHistoryExternalEvents',
     containsReduxFormField: true,
     name: 'individual.recordHistoryEvents',
+    relativeNames: ['agent', 'date'],
   },
 ]
 

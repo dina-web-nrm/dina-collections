@@ -15,31 +15,6 @@ const longitudeOptions = [
   { key: 'west', text: 'W', value: 'W' },
 ]
 
-const latRegex = /^(\+|-)?(?:90(?:(?:\.0{1,99})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,99})?))$/
-const lonRegex = /^(\+|-)?(?:180(?:(?:\.0{1,99})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,99})?))$/
-
-const latitudeValidation = [
-  value => {
-    if (value && !value.match(latRegex)) {
-      return {
-        errorCode: 'INVALID_LATITUDE',
-      }
-    }
-    return undefined
-  },
-]
-
-const longitudeValidation = [
-  value => {
-    if (value && !value.match(lonRegex)) {
-      return {
-        errorCode: 'INVALID_LONGITUDE',
-      }
-    }
-    return undefined
-  },
-]
-
 const getInitialDirection = (coordinateType, value) => {
   const coordinate = objectPath.get(value, coordinateType) || ''
 
@@ -98,7 +73,6 @@ class Coordinates extends Component {
             module={module}
             name={`${name}.latitude`}
             options={latitudeOptions}
-            validate={latitudeValidation}
           />
         </Grid.Column>
 
@@ -111,7 +85,6 @@ class Coordinates extends Component {
             module={module}
             name={`${name}.longitude`}
             options={longitudeOptions}
-            validate={longitudeValidation}
           />
         </Grid.Column>
       </FieldTemplate>

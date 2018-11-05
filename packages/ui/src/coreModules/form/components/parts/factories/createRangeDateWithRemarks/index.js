@@ -1,5 +1,3 @@
-import { defaultValidate } from 'coreModules/form/components/fields/Date/RangeDate'
-
 export default function createRangeDateWithRemarks(
   {
     baseName,
@@ -16,7 +14,6 @@ export default function createRangeDateWithRemarks(
       componentProps: {
         displayDateTypeRadios: true,
         initialDateType,
-        validate: defaultValidate,
       },
       initiallyHidden,
       name: baseName,

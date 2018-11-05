@@ -23486,12 +23486,21 @@
               "errorCode": {
                 "enum": [
                   "ADDITIONAL_PROPERTIES",
+                  "DEEP_REQUIRED",
                   "DUPLICATE",
                   "ENUM",
                   "MAX_LENGTH",
                   "MIN_LENGTH",
                   "REQUIRED",
-                  "WRONG_TYPE"
+                  "WRONG_TYPE",
+                  "DATE_RANGE_START_DATE_NOT_AFTER_END_DATE",
+                  "DATE_PAST",
+                  "DATE_ORPHAN_DAY",
+                  "DATE_ORPHAN_MONTH",
+                  "DATE_RANGE_BOTH_START_AND_END_REQUIRED",
+                  "DATE_CANNOT_BE_INTERPRETED",
+                  "INVALID_LATITUDE",
+                  "INVALID_LONGITUDE"
                 ],
                 "type": "string"
               }

@@ -1,8 +1,10 @@
 import {
-  isDirty,
+  getFormMeta,
   getFormSyncErrors,
   getFormAsyncErrors,
   getFormSubmitErrors,
+  getFormValues,
+  isDirty,
 } from 'redux-form'
 import objectPath from 'object-path'
 import { isEmpty } from 'lodash'
@@ -40,31 +42,58 @@ const getInitiallyHiddenFieldsHaveValue = (
   return false
 }
 
-const getSectionIsDirty = (state, { formName, section }) => {
+const getSectionIsDirty = (state, { formName, sectionName }) => {
   const getIsDirty = isDirty(formName)
   const sectionFieldNamesMap = selectors.getSectionFieldNamesMap(
     state.formSupport,
     {
       formName,
-      section,
     }
   )
 
-  const sectionFieldNames = sectionFieldNamesMap[section]
+  const sectionFieldNames = sectionFieldNamesMap[sectionName]
 
   return getIsDirty(state, ...sectionFieldNames)
 }
 
-const getAnyFieldIsInvalid = (state, { formName, fieldNames }) => {
-  const syncErrors = getFormSyncErrors(formName)(state)
+const getAnyFieldIsInvalid = (state, { fieldNames, formName }) => {
   const asyncErrors = getFormAsyncErrors(formName)(state)
+  const formMeta = getFormMeta(formName)(state)
+  const syncErrors = getFormSyncErrors(formName)(state)
   const submitErrors = getFormSubmitErrors(formName)(state)
+  const formValues = getFormValues(formName)(state)
 
   for (let index = 0; index < fieldNames.length; index += 1) {
+    const fieldName = fieldNames[index]
+    const fieldNameParts = fieldName.split('.*.')
+
+    if (fieldNameParts.length > 1) {
+      const fieldArray = objectPath.get(formValues, fieldNameParts[0])
+
+      if (fieldArray && fieldArray.length) {
+        const fieldNamesWithIndex = fieldArray.map((_, fieldNameIndex) => {
+          return fieldName.replace('.*.', `.${fieldNameIndex}.`)
+        })
+
+        const anyInvalidRelativeField = getAnyFieldIsInvalid(state, {
+          fieldNames: fieldNamesWithIndex,
+          formName,
+        })
+
+        if (anyInvalidRelativeField) {
+          return true
+        }
+      }
+    }
+
+    const fieldMeta = objectPath.get(formMeta, fieldName)
+
     if (
-      objectPath.get(syncErrors, fieldNames[index]) ||
-      objectPath.get(asyncErrors, fieldNames[index]) ||
-      objectPath.get(submitErrors, fieldNames[index])
+      fieldMeta &&
+      fieldMeta.touched &&
+      (objectPath.get(syncErrors, fieldName) ||
+        objectPath.get(asyncErrors, fieldName) ||
+        objectPath.get(submitErrors, fieldName))
     ) {
       return true
     }
@@ -73,16 +102,15 @@ const getAnyFieldIsInvalid = (state, { formName, fieldNames }) => {
   return false
 }
 
-const getSectionIsInvalid = (state, { formName, section }) => {
+const getSectionIsInvalid = (state, { formName, sectionName }) => {
   const sectionFieldNamesMap = selectors.getSectionFieldNamesMap(
     state.formSupport,
     {
       formName,
-      section,
     }
   )
 
-  const sectionFieldNames = sectionFieldNamesMap[section]
+  const sectionFieldNames = sectionFieldNamesMap[sectionName]
 
   return getAnyFieldIsInvalid(state, {
     fieldNames: sectionFieldNames,
@@ -91,8 +119,8 @@ const getSectionIsInvalid = (state, { formName, section }) => {
 }
 
 const getSectionsInValidStatus = (state, { formName, sectionSpecs }) => {
-  return sectionSpecs.map(({ name: section }) => {
-    return getSectionIsInvalid(state, { formName, section })
+  return sectionSpecs.map(({ name: sectionName }) => {
+    return getSectionIsInvalid(state, { formName, sectionName })
   })
 }
 

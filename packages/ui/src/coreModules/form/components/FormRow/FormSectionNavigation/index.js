@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Header, Step, Loader } from 'semantic-ui-react'
 
-import { emToPixels } from 'coreModules/layout/utilities'
-import { ModuleTranslate } from 'coreModules/i18n/components'
+import FormSectionNavigationItem from './Item'
 
 const activeStyle = {
   backgroundColor: 'rgb(245, 245, 244)',
@@ -22,6 +21,7 @@ const inactiveStyle = {
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
+  formName: PropTypes.string.isRequired,
   header: PropTypes.node.isRequired,
   loading: PropTypes.bool,
   module: PropTypes.string.isRequired,
@@ -45,50 +45,20 @@ const defaultProps = {
 }
 
 export class FormSectionNavigation extends PureComponent {
-  renderSection(index, name) {
-    const {
-      activeFormSectionIndex,
-      module,
-      onSetActiveFormSection: handleSetActiveFormSection,
-    } = this.props
-
-    return (
-      <Step
-        active={index === activeFormSectionIndex}
-        key={index}
-        onClick={event => handleSetActiveFormSection(event, index)}
-        style={{ width: emToPixels(21.875) }}
-      >
-        <Step.Content>
-          <Step.Title>
-            <ModuleTranslate
-              capitalize
-              module={module}
-              textKey={`formSectionTitles.${name}`}
-            />
-          </Step.Title>
-          <Step.Description>
-            <ModuleTranslate
-              capitalize
-              module={module}
-              textKey={`formSectionDescriptions.${name}`}
-            />
-          </Step.Description>
-        </Step.Content>
-      </Step>
-    )
-  }
-
   render() {
     const {
+      activeFormSectionIndex,
       availableHeight: height,
+      formName,
       header,
-      subHeader,
       loading,
+      module,
+      onSetActiveFormSection,
       onShowAllFormSections: handleShowAllFormSections,
       sectionSpecs,
       showAllFormSections,
       showSectionsInNavigation,
+      subHeader,
     } = this.props
 
     return (
@@ -115,7 +85,17 @@ export class FormSectionNavigation extends PureComponent {
           {showSectionsInNavigation && (
             <Step.Group size="small" style={{ marginTop: '-10px' }} vertical>
               {sectionSpecs.map(({ name }, index) => {
-                return this.renderSection(index, name)
+                return (
+                  <FormSectionNavigationItem
+                    activeFormSectionIndex={activeFormSectionIndex}
+                    formName={formName}
+                    index={index}
+                    key={name}
+                    module={module}
+                    onSetActiveFormSection={onSetActiveFormSection}
+                    sectionName={name}
+                  />
+                )
               })}
             </Step.Group>
           )}

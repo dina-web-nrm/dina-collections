@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { getFormSyncErrors } from 'redux-form'
 import { Button, Grid, Message } from 'semantic-ui-react'
 
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
@@ -7,10 +10,29 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 
 const ModuleTranslate = createModuleTranslate('form')
 
+const hasError = (syncErrors = {}) => {
+  if (syncErrors.schemaErrors && syncErrors.schemaErrors.length) {
+    return true
+  }
+
+  const errors = { ...syncErrors }
+
+  delete errors.schemaErrors
+
+  return Object.keys(errors).length > 0
+}
+
+const mapStateToProps = (state, { formName }) => {
+  return {
+    hasSyncErrors: hasError(getFormSyncErrors(formName)(state)),
+  }
+}
+
 const propTypes = {
   editMode: PropTypes.bool.isRequired,
   error: PropTypes.string,
   formName: PropTypes.string.isRequired,
+  hasSyncErrors: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
   onUndoChanges: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -29,6 +51,7 @@ export class FormActionBar extends PureComponent {
       editMode,
       error,
       formName,
+      hasSyncErrors,
       invalid,
       pristine,
       onUndoChanges: handleUndoChanges,
@@ -41,7 +64,7 @@ export class FormActionBar extends PureComponent {
       <Grid padded>
         <Grid.Column>
           <Button
-            disabled={invalid || pristine || submitting}
+            disabled={hasSyncErrors || invalid || pristine || submitting}
             size="large"
             type="submit"
           >
@@ -89,4 +112,4 @@ export class FormActionBar extends PureComponent {
 FormActionBar.propTypes = propTypes
 FormActionBar.defaultProps = defaultProps
 
-export default FormActionBar
+export default compose(connect(mapStateToProps))(FormActionBar)

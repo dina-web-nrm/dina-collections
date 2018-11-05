@@ -16,9 +16,13 @@ export default function transformOutput({ specimen = {} }) {
   )
 
   if (determinations && determinations.length) {
-    transformedSpecimen.individual.determinations = determinations.filter(
-      determination => !isEmpty(determination)
-    )
+    transformedSpecimen.individual.determinations = determinations
+      .map(determination => {
+        const patchedDetermination = { ...determination }
+        delete patchedDetermination.index
+        return patchedDetermination
+      })
+      .filter(determination => !isEmpty(determination))
   }
 
   const identifiers = objectPath.get(

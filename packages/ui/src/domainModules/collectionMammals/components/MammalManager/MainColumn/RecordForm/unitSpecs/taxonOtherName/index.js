@@ -10,6 +10,7 @@ const parts = [
     componentName: 'CustomTaxonNamesTable',
     containsReduxFormField: true,
     name: 'individual.taxonInformation.customTaxonNames',
+    relativeNames: ['customTaxonNameType.id', 'value'],
   },
 ]
 

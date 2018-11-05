@@ -1,9 +1,9 @@
 export default function reduceFieldSpecsToNodeFieldNamesMap(
   fieldSpecs,
-  { bySection, byUnit = true } = {}
+  { bySection, byUnit = true, useBaseName = false } = {}
 ) {
   return fieldSpecs.reduce((map, fieldSpec) => {
-    const { name, relativeNames, section, unit } = fieldSpec
+    const { baseName, name, section, unit } = fieldSpec
 
     if (!bySection && !byUnit) {
       throw new Error('either bySection or byUnit must be true')
@@ -11,24 +11,18 @@ export default function reduceFieldSpecsToNodeFieldNamesMap(
 
     const nodeName = bySection ? section : unit
 
-    if (relativeNames) {
-      const fullNames = relativeNames.map(relativeName => {
-        return `${name}.${relativeName}`
-      })
-
-      const newMap = {
+    if (baseName && useBaseName) {
+      return {
         ...map,
-        [nodeName]: map[nodeName] ? map[nodeName].concat(fullNames) : fullNames,
+        [nodeName]: map[nodeName]
+          ? map[nodeName].concat([baseName])
+          : [baseName],
       }
-
-      return newMap
     }
 
-    const newMap = {
+    return {
       ...map,
       [nodeName]: map[nodeName] ? map[nodeName].concat([name]) : [name],
     }
-
-    return newMap
   }, {})
 }

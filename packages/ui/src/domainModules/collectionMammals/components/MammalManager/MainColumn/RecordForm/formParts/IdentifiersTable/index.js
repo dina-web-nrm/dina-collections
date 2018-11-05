@@ -35,12 +35,13 @@ const propTypes = {
   allIdentifierTypesFetched: PropTypes.bool,
   changeFieldValue: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
-  identifiers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  identifiers: PropTypes.arrayOf(PropTypes.object),
   identifierTypeOptions: PropTypes.array.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
   allIdentifierTypesFetched: false,
+  identifiers: [],
 }
 
 function IdentifiersTable({

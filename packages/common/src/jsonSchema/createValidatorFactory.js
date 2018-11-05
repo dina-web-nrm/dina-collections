@@ -1,23 +1,37 @@
 const objectPath = require('object-path')
 const Ajv = require('ajv')
+const ajvKeywords = require('ajv-keywords')
 
-module.exports = function createValidatorFactory(models) {
+const defaultValidatorKeywords = require('./defaultValidatorKeywords')
+
+const defaultOptions = {
+  // errorDataPath: 'property',
+  allErrors: true,
+  format: 'full',
+  jsonPointers: true, // -> /members/0
+  logger: false,
+  useDefaults: true, // e.g.to may have default empty array
+  verbose: false, // to have information about the error.parentSchema
+}
+
+const createValidatorFactory = (
+  { keywords: keywordsInput = {}, models } = {}
+) => {
   const rawModels = JSON.parse(JSON.stringify(models))
-
-  const defaultOptions = {
-    // errorDataPath: 'property',
-    allErrors: true,
-    format: 'full',
-    jsonPointers: true, // -> /members/0
-    logger: false,
-    useDefaults: true, // e.g.to may have default empty array
-    verbose: false, // to have information about the error.parentSchema
-  }
 
   const createAjv = options => {
     const ajv = new Ajv({ ...options, format: 'full' })
+
+    ajvKeywords(ajv, 'deepRequired')
+
     Object.keys(models).forEach(key => {
       ajv.addSchema(models[key], key)
+    })
+
+    const keywords = { ...defaultValidatorKeywords, ...keywordsInput }
+
+    Object.keys(keywords).forEach(keyword => {
+      ajv.addKeyword(keyword, keywords[keyword])
     })
 
     return ajv
@@ -66,3 +80,5 @@ module.exports = function createValidatorFactory(models) {
     }
   }
 }
+
+module.exports = createValidatorFactory

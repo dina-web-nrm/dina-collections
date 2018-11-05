@@ -10,6 +10,7 @@ const parts = [
     componentName: 'IdentifiersTable',
     containsReduxFormField: true,
     name: 'individual.identifiers',
+    relativeNames: ['identifierType.id', 'value'],
   },
 ]
 
