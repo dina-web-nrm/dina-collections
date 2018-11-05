@@ -4,7 +4,7 @@ import { compose } from 'redux'
 
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import TogglableField from '../../TogglableField'
-import Input from '../Input'
+import TextArea from '../TextArea'
 import RemarksWrapper from './RemarksWrapper'
 
 const propTypes = {
@@ -59,7 +59,7 @@ class RemarksInput extends PureComponent {
         isLatestActiveField={isLatestActiveField}
         setAsLatestActiveField={setAsLatestActiveField}
       >
-        <Input
+        <TextArea
           displayLabel={displayLabel}
           enableHelpNotifications={enableHelpNotifications}
           fluid
