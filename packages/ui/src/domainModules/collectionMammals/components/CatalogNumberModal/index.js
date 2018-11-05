@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { Button, Grid, Modal } from 'semantic-ui-react'
 
-import { Button, Modal } from 'semantic-ui-react'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { Field, Input } from 'coreModules/form/components'
+import { Field, FormModal, Input } from 'coreModules/form/components'
 
 const mustBe6Or8Digits = value => {
   const regex = /^(\d{6}|\d{8})$/
@@ -69,67 +69,69 @@ class CatalogNumberModal extends PureComponent {
     const { createManually } = this.state
 
     return (
-      <React.Fragment>
-        <Modal open size="small">
-          <Modal.Header>
-            <ModuleTranslate textKey="other.createNewSpecimen" />
-          </Modal.Header>
-          {createManually && (
-            <React.Fragment>
-              <Modal.Content>
-                <Modal.Description>
-                  <Field
-                    autoComplete="off"
-                    className="transparent"
-                    component={Input}
-                    enableHelpNotifications={false}
-                    helpText={
-                      <ModuleTranslate textKey="other.sixOrEightDigits" />
-                    }
-                    label={<ModuleTranslate textKey="other.catalogNumber" />}
-                    module="collectionMammals"
-                    name="individual.identifiers.0.value"
-                    type="text"
-                    validate={[mustBe6Or8Digits]}
-                  />
-                </Modal.Description>
-              </Modal.Content>
-              <Modal.Actions style={{ textAlign: 'left' }}>
-                <Button disabled={!valid} onClick={handleSubmit}>
-                  <ModuleTranslate textKey="other.useThisNumber" />
-                </Button>
-                <Button onClick={this.handleBackToModalOne}>
-                  <ModuleTranslate textKey="other.back" />
-                </Button>
-                <Button basic onClick={this.handleCancel}>
-                  <ModuleTranslate textKey="other.cancel" />
-                </Button>
-              </Modal.Actions>
-            </React.Fragment>
-          )}
+      <FormModal open size="small">
+        <Modal.Header>
+          <ModuleTranslate textKey="other.createNewSpecimen" />
+        </Modal.Header>
+        {createManually && (
+          <React.Fragment>
+            <Modal.Content>
+              <Modal.Description>
+                <Grid>
+                  <Grid.Column width={8}>
+                    <Field
+                      autoComplete="off"
+                      className="transparent"
+                      component={Input}
+                      enableHelpNotifications={false}
+                      helpText={
+                        <ModuleTranslate textKey="other.sixOrEightDigits" />
+                      }
+                      label={<ModuleTranslate textKey="other.catalogNumber" />}
+                      module="collectionMammals"
+                      name="individual.identifiers.0.value"
+                      type="text"
+                      validate={[mustBe6Or8Digits]}
+                    />
+                  </Grid.Column>
+                </Grid>
+              </Modal.Description>
+            </Modal.Content>
+            <Modal.Actions style={{ textAlign: 'left' }}>
+              <Button disabled={!valid} onClick={handleSubmit}>
+                <ModuleTranslate textKey="other.useThisNumber" />
+              </Button>
+              <Button onClick={this.handleBackToModalOne}>
+                <ModuleTranslate textKey="other.back" />
+              </Button>
+              <Button basic onClick={this.handleCancel}>
+                <ModuleTranslate textKey="other.cancel" />
+              </Button>
+            </Modal.Actions>
+          </React.Fragment>
+        )}
 
-          {!createManually && (
-            <React.Fragment>
-              <Modal.Content>
-                <Modal.Description>
-                  <ModuleTranslate textKey="other.automaticCatalogNumber" />
-                </Modal.Description>
-              </Modal.Content>
-              <Modal.Actions style={{ textAlign: 'left' }}>
-                <Button onClick={handleSubmit}>
-                  <ModuleTranslate textKey="other.yesCreateNumber" />
-                </Button>
-                <Button onClick={this.handleGotoModalTwo}>
-                  <ModuleTranslate textKey="other.enterManully" />
-                </Button>
-                <Button basic onClick={this.handleCancel}>
-                  <ModuleTranslate textKey="other.cancel" />
-                </Button>
-              </Modal.Actions>
-            </React.Fragment>
-          )}
-        </Modal>
-      </React.Fragment>
+        {!createManually && (
+          <React.Fragment>
+            <Modal.Content>
+              <Modal.Description>
+                <ModuleTranslate textKey="other.automaticCatalogNumber" />
+              </Modal.Description>
+            </Modal.Content>
+            <Modal.Actions style={{ textAlign: 'left' }}>
+              <Button onClick={handleSubmit}>
+                <ModuleTranslate textKey="other.yesCreateNumber" />
+              </Button>
+              <Button onClick={this.handleGotoModalTwo}>
+                <ModuleTranslate textKey="other.enterManully" />
+              </Button>
+              <Button basic onClick={this.handleCancel}>
+                <ModuleTranslate textKey="other.cancel" />
+              </Button>
+            </Modal.Actions>
+          </React.Fragment>
+        )}
+      </FormModal>
     )
   }
 }

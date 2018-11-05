@@ -31,6 +31,7 @@ export class LocalityDropdownPickerSearch extends Component {
       pickerActive,
       ...rest
     } = this.props
+
     if (pickerActive) {
       const initialFilterValues = fieldSearchQuery
         ? {

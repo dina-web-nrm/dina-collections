@@ -6,6 +6,7 @@ import { Grid, List, Modal } from 'semantic-ui-react'
 import { buildYYYYMMDD } from 'common/es5/date'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+import { FormModal } from 'coreModules/form/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import EditCuratorialAssessment from './CuratorialAssessmentForm/Edit'
 
@@ -76,7 +77,7 @@ class CuratorialAssessmentItem extends PureComponent {
     return (
       <List.Item>
         <List.Content style={{ padding: '0.5em' }} verticalAlign="bottom">
-          <Modal
+          <FormModal
             open={open}
             size="small"
             trigger={
@@ -127,7 +128,7 @@ class CuratorialAssessmentItem extends PureComponent {
                 />
               </Modal.Description>
             </Modal.Content>
-          </Modal>
+          </FormModal>
         </List.Content>
       </List.Item>
     )

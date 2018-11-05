@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { Button, Form, Header, Input, Loader, Modal } from 'semantic-ui-react'
+
+import { FormModal } from 'coreModules/form/components'
 import { FormFieldError } from 'coreModules/error/components'
 import FieldLabel from 'coreModules/form/components/FieldTemplate/FieldLabel'
 
@@ -124,7 +126,7 @@ class CatalogNumberInput extends Component {
           />
         )}
         {!editMode && (
-          <Modal
+          <FormModal
             open={open}
             size="mini"
             trigger={
@@ -202,7 +204,7 @@ class CatalogNumberInput extends Component {
                 )}
               </Button>
             </Modal.Actions>
-          </Modal>
+          </FormModal>
         )}
       </Header>
     )

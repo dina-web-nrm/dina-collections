@@ -6,6 +6,7 @@ import { Button, Grid, Modal } from 'semantic-ui-react'
 import { isEmpty } from 'lodash'
 
 import config from 'config'
+import { FormModal } from 'coreModules/form/components'
 import formParts from 'coreModules/form/components/parts'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import { createModuleTranslate } from 'coreModules/i18n/components'
@@ -14,6 +15,7 @@ import {
   CATALOG_CARD_CREATION_DESCRIPTION,
   MAM_2006_SYSTEM_NAME,
 } from 'domainModules/collectionMammals/constants'
+
 import Fields from './Fields'
 import EventRow from './EventRow'
 
@@ -183,7 +185,7 @@ class RecordHistoryExternalEvents extends Component {
               />
             )
           })}
-        <Modal
+        <FormModal
           open={open}
           size="tiny"
           trigger={
@@ -223,7 +225,7 @@ class RecordHistoryExternalEvents extends Component {
               <ModuleTranslate capitalize textKey="other.done" />
             </Button>
           </Modal.Actions>
-        </Modal>
+        </FormModal>
         {config.isTest && <Fields />}
       </React.Fragment>
     )
