@@ -16,7 +16,7 @@ const log = createLog('modules:collectionMammals:MammalForm:CollectingLocality')
 
 const buttonStyle = {
   float: 'left',
-  marginBottom: '1em',
+  marginBottom: '2em',
 }
 
 const propTypes = {

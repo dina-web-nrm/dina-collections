@@ -25,6 +25,16 @@ const onePartErrorLabelStyle = {
 const twoPartErrorLabelStyle = {
   width: emToPixels(25),
 }
+const datePartStyle = {
+  float: 'left',
+  width: '11.5em',
+}
+const datePartSeparatorStyle = {
+  float: 'left',
+  marginTop: '1.75em',
+  textAlign: 'center',
+  width: '2em',
+}
 
 const propTypes = {
   componentErrors: PropTypes.object,
@@ -240,34 +250,29 @@ class DateRange extends Component {
         )}
         {!stack && (
           <React.Fragment>
-            <DatePart
-              disabled={dateType === LATEST}
-              displayLabel={displaySubLabels}
-              input={this.getFieldInput('startDate')}
-              isStartDate
-              meta={{}}
-              setYearInputRef={this.setStartYearInputRef}
-            />
+            <div style={datePartStyle}>
+              <DatePart
+                disabled={dateType === LATEST}
+                displayLabel={displaySubLabels}
+                input={this.getFieldInput('startDate')}
+                isStartDate
+                meta={{}}
+                setYearInputRef={this.setStartYearInputRef}
+              />
+            </div>
             {dateType !== SINGLE && (
-              <div
-                style={{
-                  float: 'left',
-                  marginTop: '1.75em',
-                  textAlign: 'center',
-                  width: '2em',
-                }}
-              >
-                {'–'}
-              </div>
+              <div style={datePartSeparatorStyle}> – </div>
             )}
-            <DatePart
-              displayLabel={displaySubLabels}
-              hidden={dateType === SINGLE}
-              input={this.getFieldInput('endDate')}
-              isEndDate
-              meta={{}}
-              setYearInputRef={this.setEndYearInputRef}
-            />
+            <div style={datePartStyle}>
+              <DatePart
+                displayLabel={displaySubLabels}
+                hidden={dateType === SINGLE}
+                input={this.getFieldInput('endDate')}
+                isEndDate
+                meta={{}}
+                setYearInputRef={this.setEndYearInputRef}
+              />
+            </div>
           </React.Fragment>
         )}
 
