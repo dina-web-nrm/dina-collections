@@ -1,3 +1,5 @@
+const objectPath = require('object-path')
+
 const backendError400 = require('common/src/error/errorFactories/backendError400')
 const extractIdentifiersFromSpecimen = require('./extractIdentifiersFromSpecimen')
 
@@ -7,7 +9,7 @@ module.exports = function extractCatalogNumberFromSpecimen({
 }) {
   const identifiers = extractIdentifiersFromSpecimen(specimen)
   const catalogNumberIdentifiers = identifiers.filter(identifier => {
-    return identifier.identifierType.id === identifierTypeId
+    return objectPath.get(identifier, 'identifierType.id') === identifierTypeId
   })
 
   const nCatalogNumbers = catalogNumberIdentifiers.length
