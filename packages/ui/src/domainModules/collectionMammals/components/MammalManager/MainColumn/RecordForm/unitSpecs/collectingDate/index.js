@@ -13,7 +13,7 @@ const parts = [
   ...createRangeDateWithRemarks({
     baseName: 'individual.collectingInformation.0.event.dateRange',
     emptyStateTextKey: 'remarks.emptyState.date',
-    initialDateType: 'range',
+    initialDateType: 'single',
     model,
     resultPrefixTextKey: 'remarks.resultPrefix.date',
   }),

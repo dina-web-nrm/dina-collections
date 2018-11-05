@@ -7,6 +7,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { DateString } from 'coreModules/commonUi/components'
+import { FormModal } from 'coreModules/form/components'
 import EditCuratorialAssessment from './CuratorialAssessmentForm/Edit'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -79,7 +80,7 @@ class CuratorialAssessmentItem extends PureComponent {
     return (
       <List.Item>
         <List.Content style={{ padding: '0.5em' }} verticalAlign="bottom">
-          <Modal
+          <FormModal
             open={open}
             size="small"
             trigger={
@@ -136,7 +137,7 @@ class CuratorialAssessmentItem extends PureComponent {
                 />
               </Modal.Description>
             </Modal.Content>
-          </Modal>
+          </FormModal>
         </List.Content>
       </List.Item>
     )

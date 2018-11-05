@@ -1001,7 +1001,6 @@
       "en": "Recorded by (interpreted)"
     }
   },
-
   "other": {
     "add": {
       "en": "Add",
@@ -1296,5 +1295,9 @@
       "en": "Weights",
       "sv": "Vikter"
     }
+  },
+  "duplicate": {
+    "en": "this catalog number is already registered",
+    "sv": ""
   }
 }

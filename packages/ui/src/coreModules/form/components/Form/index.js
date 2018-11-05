@@ -38,7 +38,7 @@ class Form extends PureComponent {
     const { children, onSubmit: handleSubmit, setFormRef } = this.props
 
     return (
-      <form onSubmit={handleSubmit} ref={setFormRef}>
+      <form className="ui form" onSubmit={handleSubmit} ref={setFormRef}>
         {children}
       </form>
     )

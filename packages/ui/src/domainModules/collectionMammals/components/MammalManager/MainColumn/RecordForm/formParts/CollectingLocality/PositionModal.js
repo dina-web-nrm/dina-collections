@@ -5,7 +5,12 @@ import { Button, Grid, Modal } from 'semantic-ui-react'
 import memoize from 'memoize-one'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { Coordinates, Field, Input } from 'coreModules/form/components'
+import {
+  Coordinates,
+  Field,
+  FormModal,
+  Input,
+} from 'coreModules/form/components'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import VerticalPosition from './VerticalPosition'
 
@@ -51,72 +56,76 @@ class PositionModal extends PureComponent {
     } = this.props
 
     return (
-      <Modal open={open} size="small">
+      <FormModal open={open} size="tiny">
         <Modal.Header>
           <ModuleTranslate module={module} textKey="headers.localityPosition" />
         </Modal.Header>
         <Modal.Content>
           <Modal.Description>
             <Grid>
-              <Grid.Column width={13}>
-                <Field
-                  autoComplete="off"
-                  component={Input}
-                  fluid
-                  module={module}
-                  name={getPath('coordinatesVerbatim')}
-                  type="text"
-                />
-              </Grid.Column>
-              <Grid.Column width={16}>
-                <Field
-                  autoComplete="off"
-                  component={Coordinates}
-                  label={<ModuleTranslate textKey="other.coordinates" />}
-                  latitudeLabel={<ModuleTranslate textKey="other.latitude" />}
-                  longitudeLabel={<ModuleTranslate textKey="other.longitude" />}
-                  module={module}
-                  name={getPath('position')}
-                />
-              </Grid.Column>
-              <Grid.Column width={13}>
-                <Field
-                  autoComplete="off"
-                  component={Input}
-                  fluid
-                  module={module}
-                  name={getPath('georeferenceSourcesText')}
-                  type="text"
-                />
-              </Grid.Column>
-              <Grid.Column width={13}>
-                <Field
-                  autoComplete="off"
-                  component={Input}
-                  fluid
-                  module={module}
-                  name={getPath('position.uncertaintyInMeters')}
-                  type="number"
-                />
-              </Grid.Column>
-              <Grid.Column width={16}>
-                <VerticalPosition
-                  label={<ModuleTranslate textKey="other.elevation" />}
-                  max={getPath('verticalPosition.maximumElevationInMeters')}
-                  min={getPath('verticalPosition.minimumElevationInMeters')}
-                  module={module}
-                  name={getPath('verticalPosition')}
-                />
-              </Grid.Column>
-              <Grid.Column width={16}>
-                <VerticalPosition
-                  label={<ModuleTranslate textKey="other.depth" />}
-                  max={getPath('verticalPosition.maximumDepthInMeters')}
-                  min={getPath('verticalPosition.minimumDepthInMeters')}
-                  module={module}
-                  name={getPath('verticalPosition')}
-                />
-              </Grid.Column>
+              <Grid.Row className="relaxed">
+                <Grid.Column width={13}>
+                  <Field
+                    autoComplete="off"
+                    component={Input}
+                    fluid
+                    module={module}
+                    name={getPath('coordinatesVerbatim')}
+                    type="text"
+                  />
+                </Grid.Column>
+                <Grid.Column width={16}>
+                  <Field
+                    autoComplete="off"
+                    component={Coordinates}
+                    label={<ModuleTranslate textKey="other.coordinates" />}
+                    latitudeLabel={<ModuleTranslate textKey="other.latitude" />}
+                    longitudeLabel={
+                      <ModuleTranslate textKey="other.longitude" />
+                    }
+                    module={module}
+                    name={getPath('position')}
+                  />
+                </Grid.Column>
+                <Grid.Column width={13}>
+                  <Field
+                    autoComplete="off"
+                    component={Input}
+                    fluid
+                    module={module}
+                    name={getPath('georeferenceSourcesText')}
+                    type="text"
+                  />
+                </Grid.Column>
+                <Grid.Column width={13}>
+                  <Field
+                    autoComplete="off"
+                    component={Input}
+                    fluid
+                    module={module}
+                    name={getPath('position.uncertaintyInMeters')}
+                    type="number"
+                  />
+                </Grid.Column>
+                <Grid.Column width={16}>
+                  <VerticalPosition
+                    label={<ModuleTranslate textKey="other.elevation" />}
+                    max={getPath('verticalPosition.maximumElevationInMeters')}
+                    min={getPath('verticalPosition.minimumElevationInMeters')}
+                    module={module}
+                    name={getPath('verticalPosition')}
+                  />
+                </Grid.Column>
+                <Grid.Column width={16}>
+                  <VerticalPosition
+                    label={<ModuleTranslate textKey="other.depth" />}
+                    max={getPath('verticalPosition.maximumDepthInMeters')}
+                    min={getPath('verticalPosition.minimumDepthInMeters')}
+                    module={module}
+                    name={getPath('verticalPosition')}
+                  />
+                </Grid.Column>
+              </Grid.Row>
             </Grid>
           </Modal.Description>
         </Modal.Content>
@@ -125,7 +134,7 @@ class PositionModal extends PureComponent {
             <ModuleTranslate textKey="other.done" />
           </Button>
         </Modal.Actions>
-      </Modal>
+      </FormModal>
     )
   }
 }

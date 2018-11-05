@@ -5,6 +5,7 @@ import { Button, Header, List, Modal } from 'semantic-ui-react'
 
 import config from 'config'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import { FormModal } from 'coreModules/form/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import CuratorialAssessmentItem from './CuratorialAssessmentItem'
 import CreateCuratorialAssessment from './CuratorialAssessmentForm/Create'
@@ -73,7 +74,7 @@ class CuratorialAssessmentsList extends Component {
             }
           </List>
         )}
-        <Modal
+        <FormModal
           open={open}
           size="small"
           trigger={
@@ -103,7 +104,7 @@ class CuratorialAssessmentsList extends Component {
               />
             </Modal.Description>
           </Modal.Content>
-        </Modal>
+        </FormModal>
         {config.isTest && <FieldsForTest getPath={getPath} />}
       </React.Fragment>
     )

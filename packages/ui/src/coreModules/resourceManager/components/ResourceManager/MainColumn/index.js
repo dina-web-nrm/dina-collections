@@ -111,7 +111,7 @@ class MainColumn extends Component {
       case 'recordNavigationBar': {
         const { treeActive } = this.props
 
-        let keys = ['onOpenNewRecordForm']
+        let keys = ['onOpenNewRecordForm', 'treeActive']
 
         if (!treeActive) {
           keys = [
@@ -129,6 +129,7 @@ class MainColumn extends Component {
           keys,
           props: this.props,
         })
+
         // showNewRecordButton={!isPicker}
         // showRecordInput={!isPicker && !treeActive}
         // showShowAllButton={!isPicker && !treeActive}

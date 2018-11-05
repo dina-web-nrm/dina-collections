@@ -8,6 +8,7 @@ import crudActionCreators from 'coreModules/crud/actionCreators'
 import downloadFileActionCreator from 'coreModules/api/actionCreators/downloadFile'
 import userSelectors from 'coreModules/user/globalSelectors'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
+import { FormModal } from 'coreModules/form/components'
 import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
 import tableColumnSpecifications from '../tableColumnSpecifications'
 
@@ -228,7 +229,7 @@ export class CsvExporter extends Component {
     let exportModal = null
     if (modalContent) {
       exportModal = (
-        <Modal open>
+        <FormModal open>
           <Modal.Header>
             Exporting{' '}
             <Icon
@@ -239,7 +240,7 @@ export class CsvExporter extends Component {
             />
           </Modal.Header>
           <Modal.Content>{modalContent}</Modal.Content>
-        </Modal>
+        </FormModal>
       )
     }
 

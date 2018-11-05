@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Header, Modal } from 'semantic-ui-react'
 
+import { FormModal } from '../../../form/components'
 import TagGroup from './TagGroup'
 
 const propTypes = {
@@ -57,7 +58,7 @@ const RefineTagSelection = ({
   }
 
   return (
-    <Modal closeIcon onClose={handleClose} open>
+    <FormModal closeIcon onClose={handleClose} open>
       <Modal.Header>{`Refine filter (${numberOfSelectedResults}/${
         numberOfSearchResults
       })`}</Modal.Header>
@@ -78,7 +79,7 @@ const RefineTagSelection = ({
           })}
         </Modal.Description>
       </Modal.Content>
-    </Modal>
+    </FormModal>
   )
 }
 

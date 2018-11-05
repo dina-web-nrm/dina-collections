@@ -30,6 +30,7 @@
     },
     "continent": { "en": "continent" },
     "country": { "en": "country" },
+    "district": { "en": "district" },
     "province": { "en": "province" }
   },
   "newLocality": {
