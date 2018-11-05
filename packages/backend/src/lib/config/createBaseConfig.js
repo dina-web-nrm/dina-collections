@@ -11,6 +11,7 @@ const services = {
   historyService: true,
   identifierService: true,
   jobService: true,
+  migrationService: true,
   placeService: true,
   searchService: true,
   specimenService: true,
