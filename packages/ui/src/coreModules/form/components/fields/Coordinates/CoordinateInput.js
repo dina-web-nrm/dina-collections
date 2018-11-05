@@ -23,7 +23,7 @@ const updateCoordinateWithDirection = (coordinate, direction) => {
 const style = {
   float: 'left',
   paddingRight: '0.5em',
-  width: '17em',
+  width: '15em',
 }
 
 const propTypes = {

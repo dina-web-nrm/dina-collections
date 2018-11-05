@@ -64,29 +64,30 @@ class Coordinates extends Component {
         module={module}
         name={name}
       >
-        <Grid.Column width={8}>
-          <Field
-            component={CoordinateInput}
-            coordinateLabel={latitudeLabel}
-            initialDirection={getInitialDirection('latitude', value)}
-            initialValue={getIntialValue('latitude', value)}
-            module={module}
-            name={`${name}.latitude`}
-            options={latitudeOptions}
-          />
-        </Grid.Column>
-
-        <Grid.Column width={8}>
-          <Field
-            component={CoordinateInput}
-            coordinateLabel={longitudeLabel}
-            initialDirection={getInitialDirection('longitude', value)}
-            initialValue={getIntialValue('longitude', value)}
-            module={module}
-            name={`${name}.longitude`}
-            options={longitudeOptions}
-          />
-        </Grid.Column>
+        <Grid>
+          <Grid.Column width={8}>
+            <Field
+              component={CoordinateInput}
+              coordinateLabel={latitudeLabel}
+              initialDirection={getInitialDirection('latitude', value)}
+              initialValue={getIntialValue('latitude', value)}
+              module={module}
+              name={`${name}.latitude`}
+              options={latitudeOptions}
+            />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Field
+              component={CoordinateInput}
+              coordinateLabel={longitudeLabel}
+              initialDirection={getInitialDirection('longitude', value)}
+              initialValue={getIntialValue('longitude', value)}
+              module={module}
+              name={`${name}.longitude`}
+              options={longitudeOptions}
+            />
+          </Grid.Column>
+        </Grid>
       </FieldTemplate>
     )
   }
