@@ -16,7 +16,7 @@ module.exports = function bootstrapWorker({
       workerActive,
     })
 
-    return null
+    return { message: 'Worker started' }
   }
 
   return bootstrapBase({

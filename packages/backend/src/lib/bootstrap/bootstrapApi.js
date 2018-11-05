@@ -43,8 +43,7 @@ module.exports = function bootstrapApi({
           return reject(err)
         }
 
-        log.info(`Api listening to port ${config.api.port}`)
-        return resolve()
+        return resolve({ message: `Api listening to port: ${config.api.port}` })
       })
     })
   }

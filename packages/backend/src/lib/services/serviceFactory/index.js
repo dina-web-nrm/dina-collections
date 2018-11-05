@@ -6,13 +6,19 @@ module.exports = function createService({
   resourceRelationshipParamsMap,
   serviceDefinition: serviceSpecificationInput,
 }) {
-  log.info(`Create service ${serviceSpecificationInput.name}`)
+  if (log) {
+    log.info(`Create service ${serviceSpecificationInput.name}`)
+  }
+
   const serviceSpecification = createServiceSpecification(
     serviceSpecificationInput
   )
   const { resources: resourceInputs = {} } = serviceSpecification
 
-  log.info('Create resources')
+  if (log) {
+    log.info('Create resources')
+  }
+
   const resources = Object.keys(resourceInputs).reduce((obj, resourceName) => {
     const resourceInput = {
       ...resourceInputs[resourceName],

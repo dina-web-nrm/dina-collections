@@ -8,21 +8,28 @@ module.exports = function createServices({
   resourceRelationshipParamsMap = {},
   serviceDefinitions,
 }) {
-  log.info('Create services')
-  return Object.keys(serviceDefinitions).reduce((services, serviceName) => {
-    if (config && config.services && !config.services[serviceName]) {
-      return services
-    }
+  log.info('Adding services:')
+  const createdServiceNames = []
+  const createdServices = Object.keys(serviceDefinitions).reduce(
+    (services, serviceName) => {
+      if (config && config.services && !config.services[serviceName]) {
+        return services
+      }
 
-    const service = createService({
-      log: log.scope(),
-      resourceRelationshipParamsMap,
-      serviceDefinition: serviceDefinitions[serviceName],
-    })
+      const service = createService({
+        resourceRelationshipParamsMap,
+        serviceDefinition: serviceDefinitions[serviceName],
+      })
 
-    return {
-      ...services,
-      [serviceName]: service,
-    }
-  }, {})
+      createdServiceNames.push(serviceName)
+
+      return {
+        ...services,
+        [serviceName]: service,
+      }
+    },
+    {}
+  )
+  log.scope().info(`Added: ${createdServiceNames.join(', ')}`)
+  return createdServices
 }

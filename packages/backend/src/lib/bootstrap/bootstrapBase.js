@@ -54,11 +54,22 @@ module.exports = function bootstrapBase({
           serviceInteractor,
         })
       })
-      .then(() => {
+      .then(({ message }) => {
+        log.info(
+          '######################################################################################'
+        )
+
         log.info(
           `Started after: ${now() -
             startTime} milliseconds. Bootstrap time: ${now() -
             bootstrapStartTime}`
+        )
+        if (message) {
+          log.info(message)
+        }
+
+        log.info(
+          '######################################################################################'
         )
       })
   })

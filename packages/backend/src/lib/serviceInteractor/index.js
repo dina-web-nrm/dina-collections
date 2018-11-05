@@ -104,8 +104,6 @@ module.exports = function createServiceInteractor() {
 
   const serviceInteractions = operationTypes.reduce(
     (methods, operationType) => {
-      log.info(`Creating service interaction for operation: ${operationType}`)
-
       return {
         ...methods,
         [operationType]: ({ request = {}, requestId, resource, user }) => {

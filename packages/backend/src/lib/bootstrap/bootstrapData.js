@@ -10,6 +10,8 @@ module.exports = function bootstrapData({
     return importer({
       config,
       serviceInteractor,
+    }).then(() => {
+      return null
     })
   }
 

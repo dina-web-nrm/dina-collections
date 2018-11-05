@@ -2,8 +2,6 @@ const createLog = require('../../utilities/log')
 const extractModelSpecificationsFromServices = require('./utilities/extractModelSpecificationsFromServices')
 const modelFactories = require('./factories')
 
-const log = createLog('lib/models', 1)
-
 module.exports = function createModels({
   config,
   elasticsearch,
@@ -20,7 +18,6 @@ module.exports = function createModels({
   return Promise.all(
     modelSpecifications.map(
       ({ modelFactory: modelFactoryName, name, ...rest }) => {
-        log.debug(name)
         const modelFactory = modelFactories[modelFactoryName]
         if (!modelFactory) {
           throw new Error(`Unknown model factory type: ${modelFactoryName}`)
