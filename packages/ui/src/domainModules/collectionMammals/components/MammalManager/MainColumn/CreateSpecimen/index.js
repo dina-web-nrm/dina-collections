@@ -13,7 +13,7 @@ const log = createLog(
   'modules:collectionMammals:components:MammalManager:CreateSpecimen'
 )
 
-const FORM_NAME = 'editSpecimen'
+const FORM_NAME = 'createSpecimen'
 
 const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
