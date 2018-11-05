@@ -56,7 +56,7 @@ const DeterminationsAccordion = ({
         determinations.length > 0 && (
           <Grid.Column width={16}>
             <Accordion
-              expandFirstItemOnMountIfEmpty
+              expandFirstItemOnMountIfEmptyOrOnlyHasIndex
               initialActiveMode={ALL_COLLAPSED}
               items={determinations}
               renderContent={props => (
@@ -82,12 +82,11 @@ const DeterminationsAccordion = ({
           module="collectionMammals"
           onClick={event => {
             event.preventDefault()
-            changeFieldValue(
-              `individual.determinations.${(determinations &&
-                determinations.length) ||
-                0}`,
-              {}
-            )
+            const index = (determinations && determinations.length) || 0
+
+            // keeping index in value to prevent the accordion item to disappear
+            // if the user focues and then blurs an input without entering a value
+            changeFieldValue(`individual.determinations.${index}`, { index })
           }}
           textKey="other.addDetermination"
         />

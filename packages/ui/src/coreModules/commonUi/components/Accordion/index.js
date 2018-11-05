@@ -16,7 +16,7 @@ const log = createLog('modules:commonUi:Accordion')
 
 const propTypes = {
   delayItemRenderUntilActive: PropTypes.bool,
-  expandFirstItemOnMountIfEmpty: PropTypes.bool,
+  expandFirstItemOnMountIfEmptyOrOnlyHasIndex: PropTypes.bool,
   expandItemOnAdd: PropTypes.bool,
   fluid: PropTypes.bool,
   getShouldExpandFirstItemOnMount: PropTypes.func,
@@ -34,7 +34,7 @@ const propTypes = {
 }
 const defaultProps = {
   delayItemRenderUntilActive: false,
-  expandFirstItemOnMountIfEmpty: false,
+  expandFirstItemOnMountIfEmptyOrOnlyHasIndex: false,
   expandItemOnAdd: true,
   fluid: true,
   getShouldExpandFirstItemOnMount: undefined,
@@ -77,7 +77,7 @@ class AccordionWrapper extends Component {
 
   componentDidMount() {
     const {
-      expandFirstItemOnMountIfEmpty,
+      expandFirstItemOnMountIfEmptyOrOnlyHasIndex,
       getShouldExpandFirstItemOnMount,
       getShouldRenderItem,
       items,
@@ -85,8 +85,9 @@ class AccordionWrapper extends Component {
 
     if (
       items.length === 1 &&
-      expandFirstItemOnMountIfEmpty &&
-      isEmpty(items[0])
+      expandFirstItemOnMountIfEmptyOrOnlyHasIndex &&
+      (isEmpty(items[0]) ||
+        (Object.keys(items[0]).length === 1 && items[0].index !== undefined))
     ) {
       this.handleSetActive(0)
     }

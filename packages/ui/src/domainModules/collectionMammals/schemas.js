@@ -20,6 +20,11 @@ const createMammalFormModels = () => {
     ],
   })
 
+  updatedModels = immutable.set(updatedModels, 'determination.properties', {
+    ...updatedModels.determination.properties,
+    index: { type: 'number' },
+  })
+
   updatedModels = immutable.set(
     updatedModels,
     'individual.properties.featureObservations',
