@@ -630,6 +630,10 @@
   -webkit-box-shadow: 0px 0px 0px 1px #E0B4B4 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
           box-shadow: 0px 0px 0px 1px #E0B4B4 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
+.ui.steps .step.error:after {
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+}
 .ui.steps .step.error .title {
   color: #912D2B;
 }
