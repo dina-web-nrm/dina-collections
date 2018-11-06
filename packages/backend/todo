@@ -1,4 +1,42 @@
-[] Commit
+
+Move endpoint factory method to inside function
+const openApiSpec = schemaInterface.getOpenApiSpec()
+
+const map = buildOperationIdPathnameMap(openApiSpec)
+
+
+
+Create service to keep track of data
+* statusService
+** migrationLog (date, dataModelVersion, migrationStatus)
+*** export middleware
+**** On bootstrap make request to check current in db, keep in singleton
+**** when post or patch request comes not hitting the migrations model
+**** if version off sync then hit db to check version and status. if not ok abort request
+
+
+
+In Common
+
+In backend
+* When starting to work with new dataModel version. Inc models package.json and build
+** This will result in new current version
+** When merging to master there should be no git history of dist versions
+* Require current versions (api and models) from dist/index.
+* Keep track of dataModel version in db. (together with flag sync required?)
+* If version not synced: Set api in maintenance mode
+** Only check sync when started?
+*** No use api with singletons in posthook
+
+
+In frontend
+* require latest always (create separate export from dist)
+
+
+In migrations
+* Use migration to increase the data-model version in db
+
+
 
 Setup test scenario
 [ ] new migration
@@ -12,6 +50,42 @@ Test flow
 [ ] run tests on test db
 [ ] run downgrate on test db
 [ ] run tests on test db
+
+
+1. create table and service for schema version
+2. create new dist package where es5 and schema is compiled to
+ and use these versions everywhere.
+ ** Backend -> pass schema at bootstrap
+
+
+For deploy new version
+1. old container running (with old schema)
+2. download new migration container
+3. Pause edit for old container (later)
+4. run new migrations
+5. start new container (with new schema)
+
+For roleback
+1. current container is running
+2. Pause edit for current container
+3. 
+
+
+
+
+3. create createModelVersionMigration that run tests and upgrades schema version in db
+4. 
+
+* Improve logging at startup and reduce not needed stuff
+* Add sync model to test migration
+* Integrate model/api version in some way
+* Dont use separate up and down for data -> use separate script instead
+* Use createMigrations to specify if data nor not.
+** createSqlSchemaMigration
+** createDataMigration
+** createModelVersionMigration
+* Use schema interface to set model-schema version?
+* Make sure different schema-versions can be used in bootstrap
 
 
 
@@ -33,7 +107,7 @@ Test flow
 
 
 
-
+* att schema test for migrations ensure both up and down exist
 * Require no console in scripts and in migrations
 * Test docker dump with non standard passwords
 
