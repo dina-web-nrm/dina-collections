@@ -1,19 +1,27 @@
-#!/bin/bash
+#!/bin/sh -
 # OBS:login with docker-hub credentials, set in ~/.docker/config
 # failsafe: check if that tag/version has already been published before pushing?
 # ./packages/scripts/src/bash/publish-docker.sh  -t 4.5.2
-
-echo "Info: This script publishes 3 images to Docker"
-TAG=latest
+usage()
+{
+    echo "usage: $0 -t <TAG>"
+}
 
 while getopts t: option
  do
   case "${option}"
    in
-    t) TAG=${OPTARG};;
+    (t) TAG=${OPTARG};;
   esac
  done
 
+if [ -z "$TAG" ]
+then
+   usage
+   exit 1
+fi
+
+echo "Info: This script publishes 3 images to Docker"
 echo "Pushing TAG=$TAG to Dockerhub"
 
 docker login

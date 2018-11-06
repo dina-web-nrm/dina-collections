@@ -1,16 +1,25 @@
-#!/bin/bash
+#!/bin/sh -
 # ./packages/scripts/src/bash/build-docker.sh  -t 4.5.2
-echo "Info: This script builds 3 docker-images"
-TAG=latest
+usage()
+{
+    echo "usage: $0 -t <TAG>"
+}
 
 while getopts t: option
  do
   case "${option}"
    in
-    t) TAG=${OPTARG};;
+    (t) TAG=${OPTARG};;
   esac
  done
 
+if [ -z "$TAG" ]
+then
+   usage
+   exit 1
+fi
+
+echo "Info: This script builds 3 docker-images"
 echo "Pushing TAG=$TAG to Dockerhub"
 
 npm run test
