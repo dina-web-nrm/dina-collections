@@ -8,6 +8,11 @@
   box-shadow: @negativeBoxShadow;
 }
 
+.ui.steps .step.error:after {
+  background-color: @negativeBackgroundColor;
+  border-color: @negativeBorderColor;
+}
+
 .ui.steps .step.error .title {
   color: @negativeHeaderColor;
 }
