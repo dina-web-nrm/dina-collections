@@ -1,6 +1,6 @@
 #!/bin/bash
 # ./packages/scripts/src/bash/build-docker.sh  -t 4.5.2
-echo "Info: This script builds docker-images"
+echo "Info: This script builds 3 docker-images"
 TAG=latest
 
 while getopts t: option
@@ -14,7 +14,6 @@ while getopts t: option
 echo "Pushing TAG=$TAG to Dockerhub"
 
 npm run test
-echo "TAG=$TAG" > .env
 npm run build:ui;
 docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:$TAG ./packages/ui;
 npm run build:semantic-ui;
