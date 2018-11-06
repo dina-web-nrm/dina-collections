@@ -3,7 +3,7 @@
 # failsafe: check if that tag/version has already been published before pushing?
 # ./packages/scripts/src/bash/publish-docker.sh  -t 4.5.2
 
-echo "Info: This script publishes images to Docker"
+echo "Info: This script publishes 3 images to Docker"
 TAG=latest
 
 while getopts t: option
