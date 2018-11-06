@@ -10,6 +10,7 @@ yarn-error.log*
 
 env/.*
 data/*.json
+data/.featureTypes
 userFiles/*
 
 .DS_Store
@@ -17,3 +18,8 @@ userFiles/*
 #certs
 certs/*.crt
 certs/*.key
+
+# redundant files
+*~
+.Rhistory
+README.html
