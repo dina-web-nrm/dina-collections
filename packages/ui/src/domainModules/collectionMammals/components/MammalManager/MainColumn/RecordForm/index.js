@@ -37,6 +37,10 @@ const rows = [
   },
 ]
 
+const getAllowTransition = location =>
+  location.pathname.includes('app/specimens/mammals') &&
+  location.pathname.includes('edit/sections')
+
 const mapStateToProps = (state, { form, formValueSelector }) => {
   return {
     catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(form)(
@@ -212,6 +216,7 @@ class RecordForm extends Component {
     return (
       <Form
         formName={form}
+        getAllowTransition={getAllowTransition}
         onSubmit={handleSubmit(this.handleFormSubmit)}
         sectionSpecs={sectionSpecs}
         setFormRef={this.setFormRef}
