@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   loadData:
-    image: dina/dina-collections-api
+    image: "dina/dina-collections-api:${TAG}"
     container_name: load-data
     environment:
       - IMPORT_DATA=true
@@ -17,9 +17,8 @@ services:
 networks:
   default:
     external:
-      name: dinacollections_default
+      name: dina-collections_default
 
 volumes:
   postgres_data:
   es_data:
-
