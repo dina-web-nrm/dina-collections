@@ -7,6 +7,7 @@ const log = createLog('lib/connectors', 1)
 
 module.exports = function createConnector({
   apiConfig,
+  config,
   customControllerFactories,
   fileInteractor,
   integrations,
@@ -42,6 +43,7 @@ module.exports = function createConnector({
   const controller =
     controllerFactory &&
     controllerFactory({
+      config,
       fileInteractor,
       integrations,
       models,

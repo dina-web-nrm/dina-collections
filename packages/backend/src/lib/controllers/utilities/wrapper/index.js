@@ -1,19 +1,21 @@
-const createLog = require('../../../../utilities/log')
-const createObjectResponse = require('../transformations/createObjectResponse')
-const extractRelationships = require('../relationships/extractRelationships')
+const applyHooks = require('../applyHooks')
+const applyInterceptors = require('../applyInterceptors')
 const createArrayResponse = require('../transformations/createArrayResponse')
 const createInterceptors = require('../createInterceptors')
-const applyInterceptors = require('../applyInterceptors')
-const applyHooks = require('../applyHooks')
+const createLog = require('../../../../utilities/log')
+const createObjectResponse = require('../transformations/createObjectResponse')
+const createPreHooks = require('../createPreHooks')
+const extractRelationships = require('../relationships/extractRelationships')
 
 module.exports = function createControllerWrapper({
-  requiredModelMethods = [],
+  config,
   enableInterceptors = false,
   enablePostHooks = false,
   enablePreHooks = false,
   fileInteractor,
   models,
   operation,
+  requiredModelMethods = [],
   responseFormat,
   responseSuccessStatus = 200,
   serviceInteractor,
@@ -72,7 +74,13 @@ module.exports = function createControllerWrapper({
     filterSpecification,
   })
 
-  const preHooks = (enablePreHooks && preHooksInput) || []
+  const preHooks = createPreHooks({
+    config,
+    customHooks: (enablePreHooks && preHooksInput) || [],
+    operation,
+    serviceInteractor,
+  })
+
   const postHooks = (enablePostHooks && postHooksInput) || []
 
   const log = createLog(`controller/${operationId}`)

@@ -40,6 +40,7 @@ module.exports = function createConnectors({
       const operation = operations[operationId]
       const connector = createConnector({
         apiConfig,
+        config,
         customControllerFactories,
         fileInteractor,
         integrations,
