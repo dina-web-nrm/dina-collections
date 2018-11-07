@@ -50,6 +50,26 @@ const isVernacularToTaxon = {
   },
 }
 
+const neitherAcceptedNorSynonymToTaxon = {
+  description:
+    'Find scientific names that are neither accepted nor synonym to any taxon',
+  inputSchema: {
+    type: 'boolean',
+  },
+  key: 'neitherAcceptedNorSynonymToTaxon',
+  sequelizeFilterFunction: ({ value }) => {
+    if (value === undefined) {
+      return null
+    }
+
+    return {
+      acceptedToTaxonId: null,
+      'document.taxonNameType': 'scientific',
+      synonymToTaxonId: null,
+    }
+  },
+}
+
 const rank = createStringMatchFilter({
   fieldPath: 'rank',
   key: 'rank',
@@ -70,6 +90,7 @@ const filterSpec = createGetManyFilterSpecifications({
     acceptedToTaxonId,
     isAcceptedToTaxon,
     isVernacularToTaxon,
+    neitherAcceptedNorSynonymToTaxon,
     rank,
     rubinNumber,
     synonymToTaxonId,
