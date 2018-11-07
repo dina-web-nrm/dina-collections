@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preversion": "cd ./packages/scripts/src/bash && ./ensure-master-is-clean.sh && yarn test",
+    "postversion": "git push && git push --tags",
     "build": "npm-run-all -p build:ui build:schema build:semantic-ui",
     "build:common": "cd ./packages/common && yarn build",
     "build:schema": "cd ./packages/common && yarn build:schema",
