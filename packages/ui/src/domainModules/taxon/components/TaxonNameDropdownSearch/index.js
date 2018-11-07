@@ -5,7 +5,12 @@ import { DropdownSearch } from 'coreModules/form/components'
 import { ALL, SCIENTIFIC, VERNACULAR } from '../../constants'
 
 const propTypes = {
-  taxonNameType: PropTypes.oneOf([ALL, SCIENTIFIC, VERNACULAR]),
+  taxonNameType: PropTypes.oneOf([
+    ALL,
+    SCIENTIFIC,
+    VERNACULAR,
+    'neitherAcceptedNorSynonymToTaxon',
+  ]),
 }
 const defaultProps = {
   taxonNameType: SCIENTIFIC,
@@ -18,6 +23,13 @@ class TaxonNameDropdownSearch extends Component {
     let baseFilter
     switch (taxonNameType) {
       case ALL: {
+        break
+      }
+      case 'neitherAcceptedNorSynonymToTaxon': {
+        baseFilter = {
+          filterFunctionName: 'neitherAcceptedNorSynonymToTaxon',
+          value: true,
+        }
         break
       }
       case SCIENTIFIC: {

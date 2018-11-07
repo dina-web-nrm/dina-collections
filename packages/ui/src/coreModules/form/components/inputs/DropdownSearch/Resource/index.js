@@ -14,7 +14,7 @@ const defaultExtractValue = item => {
 const propTypes = {
   baseFilter: PropTypes.shape({
     filterFunctionName: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
   }),
   createNestedItem: PropTypes.func.isRequired,
   extractValue: PropTypes.func,

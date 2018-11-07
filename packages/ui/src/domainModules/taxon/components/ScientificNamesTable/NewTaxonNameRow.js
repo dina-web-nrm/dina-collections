@@ -36,7 +36,7 @@ export class NewTaxonNameRow extends Component {
             }}
             meta={{}}
             module="taxon"
-            taxonNameType="scientific"
+            taxonNameType="neitherAcceptedNorSynonymToTaxon"
           />
         </Table.Cell>
         <Table.Cell />
