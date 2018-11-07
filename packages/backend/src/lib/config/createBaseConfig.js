@@ -99,7 +99,13 @@ const elasticsearch = {
 }
 
 const fileInteractor = {
-  rootPath: path.join(__dirname, process.env.BACKEND_IN_NODE_MODULES ? '../../../../../../../' : '../../../../../', '../../../../../userFiles'),
+  rootPath: path.join(
+    __dirname,
+    process.env.BACKEND_IN_NODE_MODULES
+      ? '../../../../../../../'
+      : '../../../../../',
+    'userFiles'
+  ),
 }
 
 const baseConfig = {

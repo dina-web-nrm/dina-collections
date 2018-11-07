@@ -26,10 +26,10 @@ module.exports = function createDbConfig({ env }) {
     allowSync,
     database,
     password: readKey('DB_PASSWORD'),
-    url: readKey('DB_URL'),
-    username: readKey('DB_USERNAME'),
     pool: {
       max: 20,
-    }
+    },
+    url: readKey('DB_URL'),
+    username: readKey('DB_USERNAME'),
   }
 }

@@ -9,7 +9,7 @@ exports.createEnsureDataCorrectVersion = ({
   resource,
   serviceInteractor,
 }) => {
-  return function ensureDataCorrectVersionPreHook(input) {
+  return function ensureDataCorrectVersionPreHook() {
     return Promise.resolve().then(() => {
       if (whitelistedMethods.includes(method)) {
         return true
