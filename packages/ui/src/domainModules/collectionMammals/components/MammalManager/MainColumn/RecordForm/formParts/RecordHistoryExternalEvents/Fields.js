@@ -26,7 +26,6 @@ const Fields = ({ baseName }) => {
         <Field
           autoComplete="off"
           component={SingleDate}
-          label="Condition"
           module="collectionMammals"
           name={`${baseName}.date`}
         />
