@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { Table } from 'semantic-ui-react'
 
 import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
-import { compose } from 'redux'
-import { Icon, Table } from 'semantic-ui-react'
+import { ConfirmationPopup } from 'coreModules/form/components'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 
 const propTypes = {
   disconnectPreparationType: PropTypes.func.isRequired,
@@ -34,11 +36,25 @@ class PreparationTypeRow extends PureComponent {
       <Table.Row>
         <Table.Cell width={14}>{capitalizeFirstLetter(name)}</Table.Cell>
         <Table.Cell>
-          <Icon
-            name="trash"
-            onClick={this.handleDisconnect}
+          <ConfirmationPopup
+            cancelButtonText={
+              <ModuleTranslate capitalize module="storage" textKey="cancel" />
+            }
+            confirmButtonText={
+              <ModuleTranslate capitalize module="storage" textKey="remove" />
+            }
+            header={
+              <ModuleTranslate
+                capitalize
+                module="storage"
+                textKey="removeThisConnectedPreparationTypes"
+              />
+            }
+            hideOnScroll
+            iconName="trash"
+            onConfirm={this.handleDisconnect}
             size="large"
-            style={{ cursor: 'pointer' }}
+            type="icon"
           />
         </Table.Cell>
       </Table.Row>

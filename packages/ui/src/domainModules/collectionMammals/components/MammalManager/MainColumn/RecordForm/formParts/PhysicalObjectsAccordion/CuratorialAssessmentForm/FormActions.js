@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import { Button, Grid, Message, Popup } from 'semantic-ui-react'
+import { Button, Grid, Message } from 'semantic-ui-react'
 
 import config from 'config'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
+import { ConfirmationPopup } from 'coreModules/form/components'
 
 const log = createLog(
   'modules:collectionMammals:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:FormActions'
@@ -39,24 +40,6 @@ const defaultProps = {
 }
 
 export class FormActions extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.handleClosePopup = this.handleClosePopup.bind(this)
-    this.handleOpenPopup = this.handleOpenPopup.bind(this)
-
-    this.state = {
-      popupOpen: false,
-    }
-  }
-
-  handleClosePopup() {
-    this.setState({ popupOpen: false })
-  }
-
-  handleOpenPopup() {
-    this.setState({ popupOpen: true })
-  }
-
   render() {
     const skipRemoveConfirmation = config.isTest
 
@@ -106,53 +89,21 @@ export class FormActions extends PureComponent {
                 <ModuleTranslate textKey="other.remove" />
               </Button>
             )}
+
           {displayRemoveButton &&
             !skipRemoveConfirmation &&
             handleRemove && (
-              <Popup
-                hideOnScroll
-                on="click"
-                onClose={this.handleClosePopup}
-                onOpen={this.handleOpenPopup}
-                open={this.state.popupOpen}
-                trigger={
-                  <Button
-                    onClick={event => {
-                      event.preventDefault()
-                    }}
-                    size="large"
-                    type="button"
-                  >
-                    <ModuleTranslate textKey="other.remove" />
-                  </Button>
+              <ConfirmationPopup
+                cancelButtonText={<ModuleTranslate textKey="other.cancel" />}
+                confirmButtonText={<ModuleTranslate textKey="other.remove" />}
+                header={
+                  <ModuleTranslate textKey="other.removeThisCuratorialAssessment" />
                 }
-              >
-                <Popup.Header>
-                  {'Remove this curatorial assessment?'}
-                </Popup.Header>
-                <Popup.Content>
-                  <Button
-                    onClick={event => {
-                      event.preventDefault()
-                      this.handleClosePopup()
-                      handleRemove()
-                    }}
-                    type="button"
-                  >
-                    <ModuleTranslate textKey="other.remove" />
-                  </Button>
-                  <Button
-                    basic
-                    onClick={event => {
-                      event.preventDefault()
-                      this.handleClosePopup()
-                    }}
-                    type="button"
-                  >
-                    <ModuleTranslate textKey="other.cancel" />
-                  </Button>
-                </Popup.Content>
-              </Popup>
+                hideOnScroll
+                onConfirm={handleRemove}
+                size="large"
+                text={<ModuleTranslate textKey="other.remove" />}
+              />
             )}
           <ConnectedFormSchemaError form={form} />
           {invalid &&

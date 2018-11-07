@@ -1,10 +1,15 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { Icon, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import { DropdownSearch, Field, Input } from 'coreModules/form/components'
+import {
+  ConfirmationPopup,
+  DropdownSearch,
+  Field,
+  Input,
+} from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
@@ -34,14 +39,19 @@ const propTypes = {
 }
 
 class VernacularNamesTableRow extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.handleRemove = this.handleRemove.bind(this)
+  }
+
+  handleRemove() {
+    const { getTranslationPath, index, removeArrayFieldByIndex } = this.props
+    removeArrayFieldByIndex(getTranslationPath(), index)
+  }
+
   render() {
-    const {
-      getPath,
-      getTranslationPath,
-      i18n: { moduleTranslate },
-      index,
-      removeArrayFieldByIndex,
-    } = this.props
+    const { getPath, i18n: { moduleTranslate } } = this.props
 
     log.render()
     return (
@@ -79,14 +89,24 @@ class VernacularNamesTableRow extends PureComponent {
           />
         </Grid.Column>
         <Grid.Column width={2}>
-          <Icon
-            name="trash"
-            onClick={event => {
-              event.preventDefault()
-              removeArrayFieldByIndex(getTranslationPath(), index)
-            }}
+          <ConfirmationPopup
+            cancelButtonText={moduleTranslate({
+              capitalize: true,
+              textKey: 'cancel',
+            })}
+            confirmButtonText={moduleTranslate({
+              capitalize: true,
+              textKey: 'remove',
+            })}
+            header={moduleTranslate({
+              capitalize: true,
+              textKey: 'removeThisVernacularName',
+            })}
+            hideOnScroll
+            iconName="trash"
+            onConfirm={this.handleRemove}
             size="large"
-            style={{ cursor: 'pointer' }}
+            type="icon"
           />
         </Grid.Column>
       </Grid>

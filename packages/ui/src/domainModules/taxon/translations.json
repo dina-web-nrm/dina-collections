@@ -95,6 +95,10 @@
     "en": "add vernacular name",
     "sv": ""
   },
+  "cancel": {
+    "en": "Cancel",
+    "sv": ""
+  },
   "connectScientificName": {
     "en": "connect scientific name",
     "sv": ""
@@ -125,6 +129,22 @@
   "back": {
     "en": "Back",
     "sv": "Tillbaka"
+  },
+  "remove": {
+    "en": "Remove",
+    "sv": ""
+  },
+  "removeFromThisTaxon": {
+    "en": "Remove from this taxon",
+    "sv": ""
+  },
+  "removeThisTaxon": {
+    "en": "Remove this taxon?",
+    "sv": ""
+  },
+  "removeThisVernacularName": {
+    "en": "Remove this vernacular name?",
+    "sv": ""
   },
   "reset": {
     "en": "Reset",

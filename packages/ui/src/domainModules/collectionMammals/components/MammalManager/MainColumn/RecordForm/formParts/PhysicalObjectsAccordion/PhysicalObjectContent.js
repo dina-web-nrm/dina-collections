@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Button, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
+import { camelCase } from 'lodash'
 
-import { DropdownSearch, Field, Remarks } from 'coreModules/form/components'
+import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
+import {
+  ConfirmationPopup,
+  DropdownSearch,
+  Field,
+  Remarks,
+} from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { StorageLocationDropdownPickerSearch } from 'domainModules/storage/components'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
 import { ALL } from 'domainModules/storage/constants'
 import createLog from 'utilities/log'
+import { createModuleTranslate } from 'coreModules/i18n/components'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
 
 const log = createLog(
   'modules:collectionMammals:formParts:PhysicalObjectContent'
 )
+
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { category, preparationType }) => {
   // TODO use selector for preparationType options
@@ -28,6 +38,7 @@ const mapStateToProps = (state, { category, preparationType }) => {
 }
 
 const propTypes = {
+  category: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   curatorialAssessments: PropTypes.array,
   getPath: PropTypes.func.isRequired,
@@ -42,74 +53,97 @@ const defaultProps = {
   preparationTypeOptions: [],
 }
 
-function PhysicalObjectContent({
-  changeFieldValue,
-  curatorialAssessments,
-  handleSetInactive,
-  index,
-  preparationTypeOptions,
-  getPath,
-  getTranslationPath,
-  removeArrayFieldByIndex,
-}) {
-  log.render()
-  return (
-    <Grid textAlign="left" verticalAlign="top">
-      <Grid.Row className="relaxed">
-        <Grid.Column width={9}>
-          <Field
-            autoComplete="off"
-            component={DropdownSearch}
-            disableClearValue
-            module="collectionMammals"
-            name={getPath('preparationType.id')}
-            options={preparationTypeOptions}
-            type="dropdown-search-local"
-          />
-        </Grid.Column>
-        <Grid.Column width={12}>
-          <Field
-            autoComplete="off"
-            component={StorageLocationDropdownPickerSearch}
-            group={ALL}
-            module="collectionMammals"
-            name={getPath('physicalObject.storageLocation.id')}
-            showParentName
-          />
-        </Grid.Column>
-        <Grid.Column width={16}>
-          <CuratorialAssessmentsList
-            changeFieldValue={changeFieldValue}
-            curatorialAssessments={curatorialAssessments}
-            removeArrayFieldByIndex={removeArrayFieldByIndex}
-          />
-        </Grid.Column>
-        <Grid.Column width={16}>
-          <Field
-            autoComplete="off"
-            component={Remarks}
-            emptyStateTextKey="remarks.emptyState.physicalObject"
-            model="specimen"
-            module="collectionMammals"
-            name={getPath('description')}
-            showParentName
-          />
-        </Grid.Column>
-        <Grid.Column textAlign="right" width={16}>
-          <Button
-            basic
-            onClick={() => {
-              handleSetInactive(index)
-              removeArrayFieldByIndex(getTranslationPath(), index)
-            }}
-            type="button"
-          >
-            Remove
-          </Button>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
-  )
+class PhysicalObjectContent extends Component {
+  constructor(props) {
+    super(props)
+    this.handleRemove = this.handleRemove.bind(this)
+  }
+
+  handleRemove() {
+    const {
+      getTranslationPath,
+      handleSetInactive,
+      index,
+      removeArrayFieldByIndex,
+    } = this.props
+
+    handleSetInactive(index)
+    removeArrayFieldByIndex(getTranslationPath(), index)
+  }
+
+  render() {
+    const {
+      category,
+      changeFieldValue,
+      curatorialAssessments,
+      preparationTypeOptions,
+      getPath,
+      removeArrayFieldByIndex,
+    } = this.props
+
+    log.render()
+    return (
+      <Grid textAlign="left" verticalAlign="top">
+        <Grid.Row className="relaxed">
+          <Grid.Column width={9}>
+            <Field
+              autoComplete="off"
+              component={DropdownSearch}
+              disableClearValue
+              module="collectionMammals"
+              name={getPath('preparationType.id')}
+              options={preparationTypeOptions}
+              type="dropdown-search-local"
+            />
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <Field
+              autoComplete="off"
+              component={StorageLocationDropdownPickerSearch}
+              group={ALL}
+              module="collectionMammals"
+              name={getPath('physicalObject.storageLocation.id')}
+              showParentName
+            />
+          </Grid.Column>
+          <Grid.Column width={16}>
+            <CuratorialAssessmentsList
+              changeFieldValue={changeFieldValue}
+              curatorialAssessments={curatorialAssessments}
+              removeArrayFieldByIndex={removeArrayFieldByIndex}
+            />
+          </Grid.Column>
+          <Grid.Column width={16}>
+            <Field
+              autoComplete="off"
+              component={Remarks}
+              emptyStateTextKey="remarks.emptyState.physicalObject"
+              model="specimen"
+              module="collectionMammals"
+              name={getPath('description')}
+              showParentName
+            />
+          </Grid.Column>
+          <Grid.Column textAlign="right" width={16}>
+            <ConfirmationPopup
+              cancelButtonText={<ModuleTranslate textKey="other.cancel" />}
+              confirmButtonText={<ModuleTranslate textKey="other.remove" />}
+              header={
+                <ModuleTranslate
+                  textKey={`other.physicalObjects.remove${capitalizeFirstLetter(
+                    camelCase(category)
+                  )}`}
+                />
+              }
+              hideOnScroll
+              onConfirm={this.handleRemove}
+              text={<ModuleTranslate textKey="other.remove" />}
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    )
+  }
 }
 
 PhysicalObjectContent.propTypes = propTypes

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { Button, Grid, Popup } from 'semantic-ui-react'
+import { Button, Grid } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import {
   ButtonCopyPasteField,
+  ConfirmationPopup,
   Field,
   Input,
   Remarks,
@@ -39,15 +40,13 @@ const propTypes = {
 class DeterminationContent extends Component {
   constructor(props) {
     super(props)
-    this.state = { isOpen: false }
+    this.handleRemove = this.handleRemove.bind(this)
   }
 
-  handleOpenRemovePopup = () => {
-    this.setState({ isOpen: true })
-  }
-
-  handleCloseRemovePopup = () => {
-    this.setState({ isOpen: false })
+  handleRemove() {
+    const { handleSetInactive, index, removeArrayFieldByIndex } = this.props
+    handleSetInactive(index)
+    removeArrayFieldByIndex('determinations', index)
   }
 
   render() {
@@ -162,47 +161,26 @@ class DeterminationContent extends Component {
             </Button>
           )}
           {!skipRemoveDeterminationConfirmation && (
-            <Popup
+            <ConfirmationPopup
+              cancelButtonText={moduleTranslate({
+                capitalize: true,
+                textKey: 'other.cancel',
+              })}
+              confirmButtonText={moduleTranslate({
+                capitalize: true,
+                textKey: 'other.remove',
+              })}
+              header={moduleTranslate({
+                capitalize: true,
+                textKey: 'other.removeThisDetermination',
+              })}
               hideOnScroll
-              on="click"
-              onClose={this.handleCloseRemovePopup}
-              onOpen={this.handleOpenRemovePopup}
-              open={this.state.isOpen}
-              trigger={
-                <Button
-                  onClick={event => {
-                    event.preventDefault()
-                  }}
-                >
-                  {moduleTranslate({ textKey: 'other.remove' })}
-                </Button>
-              }
-            >
-              <Popup.Header>
-                {moduleTranslate({ textKey: 'other.removeThisDetermination' })}
-              </Popup.Header>
-              <Popup.Content>
-                <Button
-                  onClick={event => {
-                    event.preventDefault()
-                    this.handleCloseRemovePopup()
-                    handleSetInactive(index)
-                    removeArrayFieldByIndex('determinations', index)
-                  }}
-                >
-                  {moduleTranslate({ textKey: 'other.remove' })}
-                </Button>
-                <Button
-                  basic
-                  onClick={event => {
-                    event.preventDefault()
-                    this.handleCloseRemovePopup()
-                  }}
-                >
-                  {moduleTranslate({ textKey: 'other.cancel' })}
-                </Button>
-              </Popup.Content>
-            </Popup>
+              onConfirm={this.handleRemove}
+              text={moduleTranslate({
+                capitalize: true,
+                textKey: 'other.remove',
+              })}
+            />
           )}
         </Grid.Column>
       </Grid>
