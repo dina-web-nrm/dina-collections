@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
+import { withUnsavedChangesConfirmation } from 'coreModules/form/higherOrderComponents'
 import { actionCreators } from 'coreModules/formSupport/keyObjectModule'
 import { transformFormSpecToFieldMap } from 'coreModules/formSupport/utilities'
 
@@ -10,7 +11,9 @@ const mapDispatchToProps = { setFormSpec: actionCreators.set[':formName'] }
 
 const propTypes = {
   children: PropTypes.node.isRequired,
+  dirty: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   formName: PropTypes.string.isRequired,
+  getAllowTransition: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   onSubmit: PropTypes.func.isRequired,
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
@@ -20,9 +23,12 @@ const propTypes = {
   ).isRequired,
   setFormRef: PropTypes.func,
   setFormSpec: PropTypes.func.isRequired,
+  unsavedChangesMessage: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
 }
 const defaultProps = {
+  getAllowTransition: undefined,
   setFormRef: undefined,
+  unsavedChangesMessage: undefined,
 }
 
 class Form extends PureComponent {
@@ -48,4 +54,10 @@ class Form extends PureComponent {
 Form.propTypes = propTypes
 Form.defaultProps = defaultProps
 
-export default compose(connect(undefined, mapDispatchToProps))(Form)
+export default compose(
+  withUnsavedChangesConfirmation({
+    unsavedChangesMessage:
+      'You have unsaved changes, are you sure you want to leave?',
+  }),
+  connect(undefined, mapDispatchToProps)
+)(Form)
