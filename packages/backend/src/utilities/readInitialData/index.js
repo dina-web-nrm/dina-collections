@@ -1,6 +1,7 @@
 const path = require('path')
 
-const relativeRootPath = '../../../../../'
+
+const relativeRootPath = process.env.BACKEND_IN_NODE_MODULES ? '../../../../../../../' : '../../../../../'
 const dataPath = path.join(__dirname, relativeRootPath, 'data')
 
 const buildInitialDataFileName = (resource, isJson) => {
