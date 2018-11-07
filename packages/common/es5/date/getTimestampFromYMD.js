@@ -132,5 +132,5 @@ module.exports = function getTimestampFromYMD(_ref4) {
 
   var interpretedTimestamp = isEndDate ? moment(YYYYMMDD).endOf('date') : moment(YYYYMMDD);
 
-  return interpretedTimestamp.isValid() ? interpretedTimestamp.toISOString(true) : undefined;
+  return interpretedTimestamp.isValid() ? interpretedTimestamp.toISOString() : undefined;
 };
