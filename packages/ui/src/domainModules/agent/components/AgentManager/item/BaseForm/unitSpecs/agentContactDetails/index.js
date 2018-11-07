@@ -16,8 +16,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 8 },
-      fluid: true,
+      columnProps: { width: 9 },
       type: 'text',
     },
     initiallyHidden: true,
@@ -27,8 +26,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 8 },
-      fluid: true,
+      columnProps: { width: 9 },
       type: 'text',
     },
     initiallyHidden: true,
@@ -38,8 +36,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 12 },
-      fluid: true,
+      columnProps: { width: 9 },
       type: 'text',
     },
     initiallyHidden: true,
@@ -49,8 +46,8 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 4 },
-      fluid: true,
+      columnProps: { width: 16 },
+      style: { width: '12em' },
       type: 'text',
     },
     initiallyHidden: true,
@@ -60,19 +57,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 4 },
-      fluid: true,
-      type: 'text',
-    },
-    initiallyHidden: true,
-    name: 'postalCode',
-    wrapInField: true,
-  },
-  {
-    componentName: 'Input',
-    componentProps: {
-      columnProps: { width: 6 },
-      fluid: true,
+      columnProps: { width: 9 },
       type: 'text',
     },
     initiallyHidden: true,
@@ -82,8 +67,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 6 },
-      fluid: true,
+      columnProps: { width: 7 },
       type: 'text',
     },
     initiallyHidden: true,
@@ -93,8 +77,18 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 6 },
-      fluid: true,
+      columnProps: { width: 16 },
+      style: { width: '12em' },
+      type: 'text',
+    },
+    initiallyHidden: true,
+    name: 'postalCode',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Input',
+    componentProps: {
+      columnProps: { width: 9 },
       type: 'text',
     },
     initiallyHidden: true,
