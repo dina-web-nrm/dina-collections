@@ -52,7 +52,7 @@
     "test:schema": "cd ./packages/models && yarn test",
     "test:common": "cd ./packages/common && yarn test",
     "test:ui": "cd ./packages/ui && yarn test:coverage",
-    "uninstall": "yarn uninstall:backend && yarn uninstall:ui && yarn uninstall:schema && yarn uninstall:semantic-ui && yarn uninstall:common && yarn uninstall:migrations yarn uninstall:scripts",
+    "uninstall": "yarn uninstall:backend && yarn uninstall:ui && yarn uninstall:schema && yarn uninstall:semantic-ui && yarn uninstall:common && yarn uninstall:migrations && yarn uninstall:scripts",
     "uninstall:backend": "rm -rf ./packages/backend/node_modules",
     "uninstall:schema": "rm -rf ./packages/models/node_modules",
     "uninstall:semantic-ui": "rm -rf ./packages/dina-style/node_modules",
