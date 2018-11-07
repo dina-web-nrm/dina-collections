@@ -119,6 +119,6 @@ module.exports = function getTimestampFromYMD({
     : moment(YYYYMMDD)
 
   return interpretedTimestamp.isValid()
-    ? interpretedTimestamp.toISOString(true)
+    ? interpretedTimestamp.toISOString()
     : undefined
 }

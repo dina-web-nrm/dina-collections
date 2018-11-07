@@ -4,5 +4,5 @@ module.exports = function formatAsTimestamp(dateValue) {
   if (!dateValue) {
     return dateValue
   }
-  return moment(dateValue).format(moment.defaultFormatUtc)
+  return moment(dateValue).toISOString()
 }
