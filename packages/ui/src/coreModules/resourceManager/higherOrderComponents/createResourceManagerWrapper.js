@@ -509,8 +509,14 @@ const createResourceManagerWrapper = (
       }
     }
     handleShowAllRecords() {
-      const { resource, showAll } = this.props
-      this.props.setShowAll(!showAll, { resource })
+      const { resource, showAll, treeActive } = this.props
+
+      if (treeActive) {
+        this.props.setShowAll(!showAll, { resource })
+      } else {
+        this.resetFilters()
+        this.tableSearch()
+      }
     }
 
     handleToggleRow(itemId) {
