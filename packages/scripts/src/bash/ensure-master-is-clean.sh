@@ -1,6 +1,7 @@
 #!/bin/sh
 # https://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
 # "The script assumes that you've done a git fetch or git remote update first, to bring the tracking branches up to date."
+# ./packages/scripts/src/bash/ensure-master-is-clean.sh
 
 git fetch
 
