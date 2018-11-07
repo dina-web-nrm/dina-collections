@@ -92,6 +92,28 @@ export default function pathBuilderFactory(
         }
       }
 
+      componentWillReceiveProps(nextProps) {
+        if (this.props.index !== nextProps.index) {
+          const { path: parentPath, translationPath: parentTranslationPath } =
+            this.context || {}
+
+          const { index, name } = nextProps
+
+          this.name = name || nodeName
+
+          this.path = buildPath({
+            index,
+            name: this.name,
+            nameLast: false,
+            parentPath,
+          })
+          this.translationPath = buildTranslationPath({
+            name: this.name,
+            parentPath: parentTranslationPath,
+          })
+        }
+      }
+
       getPath(fieldName) {
         return buildPath({
           name: fieldName,
