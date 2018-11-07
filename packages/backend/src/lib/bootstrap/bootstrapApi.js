@@ -29,6 +29,7 @@ module.exports = function bootstrapApi({
       auth,
       config,
       connectors,
+      serviceInteractor,
     })
     const app = createApp({
       auth,

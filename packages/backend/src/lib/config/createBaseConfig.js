@@ -1,6 +1,13 @@
 const path = require('path')
+const schemaInterface = require('common/src/schemaInterface')
 const { ensureNodeEnv, readKey, readBoolKey } = require('../../lib/config/env')
 const createPostgresDbConfig = require('./createPostgresDbConfig')
+
+const dataModelVersion = schemaInterface.getDataModelVersion()
+
+const dataModel = {
+  version: dataModelVersion,
+}
 
 const services = {
   agentService: true,
@@ -98,6 +105,7 @@ const fileInteractor = {
 const baseConfig = {
   api,
   auth,
+  dataModel,
   elasticsearch,
   env,
   fileInteractor,
