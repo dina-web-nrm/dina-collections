@@ -57,7 +57,7 @@ const DeterminationsAccordion = ({
         determinations.length > 0 && (
           <Grid.Column width={16}>
             <Accordion
-              expandFirstItemOnMountIfEmptyOrOnlyHasIndex
+              expandFirstItemOnMountIfEmptyOrOnlyHasKey
               initialActiveMode={ALL_COLLAPSED}
               items={determinations}
               renderContent={props => (
