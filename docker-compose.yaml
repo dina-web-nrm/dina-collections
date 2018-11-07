@@ -42,6 +42,7 @@ services:
       - 8080:8080
     volumes:
       - ./packages/keycloak/themes/dina:/opt/jboss/keycloak/themes/dina
+      - ./packages/keycloak/dev-export.json:/opt/jboss/keycloak/dev-export.json
     depends_on:
       - mysql
 
