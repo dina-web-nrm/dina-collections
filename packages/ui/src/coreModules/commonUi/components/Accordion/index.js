@@ -223,7 +223,7 @@ class AccordionWrapper extends Component {
           const isActive = this.isActive(index)
 
           return (
-            <React.Fragment key={item.id || index}>
+            <React.Fragment key={item.id || item.key || index}>
               <Accordion.Title
                 active={isActive}
                 index={index}
