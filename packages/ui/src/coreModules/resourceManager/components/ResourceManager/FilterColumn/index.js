@@ -52,7 +52,7 @@ class FilterColumn extends Component {
         return <ColumnRowHeader text="Filter" />
       }
       case 'filterForm': {
-        const { filterValues: initialValues } = this.props
+        const { filterValues: initialValues = {} } = this.props
         return this.props.renderFilterForm({ initialValues })
       }
       case 'bottomBar': {
