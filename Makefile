@@ -25,4 +25,4 @@ rm-utils:
 
 
 load-sample-data:
-	@docker-compose -f docker-compose.data.yaml up loadData
+	@docker-compose -f docker-compose.data.yaml up migrations

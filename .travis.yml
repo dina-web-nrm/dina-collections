@@ -39,3 +39,9 @@ after_success:
     docker tag dina-collections-api dina/dina-collections-api;
     docker push dina/dina-collections-api;
     fi
+
+    echo "Start dina-collections-migrations build";
+    docker build -f ./packages/backend/Dockerfile -t dina-collections-migrations ./packages;
+    docker tag dina-collections-migrations dina/dina-collections-migrations;
+    docker push dina/dina-collections-migrations;
+    fi
