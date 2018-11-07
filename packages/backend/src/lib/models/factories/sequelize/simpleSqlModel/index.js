@@ -20,19 +20,10 @@ module.exports = function createModel({
       deactivatedAt: {
         type: Sequelize.DATE,
       },
-      diff: {
-        type: Sequelize.JSONB,
-      },
       id: {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      schemaCompliant: {
-        type: Sequelize.BOOLEAN,
-      },
-      schemaVersion: {
-        type: Sequelize.STRING,
       },
       ...columns,
     },
