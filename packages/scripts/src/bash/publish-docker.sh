@@ -24,7 +24,7 @@ fi
 echo "Info: This script publishes 3 images to Docker"
 echo "Pushing TAG=$TAG to Dockerhub"
 
-docker login
+#docker login
 
 #push to docker hub
 docker push dina/dina-collections-api:$TAG
