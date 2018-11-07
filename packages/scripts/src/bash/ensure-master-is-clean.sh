@@ -16,12 +16,16 @@ if !([ -z "$(git status --untracked-files=no --porcelain)" ]); then
   #  Working directory clean excluding untracked files
   echo "Need to Add or Commit ";
 elif [ $LOCAL = $REMOTE ]; then
-    echo "Up-to-date"
-    EXIT_STATUS=0
+    	echo "Up-to-date"
+    	EXIT_STATUS=0
 elif [ $LOCAL = $BASE ]; then
-    echo "Need to pull"
+    	echo "Need to pull"
+	EXIT_STATUS=0
+	git pull
 elif [ $REMOTE = $BASE ]; then
-    echo "Need to push"
+    	echo "Need to push" # 2018-11-07, add credentials to xxx ?
+	EXIT_STATUS=0
+	git push
 else
     echo "Diverged"
 fi
