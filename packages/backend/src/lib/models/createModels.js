@@ -1,4 +1,3 @@
-const createLog = require('../../utilities/log')
 const extractModelSpecificationsFromServices = require('./utilities/extractModelSpecificationsFromServices')
 const modelFactories = require('./factories')
 

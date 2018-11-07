@@ -1,6 +1,4 @@
 const createDeleteProperties = require('common/src/createDeleteProperties')
-
-const createLog = require('../../../../../utilities/log')
 const getForeignKeyName = require('./getForeignKeyName')
 
 const deleteUndefinedProperties = createDeleteProperties(undefined)
