@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
+import createLid from 'common/es5/createLid'
 import config from 'config'
 import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'
@@ -84,9 +85,12 @@ const DeterminationsAccordion = ({
             event.preventDefault()
             const index = (determinations && determinations.length) || 0
 
-            // keeping index in value to prevent the accordion item to disappear
-            // if the user focues and then blurs an input without entering a value
-            changeFieldValue(`individual.determinations.${index}`, { index })
+            // Setting a unique key in value to prevent the accordion item from
+            // disappearing if the user focuses and then blurs an input without
+            // entering any value
+            changeFieldValue(`individual.determinations.${index}`, {
+              key: createLid(),
+            })
           }}
           textKey="other.addDetermination"
         />
