@@ -7,6 +7,7 @@ import {
   isDirty as isDirtySelector,
   isInvalid,
   reset as resetActionCreator,
+  startSubmit as startSubmitActionCreator,
 } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
@@ -24,6 +25,7 @@ const mapStateToProps = (state, { resource }) => {
 
 const mapDispatchToProps = {
   reset: resetActionCreator,
+  startSubmit: startSubmitActionCreator,
 }
 
 const propTypes = {
@@ -34,6 +36,7 @@ const propTypes = {
   onInteraction: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
+  startSubmit: PropTypes.func.isRequired,
   values: PropTypes.object,
 }
 const defaultProps = {
@@ -56,19 +59,29 @@ class BottomBar extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault()
-    const { dispatch, resource } = this.props
+    const {
+      dispatch,
+      formName,
+      onInteraction,
+      resource,
+      startSubmit,
+      values,
+    } = this.props
+
     this.setState({ loading: true })
+    startSubmit(formName) // needed for withUnsavedChangesConfirmation
+
     const create =
       crudActionCreators[resource] && crudActionCreators[resource].create
 
     return dispatch(
       create({
-        item: this.props.values,
+        item: values,
         nested: true,
       })
     ).then(({ id }) => {
       this.setState({ loading: false })
-      this.props.onInteraction(CREATE_SUCCESS, { itemId: id })
+      onInteraction(CREATE_SUCCESS, { itemId: id })
     })
   }
 
