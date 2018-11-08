@@ -10,13 +10,15 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var openApiSpec = require('../../../dist/openApi.json');
+var schemaInterface = require('../../schemaInterface');
 var createLog = require('../../log');
 
 var _require = require('../../Dependor'),
     Dependor = _require.Dependor;
 
 var buildOperationId = require('../../buildOperationId');
+
+var openApiSpec = schemaInterface.getOpenApiSpec();
 
 var dep = new Dependor({
   buildOperationId: buildOperationId

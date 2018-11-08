@@ -15,4 +15,5 @@ module.exports = [
   'historyService',
   'exportService',
   'identifierService',
+  'migrationService',
 ]

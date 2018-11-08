@@ -3,6 +3,7 @@ const Sequelize = require('sequelize')
 const createGetters = require('./utilities/createGetters')
 
 module.exports = function createModel({
+  config,
   columns,
   indexes = [],
   name,
@@ -19,19 +20,10 @@ module.exports = function createModel({
       deactivatedAt: {
         type: Sequelize.DATE,
       },
-      diff: {
-        type: Sequelize.JSONB,
-      },
       id: {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      schemaCompliant: {
-        type: Sequelize.BOOLEAN,
-      },
-      schemaVersion: {
-        type: Sequelize.STRING,
       },
       ...columns,
     },
@@ -42,6 +34,7 @@ module.exports = function createModel({
   )
 
   const methods = setupMethods({
+    config,
     Model,
     schemaModelName,
     schemaVersion,

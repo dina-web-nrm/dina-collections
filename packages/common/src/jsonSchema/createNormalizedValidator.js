@@ -1,4 +1,6 @@
-const models = require('../../dist/normalizedModels.json')
+const schemaInterface = require('../schemaInterface')
 const createValidatorFactory = require('./createValidatorFactory')
 
-module.exports = createValidatorFactory({ models })
+const normalizedModels = schemaInterface.getNormalizedModels()
+
+module.exports = createValidatorFactory({ models: normalizedModels })

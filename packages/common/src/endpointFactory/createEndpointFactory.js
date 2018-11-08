@@ -1,24 +1,23 @@
-const buildOperationIdPathnameMap = require('./utilities/buildOperationIdPathnameMap')
+const schemaInterface = require('../schemaInterface')
 const createBodyValidator = require('./utilities/createBodyValidator')
 const createGetExample = require('./utilities/createGetExample')
 const createMock = require('./utilities/createMock')
 const createQueryParamValidator = require('./utilities/createQueryParamValidator')
 const createResponseValidator = require('./utilities/createResponseValidator')
 const createMapQueryParams = require('./utilities/createMapQueryParams')
-const openApiSpec = require('../../dist/openApi.json')
-
-const map = buildOperationIdPathnameMap(openApiSpec)
 
 module.exports = function createEndpointFactory({
   createApiClientValidator,
   importFaker,
 }) {
   return function createEndpoint({ operationId, ...rest }) {
-    if (!map[operationId]) {
-      throw new Error(`Operation id: ${operationId} unknown`) // eslint-disable-line no-console
-    }
+    const openApiSpec = schemaInterface.getOpenApiSpec()
 
-    const { methodName, methodSpecification, pathname } = map[operationId]
+    const {
+      methodName,
+      methodSpecification,
+      pathname,
+    } = schemaInterface.getMethodByOperationId(operationId)
     return {
       getExample: createGetExample({
         methodSpecification,

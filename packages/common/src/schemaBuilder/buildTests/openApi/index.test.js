@@ -1,6 +1,8 @@
+const schemaInterface = require('../../../schemaInterface')
 const Ajv = require('ajv')
 const openApiSchema = require('../schemas/openApi.json')
-const openApi = require('../../../../dist/openApi.json')
+
+const openApiSpec = schemaInterface.getOpenApiSpec()
 
 describe('buildTests/openApi', () => {
   let ajv
@@ -15,7 +17,7 @@ describe('buildTests/openApi', () => {
   })
 
   it('passes schema', () => {
-    const valid = validate(openApi)
+    const valid = validate(openApiSpec)
     expect(validate.errors).toBe(null)
     expect(valid).toBeTruthy()
   })

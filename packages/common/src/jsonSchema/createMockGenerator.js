@@ -1,5 +1,7 @@
-const models = require('../../dist/normalizedModels.json')
+const schemaInterface = require('../schemaInterface')
 const createMockDataFromSchema = require('./createMockDataFromSchema')
+
+const models = schemaInterface.getNormalizedModels()
 
 module.exports = function createMockGenerator({
   importFaker,

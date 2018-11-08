@@ -1,6 +1,19 @@
 'use strict';
 
+var singletons = require('./singletons');
 var createSchemaInterface = require('./createSchemaInterface');
-var models = require('../../dist/models.json');
+var apiInfo = require('../../dist/schemas/apiVersions/current/info.json');
+var modelInfo = require('../../dist/schemas/modelVersions/current/info.json');
+var models = require('../../dist/schemas/modelVersions/current/models.json');
+var normalizedModels = require('../../dist/schemas/modelVersions/current/normalizedModels.json');
+var openApiSpec = require('../../dist/schemas/apiVersions/current/openApi.json');
 
-module.exports = createSchemaInterface({ models: models });
+singletons.set({
+  apiInfo: apiInfo,
+  modelInfo: modelInfo,
+  models: models,
+  normalizedModels: normalizedModels,
+  openApiSpec: openApiSpec
+});
+
+module.exports = createSchemaInterface(singletons);

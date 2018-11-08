@@ -1,7 +1,9 @@
-const openApiSpec = require('../../../dist/openApi.json')
+const schemaInterface = require('../../schemaInterface')
 const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 const buildOperationId = require('../../buildOperationId')
+
+const openApiSpec = schemaInterface.getOpenApiSpec()
 
 const dep = new Dependor({
   buildOperationId,

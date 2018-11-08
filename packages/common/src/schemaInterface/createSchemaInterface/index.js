@@ -1,3 +1,5 @@
+const { getMethodByOperationId } = require('../openApi')
+
 const {
   createModelKeyColumnMap,
   createNormalizeSpecifications,
@@ -8,15 +10,33 @@ const {
   getResourceRelationshipKeysToIncludeInBodyMap,
 } = require('../relationships')
 
-module.exports = ({ models }) => {
+module.exports = singletons => {
   return {
-    getModelKeyColumnMap: () => createModelKeyColumnMap({ models }),
-    getNormalizeSpecifications: () => createNormalizeSpecifications({ models }),
+    getDataModelVersion: () => {
+      const modelInfo = singletons.getModelInfo()
+      return modelInfo.modelVersion
+    },
+    getMethodByOperationId: operationId =>
+      getMethodByOperationId(singletons.getOpenApiSpec(), operationId),
+    getModelKeyColumnMap: () =>
+      createModelKeyColumnMap({ models: singletons.getModels() }),
+    getModels: () => {
+      return singletons.getModels()
+    },
+    getNormalizedModels: () => {
+      return singletons.getNormalizedModels()
+    },
+    getNormalizeSpecifications: () =>
+      createNormalizeSpecifications({ models: singletons.getModels() }),
+    getOpenApiSpec: () => {
+      return singletons.getOpenApiSpec()
+    },
+
     getRelationshipParamsForModelNames: modelNames =>
-      getRelationshipParamsForModelNames(models, modelNames),
+      getRelationshipParamsForModelNames(singletons.getModels(), modelNames),
     getResourceRelationshipKeysToIncludeInBodyMap: () =>
-      getResourceRelationshipKeysToIncludeInBodyMap(models),
+      getResourceRelationshipKeysToIncludeInBodyMap(singletons.getModels()),
     getResourceRelationshipParamsMap: () =>
-      getResourceRelationshipParamsMap(models),
+      getResourceRelationshipParamsMap(singletons.getModels()),
   }
 }

@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import schemaInterface from 'common/es5/schemaInterface'
 
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
-import specification from 'common/dist/openApi.json'
 import { NavigationSidebar } from 'coreModules/layout/components'
 
 import createModelLink from '../utilities/createModelLink'
 import getAvailableSchemaVersions from '../utilities/getAvailableSchemaVersions'
 
+const specification = schemaInterface.getOpenApiSpec()
 const { schemas } = specification.components
 
 const availableVersions = getAvailableSchemaVersions()

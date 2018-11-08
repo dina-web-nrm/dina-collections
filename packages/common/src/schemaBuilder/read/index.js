@@ -19,7 +19,7 @@ module.exports = function read({ modelBasePath, apiBasePath }) {
   const info = readInfo(infoPath)
   const models = readModels(modelBasePath)
 
-  const schemaInterface = createSchemaInterface({ models })
+  const schemaInterface = createSchemaInterface({ getModels: () => models })
   const resourceRelationshipParamsMap = schemaInterface.getResourceRelationshipParamsMap()
 
   const serviceDefinitions = require(servicesPath)

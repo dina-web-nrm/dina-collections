@@ -1,9 +1,5 @@
 const createDeleteProperties = require('common/src/createDeleteProperties')
-
-const createLog = require('../../../../../utilities/log')
 const getForeignKeyName = require('./getForeignKeyName')
-
-const log = createLog('lib/sequelize', 2)
 
 const deleteUndefinedProperties = createDeleteProperties(undefined)
 
@@ -144,8 +140,6 @@ module.exports = function setupAssociation(
     targetModelName,
     unique,
   })
-
-  log.debug(`${sourceModelName} ${associationType} ${targetAs}`)
 
   return sourceModel.Model[associationType](
     targetModel.Model,

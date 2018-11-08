@@ -1,5 +1,4 @@
 const createLog = require('../../utilities/log')
-const synchronizeModels = require('./synchronizeModels')
 const createModels = require('./createModels')
 const createRelations = require('./createRelations')
 
@@ -13,9 +12,8 @@ module.exports = function setupModels({
   serviceOrder,
   services,
 }) {
-  log.info('Setup models')
   return Promise.resolve().then(() => {
-    log.info('Create Models:')
+    log.info('Creating models:')
     return createModels({
       config,
       elasticsearch,
@@ -24,17 +22,11 @@ module.exports = function setupModels({
       serviceOrder,
       services,
     }).then(({ modelArray, modelObject: models }) => {
-      log.info('Setup relations:')
-      return createRelations({ modelArray, models })
-        .then(() => {
-          return synchronizeModels({
-            config,
-            modelArray,
-          })
-        })
-        .then(() => {
-          return { models }
-        })
+      log.scope().info('Created: ', Object.keys(models).join(', '))
+      log.info('Setting up relations')
+      return createRelations({ modelArray, models }).then(() => {
+        return { models }
+      })
     })
   })
 }

@@ -77,7 +77,7 @@ exports.createRegisterResourceActivityHook = function createRegisterResourceActi
       }
 
       return serviceInteractor
-        .detachedCall({
+        .call({
           operationId: 'resourceActivityCreate',
           request,
         })

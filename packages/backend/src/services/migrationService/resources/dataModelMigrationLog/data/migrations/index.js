@@ -1,0 +1,1 @@
+exports.initial = require('./initial')

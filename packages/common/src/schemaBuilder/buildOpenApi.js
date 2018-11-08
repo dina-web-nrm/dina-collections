@@ -5,11 +5,17 @@ const createOpenApi = require('./build/openApi')
 const buildEndpoints = require('./build/buildEndpoints')
 
 function buildOpenApi({
-  modelBasePath,
   apiBasePath,
+  backendPackagePath,
+  modelBasePath,
+  modelPackagePath,
   normalize,
-  version = '0.1.0',
 }) {
+  const modelVersion = require(modelPackagePath).version // eslint-disable-line
+  const backendVersion = require(backendPackagePath).version // eslint-disable-line
+
+  const apiVersion = `${modelVersion}-${backendVersion}`
+
   const {
     apis,
     endpoints: endpointsInput,
@@ -36,30 +42,27 @@ function buildOpenApi({
     parameters,
     security,
     servers,
-    version,
+    version: apiVersion,
   })
 
   write({
-    normalize,
-    openApi,
-    setCurrent: true,
-    version,
-  })
-
-  write({
+    apiVersion,
+    modelVersion,
     normalize,
     openApi,
   })
 }
 
-buildOpenApi({
-  apiBasePath: path.join(__dirname, '../../../backend/src'),
-  modelBasePath: path.join(__dirname, '../../../models/src'),
-  normalize: false,
-})
+// buildOpenApi({
+//   apiBasePath: path.join(__dirname, '../../../backend/src'),
+//   modelBasePath: path.join(__dirname, '../../../models/src'),
+//   normalize: false,
+// })
 
 buildOpenApi({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
+  backendPackagePath: path.join(__dirname, '../../../backend/package.json'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
+  modelPackagePath: path.join(__dirname, '../../../models/package.json'),
   normalize: true,
 })

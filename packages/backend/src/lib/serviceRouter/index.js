@@ -18,6 +18,7 @@ module.exports = function serviceRouterFactory({ auth, config, connectors }) {
       config,
     }
   )
+
   const ensureMediaTypeMiddleware = ensureMediaTypeMiddlewareFactory()
 
   const serviceRouter = express.Router({ mergeParams: true })

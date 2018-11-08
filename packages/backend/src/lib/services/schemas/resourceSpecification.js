@@ -4,6 +4,9 @@ module.exports = {
     basePath: {
       type: 'string',
     },
+    migrations: {
+      type: 'object',
+    },
     model: {
       type: 'object',
     },

@@ -7,6 +7,7 @@ const log = createLog('lib/connectors', 1)
 
 module.exports = function createConnector({
   apiConfig,
+  config,
   customControllerFactories,
   fileInteractor,
   integrations,
@@ -16,7 +17,6 @@ module.exports = function createConnector({
   serviceInteractor,
   serviceName,
 }) {
-  log.info(operationId)
   const {
     connect,
     controller: customControllerKey,
@@ -33,7 +33,7 @@ module.exports = function createConnector({
   if (!controllerFactory) {
     log
       .scope()
-      .info(
+      .warning(
         `no controller for ${operationId}. operationType: ${
           operationType
         }, connect: ${connect}, customControllerKey: ${customControllerKey}`
@@ -43,6 +43,7 @@ module.exports = function createConnector({
   const controller =
     controllerFactory &&
     controllerFactory({
+      config,
       fileInteractor,
       integrations,
       models,

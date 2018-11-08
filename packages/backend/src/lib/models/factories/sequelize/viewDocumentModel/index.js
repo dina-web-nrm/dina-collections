@@ -2,6 +2,7 @@ const createDocumentModel = require('../documentModel')
 const setupMethods = require('./setupMethods')
 
 module.exports = function createViewDocumentModel({
+  config,
   name,
   sequelize,
   stageName: stageNameInput,
@@ -28,6 +29,7 @@ module.exports = function createViewDocumentModel({
   })
 
   const methods = setupMethods({
+    config,
     sequelize,
     StageModel,
     ViewModel,

@@ -1,6 +1,10 @@
-const baseConfig = require('../../baseConfig')
-
 const { readKey, readBoolKey } = require('../../../lib/config/env')
+
+const createBaseConfig = require('../../../lib/config/createBaseConfig')
+
+const baseConfig = createBaseConfig({
+  env: 'test',
+})
 
 module.exports = {
   ...baseConfig,

@@ -17,3 +17,5 @@ userFiles/*
 #certs
 certs/*.crt
 certs/*.key
+
+*.sql

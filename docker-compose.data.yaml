@@ -1,18 +1,17 @@
 version: '3.3'
 services:
-  loadData:
-    image: dina/dina-collections-api
-    container_name: load-data
-    environment:
-      - IMPORT_DATA=true
-      - IMPORT_DATA_NUMBER_OF_SPECIMENS=1000000
-      - DEBUG=DINA:LOG_INFO*
+  migrations:
+    image: dina/dina-collections-migrations
+    container_name: dina-migrations
     env_file:
       - ./env/.backend
-    command: node /etc/api/src/apps/production/data/index.js
+    environment:
+      BACKEND_IN_NODE_MODULES: 'true'
+    command: yarn --cwd=/etc/migrations setup:production
     volumes:
       - ./data:/data
       - ./userFiles:/userFiles
+
 
 networks:
   default:

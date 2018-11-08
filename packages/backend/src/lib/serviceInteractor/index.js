@@ -1,6 +1,10 @@
 const buildOperationId = require('common/src/buildOperationId')
 const createLog = require('../../utilities/log')
 const callController = require('./callController')
+const {
+  createResourceBatchExecute,
+  createResourceBatchUpdate,
+} = require('./virtualOperations')
 
 const log = createLog('lib/serviceInteractor')
 
@@ -27,7 +31,20 @@ module.exports = function createServiceInteractor() {
     connectors = connectorsInput
   }
 
-  const call = ({ operationId, request = {}, requestId, user }) => {
+  const call = ({
+    operationId: operationIdInput,
+    operationType,
+    request = {},
+    requestId,
+    resource,
+    user,
+  }) => {
+    const operationId =
+      operationIdInput ||
+      buildOperationId({
+        operationType,
+        resource,
+      })
     return Promise.resolve().then(() => {
       return callController({
         connectors,
@@ -76,10 +93,17 @@ module.exports = function createServiceInteractor() {
     })
   }
 
+  const virtualOperations = {
+    resourceBatchExecute: createResourceBatchExecute({
+      call,
+    }),
+    resourceBatchUpdate: createResourceBatchUpdate({
+      call,
+    }),
+  }
+
   const serviceInteractions = operationTypes.reduce(
     (methods, operationType) => {
-      log.info(`Creating service interaction for operation: ${operationType}`)
-
       return {
         ...methods,
         [operationType]: ({ request = {}, requestId, resource, user }) => {
@@ -100,5 +124,5 @@ module.exports = function createServiceInteractor() {
     { call, detachedCall }
   )
 
-  return { ...serviceInteractions, addConnectors }
+  return { ...serviceInteractions, ...virtualOperations, addConnectors }
 }

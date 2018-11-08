@@ -9,48 +9,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var fs = require('fs');
 var path = require('path');
 
-var createIndexFile = function createIndexFile(_ref) {
-  var available = _ref.available,
-      versionIndexFilePath = _ref.versionIndexFilePath;
-
-  var indexFile = available.map(function (availableVersion) {
-    return 'exports[\'' + availableVersion + '\'] = {\n  models: require(\'./' + availableVersion + '/models.json\'),\n  normalizedModels: require(\'./' + availableVersion + '/normalizedModels.json\'),\n  openApi: require(\'./' + availableVersion + '/openApi.json\'),\n  normalizedOpenApi: require(\'./' + availableVersion + '/normalizedOpenApi.json\'),\n}';
-  }).join('\n') + '\n';
-
-  fs.writeFileSync(versionIndexFilePath, indexFile);
-};
-
-var updateVersionsIndex = function updateVersionsIndex(_ref2) {
-  var setCurrent = _ref2.setCurrent,
-      version = _ref2.version,
-      versionsBaseDirectory = _ref2.versionsBaseDirectory;
-
-  var versionsInfoFilePath = path.join(versionsBaseDirectory, 'info.json');
-  var versionIndexFilePath = path.join(versionsBaseDirectory, 'index.js');
-
-  var versions = fs.readdirSync(versionsBaseDirectory).filter(function (fileName) {
-    return fileName !== 'info.json';
-  }).filter(function (fileName) {
-    return fileName !== 'index.js';
-  }).filter(function (filename) {
-    return filename[0] !== '.';
-  });
-
-  var versionFile = fs.existsSync(versionsInfoFilePath) ? require(versionsInfoFilePath) : {};
-
-  var versionsInfo = {
-    available: versions,
-    current: setCurrent ? version : versionFile.current,
-    latest: versions.sort()[0]
-  };
-  fs.writeFileSync(versionsInfoFilePath, (0, _stringify2.default)(versionsInfo, null, 2));
-
-  createIndexFile({
-    available: versionsInfo.available,
-    versionIndexFilePath: versionIndexFilePath
-  });
-};
-
 var ensureDirectoryExistence = function ensureDirectoryExistence(dirPath) {
   if (fs.existsSync(dirPath)) {
     return true;
@@ -59,44 +17,83 @@ var ensureDirectoryExistence = function ensureDirectoryExistence(dirPath) {
   return true;
 };
 
-var getOpenApiFileName = function getOpenApiFileName(normalize) {
-  return normalize ? 'normalizedOpenApi.json' : 'openApi.json';
-};
-
 var getModelsFileName = function getModelsFileName(normalize) {
   return normalize ? 'normalizedModels.json' : 'models.json';
 };
 
 module.exports = function write() {
-  var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      models = _ref3.models,
-      normalize = _ref3.normalize,
-      openApi = _ref3.openApi,
-      setCurrent = _ref3.setCurrent,
-      _ref3$version = _ref3.version,
-      version = _ref3$version === undefined ? '' : _ref3$version;
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      apiVersion = _ref.apiVersion,
+      modelVersion = _ref.modelVersion,
+      models = _ref.models,
+      normalize = _ref.normalize,
+      openApi = _ref.openApi;
 
-  var buildDirectory = path.join(__dirname, '../../../../common/dist');
-  var versionsBaseDirectory = path.join(buildDirectory, 'versions');
-  var baseDirectory = version ? path.join(versionsBaseDirectory, version) : path.join(buildDirectory);
+  var buildDirectory = path.join(__dirname, '../../../../common/dist/schemas');
 
   ensureDirectoryExistence(buildDirectory);
-  ensureDirectoryExistence(versionsBaseDirectory);
-  ensureDirectoryExistence(baseDirectory);
-
   if (openApi) {
-    fs.writeFileSync(path.join(baseDirectory, getOpenApiFileName(normalize)), (0, _stringify2.default)(openApi, null, 2));
+    var apiVersionPath = path.join(buildDirectory, 'apiVersions', apiVersion);
+    var infoPath = path.join(apiVersionPath, 'info.json');
+
+    var currentInfo = void 0;
+    try {
+      currentInfo = require(infoPath);
+    } catch (err) {
+      currentInfo = {
+        candidate: true
+      };
+    }
+
+    if (!currentInfo.candidate) {
+      throw new Error('Not allowed to override non candidate schema. Tried to override apiVersion: ' + apiVersion);
+    }
+
+    var info = {
+      apiVersion: apiVersion,
+      candidate: true,
+      modelVersion: modelVersion
+    };
+
+    ensureDirectoryExistence(apiVersionPath);
+    fs.writeFileSync(path.join(apiVersionPath, 'openApi.json'), (0, _stringify2.default)(openApi, null, 2));
+    fs.writeFileSync(path.join(apiVersionPath, 'info.json'), (0, _stringify2.default)(info, null, 2));
+
+    var apiCurrentPath = path.join(buildDirectory, 'apiVersions', 'current');
+    ensureDirectoryExistence(apiCurrentPath);
+    fs.writeFileSync(path.join(apiCurrentPath, 'openApi.json'), (0, _stringify2.default)(openApi, null, 2));
+    fs.writeFileSync(path.join(apiCurrentPath, 'info.json'), (0, _stringify2.default)(info, null, 2));
   }
 
   if (models) {
-    fs.writeFileSync(path.join(baseDirectory, getModelsFileName(normalize)), (0, _stringify2.default)(models, null, 2));
-  }
+    var modelVersionPath = path.join(buildDirectory, 'modelVersions', modelVersion);
 
-  if (version) {
-    updateVersionsIndex({
-      setCurrent: setCurrent,
-      version: version,
-      versionsBaseDirectory: versionsBaseDirectory
-    });
+    var _infoPath = path.join(modelVersionPath, 'info.json');
+
+    var _currentInfo = void 0;
+    try {
+      _currentInfo = require(_infoPath);
+    } catch (err) {
+      _currentInfo = {
+        candidate: true
+      };
+    }
+
+    if (!_currentInfo.candidate) {
+      throw new Error('Not allowed to override non candidate schema. Tried to override modelVersion: ' + modelVersion);
+    }
+    var _info = {
+      candidate: true,
+      modelVersion: modelVersion
+    };
+
+    ensureDirectoryExistence(modelVersionPath);
+    fs.writeFileSync(path.join(modelVersionPath, getModelsFileName(normalize)), (0, _stringify2.default)(models, null, 2));
+    fs.writeFileSync(path.join(modelVersionPath, 'info.json'), (0, _stringify2.default)(_info, null, 2));
+
+    var modelCurrentPath = path.join(buildDirectory, 'modelVersions', 'current');
+    ensureDirectoryExistence(modelCurrentPath);
+    fs.writeFileSync(path.join(modelCurrentPath, getModelsFileName(normalize)), (0, _stringify2.default)(models, null, 2));
+    fs.writeFileSync(path.join(modelCurrentPath, 'info.json'), (0, _stringify2.default)(_info, null, 2));
   }
 };

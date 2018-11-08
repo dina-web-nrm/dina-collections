@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MarkdownToHtmlAsync from 'coreModules/i18n/components/MarkdownToHtmlAsync'
 import { Segment } from 'semantic-ui-react'
+import schemaInterface from 'common/es5/schemaInterface'
 
-const specifications = require('common/dist/versions')
+const specification = schemaInterface.getOpenApiSpec()
 
 const propTypes = {
   match: PropTypes.shape({
@@ -18,7 +19,7 @@ const VersionOverview = ({ match }) => {
   if (!activeVersion) {
     return <div>Unknown version: {match.params.schemaVersion}</div>
   }
-  const specification = specifications[match.params.schemaVersion].openApi
+
   return (
     <div>
       <h2>Version: {activeVersion}</h2>

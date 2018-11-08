@@ -1,3 +1,4 @@
+const migrations = require('./data/migrations')
 const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
 
 const {
@@ -8,6 +9,7 @@ const {
 
 module.exports = {
   basePath: '/api/storage/v01',
+  migrations,
   model: {
     modelFactory: 'sequelizeDocumentModel',
     name: 'physicalObject',

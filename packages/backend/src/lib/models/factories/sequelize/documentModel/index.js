@@ -2,6 +2,7 @@ const setupMethods = require('./setupMethods')
 const Sequelize = require('sequelize')
 
 module.exports = function createModel({
+  config,
   customMethodFactories,
   loadInitialData,
   name,
@@ -46,6 +47,7 @@ module.exports = function createModel({
     }
   )
   const methods = setupMethods({
+    config,
     customMethodFactories,
     loadInitialData,
     Model,

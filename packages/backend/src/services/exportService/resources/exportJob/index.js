@@ -1,3 +1,4 @@
+const migrations = require('./data/migrations')
 const Sequelize = require('sequelize')
 const {
   getMany: getManyFilterSpecification,
@@ -16,6 +17,7 @@ const { create: createPreHooks } = require('./data/preHooks')
 
 module.exports = {
   basePath: '/api/export/v01',
+  migrations,
   model: {
     columns: {
       error: { type: Sequelize.TEXT },

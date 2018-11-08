@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var createSchemaInterface = require('./index');
 
-var expectedFunctions = ['getModelKeyColumnMap', 'getNormalizeSpecifications', 'getRelationshipParamsForModelNames', 'getResourceRelationshipKeysToIncludeInBodyMap', 'getResourceRelationshipParamsMap'];
+var expectedFunctions = ['getDataModelVersion', 'getMethodByOperationId', 'getModelKeyColumnMap', 'getModels', 'getNormalizedModels', 'getNormalizeSpecifications', 'getOpenApiSpec', 'getRelationshipParamsForModelNames', 'getResourceRelationshipKeysToIncludeInBodyMap', 'getResourceRelationshipParamsMap'];
 
 describe('schemaInterface/createSchemaInterface', function () {
   it('exports a function', function () {

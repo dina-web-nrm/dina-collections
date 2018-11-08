@@ -1,5 +1,7 @@
 import immutable from 'object-path-immutable'
-import models from 'common/dist/models.json'
+import schemaInterface from 'common/es5/schemaInterface'
+
+const models = schemaInterface.getModels()
 
 const createTaxonFormModels = () => {
   const updatedModels = immutable.set(models, 'taxon.properties.parentId', {

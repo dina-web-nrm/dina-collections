@@ -1,3 +1,4 @@
+const migrations = require('./data/migrations')
 const Sequelize = require('sequelize')
 const {
   getMany: getManyFilterSpecification,
@@ -34,6 +35,7 @@ const defaultFields = [
 
 module.exports = {
   basePath: '/api/log/v01',
+  migrations,
   model: {
     columns: {
       action: { type: Sequelize.STRING },

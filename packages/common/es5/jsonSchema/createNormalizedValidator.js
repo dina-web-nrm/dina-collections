@@ -1,6 +1,8 @@
 'use strict';
 
-var models = require('../../dist/normalizedModels.json');
+var schemaInterface = require('../schemaInterface');
 var createValidatorFactory = require('./createValidatorFactory');
 
-module.exports = createValidatorFactory({ models: models });
+var normalizedModels = schemaInterface.getNormalizedModels();
+
+module.exports = createValidatorFactory({ models: normalizedModels });

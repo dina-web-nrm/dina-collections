@@ -1,8 +1,8 @@
 const path = require('path')
 const DEFAULT_FS = require('fs')
-const currentVersion = require('common/dist/versions/info.json').current
 const { renderMarkdownToHtml } = require('../../utilities/markdown')
 
+const currentVersion = 'current'
 const documentLink = `/docs/${currentVersion}/models/`
 const markdownLanguageRegex = /^([A-Za-z0-9-_]+)\.([a-z]+)\.md$/
 
