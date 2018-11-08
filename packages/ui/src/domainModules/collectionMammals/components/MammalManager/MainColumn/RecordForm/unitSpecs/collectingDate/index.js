@@ -12,8 +12,8 @@ const parts = [
   },
   ...createRangeDateWithRemarks({
     baseName: 'individual.collectingInformation.0.event.dateRange',
+    displayDateTypeRadios: true,
     emptyStateTextKey: 'remarks.emptyState.date',
-    initialDateType: 'single',
     model,
     resultPrefixTextKey: 'remarks.resultPrefix.date',
   }),

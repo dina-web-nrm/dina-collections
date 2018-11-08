@@ -31,6 +31,8 @@ const inputDayStyle = {
 const propTypes = {
   disabled: PropTypes.bool,
   displayLabel: PropTypes.bool,
+  displaySubLabel: PropTypes.bool,
+  enableHelpNotifications: PropTypes.bool,
   hidden: PropTypes.bool,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -48,18 +50,22 @@ const propTypes = {
   }).isRequired,
   isEndDate: PropTypes.bool,
   isStartDate: PropTypes.bool,
+  label: PropTypes.node,
   setYearInputRef: PropTypes.func,
 }
 const defaultProps = {
   disabled: false,
-  displayLabel: true,
+  displayLabel: undefined,
+  displaySubLabel: undefined,
+  enableHelpNotifications: false,
   hidden: false,
   isEndDate: false,
   isStartDate: false,
+  label: undefined,
   setYearInputRef: undefined,
 }
 
-class SingleDate extends Component {
+class DatePart extends Component {
   constructor(props) {
     super(props)
     this.handleOnChange = this.handleOnChange.bind(this)
@@ -120,6 +126,9 @@ class SingleDate extends Component {
     const {
       disabled,
       displayLabel,
+      displaySubLabel,
+      label,
+      enableHelpNotifications,
       hidden,
       input: { value },
       setYearInputRef,
@@ -128,15 +137,16 @@ class SingleDate extends Component {
 
     return (
       <FieldTemplate
-        displayLabel={false}
-        enableHelpNotifications={false}
+        displayLabel={label && displayLabel}
+        enableHelpNotifications={enableHelpNotifications}
         float="left"
+        label={label}
         meta={{}}
         style={{ display: hidden ? 'none' : undefined, width: 'initial' }}
       >
         <div style={inputYearStyle}>
           <FieldTemplate
-            displayLabel={displayLabel}
+            displayLabel={displaySubLabel}
             enableHelpNotifications={false}
             float="left"
             label="Year"
@@ -165,7 +175,7 @@ class SingleDate extends Component {
         </div>
         <div style={inputMonthStyle}>
           <FieldTemplate
-            displayLabel={displayLabel}
+            displayLabel={displaySubLabel}
             enableHelpNotifications={false}
             float="left"
             label="Month"
@@ -195,7 +205,7 @@ class SingleDate extends Component {
         </div>
         <div style={inputDayStyle}>
           <FieldTemplate
-            displayLabel={displayLabel}
+            displayLabel={displaySubLabel}
             enableHelpNotifications={false}
             float="left"
             label="Day"
@@ -228,7 +238,7 @@ class SingleDate extends Component {
   }
 }
 
-SingleDate.propTypes = propTypes
-SingleDate.defaultProps = defaultProps
+DatePart.propTypes = propTypes
+DatePart.defaultProps = defaultProps
 
-export default SingleDate
+export default DatePart
