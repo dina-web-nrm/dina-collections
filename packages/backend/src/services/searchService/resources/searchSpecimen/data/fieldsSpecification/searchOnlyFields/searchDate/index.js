@@ -46,14 +46,15 @@ const transformation = ({ migrator, src, target }) => {
 const searchFilter = {
   description: 'Search date',
   elasticsearch: ({ value = {} }) => {
-    const { start, end, dateType } = value
+    const { start, end } = value
 
     const must = []
+
     if (start) {
       must.push({
         range: {
           [`${fieldPath}.startTimestamp`]: {
-            gte: start || undefined,
+            gte: start,
           },
         },
       })
@@ -63,15 +64,9 @@ const searchFilter = {
       must.push({
         range: {
           [`${fieldPath}.endTimestamp`]: {
-            lte: end || undefined,
+            lte: end,
           },
         },
-      })
-    }
-
-    if (dateType) {
-      must.push({
-        match: { [`${fieldPath}.dateType`]: dateType },
       })
     }
 

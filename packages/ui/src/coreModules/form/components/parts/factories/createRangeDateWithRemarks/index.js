@@ -1,24 +1,37 @@
+import createRangeDate from '../createRangeDate'
+
 export default function createRangeDateWithRemarks(
   {
     baseName,
+    displayDateTypeRadios,
+    displayEndDateLabel,
+    displayLabel,
+    displayStartDateLabel,
+    displaySubLabels,
     emptyStateTextKey,
-    initialDateType = 'single',
+    endDateLabel,
+    initialDateType,
     initiallyHidden,
     model,
     resultPrefixTextKey,
+    stack,
+    startDateLabel,
   } = {}
 ) {
   return [
-    {
-      componentName: 'RangeDate',
-      componentProps: {
-        displayDateTypeRadios: true,
-        initialDateType,
-      },
+    ...createRangeDate({
+      baseName,
+      displayDateTypeRadios,
+      displayEndDateLabel,
+      displayLabel,
+      displayStartDateLabel,
+      displaySubLabels,
+      endDateLabel,
+      initialDateType,
       initiallyHidden,
-      name: baseName,
-      wrapInField: true,
-    },
+      stack,
+      startDateLabel,
+    }),
     {
       componentName: 'Remarks',
       componentProps: {

@@ -69,6 +69,7 @@ export class RawFilters extends PureComponent {
   render() {
     return (
       <Accordion
+        className="ui form"
         delayItemRenderUntilActive
         items={items}
         renderContent={this.renderContent}

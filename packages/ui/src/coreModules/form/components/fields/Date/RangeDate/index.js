@@ -39,8 +39,11 @@ const datePartSeparatorStyle = {
 const propTypes = {
   componentErrors: PropTypes.object,
   displayDateTypeRadios: PropTypes.bool,
+  displayEndDateLabel: PropTypes.bool,
   displayLabel: PropTypes.bool,
+  displayStartDateLabel: PropTypes.bool,
   displaySubLabels: PropTypes.bool,
+  endDateLabel: PropTypes.node,
   initialDateType: PropTypes.oneOf([LATEST, RANGE, SINGLE]),
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -69,17 +72,22 @@ const propTypes = {
   module: PropTypes.string,
   mountHidden: PropTypes.bool,
   stack: PropTypes.bool,
+  startDateLabel: PropTypes.node,
 }
 
 const defaultProps = {
   componentErrors: {},
   displayDateTypeRadios: false,
+  displayEndDateLabel: false,
   displayLabel: false,
+  displayStartDateLabel: false,
   displaySubLabels: true,
+  endDateLabel: undefined,
   initialDateType: 'single',
   module: 'form',
   mountHidden: config.isTest,
   stack: false,
+  startDateLabel: undefined,
 }
 
 class DateRange extends Component {
@@ -213,12 +221,17 @@ class DateRange extends Component {
   render() {
     const {
       displayDateTypeRadios,
+      displayEndDateLabel,
+      displayStartDateLabel,
       displaySubLabels,
+      endDateLabel,
       input,
       meta,
       mountHidden,
       stack,
+      startDateLabel,
     } = this.props
+
     const { dateType } = this.state
 
     const hasError = meta.touched && !!meta.error
@@ -253,9 +266,11 @@ class DateRange extends Component {
             <div style={datePartStyle}>
               <DatePart
                 disabled={dateType === LATEST}
-                displayLabel={displaySubLabels}
+                displayLabel={displayStartDateLabel}
+                displaySubLabel={displaySubLabels}
                 input={this.getFieldInput('startDate')}
                 isStartDate
+                label={startDateLabel}
                 meta={{}}
                 setYearInputRef={this.setStartYearInputRef}
               />
@@ -265,10 +280,12 @@ class DateRange extends Component {
             )}
             <div style={datePartStyle}>
               <DatePart
-                displayLabel={displaySubLabels}
+                displayLabel={displayEndDateLabel}
+                displaySubLabel={displaySubLabels}
                 hidden={dateType === SINGLE}
                 input={this.getFieldInput('endDate')}
                 isEndDate
+                label={endDateLabel}
                 meta={{}}
                 setYearInputRef={this.setEndYearInputRef}
               />
@@ -278,22 +295,28 @@ class DateRange extends Component {
 
         {stack && (
           <React.Fragment>
-            <div style={{ float: 'left', width: '100%' }}>
+            <div
+              style={{ float: 'left', marginBottom: '0.8em', width: '100%' }}
+            >
               <DatePart
                 disabled={dateType === LATEST}
-                displayLabel={displaySubLabels}
+                displayLabel={displayStartDateLabel}
+                displaySubLabel={displaySubLabels}
                 input={this.getFieldInput('startDate')}
                 isStartDate
+                label={startDateLabel}
                 meta={{}}
                 setYearInputRef={this.setStartYearInputRef}
               />
             </div>
             <div style={{ float: 'left', width: '100%' }}>
               <DatePart
-                displayLabel={displaySubLabels}
+                displayLabel={displayEndDateLabel}
+                displaySubLabel={displaySubLabels}
                 hidden={dateType === SINGLE}
                 input={this.getFieldInput('endDate')}
                 isEndDate
+                label={endDateLabel}
                 meta={{}}
                 setYearInputRef={this.setEndYearInputRef}
               />

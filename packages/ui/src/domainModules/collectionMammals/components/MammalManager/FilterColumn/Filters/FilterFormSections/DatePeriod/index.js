@@ -17,11 +17,16 @@ class DatePeriodFilterForm extends PureComponent {
         <Grid.Column width={16}>
           <Field
             component={RangeDate}
-            displayDateTypeRadios
-            label="from"
+            displayDateTypeRadios={false}
+            displayEndDateLabel
+            displayStartDateLabel
+            displaySubLabels
+            endDateLabel="Latest date"
+            initialDateType="range"
             module="collectionMammals"
             name="datePeriod.date"
             stack
+            startDateLabel="Earliest date"
           />
         </Grid.Column>
         <Grid.Column width={16}>
