@@ -13,6 +13,7 @@ module.exports = function importer({ config, serviceInteractor }) {
     'featureType',
     'identifierType',
     'preparationType',
+    'typeSpecimenType',
     // 'normalizedAgent',
 
     // 'typeSpecimenType',
