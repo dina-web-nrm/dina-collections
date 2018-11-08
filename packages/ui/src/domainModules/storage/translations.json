@@ -43,12 +43,28 @@
       "sv": ""
     }
   },
+  "cancel": {
+    "en": "Cancel",
+    "sv": ""
+  },
   "connectPreparationType": {
     "en": "connect preparation type",
     "sv": ""
   },
   "connectTaxon": {
     "en": "connect taxon",
+    "sv": ""
+  },
+  "remove": {
+    "en": "Remove",
+    "sv": ""
+  },
+  "removeThisConnectedPreparationTypes": {
+    "en": "Remove this connected preparation type?",
+    "sv": ""
+  },
+  "removeThisConnectedTaxa": {
+    "en": "Remove this connected taxa?",
     "sv": ""
   },
   "save": {

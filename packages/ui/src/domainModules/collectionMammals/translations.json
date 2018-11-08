@@ -1194,6 +1194,22 @@
       "addOtherPreparation": {
         "en": "Add an other preparation",
         "sv": ""
+      },
+      "removeSkeleton": {
+        "en": "Remove this skeleton?",
+        "sv": ""
+      },
+      "removeSkin": {
+        "en": "Remove this skin?",
+        "sv": ""
+      },
+      "removeWetPreparation": {
+        "en": "Remove this wet preparation?",
+        "sv": ""
+      },
+      "removeOtherPreparation": {
+        "en": "Remove this other preparation?",
+        "sv": ""
       }
     },
     "newAssessment": {
@@ -1215,8 +1231,24 @@
       "en": "Remove",
       "sv": "Ta bort"
     },
+    "removeThisCuratorialAssessment": {
+      "en": "Remove this curatorial assessment?",
+      "sv": ""
+    },
     "removeThisDetermination": {
       "en": "remove this determination?",
+      "sv": ""
+    },
+    "removeThisIdentifier": {
+      "en": "Remove this identifier?",
+      "sv": ""
+    },
+    "removeThisPhysicalObjects": {
+      "en": "Remove this physical object?",
+      "sv": ""
+    },
+    "removeThisOtherName": {
+      "en": "Remove this other name?",
       "sv": ""
     },
     "reset": {

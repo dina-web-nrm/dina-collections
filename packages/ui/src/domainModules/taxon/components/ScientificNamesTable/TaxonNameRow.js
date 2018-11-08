@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Header, Icon, Popup, Table } from 'semantic-ui-react'
-import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { compose } from 'redux'
 import { Link } from 'react-router-dom'
+
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+import { ConfirmationPopup } from 'coreModules/form/components'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 
 import {
   ACCEPTED,
@@ -27,7 +30,18 @@ const defaultProps = {
 class TaxonNameRow extends PureComponent {
   constructor(props) {
     super(props)
+
     this.state = { popupOpen: false }
+    this.handleRemove = this.handleRemove.bind(this)
+  }
+
+  handleRemove() {
+    const { itemId, nameType, onInteraction, stateIndex } = this.props
+    onInteraction(DISCONNECT_TAXON_NAME, {
+      itemId,
+      nameType,
+      stateIndex,
+    })
   }
 
   render() {
@@ -75,19 +89,39 @@ class TaxonNameRow extends PureComponent {
                 {nameType === SYNONYM && (
                   <React.Fragment>
                     <br />
-                    <a // eslint-disable-line
-                      onClick={event => {
-                        event.preventDefault()
-                        onInteraction(DISCONNECT_TAXON_NAME, {
-                          itemId,
-                          nameType,
-                          stateIndex,
-                        })
-                        this.setState({ popupOpen: false })
-                      }}
-                    >
-                      Remove from this taxon
-                    </a>
+                    <ConfirmationPopup
+                      cancelButtonText={
+                        <ModuleTranslate
+                          capitalize
+                          module="taxon"
+                          textKey="cancel"
+                        />
+                      }
+                      confirmButtonText={
+                        <ModuleTranslate
+                          capitalize
+                          module="taxon"
+                          textKey="remove"
+                        />
+                      }
+                      header={
+                        <ModuleTranslate
+                          capitalize
+                          module="taxon"
+                          textKey="removeThisTaxon"
+                        />
+                      }
+                      hideOnScroll
+                      onConfirm={this.handleRemove}
+                      text={
+                        <ModuleTranslate
+                          capitalize
+                          module="taxon"
+                          textKey="removeFromThisTaxon"
+                        />
+                      }
+                      type="link"
+                    />
                   </React.Fragment>
                 )}
               </React.Fragment>

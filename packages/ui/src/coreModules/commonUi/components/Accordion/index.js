@@ -16,7 +16,7 @@ const log = createLog('modules:commonUi:Accordion')
 
 const propTypes = {
   delayItemRenderUntilActive: PropTypes.bool,
-  expandFirstItemOnMountIfEmptyOrOnlyHasIndex: PropTypes.bool,
+  expandFirstItemOnMountIfEmptyOrOnlyHasKey: PropTypes.bool,
   expandItemOnAdd: PropTypes.bool,
   fluid: PropTypes.bool,
   getShouldExpandFirstItemOnMount: PropTypes.func,
@@ -34,7 +34,7 @@ const propTypes = {
 }
 const defaultProps = {
   delayItemRenderUntilActive: false,
-  expandFirstItemOnMountIfEmptyOrOnlyHasIndex: false,
+  expandFirstItemOnMountIfEmptyOrOnlyHasKey: false,
   expandItemOnAdd: true,
   fluid: true,
   getShouldExpandFirstItemOnMount: undefined,
@@ -77,7 +77,7 @@ class AccordionWrapper extends Component {
 
   componentDidMount() {
     const {
-      expandFirstItemOnMountIfEmptyOrOnlyHasIndex,
+      expandFirstItemOnMountIfEmptyOrOnlyHasKey,
       getShouldExpandFirstItemOnMount,
       getShouldRenderItem,
       items,
@@ -85,9 +85,9 @@ class AccordionWrapper extends Component {
 
     if (
       items.length === 1 &&
-      expandFirstItemOnMountIfEmptyOrOnlyHasIndex &&
+      expandFirstItemOnMountIfEmptyOrOnlyHasKey &&
       (isEmpty(items[0]) ||
-        (Object.keys(items[0]).length === 1 && items[0].index !== undefined))
+        (Object.keys(items[0]).length === 1 && items[0].key !== undefined))
     ) {
       this.handleSetActive(0)
     }
@@ -223,7 +223,7 @@ class AccordionWrapper extends Component {
           const isActive = this.isActive(index)
 
           return (
-            <React.Fragment key={item.id || index}>
+            <React.Fragment key={item.id || item.key || index}>
               <Accordion.Title
                 active={isActive}
                 index={index}

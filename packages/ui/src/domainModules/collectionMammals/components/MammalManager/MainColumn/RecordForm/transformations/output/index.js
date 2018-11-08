@@ -19,7 +19,7 @@ export default function transformOutput({ specimen = {} }) {
     transformedSpecimen.individual.determinations = determinations
       .map(determination => {
         const patchedDetermination = { ...determination }
-        delete patchedDetermination.index
+        delete patchedDetermination.key
         return patchedDetermination
       })
       .filter(determination => !isEmpty(determination))

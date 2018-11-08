@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { compose } from 'redux'
-import { Icon, Table } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 import objectPath from 'object-path'
+
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import { ConfirmationPopup } from 'coreModules/form/components'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 
 const propTypes = {
   disconnectName: PropTypes.func.isRequired,
@@ -34,11 +37,25 @@ class TaxonNameRow extends PureComponent {
       <Table.Row>
         <Table.Cell width={14}>{`${name} (${rank})`}</Table.Cell>
         <Table.Cell>
-          <Icon
-            name="trash"
-            onClick={this.handleDisconnect}
+          <ConfirmationPopup
+            cancelButtonText={
+              <ModuleTranslate capitalize module="storage" textKey="cancel" />
+            }
+            confirmButtonText={
+              <ModuleTranslate capitalize module="storage" textKey="remove" />
+            }
+            header={
+              <ModuleTranslate
+                capitalize
+                module="storage"
+                textKey="removeThisConnectedTaxa"
+              />
+            }
+            hideOnScroll
+            iconName="trash"
+            onConfirm={this.handleDisconnect}
             size="large"
-            style={{ cursor: 'pointer' }}
+            type="icon"
           />
         </Table.Cell>
       </Table.Row>
