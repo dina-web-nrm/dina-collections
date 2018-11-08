@@ -15,6 +15,7 @@ import {
 const log = createLog('modules:commonUi:Accordion')
 
 const propTypes = {
+  className: PropTypes.string,
   delayItemRenderUntilActive: PropTypes.bool,
   expandFirstItemOnMountIfEmptyOrOnlyHasKey: PropTypes.bool,
   expandItemOnAdd: PropTypes.bool,
@@ -33,6 +34,7 @@ const propTypes = {
   styled: PropTypes.bool,
 }
 const defaultProps = {
+  className: undefined,
   delayItemRenderUntilActive: false,
   expandFirstItemOnMountIfEmptyOrOnlyHasKey: false,
   expandItemOnAdd: true,
@@ -205,6 +207,7 @@ class AccordionWrapper extends Component {
   render() {
     log.render()
     const {
+      className,
       fluid,
       getShouldRenderItem,
       items,
@@ -214,7 +217,7 @@ class AccordionWrapper extends Component {
     } = this.props
 
     return (
-      <Accordion fluid={fluid} styled={styled}>
+      <Accordion className={className} fluid={fluid} styled={styled}>
         {items.map((item, index) => {
           if (getShouldRenderItem && !getShouldRenderItem(item)) {
             return null
