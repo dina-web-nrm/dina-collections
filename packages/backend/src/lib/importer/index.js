@@ -7,7 +7,7 @@ module.exports = function importer({ config, serviceInteractor }) {
   log.info('Start importer')
 
   const resources = [
-    // 'causeOfDeathType',
+    'causeOfDeathType',
     // 'customTaxonNameType',
     // 'establishmentMeansType',
     // 'featureType',
