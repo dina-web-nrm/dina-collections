@@ -10,7 +10,7 @@ module.exports = function importer({ config, serviceInteractor }) {
     'causeOfDeathType',
     'customTaxonNameType',
     'establishmentMeansType',
-    // 'featureType',
+    'featureType',
     // 'identifierType',
     // 'normalizedAgent',
     // 'preparationType',
