@@ -9,7 +9,7 @@ module.exports = function importer({ config, serviceInteractor }) {
   const resources = [
     'causeOfDeathType',
     'customTaxonNameType',
-    // 'establishmentMeansType',
+    'establishmentMeansType',
     // 'featureType',
     // 'identifierType',
     // 'normalizedAgent',
