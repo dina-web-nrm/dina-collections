@@ -7,19 +7,19 @@ module.exports = function importer({ config, serviceInteractor }) {
   log.info('Start importer')
 
   const resources = [
-    'causeOfDeathType',
-    'customTaxonNameType',
-    'establishmentMeansType',
-    'featureType',
-    'identifierType',
-    'normalizedAgent',
-    'preparationType',
-    'typeSpecimenType',
-    'place',
-    'taxon',
-    'taxonName',
-    'storageLocation',
-    'specimen',
+    // 'causeOfDeathType',
+    // 'customTaxonNameType',
+    // 'establishmentMeansType',
+    // 'featureType',
+    // 'identifierType',
+    // 'normalizedAgent',
+    // 'preparationType',
+    // 'typeSpecimenType',
+    // 'place',
+    // 'taxon',
+    // 'taxonName',
+    // 'storageLocation',
+    // 'specimen',
   ]
 
   return asyncReduce({
