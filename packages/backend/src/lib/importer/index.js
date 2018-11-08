@@ -15,12 +15,10 @@ module.exports = function importer({ config, serviceInteractor }) {
     'preparationType',
     'typeSpecimenType',
     'place',
+    'taxon',
+    'taxonName',
+    'storageLocation',
     // 'normalizedAgent',
-
-    // 'typeSpecimenType',
-    // 'taxon',
-    // 'taxonName',
-    // 'storageLocation',
     // 'specimen',
   ]
 
