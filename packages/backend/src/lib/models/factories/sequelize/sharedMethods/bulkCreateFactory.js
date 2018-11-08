@@ -14,7 +14,7 @@ module.exports = function bulkCreateFactory(
   }
 
   // This should only be used to create test initialData
-  return bulkCreateWrapper(({ items = [], validate = false }) => {
+  return bulkCreateWrapper(({ items = [], validate = true }) => {
     log.debug(`Start create ${items.length} items for: ${Model.tableName}`)
     if (items.length === 0) {
       return Promise.resolve({ meta: { count: 0 } })
@@ -22,8 +22,8 @@ module.exports = function bulkCreateFactory(
 
     return Model.bulkCreate(
       items.map(item => {
-        if (validate) {
-          const errors = validateFunction(item)
+        if (validateFunction && validate) {
+          const errors = validateFunction(item.attributes)
           if (errors) {
             throw errors
           }
