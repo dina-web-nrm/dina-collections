@@ -178,7 +178,7 @@ agentkeepalive@^3.4.1:
   dependencies:
     humanize-ms "^1.2.1"
 
-ajv-keywords@^3.0.0:
+ajv-keywords@^3.0.0, ajv-keywords@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
   integrity sha1-6GuBnGAs+IIa1jdBNpjx3sAhhHo=
@@ -1547,6 +1547,7 @@ commander@~2.17.1:
   version "0.1.0"
   dependencies:
     ajv "^5.2.3"
+    ajv-keywords "^3.2.0"
     debug "^3.1.0"
     json-schema-faker "^0.4.4"
     lodash "^4.17.5"
