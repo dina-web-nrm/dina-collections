@@ -233,6 +233,7 @@ class ResourceManager extends Component {
             'buildFilterQuery',
             'filterValues',
             'onInteraction',
+            'onShowAllRecords',
             'onUpdateFilterValues',
             'renderFilterForm',
             'resource',

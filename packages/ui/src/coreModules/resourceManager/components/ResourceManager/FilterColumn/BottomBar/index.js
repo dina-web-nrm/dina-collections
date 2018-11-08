@@ -6,7 +6,6 @@ import {
   getFormValues,
   isDirty as isDirtySelector,
   isInvalid,
-  reset as resetActionCreator,
 } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 
@@ -20,16 +19,11 @@ const mapStateToProps = (state, { resource }) => {
   }
 }
 
-const mapDispatchToProps = {
-  reset: resetActionCreator,
-}
-
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   invalid: PropTypes.bool.isRequired,
   isDirty: PropTypes.bool.isRequired,
+  onShowAllRecords: PropTypes.func.isRequired,
   onUpdateFilterValues: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
   values: PropTypes.object,
 }
 const defaultProps = {
@@ -45,9 +39,8 @@ class BottomBar extends PureComponent {
   }
 
   handleReset(event) {
-    const { formName } = this.props
     event.preventDefault()
-    this.props.reset(formName)
+    this.props.onShowAllRecords()
   }
 
   handleSubmit(event) {
@@ -89,4 +82,4 @@ class BottomBar extends PureComponent {
 BottomBar.propTypes = propTypes
 BottomBar.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(BottomBar)
+export default compose(connect(mapStateToProps))(BottomBar)

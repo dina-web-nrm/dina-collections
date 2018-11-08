@@ -61,6 +61,7 @@ class FilterColumn extends Component {
             'buildFilterQuery',
             'onInteraction',
             'onUpdateFilterValues',
+            'onShowAllRecords',
             'resource',
           ],
           props: this.props,
