@@ -65,13 +65,11 @@ export class ScientificNamesTable extends Component {
     this.addSynonym = this.addSynonym.bind(this)
   }
 
-  setTaxonNameAsAccepted({ itemId, nameType, stateIndex } = {}) {
+  setTaxonNameAsAccepted({ itemId } = {}) {
     const currentAcceptedName = this.props.acceptedTaxonName
 
     this.disconnectTaxonName({
       itemId,
-      nameType,
-      stateIndex,
     })
 
     if (currentAcceptedName && currentAcceptedName.id) {
@@ -98,6 +96,7 @@ export class ScientificNamesTable extends Component {
     this.disconnectTaxonName({
       itemId,
     })
+
     if (unshift) {
       return this.props.arrayUnshift(this.props.formName, 'synonyms', {
         id: itemId,
@@ -115,6 +114,7 @@ export class ScientificNamesTable extends Component {
         return id === itemId
       }
     )
+
     if (!existingTaxonNameListItem) {
       return null
     }
@@ -130,23 +130,24 @@ export class ScientificNamesTable extends Component {
     return null
   }
 
-  handleInteraction(interactionType, { itemId, nameType, stateIndex } = {}) {
+  handleInteraction(interactionType, { itemId, stateIndex } = {}) {
     if (interactionType === ADD_SYNONYM) {
       this.setState({ connectingScientificName: false })
-      this.addSynonym({
-        itemId,
-      })
+      if (!this.props.scientificNames.length) {
+        this.setTaxonNameAsAccepted({ itemId })
+      } else {
+        this.addSynonym({
+          itemId,
+        })
+      }
     } else if (interactionType === DISCONNECT_TAXON_NAME) {
       this.disconnectTaxonName({
         itemId,
-        nameType,
         stateIndex,
       })
     } else if (interactionType === SET_TAXON_NAME_AS_ACCEPTED) {
       this.setTaxonNameAsAccepted({
         itemId,
-        nameType,
-        stateIndex,
       })
     }
   }

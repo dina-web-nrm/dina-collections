@@ -23,7 +23,7 @@ const mapDispatchToProps = {
 const propTypes = {
   baseFilter: PropTypes.shape({
     filterFunctionName: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
   }),
   createNestedItem: PropTypes.func.isRequired,
   extractText: PropTypes.func,

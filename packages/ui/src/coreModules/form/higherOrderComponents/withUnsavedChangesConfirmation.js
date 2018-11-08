@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { isDirty } from 'redux-form'
+import { isDirty, isSubmitting } from 'redux-form'
 import { Prompt } from 'react-router-dom'
 
 const mapStateToProps = (state, { formName }) => {
   return {
     dirty: isDirty(formName)(state),
+    submitting: isSubmitting(formName)(state),
   }
 }
 
 const propTypes = {
   dirty: PropTypes.bool.isRequired,
   getAllowTransition: PropTypes.func,
+  submitting: PropTypes.bool.isRequired,
   unsavedChangesMessage: PropTypes.string,
 }
 
@@ -47,7 +49,7 @@ const withUnsavedChangesConfirmation = (
     }
 
     handleBeforeUnload(event) {
-      if (this.props.dirty) {
+      if (this.props.dirty && !this.props.submitting) {
         // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload#Example
         // Cancel the event as stated by the standard.
         event.preventDefault()
@@ -60,6 +62,7 @@ const withUnsavedChangesConfirmation = (
       const {
         dirty,
         getAllowTransition: getAllowTransitionOverride,
+        submitting,
         unsavedChangesMessage: unsavedChangesMessageOverride,
       } = this.props
 
@@ -82,7 +85,7 @@ const withUnsavedChangesConfirmation = (
                 unsavedChangesMessage
               )
             }}
-            when={dirty}
+            when={dirty && !submitting}
           />
           <ComposedComponent {...this.props} />
         </React.Fragment>

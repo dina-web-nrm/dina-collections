@@ -69,5 +69,4 @@ BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
   destroyOnUnmount: false,
-  enableReinitialize: true,
 })(BaseForm)

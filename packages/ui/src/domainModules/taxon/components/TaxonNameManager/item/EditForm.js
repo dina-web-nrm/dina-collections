@@ -23,15 +23,17 @@ export class Edit extends PureComponent {
   render() {
     const {
       i18n: { moduleTranslate },
-      nestedItem: initialValues,
+      nestedItem,
       onInteraction,
       itemId,
       ...rest
     } = this.props
 
-    if (!initialValues) {
+    if (!nestedItem) {
       return null
     }
+
+    const { name, rank, rubinNumber } = nestedItem
 
     return (
       <BaseForm
@@ -39,10 +41,10 @@ export class Edit extends PureComponent {
         displayBackButton
         displayResetButton
         form="taxonNameEdit"
-        formSectionNavigationHeader={`${initialValues.name} (${moduleTranslate({
+        formSectionNavigationHeader={`${name} (${moduleTranslate({
           textKey: 'name',
         })})`}
-        initialValues={initialValues}
+        initialValues={{ id: itemId, name, rank, rubinNumber }}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')

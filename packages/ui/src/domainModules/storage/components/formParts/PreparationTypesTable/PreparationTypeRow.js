@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+
+import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { compose } from 'redux'
 import { Icon, Table } from 'semantic-ui-react'
@@ -30,7 +32,7 @@ class PreparationTypeRow extends PureComponent {
 
     return (
       <Table.Row>
-        <Table.Cell width={14}>{name}</Table.Cell>
+        <Table.Cell width={14}>{capitalizeFirstLetter(name)}</Table.Cell>
         <Table.Cell>
           <Icon
             name="trash"

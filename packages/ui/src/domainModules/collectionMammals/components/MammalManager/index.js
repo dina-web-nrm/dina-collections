@@ -396,14 +396,17 @@ class MammalManager extends Component {
         sort,
       })
       .then(items => {
-        this.props.setCurrentTableRowNumber(items.length && 1)
+        if (items && items.length) {
+          this.props.setCurrentTableRowNumber(1)
+          this.props.setFocusedSpecimenId(items[0].id)
+        }
       })
   }
 
   handleShowAllRecords(event) {
     event.preventDefault()
     this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
-    return this.handleSearchSpecimens(this.props)
+    setTimeout(() => this.handleSearchSpecimens())
   }
 
   handleResetFilters(event) {

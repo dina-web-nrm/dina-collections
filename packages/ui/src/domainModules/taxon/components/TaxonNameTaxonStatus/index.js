@@ -44,7 +44,7 @@ const TaxonNameTaxonStatus = ({
 }) => {
   if (objectPath.get(taxonName, 'acceptedToTaxon.id')) {
     const taxonId = objectPath.get(taxonName, 'acceptedToTaxon.id')
-
+    const rankString = taxonName.rank && `(${taxonName.rank})`
     return (
       <React.Fragment>
         {`${moduleTranslate({
@@ -53,7 +53,7 @@ const TaxonNameTaxonStatus = ({
         })} `}
         <Link
           to={`/app/taxa?filterColumn=&itemId=${taxonId}&mainColumn=edit`}
-        >{`${taxonName.name} (${taxonName.rank})`}</Link>
+        >{`${taxonName.name} ${rankString}`}</Link>
       </React.Fragment>
     )
   }
@@ -65,6 +65,7 @@ const TaxonNameTaxonStatus = ({
       'acceptedTaxonName.name'
     )
     const acceptedRank = objectPath.get(acceptedTaxon, 'acceptedTaxonName.rank')
+    const rankString = acceptedRank && `(${acceptedRank})`
 
     return (
       <React.Fragment>
@@ -74,7 +75,7 @@ const TaxonNameTaxonStatus = ({
         })} `}
         <Link
           to={`/app/taxa?filterColumn=&itemId=${taxonId}&mainColumn=edit`}
-        >{`${acceptedTaxonName} (${acceptedRank})`}</Link>
+        >{`${acceptedTaxonName} ${rankString}`}</Link>
       </React.Fragment>
     )
   }

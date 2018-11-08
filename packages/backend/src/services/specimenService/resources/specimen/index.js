@@ -10,7 +10,7 @@ const {
 const createSuccess = require('./data/exampleRequests/createSuccess.json')
 const updateRequestSuccess = require('./data/exampleRequests/updateSuccess.json')
 
-const { update: updateProHooks } = require('./data/preHooks')
+const { update: updatePreHooks } = require('./data/preHooks')
 
 const {
   create: createPostHooks,
@@ -51,7 +51,7 @@ module.exports = {
     {
       exampleRequests: { primary: updateRequestSuccess },
       postHooks: updatePostHooks,
-      preHooks: updateProHooks,
+      preHooks: updatePreHooks,
       type: 'update',
     },
     {
