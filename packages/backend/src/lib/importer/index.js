@@ -14,10 +14,10 @@ module.exports = function importer({ config, serviceInteractor }) {
     'identifierType',
     'preparationType',
     'typeSpecimenType',
+    'place',
     // 'normalizedAgent',
 
     // 'typeSpecimenType',
-    // 'place',
     // 'taxon',
     // 'taxonName',
     // 'storageLocation',

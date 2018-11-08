@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 
 exports.transformPlace = function transformPlace({ src, target }) {
-  const { name, level, id, parentId } = src
+  const { name, group, id, parentId } = src
 
   target.attributes = {
-    group: level === 'continentOcean' ? 'continent' : level,
+    group,
     name,
   }
 
