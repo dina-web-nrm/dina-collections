@@ -16,8 +16,7 @@
       "example": "skin"
     },
     "name": {
-      "type": "string",
-      "example": "hair, scales"
+      "$ref": "__ROOT__translatedString"
     }
   }
 }
