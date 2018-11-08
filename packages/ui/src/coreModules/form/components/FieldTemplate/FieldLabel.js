@@ -9,7 +9,7 @@ import injectLabelKey from '../../higherOrderComponents/injectLabelKey'
 const propTypes = {
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  htmlFor: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   labelKey: PropTypes.string,
   subLabel: PropTypes.bool,
@@ -17,6 +17,7 @@ const propTypes = {
 const defaultProps = {
   helpNotificationProps: undefined,
   helpText: undefined,
+  htmlFor: undefined,
   label: undefined,
   labelKey: undefined,
   subLabel: false,
