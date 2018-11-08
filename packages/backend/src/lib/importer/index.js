@@ -12,8 +12,9 @@ module.exports = function importer({ config, serviceInteractor }) {
     'establishmentMeansType',
     'featureType',
     'identifierType',
+    'preparationType',
     // 'normalizedAgent',
-    // 'preparationType',
+
     // 'typeSpecimenType',
     // 'place',
     // 'taxon',
