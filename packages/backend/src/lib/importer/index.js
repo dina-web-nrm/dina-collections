@@ -11,7 +11,7 @@ module.exports = function importer({ config, serviceInteractor }) {
     'customTaxonNameType',
     'establishmentMeansType',
     'featureType',
-    // 'identifierType',
+    'identifierType',
     // 'normalizedAgent',
     // 'preparationType',
     // 'typeSpecimenType',
