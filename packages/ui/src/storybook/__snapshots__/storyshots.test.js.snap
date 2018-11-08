@@ -745,6 +745,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -915,6 +927,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -1117,6 +1141,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -1299,6 +1335,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -1501,6 +1549,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -1683,6 +1743,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -1885,6 +1957,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -2055,6 +2139,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -2257,6 +2353,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -2439,6 +2547,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -2644,6 +2764,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -2826,6 +2958,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -3036,6 +3180,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -3206,6 +3362,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -3514,6 +3682,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -3684,6 +3864,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           }
         >
+          <label
+            htmlFor={undefined}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <span>
+              
+            </span>
+          </label>
           <div
             style={
               Object {
@@ -3868,6 +4060,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
         }
       }
     >
+      <label
+        htmlFor={undefined}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <span>
+          
+        </span>
+      </label>
       <div
         style={
           Object {
@@ -4036,6 +4240,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
         }
       }
     >
+      <label
+        htmlFor={undefined}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <span>
+          
+        </span>
+      </label>
       <div
         style={
           Object {
@@ -6031,7 +6247,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
     }
   >
     <div
-      className="accordion ui fluid styled"
+      className="accordion ui fluid styled ui form"
     >
       <div
         className="title"
