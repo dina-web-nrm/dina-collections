@@ -125,15 +125,46 @@ var getValue = function getValue(_ref3) {
   return value;
 };
 
-var migrateValue = function migrateValue(_ref4) {
-  var condition = _ref4.condition,
-      format = _ref4.format,
-      fromPath = _ref4.fromPath,
-      src = _ref4.src,
-      _ref4$strip = _ref4.strip,
-      strip = _ref4$strip === undefined ? false : _ref4$strip,
-      target = _ref4.target,
-      toPath = _ref4.toPath;
+var getFromGlobals = function getFromGlobals(_ref4) {
+  var globals = _ref4.globals,
+      mapKey = _ref4.mapKey,
+      key = _ref4.key,
+      reporter = _ref4.reporter;
+
+  if (!globals[mapKey]) {
+    throw new Error('Unknown key: ' + mapKey);
+  }
+  var path = [mapKey, key].join('.');
+  var value = getValue({
+    obj: globals,
+    path: path
+  });
+
+  if (reporter) {
+    if (value) {
+      reporter.rebuildViewLookupHit({
+        id: key,
+        resource: mapKey
+      });
+    } else {
+      reporter.rebuildViewLookupMiss({
+        id: key === undefined ? 'undefined' : key,
+        resource: mapKey
+      });
+    }
+  }
+  return value;
+};
+
+var migrateValue = function migrateValue(_ref5) {
+  var condition = _ref5.condition,
+      format = _ref5.format,
+      fromPath = _ref5.fromPath,
+      src = _ref5.src,
+      _ref5$strip = _ref5.strip,
+      strip = _ref5$strip === undefined ? false : _ref5$strip,
+      target = _ref5.target,
+      toPath = _ref5.toPath;
 
   if (!isPathValid(fromPath)) {
     return;
@@ -163,9 +194,9 @@ var migrateValue = function migrateValue(_ref4) {
   });
 };
 
-var filterArray = function filterArray(_ref5) {
-  var obj = _ref5.obj,
-      path = _ref5.path;
+var filterArray = function filterArray(_ref6) {
+  var obj = _ref6.obj,
+      path = _ref6.path;
 
   var array = getValue({ obj: obj, path: path });
   if (!isValueDefined(array)) {
@@ -178,9 +209,9 @@ var filterArray = function filterArray(_ref5) {
   setValue({ obj: obj, path: path, value: value });
 };
 
-var valueExist = function valueExist(_ref6) {
-  var obj = _ref6.obj,
-      path = _ref6.path;
+var valueExist = function valueExist(_ref7) {
+  var obj = _ref7.obj,
+      path = _ref7.path;
 
   if (!isPathValid(path)) {
     return undefined;
@@ -188,10 +219,10 @@ var valueExist = function valueExist(_ref6) {
   return getValue({ obj: obj, path: path, strip: false }) !== undefined;
 };
 
-var applyTransformationFunctions = function applyTransformationFunctions(_ref7) {
-  var item = _ref7.item,
-      transformationFunctions = _ref7.transformationFunctions,
-      rest = (0, _objectWithoutProperties3.default)(_ref7, ['item', 'transformationFunctions']);
+var applyTransformationFunctions = function applyTransformationFunctions(_ref8) {
+  var item = _ref8.item,
+      transformationFunctions = _ref8.transformationFunctions,
+      rest = (0, _objectWithoutProperties3.default)(_ref8, ['item', 'transformationFunctions']);
 
   if (!transformationFunctions) {
     throw new Error('No map functions provided');
@@ -209,10 +240,10 @@ var applyTransformationFunctions = function applyTransformationFunctions(_ref7) 
   return target;
 };
 
-var applyTransformationFunctionsAsync = function applyTransformationFunctionsAsync(_ref8) {
-  var item = _ref8.item,
-      transformationFunctions = _ref8.transformationFunctions,
-      rest = (0, _objectWithoutProperties3.default)(_ref8, ['item', 'transformationFunctions']);
+var applyTransformationFunctionsAsync = function applyTransformationFunctionsAsync(_ref9) {
+  var item = _ref9.item,
+      transformationFunctions = _ref9.transformationFunctions,
+      rest = (0, _objectWithoutProperties3.default)(_ref9, ['item', 'transformationFunctions']);
 
   if (!transformationFunctions) {
     throw new Error('No map functions provided');
@@ -227,8 +258,8 @@ var applyTransformationFunctionsAsync = function applyTransformationFunctionsAsy
   return asyncReduce({
     initialValue: null,
     items: transformationFunctionsArray,
-    reduceFunction: function reduceFunction(_ref9) {
-      var transformationFunction = _ref9.item;
+    reduceFunction: function reduceFunction(_ref10) {
+      var transformationFunction = _ref10.item;
 
       return _promise2.default.resolve().then(function () {
         return transformationFunction((0, _extends3.default)({ locals: locals, src: item, target: target }, rest));
@@ -248,6 +279,7 @@ module.exports = {
   applyTransformationFunctions: applyTransformationFunctions,
   applyTransformationFunctionsAsync: applyTransformationFunctionsAsync,
   filterArray: filterArray,
+  getFromGlobals: getFromGlobals,
   getValue: getValue,
   migrateValue: migrateValue,
   pushValueToArray: pushValueToArray,

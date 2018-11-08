@@ -4,6 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _buildDateRange = require('./buildDateRange');
+
+Object.defineProperty(exports, 'buildDateRange', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_buildDateRange).default;
+  }
+});
+
 var _buildYYYYMMDD = require('./buildYYYYMMDD');
 
 Object.defineProperty(exports, 'buildYYYYMMDD', {
