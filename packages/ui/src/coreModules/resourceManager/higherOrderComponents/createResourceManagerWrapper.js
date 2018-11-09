@@ -596,7 +596,6 @@ const createResourceManagerWrapper = (
     tableSearch(filterValues) {
       const { search, resource } = this.props
 
-      this.props.setListItems([], { resource })
       const query = filterValues
         ? this.props.buildFilterQuery({
             values: filterValues,
