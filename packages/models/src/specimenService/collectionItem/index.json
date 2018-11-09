@@ -38,5 +38,6 @@
       "$ref": "__ROOT__physicalObject",
       "x-reference-type": "external"
     }
-  }
+  },
+  "required": ["physicalObject"]
 }
