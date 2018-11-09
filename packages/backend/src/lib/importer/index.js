@@ -18,7 +18,7 @@ module.exports = function importer({ config, serviceInteractor }) {
     'taxon',
     'taxonName',
     'storageLocation',
-    // 'normalizedAgent',
+    'normalizedAgent',
     // 'specimen',
   ]
 
