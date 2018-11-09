@@ -4,10 +4,7 @@ import schemaInterface from 'common/es5/schemaInterface'
 const models = schemaInterface.getModels()
 
 const createMammalFormModels = () => {
-  let updatedModels = immutable.set(models, 'collectionItem', {
-    ...models.collectionItem,
-    deepRequired: ['/physicalObject/storageLocation/id'],
-  })
+  let updatedModels = { ...models }
 
   updatedModels = immutable.set(updatedModels, 'dateRange', {
     ...updatedModels.dateRange,
@@ -53,6 +50,19 @@ const createMammalFormModels = () => {
       'x-validation-longitude': true,
     }
   )
+
+  updatedModels = immutable.set(
+    updatedModels,
+    'storageLocation.properties.id',
+    {
+      minLength: 1,
+      type: 'string',
+    }
+  )
+
+  updatedModels = immutable.set(updatedModels, 'storageLocation.required', [
+    'id',
+  ])
 
   return updatedModels
 }
