@@ -9,7 +9,12 @@ import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import createLog from 'utilities/log'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import {
+  createEnsureAllItemsFetched,
+  createGetItemById,
+  createGetNestedItemById,
+} from 'coreModules/crud/higherOrderComponents'
+import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
 import setDefaultValues from '../RecordForm/transformations/input'
 import RecordForm from '../RecordForm'
 
@@ -23,7 +28,14 @@ const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
 const mapStateToProps = state => {
   return {
+    catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(FORM_NAME)(
+      state
+    ),
     featureTypes: crudGlobalSelectors.featureType.getAll(state),
+    taxonNameId: formValueSelector(
+      state,
+      'individual.taxonInformation.curatorialTaxonName.id'
+    ),
   }
 }
 
@@ -34,6 +46,7 @@ const mapDispatchToProps = {
 const propTypes = {
   clearNestedCacheNamespace: PropTypes.func.isRequired,
   featureTypes: PropTypes.array.isRequired,
+  featureTypesFetched: PropTypes.bool.isRequired,
   fetchOneItemById: PropTypes.func.isRequired,
   nestedItem: PropTypes.object,
   updateSpecimen: PropTypes.func.isRequired,
@@ -51,10 +64,11 @@ class EditSpecimen extends PureComponent {
       nestedItem,
       updateSpecimen,
       featureTypes,
+      featureTypesFetched,
       ...rest
     } = this.props
 
-    if (!nestedItem) {
+    if (!nestedItem || !featureTypesFetched) {
       return null
     }
 
@@ -115,5 +129,19 @@ export default compose(
     ],
     resource: 'specimen',
   }),
-  connect(mapStateToProps, mapDispatchToProps)
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'featureTypesFetched',
+    resource: 'featureType',
+  }),
+  createEnsureAllItemsFetched({ resource: 'customTaxonNameType' }),
+  createEnsureAllItemsFetched({ resource: 'identifierType' }),
+  createEnsureAllItemsFetched({
+    resource: 'preparationType',
+  }),
+  connect(mapStateToProps, mapDispatchToProps),
+  createGetItemById({
+    idPath: 'taxonNameId',
+    itemKey: 'taxonName',
+    resource: 'taxonName',
+  })
 )(EditSpecimen)
