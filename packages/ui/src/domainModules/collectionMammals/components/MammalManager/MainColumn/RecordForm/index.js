@@ -16,6 +16,7 @@ import CatalogNumberModal from 'domainModules/collectionMammals/components/Catal
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
+import { mapCollectionItemsErrors } from './transformations/syncErrors'
 import sectionSpecs from './sectionSpecs'
 import customParts from './formParts'
 
@@ -253,8 +254,11 @@ export default reduxForm({
     return false
   },
   updateUnregisteredFields: true,
-  validate: customFormValidator({
-    model: 'specimen',
-    models: mammalFormModels,
-  }),
+  validate: compose(
+    mapCollectionItemsErrors,
+    customFormValidator({
+      model: 'specimen',
+      models: mammalFormModels,
+    })
+  ),
 })(EnhancedForm)
