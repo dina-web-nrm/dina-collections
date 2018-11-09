@@ -9,7 +9,7 @@
       "$ref": "__ROOT__id"
     },
     "lid": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "type": {
       "$ref": "__ROOT__type"

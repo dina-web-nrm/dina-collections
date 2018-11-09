@@ -1,5 +1,5 @@
 {
   "additionalProperties": false,
-  "description": "A identifier id",
+  "description": "An identifier id",
   "type": "string"
 }
