@@ -20524,6 +20524,15 @@
           },
           {
             "in": "query",
+            "name": "filter[neitherAcceptedNorSynonymToTaxon]",
+            "description": "Find scientific names that are neither accepted nor synonym to any taxon",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[rank]",
             "description": "Match for rank",
             "required": false,
@@ -20937,7 +20946,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***updatedAfter*** <br/> Filter by updatedAt after specificed timestamp <br/> <br/>  ***nameSearch*** <br/> Filter by string search, example swe <br/> <br/>  ***acceptedToTaxonId*** <br/> Find taxon names that are accepted to taxon id <br/> <br/>  ***isAcceptedToTaxon*** <br/> Find taxon names that are accepted to any taxon <br/> <br/>  ***isVernacularToTaxon*** <br/> Find taxon names that are venacular to any taxon <br/> <br/>  ***rank*** <br/> Match for rank <br/> <br/>  ***rubinNumber*** <br/> Match for rubinNumber <br/> <br/>  ***synonymToTaxonId*** <br/> Find taxon names that are synonym to taxon id <br/> <br/>  ***taxonNameType*** <br/> Match for taxonNameType <br/>\n\n  \n  <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***updatedAfter*** <br/> Filter by updatedAt after specificed timestamp <br/> <br/>  ***nameSearch*** <br/> Filter by string search, example swe <br/> <br/>  ***acceptedToTaxonId*** <br/> Find taxon names that are accepted to taxon id <br/> <br/>  ***isAcceptedToTaxon*** <br/> Find taxon names that are accepted to any taxon <br/> <br/>  ***isVernacularToTaxon*** <br/> Find taxon names that are venacular to any taxon <br/> <br/>  ***neitherAcceptedNorSynonymToTaxon*** <br/> Find scientific names that are neither accepted nor synonym to any taxon <br/> <br/>  ***rank*** <br/> Match for rank <br/> <br/>  ***rubinNumber*** <br/> Match for rubinNumber <br/> <br/>  ***synonymToTaxonId*** <br/> Find taxon names that are synonym to taxon id <br/> <br/>  ***taxonNameType*** <br/> Match for taxonNameType <br/>\n\n  \n  <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -21808,7 +21817,7 @@
       },
       "id": {
         "additionalProperties": false,
-        "description": "A identifier id",
+        "description": "An identifier id",
         "type": "string",
         "properties": {},
         "x-category": "core",
@@ -22943,6 +22952,9 @@
             "x-summary": ""
           }
         },
+        "required": [
+          "physicalObject"
+        ],
         "description": "# collectionItem\n\nThe smallest recognized \"thing\" in the collection. This is usually a physical object but could also be a part of a physical object. For example, a moss and a lichen growing on the same piece of bark may be considered as two collection items.\n\n\n### Definition\n\nThe smallest recognized \"thing\" in the collection. This may be a physical object or part of a physical object.\n\n\n### Examples\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark recognized as two collection items.\n\n\n### Notes\n\nThis term represents a fundamental unit in the management of the collection. The term is permissive on what to include in a collection item, just to make the model able to fit different use cases.\n\n\n### See also\n\n[physicalObject](/docs/0.1.0-0.1.0/models/physicalObject/)",
         "x-category": "specimenService",
         "x-modelType": "model",
@@ -23648,8 +23660,16 @@
             "type": "string",
             "x-summary": ""
           },
+          "id": {
+            "$ref": "#/components/schemas/id",
+            "x-summary": ""
+          },
           "lid": {
-            "type": "string",
+            "$ref": "#/components/schemas/lid",
+            "x-summary": ""
+          },
+          "type": {
+            "$ref": "#/components/schemas/type",
             "x-summary": ""
           },
           "collectionItems": {
@@ -23659,23 +23679,18 @@
             },
             "x-summary": ""
           },
-          "storageLocationText": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "id": {
-            "$ref": "#/components/schemas/id",
-            "x-summary": ""
-          },
-          "type": {
-            "$ref": "#/components/schemas/type",
-            "x-summary": ""
-          },
           "storageLocation": {
             "$ref": "#/components/schemas/externalModelReference",
             "x-summary": ""
+          },
+          "storageLocationText": {
+            "type": "string",
+            "x-summary": ""
           }
         },
+        "required": [
+          "storageLocation"
+        ],
         "description": "# physicalObject\n\nThe smallest recognized physical \"thing\" in the collection. Typical examples are a skin preparation and a herbarium sheet. A physical object represents one or more [collectionItems](/docs/0.1.0-0.1.0/models/collectionItem/).\n\n\n### Definition\n\nThe smallest recognized physical \"thing\" in the collection.\n\n\n### Examples\n\n* A herbarium sheet with three plants mounted on it (possibly three collection items)\n* A mounted skin of a squirrel (one [collectionItem](/docs/0.1.0-0.1.0/models/collectionItem/))\n* A jar with two fishes (possibly two [collectionItems](/docs/0.1.0-0.1.0/models/collectionItem/))\n* A tree branch with two birds mounted on it (possibly two [collectionItems](/docs/0.1.0-0.1.0/models/collectionItem/))\n\n\n### Notes\n\nThe physical object is the physical thing that you do something with when you manage your collection. This could for example be the thing stored on the shelf, sent on loan or received from a donator. Physical objects change over time. Imagine for example a jar of 5 fishes first treated as one physical object \"A\". In response to a loan request, a new physical object \"B\" is created with one of the fishes and sent to the borrower. When the loan is returned, the fish is put back into the original container (\"A\"), thereby ending the existence of object \"B\".\n\n\n### See also\n\n[collectionItem](/docs/0.1.0-0.1.0/models/collectionItem/)",
         "x-category": "storageService",
         "x-modelType": "model",
