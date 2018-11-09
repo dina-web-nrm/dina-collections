@@ -31,9 +31,8 @@ const mapDispatchToProps = {
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  fetchAfterUpdate: PropTypes.bool.isRequired,
+  fetchIncludeAfterUpdate: PropTypes.arrayOf(PropTypes.string),
   formName: PropTypes.string.isRequired,
-  include: PropTypes.arrayOf(PropTypes.string),
   invalid: PropTypes.bool.isRequired,
   isDirty: PropTypes.bool.isRequired,
   itemId: PropTypes.string.isRequired,
@@ -43,7 +42,7 @@ const propTypes = {
   values: PropTypes.object,
 }
 const defaultProps = {
-  include: undefined,
+  fetchIncludeAfterUpdate: undefined,
   values: undefined,
 }
 
@@ -80,7 +79,7 @@ class BottomBar extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault()
-    const { dispatch, fetchAfterUpdate, include, itemId, resource } = this.props
+    const { dispatch, fetchIncludeAfterUpdate, itemId, resource } = this.props
     this.setState({ loading: true })
     const update =
       crudActionCreators[resource] && crudActionCreators[resource].update
@@ -97,14 +96,14 @@ class BottomBar extends PureComponent {
       this.setState({ loading: false })
       this.props.onInteraction(EDIT_SUCCESS)
 
-      if (fetchAfterUpdate) {
+      if (fetchIncludeAfterUpdate) {
         const getOne =
           crudActionCreators[resource] && crudActionCreators[resource].getOne
 
         dispatch(
           getOne({
             id: itemId,
-            include,
+            include: fetchIncludeAfterUpdate,
           })
         )
       }

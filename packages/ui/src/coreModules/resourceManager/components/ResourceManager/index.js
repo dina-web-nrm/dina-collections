@@ -49,11 +49,10 @@ const propTypes = {
   columnHeight: PropTypes.number.isRequired,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
-  fetchAfterUpdate: PropTypes.bool,
+  fetchIncludeAfterUpdate: PropTypes.arrayOf(PropTypes.string),
   filterActive: PropTypes.bool.isRequired,
   filterColumnWidth: PropTypes.number.isRequired,
   focusedItemId: PropTypes.string,
-  include: PropTypes.arrayOf(PropTypes.string),
   isPicker: PropTypes.bool,
   itemFetchOptions: PropTypes.object.isRequired,
   itemId: PropTypes.string,
@@ -70,9 +69,8 @@ const propTypes = {
   windowHeight: PropTypes.number.isRequired,
 }
 const defaultProps = {
-  fetchAfterUpdate: false,
+  fetchIncludeAfterUpdate: undefined,
   focusedItemId: undefined,
-  include: undefined,
   isPicker: false,
   itemId: undefined,
   rightSidebarWidth: emToPixels(25),
@@ -148,11 +146,10 @@ class ResourceManager extends Component {
             'currentTableRowNumber',
             'editItemActive',
             'expandedIds',
-            'fetchAfterUpdate',
+            'fetchIncludeAfterUpdate',
             'fetchTreeBase',
             'filterActive',
             'focusedIndex',
-            'include',
             'isPicker',
             'itemEnabled',
             'itemFetchOptions',
@@ -195,8 +192,7 @@ class ResourceManager extends Component {
       case 'editItemColumn': {
         const { extractedProps } = extractProps({
           keys: [
-            'fetchAfterUpdate',
-            'include',
+            'fetchIncludeAfterUpdate',
             'itemId',
             'ItemTitle',
             'onInteraction',

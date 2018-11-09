@@ -85,12 +85,7 @@ export default compose(
     include,
     nestedItemKey: 'taxon',
     refresh: true,
-    relationships: [
-      'acceptedTaxonName',
-      'parent',
-      'synonyms',
-      'vernacularNames',
-    ],
+    relationships: include,
     resolveRelationships: ['taxon', 'taxonName'],
     resource: 'taxon',
   })

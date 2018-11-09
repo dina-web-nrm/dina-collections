@@ -9,8 +9,7 @@ import BottomBar from './BottomBar'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
-  fetchAfterUpdate: PropTypes.bool.isRequired,
-  include: PropTypes.arrayOf(PropTypes.string),
+  fetchIncludeAfterUpdate: PropTypes.arrayOf(PropTypes.string),
   itemFetchOptions: PropTypes.object.isRequired,
   itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
@@ -18,7 +17,7 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
 }
 const defaultProps = {
-  include: undefined,
+  fetchIncludeAfterUpdate: undefined,
   itemId: undefined,
 }
 
@@ -54,8 +53,7 @@ class EditItemColumn extends Component {
       case 'bottomBar': {
         const { extractedProps } = extractProps({
           keys: [
-            'fetchAfterUpdate',
-            'include',
+            'fetchIncludeAfterUpdate',
             'itemId',
             'resource',
             'onInteraction',

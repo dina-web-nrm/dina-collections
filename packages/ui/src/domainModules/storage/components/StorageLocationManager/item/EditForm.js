@@ -5,6 +5,8 @@ import { compose } from 'redux'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import BaseForm from './BaseForm'
 
+export const include = ['parent', 'preparationTypes', 'taxa']
+
 const propTypes = {
   itemId: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
@@ -51,8 +53,9 @@ Edit.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    include: ['parent', 'preparationTypes', 'taxa'],
-    relationships: ['parent', 'preparationTypes', 'taxa'],
+    include,
+    refresh: true,
+    relationships: include,
     resolveRelationships: ['storageLocation', 'preparationType', 'taxon'],
     resource: 'storageLocation',
   })
