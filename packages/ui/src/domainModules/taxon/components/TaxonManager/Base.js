@@ -88,8 +88,7 @@ class TaxonManager extends Component {
         {...this.props}
         baseTreeFilter={baseTreeFilter}
         buildFilterQuery={buildFilterQuery}
-        fetchAfterUpdate
-        include={include}
+        fetchIncludeAfterUpdate={include}
         itemFetchOptions={itemFetchOptions}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
