@@ -15,7 +15,7 @@ const createResourceActivity = ({
   service,
   user,
 }) => {
-  const { id, internals } = item
+  const { id, internals, meta } = item
   const attributes = {
     action,
     requestId,
@@ -26,6 +26,11 @@ const createResourceActivity = ({
     userId: user && user.id,
     username: user && user.name,
   }
+
+  if (meta && meta.sourceData) {
+    attributes.sourceData = meta.sourceData
+  }
+
   if (internals.createdAt) {
     attributes.srcCreatedAt = formatAsTimestamp(internals.createdAt)
   }

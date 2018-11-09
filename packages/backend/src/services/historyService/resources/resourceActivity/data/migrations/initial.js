@@ -43,6 +43,7 @@ module.exports = {
         resourceId: { type: Sequelize.STRING },
         service: { type: Sequelize.STRING },
         snapshot: { type: Sequelize.JSONB },
+        sourceData: { type: Sequelize.JSONB },
         srcCreatedAt: { type: Sequelize.DATE },
         srcDeactivatedAt: { type: Sequelize.DATE },
         srcSchemaVersion: { type: Sequelize.STRING },
