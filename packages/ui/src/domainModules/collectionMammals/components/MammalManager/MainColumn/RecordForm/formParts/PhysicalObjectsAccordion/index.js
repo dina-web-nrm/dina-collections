@@ -174,6 +174,7 @@ class PhysicalObjectsAccordion extends PureComponent {
                   return (
                     <PhysicalObjectTitle
                       category={category}
+                      formName={formName}
                       preparationTypeId={
                         props.preparationType && props.preparationType.id
                       }

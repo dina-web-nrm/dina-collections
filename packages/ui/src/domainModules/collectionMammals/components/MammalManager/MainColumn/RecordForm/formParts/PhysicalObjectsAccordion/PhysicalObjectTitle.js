@@ -1,19 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { Icon, Label } from 'semantic-ui-react'
 
 import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import createLog from 'utilities/log'
 
 const log = createLog('modules:collectionMammals:formParts:PhysicalObjectTitle')
+
+const mapStateToProps = (state, { formName, getPath }) => {
+  return {
+    invalidStorageLocation: formSupportSelectors.getAnyFieldIsInvalid(state, {
+      fieldNames: [getPath('physicalObject.storageLocation.id')],
+      formName,
+    }),
+  }
+}
 
 const propTypes = {
   active: PropTypes.bool.isRequired,
   category: PropTypes.string,
   curatorialAssessments: PropTypes.array,
+  invalidStorageLocation: PropTypes.bool,
   preparationType: PropTypes.shape({
     category: PropTypes.string,
     name: PropTypes.string,
@@ -23,6 +36,7 @@ const propTypes = {
 const defaultProps = {
   category: undefined,
   curatorialAssessments: undefined,
+  invalidStorageLocation: false,
   preparationType: undefined,
   storageLocation: undefined,
 }
@@ -31,11 +45,19 @@ function PhysicalObjectTitle({
   active,
   category,
   curatorialAssessments,
+  invalidStorageLocation,
   preparationType,
   storageLocation,
 }) {
+  log.render()
+
   if (active) {
-    return <ThreeColumnGrid left={<Icon name="dropdown" />} />
+    return (
+      <ThreeColumnGrid
+        className={invalidStorageLocation ? 'error' : undefined}
+        left={<Icon name="dropdown" />}
+      />
+    )
   }
 
   const lastCuratorialAssessment =
@@ -43,7 +65,6 @@ function PhysicalObjectTitle({
     curatorialAssessments.length &&
     curatorialAssessments[curatorialAssessments.length - 1]
 
-  log.render()
   return (
     <ThreeColumnGrid
       center={
@@ -54,6 +75,7 @@ function PhysicalObjectTitle({
           </span>
         )
       }
+      classNames={invalidStorageLocation ? 'error' : undefined}
       left={
         preparationType || category ? (
           <React.Fragment>
@@ -103,5 +125,7 @@ export default compose(
     itemKey: 'storageLocation',
     relationships: null,
     resource: 'storageLocation',
-  })
+  }),
+  pathBuilder(),
+  connect(mapStateToProps)
 )(PhysicalObjectTitle)
