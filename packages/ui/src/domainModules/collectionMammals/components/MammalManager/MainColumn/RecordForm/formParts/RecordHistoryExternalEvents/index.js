@@ -186,6 +186,7 @@ class RecordHistoryExternalEvents extends Component {
             )
           })}
         <FormModal
+          onClose={this.handleClose}
           open={open}
           size="tiny"
           trigger={
