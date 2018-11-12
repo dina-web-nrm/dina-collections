@@ -130,7 +130,7 @@ class PositionModal extends PureComponent {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions style={{ textAlign: 'left' }}>
-          <Button basic disabled={isInvalid} onClick={handleClose}>
+          <Button disabled={isInvalid} onClick={handleClose}>
             <ModuleTranslate textKey="other.done" />
           </Button>
         </Modal.Actions>
