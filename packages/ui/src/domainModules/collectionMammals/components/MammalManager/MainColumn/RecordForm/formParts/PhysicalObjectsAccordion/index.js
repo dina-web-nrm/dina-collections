@@ -83,6 +83,7 @@ const propTypes = {
   category: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   collectionItems: PropTypes.array,
+  formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   getStorageLocations: PropTypes.func.isRequired,
   preparationTypes: PropTypes.object,
@@ -131,6 +132,7 @@ class PhysicalObjectsAccordion extends PureComponent {
       category,
       changeFieldValue,
       collectionItems,
+      formName,
       formValueSelector,
       removeArrayFieldByIndex,
     } = this.props
@@ -152,11 +154,13 @@ class PhysicalObjectsAccordion extends PureComponent {
                 getShouldRenderItem={this.getShouldRenderItem}
                 initialActiveMode={ALL_COLLAPSED}
                 items={collectionItems}
+                renderActiveOnly
                 renderContent={props => {
                   return (
                     <PhysicalObjectContent
                       category={category}
                       changeFieldValue={changeFieldValue}
+                      formName={formName}
                       formValueSelector={formValueSelector}
                       preparationTypeId={
                         props.preparationType && props.preparationType.id
@@ -170,6 +174,7 @@ class PhysicalObjectsAccordion extends PureComponent {
                   return (
                     <PhysicalObjectTitle
                       category={category}
+                      formName={formName}
                       preparationTypeId={
                         props.preparationType && props.preparationType.id
                       }

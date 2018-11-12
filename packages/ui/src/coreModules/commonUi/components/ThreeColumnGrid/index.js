@@ -9,6 +9,7 @@ const log = createLog('modules:commonUi:ThreeColumnGrid')
 const propTypes = {
   center: PropTypes.node,
   centerColumnTextAlign: PropTypes.string,
+  classNames: PropTypes.string,
   left: PropTypes.node,
   leftColumnTextAlign: PropTypes.string,
   right: PropTypes.node,
@@ -17,6 +18,7 @@ const propTypes = {
 const defaultProps = {
   center: undefined,
   centerColumnTextAlign: 'left',
+  classNames: undefined,
   left: undefined,
   leftColumnTextAlign: 'left',
   right: undefined,
@@ -24,16 +26,17 @@ const defaultProps = {
 }
 
 function ThreeColumnGrid({
-  centerColumnTextAlign,
-  leftColumnTextAlign,
   center,
+  centerColumnTextAlign,
+  classNames,
   left,
+  leftColumnTextAlign,
   right,
   rightColumnTextAlign,
 }) {
   log.render()
   return (
-    <Grid columns={3}>
+    <Grid className={classNames} columns={3}>
       <Grid.Column textAlign={leftColumnTextAlign}>
         {!!left && left}
       </Grid.Column>

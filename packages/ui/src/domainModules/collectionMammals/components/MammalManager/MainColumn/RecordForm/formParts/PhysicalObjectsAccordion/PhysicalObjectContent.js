@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { touch } from 'redux-form'
 import { Grid } from 'semantic-ui-react'
 import { camelCase } from 'lodash'
 
@@ -36,17 +37,20 @@ const mapStateToProps = (state, { category, preparationType }) => {
     ),
   }
 }
+const mapDispatchToProps = { touch }
 
 const propTypes = {
   category: PropTypes.string.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   curatorialAssessments: PropTypes.array,
+  formName: PropTypes.string.isRequired,
   getPath: PropTypes.func.isRequired,
   getTranslationPath: PropTypes.func.isRequired,
   handleSetInactive: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   preparationTypeOptions: PropTypes.array,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
+  touch: PropTypes.func.isRequired,
 }
 const defaultProps = {
   curatorialAssessments: undefined,
@@ -57,6 +61,15 @@ class PhysicalObjectContent extends Component {
   constructor(props) {
     super(props)
     this.handleRemove = this.handleRemove.bind(this)
+  }
+
+  componentWillUnmount() {
+    // trigger validation even if the field has not been touched, because it is
+    // easy to miss (hard to find) this otherwise
+    this.props.touch(
+      this.props.formName,
+      this.props.getPath('physicalObject.storageLocation.id')
+    )
   }
 
   handleRemove() {
@@ -155,6 +168,6 @@ export default compose(
     relationships: null,
     resource: 'preparationType',
   }),
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   pathBuilder()
 )(PhysicalObjectContent)

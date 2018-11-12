@@ -263,10 +263,23 @@
   background: white;
   color: rgba(0, 0, 0, 0.95);
 }
+.ui.styled.accordion .title .error {
+  background-color: #FFF6F6;
+  color: #9F3A38;
+  -webkit-box-shadow: 0px 0px 0px 1px #E0B4B4 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0px 1px #E0B4B4 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.ui.styled.accordion .title .error:after {
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+}
 
 /* Active */
 .ui.styled.accordion .active.title {
   border-top: 1px solid #1e8c45 !important;
   background: #f5f5f4;
   color: rgba(0, 0, 0, 0.95);
+}
+.ui.styled.accordion .active.title .error {
+  color: #912D2B;
 }
