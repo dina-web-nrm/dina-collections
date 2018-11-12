@@ -7,20 +7,16 @@ import { push } from 'react-router-redux'
 import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
 import objectPath from 'object-path'
 
-import {
-  createEnsureAllItemsFetched,
-  createGetItemById,
-} from 'coreModules/crud/higherOrderComponents'
 import { Form, FormActionBar, FormRow } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import CatalogNumberModal from 'domainModules/collectionMammals/components/CatalogNumberModal'
-import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
+import { mapCollectionItemsErrors } from './transformations/syncErrors'
 import sectionSpecs from './sectionSpecs'
 import customParts from './formParts'
 
@@ -40,18 +36,6 @@ const rows = [
 const getAllowTransition = location =>
   location.pathname.includes('app/specimens/mammals') &&
   location.pathname.includes('edit/sections')
-
-const mapStateToProps = (state, { form, formValueSelector }) => {
-  return {
-    catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(form)(
-      state
-    ),
-    taxonNameId: formValueSelector(
-      state,
-      'individual.taxonInformation.curatorialTaxonName.id'
-    ),
-  }
-}
 
 const mapDispatchToProps = {
   changeFormValue: change,
@@ -250,20 +234,7 @@ RecordForm.defaultProps = defaultProps
 
 const EnhancedForm = compose(
   withRouter,
-  createEnsureAllItemsFetched({ resource: 'customTaxonNameType' }),
-  createEnsureAllItemsFetched({ resource: 'identifierType' }),
-  createEnsureAllItemsFetched({
-    resource: 'preparationType',
-  }),
-  createEnsureAllItemsFetched({
-    resource: 'featureType',
-  }),
-  connect(mapStateToProps, mapDispatchToProps),
-  createGetItemById({
-    idPath: 'taxonNameId',
-    itemKey: 'taxonName',
-    resource: 'taxonName',
-  })
+  connect(undefined, mapDispatchToProps)
 )(RecordForm)
 
 export default reduxForm({
@@ -271,11 +242,7 @@ export default reduxForm({
   keepDirtyOnReinitialize: false,
   shouldError: params => {
     if (params) {
-      const { initialRender, props, nextProps } = params
-
-      if (initialRender) {
-        return false
-      }
+      const { props, nextProps } = params
 
       return (
         (props && props.registeredFields) !==
@@ -287,8 +254,11 @@ export default reduxForm({
     return false
   },
   updateUnregisteredFields: true,
-  validate: customFormValidator({
-    model: 'specimen',
-    models: mammalFormModels,
-  }),
+  validate: compose(
+    mapCollectionItemsErrors,
+    customFormValidator({
+      model: 'specimen',
+      models: mammalFormModels,
+    })
+  ),
 })(EnhancedForm)
