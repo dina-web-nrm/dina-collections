@@ -6,6 +6,7 @@ const models = schemaInterface.getModels()
 const createMammalFormModels = () => {
   let updatedModels = { ...models }
 
+  // date range validation
   updatedModels = immutable.set(updatedModels, 'dateRange', {
     ...updatedModels.dateRange,
     allOf: [
@@ -18,11 +19,13 @@ const createMammalFormModels = () => {
     ],
   })
 
+  // determination key is a temporary uuid needed for React array key
   updatedModels = immutable.set(updatedModels, 'determination.properties', {
     ...updatedModels.determination.properties,
     key: { type: 'string' },
   })
 
+  // feature observations have object structure in form
   updatedModels = immutable.set(
     updatedModels,
     'individual.properties.featureObservations',
@@ -37,6 +40,7 @@ const createMammalFormModels = () => {
     }
   )
 
+  // latitude and longitude validation
   updatedModels = immutable.set(updatedModels, 'position.properties.latitude', {
     ...updatedModels.position.properties.latitude,
     'x-validation-latitude': true,
@@ -51,6 +55,7 @@ const createMammalFormModels = () => {
     }
   )
 
+  // storage location is required for physical object in collection item
   updatedModels = immutable.set(updatedModels, 'collectionItem.required', [
     'physicalObject',
   ])
