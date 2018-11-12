@@ -54,6 +54,7 @@ apiDescribe('specimen', () => {
                 physicalObjects: { data: [] },
                 places: { data: [] },
                 preparationTypes: { data: [] },
+                resourceActivities: { data: [] },
                 taxonNames: { data: [] },
                 typeSpecimenType: { data: null },
               },
@@ -110,10 +111,10 @@ apiDescribe('specimen', () => {
                   preparationTypes: {
                     data: [],
                   },
+                  resourceActivities: { data: [] },
                   taxonNames: {
                     data: [],
                   },
-
                   typeSpecimenType: {
                     data: null,
                   },
@@ -168,6 +169,7 @@ apiDescribe('specimen', () => {
                   preparationTypes: {
                     data: [],
                   },
+                  resourceActivities: { data: [] },
                   taxonNames: {
                     data: [],
                   },

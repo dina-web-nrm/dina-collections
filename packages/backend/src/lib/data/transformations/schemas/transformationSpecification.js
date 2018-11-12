@@ -7,6 +7,9 @@ module.exports = {
     collidingIdPrefix: {
       type: 'string',
     },
+    defaultLimit: {
+      type: 'number',
+    },
     description: {
       type: 'string',
     },

@@ -3,7 +3,10 @@ const extractCatalogNumberFromSpecimen = require('../utilities/extractCatalogNum
 const fetchCatalogNumberIdentifierTypeId = require('../utilities/fetchCatalogNumberIdentifierTypeId')
 const fetchStoredCatalogNumber = require('../utilities/fetchStoredCatalogNumber')
 
-const validateBodyUpdate = ({ request, serviceInteractor }) => {
+const validateBodyUpdate = ({ config, request, serviceInteractor }) => {
+  if (config.env.isTest) {
+    return Promise.resolve()
+  }
   return fetchCatalogNumberIdentifierTypeId({ serviceInteractor }).then(
     identifierTypeId => {
       const catalogNumber = extractCatalogNumberFromSpecimen({
@@ -27,5 +30,4 @@ const validateBodyUpdate = ({ request, serviceInteractor }) => {
   )
 }
 
-// exports.create = [validateBodyCreate]
 exports.update = [validateBodyUpdate]

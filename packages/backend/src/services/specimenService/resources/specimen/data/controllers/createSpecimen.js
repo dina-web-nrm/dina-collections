@@ -10,11 +10,19 @@ const createCatalogNumberError = require('../utilities/createCatalogNumberError'
 const createControllerFactory = require('../../../../../../lib/controllers/crud/create')
 
 module.exports = function createSpecimen(options) {
-  const { serviceInteractor } = options
+  const { config, serviceInteractor } = options
 
   const createController = createControllerFactory(options)
 
   return ({ request, user, requestId }) => {
+    if (config.env.isTest) {
+      return createController({
+        config,
+        request,
+        requestId,
+        user,
+      })
+    }
     return fetchCatalogNumberIdentifierTypeId({ serviceInteractor })
       .then(identifierTypeId => {
         const catalogNumber = extractCatalogNumberFromSpecimen({

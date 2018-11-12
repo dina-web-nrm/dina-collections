@@ -1,10 +1,18 @@
 /* eslint-disable no-param-reassign */
 
+/*
+example src data
+  "migrationData": {
+      "publishRecord": "True",
+      "remarks": "5 ex. OBS Det finns 2 Odensjö i Småland så det är minst lika troligt att dessa kommer från det utanför Växjö istället.",
+    },
+*/
+
 module.exports = function migrateSpecimen({
-  src,
-  target,
   globalIndex,
   migrator,
+  src,
+  target,
 }) {
   const { id: idInput } = src
   const id = idInput || `${globalIndex + 1}`
@@ -15,30 +23,23 @@ module.exports = function migrateSpecimen({
     value: id,
   })
 
-  const publishCoord = migrator.getValue({
-    obj: src,
-    path: 'objects.Publish_Coord',
-    strip: true,
-  })
-
   const publishRecord = migrator.getValue({
     obj: src,
-    path: 'objects.Publish_Record',
+    path: 'migrationData.publishRecord',
     strip: true,
   })
 
   migrator.setValue({
     obj: target,
     path: 'attributes.publishRecord',
-    value: publishCoord === 'Y' && publishRecord === 'Y',
+    value: publishRecord === 'True',
   })
 
   const remarks = migrator.getValue({
     obj: src,
-    path: 'objects.Comments',
+    path: 'migrationData.remarks',
     strip: true,
   })
-
   if (remarks) {
     migrator.setValue({
       obj: target,

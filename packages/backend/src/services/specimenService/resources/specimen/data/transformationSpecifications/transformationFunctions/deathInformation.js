@@ -1,96 +1,61 @@
 /* eslint-disable no-param-reassign */
 
-const causeOfDeathTypeValueMap = {
-  'dead in captivity': 'dead-in-captivity',
-  'found dead': 'found-dead',
-  'hunt, shot': 'hunt-shot',
-  'hunt, trap': 'hunt-trap',
-  'put to death': 'put-to-death',
-}
+/*
+example src data
+      "deathInformation": {
+        "causeOfDeath": "collected",
+        "remarks": null
+      },
 
-const getCauseOfDeathTypeIdByKey = ({ wayOfDeath, causeOfDeathTypes }) => {
-  if (!wayOfDeath) {
-    return null
-  }
-  const lowerCaseWayOfDeath = wayOfDeath.toLowerCase()
-  const key =
-    causeOfDeathTypeValueMap[lowerCaseWayOfDeath] || lowerCaseWayOfDeath
-  const matchingCauseOfDeathTypes = causeOfDeathTypes.find(causeOfDeathType => {
-    return causeOfDeathType.attributes.key === key
-  })
-
-  if (!matchingCauseOfDeathTypes) {
-    return null
-  }
-
-  return matchingCauseOfDeathTypes.id
-}
-
+*/
 module.exports = function migrateDeathInformation({
-  migrator,
   reporter,
-  serviceInteractor,
+  globals,
   src,
   target,
+  migrator,
 }) {
-  return serviceInteractor
-    .getMany({
-      request: {
-        queryParams: { limit: 100 },
-      },
-      resource: 'causeOfDeathType',
+  const srcDeathInformation = migrator.getValue({
+    obj: src,
+    path: 'migrationData.deathInformation',
+    strip: true,
+  })
+
+  if (!srcDeathInformation) {
+    return
+  }
+
+  const {
+    causeOfDeath: srcCauseOfDeath,
+    remarks: srcRemarks,
+  } = srcDeathInformation
+
+  const deathInformation = {}
+
+  if (srcCauseOfDeath) {
+    const id = migrator.getFromGlobals({
+      globals,
+      key: srcCauseOfDeath,
+      mapKey: 'causeOfDeathTypeKeyIdMap',
+      reporter,
     })
-    .then(({ data: causeOfDeathTypes }) => {
-      let deathInformation
 
-      const wayOfDeath = migrator.getValue({
-        obj: src,
-        path: 'objects.WayOfDeath_related.DödsorsakEN',
-        strip: true,
-      })
-
-      const deathRemark = migrator.getValue({
-        obj: src,
-        path: 'objects.DeathRemark',
-        strip: true,
-      })
-
-      let causeOfDeathTypeId
-      if (wayOfDeath) {
-        causeOfDeathTypeId = getCauseOfDeathTypeIdByKey({
-          causeOfDeathTypes,
-          wayOfDeath,
-        })
-        if (causeOfDeathTypeId) {
-          reporter.rebuildViewLookupHit({
-            id: wayOfDeath,
-            resource: 'causeOfDeathType',
-          })
-        } else {
-          reporter.rebuildViewLookupMiss({
-            id: wayOfDeath,
-            resource: 'causeOfDeathType',
-          })
-        }
+    if (id) {
+      deathInformation.causeOfDeathType = {
+        id,
       }
+    }
+  }
 
-      if (causeOfDeathTypeId || deathRemark) {
-        deathInformation = {
-          causeOfDeathType: !causeOfDeathTypeId
-            ? undefined
-            : {
-                id: causeOfDeathTypeId,
-              },
-          remarks: deathRemark,
-        }
-      }
+  if (srcRemarks) {
+    deathInformation.remarks = srcRemarks
+  }
 
-      if (deathInformation) {
-        migrator.setValue({
-          obj: target,
-          path: 'attributes.individual.deathInformation.0',
-          value: deathInformation,
-        })
-      }
+  if (Object.keys(deathInformation).length) {
+    migrator.setValue({
+      obj: target,
+      path: 'attributes.individual.deathInformation.0',
+      value: deathInformation,
     })
+  }
 }
