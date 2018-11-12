@@ -37,9 +37,14 @@ export default function errorMiddleware({ debug = true } = {}) {
         console.log(action.payload) // eslint-disable-line no-console
       }
 
-      // logout user from frontend i API responds with Unauthorized. this will
-      // redirect to /login if user was on page that requires being logged in
-      if (action.payload && action.payload.status === 401) {
+      // logout user from frontend if API responds with Unauthorized or
+      // Forbidden. this will redirect to /login if user was on page that
+      // requires being logged in
+      // TODO: Implement more fine-grained behavior for 403
+      if (
+        action.payload &&
+        (action.payload.status === 401 || action.payload.status === 403)
+      ) {
         dispatch(logout())
       }
     }
