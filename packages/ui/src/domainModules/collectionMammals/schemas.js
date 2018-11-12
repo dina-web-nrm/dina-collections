@@ -51,6 +51,15 @@ const createMammalFormModels = () => {
     }
   )
 
+  updatedModels = immutable.set(updatedModels, 'collectionItem.required', [
+    'physicalObject',
+  ])
+  updatedModels = immutable.set(updatedModels, 'physicalObject.required', [
+    'storageLocation',
+  ])
+  updatedModels = immutable.set(updatedModels, 'storageLocation.required', [
+    'id',
+  ])
   updatedModels = immutable.set(
     updatedModels,
     'storageLocation.properties.id',
@@ -59,10 +68,6 @@ const createMammalFormModels = () => {
       type: 'string',
     }
   )
-
-  updatedModels = immutable.set(updatedModels, 'storageLocation.required', [
-    'id',
-  ])
 
   return updatedModels
 }
