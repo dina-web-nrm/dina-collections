@@ -28,6 +28,7 @@ const propTypes = {
     FIRST_EXPANDED,
   ]),
   items: PropTypes.arrayOf(PropTypes.object.isRequired),
+  renderActiveOnly: PropTypes.bool,
   renderContent: PropTypes.func,
   renderTitle: PropTypes.func.isRequired,
   selectMode: PropTypes.oneOf([MULTI, SINGLE]),
@@ -43,6 +44,7 @@ const defaultProps = {
   getShouldRenderItem: undefined,
   initialActiveMode: ALL_COLLAPSED,
   items: [],
+  renderActiveOnly: false,
   renderContent: undefined,
   selectMode: SINGLE,
   styled: true,
@@ -193,11 +195,15 @@ class AccordionWrapper extends Component {
   }
 
   shouldRenderContent(index) {
-    const { delayItemRenderUntilActive } = this.props
+    const { delayItemRenderUntilActive, renderActiveOnly } = this.props
 
     if (delayItemRenderUntilActive) {
       // render & keep rendered if it has been active or if it is active now
       return this.state.hasBeenActive[index] || this.isActive(index)
+    }
+
+    if (renderActiveOnly) {
+      return this.isActive(index)
     }
 
     // always render content when should not delayItemRenderUntilActive
