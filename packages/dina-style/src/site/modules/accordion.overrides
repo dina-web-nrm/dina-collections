@@ -14,9 +14,24 @@
   color: @styledActiveTitleColor;
 }
 
+.ui.styled.accordion .title .error {
+  background-color: @negativeBackgroundColor;
+  color: @negativeTextColor;
+  box-shadow: @negativeBoxShadow;
+}
+
+.ui.styled.accordion .title .error:after {
+  background-color: @negativeBackgroundColor;
+  border-color: @negativeBorderColor;
+}
+
 /* Active */
 .ui.styled.accordion .active.title {
   border-top: @coloredBorderSize solid @green !important;
   background: @styledContentBackground;
   color: @styledActiveTitleColor;
+}
+
+.ui.styled.accordion .active.title .error {
+  color: @negativeHeaderColor;
 }

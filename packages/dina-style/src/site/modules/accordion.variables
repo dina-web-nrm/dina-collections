@@ -4,3 +4,7 @@
 @coloredBorderSize: 1px;
 @styledContentBackground: @segmentBackground;
 @styledInactiveTitleBackground: @pageBackground;
+@borderWidth: 1px;
+@shadowShadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+@negativeBoxShadow: 0px 0px 0px @borderWidth @negativeBorderColor inset,
+  @shadowShadow;
