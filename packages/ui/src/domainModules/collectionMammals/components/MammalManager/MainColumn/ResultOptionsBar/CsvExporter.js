@@ -229,7 +229,7 @@ export class CsvExporter extends Component {
     let exportModal = null
     if (modalContent) {
       exportModal = (
-        <FormModal open>
+        <FormModal onClose={this.handleClose} open>
           <Modal.Header>
             Exporting{' '}
             <Icon

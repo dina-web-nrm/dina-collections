@@ -56,7 +56,7 @@ class PositionModal extends PureComponent {
     } = this.props
 
     return (
-      <FormModal open={open} size="tiny">
+      <FormModal onClose={handleClose} open={open} size="tiny">
         <Modal.Header>
           <ModuleTranslate module={module} textKey="headers.localityPosition" />
         </Modal.Header>
@@ -130,7 +130,7 @@ class PositionModal extends PureComponent {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions style={{ textAlign: 'left' }}>
-          <Button basic disabled={isInvalid} onClick={handleClose}>
+          <Button disabled={isInvalid} onClick={handleClose}>
             <ModuleTranslate textKey="other.done" />
           </Button>
         </Modal.Actions>

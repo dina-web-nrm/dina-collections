@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
+import { Prompt } from 'react-router-dom'
 import immutable from 'object-path-immutable'
 
 import {
@@ -144,20 +145,30 @@ const createPickerWrapper = (
       const value = input && input.value
 
       return (
-        <ComposedComponent
-          {...this.props}
-          fieldSearchQuery={searchQuery}
-          fieldValue={value}
-          formName={formName}
-          onClose={handleOnClose}
-          onInteraction={handleInteraction}
-          onPickerButtonClick={handlePickerButtonClick}
-          onSearchQueryChange={handleSearchQueryChange}
-          pathToIdInValue={pathToIdInValueOverride || pathToIdInValue}
-          pathToTextInValue={pathToTextInValueOverride || pathToTextInValue}
-          pickerActive={pickerActive}
-          setPickerActive={setPickerActive}
-        />
+        <React.Fragment>
+          <Prompt
+            message={() => {
+              // first block transition then close
+              setTimeout(this.handleOnClose)
+              return false
+            }}
+            when={pickerActive}
+          />
+          <ComposedComponent
+            {...this.props}
+            fieldSearchQuery={searchQuery}
+            fieldValue={value}
+            formName={formName}
+            onClose={handleOnClose}
+            onInteraction={handleInteraction}
+            onPickerButtonClick={handlePickerButtonClick}
+            onSearchQueryChange={handleSearchQueryChange}
+            pathToIdInValue={pathToIdInValueOverride || pathToIdInValue}
+            pathToTextInValue={pathToTextInValueOverride || pathToTextInValue}
+            pickerActive={pickerActive}
+            setPickerActive={setPickerActive}
+          />
+        </React.Fragment>
       )
     }
   }
