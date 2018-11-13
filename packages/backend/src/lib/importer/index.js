@@ -19,7 +19,7 @@ module.exports = function importer({ config, serviceInteractor }) {
     'taxonName',
     'storageLocation',
     'normalizedAgent',
-    // 'specimen',
+    'specimen',
   ]
 
   return asyncReduce({
