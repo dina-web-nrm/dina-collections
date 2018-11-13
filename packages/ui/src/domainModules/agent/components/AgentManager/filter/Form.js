@@ -67,6 +67,4 @@ export class BaseForm extends Component {
 BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
-export default reduxForm({
-  destroyOnUnmount: false,
-})(BaseForm)
+export default reduxForm({})(BaseForm)

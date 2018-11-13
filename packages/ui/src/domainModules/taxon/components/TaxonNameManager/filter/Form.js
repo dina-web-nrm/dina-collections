@@ -83,6 +83,5 @@ BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
-  destroyOnUnmount: true, // to keep values when switching layout
   form: FORM_NAME,
 })(BaseForm)
