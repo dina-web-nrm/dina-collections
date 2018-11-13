@@ -454,7 +454,7 @@ const createResourceManagerWrapper = (
           matchingIndex = index
         }
       })
-      if (matchingIndex) {
+      if (matchingIndex !== undefined) {
         return matchingIndex + 1
       }
       return null
