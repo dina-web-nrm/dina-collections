@@ -3,19 +3,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { reset as resetActionCreator } from 'redux-form'
 import createLog from 'utilities/log'
 
 import actionCreators from 'coreModules/crud/actionCreators'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/resourceManager/keyObjectModule'
-
-import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
-
-import { reset as resetActionCreator } from 'redux-form'
-
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
