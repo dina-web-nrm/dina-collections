@@ -10,11 +10,14 @@ exports.transformTaxonName = function transformTaxonName({ src, target }) {
     synonymToTaxonId,
     vernacularToTaxonId,
     type: taxonNameType,
+    group,
+    rank,
     ...rest
   } = src
 
   const attributes = {
     ...rest,
+    rank: rank || group,
     taxonNameType,
   }
 
