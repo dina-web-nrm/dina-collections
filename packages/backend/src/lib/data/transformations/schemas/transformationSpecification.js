@@ -15,6 +15,9 @@ module.exports = {
         type: 'string',
       },
     },
+    globalDecorators: {
+      type: 'array',
+    },
     numberOfEntriesEachBatch: {
       type: 'number',
     },
