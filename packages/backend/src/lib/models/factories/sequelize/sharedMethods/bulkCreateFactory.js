@@ -17,7 +17,7 @@ module.exports = function bulkCreateFactory(
   return bulkCreateWrapper(({ items = [], validate = true }) => {
     log.debug(`Start create ${items.length} items for: ${Model.tableName}`)
     if (items.length === 0) {
-      return Promise.resolve({ meta: { count: 0 } })
+      return Promise.resolve({ items: [], meta: { count: 0 } })
     }
 
     return Model.bulkCreate(
