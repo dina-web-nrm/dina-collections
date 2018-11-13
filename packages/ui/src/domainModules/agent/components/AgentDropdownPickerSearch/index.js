@@ -8,7 +8,6 @@ import AgentDropdownSearch from '../AgentDropdownSearch'
 import AgentManager from '../AgentManager/Local'
 
 const propTypes = {
-  fieldSearchQuery: PropTypes.string,
   fieldValue: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
@@ -30,7 +29,6 @@ const propTypes = {
 }
 
 const defaultProps = {
-  fieldSearchQuery: undefined,
   fieldValue: undefined,
   reportPickerActive: undefined,
 }
@@ -46,7 +44,6 @@ export class AgentDropdownPickerSearch extends Component {
 
   render() {
     const {
-      fieldSearchQuery,
       fieldValue,
       onClose,
       onInteraction,
@@ -58,10 +55,9 @@ export class AgentDropdownPickerSearch extends Component {
     } = this.props
 
     if (pickerActive) {
-      const initialFilterValues = fieldSearchQuery
+      const initialFilterValues = objectPath.get(fieldValue, pathToTextInValue)
         ? {
-            fullName:
-              fieldSearchQuery || objectPath.get(fieldValue, pathToTextInValue),
+            fullName: objectPath.get(fieldValue, pathToTextInValue),
           }
         : undefined
 
