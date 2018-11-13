@@ -66,7 +66,7 @@ export class AgentDropdownPickerSearch extends Component {
         : undefined
 
       return (
-        <Modal open style={{ overflow: 'hidden' }}>
+        <Modal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <AgentManager
               initialFilterValues={initialFilterValues}
