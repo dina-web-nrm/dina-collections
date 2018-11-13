@@ -1,8 +1,8 @@
-const allFromSrcWithIndexId = require('../../../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
+const transformationFunctions = require('./transformationFunctions')
 
 exports.importDataFromFile = {
   description: 'Importing agents from file',
   srcFileName: 'agents',
   storeResourceActivity: true,
-  transformationFunctions: [allFromSrcWithIndexId],
+  transformationFunctions: [transformationFunctions.transformAgent],
 }
