@@ -629,7 +629,7 @@ const createResourceManagerWrapper = (
           initialItemId !== undefined &&
           initialItemId !== ''
         ) {
-          this.handleInteraction(ITEM_SELECT, { itemId: initialItemId })
+          this.props.setFocusIdWhenLoaded(initialItemId, { resource })
         }
         this.transitionToTableView()
         return
