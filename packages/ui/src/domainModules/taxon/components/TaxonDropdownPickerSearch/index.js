@@ -20,7 +20,7 @@ const defaultProps = {
   fieldValue: undefined,
 }
 
-export class TaxonNameDropdownPickerSearch extends Component {
+export class TaxonDropdownPickerSearch extends Component {
   render() {
     const {
       fieldSearchQuery,
@@ -59,7 +59,7 @@ export class TaxonNameDropdownPickerSearch extends Component {
   }
 }
 
-TaxonNameDropdownPickerSearch.propTypes = propTypes
-TaxonNameDropdownPickerSearch.defaultProps = defaultProps
+TaxonDropdownPickerSearch.propTypes = propTypes
+TaxonDropdownPickerSearch.defaultProps = defaultProps
 
-export default createPickerWrapper({})(TaxonNameDropdownPickerSearch)
+export default createPickerWrapper({})(TaxonDropdownPickerSearch)
