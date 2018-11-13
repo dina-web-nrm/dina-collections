@@ -199,7 +199,7 @@ const createResourceManagerWrapper = (
         this.handleInteraction(NAVIGATE_FILTER)
       }
 
-      this.viewUpdateTableView()
+      this.viewUpdateTableView(undefined, initialFilterValues)
       this.viewUpdateTreeView()
       this.viewUpdateEditItemView()
 
@@ -607,7 +607,7 @@ const createResourceManagerWrapper = (
       })
     }
 
-    viewUpdateTableView(prevProps) {
+    viewUpdateTableView(prevProps, initialFilterValues) {
       const {
         filterValues,
         focusIdWhenLoaded,
@@ -631,7 +631,7 @@ const createResourceManagerWrapper = (
         ) {
           this.props.setFocusIdWhenLoaded(initialItemId, { resource })
         }
-        this.transitionToTableView()
+        this.transitionToTableView(initialFilterValues)
         return
       }
 
@@ -658,7 +658,7 @@ const createResourceManagerWrapper = (
       }
     }
 
-    transitionToTableView() {
+    transitionToTableView(initialFilterValues) {
       log.debug('transition to view: Table')
 
       const { filterValues, focusedItemId, resource } = this.props
@@ -666,7 +666,7 @@ const createResourceManagerWrapper = (
         this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
       }
 
-      this.tableSearch(filterValues)
+      this.tableSearch(filterValues || initialFilterValues)
     }
     transitionFromTableView() {
       log.debug('transition from view: Table')
