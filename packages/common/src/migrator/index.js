@@ -82,6 +82,32 @@ const getValue = ({ clone = false, obj, path, strip = false }) => {
   return value
 }
 
+const getFromGlobals = ({ globals, mapKey, key, reporter }) => {
+  if (!globals[mapKey]) {
+    throw new Error(`Unknown key: ${mapKey}`)
+  }
+  const path = [mapKey, key].join('.')
+  const value = getValue({
+    obj: globals,
+    path,
+  })
+
+  if (reporter) {
+    if (value) {
+      reporter.rebuildViewLookupHit({
+        id: key,
+        resource: mapKey,
+      })
+    } else {
+      reporter.rebuildViewLookupMiss({
+        id: key,
+        resource: mapKey,
+      })
+    }
+  }
+  return value
+}
+
 const migrateValue = ({
   condition,
   format,
@@ -203,6 +229,7 @@ module.exports = {
   applyTransformationFunctions,
   applyTransformationFunctionsAsync,
   filterArray,
+  getFromGlobals,
   getValue,
   migrateValue,
   pushValueToArray,
