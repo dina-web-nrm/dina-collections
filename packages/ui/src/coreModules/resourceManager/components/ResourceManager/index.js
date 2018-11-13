@@ -39,7 +39,7 @@ const mapStateToProps = (state, { isPicker, windowHeight }) => {
   return {
     availableHeight,
     columnHeight,
-    filterColumnWidth: isPicker ? emToPixels(15) : emToPixels(25),
+    filterColumnWidth: isPicker ? emToPixels(16) : emToPixels(25),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
   }
 }
