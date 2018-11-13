@@ -9,9 +9,11 @@ const defaultExecuteFunction = require('./execute')
 const defaultTransformationFunctions = require('../utilities/defaultTransformationFunctions')
 const defaultPreTransformationFunction = require('../../../data/transformations/utilities/preTransformationCoreToNested')
 const defaultPostTransformationFunction = require('../../../data/transformations/utilities/postTransformationNoop')
+const createGlobals = require('../../../data/transformations/utilities/createGlobals')
 const createServiceInteractorCache = require('../../../serviceInteractor/cache')
 
 const log = createLog('lib/controllers/views/rebuildView/rebuild')
+
 module.exports = function rebuildView({
   models,
   operation,
@@ -19,6 +21,7 @@ module.exports = function rebuildView({
 }) {
   const {
     transformationSpecification: {
+      globalDecorators = [],
       cacheRequestsToResources,
       collidingIdPrefix,
       createBatchFunction = defaultCreateBatchFunction,
@@ -71,65 +74,71 @@ module.exports = function rebuildView({
       })
     }
 
-    const wrapperTransformationFunction = ({ startCount, items }) => {
-      return transformationFunction({
-        items,
-        postTransformationFunction,
-        preTransformationFunction,
-        reporter,
-        resolveRelations,
-        resourceCacheMap,
-        serviceInteractor: serviceInteractorCache,
-        srcResource,
-        startCount,
-        transformationFunctions,
-      })
-    }
-
-    const wrappedBatchFunction = ({ ...args }) => {
-      return createBatchFunction({
-        ...args,
-        serviceInteractor: serviceInteractorCache,
-        srcFileName,
-        srcRelationships,
-        srcResource,
-        transformationFunction: wrapperTransformationFunction,
-      })
-    }
-
     reporter.start()
     return model.synchronize({ force: true }).then(() => {
       log.scope().info(`warming views for ${resource}`)
-      return rebuildCacheViews({
+      return createGlobals({
+        globalDecorators,
         serviceInteractor,
-        views: warmViews,
-      }).then(dependencyReport => {
-        log.scope().info(`Start: migrate data for ${resource}`)
-        return batchExecute({
-          createBatch: wrappedBatchFunction,
-          execute: wrapperExecute,
-          numberOfEntries: limit,
-          numberOfEntriesEachBatch,
-          reporter,
-        }).then(() => {
-          log.scope().info(`Done: migrate data for ${resource}`)
-          return emptyCacheViews({
-            serviceInteractor,
-            views: warmViews,
-          }).then(() => {
-            reporter.done()
-            if (cacheRequestsToResources) {
-              serviceInteractorCache.emptyCache()
-            }
-            reporter.rebuildViewDependencyReport({
-              dependencyReport,
-            })
+      }).then(globals => {
+        const wrapperTransformationFunction = ({ startCount, items }) => {
+          return transformationFunction({
+            globals,
+            items,
+            postTransformationFunction,
+            preTransformationFunction,
+            reporter,
+            resolveRelations,
+            resourceCacheMap,
+            serviceInteractor: serviceInteractorCache,
+            srcResource,
+            startCount,
+            transformationFunctions,
+          })
+        }
 
-            return {
-              data: {
-                attributes: reporter.getReport(),
-              },
-            }
+        const wrappedBatchFunction = ({ ...args }) => {
+          return createBatchFunction({
+            ...args,
+            serviceInteractor: serviceInteractorCache,
+            srcFileName,
+            srcRelationships,
+            srcResource,
+            transformationFunction: wrapperTransformationFunction,
+          })
+        }
+
+        return rebuildCacheViews({
+          serviceInteractor,
+          views: warmViews,
+        }).then(dependencyReport => {
+          log.scope().info(`Start: migrate data for ${resource}`)
+          return batchExecute({
+            createBatch: wrappedBatchFunction,
+            execute: wrapperExecute,
+            numberOfEntries: limit,
+            numberOfEntriesEachBatch,
+            reporter,
+          }).then(() => {
+            log.scope().info(`Done: migrate data for ${resource}`)
+            return emptyCacheViews({
+              serviceInteractor,
+              views: warmViews,
+            }).then(() => {
+              reporter.done()
+              if (cacheRequestsToResources) {
+                serviceInteractorCache.emptyCache()
+              }
+              reporter.rebuildViewDependencyReport({
+                dependencyReport,
+              })
+
+              return {
+                data: {
+                  attributes: reporter.getReport(),
+                },
+              }
+            })
           })
         })
       })

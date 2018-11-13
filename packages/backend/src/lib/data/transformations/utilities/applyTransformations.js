@@ -2,9 +2,10 @@ const migrator = require('common/src/migrator')
 const getItemByTypeId = require('./getItemByTypeId')
 
 module.exports = function applyTransformationFunctions({
+  globals,
   items,
-  preTransformationFunction,
   postTransformationFunction,
+  preTransformationFunction,
   reporter,
   resolveRelations = false,
   resourceCacheMap,
@@ -42,6 +43,7 @@ module.exports = function applyTransformationFunctions({
         .applyTransformationFunctionsAsync({
           getItemByTypeId: wrappedGetItemByTypeId,
           globalIndex,
+          globals,
           index,
           item,
           migrator,
