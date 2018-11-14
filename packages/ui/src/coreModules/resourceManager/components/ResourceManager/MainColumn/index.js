@@ -24,7 +24,7 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
-  fetchIncludeAfterUpdate: PropTypes.bool,
+  fetchIncludeAfterUpdate: PropTypes.arrayOf(PropTypes.string),
   isPicker: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
