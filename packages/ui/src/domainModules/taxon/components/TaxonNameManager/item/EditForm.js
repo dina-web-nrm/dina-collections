@@ -6,6 +6,12 @@ import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import BaseForm from './BaseForm'
 
+export const include = [
+  'acceptedToTaxon',
+  'resourceActivities',
+  'synonymToTaxon',
+]
+
 const propTypes = {
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
@@ -33,7 +39,14 @@ export class Edit extends PureComponent {
       return null
     }
 
-    const { name, rank, rubinNumber } = nestedItem
+    const {
+      acceptedToTaxon,
+      name,
+      rank,
+      resourceActivities,
+      rubinNumber,
+      synonymToTaxon,
+    } = nestedItem
 
     return (
       <BaseForm
@@ -44,7 +57,15 @@ export class Edit extends PureComponent {
         formSectionNavigationHeader={`${name} (${moduleTranslate({
           textKey: 'name',
         })})`}
-        initialValues={{ id: itemId, name, rank, rubinNumber }}
+        initialValues={{
+          acceptedToTaxon,
+          id: itemId,
+          name,
+          rank,
+          resourceActivities,
+          rubinNumber,
+          synonymToTaxon,
+        }}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
@@ -61,7 +82,10 @@ Edit.defaultProps = defaultProps
 export default compose(
   withI18n({ module: 'taxon' }),
   createGetNestedItemById({
-    nestedItemKey: 'taxonName',
+    include,
+    refresh: true,
+    relationships: include,
+    resolveRelationships: ['resourceActivity', 'taxon'],
     resource: 'taxonName',
   })
 )(Edit)

@@ -6,6 +6,8 @@ import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import BaseForm from './BaseForm'
 
+export const include = ['parent', 'resourceActivities']
+
 const propTypes = {
   itemId: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
@@ -57,11 +59,11 @@ Edit.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    include: ['parent'],
+    include,
     namespace: 'edit',
     refresh: true,
-    relationships: ['parent'],
-    resolveRelationships: ['place'],
+    relationships: include,
+    resolveRelationships: ['place', 'resourceActivity'],
     resource: 'place',
     shouldFetch: true,
   })

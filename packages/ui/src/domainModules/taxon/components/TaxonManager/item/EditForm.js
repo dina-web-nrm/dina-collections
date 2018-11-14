@@ -12,6 +12,7 @@ import BaseForm from './BaseForm'
 export const include = [
   'acceptedTaxonName',
   'parent',
+  'resourceActivities',
   'synonyms',
   'vernacularNames',
 ]
@@ -86,7 +87,7 @@ export default compose(
     nestedItemKey: 'taxon',
     refresh: true,
     relationships: include,
-    resolveRelationships: ['taxon', 'taxonName'],
+    resolveRelationships: ['resourceActivity', 'taxon', 'taxonName'],
     resource: 'taxon',
   })
 )(Edit)

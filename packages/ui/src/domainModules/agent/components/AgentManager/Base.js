@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 
 import CreateForm from './item/CreateForm'
-import EditForm from './item/EditForm'
+import EditForm, { include } from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
 import tableColumnSpecifications from './tableColumnSpecifications'
@@ -67,6 +67,7 @@ class AgentManager extends Component {
       <ResourceManager
         {...this.props}
         buildFilterQuery={buildFilterQuery}
+        fetchIncludeAfterUpdate={include}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         renderCreateForm={this.renderCreateForm}

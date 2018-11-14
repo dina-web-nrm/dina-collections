@@ -78,8 +78,22 @@
       "en": "new scientific name",
       "sv": ""
     },
+    "recordHistory": {
+      "en": "Record history",
+      "sv": ""
+    },
     "vernacularNames": {
       "en": "vernacular names",
+      "sv": ""
+    }
+  },
+  "other": {
+    "createdBy": {
+      "en": "Created by",
+      "sv": ""
+    },
+    "lastModifiedBy": {
+      "en": "Last modified by",
       "sv": ""
     }
   },

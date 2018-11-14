@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react'
 import { getYMDHMSFromTimestamp } from 'common/es5/date'
 
 const propTypes = {
-  actionType: PropTypes.string.isRequired,
+  eventType: PropTypes.string.isRequired,
   timestamp: PropTypes.string.isRequired,
   username: PropTypes.string,
 }
@@ -16,12 +16,12 @@ const defaultProps = {
 
 class EventRow extends PureComponent {
   render() {
-    const { actionType, timestamp, username } = this.props
+    const { eventType, timestamp, username } = this.props
 
     const eventTimestamp = getYMDHMSFromTimestamp(timestamp)
     const eventRow = username
-      ? `${actionType} ${username} ${eventTimestamp}`
-      : `${actionType} ${eventTimestamp}`
+      ? `${eventType} ${username} ${eventTimestamp}`
+      : `${eventType} ${eventTimestamp}`
 
     return <Grid.Column width={16}>{eventRow}</Grid.Column>
   }

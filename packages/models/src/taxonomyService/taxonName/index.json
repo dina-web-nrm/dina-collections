@@ -49,6 +49,20 @@
             }
           }
         },
+        "resourceActivities": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__resourceActivity",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "synonymToTaxon": {
           "type": "object",
           "x-key-allow-null": true,
@@ -82,6 +96,13 @@
     "acceptedToTaxon": {
       "$ref": "__ROOT__taxon",
       "x-reference-type": "external"
+    },
+    "resourceActivities": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__resourceActivity",
+        "x-reference-type": "external"
+      }
     },
     "synonymToTaxon": {
       "$ref": "__ROOT__taxon",

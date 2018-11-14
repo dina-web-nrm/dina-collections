@@ -1,7 +1,6 @@
 const parts = [
   {
     componentName: 'RecordHistoryEvents',
-    containsReduxFormField: true,
     name: 'resourceActivities',
   },
 ]

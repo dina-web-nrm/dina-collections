@@ -30,6 +30,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
+export const include = ['resourceActivities']
+
 const propTypes = {
   form: PropTypes.string.isRequired,
   itemId: PropTypes.string.isRequired,
@@ -87,7 +89,10 @@ Edit.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    relationships: ['all'],
+    include,
+    refresh: true,
+    relationships: include,
+    resolveRelationships: ['resourceActivity'],
     resource: 'normalizedAgent',
   }),
   connect(mapStateToProps)

@@ -121,6 +121,19 @@
       "relationships": {
         "type": "object",
         "properties": {
+          "resourceActivities": {
+            "type": "object",
+            "x-key-stored-in-model": "resourceActivity",
+            "x-key-type": "json",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
           "user": {
             "type": "object",
             "x-key-stored-in-model": "normalizedAgent",
@@ -132,6 +145,13 @@
               }
             }
           }
+        },
+        "x-summary": ""
+      },
+      "resourceActivities": {
+        "type": "array",
+        "items": {
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
@@ -1385,6 +1405,19 @@
                 }
               }
             }
+          },
+          "resourceActivities": {
+            "type": "object",
+            "x-key-stored-in-model": "resourceActivity",
+            "x-key-type": "json",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
           }
         },
         "x-summary": ""
@@ -1398,6 +1431,13 @@
       "children": {
         "type": "array",
         "description": "Children places",
+        "items": {
+          "$ref": "externalModelReference"
+        },
+        "x-summary": ""
+      },
+      "resourceActivities": {
+        "type": "array",
         "items": {
           "$ref": "externalModelReference"
         },
@@ -2611,6 +2651,19 @@
               }
             }
           },
+          "resourceActivities": {
+            "type": "object",
+            "x-key-stored-in-model": "resourceActivity",
+            "x-key-type": "json",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
           "taxa": {
             "type": "object",
             "x-key-stored-in-model": "storageLocation",
@@ -2646,6 +2699,13 @@
         "x-summary": ""
       },
       "preparationTypes": {
+        "type": "array",
+        "items": {
+          "$ref": "externalModelReference"
+        },
+        "x-summary": ""
+      },
+      "resourceActivities": {
         "type": "array",
         "items": {
           "$ref": "externalModelReference"
@@ -2724,6 +2784,19 @@
               }
             }
           },
+          "resourceActivities": {
+            "type": "object",
+            "x-key-stored-in-model": "resourceActivity",
+            "x-key-type": "json",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
           "synonyms": {
             "type": "object",
             "x-key-allow-null": true,
@@ -2770,6 +2843,13 @@
       },
       "parent": {
         "$ref": "externalModelReference",
+        "x-summary": ""
+      },
+      "resourceActivities": {
+        "type": "array",
+        "items": {
+          "$ref": "externalModelReference"
+        },
         "x-summary": ""
       },
       "synonyms": {
@@ -2855,6 +2935,19 @@
               }
             }
           },
+          "resourceActivities": {
+            "type": "object",
+            "x-key-stored-in-model": "resourceActivity",
+            "x-key-type": "json",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
           "synonymToTaxon": {
             "type": "object",
             "x-key-allow-null": true,
@@ -2886,6 +2979,13 @@
       },
       "acceptedToTaxon": {
         "$ref": "externalModelReference",
+        "x-summary": ""
+      },
+      "resourceActivities": {
+        "type": "array",
+        "items": {
+          "$ref": "externalModelReference"
+        },
         "x-summary": ""
       },
       "synonymToTaxon": {
@@ -2920,6 +3020,32 @@
               },
               "relationships": {
                 "properties": {
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "user": {
                     "additionalProperties": false,
                     "properties": {
@@ -3009,6 +3135,32 @@
               },
               "relationships": {
                 "properties": {
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "user": {
                     "additionalProperties": false,
                     "properties": {
@@ -3098,6 +3250,32 @@
             },
             "relationships": {
               "properties": {
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "user": {
                   "additionalProperties": false,
                   "properties": {
@@ -3184,6 +3362,32 @@
             },
             "relationships": {
               "properties": {
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "user": {
                   "additionalProperties": false,
                   "properties": {
@@ -3270,6 +3474,32 @@
               },
               "relationships": {
                 "properties": {
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "user": {
                     "additionalProperties": false,
                     "properties": {
@@ -3412,6 +3642,32 @@
               },
               "relationships": {
                 "properties": {
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "user": {
                     "additionalProperties": false,
                     "properties": {
@@ -7975,6 +8231,32 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -8081,6 +8363,32 @@
                                 "place"
                               ],
                               "example": "place",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
                               "type": "string"
                             }
                           },
@@ -8205,6 +8513,32 @@
                     }
                   },
                   "type": "object"
+                },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
                 }
               },
               "type": "object"
@@ -8308,6 +8642,32 @@
                               "place"
                             ],
                             "example": "place",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
                             "type": "string"
                           }
                         },
@@ -8429,6 +8789,32 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -8535,6 +8921,32 @@
                                 "place"
                               ],
                               "example": "place",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
                               "type": "string"
                             }
                           },
@@ -16720,6 +17132,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "taxa": {
                     "additionalProperties": false,
                     "properties": {
@@ -16903,6 +17341,32 @@
                                 "preparationType"
                               ],
                               "example": "preparationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
                               "type": "string"
                             }
                           },
@@ -17106,6 +17570,32 @@
                   },
                   "type": "object"
                 },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "taxa": {
                   "additionalProperties": false,
                   "properties": {
@@ -17286,6 +17776,32 @@
                               "preparationType"
                             ],
                             "example": "preparationType",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
                             "type": "string"
                           }
                         },
@@ -17486,6 +18002,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "taxa": {
                     "additionalProperties": false,
                     "properties": {
@@ -17669,6 +18211,32 @@
                                 "preparationType"
                               ],
                               "example": "preparationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
                               "type": "string"
                             }
                           },
@@ -18215,6 +18783,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "synonyms": {
                     "additionalProperties": false,
                     "properties": {
@@ -18408,6 +19002,32 @@
                             "type": "null"
                           }
                         ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     },
                     "type": "object"
@@ -18609,6 +19229,32 @@
                   },
                   "type": "object"
                 },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "synonyms": {
                   "additionalProperties": false,
                   "properties": {
@@ -18799,6 +19445,32 @@
                           "type": "null"
                         }
                       ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
                     }
                   },
                   "type": "object"
@@ -18997,6 +19669,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "synonyms": {
                     "additionalProperties": false,
                     "properties": {
@@ -19190,6 +19888,32 @@
                             "type": "null"
                           }
                         ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     },
                     "type": "object"
@@ -19910,6 +20634,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "synonymToTaxon": {
                     "additionalProperties": false,
                     "properties": {
@@ -20055,6 +20805,32 @@
                             "type": "null"
                           }
                         ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     },
                     "type": "object"
@@ -20208,6 +20984,32 @@
                   },
                   "type": "object"
                 },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "synonymToTaxon": {
                   "additionalProperties": false,
                   "properties": {
@@ -20350,6 +21152,32 @@
                           "type": "null"
                         }
                       ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "resourceActivities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "resourceActivity"
+                            ],
+                            "example": "resourceActivity",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
                     }
                   },
                   "type": "object"
@@ -20500,6 +21328,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "synonymToTaxon": {
                     "additionalProperties": false,
                     "properties": {
@@ -20645,6 +21499,32 @@
                             "type": "null"
                           }
                         ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     },
                     "type": "object"
@@ -21160,6 +22040,32 @@
               },
               "relationships": {
                 "properties": {
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "user": {
                     "additionalProperties": false,
                     "properties": {
@@ -21361,6 +22267,32 @@
               },
               "relationships": {
                 "properties": {
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "user": {
                     "additionalProperties": false,
                     "properties": {
@@ -23092,6 +24024,32 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -23336,6 +24294,32 @@
                                 "place"
                               ],
                               "example": "place",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
                               "type": "string"
                             }
                           },
@@ -26406,6 +27390,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "taxa": {
                     "additionalProperties": false,
                     "properties": {
@@ -26703,6 +27713,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "taxa": {
                     "additionalProperties": false,
                     "properties": {
@@ -26955,6 +27991,32 @@
                             "type": "null"
                           }
                         ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     },
                     "type": "object"
@@ -27248,6 +28310,32 @@
                             "type": "null"
                           }
                         ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     },
                     "type": "object"
@@ -27546,6 +28634,32 @@
                     },
                     "type": "object"
                   },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "synonymToTaxon": {
                     "additionalProperties": false,
                     "properties": {
@@ -27801,6 +28915,32 @@
                             "type": "null"
                           }
                         ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "resourceActivities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "resourceActivity"
+                              ],
+                              "example": "resourceActivity",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     },
                     "type": "object"

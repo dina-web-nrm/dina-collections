@@ -53,6 +53,10 @@
     "nameDetails": {
       "en": "name details and abbreviation",
       "sv": ""
+    },
+    "recordHistory": {
+      "en": "Record history",
+      "sv": ""
     }
   },
   "buttons": {
@@ -75,6 +79,16 @@
         "en": "add agent remarks",
         "sv": ""
       }
+    }
+  },
+  "other": {
+    "createdBy": {
+      "en": "Created by",
+      "sv": ""
+    },
+    "lastModifiedBy": {
+      "en": "Last modified by",
+      "sv": ""
     }
   },
   "agent": {

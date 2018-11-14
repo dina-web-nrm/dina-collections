@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { reduxForm } from 'redux-form'
+import {
+  formValueSelector as formValueSelectorFactory,
+  reduxForm,
+} from 'redux-form'
 
 import formValidator from 'common/es5/error/validators/formValidator'
 import { Form, FormRow } from 'coreModules/form/components'
@@ -22,6 +25,11 @@ const defaultProps = {
 }
 
 class BaseForm extends Component {
+  constructor(props) {
+    super(props)
+    this.formValueSelector = formValueSelectorFactory(props.form)
+  }
+
   render() {
     const {
       availableHeight,
@@ -46,6 +54,7 @@ class BaseForm extends Component {
           formName={form}
           formSectionNavigationHeader={formSectionNavigationHeader}
           formSectionNavigationSubHeader={formSectionNavigationSubHeader}
+          formValueSelector={this.formValueSelector}
           module="locality"
           moduleName="locality"
           sectionSpecs={sectionSpecs}

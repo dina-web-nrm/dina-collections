@@ -5,7 +5,12 @@ import { compose } from 'redux'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import BaseForm from './BaseForm'
 
-export const include = ['parent', 'preparationTypes', 'taxa']
+export const include = [
+  'parent',
+  'preparationTypes',
+  'resourceActivities',
+  'taxa',
+]
 
 const propTypes = {
   itemId: PropTypes.string.isRequired,
@@ -56,7 +61,12 @@ export default compose(
     include,
     refresh: true,
     relationships: include,
-    resolveRelationships: ['storageLocation', 'preparationType', 'taxon'],
+    resolveRelationships: [
+      'storageLocation',
+      'preparationType',
+      'resourceActivity',
+      'taxon',
+    ],
     resource: 'storageLocation',
   })
 )(Edit)

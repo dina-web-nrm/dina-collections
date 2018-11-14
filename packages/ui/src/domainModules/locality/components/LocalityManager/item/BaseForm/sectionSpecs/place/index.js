@@ -1,8 +1,9 @@
+import { recordHistoryEvents } from 'coreModules/form/components/units'
 import unitSpecs from '../../unitSpecs'
 
 const { place } = unitSpecs
 
-const units = [place]
+const units = [place, recordHistoryEvents]
 
 export default {
   name: 'place',
