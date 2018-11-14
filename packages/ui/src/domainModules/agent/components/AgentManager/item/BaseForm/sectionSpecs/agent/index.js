@@ -6,6 +6,7 @@ const {
   agentBirthAndDeath,
   agentContactDetails,
   agentNameDetails,
+  agentRoles,
 } = unitSpecs
 
 const units = [
@@ -13,6 +14,7 @@ const units = [
   agentNameDetails,
   agentContactDetails,
   agentBirthAndDeath,
+  agentRoles,
   recordHistoryEvents,
 ]
 
