@@ -20,16 +20,13 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const {
-      nestedItem: initialValues,
-      onInteraction,
-      itemId,
-      ...rest
-    } = this.props
+    const { nestedItem, onInteraction, itemId, ...rest } = this.props
 
-    if (!initialValues) {
+    if (!nestedItem) {
       return null
     }
+
+    const { name, group, resourceActivities } = nestedItem
 
     return (
       <React.Fragment>
@@ -38,16 +35,15 @@ export class Edit extends PureComponent {
           displayBackButton
           displayResetButton
           form="placeEdit"
-          formSectionNavigationHeader={initialValues.name}
-          formSectionNavigationSubHeader={capitalizeFirstLetter(
-            initialValues.group
-          )}
-          initialValues={initialValues}
+          formSectionNavigationHeader={name}
+          formSectionNavigationSubHeader={capitalizeFirstLetter(group)}
+          initialValues={nestedItem}
           onClose={event => {
             event.preventDefault()
             onInteraction('FORM_CANCEL')
           }}
           onInteraction={onInteraction}
+          resourceActivities={resourceActivities}
         />
       </React.Fragment>
     )

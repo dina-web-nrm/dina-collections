@@ -72,7 +72,7 @@ class EditSpecimen extends PureComponent {
       return null
     }
 
-    const initialValues = setDefaultValues({
+    const { resourceActivities, ...initialValues } = setDefaultValues({
       featureTypes,
       specimen: nestedItem || {},
     })
@@ -101,6 +101,7 @@ class EditSpecimen extends PureComponent {
         initialValues={initialValues}
         loading={!nestedItem}
         mode="edit"
+        resourceActivities={resourceActivities}
       />
     )
   }

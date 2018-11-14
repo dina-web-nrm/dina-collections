@@ -24,16 +24,13 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const {
-      nestedItem: initialValues,
-      onInteraction,
-      itemId,
-      ...rest
-    } = this.props
+    const { nestedItem, onInteraction, itemId, ...rest } = this.props
 
-    if (!initialValues) {
+    if (!nestedItem) {
       return null
     }
+
+    const { name, resourceActivities } = nestedItem
 
     return (
       <BaseForm
@@ -41,13 +38,14 @@ export class Edit extends PureComponent {
         displayBackButton
         displayResetButton
         form="storageLocationEdit"
-        formSectionNavigationHeader={initialValues.name}
-        initialValues={initialValues}
+        formSectionNavigationHeader={name}
+        initialValues={nestedItem}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
+        resourceActivities={resourceActivities}
       />
     )
   }
