@@ -8,7 +8,7 @@ import createLog from 'utilities/log'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/DeterminationsAccordion/DeterminationTitle'
+  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/formParts/DeterminationsAccordion/DeterminationTitle'
 )
 
 const propTypes = {

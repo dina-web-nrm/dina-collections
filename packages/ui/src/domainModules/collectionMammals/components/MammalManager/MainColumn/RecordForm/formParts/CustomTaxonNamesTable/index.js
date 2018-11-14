@@ -14,7 +14,7 @@ import CustomTaxonNamesTableRow from './Row'
 const { AddButton } = formParts
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/CustomTaxonNamesTable'
+  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/formParts/CustomTaxonNamesTable'
 )
 
 const mapStateToProps = (state, { formValueSelector, name }) => {
