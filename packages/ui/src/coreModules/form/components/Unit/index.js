@@ -88,6 +88,7 @@ class Unit extends PureComponent {
       moduleName,
       removeArrayFieldByIndex,
       unitSpec,
+      ...rest
     } = this.props
 
     const { showInitiallyHiddenParts } = this.state
@@ -109,7 +110,7 @@ class Unit extends PureComponent {
               initiallyShown,
               name,
               wrapInField,
-              ...rest
+              ...partPropsRest
             },
             index
           ) => {
@@ -129,6 +130,7 @@ class Unit extends PureComponent {
             if (containsReduxFormField) {
               return (
                 <Component
+                  {...rest}
                   changeFieldValue={changeFieldValue}
                   formName={formName}
                   formValueSelector={formValueSelector}
@@ -138,7 +140,7 @@ class Unit extends PureComponent {
                   onClick={this.showInitiallyHiddenParts}
                   removeArrayFieldByIndex={removeArrayFieldByIndex}
                   {...componentProps}
-                  {...rest}
+                  {...partPropsRest}
                 />
               )
             }
@@ -146,26 +148,28 @@ class Unit extends PureComponent {
             if (wrapInField) {
               return (
                 <Field
+                  {...rest}
                   autoComplete="off"
                   component={Component}
                   key={name}
                   module={moduleName}
                   name={name}
                   {...componentProps}
-                  {...rest}
+                  {...partPropsRest}
                 />
               )
             }
 
             return (
               <Component
+                {...rest}
                 formValueSelector={formValueSelector}
                 key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
                 module={moduleName}
                 name={name}
                 onClick={this.showInitiallyHiddenParts}
                 {...componentProps}
-                {...rest}
+                {...partPropsRest}
               />
             )
           }

@@ -38,6 +38,7 @@ class Section extends PureComponent {
       moduleName,
       removeArrayFieldByIndex,
       sectionSpec,
+      ...rest
     } = this.props
 
     return (
@@ -46,6 +47,7 @@ class Section extends PureComponent {
           {sectionSpec.units.map(unit => {
             return (
               <Unit
+                {...rest}
                 changeFieldValue={changeFieldValue}
                 customParts={customParts}
                 formName={formName}

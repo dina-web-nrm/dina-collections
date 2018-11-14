@@ -4,7 +4,7 @@ import { Button, Grid, Icon } from 'semantic-ui-react'
 
 import Section from '../../Section'
 
-const propTypes = {
+export const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   changeFieldValue: PropTypes.func,
@@ -50,6 +50,7 @@ class FormSectionView extends PureComponent {
       removeArrayFieldByIndex,
       sectionSpecs,
       showSectionsInNavigation,
+      ...rest
     } = this.props
 
     const sectionIndex = showSectionsInNavigation ? activeFormSectionIndex : 0
@@ -73,6 +74,7 @@ class FormSectionView extends PureComponent {
     return (
       <Grid.Column width={16}>
         <Section
+          {...rest}
           changeFieldValue={changeFieldValue}
           customParts={customParts}
           formName={formName}
@@ -96,6 +98,7 @@ class FormSectionView extends PureComponent {
       moduleName,
       removeArrayFieldByIndex,
       sectionSpecs,
+      ...rest
     } = this.props
 
     return (
@@ -110,6 +113,7 @@ class FormSectionView extends PureComponent {
           return (
             <Grid.Column key={name} width={16}>
               <Section
+                {...rest}
                 changeFieldValue={changeFieldValue}
                 customParts={customParts}
                 formName={formName}
