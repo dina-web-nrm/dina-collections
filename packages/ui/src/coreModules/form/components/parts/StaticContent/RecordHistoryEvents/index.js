@@ -7,16 +7,14 @@ import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import TranslatedHeader from '../TranslatedHeader'
 import EventRow from './EventRow'
 
-const mapStateToProps = (state, { formValueSelector, name }) => {
-  const recordHistoryEvents = formValueSelector(state, name)
-
-  if (!recordHistoryEvents || !recordHistoryEvents.length) {
+const mapStateToProps = (_, { resourceActivities }) => {
+  if (!resourceActivities || !resourceActivities.length) {
     return {}
   }
 
   return {
-    createdEvent: recordHistoryEvents.find(({ action }) => action === 'create'),
-    lastModifiedEvent: recordHistoryEvents.find(
+    createdEvent: resourceActivities.find(({ action }) => action === 'create'),
+    lastModifiedEvent: resourceActivities.find(
       ({ action }) => action === 'update'
     ),
   }
