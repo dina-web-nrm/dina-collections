@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import extractProps from 'utilities/extractProps'
+
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   renderRow: PropTypes.func,
@@ -50,7 +52,12 @@ class RowLayout extends Component {
           ...(wrapperStyle || {}),
         }}
       >
-        {rows.map((rowProps, index) => {
+        {rows.map((rowSpec, index) => {
+          const { extractedProps: rowProps, rest } = extractProps({
+            keys: ['classNames', 'id', 'height', 'key', 'renderRow', 'style'],
+            props: rowSpec,
+          })
+
           return (
             <div
               className={rowProps.classNames}
@@ -74,9 +81,9 @@ class RowLayout extends Component {
             >
               {!rowProps.renderRow &&
                 renderRow &&
-                renderRow(rowProps.key, { ...this.props, ...rowProps })}
+                renderRow(rowProps.key, { ...this.props, ...rest })}
               {rowProps.renderRow &&
-                rowProps.renderRow({ ...this.props, ...rowProps })}
+                rowProps.renderRow({ ...this.props, ...rest })}
             </div>
           )
         })}
