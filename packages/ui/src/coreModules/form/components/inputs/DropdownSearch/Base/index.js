@@ -99,7 +99,7 @@ class DropdownSearchInput extends Component {
   }
 
   componentDidMount() {
-    if (this.props.focusOnMount) {
+    if (this.props.focusOnMount && !this.props.selectedOption) {
       this.input.handleFocus()
     }
   }

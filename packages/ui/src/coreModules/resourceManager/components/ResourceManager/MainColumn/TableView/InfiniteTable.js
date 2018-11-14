@@ -45,13 +45,18 @@ export class InfiniteTable extends Component {
     this.renderItem = this.renderItem.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.currentTableRowNumber !== nextProps.currentTableRowNumber) {
+  componentDidUpdate(prevProps) {
+    const { currentTableRowNumber } = this.props
+
+    const { currentTableRowNumber: prevCurrentTableRowNumber } = prevProps
+
+    if (currentTableRowNumber !== prevCurrentTableRowNumber) {
       const [firstVisibleRow] = this.list.getVisibleRange()
-      if (nextProps.currentTableRowNumber <= firstVisibleRow + 1) {
-        this.list.scrollTo(nextProps.currentTableRowNumber - 1)
+
+      if (currentTableRowNumber <= firstVisibleRow + 1) {
+        this.list.scrollTo(currentTableRowNumber - 1)
       } else {
-        this.list.scrollAround(nextProps.currentTableRowNumber)
+        this.list.scrollAround(currentTableRowNumber)
       }
     }
   }

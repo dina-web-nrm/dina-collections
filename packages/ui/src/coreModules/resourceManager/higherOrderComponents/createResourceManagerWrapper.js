@@ -3,19 +3,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { reset as resetActionCreator } from 'redux-form'
 import createLog from 'utilities/log'
 
 import actionCreators from 'coreModules/crud/actionCreators'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/resourceManager/keyObjectModule'
-
-import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
-
-import { reset as resetActionCreator } from 'redux-form'
-
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
@@ -199,7 +196,7 @@ const createResourceManagerWrapper = (
         this.handleInteraction(NAVIGATE_FILTER)
       }
 
-      this.viewUpdateTableView()
+      this.viewUpdateTableView(undefined, initialFilterValues)
       this.viewUpdateTreeView()
       this.viewUpdateEditItemView()
 
@@ -457,7 +454,7 @@ const createResourceManagerWrapper = (
           matchingIndex = index
         }
       })
-      if (matchingIndex) {
+      if (matchingIndex !== undefined) {
         return matchingIndex + 1
       }
       return null
@@ -607,7 +604,7 @@ const createResourceManagerWrapper = (
       })
     }
 
-    viewUpdateTableView(prevProps) {
+    viewUpdateTableView(prevProps, initialFilterValues) {
       const {
         filterValues,
         focusIdWhenLoaded,
@@ -629,9 +626,9 @@ const createResourceManagerWrapper = (
           initialItemId !== undefined &&
           initialItemId !== ''
         ) {
-          this.handleInteraction(ITEM_SELECT, { itemId: initialItemId })
+          this.props.setFocusIdWhenLoaded(initialItemId, { resource })
         }
-        this.transitionToTableView()
+        this.transitionToTableView(initialFilterValues)
         return
       }
 
@@ -658,7 +655,7 @@ const createResourceManagerWrapper = (
       }
     }
 
-    transitionToTableView() {
+    transitionToTableView(initialFilterValues) {
       log.debug('transition to view: Table')
 
       const { filterValues, focusedItemId, resource } = this.props
@@ -666,7 +663,7 @@ const createResourceManagerWrapper = (
         this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
       }
 
-      this.tableSearch(filterValues)
+      this.tableSearch(filterValues || initialFilterValues)
     }
     transitionFromTableView() {
       log.debug('transition from view: Table')

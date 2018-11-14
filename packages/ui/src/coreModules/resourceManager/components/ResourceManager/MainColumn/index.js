@@ -24,7 +24,7 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
-  fetchIncludeAfterUpdate: PropTypes.bool.isRequired,
+  fetchIncludeAfterUpdate: PropTypes.bool,
   isPicker: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
@@ -38,6 +38,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  fetchIncludeAfterUpdate: undefined,
   recordNavigationHeight: emToPixels(4.25),
   recordOptionsHeight: emToPixels(3.5625),
 }
