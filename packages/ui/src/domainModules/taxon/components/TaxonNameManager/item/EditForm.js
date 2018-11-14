@@ -12,6 +12,8 @@ export const include = [
   'synonymToTaxon',
 ]
 
+const passthroughProps = ['nestedTaxonName', 'resourceActivities']
+
 const propTypes = {
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
@@ -39,14 +41,7 @@ export class Edit extends PureComponent {
       return null
     }
 
-    const {
-      acceptedToTaxon,
-      name,
-      rank,
-      resourceActivities,
-      rubinNumber,
-      synonymToTaxon,
-    } = nestedItem
+    const { name, rank, resourceActivities, rubinNumber } = nestedItem
 
     return (
       <BaseForm
@@ -58,19 +53,18 @@ export class Edit extends PureComponent {
           textKey: 'name',
         })})`}
         initialValues={{
-          acceptedToTaxon,
-          id: itemId,
           name,
           rank,
-          resourceActivities,
           rubinNumber,
-          synonymToTaxon,
         }}
+        nestedTaxonName={nestedItem}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
+        passthroughProps={passthroughProps}
+        resourceActivities={resourceActivities}
       />
     )
   }
