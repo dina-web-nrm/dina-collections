@@ -16,7 +16,7 @@ services:
 networks:
   default:
     external:
-      name: dinacollections_default
+      name: dina-collections_default
 
 volumes:
   postgres_data:
