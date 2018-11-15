@@ -18,7 +18,7 @@ const defaultProps = {
 }
 
 const baseTreeFilter = {
-  group: 'continent',
+  group: 'continentOcean',
 }
 
 const tableBatchFetchOptions = {

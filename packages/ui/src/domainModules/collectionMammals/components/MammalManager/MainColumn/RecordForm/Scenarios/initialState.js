@@ -105,7 +105,7 @@ export default {
           '1': {
             attributes: {
               name: 'africa',
-              group: 'continent',
+              group: 'continentOcean',
             },
 
             id: '1',
