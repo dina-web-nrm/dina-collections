@@ -28,10 +28,10 @@ module.exports = function buildDateRange({
       year: startYear,
     })
     range.startDate = {
+      day: startDay ? Number(startDay) : undefined,
       interpretedTimestamp,
-      startDay,
-      startMonth,
-      startYear,
+      month: startMonth ? Number(startMonth) : undefined,
+      year: startYear ? Number(startYear) : undefined,
     }
   }
 
@@ -47,10 +47,10 @@ module.exports = function buildDateRange({
       year: endYear,
     })
     range.endDate = {
-      endDay,
-      endMonth,
-      endYear,
+      day: endDay ? Number(endDay) : undefined,
       interpretedTimestamp,
+      month: endMonth ? Number(endMonth) : undefined,
+      year: endYear ? Number(endYear) : undefined,
     }
   }
 
