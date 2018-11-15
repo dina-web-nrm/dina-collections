@@ -100,7 +100,7 @@ const getFromGlobals = ({ globals, mapKey, key, reporter }) => {
       })
     } else {
       reporter.rebuildViewLookupMiss({
-        id: key,
+        id: key === undefined ? 'undefined' : key,
         resource: mapKey,
       })
     }
