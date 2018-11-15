@@ -18,7 +18,7 @@ const defaultProps = {
 }
 
 const baseTreeFilter = {
-  group: 'Level 2',
+  group: 'level 1',
 }
 
 const tableBatchFetchOptions = {
