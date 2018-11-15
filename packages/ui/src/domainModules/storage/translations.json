@@ -41,6 +41,20 @@
     "newStorageLocation": {
       "en": "new storage",
       "sv": ""
+    },
+    "recordHistory": {
+      "en": "Record history",
+      "sv": ""
+    }
+  },
+  "other": {
+    "createdBy": {
+      "en": "Created by",
+      "sv": ""
+    },
+    "lastModifiedBy": {
+      "en": "Last modified by",
+      "sv": ""
     }
   },
   "cancel": {

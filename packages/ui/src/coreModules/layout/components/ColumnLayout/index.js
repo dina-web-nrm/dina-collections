@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import extractProps from 'utilities/extractProps'
+
 const propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       renderColumn: PropTypes.func,
+      style: PropTypes.object,
       width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     }).isRequired
   ),
@@ -41,10 +44,16 @@ class ColumnLayout extends Component {
           ...(wrapperStyle || {}),
         }}
       >
-        {columns.map((columnProps, index) => {
+        {columns.map((columnSpec, index) => {
+          const { extractedProps: columnProps, rest } = extractProps({
+            keys: ['classNames', 'id', 'key', 'renderColumn', 'style', 'width'],
+            props: columnSpec,
+          })
+
           return (
             <div
               className={columnProps.classNames}
+              id={columnProps.id}
               key={columnProps.key || index}
               style={
                 columnProps.width
@@ -66,10 +75,10 @@ class ColumnLayout extends Component {
                 renderColumn &&
                 renderColumn(columnProps.key, {
                   ...this.props,
-                  ...columnProps,
+                  ...rest,
                 })}
               {columnProps.renderColumn &&
-                columnProps.renderColumn({ ...this.props, ...columnProps })}
+                columnProps.renderColumn({ ...this.props, ...rest })}
             </div>
           )
         })}

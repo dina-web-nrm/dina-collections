@@ -14,7 +14,7 @@ import IdentifiersTableRow from './Row'
 const { AddButton } = formParts
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/IdentifiersTable'
+  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/formParts/IdentifiersTable'
 )
 
 const mapStateToProps = (state, { formValueSelector, name }) => {

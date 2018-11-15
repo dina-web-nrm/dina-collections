@@ -5115,6 +5115,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout One full-width co
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5157,6 +5158,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
     >
       <div
         className={undefined}
+        id={undefined}
         style={
           Object {
             "flex": "none",
@@ -5178,6 +5180,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
       </div>
       <div
         className={undefined}
+        id={undefined}
         style={
           Object {
             "flex": "auto",
@@ -5200,6 +5203,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
       </div>
       <div
         className={undefined}
+        id={undefined}
         style={
           Object {
             "flex": "none",
@@ -5236,6 +5240,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5257,6 +5262,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
     </div>
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5292,6 +5298,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -5313,6 +5320,7 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
     </div>
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",

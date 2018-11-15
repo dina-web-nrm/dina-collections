@@ -1,30 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import objectPath from 'object-path'
 
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
-const mapStateToProps = (state, { formValueSelector }) => {
-  return {
-    itemId: formValueSelector(state, 'id'),
-  }
-}
-
 const propTypes = {
-  acceptedTaxon: PropTypes.shape({
-    acceptedTaxonName: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      rank: PropTypes.string.isRequired,
-    }).isRequired,
-  }),
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
-  taxonName: PropTypes.shape({
+  nestedTaxonName: PropTypes.shape({
     acceptedToTaxon: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
@@ -32,19 +19,29 @@ const propTypes = {
       id: PropTypes.string.isRequired,
     }),
   }).isRequired,
+  synonymToAcceptedTaxonName: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    rank: PropTypes.string.isRequired,
+  }),
 }
 const defaultProps = {
-  acceptedTaxon: undefined,
+  synonymToAcceptedTaxonName: undefined,
 }
 
 const TaxonNameTaxonStatus = ({
-  acceptedTaxon,
   i18n: { moduleTranslate },
-  taxonName,
+  nestedTaxonName,
+  synonymToAcceptedTaxonName,
 }) => {
-  if (objectPath.get(taxonName, 'acceptedToTaxon.id')) {
-    const taxonId = objectPath.get(taxonName, 'acceptedToTaxon.id')
-    const rankString = taxonName.rank && `(${taxonName.rank})`
+  const acceptedToTaxonId = objectPath.get(
+    nestedTaxonName,
+    'acceptedToTaxon.id'
+  )
+
+  if (acceptedToTaxonId) {
+    const { name, rank } = nestedTaxonName
+    const rankString = rank ? ` (${rank})` : ''
+
     return (
       <React.Fragment>
         {`${moduleTranslate({
@@ -52,20 +49,28 @@ const TaxonNameTaxonStatus = ({
           textKey: 'acceptedNameForTaxon',
         })} `}
         <Link
-          to={`/app/taxa?filterColumn=&itemId=${taxonId}&mainColumn=edit`}
-        >{`${taxonName.name} ${rankString}`}</Link>
+          to={`/app/taxa?filterColumn=&itemId=${
+            acceptedToTaxonId
+          }&mainColumn=edit`}
+        >{`${name}${rankString}`}</Link>
       </React.Fragment>
     )
   }
 
-  if (objectPath.get(taxonName, 'synonymToTaxon.id')) {
-    const taxonId = objectPath.get(taxonName, 'synonymToTaxon.id')
+  const synonymToTaxonId = objectPath.get(nestedTaxonName, 'synonymToTaxon.id')
+
+  if (synonymToTaxonId) {
     const acceptedTaxonName = objectPath.get(
-      acceptedTaxon,
+      synonymToAcceptedTaxonName,
       'acceptedTaxonName.name'
     )
-    const acceptedRank = objectPath.get(acceptedTaxon, 'acceptedTaxonName.rank')
-    const rankString = acceptedRank && `(${acceptedRank})`
+    const acceptedTaxonNameRank = objectPath.get(
+      synonymToAcceptedTaxonName,
+      'acceptedTaxonName.rank'
+    )
+    const rankString = acceptedTaxonNameRank
+      ? ` (${acceptedTaxonNameRank})`
+      : ''
 
     return (
       <React.Fragment>
@@ -74,8 +79,10 @@ const TaxonNameTaxonStatus = ({
           textKey: 'synonymForTaxon',
         })} `}
         <Link
-          to={`/app/taxa?filterColumn=&itemId=${taxonId}&mainColumn=edit`}
-        >{`${acceptedTaxonName} ${rankString}`}</Link>
+          to={`/app/taxa?filterColumn=&itemId=${
+            synonymToTaxonId
+          }&mainColumn=edit`}
+        >{`${acceptedTaxonName}${rankString}`}</Link>
       </React.Fragment>
     )
   }
@@ -95,18 +102,10 @@ TaxonNameTaxonStatus.defaultProps = defaultProps
 
 export default compose(
   withI18n({ module: 'taxon' }),
-  connect(mapStateToProps),
   createGetNestedItemById({
-    include: ['acceptedToTaxon', 'synonymToTaxon'],
-    nestedItemKey: 'taxonName',
-    relationships: ['acceptedToTaxon', 'synonymToTaxon'],
-    resolveRelationships: ['taxon'],
-    resource: 'taxonName',
-  }),
-  createGetNestedItemById({
-    idPath: 'taxonName.synonymToTaxon.id',
+    idPath: 'nestedTaxonName.synonymToTaxon.id',
     include: ['acceptedTaxonName'],
-    nestedItemKey: 'acceptedTaxon',
+    nestedItemKey: 'synonymToAcceptedTaxonName',
     relationships: ['acceptedTaxonName'],
     resolveRelationships: ['taxonName'],
     resource: 'taxon',

@@ -33,6 +33,22 @@
     "district": { "en": "district" },
     "province": { "en": "province" }
   },
+  "headers": {
+    "recordHistory": {
+      "en": "Record history",
+      "sv": ""
+    }
+  },
+  "other": {
+    "createdBy": {
+      "en": "Created by",
+      "sv": ""
+    },
+    "lastModifiedBy": {
+      "en": "Last modified by",
+      "sv": ""
+    }
+  },
   "newLocality": {
     "en": "new locality",
     "sv": ""

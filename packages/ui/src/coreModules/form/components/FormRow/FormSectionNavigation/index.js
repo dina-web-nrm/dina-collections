@@ -18,7 +18,7 @@ const inactiveStyle = {
   margin: 0,
 }
 
-const propTypes = {
+export const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   formName: PropTypes.string.isRequired,

@@ -101,6 +101,20 @@
               }
             }
           }
+        },
+        "resourceActivities": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__resourceActivity",
+                "x-reference-type": "external"
+              }
+            }
+          }
         }
       }
     },
@@ -114,6 +128,13 @@
       "description": "Children places",
       "items": {
         "$ref": "__ROOT__place",
+        "x-reference-type": "external"
+      }
+    },
+    "resourceActivities": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__resourceActivity",
         "x-reference-type": "external"
       }
     }

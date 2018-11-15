@@ -1,10 +1,10 @@
+import { recordHistoryEvents } from 'coreModules/form/components/units'
 import unitSpecs from '../../unitSpecs'
 
 const {
   specimenRoot,
   identifiers,
   acquisition,
-  recordHistoryEvents,
   recordHistoryExternalEvents,
 } = unitSpecs
 

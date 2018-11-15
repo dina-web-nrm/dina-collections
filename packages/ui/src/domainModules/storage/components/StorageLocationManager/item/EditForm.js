@@ -5,7 +5,12 @@ import { compose } from 'redux'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import BaseForm from './BaseForm'
 
-export const include = ['parent', 'preparationTypes', 'taxa']
+export const include = [
+  'parent',
+  'preparationTypes',
+  'resourceActivities',
+  'taxa',
+]
 
 const propTypes = {
   itemId: PropTypes.string.isRequired,
@@ -19,16 +24,13 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const {
-      nestedItem: initialValues,
-      onInteraction,
-      itemId,
-      ...rest
-    } = this.props
+    const { nestedItem, onInteraction, itemId, ...rest } = this.props
 
-    if (!initialValues) {
+    if (!nestedItem) {
       return null
     }
+
+    const { name, resourceActivities } = nestedItem
 
     return (
       <BaseForm
@@ -36,13 +38,14 @@ export class Edit extends PureComponent {
         displayBackButton
         displayResetButton
         form="storageLocationEdit"
-        formSectionNavigationHeader={initialValues.name}
-        initialValues={initialValues}
+        formSectionNavigationHeader={name}
+        initialValues={nestedItem}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
+        resourceActivities={resourceActivities}
       />
     )
   }
@@ -56,7 +59,12 @@ export default compose(
     include,
     refresh: true,
     relationships: include,
-    resolveRelationships: ['storageLocation', 'preparationType', 'taxon'],
+    resolveRelationships: [
+      'storageLocation',
+      'preparationType',
+      'resourceActivity',
+      'taxon',
+    ],
     resource: 'storageLocation',
   })
 )(Edit)

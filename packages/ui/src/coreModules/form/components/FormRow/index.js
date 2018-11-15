@@ -7,14 +7,19 @@ import { push } from 'react-router-redux'
 import objectPath from 'object-path'
 
 import createLog from 'utilities/log'
+import extractProps from 'utilities/extractProps'
 import {
   actionCreators as formSupportKeyObjectActionCreators,
   globalSelectors as formSupportKeyObjectSelectors,
 } from 'coreModules/formSupport/keyObjectModule'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
-import FormSectionNavigation from './FormSectionNavigation'
-import FormSectionView from './FormSectionView'
+import FormSectionNavigation, {
+  propTypes as formSectionNavigationPropTypes,
+} from './FormSectionNavigation'
+import FormSectionView, {
+  propTypes as formSectionViewPropTypes,
+} from './FormSectionView'
 
 const log = createLog('coreModules/form/components/FormRow')
 
@@ -61,6 +66,7 @@ const propTypes = {
     path: PropTypes.string.isRequired,
   }).isRequired,
   moduleName: PropTypes.string.isRequired,
+  passthroughProps: PropTypes.arrayOf(PropTypes.string.isRequired),
   push: PropTypes.func.isRequired,
   resourceIdPathParamKey: PropTypes.string,
   sectionId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -79,6 +85,7 @@ const defaultProps = {
   activeFormSectionIndex: undefined,
   customParts: undefined,
   formSectionNavigationSubHeader: undefined,
+  passthroughProps: ['resourceActivities'],
   resourceIdPathParamKey: 'itemId',
   sectionId: undefined,
   showAllFormSections: undefined,
@@ -155,6 +162,14 @@ class FormRow extends PureComponent {
   renderColumn(key, props) {
     switch (key) {
       case 'formSectionNavigation': {
+        const { extractedProps } = extractProps({
+          keys: [
+            ...Object.keys(formSectionNavigationPropTypes),
+            ...this.props.passthroughProps,
+          ],
+          props,
+        })
+
         const {
           formSectionNavigationHeader,
           formSectionNavigationSubHeader,
@@ -162,8 +177,7 @@ class FormRow extends PureComponent {
 
         return (
           <FormSectionNavigation
-            {...this.props}
-            {...props}
+            {...extractedProps}
             header={formSectionNavigationHeader}
             subHeader={formSectionNavigationSubHeader}
           />
@@ -171,7 +185,15 @@ class FormRow extends PureComponent {
       }
 
       case 'formSectionView': {
-        return <FormSectionView {...this.props} {...props} />
+        const { extractedProps } = extractProps({
+          keys: [
+            ...Object.keys(formSectionViewPropTypes),
+            ...this.props.passthroughProps,
+          ],
+          props,
+        })
+
+        return <FormSectionView {...extractedProps} />
       }
 
       default: {
@@ -200,6 +222,7 @@ class FormRow extends PureComponent {
     ) {
       return null
     }
+
     return (
       <React.Fragment>
         <ColumnLayout

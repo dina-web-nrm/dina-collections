@@ -17,7 +17,7 @@ import DeterminationTitle from './DeterminationTitle'
 const { AddButton } = formParts
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/DeterminationsAccordion'
+  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/formParts/DeterminationsAccordion'
 )
 
 const mapStateToProps = (state, { formValueSelector }) => {

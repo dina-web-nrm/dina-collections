@@ -47,6 +47,7 @@ class BaseForm extends Component {
       formSectionNavigationSubHeader,
       formValueSelector,
       handleSubmit,
+      ...rest
     } = this.props
 
     return (
@@ -59,6 +60,7 @@ class BaseForm extends Component {
         setFormRef={this.setFormRef}
       >
         <FormRow
+          {...rest}
           availableHeight={availableHeight - formActionBarHeight}
           customParts={customParts}
           formName={form}

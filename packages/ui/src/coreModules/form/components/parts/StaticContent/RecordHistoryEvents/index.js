@@ -3,23 +3,18 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import formParts from 'coreModules/form/components/parts'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-
+import TranslatedHeader from '../TranslatedHeader'
 import EventRow from './EventRow'
 
-const { TranslatedHeader } = formParts
-
-const mapStateToProps = (state, { formValueSelector, name }) => {
-  const recordHistoryEvents = formValueSelector(state, name)
-
-  if (!recordHistoryEvents || !recordHistoryEvents.length) {
+const mapStateToProps = (_, { resourceActivities }) => {
+  if (!resourceActivities || !resourceActivities.length) {
     return {}
   }
 
   return {
-    createdEvent: recordHistoryEvents.find(({ action }) => action === 'create'),
-    lastModifiedEvent: recordHistoryEvents.find(
+    createdEvent: resourceActivities.find(({ action }) => action === 'create'),
+    lastModifiedEvent: resourceActivities.find(
       ({ action }) => action === 'update'
     ),
   }
@@ -64,11 +59,11 @@ class RecordHistoryEvents extends PureComponent {
             textKey="headers.recordHistory"
           />
         )}
-
         {createdEvent && (
           <EventRow
-            actionType={moduleTranslate({
+            eventType={moduleTranslate({
               capitalize: true,
+              module,
               textKey: 'other.createdBy',
             })}
             timestamp={createdEvent.srcCreatedAt}
@@ -78,8 +73,9 @@ class RecordHistoryEvents extends PureComponent {
 
         {lastModifiedEvent && (
           <EventRow
-            actionType={moduleTranslate({
+            eventType={moduleTranslate({
               capitalize: true,
+              module,
               textKey: 'other.lastModifiedBy',
             })}
             timestamp={lastModifiedEvent.srcUpdatedAt}
@@ -94,7 +90,6 @@ class RecordHistoryEvents extends PureComponent {
 RecordHistoryEvents.propTypes = propTypes
 RecordHistoryEvents.defaultProps = defaultProps
 
-export default compose(
-  withI18n({ module: 'collectionMammals' }),
-  connect(mapStateToProps)
-)(RecordHistoryEvents)
+export default compose(withI18n(), connect(mapStateToProps))(
+  RecordHistoryEvents
+)

@@ -30,6 +30,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
+export const include = ['resourceActivities']
+
 const propTypes = {
   form: PropTypes.string.isRequired,
   itemId: PropTypes.string.isRequired,
@@ -48,17 +50,13 @@ export class Edit extends PureComponent {
   }
 
   render() {
-    const {
-      form,
-      nestedItem: initialValues,
-      onInteraction,
-      itemId,
-      ...rest
-    } = this.props
+    const { form, nestedItem, onInteraction, itemId, ...rest } = this.props
 
-    if (!initialValues) {
+    if (!nestedItem) {
       return null
     }
+
+    const { agentType, fullName, resourceActivities } = nestedItem
 
     return (
       <BaseForm
@@ -66,17 +64,16 @@ export class Edit extends PureComponent {
         displayBackButton
         displayResetButton
         form={form}
-        formSectionNavigationHeader={initialValues.fullName}
-        formSectionNavigationSubHeader={capitalizeFirstLetter(
-          initialValues.agentType
-        )}
+        formSectionNavigationHeader={fullName}
+        formSectionNavigationSubHeader={capitalizeFirstLetter(agentType)}
         formValueSelector={this.formValueSelector}
-        initialValues={initialValues}
+        initialValues={nestedItem}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
+        resourceActivities={resourceActivities}
       />
     )
   }
@@ -87,7 +84,10 @@ Edit.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    relationships: ['all'],
+    include,
+    refresh: true,
+    relationships: include,
+    resolveRelationships: ['resourceActivity'],
     resource: 'normalizedAgent',
   }),
   connect(mapStateToProps)

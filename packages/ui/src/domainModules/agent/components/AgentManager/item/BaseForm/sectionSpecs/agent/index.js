@@ -1,3 +1,4 @@
+import { recordHistoryEvents } from 'coreModules/form/components/units'
 import unitSpecs from '../../unitSpecs'
 
 const {
@@ -12,6 +13,7 @@ const units = [
   agentNameDetails,
   agentContactDetails,
   agentBirthAndDeath,
+  recordHistoryEvents,
 ]
 
 export default {

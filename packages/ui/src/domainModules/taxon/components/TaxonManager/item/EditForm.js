@@ -12,6 +12,7 @@ import BaseForm from './BaseForm'
 export const include = [
   'acceptedTaxonName',
   'parent',
+  'resourceActivities',
   'synonyms',
   'vernacularNames',
 ]
@@ -21,12 +22,12 @@ const propTypes = {
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
   itemId: PropTypes.string.isRequired,
+  nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
-  taxon: PropTypes.object,
 }
 
 const defaultProps = {
-  taxon: undefined,
+  nestedItem: undefined,
 }
 
 export class Edit extends PureComponent {
@@ -35,22 +36,24 @@ export class Edit extends PureComponent {
       i18n: { moduleTranslate },
       onInteraction,
       itemId,
-      taxon,
+      nestedItem,
       ...rest
     } = this.props
 
-    if (!taxon) {
+    if (!nestedItem) {
       return null
     }
 
-    const initialValues = { ...taxon }
+    const { resourceActivities } = nestedItem
+
+    const name = objectPath.get(nestedItem, 'acceptedTaxonName.name')
+    const rank = objectPath.get(nestedItem, 'acceptedTaxonName.rank')
+
+    const initialValues = { ...nestedItem }
 
     if (objectPath.get(initialValues, 'parent.acceptedTaxonName')) {
       delete initialValues.parent.acceptedTaxonName
     }
-
-    const name = objectPath.get(initialValues, 'acceptedTaxonName.name')
-    const rank = objectPath.get(initialValues, 'acceptedTaxonName.rank')
 
     return (
       <BaseForm
@@ -71,6 +74,7 @@ export class Edit extends PureComponent {
           onInteraction('FORM_CANCEL')
         }}
         onInteraction={onInteraction}
+        resourceActivities={resourceActivities}
       />
     )
   }
@@ -83,10 +87,9 @@ export default compose(
   withI18n({ module: 'taxon' }),
   createGetNestedItemById({
     include,
-    nestedItemKey: 'taxon',
     refresh: true,
     relationships: include,
-    resolveRelationships: ['taxon', 'taxonName'],
+    resolveRelationships: ['resourceActivity', 'taxon', 'taxonName'],
     resource: 'taxon',
   })
 )(Edit)
