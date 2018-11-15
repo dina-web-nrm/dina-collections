@@ -6,7 +6,7 @@ const {
 
 const fieldPath = 'attributes.recordEventRegistered'
 
-const MATCHING_DESCRIPTION = 'Registration of the specimen'
+const MATCHING_DESCRIPTION = 'New specimen record'
 
 const transformation = ({ migrator, src, target }) => {
   const recordEventStrings = extractRecordEventText({
