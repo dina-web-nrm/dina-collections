@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   migrations:
-    image: dina/dina-collections-migrations
+    image: "dina/dina-collections-migrations:${TAG}"
     container_name: dina-migrations
     env_file:
       - ./env/.backend
