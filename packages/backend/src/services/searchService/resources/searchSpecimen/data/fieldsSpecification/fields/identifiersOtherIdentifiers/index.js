@@ -4,7 +4,7 @@ const {
 
 const fieldPath = 'attributes.identifiersOtherIdentifiers'
 
-const CATALOG_NUMBER_TYPE = 'catalog-number'
+const CATALOG_NUMBER_TYPE = 'catalog-no'
 
 const transformation = ({ migrator, src, target }) => {
   const identifiers = migrator.getValue({
