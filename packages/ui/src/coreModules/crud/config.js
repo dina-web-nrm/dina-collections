@@ -194,7 +194,7 @@ const config = {
         {
           text: {
             parameter: 'attributes.name',
-            translated: false,
+            translated: true,
           },
           type: 'getAllAsOptions',
         },
@@ -363,7 +363,7 @@ const config = {
         {
           text: {
             parameter: 'attributes.name',
-            translated: false,
+            translated: true,
           },
           type: 'getAllAsOptions',
         },
