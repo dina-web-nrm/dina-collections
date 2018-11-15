@@ -239,6 +239,7 @@ class FormRow extends PureComponent {
           renderColumn={this.renderColumn}
           sectionSpecs={sectionSpecs}
           showAllFormSections={showAllFormSections}
+          showSectionsInNavigation={showSectionsInNavigation}
           specimenId={match.params.specimenId}
         />
       </React.Fragment>
