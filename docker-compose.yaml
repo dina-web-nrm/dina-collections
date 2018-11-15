@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   api:
-    image: dina/dina-collections-api
+    image: "dina/dina-collections-api:${TAG}"
     container_name: dina-api
     expose:
     - "80"
@@ -80,9 +80,8 @@ services:
       #- /etc/localtime:/etc/localtime
     command: /bin/bash -c "envsubst < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/dina.conf && forego start -r"
 
-
   style:
-    image: dina/dina-semantic-ui-docs
+    image: "dina/dina-semantic-ui-docs:${TAG}"
     container_name: dina-semantic-ui-docs
     expose:
     - "80"
@@ -91,7 +90,7 @@ services:
     command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
 
   ui:
-    image: dina/dina-collections-ui
+    image: "dina/dina-collections-ui:${TAG}"
     container_name: dina-collections-ui
     expose:
     - "80"
@@ -103,7 +102,7 @@ services:
       - keycloak
 
   worker:
-    image: dina/dina-collections-api
+    image: "dina/dina-collections-api:${TAG}"
     container_name: dina-worker
     env_file:
       - ./env/.backend
