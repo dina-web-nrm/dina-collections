@@ -30,11 +30,11 @@ class PreparationTypeRow extends PureComponent {
   render() {
     const { item } = this.props
 
-    const { attributes: { name } = {} } = item || {}
+    const { attributes: { name: { en: nameEn } = {} } = {} } = item || {}
 
     return (
       <Table.Row>
-        <Table.Cell width={14}>{capitalizeFirstLetter(name)}</Table.Cell>
+        <Table.Cell width={14}>{capitalizeFirstLetter(nameEn)}</Table.Cell>
         <Table.Cell>
           <ConfirmationPopup
             cancelButtonText={
