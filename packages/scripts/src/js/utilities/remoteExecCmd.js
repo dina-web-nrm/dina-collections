@@ -33,6 +33,7 @@ module.exports = function remoteExecCmd({
         user,
       },
       (err, stdout, stderr) => {
+        console.log(stdout)
         if (stderr) {
           return reject(stderr)
         }

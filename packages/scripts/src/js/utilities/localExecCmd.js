@@ -10,6 +10,7 @@ module.exports = function localExecCmd({ cmd: cmdInput, envMap, rootPath }) {
 
   return new Promise((resolve, reject) => {
     exec(cmd, (err, stdout, stderr) => {
+      console.log(stdout)
       if (stderr) {
         return reject(stderr)
       }
