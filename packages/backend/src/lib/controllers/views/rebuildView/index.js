@@ -21,11 +21,12 @@ module.exports = function rebuildView({
 }) {
   const {
     transformationSpecification: {
-      globalDecorators = [],
       cacheRequestsToResources,
       collidingIdPrefix,
       createBatchFunction = defaultCreateBatchFunction,
+      defaultLimit = 10000,
       executeFunction = defaultExecuteFunction,
+      globalDecorators = [],
       numberOfEntriesEachBatch = 1000,
       postTransformationFunction = defaultPostTransformationFunction,
       preTransformationFunction = defaultPreTransformationFunction,
@@ -52,7 +53,7 @@ module.exports = function rebuildView({
   }
 
   return ({ request = {} } = {}) => {
-    const { queryParams: { limit = 10000 } = {} } = request
+    const { queryParams: { limit = defaultLimit } = {} } = request
     const reporter = createReporter()
     const serviceInteractorCache = cacheRequestsToResources
       ? createServiceInteractorCache({
