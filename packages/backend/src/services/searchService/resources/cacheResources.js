@@ -6,7 +6,7 @@ const filterSpecification = createGetManyFilterSpecifications({
 })
 
 module.exports = cacheResourcesSpecifications.reduce(
-  (obj, { name, srcResource, srcRelationships }) => {
+  (obj, { defaultLimit, name, srcResource, srcRelationships }) => {
     const spec = {
       basePath: '/api/search/v01',
       model: {
@@ -47,6 +47,7 @@ module.exports = cacheResourcesSpecifications.reduce(
         },
         {
           transformationSpecification: {
+            defaultLimit,
             srcRelationships,
             srcResource,
           },
