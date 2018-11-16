@@ -16,7 +16,6 @@ module.exports = function setupMethods({
   loadInitialData,
   Model,
   schemaModelName,
-  schemaVersion,
   validate: performValidation,
 }) {
   let validate = () => {
@@ -42,7 +41,6 @@ module.exports = function setupMethods({
   const getCount = getCountFactory({ Model })
   const create = createFactory({
     Model,
-    schemaVersion,
     validate,
   })
 
@@ -64,13 +62,11 @@ module.exports = function setupMethods({
   const update = updateFactory({
     getById,
     Model,
-    schemaVersion,
     validate,
   })
 
   const bulkCreate = bulkCreateFactory({
     Model,
-    schemaVersion,
     validate,
   })
 

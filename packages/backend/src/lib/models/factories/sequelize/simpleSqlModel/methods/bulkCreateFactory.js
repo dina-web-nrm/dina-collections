@@ -7,7 +7,7 @@ const log = createLog(
 )
 
 module.exports = function bulkCreateFactory(
-  { Model, schemaVersion, updatePrimaryKey, validate: validateFunction } = {}
+  { Model, updatePrimaryKey, validate: validateFunction } = {}
 ) {
   if (!Model) {
     throw new Error('Have to provide model')
@@ -29,7 +29,7 @@ module.exports = function bulkCreateFactory(
           }
         }
 
-        return { id: item.id, ...(item.attributes || {}), schemaVersion }
+        return { id: item.id, ...(item.attributes || {}) }
       }),
       { returning: true }
     ).then(res => {

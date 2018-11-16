@@ -8,7 +8,7 @@ const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/modelFactories/documentModel/methods/updateFactory')
 
-module.exports = function updateFactory({ Model, schemaVersion, validate }) {
+module.exports = function updateFactory({ Model, validate }) {
   return updateWrapper(({ item = {}, id }) => {
     const { attributes, internals, relationships } = item
 
@@ -52,7 +52,6 @@ module.exports = function updateFactory({ Model, schemaVersion, validate }) {
         diff: (storedData.diff || []).concat(diff(oldItem, newItem)),
         relationships: updatedRelationships,
         schemaCompliant: !validate(newItem),
-        schemaVersion,
       }
 
       if (newItem.attributes !== undefined) {

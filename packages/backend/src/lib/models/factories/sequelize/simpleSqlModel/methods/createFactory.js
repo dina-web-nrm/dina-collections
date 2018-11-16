@@ -6,13 +6,13 @@ const log = createLog(
   'lib/models/factories/sequelize/simpleSqlModel/methods/createFactory'
 )
 
-module.exports = function createFactory({ Model, schemaVersion } = {}) {
+module.exports = function createFactory({ Model } = {}) {
   if (!Model) {
     throw new Error('Have to provide model')
   }
 
   return createWrapper(({ item = {} }) => {
-    const data = { ...(item.attributes || {}), schemaVersion }
+    const data = { ...(item.attributes || {}) }
 
     log.debug(`Creating instance for model ${Model.tableName}`)
 

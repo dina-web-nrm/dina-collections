@@ -5,7 +5,6 @@ module.exports = function createModel({
   name,
   relations,
   schemaModelName: schemaModelNameInput,
-  schemaVersion = '1.0.1',
   inMemoryDb,
   validate = false,
 }) {
@@ -18,7 +17,6 @@ module.exports = function createModel({
     Model,
     relations,
     schemaModelName,
-    schemaVersion,
     validate,
   })
 

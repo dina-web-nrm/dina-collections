@@ -11,7 +11,6 @@ module.exports = function createModel({
   normalizedColumnNames = [],
   relations,
   schemaModelName: schemaModelNameInput,
-  schemaVersion = '1.0.1',
   sequelize,
   validate = true,
 }) {
@@ -62,9 +61,6 @@ module.exports = function createModel({
       schemaCompliant: {
         type: Sequelize.BOOLEAN,
       },
-      schemaVersion: {
-        type: Sequelize.STRING,
-      },
       ...dataColumns,
     },
     {
@@ -81,7 +77,6 @@ module.exports = function createModel({
     Model,
     relations,
     schemaModelName,
-    schemaVersion,
     sequelize,
     validate,
   })
