@@ -49,6 +49,7 @@ module.exports = {
     {
       filterSpecification: queryFilterSpecification,
       selectableFields: ['id', 'attributes.name', 'attributes.group'],
+      sortableFields: ['id', 'attributes.name'],
       type: 'query',
     },
     {
