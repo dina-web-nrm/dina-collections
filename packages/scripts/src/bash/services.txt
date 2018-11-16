@@ -1,0 +1,9 @@
+dina-api
+dina-collections-ui
+dina-semantic-ui-docs
+dina-worker
+elasticsearch
+keycloak
+keycloak-mysql
+postgres
+proxy
