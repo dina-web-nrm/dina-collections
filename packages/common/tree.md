@@ -4,10 +4,8 @@
 ├── README.md
 ├── dist
 │   ├── components
-│   ├── models.json
-│   ├── normalizedModels.json
-│   ├── normalizedOpenApi.json
 │   ├── openApi.json
+│   ├── schemas
 │   ├── semantic.css
 │   ├── semantic.js
 │   ├── semantic.min.css
@@ -22,6 +20,7 @@
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── coordinates
 │   ├── createDeleteProperties
 │   ├── createLid
 │   ├── date
@@ -51,6 +50,7 @@
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── coordinates
 │   ├── createDeleteProperties
 │   ├── createLid
 │   ├── date

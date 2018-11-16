@@ -4,8 +4,6 @@
 ├── app
 │   ├── index.js
 │   └── middlewares
-│       ├── authenticate
-│       │   └── index.js
 │       ├── docs
 │       │   ├── index.html
 │       │   └── index.js
@@ -13,10 +11,20 @@
 │       ├── logIncoming.js
 │       └── pingRoute.js
 ├── auth
-│   └── index.js
+│   ├── createUser.js
+│   ├── index.js
+│   └── middleware.js
 ├── bootstrap
-│   └── index.js
+│   ├── bootstrapApi.js
+│   ├── bootstrapBase.js
+│   ├── bootstrapData.js
+│   ├── bootstrapWorker.js
+│   ├── setupConnectors.js
+│   ├── setupJobs.js
+│   └── setupServiceInteractor.js
 ├── config
+│   ├── createBaseConfig.js
+│   ├── createPostgresDbConfig.js
 │   └── env
 │       ├── envVariables.js
 │       ├── index.js
@@ -30,6 +38,7 @@
 │   └── index.js
 ├── controllers
 │   ├── crud
+│   │   ├── bulkCreate.js
 │   │   ├── create.js
 │   │   ├── del.js
 │   │   ├── getMany.js
@@ -61,10 +70,13 @@
 │   │   │   └── index.js
 │   │   ├── createInterceptors
 │   │   │   └── index.js
+│   │   ├── createPreHooks
+│   │   │   └── index.js
 │   │   ├── relationships
 │   │   │   ├── buildIncludeArray.js
 │   │   │   ├── buildIncludeArray.spec.js
 │   │   │   ├── extractRelationships
+│   │   │   ├── fetchJsonExternalRelationships
 │   │   │   ├── getFormatOutput.js
 │   │   │   ├── getJsonRelationship
 │   │   │   ├── getSqlRelationship
@@ -75,6 +87,7 @@
 │   │   │   ├── createObjectResponse.js
 │   │   │   ├── createRelationshipsArrayResponse.js
 │   │   │   ├── createRelationshipsObjectResponse.js
+│   │   │   ├── inputArray.js
 │   │   │   ├── inputObject.js
 │   │   │   ├── outputArray.js
 │   │   │   └── outputObject.js
@@ -102,6 +115,9 @@
 │   ├── aggregations
 │   │   ├── factories
 │   │   │   ├── createStringAggregation.js
+│   │   │   ├── createTagTypeAggregation.js
+│   │   │   ├── createTagValueAggregation.js
+│   │   │   ├── createTextPreviewAggregation.js
 │   │   │   └── index.js
 │   │   └── schemas
 │   │       ├── aggregation.js
@@ -121,9 +137,14 @@
 │   ├── filters
 │   │   ├── factories
 │   │   │   ├── createEqualFilter.js
+│   │   │   ├── createFeatureRangeFilter.js
+│   │   │   ├── createForeignKeyMatchFilter.js
 │   │   │   ├── createNumberRangeFilter.js
 │   │   │   ├── createStringMatchFilter.js
 │   │   │   ├── createStringSearchFilter.js
+│   │   │   ├── createTagMatchFilter.js
+│   │   │   ├── createTagSearchFilter.js
+│   │   │   ├── createTextSearch
 │   │   │   └── index.js
 │   │   ├── schemas
 │   │   │   ├── filter.js
@@ -145,8 +166,6 @@
 │   │       ├── createGetManyFilterSpecifications.js
 │   │       └── createGetOneFilterSpecifications.js
 │   ├── hooks
-│   │   ├── factories
-│   │   │   └── createRegisterResourceActivityHook.js
 │   │   └── sharedHooks
 │   │       └── ensureNoCircularAncestorsPreHook.js
 │   ├── interceptors
@@ -156,11 +175,13 @@
 │   ├── mappings
 │   │   ├── factories
 │   │   │   ├── createDateMapping.js
+│   │   │   ├── createFeatureRangeMapping.js
 │   │   │   ├── createIntegerMapping.js
 │   │   │   ├── createKeywordAndRawMapping.js
 │   │   │   ├── createKeywordMapping.js
 │   │   │   ├── createNestedMapping.js
 │   │   │   ├── createNumberMapping.js
+│   │   │   ├── createValueTagMapping.js
 │   │   │   └── index.js
 │   │   └── utilities
 │   │       └── extractMappingsFromFieldSpecification.js
@@ -180,8 +201,11 @@
 │       │   └── index.js
 │       └── utilities
 │           ├── applyTransformations.js
+│           ├── createGlobals.js
+│           ├── createKeyIdMapDecorator.js
 │           ├── extractFetchParents.js
 │           ├── fetchParents.js
+│           ├── fetchParentsSync.js
 │           ├── getItemByTypeId.js
 │           ├── postTransformationNoop.js
 │           ├── postTransformationRemoveNull.js
@@ -260,6 +284,7 @@
 │       └── parseFilterValue.js
 ├── operations
 │   ├── crudOperations
+│   │   ├── bulkCreate.js
 │   │   ├── create.js
 │   │   ├── del.js
 │   │   ├── getMany.js
@@ -269,6 +294,7 @@
 │   │   ├── query.js
 │   │   ├── schemas
 │   │   │   ├── base.js
+│   │   │   ├── bulkCreate.js
 │   │   │   ├── create.js
 │   │   │   ├── del.js
 │   │   │   ├── getMany.js
@@ -327,7 +353,11 @@
 ├── serviceInteractor
 │   ├── cache.js
 │   ├── callController.js
-│   └── index.js
+│   ├── index.js
+│   └── virtualOperations
+│       ├── createResourceBatchExecute.js
+│       ├── createResourceBatchUpdate.js
+│       └── index.js
 ├── serviceRouter
 │   ├── index.js
 │   ├── middlewares
