@@ -21,6 +21,8 @@ const baseTreeFilter = {
   group: 'level 1',
 }
 
+const sortOrder = ['attributes.name:asc']
+
 const tableBatchFetchOptions = {
   include: ['parent.parent.parent.parent.parent'],
   relationships: [
@@ -76,6 +78,7 @@ class StorageLocationManager extends Component {
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
         resource="storageLocation"
+        sortOrder={sortOrder}
         tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled

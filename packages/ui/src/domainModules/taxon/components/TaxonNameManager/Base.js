@@ -17,6 +17,8 @@ const defaultProps = {
   itemId: undefined,
 }
 
+const sortOrder = ['attributes.name:asc']
+
 class TaxonNameManager extends Component {
   constructor(props) {
     super(props)
@@ -59,6 +61,7 @@ class TaxonNameManager extends Component {
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
         resource="taxonName"
+        sortOrder={sortOrder}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled={false}
       />
