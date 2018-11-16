@@ -93,6 +93,7 @@ module.exports = function createControllerWrapper({
     }) {
       // log.debug(`Called with request id: ${requestId}`)
       return applyHooks({
+        config,
         fileInteractor,
         hooks: preHooks,
         log,
@@ -155,6 +156,7 @@ module.exports = function createControllerWrapper({
         })
         .then(({ externalJsonRelationships, item, items, meta, request }) => {
           return applyHooks({
+            config,
             fileInteractor,
             hooks: postHooks,
             item,
