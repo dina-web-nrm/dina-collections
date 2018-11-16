@@ -13,6 +13,7 @@ const {
 const setupElasticsearchDocumentModel = ({ config }) => {
   return setupTestDatastores({ config }).then(({ elasticsearch }) => {
     const model = createElasticsearchDocumentModel({
+      config,
       elasticsearch,
       forceRefresh: true,
       name: 'testInMemoryModel',
@@ -28,6 +29,7 @@ const setupElasticsearchDocumentModel = ({ config }) => {
 const setupInMemoryDocumentModel = ({ config }) => {
   return setupTestDatastores({ config }).then(({ inMemoryDb }) => {
     const model = createInMemoryDocumentModel({
+      config,
       inMemoryDb,
       name: 'testInMemoryModel',
       schemaModelName: null,
@@ -42,6 +44,7 @@ const setupInMemoryDocumentModel = ({ config }) => {
 const setupInMemoryViewDocumentModel = ({ config }) => {
   return setupTestDatastores({ config }).then(({ inMemoryDb }) => {
     const model = createInMemoryViewDocumentModel({
+      config,
       inMemoryDb,
       name: 'testInMemoryViewModel',
       schemaModelName: null,
@@ -56,6 +59,7 @@ const setupInMemoryViewDocumentModel = ({ config }) => {
 const setupSequelizeDocumentModel = ({ config }) => {
   return setupTestDatastores({ config }).then(({ sequelize }) => {
     const model = createSequelizeDocumentModel({
+      config,
       name: 'testSequelizeDocumentModel',
       schemaModelName: null,
       sequelize,
@@ -70,6 +74,7 @@ const setupSequelizeDocumentModel = ({ config }) => {
 const setupSequelizeNormalizedDocumentModel = ({ config }) => {
   return setupTestDatastores({ config }).then(({ sequelize }) => {
     const model = createSequelizeNormalizedDocumentModel({
+      config,
       name: 'testSequelizeNormalizedDocumentModel',
       schemaModelName: null,
       sequelize,
@@ -84,6 +89,7 @@ const setupSequelizeNormalizedDocumentModel = ({ config }) => {
 const setupSequelizeViewDocumentModel = ({ config }) => {
   return setupTestDatastores({ config }).then(({ sequelize }) => {
     const model = createSequelizeViewDocumentModel({
+      config,
       name: 'testSequelizeViewDocumentModel',
       schemaModelName: null,
       sequelize,
