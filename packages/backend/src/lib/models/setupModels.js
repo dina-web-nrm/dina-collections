@@ -1,6 +1,7 @@
 const createLog = require('../../utilities/log')
 const createModels = require('./createModels')
 const createRelations = require('./createRelations')
+const synchronizeModels = require('./synchronizeModels')
 
 const log = createLog('lib/models')
 
@@ -25,7 +26,14 @@ module.exports = function setupModels({
       log.scope().info('Created: ', Object.keys(models).join(', '))
       log.info('Setting up relations')
       return createRelations({ modelArray, models }).then(() => {
-        return { models }
+        const syncModels = config.env.isTest && config.test.syncModels
+        if (!syncModels) {
+          return { models }
+        }
+
+        return synchronizeModels({ config, modelArray }).then(() => {
+          return { models }
+        })
       })
     })
   })
