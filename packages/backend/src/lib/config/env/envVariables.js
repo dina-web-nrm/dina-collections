@@ -24,6 +24,7 @@ const testVariables = [
   'TEST_API_URL',
   'TEST_AUTH_URL',
   'TEST_PASSWORD',
+  'TEST_SYNC_MODELS',
   'TEST_USERNAME',
 ]
 

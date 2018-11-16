@@ -143,6 +143,19 @@ module.exports = function createBaseConfig({ env: nodeEnv }) {
     }
   }
 
+  if (nodeEnv === 'test') {
+    const syncModels = readBoolKey('TEST_SYNC_MODELS')
+    if (syncModels) {
+      envConfig = {
+        ...envConfig,
+        test: {
+          ...envConfig.test,
+          syncModels,
+        },
+      }
+    }
+  }
+
   return {
     ...envConfig,
     db,
