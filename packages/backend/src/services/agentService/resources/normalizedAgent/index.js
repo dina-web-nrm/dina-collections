@@ -38,11 +38,13 @@ module.exports = {
     {
       filterSpecification: getManyFilterSpecification,
       includeRelations: true,
+      sortableFields: ['id', 'attributes.name'],
       type: 'getMany',
     },
     {
       filterSpecification: queryFilterSpecification,
       selectableFields: ['id', 'attributes.agentType', 'attributes.fullName'],
+      sortableFields: ['id', 'attributes.name'],
       type: 'query',
     },
     {
