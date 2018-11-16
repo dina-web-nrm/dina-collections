@@ -62,7 +62,11 @@ exports.createRegisterResourceActivityHook = function createRegisterResourceActi
   includeDiff = false,
   includeSnapshot = false,
 }) {
-  return ({ item, requestId, resource, serviceInteractor, user }) => {
+  return ({ config, item, requestId, resource, serviceInteractor, user }) => {
+    if (config.env.isTest) {
+      return Promise.resolve(true)
+    }
+
     return Promise.resolve().then(() => {
       const resourceActivity = createResourceActivity({
         action,
