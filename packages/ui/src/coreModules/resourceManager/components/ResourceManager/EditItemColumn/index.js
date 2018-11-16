@@ -15,10 +15,12 @@ const propTypes = {
   onInteraction: PropTypes.func.isRequired,
   renderEditForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
+  transformOutput: PropTypes.func,
 }
 const defaultProps = {
   fetchIncludeAfterUpdate: undefined,
   itemId: undefined,
+  transformOutput: undefined,
 }
 
 const rows = [
@@ -61,7 +63,14 @@ class EditItemColumn extends Component {
           props: this.props,
         })
 
-        return <BottomBar {...extractedProps} />
+        const { transformOutput } = this.props
+        return (
+          <BottomBar
+            {...extractedProps}
+            availableHeight
+            transformOutput={transformOutput}
+          />
+        )
       }
       default: {
         throw new Error(`Unknown row: ${key}`)

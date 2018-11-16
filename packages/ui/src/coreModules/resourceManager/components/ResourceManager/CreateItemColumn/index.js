@@ -12,9 +12,13 @@ const propTypes = {
   onInteraction: PropTypes.func.isRequired,
   renderCreateForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
+  transformOutput: PropTypes.func,
 }
 
-const defaultProps = {}
+const defaultProps = {
+  transformOutput: undefined,
+}
+
 const rows = [
   {
     key: 'itemCreateForm',
@@ -50,8 +54,10 @@ class CreateItemColumn extends Component {
           keys: ['resource', 'onInteraction'],
           props: this.props,
         })
-
-        return <BottomBar {...extractedProps} />
+        const { transformOutput } = this.props
+        return (
+          <BottomBar {...extractedProps} transformOutput={transformOutput} />
+        )
       }
       default: {
         throw new Error(`Unknown row: ${key}`)
