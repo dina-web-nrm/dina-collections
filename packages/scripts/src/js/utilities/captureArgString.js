@@ -5,8 +5,8 @@ module.exports = function captureArgString() {
   const args = []
 
   inputArgs.forEach(arg => {
-    if (arg === '--includeVersion') {
-      args.push('-v')
+    if (arg === '--includeTag') {
+      args.push('-t')
       args.push(getLocalPackageVersion())
     } else {
       args.push(arg)

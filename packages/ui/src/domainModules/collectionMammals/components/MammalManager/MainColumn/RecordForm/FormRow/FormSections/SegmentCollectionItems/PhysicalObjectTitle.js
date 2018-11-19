@@ -78,9 +78,10 @@ function PhysicalObjectTitle({
             />
             {preparationType &&
               preparationType.attributes &&
-              preparationType.attributes.name && (
+              preparationType.attributes.name &&
+              preparationType.attributes.name.en && (
                 <span style={{ fontWeight: 'normal' }}>
-                  {` (${preparationType.attributes.name})`}
+                  {` (${preparationType.attributes.name.en})`}
                 </span>
               )}
           </React.Fragment>

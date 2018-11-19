@@ -23,6 +23,9 @@
         "$ref": "__ROOT__curatorialAssessment"
       }
     },
+    "remarks": {
+      "type": "string"
+    },
     "description": {
       "type": "string"
     },

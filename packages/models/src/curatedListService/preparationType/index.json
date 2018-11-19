@@ -15,9 +15,11 @@
       "type": "string",
       "example": "skin"
     },
+    "key": {
+      "type": "string"
+    },
     "name": {
-      "type": "string",
-      "example": "hair, scales"
+      "$ref": "__ROOT__translatedString"
     }
   }
 }

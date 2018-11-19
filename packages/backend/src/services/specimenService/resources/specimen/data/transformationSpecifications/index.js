@@ -1,47 +1,65 @@
 const execute = require('./execute')
-const lookupSpecifications = require('../../../lookupResources/specification')
 
 const {
-  acquisition,
+  acquisitions,
   collectingInformation,
   collectionItems,
   deathInformation,
-  determination,
-  featureTypes,
+  determinations,
+  featureObservations,
   identifiers,
-  individual,
+  legacyData,
   nestToCore,
   originInformation,
-  readOnly,
   recordHistoryEvents,
+  sourceData,
   specimen,
   taxonInformation,
 } = require('./transformationFunctions')
 
-const warmViews = lookupSpecifications.map(({ name }) => {
-  return name
-})
+const {
+  decorateTaxonNameKeyIdMap,
+  decorateCauseOfDeathTypeKeyIdMap,
+  decorateCustomTaxonNameTypeKeyIdMap,
+  decorateEstablishmentMeansTypeKeyIdMap,
+  decorateFeatureTypeKeyIdMap,
+  decorateIdentifierTypeKeyIdMap,
+  decoratePlaceKeyIdMap,
+  decoratePreparationTypeKeyIdMap,
+  decorateStorageLocationKeyIdMap,
+  decorateTypeSpecimenTypeKeyIdMap,
+} = require('./globalDecorators')
 
 exports.importDataFromFile = {
-  cacheRequestsToResources: ['identifierType', 'causeOfDeathTypes'],
   description: 'Importing specimens from file',
   executeFunction: execute,
+  globalDecorators: [
+    decorateCauseOfDeathTypeKeyIdMap,
+    decorateCustomTaxonNameTypeKeyIdMap,
+    decorateEstablishmentMeansTypeKeyIdMap,
+    decorateFeatureTypeKeyIdMap,
+    decorateIdentifierTypeKeyIdMap,
+    decoratePlaceKeyIdMap,
+    decoratePreparationTypeKeyIdMap,
+    decorateStorageLocationKeyIdMap,
+    decorateTaxonNameKeyIdMap,
+    decorateTypeSpecimenTypeKeyIdMap,
+  ],
   srcFileName: 'specimens',
   transformationFunctions: [
     specimen,
-    taxonInformation,
-    determination,
-    identifiers,
-    collectionItems,
+    acquisitions,
     collectingInformation,
-    featureTypes,
-    recordHistoryEvents,
+    collectionItems,
     deathInformation,
-    individual,
+    determinations,
+    featureObservations,
+    identifiers,
+    legacyData,
     originInformation,
-    acquisition,
-    readOnly,
+    recordHistoryEvents,
+    taxonInformation,
     nestToCore,
+    sourceData,
   ],
-  warmViews,
 }

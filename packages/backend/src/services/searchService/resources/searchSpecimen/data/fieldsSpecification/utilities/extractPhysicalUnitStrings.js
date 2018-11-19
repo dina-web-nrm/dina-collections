@@ -23,7 +23,7 @@ module.exports = function extractPhysicalUnitString({
 
     if (preparationType) {
       if (includePreparationType(preparationType)) {
-        let str = preparationType.name
+        let str = preparationType.name.en
 
         if (includeStorageLocation) {
           const storageLocationParent = migrator.getValue({

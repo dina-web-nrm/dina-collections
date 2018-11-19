@@ -6,7 +6,7 @@ const {
 
 const fieldPath = 'attributes.recordEventLastModified'
 
-const MATCHING_DESCRIPTION = 'Last modification of'
+const MATCHING_DESCRIPTION = 'Last update of specimen record'
 
 const transformation = ({ migrator, src, target }) => {
   const recordEventStrings = extractRecordEventText({

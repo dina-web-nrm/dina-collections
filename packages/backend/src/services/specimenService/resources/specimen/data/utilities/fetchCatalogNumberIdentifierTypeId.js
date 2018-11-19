@@ -8,7 +8,7 @@ module.exports = function fetchCatalogNumberIdentifierTypeId({
       request: {
         queryParams: {
           filter: {
-            key: 'catalog-number',
+            key: 'catalog-no',
           },
         },
       },

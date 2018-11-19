@@ -65,6 +65,18 @@
 │       │   ├── data
 │       │   └── index.js
 │       └── index.js
+├── historyService
+│   ├── index.js
+│   ├── info
+│   │   ├── description.md
+│   │   └── index.js
+│   ├── resources
+│   │   ├── index.js
+│   │   └── resourceActivity
+│   │       ├── data
+│   │       └── index.js
+│   └── serviceInteractions
+│       └── index.js
 ├── identifierService
 │   ├── index.js
 │   ├── info
@@ -82,19 +94,23 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   └── resources
-│       ├── data
-│       │   └── filterSpecifications
-│       └── index.js
-├── logService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   └── resources
 │       ├── index.js
-│       └── resourceActivity
+│       └── job
 │           ├── data
 │           └── index.js
+├── migrationService
+│   ├── index.js
+│   ├── info
+│   │   └── index.js
+│   ├── preHooks
+│   │   └── index.js
+│   ├── resources
+│   │   ├── dataModelMigrationLog
+│   │   │   ├── data
+│   │   │   └── index.js
+│   │   └── index.js
+│   └── serviceInteractions
+│       └── index.js
 ├── placeService
 │   ├── e2e.spec.js
 │   ├── index.js
@@ -123,16 +139,11 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── resources
-│   │   ├── index.js
-│   │   ├── lookupResources
-│   │   │   ├── data
-│   │   │   ├── index.js
-│   │   │   └── specification.js
-│   │   └── specimen
-│   │       ├── data
-│   │       └── index.js
-│   └── todo.md
+│   └── resources
+│       ├── index.js
+│       └── specimen
+│           ├── data
+│           └── index.js
 ├── statusService
 │   ├── controllers
 │   │   ├── getStatus.js
@@ -141,7 +152,9 @@
 │   ├── info
 │   │   └── index.js
 │   └── resources
-│       └── index.js
+│       ├── index.js
+│       └── status
+│           └── index.js
 ├── storageService
 │   ├── e2e.spec.js
 │   ├── index.js

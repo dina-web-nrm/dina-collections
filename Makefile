@@ -6,23 +6,22 @@ setup:
 	./packages/scripts/src/bash/create-env.sh
 
 up:
-	@docker-compose up -d
+	TAG=latest docker-compose up -d
 
 stop:
-	@docker-compose stop
+	TAG=latest docker-compose stop
 
 rm:
-	@docker-compose rm -vf
+	TAG=latest docker-compose rm -vf
 
 up-utils:
-	@docker-compose -f docker-compose.dev-utils.yaml up -d
+	TAG=latest docker-compose -f docker-compose.dev-utils.yaml up -d
 
 stop-utils:
-	@docker-compose -f docker-compose.dev-utils.yaml stop
+	TAG=latest docker-compose -f docker-compose.dev-utils.yaml stop
 
 rm-utils:
-	@docker-compose -f docker-compose.dev-utils.yaml rm -vf
-
+	TAG=latest docker-compose -f docker-compose.dev-utils.yaml rm -vf
 
 load-sample-data:
-	@docker-compose -f docker-compose.data.yaml up migrations
+	TAG=latest docker-compose -f docker-compose.data.yaml up migrations

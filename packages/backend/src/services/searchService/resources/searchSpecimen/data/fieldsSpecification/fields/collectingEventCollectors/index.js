@@ -14,8 +14,8 @@ const transformation = ({ migrator, src, target }) => {
   const collectors = []
 
   collectingInformation.forEach(({ collectedByAgent, collectorsText }) => {
-    if (collectedByAgent && collectedByAgent.fullName) {
-      collectors.push(collectedByAgent.fullName)
+    if (collectedByAgent && collectedByAgent.textI) {
+      collectors.push(collectedByAgent.textI)
     }
 
     if (collectorsText) {

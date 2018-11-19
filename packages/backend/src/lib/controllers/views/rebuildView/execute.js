@@ -37,7 +37,20 @@ module.exports = function execute({
         action: 'create',
         includeDiff: false,
         includeSnapshot: false,
-        items: createdItems,
+        items: createdItems.map((item, index) => {
+          const { meta } = filteredItems[index]
+          if (!(meta && meta.sourceData)) {
+            return item
+          }
+
+          return {
+            ...item,
+            meta: {
+              ...(item.meta || {}),
+              sourceData: meta.sourceData,
+            },
+          }
+        }),
         resource,
         serviceInteractor,
       })

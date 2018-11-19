@@ -17,12 +17,14 @@ module.exports = function createViewDocumentModel({
   const stageName = stageNameInput || `${name}Stage`
 
   const ViewModel = createDocumentModel({
+    config,
     name: viewName,
     sequelize,
     validate,
   })
 
   const StageModel = createDocumentModel({
+    config,
     name: stageName,
     sequelize,
     validate,

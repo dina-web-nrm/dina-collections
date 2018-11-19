@@ -18,8 +18,10 @@ const defaultProps = {
 }
 
 const baseTreeFilter = {
-  group: 'continent',
+  group: 'continentOcean',
 }
+
+const sortOrder = ['attributes.name:asc']
 
 const tableBatchFetchOptions = {
   include: ['parent.parent.parent.parent.parent'],
@@ -76,6 +78,7 @@ class LocalityManager extends Component {
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
         resource="place"
+        sortOrder={sortOrder}
         tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled

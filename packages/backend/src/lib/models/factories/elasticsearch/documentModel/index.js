@@ -7,7 +7,6 @@ module.exports = function createModel({
   mappingSpecification,
   name,
   schemaModelName,
-  schemaVersion,
 }) {
   const mappings =
     (mappingSpecification &&
@@ -40,7 +39,6 @@ module.exports = function createModel({
     forceRefresh,
     Model,
     schemaModelName,
-    schemaVersion,
   })
 
   return { modelType: 'elasticsearchDocumentModel', name, ...methods }

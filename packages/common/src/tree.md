@@ -61,6 +61,8 @@
 │   └── index.js
 ├── chainPromises
 │   └── index.js
+├── coordinates
+│   └── Converter.js
 ├── createDeleteProperties
 │   ├── index.js
 │   └── index.test.js
@@ -68,11 +70,13 @@
 │   ├── index.js
 │   └── index.test.js
 ├── date
+│   ├── buildDateRange.js
 │   ├── buildYYYYMMDD.js
 │   ├── formatAsTimestamp.js
 │   ├── getCurrentUTCTimestamp.js
 │   ├── getCurrentYear.js
 │   ├── getTimestampFromYMD.js
+│   ├── getYMDHMSFromTimestamp.js
 │   ├── getYYYYMMDDFromTimestamp.js
 │   └── index.js
 ├── endpointFactory
@@ -121,11 +125,15 @@
 │   │   ├── logError.js
 │   │   └── transformToReduxFormError.js
 │   └── validators
+│       ├── coordinates
+│       │   └── index.js
 │       ├── createBackendApiClientValidator.js
 │       ├── createFrontendApiClientValidator.js
 │       ├── createSystemBackendValidator.js
 │       ├── createSystemFrontendValidator.js
 │       ├── customFormValidator.js
+│       ├── date
+│       │   └── index.js
 │       ├── dbValidator.js
 │       └── formValidator.js
 ├── formatObject
@@ -238,6 +246,7 @@
 │   ├── createNormalizedValidator.js
 │   ├── createValidator.js
 │   ├── createValidatorFactory.js
+│   ├── defaultValidatorKeywords.js
 │   ├── importJsonFakerSync.js
 │   ├── index.js
 │   ├── validateAgainstModel.js
@@ -286,6 +295,7 @@
 │   │   │   └── swagger.json
 │   │   └── testImports.test.js
 │   ├── e2e.spec.js
+│   ├── lockVersion.js
 │   ├── read
 │   │   ├── index.js
 │   │   ├── readApis.js
@@ -304,7 +314,6 @@
 │   │   ├── endpoint.json
 │   │   ├── openApi.json
 │   │   └── swagger.json
-│   ├── todo
 │   └── write
 │       └── index.js
 ├── schemaInterface
@@ -312,6 +321,7 @@
 │   │   ├── index.js
 │   │   └── index.test.js
 │   ├── index.js
+│   ├── loadVersionSet.js
 │   ├── normalize
 │   │   ├── createKeyColumnMap.js
 │   │   ├── createModelKeyColumnMap.js
@@ -325,13 +335,17 @@
 │   │       ├── getModelType.js
 │   │       ├── normalizrGetIdAttribute.js
 │   │       └── normalizrProcessStrategy.js
-│   └── relationships
-│       ├── index.js
-│       ├── index.test.js
-│       ├── modelsSelectors.js
-│       ├── modelsSelectors.test.js
-│       ├── relationshipsSchemaSelectors.js
-│       └── relationshipsSchemaSelectors.test.js
+│   ├── openApi
+│   │   ├── getMethodByOperationId.js
+│   │   └── index.js
+│   ├── relationships
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   ├── modelsSelectors.js
+│   │   ├── modelsSelectors.test.js
+│   │   ├── relationshipsSchemaSelectors.js
+│   │   └── relationshipsSchemaSelectors.test.js
+│   └── singletons.js
 ├── scripts
 │   └── buildFileStructureTrees.js
 ├── search

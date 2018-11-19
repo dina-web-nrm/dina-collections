@@ -7,6 +7,9 @@ module.exports = {
     collidingIdPrefix: {
       type: 'string',
     },
+    defaultLimit: {
+      type: 'number',
+    },
     description: {
       type: 'string',
     },
@@ -14,6 +17,9 @@ module.exports = {
       not: {
         type: 'string',
       },
+    },
+    globalDecorators: {
+      type: 'array',
     },
     numberOfEntriesEachBatch: {
       type: 'number',

@@ -18,6 +18,8 @@ const defaultProps = {
   itemId: undefined,
 }
 
+const sortOrder = ['attributes.name:asc']
+
 class AgentManager extends Component {
   constructor(props) {
     super(props)
@@ -74,6 +76,7 @@ class AgentManager extends Component {
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
         resource="normalizedAgent"
+        sortOrder={sortOrder}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled={false}
       />

@@ -4,9 +4,7 @@ const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/modelFactories/documentModel/methods/createFactory')
 
-module.exports = function createFactory(
-  { Model, schemaVersion, validate } = {}
-) {
+module.exports = function createFactory({ Model, validate } = {}) {
   if (!Model) {
     throw new Error('Have to provide model')
   }
@@ -23,7 +21,6 @@ module.exports = function createFactory(
       document: attributes,
       relationships,
       schemaCompliant: validate ? !validate(newItem) : undefined,
-      schemaVersion: schemaVersion || undefined,
     }
 
     if (internals) {

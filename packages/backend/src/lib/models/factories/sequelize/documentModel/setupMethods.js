@@ -20,7 +20,6 @@ module.exports = function setupMethods({
   Model,
   relations,
   schemaModelName,
-  schemaVersion,
   sequelize,
   validate: performValidation,
 }) {
@@ -46,7 +45,6 @@ module.exports = function setupMethods({
   const getWhere = getWhereFactory({ buildWhereFilter, buildWhereQuery, Model })
   const create = createFactory({
     Model,
-    schemaVersion,
     validate,
   })
 
@@ -58,20 +56,17 @@ module.exports = function setupMethods({
   const update = updateFactory({
     getById,
     Model,
-    schemaVersion,
     validate,
   })
 
   const updatePrimaryKey = updatePrimaryKeyFactory({
     Model,
-    schemaVersion,
     sequelize,
     validate,
   })
 
   const bulkCreate = bulkCreateFactory({
     Model,
-    schemaVersion,
     updatePrimaryKey,
     validate,
   })
@@ -102,7 +97,6 @@ module.exports = function setupMethods({
           [key]: customMethodFactories[key]({
             coreMethods,
             Model,
-            schemaVersion,
             sequelize,
             validate,
           }),

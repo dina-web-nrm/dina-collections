@@ -7,7 +7,7 @@ const {
 const fieldPath = 'attributes.recordEventCataloged'
 
 // TODO this seams to not be migrate yet
-const MATCHING_DESCRIPTION = 'NOT MIGRATED'
+const MATCHING_DESCRIPTION = 'New catalog card'
 
 const transformation = ({ migrator, src, target }) => {
   const recordEventStrings = extractRecordEventText({

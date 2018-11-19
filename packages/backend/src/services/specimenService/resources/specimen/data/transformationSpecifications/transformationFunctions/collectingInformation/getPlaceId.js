@@ -1,55 +1,26 @@
-const getPlaceInformation = ({ src, migrator }) => {
-  const continent = migrator.getValue({
-    obj: src,
-    path: 'objects.FieldNo_related.Continent_Ocean',
-    strip: true,
-  })
+const buildKey = require('../../globalDecorators/decoratePlaceKeyIdMap/buildKey')
 
-  const nation = migrator.getValue({
-    obj: src,
-    path: 'objects.FieldNo_related.Nation',
-    strip: true,
-  })
+module.exports = function getPlaceId({
+  srcCollectingInformation,
+  globals,
+  migrator,
+  reporter,
+}) {
+  const {
+    locationInformation_continentOcean: continent,
+    locationInformation_country: nation,
+    // locationInformation_district,
+    locationInformation_province: province,
+  } = srcCollectingInformation
 
-  const province = migrator.getValue({
-    obj: src,
-    path: 'objects.FieldNo_related.Province',
-    strip: true,
-  })
-
-  return {
-    continent,
-    nation,
-    province,
-  }
-}
-
-module.exports = function getPlaceId({ getItemByTypeId, src, migrator }) {
-  const { continent, nation, province } = getPlaceInformation({
-    migrator,
-    src,
-  })
-
-  const key = [continent, nation, province]
-    .filter(group => {
-      return !!group
-    })
-    .map(item => {
-      return item.trim()
-    })
-    .join('->')
-
+  const key = buildKey({ continent, nation, province })
   if (!key) {
-    return Promise.resolve(undefined)
+    return null
   }
-  return getItemByTypeId({
-    id: key,
-    type: 'lookupPlace',
-  }).then(place => {
-    if (!place) {
-      return undefined
-    }
-
-    return place.attributes.srcId
+  return migrator.getFromGlobals({
+    globals,
+    key,
+    mapKey: 'placeKeyIdMap',
+    reporter,
   })
 }

@@ -2,7 +2,7 @@ const createEqualFilter = require('../../../../../../../lib/data/filters/factori
 
 const fieldPath = 'attributes.identifier'
 
-const CATALOG_NUMBER_TYPE = 'catalog-number'
+const CATALOG_NUMBER_TYPE = 'catalog-no'
 const transformation = ({ migrator, src, target }) => {
   const identifiers = migrator.getValue({
     obj: src,

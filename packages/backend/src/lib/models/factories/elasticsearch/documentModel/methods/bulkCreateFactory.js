@@ -27,6 +27,7 @@ module.exports = function bulkCreateFactory(
 
     const body = items.reduce((rows, item) => {
       const { attributes, id, internals = {}, relationships } = item
+
       rows.push({
         index: { _id: id, _index: Model.index, _type: Model.name },
       })
@@ -46,6 +47,10 @@ module.exports = function bulkCreateFactory(
         refresh: forceRefresh,
       })
       .then(res => {
+        if (res.errors) {
+          throw res
+        }
+
         log.debug(`Successfully created ${items.length} items`)
         return { meta: { count: res && res.items && res.items.length } }
       })

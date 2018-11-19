@@ -40,7 +40,7 @@
       "type": "string",
       "description": "Group of locality",
       "enum": [
-        "continent",
+        "continentOcean",
         "country",
         "district",
         "geodeticDatum",

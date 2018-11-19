@@ -59,6 +59,9 @@
       "format": "date-time",
       "type": "string"
     },
+    "sourceData": {
+      "type": "object"
+    },
     "id": {
       "$ref": "__ROOT__id"
     },

@@ -155,6 +155,9 @@
 ├── error
 │   ├── components
 │   │   ├── ConnectedFormSchemaError.js
+│   │   ├── ErrorBoundary
+│   │   │   ├── FullPageError.js
+│   │   │   └── index.js
 │   │   ├── FormFieldError.js
 │   │   ├── FormFieldError.stories.js
 │   │   ├── FormSchemaError.js
@@ -168,11 +171,23 @@
 │   └── translations.json
 ├── form
 │   ├── components
+│   │   ├── ConfirmationPopup
+│   │   │   └── index.js
 │   │   ├── FieldTemplate
 │   │   │   ├── FieldError.js
 │   │   │   ├── FieldLabel.js
 │   │   │   └── index.js
 │   │   ├── FieldWrapper
+│   │   │   └── index.js
+│   │   ├── Form
+│   │   │   └── index.js
+│   │   ├── FormActionBar
+│   │   │   └── index.js
+│   │   ├── FormModal
+│   │   │   └── index.js
+│   │   ├── FormRow
+│   │   │   ├── FormSectionNavigation
+│   │   │   ├── FormSectionView
 │   │   │   └── index.js
 │   │   ├── Section
 │   │   │   └── index.js
@@ -184,11 +199,14 @@
 │   │   │   └── index.js
 │   │   ├── fields
 │   │   │   ├── Checkbox
+│   │   │   ├── Coordinates
 │   │   │   ├── CustomData
 │   │   │   ├── Date
 │   │   │   ├── DropdownSearch
 │   │   │   ├── Input
 │   │   │   ├── MultipleSearchSelectionDropdown
+│   │   │   ├── Radio
+│   │   │   ├── RadioBoolean
 │   │   │   ├── Remarks
 │   │   │   ├── Search
 │   │   │   └── TextArea
@@ -196,7 +214,6 @@
 │   │   ├── inputs
 │   │   │   ├── Checkbox
 │   │   │   ├── CustomData
-│   │   │   ├── Date
 │   │   │   ├── DropdownSearch
 │   │   │   ├── Input
 │   │   │   ├── MultipleSearchSelectionDropdown
@@ -208,17 +225,19 @@
 │   │   │   ├── FormTable
 │   │   │   ├── HelpTextNotification.js
 │   │   │   └── InputDatePart
-│   │   └── parts
-│   │       ├── ReduxFormFieldComponents
-│   │       ├── StaticContent
-│   │       ├── factories
-│   │       └── index.js
+│   │   ├── parts
+│   │   │   ├── ReduxFormFieldComponents
+│   │   │   ├── StaticContent
+│   │   │   ├── factories
+│   │   │   └── index.js
+│   │   └── units
+│   │       ├── index.js
+│   │       └── recordHistoryEvents
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── higherOrderComponents
 │   │   ├── index.js
 │   │   ├── injectErrorKeys.js
-│   │   ├── injectFormPartStatus.js
 │   │   ├── injectHelpNotificationProps.js
 │   │   ├── injectIsLatestActiveField.js
 │   │   ├── injectLabelKey.js
@@ -226,7 +245,7 @@
 │   │   ├── injectSearchOptions.js
 │   │   ├── pathBuilder.js
 │   │   ├── pathBuilder.spec.js
-│   │   ├── reportFormFieldStatus.js
+│   │   ├── withUnsavedChangesConfirmation.js
 │   │   ├── wrapInColumn.js
 │   │   └── wrapInFieldTemplate.js
 │   ├── index.js
@@ -236,21 +255,33 @@
 │   ├── selectors.js
 │   ├── translations.json
 │   └── utilities
-│       ├── buildInitialFormPartStatus.js
 │       ├── createErrorKeys.js
 │       ├── createHelpNotificationProps.js
 │       ├── createInputTest.js
 │       ├── createLabelKey.js
 │       ├── createParameterKey.js
 │       ├── createUpdateFormPartStatus.js
-│       ├── extractInitiallyHiddenFields.js
-│       ├── getHiddenFieldsHaveValue.js
 │       ├── handleReduxFormSubmitError.js
 │       ├── index.js
 │       ├── index.test.js
 │       ├── radioTransformations.js
 │       ├── wrapReduxFormFieldParts.js
 │       └── wrapStaticContentParts.js
+├── formSupport
+│   ├── constants.js
+│   ├── globalSelectors.js
+│   ├── index.js
+│   ├── keyObjectModule.js
+│   ├── selectors.js
+│   ├── selectors.test.js
+│   └── utilities
+│       ├── index.js
+│       ├── reduceFieldSpecsToNodeFieldNamesMap.js
+│       ├── reduceFieldSpecsToNodeFieldNamesMap.test.js
+│       ├── reduceFieldSpecsToSectionFieldNamesMap.js
+│       ├── reduceFieldSpecsToUnitFieldNamesMap.js
+│       ├── transformFormSpecToFieldMap.js
+│       └── transformFormSpecToFieldMap.test.js
 ├── i18n
 │   ├── actionCreators
 │   │   ├── index.js
@@ -294,6 +325,7 @@
 │   ├── actionCreators
 │   │   ├── index.js
 │   │   ├── registerKeyboardShortcut.js
+│   │   ├── setLayer.js
 │   │   ├── setShortcutsModalHidden.js
 │   │   ├── setShortcutsModalVisible.js
 │   │   ├── toggleShortcutsModal.js
@@ -307,6 +339,9 @@
 │   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
+│   ├── higherOrderComponents
+│   │   ├── createShortcutLayer.js
+│   │   └── index.js
 │   ├── index.js
 │   ├── reducer.js
 │   ├── reducer.test.js
@@ -390,10 +425,10 @@
 ├── resourceManager
 │   ├── components
 │   │   ├── ResourceManager
-│   │   │   ├── CollectionColumn
 │   │   │   ├── CreateItemColumn
 │   │   │   ├── EditItemColumn
 │   │   │   ├── FilterColumn
+│   │   │   ├── MainColumn
 │   │   │   ├── index.js
 │   │   │   └── picker
 │   │   └── index.js
@@ -438,6 +473,8 @@
 │   │   │   ├── index.js
 │   │   │   ├── index.stories.js
 │   │   │   └── selectors.js
+│   │   ├── SearchPreview
+│   │   │   └── Field.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── higherOrderComponents
@@ -446,7 +483,13 @@
 │   │   └── index.js
 │   ├── index.js
 │   ├── keyObjectModule.js
-│   └── translations.json
+│   ├── translations.json
+│   └── utilities
+│       └── queryBuilderFactory
+│           ├── createHigherOrderComponents
+│           ├── createSelectors
+│           ├── index.js
+│           └── utilities
 ├── size
 │   ├── actionCreators
 │   │   ├── index.js

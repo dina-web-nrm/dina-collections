@@ -1,221 +1,61 @@
 /* eslint-disable no-param-reassign */
 
-const getIdentifierTypeIdByKey = ({ key, identifierTypes }) => {
-  const matchingIdentifierType = identifierTypes.find(identifierType => {
-    return identifierType.attributes.key === key
-  })
-
-  if (!matchingIdentifierType) {
-    return null
-  }
-
-  return matchingIdentifierType.id
-}
+/*
+example src data
+  "identifiers": [
+    {
+      "identifierType_key": "catalog-no",
+      "value": "584072"
+    },
+    {
+      "identifierType_key": "old-skeleton-no",
+      "value": "4072/1.860"
+    }
+  ],
+*/
 
 module.exports = function migrateIdentifiers({
+  globals,
   migrator,
   reporter,
-  serviceInteractor,
   src,
   target,
 }) {
-  return serviceInteractor
-    .getMany({
-      request: {
-        queryParams: { limit: 100 },
-      },
-      resource: 'identifierType',
+  const srcIdentifiers = migrator.getValue({
+    obj: src,
+    path: 'migrationData.identifiers',
+    strip: true,
+  })
+
+  if (!srcIdentifiers) {
+    return
+  }
+
+  const identifiers = srcIdentifiers
+    .map(srcIdentifier => {
+      const id = migrator.getFromGlobals({
+        globals,
+        key: srcIdentifier.identifierType_key,
+        mapKey: 'identifierTypeKeyIdMap',
+        reporter,
+      })
+      if (!(id && srcIdentifier.value)) {
+        return null
+      }
+      return {
+        identifierType: {
+          id,
+        },
+        value: srcIdentifier.value,
+      }
     })
-    .then(({ data: identifierTypes }) => {
-      const identifiers = []
-
-      // catalog number
-      const catalogNumber = migrator.getValue({
-        obj: src,
-        path: 'catalogNumber',
-        strip: true,
-      })
-
-      if (catalogNumber) {
-        const id = getIdentifierTypeIdByKey({
-          identifierTypes,
-          key: 'catalog-number',
-        })
-
-        if (!id) {
-          reporter.increment({
-            path: `dependencies.identifierTypes.catalogNumber.missing`,
-          })
-        } else {
-          reporter.increment({
-            path: `dependencies.identifierTypes.catalogNumber.nHits`,
-          })
-
-          identifiers.push({
-            identifierType: {
-              id,
-            },
-            value: `${catalogNumber}`,
-          })
-        }
-      }
-
-      // old skeleton number
-      const oldSkeletonNumber = migrator.getValue({
-        obj: src,
-        path: 'collection.OldSkeletonNo',
-        strip: true,
-      })
-
-      if (oldSkeletonNumber) {
-        const id = getIdentifierTypeIdByKey({
-          identifierTypes,
-          key: 'old-skeleton-nr',
-        })
-
-        if (!id) {
-          reporter.increment({
-            path: `dependencies.identifierTypes.oldSkeletonNumber.missing`,
-          })
-        } else {
-          reporter.increment({
-            path: `dependencies.identifierTypes.oldSkeletonNumber.nHits`,
-          })
-
-          identifiers.push({
-            identifierType: {
-              id,
-            },
-            value: `${oldSkeletonNumber}`,
-          })
-        }
-      }
-
-      // old skeleton number
-      const oldSkinNumber = migrator.getValue({
-        obj: src,
-        path: 'collection.OldSkinNo',
-        strip: true,
-      })
-
-      if (oldSkinNumber) {
-        const id = getIdentifierTypeIdByKey({
-          identifierTypes,
-          key: 'old-skin-nr',
-        })
-
-        if (!id) {
-          reporter.increment({
-            path: `dependencies.identifierTypes.oldSkinNumber.missing`,
-          })
-        } else {
-          reporter.increment({
-            path: `dependencies.identifierTypes.oldSkinNumber.nHits`,
-          })
-
-          identifiers.push({
-            identifierType: {
-              id,
-            },
-            value: `${oldSkinNumber}`,
-          })
-        }
-      }
-
-      const loanNumber = migrator.getValue({
-        obj: src,
-        path: 'collection.LoanNo',
-        strip: true,
-      })
-
-      if (loanNumber) {
-        const id = getIdentifierTypeIdByKey({
-          identifierTypes,
-          key: 'loan-nr',
-        })
-
-        if (!id) {
-          reporter.increment({
-            path: `dependencies.identifierTypes.loanNumber.missing`,
-          })
-        } else {
-          reporter.increment({
-            path: `dependencies.identifierTypes.loanNumber.nHits`,
-          })
-
-          identifiers.push({
-            identifierType: {
-              id,
-            },
-            value: `${loanNumber}`,
-          })
-        }
-      }
-
-      const otherInstitutionNumber = migrator.getValue({
-        obj: src,
-        path: 'collection.OtherInstitutionNumber',
-        strip: true,
-      })
-
-      if (otherInstitutionNumber) {
-        const id = getIdentifierTypeIdByKey({
-          identifierTypes,
-          key: 'other-institution-nr',
-        })
-
-        if (!id) {
-          reporter.increment({
-            path: `dependencies.identifierTypes.otherInstitutionNumber.missing`,
-          })
-        } else {
-          reporter.increment({
-            path: `dependencies.identifierTypes.otherInstitutionNumber.nHits`,
-          })
-
-          identifiers.push({
-            identifierType: {
-              id,
-            },
-            value: `${otherInstitutionNumber}`,
-          })
-        }
-      }
-
-      const svaNumber = migrator.getValue({
-        obj: src,
-        path: 'collection.SVAnumber',
-        strip: true,
-      })
-
-      if (svaNumber) {
-        const id = getIdentifierTypeIdByKey({
-          identifierTypes,
-          key: 'sva-nr',
-        })
-
-        if (!id) {
-          reporter.increment({
-            path: `dependencies.identifierTypes.svaNumber.missing`,
-          })
-        } else {
-          reporter.increment({
-            path: `dependencies.identifierTypes.svaNumber.nHits`,
-          })
-
-          identifiers.push({
-            identifierType: {
-              id,
-            },
-            value: `${svaNumber}`,
-          })
-        }
-      }
-
-      migrator.setValue({
-        obj: target,
-        path: 'attributes.individual.identifiers',
-        value: identifiers,
-      })
+    .filter(identifier => {
+      return !!identifier
     })
+
+  migrator.setValue({
+    obj: target,
+    path: 'attributes.individual.identifiers',
+    value: identifiers,
+  })
 }

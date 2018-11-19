@@ -25,12 +25,6 @@ module.exports = {
       relationships: {
         type: Sequelize.JSONB,
       },
-      schemaCompliant: {
-        type: Sequelize.BOOLEAN,
-      },
-      schemaVersion: {
-        type: Sequelize.STRING,
-      },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,

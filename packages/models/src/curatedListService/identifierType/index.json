@@ -6,7 +6,7 @@
       "type": "string"
     },
     "name": {
-      "type": "string"
+      "$ref": "__ROOT__translatedString"
     },
     "key": {
       "type": "string"

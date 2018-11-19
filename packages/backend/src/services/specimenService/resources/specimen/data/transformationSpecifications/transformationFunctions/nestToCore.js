@@ -12,6 +12,7 @@ const validate = obj => {
 
 module.exports = function nestToCore({ globalIndex, target, reporter }) {
   const { id, attributes } = target
+
   const coreSpecimen =
     nestedToCoreSync({
       item: attributes,

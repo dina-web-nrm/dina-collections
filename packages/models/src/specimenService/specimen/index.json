@@ -29,6 +29,9 @@
     "remarks": {
       "type": "string"
     },
+    "legacyData": {
+      "$ref": "__ROOT__legacyData"
+    },
     "readOnly": {
       "$ref": "__ROOT__readOnly"
     },

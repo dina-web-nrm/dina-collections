@@ -78,7 +78,6 @@ module.exports = function execute({
       scope: 'nTargetPhysicalObjects',
     })
   }
-
   return models.physicalObject
     .bulkCreate({ items: mappedPhysicalObjects })
     .then(({ items: createdPhysicalObjects }) => {
@@ -110,12 +109,27 @@ module.exports = function execute({
       return models.specimen
         .bulkCreate({ items: specimens })
         .then(({ items: createdSpecimens }) => {
+          const resourceActivityItems = createdSpecimens.map((item, index) => {
+            const { meta } = mappedSpecimens[index]
+            if (!(meta && meta.sourceData)) {
+              return item
+            }
+
+            return {
+              ...item,
+              meta: {
+                ...(item.meta || {}),
+                sourceData: meta.sourceData,
+              },
+            }
+          })
+
           return bulkCreateResourceActivities({
             // user,
             action: 'create',
             includeDiff: false,
             includeSnapshot: true,
-            items: createdSpecimens,
+            items: resourceActivityItems,
             resource: 'specimen',
             service: 'specimenService',
             serviceInteractor,

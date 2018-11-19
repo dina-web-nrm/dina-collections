@@ -1,276 +1,126 @@
 /* eslint-disable no-param-reassign */
-const getPlaceId = require('./getPlaceId')
-const getEstablishmentMeansType = require('./getEstablishmentMeansType')
-const getCollectorAgent = require('./getCollectorAgent')
+const createLocationInformation = require('./locationInformation')
+const buildDateRange = require('common/src/date/buildDateRange')
 
-module.exports = function collectingInformation({
-  getItemByTypeId,
-  migrator,
+/*
+example src data
+ "collectingInformation": {
+    "collectedByAgent": null,
+    "date_year": "1845",
+    "date_month": null,
+    "date_day": null,
+    "date_dateType": "latest",
+    "date_remarks": null,
+    "establishmentMeans": "wild and native",
+    "expeditionText": null,
+    "isDeathDate": "False",
+    "locationInformation_continentOcean": "Europe",
+    "locationInformation_country": "Sweden",
+    "locationInformation_district": null,
+    "locationInformation_latitude": "57.7114",
+    "locationInformation_localityI": "Odensjö",
+    "locationInformation_localityV": "Odensjö, Småland",
+    "locationInformation_longitude": "14.1769",
+    "locationInformation_maxDepthInMeters": null,
+    "locationInformation_maxElevationhInMeters": null,
+    "locationInformation_minDepthInMeters": null,
+    "locationInformation_minElevationInMeters": null,
+    "locationInformation_province": "Småland",
+    "locationInformation_remarks": "Obs! Finns ytterligare ett Odensjö utanför Växjö, så djur som har denna lokal kan ha fel koordinat",
+    "locationInformation_swedishGrid5km": null,
+    "locationInformation_uncertaintyInMeters": null
+  },
+*/
+
+module.exports = function migrateCollectingInformation({
   src,
   target,
+  migrator,
+  globals,
+  reporter,
 }) {
-  // collectorsInformation
-
-  return getCollectorAgent({
-    getItemByTypeId,
-    migrator,
-    src,
-  }).then(agent => {
-    if (agent) {
-      migrator.setValue({
-        obj: target,
-        path:
-          'attributes.individual.collectingInformation.0.collectedByAgent.normalized.id',
-        value: agent.id,
-      })
-
-      if (agent.duplicate) {
-        migrator.setValue({
-          obj: target,
-          path: 'attributes.individual.collectingInformation.0.remarks',
-          value: `Duplicated agent with full name: ${agent.collector}`,
-        })
-      }
-    }
-
-    /* event */
-    // collectingDate
-    const collectingYear = migrator.getValue({
-      obj: src,
-      path: 'objects.Coll_Year',
-      strip: true,
-    })
-    const collectingMonth = migrator.getValue({
-      obj: src,
-      path: 'objects.Coll_Month',
-      strip: true,
-    })
-    const collectingDay = migrator.getValue({
-      obj: src,
-      path: 'objects.Coll_Day',
-      strip: true,
-    })
-
-    migrator.setValue({
-      obj: target,
-      path:
-        'attributes.individual.collectingInformation.0.event.dateRange.startDate',
-      value: {
-        day: collectingDay,
-        month: collectingMonth,
-        year: collectingYear,
-      },
-    })
-
-    migrator.setValue({
-      obj: target,
-      path:
-        'attributes.individual.collectingInformation.0.event.dateRange.endDate',
-      value: {
-        day: collectingDay,
-        month: collectingMonth,
-        year: collectingYear,
-      },
-    })
-
-    /* event.locationInformation */
-    // localityRemarks
-    const localityRemarks = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.LocationRemarks',
-      strip: true,
-    })
-
-    migrator.setValue({
-      obj: target,
-      path:
-        'attributes.individual.collectingInformation.0.event.locationInformation.remarks',
-      value: localityRemarks,
-    })
-
-    // localityV
-    const localityV = migrator.getValue({
-      obj: src,
-      path: 'objects.StatedLocality',
-      strip: true,
-    })
-
-    migrator.setValue({
-      obj: target,
-      path:
-        'attributes.individual.collectingInformation.0.event.locationInformation.localityV',
-      value: localityV,
-    })
-
-    // localityI
-    const localityI = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Locality',
-      strip: true,
-    })
-
-    migrator.setValue({
-      obj: target,
-      path:
-        'attributes.individual.collectingInformation.0.event.locationInformation.localityI',
-      value: localityI,
-    })
-
-    /* event.locationInformation.position */
-    // latitude
-    const latitude = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Lat_DD',
-      strip: true,
-    })
-
-    migrator.setValue({
-      format: 'string',
-      obj: target,
-      path:
-        'attributes.individual.collectingInformation.0.event.locationInformation.position.latitude',
-      value: latitude,
-    })
-
-    // latitude
-    const longitude = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Long_DD',
-      strip: true,
-    })
-
-    migrator.setValue({
-      format: 'string',
-      obj: target,
-      path:
-        'attributes.individual.collectingInformation.0.event.locationInformation.position.longitude',
-      value: longitude,
-    })
-
-    const uncertaintyInMeters = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Locational_Accuracy',
-      strip: true,
-    })
-
-    if (uncertaintyInMeters) {
-      migrator.setValue({
-        format: 'number',
-        obj: target,
-        path:
-          'attributes.individual.collectingInformation.0.event.locationInformation.position.uncertaintyInMeters',
-        value: Number(uncertaintyInMeters),
-      })
-    }
-
-    /* event.locationInformation.verticalPosition */
-
-    const minimumElevationInMeters = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Min_Elevation',
-      strip: true,
-    })
-
-    if (minimumElevationInMeters) {
-      migrator.setValue({
-        format: 'number',
-        obj: target,
-        path:
-          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
-        value: Number(minimumElevationInMeters),
-      })
-    }
-
-    const maximumElevationInMeters = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Max_Elevation',
-      strip: true,
-    })
-
-    if (maximumElevationInMeters) {
-      migrator.setValue({
-        format: 'number',
-        obj: target,
-        path:
-          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
-        value: Number(maximumElevationInMeters),
-      })
-    }
-
-    const maximumDepthInMeters = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Max_Depth',
-      strip: true,
-    })
-
-    if (maximumDepthInMeters) {
-      migrator.setValue({
-        format: 'number',
-        obj: target,
-        path:
-          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
-        value: Number(maximumDepthInMeters),
-      })
-    }
-
-    const minimumDepthInMeters = migrator.getValue({
-      obj: src,
-      path: 'objects.FieldNo_related.Min_Depth',
-      strip: true,
-    })
-
-    if (minimumDepthInMeters) {
-      migrator.setValue({
-        format: 'number',
-        obj: target,
-        path:
-          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
-        value: Number(minimumDepthInMeters),
-      })
-    }
-
-    const expeditionText = migrator.getValue({
-      obj: src,
-      path: 'objects.Expedition',
-      strip: true,
-    })
-
-    if (expeditionText) {
-      migrator.setValue({
-        obj: target,
-        path:
-          'attributes.individual.collectingInformation.0.event.expeditionText',
-        value: expeditionText,
-      })
-    }
-
-    return getPlaceId({
-      getItemByTypeId,
-      migrator,
-      src,
-    }).then(placeId => {
-      if (placeId !== undefined) {
-        migrator.setValue({
-          obj: target,
-          path:
-            'attributes.individual.collectingInformation.0.event.locationInformation.places.0.id',
-          value: placeId,
-        })
-      }
-      return getEstablishmentMeansType({
-        getItemByTypeId,
-        migrator,
-        src,
-      }).then(establishmentMeansTypeId => {
-        if (establishmentMeansTypeId !== undefined) {
-          migrator.setValue({
-            obj: target,
-            path:
-              'attributes.individual.collectingInformation.0.establishmentMeansType.id',
-            value: establishmentMeansTypeId,
-          })
-        }
-      })
-    })
+  const srcCollectingInformation = migrator.getValue({
+    obj: src,
+    path: 'migrationData.collectingInformation',
+    strip: true,
   })
+
+  const collectingInformation = {}
+
+  if (srcCollectingInformation.collectedByAgent) {
+    collectingInformation.collectedByAgent = {
+      textI: srcCollectingInformation.collectedByAgent,
+    }
+  }
+
+  if (srcCollectingInformation.establishmentMeans) {
+    const id = migrator.getFromGlobals({
+      globals,
+      key: srcCollectingInformation.establishmentMeans,
+      mapKey: 'establishmentMeansTypeKeyIdMap',
+      reporter,
+    })
+
+    if (id) {
+      collectingInformation.establishmentMeansType = {
+        id,
+      }
+    }
+  }
+
+  if (srcCollectingInformation.remarks) {
+    collectingInformation.remarks = {
+      textI: srcCollectingInformation.collectedByAgent,
+    }
+  }
+
+  // event
+  const dateYear = srcCollectingInformation.date_year
+  const dateMonth = srcCollectingInformation.date_month
+  const dateDay = srcCollectingInformation.date_day
+  const remarks = srcCollectingInformation.date_remarks
+  const dateType = srcCollectingInformation.date_type
+
+  const eventDateRange = buildDateRange({
+    dateType: dateType || 'latest',
+    remarks,
+    startDay: dateDay,
+    startMonth: dateMonth,
+    startYear: dateYear,
+  })
+
+  const { expeditionText } = srcCollectingInformation
+
+  // locationInformation
+  const locationInformation = createLocationInformation({
+    globals,
+    migrator,
+    reporter,
+    srcCollectingInformation,
+  })
+
+  if (eventDateRange || expeditionText || locationInformation) {
+    const event = {}
+    if (eventDateRange) {
+      event.dateRange = eventDateRange
+    }
+    if (expeditionText) {
+      event.expeditionText = expeditionText
+    }
+    if (locationInformation) {
+      event.locationInformation = locationInformation
+    }
+    collectingInformation.event = event
+  }
+
+  const isDeathDate = srcCollectingInformation.isDeathDate === 'True'
+  collectingInformation.isDeathDate = isDeathDate
+
+  if (Object.keys(collectingInformation).length) {
+    migrator.setValue({
+      obj: target,
+      path: 'attributes.individual.collectingInformation.0',
+      value: collectingInformation,
+    })
+  }
 }

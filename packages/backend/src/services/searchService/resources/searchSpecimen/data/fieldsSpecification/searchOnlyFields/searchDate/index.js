@@ -20,11 +20,17 @@ const transformation = ({ migrator, src, target }) => {
 
   const dates = []
 
-  if (collectingEventDateRange.startDate) {
-    const startTimestamp = getTimestampFromYMD(
-      collectingEventDateRange.startDate
-    )
-    const endTimestamp = getTimestampFromYMD(collectingEventDateRange.endDate)
+  if (collectingEventDateRange.startDate || collectingEventDateRange.endDate) {
+    let startTimestamp
+    if (collectingEventDateRange.startDate) {
+      startTimestamp = getTimestampFromYMD(collectingEventDateRange.startDate)
+    }
+
+    let endTimestamp
+    if (collectingEventDateRange.endDate) {
+      endTimestamp = getTimestampFromYMD(collectingEventDateRange.endDate)
+    }
+
     if (startTimestamp || endTimestamp) {
       dates.push({
         dateType: 'collecting-event-start-date',

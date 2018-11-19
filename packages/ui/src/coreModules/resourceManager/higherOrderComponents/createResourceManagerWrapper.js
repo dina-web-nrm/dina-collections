@@ -121,6 +121,7 @@ const createResourceManagerWrapper = (
     setListItems: PropTypes.func.isRequired,
     setShowAll: PropTypes.func.isRequired,
     showAll: PropTypes.bool,
+    sortOrder: PropTypes.array,
     tableActive: PropTypes.bool.isRequired,
     tableColumnSpecifications: PropTypes.array.isRequired,
     totalNumberOfRecords: PropTypes.number.isRequired,
@@ -143,6 +144,7 @@ const createResourceManagerWrapper = (
     recordNavigationHeight: emToPixels(4.25),
     recordOptionsHeight: emToPixels(3.5625),
     showAll: false,
+    sortOrder: [],
   }
 
   class ResourceManagerWrapper extends Component {
@@ -371,7 +373,7 @@ const createResourceManagerWrapper = (
     }
 
     expandAncestorsForItemId(itemId) {
-      const { dispatch, itemFetchOptions, resource } = this.props
+      const { dispatch, itemFetchOptions, resource, sortOrder } = this.props
       const getManyActionCreator =
         actionCreators[resource] && actionCreators[resource].getMany
 
@@ -381,6 +383,7 @@ const createResourceManagerWrapper = (
             filter: {
               ancestorsToId: itemId,
             },
+            sort: sortOrder,
           },
           storeInState: false,
         })
@@ -401,6 +404,7 @@ const createResourceManagerWrapper = (
               },
               include: itemFetchOptions.include,
               relationships: itemFetchOptions.relationships,
+              sort: sortOrder,
             },
           })
         ).then(() => {
@@ -423,6 +427,7 @@ const createResourceManagerWrapper = (
         dispatch,
         itemFetchOptions,
         resource,
+        sortOrder,
       } = this.props
       const getManyActionCreator =
         actionCreators[resource] && actionCreators[resource].getMany
@@ -434,6 +439,7 @@ const createResourceManagerWrapper = (
             filter: baseTreeFilter,
             include: itemFetchOptions.include,
             relationships: itemFetchOptions.relationships,
+            sort: sortOrder,
           },
         })
       ).then(items => {
@@ -591,7 +597,7 @@ const createResourceManagerWrapper = (
     }
 
     tableSearch(filterValues) {
-      const { search, resource } = this.props
+      const { search, resource, sortOrder } = this.props
 
       const query = filterValues
         ? this.props.buildFilterQuery({
@@ -599,7 +605,7 @@ const createResourceManagerWrapper = (
           })
         : undefined
 
-      return search({ query }).then(items => {
+      return search({ query, sort: sortOrder }).then(items => {
         this.props.setListItems(items, { resource })
       })
     }

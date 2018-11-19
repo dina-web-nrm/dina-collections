@@ -8,7 +8,6 @@ module.exports = function createModel({
   indexes = [],
   name,
   schemaModelName: schemaModelNameInput,
-  schemaVersion = '1.0.1',
   sequelize,
   validate = true,
 }) {
@@ -37,7 +36,6 @@ module.exports = function createModel({
     config,
     Model,
     schemaModelName,
-    schemaVersion,
     sequelize,
     validate,
   })

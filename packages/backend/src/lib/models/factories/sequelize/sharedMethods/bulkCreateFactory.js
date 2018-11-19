@@ -7,23 +7,23 @@ const log = createLog(
 )
 
 module.exports = function bulkCreateFactory(
-  { Model, schemaVersion, updatePrimaryKey, validate: validateFunction } = {}
+  { Model, updatePrimaryKey, validate: validateFunction } = {}
 ) {
   if (!Model) {
     throw new Error('Have to provide model')
   }
 
   // This should only be used to create test initialData
-  return bulkCreateWrapper(({ items = [], validate = false }) => {
+  return bulkCreateWrapper(({ items = [], validate = true }) => {
     log.debug(`Start create ${items.length} items for: ${Model.tableName}`)
     if (items.length === 0) {
-      return Promise.resolve({ meta: { count: 0 } })
+      return Promise.resolve({ items: [], meta: { count: 0 } })
     }
 
     return Model.bulkCreate(
       items.map(item => {
-        if (validate) {
-          const errors = validateFunction(item)
+        if (validateFunction && validate) {
+          const errors = validateFunction(item.attributes)
           if (errors) {
             throw errors
           }
@@ -34,7 +34,6 @@ module.exports = function bulkCreateFactory(
           id,
           relationships,
           schemaCompliant: true,
-          schemaVersion: schemaVersion || undefined,
           ...internals,
         }
       }),

@@ -1,7 +1,11 @@
+const path = require('path')
+const fs = require('fs')
 const asyncReduce = require('common/src/asyncReduce')
 const createLog = require('../../utilities/log')
 
 const log = createLog('lib/importer')
+
+const saveToFile = false
 
 module.exports = function importer({ config, serviceInteractor }) {
   log.info('Start importer')
@@ -12,13 +16,13 @@ module.exports = function importer({ config, serviceInteractor }) {
     'establishmentMeansType',
     'featureType',
     'identifierType',
-    'normalizedAgent',
     'preparationType',
     'typeSpecimenType',
     'place',
     'taxon',
     'taxonName',
     'storageLocation',
+    'normalizedAgent',
     'specimen',
   ]
 
@@ -49,6 +53,13 @@ module.exports = function importer({ config, serviceInteractor }) {
   }).then(importReport => {
     log.info('Import done')
     log.info('Start rebuilding searchSpecimen')
+    if (saveToFile) {
+      fs.writeFileSync(
+        path.join(__dirname, 'importReport.json'),
+        JSON.stringify(importReport, null, 2)
+      )
+    }
+
     return serviceInteractor
       .call({
         operationId: 'searchSpecimenRebuildView',

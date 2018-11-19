@@ -82,9 +82,10 @@ function PhysicalObjectTitle({
             <Icon name="dropdown" />
             {preparationType &&
               preparationType.attributes &&
-              preparationType.attributes.name && (
+              preparationType.attributes.name &&
+              preparationType.attributes.name.en && (
                 <span style={{ fontWeight: 'normal' }}>
-                  {capitalizeFirstLetter(preparationType.attributes.name)}
+                  {capitalizeFirstLetter(preparationType.attributes.name.en)}
                 </span>
               )}
           </React.Fragment>

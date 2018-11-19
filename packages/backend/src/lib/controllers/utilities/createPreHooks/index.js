@@ -10,6 +10,7 @@ module.exports = function createPreHooks({
 }) {
   return [
     createEnsureDataCorrectVersion({
+      config,
       dataModelVersion: config.dataModel.version,
       method: operation.method,
       resource: operation.resource,

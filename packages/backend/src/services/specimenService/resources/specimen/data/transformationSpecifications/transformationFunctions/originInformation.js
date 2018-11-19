@@ -1,17 +1,66 @@
 /* eslint-disable no-param-reassign */
 
-module.exports = function migrateOriginInformation({ src, target, migrator }) {
-  const originLocality = migrator.getValue({
+/*
+example src data
+      "originInformation": {
+        "originLocality": null,
+        "establishmentMeans": "captive",
+        "isResultOfSelectiveBreeding": "True"
+      },
+
+*/
+module.exports = function migrateOriginInformation({
+  reporter,
+  globals,
+  src,
+  target,
+  migrator,
+}) {
+  const srcOriginInformation = migrator.getValue({
     obj: src,
-    path: 'objects.OriginLocality',
+    path: 'migrationData.originInformation',
     strip: true,
   })
 
-  if (originLocality) {
+  if (!srcOriginInformation) {
+    return
+  }
+
+  const {
+    originLocality: srcOriginLocality,
+    establishmentMeans: srcEstablishmentMeans,
+    isResultOfSelectiveBreeding: srcIsResultOfSelectiveBreeding,
+  } = srcOriginInformation
+
+  const originInformation = {}
+
+  if (srcEstablishmentMeans) {
+    const id = migrator.getFromGlobals({
+      globals,
+      key: srcEstablishmentMeans,
+      mapKey: 'establishmentMeansTypeKeyIdMap',
+      reporter,
+    })
+
+    if (id !== undefined && id !== null) {
+      originInformation.establishmentMeansType = {
+        id,
+      }
+    }
+  }
+
+  if (srcOriginLocality) {
+    originInformation.originLocality = srcOriginLocality
+  }
+
+  originInformation.isResultOfSelectiveBreeding =
+    srcIsResultOfSelectiveBreeding === 'True'
+
+  if (Object.keys(originInformation).length) {
     migrator.setValue({
       obj: target,
-      path: 'attributes.individual.originInformation.0.originLocality',
-      value: originLocality,
+      path: 'attributes.individual.originInformation.0',
+      value: originInformation,
     })
   }
 }
