@@ -29,7 +29,7 @@
     "install:scripts": "cd ./packages/scripts && yarn install",
     "install:migrations": "cd ./packages/migrations && yarn install",
     "install:ui": "cd ./packages/ui && yarn install",
-    "preversion": "./packages/scripts/src/bash/ensure-master-is-clean.sh && yarn test",
+    "preversion": "./packages/scripts/src/bash/ensure-master-is-clean.sh",
     "postversion": "git push && git push --tags",
     "setup": "yarn setup:env && yarn install && yarn setup:links && yarn test",
     "setup:env": "./packages/scripts/src/bash/create-env.sh",
