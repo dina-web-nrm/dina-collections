@@ -29,7 +29,7 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'Level 1')
+      const parent = findParentWithSpecificGroup(value, 'level 1')
       if (!parent) {
         return ''
       }
@@ -47,7 +47,7 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'Level 2')
+      const parent = findParentWithSpecificGroup(value, 'level 2')
       if (!parent) {
         return ''
       }
@@ -65,7 +65,7 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'Level 3')
+      const parent = findParentWithSpecificGroup(value, 'level 3')
       if (!parent) {
         return ''
       }
@@ -83,7 +83,7 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'Level 4')
+      const parent = findParentWithSpecificGroup(value, 'level 4')
       if (!parent) {
         return ''
       }
