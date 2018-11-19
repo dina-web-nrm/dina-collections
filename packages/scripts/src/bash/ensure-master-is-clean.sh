@@ -9,11 +9,6 @@ BASE=$(git merge-base @ "$UPSTREAM")
 
 EXIT_STATUS=1
 
-if [[ "$BRANCH" != "master" ]]; then
-  echo 'Aborting script branch not master';
-  exit 1;
-fi
-
 if !([ -z "$(git status --untracked-files=no --porcelain)" ]); then
   #  Working directory clean excluding untracked files
   echo "Need to Add or Commit ";
