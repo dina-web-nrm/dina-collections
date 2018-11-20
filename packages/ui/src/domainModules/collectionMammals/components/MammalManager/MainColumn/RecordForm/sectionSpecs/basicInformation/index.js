@@ -6,6 +6,7 @@ const {
   identifiers,
   acquisition,
   recordHistoryExternalEvents,
+  legacyData,
 } = unitSpecs
 
 const units = [
@@ -14,6 +15,7 @@ const units = [
   acquisition,
   recordHistoryExternalEvents,
   recordHistoryEvents,
+  legacyData,
 ]
 
 export default {
