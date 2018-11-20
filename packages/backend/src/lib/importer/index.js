@@ -61,20 +61,31 @@ module.exports = function importer({ config, serviceInteractor }) {
     }
 
     return serviceInteractor
-      .call({
-        operationId: 'searchSpecimenRebuildView',
-        request: { queryParams: { limit: 100000 } },
+      .rebuildView({
+        request: {
+          queryParams: {
+            limit: config.initialData.numberOfSpecimens,
+          },
+        },
+        resource: 'catalogNumber',
       })
-      .then(rebuildSearchSpecimenReport => {
-        /* eslint-disable no-console */
-        console.log('importReport', JSON.stringify(importReport, null, 2))
-        console.log(
-          'rebuildSearchSpecimenReport',
-          JSON.stringify(rebuildSearchSpecimenReport, null, 2)
-        )
-        /* eslint-enable no-console */
-        log.info('Rebuilding searchSpecimen done')
-        process.exit(0)
+      .then(() => {
+        return serviceInteractor
+          .call({
+            operationId: 'searchSpecimenRebuildView',
+            request: { queryParams: { limit: 100000 } },
+          })
+          .then(rebuildSearchSpecimenReport => {
+            /* eslint-disable no-console */
+            console.log('importReport', JSON.stringify(importReport, null, 2))
+            console.log(
+              'rebuildSearchSpecimenReport',
+              JSON.stringify(rebuildSearchSpecimenReport, null, 2)
+            )
+            /* eslint-enable no-console */
+            log.info('Rebuilding searchSpecimen done')
+            process.exit(0)
+          })
       })
   })
 }
