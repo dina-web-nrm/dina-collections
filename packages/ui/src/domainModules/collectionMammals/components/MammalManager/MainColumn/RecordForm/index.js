@@ -7,7 +7,7 @@ import { push } from 'react-router-redux'
 import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
 import objectPath from 'object-path'
 
-import { Form, FormActionBar, FormRow } from 'coreModules/form/components'
+import { Form, RecordActionBar, FormRow } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { createModuleTranslate } from 'coreModules/i18n/components'
@@ -172,7 +172,7 @@ class RecordForm extends Component {
         const { mode } = this.props
 
         return (
-          <FormActionBar
+          <RecordActionBar
             {...this.props}
             {...props}
             editMode={mode === 'edit'}
