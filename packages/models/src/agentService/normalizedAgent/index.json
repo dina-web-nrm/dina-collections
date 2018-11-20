@@ -26,6 +26,9 @@
     "alsoKnownAs": {
       "type": "string"
     },
+    "title": {
+      "type": "string"
+    },
     "disambiguatingDescription": {
       "type": "string"
     },
