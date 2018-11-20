@@ -35,6 +35,9 @@ module.exports = function decorateRequestWithCatalogNumber({
     'individual.identifiers',
     newIdentifiers
   )
+
+  updatedNestedSpecimen.publishRecord = true
+
   const updatedCoreSpecimen = nestedToCoreSync({
     item: updatedNestedSpecimen,
     resolveRelationships: false,
