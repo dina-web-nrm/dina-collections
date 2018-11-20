@@ -40,6 +40,21 @@ module.exports = function migrateSpecimen({
     path: 'migrationData.remarks',
     strip: true,
   })
+
+  const srcCollectionItemsRemarks = migrator.getValue({
+    obj: src,
+    path: 'migrationData.collectionItemsRemarks',
+    strip: true,
+  })
+
+  if (srcCollectionItemsRemarks) {
+    migrator.setValue({
+      obj: target,
+      path: 'attributes.collectionItemsRemarks',
+      value: srcCollectionItemsRemarks,
+    })
+  }
+
   if (remarks) {
     migrator.setValue({
       obj: target,
