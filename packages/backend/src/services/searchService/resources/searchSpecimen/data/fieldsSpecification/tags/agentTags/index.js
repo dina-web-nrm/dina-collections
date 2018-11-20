@@ -35,7 +35,7 @@ const transformation = ({ migrator, src, target }) => {
   collectingInformation.forEach(collectingInformationItem => {
     const collectorFullName = migrator.getValue({
       obj: collectingInformationItem,
-      path: 'collectedByAgent.normalized.textI',
+      path: 'collectedByAgent.textI',
     })
 
     if (collectorFullName) {
