@@ -26,7 +26,7 @@ const mapStateToProps = (state, { formValueSelector, name }) => {
     identifierTypeOptions: globalCrudSelectors.identifierType
       .getAllAsOptions(state)
       .filter(option => {
-        return option.text !== 'Catalog number'
+        return option.text !== 'Catalog no.'
       }),
   }
 }
