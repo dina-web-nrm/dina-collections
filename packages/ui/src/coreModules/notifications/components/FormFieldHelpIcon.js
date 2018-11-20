@@ -39,6 +39,7 @@ export const FormFieldHelpIcon = ({
       name="help circle outline"
       onClick={event => {
         event.preventDefault()
+        event.stopPropagation()
         createNotification({
           componentProps: helpNotificationProps,
           displayType: isLarge ? 'inline' : 'fixed',
