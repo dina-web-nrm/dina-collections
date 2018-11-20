@@ -2,9 +2,15 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { getFormSyncErrors } from 'redux-form'
-import { Button, Grid, Message } from 'semantic-ui-react'
+import {
+  getFormSyncErrors,
+  isInvalid,
+  isPristine,
+  isSubmitting,
+} from 'redux-form'
+import { Button, Grid } from 'semantic-ui-react'
 
+import config from 'config'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 
@@ -22,50 +28,51 @@ const hasError = (syncErrors = {}) => {
   return Object.keys(errors).length > 0
 }
 
+const textStyle = { float: 'left', marginLeft: '1.25em', marginTop: '0.625em' }
+
 const mapStateToProps = (state, { formName }) => {
   return {
     hasSyncErrors: hasError(getFormSyncErrors(formName)(state)),
+    invalid: isInvalid(formName)(state),
+    pristine: isPristine(formName)(state),
+    submitting: isSubmitting(formName)(state),
   }
 }
 
 const propTypes = {
-  editMode: PropTypes.bool.isRequired,
-  error: PropTypes.string,
   formName: PropTypes.string.isRequired,
   hasSyncErrors: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onUndoChanges: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  submitFailed: PropTypes.bool.isRequired,
-  submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
 }
 
-const defaultProps = {
-  error: '',
-}
-
-export class FormActionBar extends PureComponent {
+export class RecordActionBar extends PureComponent {
   render() {
     const {
-      editMode,
-      error,
       formName,
       hasSyncErrors,
       invalid,
-      pristine,
+      onDelete: handleDelete,
+      onSubmit: handleSubmit,
       onUndoChanges: handleUndoChanges,
-      submitFailed,
-      submitSucceeded,
+      pristine,
       submitting,
     } = this.props
 
     return (
-      <Grid padded>
+      <Grid padded verticalAlign="middle">
         <Grid.Column>
           <Button
-            disabled={hasSyncErrors || invalid || pristine || submitting}
+            disabled={hasSyncErrors || invalid || pristine}
+            loading={submitting}
+            onClick={handleSubmit}
+            primary
             size="large"
+            style={{ float: 'left' }}
             type="submit"
           >
             <ModuleTranslate textKey="save" />
@@ -75,41 +82,35 @@ export class FormActionBar extends PureComponent {
             disabled={pristine || submitting}
             onClick={handleUndoChanges}
             size="large"
+            style={{ float: 'left' }}
             type="button"
           >
             Undo changes
           </Button>
-          {!editMode && (
-            <span style={{ marginLeft: '15px' }}>*New record*</span>
-          )}
-          {!pristine && <em style={{ marginLeft: '10px' }}>Unsaved changes</em>}
-          <ConnectedFormSchemaError form={formName} />
-          {invalid &&
-            !error &&
-            submitFailed && (
-              <Message
-                error
-                header={<ModuleTranslate textKey="formContainsErrors" />}
-              />
-            )}
-          {submitFailed &&
-            error && (
-              <Message
-                content={error}
-                error
-                header={<ModuleTranslate textKey="submitFailed" />}
-              />
-            )}
-          {submitSucceeded && (
-            <Message header={<ModuleTranslate textKey="saved" />} success />
-          )}
+          {!pristine &&
+            (hasSyncErrors || invalid ? (
+              <em style={textStyle}>
+                <ModuleTranslate textKey="issuesPreventSaving" />
+              </em>
+            ) : (
+              <em style={textStyle}>Unsaved changes</em>
+            ))}
+          {config.isDevelopment && <ConnectedFormSchemaError form={formName} />}
+          <Button
+            basic
+            onClick={handleDelete}
+            size="large"
+            style={{ float: 'right' }}
+            type="button"
+          >
+            Delete record
+          </Button>
         </Grid.Column>
       </Grid>
     )
   }
 }
 
-FormActionBar.propTypes = propTypes
-FormActionBar.defaultProps = defaultProps
+RecordActionBar.propTypes = propTypes
 
-export default compose(connect(mapStateToProps))(FormActionBar)
+export default compose(connect(mapStateToProps))(RecordActionBar)
