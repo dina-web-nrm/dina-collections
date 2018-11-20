@@ -49,6 +49,10 @@
         "type": "string",
         "x-summary": ""
       },
+      "title": {
+        "type": "string",
+        "x-summary": ""
+      },
       "disambiguatingDescription": {
         "type": "string",
         "x-summary": ""
@@ -116,10 +120,6 @@
         "items": {
           "$ref": "role"
         },
-        "x-summary": ""
-      },
-      "title": {
-        "type": "string",
         "x-summary": ""
       },
       "readOnly": {

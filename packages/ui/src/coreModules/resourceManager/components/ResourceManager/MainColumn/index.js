@@ -33,6 +33,7 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   tableActive: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  transformOutput: PropTypes.func,
   treeActive: PropTypes.bool.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
 }
@@ -41,6 +42,7 @@ const defaultProps = {
   fetchIncludeAfterUpdate: undefined,
   recordNavigationHeight: emToPixels(4.25),
   recordOptionsHeight: emToPixels(3.5625),
+  transformOutput: undefined,
 }
 
 class MainColumn extends Component {
@@ -195,9 +197,10 @@ class MainColumn extends Component {
 
       case 'editItem': {
         const {
+          availableHeight,
           recordNavigationHeight,
           recordOptionsHeight,
-          availableHeight,
+          transformOutput,
         } = this.props
         const { extractedProps } = extractProps({
           keys: [
@@ -218,15 +221,17 @@ class MainColumn extends Component {
             availableHeight={
               availableHeight - recordNavigationHeight - recordOptionsHeight
             }
+            transformOutput={transformOutput}
           />
         )
       }
 
       case 'createItem': {
         const {
+          availableHeight,
           recordNavigationHeight,
           recordOptionsHeight,
-          availableHeight,
+          transformOutput,
         } = this.props
         const { extractedProps } = extractProps({
           keys: ['onInteraction', 'resource', 'renderCreateForm'],
@@ -239,6 +244,7 @@ class MainColumn extends Component {
             availableHeight={
               availableHeight - recordNavigationHeight - recordOptionsHeight
             }
+            transformOutput={transformOutput}
           />
         )
       }

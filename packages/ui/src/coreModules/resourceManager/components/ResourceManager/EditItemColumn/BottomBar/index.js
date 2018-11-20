@@ -39,10 +39,12 @@ const propTypes = {
   onInteraction: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
+  transformOutput: PropTypes.func,
   values: PropTypes.object,
 }
 const defaultProps = {
   fetchIncludeAfterUpdate: undefined,
+  transformOutput: undefined,
   values: undefined,
 }
 
@@ -79,7 +81,13 @@ class BottomBar extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault()
-    const { dispatch, fetchIncludeAfterUpdate, itemId, resource } = this.props
+    const {
+      dispatch,
+      fetchIncludeAfterUpdate,
+      itemId,
+      resource,
+      transformOutput,
+    } = this.props
     this.setState({ loading: true })
     const update =
       crudActionCreators[resource] && crudActionCreators[resource].update
@@ -88,7 +96,9 @@ class BottomBar extends PureComponent {
       update({
         item: {
           id: itemId,
-          ...this.props.values,
+          ...(transformOutput
+            ? transformOutput(this.props.values)
+            : this.props.values),
         },
         nested: true,
       })

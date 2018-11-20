@@ -37,9 +37,11 @@ const propTypes = {
   reset: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   startSubmit: PropTypes.func.isRequired,
+  transformOutput: PropTypes.func,
   values: PropTypes.object,
 }
 const defaultProps = {
+  transformOutput: undefined,
   values: undefined,
 }
 
@@ -64,6 +66,7 @@ class BottomBar extends PureComponent {
       formName,
       onInteraction,
       resource,
+      transformOutput,
       startSubmit,
       values,
     } = this.props
@@ -76,7 +79,9 @@ class BottomBar extends PureComponent {
 
     return dispatch(
       create({
-        item: values,
+        item: {
+          ...(transformOutput ? transformOutput(values) : values),
+        },
         nested: true,
       })
     ).then(({ id }) => {

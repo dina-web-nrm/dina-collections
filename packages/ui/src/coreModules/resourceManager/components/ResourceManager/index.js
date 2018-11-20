@@ -64,6 +64,7 @@ const propTypes = {
   rightSidebarWidth: PropTypes.number,
   tableActive: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  transformOutput: PropTypes.func,
   treeActive: PropTypes.bool.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
   windowHeight: PropTypes.number.isRequired,
@@ -74,6 +75,7 @@ const defaultProps = {
   isPicker: false,
   itemId: undefined,
   rightSidebarWidth: emToPixels(25),
+  transformOutput: undefined,
 }
 
 class ResourceManager extends Component {
@@ -185,8 +187,14 @@ class ResourceManager extends Component {
           props: this.props,
         })
 
-        const { columnHeight } = this.props
-        return <MainColumn {...extractedProps} availableHeight={columnHeight} />
+        const { columnHeight, transformOutput } = this.props
+        return (
+          <MainColumn
+            {...extractedProps}
+            availableHeight={columnHeight}
+            transformOutput={transformOutput}
+          />
+        )
       }
 
       case 'editItemColumn': {
@@ -203,9 +211,13 @@ class ResourceManager extends Component {
           props: this.props,
         })
 
-        const { columnHeight } = this.props
+        const { columnHeight, transformOutput } = this.props
         return (
-          <EditItemColumn {...extractedProps} availableHeight={columnHeight} />
+          <EditItemColumn
+            {...extractedProps}
+            availableHeight={columnHeight}
+            transformOutput={transformOutput}
+          />
         )
       }
 
@@ -214,11 +226,12 @@ class ResourceManager extends Component {
           keys: ['onInteraction', 'resource', 'renderCreateForm'],
           props: this.props,
         })
-        const { columnHeight } = this.props
+        const { columnHeight, transformOutput } = this.props
         return (
           <CreateItemColumn
             {...extractedProps}
             availableHeight={columnHeight}
+            transformOutput={transformOutput}
           />
         )
       }

@@ -6,6 +6,7 @@ import CreateForm from './item/CreateForm'
 import EditForm, { include } from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
+import transformOutput from './item/BaseForm/transformations/output'
 import tableColumnSpecifications from './tableColumnSpecifications'
 import ItemTitle from './ItemTitle'
 
@@ -78,6 +79,7 @@ class AgentManager extends Component {
         resource="normalizedAgent"
         sortOrder={sortOrder}
         tableColumnSpecifications={tableColumnSpecifications}
+        transformOutput={transformOutput}
         treeEnabled={false}
       />
     )

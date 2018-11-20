@@ -17,7 +17,6 @@ const parts = [
     componentName: 'Input',
     componentProps: {
       columnProps: { width: 8 },
-      fluid: true,
       type: 'text',
     },
     initiallyHidden: true,
@@ -28,7 +27,6 @@ const parts = [
     componentName: 'Input',
     componentProps: {
       columnProps: { width: 8 },
-      fluid: true,
       type: 'text',
     },
     initiallyHidden: true,
@@ -38,7 +36,6 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      fluid: true,
       type: 'text',
     },
     initiallyHidden: true,
@@ -48,7 +45,6 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      fluid: true,
       type: 'text',
     },
     initiallyHidden: true,
@@ -58,8 +54,17 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 4 },
-      fluid: true,
+      columnProps: { clear: true, width: 6 },
+      type: 'text',
+    },
+    initiallyHidden: true,
+    name: 'title',
+    wrapInField: true,
+  },
+  {
+    componentName: 'Input',
+    componentProps: {
+      columnProps: { clear: true, width: 4 },
       type: 'text',
     },
     initiallyHidden: true,

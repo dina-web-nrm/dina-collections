@@ -2,27 +2,32 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { reduxForm, reset } from 'redux-form'
+import { arrayRemove, change, reduxForm, reset } from 'redux-form'
 
-import formValidator from 'common/es5/error/validators/formValidator'
 import { Form, FormRow } from 'coreModules/form/components'
 import { emToPixels } from 'coreModules/layout/utilities'
+import customFormValidator from 'common/es5/error/validators/customFormValidator'
+import { agentFormModels } from 'domainModules/agent/schemas'
 import customParts from '../../../formParts'
 import sectionSpecs from './sectionSpecs'
 
 const formActionBarHeight = emToPixels(4.625)
 
 const mapDispatchToProps = {
+  changeFormValue: change,
+  removeArrayField: arrayRemove,
   reset,
 }
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  changeFormValue: PropTypes.func.isRequired,
   form: PropTypes.string.isRequired,
   formSectionNavigationHeader: PropTypes.node.isRequired,
   formSectionNavigationSubHeader: PropTypes.node,
   formValueSelector: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  removeArrayField: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
 }
 const defaultProps = {
@@ -33,6 +38,16 @@ class BaseForm extends Component {
   constructor(props) {
     super(props)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
+    this.changeFieldValue = this.changeFieldValue.bind(this)
+    this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
+  }
+
+  changeFieldValue(fieldName, value) {
+    this.props.changeFormValue(this.props.form, fieldName, value)
+  }
+
+  removeArrayFieldByIndex(fieldName, index) {
+    this.props.removeArrayField(this.props.form, fieldName, index)
   }
 
   handleUndoChanges() {
@@ -62,6 +77,7 @@ class BaseForm extends Component {
         <FormRow
           {...rest}
           availableHeight={availableHeight - formActionBarHeight}
+          changeFieldValue={this.changeFieldValue}
           customParts={customParts}
           formName={form}
           formSectionNavigationHeader={formSectionNavigationHeader}
@@ -69,6 +85,7 @@ class BaseForm extends Component {
           formValueSelector={formValueSelector}
           module="agent"
           moduleName="agent"
+          removeArrayFieldByIndex={this.removeArrayFieldByIndex}
           sectionSpecs={sectionSpecs}
         />
       </Form>
@@ -83,5 +100,10 @@ const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
 
 export default reduxForm({
   enableReinitialize: true,
-  validate: formValidator({ model: 'normalizedAgent' }),
+  validate: compose(
+    customFormValidator({
+      model: 'normalizedAgent',
+      models: agentFormModels,
+    })
+  ),
 })(EnhancedForm)
