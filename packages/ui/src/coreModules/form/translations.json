@@ -7,9 +7,9 @@
     "en": "click to add",
     "sv": "klicka för att lägga till"
   },
-  "formContainsErrors": {
-    "en": "Form contains errors",
-    "sv": "Formuläret innehåller fel"
+  "issuesPreventSaving": {
+    "en": "There are issues that prevent saving",
+    "sv": ""
   },
   "plainText": {
     "en": "plain text",
