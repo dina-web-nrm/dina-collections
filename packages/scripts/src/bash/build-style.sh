@@ -23,4 +23,4 @@ echo "Info: This script builds 4 docker-images"
 echo "Pushing TAG=$TAG to Dockerhub"
 
 npm run build:semantic-ui;
-docker build -f ./packages/dina-style/Dockerfile -t dina/dina-semantic-ui-docs:$TAG ./packages/dina-style;
+docker build -f ./packages/dina-style/Dockerfile -t dina/dina-semantic-ui-docs:$TAG -t dina/dina-semantic-ui-docs:latest ./packages/dina-style;

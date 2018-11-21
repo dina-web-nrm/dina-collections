@@ -27,6 +27,9 @@ echo "Pushing TAG=$TAG to Dockerhub"
 #docker login
 
 #push to docker hub
+docker push dina/dina-collections-api:latest
 docker push dina/dina-collections-api:$TAG
+docker push dina/dina-collections-ui:latest
 docker push dina/dina-collections-ui:$TAG
+docker push dina/dina-collections-migrations:latest
 docker push dina/dina-collections-migrations:$TAG
