@@ -207,6 +207,9 @@
         "en": "Remarks"
       }
     },
+    "legacyData": {
+      "en": "Legacy data"
+    },
     "locationInformation": {
       "coordinatesVerbatim": {
         "en": "Coordinate (stated)",
@@ -417,6 +420,9 @@
     "identifiers": {
       "en": "identifiers",
       "sv": ""
+    },
+    "legacyData": {
+      "en": "Legacy data"
     },
     "localityOrigin": {
       "en": "collecting location and origin"

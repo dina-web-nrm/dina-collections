@@ -1,9 +1,10 @@
 import config from 'config'
 import createNotification from 'coreModules/notifications/actionCreators/createNotification'
 import logout from 'coreModules/user/actionCreators/logout'
+import globalUserSelectors from 'coreModules/user/globalSelectors'
 
 export default function errorMiddleware({ debug = true } = {}) {
-  return ({ dispatch }) => next => action => {
+  return ({ dispatch, getState }) => next => action => {
     const result = next(action)
     if (!debug) {
       return result
@@ -45,7 +46,10 @@ export default function errorMiddleware({ debug = true } = {}) {
         action.payload &&
         (action.payload.status === 401 || action.payload.status === 403)
       ) {
-        dispatch(logout())
+        const isLoggedIn = globalUserSelectors.getUserLoggedIn(getState())
+        if (isLoggedIn) {
+          dispatch(logout())
+        }
       }
     }
     return result

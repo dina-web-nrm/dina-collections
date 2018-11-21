@@ -50,10 +50,6 @@ module.exports = function migrateCollectionItems({
       } = srcPhysicalObject
       const collectionItem = {}
 
-      if (srcRemarks) {
-        collectionItem.remarks = srcRemarks
-      }
-
       const storageLocationKey = buildKey({
         storageLevel1: srcStorageLevel1,
         storageLevel2: srcStorageLevel2,
@@ -81,11 +77,15 @@ module.exports = function migrateCollectionItems({
         }
       }
 
-      if (storageLocationId) {
-        collectionItem.physicalObject = {
-          storageLocation: {
+      if (storageLocationId !== undefined || srcRemarks) {
+        collectionItem.physicalObject = {}
+        if (storageLocationId !== undefined) {
+          collectionItem.physicalObject.storageLocation = {
             id: storageLocationId,
-          },
+          }
+        }
+        if (srcRemarks) {
+          collectionItem.physicalObject.remarks = srcRemarks
         }
       }
 

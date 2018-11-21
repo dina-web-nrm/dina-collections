@@ -118,14 +118,15 @@ class DropdownSearchInput extends Component {
   handleOnChange(_, data) {
     const { value } = data
     this.handleSearchChange(null, { searchQuery: '' })
-
     if (this.props.type === 'dropdown-search-id-text') {
-      this.props.input.onBlur(
-        deleteUndefinedProperties({
-          ...this.props.input.value,
-          ...value,
-        })
-      )
+      const updatedValue = deleteUndefinedProperties({
+        ...this.props.input.value,
+        ...value,
+        normalized: value.normalized,
+        textI: value.textI,
+      })
+
+      this.props.input.onBlur(updatedValue)
     } else {
       this.props.input.onBlur(value)
     }

@@ -9,6 +9,7 @@ module.exports = function decorateRequestWithCatalogNumber({
   identifierTypeId,
 }) {
   const coreSpecimen = objectPath.get(request, 'body.data')
+
   const nestedSpecimen = coreToNestedSync({
     item: coreSpecimen,
     resolveRelationships: false,
@@ -35,14 +36,28 @@ module.exports = function decorateRequestWithCatalogNumber({
     newIdentifiers
   )
 
+  updatedNestedSpecimen.publishRecord = true
+
   const updatedCoreSpecimen = nestedToCoreSync({
     item: updatedNestedSpecimen,
     resolveRelationships: false,
     type: 'specimen',
   })
-  return immutablePath.set(
+
+  let updatedRequest = immutablePath.set(
     request,
     'body.data.attributes',
     updatedCoreSpecimen.attributes
   )
+
+  updatedRequest = immutablePath.set(
+    updatedRequest,
+    'body.data.relationships',
+    {
+      identifierTypes: {
+        data: [{ id: identifierTypeId, type: 'identifierType' }],
+      },
+    }
+  )
+  return updatedRequest
 }

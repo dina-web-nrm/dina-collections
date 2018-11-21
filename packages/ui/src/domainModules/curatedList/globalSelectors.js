@@ -28,7 +28,7 @@ const createDropdownSelector = (categoryFilter, numberOfResults) => {
         .map(({ id, attributes }) => {
           return {
             key: id,
-            text: capitalizeFirstLetter(attributes.name),
+            text: capitalizeFirstLetter(attributes.name.en),
             value: id,
           }
         })

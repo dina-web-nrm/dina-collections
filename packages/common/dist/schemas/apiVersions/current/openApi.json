@@ -19320,6 +19320,10 @@
             "$ref": "#/components/schemas/type",
             "x-summary": ""
           },
+          "remarks": {
+            "type": "string",
+            "x-summary": ""
+          },
           "collectionItems": {
             "type": "array",
             "items": {
