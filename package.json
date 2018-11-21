@@ -30,7 +30,7 @@
     "install:migrations": "cd ./packages/migrations && yarn install",
     "install:ui": "cd ./packages/ui && yarn install",
     "preversion": "./packages/scripts/src/bash/ensure-master-is-clean.sh",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push origin master && git push --tags",
     "setup": "yarn setup:env && yarn install && yarn setup:links && yarn test",
     "setup:env": "./packages/scripts/src/bash/create-env.sh",
     "setup:links": "yarn setup:links:common && yarn setup:links:backend && yarn setup:links:ui && yarn setup:links:scripts && yarn setup:links:migrations",
