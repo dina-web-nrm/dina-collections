@@ -81,7 +81,7 @@ services:
     command: /bin/bash -c "envsubst < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/dina.conf && forego start -r"
 
   style:
-    image: "dina/dina-semantic-ui-docs:${TAG}"
+    image: "dina/dina-semantic-ui-docs:latest"
     container_name: dina-semantic-ui-docs
     expose:
     - "80"
