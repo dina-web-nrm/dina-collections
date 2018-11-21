@@ -21,12 +21,10 @@ then
   exit 1
 fi
 
-echo "Info: This script publishes 3 images to Docker"
+echo "Info: This script publishes 1 images to Docker"
 echo "Pushing TAG=$TAG to Dockerhub"
 
 #docker login
 
 #push to docker hub
-docker push dina/dina-collections-api:$TAG
-docker push dina/dina-collections-ui:$TAG
-docker push dina/dina-collections-migrations:$TAG
+docker push dina/dina-semantic-ui-docs:$TAG

@@ -17226,10 +17226,6 @@
             "type": "string",
             "x-summary": ""
           },
-          "title": {
-            "type": "string",
-            "x-summary": ""
-          },
           "disambiguatingDescription": {
             "type": "string",
             "x-summary": ""
@@ -17297,6 +17293,10 @@
             "items": {
               "$ref": "#/components/schemas/role"
             },
+            "x-summary": ""
+          },
+          "title": {
+            "type": "string",
             "x-summary": ""
           },
           "readOnly": {
