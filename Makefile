@@ -24,4 +24,4 @@ rm-utils:
 	TAG=latest docker-compose -f docker-compose.dev-utils.yaml rm -vf
 
 load-sample-data:
-	TAG=latest docker-compose -f docker-compose.data.yaml up migrations
+	TAG=latest docker-compose -f docker-compose.data.yaml up -d migrations
