@@ -19,13 +19,11 @@ then
    exit 1
 fi
 
-echo "Info: This script builds 4 docker-images"
+echo "Info: This script builds 3 docker-images"
 echo "Pushing TAG=$TAG to Dockerhub"
 
 npm run build:ui;
 docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:$TAG ./packages/ui;
-npm run build:semantic-ui;
-docker build -f ./packages/dina-style/Dockerfile -t dina/dina-semantic-ui-docs:$TAG ./packages/dina-style;
 npm run uninstall;
 docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TAG ./packages;
 docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TAG ./packages;
