@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 const createLocationInformation = require('./locationInformation')
-const buildDateRange = require('common/src/date/buildDateRange')
+const getInterpretedDateRangeFromOneDate = require('common/src/date/getInterpretedDateRangeFromOneDate')
 
 /*
 example src data
@@ -75,18 +75,18 @@ module.exports = function migrateCollectingInformation({
   }
 
   // event
-  const dateYear = srcCollectingInformation.date_year
-  const dateMonth = srcCollectingInformation.date_month
-  const dateDay = srcCollectingInformation.date_day
+  const year = srcCollectingInformation.date_year
+  const month = srcCollectingInformation.date_month
+  const day = srcCollectingInformation.date_day
   const remarks = srcCollectingInformation.date_remarks
-  const dateType = srcCollectingInformation.date_type
+  const dateType = srcCollectingInformation.date_dateType
 
-  const eventDateRange = buildDateRange({
-    dateType: dateType || 'latest',
+  const eventDateRange = getInterpretedDateRangeFromOneDate({
+    dateType,
+    day,
+    month,
     remarks,
-    startDay: dateDay,
-    startMonth: dateMonth,
-    startYear: dateYear,
+    year,
   })
 
   const { expeditionText } = srcCollectingInformation
