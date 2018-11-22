@@ -1,4 +1,4 @@
-import { createSingleDate } from 'coreModules/form/components/parts/factories'
+import { createRangeDate } from 'coreModules/form/components/parts/factories'
 
 const parts = [
   {
@@ -15,13 +15,18 @@ const parts = [
     },
     initiallyShown: true,
   },
-  ...createSingleDate({
+  ...createRangeDate({
+    displayDateTypeRadios: false,
+    displayEndDateLabel: true,
+    displayLabel: false,
+    displayStartDateLabel: true,
+    displaySubLabels: true,
+    endDateLabel: 'Death date',
+    initialDateType: 'openRange',
     initiallyHidden: true,
-    name: 'birthDate',
-  }),
-  ...createSingleDate({
-    initiallyHidden: true,
-    name: 'deathDate',
+    name: 'lifespan',
+    stack: true,
+    startDateLabel: 'Birth date',
   }),
 ]
 

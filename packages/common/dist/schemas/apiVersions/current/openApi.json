@@ -17270,11 +17270,7 @@
             "type": "string",
             "x-summary": ""
           },
-          "birthDate": {
-            "$ref": "#/components/schemas/dateRange",
-            "x-summary": ""
-          },
-          "deathDate": {
+          "lifespan": {
             "$ref": "#/components/schemas/dateRange",
             "x-summary": ""
           },
@@ -17456,6 +17452,7 @@
             "type": "string",
             "enum": [
               "latest",
+              "openRange",
               "range",
               "single"
             ],

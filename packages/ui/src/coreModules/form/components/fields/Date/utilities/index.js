@@ -1,14 +1,5 @@
-import { getTimestampFromYMD } from 'common/es5/date'
+import { getEarliestTimestamp, getTimestampFromYMD } from 'common/es5/date'
 import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
-
-export const getEarliestTimestamp = () => {
-  return getTimestampFromYMD({
-    day: 1,
-    isStartDate: true,
-    month: 1,
-    year: 1600,
-  })
-}
 
 export const isInt = value => {
   return (

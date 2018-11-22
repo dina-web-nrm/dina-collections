@@ -4,14 +4,14 @@ import objectPath from 'object-path'
 
 import config from 'config'
 import extractProps from 'utilities/extractProps'
-import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
+import { LATEST, OPEN_RANGE, RANGE, SINGLE } from 'coreModules/form/constants'
 import { emToPixels } from 'coreModules/layout/utilities'
 import FieldTemplate, { fieldTemplatePropKeys } from '../../../FieldTemplate'
 import DatePart from '../DatePart'
 import { getRangeValue, getRangeValueAfterDateTypeChange } from '../utilities'
 import DateTypeRadios from './DateTypeRadios'
 
-const DATE_TYPES = [SINGLE, RANGE, LATEST]
+const SELECTABLE_DATE_TYPES = [SINGLE, RANGE, LATEST]
 
 const onePartErrorFieldStyle = {
   marginBottom: emToPixels(3.75),
@@ -44,7 +44,7 @@ const propTypes = {
   displayStartDateLabel: PropTypes.bool,
   displaySubLabels: PropTypes.bool,
   endDateLabel: PropTypes.node,
-  initialDateType: PropTypes.oneOf([LATEST, RANGE, SINGLE]),
+  initialDateType: PropTypes.oneOf([LATEST, OPEN_RANGE, RANGE, SINGLE]),
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
@@ -257,7 +257,7 @@ class DateRange extends Component {
         {displayDateTypeRadios && (
           <DateTypeRadios
             dateType={dateType}
-            dateTypes={DATE_TYPES}
+            dateTypes={SELECTABLE_DATE_TYPES}
             onDateTypeChange={this.handleDateTypeChange}
           />
         )}

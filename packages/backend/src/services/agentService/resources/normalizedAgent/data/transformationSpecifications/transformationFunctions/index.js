@@ -1,4 +1,5 @@
 const createDeleteProperties = require('common/src/createDeleteProperties')
+const getInterpretedDateRangeFromTwoDates = require('common/src/date/getInterpretedDateRangeFromTwoDates')
 
 const deleteNullProperties = createDeleteProperties(null)
 
@@ -14,10 +15,10 @@ exports.transformAgent = function transformAgent({
     migrationData: {
       abbreviation,
       agentType,
-      birthDateyear,
+      birthDateYear,
       city,
       country,
-      deathDateyear,
+      deathDateYear,
       email,
       familyName,
       fullName,
@@ -26,8 +27,8 @@ exports.transformAgent = function transformAgent({
       postalCode,
       remarks,
       'role.affiliation.name': affiliationName,
-      'role.dateRange.endDate.year': roleStartYear,
-      'role.dateRange.startDate.year': roleEndYear,
+      'role.dateRange.endDate.year': roleEndYear,
+      'role.dateRange.startDate.year': roleStartYear,
       'role.name': roleName,
       stateProvince,
       streetAdress,
@@ -55,18 +56,15 @@ exports.transformAgent = function transformAgent({
     })
   }
 
-  if (roleStartYear) {
+  if (roleEndYear || roleStartYear) {
     migrator.setValue({
       obj: role,
-      path: 'dateRange.startDate.year',
-      value: Number(roleStartYear),
-    })
-  }
-  if (roleEndYear) {
-    migrator.setValue({
-      obj: role,
-      path: 'dateRange.endDate.year',
-      value: Number(roleEndYear),
+      path: 'dateRange',
+      value: getInterpretedDateRangeFromTwoDates({
+        dateType: 'openRange',
+        endYear: roleEndYear ? Number(roleEndYear) : undefined,
+        startYear: roleStartYear ? Number(roleStartYear) : undefined,
+      }),
     })
   }
 
@@ -90,19 +88,15 @@ exports.transformAgent = function transformAgent({
     title,
   }
 
-  if (birthDateyear) {
+  if (birthDateYear || deathDateYear) {
     migrator.setValue({
       obj: attributes,
-      path: 'birthDate.startDate.year',
-      value: Number(birthDateyear),
-    })
-  }
-
-  if (deathDateyear) {
-    migrator.setValue({
-      obj: attributes,
-      path: 'deathDate.startDate.year',
-      value: Number(deathDateyear),
+      path: 'lifespan',
+      value: getInterpretedDateRangeFromTwoDates({
+        dateType: 'openRange',
+        endYear: deathDateYear ? Number(deathDateYear) : undefined,
+        startYear: birthDateYear ? Number(birthDateYear) : undefined,
+      }),
     })
   }
 

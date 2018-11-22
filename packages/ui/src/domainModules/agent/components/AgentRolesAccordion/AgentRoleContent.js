@@ -82,7 +82,7 @@ class AgentRoleContent extends Component {
                 capitalize: true,
                 textKey: 'endDate',
               })}
-              initialDateType="range"
+              initialDateType="openRange"
               module="agent"
               name={getPath('dateRange')}
               stack

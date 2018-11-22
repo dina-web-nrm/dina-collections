@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-const buildDateRange = require('common/src/date/buildDateRange')
+const getInterpretedDateRangeFromOneDate = require('common/src/date/getInterpretedDateRangeFromOneDate')
 
 /*
 example src data
@@ -33,11 +33,11 @@ module.exports = function migrateDeterminations({ src, target, migrator }) {
   const determination = {}
 
   if (srcDateYear) {
-    determination.date = buildDateRange({
+    determination.date = getInterpretedDateRangeFromOneDate({
       dateType: 'single',
-      startDay: srcDateDay,
-      startMonth: srcDateMonth,
-      startYear: srcDateYear,
+      day: srcDateDay,
+      month: srcDateMonth,
+      year: srcDateYear,
     })
   }
 
