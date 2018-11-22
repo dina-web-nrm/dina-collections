@@ -4587,6 +4587,20 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
 </div>
 `;
 
+exports[`storyshots Storyshots coreModules/form/components/RecordActionBar/InspectRelationsModal default 1`] = `
+<div>
+  <a
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    inspect relations here
+  </a>
+</div>
+`;
+
 exports[`storyshots Storyshots coreModules/i18n/I18nProvider Default 1`] = `
 <div>
   <div

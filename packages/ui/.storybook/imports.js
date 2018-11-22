@@ -10,6 +10,7 @@ require('../src/coreModules/form/components/fields/Date/DatePart/index.stories.j
 require('../src/coreModules/form/components/fields/Date/RangeDate/index.stories.js')
 require('../src/coreModules/form/components/fields/Remarks/index.stories.js')
 require('../src/coreModules/form/components/FormRow/FormSectionNavigation/index.stories.js')
+require('../src/coreModules/form/components/RecordActionBar/InspectRelationsModal/index.stories.js')
 require('../src/coreModules/i18n/components/createModuleTranslate.stories.js')
 require('../src/coreModules/i18n/components/I18nProvider.stories.js')
 require('../src/coreModules/i18n/components/LanguageSelect.stories.js')

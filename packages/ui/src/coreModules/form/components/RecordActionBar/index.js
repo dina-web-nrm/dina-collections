@@ -13,6 +13,7 @@ import { Button, Grid } from 'semantic-ui-react'
 import config from 'config'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
+import DeleteRecordModal from './DeleteRecordModal'
 
 const ModuleTranslate = createModuleTranslate('form')
 
@@ -96,15 +97,7 @@ export class RecordActionBar extends PureComponent {
               <em style={textStyle}>Unsaved changes</em>
             ))}
           {config.isDevelopment && <ConnectedFormSchemaError form={formName} />}
-          <Button
-            basic
-            onClick={handleDelete}
-            size="large"
-            style={{ float: 'right' }}
-            type="button"
-          >
-            Delete record
-          </Button>
+          <DeleteRecordModal onDelete={handleDelete} />
         </Grid.Column>
       </Grid>
     )
