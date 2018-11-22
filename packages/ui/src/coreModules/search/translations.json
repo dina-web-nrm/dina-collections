@@ -2,5 +2,15 @@
   "typeQueryAndPressEnter": {
     "en": "Type query and press Enter",
     "sv": "Skriv sökterm och tryck Enter"
+  },
+  "noResultFound": {
+    "content": {
+      "en": "You can try to adjust the search filter or show all records",
+      "sv": ""
+    },
+    "header": {
+      "en": "No results found",
+      "sv": ""
+    }
   }
 }
