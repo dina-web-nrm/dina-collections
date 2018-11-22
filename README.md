@@ -269,4 +269,17 @@ To deploy latest version run
 
 Local can be replaced by test, stage and production for remote deploys
 
+## Build file trees
+
+Install (works only on Mac):
+
+```
+brew install tree
+```
+
+Build:
+
+```
+yarn build:trees
+```
 
