@@ -6,63 +6,70 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var getTimestampFromYMD = require('./getTimestampFromYMD');
+var _require = require('./constants'),
+    DATE_TYPES = _require.DATE_TYPES;
 
-var DATE_TYPES = ['latest', 'range', 'single'];
+var createDeleteProperties = require('../createDeleteProperties');
 
-module.exports = function buildDateRange(_ref) {
-  var startDay = _ref.startDay,
-      startMonth = _ref.startMonth,
-      startYear = _ref.startYear,
-      endDay = _ref.endDay,
-      endMonth = _ref.endMonth,
-      endYear = _ref.endYear,
-      dateType = _ref.dateType,
-      dateText = _ref.dateText,
-      remarks = _ref.remarks;
+var deleteNullProperties = createDeleteProperties(null);
+var deleteUndefinedProperties = createDeleteProperties(undefined);
 
-  if (!DATE_TYPES.includes(dateType)) {
-    throw new Error('Unknown dataType: ' + dateType);
+var getDatePart = function getDatePart(_ref) {
+  var day = _ref.day,
+      month = _ref.month,
+      year = _ref.year,
+      timestamp = _ref.timestamp,
+      interpretedTimestamp = _ref.interpretedTimestamp;
+
+  var datePart = deleteNullProperties(deleteUndefinedProperties({
+    day: day,
+    interpretedTimestamp: interpretedTimestamp,
+    month: month,
+    timestamp: timestamp,
+    year: year
+  }));
+
+  return (0, _keys2.default)(datePart).length ? datePart : undefined;
+};
+
+module.exports = function buildDateRange(_ref2) {
+  var startDay = _ref2.startDay,
+      startMonth = _ref2.startMonth,
+      startYear = _ref2.startYear,
+      startTimestamp = _ref2.startTimestamp,
+      startInterpretedTimestamp = _ref2.startInterpretedTimestamp,
+      endDay = _ref2.endDay,
+      endMonth = _ref2.endMonth,
+      endYear = _ref2.endYear,
+      endTimestamp = _ref2.endTimestamp,
+      endInterpretedTimestamp = _ref2.endInterpretedTimestamp,
+      dateType = _ref2.dateType,
+      dateText = _ref2.dateText,
+      remarks = _ref2.remarks;
+
+  if (dateType && !DATE_TYPES.includes(dateType)) {
+    throw new Error('Unknown dateType: ' + dateType);
   }
 
-  var range = {};
-  if (startDay || startMonth || startYear) {
-    var interpretedTimestamp = getTimestampFromYMD({
-      day: startDay,
-      isStartDate: true,
-      month: startMonth,
-      year: startYear
-    });
-    range.startDate = {
-      day: startDay ? Number(startDay) : undefined,
-      interpretedTimestamp: interpretedTimestamp,
-      month: startMonth ? Number(startMonth) : undefined,
-      year: startYear ? Number(startYear) : undefined
-    };
-  }
-
-  if (remarks) {
-    range.remarks = remarks;
-  }
-
-  if (endDay || endMonth || endYear) {
-    var _interpretedTimestamp = getTimestampFromYMD({
+  var dateRange = deleteNullProperties(deleteUndefinedProperties({
+    dateText: dateText,
+    dateType: dateType,
+    endDate: getDatePart({
       day: endDay,
-      isEndDate: true,
+      interpretedTimestamp: endInterpretedTimestamp,
       month: endMonth,
+      timestamp: endTimestamp,
       year: endYear
-    });
-    range.endDate = {
-      day: endDay ? Number(endDay) : undefined,
-      interpretedTimestamp: _interpretedTimestamp,
-      month: endMonth ? Number(endMonth) : undefined,
-      year: endYear ? Number(endYear) : undefined
-    };
-  }
+    }),
+    remarks: remarks,
+    startDate: getDatePart({
+      day: startDay,
+      interpretedTimestamp: startInterpretedTimestamp,
+      month: startMonth,
+      timestamp: startTimestamp,
+      year: startYear
+    })
+  }));
 
-  if (dateText) {
-    range.dateText = dateText;
-  }
-
-  return (0, _keys2.default)(range).length ? range : null;
+  return (0, _keys2.default)(dateRange).length ? dateRange : null;
 };

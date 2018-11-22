@@ -93,11 +93,7 @@
         "type": "string",
         "x-summary": ""
       },
-      "birthDate": {
-        "$ref": "dateRange",
-        "x-summary": ""
-      },
-      "deathDate": {
+      "lifespan": {
         "$ref": "dateRange",
         "x-summary": ""
       },
@@ -334,6 +330,7 @@
         "type": "string",
         "enum": [
           "latest",
+          "openRange",
           "range",
           "single"
         ],
