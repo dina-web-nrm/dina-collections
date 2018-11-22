@@ -11,3 +11,5 @@ export { default as MultipleSearchTagsSelect } from './MultipleSearchTagsSelect'
 export {
   default as MultipleSearchTagsSelectField,
 } from './MultipleSearchTagsSelect/Field'
+
+export { default as NoResultsFound } from './NoResultsFound'

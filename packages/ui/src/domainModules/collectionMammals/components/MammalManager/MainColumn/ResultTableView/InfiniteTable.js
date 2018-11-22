@@ -12,6 +12,7 @@ import { globalSelectors as searchSelectors } from 'coreModules/search/keyObject
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
+import { NoResultsFound } from 'coreModules/search/components/'
 import { actionCreators as keyObjectActionCreators } from '../../../../keyObjectModule'
 import InfiniteTableRow from './InfiniteTableRow'
 
@@ -173,6 +174,11 @@ export class InfiniteTable extends Component {
         </Grid>
       )
     }
+
+    if (searchResult.items.length === 0) {
+      return <NoResultsFound />
+    }
+
     return (
       <div style={{ width }}>
         <ReactList

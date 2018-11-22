@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { NoResultsFound } from 'coreModules/search/components/'
 import InfiniteTableHeader from './InfiniteTableHeader'
 import InfiniteTable from './InfiniteTable'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  listItems: PropTypes.array.isRequired,
   resource: PropTypes.string.isRequired,
   tableBatchFetchOptions: PropTypes.object,
   tableColumnSpecifications: PropTypes.array.isRequired,
@@ -16,6 +18,7 @@ const propTypes = {
 const defaultProps = {
   tableBatchFetchOptions: {},
 }
+
 const rows = [
   {
     height: emToPixels(3.5),
@@ -24,7 +27,7 @@ const rows = [
   },
   {
     id: 'tableScrollContainer',
-    key: 'infiniteTable',
+    key: 'tableScrollContainer',
     style: { overflow: 'auto' },
   },
 ]
@@ -37,6 +40,7 @@ class ResultTableView extends PureComponent {
 
   renderRow(key) {
     const { tableColumnSpecifications, resource, width } = this.props
+
     switch (key) {
       case 'infiniteTableHeader': {
         return (
@@ -48,9 +52,13 @@ class ResultTableView extends PureComponent {
           />
         )
       }
-      case 'infiniteTable': {
-        const { tableBatchFetchOptions } = this.props
-        return <InfiniteTable {...this.props} {...tableBatchFetchOptions} />
+      case 'tableScrollContainer': {
+        const { listItems, tableBatchFetchOptions } = this.props
+        return listItems.length === 0 ? (
+          <NoResultsFound />
+        ) : (
+          <InfiniteTable {...this.props} {...tableBatchFetchOptions} />
+        )
       }
       default: {
         throw new Error(`Unknown row key: ${key}`)
