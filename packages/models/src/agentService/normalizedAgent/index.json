@@ -59,10 +59,7 @@
     "email": {
       "type": "string"
     },
-    "birthDate": {
-      "$ref": "__ROOT__dateRange"
-    },
-    "deathDate": {
+    "lifespan": {
       "$ref": "__ROOT__dateRange"
     },
     "agentType": {
