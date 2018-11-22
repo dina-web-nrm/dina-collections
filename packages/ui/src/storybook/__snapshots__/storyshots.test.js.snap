@@ -6149,6 +6149,52 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
 </div>
 `;
 
+exports[`storyshots Storyshots coreModules/search/NoResultsFound Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        style={
+          Object {
+            "padding": "1em",
+          }
+        }
+      >
+        <div
+          className="ui small icon message"
+        >
+          <i
+            aria-hidden="true"
+            className="info icon"
+          />
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              No results found
+            </div>
+            <p>
+              You can try to adjust the search filter or show all records
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
 <div>
   <div
