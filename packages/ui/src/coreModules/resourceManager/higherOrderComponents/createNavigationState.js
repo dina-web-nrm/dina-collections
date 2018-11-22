@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
+  DEL_SUCCESS,
   ITEM_SELECT,
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
@@ -80,6 +81,11 @@ const createResourceUrlState = () => ComposedComponent => {
         case CREATE_SUCCESS: {
           const { itemId } = data
           this.navigateEdit(itemId)
+          break
+        }
+
+        case DEL_SUCCESS: {
+          this.navigateList()
           break
         }
 

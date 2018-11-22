@@ -85,8 +85,7 @@ class EditItemColumn extends Component {
     this.props.onInteraction(CLOSE_ITEM_VIEW)
   }
 
-  handleDelete(event) {
-    event.preventDefault()
+  handleDelete() {
     const { dispatch, itemId, resource } = this.props
     const del = crudActionCreators[resource] && crudActionCreators[resource].del
 
@@ -94,9 +93,14 @@ class EditItemColumn extends Component {
       del({
         id: itemId,
       })
-    ).then(() => {
-      this.props.onInteraction(DEL_SUCCESS)
-    })
+    )
+      .then(res => {
+        this.props.onInteraction(DEL_SUCCESS)
+        return res
+      })
+      .catch(err => {
+        return err
+      })
   }
 
   handleSubmit(event) {
