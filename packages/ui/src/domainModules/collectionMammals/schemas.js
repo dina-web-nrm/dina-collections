@@ -43,7 +43,10 @@ const createMammalFormModels = () => {
   // latitude and longitude validation
   updatedModels = immutable.set(updatedModels, 'position.properties.latitude', {
     ...updatedModels.position.properties.latitude,
-    'x-validation-latitude': true,
+    allOf: [
+      { 'x-validation-digits-and-decimal-point': true },
+      { 'x-validation-latitude': true },
+    ],
   })
 
   updatedModels = immutable.set(
@@ -51,7 +54,10 @@ const createMammalFormModels = () => {
     'position.properties.longitude',
     {
       ...updatedModels.position.properties.longitude,
-      'x-validation-longitude': true,
+      allOf: [
+        { 'x-validation-digits-and-decimal-point': true },
+        { 'x-validation-longitude': true },
+      ],
     }
   )
 
