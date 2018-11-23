@@ -1,4 +1,8 @@
-const { latitude, longitude } = require('../error/validators/coordinates')
+const {
+  latitude,
+  longitude,
+  stringWithOnlyDigitsAndMaximumOnePoint,
+} = require('../error/validators/coordinates')
 
 const {
   bothStartAndEndDateRequiredIfOneProvided,
@@ -44,6 +48,11 @@ module.exports = {
     schema: false,
     type: 'object',
     validate: validIfNotEmptyRange,
+  },
+  'x-validation-digits-and-decimal-point': {
+    schema: false,
+    type: 'string',
+    validate: stringWithOnlyDigitsAndMaximumOnePoint,
   },
   'x-validation-latitude': {
     schema: false,

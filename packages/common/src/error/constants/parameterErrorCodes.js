@@ -15,6 +15,7 @@ module.exports = {
   'x-validation-date-range-start-and-end':
     'DATE_RANGE_BOTH_START_AND_END_REQUIRED',
   'x-validation-date-range-valid-if-not-empty': 'DATE_CANNOT_BE_INTERPRETED',
+  'x-validation-digits-and-decimal-point': 'DIGITS_AND_DECIMAL_POINT',
   'x-validation-latitude': 'INVALID_LATITUDE',
   'x-validation-longitude': 'INVALID_LONGITUDE',
 }
