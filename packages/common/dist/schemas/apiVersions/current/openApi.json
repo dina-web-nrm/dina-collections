@@ -19586,6 +19586,7 @@
                   "DATE_ORPHAN_MONTH",
                   "DATE_RANGE_BOTH_START_AND_END_REQUIRED",
                   "DATE_CANNOT_BE_INTERPRETED",
+                  "DIGITS_AND_DECIMAL_POINT",
                   "INVALID_LATITUDE",
                   "INVALID_LONGITUDE"
                 ],

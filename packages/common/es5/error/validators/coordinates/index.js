@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-var _isNan = require("babel-runtime/core-js/number/is-nan");
+var _isNan = require('babel-runtime/core-js/number/is-nan');
 
 var _isNan2 = _interopRequireDefault(_isNan);
 
@@ -24,5 +24,14 @@ var longitude = function longitude(value) {
   return number >= -180 && number <= 180;
 };
 
+var stringWithOnlyDigitsAndMaximumOnePoint = function stringWithOnlyDigitsAndMaximumOnePoint(value) {
+  if (typeof value !== 'string') {
+    return false;
+  }
+
+  return value.match(/^\d{1,}\.{0,1}\d*$/) !== null;
+};
+
 exports.latitude = latitude;
 exports.longitude = longitude;
+exports.stringWithOnlyDigitsAndMaximumOnePoint = stringWithOnlyDigitsAndMaximumOnePoint;

@@ -2,7 +2,8 @@
 
 var _require = require('../error/validators/coordinates'),
     latitude = _require.latitude,
-    longitude = _require.longitude;
+    longitude = _require.longitude,
+    stringWithOnlyDigitsAndMaximumOnePoint = _require.stringWithOnlyDigitsAndMaximumOnePoint;
 
 var _require2 = require('../error/validators/date'),
     bothStartAndEndDateRequiredIfOneProvided = _require2.bothStartAndEndDateRequiredIfOneProvided,
@@ -43,6 +44,11 @@ module.exports = {
     schema: false,
     type: 'object',
     validate: validIfNotEmptyRange
+  },
+  'x-validation-digits-and-decimal-point': {
+    schema: false,
+    type: 'string',
+    validate: stringWithOnlyDigitsAndMaximumOnePoint
   },
   'x-validation-latitude': {
     schema: false,
