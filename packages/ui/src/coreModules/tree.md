@@ -181,13 +181,15 @@
 │   │   │   └── index.js
 │   │   ├── Form
 │   │   │   └── index.js
-│   │   ├── FormActionBar
-│   │   │   └── index.js
 │   │   ├── FormModal
 │   │   │   └── index.js
 │   │   ├── FormRow
 │   │   │   ├── FormSectionNavigation
 │   │   │   ├── FormSectionView
+│   │   │   └── index.js
+│   │   ├── RecordActionBar
+│   │   │   ├── DeleteRecordModal.js
+│   │   │   ├── InspectRelationsModal
 │   │   │   └── index.js
 │   │   ├── Section
 │   │   │   └── index.js
@@ -473,6 +475,9 @@
 │   │   │   ├── index.js
 │   │   │   ├── index.stories.js
 │   │   │   └── selectors.js
+│   │   ├── NoResultsFound
+│   │   │   ├── index.js
+│   │   │   └── index.stories.js
 │   │   ├── SearchPreview
 │   │   │   └── Field.js
 │   │   └── index.js
