@@ -11,16 +11,12 @@ const ItemTitle = ({ nestedItem }) => {
     return ''
   }
 
-  const details = acceptedTaxonName.rubinNumber
-    ? `${acceptedTaxonName.rank}, ${acceptedTaxonName.rubinNumber}`
-    : acceptedTaxonName.rank
-
   return (
     <span>
       <span style={{ fontWeight: 'bold', marginRight: '0.5em' }}>
         {acceptedTaxonName.name}
       </span>
-      <span>({details})</span>
+      <span>({acceptedTaxonName.rank})</span>
     </span>
   )
 }
