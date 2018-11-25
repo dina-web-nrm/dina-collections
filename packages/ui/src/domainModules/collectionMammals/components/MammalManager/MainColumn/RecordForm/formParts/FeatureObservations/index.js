@@ -22,7 +22,7 @@ const GROUPS_AND_HEADLINES = [
     headlineKey: 'age-development-stage',
   },
   { groups: ['sex'], headlineKey: 'sex' },
-  { groups: ['condition'], headlineKey: 'condition' },
+  { groups: ['carcass-condition'], headlineKey: 'carcass-condition' },
   { groups: ['bone-count'], headlineKey: 'bone-count' },
   { groups: ['weight'], headlineKey: 'weight' },
   { groups: ['length'], headlineKey: 'length' },

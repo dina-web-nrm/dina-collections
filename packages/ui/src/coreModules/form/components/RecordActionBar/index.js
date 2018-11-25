@@ -44,11 +44,14 @@ const propTypes = {
   formName: PropTypes.string.isRequired,
   hasSyncErrors: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
   onUndoChanges: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
+}
+const defaultProps = {
+  onDelete: undefined,
 }
 
 export class RecordActionBar extends PureComponent {
@@ -97,7 +100,7 @@ export class RecordActionBar extends PureComponent {
               <em style={textStyle}>Unsaved changes</em>
             ))}
           {config.isDevelopment && <ConnectedFormSchemaError form={formName} />}
-          <DeleteRecordModal onDelete={handleDelete} />
+          {handleDelete && <DeleteRecordModal onDelete={handleDelete} />}
         </Grid.Column>
       </Grid>
     )
@@ -105,5 +108,6 @@ export class RecordActionBar extends PureComponent {
 }
 
 RecordActionBar.propTypes = propTypes
+RecordActionBar.defaultProps = defaultProps
 
 export default compose(connect(mapStateToProps))(RecordActionBar)

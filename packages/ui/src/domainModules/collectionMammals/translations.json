@@ -33,7 +33,7 @@
         "en": "Bone counts",
         "sv": "Benantal"
       },
-      "condition": {
+      "carcass-condition": {
         "en": "Carcass condition",
         "sv": "Tillstånd"
       },
@@ -873,7 +873,7 @@
         "en": "Select sex",
         "sv": ""
       },
-      "condition": {
+      "carcass-condition": {
         "en": "Select carcass condition",
         "sv": ""
       },
@@ -938,7 +938,7 @@
       "hind-foot-length": {
         "en": "Hind-foot length"
       },
-      "condition": {
+      "carcass-condition": {
         "en": "Condition"
       },
       "cranium": {
