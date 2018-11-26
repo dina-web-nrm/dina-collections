@@ -21,7 +21,11 @@ module.exports = function requestRebuildView({
     )
   }
 
-  return () => {
+  return ({ request }) => {
+    const {
+      body: { attributes: { operationRequest = {} } = {} } = {},
+    } = request
+
     return serviceInteractor.call({
       operationId: 'jobCreate',
       request: {
@@ -29,6 +33,7 @@ module.exports = function requestRebuildView({
           data: {
             attributes: {
               operationId: rebuildViewOperationId,
+              operationRequest,
             },
           },
         },
