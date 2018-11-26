@@ -6,7 +6,14 @@ module.exports = function createScheduler({ serviceInteractor }) {
   log.info('Start scheduler')
 
   return serviceInteractor
-    .call({ operationId: 'searchSpecimenRequestRebuildView', request: {} })
+    .call({
+      operationId: 'searchSpecimenRequestRebuildView',
+      request: {
+        queryParams: {
+          limit: 1000000,
+        },
+      },
+    })
     .then(() => {
       log.info('Adding job success')
     })
