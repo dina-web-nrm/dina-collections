@@ -17,6 +17,10 @@
 │   │   │   ├── filter
 │   │   │   ├── item
 │   │   │   └── tableColumnSpecifications.js
+│   │   ├── AgentRolesAccordion
+│   │   │   ├── AgentRoleContent.js
+│   │   │   ├── AgentRoleTitle.js
+│   │   │   └── index.js
 │   │   ├── TogglableAgentDropdownPickerSearch
 │   │   │   └── index.js
 │   │   ├── formParts
@@ -25,6 +29,7 @@
 │   ├── constants.js
 │   ├── index.js
 │   ├── keyObjectModule.js
+│   ├── schemas.js
 │   └── translations.json
 ├── allModules.js
 ├── collectionMammals

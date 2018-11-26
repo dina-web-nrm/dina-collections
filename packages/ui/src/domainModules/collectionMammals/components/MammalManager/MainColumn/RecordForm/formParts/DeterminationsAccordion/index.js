@@ -36,6 +36,7 @@ const propTypes = {
       taxonNameStandardized: PropTypes.string,
     })
   ),
+  formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
@@ -47,6 +48,7 @@ const defaultProps = {
 const DeterminationsAccordion = ({
   changeFieldValue,
   determinations,
+  formName,
   removeArrayFieldByIndex,
 }) => {
   log.render()
@@ -69,6 +71,8 @@ const DeterminationsAccordion = ({
               )}
               renderTitle={({ index, ...rest }) => (
                 <DeterminationTitle
+                  formName={formName}
+                  index={index}
                   {...determinations[index] || {}}
                   {...rest}
                 />

@@ -33,6 +33,7 @@ const propTypes = {
     })
   ),
   changeFieldValue: PropTypes.func.isRequired,
+  formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
@@ -43,8 +44,9 @@ const defaultProps = {
 }
 
 const AgentRolesAccordion = ({
-  changeFieldValue,
   agentRoles,
+  changeFieldValue,
+  formName,
   name,
   removeArrayFieldByIndex,
 }) => {
@@ -68,7 +70,12 @@ const AgentRolesAccordion = ({
                 )
               }}
               renderTitle={({ index, ...rest }) => (
-                <AgentRoleTitle {...agentRoles[index] || {}} {...rest} />
+                <AgentRoleTitle
+                  formName={formName}
+                  index={index}
+                  {...agentRoles[index] || {}}
+                  {...rest}
+                />
               )}
             />
           </Grid.Column>

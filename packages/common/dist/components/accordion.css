@@ -266,8 +266,8 @@
 .ui.styled.accordion .title .error {
   background-color: #FFF6F6;
   color: #9F3A38;
-  -webkit-box-shadow: 0px 0px 0px 1px #E0B4B4 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
-          box-shadow: 0px 0px 0px 1px #E0B4B4 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0px 0px 0px 1px #E0B4B4, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: 0px 0px 0px 1px #E0B4B4, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .ui.styled.accordion .title .error:after {
   background-color: #FFF6F6;

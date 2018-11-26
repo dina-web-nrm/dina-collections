@@ -81,6 +81,7 @@ class ListItem extends Component {
           background,
           height: emToPixels(2.5),
           padding: emToPixels(0.75),
+          verticalAlign: 'middle',
         }}
       >
         <Grid.Column
@@ -99,7 +100,7 @@ class ListItem extends Component {
           }}
           textAlign="right"
         >
-          {isExpandable && <Icon name={triangleIcon} size="large" />}
+          {isExpandable && <Icon name={triangleIcon} />}
         </Grid.Column>
 
         <Grid.Column key="name" style={{ width: 500 }} textAlign="left">
