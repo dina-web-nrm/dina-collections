@@ -9,8 +9,14 @@ module.exports = function createScheduler({ serviceInteractor }) {
     .call({
       operationId: 'searchSpecimenRequestRebuildView',
       request: {
-        queryParams: {
-          limit: 1000000,
+        body: {
+          attributes: {
+            operationRequest: {
+              queryParams: {
+                limit: 1000000,
+              },
+            },
+          },
         },
       },
     })
