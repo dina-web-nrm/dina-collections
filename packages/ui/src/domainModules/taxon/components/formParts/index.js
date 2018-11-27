@@ -6,7 +6,7 @@ import TaxonDropdownSearch from '../TaxonDropdownSearch'
 import TaxonNameDropdownPickerSearch from '../AcceptedTaxonNameDropdownPickerSearch'
 import TaxonNameDropdownSearch from '../TaxonNameDropdownSearch'
 import TaxonNameTaxonStatus from '../TaxonNameTaxonStatus'
-import TogglableAcceptedTaxonNameDropdownPickerSearch from '../TogglableAcceptedTaxonNameDropdownPickerSearch'
+import TogglableTaxonDropdownPickerSearch from '../TogglableTaxonDropdownPickerSearch'
 import VernacularNamesTable from '../VernacularNamesTable'
 
 export default wrapReduxFormFieldParts({
@@ -16,6 +16,6 @@ export default wrapReduxFormFieldParts({
   TaxonNameDropdownPickerSearch,
   TaxonNameDropdownSearch,
   TaxonNameTaxonStatus,
-  TogglableAcceptedTaxonNameDropdownPickerSearch,
+  TogglableTaxonDropdownPickerSearch,
   VernacularNamesTable,
 })
