@@ -2,15 +2,15 @@ import { recordHistoryEvents } from 'coreModules/form/components/units'
 import unitSpecs from '../../unitSpecs'
 
 const {
-  connectedPreparationTypes,
-  connectedTaxa,
+  // connectedPreparationTypes,
+  // connectedTaxa,
   storageLocationRoot,
 } = unitSpecs
 
 const units = [
   storageLocationRoot,
-  connectedTaxa,
-  connectedPreparationTypes,
+  // connectedTaxa,
+  // connectedPreparationTypes,
   recordHistoryEvents,
 ]
 
