@@ -12,6 +12,8 @@ const propTypes = {
   icon: PropTypes.string,
   iconPosition: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  max: PropTypes.number,
+  min: PropTypes.number,
   placeholder: PropTypes.string,
   size: PropTypes.string,
   style: PropTypes.object,
@@ -24,6 +26,8 @@ const defaultProps = {
   focusOnMount: false,
   icon: undefined,
   iconPosition: 'left',
+  max: undefined,
+  min: undefined,
   placeholder: undefined,
   size: undefined,
   style: undefined,
@@ -45,6 +49,8 @@ class TextInput extends PureComponent {
       icon,
       iconPosition,
       input,
+      max,
+      min,
       placeholder,
       size,
       style,
@@ -58,6 +64,8 @@ class TextInput extends PureComponent {
         fluid={fluid}
         icon={icon}
         iconPosition={icon && iconPosition}
+        max={max}
+        min={min}
         placeholder={placeholder}
         ref={element => {
           this.input = element
