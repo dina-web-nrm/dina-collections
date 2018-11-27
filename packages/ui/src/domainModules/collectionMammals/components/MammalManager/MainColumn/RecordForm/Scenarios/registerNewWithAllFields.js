@@ -50,11 +50,7 @@ const segmentIdentifiersMutations = [
 
 const segmentTaxonMutations = [
   {
-    name: 'individual.taxonInformation.curatorialTaxonNameText',
-    value: 'curatorialTaxonNameText',
-  },
-  {
-    name: 'individual.taxonInformation.curatorialTaxonName.id.hidden',
+    name: 'individual.taxonInformation.curatorialTaxon.id.hidden',
     value: '1',
   },
 
@@ -465,10 +461,9 @@ const expectedOutput = {
     ],
     remarks: 'remarks',
     taxonInformation: {
-      curatorialTaxonName: {
+      curatorialTaxon: {
         id: '1',
       },
-      curatorialTaxonNameText: 'curatorialTaxonNameText',
       taxonRemarks: 'taxonRemarks',
     },
     typeStatus: {

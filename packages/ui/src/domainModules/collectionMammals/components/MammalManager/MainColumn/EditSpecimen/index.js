@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import { formValueSelector as formValueSelectorFactory } from 'redux-form'
+import objectPath from 'object-path'
 
 import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import createLog from 'utilities/log'
@@ -11,7 +12,6 @@ import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import {
   createEnsureAllItemsFetched,
-  createGetItemById,
   createGetNestedItemById,
 } from 'coreModules/crud/higherOrderComponents'
 import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
@@ -32,10 +32,6 @@ const mapStateToProps = state => {
       state
     ),
     featureTypes: crudGlobalSelectors.featureType.getAll(state),
-    taxonNameId: formValueSelector(
-      state,
-      'individual.taxonInformation.curatorialTaxonName.id'
-    ),
   }
 }
 
@@ -48,39 +44,47 @@ const propTypes = {
   featureTypes: PropTypes.array.isRequired,
   featureTypesFetched: PropTypes.bool.isRequired,
   fetchOneItemById: PropTypes.func.isRequired,
-  nestedItem: PropTypes.object,
+  nestedSpecimen: PropTypes.object,
   updateSpecimen: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  nestedItem: null,
+  nestedSpecimen: null,
 }
 
 class EditSpecimen extends PureComponent {
   render() {
+    log.render()
+
     const {
       clearNestedCacheNamespace,
       fetchOneItemById,
-      nestedItem,
+      nestedSpecimen,
       updateSpecimen,
       featureTypes,
       featureTypesFetched,
       ...rest
     } = this.props
 
-    if (!nestedItem || !featureTypesFetched) {
+    if (!nestedSpecimen || !featureTypesFetched) {
       return null
     }
 
+    const curatorialTaxon = objectPath.get(
+      nestedSpecimen,
+      'individual.taxonInformation.curatorialTaxon'
+    )
+
     const { resourceActivities, ...initialValues } = setDefaultValues({
       featureTypes,
-      specimen: nestedItem || {},
+      specimen: nestedSpecimen || {},
     })
-    log.render()
+
     log.debug('initialValues', initialValues)
     return (
       <RecordForm
         {...rest}
+        curatorialTaxon={curatorialTaxon}
         form={FORM_NAME}
         formName={FORM_NAME}
         formValueSelector={formValueSelector}
@@ -99,7 +103,7 @@ class EditSpecimen extends PureComponent {
           })
         }}
         initialValues={initialValues}
-        loading={!nestedItem}
+        loading={!nestedSpecimen}
         mode="edit"
         resourceActivities={resourceActivities}
       />
@@ -120,13 +124,17 @@ export default compose(
       'physicalObjects.storageLocation',
       'places',
       'resourceActivities',
+      'taxa.acceptedTaxonName',
       'taxonNames',
     ],
+    nestedItemKey: 'nestedSpecimen',
     relationships: ['all'],
     resolveRelationships: [
       'physicalObject',
       'storageLocation',
       'resourceActivity',
+      'taxon',
+      'taxonName',
     ],
     resource: 'specimen',
   }),
@@ -139,10 +147,5 @@ export default compose(
   createEnsureAllItemsFetched({
     resource: 'preparationType',
   }),
-  connect(mapStateToProps, mapDispatchToProps),
-  createGetItemById({
-    idPath: 'taxonNameId',
-    itemKey: 'taxonName',
-    resource: 'taxonName',
-  })
+  connect(mapStateToProps, mapDispatchToProps)
 )(EditSpecimen)

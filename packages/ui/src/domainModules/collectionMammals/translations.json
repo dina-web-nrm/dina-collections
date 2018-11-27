@@ -323,11 +323,8 @@
       }
     },
     "taxonInformation": {
-      "curatorialTaxonName": {
-        "en": "Curatorial taxon name"
-      },
-      "curatorialTaxonNameText": {
-        "en": "Curatorial taxon name"
+      "curatorialTaxon": {
+        "en": "Curatorial taxon"
       },
       "readOnly": {
         "en": "Read only"
