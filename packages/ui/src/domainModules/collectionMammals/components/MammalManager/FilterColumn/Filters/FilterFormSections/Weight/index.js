@@ -39,6 +39,7 @@ class WeightFilterForm extends PureComponent {
               component={Input}
               fluid
               label="from"
+              min={0}
               module="collectionMammals"
               name="weight.rangeValue.min"
               type="number"
@@ -50,6 +51,7 @@ class WeightFilterForm extends PureComponent {
               component={Input}
               fluid
               label="to"
+              min={0}
               module="collectionMammals"
               name="weight.rangeValue.max"
               type="number"
