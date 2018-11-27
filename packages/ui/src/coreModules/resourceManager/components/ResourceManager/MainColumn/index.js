@@ -75,6 +75,10 @@ class MainColumn extends Component {
       rows.push({
         height: `${recordOptionsHeight}px`,
         key: 'resultOptionBar',
+        style: {
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
+        },
       })
 
       if (tableActive) {

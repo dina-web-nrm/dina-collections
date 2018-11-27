@@ -30,40 +30,43 @@ export class ResultOptionsBar extends Component {
     } = this.props
 
     return (
-      <Menu attached="top" tabular>
-        <Menu.Item
-          active={isItemViewOrSettings}
-          name="form"
-          onClick={event => handleFormTabClick(event)}
-        >
-          <Icon name="wordpress forms" size="large" />
-        </Menu.Item>
+      <Menu attached="top" icon tabular>
         <Menu.Item
           active={isTableViewOrSettings}
+          link
           name="table"
           onClick={event => handleTableTabClick(event)}
         >
-          <Icon name="table" size="large" />
+          <Icon name="table" />
         </Menu.Item>
-        <Menu.Menu position="right">
-          {handleExportToCsv && <CsvExporter />}
-
+        <Menu.Item
+          active={isItemViewOrSettings}
+          link
+          name="form"
+          onClick={event => handleFormTabClick(event)}
+        >
+          <Icon name="wordpress forms" />
+        </Menu.Item>
+        <Menu.Menu className="icon secondary  ui" position="right">
+          {handleExportToCsv && (
+            <Menu.Item link>
+              <CsvExporter />
+            </Menu.Item>
+          )}
           {handleSettingClick && (
-            <Menu.Item>
+            <Menu.Item link>
               <Icon
                 name="setting"
                 onClick={event => handleSettingClick(event)}
-                size="large"
                 style={{ cursor: 'pointer' }}
               />
             </Menu.Item>
           )}
-          <Menu.Item>
+          <Menu.Item link>
             <Icon
               name="search"
               onClick={event => handleToggleFilters(event)}
-              size="large"
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', marginLeft: '3.125em' }}
             />
           </Menu.Item>
         </Menu.Menu>

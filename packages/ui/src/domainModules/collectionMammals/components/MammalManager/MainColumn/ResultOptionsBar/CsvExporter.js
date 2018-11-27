@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { Button, Grid, Icon, Modal, Popup } from 'semantic-ui-react'
+import { Button, Icon, Modal, Popup } from 'semantic-ui-react'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import downloadFileActionCreator from 'coreModules/api/actionCreators/downloadFile'
@@ -247,26 +247,21 @@ export class CsvExporter extends Component {
     return (
       <React.Fragment>
         {exportModal}
-        <Grid textAlign="center" verticalAlign="middle">
-          <Grid.Column>
-            <Popup
-              content={
-                !exportModal && (
-                  <Button
-                    content="Export result to CSV"
-                    onClick={event => this.handleExportToCsv(event)}
-                    type="button"
-                  />
-                )
-              }
-              on="click"
-              position="bottom right"
-              trigger={
-                <Icon name="share" size="large" style={{ cursor: 'pointer' }} />
-              }
-            />
-          </Grid.Column>
-        </Grid>
+
+        <Popup
+          content={
+            !exportModal && (
+              <Button
+                content="Export result to CSV"
+                onClick={event => this.handleExportToCsv(event)}
+                type="button"
+              />
+            )
+          }
+          on="click"
+          position="bottom right"
+          trigger={<Icon name="share" style={{ cursor: 'pointer' }} />}
+        />
       </React.Fragment>
     )
   }

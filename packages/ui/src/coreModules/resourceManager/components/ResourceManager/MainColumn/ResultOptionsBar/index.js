@@ -35,20 +35,20 @@ export class ResultOptionsBar extends Component {
     } = this.props
 
     return (
-      <Menu attached="top" style={{ position: 'relative' }} tabular>
-        {itemEnabled && (
-          <Menu.Item
-            active={createItemActive || editItemActive}
-            name="form"
-            onClick={event => handleFormTabClick(event)}
-          >
-            <Icon name="wordpress forms" />
-          </Menu.Item>
-        )}
+      <Menu attached="top" icon style={{ position: 'relative' }} tabular>
+        <Menu.Item
+          active={tableActive}
+          link
+          name="table"
+          onClick={event => handleListTabClick(event)}
+        >
+          <Icon name="table" />
+        </Menu.Item>
 
         {treeEnabled && (
           <Menu.Item
             active={treeActive}
+            link
             name="form"
             onClick={event => handleTreeTabClick(event)}
           >
@@ -56,21 +56,24 @@ export class ResultOptionsBar extends Component {
           </Menu.Item>
         )}
 
-        <Menu.Item
-          active={tableActive}
-          name="table"
-          onClick={event => handleListTabClick(event)}
-        >
-          <Icon name="table" />
-        </Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item>
+        {itemEnabled && (
+          <Menu.Item
+            active={createItemActive || editItemActive}
+            link
+            name="form"
+            onClick={event => handleFormTabClick(event)}
+          >
+            <Icon name="wordpress forms" />
+          </Menu.Item>
+        )}
+
+        <Menu.Menu className="icon secondary  ui" position="right">
+          <Menu.Item link>
             <Icon
               disabled={!handleToggleFilters}
               name="search"
               onClick={event => handleToggleFilters(event)}
-              size="large"
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', marginLeft: '3.125em' }}
             />
           </Menu.Item>
         </Menu.Menu>

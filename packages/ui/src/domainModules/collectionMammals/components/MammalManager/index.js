@@ -131,13 +131,15 @@ const mapStateToProps = (
   )
 
   const mainColumnActiveTab = getMainColumnActiveTab(url)
-  const currentTableRowNumber = keyObjectGlobalSelectors.get.currentTableRowNumber(
-    state
-  )
+
   const totalNumberOfRecords =
     specimenSearchState &&
     specimenSearchState.items &&
     specimenSearchState.items.length
+
+  const currentTableRowNumber = keyObjectGlobalSelectors.get.currentTableRowNumber(
+    state
+  )
 
   const isEditRecordView = mainColumnActiveTab === 'recordEdit'
   const isNewRecordView = mainColumnActiveTab === 'recordNew'
@@ -146,14 +148,19 @@ const mapStateToProps = (
   const isTableViewOrSettings = mainColumnActiveTab.startsWith('resultTable')
 
   const showSelectNextRecordButton =
-    !isNewRecordView && currentTableRowNumber !== totalNumberOfRecords
+    !isNewRecordView && currentTableRowNumber < totalNumberOfRecords
   const showSelectPreviousRecordButton =
-    !isNewRecordView && currentTableRowNumber !== 1
+    !isNewRecordView && currentTableRowNumber > 1
+
+  const filterFormIsDirty = isDirty(SPECIMEN_FILTERS_FORM_NAME)(state)
+  const enableShowAllRecordsButton = isEditRecordView
+    ? false
+    : filterFormIsDirty || totalNumberOfRecords === 0
 
   return {
     currentTableRowNumber,
+    enableShowAllRecordsButton,
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
-    filterFormIsDirty: isDirty(SPECIMEN_FILTERS_FORM_NAME)(state),
     filterValues: getFormValues(SPECIMEN_FILTERS_FORM_NAME)(state),
     focusedSpecimenId: keyObjectGlobalSelectors.get.focusedSpecimenId(state),
     isEditRecordView,
@@ -173,6 +180,8 @@ const mapStateToProps = (
 }
 
 const mapDispatchToProps = {
+  delCurrentTableRowNumber: keyObjectActionCreators.del.currentTableRowNumber,
+  delFocusedSpecimenId: keyObjectActionCreators.del.focusedSpecimenId,
   push,
   reset,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
@@ -182,8 +191,10 @@ const mapDispatchToProps = {
 
 const propTypes = {
   currentTableRowNumber: PropTypes.number,
+  delCurrentTableRowNumber: PropTypes.func.isRequired,
+  delFocusedSpecimenId: PropTypes.func.isRequired,
+  enableShowAllRecordsButton: PropTypes.bool.isRequired,
   filterColumnIsOpen: PropTypes.bool.isRequired,
-  filterFormIsDirty: PropTypes.bool.isRequired,
   filterValues: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
   focusedSpecimenId: PropTypes.string,
   isEditRecordView: PropTypes.bool.isRequired,
@@ -212,7 +223,7 @@ const propTypes = {
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
-  currentTableRowNumber: 1,
+  currentTableRowNumber: undefined,
   filterValues: undefined,
   focusedSpecimenId: undefined,
   rightSidebarWidth: emToPixels(25),
@@ -354,23 +365,13 @@ class MammalManager extends Component {
   }
 
   handleSelectNextRecord(event) {
-    const {
-      currentTableRowNumber,
-      isNewRecordView,
-      totalNumberOfRecords,
-    } = this.props
-
-    if (!isNewRecordView && currentTableRowNumber < totalNumberOfRecords) {
-      this.handleSetCurrentTableRowNumber(event, currentTableRowNumber + 1)
-    }
+    const { currentTableRowNumber } = this.props
+    this.handleSetCurrentTableRowNumber(event, currentTableRowNumber + 1)
   }
 
   handleSelectPreviousRecord(event) {
-    const { currentTableRowNumber, isNewRecordView } = this.props
-
-    if (!isNewRecordView && currentTableRowNumber > 1) {
-      this.handleSetCurrentTableRowNumber(event, currentTableRowNumber - 1)
-    }
+    const { currentTableRowNumber } = this.props
+    this.handleSetCurrentTableRowNumber(event, currentTableRowNumber - 1)
   }
 
   handleToggleFilters(event) {
@@ -399,6 +400,9 @@ class MammalManager extends Component {
         if (items && items.length) {
           this.props.setCurrentTableRowNumber(1)
           this.props.setFocusedSpecimenId(items[0].id)
+        } else {
+          this.props.delCurrentTableRowNumber()
+          this.props.delFocusedSpecimenId()
         }
       })
   }
@@ -426,8 +430,8 @@ class MammalManager extends Component {
 
   handleOpenEditRecordView(event) {
     if (event) event.preventDefault()
-    const specimenId = this.props.focusedSpecimenId
 
+    const specimenId = this.props.focusedSpecimenId
     if (specimenId) {
       this.props.push(`/app/specimens/mammals/${specimenId}/edit/sections/0`)
     }
@@ -448,7 +452,7 @@ class MammalManager extends Component {
   render() {
     const {
       currentTableRowNumber,
-      filterFormIsDirty,
+      enableShowAllRecordsButton,
       isItemViewOrSettings,
       isNewRecordView,
       isTableView,
@@ -484,7 +488,9 @@ class MammalManager extends Component {
             !isNewRecordView && this.handleSetCurrentTableRowNumber
           }
           onSettingClick={isTableView && this.handleSettingClick}
-          onShowAllRecords={filterFormIsDirty && this.handleShowAllRecords}
+          onShowAllRecords={
+            enableShowAllRecordsButton && this.handleShowAllRecords
+          }
           onTableTabClick={!isTableView && this.handleOpenTableView}
           onToggleFilters={!isNewRecordView && this.handleToggleFilters}
           totalNumberOfRecords={totalNumberOfRecords}
