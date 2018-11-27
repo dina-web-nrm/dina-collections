@@ -183,14 +183,26 @@
             }
           }
         },
+        "taxa": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": ["individual.taxonInformation.curatorialTaxon"],
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__taxon",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "taxonNames": {
           "type": "object",
           "x-key-stored-in-model": "specimen",
           "x-key-type": "json",
-          "x-path": [
-            "individual.determinations.*.taxonName",
-            "individual.taxonInformation.curatorialTaxonName"
-          ],
+          "x-path": ["individual.determinations.*.taxonName"],
           "properties": {
             "data": {
               "type": "array",
@@ -276,6 +288,13 @@
       "type": "array",
       "items": {
         "$ref": "__ROOT__resourceActivity",
+        "x-reference-type": "external"
+      }
+    },
+    "taxa": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxon",
         "x-reference-type": "external"
       }
     },
