@@ -10901,6 +10901,7 @@
                   "places",
                   "preparationTypes",
                   "resourceActivities",
+                  "taxa",
                   "taxonNames",
                   "typeSpecimenType"
                 ],
@@ -11074,6 +11075,7 @@
                   "places",
                   "preparationTypes",
                   "resourceActivities",
+                  "taxa",
                   "taxonNames",
                   "typeSpecimenType"
                 ],
@@ -11402,6 +11404,7 @@
                   "places",
                   "preparationTypes",
                   "resourceActivities",
+                  "taxa",
                   "taxonNames",
                   "typeSpecimenType"
                 ],
@@ -19237,6 +19240,13 @@
             },
             "x-summary": ""
           },
+          "taxa": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/externalModelReference"
+            },
+            "x-summary": ""
+          },
           "taxonNames": {
             "type": "array",
             "items": {
@@ -19260,12 +19270,8 @@
             "$ref": "#/components/schemas/lid",
             "x-summary": ""
           },
-          "curatorialTaxonNameText": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "curatorialTaxonName": {
-            "$ref": "#/components/schemas/taxonName",
+          "curatorialTaxon": {
+            "$ref": "#/components/schemas/taxon",
             "x-summary": ""
           },
           "customTaxonNames": {
@@ -35924,6 +35930,32 @@
                         },
                         "type": "object"
                       },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
                       "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
@@ -36619,6 +36651,32 @@
                                     "resourceActivity"
                                   ],
                                   "example": "resourceActivity",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
@@ -46639,6 +46697,32 @@
                         },
                         "type": "object"
                       },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
                       "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
@@ -46978,6 +47062,32 @@
                                     "resourceActivity"
                                   ],
                                   "example": "resourceActivity",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
@@ -47337,6 +47447,32 @@
                       },
                       "type": "object"
                     },
+                    "taxa": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "taxon"
+                                ],
+                                "example": "taxon",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "taxonNames": {
                       "additionalProperties": false,
                       "properties": {
@@ -47673,6 +47809,32 @@
                                   "resourceActivity"
                                 ],
                                 "example": "resourceActivity",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "taxa": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "taxon"
+                                ],
+                                "example": "taxon",
                                 "type": "string"
                               }
                             },
@@ -48029,6 +48191,32 @@
                         },
                         "type": "object"
                       },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
                       "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
@@ -48368,6 +48556,32 @@
                                     "resourceActivity"
                                   ],
                                   "example": "resourceActivity",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "taxa": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxon"
+                                  ],
+                                  "example": "taxon",
                                   "type": "string"
                                 }
                               },
