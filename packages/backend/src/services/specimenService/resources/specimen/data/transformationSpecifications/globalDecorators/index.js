@@ -35,6 +35,6 @@ exports.decorateTypeSpecimenTypeKeyIdMap = createKeyIdMapDecorator({
   resource: 'typeSpecimenType',
 })
 
-exports.decorateTaxonNameKeyIdMap = require('./decorateTaxonNameKeyIdMap')
 exports.decoratePlaceKeyIdMap = require('./decoratePlaceKeyIdMap')
 exports.decorateStorageLocationKeyIdMap = require('./decorateStorageLocationKeyIdMap')
+exports.decorateTaxonKeyIdMap = require('./decorateTaxonKeyIdMap')

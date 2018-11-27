@@ -1,85 +1,67 @@
 const fetchParents = require('../../../../../../../lib/data/transformations/utilities/fetchParents')
 /* eslint-disable no-param-reassign */
 
-const getTaxonNameWithParentTaxonNames = ({ taxonNameId, getItemByTypeId }) => {
+const getTaxonAndParentAcceptedNames = ({ taxonId, getItemByTypeId }) => {
   return getItemByTypeId({
-    id: taxonNameId,
+    id: taxonId,
     queryParams: {
-      relationships: ['acceptedToTaxon'],
+      relationships: ['parent', 'acceptedTaxonName'],
     },
-    type: 'taxonName',
-  }).then(taxonName => {
-    const taxonId =
-      taxonName.relationships &&
-      taxonName.relationships.acceptedToTaxon &&
-      taxonName.relationships.acceptedToTaxon.data &&
-      taxonName.relationships.acceptedToTaxon.data.id
+    type: 'taxon',
+  })
+    .then(taxon => {
+      if (!taxon) {
+        return []
+      }
 
-    if (!taxonId) {
-      return [taxonName]
-    }
-
-    return getItemByTypeId({
-      id: taxonId,
-      queryParams: {
+      return fetchParents({
+        getItemByTypeId,
+        item: taxon,
         relationships: ['parent', 'acceptedTaxonName'],
-      },
-      type: 'taxon',
+        resource: 'taxon',
+      }).then(parents => {
+        return [...parents, taxon]
+      })
     })
-      .then(taxon => {
-        if (!taxon) {
-          return []
+    .then(taxons => {
+      const promises = taxons.map(taxon => {
+        const taxonTaxonNameId =
+          taxon.relationships &&
+          taxon.relationships.acceptedTaxonName &&
+          taxon.relationships.acceptedTaxonName.data &&
+          taxon.relationships.acceptedTaxonName.data.id
+        if (!taxonTaxonNameId) {
+          return null
         }
 
-        return fetchParents({
-          getItemByTypeId,
-          item: taxon,
-          relationships: ['parent', 'acceptedTaxonName'],
-          resource: 'taxon',
-        }).then(parents => {
-          return [...parents, taxon]
+        return getItemByTypeId({
+          id: taxonTaxonNameId,
+          type: 'taxonName',
+        }).then(taxonTaxonName => {
+          return taxonTaxonName
         })
       })
-      .then(taxons => {
-        const promises = taxons.map(taxon => {
-          const taxonTaxonNameId =
-            taxon.relationships &&
-            taxon.relationships.acceptedTaxonName &&
-            taxon.relationships.acceptedTaxonName.data &&
-            taxon.relationships.acceptedTaxonName.data.id
-          if (!taxonTaxonNameId) {
-            return null
-          }
-
-          return getItemByTypeId({
-            id: taxonTaxonNameId,
-            type: 'taxonName',
-          }).then(taxonTaxonName => {
-            return taxonTaxonName
-          })
-        })
-        return Promise.all(promises).then(taxonNames => {
-          return taxonNames.filter(item => {
-            return !!item
-          })
+      return Promise.all(promises).then(taxonNames => {
+        return taxonNames.filter(item => {
+          return !!item
         })
       })
-  })
+    })
 }
 
 const transformation = ({ getItemByTypeId, locals, migrator, src }) => {
-  const curatorialTaxonNameId = migrator.getValue({
+  const curatorialTaxonId = migrator.getValue({
     obj: src,
-    path: 'individual.taxonInformation.curatorialTaxonName.id',
+    path: 'individual.taxonInformation.curatorialTaxon.id',
   })
 
-  if (curatorialTaxonNameId === undefined) {
+  if (curatorialTaxonId === undefined) {
     return null
   }
 
-  return getTaxonNameWithParentTaxonNames({
+  return getTaxonAndParentAcceptedNames({
     getItemByTypeId,
-    taxonNameId: curatorialTaxonNameId,
+    taxonId: curatorialTaxonId,
   }).then(taxonNames => {
     migrator.setValue({
       obj: locals,

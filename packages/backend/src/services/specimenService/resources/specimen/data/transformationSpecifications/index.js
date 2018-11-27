@@ -18,7 +18,6 @@ const {
 } = require('./transformationFunctions')
 
 const {
-  decorateTaxonNameKeyIdMap,
   decorateCauseOfDeathTypeKeyIdMap,
   decorateCustomTaxonNameTypeKeyIdMap,
   decorateEstablishmentMeansTypeKeyIdMap,
@@ -27,6 +26,7 @@ const {
   decoratePlaceKeyIdMap,
   decoratePreparationTypeKeyIdMap,
   decorateStorageLocationKeyIdMap,
+  decorateTaxonKeyIdMap,
   decorateTypeSpecimenTypeKeyIdMap,
 } = require('./globalDecorators')
 
@@ -42,7 +42,7 @@ exports.importDataFromFile = {
     decoratePlaceKeyIdMap,
     decoratePreparationTypeKeyIdMap,
     decorateStorageLocationKeyIdMap,
-    decorateTaxonNameKeyIdMap,
+    decorateTaxonKeyIdMap,
     decorateTypeSpecimenTypeKeyIdMap,
   ],
   srcFileName: 'specimens',
