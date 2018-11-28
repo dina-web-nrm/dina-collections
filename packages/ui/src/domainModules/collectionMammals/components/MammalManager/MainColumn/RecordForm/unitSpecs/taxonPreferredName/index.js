@@ -7,8 +7,8 @@ const parts = [
     },
   },
   {
-    componentName: 'TogglableAcceptedTaxonNameDropdownPickerSearch',
-    name: 'individual.taxonInformation.curatorialTaxonName.id',
+    componentName: 'TogglableTaxonDropdownPickerSearch',
+    name: 'individual.taxonInformation.curatorialTaxon.id',
     wrapInField: true,
   },
 ]

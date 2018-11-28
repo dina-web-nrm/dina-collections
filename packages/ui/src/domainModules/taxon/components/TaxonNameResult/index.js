@@ -6,10 +6,7 @@ import objectPath from 'object-path'
 
 import config from 'config'
 import extractProps from 'utilities/extractProps'
-import {
-  createGetItemById,
-  createGetNestedItemById,
-} from 'coreModules/crud/higherOrderComponents'
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { FieldTemplate } from 'coreModules/form/components'
 import { propTypes as fieldTemplateProps } from 'coreModules/form/components/FieldTemplate'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
@@ -58,12 +55,6 @@ const propTypes = {
       parent: PropTypes.object,
     }),
   }),
-  taxonName: PropTypes.shape({
-    attributes: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    id: PropTypes.string.isRequired,
-  }),
   textOnly: PropTypes.bool,
 }
 const defaultProps = {
@@ -73,11 +64,10 @@ const defaultProps = {
   removeForceRenderResult: undefined,
   setAsLatestActiveField: undefined,
   taxon: undefined,
-  taxonName: undefined,
   textOnly: false,
 }
 
-class TaxonNameResult extends Component {
+class TaxonResult extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -106,10 +96,10 @@ class TaxonNameResult extends Component {
   }
 
   render() {
-    const { input: { name }, taxon, taxonName, textOnly } = this.props
+    const { input: { name }, taxon, textOnly } = this.props
 
     const acceptedTaxonName =
-      taxonName && objectPath.get(taxonName, 'attributes.name')
+      taxon && objectPath.get(taxon, 'acceptedTaxonName.name')
     const suffix = taxon && objectPath.get(taxon, 'acceptedTaxonName.rank')
     const parentAcceptedTaxonNames = taxon && getParentAcceptedTaxonNames(taxon)
 
@@ -151,18 +141,13 @@ class TaxonNameResult extends Component {
   }
 }
 
-TaxonNameResult.propTypes = propTypes
-TaxonNameResult.defaultProps = defaultProps
+TaxonResult.propTypes = propTypes
+TaxonResult.defaultProps = defaultProps
 
 export default compose(
   withI18n(),
-  createGetItemById({
-    idPath: 'input.value',
-    itemKey: 'taxonName',
-    resource: 'taxonName',
-  }),
   createGetNestedItemById({
-    idPath: 'taxonName.relationships.acceptedToTaxon.data.id',
+    idPath: 'input.value',
     include: [
       'acceptedTaxonName',
       'parent.acceptedTaxonName',
@@ -188,4 +173,4 @@ export default compose(
     resolveRelationships: ['taxon', 'taxonName'],
     resource: 'taxon',
   })
-)(TaxonNameResult)
+)(TaxonResult)

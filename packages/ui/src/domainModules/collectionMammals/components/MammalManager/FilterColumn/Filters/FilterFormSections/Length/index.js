@@ -44,6 +44,7 @@ class LengthFilterForm extends PureComponent {
               component={Input}
               fluid
               label="from"
+              min={0}
               module="collectionMammals"
               name="length.rangeValue.min"
               type="number"
@@ -55,6 +56,7 @@ class LengthFilterForm extends PureComponent {
               component={Input}
               fluid
               label="to"
+              min={0}
               module="collectionMammals"
               name="length.rangeValue.max"
               type="number"

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import { TogglableField } from 'coreModules/form/components'
-import AcceptedTaxonNameDropdownPickerSearch from '../AcceptedTaxonNameDropdownPickerSearch'
+import TaxonDropdownPickerSearch from '../TaxonDropdownPickerSearch'
 import TaxonNameResult from '../TaxonNameResult'
 
 const propTypes = {
@@ -12,7 +12,7 @@ const propTypes = {
   }).isRequired,
 }
 
-class TogglableAcceptedTaxonNameDropdownPickerSearch extends PureComponent {
+class TogglableTaxonDropdownPickerSearch extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -58,7 +58,7 @@ class TogglableAcceptedTaxonNameDropdownPickerSearch extends PureComponent {
   /* eslint-disable class-methods-use-this */
   renderInput(props) {
     return (
-      <AcceptedTaxonNameDropdownPickerSearch
+      <TaxonDropdownPickerSearch
         {...props}
         reportPickerActive={this.reportPickerActive}
       />
@@ -99,6 +99,6 @@ class TogglableAcceptedTaxonNameDropdownPickerSearch extends PureComponent {
   }
 }
 
-TogglableAcceptedTaxonNameDropdownPickerSearch.propTypes = propTypes
+TogglableTaxonDropdownPickerSearch.propTypes = propTypes
 
-export default TogglableAcceptedTaxonNameDropdownPickerSearch
+export default TogglableTaxonDropdownPickerSearch

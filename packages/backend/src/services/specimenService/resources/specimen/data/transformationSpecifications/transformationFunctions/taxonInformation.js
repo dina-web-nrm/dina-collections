@@ -1,4 +1,4 @@
-const buildKey = require('../globalDecorators/decorateTaxonNameKeyIdMap/buildKey')
+const buildKey = require('../globalDecorators/decorateTaxonKeyIdMap/buildKey')
 
 // const taxonInformation = {
 //   curatorialTaxonName: 'Eptesicus nilssonii',
@@ -31,8 +31,8 @@ module.exports = function migrateTaxonInformation({
   }
 
   const {
-    curatorialTaxonName: srcCuratorialTaxonName,
-    curatorialTaxonNameRank: srcCuratorialTaxonNameRank,
+    curatorialTaxonName: srcCuratorialTaxonAcceptedName,
+    curatorialTaxonNameRank: srcCuratorialTaxonAcceptedNameRank,
     customTaxonNames: srcCustomTaxonNames,
     taxonRemarks: srcTaxonRemarks,
     typeStatus: srcTypeStatus,
@@ -40,21 +40,21 @@ module.exports = function migrateTaxonInformation({
 
   const taxonInformation = {}
 
-  if (srcCuratorialTaxonName || srcCuratorialTaxonNameRank) {
-    const taxonNameKey = buildKey({
-      name: srcCuratorialTaxonName,
-      rank: srcCuratorialTaxonNameRank,
+  if (srcCuratorialTaxonAcceptedName || srcCuratorialTaxonAcceptedNameRank) {
+    const taxonKey = buildKey({
+      name: srcCuratorialTaxonAcceptedName,
+      rank: srcCuratorialTaxonAcceptedNameRank,
     })
 
     const id = migrator.getFromGlobals({
       globals,
-      key: taxonNameKey,
-      mapKey: 'taxonNameKeyIdMap',
+      key: taxonKey,
+      mapKey: 'taxonKeyIdMap',
       reporter,
     })
 
     if (id !== undefined && id !== null) {
-      taxonInformation.curatorialTaxonName = {
+      taxonInformation.curatorialTaxon = {
         id,
       }
     }

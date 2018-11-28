@@ -304,7 +304,7 @@ const injectSearchOptions = (
       }
 
       return this.props.getManySearch({ queryParams }).then(res => {
-        if (!nestItems) {
+        if (!nestItems || !(res && res.length)) {
           return res
         }
         const promises = res.map(item => {

@@ -4,11 +4,8 @@
     "lid": {
       "$ref": "__ROOT__lid"
     },
-    "curatorialTaxonNameText": {
-      "type": "string"
-    },
-    "curatorialTaxonName": {
-      "$ref": "__ROOT__taxonName"
+    "curatorialTaxon": {
+      "$ref": "__ROOT__taxon"
     },
     "customTaxonNames": {
       "type": "array",

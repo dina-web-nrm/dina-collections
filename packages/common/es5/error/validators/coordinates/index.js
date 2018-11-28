@@ -29,7 +29,7 @@ var stringWithOnlyDigitsAndMaximumOnePoint = function stringWithOnlyDigitsAndMax
     return false;
   }
 
-  return value.match(/^\d{1,}\.{0,1}\d*$/) !== null;
+  return value.match(/^-{0,1}\d{1,}\.{0,1}\d*$/) !== null;
 };
 
 exports.latitude = latitude;

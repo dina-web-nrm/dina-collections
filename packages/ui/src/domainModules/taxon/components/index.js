@@ -7,7 +7,7 @@ import TaxonNameDropdownPickerSearch from './TaxonNameDropdownPickerSearch'
 import TaxonNameDropdownSearch from './TaxonNameDropdownSearch'
 import TaxonNameManager from './TaxonNameManager/Query'
 import TaxonNameTaxonStatus from './TaxonNameTaxonStatus'
-import TogglableAcceptedTaxonNameDropdownPickerSearch from './TogglableAcceptedTaxonNameDropdownPickerSearch'
+import TogglableTaxonDropdownPickerSearch from './TogglableTaxonDropdownPickerSearch'
 
 export {
   AcceptedTaxonNameDropdownPickerSearch,
@@ -19,5 +19,5 @@ export {
   TaxonNameDropdownSearch,
   TaxonNameManager,
   TaxonNameTaxonStatus,
-  TogglableAcceptedTaxonNameDropdownPickerSearch,
+  TogglableTaxonDropdownPickerSearch,
 }

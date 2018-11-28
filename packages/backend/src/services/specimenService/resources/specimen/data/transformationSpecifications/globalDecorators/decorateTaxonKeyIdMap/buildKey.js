@@ -1,14 +1,8 @@
-module.exports = function buildKey({
-  taxonName,
-  rank: rankInput,
-  name: nameInput,
-}) {
-  const name = taxonName ? taxonName.attributes.name : nameInput
-  const rank = taxonName ? taxonName.attributes.rank : rankInput
-
+module.exports = function buildKey({ name, rank }) {
   if (!(rank && name)) {
     return null
   }
+
   return [
     rank
       .trim()

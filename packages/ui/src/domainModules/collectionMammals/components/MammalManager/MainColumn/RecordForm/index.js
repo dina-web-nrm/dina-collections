@@ -49,6 +49,11 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   catalogNumber: PropTypes.string,
   changeFormValue: PropTypes.func.isRequired,
+  curatorialTaxon: PropTypes.shape({
+    acceptedTaxonName: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }),
   error: PropTypes.string,
   form: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
@@ -69,19 +74,14 @@ const propTypes = {
   submit: PropTypes.func.isRequired,
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
-  taxonName: PropTypes.shape({
-    attributes: PropTypes.shape({
-      name: PropTypes.string,
-    }),
-  }),
 }
 const defaultProps = {
   catalogNumber: undefined,
+  curatorialTaxon: undefined,
   error: '',
   loading: false,
   mode: 'register',
   redirectOnSuccess: false,
-  taxonName: undefined,
 }
 
 class RecordForm extends Component {
@@ -148,9 +148,12 @@ class RecordForm extends Component {
   renderRow(key, props) {
     switch (key) {
       case 'formRow': {
-        const { availableHeight, catalogNumber, taxonName } = this.props
+        const { availableHeight, catalogNumber, curatorialTaxon } = this.props
 
-        const curatorialTaxonName = objectPath.get(taxonName, 'attributes.name')
+        const curatorialTaxonAcceptedName = objectPath.get(
+          curatorialTaxon,
+          'acceptedTaxonName.name'
+        )
 
         return (
           <FormRow
@@ -161,7 +164,7 @@ class RecordForm extends Component {
             formSectionNavigationHeader={
               catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
             }
-            formSectionNavigationSubHeader={curatorialTaxonName}
+            formSectionNavigationSubHeader={curatorialTaxonAcceptedName}
             resourceIdPathParamKey="specimenId"
             showSectionsInNavigation
           />
