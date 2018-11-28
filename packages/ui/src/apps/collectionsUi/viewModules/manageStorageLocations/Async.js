@@ -4,6 +4,7 @@ import { MODULE_NAME } from './constants'
 export default createAsyncView({
   modules: () => {
     return [
+      import('coreModules/search'),
       import('domainModules/taxon'),
       import('domainModules/storage'),
       import('coreModules/form'),

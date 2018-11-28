@@ -8225,58 +8225,55 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/ResultOptionsBar default 1`] = `
 <div>
   <div
-    className="ui top attached tabular menu"
+    className="ui top attached icon tabular menu"
   >
     <a
-      className="item"
+      className="link item"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
-        className="wordpress forms large icon"
+        className="table icon"
       />
     </a>
     <a
-      className="item"
+      className="link item"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
-        className="table large icon"
+        className="wordpress forms icon"
       />
     </a>
     <div
-      className="right menu"
+      className="right menu icon secondary  ui"
     >
       <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="column"
-        >
-          <i
-            aria-hidden="true"
-            className="share large icon"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-          />
-        </div>
-      </div>
-      <div
-        className="item"
+        className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="setting large icon"
+          className="share icon"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        />
+      </div>
+      <div
+        className="link item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="setting icon"
           onClick={[Function]}
           style={
             Object {
@@ -8286,16 +8283,17 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         />
       </div>
       <div
-        className="item"
+        className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="search large icon"
+          className="search icon"
           onClick={[Function]}
           style={
             Object {
               "cursor": "pointer",
+              "marginLeft": "3.125em",
             }
           }
         />
@@ -8308,58 +8306,55 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/ResultOptionsBar formView 1`] = `
 <div>
   <div
-    className="ui top attached tabular menu"
+    className="ui top attached icon tabular menu"
   >
     <a
-      className="item"
+      className="link item"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
-        className="wordpress forms large icon"
+        className="table icon"
       />
     </a>
     <a
-      className="item"
+      className="link item"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
-        className="table large icon"
+        className="wordpress forms icon"
       />
     </a>
     <div
-      className="right menu"
+      className="right menu icon secondary  ui"
     >
       <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="column"
-        >
-          <i
-            aria-hidden="true"
-            className="share large icon"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-          />
-        </div>
-      </div>
-      <div
-        className="item"
+        className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="setting large icon"
+          className="share icon"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        />
+      </div>
+      <div
+        className="link item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="setting icon"
           onClick={[Function]}
           style={
             Object {
@@ -8369,16 +8364,17 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         />
       </div>
       <div
-        className="item"
+        className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="search large icon"
+          className="search icon"
           onClick={[Function]}
           style={
             Object {
               "cursor": "pointer",
+              "marginLeft": "3.125em",
             }
           }
         />
@@ -8391,58 +8387,55 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/ResultOptionsBar tableView 1`] = `
 <div>
   <div
-    className="ui top attached tabular menu"
+    className="ui top attached icon tabular menu"
   >
     <a
-      className="item"
+      className="link item"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
-        className="wordpress forms large icon"
+        className="table icon"
       />
     </a>
     <a
-      className="item"
+      className="link item"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
-        className="table large icon"
+        className="wordpress forms icon"
       />
     </a>
     <div
-      className="right menu"
+      className="right menu icon secondary  ui"
     >
       <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="column"
-        >
-          <i
-            aria-hidden="true"
-            className="share large icon"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={
-              Object {
-                "cursor": "pointer",
-              }
-            }
-          />
-        </div>
-      </div>
-      <div
-        className="item"
+        className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="setting large icon"
+          className="share icon"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        />
+      </div>
+      <div
+        className="link item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="setting icon"
           onClick={[Function]}
           style={
             Object {
@@ -8452,16 +8445,17 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         />
       </div>
       <div
-        className="item"
+        className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="search large icon"
+          className="search icon"
           onClick={[Function]}
           style={
             Object {
               "cursor": "pointer",
+              "marginLeft": "3.125em",
             }
           }
         />

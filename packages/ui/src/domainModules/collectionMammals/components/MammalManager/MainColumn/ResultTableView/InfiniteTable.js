@@ -48,7 +48,7 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  currentTableRowNumber: PropTypes.number.isRequired,
+  currentTableRowNumber: PropTypes.number,
   fetchItemById: PropTypes.func.isRequired,
   language: PropTypes.string.isRequired,
   searchResult: PropTypes.object,
@@ -59,6 +59,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  currentTableRowNumber: 1,
   searchResult: undefined,
 }
 
@@ -88,6 +89,7 @@ export class InfiniteTable extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (
+      this.list &&
       nextProps.currentTableRowNumber &&
       this.props.currentTableRowNumber !== nextProps.currentTableRowNumber
     ) {

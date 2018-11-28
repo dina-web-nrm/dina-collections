@@ -27,6 +27,10 @@ const recordOptions = {
   height: `${recordOptionsHeight}px`,
   key: 'recordOptions',
   renderRow: props => <ResultOptionsBar {...props} />,
+  style: {
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+  },
 }
 
 /* eslint-disable react/prop-types */

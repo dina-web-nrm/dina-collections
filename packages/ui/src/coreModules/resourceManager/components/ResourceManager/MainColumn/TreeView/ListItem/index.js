@@ -81,8 +81,8 @@ class ListItem extends Component {
           background,
           height: emToPixels(2.5),
           padding: emToPixels(0.75),
-          verticalAlign: 'middle',
         }}
+        verticalAlign="middle"
       >
         <Grid.Column
           key="rowNumber"
