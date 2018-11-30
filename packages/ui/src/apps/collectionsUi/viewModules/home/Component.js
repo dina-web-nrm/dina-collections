@@ -1,191 +1,126 @@
-import React from 'react'
-import { compose } from 'redux'
-import PropTypes from 'prop-types'
-import { Form, Grid } from 'semantic-ui-react'
-import FieldWrapper from 'coreModules/form/components/FieldWrapper'
+import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 
-import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
-import LocalityDropdownPickerSearch from 'domainModules/locality/components/LocalityDropdownPickerSearch'
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  Segment,
+} from 'semantic-ui-react'
 
-import StorageLocationDropdownSearch from 'domainModules/storage/components/StorageLocationDropdownSearch'
-import StorageLocationDropdownPickerSearch from 'domainModules/storage/components/StorageLocationDropdownPickerSearch'
+import { Markdown } from 'coreModules/i18n/components'
 
-import AgentDropdownSearch from 'domainModules/agent/components/AgentDropdownSearch'
-import AgentDropdownPickerSearch from 'domainModules/agent/components/AgentDropdownPickerSearch'
+import logo from './logo.png'
 
-import TaxonNameDropdownSearch from 'domainModules/taxon/components/TaxonNameDropdownSearch'
-import TaxonNameDropdownPickerSearch from 'domainModules/taxon/components/TaxonNameDropdownPickerSearch'
-import AcceptedTaxonNameDropdownPickerSearch from 'domainModules/taxon/components/AcceptedTaxonNameDropdownPickerSearch'
+class Home extends Component {
+  render() {
+    return (
+      <div>
+        <Segment
+          style={{
+            minHeight: 700,
+            padding: '1em 0em',
+          }}
+          textAlign="center"
+          vertical
+        >
+          <Container text>
+            <Image
+              centered
+              size="small"
+              src={logo}
+              style={{ marginTop: '10em' }}
+            />
+            <Header
+              as="h1"
+              content="Collections UI"
+              style={{
+                fontSize: '4em',
+                fontWeight: 'normal',
+                marginBottom: 0,
+              }}
+            />
+            <Header
+              as="h2"
+              content="The DINA project develops an open-source Web-based information management system for natural history data"
+              style={{ fontSize: '1.7em', fontWeight: 'normal' }}
+            />
+            <a href="#footer">
+              <Button color="blue" size="huge">
+                Read more
+                <Icon
+                  name="down arrow"
+                  style={{ margin: '0em -0.25em 0em 0.5em' }}
+                />
+              </Button>
+            </a>
+            <NavLink to="/login">
+              <Button color="green" size="huge">
+                Login
+                <Icon name="right arrow" />
+              </Button>
+            </NavLink>
+          </Container>
+        </Segment>
 
-import TaxonDropdownSearch from 'domainModules/taxon/components/TaxonDropdownSearch'
-import TaxonDropdownPickerSearch from 'domainModules/taxon/components/TaxonDropdownPickerSearch'
-
-import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
-import { reduxForm } from 'redux-form'
-
-const propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
+        <Segment style={{ padding: '8em 0em' }} vertical>
+          <Grid container stackable verticalAlign="top">
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <Segment padded="very">
+                  <Header as="h3" style={{ fontSize: '2em' }}>
+                    Collection management for large installations
+                  </Header>
+                  <p style={{ fontSize: '1.33em' }}>
+                    {`At the core of the system is support for assembling, managing
+                  and sharing data associated with natural history collections
+                  and their curation ("collection management"). Target
+                  collections include zoological, botanical, geological and
+                  paleontological collections, living collections, biodiversity
+                  inventories, observation records, and molecular data. DINA is
+                  primarily intended for large installations servicing the
+                  collection management needs of a country, a region, or a large
+                  institution.`}
+                  </p>
+                </Segment>
+                <Divider horizontal />
+                <Segment padded="very">
+                  <Header as="h3" style={{ fontSize: '2em' }}>
+                    An international partnership for open-source development
+                  </Header>
+                  <p style={{ fontSize: '1.33em' }}>
+                    {`DINA is developed by the DINA consortium, an unincorporated
+                  international partnership among organizations and individuals
+                  for collaborative open-source development. The DINA consortium
+                  was founded in 2014 by six natural history collection
+                  institutions in Europe and North America and is open to
+                  additional members as detailed below. The DINA acronym stands
+                  for "DIgital Information system for NAtural history data", and
+                  has its roots in a Swedish initiative to replace a
+                  heterogeneous collection of unsustainable in-house databases
+                  with a modern, web-based national collection management
+                  system.`}
+                  </p>
+                </Segment>
+              </Grid.Column>
+              <Grid.Column floated="right" width={6}>
+                <Segment padded="very">
+                  <Markdown
+                    fallbackLanguage="en"
+                    textKey="modules.start.changelog"
+                  />
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </div>
+    )
+  }
 }
 
-const Home = props => {
-  const { handleSubmit } = props
-
-  return (
-    <PageTemplate>
-      <Form onSubmit={handleSubmit(() => {})}>
-        <Grid textAlign="left" verticalAlign="top">
-          <h1>Locality</h1>
-          <Grid.Row>
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={LocalityDropdownSearch}
-                label="Locality dropdown search"
-                model="storageLocation"
-                module="storage"
-                name="localityId"
-              />
-            </Grid.Column>
-
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={LocalityDropdownPickerSearch}
-                formName="test"
-                label="Locality picker"
-                model="storageLocation"
-                module="storage"
-                name="localityId"
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <h1>Storage</h1>
-          <Grid.Row>
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={StorageLocationDropdownSearch}
-                label="Storage dropdown search"
-                model="storageLocation"
-                module="storage"
-                name="storageId"
-              />
-            </Grid.Column>
-
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={StorageLocationDropdownPickerSearch}
-                formName="test"
-                label="Storage picker"
-                model="storageLocation"
-                module="storage"
-                name="storageId"
-              />
-            </Grid.Column>
-          </Grid.Row>
-
-          <h1>Agent</h1>
-          <Grid.Row>
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={AgentDropdownSearch}
-                label="Agent dropdown search"
-                model="storageLocation"
-                module="storage"
-                name="agentId"
-              />
-            </Grid.Column>
-
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={AgentDropdownPickerSearch}
-                formName="test"
-                label="Agent picker"
-                model="storageLocation"
-                module="storage"
-                name="agentId"
-              />
-            </Grid.Column>
-          </Grid.Row>
-
-          <h1>Taxonomy</h1>
-          <Grid.Row>
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={TaxonNameDropdownSearch}
-                label="Taxon name search"
-                model="storageLocation"
-                module="storage"
-                name="taxonNameId"
-              />
-            </Grid.Column>
-
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={TaxonNameDropdownPickerSearch}
-                formName="test"
-                label="Taxon name picker"
-                model="storageLocation"
-                module="storage"
-                name="taxonNameId"
-              />
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={AcceptedTaxonNameDropdownPickerSearch}
-                label="Accepted taxon name search"
-                model="storageLocation"
-                module="storage"
-                name="taxonNameId"
-              />
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={TaxonDropdownSearch}
-                label="Taxon search"
-                model="storageLocation"
-                module="storage"
-                name="taxonId"
-              />
-            </Grid.Column>
-
-            <Grid.Column mobile={4}>
-              <FieldWrapper
-                autoComplete="off"
-                component={TaxonDropdownPickerSearch}
-                formName="test"
-                label="Taxon picker"
-                model="storageLocation"
-                module="storage"
-                name="taxonId"
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Form>
-    </PageTemplate>
-  )
-}
-
-Home.propTypes = propTypes
-
-export default compose(
-  reduxForm({
-    destroyOnUnmount: false, // to keep values when switching layout
-    enableReinitialize: true,
-    form: 'test',
-  })
-)(Home)
+export default Home
