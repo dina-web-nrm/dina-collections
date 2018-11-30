@@ -8,7 +8,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var exportedFunctions = require('./index');
 
-var expectedFunctions = ['capitalizeFirstLetter', 'camelCaseToUpperSnakeCase'];
+var expectedFunctions = ['capitalizeFirstLetter', 'capitalizeFirstLetterOfEachWord', 'camelCaseToUpperSnakeCase'];
 
 describe('stringFormatters', function () {
   it('exports expected functions', function () {
