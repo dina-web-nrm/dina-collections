@@ -18,17 +18,18 @@ module.exports = function buildKey({
   continent,
   nation,
   province,
+  district,
 }) {
   let segments = []
   if (parents) {
     segments = [
       ...parents.map(parent => {
-        return parent.attributes.name
+        return `${parent.attributes.name} (${parent.attributes.group})`
       }),
-      place.attributes.name,
+      `${place.attributes.name} (${place.attributes.group})`,
     ]
   } else {
-    segments = [continent, nation, province]
+    segments = [continent, nation, province, district]
   }
 
   return internalBuildKey(segments)
