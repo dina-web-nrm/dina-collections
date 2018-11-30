@@ -1,6 +1,10 @@
 const exportedFunctions = require('./index')
 
-const expectedFunctions = ['capitalizeFirstLetter', 'camelCaseToUpperSnakeCase']
+const expectedFunctions = [
+  'capitalizeFirstLetter',
+  'capitalizeFirstLetterOfEachWord',
+  'camelCaseToUpperSnakeCase',
+]
 
 describe('stringFormatters', () => {
   it('exports expected functions', () => {
