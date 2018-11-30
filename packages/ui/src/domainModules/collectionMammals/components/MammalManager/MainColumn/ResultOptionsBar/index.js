@@ -58,16 +58,11 @@ export class ResultOptionsBar extends Component {
               <Icon
                 name="setting"
                 onClick={event => handleSettingClick(event)}
-                style={{ cursor: 'pointer' }}
               />
             </Menu.Item>
           )}
-          <Menu.Item link>
-            <Icon
-              name="search"
-              onClick={event => handleToggleFilters(event)}
-              style={{ cursor: 'pointer', marginLeft: '3.125em' }}
-            />
+          <Menu.Item link style={{ marginLeft: '3.125em' }}>
+            <Icon name="search" onClick={event => handleToggleFilters(event)} />
           </Menu.Item>
         </Menu.Menu>
       </Menu>
