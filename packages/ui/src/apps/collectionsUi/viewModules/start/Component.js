@@ -1,126 +1,119 @@
 import React, { Component } from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Button, Divider, Grid, Header, Icon, Image } from 'semantic-ui-react'
 
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  Segment,
-} from 'semantic-ui-react'
+import { getVersionFromRootPackageJson } from 'common/es5/version'
+import userSelectors from 'coreModules/user/globalSelectors'
+import { withI18n } from 'coreModules/i18n/higherOrderComponents'
+import logo from './DINA_logo_only.png'
 
-import { Markdown } from 'coreModules/i18n/components'
+const mapStateToProps = state => {
+  return {
+    name: userSelectors.getName(state),
+  }
+}
 
-import logo from './logo.png'
+const propTypes = {
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
+  name: PropTypes.string.isRequired,
+}
 
 class Start extends Component {
   render() {
+    const { i18n: { moduleTranslate }, name } = this.props
+
     return (
-      <div>
-        <Segment
-          style={{
-            minHeight: 700,
-            padding: '1em 0em',
-          }}
+      <React.Fragment>
+        <Grid
+          columns={2}
+          container
+          style={{ marginTop: '6.25em' }}
           textAlign="center"
-          vertical
+          verticalAlign="middle"
         >
-          <Container text>
-            <Image
-              centered
-              size="small"
-              src={logo}
-              style={{ marginTop: '10em' }}
-            />
+          <Grid.Column width={10}>
             <Header
               as="h1"
-              content="Collections UI"
+              content={`${moduleTranslate({
+                capitalize: true,
+                module: 'start',
+                textKey: 'welcome',
+              })} ${name}! ${moduleTranslate({
+                capitalize: true,
+                module: 'start',
+                textKey: 'startPageText',
+              })}`}
               style={{
-                fontSize: '4em',
-                fontWeight: 'normal',
-                marginBottom: 0,
+                color: '#000000a0',
+                fontWeight: 200,
+                lineHeight: '2.5rem',
+                marginBottom: '1em',
               }}
             />
-            <Header
-              as="h2"
-              content="The DINA project develops an open-source Web-based information management system for natural history data"
-              style={{ fontSize: '1.7em', fontWeight: 'normal' }}
-            />
-            <a href="#footer">
-              <Button color="blue" size="huge">
-                Read more
-                <Icon
-                  name="down arrow"
-                  style={{ margin: '0em -0.25em 0em 0.5em' }}
-                />
-              </Button>
-            </a>
-            <NavLink to="/login">
-              <Button color="green" size="huge">
-                Login
-                <Icon name="right arrow" />
+
+            <NavLink to="/app/specimens/mammals/create/sections/0">
+              <Button primary size="huge" type="button">
+                <Icon name="plus" />
+                {moduleTranslate({
+                  capitalize: true,
+                  module: 'start',
+                  textKey: 'btnRegisterMammal',
+                })}
               </Button>
             </NavLink>
-          </Container>
-        </Segment>
-
-        <Segment style={{ padding: '8em 0em' }} vertical>
-          <Grid container stackable verticalAlign="top">
-            <Grid.Row>
-              <Grid.Column width={8}>
-                <Segment padded="very">
-                  <Header as="h3" style={{ fontSize: '2em' }}>
-                    Collection management for large installations
-                  </Header>
-                  <p style={{ fontSize: '1.33em' }}>
-                    {`At the core of the system is support for assembling, managing
-                  and sharing data associated with natural history collections
-                  and their curation ("collection management"). Target
-                  collections include zoological, botanical, geological and
-                  paleontological collections, living collections, biodiversity
-                  inventories, observation records, and molecular data. DINA is
-                  primarily intended for large installations servicing the
-                  collection management needs of a country, a region, or a large
-                  institution.`}
-                  </p>
-                </Segment>
-                <Divider horizontal />
-                <Segment padded="very">
-                  <Header as="h3" style={{ fontSize: '2em' }}>
-                    An international partnership for open-source development
-                  </Header>
-                  <p style={{ fontSize: '1.33em' }}>
-                    {`DINA is developed by the DINA consortium, an unincorporated
-                  international partnership among organizations and individuals
-                  for collaborative open-source development. The DINA consortium
-                  was founded in 2014 by six natural history collection
-                  institutions in Europe and North America and is open to
-                  additional members as detailed below. The DINA acronym stands
-                  for "DIgital Information system for NAtural history data", and
-                  has its roots in a Swedish initiative to replace a
-                  heterogeneous collection of unsustainable in-house databases
-                  with a modern, web-based national collection management
-                  system.`}
-                  </p>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column floated="right" width={6}>
-                <Segment padded="very">
-                  <Markdown
-                    fallbackLanguage="en"
-                    textKey="modules.start.changelog"
-                  />
-                </Segment>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
-      </div>
+            <NavLink to="/app/specimens/mammals">
+              <Button basic primary size="huge" type="button">
+                <Icon name="search" />
+                {moduleTranslate({
+                  capitalize: true,
+                  module: 'start',
+                  textKey: 'btnFindMammals',
+                })}
+              </Button>
+            </NavLink>
+            <div
+              style={{
+                color: '#000000a0',
+                marginTop: '1em',
+              }}
+            >
+              {moduleTranslate({
+                capitalize: true,
+                module: 'start',
+                textKey: 'needHelp',
+              })}{' '}
+              <a href="mailto:team@mail.dina-web.net">team@mail.dina-web.net</a>
+            </div>
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <Image centered src={logo} style={{ height: '16rem' }} />
+          </Grid.Column>
+        </Grid>
+        <Divider style={{ marginTop: '5em' }} />
+        <div style={{ color: '#000000a0', paddingLeft: '1em' }}>
+          {moduleTranslate({
+            capitalize: true,
+            module: 'start',
+            textKey: 'dinaCollections',
+          })}{' '}
+          <i>
+            {moduleTranslate({
+              capitalize: true,
+              module: 'start',
+              textKey: 'currentlyVersion',
+            })}
+            {getVersionFromRootPackageJson()}
+          </i>
+        </div>
+      </React.Fragment>
     )
   }
 }
 
-export default Start
+Start.propTypes = propTypes
+export default compose(connect(mapStateToProps), withI18n())(Start)

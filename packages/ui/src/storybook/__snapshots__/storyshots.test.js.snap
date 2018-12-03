@@ -8275,27 +8275,21 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           aria-hidden="true"
           className="setting icon"
           onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
         />
       </div>
       <div
         className="link item"
         onClick={[Function]}
+        style={
+          Object {
+            "marginLeft": "3.125em",
+          }
+        }
       >
         <i
           aria-hidden="true"
           className="search icon"
           onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-              "marginLeft": "3.125em",
-            }
-          }
         />
       </div>
     </div>
@@ -8356,27 +8350,21 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           aria-hidden="true"
           className="setting icon"
           onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
         />
       </div>
       <div
         className="link item"
         onClick={[Function]}
+        style={
+          Object {
+            "marginLeft": "3.125em",
+          }
+        }
       >
         <i
           aria-hidden="true"
           className="search icon"
           onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-              "marginLeft": "3.125em",
-            }
-          }
         />
       </div>
     </div>
@@ -8437,27 +8425,21 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           aria-hidden="true"
           className="setting icon"
           onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
         />
       </div>
       <div
         className="link item"
         onClick={[Function]}
+        style={
+          Object {
+            "marginLeft": "3.125em",
+          }
+        }
       >
         <i
           aria-hidden="true"
           className="search icon"
           onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-              "marginLeft": "3.125em",
-            }
-          }
         />
       </div>
     </div>

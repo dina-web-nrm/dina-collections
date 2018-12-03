@@ -5,7 +5,7 @@ import { Footer } from 'coreModules/commonUi/components'
 import { ViewWrap } from 'coreModules/layout/components'
 import Login from '../login/Async'
 import PageNotFound from '../pageNotFound/Async'
-import Start from '../start/Async'
+import Home from '../home/Async'
 
 class Public extends Component {
   render() {
@@ -13,7 +13,7 @@ class Public extends Component {
       <ViewWrap>
         <Switch>
           <Route component={Login} exact path="/login" />
-          <Route component={Start} exact path="/" />
+          <Route component={Home} exact path="/" />
           <Route component={PageNotFound} />
         </Switch>
         <Footer />

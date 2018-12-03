@@ -1,1 +1,42 @@
-{}
+{
+  "body": {
+    "en": "Welcome, welcome here, whoever you are",
+    "sv": "Välkommen, välkommen hit, vem du än är"
+  },
+  "markdownTranslation": {
+    "en": "Markdown translation",
+    "sv": "Markdown-översättning"
+  },
+  "regularTranslation": {
+    "en": "Regular translation",
+    "sv": "Vanlig översättning"
+  },
+  "welcome": {
+    "en": "Welcome ",
+    "sv": ""
+  },
+  "startPageText": {
+    "en": "What would you like to do?",
+    "sv": ""
+  },
+  "needHelp": {
+    "en": "Need help?",
+    "sv": ""
+  },
+  "dinaCollections": {
+    "en": "Dina Collections",
+    "sv": ""
+  },
+  "currentlyVersion": {
+    "en": "currently v.",
+    "sv": ""
+  },
+  "btnRegisterMammal": {
+    "en": "Register mammal",
+    "sv": ""
+  },
+  "btnFindMammals": {
+    "en": "Find mammals",
+    "sv": ""
+  }
+}

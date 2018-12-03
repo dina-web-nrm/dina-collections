@@ -10,7 +10,7 @@ import {
   ShortcutsDisplay,
 } from 'coreModules/keyboardShortcuts/components'
 
-import Home from '../home/Async'
+import Start from '../start/Async'
 import SpecimensMammals from '../specimensMammals/Async'
 import PageNotFound from '../pageNotFound/Async'
 import Settings from '../settings/Async'
@@ -53,7 +53,7 @@ class App extends Component {
         <KeyboardShortcuts shortcuts={this.shortcuts} />
         <ViewWrap leftSidebarEnabled leftSidebarTogglable topMenuEnabled>
           <Switch>
-            <Route component={Home} exact path={match.url} />
+            <Route component={Start} exact path={match.url} />
             <Route
               component={SpecimensMammals}
               exact
