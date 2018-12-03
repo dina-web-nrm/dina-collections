@@ -14,6 +14,11 @@ export const getUser = state => {
 }
 
 export const getUserName = state => {
+export const getName = state => {
+  const user = getUser(state)
+  return (user && user.name) || null
+}
+
   const user = getUser(state)
   return (user && user.username) || null
 }
