@@ -13,12 +13,12 @@ export const getUser = state => {
   return state.user
 }
 
-export const getUserName = state => {
 export const getName = state => {
   const user = getUser(state)
   return (user && user.name) || null
 }
 
+export const getUsername = state => {
   const user = getUser(state)
   return (user && user.username) || null
 }

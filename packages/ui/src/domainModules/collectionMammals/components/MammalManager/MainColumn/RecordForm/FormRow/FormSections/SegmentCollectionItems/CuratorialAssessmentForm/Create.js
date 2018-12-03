@@ -8,7 +8,7 @@ import BaseForm from './Base'
 
 const mapStateToProps = state => {
   return {
-    username: userSelectors.getUserName(state),
+    username: userSelectors.getUsername(state),
   }
 }
 
