@@ -32,11 +32,11 @@ class Start extends Component {
         <Grid
           columns={2}
           container
-          style={{ marginTop: '6.25em' }}
+          style={{ marginBottom: '8.5em', marginTop: '7em' }}
           textAlign="center"
           verticalAlign="middle"
         >
-          <Grid.Column width={10}>
+          <Grid.Column width={9}>
             <Header
               as="h1"
               content={`${moduleTranslate({
@@ -50,6 +50,7 @@ class Start extends Component {
               })}`}
               style={{
                 color: '#000000a0',
+                fontSize: '2.5em',
                 fontWeight: 200,
                 lineHeight: '2.5rem',
                 marginBottom: '1em',
@@ -90,11 +91,11 @@ class Start extends Component {
               <a href="mailto:team@mail.dina-web.net">team@mail.dina-web.net</a>
             </div>
           </Grid.Column>
-          <Grid.Column width={6}>
-            <Image centered src={logo} style={{ height: '16rem' }} />
+          <Grid.Column width={7}>
+            <Image centered src={logo} />
           </Grid.Column>
         </Grid>
-        <Divider style={{ marginTop: '5em' }} />
+        <Divider />
         <div style={{ color: '#000000a0', paddingLeft: '1em' }}>
           {moduleTranslate({
             capitalize: true,
