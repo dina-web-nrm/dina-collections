@@ -13,12 +13,14 @@ docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 
 $FULL_PATH/build-docker.sh  -t $TRAVIS_TAG
 if [ $? -ne 0 ]; then
-      echo "Aborting. exit is $?"
-      exit $?
+  echo "Aborting. exit is not 0"
+  exit 1
 fi
+
 
 $FULL_PATH/publish-docker.sh  -t $TRAVIS_TAG
 if [ $? -ne 0 ]; then
-      echo "Aborting. exit-status=$?"
-      exit $?
+  echo "Aborting. exit is not 0"
+  exit 1
 fi
+
