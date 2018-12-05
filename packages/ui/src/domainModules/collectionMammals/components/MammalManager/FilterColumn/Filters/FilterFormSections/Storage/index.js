@@ -23,20 +23,20 @@ class StorageFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            addTagTypeToText={false}
-            autoComplete="off"
-            component={WrappedMultipleSearchTagsSelectField}
-            label="Normal storage"
-            name="storage.tagValues"
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Level"
+            name="storage.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            component={WrappedMultipleChoiceCheckboxesField}
-            displayCount
-            label="Level"
-            name="storage.tagTypes"
+            addTagTypeToText={false}
+            autoComplete="off"
+            component={WrappedMultipleSearchTagsSelectField}
+            label="Normal storage"
+            name="storage.tagValues"
             resource="searchSpecimen"
           />
         </Grid.Column>

@@ -1,4 +1,4 @@
-import { camelCaseToUpperSnakeCase } from 'common/src/stringFormatters'
+import { camelCaseToUpperSnakeCase } from 'common/es5/stringFormatters'
 
 export default function createActionType({
   apiActionType = '',

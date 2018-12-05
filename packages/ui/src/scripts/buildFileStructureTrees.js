@@ -1,5 +1,5 @@
 const path = require('path')
-const buildFileTrees = require('common/src/buildFileTrees')
+const buildFileTrees = require('common/es5/buildFileTrees')
 
 const trees = [
   {

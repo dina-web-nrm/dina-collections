@@ -24,25 +24,25 @@ echo "Pushing TAG=$TAG to Dockerhub"
 
 npm run build:ui;
 if [ $? -ne 0 ]; then
-      echo "Aborting. exit is $?"
-      exit $?
+  echo "Aborting. exit is not 0"
+  exit 1
 fi
 
 docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:$TAG -t dina/dina-collections-ui:latest ./packages/ui;
 if [ $? -ne 0 ]; then
-      echo "Aborting. exit is $?"
-      exit $?
+  echo "Aborting. exit is not 0"
+  exit 1
 fi
 
 npm run uninstall;
 docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TAG -t dina/dina-collections-api:latest ./packages;
 if [ $? -ne 0 ]; then
-      echo "Aborting. exit is $?"
-      exit $?
+  echo "Aborting. exit is not 0"
+  exit 1
 fi
 
 docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TAG -t dina/dina-collections-migrations:latest ./packages;
 if [ $? -ne 0 ]; then
-      echo "Aborting. exit is $?"
-      exit $?
+  echo "Aborting. exit is not 0"
+  exit 1
 fi

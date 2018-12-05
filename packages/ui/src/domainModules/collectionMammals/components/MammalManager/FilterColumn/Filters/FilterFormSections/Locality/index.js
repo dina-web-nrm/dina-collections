@@ -22,16 +22,6 @@ class LocalityFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            autoComplete="off"
-            component={WrappedMultipleSearchTagsSelectField}
-            fluid
-            label="Higher Geography"
-            name="locality.higherGeography.tagValues"
-            resource="searchSpecimen"
-          />
-        </Grid.Column>
-        <Grid.Column width={16}>
-          <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
             label="Higher geography level"
@@ -44,17 +34,28 @@ class LocalityFilterForm extends PureComponent {
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             fluid
-            label="Locality"
-            name="locality.localities.tagValues"
+            label="Higher Geography"
+            name="locality.higherGeography.tagValues"
             resource="searchSpecimen"
           />
         </Grid.Column>
+
         <Grid.Column width={16}>
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
             label="Locality type"
             name="locality.localities.tagTypes"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            autoComplete="off"
+            component={WrappedMultipleSearchTagsSelectField}
+            fluid
+            label="Locality"
+            name="locality.localities.tagValues"
             resource="searchSpecimen"
           />
         </Grid.Column>

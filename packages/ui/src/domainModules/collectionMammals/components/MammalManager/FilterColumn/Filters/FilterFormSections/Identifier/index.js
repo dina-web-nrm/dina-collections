@@ -23,19 +23,19 @@ class IdentifierFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            autoComplete="off"
-            component={WrappedMultipleSearchTagsSelectField}
-            label="Identifier value"
-            name="identifier.tagValues"
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Identifier types"
+            name="identifier.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            component={WrappedMultipleChoiceCheckboxesField}
-            displayCount
-            label="Identifier types"
-            name="identifier.tagTypes"
+            autoComplete="off"
+            component={WrappedMultipleSearchTagsSelectField}
+            label="Identifier value"
+            name="identifier.tagValues"
             resource="searchSpecimen"
           />
         </Grid.Column>

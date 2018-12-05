@@ -23,19 +23,19 @@ class AgentFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            autoComplete="off"
-            component={WrappedMultipleSearchTagsSelectField}
-            label="Agent/name"
-            name="agent.tagValues"
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Role"
+            name="agent.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            component={WrappedMultipleChoiceCheckboxesField}
-            displayCount
-            label="Role"
-            name="agent.tagTypes"
+            autoComplete="off"
+            component={WrappedMultipleSearchTagsSelectField}
+            label="Agent/name"
+            name="agent.tagValues"
             resource="searchSpecimen"
           />
         </Grid.Column>
