@@ -923,10 +923,10 @@
       "body-length": {
         "en": "Body length"
       },
-      "tail-anus-length": {
+      "tail-to-anus-length": {
         "en": "Tail-anus length"
       },
-      "tail-pelvis-length": {
+      "tail-to-pelvis-length": {
         "en": "Tail-pelvis length"
       },
       "ear-length": {
@@ -938,60 +938,60 @@
       "carcass-condition": {
         "en": "Condition"
       },
-      "cranium": {
-        "en": "Cranium",
+      "cranium-count": {
+        "en": "Cranium count",
         "sv": ""
       },
-      "mandibula": {
-        "en": "Mandibula",
+      "mandibula-count": {
+        "en": "Mandibula count",
         "sv": ""
       },
-      "vertebrae": {
-        "en": "Vertebrae",
+      "vertebrae-count": {
+        "en": "Vertebrae count",
         "sv": ""
       },
-      "costae": {
-        "en": "Costae",
+      "costae-count": {
+        "en": "Costae count",
         "sv": ""
       },
-      "scapula": {
-        "en": "Scapula",
+      "scapula-count": {
+        "en": "Scapula count",
         "sv": ""
       },
-      "humerus": {
-        "en": "Humerus",
+      "humerus-count": {
+        "en": "Humerus count",
         "sv": ""
       },
-      "ulna": {
-        "en": "Ulna",
+      "ulna-count": {
+        "en": "Ulna count",
         "sv": ""
       },
-      "radius": {
-        "en": "Radius",
+      "radius-count": {
+        "en": "Radius count",
         "sv": ""
       },
-      "manus": {
-        "en": "Manus",
+      "manus-count": {
+        "en": "Manus count",
         "sv": ""
       },
-      "pelvis": {
-        "en": "Pelvis",
+      "pelvis-count": {
+        "en": "Pelvis count",
         "sv": ""
       },
-      "femur": {
-        "en": "Femur",
+      "femur-count": {
+        "en": "Femur count",
         "sv": ""
       },
-      "tibia": {
-        "en": "Tibia",
+      "tibia-count": {
+        "en": "Tibia count",
         "sv": ""
       },
-      "pedis": {
-        "en": "Pedis",
+      "pedis-count": {
+        "en": "Pedis count",
         "sv": ""
       },
-      "bacculum": {
-        "en": "Bacculum",
+      "bacculum-count": {
+        "en": "Bacculum count",
         "sv": ""
       }
     }

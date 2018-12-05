@@ -15,6 +15,9 @@ const parts = [
   },
   {
     componentName: 'TypeSpecimenTypeDropdownSearch',
+    componentProps: {
+      columnProps: { clear: true, width: 6 },
+    },
     initiallyHidden: true,
     name: 'individual.taxonInformation.typeStatus.id',
     wrapInField: true,

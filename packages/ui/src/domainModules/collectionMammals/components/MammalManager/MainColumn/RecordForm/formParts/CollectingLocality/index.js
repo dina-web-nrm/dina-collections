@@ -16,7 +16,9 @@ const log = createLog('modules:collectionMammals:MammalForm:CollectingLocality')
 
 const buttonStyle = {
   float: 'left',
-  marginBottom: '2em',
+  marginBottom: '1.56em',
+  paddingLeft: '1.32em',
+  paddingRight: '1.32em',
 }
 
 const propTypes = {
@@ -68,7 +70,7 @@ class CollectingLocality extends PureComponent {
     log.render()
     return (
       <React.Fragment>
-        <Grid.Column width={10}>
+        <Grid.Column width={11}>
           <Field
             autoComplete="off"
             component={TextArea}
@@ -90,8 +92,13 @@ class CollectingLocality extends PureComponent {
             />
           </Grid.Column>
         ) : (
-          <Grid.Column style={buttonStyle} width={6}>
-            <Button onClick={this.handleOpen} type="button">
+          <Grid.Column width={5}>
+            <Button
+              floated="left"
+              onClick={this.handleOpen}
+              style={buttonStyle}
+              type="button"
+            >
               <Icon name="marker" />
               <ModuleTranslate
                 capitalize

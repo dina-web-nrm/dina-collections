@@ -8,6 +8,9 @@ const parts = [
   },
   {
     componentName: 'TogglableTaxonDropdownPickerSearch',
+    componentProps: {
+      columnProps: { width: 8 },
+    },
     name: 'individual.taxonInformation.curatorialTaxon.id',
     wrapInField: true,
   },

@@ -18,7 +18,7 @@ const parts = [
   {
     componentName: 'TextArea',
     componentProps: {
-      columnProps: { width: 10 },
+      columnProps: { width: 11 },
       rows: 2,
       type: 'text',
     },
@@ -43,7 +43,7 @@ const parts = [
   {
     componentName: 'Remarks',
     componentProps: {
-      columnProps: { width: 10 },
+      columnProps: { width: 11 },
       emptyStateTextKey: 'remarks.emptyState.origin',
       model,
       resultPrefixTextKey: 'remarks.resultPrefix.origin',
