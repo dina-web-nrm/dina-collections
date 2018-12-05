@@ -55,6 +55,10 @@
         "en": "Role/position",
         "sv": ""
       }
+    },
+    "legacyData": {
+      "en": "Legacy data",
+      "sv": ""
     }
   },
   "headers": {
@@ -76,6 +80,10 @@
     },
     "roles": {
       "en": "roles",
+      "sv": ""
+    },
+    "legacyData": {
+      "en": "Legacy data",
       "sv": ""
     }
   },

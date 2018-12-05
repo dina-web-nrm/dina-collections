@@ -1,4 +1,7 @@
-import { recordHistoryEvents } from 'coreModules/form/components/units'
+import {
+  legacyData,
+  recordHistoryEvents,
+} from 'coreModules/form/components/units'
 import unitSpecs from '../../unitSpecs'
 
 const {
@@ -6,7 +9,6 @@ const {
   identifiers,
   acquisition,
   recordHistoryExternalEvents,
-  legacyData,
 } = unitSpecs
 
 const units = [
