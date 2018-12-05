@@ -7,6 +7,8 @@ module.exports = function capitalizeFirstLetterOfEachWord(string) {
 
   return string
     .split(' ')
-    .map(word => capitalizeFirstLetter(word))
+    .map(word => {
+      return capitalizeFirstLetter(word)
+    })
     .join(' ')
 }
