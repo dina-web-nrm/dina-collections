@@ -23,19 +23,19 @@ class TaxonomyFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            autoComplete="off"
-            component={WrappedMultipleSearchTagsSelectField}
-            label="Taxon name"
-            name="taxonomy.tagValues"
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Ranks"
+            name="taxonomy.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            component={WrappedMultipleChoiceCheckboxesField}
-            displayCount
-            label="Ranks"
-            name="taxonomy.tagTypes"
+            autoComplete="off"
+            component={WrappedMultipleSearchTagsSelectField}
+            label="Taxon name"
+            name="taxonomy.tagValues"
             resource="searchSpecimen"
           />
         </Grid.Column>
