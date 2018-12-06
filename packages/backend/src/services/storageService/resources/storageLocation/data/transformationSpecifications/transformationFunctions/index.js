@@ -6,7 +6,7 @@ exports.transformStorageLocation = function transformStorageLocation({
 }) {
   const { migrationData: { name, group, id, parentId }, sourceData } = src
   if (!name) {
-    return null
+    return
   }
   target.attributes = {
     group,
