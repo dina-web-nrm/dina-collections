@@ -22,6 +22,7 @@ const propTypes = {
     }).isRequired
   ).isRequired,
   parse: PropTypes.func,
+  selectedOption: PropTypes.object,
 }
 
 const defaultProps = {
@@ -30,6 +31,7 @@ const defaultProps = {
   isLoading: undefined,
   limit: 10,
   parse: undefined,
+  selectedOption: undefined,
 }
 
 const createSelectedOptionSelector = options => {
@@ -119,7 +121,14 @@ class DropdownSearchLocalInput extends Component {
   }
 
   render() {
-    const { initialText, input, isLoading, parse, ...rest } = this.props
+    const {
+      initialText,
+      input,
+      isLoading,
+      parse,
+      selectedOption,
+      ...rest
+    } = this.props
     const { filteredOptions, searchQuery } = this.state
     return (
       <DropdownSearchBaseInput
@@ -130,7 +139,7 @@ class DropdownSearchLocalInput extends Component {
         options={filteredOptions}
         parse={parse}
         searchQuery={searchQuery}
-        selectedOption={this.getSelectedOption()}
+        selectedOption={selectedOption || this.getSelectedOption()}
         {...rest}
       />
     )
