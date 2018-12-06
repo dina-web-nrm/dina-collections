@@ -9,14 +9,16 @@ module.exports = function getPlaceId({
   const {
     locationInformation_continentOcean: continent,
     locationInformation_country: nation,
-    // locationInformation_district,
+    locationInformation_district: district,
     locationInformation_province: province,
   } = srcCollectingInformation
 
-  const key = buildKey({ continent, nation, province })
+  const key = buildKey({ continent, district, nation, province })
+
   if (!key) {
     return null
   }
+
   return migrator.getFromGlobals({
     globals,
     key,

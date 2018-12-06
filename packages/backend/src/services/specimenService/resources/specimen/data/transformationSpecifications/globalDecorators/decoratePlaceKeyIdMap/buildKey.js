@@ -29,7 +29,18 @@ module.exports = function buildKey({
       `${place.attributes.name} (${place.attributes.group})`,
     ]
   } else {
-    segments = [continent, nation, province, district]
+    if (continent) {
+      segments.push(`${continent} (continent-ocean)`)
+    }
+    if (nation) {
+      segments.push(`${nation} (country)`)
+    }
+    if (province) {
+      segments.push(`${province} (province)`)
+    }
+    if (district) {
+      segments.push(`${district} (district)`)
+    }
   }
 
   return internalBuildKey(segments)
