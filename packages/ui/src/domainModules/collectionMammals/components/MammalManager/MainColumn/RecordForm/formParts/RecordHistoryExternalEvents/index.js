@@ -13,7 +13,6 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import {
   CATALOG_CARD,
   CATALOG_CARD_CREATION_DESCRIPTION,
-  MAM_2006_SYSTEM_NAME,
 } from 'domainModules/collectionMammals/constants'
 
 import Fields from './Fields'
@@ -64,7 +63,7 @@ const mapStateToProps = (state, { formName, formValueSelector, name }) => {
       formName,
     }),
     otherEvents: recordHistoryEvents.filter(
-      ({ system }) => system === MAM_2006_SYSTEM_NAME
+      ({ description }) => description !== CATALOG_CARD_CREATION_DESCRIPTION
     ),
     recordHistoryEvents,
   }
