@@ -44,7 +44,7 @@
     "setup:links:scripts": "cd ./packages/scripts && yarn link",
     "setup:loadTestData": "yarn start:dbs && cd ./packages/backend && yarn data:loadAll",
     "start:backend": "yarn start:dbs && cd ./packages/backend && yarn start",
-    "start:dbs": "yarn start:postgres && yarn start:elasticsearch",
+    "start:dbs": "yarn start:postgres && yarn start:elasticsearch && yarn start:mysql",
     "start:elasticsearch": "docker-compose -f docker-compose.yaml up -d elasticsearch",
     "start:keycloak": "yarn start:mysql && docker-compose -f docker-compose.yaml up -d keycloak",
     "start:mysql": "docker-compose -f docker-compose.yaml up -d mysql",
