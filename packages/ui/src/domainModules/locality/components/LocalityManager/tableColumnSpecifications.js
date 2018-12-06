@@ -29,7 +29,10 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'continentOcean')
+      const parent = findParentWithSpecificGroup(
+        value.parent,
+        'continent-ocean'
+      )
       if (!parent) {
         return ''
       }
