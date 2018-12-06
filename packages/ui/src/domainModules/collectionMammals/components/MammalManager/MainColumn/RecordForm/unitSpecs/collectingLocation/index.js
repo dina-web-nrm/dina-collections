@@ -16,7 +16,7 @@ const parts = [
   {
     componentName: 'TextArea',
     componentProps: {
-      columnProps: { width: 10 },
+      columnProps: { width: 11 },
       rows: 2,
       type: 'text',
     },
@@ -27,7 +27,7 @@ const parts = [
   {
     componentName: 'LocalityDropdownPickerSearch',
     componentProps: {
-      columnProps: { width: 10 },
+      columnProps: { width: 11 },
     },
     name:
       'individual.collectingInformation.0.event.locationInformation.places.0.id',
@@ -36,8 +36,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 7 },
-      fluid: true,
+      columnProps: { clear: true, width: 5 },
       type: 'text',
     },
     name:
@@ -53,7 +52,7 @@ const parts = [
   {
     componentName: 'Remarks',
     componentProps: {
-      columnProps: { width: 10 },
+      columnProps: { width: 11 },
       emptyStateTextKey: 'remarks.emptyState.collectingLocationRemarks',
       model,
       resultPrefixTextKey: 'remarks.resultPrefix.collectingLocationRemarks',

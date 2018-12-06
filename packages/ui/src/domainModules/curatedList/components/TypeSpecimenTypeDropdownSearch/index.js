@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Grid } from 'semantic-ui-react'
 
 import { DropdownSearch } from 'coreModules/form/components'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
@@ -40,13 +39,11 @@ class TypeSpecimenTypeDropdownSearch extends Component {
       return null
     }
     return (
-      <Grid.Column width={16}>
-        <DropdownSearch
-          {...rest}
-          options={typeSpecimenTypeOptions}
-          type="dropdown-search-local"
-        />
-      </Grid.Column>
+      <DropdownSearch
+        {...rest}
+        options={typeSpecimenTypeOptions}
+        type="dropdown-search-local"
+      />
     )
   }
 }

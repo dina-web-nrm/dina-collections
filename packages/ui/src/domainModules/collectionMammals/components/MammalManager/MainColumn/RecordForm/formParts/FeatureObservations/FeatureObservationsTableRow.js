@@ -176,7 +176,7 @@ class FeatureObservationTableRow extends PureComponent {
           </Table.Cell>
         )}
         {hasSelectableMethods && (
-          <Table.Cell key={getPath('methodText')}>
+          <Table.Cell key={getPath('methodText')} width={6}>
             <Field
               autoComplete="off"
               className="transparent"
