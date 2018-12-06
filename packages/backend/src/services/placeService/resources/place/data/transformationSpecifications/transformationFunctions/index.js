@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 
 exports.transformPlace = function transformPlace({ src, target }) {
-  const { name, group, id, parentId } = src
+  const { migrationData: { name, group, id, parentId }, sourceData } = src
 
   target.attributes = {
     group,
@@ -12,4 +12,5 @@ exports.transformPlace = function transformPlace({ src, target }) {
   target.internals = {
     parentId,
   }
+  target.meta = { sourceData }
 }

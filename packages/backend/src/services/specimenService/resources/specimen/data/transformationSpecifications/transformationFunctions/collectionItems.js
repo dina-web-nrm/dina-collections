@@ -46,6 +46,7 @@ module.exports = function migrateCollectionItems({
         storageLevel1: srcStorageLevel1,
         storageLevel2: srcStorageLevel2,
         storageLevel3: srcStorageLevel3,
+        storageLevel4: srcStorageLevel4,
         storageLevel5: srcStorageLevel5,
       } = srcPhysicalObject
       const collectionItem = {}
@@ -54,6 +55,7 @@ module.exports = function migrateCollectionItems({
         storageLevel1: srcStorageLevel1,
         storageLevel2: srcStorageLevel2,
         storageLevel3: srcStorageLevel3,
+        storageLevel4: srcStorageLevel4,
         storageLevel5: srcStorageLevel5,
       })
 

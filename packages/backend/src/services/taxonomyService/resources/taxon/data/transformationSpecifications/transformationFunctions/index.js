@@ -4,7 +4,7 @@ const deleteNullProperties = createDeleteProperties(null)
 
 /* eslint-disable no-param-reassign */
 exports.transformTaxon = function transformTaxon({ src, target }) {
-  const { id, parentId, ...rest } = src
+  const { migrationData: { id, parentId, ...rest }, sourceData } = src
 
   target.attributes = deleteNullProperties(rest)
 
@@ -13,4 +13,5 @@ exports.transformTaxon = function transformTaxon({ src, target }) {
   }
 
   target.id = id
+  target.meta = { sourceData }
 }

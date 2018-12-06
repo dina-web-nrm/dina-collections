@@ -4,10 +4,10 @@ const buildKey = require('../globalDecorators/decorateTaxonKeyIdMap/buildKey')
 //   curatorialTaxonName: 'Eptesicus nilssonii',
 //   curatorialTaxonNameRank: 'species',
 //   taxonRemarks: null,
-//   typeStatus: null,
+//   typeStatus_key: null,
 //   customTaxonNames: [
 //     {
-//       customTaxonNameType: 'old-scientific-name',
+//       customTaxonNameType_key: 'old-scientific-name',
 //       value: 'Vesperugo nilssoni',
 //     },
 //   ],
@@ -35,7 +35,7 @@ module.exports = function migrateTaxonInformation({
     curatorialTaxonNameRank: srcCuratorialTaxonAcceptedNameRank,
     customTaxonNames: srcCustomTaxonNames,
     taxonRemarks: srcTaxonRemarks,
-    typeStatus: srcTypeStatus,
+    typeStatus_key: srcTypeStatus,
   } = srcTaxonInformation
 
   const taxonInformation = {}

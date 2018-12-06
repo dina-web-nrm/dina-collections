@@ -18461,7 +18461,7 @@
             "type": "string",
             "description": "Group of locality",
             "enum": [
-              "continentOcean",
+              "continent-ocean",
               "country",
               "district",
               "geodeticDatum",

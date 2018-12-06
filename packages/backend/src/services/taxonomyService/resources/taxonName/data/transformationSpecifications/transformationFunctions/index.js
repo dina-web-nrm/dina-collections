@@ -5,14 +5,18 @@ const deleteNullProperties = createDeleteProperties(null)
 /* eslint-disable no-param-reassign */
 exports.transformTaxonName = function transformTaxonName({ src, target }) {
   const {
-    id,
-    acceptedToTaxonId,
-    synonymToTaxonId,
-    vernacularToTaxonId,
-    type: taxonNameType,
-    group,
-    rank,
-    ...rest
+    migrationData: {
+      id,
+      acceptedToTaxonId,
+      synonymToTaxonId,
+      vernacularToTaxonId,
+      type: taxonNameType,
+      group,
+      rank,
+      ...rest
+    },
+
+    sourceData,
   } = src
 
   const attributes = {
@@ -34,4 +38,6 @@ exports.transformTaxonName = function transformTaxonName({ src, target }) {
   if (vernacularToTaxonId) {
     target.internals.vernacularToTaxonId = vernacularToTaxonId
   }
+
+  target.meta = { sourceData }
 }

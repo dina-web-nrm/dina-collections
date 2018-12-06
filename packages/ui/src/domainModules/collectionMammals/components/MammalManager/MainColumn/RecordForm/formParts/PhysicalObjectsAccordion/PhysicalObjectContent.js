@@ -133,7 +133,7 @@ class PhysicalObjectContent extends Component {
               emptyStateTextKey="remarks.emptyState.physicalObject"
               model="specimen"
               module="collectionMammals"
-              name={getPath('description')}
+              name={getPath('physicalObject.remarks')}
               showParentName
             />
           </Grid.Column>

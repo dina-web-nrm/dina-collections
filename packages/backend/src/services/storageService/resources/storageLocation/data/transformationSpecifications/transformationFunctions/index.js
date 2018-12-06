@@ -4,7 +4,7 @@ exports.transformStorageLocation = function transformStorageLocation({
   src,
   target,
 }) {
-  const { name, group, id, parentId } = src
+  const { migrationData: { name, group, id, parentId }, sourceData } = src
 
   target.attributes = {
     group,
@@ -15,4 +15,6 @@ exports.transformStorageLocation = function transformStorageLocation({
   target.internals = {
     parentId,
   }
+
+  target.meta = { sourceData }
 }

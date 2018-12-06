@@ -4,7 +4,7 @@ const getInterpretedDateRangeFromOneDate = require('common/src/date/getInterpret
 /*
 example src data
       "determinations": {
-        "determinedByAgent": null,
+        "determinedByAgent_textI": null,
         "taxonNameI": "Eptesicus nilssonii",
         "date_year": null,
         "date_month": null,
@@ -23,7 +23,7 @@ module.exports = function migrateDeterminations({ src, target, migrator }) {
   }
 
   const {
-    determinedByAgent: srcDeterminedByAgent,
+    determinedByAgent_textI: srcDeterminedByAgent,
     taxonNameI: srcTaxonNameI,
     date_year: srcDateYear,
     date_month: srcDateMonth,

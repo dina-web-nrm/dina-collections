@@ -4,7 +4,7 @@
 example src data
       "originInformation": {
         "originLocality": null,
-        "establishmentMeans": "captive",
+        "establishmentMeans_key": "captive",
         "isResultOfSelectiveBreeding": "True"
       },
 
@@ -28,7 +28,7 @@ module.exports = function migrateOriginInformation({
 
   const {
     originLocality: srcOriginLocality,
-    establishmentMeans: srcEstablishmentMeans,
+    establishmentMeans_key: srcEstablishmentMeans,
     isResultOfSelectiveBreeding: srcIsResultOfSelectiveBreeding,
   } = srcOriginInformation
 

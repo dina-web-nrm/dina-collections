@@ -3,7 +3,7 @@
 /*
 example src data
       "deathInformation": {
-        "causeOfDeath": "collected",
+        "causeOfDeath_key": "collected",
         "remarks": null
       },
 
@@ -26,7 +26,7 @@ module.exports = function migrateDeathInformation({
   }
 
   const {
-    causeOfDeath: srcCauseOfDeath,
+    causeOfDeath_key: srcCauseOfDeath,
     remarks: srcRemarks,
   } = srcDeathInformation
 

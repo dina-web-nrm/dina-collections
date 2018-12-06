@@ -11,7 +11,7 @@ example src data
     "date_day": null,
     "date_dateType": "latest",
     "date_remarks": null,
-    "establishmentMeans": "wild and native",
+    "establishmentMeans_key": "wild and native",
     "expeditionText": null,
     "isDeathDate": "False",
     "locationInformation_continentOcean": "Europe",
@@ -53,10 +53,10 @@ module.exports = function migrateCollectingInformation({
     }
   }
 
-  if (srcCollectingInformation.establishmentMeans) {
+  if (srcCollectingInformation.establishmentMeans_key) {
     const id = migrator.getFromGlobals({
       globals,
-      key: srcCollectingInformation.establishmentMeans,
+      key: srcCollectingInformation.establishmentMeans_key,
       mapKey: 'establishmentMeansTypeKeyIdMap',
       reporter,
     })
@@ -68,10 +68,9 @@ module.exports = function migrateCollectingInformation({
     }
   }
 
-  if (srcCollectingInformation.remarks) {
-    collectingInformation.remarks = {
-      textI: srcCollectingInformation.collectedByAgent,
-    }
+  if (srcCollectingInformation.locationInformation_remarks) {
+    collectingInformation.remarks =
+      srcCollectingInformation.locationInformation_remarks
   }
 
   // event
