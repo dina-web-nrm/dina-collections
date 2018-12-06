@@ -68,10 +68,9 @@ module.exports = function migrateCollectingInformation({
     }
   }
 
-  if (srcCollectingInformation.remarks) {
-    collectingInformation.remarks = {
-      textI: srcCollectingInformation.collectedByAgent,
-    }
+  if (srcCollectingInformation.locationInformation_remarks) {
+    collectingInformation.remarks =
+      srcCollectingInformation.locationInformation_remarks
   }
 
   // event
