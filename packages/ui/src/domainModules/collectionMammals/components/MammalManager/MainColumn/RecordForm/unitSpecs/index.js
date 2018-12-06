@@ -7,7 +7,6 @@ import death from './death'
 import determinations from './determinations'
 import features from './features'
 import identifiers from './identifiers'
-import legacyData from './legacyData'
 import localityOriginRoot from './localityOriginRoot'
 import origin from './origin'
 import physicalObjectsOtherPreparation from './physicalObjectsOtherPreparation'
@@ -32,7 +31,6 @@ export default {
   determinations,
   features,
   identifiers,
-  legacyData,
   localityOriginRoot,
   origin,
   physicalObjectsOtherPreparation,

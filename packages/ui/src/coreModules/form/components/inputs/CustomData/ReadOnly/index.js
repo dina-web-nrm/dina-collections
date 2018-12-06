@@ -32,7 +32,7 @@ class ReadOnly extends Component {
     let buttonText = 'Display'
     let disabled = false
     if (!(value && Object.keys(value).length)) {
-      buttonText = 'No read only data'
+      buttonText = 'No legacy data'
       disabled = true
     }
 
