@@ -1,0 +1,115 @@
+[
+  {
+    "key": "put-to-death",
+    "name": {
+      "en": "put to death",
+      "sv": "avlivad"
+    }
+  },
+  {
+    "key": "bycatch",
+    "name": {
+      "en": "bycatch",
+      "sv": "bifångst"
+    }
+  },
+  {
+    "key": "construction",
+    "name": {
+      "en": "construction",
+      "sv": "byggnation"
+    }
+  },
+  {
+    "key": "killed-by-other-animal",
+    "name": {
+      "en": "killed by other animal",
+      "sv": "dödad av annat djur"
+    }
+  },
+  {
+    "key": "found-shot",
+    "name": {
+      "en": "found shot",
+      "sv": "funnen skjuten"
+    }
+  },
+  {
+    "key": "collected",
+    "name": {
+      "en": "collected",
+      "sv": "insamlad"
+    }
+  },
+  {
+    "key": "hunt-trap",
+    "name": {
+      "en": "hunt, trap",
+      "sv": "jakt, fälla"
+    }
+  },
+  {
+    "key": "hunt-shot",
+    "name": {
+      "en": "hunt, shot",
+      "sv": "jakt, skjuten"
+    }
+  },
+  {
+    "key": "disease",
+    "name": {
+      "en": "disease",
+      "sv": "sjukdom"
+    }
+  },
+  {
+    "key": "traffic",
+    "name": {
+      "en": "traffic",
+      "sv": "trafik"
+    }
+  },
+  {
+    "key": "other",
+    "name": {
+      "en": "other",
+      "sv": "annan"
+    }
+  },
+  {
+    "key": "unknown",
+    "name": {
+      "en": "unknown",
+      "sv": "okänd"
+    }
+  },
+  {
+    "key": "dead-in-captivity",
+    "name": {
+      "en": "dead in captivity",
+      "sv": "död i fångenskap"
+    }
+  },
+  {
+    "key": "fossil",
+    "name": {
+      "en": "fossil",
+      "sv": "fossil"
+    }
+  },
+  {
+    "key": "subfossil",
+    "name": {
+      "en": "subfossil",
+      "sv": "subfossil"
+    }
+  },
+  {
+    "key": "found-dead",
+    "name": {
+      "en": "found dead",
+      "sv": "funnen död"
+    }
+  }
+]
+

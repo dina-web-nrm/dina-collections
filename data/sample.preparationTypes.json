@@ -1,0 +1,186 @@
+[ 
+  { 
+    "category": "skeleton",
+    "key": "complete-disarticulated-skeleton",
+    "name": {
+      "en": "complete, disarticulated skeleton",
+      "sv": "komplett, omonterat skelett"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "complete-mounted-skeleton",
+    "name": {
+      "en": "complete, mounted skeleton",
+      "sv": "komplett, monterat skelett"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "partial-skeleton-without-skull",
+    "name": {
+      "en": "partial skeleton without skull",
+      "sv": "partiellt skelett utan skalle"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "partial-skeleton-with-skull",
+    "name": {
+      "en": "partial skeleton with skull",
+      "sv": "partiellt skelett med skalle"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "skull",
+    "name": {
+      "en": "skull",
+      "sv": "skalle"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "some-bones",
+    "name": {
+      "en": "some bones, < 30%",
+      "sv": "enstaka ben, < 30 %"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "cast",
+    "name": {
+      "en": "cast",
+      "sv": "avgjutning"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "antler-or-horn",
+    "name": {
+      "en": "antler or horn",
+      "sv": "horn (inkl. hjorthorn)"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "bones-from-several-individuals",
+    "name": {
+      "en": "bones from several individuals",
+      "sv": "ben från flera individer"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "animal-product",
+    "name": {
+      "en": "animal product",
+      "sv": "animalisk produkt"
+    }
+  },
+  {
+    "category": "skeleton",
+    "key": "unspecified-skeleton",
+    "name": {
+      "en": "unspecified skeleton",
+      "sv": "ospecificerat skelett"
+    }
+  },
+  {
+    "category": "skin",
+    "key": "complete-study-skin",
+    "name": {
+      "en": "complete study skin",
+      "sv": "helt skinn, skinnlagt"
+    }
+  },
+  {
+    "category": "skin",
+    "key": "complete-mounted-skin",
+    "name": {
+      "en": "complete, mounted skin",
+      "sv": "helt skinn, monterat"
+    }
+  },
+  {
+    "category": "skin",
+    "key": "partial-skin-large",
+    "name": {
+      "en": "partial skin, 30-90%",
+      "sv": "partiellt skinn, 30–90 %"
+    }
+  },
+  {
+    "category": "skin",
+    "key": "hair-or-scales",
+    "name": {
+      "en": "hair or scales",
+      "sv": "hår eller fjäll"
+    }
+  },
+  {
+    "category": "skin",
+    "key": "skin-from-skull",
+    "name": {
+      "en": "skin from skull",
+      "sv": "skinn från huvud"
+    }
+  },
+  {
+    "category": "skin",
+    "key": "partial-skin-small",
+    "name": {
+      "en": "partial skin, < 30%",
+      "sv": "partiellt skinn, < 30 %"
+    }
+  },
+  {
+    "category": "skin",
+    "key": "unspecified-skin",
+    "name": {
+      "en": "unspecified skin",
+      "sv": "ospecificerat skinn"
+    }
+  },
+  {
+    "category": "wet-preparation",
+    "key": "entire-specimen-in-alcohol",
+    "name": {
+      "en": "entire specimen in alcohol",
+      "sv": "helt djur i sprit"
+    }
+  },
+  {
+    "category": "wet-preparation",
+    "key": "skeleton-in-alcohol",
+    "name": {
+      "en": "skeleton in alcohol",
+      "sv": "skelett i sprit"
+    }
+  },
+  {
+    "category": "wet-preparation",
+    "key": "skin-in-alcohol",
+    "name": {
+      "en": "skin in alcohol",
+      "sv": "skinn i sprit"
+    }
+  },
+  {
+    "category": "wet-preparation",
+    "key": "unspecified-wet-preparation",
+    "name": {
+      "en": "unspecified wet preparation",
+      "sv": "ospecificerad våtpreparation"
+    }
+  },
+  {
+    "category": "other-preparation",
+    "key": "unspecified-other-preparation",
+    "name": {
+      "en": "unspecified other preparation",
+      "sv": "ospecificerad annan preparation"
+    }
+  }
+]

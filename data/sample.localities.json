@@ -1,0 +1,252 @@
+[
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "root",
+      "id": "1",
+      "name": "root",
+      "parentId": null
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "continent-ocean",
+      "id": "2",
+      "name": "Africa",
+      "parentId": "1"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "country",
+      "id": "3",
+      "name": "Congo, The Democratic Republic of the",
+      "parentId": "2"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "4",
+      "name": "Rutshuru",
+      "parentId": "3"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "country",
+      "id": "5",
+      "name": "South africa",
+      "parentId": "2"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "continent-ocean",
+      "id": "6",
+      "name": "Europe",
+      "parentId": "1"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "country",
+      "id": "7",
+      "name": "Germany",
+      "parentId": "6"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "8",
+      "name": "Baden-Württemberg",
+      "parentId": "7"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "country",
+      "id": "9",
+      "name": "Sweden",
+      "parentId": "6"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "10",
+      "name": "Gotland",
+      "parentId": "9"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "11",
+      "name": "Jämtland",
+      "parentId": "9"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "12",
+      "name": "Lule Lappmark",
+      "parentId": "9"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "13",
+      "name": "Lycksele Lappmark",
+      "parentId": "9"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "14",
+      "name": "Pite Lappmark",
+      "parentId": "9"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "district",
+      "id": "15",
+      "name": "Arjeplog",
+      "parentId": "14"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "16",
+      "name": "Uppland",
+      "parentId": "9"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "17",
+      "name": "Ångermanland",
+      "parentId": "9"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "continent-ocean",
+      "id": "18",
+      "name": "No information",
+      "parentId": "1"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "country",
+      "id": "19",
+      "name": "No information",
+      "parentId": "18"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "continent-ocean",
+      "id": "20",
+      "name": "South America",
+      "parentId": "1"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "country",
+      "id": "21",
+      "name": "Bolivia",
+      "parentId": "20"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "22",
+      "name": "Beni",
+      "parentId": "21"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "district",
+      "id": "23",
+      "name": "Yacuma",
+      "parentId": "22"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "country",
+      "id": "24",
+      "name": "Ecuador",
+      "parentId": "20"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "province",
+      "id": "25",
+      "name": "Pichincha",
+      "parentId": "24"
+    },
+    "sourceData": null
+  }
+]

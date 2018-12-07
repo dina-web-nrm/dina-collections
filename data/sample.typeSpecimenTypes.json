@@ -1,0 +1,67 @@
+[
+  {
+    "key": "cotype",
+    "name": {
+      "en": "cotype",
+      "sv": "cotyp"
+    },
+    "description": "A term no longer used. Formerly used for either a syntype or paratype."
+  },  
+  {
+    "key": "holotype",
+    "name": {
+      "en": "holotype",
+      "sv": "holotyp"
+    },
+    "description": "Unique specimen, fixed by original designation or indication."
+  },
+  {
+    "key": "lectotype",
+    "name": {
+      "en": "lectotype",
+      "sv": "lektotyp"
+    },
+    "description": "Unique specimen, fixed by designation of a syntype to be the lectotype."
+  },
+  {
+    "key": "neotype",
+    "name": {
+      "en": "neotype",
+      "sv": "neotyp"
+    },
+    "description": "Unique specimen, fixed by designation of a specimen to be the neotype."
+  },
+  {
+    "key": "paralectotype",
+    "name": {
+      "en": "paralectotype",
+      "sv": "paralektotyp"
+    },
+    "description": "One or more specimens remaining in syntype series after designation of the lectotype."
+  },
+  {
+    "key": "paratype",
+    "name": {
+      "en": "paratype",
+      "sv": "paratyp"
+    },
+    "description": "One or more specimens referred to in the original description in addition to the holotype."
+  },
+  {
+    "key": "syntype",
+    "name": {
+      "en": "syntype",
+      "sv": "syntyp"
+    },
+    "description": "Two or more specimens referred to in the original description of which neither is the holotype."
+  },
+  {
+    "key": "unspecified-type",
+    "name": {
+      "en": "unspecified type",
+      "sv": "ospecificerad typ"
+    },
+    "description": "Unknown kind of type."
+  }
+]
+

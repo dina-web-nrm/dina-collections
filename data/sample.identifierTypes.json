@@ -1,0 +1,27 @@
+[
+  {
+    "key": "catalog-no",
+    "name": "catalog no."
+  },
+  {
+    "key": "old-skeleton-no",
+    "name": "old skeleton no."
+  },
+  {
+    "key": "old-skin-no",
+    "name": "old skin no."
+  },
+  {
+    "key": "other-institution-no",
+    "name": "other institution no."
+  },
+  {
+    "key": "sva-no",
+    "name": "SVA no."
+  },
+  {
+    "key": "loan-no",
+    "name": "loan no."
+  }
+]
+
