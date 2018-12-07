@@ -59,6 +59,9 @@
       "format": "date-time",
       "type": "string"
     },
+    "hasSourceData": {
+      "type": "boolean"
+    },
     "sourceData": {
       "type": "object"
     },
