@@ -4,6 +4,7 @@ all:  up
 
 setup:
 	./packages/scripts/src/bash/create-env.sh
+	./packages/scripts/src/bash/create-sample-data.sh
 
 up:
 	TAG=latest docker-compose up -d
