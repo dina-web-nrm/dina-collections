@@ -1,0 +1,30 @@
+[
+ {
+   "key": "wild-and-native",
+   "name": {
+     "en": "wild and native",
+     "sv": "vild och inhemsk"
+   }
+ },
+ {
+   "key": "wild-and-introduced",
+   "name": {
+     "en": "wild and introduced",
+     "sv": "vild och introducerad"
+   }
+ },
+ {
+   "key": "captive",
+   "name": {
+     "en": "captive",
+     "sv": "i fångenskap"
+   }
+ },
+ {
+   "key": "unknown",
+   "name": {
+     "en": "unknown",
+     "sv": "osäker"
+   }
+ }
+]

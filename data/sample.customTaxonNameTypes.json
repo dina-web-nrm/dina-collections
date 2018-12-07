@@ -1,0 +1,20 @@
+[
+ {
+   "key": "label-name",
+   "name": {
+     "en": "label name"
+   }
+ },
+ {
+   "key": "old-local-name",
+   "name": {
+     "en": "old local name"
+   }
+ },
+ {
+   "key": "old-scientific-name",
+   "name": {
+     "en": "old scientific name"
+   }
+ }
+]

@@ -1,0 +1,671 @@
+[
+  {
+    "group": "age-stage",
+    "key": "age-stage",
+    "selectableMethods": [
+      {
+        "key": "known-age",
+        "name": {
+          "en": "known age",
+          "sv": "känd ålder"
+        }
+      },
+      {
+        "key": "sectioned-teeth",
+        "name": {
+          "en": "sectioned teeth",
+          "sv": "tandsnittning"
+        }
+      },
+      {
+        "key": "other",
+        "name": {
+          "en": "other",
+          "sv": "annan"
+        }
+      }
+    ],
+    "selectableValues": [
+      {
+        "key": "adult",
+        "name": {
+          "en": "adult",
+          "sv": "adult"
+        }
+      },
+      {
+        "key": "adult?",
+        "name": {
+          "en": "adult?",
+          "sv": "adult?"
+        }
+      },
+      {
+        "key": "subadult",
+        "name": {
+          "en": "subadult",
+          "sv": "subadult"
+        }
+      },
+      {
+        "key": "subadult?",
+        "name": {
+          "en": "subadult?",
+          "sv": "subadult?"
+        }
+      },
+      {
+        "key": "juvenile",
+        "name": {
+          "en": "juvenile",
+          "sv": "juvenil"
+        }
+      },
+      {
+        "key": "juvenile?",
+        "name": {
+          "en": "juvenile?",
+          "sv": "juvenil?"
+        }
+      },
+      {
+        "key": "immature",
+        "name": {
+          "en": "immature",
+          "sv": "immatur"
+        }
+      },
+      {
+        "key": "embryo",
+        "name": {
+          "en": "embryo",
+          "sv": "embryo"
+        }
+      },
+      {
+        "key": "fetus",
+        "name": {
+          "en": "fetus",
+          "sv": "featus"
+        }
+      },
+      {
+        "key": "unknown",
+        "name": {
+          "en": "unknown",
+          "sv": "okänd"
+        }
+      }
+    ]
+  },
+  {
+    "group": "age-and-stage",
+    "key": "age",
+    "selectableMethods": [
+      {
+        "key": "known-age",
+        "name": {
+          "en": "known age",
+          "sv": "känd ålder"
+        }
+      },
+      {
+        "key": "sectioned-teeth",
+        "name": {
+          "en": "sectioned teeth",
+          "sv": "tandsnittning"
+        }
+      },
+      {
+        "key": "other",
+        "name": {
+          "en": "other",
+          "sv": "annan"
+        }
+      }
+    ]
+  },
+  {
+    "group": "carcass-condition",
+    "key": "carcass-condition",
+    "selectableValues": [
+      {
+        "key": "fresh",
+        "name": {
+          "en": "fresh",
+          "sv": "färsk"
+        }
+      },
+      {
+        "key": "hairless",
+        "name": {
+          "en": "hairless",
+          "sv": "hår släpper"
+        }
+      },
+      {
+        "key": "slightly-cadaverous",
+        "name": {
+          "en": "slightly cadaverous",
+          "sv": "lätt kadaverös"
+        }
+      },
+      {
+        "key": "cadaverous",
+        "name": {
+          "en": "cadaverous",
+          "sv": "kadaverös"
+        }
+      },
+      {
+        "key": "dried",
+        "name": {
+          "en": "dried",
+          "sv": "intorkad"
+        }
+      },
+      {
+        "key": "skeletal",
+        "name": {
+          "en": "skeletal",
+          "sv": "skeletterad"
+        }
+      },
+      {
+        "key": "unknown",
+        "name": {
+          "en": "unknown",
+          "sv": "okänd"
+        }
+      }
+    ]
+  },
+  {
+    "group": "bone-count",
+    "key": "cranium-count",
+        "name": {
+          "en": "cranium",
+          "sv": "kranium"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "mandibula-count",
+        "name": {
+          "en": "mandibula",
+          "sv": "mandibula"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "vertebrae-count",
+        "name": {
+          "en": "vertebrae",
+          "sv": "vertebrae"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "costae-count",
+        "name": {
+          "en": "costae",
+          "sv": "costae"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "scapula-count",
+        "name": {
+          "en": "scapula",
+          "sv": "scapula"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "humerus-count",
+        "name": {
+          "en": "humerus",
+          "sv": "humerus"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "ulna-count",
+        "name": {
+          "en": "ulna",
+          "sv": "ulna"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "radius-count",
+        "name": {
+          "en": "radius",
+          "sv": "radius"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "manus-count",
+        "name": {
+          "en": "manus",
+          "sv": "manus"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "pelvis-count",
+        "name": {
+          "en": "pelvis",
+          "sv": "pelvis"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "femur-count",
+        "name": {
+          "en": "femur",
+          "sv": "femur"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "tibia-count",
+        "name": {
+          "en": "tibia",
+          "sv": "tibia"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "pedis-count",
+        "name": {
+          "en": "pedis",
+          "sv": "pedis"
+        }
+  },
+  {
+    "group": "bone-count",
+    "key": "bacculum-count",
+        "name": {
+          "en": "bacculum",
+          "sv": "bacculum"
+        }
+  },
+  {
+    "group": "length",
+    "key": "total-length",
+    "name": {
+      "en": "total length",
+      "sv": "totallängd"
+    },
+    "selectableUnits": [
+      {
+        "key": "mm",
+        "name": {
+          "en": "mm",
+          "sv": "mm"
+        }
+      },
+      {
+        "key": "cm",
+        "name": {
+          "en": "cm",
+          "sv": "cm"
+        }
+      },
+      {
+        "key": "m",
+        "name": {
+          "en": "m",
+          "sv": "m"
+        }
+      }
+    ]
+  },
+  {
+    "group": "length",
+    "key": "body-length",
+    "name": {
+      "en": "body length",
+      "sv": "kroppslängd"
+    },
+    "selectableUnits": [
+      {
+        "key": "mm",
+        "name": {
+          "en": "mm",
+          "sv": "mm"
+        }
+      },
+      {
+        "key": "cm",
+        "name": {
+          "en": "cm",
+          "sv": "cm"
+        }
+      },
+      {
+        "key": "m",
+        "name": {
+          "en": "m",
+          "sv": "m"
+        }
+      }
+    ]
+  },
+  {
+    "group": "length",
+    "key": "tail-to-anus-length",
+    "name": {
+      "en": "tail–anus length",
+      "sv": "längd stjärt–anus"
+    },
+    "selectableUnits": [
+      {
+        "key": "mm",
+        "name": {
+          "en": "mm",
+          "sv": "mm"
+        }
+      },
+      {
+        "key": "cm",
+        "name": {
+          "en": "cm",
+          "sv": "cm"
+        }
+      },
+      {
+        "key": "m",
+        "name": {
+          "en": "m",
+          "sv": "m"
+        }
+      }
+    ]
+  },
+  {
+    "group": "length",
+    "key": "tail-to-pelvis-length",
+    "name": {
+      "en": "tail–pelvis length",
+      "sv": "längd stjärt–pelvis"
+    },
+    "selectableUnits": [
+      {
+        "key": "mm",
+        "name": {
+          "en": "mm",
+          "sv": "mm"
+        }
+      },
+      {
+        "key": "cm",
+        "name": {
+          "en": "cm",
+          "sv": "cm"
+        }
+      },
+      {
+        "key": "m",
+        "name": {
+          "en": "m",
+          "sv": "m"
+        }
+      }
+    ]
+  },
+  {
+    "group": "length",
+    "key": "ear-length",
+    "name": {
+      "en": "ear length",
+      "sv": "öronlängd"
+    },
+    "selectableUnits": [
+      {
+        "key": "mm",
+        "name": {
+          "en": "mm",
+          "sv": "mm"
+        }
+      },
+      {
+        "key": "cm",
+        "name": {
+          "en": "cm",
+          "sv": "cm"
+        }
+      },
+      {
+        "key": "m",
+        "name": {
+          "en": "m",
+          "sv": "m"
+        }
+      }
+    ]
+  },
+  {
+    "group": "length",
+    "key": "hind-foot-length",
+    "name": {
+      "en": "hind foot length",
+      "sv": "bakfotens längd"
+    },
+    "selectableUnits": [
+      {
+        "key": "mm",
+        "name": {
+          "en": "mm",
+          "sv": "mm"
+        }
+      },
+      {
+        "key": "cm",
+        "name": {
+          "en": "cm",
+          "sv": "cm"
+        }
+      },
+      {
+        "key": "m",
+        "name": {
+          "en": "m",
+          "sv": "m"
+        }
+      }
+    ]
+  },
+  {
+    "group": "sex",
+    "key": "sex",
+    "selectableValues": [
+      {
+        "key": "female",
+        "name": {
+          "en": "female",
+          "sv": "hona"
+        }
+      },
+      {
+        "key": "female?",
+        "name": {
+          "en": "female?",
+          "sv": "hona?"
+        }
+      },
+      {
+        "key": "male",
+        "name": {
+          "en": "male",
+          "sv": "hane"
+        }
+      },
+      {
+        "key": "male?",
+        "name": {
+          "en": "male?",
+          "sv": "hane?"
+        }
+      },
+      {
+        "key": "hermaphrodite",
+        "name": {
+          "en": "hermaphrodite",
+          "sv": "hermafrodit"
+        }
+      },
+      {
+        "key": "indeterminate",
+        "name": {
+          "en": "indeterminate",
+          "sv": "obestämbar"
+        }
+      },
+      {
+        "key": "castrated",
+        "name": {
+          "en": "castrated",
+          "sv": "kastrerad"
+        }
+      },
+      {
+        "key": "transitional",
+        "name": {
+          "en": "transitional",
+          "sv": "transitional"
+        }
+      },
+      {
+        "key": "unknown",
+        "name": {
+          "en": "unknown",
+          "sv": "okänd"
+        }
+      }
+    ]
+  },
+  {
+    "group": "weight",
+    "key": "complete-body-weight",
+    "name": {
+      "en": "complete body",
+      "sv": "totalvikt"
+    },
+    "selectableUnits": [
+      {
+        "key": "kg",
+        "name": {
+          "en": "kg",
+          "sv": "kg"
+        }
+      },
+      {
+        "key": "g",
+        "name": {
+          "en": "g",
+          "sv": "g"
+        }
+      }
+    ]
+  },
+  {
+    "group": "weight",
+    "key": "skinned-weight",
+    "name": {
+      "en": "skinned",
+      "sv": "flådd vikt"
+    },
+    "selectableUnits": [
+      {
+        "key": "kg",
+        "name": {
+          "en": "kg",
+          "sv": "kg"
+        }
+      },
+      {
+        "key": "g",
+        "name": {
+          "en": "g",
+          "sv": "g"
+        }
+      }
+    ]
+  },
+  {
+    "group": "weight",
+    "key": "gutted-weight",
+    "name": {
+      "en": "gutted",
+      "sv": "passad vikt"
+    },
+    "selectableUnits": [
+      {
+        "key": "kg",
+        "name": {
+          "en": "kg",
+          "sv": "kg"
+        }
+      },
+      {
+        "key": "g",
+        "name": {
+          "en": "g",
+          "sv": "g"
+        }
+      }
+    ]
+  },
+  {
+    "group": "weight",
+    "key": "slaughtered-weight",
+    "name": {
+      "en": "slaughtered",
+      "sv": "slaktvikt"
+    },
+    "selectableUnits": [
+      {
+        "key": "kg",
+        "name": {
+          "en": "kg",
+          "sv": "kg"
+        }
+      },
+      {
+        "key": "g",
+        "name": {
+          "en": "g",
+          "sv": "g"
+        }
+      }
+    ]
+  },
+  {
+    "group": "weight",
+    "key": "unknown-weight-type",
+    "name": {
+      "en": "unknown",
+      "sv": "viktslag okänt"
+    },
+    "selectableUnits": [
+      {
+        "key": "kg",
+        "name": {
+          "en": "kg",
+          "sv": "kg"
+        }
+      },
+      {
+        "key": "g",
+        "name": {
+          "en": "g",
+          "sv": "g"
+        }
+      }
+    ]
+  }
+]
+
