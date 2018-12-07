@@ -82,7 +82,7 @@ describe('jsonApiClient', () => {
       expect(depSpies.jsonApiUpdate).toHaveBeenCalledWith({
         item: { id: '1' },
         openApiClient,
-        resourcesToModify: ['agent'],
+        resourcesToModify: [],
         resourceType: 'agent',
       })
     })

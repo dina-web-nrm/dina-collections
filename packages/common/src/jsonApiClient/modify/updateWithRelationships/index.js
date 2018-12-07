@@ -14,7 +14,7 @@ const dep = new Dependor({
 const defaultLog = createLog('common:jsonApiClient:updateWithRelationships')
 
 function updateWithRelationships(
-  { item, log = defaultLog, openApiClient, resourcesToModify } = {}
+  { item, log = defaultLog, openApiClient } = {}
 ) {
   return Promise.resolve().then(() => {
     if (!item) {
@@ -41,7 +41,7 @@ function updateWithRelationships(
         },
         log: log.scope(),
         openApiClient,
-        resourcesToModify,
+        resourcesToModify: [item.type],
       })
       .then(response => {
         return dep

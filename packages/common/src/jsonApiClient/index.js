@@ -34,7 +34,7 @@ const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
 
   const update = (resourceType, userOptions) => {
     log.debug(`update ${resourceType}`, userOptions)
-    const { body = {}, resourcesToModify = [resourceType] } = userOptions
+    const { body = {}, resourcesToModify = [] } = userOptions
     const item = body.data
     return dep.jsonApiUpdate({
       item,
@@ -46,7 +46,7 @@ const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
 
   const create = (resourceType, userOptions) => {
     log.debug(`create ${resourceType}`, userOptions)
-    const { body = {}, resourcesToModify = [resourceType] } = userOptions
+    const { body = {}, resourcesToModify = [] } = userOptions
     const item = body.data
     return dep.jsonApiCreate({
       item,

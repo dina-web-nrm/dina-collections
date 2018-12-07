@@ -44,9 +44,10 @@ function modifyRelatedResourceItem(
       throw new Error('missing item and it is not null')
     }
 
-    let item = itemInput
+    const item = itemInput
+
     if (!resourcesToModify.includes(itemInput.type)) {
-      item = {
+      return {
         id: itemInput.id,
         type: itemInput.type,
       }
