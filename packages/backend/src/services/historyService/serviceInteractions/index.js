@@ -28,6 +28,7 @@ const createResourceActivity = ({
 
   if (meta && meta.sourceData) {
     attributes.sourceData = meta.sourceData
+    attributes.hasSourceData = !!attributes.sourceData
   }
 
   if (internals.createdAt) {
