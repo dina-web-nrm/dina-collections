@@ -31,7 +31,7 @@ This guide assumes you have `git` installed
 3. Setup env-files
 
 	```
-	make setup-env
+	make setup
 	
 	```
 	This will setup default env variables. Suitable for most local dev environments but not suitable for any server environments. If you want to look at them or change them go into ./env and inspect [./env/README.md](./env/README.md)
@@ -48,7 +48,7 @@ This guide assumes you have `git` installed
 5. Start services in dev mode:
 
 	```
-	make up-local
+	make up
 
 	```
 
@@ -71,7 +71,7 @@ This guide assumes you have `git` installed
 9. Stop on your local machine
 
    ```
-   make stop-local
+   make stop
    ```
 
 
