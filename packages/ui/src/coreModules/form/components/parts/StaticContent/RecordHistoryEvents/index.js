@@ -66,6 +66,8 @@ class RecordHistoryEvents extends PureComponent {
               module,
               textKey: 'other.createdBy',
             })}
+            includeSourceLink={createdEvent.hasSourceData}
+            recordHistoryId={createdEvent.id}
             timestamp={createdEvent.srcCreatedAt}
             username={createdEvent.username}
           />
