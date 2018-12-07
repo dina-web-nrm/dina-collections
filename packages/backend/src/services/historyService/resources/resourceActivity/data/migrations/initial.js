@@ -35,6 +35,7 @@ module.exports = {
           type: Sequelize.DATE,
         },
         action: { type: Sequelize.STRING },
+        hasSourceData: { type: Sequelize.BOOLEAN },
         requestId: { type: Sequelize.STRING },
         resource: { type: Sequelize.STRING },
         resourceId: { type: Sequelize.STRING },
