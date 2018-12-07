@@ -94,7 +94,7 @@ describe('jsonApiClient', function () {
       expect(depSpies.jsonApiUpdate).toHaveBeenCalledWith({
         item: { id: '1' },
         openApiClient: openApiClient,
-        resourcesToModify: ['agent'],
+        resourcesToModify: [],
         resourceType: 'agent'
       });
     });

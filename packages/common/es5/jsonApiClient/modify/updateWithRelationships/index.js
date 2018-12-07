@@ -37,8 +37,7 @@ function updateWithRelationships() {
       item = _ref.item,
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
-      openApiClient = _ref.openApiClient,
-      resourcesToModify = _ref.resourcesToModify;
+      openApiClient = _ref.openApiClient;
 
   return _promise2.default.resolve().then(function () {
     if (!item) {
@@ -64,7 +63,7 @@ function updateWithRelationships() {
       }),
       log: log.scope(),
       openApiClient: openApiClient,
-      resourcesToModify: resourcesToModify
+      resourcesToModify: [item.type]
     }).then(function (response) {
       return dep.updateRelationships({
         item: response.data,
