@@ -1134,6 +1134,10 @@
         "type": "string",
         "x-summary": ""
       },
+      "hasSourceData": {
+        "type": "boolean",
+        "x-summary": ""
+      },
       "sourceData": {
         "type": "object",
         "x-summary": ""
