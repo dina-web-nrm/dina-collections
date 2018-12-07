@@ -27,6 +27,7 @@ const containerStyle = {
 const propTypes = {
   autoComplete: PropTypes.string,
   disableClearValue: PropTypes.bool,
+  disabled: PropTypes.bool,
   displayAsButton: PropTypes.bool,
   fluid: PropTypes.bool,
   focusOnMount: PropTypes.bool,
@@ -76,6 +77,7 @@ const propTypes = {
 const defaultProps = {
   autoComplete: undefined,
   disableClearValue: false,
+  disabled: false,
   displayAsButton: false,
   fluid: true,
   focusOnMount: false,
@@ -150,6 +152,7 @@ class DropdownSearchInput extends Component {
     const {
       autoComplete,
       disableClearValue,
+      disabled,
       displayAsButton,
       fluid,
       icon,
@@ -186,6 +189,7 @@ class DropdownSearchInput extends Component {
           <Dropdown
             autoComplete={autoComplete}
             button={displayAsButton}
+            disabled={disabled}
             fluid={fluid}
             icon={icon}
             loading={isLoading}

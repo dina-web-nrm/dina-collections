@@ -4,7 +4,7 @@ import { Grid, Icon } from 'semantic-ui-react'
 import objectPath from 'object-path'
 import { isEmpty } from 'lodash'
 
-import { buildYYYYMMDD } from 'common/es5/date'
+import { buildYYYYMMDD, getYYYYMMDDFromTimestamp } from 'common/es5/date'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { AgentIdTextResult } from 'domainModules/agent/components'
 
@@ -38,7 +38,7 @@ class EventRow extends PureComponent {
 
       const YYYYMMDD = buildYYYYMMDD(startDate || {})
 
-      dateToShow = YYYYMMDD || dateText
+      dateToShow = YYYYMMDD || getYYYYMMDDFromTimestamp(dateText)
     }
 
     return (
