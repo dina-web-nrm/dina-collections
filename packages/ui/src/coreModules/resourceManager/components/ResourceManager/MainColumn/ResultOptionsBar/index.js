@@ -68,12 +68,12 @@ export class ResultOptionsBar extends Component {
         )}
 
         <Menu.Menu className="icon secondary  ui" position="right">
-          <Menu.Item link style={{ marginLeft: '3.125em' }}>
-            <Icon
-              disabled={!handleToggleFilters}
-              name="search"
-              onClick={event => handleToggleFilters(event)}
-            />
+          <Menu.Item
+            link
+            onClick={event => handleToggleFilters(event)}
+            style={{ marginLeft: '3.125em' }}
+          >
+            <Icon disabled={!handleToggleFilters} name="search" />
           </Menu.Item>
         </Menu.Menu>
       </Menu>
