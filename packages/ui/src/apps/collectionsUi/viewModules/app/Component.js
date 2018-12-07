@@ -19,6 +19,7 @@ import ManageLocalities from '../manageLocalities/Async'
 import ManageStorageLocations from '../manageStorageLocations/Async'
 import ManageTaxonomy from '../manageTaxonomy/Async'
 import ManageTaxonNames from '../manageTaxonNames/Async'
+import SourceData from '../sourceData/Async'
 
 const propTypes = {
   match: PropTypes.shape({
@@ -105,6 +106,12 @@ class App extends Component {
               component={ManageTaxonNames}
               exact
               path={`${match.url}/taxonNames`}
+            />
+
+            <Route
+              component={SourceData}
+              exact
+              path={`${match.url}/sourceData/:sourceDataId`}
             />
 
             <Route component={Settings} exact path={`${match.url}/settings`} />

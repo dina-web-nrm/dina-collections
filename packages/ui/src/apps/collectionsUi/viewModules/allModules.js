@@ -8,6 +8,7 @@ import * as manageLocalities from './manageLocalities'
 import * as manageStorageLocations from './manageStorageLocations'
 import * as manageTaxonomy from './manageTaxonomy'
 import * as manageTaxonNames from './manageTaxonNames'
+import * as sourceData from './sourceData'
 
 import * as pageNotFound from './pageNotFound'
 import * as publicModule from './public'
@@ -25,6 +26,7 @@ const modules = [
   manageStorageLocations,
   manageTaxonomy,
   manageTaxonNames,
+  sourceData,
   login,
   settings,
   docs,
