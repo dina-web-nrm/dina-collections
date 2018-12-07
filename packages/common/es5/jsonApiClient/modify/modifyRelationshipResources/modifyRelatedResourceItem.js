@@ -54,8 +54,9 @@ function modifyRelatedResourceItem() {
     }
 
     var item = itemInput;
+
     if (!resourcesToModify.includes(itemInput.type)) {
-      item = {
+      return {
         id: itemInput.id,
         type: itemInput.type
       };

@@ -52,7 +52,7 @@ var createJsonApiClient = function createJsonApiClient(_ref) {
     var _userOptions$body = userOptions.body,
         body = _userOptions$body === undefined ? {} : _userOptions$body,
         _userOptions$resource = userOptions.resourcesToModify,
-        resourcesToModify = _userOptions$resource === undefined ? [resourceType] : _userOptions$resource;
+        resourcesToModify = _userOptions$resource === undefined ? [] : _userOptions$resource;
 
     var item = body.data;
     return dep.jsonApiUpdate({
@@ -68,7 +68,7 @@ var createJsonApiClient = function createJsonApiClient(_ref) {
     var _userOptions$body2 = userOptions.body,
         body = _userOptions$body2 === undefined ? {} : _userOptions$body2,
         _userOptions$resource2 = userOptions.resourcesToModify,
-        resourcesToModify = _userOptions$resource2 === undefined ? [resourceType] : _userOptions$resource2;
+        resourcesToModify = _userOptions$resource2 === undefined ? [] : _userOptions$resource2;
 
     var item = body.data;
     return dep.jsonApiCreate({
