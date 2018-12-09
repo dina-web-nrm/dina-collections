@@ -1294,6 +1294,10 @@
       "en": "Yes (zoo animal or similar)",
       "sv": ""
     },
+    "unknown": {
+      "en": "unknown",
+      "sv": ""
+    },
     "sixOrEightDigits": {
       "en": "6 or 8 digits",
       "sv": "6 eller 8 siffror"

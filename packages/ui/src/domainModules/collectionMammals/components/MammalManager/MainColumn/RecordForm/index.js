@@ -55,6 +55,7 @@ const propTypes = {
     }),
   }),
   error: PropTypes.string,
+  establishmentMeansTypes: PropTypes.array,
   form: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
@@ -79,6 +80,7 @@ const defaultProps = {
   catalogNumber: undefined,
   curatorialTaxon: undefined,
   error: '',
+  establishmentMeansTypes: undefined,
   loading: false,
   mode: 'register',
   redirectOnSuccess: false,
@@ -110,6 +112,7 @@ class RecordForm extends Component {
 
   handleFormSubmit(formData) {
     const {
+      establishmentMeansTypes,
       handleFormSubmit,
       match,
       push: pushRoute,
@@ -121,7 +124,7 @@ class RecordForm extends Component {
       ...formData,
     }
 
-    return handleFormSubmit(filterOutput({ specimen }))
+    return handleFormSubmit(filterOutput({ establishmentMeansTypes, specimen }))
       .then(({ id: specimenId }) => {
         if (!match.params.specimenId && specimenId && redirectOnSuccess) {
           pushRoute(
