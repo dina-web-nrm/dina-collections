@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm-run-all -p build:ui build:schema build:semantic-ui",
+    "build:versionInfo": "node ./packages/scripts/src/js/buildAndCommitVersionInfo.js",
     "build:common": "cd ./packages/common && yarn build",
     "build:schema": "cd ./packages/common && yarn build:schema",
     "build:semantic-ui": "cd ./packages/dina-style && yarn build:docs",
@@ -33,7 +34,7 @@
     "install:semantic-ui": "cd ./packages/dina-style && yarn install",
     "install:ui": "cd ./packages/ui && yarn install",
     "postversion": "git push origin master && git push --tags",
-    "preversion": "./packages/scripts/src/bash/ensure-master-is-clean.sh",
+    "preversion": "./packages/scripts/src/bash/ensure-master-is-clean.sh && yarn build:versionInfo",
     "setup": "yarn setup:env && yarn setup:sample-data && yarn install && yarn setup:links && yarn test",
     "setup:env": "./packages/scripts/src/bash/create-env.sh",
     "setup:links": "yarn setup:links:common && yarn setup:links:backend && yarn setup:links:ui && yarn setup:links:scripts && yarn setup:links:migrations",

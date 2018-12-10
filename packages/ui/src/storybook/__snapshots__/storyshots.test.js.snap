@@ -8277,7 +8277,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           onClick={[Function]}
         />
       </div>
-      <div
+      <a
         className="link item"
         onClick={[Function]}
         style={
@@ -8289,9 +8289,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         <i
           aria-hidden="true"
           className="search icon"
-          onClick={[Function]}
         />
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -8352,7 +8351,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           onClick={[Function]}
         />
       </div>
-      <div
+      <a
         className="link item"
         onClick={[Function]}
         style={
@@ -8364,9 +8363,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         <i
           aria-hidden="true"
           className="search icon"
-          onClick={[Function]}
         />
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -8427,7 +8425,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           onClick={[Function]}
         />
       </div>
-      <div
+      <a
         className="link item"
         onClick={[Function]}
         style={
@@ -8439,9 +8437,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         <i
           aria-hidden="true"
           className="search icon"
-          onClick={[Function]}
         />
-      </div>
+      </a>
     </div>
   </div>
 </div>

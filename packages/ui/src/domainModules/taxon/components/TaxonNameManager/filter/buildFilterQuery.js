@@ -1,5 +1,14 @@
 export default function buildFilterQuery({ values }) {
-  const and = []
+  const and = [
+    {
+      filter: {
+        filterFunction: 'taxonNameType',
+        input: {
+          value: 'scientific',
+        },
+      },
+    },
+  ]
 
   if (values.name) {
     and.push({

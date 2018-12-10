@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Button, Divider, Grid, Header, Icon, Image } from 'semantic-ui-react'
 
-import { getVersionFromRootPackageJson } from 'common/es5/version'
+import { version } from 'common/dist/repoVersionInfo.json'
 import userSelectors from 'coreModules/user/globalSelectors'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import logo from './DINA_logo_only.png'
@@ -108,7 +108,7 @@ class Start extends Component {
               module: 'start',
               textKey: 'currentlyVersion',
             })}
-            {getVersionFromRootPackageJson()}
+            {version}
           </i>
         </div>
       </React.Fragment>
