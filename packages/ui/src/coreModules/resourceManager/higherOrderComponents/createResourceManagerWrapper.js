@@ -6,13 +6,16 @@ import { compose } from 'redux'
 import { reset as resetActionCreator } from 'redux-form'
 import createLog from 'utilities/log'
 
-import actionCreators from 'coreModules/crud/actionCreators'
+import crudActionCreators from 'coreModules/crud/actionCreators'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/resourceManager/keyObjectModule'
+
+import * as actionCreators from 'coreModules/resourceManager/actionCreators'
+
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
@@ -67,10 +70,12 @@ const createResourceManagerWrapper = (
   }
 
   const mapDispatchToProps = {
-    clearNestedCache: actionCreators.clearNestedCache,
+    clearNestedCache: crudActionCreators.clearNestedCache,
     clearResourceState: keyObjectActionCreators.del[':resource'],
+    close: actionCreators.close,
     delFocusIdWhenLoaded:
       keyObjectActionCreators.del[':resource.focusIdWhenLoaded'],
+    open: actionCreators.open,
     resetForm: resetActionCreator,
     setBaseItems: keyObjectActionCreators.set[':resource.baseItems'],
     setCurrentTableRowNumber:
@@ -89,6 +94,7 @@ const createResourceManagerWrapper = (
     buildFilterQuery: PropTypes.func.isRequired,
     clearNestedCache: PropTypes.func.isRequired,
     clearResourceState: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
     currentTableRowNumber: PropTypes.number.isRequired,
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -107,6 +113,7 @@ const createResourceManagerWrapper = (
     nestedCacheNamespaces: PropTypes.arrayOf(PropTypes.string),
     nextRowAvailable: PropTypes.bool.isRequired,
     onInteraction: PropTypes.func.isRequired,
+    open: PropTypes.func.isRequired,
     prevRowAvailable: PropTypes.bool.isRequired,
     recordNavigationHeight: PropTypes.number,
     recordOptionsHeight: PropTypes.number,
@@ -191,6 +198,7 @@ const createResourceManagerWrapper = (
     }
 
     componentDidMount() {
+      this.props.open()
       const { initialFilterValues, resource } = this.props
 
       if (initialFilterValues) {
@@ -284,6 +292,7 @@ const createResourceManagerWrapper = (
 
       document.removeEventListener('keydown', this.handleKeyDown)
       this.props.clearResourceState({ resource })
+      this.props.close()
     }
 
     getNestedCacheNamespaces() {
@@ -375,7 +384,7 @@ const createResourceManagerWrapper = (
     expandAncestorsForItemId(itemId) {
       const { dispatch, itemFetchOptions, resource, sortOrder } = this.props
       const getManyActionCreator =
-        actionCreators[resource] && actionCreators[resource].getMany
+        crudActionCreators[resource] && crudActionCreators[resource].getMany
 
       return dispatch(
         getManyActionCreator({
@@ -430,7 +439,7 @@ const createResourceManagerWrapper = (
         sortOrder,
       } = this.props
       const getManyActionCreator =
-        actionCreators[resource] && actionCreators[resource].getMany
+        crudActionCreators[resource] && crudActionCreators[resource].getMany
 
       this.props.setBaseItems([], { resource })
       return dispatch(

@@ -1,4 +1,8 @@
 import { LOCATION_CHANGE } from 'react-router-redux'
+import {
+  RESOURCE_MANAGER_OPEN,
+  RESOURCE_MANAGER_CLOSE,
+} from 'coreModules/resourceManager/actionTypes'
 import { SIZE_SET_BREAKPOINT } from 'coreModules/size/actionTypes'
 import { Flash } from 'coreModules/notifications/components'
 import {
@@ -13,7 +17,12 @@ const fieldHelpTextDefaults = {
   component: HelpTextNotification,
   displayType: INLINE,
   priority: 10,
-  terminateActions: [LOCATION_CHANGE, SIZE_SET_BREAKPOINT],
+  terminateActions: [
+    RESOURCE_MANAGER_OPEN,
+    RESOURCE_MANAGER_CLOSE,
+    LOCATION_CHANGE,
+    SIZE_SET_BREAKPOINT,
+  ],
   type: 'HELP_TEXT',
 }
 
