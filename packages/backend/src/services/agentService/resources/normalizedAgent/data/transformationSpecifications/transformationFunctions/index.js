@@ -15,10 +15,10 @@ exports.transformAgent = function transformAgent({
     migrationData: {
       abbreviation,
       agentType,
-      birthDateYear,
+      'birthDate.year': birthDateYear,
       city,
       country,
-      deathDateYear,
+      'deathDate.year': deathDateYear,
       disambiguatingDescription,
       email,
       familyName,
