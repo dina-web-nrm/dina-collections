@@ -86,6 +86,7 @@ RawFilters.defaultProps = defaultProps
 const EnhancedFilters = compose(connect(mapStateToProps))(RawFilters)
 
 export default reduxForm({
+  destroyOnUnmount: false,
   enableReinitialize: true,
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
