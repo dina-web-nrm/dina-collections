@@ -608,11 +608,9 @@ const createResourceManagerWrapper = (
     tableSearch(filterValues) {
       const { search, resource, sortOrder } = this.props
 
-      const query = filterValues
-        ? this.props.buildFilterQuery({
-            values: filterValues,
-          })
-        : undefined
+      const query = this.props.buildFilterQuery({
+        values: filterValues || {},
+      })
 
       return search({ query, sort: sortOrder }).then(items => {
         this.props.setListItems(items, { resource })
