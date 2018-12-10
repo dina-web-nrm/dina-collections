@@ -79,7 +79,7 @@ class ResultTableView extends PureComponent {
 
     this.shortcuts = [
       {
-        command: 'o',
+        command: 'enter',
         description: 'Open focused record',
         onPress: props.onFormTabClick,
       },

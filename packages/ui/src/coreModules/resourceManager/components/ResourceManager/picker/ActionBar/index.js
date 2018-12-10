@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { createInjectItemTitle } from 'coreModules/resourceManager/higherOrderComponents'
 import { Button, Grid, Header } from 'semantic-ui-react'
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
 const propTypes = {
   itemTitle: PropTypes.node,
@@ -16,25 +17,50 @@ const defaultProps = {
   nestedItem: undefined,
 }
 
-const ItemHeader = props => {
-  const { nestedItem, onPickItem, itemTitle } = props
+class ItemHeader extends Component {
+  constructor(props) {
+    super(props)
+    this.handlePickItem = this.handlePickItem.bind(this)
+    this.shortcuts = [
+      {
+        command: 'enter',
+        description: 'Picker: Select current item',
+        onPress: this.handlePickItem,
+      },
+    ]
+  }
 
-  return (
-    <Grid padded>
-      <Grid.Column>
-        <Header>
-          <Button
-            disabled={!nestedItem}
-            onClick={() => onPickItem(nestedItem.id, nestedItem)}
-            size="large"
-            type="button"
-          >
-            pick: {itemTitle}
-          </Button>
-        </Header>
-      </Grid.Column>
-    </Grid>
-  )
+  handlePickItem() {
+    const { nestedItem } = this.props
+    this.props.onPickItem(nestedItem.id, nestedItem)
+  }
+
+  render() {
+    const { nestedItem, itemTitle } = this.props
+
+    return (
+      <React.Fragment>
+        <KeyboardShortcuts
+          activeInLayer="resourceManager"
+          shortcuts={this.shortcuts}
+        />
+        <Grid padded>
+          <Grid.Column>
+            <Header>
+              <Button
+                disabled={!nestedItem}
+                onClick={() => this.handlePickItem(nestedItem.id, nestedItem)}
+                size="large"
+                type="button"
+              >
+                pick: {itemTitle}
+              </Button>
+            </Header>
+          </Grid.Column>
+        </Grid>
+      </React.Fragment>
+    )
+  }
 }
 
 ItemHeader.propTypes = propTypes

@@ -28,6 +28,7 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  activeInLayer: PropTypes.string,
   children: PropTypes.node,
   layer: PropTypes.string,
   onPress: PropTypes.func,
@@ -35,6 +36,7 @@ const propTypes = {
   registerKeyboardShortcut: PropTypes.func.isRequired,
   shortcuts: PropTypes.arrayOf(
     PropTypes.shape({
+      activeInLayer: PropTypes.string,
       command: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       onPress: PropTypes.func,
@@ -43,6 +45,7 @@ const propTypes = {
   unregisterKeyboardShortcut: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  activeInLayer: undefined,
   children: undefined,
   layer: undefined,
   onPress: undefined,
@@ -58,25 +61,26 @@ class KeyboardShortcuts extends Component {
   }
 
   componentDidMount() {
-    const { shortcuts } = this.props
+    const { activeInLayer: generalActiveInLayer, shortcuts } = this.props
 
     if (!shortcuts || !shortcuts.length) {
       throw new Error('Missing shortcuts')
     }
 
     shortcuts.forEach(shortcut => {
-      const { command } = shortcut
-
+      const { activeInLayer: specificActiveInLayer, command } = shortcut
+      const activeInLayer = specificActiveInLayer || generalActiveInLayer
       if (Array.isArray(command)) {
         return command.forEach(cmd => {
           this.registerKeyboardShortcut({
             ...shortcut,
+            activeInLayer,
             command: cmd,
           })
         })
       }
 
-      return this.registerKeyboardShortcut(shortcut)
+      return this.registerKeyboardShortcut({ activeInLayer, ...shortcut })
     })
   }
 
@@ -90,8 +94,14 @@ class KeyboardShortcuts extends Component {
   }
 
   getHandler(shortcut) {
-    const { activeInLayer, onPress } = shortcut
-    const { onPress: onPressSwitch } = this.props
+    const {
+      activeInLayer: generalActiveInLayer,
+      onPress: onPressSwitch,
+    } = this.props
+
+    const { activeInLayer: specificActiveInLayer, onPress } = shortcut
+
+    const activeInLayer = specificActiveInLayer || generalActiveInLayer
 
     const handler = onPress || onPressSwitch || this.getParamsHandler(shortcut)
 

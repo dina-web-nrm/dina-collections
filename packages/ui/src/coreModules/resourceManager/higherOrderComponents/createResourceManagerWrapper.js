@@ -16,6 +16,8 @@ import {
 
 import * as actionCreators from 'coreModules/resourceManager/actionCreators'
 
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
+
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
@@ -167,7 +169,6 @@ const createResourceManagerWrapper = (
       this.handleClosePicker = this.handleClosePicker.bind(this)
       this.handleFormTabClick = this.handleFormTabClick.bind(this)
       this.handleInteraction = this.handleInteraction.bind(this)
-      this.handleKeyDown = this.handleKeyDown.bind(this)
       this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
       this.handlePickItem = this.handlePickItem.bind(this)
       this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
@@ -195,6 +196,33 @@ const createResourceManagerWrapper = (
       this.transitionFromEditItemView = this.transitionFromEditItemView.bind(
         this
       )
+
+      this.shortcuts = [
+        {
+          command: 'down',
+          description: 'Picker: Move focus to next record',
+          onPress: this.handleSelectNextRecord,
+        },
+        {
+          command: 'up',
+          description: 'Picker: Move focus to previous record',
+          onPress: this.handleSelectPrev,
+        },
+        {
+          command: 'left',
+          description: 'Picker: Collapse tree node',
+          onPress: () => {
+            this.handleToggleCurrentRow('collapse')
+          },
+        },
+        {
+          command: 'right',
+          description: 'Picker: Expand tree node',
+          onPress: () => {
+            this.handleToggleCurrentRow('expand')
+          },
+        },
+      ]
     }
 
     componentDidMount() {
@@ -209,8 +237,6 @@ const createResourceManagerWrapper = (
       this.viewUpdateTableView(undefined, initialFilterValues)
       this.viewUpdateTreeView()
       this.viewUpdateEditItemView()
-
-      document.addEventListener('keydown', this.handleKeyDown)
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),
       })
@@ -290,7 +316,6 @@ const createResourceManagerWrapper = (
         namespaces: this.getNestedCacheNamespaces(),
       })
 
-      document.removeEventListener('keydown', this.handleKeyDown)
       this.props.clearResourceState({ resource })
       this.props.close()
     }
@@ -352,33 +377,6 @@ const createResourceManagerWrapper = (
       const formName = `${resource}Filter`
       this.props.resetForm(formName, { resource })
       this.props.setFilterValues({}, { resource })
-    }
-
-    handleKeyDown(event) {
-      const { key } = event
-      switch (key) {
-        case 'ArrowDown': {
-          return this.handleSelectNextRecord()
-        }
-        case 'ArrowUp': {
-          return this.handleSelectPrev()
-        }
-        case 'ArrowLeft': {
-          return this.handleToggleCurrentRow('collapse')
-        }
-        case 'ArrowRight': {
-          return this.handleToggleCurrentRow('expand')
-        }
-
-        case 'Enter': {
-          event.preventDefault()
-          return this.selectCurrentRow()
-        }
-
-        default: {
-          return null
-        }
-      }
     }
 
     expandAncestorsForItemId(itemId) {
@@ -783,25 +781,31 @@ const createResourceManagerWrapper = (
     render() {
       const { nextRowAvailable, prevRowAvailable } = this.props
       return (
-        <ComposedComponent
-          {...this.props}
-          fetchTreeBase={this.fetchTreeBase}
-          onClickRow={this.handleClickRow}
-          onClosePicker={this.handleClosePicker}
-          onFormTabClick={this.handleFormTabClick}
-          onInteraction={this.handleInteraction}
-          onOpenNewRecordForm={this.handleOpenNewRecordForm}
-          onPickItem={this.handlePickItem}
-          onSelectNextRecord={nextRowAvailable && this.handleSelectNextRecord}
-          onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
-          onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
-          onShowAllRecords={this.handleShowAllRecords}
-          onToggleCurrentRow={this.handleToggleCurrentRow}
-          onToggleFilters={this.handleToggleFilters}
-          onToggleRow={this.handleToggleRow}
-          onUpdateFilterValues={this.handleUpdateFilterValues}
-          tableSearch={this.tableSearch}
-        />
+        <React.Fragment>
+          <KeyboardShortcuts
+            activeInLayer="resourceManager"
+            shortcuts={this.shortcuts}
+          />
+          <ComposedComponent
+            {...this.props}
+            fetchTreeBase={this.fetchTreeBase}
+            onClickRow={this.handleClickRow}
+            onClosePicker={this.handleClosePicker}
+            onFormTabClick={this.handleFormTabClick}
+            onInteraction={this.handleInteraction}
+            onOpenNewRecordForm={this.handleOpenNewRecordForm}
+            onPickItem={this.handlePickItem}
+            onSelectNextRecord={nextRowAvailable && this.handleSelectNextRecord}
+            onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
+            onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
+            onShowAllRecords={this.handleShowAllRecords}
+            onToggleCurrentRow={this.handleToggleCurrentRow}
+            onToggleFilters={this.handleToggleFilters}
+            onToggleRow={this.handleToggleRow}
+            onUpdateFilterValues={this.handleUpdateFilterValues}
+            tableSearch={this.tableSearch}
+          />
+        </React.Fragment>
       )
     }
   }
