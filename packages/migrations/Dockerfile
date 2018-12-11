@@ -1,6 +1,10 @@
-FROM keymetrics/pm2:latest-alpine
+FROM node:8-alpine
 
-RUN apk update && apk add bash
+# Install pm2
+RUN npm install pm2@3.2.2 -g
+
+# Expose ports needed to use Keymetrics.io
+EXPOSE 80 443 43554
 
 # Bundle APP files
 # Note that context need to be packages
