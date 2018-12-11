@@ -2,7 +2,7 @@ const parts = [
   {
     componentName: 'TaxonDropdownSearch',
     componentProps: {
-      columnProps: { width: 9 },
+      columnProps: { width: 10 },
     },
     name: 'parent.id',
     wrapInField: true,

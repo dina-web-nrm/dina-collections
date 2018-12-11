@@ -43,7 +43,6 @@ const parts = [
   {
     componentName: 'Remarks',
     componentProps: {
-      columnProps: { width: 11 },
       emptyStateTextKey: 'remarks.emptyState.origin',
       model,
       resultPrefixTextKey: 'remarks.resultPrefix.origin',

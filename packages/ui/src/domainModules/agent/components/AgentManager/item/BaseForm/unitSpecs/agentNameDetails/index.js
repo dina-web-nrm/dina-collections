@@ -36,6 +36,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
+      columnProps: { width: 10 },
       type: 'text',
     },
     initiallyHidden: true,
@@ -45,6 +46,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
+      columnProps: { width: 10 },
       type: 'text',
     },
     initiallyHidden: true,

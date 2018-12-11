@@ -17,7 +17,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 9 },
+      columnProps: { width: 10 },
       fluid: true,
       type: 'text',
     },
