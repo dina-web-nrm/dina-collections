@@ -4,6 +4,7 @@ import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import BaseForm from './BaseForm'
+import setDefaultValues from './BaseForm/transformations/input'
 
 const propTypes = {
   form: PropTypes.string.isRequired,
@@ -22,7 +23,8 @@ export class Create extends PureComponent {
 
   render() {
     const { form, itemId, onInteraction, ...rest } = this.props
-    const initialValues = itemId ? { parent: { id: itemId } } : {}
+
+    const initialValues = setDefaultValues({ agent: {} })
 
     return (
       <BaseForm

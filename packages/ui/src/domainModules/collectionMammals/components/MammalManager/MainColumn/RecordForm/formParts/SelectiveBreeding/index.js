@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import PropTypes from 'prop-types'
 
 import createLog from 'utilities/log'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import formParts from 'coreModules/form/components/parts'
-
-const { RadioBoolean } = formParts
+import { Radio } from 'coreModules/form/components'
+import { wrapInColumn } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:OriginInformation:SelectiveBreeding'
@@ -33,22 +32,31 @@ class SelectiveBreeding extends Component {
 
     this.radioOptions = [
       {
-        key: 'false',
+        key: 'no',
         text: moduleTranslate({
           capitalize: true,
           module: 'collectionMammals',
           textKey: 'other.wildAnimal',
         }),
-        value: 'false',
+        value: 'no',
       },
       {
-        key: 'true',
+        key: 'yes',
         text: moduleTranslate({
           capitalize: true,
           module: 'collectionMammals',
           textKey: 'other.zooAnimal',
         }),
-        value: 'true',
+        value: 'yes',
+      },
+      {
+        key: 'unknown',
+        text: moduleTranslate({
+          capitalize: true,
+          module: 'collectionMammals',
+          textKey: 'other.unknown',
+        }),
+        value: 'unknown',
       },
     ]
   }
@@ -58,7 +66,7 @@ class SelectiveBreeding extends Component {
 
     log.render()
     return (
-      <RadioBoolean
+      <Radio
         input={input}
         label={<ModuleTranslate module="collectionMammals" textKey={label} />}
         radioOptions={this.radioOptions}
@@ -68,5 +76,4 @@ class SelectiveBreeding extends Component {
 }
 
 SelectiveBreeding.propTypes = propTypes
-
-export default compose(withI18n())(SelectiveBreeding)
+export default compose(withI18n(), wrapInColumn)(SelectiveBreeding)

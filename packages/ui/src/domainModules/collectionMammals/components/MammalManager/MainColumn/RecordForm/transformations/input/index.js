@@ -1,7 +1,13 @@
 import transformFeatureObservations from './transformFeatureObservations'
 
-export default function transformInput({ featureTypes = [], specimen = {} }) {
+export default function transformInput({
+  establishmentMeansTypes = [],
+  featureTypes = [],
+  identifierTypes = [],
+  specimen = {},
+}) {
   const transformedSpecimen = JSON.parse(JSON.stringify(specimen))
+
   if (!transformedSpecimen.individual) {
     transformedSpecimen.individual = {}
   }
@@ -10,11 +16,18 @@ export default function transformInput({ featureTypes = [], specimen = {} }) {
     transformedSpecimen.individual.determinations = []
   }
 
-  if (!transformedSpecimen.individual.identifiers) {
+  if (
+    !transformedSpecimen.individual.identifiers &&
+    identifierTypes.length > 0
+  ) {
+    const identifierType = identifierTypes.find(({ attributes }) => {
+      return attributes && attributes.key === 'catalog-no'
+    })
+
     transformedSpecimen.individual.identifiers = [
       {
         identifierType: {
-          id: '1',
+          id: identifierType.id,
         },
         namespace: '',
         remarks: '',
@@ -25,6 +38,37 @@ export default function transformInput({ featureTypes = [], specimen = {} }) {
 
   if (!transformedSpecimen.individual.recordHistoryEvents) {
     transformedSpecimen.individual.recordHistoryEvents = []
+  }
+
+  if (
+    !transformedSpecimen.individual.collectingInformation &&
+    establishmentMeansTypes.length > 0
+  ) {
+    const establishmentMeansType = establishmentMeansTypes.find(
+      ({ attributes }) => {
+        return attributes && attributes.key === 'wild-and-native'
+      }
+    )
+    transformedSpecimen.individual.collectingInformation = [
+      { establishmentMeansType: { id: establishmentMeansType.id } },
+    ]
+  }
+
+  if (
+    !transformedSpecimen.individual.originInformation &&
+    establishmentMeansTypes.length > 0
+  ) {
+    const establishmentMeansType = establishmentMeansTypes.find(
+      ({ attributes }) => {
+        return attributes && attributes.key === 'unknown'
+      }
+    )
+    transformedSpecimen.individual.originInformation = [
+      {
+        establishmentMeansType: { id: establishmentMeansType.id },
+        isResultOfSelectiveBreeding: 'unknown',
+      },
+    ]
   }
 
   transformedSpecimen.individual.featureObservations = transformFeatureObservations(
