@@ -56,7 +56,7 @@ class VernacularNamesTableRow extends PureComponent {
     log.render()
     return (
       <Grid textAlign="left" verticalAlign="middle">
-        <Grid.Column width={6}>
+        <Grid.Column width={5}>
           <Field
             autoComplete="off"
             className="transparent"
@@ -72,7 +72,7 @@ class VernacularNamesTableRow extends PureComponent {
             type="dropdown-search-local"
           />
         </Grid.Column>
-        <Grid.Column width={8}>
+        <Grid.Column width={9}>
           <Field
             autoComplete="off"
             className="transparent"
