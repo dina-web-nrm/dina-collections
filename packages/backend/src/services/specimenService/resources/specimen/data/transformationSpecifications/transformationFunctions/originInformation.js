@@ -5,7 +5,7 @@ example src data
       "originInformation": {
         "originLocality": null,
         "establishmentMeans_key": "captive",
-        "isResultOfSelectiveBreeding": "True"
+        "isResultOfSelectiveBreeding": "yes"
       },
 
 */
@@ -54,7 +54,7 @@ module.exports = function migrateOriginInformation({
   }
 
   originInformation.isResultOfSelectiveBreeding =
-    srcIsResultOfSelectiveBreeding === 'True'
+    srcIsResultOfSelectiveBreeding || 'unknown'
 
   if (Object.keys(originInformation).length) {
     migrator.setValue({
