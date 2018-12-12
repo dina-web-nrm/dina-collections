@@ -120,7 +120,11 @@ const createPickerWrapper = (
 
     handlePickerButtonClick(event) {
       event.preventDefault()
-      this.setPickerActive()
+      // Set timeout to prevent picker open event from closing the modal
+      // Only an issue with modal in modal
+      setTimeout(() => {
+        this.setPickerActive()
+      })
     }
 
     render() {
