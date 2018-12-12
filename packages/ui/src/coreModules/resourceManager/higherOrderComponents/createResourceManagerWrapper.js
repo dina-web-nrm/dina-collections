@@ -109,6 +109,7 @@ const createResourceManagerWrapper = (
     focusIdWhenLoaded: PropTypes.string,
     initialFilterValues: PropTypes.object,
     initialItemId: PropTypes.string,
+    isPicker: PropTypes.bool.isRequired,
     itemFetchOptions: PropTypes.object,
     itemId: PropTypes.string,
     listItems: PropTypes.array,
@@ -146,6 +147,7 @@ const createResourceManagerWrapper = (
     focusIdWhenLoaded: undefined,
     initialFilterValues: undefined,
     initialItemId: undefined,
+    isPicker: false,
     itemFetchOptions: { include: [], relationships: ['children', 'parent'] },
     itemId: undefined,
     listItems: [],
@@ -200,29 +202,56 @@ const createResourceManagerWrapper = (
       this.shortcuts = [
         {
           command: 'down',
-          description: 'Picker: Move focus to next record',
+          description: 'Move focus to next record',
           onPress: this.handleSelectNextRecord,
         },
         {
           command: 'up',
-          description: 'Picker: Move focus to previous record',
+          description: 'Move focus to previous record',
           onPress: this.handleSelectPrev,
         },
         {
           command: 'left',
-          description: 'Picker: Collapse tree node',
+          description: 'Collapse tree node',
           onPress: () => {
             this.handleToggleCurrentRow('collapse')
           },
         },
         {
           command: 'right',
-          description: 'Picker: Expand tree node',
+          description: 'Expand tree node',
           onPress: () => {
             this.handleToggleCurrentRow('expand')
           },
         },
+        {
+          command: 'n t',
+          description: 'Open table view',
+          onPress: event => {
+            event.preventDefault()
+            this.props.onInteraction(NAVIGATE_LIST)
+          },
+        },
       ]
+      if (!props.isPicker) {
+        // picker case is handled in picker action bar
+        this.shortcuts.push({
+          command: 'enter',
+          description: 'Select current item',
+          onPress: event => {
+            event.preventDefault()
+            this.selectCurrentRow()
+          },
+        })
+        this.shortcuts.push({
+          command: 'n n',
+          description: 'Open new record form',
+          onPress: event => {
+            event.preventDefault()
+            this.props.onInteraction(NAVIGATE_CREATE)
+          },
+        })
+      }
     }
 
     componentDidMount() {
@@ -590,6 +619,7 @@ const createResourceManagerWrapper = (
       }
       this.props.onInteraction(type, data)
     }
+
     selectCurrentRow(newFocusedIndex) {
       const { listItems, focusedIndex: currentFocusedIndex } = this.props
 

@@ -9,10 +9,24 @@ import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 
-const mapStateToProps = (state, { formName, sectionName }) => {
+const mapStateToProps = (
+  state,
+  { activeFormSectionIndex, formName, index, sectionName }
+) => {
+  if (config.isTest) {
+    return {
+      sectionIsInvalid: false,
+    }
+  }
+
+  const isActive = index === activeFormSectionIndex
+
   return {
-    sectionIsInvalid: config.isTest
-      ? false
+    sectionIsInvalid: isActive
+      ? formSupportSelectors.computeSectionIsInvalid(state, {
+          formName,
+          sectionName,
+        })
       : formSupportSelectors.getSectionIsInvalid(state, {
           formName,
           sectionName,

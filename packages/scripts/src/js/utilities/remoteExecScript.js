@@ -10,7 +10,7 @@ module.exports = function remoteExecScript({ server }) {
   const repoRootPath = getServerRootFullPath(server)
   const scriptPath = getBashScriptRelativePath(scriptName)
 
-  const cmd = `sh ./${scriptPath} ${argString}`
+  const cmd = `./${scriptPath} ${argString}`
   return remoteExecCmd({
     cmd,
     rootPath: repoRootPath,

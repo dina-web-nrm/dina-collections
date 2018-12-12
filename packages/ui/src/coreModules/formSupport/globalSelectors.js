@@ -10,6 +10,9 @@ import objectPath from 'object-path'
 import { isEmpty } from 'lodash'
 
 import wrapSelectors from 'utilities/wrapSelectors'
+
+import { globalSelectors as formSupportKeyObjectSelectors } from 'coreModules/formSupport/keyObjectModule'
+
 import * as selectors from './selectors'
 
 const getInitiallyHiddenFieldsHaveValue = (
@@ -56,7 +59,10 @@ const getSectionIsDirty = (state, { formName, sectionName }) => {
   return getIsDirty(state, ...sectionFieldNames)
 }
 
-const getAnyFieldIsInvalid = (state, { fieldNames, formName }) => {
+const getAnyFieldIsInvalid = (
+  state,
+  { fieldNames, formName, requireTouched = true }
+) => {
   const asyncErrors = getFormAsyncErrors(formName)(state)
   const formMeta = getFormMeta(formName)(state)
   const syncErrors = getFormSyncErrors(formName)(state)
@@ -78,6 +84,7 @@ const getAnyFieldIsInvalid = (state, { fieldNames, formName }) => {
         const anyInvalidRelativeField = getAnyFieldIsInvalid(state, {
           fieldNames: fieldNamesWithIndex,
           formName,
+          requireTouched,
         })
 
         if (anyInvalidRelativeField) {
@@ -88,14 +95,19 @@ const getAnyFieldIsInvalid = (state, { fieldNames, formName }) => {
 
     const fieldMeta = objectPath.get(formMeta, fieldName)
 
-    if (
-      fieldMeta &&
-      fieldMeta.touched &&
-      (objectPath.get(syncErrors, fieldName) ||
-        objectPath.get(asyncErrors, fieldName) ||
-        objectPath.get(submitErrors, fieldName))
-    ) {
-      return true
+    const hasErrors =
+      objectPath.get(syncErrors, fieldName) ||
+      objectPath.get(asyncErrors, fieldName) ||
+      objectPath.get(submitErrors, fieldName)
+
+    if (hasErrors) {
+      if (!requireTouched) {
+        return true
+      }
+      const isTouched = fieldMeta && fieldMeta.touched
+      if (requireTouched && isTouched) {
+        return true
+      }
     }
   }
 
@@ -103,6 +115,18 @@ const getAnyFieldIsInvalid = (state, { fieldNames, formName }) => {
 }
 
 const getSectionIsInvalid = (state, { formName, sectionName }) => {
+  const sectionInvalidStatus = formSupportKeyObjectSelectors.get[
+    'sectionNavigation.:formName.sectionInvalidStatus'
+  ](state, { formName })
+
+  if (!sectionInvalidStatus) {
+    return false
+  }
+
+  return sectionInvalidStatus[sectionName]
+}
+
+const computeSectionIsInvalid = (state, { formName, sectionName }) => {
   const sectionFieldNamesMap = selectors.getSectionFieldNamesMap(
     state.formSupport,
     {
@@ -115,17 +139,19 @@ const getSectionIsInvalid = (state, { formName, sectionName }) => {
   return getAnyFieldIsInvalid(state, {
     fieldNames: sectionFieldNames,
     formName,
+    requireTouched: false,
   })
 }
 
 const getSectionsInValidStatus = (state, { formName, sectionSpecs }) => {
   return sectionSpecs.map(({ name: sectionName }) => {
-    return getSectionIsInvalid(state, { formName, sectionName })
+    return computeSectionIsInvalid(state, { formName, sectionName })
   })
 }
 
 export default {
   ...wrapSelectors(selectors),
+  computeSectionIsInvalid,
   getAnyFieldIsInvalid,
   getInitiallyHiddenFieldsHaveValue,
   getSectionIsDirty,

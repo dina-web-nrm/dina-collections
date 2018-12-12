@@ -4517,7 +4517,9 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
                 }
               }
             >
-              Some added remarks
+              <span>
+                Some added remarks
+              </span>
             </div>
           </div>
         </div>
@@ -4577,7 +4579,9 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
                 }
               }
             >
-              Taxon: Some added remarks
+              <span>
+                Taxon: Some added remarks
+              </span>
             </div>
           </div>
         </div>
