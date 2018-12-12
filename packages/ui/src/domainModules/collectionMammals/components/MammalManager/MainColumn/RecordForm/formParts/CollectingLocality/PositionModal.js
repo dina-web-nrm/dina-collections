@@ -28,12 +28,15 @@ const getFieldNames = memoize(getPath => {
   ]
 })
 
-const mapStateToProps = (state, { formName, getPath }) => {
+const mapStateToProps = (state, { open, formName, getPath }) => {
   return {
-    isInvalid: formSupportSelectors.getAnyFieldIsInvalid(state, {
-      fieldNames: getFieldNames(getPath),
-      formName,
-    }),
+    isInvalid:
+      open &&
+      formSupportSelectors.getAnyFieldIsInvalid(state, {
+        fieldNames: getFieldNames(getPath),
+        formName,
+        requireTouched: false,
+      }),
   }
 }
 

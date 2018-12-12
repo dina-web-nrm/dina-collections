@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import objectPath from 'object-path'
-
+import { validateSections } from 'coreModules/formSupport/actionCreators'
 import createLog from 'utilities/log'
 import extractProps from 'utilities/extractProps'
 import {
@@ -51,6 +51,7 @@ const mapDispatchToProps = {
     formSupportKeyObjectActionCreators.set[
       'sectionNavigation.:formName.showAllFormSections'
     ],
+  validateSections,
 }
 
 const propTypes = {
@@ -80,6 +81,7 @@ const propTypes = {
   setShowAllFormSections: PropTypes.func.isRequired,
   showAllFormSections: PropTypes.bool,
   showSectionsInNavigation: PropTypes.bool,
+  validateSections: PropTypes.func.isRequired,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
@@ -124,6 +126,7 @@ class FormRow extends PureComponent {
       this.props.setActiveFormSectionIndex(null, { formName })
       this.props.setShowAllFormSections(true, { formName })
     }
+    this.props.validateSections({ formName: props.formName })
   }
 
   handleSetActiveFormSection(event, activeFormSectionIndex) {
