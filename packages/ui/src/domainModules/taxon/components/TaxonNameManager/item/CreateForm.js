@@ -15,7 +15,9 @@ const defaultProps = {
 export class Create extends PureComponent {
   render() {
     const { itemId, onInteraction, ...rest } = this.props
-    const initialValues = itemId ? { parent: { id: itemId } } : {}
+    const initialValues = itemId
+      ? { parent: { id: itemId }, taxonNameType: 'scientific' }
+      : { taxonNameType: 'scientific' }
 
     return (
       <BaseForm
