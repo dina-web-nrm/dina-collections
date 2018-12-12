@@ -84,7 +84,7 @@ class DeterminationContent extends Component {
               type="text"
             />
           </Grid.Column>
-          <Grid.Column width={9}>
+          <Grid.Column width={7}>
             <Field
               autoComplete="off"
               component={Input}
@@ -95,7 +95,7 @@ class DeterminationContent extends Component {
               type="text"
             />
           </Grid.Column>
-          <Grid.Column width={7}>
+          <Grid.Column width={9}>
             <Field
               autoComplete="off"
               buttonTextKey="other.addAgent"

@@ -12,7 +12,7 @@ const parts = [
   {
     componentName: 'RankDropdown',
     componentProps: {
-      columnProps: { width: 9 },
+      columnProps: { clear: true, width: 9 },
     },
     name: 'rank',
     wrapInField: true,
@@ -20,7 +20,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
-      columnProps: { width: 9 },
+      columnProps: { width: 6 },
       fluid: true,
       type: 'text',
     },

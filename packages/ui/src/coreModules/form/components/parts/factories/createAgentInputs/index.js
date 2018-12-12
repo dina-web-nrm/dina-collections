@@ -11,7 +11,7 @@ export default function createAgentInputs(
     {
       componentName: 'Input',
       componentProps: {
-        columnProps: { width: 9 },
+        columnProps: { width: 8 },
         fluid: true,
         model,
         type: 'text',
@@ -24,7 +24,7 @@ export default function createAgentInputs(
       componentName: 'TogglableAgentDropdownPickerSearch',
       componentProps: {
         buttonTextKey,
-        columnProps: { width: 6 },
+        columnProps: { width: 8 },
         displayEmptyStateLabel: false,
         displayResultLabel: false,
       },

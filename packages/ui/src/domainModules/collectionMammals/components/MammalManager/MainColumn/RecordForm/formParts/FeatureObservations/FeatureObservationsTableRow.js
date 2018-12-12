@@ -41,13 +41,33 @@ const getPlaceholder = (group, key) => {
 const getColumnWidth = group => {
   switch (group) {
     case 'bone-count': {
-      return 3
+      return 1
     }
-    case 'age-and-stage': {
+    case 'carcass-condition': {
+      return 7
+    }
+    case 'age-and-stage':
+    case 'age-stage':
+    case 'sex': {
       return 6
     }
     default: {
       return 4
+    }
+  }
+}
+
+const getLabelWidth = group => {
+  switch (group) {
+    case 'sex':
+    case 'carcass-condition': {
+      return 1
+    }
+    case 'weight': {
+      return 4
+    }
+    default: {
+      return 3
     }
   }
 }
@@ -97,11 +117,12 @@ class FeatureObservationTableRow extends PureComponent {
     const moreThanTwoColumns = hasSelectableUnits || hasSelectableMethods
 
     const columnWidth = getColumnWidth(group)
+    const labelWidth = getLabelWidth(group)
 
     log.render()
     return (
       <Table.Row key={index}>
-        <Table.Cell key={getPath('featureType.id')} width={4}>
+        <Table.Cell key={getPath('featureType.id')} width={labelWidth}>
           <ModuleTranslate
             fallback={key}
             module={module}
@@ -110,7 +131,10 @@ class FeatureObservationTableRow extends PureComponent {
           />
         </Table.Cell>
         {hasSelectableValues ? (
-          <Table.Cell key={getPath('featureObservationText')} width={6}>
+          <Table.Cell
+            key={getPath('featureObservationText')}
+            width={columnWidth}
+          >
             <Field
               autoComplete="off"
               className="transparent"
@@ -157,7 +181,7 @@ class FeatureObservationTableRow extends PureComponent {
         )}
 
         {hasSelectableUnits && (
-          <Table.Cell key={getPath('featureObservationUnit')}>
+          <Table.Cell key={getPath('featureObservationUnit')} width={5}>
             <Field
               autoComplete="off"
               className="transparent"
@@ -196,6 +220,7 @@ class FeatureObservationTableRow extends PureComponent {
         )}
 
         {!moreThanTwoColumns && <Table.Cell width={6} />}
+        {hasSelectableUnits && <Table.Cell width={4} />}
       </Table.Row>
     )
   }

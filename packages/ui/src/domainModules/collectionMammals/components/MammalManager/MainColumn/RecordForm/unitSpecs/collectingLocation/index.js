@@ -52,7 +52,6 @@ const parts = [
   {
     componentName: 'Remarks',
     componentProps: {
-      columnProps: { width: 11 },
       emptyStateTextKey: 'remarks.emptyState.collectingLocationRemarks',
       model,
       resultPrefixTextKey: 'remarks.resultPrefix.collectingLocationRemarks',

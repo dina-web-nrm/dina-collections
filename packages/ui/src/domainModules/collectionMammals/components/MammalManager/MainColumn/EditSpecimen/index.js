@@ -31,7 +31,11 @@ const mapStateToProps = state => {
     catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(FORM_NAME)(
       state
     ),
+    establishmentMeansTypes: crudGlobalSelectors.establishmentMeansType.getAll(
+      state
+    ),
     featureTypes: crudGlobalSelectors.featureType.getAll(state),
+    identifierTypes: crudGlobalSelectors.identifierType.getAll(state),
   }
 }
 
@@ -41,9 +45,11 @@ const mapDispatchToProps = {
 
 const propTypes = {
   clearNestedCacheNamespace: PropTypes.func.isRequired,
+  establishmentMeansTypes: PropTypes.array.isRequired,
   featureTypes: PropTypes.array.isRequired,
   featureTypesFetched: PropTypes.bool.isRequired,
   fetchOneItemById: PropTypes.func.isRequired,
+  identifierTypes: PropTypes.array.isRequired,
   nestedSpecimen: PropTypes.object,
   updateSpecimen: PropTypes.func.isRequired,
 }
@@ -58,7 +64,9 @@ class EditSpecimen extends PureComponent {
 
     const {
       clearNestedCacheNamespace,
+      establishmentMeansTypes,
       fetchOneItemById,
+      identifierTypes,
       nestedSpecimen,
       updateSpecimen,
       featureTypes,
@@ -76,7 +84,9 @@ class EditSpecimen extends PureComponent {
     )
 
     const { resourceActivities, ...initialValues } = setDefaultValues({
+      establishmentMeansTypes,
       featureTypes,
+      identifierTypes,
       specimen: nestedSpecimen || {},
     })
 
@@ -85,6 +95,7 @@ class EditSpecimen extends PureComponent {
       <RecordForm
         {...rest}
         curatorialTaxon={curatorialTaxon}
+        establishmentMeansTypes={establishmentMeansTypes}
         form={FORM_NAME}
         formName={FORM_NAME}
         formValueSelector={formValueSelector}
@@ -141,6 +152,9 @@ export default compose(
   createEnsureAllItemsFetched({
     allFetchedKey: 'featureTypesFetched',
     resource: 'featureType',
+  }),
+  createEnsureAllItemsFetched({
+    resource: 'establishmentMeansType',
   }),
   createEnsureAllItemsFetched({ resource: 'customTaxonNameType' }),
   createEnsureAllItemsFetched({ resource: 'identifierType' }),

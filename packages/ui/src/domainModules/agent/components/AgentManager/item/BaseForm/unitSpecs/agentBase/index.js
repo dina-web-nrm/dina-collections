@@ -13,6 +13,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
+      columnProps: { width: 10 },
       fluid: true,
       type: 'text',
     },
@@ -22,6 +23,7 @@ const parts = [
   {
     componentName: 'Input',
     componentProps: {
+      columnProps: { width: 10 },
       fluid: true,
       type: 'text',
     },

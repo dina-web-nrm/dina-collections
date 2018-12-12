@@ -19096,7 +19096,12 @@
             "x-summary": ""
           },
           "isResultOfSelectiveBreeding": {
-            "type": "boolean",
+            "type": "string",
+            "enum": [
+              "yes",
+              "no",
+              "unknown"
+            ],
             "x-summary": ""
           },
           "event": {
