@@ -214,9 +214,11 @@ const injectSearchOptions = (
       response = [],
       { skipPlainTextOption = false, value } = {}
     ) {
-      if (Array.isArray(response)) {
-        const { searchQuery } = this.state
-
+      const { searchQuery } = this.state
+      if (
+        (searchQuery && Array.isArray(response)) ||
+        (!searchQuery && response.length === 1)
+      ) {
         const options = []
 
         if (enablePlainTextOption && searchQuery && !skipPlainTextOption) {
