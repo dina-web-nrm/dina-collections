@@ -3,6 +3,7 @@ import wrapReduxFormFieldParts from 'coreModules/form/utilities/wrapReduxFormFie
 import RankDropdown from '../RankDropdown'
 import ScientificNamesTable from '../ScientificNamesTable'
 import TaxonDropdownSearch from '../TaxonDropdownSearch'
+import TaxonDropdownPickerSearch from '../TaxonDropdownPickerSearch'
 import TaxonNameDropdownPickerSearch from '../AcceptedTaxonNameDropdownPickerSearch'
 import TaxonNameDropdownSearch from '../TaxonNameDropdownSearch'
 import TaxonNameTaxonStatus from '../TaxonNameTaxonStatus'
@@ -12,6 +13,7 @@ import VernacularNamesTable from '../VernacularNamesTable'
 export default wrapReduxFormFieldParts({
   RankDropdown,
   ScientificNamesTable,
+  TaxonDropdownPickerSearch,
   TaxonDropdownSearch,
   TaxonNameDropdownPickerSearch,
   TaxonNameDropdownSearch,

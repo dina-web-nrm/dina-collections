@@ -184,6 +184,7 @@ const injectSearchOptions = (
         }).then(res => {
           const selectedOptions =
             this.buildOptionsFromResponse(res, {
+              id,
               skipPlainTextOption: true,
               value,
             }) || []
@@ -212,13 +213,10 @@ const injectSearchOptions = (
 
     buildOptionsFromResponse(
       response = [],
-      { skipPlainTextOption = false, value } = {}
+      { id, skipPlainTextOption = false, value } = {}
     ) {
       const { searchQuery } = this.state
-      if (
-        (searchQuery && Array.isArray(response)) ||
-        (!searchQuery && response.length === 1)
-      ) {
+      if ((searchQuery && Array.isArray(response)) || (!searchQuery && id)) {
         const options = []
 
         if (enablePlainTextOption && searchQuery && !skipPlainTextOption) {
