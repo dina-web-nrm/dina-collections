@@ -12,7 +12,7 @@ module.exports = function localExecScript() {
 
   const scriptRelativePath = getBashScriptRelativePath(scriptName)
 
-  const cmd = `cd ${rootPath} && sh ./${scriptRelativePath} ${argString}`
+  const cmd = `cd ${rootPath} && ./${scriptRelativePath} ${argString}`
   return localExecCmd({ cmd, execFromRoot: false })
     .then(res => {
       console.log('SUCCESS')

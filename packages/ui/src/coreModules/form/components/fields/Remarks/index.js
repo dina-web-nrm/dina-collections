@@ -128,13 +128,22 @@ class RemarksInput extends PureComponent {
             })}: ${input.value}`
         : input.value
 
+    const remarkSegments = (remarks || '')
+      .split('\n')
+      .reduce((segments, segment) => {
+        if (segments.length) {
+          return [...segments, <br />, <span>{segment}</span>]
+        }
+        return [<span>{segment}</span>]
+      }, [])
+
     return (
       <RemarksWrapper
         input={input}
         isLatestActiveField={isLatestActiveField}
         setAsLatestActiveField={setAsLatestActiveField}
       >
-        <div style={{ paddingTop: 8 }}>{remarks}</div>
+        <div style={{ paddingTop: 8 }}>{remarkSegments}</div>
       </RemarksWrapper>
     )
   }

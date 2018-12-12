@@ -22,6 +22,11 @@ const matchFilterName = 'matchStorageLocationTags'
 const delimiter = 'ddaadd'
 
 const findLevel2ParentSufix = storageLocation => {
+  const isRoot = storageLocation.group === 'root'
+  if (isRoot) {
+    return ''
+  }
+
   const isLevel2 = storageLocation.group === 'Level 2'
   if (isLevel2) {
     return ` ${storageLocation.name}`
@@ -53,6 +58,7 @@ const transformation = ({ migrator, target, locals }) => {
   const { storageLocations = [], storageLocationTexts = [] } = locals
 
   const tags = []
+
   storageLocations.forEach(storageLocation => {
     const { name, group } = storageLocation
     const tagType = group

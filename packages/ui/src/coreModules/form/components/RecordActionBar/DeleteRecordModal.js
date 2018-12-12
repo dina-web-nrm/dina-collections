@@ -57,7 +57,7 @@ class DeleteRecordModal extends PureComponent {
                 basic
                 onClick={this.handleOpen}
                 size="large"
-                style={{ float: 'right' }}
+                style={{ float: 'right', pointerEvents: 'initial' }}
                 type="button"
               >
                 Delete record
@@ -72,7 +72,9 @@ class DeleteRecordModal extends PureComponent {
               <Grid.Column>The record will be permanently deleted</Grid.Column>
             </Grid>
           </Modal.Content>
-          <Modal.Actions style={{ textAlign: 'left' }}>
+          <Modal.Actions
+            style={{ pointerEvents: 'initial', textAlign: 'left' }}
+          >
             <Button onClick={this.handleDelete} primary>
               Yes, delete record
             </Button>

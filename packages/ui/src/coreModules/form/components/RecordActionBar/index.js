@@ -68,7 +68,7 @@ export class RecordActionBar extends PureComponent {
     } = this.props
 
     return (
-      <Grid padded verticalAlign="middle">
+      <Grid padded style={{ pointerEvents: 'none' }} verticalAlign="middle">
         <Grid.Column>
           <Button
             disabled={hasSyncErrors || invalid || pristine}
@@ -76,7 +76,7 @@ export class RecordActionBar extends PureComponent {
             onClick={handleSubmit}
             primary
             size="large"
-            style={{ float: 'left' }}
+            style={{ float: 'left', pointerEvents: 'initial' }}
             type="submit"
           >
             <ModuleTranslate textKey="save" />
@@ -86,7 +86,7 @@ export class RecordActionBar extends PureComponent {
             disabled={pristine || submitting}
             onClick={handleUndoChanges}
             size="large"
-            style={{ float: 'left' }}
+            style={{ float: 'left', pointerEvents: 'initial' }}
             type="button"
           >
             Undo changes
