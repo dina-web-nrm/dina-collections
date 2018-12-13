@@ -4,8 +4,12 @@ import { Modal, Button } from 'semantic-ui-react'
 import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 
 import StorageLocationDropdownSearch from '../StorageLocationDropdownSearch'
-import StorageLocationManager from '../StorageLocationManager/Local'
 
+let StorageLocationManager = null
+
+export function setLocalStorageLocationManager(injected) {
+  StorageLocationManager = injected
+}
 const propTypes = {
   fieldSearchQuery: PropTypes.string,
   fieldValue: PropTypes.string,
