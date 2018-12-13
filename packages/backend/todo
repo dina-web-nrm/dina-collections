@@ -1,6 +1,8 @@
 IMPORTANT
 * Add all catalog numbers as part of migrations
 * Add them as part of migrating specimens
+* Add validations to centralized model
+* Ensure not possible to run migrations by mistake 
 
 
 TODO
