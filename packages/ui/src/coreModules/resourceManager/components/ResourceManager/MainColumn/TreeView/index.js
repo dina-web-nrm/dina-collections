@@ -30,6 +30,7 @@ const propTypes = {
   itemsObject: PropTypes.object.isRequired,
   ItemTitle: PropTypes.func,
   listItems: PropTypes.array.isRequired,
+  managerScope: PropTypes.string.isRequired,
   onClickRow: PropTypes.func.isRequired,
   onToggleRow: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
@@ -65,7 +66,7 @@ class TreeView extends Component {
       expandedIds,
       fetchItemById,
       itemsObject,
-      resource,
+      managerScope,
       showAll,
     } = this.props
 
@@ -90,7 +91,7 @@ class TreeView extends Component {
         itemsObject,
         showAll,
       })
-      this.props.setListItems(listItems, { resource })
+      this.props.setListItems(listItems, { managerScope })
     }
 
     if (currentTableRowNumber !== prevCurrentTableRowNumber) {
@@ -110,6 +111,7 @@ class TreeView extends Component {
       itemFetchOptions,
       ItemTitle,
       listItems,
+      managerScope,
       resource,
     } = this.props
 
@@ -141,6 +143,7 @@ class TreeView extends Component {
         ItemTitle={ItemTitle}
         key={itemId}
         level={level}
+        namespace={managerScope}
         onClickRow={this.props.onClickRow}
         onToggleRow={this.props.onToggleRow}
         resource={resource}

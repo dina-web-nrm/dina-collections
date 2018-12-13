@@ -8,6 +8,7 @@ import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
 const propTypes = {
   itemTitle: PropTypes.node,
+  managerScope: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
   onPickItem: PropTypes.func.isRequired,
 }
@@ -36,12 +37,12 @@ class ItemHeader extends Component {
   }
 
   render() {
-    const { nestedItem, itemTitle } = this.props
+    const { managerScope, nestedItem, itemTitle } = this.props
 
     return (
       <React.Fragment>
         <KeyboardShortcuts
-          activeInLayer="resourceManager"
+          activeInLayer={managerScope}
           shortcuts={this.shortcuts}
         />
         <Grid padded>
@@ -68,7 +69,6 @@ ItemHeader.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    namespace: 'title',
     refresh: false,
     shouldFetch: false,
   }),

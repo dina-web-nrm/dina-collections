@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
-import { createShortcutLayer } from 'coreModules/keyboardShortcuts/higherOrderComponents'
 import memoize from 'memoize-one'
 import {
   ColumnLayout,
@@ -56,6 +55,7 @@ const propTypes = {
   isPicker: PropTypes.bool,
   itemFetchOptions: PropTypes.object.isRequired,
   itemId: PropTypes.string,
+  managerScope: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
   renderEditForm: PropTypes.func.isRequired,
   renderFilterForm: PropTypes.func.isRequired,
@@ -158,6 +158,7 @@ class ResourceManager extends Component {
             'itemId',
             'ItemTitle',
             'listItems',
+            'managerScope',
             'nextRowAvailable',
             'onClickRow',
             'onFormTabClick',
@@ -304,17 +305,18 @@ class ResourceManager extends Component {
 
       case 'pickerActionBar': {
         const { extractedProps } = extractProps({
-          keys: ['ItemTitle', 'onPickItem', 'resource'],
+          keys: ['managerScope', 'ItemTitle', 'onPickItem', 'resource'],
           props: this.props,
         })
 
-        const { itemFetchOptions } = this.props
+        const { managerScope, itemFetchOptions } = this.props
 
         return (
           <PickerActionBar
             {...extractedProps}
             {...itemFetchOptions}
             itemId={this.props.focusedItemId}
+            namespace={`${managerScope}Title`}
           />
         )
       }
@@ -339,6 +341,5 @@ ResourceManager.defaultProps = defaultProps
 export default compose(
   createResourceManagerWrapper(),
   injectWindowHeight,
-  connect(mapStateToProps),
-  createShortcutLayer({ layer: 'resourceManager' })
+  connect(mapStateToProps)
 )(ResourceManager)

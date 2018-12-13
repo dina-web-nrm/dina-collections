@@ -9,14 +9,14 @@ const {
 } = keyObjectModuleFactory({
   actionPrefix: 'RESOURCE_MANAGER',
   keys: [
-    ':resource',
-    ':resource.baseItems',
-    ':resource.currentTableRowNumber',
-    ':resource.expandedIds',
-    ':resource.focusIdWhenLoaded',
-    ':resource.listFilterValues',
-    ':resource.listItems',
-    ':resource.showAll',
+    ':managerScope',
+    ':managerScope.baseItems',
+    ':managerScope.currentTableRowNumber',
+    ':managerScope.expandedIds',
+    ':managerScope.focusIdWhenLoaded',
+    ':managerScope.listFilterValues',
+    ':managerScope.listItems',
+    ':managerScope.showAll',
   ],
   name: 'resourceManager',
 })

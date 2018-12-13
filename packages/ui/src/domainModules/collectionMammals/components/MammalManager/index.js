@@ -255,13 +255,11 @@ class MammalManager extends Component {
 
     this.shortcuts = [
       {
-        activeInLayer: 'mammalManager',
         command: 'down',
         description: 'Move focus to next record',
         onPress: this.handleSelectNextRecord,
       },
       {
-        activeInLayer: 'mammalManager',
         command: 'up',
         description: 'Move focus to previous record',
         onPress: this.handleSelectPreviousRecord,
@@ -465,7 +463,10 @@ class MammalManager extends Component {
 
     return (
       <React.Fragment>
-        <KeyboardShortcuts shortcuts={this.shortcuts} />
+        <KeyboardShortcuts
+          activeInLayer="mammalManager"
+          shortcuts={this.shortcuts}
+        />
         <ColumnLayout
           columns={this.getColumns()}
           currentTableRowNumber={currentTableRowNumber}
