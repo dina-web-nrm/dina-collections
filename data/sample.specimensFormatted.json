@@ -4094,7 +4094,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": null,
+      "collectionItemsRemarks": "Skin at another institution",
       "publishRecord": "True",
       "remarks": "Skin to other institution.\nLänstyrelsens naturvårdsenhet har framfört önskemål om att djuret ska ingå i Naturrum, Ammarnäs.\nJakttillstånd finns enligt uppgift.\nPenisben finnes.\nBiocidprov tagna.",
       "identifiers": [
@@ -4256,7 +4256,7 @@
         },
         {
           "preparationType_key": "unspecified-skin",
-          "remarks": "Skin at another institution",
+          "remarks": null,
           "storageLevel1": "Annan Institution",
           "storageLevel2": null,
           "storageLevel4": null
@@ -4486,7 +4486,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": null,
+      "collectionItemsRemarks": "Skin discarded from collection",
       "publishRecord": "True",
       "remarks": "Kranie finns på Grimsö med nummer B215-93",
       "identifiers": [
@@ -4584,13 +4584,6 @@
           "storageLevel1": "Bensalen",
           "storageLevel2": null,
           "storageLevel4": "7803903 Capreolus capreolus"
-        },
-        {
-          "preparationType_key": "unspecified-skin",
-          "remarks": "Skin discarded from collection",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
         }
       ]
     }
@@ -4802,7 +4795,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": "Kan vara förväxlat med 98/5647",
+      "collectionItemsRemarks": "Kan vara förväxlat med 98/5647\n\nSkin missing",
       "publishRecord": "True",
       "remarks": null,
       "identifiers": [
@@ -4920,13 +4913,6 @@
           "storageLevel1": "Bensalen",
           "storageLevel2": null,
           "storageLevel4": "5520606 Lynx lynx"
-        },
-        {
-          "preparationType_key": "unspecified-skin",
-          "remarks": "Skin missing",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
         },
         {
           "preparationType_key": "unspecified-wet-preparation",
@@ -5145,7 +5131,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": null,
+      "collectionItemsRemarks": "Skin missing",
       "publishRecord": "True",
       "remarks": "00-0k0-925F",
       "identifiers": [
@@ -5319,13 +5305,6 @@
           "storageLevel1": "Bensalen",
           "storageLevel2": null,
           "storageLevel4": "5203003 Gulo gulo"
-        },
-        {
-          "preparationType_key": "unspecified-skin",
-          "remarks": "Skin missing",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
         }
       ]
     }
