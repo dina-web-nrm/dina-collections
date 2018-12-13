@@ -30,7 +30,7 @@ services:
       - 9200:9200
 
   keycloak:
-    image: jboss/keycloak:4.5.0.Final #this is the latest
+    image: jboss/keycloak:4.5.0.Final
     container_name: keycloak
     # Username & password to use the database
     env_file: ./env/.keycloak
@@ -66,7 +66,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   proxy:
-    image: jwilder/nginx-proxy:latest
+    image: jwilder/nginx-proxy:0.7.0
     container_name: proxy
     environment:
       - NGINX_MAX_BODY_SZ=100m
