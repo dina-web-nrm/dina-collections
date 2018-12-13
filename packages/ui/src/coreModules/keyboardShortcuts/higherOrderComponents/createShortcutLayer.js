@@ -15,6 +15,7 @@ const childContextTypes = {
 }
 
 const propTypes = {
+  layer: PropTypes.string,
   setLayer: PropTypes.func.isRequired,
 }
 
@@ -24,15 +25,18 @@ export default function createShortcutLayer({ layer }) {
   if (!layer) {
     throw new Error('Layer is required')
   }
+  const defaultProps = {
+    layer,
+  }
   return function shortcutLayer(ComposedComponent) {
     class ShortcutLayer extends Component {
       getChildContext() {
         return {
-          layer,
+          layer: this.props.layer,
         }
       }
       componentDidMount() {
-        this.props.setLayer(layer)
+        this.props.setLayer(this.props.layer)
       }
 
       componentWillUnmount() {
@@ -49,6 +53,7 @@ export default function createShortcutLayer({ layer }) {
     ShortcutLayer.contextTypes = contextTypes
     ShortcutLayer.childContextTypes = childContextTypes
     ShortcutLayer.propTypes = propTypes
+    ShortcutLayer.defaultProps = defaultProps
 
     return compose(connect(undefined, mapDispatchToProps))(ShortcutLayer)
   }
