@@ -26,27 +26,5 @@
   "submitFailed": {
     "en": "Could not save",
     "sv": "Kunde inte spara"
-  },
-  "resource": {
-    "normalizedAgent": {
-      "en": "agent",
-      "sv": ""
-    },
-    "place": {
-      "en": "locality",
-      "sv": ""
-    },
-    "specimen": {
-      "en": "specimen",
-      "sv": ""
-    },
-    "storageLocation": {
-      "en": "storage location",
-      "sv": ""
-    },
-    "taxonName": {
-      "en": "taxon name",
-      "sv": ""
-    }
   }
 }

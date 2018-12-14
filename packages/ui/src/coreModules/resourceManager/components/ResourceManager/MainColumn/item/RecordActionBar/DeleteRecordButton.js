@@ -4,10 +4,14 @@ import { Prompt } from 'react-router-dom'
 import { Button, Grid, Modal } from 'semantic-ui-react'
 
 const propTypes = {
+  loading: PropTypes.bool,
   onDelete: PropTypes.func.isRequired,
 }
+const defaultProps = {
+  loading: false,
+}
 
-class DeleteRecordModal extends PureComponent {
+class DeleteRecordButton extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -34,6 +38,7 @@ class DeleteRecordModal extends PureComponent {
   }
 
   render() {
+    const { loading } = this.props
     const { open } = this.state
 
     return (
@@ -55,6 +60,7 @@ class DeleteRecordModal extends PureComponent {
             !open && (
               <Button
                 basic
+                loading={loading}
                 onClick={this.handleOpen}
                 size="large"
                 style={{ float: 'right', pointerEvents: 'initial' }}
@@ -86,6 +92,7 @@ class DeleteRecordModal extends PureComponent {
   }
 }
 
-DeleteRecordModal.propTypes = propTypes
+DeleteRecordButton.propTypes = propTypes
+DeleteRecordButton.defaultProps = defaultProps
 
-export default DeleteRecordModal
+export default DeleteRecordButton
