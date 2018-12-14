@@ -41,19 +41,32 @@ export class InfiniteTable extends Component {
     this.list = null
     this.setListRef = element => {
       this.list = element
+      this.scroll()
     }
 
     this.renderItem = this.renderItem.bind(this)
+    this.scroll = this.scroll.bind(this)
+  }
+
+  componentDidMount() {
+    this.scroll()
   }
 
   componentDidUpdate(prevProps) {
+    this.scroll(prevProps)
+  }
+
+  scroll(prevProps = {}) {
     const { currentTableRowNumber } = this.props
 
     const { currentTableRowNumber: prevCurrentTableRowNumber } = prevProps
 
-    if (currentTableRowNumber !== prevCurrentTableRowNumber) {
+    if (this.list && currentTableRowNumber !== prevCurrentTableRowNumber) {
       const [firstVisibleRow] = this.list.getVisibleRange()
 
+      // this special case is to avoid that the focused row is hidden behind the
+      // table header, which is fixed positioned and therefore seen by
+      // react-list as the first row in terms of scroll position
       if (currentTableRowNumber <= firstVisibleRow + 1) {
         this.list.scrollTo(currentTableRowNumber - 1)
       } else {

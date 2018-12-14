@@ -15,8 +15,6 @@ import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
 
 import MainColumn from './MainColumn'
-import CreateItemColumn from './CreateItemColumn'
-import EditItemColumn from './EditItemColumn'
 import FilterColumn from './FilterColumn'
 import PickerHeader from './picker/Header'
 import PickerActionBar from './picker/ActionBar'
@@ -48,7 +46,7 @@ const propTypes = {
   columnHeight: PropTypes.number.isRequired,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
-  fetchIncludeAfterUpdate: PropTypes.arrayOf(PropTypes.string),
+  fetchRelationshipsBeforeDelete: PropTypes.func,
   filterActive: PropTypes.bool.isRequired,
   filterColumnWidth: PropTypes.number.isRequired,
   focusedItemId: PropTypes.string,
@@ -57,6 +55,7 @@ const propTypes = {
   itemId: PropTypes.string,
   managerScope: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
+  relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
   renderEditForm: PropTypes.func.isRequired,
   renderFilterForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
@@ -70,10 +69,11 @@ const propTypes = {
   windowHeight: PropTypes.number.isRequired,
 }
 const defaultProps = {
-  fetchIncludeAfterUpdate: undefined,
+  fetchRelationshipsBeforeDelete: undefined,
   focusedItemId: undefined,
   isPicker: false,
   itemId: undefined,
+  relationshipsToCheckBeforeDelete: undefined,
   rightSidebarWidth: emToPixels(25),
   transformOutput: undefined,
 }
@@ -144,11 +144,13 @@ class ResourceManager extends Component {
           keys: [
             'availableHeight',
             'baseItems',
+            'buildEditItemHeaders',
+            'createGetNestedItemHocInput',
             'createItemActive',
             'currentTableRowNumber',
             'editItemActive',
             'expandedIds',
-            'fetchIncludeAfterUpdate',
+            'fetchRelationshipsBeforeDelete',
             'fetchTreeBase',
             'filterActive',
             'focusedIndex',
@@ -172,6 +174,7 @@ class ResourceManager extends Component {
             'onToggleFilters',
             'onToggleRow',
             'prevRowAvailable',
+            'relationshipsToCheckBeforeDelete',
             'renderCreateForm',
             'renderEditForm',
             'resource',
@@ -191,45 +194,6 @@ class ResourceManager extends Component {
         const { columnHeight, transformOutput } = this.props
         return (
           <MainColumn
-            {...extractedProps}
-            availableHeight={columnHeight}
-            transformOutput={transformOutput}
-          />
-        )
-      }
-
-      case 'editItemColumn': {
-        const { extractedProps } = extractProps({
-          keys: [
-            'fetchIncludeAfterUpdate',
-            'itemId',
-            'ItemTitle',
-            'onInteraction',
-            'renderEditForm',
-            'resource',
-            'itemFetchOptions',
-          ],
-          props: this.props,
-        })
-
-        const { columnHeight, transformOutput } = this.props
-        return (
-          <EditItemColumn
-            {...extractedProps}
-            availableHeight={columnHeight}
-            transformOutput={transformOutput}
-          />
-        )
-      }
-
-      case 'createItemColumn': {
-        const { extractedProps } = extractProps({
-          keys: ['onInteraction', 'resource', 'renderCreateForm'],
-          props: this.props,
-        })
-        const { columnHeight, transformOutput } = this.props
-        return (
-          <CreateItemColumn
             {...extractedProps}
             availableHeight={columnHeight}
             transformOutput={transformOutput}
