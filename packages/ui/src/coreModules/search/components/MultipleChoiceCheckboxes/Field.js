@@ -153,14 +153,22 @@ class MultipleChoiceCheckboxes extends Component {
     }
 
     return (
-      <Grid textAlign="left" verticalAlign="middle">
+      <Grid
+        style={{ pointerEvents: 'none' }}
+        textAlign="left"
+        verticalAlign="middle"
+      >
         <Grid.Row>
           {allIds.map(id => {
             const drillDownOption = drillDownOptionsMap[id]
             const isChecked = checkedValues.includes(id)
 
             return (
-              <Grid.Column key={id} width={16}>
+              <Grid.Column
+                key={id}
+                style={{ pointerEvents: 'initial' }}
+                width={16}
+              >
                 <Checkbox
                   disabled={!drillDownOption && !isChecked}
                   input={{
