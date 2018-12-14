@@ -8,13 +8,14 @@ import { createSelector } from 'reselect'
 import { push } from 'react-router-redux'
 import objectPath from 'object-path'
 
+import crudActionCreators from 'coreModules/crud/actionCreators'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { createShortcutLayer } from 'coreModules/keyboardShortcuts/higherOrderComponents'
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
+import { createNotification as createNotificationAC } from 'coreModules/notifications/actionCreators'
 import userSelectors from 'coreModules/user/globalSelectors'
-
 import {
   createInjectSearch,
   createInjectSearchResult,
@@ -112,7 +113,7 @@ const getMainColumnActiveTab = createSelector(
 
 const mapStateToProps = (
   state,
-  { match: { url }, searchResultResourceType: resource }
+  { match: { params, url }, searchResultResourceType: resource }
 ) => {
   const userPreferences = userSelectors.getUserPreferences(state)
   const tableColumnsToShow =
@@ -173,6 +174,7 @@ const mapStateToProps = (
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     showSelectNextRecordButton,
     showSelectPreviousRecordButton,
+    specimenId: objectPath.get(params, 'specimenId'),
     tableColumnsToShow,
     tableColumnsToSort,
     totalNumberOfRecords,
@@ -180,8 +182,10 @@ const mapStateToProps = (
 }
 
 const mapDispatchToProps = {
+  createNotification: createNotificationAC,
   delCurrentTableRowNumber: keyObjectActionCreators.del.currentTableRowNumber,
   delFocusedSpecimenId: keyObjectActionCreators.del.focusedSpecimenId,
+  delSpecimen: crudActionCreators.specimen.del,
   push,
   reset,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
@@ -190,9 +194,11 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  createNotification: PropTypes.func.isRequired,
   currentTableRowNumber: PropTypes.number,
   delCurrentTableRowNumber: PropTypes.func.isRequired,
   delFocusedSpecimenId: PropTypes.func.isRequired,
+  delSpecimen: PropTypes.func.isRequired,
   enableShowAllRecordsButton: PropTypes.bool.isRequired,
   filterColumnIsOpen: PropTypes.bool.isRequired,
   filterValues: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
@@ -219,6 +225,7 @@ const propTypes = {
   setFocusedSpecimenId: PropTypes.func.isRequired,
   showSelectNextRecordButton: PropTypes.bool.isRequired,
   showSelectPreviousRecordButton: PropTypes.bool.isRequired,
+  specimenId: PropTypes.string,
   tableColumnsToSort: PropTypes.array, // eslint-disable-line react/no-unused-prop-types
   totalNumberOfRecords: PropTypes.number,
 }
@@ -228,6 +235,7 @@ const defaultProps = {
   focusedSpecimenId: undefined,
   rightSidebarWidth: emToPixels(25),
   searchResult: undefined,
+  specimenId: undefined,
   tableColumnsToSort: undefined,
   totalNumberOfRecords: 0,
 }
@@ -237,6 +245,7 @@ class MammalManager extends Component {
     super(props)
 
     this.getColumns = this.getColumns.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
     this.handleSpecimenIdUpdate = this.handleSpecimenIdUpdate.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
     this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
@@ -301,8 +310,7 @@ class MammalManager extends Component {
 
     if (
       nextProps.isEditRecordView &&
-      (objectPath.get(this.props, 'match.params.specimenId') !==
-        objectPath.get(nextProps, 'match.params.specimenId') ||
+      (this.props.specimenId !== nextProps.specimenId ||
         objectPath.get(this.props, 'searchResult.items') !==
           objectPath.get(nextProps, 'searchResult.items'))
     ) {
@@ -312,6 +320,20 @@ class MammalManager extends Component {
 
   getColumns() {
     return getColumns(this.props)
+  }
+
+  handleDelete() {
+    const { createNotification, delSpecimen, specimenId } = this.props
+
+    return delSpecimen({ id: specimenId }).then(() => {
+      createNotification({
+        componentProps: {
+          header: 'The record was deleted',
+        },
+        type: 'SUCCESS',
+      })
+      this.handleSearchSpecimens()
+    })
   }
 
   handleSpecimenIdUpdate(props = this.props) {
@@ -474,6 +496,7 @@ class MammalManager extends Component {
           isNewRecordView={isNewRecordView}
           isTableViewOrSettings={isTableViewOrSettings}
           mainColumnActiveTab={mainColumnActiveTab}
+          onDelete={this.handleDelete}
           onExportCsv={isTableView && this.handleExportToCsv}
           onFormTabClick={isTableView && this.handleOpenEditRecordView}
           onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}

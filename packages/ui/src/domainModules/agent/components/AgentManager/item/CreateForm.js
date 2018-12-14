@@ -32,11 +32,11 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form={form}
-        formSectionNavigationHeader={
-          <ModuleTranslate capitalize module="agent" textKey="newAgent" />
-        }
         formValueSelector={this.formValueSelector}
         initialValues={initialValues}
+        itemHeader={
+          <ModuleTranslate capitalize module="agent" textKey="newAgent" />
+        }
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')

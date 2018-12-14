@@ -16,12 +16,12 @@ const formActionBarHeight = emToPixels(4.625)
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   form: PropTypes.string.isRequired,
-  formSectionNavigationHeader: PropTypes.node.isRequired,
-  formSectionNavigationSubHeader: PropTypes.node,
   handleSubmit: PropTypes.func.isRequired,
+  itemHeader: PropTypes.node.isRequired,
+  itemSubHeader: PropTypes.node,
 }
 const defaultProps = {
-  formSectionNavigationSubHeader: undefined,
+  itemSubHeader: undefined,
 }
 
 class BaseForm extends Component {
@@ -34,8 +34,8 @@ class BaseForm extends Component {
     const {
       availableHeight,
       form,
-      formSectionNavigationHeader,
-      formSectionNavigationSubHeader,
+      itemHeader,
+      itemSubHeader,
       handleSubmit,
       ...rest
     } = this.props
@@ -54,9 +54,9 @@ class BaseForm extends Component {
           availableHeight={availableHeight - formActionBarHeight}
           customParts={customParts}
           formName={form}
-          formSectionNavigationHeader={formSectionNavigationHeader}
-          formSectionNavigationSubHeader={formSectionNavigationSubHeader}
           formValueSelector={this.formValueSelector}
+          itemHeader={itemHeader}
+          itemSubHeader={itemSubHeader}
           module="locality"
           moduleName="locality"
           sectionSpecs={sectionSpecs}

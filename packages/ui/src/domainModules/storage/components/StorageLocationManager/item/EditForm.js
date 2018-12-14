@@ -1,19 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'redux'
 
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import BaseForm from './BaseForm'
 
-export const include = [
-  'parent',
-  'preparationTypes',
-  'resourceActivities',
-  'taxa',
-]
-
 const propTypes = {
-  itemId: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
 }
@@ -24,13 +14,13 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const { nestedItem, onInteraction, itemId, ...rest } = this.props
+    const { nestedItem, onInteraction, ...rest } = this.props
 
     if (!nestedItem) {
       return null
     }
 
-    const { name, resourceActivities } = nestedItem
+    const { resourceActivities } = nestedItem
 
     return (
       <BaseForm
@@ -38,7 +28,6 @@ export class Edit extends PureComponent {
         displayBackButton
         displayResetButton
         form="storageLocationEdit"
-        formSectionNavigationHeader={name}
         initialValues={nestedItem}
         onClose={event => {
           event.preventDefault()
@@ -54,17 +43,4 @@ export class Edit extends PureComponent {
 Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
-export default compose(
-  createGetNestedItemById({
-    include,
-    refresh: true,
-    relationships: include,
-    resolveRelationships: [
-      'storageLocation',
-      'preparationType',
-      'resourceActivity',
-      'taxon',
-    ],
-    resource: 'storageLocation',
-  })
-)(Edit)
+export default Edit

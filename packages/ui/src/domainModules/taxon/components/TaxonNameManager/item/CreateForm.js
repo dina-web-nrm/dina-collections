@@ -25,14 +25,14 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form="taxonNameCreate"
-        formSectionNavigationHeader={
+        initialValues={initialValues}
+        itemHeader={
           <ModuleTranslate
             capitalize
             module="taxon"
             textKey="headers.newScientificName"
           />
         }
-        initialValues={initialValues}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')

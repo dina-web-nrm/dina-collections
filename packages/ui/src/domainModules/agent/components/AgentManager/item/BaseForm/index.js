@@ -23,15 +23,15 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   changeFormValue: PropTypes.func.isRequired,
   form: PropTypes.string.isRequired,
-  formSectionNavigationHeader: PropTypes.node.isRequired,
-  formSectionNavigationSubHeader: PropTypes.node,
   formValueSelector: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  itemHeader: PropTypes.node.isRequired,
+  itemSubHeader: PropTypes.node,
   removeArrayField: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  formSectionNavigationSubHeader: undefined,
+  itemSubHeader: undefined,
 }
 
 class BaseForm extends Component {
@@ -58,8 +58,8 @@ class BaseForm extends Component {
     const {
       availableHeight,
       form,
-      formSectionNavigationHeader,
-      formSectionNavigationSubHeader,
+      itemHeader,
+      itemSubHeader,
       formValueSelector,
       handleSubmit,
       ...rest
@@ -80,9 +80,9 @@ class BaseForm extends Component {
           changeFieldValue={this.changeFieldValue}
           customParts={customParts}
           formName={form}
-          formSectionNavigationHeader={formSectionNavigationHeader}
-          formSectionNavigationSubHeader={formSectionNavigationSubHeader}
           formValueSelector={formValueSelector}
+          itemHeader={itemHeader}
+          itemSubHeader={itemSubHeader}
           module="agent"
           moduleName="agent"
           removeArrayFieldByIndex={this.removeArrayFieldByIndex}
