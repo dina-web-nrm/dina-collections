@@ -99,6 +99,10 @@ module.exports = {
       relationKey: 'physicalObjects',
       type: 'updateRelationship',
     },
+    {
+      relationKey: 'taxa',
+      type: 'getRelationship',
+    },
   ],
   resource: 'storageLocation',
 }

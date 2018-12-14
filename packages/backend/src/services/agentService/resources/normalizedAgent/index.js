@@ -61,6 +61,10 @@ module.exports = {
       type: 'del',
     },
     {
+      relationKey: 'specimens',
+      type: 'getRelationship',
+    },
+    {
       relationKey: 'user',
       type: 'getRelationship',
     },

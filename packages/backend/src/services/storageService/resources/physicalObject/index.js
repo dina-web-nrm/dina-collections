@@ -37,7 +37,10 @@ module.exports = {
       postHooks: delPostHooks,
       type: 'del',
     },
-
+    {
+      relationKey: 'specimens',
+      type: 'getRelationship',
+    },
     {
       relationKey: 'storageLocation',
       type: 'getRelationship',
