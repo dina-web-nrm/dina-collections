@@ -656,9 +656,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         values: filterValues || {},
       })
 
-      return search({ query, sort: sortOrder }).then(items => {
-        this.props.setListItems(items, { managerScope })
-      })
+      return search({ query, sort: sortOrder, useScroll: false }).then(
+        items => {
+          this.props.setListItems(items, { managerScope })
+        }
+      )
     }
 
     viewUpdateTableView(prevProps, initialFilterValues) {

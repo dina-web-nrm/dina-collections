@@ -1,16 +1,32 @@
 export default function createCallParams({
   aggregations,
+  batchLimit = 3000,
+  batchNumber = 0,
   excludeFields,
   includeDeactivated,
   includeFields,
-  limit,
-  offset,
+  lastBatchOffset = 0,
+  limit: totalLimit,
+  multipleBatches,
   options,
   query,
-  scroll,
   scrollId,
   sort,
+  useScroll,
 }) {
+  let limit
+  let offset = 0
+  if (!multipleBatches) {
+    limit = totalLimit
+  } else {
+    limit = Math.min(totalLimit, batchLimit)
+    if (!useScroll) {
+      if (batchNumber > 0) {
+        offset = Math.min(totalLimit, lastBatchOffset + batchLimit)
+      }
+    }
+  }
+
   return {
     ...options,
     body: {
@@ -23,7 +39,7 @@ export default function createCallParams({
           limit,
           offset,
           query,
-          scroll,
+          scroll: multipleBatches,
           scrollId,
           sort,
         },

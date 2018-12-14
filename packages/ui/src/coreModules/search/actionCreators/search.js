@@ -12,6 +12,7 @@ export default function search(
     resource,
     sort,
     storeSearchResult = false,
+    useScroll,
   } = {}
 ) {
   const updateSearchResult = actionCreators.set[':resource.searchState']
@@ -38,6 +39,7 @@ export default function search(
         query,
         sort,
         throwError: true,
+        useScroll,
       })
     ).then(items => {
       if (storeSearchResult) {

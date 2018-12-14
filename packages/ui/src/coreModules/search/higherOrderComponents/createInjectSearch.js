@@ -64,6 +64,7 @@ const createInjectSearch = (
         query,
         resource: resourceInput,
         sort,
+        useScroll = true,
       } = {}
     ) {
       const { resource: propResource } = this.props
@@ -77,6 +78,7 @@ const createInjectSearch = (
         resource: resourceInput || propResource || resource,
         sort,
         storeSearchResult,
+        useScroll,
       })
     }
 

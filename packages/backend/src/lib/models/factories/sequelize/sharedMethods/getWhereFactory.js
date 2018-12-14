@@ -3,6 +3,7 @@ const extractFieldsFromUserInput = require('../../../../data/fields/utilities/ex
 const extractSortObjectsFromUserInput = require('../../../../data/sort/utilities/extractSortObjectsFromUserInput')
 const getWhereWrapper = require('../../wrappers/methods/getWhere')
 const formatModelItemsResponse = require('../utilities/formatModelItemsResponse')
+const extractMetaFromResult = require('../utilities/extractMetaFromResult')
 
 const buildWhere = ({
   buildWhereFilter,
@@ -104,6 +105,8 @@ module.exports = function getWhereFactory({
             selectableFields,
           })
 
+          const meta = extractMetaFromResult({ result: res })
+
           if (fields.length || excludeFieldsInput.length) {
             return {
               items: items.map(item => {
@@ -113,10 +116,12 @@ module.exports = function getWhereFactory({
                   item,
                 })
               }),
+              meta,
             }
           }
           return {
             items,
+            meta,
           }
         })
       })

@@ -2,27 +2,35 @@ import createCallParams from './createCallParams'
 
 export default function performQuery({
   apiClient,
-  batchLimit: batchLimitInput = 3000,
   callParams,
+  limit,
+  multipleBatches,
   operationId,
   options,
-  scroll,
+  useScroll,
 }) {
+  // TODO clean this up and use meta from server to know if scroll is available
+  let lastBatchOffset = 0
+  let batchNumber = 0
   let lastScrollId
   let lastBatchCallParams
   let nFetchedItems = 0
-  const { limit } = callParams.body.data.attributes
-  const batchLimit = Math.min(limit, batchLimitInput)
   const data = []
   const call = () => {
     return Promise.resolve().then(() => {
       lastBatchCallParams = createCallParams({
         ...callParams.body.data.attributes,
-        limit: scroll ? batchLimit : limit,
+        batchNumber,
+        lastBatchOffset,
+        limit,
+        multipleBatches,
         options,
-        scroll,
         scrollId: lastScrollId,
+        useScroll,
       })
+
+      lastBatchOffset = lastBatchCallParams.body.data.attributes.offset
+
       return apiClient.call(operationId, lastBatchCallParams).then(response => {
         const { scrollId, nResponseItems = 0, nTotalItems = 0 } =
           (response && response.meta) || {}
@@ -31,14 +39,29 @@ export default function performQuery({
         nFetchedItems += nResponseItems
         data.push(...response.data)
 
-        const doAnotherCall =
-          scroll &&
-          lastScrollId &&
-          nFetchedItems !== 0 &&
-          nFetchedItems < nTotalItems &&
-          nFetchedItems < limit
+        let doAnotherCall = false
+        if (multipleBatches) {
+          if (useScroll) {
+            doAnotherCall =
+              lastScrollId &&
+              nResponseItems !== 0 &&
+              nFetchedItems < nTotalItems &&
+              nFetchedItems < limit
+          } else {
+            const {
+              offset: lastOffset,
+              limit: lastLimit,
+            } = lastBatchCallParams.body.data.attributes
+
+            doAnotherCall =
+              lastOffset < limit &&
+              nResponseItems !== 0 &&
+              nResponseItems === lastLimit
+          }
+        }
 
         if (doAnotherCall) {
+          batchNumber += 1
           return call()
         }
 
