@@ -4,7 +4,12 @@ import { Modal, Button } from 'semantic-ui-react'
 import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 
 import TaxonNameDropdownSearch from '../TaxonNameDropdownSearch'
-import TaxonNameManager from '../TaxonNameManager/Local'
+
+let TaxonNameManager = null
+
+export function setLocalManager(InjectedTaxonNameManager) {
+  TaxonNameManager = InjectedTaxonNameManager
+}
 
 const propTypes = {
   fieldSearchQuery: PropTypes.string,

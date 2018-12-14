@@ -9,13 +9,14 @@ import createLog from 'utilities/log'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/resourceManager/keyObjectModule'
 
 import * as actionCreators from 'coreModules/resourceManager/actionCreators'
-
+import { createShortcutLayer } from 'coreModules/keyboardShortcuts/higherOrderComponents'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
 import {
@@ -31,28 +32,31 @@ import {
 
 const log = createLog('resourceManager:resourceManagerWrapper')
 
-const createResourceManagerWrapper = (
-  { nestedCacheNamespaces = ['', 'title'] } = {}
-) => ComposedComponent => {
-  const mapStateToProps = (state, { resource }) => {
+const createResourceManagerWrapper = () => ComposedComponent => {
+  const mapStateToProps = (state, { isPicker, resource }) => {
+    const managerScope = isPicker ? `${resource}Picker` : resource
     const { get } = keyObjectGlobalSelectors
-    const baseItems = get[':resource.baseItems'](state, { resource })
-    const listItems = get[':resource.listItems'](state, { resource })
+    const baseItems = get[':managerScope.baseItems'](state, { managerScope })
+    const listItems = get[':managerScope.listItems'](state, { managerScope })
     const currentTableRowNumber =
-      get[':resource.currentTableRowNumber'](state, { resource }) || 1
+      get[':managerScope.currentTableRowNumber'](state, { managerScope }) || 1
 
-    const showAll = get[':resource.showAll'](state, { resource })
-    const expandedIds = get[':resource.expandedIds'](state, { resource })
+    const showAll = get[':managerScope.showAll'](state, { managerScope })
+    const expandedIds = get[':managerScope.expandedIds'](state, {
+      managerScope,
+    })
     const focusedIndex = currentTableRowNumber - 1
     const totalNumberOfRecords = (listItems || []).length
     const nextRowAvailable = currentTableRowNumber < totalNumberOfRecords
     const prevRowAvailable = currentTableRowNumber > 1
-    const filterValues = get[':resource.listFilterValues'](state, { resource })
+    const filterValues = get[':managerScope.listFilterValues'](state, {
+      managerScope,
+    })
     const focusedItemId =
       listItems && listItems[focusedIndex] && listItems[focusedIndex].id
 
-    const focusIdWhenLoaded = get[':resource.focusIdWhenLoaded'](state, {
-      resource,
+    const focusIdWhenLoaded = get[':managerScope.focusIdWhenLoaded'](state, {
+      managerScope,
     })
 
     return {
@@ -63,7 +67,9 @@ const createResourceManagerWrapper = (
       focusedIndex,
       focusedItemId,
       focusIdWhenLoaded,
+      layer: managerScope,
       listItems,
+      managerScope,
       nextRowAvailable,
       prevRowAvailable,
       showAll,
@@ -73,21 +79,22 @@ const createResourceManagerWrapper = (
 
   const mapDispatchToProps = {
     clearNestedCache: crudActionCreators.clearNestedCache,
-    clearResourceState: keyObjectActionCreators.del[':resource'],
+    clearResourceState: keyObjectActionCreators.del[':managerScope'],
     close: actionCreators.close,
     delFocusIdWhenLoaded:
-      keyObjectActionCreators.del[':resource.focusIdWhenLoaded'],
+      keyObjectActionCreators.del[':managerScope.focusIdWhenLoaded'],
     open: actionCreators.open,
     resetForm: resetActionCreator,
-    setBaseItems: keyObjectActionCreators.set[':resource.baseItems'],
+    setBaseItems: keyObjectActionCreators.set[':managerScope.baseItems'],
     setCurrentTableRowNumber:
-      keyObjectActionCreators.set[':resource.currentTableRowNumber'],
-    setExpandedIds: keyObjectActionCreators.set[':resource.expandedIds'],
-    setFilterValues: keyObjectActionCreators.set[':resource.listFilterValues'],
+      keyObjectActionCreators.set[':managerScope.currentTableRowNumber'],
+    setExpandedIds: keyObjectActionCreators.set[':managerScope.expandedIds'],
+    setFilterValues:
+      keyObjectActionCreators.set[':managerScope.listFilterValues'],
     setFocusIdWhenLoaded:
-      keyObjectActionCreators.set[':resource.focusIdWhenLoaded'],
-    setListItems: keyObjectActionCreators.set[':resource.listItems'],
-    setShowAll: keyObjectActionCreators.set[':resource.showAll'],
+      keyObjectActionCreators.set[':managerScope.focusIdWhenLoaded'],
+    setListItems: keyObjectActionCreators.set[':managerScope.listItems'],
+    setShowAll: keyObjectActionCreators.set[':managerScope.showAll'],
   }
 
   const propTypes = {
@@ -109,10 +116,11 @@ const createResourceManagerWrapper = (
     focusIdWhenLoaded: PropTypes.string,
     initialFilterValues: PropTypes.object,
     initialItemId: PropTypes.string,
-    isPicker: PropTypes.bool.isRequired,
+    isPicker: PropTypes.bool,
     itemFetchOptions: PropTypes.object,
     itemId: PropTypes.string,
     listItems: PropTypes.array,
+    managerScope: PropTypes.string.isRequired,
     nestedCacheNamespaces: PropTypes.arrayOf(PropTypes.string),
     nextRowAvailable: PropTypes.bool.isRequired,
     onInteraction: PropTypes.func.isRequired,
@@ -256,10 +264,10 @@ const createResourceManagerWrapper = (
 
     componentDidMount() {
       this.props.open()
-      const { initialFilterValues, resource } = this.props
+      const { initialFilterValues, managerScope } = this.props
 
       if (initialFilterValues) {
-        this.props.setFilterValues(initialFilterValues, { resource })
+        this.props.setFilterValues(initialFilterValues, { managerScope })
         this.handleInteraction(NAVIGATE_FILTER)
       }
 
@@ -274,7 +282,7 @@ const createResourceManagerWrapper = (
     componentDidUpdate(prevProps) {
       const {
         currentTableRowNumber,
-        resource,
+        managerScope,
         totalNumberOfRecords,
       } = this.props
 
@@ -335,32 +343,25 @@ const createResourceManagerWrapper = (
       })
 
       if (totalNumberOfRecords < currentTableRowNumber) {
-        this.props.setCurrentTableRowNumber(totalNumberOfRecords, { resource })
+        this.props.setCurrentTableRowNumber(totalNumberOfRecords, {
+          managerScope,
+        })
       }
     }
 
     componentWillUnmount() {
-      const { resource } = this.props
+      const { managerScope } = this.props
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),
       })
 
-      this.props.clearResourceState({ resource })
+      this.props.clearResourceState({ managerScope })
       this.props.close()
     }
 
     getNestedCacheNamespaces() {
-      if (this.props.nestedCacheNamespaces) {
-        return this.props.nestedCacheNamespaces
-      }
-
-      if (nestedCacheNamespaces) {
-        return nestedCacheNamespaces.map(
-          namespace => `${this.props.resource}${namespace}`
-        )
-      }
-
-      return []
+      const { managerScope } = this.props
+      return [managerScope, `${managerScope}Title`]
     }
 
     getActiveViews() {
@@ -402,14 +403,20 @@ const createResourceManagerWrapper = (
       return transitions
     }
     resetFilters() {
-      const { resource } = this.props
+      const { managerScope, resource } = this.props
       const formName = `${resource}Filter`
       this.props.resetForm(formName, { resource })
-      this.props.setFilterValues({}, { resource })
+      this.props.setFilterValues({}, { managerScope })
     }
 
     expandAncestorsForItemId(itemId) {
-      const { dispatch, itemFetchOptions, resource, sortOrder } = this.props
+      const {
+        dispatch,
+        itemFetchOptions,
+        managerScope,
+        resource,
+        sortOrder,
+      } = this.props
       const getManyActionCreator =
         crudActionCreators[resource] && crudActionCreators[resource].getMany
 
@@ -452,7 +459,7 @@ const createResourceManagerWrapper = (
             }
           }, expandedIds)
 
-          this.props.setExpandedIds(updatedExpandedIds, { resource })
+          this.props.setExpandedIds(updatedExpandedIds, { managerScope })
         })
       })
     }
@@ -462,13 +469,14 @@ const createResourceManagerWrapper = (
         baseTreeFilter,
         dispatch,
         itemFetchOptions,
+        managerScope,
         resource,
         sortOrder,
       } = this.props
       const getManyActionCreator =
         crudActionCreators[resource] && crudActionCreators[resource].getMany
 
-      this.props.setBaseItems([], { resource })
+      this.props.setBaseItems([], { managerScope })
       return dispatch(
         getManyActionCreator({
           queryParams: {
@@ -479,7 +487,7 @@ const createResourceManagerWrapper = (
           },
         })
       ).then(items => {
-        this.props.setBaseItems(items, { resource })
+        this.props.setBaseItems(items, { managerScope })
       })
     }
 
@@ -503,21 +511,21 @@ const createResourceManagerWrapper = (
     }
 
     focusRowWithId(itemId) {
-      const { resource } = this.props
+      const { managerScope } = this.props
       const rowNumber = this.findRowNumberById(itemId)
       if (rowNumber) {
-        this.props.setCurrentTableRowNumber(rowNumber, { resource })
+        this.props.setCurrentTableRowNumber(rowNumber, { managerScope })
         return rowNumber
       }
       return null
     }
 
     handleUpdateFilterValues(filters = {}) {
-      const { resource, tableActive } = this.props
+      const { managerScope, tableActive } = this.props
       if (!tableActive) {
         this.props.onInteraction(NAVIGATE_LIST)
       }
-      this.props.setFilterValues(filters, { resource })
+      this.props.setFilterValues(filters, { managerScope })
     }
 
     handleClosePicker() {
@@ -532,26 +540,34 @@ const createResourceManagerWrapper = (
       this.handleInteraction(NAVIGATE_CREATE)
     }
     handleSelectNextRecord() {
-      const { currentTableRowNumber, nextRowAvailable, resource } = this.props
+      const {
+        currentTableRowNumber,
+        managerScope,
+        nextRowAvailable,
+      } = this.props
       if (nextRowAvailable) {
         this.props.setCurrentTableRowNumber(currentTableRowNumber + 1, {
-          resource,
+          managerScope,
         })
       }
     }
     handleSelectPrev() {
-      const { currentTableRowNumber, prevRowAvailable, resource } = this.props
+      const {
+        currentTableRowNumber,
+        managerScope,
+        prevRowAvailable,
+      } = this.props
       if (prevRowAvailable) {
         this.props.setCurrentTableRowNumber(currentTableRowNumber - 1, {
-          resource,
+          managerScope,
         })
       }
     }
     handleShowAllRecords() {
-      const { resource, showAll, treeActive } = this.props
+      const { managerScope, showAll, treeActive } = this.props
 
       if (treeActive) {
-        this.props.setShowAll(!showAll, { resource })
+        this.props.setShowAll(!showAll, { managerScope })
       } else {
         this.resetFilters()
         this.tableSearch()
@@ -559,16 +575,16 @@ const createResourceManagerWrapper = (
     }
 
     handleToggleRow(itemId) {
-      const { expandedIds, resource } = this.props
+      const { expandedIds, managerScope } = this.props
       const updatedExpandedIds = {
         ...expandedIds,
         [itemId]: !expandedIds[itemId],
       }
-      this.props.setExpandedIds(updatedExpandedIds, { resource })
+      this.props.setExpandedIds(updatedExpandedIds, { managerScope })
     }
 
     handleToggleCurrentRow(mode) {
-      const { focusedIndex, expandedIds, listItems, resource } = this.props
+      const { focusedIndex, expandedIds, listItems, managerScope } = this.props
       const listItem = listItems[focusedIndex]
       const id = listItem && listItem.id
 
@@ -576,7 +592,7 @@ const createResourceManagerWrapper = (
         ...expandedIds,
         [id]: mode === 'expand',
       }
-      this.props.setExpandedIds(updatedExpandedIds, { resource })
+      this.props.setExpandedIds(updatedExpandedIds, { managerScope })
     }
 
     handleClickRow(_, itemId) {
@@ -588,8 +604,8 @@ const createResourceManagerWrapper = (
     }
 
     handleSetCurrentTableRow(event, number) {
-      const { resource } = this.props
-      this.props.setCurrentTableRowNumber(number, { resource })
+      const { managerScope } = this.props
+      this.props.setCurrentTableRowNumber(number, { managerScope })
     }
 
     handleToggleFilters() {
@@ -634,14 +650,14 @@ const createResourceManagerWrapper = (
     }
 
     tableSearch(filterValues) {
-      const { search, resource, sortOrder } = this.props
+      const { managerScope, search, sortOrder } = this.props
 
       const query = this.props.buildFilterQuery({
         values: filterValues || {},
       })
 
       return search({ query, sort: sortOrder }).then(items => {
-        this.props.setListItems(items, { resource })
+        this.props.setListItems(items, { managerScope })
       })
     }
 
@@ -652,7 +668,7 @@ const createResourceManagerWrapper = (
         initialItemId,
         itemId,
         listItems,
-        resource,
+        managerScope,
         tableActive,
       } = this.props
 
@@ -667,7 +683,7 @@ const createResourceManagerWrapper = (
           initialItemId !== undefined &&
           initialItemId !== ''
         ) {
-          this.props.setFocusIdWhenLoaded(initialItemId, { resource })
+          this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
         }
         this.transitionToTableView(initialFilterValues)
         return
@@ -691,7 +707,7 @@ const createResourceManagerWrapper = (
       ) {
         const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
         if (rowFocused) {
-          this.props.delFocusIdWhenLoaded({ resource })
+          this.props.delFocusIdWhenLoaded({ managerScope })
         }
       }
     }
@@ -699,9 +715,9 @@ const createResourceManagerWrapper = (
     transitionToTableView(initialFilterValues) {
       log.debug('transition to view: Table')
 
-      const { filterValues, focusedItemId, resource } = this.props
+      const { filterValues, focusedItemId, managerScope } = this.props
       if (focusedItemId) {
-        this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
+        this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
       }
 
       this.tableSearch(filterValues || initialFilterValues)
@@ -717,11 +733,11 @@ const createResourceManagerWrapper = (
     viewUpdateTreeView(prevProps) {
       const {
         focusIdWhenLoaded,
-        listItems,
-        resource,
-        treeActive,
-        itemId,
         initialItemId,
+        itemId,
+        listItems,
+        managerScope,
+        treeActive,
       } = this.props
 
       if (!treeActive) {
@@ -735,7 +751,7 @@ const createResourceManagerWrapper = (
           initialItemId !== undefined &&
           initialItemId !== ''
         ) {
-          this.props.setFocusIdWhenLoaded(initialItemId, { resource })
+          this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
           this.expandAncestorsForItemId(initialItemId)
         }
         this.transitionToTreeView()
@@ -750,25 +766,25 @@ const createResourceManagerWrapper = (
       ) {
         const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
         if (rowFocused) {
-          this.props.delFocusIdWhenLoaded({ resource })
+          this.props.delFocusIdWhenLoaded({ managerScope })
         }
       }
     }
     transitionToTreeView() {
       log.debug('transition to view: Tree')
       this.resetFilters()
-      const { focusedItemId, resource } = this.props
+      const { focusedItemId, managerScope } = this.props
       if (focusedItemId) {
-        this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
+        this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
         this.expandAncestorsForItemId(focusedItemId)
       }
       this.fetchTreeBase()
     }
     transitionFromTreeView() {
       log.debug('transition from view: Tree')
-      const { resource } = this.props
+      const { managerScope } = this.props
 
-      this.props.setExpandedIds({}, { resource })
+      this.props.setExpandedIds({}, { managerScope })
     }
 
     viewUpdateEditItemView(prevProps) {
@@ -809,16 +825,17 @@ const createResourceManagerWrapper = (
     }
 
     render() {
-      const { nextRowAvailable, prevRowAvailable } = this.props
+      const { managerScope, nextRowAvailable, prevRowAvailable } = this.props
       return (
         <React.Fragment>
           <KeyboardShortcuts
-            activeInLayer="resourceManager"
+            activeInLayer={managerScope}
             shortcuts={this.shortcuts}
           />
           <ComposedComponent
             {...this.props}
             fetchTreeBase={this.fetchTreeBase}
+            managerScope={managerScope}
             onClickRow={this.handleClickRow}
             onClosePicker={this.handleClosePicker}
             onFormTabClick={this.handleFormTabClick}
@@ -849,7 +866,8 @@ const createResourceManagerWrapper = (
       storeSearchResult: false,
     }),
     connect(mapStateToProps, mapDispatchToProps),
-    connect()
+    connect(),
+    createShortcutLayer({ layer: 'resourceManager' })
   )(ResourceManagerWrapper)
 }
 

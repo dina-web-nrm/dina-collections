@@ -13,6 +13,7 @@ const propTypes = {
   fetchItemById: PropTypes.func.isRequired,
   focusedIndex: PropTypes.number.isRequired,
   listItems: PropTypes.array,
+  managerScope: PropTypes.string.isRequired,
   onClickRow: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   tableBatchFetchOptions: PropTypes.object,
@@ -66,6 +67,7 @@ export class InfiniteTable extends Component {
       fetchItemById,
       focusedIndex,
       listItems,
+      managerScope,
       resource,
       tableBatchFetchOptions,
       tableColumnSpecifications,
@@ -87,6 +89,7 @@ export class InfiniteTable extends Component {
         background={background}
         itemId={id}
         key={id}
+        namespace={managerScope}
         onClickRow={this.props.onClickRow}
         relationships={relationships}
         resolveRelationships={resolveRelationships}

@@ -58,39 +58,25 @@ class KeyboardShortcuts extends Component {
     this.getParamsHandler = this.getParamsHandler.bind(this)
     this.registerKeyboardShortcut = this.registerKeyboardShortcut.bind(this)
     this.unregisterKeyboardShortcut = this.unregisterKeyboardShortcut.bind(this)
+    this.addShortcuts = this.addShortcuts.bind(this)
+    this.removeShortcuts = this.removeShortcuts.bind(this)
   }
 
   componentDidMount() {
-    const { activeInLayer: generalActiveInLayer, shortcuts } = this.props
+    this.addShortcuts()
+  }
 
-    if (!shortcuts || !shortcuts.length) {
-      throw new Error('Missing shortcuts')
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.layer !== nextProps.layer &&
+      this.props.activeInLayer === nextProps.layer
+    ) {
+      this.addShortcuts(nextProps)
     }
-
-    shortcuts.forEach(shortcut => {
-      const { activeInLayer: specificActiveInLayer, command } = shortcut
-      const activeInLayer = specificActiveInLayer || generalActiveInLayer
-      if (Array.isArray(command)) {
-        return command.forEach(cmd => {
-          this.registerKeyboardShortcut({
-            ...shortcut,
-            activeInLayer,
-            command: cmd,
-          })
-        })
-      }
-
-      return this.registerKeyboardShortcut({ activeInLayer, ...shortcut })
-    })
   }
 
   componentWillUnmount() {
-    const { shortcuts } = this.props
-
-    shortcuts.forEach(shortcut => {
-      const { command } = shortcut
-      return this.unregisterKeyboardShortcut(command)
-    })
+    this.removeShortcuts()
   }
 
   getHandler(shortcut) {
@@ -132,6 +118,38 @@ class KeyboardShortcuts extends Component {
         return () => {}
       }
     }
+  }
+
+  addShortcuts(props = this.props) {
+    const { activeInLayer: generalActiveInLayer, shortcuts } = props
+
+    if (!shortcuts || !shortcuts.length) {
+      throw new Error('Missing shortcuts')
+    }
+
+    shortcuts.forEach(shortcut => {
+      const { activeInLayer: specificActiveInLayer, command } = shortcut
+      const activeInLayer = specificActiveInLayer || generalActiveInLayer
+      if (Array.isArray(command)) {
+        return command.forEach(cmd => {
+          this.registerKeyboardShortcut({
+            ...shortcut,
+            activeInLayer,
+            command: cmd,
+          })
+        })
+      }
+
+      return this.registerKeyboardShortcut({ activeInLayer, ...shortcut })
+    })
+  }
+  removeShortcuts() {
+    const { shortcuts } = this.props
+
+    shortcuts.forEach(shortcut => {
+      const { command } = shortcut
+      return this.unregisterKeyboardShortcut(command)
+    })
   }
 
   registerKeyboardShortcut(shortcut) {

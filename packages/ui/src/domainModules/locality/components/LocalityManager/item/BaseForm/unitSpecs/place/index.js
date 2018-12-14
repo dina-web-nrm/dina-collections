@@ -18,7 +18,7 @@ const parts = [
     wrapInField: true,
   },
   {
-    componentName: 'LocalityDropdownSearch',
+    componentName: 'LocalityDropdownPickerSearch',
     componentProps: {
       columnProps: { width: 9 },
     },

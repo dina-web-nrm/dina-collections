@@ -1,6 +1,6 @@
 const parts = [
   {
-    componentName: 'TaxonDropdownSearch',
+    componentName: 'TaxonDropdownPickerSearch',
     componentProps: {
       columnProps: { width: 10 },
     },

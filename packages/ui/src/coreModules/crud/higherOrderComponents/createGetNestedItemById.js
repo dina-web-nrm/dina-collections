@@ -42,9 +42,7 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
       props: ownProps,
     })
 
-    const namespace = injectedNamspace
-      ? `${resource}${injectedNamspace}`
-      : `${resource}`
+    const namespace = injectedNamspace || resource
 
     const getNestedItem =
       keyObjectGlobalSelectors.get['nestedCache.:namespace.items.:id']

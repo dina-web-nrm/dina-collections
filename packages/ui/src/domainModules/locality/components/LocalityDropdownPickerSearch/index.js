@@ -4,7 +4,12 @@ import { Modal, Button } from 'semantic-ui-react'
 import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 
 import LocalityDropdownSearch from '../LocalityDropdownSearch'
-import LocalityManager from '../LocalityManager/Local'
+
+let LocalityManager = null
+
+export function setLocalManager(injected) {
+  LocalityManager = injected
+}
 
 const propTypes = {
   fieldSearchQuery: PropTypes.string,

@@ -12,6 +12,13 @@ module.exports = function ensureNoCircularAncestorsPreHook({
       return null
     }
 
+    if (parentId === id) {
+      backendError400({
+        code: 'REQUEST_ERROR',
+        detail: `Cant set parentId: (${parentId}) to own id: (${id})`,
+      })
+    }
+
     return serviceInteractor
       .getMany({
         request: {
