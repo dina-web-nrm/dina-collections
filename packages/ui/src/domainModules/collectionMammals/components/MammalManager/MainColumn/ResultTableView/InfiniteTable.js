@@ -84,44 +84,43 @@ export class InfiniteTable extends Component {
   }
 
   componentDidMount() {
+    this.scroll()
     handleFirstSearchResult(this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (
-      this.list &&
-      nextProps.currentTableRowNumber &&
-      this.props.currentTableRowNumber !== nextProps.currentTableRowNumber
-    ) {
-      const [firstVisibleRow] = this.list.getVisibleRange()
-
-      // this special case is to avoid that the focused row is hidden behind the
-      // table header, which is fixed positioned and therefore seen by
-      // react-list as the first row in terms of scroll position
-      if (nextProps.currentTableRowNumber <= firstVisibleRow + 1) {
-        this.list.scrollTo(nextProps.currentTableRowNumber - 1)
-      } else {
-        this.list.scrollAround(nextProps.currentTableRowNumber)
-      }
-    }
+  componentDidUpdate(prevProps) {
+    this.scroll(prevProps)
 
     if (
-      !(
-        this.props.searchResult &&
-        this.props.searchResult.items &&
-        this.props.searchResult.items.length
-      ) &&
-      (nextProps.searchResult &&
-        nextProps.searchResult.items &&
-        nextProps.searchResult.items.length)
+      !objectPath.get(prevProps, 'searchResult.items.length') &&
+      objectPath.get(this.props, 'searchResult.items.length')
     ) {
-      handleFirstSearchResult(nextProps)
+      handleFirstSearchResult(this.props)
     }
   }
 
   handleRowClick(rowNumber, specimenId) {
     this.props.setFocusedSpecimenId(specimenId)
     this.props.setCurrentTableRowNumber(rowNumber)
+  }
+
+  scroll(prevProps = {}) {
+    const { currentTableRowNumber } = this.props
+
+    const { currentTableRowNumber: prevCurrentTableRowNumber } = prevProps
+
+    if (this.list && currentTableRowNumber !== prevCurrentTableRowNumber) {
+      const [firstVisibleRow] = this.list.getVisibleRange()
+
+      // this special case is to avoid that the focused row is hidden behind the
+      // table header, which is fixed positioned and therefore seen by
+      // react-list as the first row in terms of scroll position
+      if (currentTableRowNumber <= firstVisibleRow + 1) {
+        this.list.scrollTo(currentTableRowNumber - 1)
+      } else {
+        this.list.scrollAround(currentTableRowNumber)
+      }
+    }
   }
 
   renderItem(index) {
