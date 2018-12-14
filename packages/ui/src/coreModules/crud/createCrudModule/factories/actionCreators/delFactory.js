@@ -25,7 +25,7 @@ export default function delAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function delAc({ id, throwError = false } = {}) {
+  return function delAc({ id, throwError = true } = {}) {
     log.debug(`${resource}.del called`, { id })
 
     return (dispatch, getState, { apiClient }) => {

@@ -42,7 +42,7 @@ class CreateSpecimen extends PureComponent {
             item: formOutput,
             type: 'specimen',
           })
-          return createSpecimen({ item, throwError: true })
+          return createSpecimen({ item })
         }}
         initialValues={initialValues}
         mode="register"
