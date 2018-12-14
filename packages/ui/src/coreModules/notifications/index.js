@@ -2,6 +2,7 @@ import * as actionCreators from './actionCreators'
 import * as actionTypes from './actionTypes'
 import * as components from './components'
 import * as constants from './constants'
+import * as notifications from './notifications'
 import * as selectors from './selectors'
 import globalSelectors from './globalSelectors'
 import middleware from './middleware'
@@ -17,6 +18,7 @@ export {
   globalSelectors,
   middleware,
   name,
+  notifications,
   reducer,
   selectors,
 }
