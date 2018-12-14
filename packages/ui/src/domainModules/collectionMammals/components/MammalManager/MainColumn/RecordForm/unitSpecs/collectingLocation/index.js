@@ -5,7 +5,7 @@ const parts = [
     componentName: 'TranslatedHeader',
     componentProps: {
       as: 'h3',
-      textKey: 'headers.collecintLocality',
+      textKey: 'headers.collectingLocality',
     },
   },
   {
