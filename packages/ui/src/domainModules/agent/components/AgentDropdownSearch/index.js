@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'redux'
 
 import createDeleteProperties from 'common/es5/createDeleteProperties'
 import { DropdownSearch } from 'coreModules/form/components'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 import { ALL, PERSON, ORGANIZATION, OTHER, UNKNOWN } from '../../constants'
 
@@ -98,4 +96,4 @@ class AgentDropdownSearch extends Component {
 AgentDropdownSearch.propTypes = propTypes
 AgentDropdownSearch.defaultProps = defaultProps
 
-export default compose(withI18n({ module: 'form' }))(AgentDropdownSearch)
+export default AgentDropdownSearch
