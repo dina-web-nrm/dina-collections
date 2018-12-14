@@ -12,6 +12,7 @@ const {
   getKeyType,
   getKeyUnique,
   getPath,
+  getInverseRelationshipKey,
   getTargetFormat,
   getTargetModel,
   getTargetOneOrMany,
@@ -29,6 +30,7 @@ const getRelationshipParamsFromRelationshipsSchemaItem = ({
     relationshipsSchemaItem && {
       allowNull: getKeyAllowNull(relationshipsSchemaItem),
       format: getTargetFormat(relationshipsSchemaItem),
+      inverseTargetAs: getInverseRelationshipKey(relationshipsSchemaItem),
       keyName: getKeyName(relationshipsSchemaItem),
       keyStoredInModel,
       keyType,

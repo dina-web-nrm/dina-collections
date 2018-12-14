@@ -5,6 +5,7 @@ const {
   getKeyType,
   getKeyUnique,
   getPath,
+  getInverseRelationshipKey,
   getTargetFormat,
   getTargetModel,
   getTargetOneOrMany,
@@ -16,6 +17,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', () => {
   beforeEach(() => {
     schemaItem = {
       type: 'object',
+      'x-inverse-relationship-key': 'dice',
       'x-key-allow-null': true,
       'x-key-name': 'customKey',
       'x-key-stored-in-model': 'game',
@@ -25,7 +27,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', () => {
       properties: {
         data: {
           type: 'object',
-          $ref: 'dice',
+          $ref: 'game',
         },
       },
     }
@@ -103,6 +105,18 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', () => {
     })
   })
 
+  describe('getInverseRelationshipKey', () => {
+    it('returns undefined for empty schemaItem', () => {
+      expect(getInverseRelationshipKey(undefined)).toEqual(undefined)
+    })
+    it('returns x-inverse-relationship-key', () => {
+      const testValue = getInverseRelationshipKey(schemaItem)
+      const expectedResult = 'dice'
+
+      expect(testValue).toEqual(expectedResult)
+    })
+  })
+
   describe('getTargetFormat', () => {
     it('returns undefined for empty schemaItem', () => {
       expect(getTargetFormat(undefined)).toEqual(undefined)
@@ -121,7 +135,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', () => {
     })
     it('returns $ref of data property', () => {
       const testValue = getTargetModel(schemaItem)
-      const expectedResult = 'dice'
+      const expectedResult = 'game'
 
       expect(testValue).toEqual(expectedResult)
     })
