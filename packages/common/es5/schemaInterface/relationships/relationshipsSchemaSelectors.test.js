@@ -7,6 +7,7 @@ var _require = require('./relationshipsSchemaSelectors'),
     getKeyType = _require.getKeyType,
     getKeyUnique = _require.getKeyUnique,
     getPath = _require.getPath,
+    getInverseRelationshipKey = _require.getInverseRelationshipKey,
     getTargetFormat = _require.getTargetFormat,
     getTargetModel = _require.getTargetModel,
     getTargetOneOrMany = _require.getTargetOneOrMany;
@@ -16,6 +17,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', function 
   beforeEach(function () {
     schemaItem = {
       type: 'object',
+      'x-inverse-relationship-key': 'dice',
       'x-key-allow-null': true,
       'x-key-name': 'customKey',
       'x-key-stored-in-model': 'game',
@@ -25,7 +27,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', function 
       properties: {
         data: {
           type: 'object',
-          $ref: 'dice'
+          $ref: 'game'
         }
       }
     };
@@ -103,6 +105,18 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', function 
     });
   });
 
+  describe('getInverseRelationshipKey', function () {
+    it('returns undefined for empty schemaItem', function () {
+      expect(getInverseRelationshipKey(undefined)).toEqual(undefined);
+    });
+    it('returns x-inverse-relationship-key', function () {
+      var testValue = getInverseRelationshipKey(schemaItem);
+      var expectedResult = 'dice';
+
+      expect(testValue).toEqual(expectedResult);
+    });
+  });
+
   describe('getTargetFormat', function () {
     it('returns undefined for empty schemaItem', function () {
       expect(getTargetFormat(undefined)).toEqual(undefined);
@@ -121,7 +135,7 @@ describe('schemaInterface/relationships/relationshipsSchemaSelectors', function 
     });
     it('returns $ref of data property', function () {
       var testValue = getTargetModel(schemaItem);
-      var expectedResult = 'dice';
+      var expectedResult = 'game';
 
       expect(testValue).toEqual(expectedResult);
     });
