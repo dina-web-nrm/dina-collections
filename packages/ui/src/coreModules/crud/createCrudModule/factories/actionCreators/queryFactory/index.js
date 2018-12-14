@@ -45,9 +45,10 @@ export default function queryAcFactory(
       query,
       sort,
       throwError = false,
+      useScroll,
     } = {}
   ) {
-    const scroll = limit + offset > 2000
+    const multipleBatches = limit + offset > 2000
 
     log.debug(`${resource}.create called`, {
       aggregations,
@@ -55,10 +56,11 @@ export default function queryAcFactory(
       includeDeactivated,
       includeFields,
       limit,
+      multipleBatches,
       offset,
       query,
-      scroll,
       sort,
+      useScroll,
     })
 
     return (dispatch, getState, { apiClient }) => {
@@ -68,11 +70,12 @@ export default function queryAcFactory(
         includeDeactivated,
         includeFields,
         limit,
+        multipleBatches,
         offset,
         options,
         query,
-        scroll,
         sort,
+        useScroll,
       })
       dispatch({
         meta: callParams,
@@ -82,9 +85,11 @@ export default function queryAcFactory(
         apiClient,
         batchLimit,
         callParams,
+        limit,
+        multipleBatches,
         operationId,
         options,
-        scroll,
+        useScroll,
       }).then(
         response => {
           dispatch({
