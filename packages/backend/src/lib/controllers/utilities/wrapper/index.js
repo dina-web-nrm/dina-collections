@@ -154,65 +154,77 @@ module.exports = function createControllerWrapper({
             }
           )
         })
-        .then(({ externalJsonRelationships, item, items, meta, request }) => {
-          return applyHooks({
-            config,
-            fileInteractor,
-            hooks: postHooks,
+        .then(
+          ({
             item,
+            itemExternalRelationships,
             items,
-            log,
-            requestId,
-            resource,
-            serviceInteractor,
-            user,
-          }).then(() => {
-            const {
-              queryParams: { relationships: queryParamRelationships = '' } = {},
-            } = request
+            itemsExternalRelationships,
+            meta,
+            request,
+          }) => {
+            return applyHooks({
+              config,
+              fileInteractor,
+              hooks: postHooks,
+              item,
+              items,
+              log,
+              requestId,
+              resource,
+              serviceInteractor,
+              user,
+            }).then(() => {
+              const {
+                queryParams: {
+                  relationships: queryParamRelationships = '',
+                } = {},
+              } = request
 
-            if (responseIsObject) {
-              const relationships =
-                includeRelations &&
-                extractRelationships({
-                  externalJsonRelationships,
-                  item,
-                  queryParamRelationships,
-                  relations,
-                })
-
-              return createObjectResponse({
-                data: item,
-                id: item.id,
-                relationships,
-                status: responseSuccessStatus,
-                type: resource,
-              })
-            }
-
-            return createArrayResponse({
-              items: items.map(arrayItem => {
+              if (responseIsObject) {
                 const relationships =
                   includeRelations &&
                   extractRelationships({
-                    item: arrayItem,
+                    externalRelationships: itemExternalRelationships,
+                    item,
                     queryParamRelationships,
                     relations,
                   })
-                if (!relationships) {
-                  return arrayItem
-                }
 
-                return {
-                  ...arrayItem,
+                return createObjectResponse({
+                  data: item,
+                  id: item.id,
                   relationships,
-                }
-              }),
-              meta,
-              type: resource,
+                  status: responseSuccessStatus,
+                  type: resource,
+                })
+              }
+
+              return createArrayResponse({
+                items: items.map((arrayItem, index) => {
+                  const relationships =
+                    includeRelations &&
+                    extractRelationships({
+                      externalRelationships: itemsExternalRelationships[index],
+                      item: arrayItem,
+                      queryParamRelationships,
+                      relations,
+                    })
+                  if (!relationships) {
+                    return arrayItem
+                  }
+
+                  return {
+                    ...arrayItem,
+                    relationships,
+                  }
+                }),
+                meta,
+                type: resource,
+              })
             })
-          })
-        })
+          }
+        )
         .catch(err => {
           log.err('Received Error', err)
           throw err

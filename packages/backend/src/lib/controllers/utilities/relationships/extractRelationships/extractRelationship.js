@@ -1,10 +1,12 @@
+const objectPath = require('object-path')
 const shouldIncludeRelation = require('../shouldIncludeRelation')
 
 module.exports = function extractRelationship({
+  externalRelationships,
   item,
   queryParamRelationships,
-  relationKey,
   relation,
+  relationKey,
 }) {
   if (!shouldIncludeRelation({ queryParamRelationships, relationKey })) {
     return null
@@ -13,10 +15,15 @@ module.exports = function extractRelationship({
     format: relationFormat,
     targetResource: relationResource,
     storeInDocument,
+    storeInExternalDocument,
   } = relation
 
   if (storeInDocument) {
-    return item.relationships && item.relationships[relationKey]
+    return objectPath.get(item, `relationships.${relationKey}`)
+  }
+
+  if (storeInExternalDocument) {
+    return objectPath.get(externalRelationships, relationKey)
   }
 
   const { internals = {} } = item

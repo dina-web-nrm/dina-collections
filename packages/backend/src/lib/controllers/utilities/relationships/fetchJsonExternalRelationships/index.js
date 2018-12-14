@@ -1,13 +1,33 @@
+const objectPath = require('object-path')
+
 const shouldIncludeRelation = require('../shouldIncludeRelation')
 
+/* eslint-disable no-param-reassign */
+const addItemToData = ({ id, item, map }) => {
+  if (Array.isArray(objectPath.get(map, `${id}.data`))) {
+    map[id].data.push(item)
+  } else {
+    map[id] = {
+      data: [item],
+    }
+  }
+}
+
 module.exports = function fetchJsonExternalRelationships({
-  id: srcId,
+  item: sourceItem,
+  items: sourceItems,
   relations,
-  resource,
+  resource: sourceResource,
   serviceInteractor,
   queryParamRelationships,
 }) {
-  const remoteRelations = Object.keys(relations)
+  const sourceItemId = sourceItem && sourceItem.id
+  const sourceItemIds =
+    (sourceItemId && [sourceItemId]) ||
+    (sourceItems && sourceItems.map(({ id }) => id))
+  const filterKey = `${sourceResource}Ids`
+
+  const remoteRequestSpecifications = Object.keys(relations)
     .map(relationKey => {
       const { storeInExternalDocument } = relations[relationKey]
 
@@ -15,51 +35,137 @@ module.exports = function fetchJsonExternalRelationships({
         return null
       }
 
-      if (storeInExternalDocument) {
-        return relations[relationKey]
+      // TODO: make it work for resourceActivities
+      if (relationKey === 'resourceActivities' && !sourceItem) {
+        return null
       }
+
+      if (storeInExternalDocument) {
+        const relation = relations[relationKey]
+        const {
+          oneOrMany,
+          inverseTargetAs: inverseRelationshipKey,
+          targetResource,
+        } = relation
+
+        return {
+          inverseRelationshipKey,
+          oneOrMany,
+          relationKey,
+          request: {
+            queryParams:
+              relationKey === 'resourceActivities' && sourceItem
+                ? {
+                    filter: {
+                      relationshipId: sourceItemId,
+                      relationshipType: sourceResource,
+                    },
+                    includeFields: ['id'],
+                  }
+                : {
+                    filter: {
+                      [filterKey]: sourceItemIds,
+                    },
+                    relationships: inverseRelationshipKey
+                      ? [inverseRelationshipKey]
+                      : undefined,
+                  },
+          },
+          targetResource,
+        }
+      }
+
       return null
     })
-    .filter(includeElement => {
-      return !!includeElement
+    .filter(patchedRelations => {
+      return !!patchedRelations
     })
 
-  const promises = remoteRelations.map(relation => {
-    const { targetResource, targetAs } = relation
-    const request = {
-      queryParams: {
-        filter: {
-          relationshipId: srcId,
-          relationshipType: resource,
-        },
-        includeFields: ['id'],
-      },
-    }
-    return serviceInteractor
-      .getMany({
-        request,
-        resource: targetResource,
-      })
-      .then(({ data: items }) => {
-        return {
-          data: items.map(item => {
-            return {
-              id: item.id,
+  const getExternalRelationshipsPromises = remoteRequestSpecifications.map(
+    ({
+      inverseRelationshipKey,
+      oneOrMany,
+      relationKey,
+      request,
+      targetResource,
+    }) => {
+      return serviceInteractor
+        .getMany({
+          request,
+          resource: targetResource,
+        })
+        .then(({ data: relatedItems }) => {
+          const sourceIdRelationshipsMap = {}
+
+          relatedItems.forEach(relatedItem => {
+            const mappedRelationshipItem = {
+              id: relatedItem.id,
               type: targetResource,
             }
-          }),
-          targetAs,
-        }
-      })
-  })
 
-  return Promise.all(promises).then(resultArray => {
-    const relationships = {}
-    resultArray.forEach(({ targetAs, data }) => {
-      relationships[targetAs] = {
-        data,
-      }
+            const sourceItemsRelatedToTarget = objectPath.get(
+              relatedItem,
+              `relationships.${inverseRelationshipKey}.data`
+            )
+
+            if (sourceItemsRelatedToTarget) {
+              if (oneOrMany === 'one') {
+                sourceIdRelationshipsMap[sourceItemId] = {
+                  data: mappedRelationshipItem,
+                }
+              } else {
+                sourceItemsRelatedToTarget.forEach(({ id }) =>
+                  addItemToData({
+                    id,
+                    item: mappedRelationshipItem,
+                    map: sourceIdRelationshipsMap,
+                  })
+                )
+              }
+            } else if (targetResource === 'resourceActivity' && sourceItem) {
+              addItemToData({
+                id: sourceItemId,
+                item: mappedRelationshipItem,
+                map: sourceIdRelationshipsMap,
+              })
+            }
+          })
+
+          return {
+            relationKey,
+            sourceIdRelationshipsMap,
+          }
+        })
+    }
+  )
+
+  return Promise.all(getExternalRelationshipsPromises).then(resultArray => {
+    const sourceIdRelationshipsMaps = resultArray.reduce(
+      (maps, { sourceIdRelationshipsMap, relationKey }) => {
+        maps[relationKey] = sourceIdRelationshipsMap
+
+        return maps
+      },
+      {}
+    )
+
+    const relationKeys = Object.keys(sourceIdRelationshipsMaps)
+
+    const itemsExternalRelationships = sourceItemIds.map(id => {
+      return relationKeys.reduce((relationships, relationKey) => {
+        const relationship = objectPath.get(
+          sourceIdRelationshipsMaps,
+          `${relationKey}.${id}`
+        )
+
+        relationships[relationKey] = relationship
+
+        return relationships
+      }, {})
     })
-    return relationships
+
+    return sourceItem // i.e. only one item, not many
+      ? itemsExternalRelationships[0]
+      : itemsExternalRelationships
   })
 }

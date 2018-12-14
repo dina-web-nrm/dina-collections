@@ -1,5 +1,6 @@
 const createControllerWrapper = require('../utilities/wrapper')
 const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
+const fetchJsonExternalRelationships = require('../utilities/relationships/fetchJsonExternalRelationships')
 
 module.exports = function getMany(options) {
   const {
@@ -9,6 +10,7 @@ module.exports = function getMany(options) {
       filterSpecification,
       includeRelations,
       relations,
+      resource,
       selectableFields,
       sortableFields,
     },
@@ -65,11 +67,21 @@ module.exports = function getMany(options) {
         sortInput,
       })
       .then(({ items, meta } = {}) => {
-        return {
+        return fetchJsonExternalRelationships({
+          filterSpecification,
           items,
-          meta,
-          request,
-        }
+          queryParamRelationships,
+          relations,
+          resource,
+          serviceInteractor,
+        }).then(itemsExternalRelationships => {
+          return {
+            items,
+            itemsExternalRelationships,
+            meta,
+            request,
+          }
+        })
       })
   })
 }
