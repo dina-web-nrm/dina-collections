@@ -1,6 +1,8 @@
 const migrations = require('./data/migrations')
 const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
-
+const {
+  getMany: getManyFilterSpecification,
+} = require('./data/filterSpecifications')
 const {
   create: createPostHooks,
   del: delPostHooks,
@@ -26,6 +28,7 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },
