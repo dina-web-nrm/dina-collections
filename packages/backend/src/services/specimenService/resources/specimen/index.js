@@ -41,6 +41,10 @@ module.exports = {
     },
     {
       filterSpecification: getManyFilterSpecification,
+      type: 'count',
+    },
+    {
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },
