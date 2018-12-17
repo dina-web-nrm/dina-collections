@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Header, List, Modal } from 'semantic-ui-react'
+import { Grid, Header, Modal } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
 import { ModuleTranslate } from 'coreModules/i18n/components'
-import ListItem from './ListItem'
+
+import RelationshipList from './RelationshipList'
 
 const propTypes = {
   relationships: PropTypes.objectOf(
@@ -90,13 +91,10 @@ class ModalContent extends PureComponent {
                     </Header>
                   </Grid.Column>
                   <Grid.Column>
-                    <List divided selection verticalAlign="middle">
-                      {(isArray ? data : [data])
-                        .slice(0, 30)
-                        .map(({ id, type }) => {
-                          return <ListItem id={id} key={id} resource={type} />
-                        })}
-                    </List>
+                    <RelationshipList
+                      data={data}
+                      resource={relationshipResource}
+                    />
                   </Grid.Column>
                 </React.Fragment>
               )
