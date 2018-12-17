@@ -22,7 +22,6 @@ export {
 export { default as Radio } from './fields/Radio'
 export { default as RadioBoolean } from './fields/RadioBoolean'
 export { default as RangeDate } from './fields/Date/RangeDate'
-export { default as RecordActionBar } from './RecordActionBar'
 export { default as Remarks } from './fields/Remarks'
 export { default as Search } from './fields/Search'
 export { default as Section } from './Section'

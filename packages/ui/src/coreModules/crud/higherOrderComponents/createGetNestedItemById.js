@@ -72,12 +72,14 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
     item: PropTypes.object,
     namespace: PropTypes.string,
     nestedItem: PropTypes.object,
+    nestedItemKey: PropTypes.string,
   }
 
   const defaultProps = {
     item: null,
     namespace: undefined,
     nestedItem: undefined,
+    nestedItemKey: undefined,
   }
 
   class GetNestedItemById extends Component {
@@ -141,7 +143,7 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
 
     render() {
       let propsToForward = { ...this.props }
-      if (nestedItemKey) {
+      if (this.props.nestedItemKey || nestedItemKey) {
         const { nestedItem } = this.props
         propsToForward = {
           ...propsToForward,

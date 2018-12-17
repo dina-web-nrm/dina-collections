@@ -87,6 +87,19 @@ module.exports = {
       relationKey: 'parent',
       type: 'updateRelationship',
     },
+    {
+      relationKey: 'specimens',
+      type: 'getRelationship',
+    },
+    {
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationship',
+        relationKey: 'places',
+        resource: 'place',
+      }),
+      relationKey: 'specimens',
+      type: 'updateRelationship',
+    },
   ],
   resource: 'place',
 }

@@ -128,6 +128,14 @@ module.exports = {
       type: 'updateRelationship',
     },
     {
+      relationKey: 'taxa',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'taxa',
+      type: 'updateRelationship',
+    },
+    {
       relationKey: 'taxonNames',
       type: 'getRelationship',
     },

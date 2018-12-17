@@ -4,14 +4,10 @@ import { compose } from 'redux'
 import objectPath from 'object-path'
 
 import config from 'config'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { injectSearchOptions } from 'coreModules/form/higherOrderComponents'
 import DropdownSearchBase from '../Base'
 
 const propTypes = {
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
   pathToIdInValue: PropTypes.string.isRequired,
   pathToTextInValue: PropTypes.string.isRequired,
   updateSelectedOption: PropTypes.func.isRequired,
@@ -69,7 +65,6 @@ class DropdownSearchIdTextInput extends PureComponent {
 
 DropdownSearchIdTextInput.propTypes = propTypes
 
-export default compose(
-  withI18n({ module: 'form' }),
-  injectSearchOptions({ enablePlainTextOption: true })
-)(DropdownSearchIdTextInput)
+export default compose(injectSearchOptions({ enablePlainTextOption: true }))(
+  DropdownSearchIdTextInput
+)

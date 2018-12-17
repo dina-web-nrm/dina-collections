@@ -13,7 +13,7 @@ import { Button, Grid } from 'semantic-ui-react'
 import config from 'config'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import DeleteRecordModal from './DeleteRecordModal'
+import DeleteRecordButton from './DeleteRecordButton'
 
 const ModuleTranslate = createModuleTranslate('form')
 
@@ -44,6 +44,7 @@ const propTypes = {
   formName: PropTypes.string.isRequired,
   hasSyncErrors: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
+  loadingDelete: PropTypes.bool,
   onDelete: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
   onUndoChanges: PropTypes.func.isRequired,
@@ -51,6 +52,7 @@ const propTypes = {
   submitting: PropTypes.bool.isRequired,
 }
 const defaultProps = {
+  loadingDelete: undefined,
   onDelete: undefined,
 }
 
@@ -60,6 +62,7 @@ export class RecordActionBar extends PureComponent {
       formName,
       hasSyncErrors,
       invalid,
+      loadingDelete,
       onDelete: handleDelete,
       onSubmit: handleSubmit,
       onUndoChanges: handleUndoChanges,
@@ -100,7 +103,12 @@ export class RecordActionBar extends PureComponent {
               <em style={textStyle}>Unsaved changes</em>
             ))}
           {config.isDevelopment && <ConnectedFormSchemaError form={formName} />}
-          {handleDelete && <DeleteRecordModal onDelete={handleDelete} />}
+          {handleDelete && (
+            <DeleteRecordButton
+              loading={loadingDelete}
+              onDelete={handleDelete}
+            />
+          )}
         </Grid.Column>
       </Grid>
     )

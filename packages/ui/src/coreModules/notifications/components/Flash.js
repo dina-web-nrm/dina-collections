@@ -5,10 +5,10 @@ import { Message } from 'semantic-ui-react'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 const propTypes = {
-  description: PropTypes.string,
+  description: PropTypes.node,
   descriptionKey: PropTypes.string,
   descriptionParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  header: PropTypes.string,
+  header: PropTypes.node,
   headerKey: PropTypes.string,
   headerParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   i18n: PropTypes.shape({

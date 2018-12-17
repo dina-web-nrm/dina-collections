@@ -37,7 +37,7 @@ export default function getOneAcFactory(
       id,
       include,
       relationships = ['all'],
-      throwError = false,
+      throwError = true,
       storeInState = true,
       queryParams: queryParamInput = {},
     } = {}

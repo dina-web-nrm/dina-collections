@@ -33,7 +33,7 @@ export default function createAcFactory(
   }
 
   return function createAc(
-    { item: rawItem, nested = false, throwError = false } = {}
+    { item: rawItem, nested = false, throwError = true } = {}
   ) {
     log.debug(`${resource}.create called`, { item: rawItem, throwError })
 

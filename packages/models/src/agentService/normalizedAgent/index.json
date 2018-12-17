@@ -83,6 +83,7 @@
       "properties": {
         "resourceActivities": {
           "type": "object",
+          "x-inverse-relationship-key": "normalizedAgents",
           "x-key-stored-in-model": "resourceActivity",
           "x-key-type": "json",
           "properties": {
@@ -90,6 +91,20 @@
               "type": "array",
               "items": {
                 "$ref": "__ROOT__resourceActivity",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "specimens": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__specimen",
                 "x-reference-type": "external"
               }
             }

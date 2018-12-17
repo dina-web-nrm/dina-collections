@@ -171,6 +171,7 @@
         },
         "resourceActivities": {
           "type": "object",
+          "x-inverse-relationship-key": "specimens",
           "x-key-stored-in-model": "resourceActivity",
           "x-key-type": "json",
           "properties": {

@@ -10,7 +10,7 @@ const createMammalFormModels = () => {
   updatedModels = immutable.set(updatedModels, 'dateRange', {
     ...updatedModels.dateRange,
     allOf: [
-      { 'x-validation-date-range-end-in-the-past': true },
+      { 'x-validation-date-range-in-the-past': true },
       { 'x-validation-date-range-end-after-start': true },
       { 'x-validation-date-range-start-and-end': true },
       { 'x-validation-date-range-valid-if-not-empty': true },

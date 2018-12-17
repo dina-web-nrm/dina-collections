@@ -4,8 +4,6 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
 
@@ -34,7 +32,6 @@ export const include = ['resourceActivities']
 
 const propTypes = {
   form: PropTypes.string.isRequired,
-  itemId: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
 }
@@ -50,13 +47,13 @@ export class Edit extends PureComponent {
   }
 
   render() {
-    const { form, nestedItem, onInteraction, itemId, ...rest } = this.props
+    const { form, nestedItem, onInteraction, ...rest } = this.props
 
     if (!nestedItem) {
       return null
     }
 
-    const { agentType, fullName, resourceActivities } = nestedItem
+    const { resourceActivities } = nestedItem
 
     return (
       <BaseForm
@@ -64,8 +61,6 @@ export class Edit extends PureComponent {
         displayBackButton
         displayResetButton
         form={form}
-        formSectionNavigationHeader={fullName}
-        formSectionNavigationSubHeader={capitalizeFirstLetter(agentType)}
         formValueSelector={this.formValueSelector}
         initialValues={nestedItem}
         onClose={event => {
@@ -82,13 +77,4 @@ export class Edit extends PureComponent {
 Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
-export default compose(
-  createGetNestedItemById({
-    include,
-    refresh: true,
-    relationships: include,
-    resolveRelationships: ['resourceActivity'],
-    resource: 'normalizedAgent',
-  }),
-  connect(mapStateToProps)
-)(Edit)
+export default compose(connect(mapStateToProps))(Edit)

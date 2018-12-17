@@ -25,7 +25,7 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form="taxonCreate"
-        formSectionNavigationHeader={
+        itemHeader={
           <ModuleTranslate
             capitalize
             module="taxon"

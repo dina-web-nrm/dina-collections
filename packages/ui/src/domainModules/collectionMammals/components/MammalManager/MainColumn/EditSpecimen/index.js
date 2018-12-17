@@ -106,7 +106,6 @@ class EditSpecimen extends PureComponent {
           })
           return updateSpecimen({
             item,
-            throwError: true,
           }).then(({ id }) => {
             return fetchOneItemById(id).then(() => {
               return { id }

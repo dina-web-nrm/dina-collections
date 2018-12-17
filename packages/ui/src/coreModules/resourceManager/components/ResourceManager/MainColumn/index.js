@@ -13,18 +13,19 @@ import {
   NAVIGATE_TREE,
 } from 'coreModules/resourceManager/constants'
 
-import RecordNavigationBar from './RecordNavigationBar'
-import TableView from './TableView'
-import TreeView from './TreeView'
-import ResultOptionsBar from './ResultOptionsBar'
-import EditItemColumn from '../EditItemColumn'
-import CreateItemColumn from '../CreateItemColumn'
+import RecordNavigationBar from './shared/RecordNavigationBar'
+import ResultOptionsBar from './shared/ResultOptionsBar'
+import TableView from './collection/TableView'
+import TreeView from './collection/TreeView'
+import CreateItemColumn from './item/CreateItemColumn'
+import EditItemColumn from './item/EditItemColumn'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  createGetNestedItemHocInput: PropTypes.object,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
-  fetchIncludeAfterUpdate: PropTypes.arrayOf(PropTypes.string),
+  fetchRelationshipsBeforeDelete: PropTypes.func,
   isPicker: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
@@ -39,7 +40,8 @@ const propTypes = {
 }
 
 const defaultProps = {
-  fetchIncludeAfterUpdate: undefined,
+  createGetNestedItemHocInput: {},
+  fetchRelationshipsBeforeDelete: undefined,
   recordNavigationHeight: emToPixels(4.25),
   recordOptionsHeight: emToPixels(3.5625),
   transformOutput: undefined,
@@ -204,30 +206,34 @@ class MainColumn extends Component {
       case 'editItem': {
         const {
           availableHeight,
+          createGetNestedItemHocInput,
           recordNavigationHeight,
           recordOptionsHeight,
-          transformOutput,
         } = this.props
+
         const { extractedProps } = extractProps({
           keys: [
-            'fetchIncludeAfterUpdate',
+            'buildEditItemHeaders',
+            'fetchRelationshipsBeforeDelete',
             'itemId',
             'ItemTitle',
             'onInteraction',
+            'relationshipsToCheckBeforeDelete',
             'renderEditForm',
             'resource',
             'itemFetchOptions',
+            'transformOutput',
           ],
           props: this.props,
         })
 
         return (
           <EditItemColumn
+            {...createGetNestedItemHocInput}
             {...extractedProps}
             availableHeight={
               availableHeight - recordNavigationHeight - recordOptionsHeight
             }
-            transformOutput={transformOutput}
           />
         )
       }

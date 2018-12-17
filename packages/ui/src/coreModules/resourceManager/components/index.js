@@ -1,4 +1,5 @@
-import RecordNavigationBar from './ResourceManager/MainColumn/RecordNavigationBar'
+import RecordActionBar from './ResourceManager/MainColumn/item/ActionBars/Base'
+import RecordNavigationBar from './ResourceManager/MainColumn/shared/RecordNavigationBar'
 import ResourceManager from './ResourceManager'
 
-export { ResourceManager, RecordNavigationBar }
+export { RecordActionBar, RecordNavigationBar, ResourceManager }

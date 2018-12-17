@@ -46,41 +46,41 @@ module.exports = function getOne(options) {
         relations,
       })
     }
+    return model
+      .getById({
+        excludeFieldsInput,
+        filterInput,
+        filterSpecification,
+        id,
+        include,
+        includeDeactivated,
+        includeFieldsInput:
+          includeFieldsInput && includeFieldsInput.length
+            ? includeFieldsInput
+            : defaultFields,
+        selectableFields,
+      })
+      .then(({ item } = {}) => {
+        if (!item) {
+          backendError404({
+            code: 'RESOURCE_NOT_FOUND_ERROR',
+            detail: `${resource} with id: ${id} not found`,
+          })
+        }
 
-    return fetchJsonExternalRelationships({
-      id,
-      queryParamRelationships,
-      relations,
-      resource,
-      serviceInteractor,
-    }).then(externalJsonRelationships => {
-      return model
-        .getById({
-          excludeFieldsInput,
-          filterInput,
+        return fetchJsonExternalRelationships({
           filterSpecification,
-          id,
-          include,
-          includeDeactivated,
-          includeFieldsInput:
-            includeFieldsInput && includeFieldsInput.length
-              ? includeFieldsInput
-              : defaultFields,
-          selectableFields,
-        })
-        .then(({ item } = {}) => {
-          if (!item) {
-            backendError404({
-              code: 'RESOURCE_NOT_FOUND_ERROR',
-              detail: `${resource} with id: ${id} not found`,
-            })
-          }
-
+          item,
+          queryParamRelationships,
+          relations,
+          resource,
+          serviceInteractor,
+        }).then(itemExternalRelationships => {
           return {
-            externalJsonRelationships,
             item,
+            itemExternalRelationships,
           }
         })
-    })
+      })
   })
 }

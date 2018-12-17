@@ -1,0 +1,70 @@
+{
+  "relations": {
+    "en": "relations",
+    "sv": ""
+  },
+  "relationshipKey": {
+    "acceptedToTaxon": {
+      "en": "taxa",
+      "sv": ""
+    },
+    "children": {
+      "en": "children",
+      "sv": ""
+    },
+    "normalizedAgents": {
+      "en": "agents",
+      "sv": ""
+    },
+    "places": {
+      "en": "localities",
+      "sv": ""
+    },
+    "specimens": {
+      "en": "specimens",
+      "sv": ""
+    },
+    "storageLocations": {
+      "en": "storage locations",
+      "sv": ""
+    },
+    "synonymToTaxon": {
+      "en": "taxa",
+      "sv": ""
+    },
+    "taxa": {
+      "en": "taxa",
+      "sv": ""
+    },
+    "taxonNames": {
+      "en": "taxon names",
+      "sv": ""
+    }
+  },
+  "resourcePlural": {
+    "normalizedAgent": {
+      "en": "agents",
+      "sv": ""
+    },
+    "place": {
+      "en": "localities",
+      "sv": ""
+    },
+    "specimen": {
+      "en": "specimens",
+      "sv": ""
+    },
+    "storageLocation": {
+      "en": "storage locations",
+      "sv": ""
+    },
+    "taxon": {
+      "en": "taxa",
+      "sv": ""
+    },
+    "taxonName": {
+      "en": "taxon names",
+      "sv": ""
+    }
+  }
+}

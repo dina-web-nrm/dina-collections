@@ -20,6 +20,10 @@ exports.getKeyUnique = function (relationshipsSchemaItem) {
 exports.getPath = function (relationshipsSchemaItem) {
   return relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, 'x-path');
 };
+
+exports.getInverseRelationshipKey = function (relationshipsSchemaItem) {
+  return relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, 'x-inverse-relationship-key');
+};
 exports.getTargetFormat = function (relationshipsSchemaItem) {
   return relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, 'properties.data.type');
 };

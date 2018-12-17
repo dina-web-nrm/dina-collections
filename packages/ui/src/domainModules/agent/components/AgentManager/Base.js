@@ -1,16 +1,50 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ResourceManager } from 'coreModules/resourceManager/components'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { actionCreators as crudActionCreators } from 'coreModules/crud'
+import { ResourceManager } from 'coreModules/resourceManager/components'
 import CreateForm from './item/CreateForm'
-import EditForm, { include } from './item/EditForm'
+import EditForm from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
 import transformOutput from './item/BaseForm/transformations/output'
 import tableColumnSpecifications from './tableColumnSpecifications'
 import ItemTitle from './ItemTitle'
 
+const resource = 'normalizedAgent'
+const include = ['resourceActivities']
+const createGetNestedItemHocInput = {
+  include,
+  refresh: true,
+  relationships: include,
+  resolveRelationships: ['resourceActivity'],
+  resource,
+}
+
+const relationshipsToCheckBeforeDelete = ['specimens']
+
+const sortOrder = ['attributes.name:asc']
+
+const buildEditItemHeaders = nestedItem => {
+  if (!nestedItem) {
+    return {}
+  }
+
+  return {
+    itemHeader: nestedItem.fullName,
+    itemSubHeader: capitalizeFirstLetter(nestedItem.agentType),
+  }
+}
+
+const mapDispatchToProps = {
+  getAgent: crudActionCreators.normalizedAgent.getOne,
+}
+
 const propTypes = {
+  getAgent: PropTypes.func.isRequired,
   itemId: PropTypes.string,
   onNavigation: PropTypes.func.isRequired,
 }
@@ -18,8 +52,6 @@ const propTypes = {
 const defaultProps = {
   itemId: undefined,
 }
-
-const sortOrder = ['attributes.name:asc']
 
 class AgentManager extends Component {
   constructor(props) {
@@ -69,14 +101,16 @@ class AgentManager extends Component {
     return (
       <ResourceManager
         {...this.props}
+        buildEditItemHeaders={buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
-        fetchIncludeAfterUpdate={include}
+        createGetNestedItemHocInput={createGetNestedItemHocInput}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
+        relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
-        resource="normalizedAgent"
+        resource={resource}
         sortOrder={sortOrder}
         tableColumnSpecifications={tableColumnSpecifications}
         transformOutput={transformOutput}
@@ -89,4 +123,4 @@ class AgentManager extends Component {
 AgentManager.propTypes = propTypes
 AgentManager.defaultProps = defaultProps
 
-export default AgentManager
+export default compose(connect(undefined, mapDispatchToProps))(AgentManager)

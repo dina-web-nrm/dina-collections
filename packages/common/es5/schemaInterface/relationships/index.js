@@ -23,6 +23,7 @@ var _require3 = require('./relationshipsSchemaSelectors'),
     getKeyType = _require3.getKeyType,
     getKeyUnique = _require3.getKeyUnique,
     getPath = _require3.getPath,
+    getInverseRelationshipKey = _require3.getInverseRelationshipKey,
     getTargetFormat = _require3.getTargetFormat,
     getTargetModel = _require3.getTargetModel,
     getTargetOneOrMany = _require3.getTargetOneOrMany;
@@ -38,6 +39,7 @@ var getRelationshipParamsFromRelationshipsSchemaItem = function getRelationshipP
   return relationshipsSchemaItem && {
     allowNull: getKeyAllowNull(relationshipsSchemaItem),
     format: getTargetFormat(relationshipsSchemaItem),
+    inverseTargetAs: getInverseRelationshipKey(relationshipsSchemaItem),
     keyName: getKeyName(relationshipsSchemaItem),
     keyStoredInModel: keyStoredInModel,
     keyType: keyType,

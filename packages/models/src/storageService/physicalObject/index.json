@@ -23,16 +23,27 @@
         "$ref": "__ROOT__collectionItem"
       }
     },
-    "storageLocation": {
-      "$ref": "__ROOT__storageLocation",
-      "x-reference-type": "external"
-    },
     "storageLocationText": {
       "type": "string"
     },
     "relationships": {
       "type": "object",
       "properties": {
+        "specimens": {
+          "type": "object",
+          "x-inverse-relationship-key": "physicalObjects",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__specimen",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "storageLocation": {
           "type": "object",
           "x-key-allow-null": true,
@@ -47,6 +58,17 @@
           }
         }
       }
+    },
+    "specimens": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__specimen",
+        "x-reference-type": "external"
+      }
+    },
+    "storageLocation": {
+      "$ref": "__ROOT__storageLocation",
+      "x-reference-type": "external"
     }
   }
 }

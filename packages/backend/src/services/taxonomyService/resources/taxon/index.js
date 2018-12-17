@@ -99,6 +99,24 @@ module.exports = {
       type: 'updateRelationship',
     },
     {
+      relationKey: 'specimens',
+      type: 'getRelationship',
+    },
+    {
+      connect: false,
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationship',
+        relationKey: 'taxa',
+        resource: 'specimen',
+      }),
+      relationKey: 'specimens',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'storageLocations',
+      type: 'getRelationship',
+    },
+    {
       relationKey: 'synonyms',
       type: 'getRelationship',
     },

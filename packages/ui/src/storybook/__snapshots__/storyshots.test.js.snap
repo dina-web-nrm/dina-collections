@@ -4591,20 +4591,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/form/components/RecordActionBar/InspectRelationsModal default 1`] = `
-<div>
-  <a
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    inspect relations here
-  </a>
-</div>
-`;
-
 exports[`storyshots Storyshots coreModules/i18n/I18nProvider Default 1`] = `
 <div>
   <div
@@ -6012,6 +5998,1416 @@ exports[`storyshots Storyshots coreModules/notifications/NotificationDisplay Def
 
 exports[`storyshots Storyshots coreModules/notifications/NotificationModal Default 1`] = `<div />`;
 
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/item/RecordActionBar/higherOrderComponents/createHandleDelete/InspectRelationsModal/ModalContent default 1`] = `
+<div>
+  <div
+    className="content"
+  >
+    <div
+      className="ui grid"
+    >
+      <div
+        className="one column row relaxed"
+      >
+        <div
+          className="column"
+        >
+          <div
+            className="ui header"
+          >
+            <span>
+              Specimens
+            </span>
+             
+            (
+            1
+             
+            <span>
+              relations
+            </span>
+            )
+          </div>
+        </div>
+        <div
+          className="column"
+        >
+          <div
+            className="ui divided selection middle aligned list"
+            role="list"
+          >
+            <a
+              className="item"
+              data-value={undefined}
+              href="/app/specimens/mammals/1/edit/sections/0"
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              role="listitem"
+              target="_blank"
+            >
+              <div
+                className="left floated content"
+              >
+                1
+              </div>
+              <div
+                className="right floated content"
+              >
+                <button
+                  className="ui icon button"
+                  disabled={undefined}
+                  onClick={[Function]}
+                  role="button"
+                  tabIndex={undefined}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="external alternate icon"
+                  />
+                </button>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          className="column"
+        >
+          <div
+            className="ui header"
+          >
+            <span>
+              Storage locations
+            </span>
+             
+            (
+            2
+             
+            <span>
+              relations
+            </span>
+            )
+          </div>
+        </div>
+        <div
+          className="column"
+        >
+          <div
+            className="ui divided selection middle aligned list"
+            role="list"
+          >
+            <a
+              className="item"
+              data-value={undefined}
+              href="/app/storageLocations?itemId=1&mainColumn=edit"
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              role="listitem"
+              target="_blank"
+            >
+              <div
+                className="left floated content"
+              >
+                1
+              </div>
+              <div
+                className="right floated content"
+              >
+                <button
+                  className="ui icon button"
+                  disabled={undefined}
+                  onClick={[Function]}
+                  role="button"
+                  tabIndex={undefined}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="external alternate icon"
+                  />
+                </button>
+              </div>
+            </a>
+            <a
+              className="item"
+              data-value={undefined}
+              href="/app/storageLocations?itemId=2&mainColumn=edit"
+              onClick={[Function]}
+              rel="noopener noreferrer"
+              role="listitem"
+              target="_blank"
+            >
+              <div
+                className="left floated content"
+              >
+                2
+              </div>
+              <div
+                className="right floated content"
+              >
+                <button
+                  className="ui icon button"
+                  disabled={undefined}
+                  onClick={[Function]}
+                  role="button"
+                  tabIndex={undefined}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="external alternate icon"
+                  />
+                </button>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar addingNewRecordComplete 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50001}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={50001}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50001
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar changeTableRowNumber 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar default 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar firstRecord 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={1}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar lastRecord 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={50000}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar nextRecord 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30001}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar openFilter 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar openNewRecordForm 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini disabled input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={true}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={-1}
+            type="number"
+            value={50000}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": -3,
+          }
+        }
+      >
+        50000
+         records
+        <br />
+        <i>
+          *Adding new*
+        </i>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon disabled button"
+          disabled={true}
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon disabled button"
+          disabled={true}
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar previousRecord 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={29999}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar showAllRecords 1`] = `
+<div>
+  <div
+    className="ui padded center aligned middle aligned grid"
+  >
+    <div
+      className="column"
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+          }
+        }
+      >
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+           Show All
+        </button>
+        <button
+          className="ui tiny icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+           New record
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Default 1`] = `
 <div>
   <div
@@ -6977,1250 +8373,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           }
         }
       />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar addingNewRecordComplete 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50001}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={50001}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50001
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar changeTableRowNumber 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={30000}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar default 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={30000}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar firstRecord 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={1}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar lastRecord 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={50000}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar nextRecord 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={30001}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar openFilter 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={30000}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar openNewRecordForm 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini disabled input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={true}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={-1}
-            type="number"
-            value={50000}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": -3,
-          }
-        }
-      >
-        50000
-         records
-        <br />
-        <i>
-          *Adding new*
-        </i>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon disabled button"
-          disabled={true}
-          onClick={[Function]}
-          role="button"
-          tabIndex={-1}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon disabled button"
-          disabled={true}
-          onClick={[Function]}
-          role="button"
-          tabIndex={-1}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar previousRecord 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={29999}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar showAllRecords 1`] = `
-<div>
-  <div
-    className="ui padded center aligned middle aligned grid"
-  >
-    <div
-      className="column"
-    >
-      <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
-      >
-        <div
-          className="ui buttons"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron left icon"
-            />
-          </button>
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="chevron right icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
-      >
-        <div
-          className="ui mini input"
-          style={
-            Object {
-              "width": "80px",
-            }
-          }
-        >
-          <input
-            disabled={false}
-            max={50000}
-            min={1}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="number"
-            value={30000}
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
-      >
-        50000
-         records
-      </div>
-      <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
-      >
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
-        </button>
-        <button
-          className="ui tiny icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
-        </button>
-      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import * as components from './components'
 import * as constants from './constants'
 import * as higherOrderComponents from './higherOrderComponents'
+import translations from './translations.json'
 import {
   actionCreators,
   actionTypes,
@@ -19,4 +20,5 @@ export {
   higherOrderComponents,
   name,
   reducer,
+  translations,
 }

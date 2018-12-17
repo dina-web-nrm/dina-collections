@@ -23,10 +23,10 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form="placeCreate"
-        formSectionNavigationHeader={
+        initialValues={initialValues}
+        itemHeader={
           <ModuleTranslate capitalize module="locality" textKey="newLocality" />
         }
-        initialValues={initialValues}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')

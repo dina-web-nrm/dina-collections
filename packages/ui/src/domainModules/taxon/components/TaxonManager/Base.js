@@ -1,22 +1,39 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ResourceManager } from 'coreModules/resourceManager/components'
+import { compose } from 'redux'
+import objectPath from 'object-path'
 
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { ResourceManager } from 'coreModules/resourceManager/components'
+import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import CreateForm from './item/CreateForm'
-import EditForm, { include } from './item/EditForm'
+import EditForm from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
 import tableColumnSpecifications from './tableColumnSpecifications'
 import ItemTitle from './ItemTitle'
 
-const propTypes = {
-  itemId: PropTypes.string,
-  onNavigation: PropTypes.func.isRequired,
+const resource = 'taxon'
+const include = [
+  'acceptedTaxonName',
+  'parent',
+  'resourceActivities',
+  'synonyms',
+  'vernacularNames',
+]
+const createGetNestedItemHocInput = {
+  include,
+  refresh: true,
+  relationships: include,
+  resolveRelationships: ['resourceActivity', 'taxon', 'taxonName'],
+  resource,
 }
 
-const defaultProps = {
-  itemId: undefined,
-}
+const relationshipsToCheckBeforeDelete = [
+  'children',
+  'specimens',
+  'storageLocations',
+]
 
 const baseTreeFilter = {
   parentId: '1',
@@ -51,10 +68,23 @@ const itemFetchOptions = {
   resolveRelationships: ['taxonName'],
 }
 
+const propTypes = {
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
+  itemId: PropTypes.string,
+  onNavigation: PropTypes.func.isRequired,
+}
+
+const defaultProps = {
+  itemId: undefined,
+}
+
 class TaxonManager extends Component {
   constructor(props) {
     super(props)
     this.handleInteraction = this.handleInteraction.bind(this)
+    this.buildEditItemHeaders = this.buildEditItemHeaders.bind(this)
     this.renderCreateForm = this.renderCreateForm.bind(this)
     this.renderEditForm = this.renderEditForm.bind(this)
     this.renderFilterForm = this.renderFilterForm.bind(this)
@@ -62,6 +92,24 @@ class TaxonManager extends Component {
 
   handleInteraction(type, data = {}) {
     this.props.onNavigation(type, data)
+  }
+
+  buildEditItemHeaders(nestedItem) {
+    if (!nestedItem) {
+      return {}
+    }
+
+    const name = objectPath.get(nestedItem, 'acceptedTaxonName.name')
+    const rank = objectPath.get(nestedItem, 'acceptedTaxonName.rank')
+
+    return {
+      itemHeader:
+        name &&
+        `${name} (${this.props.i18n.moduleTranslate({
+          textKey: 'taxon',
+        })})`,
+      itemSubHeader: capitalizeFirstLetter(rank),
+    }
   }
 
   renderEditForm(props = {}) {
@@ -87,11 +135,13 @@ class TaxonManager extends Component {
       <ResourceManager
         {...this.props}
         baseTreeFilter={baseTreeFilter}
+        buildEditItemHeaders={this.buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
-        fetchIncludeAfterUpdate={include}
+        createGetNestedItemHocInput={createGetNestedItemHocInput}
         itemFetchOptions={itemFetchOptions}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
+        relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
@@ -107,4 +157,4 @@ class TaxonManager extends Component {
 TaxonManager.propTypes = propTypes
 TaxonManager.defaultProps = defaultProps
 
-export default TaxonManager
+export default compose(withI18n({ module: 'taxon' }))(TaxonManager)

@@ -29,7 +29,7 @@ export const actions = {
 }
 
 storiesOf(
-  'domainModules/collectionMammals/MammalManager/RecordNavigationBar',
+  'coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar',
   module
 )
   .addDecorator(createStoryDecorator({ wrap: false }))

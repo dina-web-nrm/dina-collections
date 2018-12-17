@@ -51,6 +51,7 @@
         },
         "resourceActivities": {
           "type": "object",
+          "x-inverse-relationship-key": "taxonNames",
           "x-key-stored-in-model": "resourceActivity",
           "x-key-type": "json",
           "properties": {

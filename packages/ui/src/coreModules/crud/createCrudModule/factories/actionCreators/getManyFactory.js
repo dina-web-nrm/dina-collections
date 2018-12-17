@@ -43,7 +43,7 @@ export default function getManyAcFactory(
       relationships,
       removeFromState = false,
       storeInState = true,
-      throwError = false,
+      throwError = true,
     } = {}
   ) {
     if (removeFromState) {

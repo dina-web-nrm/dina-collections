@@ -33,7 +33,7 @@ export default function updateAcFactory(
   }
 
   return function updateAc(
-    { item: rawItem, nested = false, throwError = false } = {}
+    { item: rawItem, nested = false, throwError = true } = {}
   ) {
     log.debug(`${resource}.update called`, {
       item: rawItem,

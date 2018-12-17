@@ -23,14 +23,14 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form="storageLocationCreate"
-        formSectionNavigationHeader={
+        initialValues={initialValues}
+        itemHeader={
           <ModuleTranslate
             capitalize
             module="storage"
             textKey="headers.newStorageLocation"
           />
         }
-        initialValues={initialValues}
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')

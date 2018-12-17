@@ -3,10 +3,22 @@ import PropTypes from 'prop-types'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 
 import CreateForm from './item/CreateForm'
-import EditForm, { include } from './item/EditForm'
+import EditForm from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
 import tableColumnSpecifications from './tableColumnSpecifications'
+
+const resource = 'place'
+const include = ['parent', 'resourceActivities']
+const createGetNestedItemHocInput = {
+  include,
+  refresh: true,
+  relationships: include,
+  resolveRelationships: ['place', 'resourceActivity'],
+  resource,
+}
+
+const relationshipsToCheckBeforeDelete = ['children', 'specimens']
 
 const propTypes = {
   itemId: PropTypes.string,
@@ -72,8 +84,9 @@ class LocalityManager extends Component {
         {...this.props}
         baseTreeFilter={baseTreeFilter}
         buildFilterQuery={buildFilterQuery}
-        fetchIncludeAfterUpdate={include}
+        createGetNestedItemHocInput={createGetNestedItemHocInput}
         onInteraction={this.handleInteraction}
+        relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}

@@ -58,8 +58,8 @@ const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
-  formSectionNavigationHeader: PropTypes.node.isRequired,
-  formSectionNavigationSubHeader: PropTypes.node,
+  itemHeader: PropTypes.node.isRequired,
+  itemSubHeader: PropTypes.node,
   match: PropTypes.shape({
     params: PropTypes.shape({
       specimenId: PropTypes.string,
@@ -86,7 +86,7 @@ const propTypes = {
 const defaultProps = {
   activeFormSectionIndex: undefined,
   customParts: undefined,
-  formSectionNavigationSubHeader: undefined,
+  itemSubHeader: undefined,
   passthroughProps: ['resourceActivities'],
   resourceIdPathParamKey: 'itemId',
   sectionId: undefined,
@@ -173,16 +173,13 @@ class FormRow extends PureComponent {
           props,
         })
 
-        const {
-          formSectionNavigationHeader,
-          formSectionNavigationSubHeader,
-        } = this.props
+        const { itemHeader, itemSubHeader } = this.props
 
         return (
           <FormSectionNavigation
             {...extractedProps}
-            header={formSectionNavigationHeader}
-            subHeader={formSectionNavigationSubHeader}
+            header={itemHeader}
+            subHeader={itemSubHeader}
           />
         )
       }
@@ -190,6 +187,8 @@ class FormRow extends PureComponent {
       case 'formSectionView': {
         const { extractedProps } = extractProps({
           keys: [
+            'itemHeader',
+            'itemSubHeader',
             ...Object.keys(formSectionViewPropTypes),
             ...this.props.passthroughProps,
           ],

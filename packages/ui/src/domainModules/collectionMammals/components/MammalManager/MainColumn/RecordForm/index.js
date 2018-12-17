@@ -7,8 +7,10 @@ import { push } from 'react-router-redux'
 import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
 import objectPath from 'object-path'
 
-import { Form, RecordActionBar, FormRow } from 'coreModules/form/components'
+import { Form, FormRow } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
+import { RecordActionBar } from 'coreModules/resourceManager/components'
+import { createHandleDelete } from 'coreModules/resourceManager/components/ResourceManager/MainColumn/item/ActionBars/higherOrderComponents'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
@@ -21,6 +23,8 @@ import sectionSpecs from './sectionSpecs'
 import customParts from './formParts'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
+
+const EnhancedRecordActionBar = compose(createHandleDelete())(RecordActionBar)
 
 const recordActionBarHeight = emToPixels(4.625)
 
@@ -89,13 +93,13 @@ const defaultProps = {
 class RecordForm extends Component {
   constructor(props) {
     super(props)
-    this.setFormRef = this.setFormRef.bind(this)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.changeFieldValue = this.changeFieldValue.bind(this)
-    this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
-    this.handleUndoChanges = this.handleUndoChanges.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleSubmitFromModal = this.handleSubmitFromModal.bind(this)
+    this.handleUndoChanges = this.handleUndoChanges.bind(this)
+    this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
     this.renderRow = this.renderRow.bind(this)
+    this.setFormRef = this.setFormRef.bind(this)
   }
 
   setFormRef(element) {
@@ -164,10 +168,10 @@ class RecordForm extends Component {
             {...props}
             availableHeight={availableHeight - recordActionBarHeight}
             customParts={customParts}
-            formSectionNavigationHeader={
+            itemHeader={
               catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
             }
-            formSectionNavigationSubHeader={curatorialTaxonAcceptedName}
+            itemSubHeader={curatorialTaxonAcceptedName}
             resourceIdPathParamKey="specimenId"
             showSectionsInNavigation
           />
@@ -175,13 +179,10 @@ class RecordForm extends Component {
       }
 
       case 'recordActionBar': {
-        const { mode } = this.props
-
         return (
-          <RecordActionBar
+          <EnhancedRecordActionBar
             {...this.props}
             {...props}
-            editMode={mode === 'edit'}
             onUndoChanges={this.handleUndoChanges}
           />
         )

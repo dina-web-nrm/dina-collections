@@ -35,6 +35,13 @@ exports.getPath = relationshipsSchemaItem => {
     relationshipsSchemaItem && objectPath.get(relationshipsSchemaItem, `x-path`)
   )
 }
+
+exports.getInverseRelationshipKey = relationshipsSchemaItem => {
+  return (
+    relationshipsSchemaItem &&
+    objectPath.get(relationshipsSchemaItem, `x-inverse-relationship-key`)
+  )
+}
 exports.getTargetFormat = relationshipsSchemaItem => {
   return (
     relationshipsSchemaItem &&
