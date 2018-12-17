@@ -10,6 +10,9 @@ const inputSchema = {
     aggregationSpecification: {
       type: 'object',
     },
+    count: {
+      type: 'boolean',
+    },
     excludeFieldsInput: {
       type: 'array',
     },

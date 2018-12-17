@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize')
 const extractFieldsFromItem = require('../../../../data/fields/utilities/extractFieldsFromItem')
 const extractFieldsFromUserInput = require('../../../../data/fields/utilities/extractFieldsFromUserInput')
 const extractSortObjectsFromUserInput = require('../../../../data/sort/utilities/extractSortObjectsFromUserInput')
@@ -39,6 +40,7 @@ module.exports = function getWhereFactory({
 }) {
   return getWhereWrapper(
     ({
+      count,
       excludeFieldsInput = [],
       filterInput,
       filterSpecification,
@@ -85,10 +87,10 @@ module.exports = function getWhereFactory({
 
         const options = {
           include,
-          order,
           paranoid: !includeDeactivated,
           where,
         }
+
         if (limit) {
           options.limit = limit
         }
@@ -97,7 +99,27 @@ module.exports = function getWhereFactory({
           options.offset = offset
         }
 
+        if (order && !count) {
+          options.order = order
+        }
+
+        if (count) {
+          options.attributes = [
+            [Sequelize.fn('COUNT', Sequelize.col('id')), 'count'],
+          ]
+        }
+
         return Model.findAll(options).then(res => {
+          if (count) {
+            const meta = {
+              count: res[0].dataValues.count,
+            }
+            return {
+              items: [],
+              meta,
+            }
+          }
+
           const items = formatModelItemsResponse({ input: res })
 
           const fields = extractFieldsFromUserInput({

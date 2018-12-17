@@ -1,4 +1,5 @@
 exports.bulkCreate = require('./bulkCreate')
+exports.count = require('./count')
 exports.create = require('./create')
 exports.del = require('./del')
 exports.getMany = require('./getMany')
