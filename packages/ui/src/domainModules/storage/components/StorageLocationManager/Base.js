@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import objectPath from 'object-path'
 
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import crudActionCreators from 'coreModules/crud/actionCreators'
@@ -52,13 +51,15 @@ const tableBatchFetchOptions = {
 }
 
 const mapDispatchToProps = {
-  getManySpecimens: crudActionCreators.specimen.getMany,
-  getOneStorageLocation: crudActionCreators.storageLocation.getOne,
+  getManyPhysicalObject: crudActionCreators.physicalObject.getMany,
+  getManySpecimen: crudActionCreators.specimen.getMany,
+  getManyStorageLocation: crudActionCreators.storageLocation.getMany,
 }
 
 const propTypes = {
-  getManySpecimens: PropTypes.func.isRequired,
-  getOneStorageLocation: PropTypes.func.isRequired,
+  getManyPhysicalObject: PropTypes.func.isRequired,
+  getManySpecimen: PropTypes.func.isRequired,
+  getManyStorageLocation: PropTypes.func.isRequired,
   itemId: PropTypes.string,
   onNavigation: PropTypes.func.isRequired,
 }
@@ -70,6 +71,8 @@ const defaultProps = {
 class StorageLocationManager extends Component {
   constructor(props) {
     super(props)
+    this.getChildren = this.getChildren.bind(this)
+    this.getSpecimens = this.getSpecimens.bind(this)
     this.handleInteraction = this.handleInteraction.bind(this)
     this.fetchRelationshipsBeforeDelete = this.fetchRelationshipsBeforeDelete.bind(
       this
@@ -79,36 +82,48 @@ class StorageLocationManager extends Component {
     this.renderFilterForm = this.renderFilterForm.bind(this)
   }
 
+  getChildren() {
+    const { getManyStorageLocation, itemId } = this.props
+
+    return getManyStorageLocation({
+      limit: 30,
+      queryParams: { filter: { parentId: itemId } },
+    }).then(children => {
+      return children
+    })
+  }
+
+  getSpecimens() {
+    const { getManyPhysicalObject, getManySpecimen, itemId } = this.props
+
+    return getManyPhysicalObject({
+      limit: 100, // something big enough to likely return >=30 specimens if available
+      queryParams: { filter: { storageLocationId: itemId } },
+    }).then(physicalObjects => {
+      const physicalObjectIds = physicalObjects.map(({ id }) => id)
+
+      return getManySpecimen({
+        limit: 30,
+        queryParams: { filter: { physicalObjectIds } },
+      }).then(specimens => {
+        return specimens
+      })
+    })
+  }
+
   handleInteraction(type, data = {}) {
     this.props.onNavigation(type, data)
   }
 
   fetchRelationshipsBeforeDelete() {
-    const { getManySpecimens, getOneStorageLocation, itemId } = this.props
-
-    return getOneStorageLocation({
-      id: itemId,
-      relationships: ['children', 'physicalObjects'],
-    }).then(storageLocation => {
-      const { relationships } = storageLocation
-      const physicalObjects = objectPath.get(
-        relationships,
-        'physicalObjects.data'
-      )
-      delete relationships.physicalObjects
-
-      const physicalObjectIds = physicalObjects.map(({ id }) => id)
-
-      return getManySpecimens({
-        limit: 30,
-        queryParams: { filter: { physicalObjectIds } },
-      }).then(specimens => {
+    return Promise.all([this.getChildren(), this.getSpecimens()]).then(
+      ([children, specimens]) => {
         return Promise.resolve({
-          ...relationships,
+          children: { data: children },
           specimens: { data: specimens },
         })
-      })
-    })
+      }
+    )
   }
 
   renderEditForm(props = {}) {
