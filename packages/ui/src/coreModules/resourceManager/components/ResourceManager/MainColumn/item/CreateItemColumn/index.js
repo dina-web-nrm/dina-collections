@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'redux'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
-import RecordActionBar from '../RecordActionBar'
-import {
-  createHandleCreateSubmit,
-  createHandleUndoChanges,
-} from '../RecordActionBar/higherOrderComponents'
-
-const EnhancedRecordActionBar = compose(
-  createHandleCreateSubmit(),
-  createHandleUndoChanges()
-)(RecordActionBar)
+import { CreateItemActionBar } from '../ActionBars'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
@@ -56,7 +46,7 @@ class CreateItemColumn extends Component {
         })
 
         return (
-          <EnhancedRecordActionBar
+          <CreateItemActionBar
             {...extractedProps}
             formName={`${resource}Create`}
           />

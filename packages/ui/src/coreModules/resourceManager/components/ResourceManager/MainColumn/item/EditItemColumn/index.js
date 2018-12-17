@@ -7,18 +7,7 @@ import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
-import RecordActionBar from '../RecordActionBar'
-import {
-  createHandleDelete,
-  createHandleEditSubmit,
-  createHandleUndoChanges,
-} from '../RecordActionBar/higherOrderComponents'
-
-const EnhancedRecordActionBar = compose(
-  createHandleDelete(),
-  createHandleEditSubmit(),
-  createHandleUndoChanges()
-)(RecordActionBar)
+import { EditItemActionBar } from '../ActionBars'
 
 const defaultBuildItemHeaders = nestedItem => {
   if (!nestedItem) {
@@ -100,7 +89,7 @@ class EditItemColumn extends Component {
         })
 
         return (
-          <EnhancedRecordActionBar
+          <EditItemActionBar
             {...extractedProps}
             formName={`${resource}Edit`}
             itemHeader={itemHeader}
