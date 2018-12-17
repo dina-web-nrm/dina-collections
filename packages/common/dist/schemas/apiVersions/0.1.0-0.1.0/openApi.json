@@ -13458,6 +13458,27 @@
           },
           {
             "in": "query",
+            "name": "filter[storageLocationId]",
+            "description": "Filter by storageLocationId. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[storageLocationIds]",
+            "description": "Filter by storageLocationIds. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
