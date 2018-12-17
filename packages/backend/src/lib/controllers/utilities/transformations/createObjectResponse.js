@@ -2,9 +2,10 @@ const formatAsTimestamp = require('common/src/date/formatAsTimestamp')
 
 module.exports = function createObjectResponse({
   data,
-  type,
+  meta,
   relationships,
   status = 200,
+  type,
 }) {
   const { id, attributes, internals = {} } = data
 
@@ -23,6 +24,7 @@ module.exports = function createObjectResponse({
       type,
     },
     meta: {
+      ...meta,
       internals: {
         status,
       },

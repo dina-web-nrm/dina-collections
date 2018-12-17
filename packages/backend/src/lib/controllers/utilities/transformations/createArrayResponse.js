@@ -2,13 +2,21 @@ const formatAsTimestamp = require('common/src/date/formatAsTimestamp')
 
 module.exports = function createArrayResponse({
   items,
-  meta = {},
+  meta: metaInput = {},
   status = 200,
   type,
 }) {
+  const meta = {
+    ...metaInput,
+    internals: {
+      status,
+    },
+  }
+
   if (!items || items.length === 0) {
     return {
       data: [],
+      meta,
     }
   }
 
@@ -42,11 +50,6 @@ module.exports = function createArrayResponse({
 
       return itemResponse
     }),
-    meta: {
-      ...meta,
-      internals: {
-        status,
-      },
-    },
+    meta,
   }
 }
