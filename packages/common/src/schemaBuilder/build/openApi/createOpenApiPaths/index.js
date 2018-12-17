@@ -10,6 +10,13 @@ module.exports = function createOpenApiPaths(endpoints) {
         [endpoint.path]: {},
       }
     }
+    if (updatedPaths[endpoint.path][endpoint.method]) {
+      throw new Error(
+        `Detected duplicated method: ${endpoint.method} for path: ${
+          endpoint.path
+        }`
+      )
+    }
     const path = buildPath(endpoint)
     return {
       ...updatedPaths,
