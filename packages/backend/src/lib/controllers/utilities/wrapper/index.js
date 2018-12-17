@@ -90,6 +90,7 @@ module.exports = function createControllerWrapper({
       request: originalRequest,
       user,
       requestId,
+      ...rest
     }) {
       // log.debug(`Called with request id: ${requestId}`)
       return applyHooks({
@@ -143,6 +144,7 @@ module.exports = function createControllerWrapper({
                     requestId,
                     serviceInteractor,
                     user,
+                    ...rest,
                   })
                 })
                 .then(controllerResponse => {
@@ -185,7 +187,7 @@ module.exports = function createControllerWrapper({
                 const relationships =
                   includeRelations &&
                   extractRelationships({
-                    externalRelationships: itemExternalRelationships,
+                    externalJsonRelationships: itemExternalRelationships,
                     item,
                     queryParamRelationships,
                     relations,
@@ -194,6 +196,7 @@ module.exports = function createControllerWrapper({
                 return createObjectResponse({
                   data: item,
                   id: item.id,
+                  meta,
                   relationships,
                   status: responseSuccessStatus,
                   type: resource,
