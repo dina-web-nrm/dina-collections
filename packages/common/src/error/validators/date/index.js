@@ -93,7 +93,7 @@ const pastSingleDate = value => {
 const pastDateRange = value => {
   return (
     pastSingleDate(value && value.startDate) &&
-    pastSingleDate(value && value.endDate, true)
+    pastSingleDate(value && value.endDate)
   )
 }
 
