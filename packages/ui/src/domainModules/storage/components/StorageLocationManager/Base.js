@@ -12,13 +12,7 @@ import buildFilterQuery from './filter/buildFilterQuery'
 import tableColumnSpecifications from './tableColumnSpecifications'
 
 const resource = 'storageLocation'
-const include = [
-  'parent',
-  'physicalObjects.specimens',
-  'preparationTypes',
-  'resourceActivities',
-  'taxa',
-]
+const include = ['parent', 'resourceActivities']
 const createGetNestedItemHocInput = {
   include,
   refresh: true,
