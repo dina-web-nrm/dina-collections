@@ -71,7 +71,7 @@ class BottomBar extends PureComponent {
             size="large"
             style={{ float: 'right' }}
           >
-            Reset
+            Clear all filters
           </Button>
         </Grid.Column>
       </Grid>
