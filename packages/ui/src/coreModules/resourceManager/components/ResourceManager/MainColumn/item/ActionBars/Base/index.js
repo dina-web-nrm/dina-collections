@@ -46,14 +46,16 @@ const propTypes = {
   invalid: PropTypes.bool.isRequired,
   loadingDelete: PropTypes.bool,
   onDelete: PropTypes.func,
-  onSubmit: PropTypes.func.isRequired,
-  onUndoChanges: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
+  onUndoChanges: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   loadingDelete: undefined,
   onDelete: undefined,
+  onSubmit: undefined,
+  onUndoChanges: undefined,
 }
 
 export class RecordActionBar extends PureComponent {
@@ -74,7 +76,7 @@ export class RecordActionBar extends PureComponent {
       <Grid padded style={{ pointerEvents: 'none' }} verticalAlign="middle">
         <Grid.Column>
           <Button
-            disabled={hasSyncErrors || invalid || pristine}
+            disabled={!handleSubmit || hasSyncErrors || invalid || pristine}
             loading={submitting}
             onClick={handleSubmit}
             primary
@@ -86,7 +88,7 @@ export class RecordActionBar extends PureComponent {
           </Button>
           <Button
             basic
-            disabled={pristine || submitting}
+            disabled={!handleUndoChanges || pristine || submitting}
             onClick={handleUndoChanges}
             size="large"
             style={{ float: 'left', pointerEvents: 'initial' }}
