@@ -131,12 +131,24 @@ const createHandleDelete = () => ComposedComponent => {
       const { del } = crudActionCreators[resource]
 
       return dispatch(del({ id: itemId })).then(() => {
-        createNotification({
-          componentProps: {
-            header: 'The record was deleted',
-          },
-          type: 'SUCCESS',
-        })
+        const notification =
+          resource === 'specimen' // special case for specimen to wait for elasticsearch to update
+            ? {
+                componentProps: {
+                  header:
+                    'The specimen was deleted. Please wait while the table is updated...',
+                },
+                ttl: 3000,
+                type: 'SUCCESS',
+              }
+            : {
+                componentProps: {
+                  header: 'The record was deleted',
+                },
+                type: 'SUCCESS',
+              }
+
+        createNotification(notification)
 
         if (onInteraction) {
           onInteraction(DEL_SUCCESS)

@@ -113,6 +113,7 @@ class EditSpecimen extends PureComponent {
           })
         }}
         initialValues={initialValues}
+        itemId={nestedSpecimen.id}
         loading={!nestedSpecimen}
         mode="edit"
         resourceActivities={resourceActivities}
