@@ -85,6 +85,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={AgentDropdownPickerSearch}
+                enablePlainTextOption={false}
                 module="collectionMammals"
                 name="agent"
                 parameterKey="curatorialAssessment.agent"
