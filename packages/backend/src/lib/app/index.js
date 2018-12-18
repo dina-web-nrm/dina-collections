@@ -1,11 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const responseTime = require('response-time')
 const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
 const createLogIncomingMiddleware = require('./middlewares/logIncoming')
 const createDocsMiddleware = require('./middlewares/docs')
 const createPingRouteMiddleware = require('./middlewares/pingRoute')
 const createAuthenticateMiddleware = require('../auth/middleware')
+const createResponseTimeMiddleware = require('./middlewares/responseTime')
 
 module.exports = function createApp(
   { auth, config, openApiSpec, routers } = {}
@@ -17,8 +17,9 @@ module.exports = function createApp(
   const errorHandlerMiddleware = createErrorHandlerMiddleware()
   const pingRouteMiddleware = createPingRouteMiddleware()
   const authenticateMiddleware = createAuthenticateMiddleware({ auth, config })
+  const responseTimeMiddleware = createResponseTimeMiddleware()
 
-  app.use(responseTime())
+  app.use(responseTimeMiddleware)
   app.use(logIncomingMiddleware)
   app.use('/docs', docsMiddleware)
   app.use(
