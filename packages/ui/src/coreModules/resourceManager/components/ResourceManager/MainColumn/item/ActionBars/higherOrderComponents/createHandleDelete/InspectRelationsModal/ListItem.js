@@ -54,4 +54,10 @@ const ListItem = ({ id, resource }) => {
 
 ListItem.propTypes = propTypes
 
-export default compose(createGetItemById({ idPath: 'id' }))(ListItem)
+export default compose(
+  createGetItemById({
+    idPath: 'id',
+    refresh: false,
+    shouldFetch: false,
+  })
+)(ListItem)
