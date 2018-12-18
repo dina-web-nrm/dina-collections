@@ -4,10 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 
-import {
-  CLOSE_ITEM_VIEW,
-  DEL_SUCCESS,
-} from 'coreModules/resourceManager/constants'
+import { DEL_SUCCESS } from 'coreModules/resourceManager/constants'
 import { createNotification as createNotificationActionCreator } from 'coreModules/notifications/actionCreators'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import InspectRelationsModal from './InspectRelationsModal'
@@ -23,7 +20,7 @@ const propTypes = {
   itemHeader: PropTypes.string,
   itemId: PropTypes.string,
   itemSubHeader: PropTypes.string,
-  onInteraction: PropTypes.func.isRequired,
+  onInteraction: PropTypes.func,
   relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
   resource: PropTypes.string.isRequired,
 }
@@ -32,6 +29,7 @@ const defaultProps = {
   itemHeader: undefined,
   itemId: undefined,
   itemSubHeader: undefined,
+  onInteraction: undefined,
   relationshipsToCheckBeforeDelete: [],
 }
 
@@ -43,7 +41,6 @@ const createHandleDelete = () => ComposedComponent => {
       this.deleteItemOrShowRelationships = this.deleteItemOrShowRelationships.bind(
         this
       )
-      this.handleClose = this.handleClose.bind(this)
       this.handleDelete = this.handleDelete.bind(this)
       this.handleModalClose = this.handleModalClose.bind(this)
       this.handleModalOpen = this.handleModalOpen.bind(this)
@@ -53,11 +50,6 @@ const createHandleDelete = () => ComposedComponent => {
         open: false,
         relationships: undefined,
       }
-    }
-
-    handleClose(event) {
-      event.preventDefault()
-      this.props.onInteraction(CLOSE_ITEM_VIEW)
     }
 
     handleDelete() {
@@ -145,7 +137,10 @@ const createHandleDelete = () => ComposedComponent => {
           },
           type: 'SUCCESS',
         })
-        onInteraction(DEL_SUCCESS)
+
+        if (onInteraction) {
+          onInteraction(DEL_SUCCESS)
+        }
       })
     }
 
