@@ -184,6 +184,7 @@ class RecordForm extends Component {
             {...this.props}
             {...props}
             onUndoChanges={this.handleUndoChanges}
+            resource="specimen"
           />
         )
       }
