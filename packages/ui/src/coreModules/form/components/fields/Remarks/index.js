@@ -130,11 +130,15 @@ class RemarksInput extends PureComponent {
 
     const remarkSegments = (remarks || '')
       .split('\n')
-      .reduce((segments, segment) => {
+      .reduce((segments, segment, index) => {
         if (segments.length) {
-          return [...segments, <br />, <span>{segment}</span>]
+          return [
+            ...segments,
+            <br />,
+            <span key={segment + index}>{segment}</span>, // eslint-disable-line react/no-array-index-key
+          ]
         }
-        return [<span>{segment}</span>]
+        return [<span key={segment + index}>{segment}</span>] // eslint-disable-line react/no-array-index-key
       }, [])
 
     return (

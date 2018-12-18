@@ -15,9 +15,9 @@ const {
 const units = [
   agentBase,
   agentNameDetails,
+  agentRoles,
   agentContactDetails,
   agentBirthAndDeath,
-  agentRoles,
   recordHistoryEvents,
   legacyData,
 ]

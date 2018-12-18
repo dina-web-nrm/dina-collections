@@ -8,13 +8,12 @@ import { createSelector } from 'reselect'
 import { push } from 'react-router-redux'
 import objectPath from 'object-path'
 
-import crudActionCreators from 'coreModules/crud/actionCreators'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { createShortcutLayer } from 'coreModules/keyboardShortcuts/higherOrderComponents'
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
-import { createNotification as createNotificationAC } from 'coreModules/notifications/actionCreators'
+import { DEL_SUCCESS } from 'coreModules/resourceManager/constants'
 import userSelectors from 'coreModules/user/globalSelectors'
 import {
   createInjectSearch,
@@ -182,10 +181,8 @@ const mapStateToProps = (
 }
 
 const mapDispatchToProps = {
-  createNotification: createNotificationAC,
   delCurrentTableRowNumber: keyObjectActionCreators.del.currentTableRowNumber,
   delFocusedSpecimenId: keyObjectActionCreators.del.focusedSpecimenId,
-  delSpecimen: crudActionCreators.specimen.del,
   push,
   reset,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
@@ -194,11 +191,9 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  createNotification: PropTypes.func.isRequired,
   currentTableRowNumber: PropTypes.number,
   delCurrentTableRowNumber: PropTypes.func.isRequired,
   delFocusedSpecimenId: PropTypes.func.isRequired,
-  delSpecimen: PropTypes.func.isRequired,
   enableShowAllRecordsButton: PropTypes.bool.isRequired,
   filterColumnIsOpen: PropTypes.bool.isRequired,
   filterValues: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
@@ -245,22 +240,22 @@ class MammalManager extends Component {
     super(props)
 
     this.getColumns = this.getColumns.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
-    this.handleSpecimenIdUpdate = this.handleSpecimenIdUpdate.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
+    this.handleInteraction = this.handleInteraction.bind(this)
+    this.handleOpenEditRecordView = this.handleOpenEditRecordView.bind(this)
+    this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
+    this.handleOpenTableView = this.handleOpenTableView.bind(this)
+    this.handleResetFilters = this.handleResetFilters.bind(this)
+    this.handleSearchSpecimens = this.handleSearchSpecimens.bind(this)
+    this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
+    this.handleSelectPreviousRecord = this.handleSelectPreviousRecord.bind(this)
     this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
       this
     )
     this.handleSettingClick = this.handleSettingClick.bind(this)
-    this.handleToggleFilters = this.handleToggleFilters.bind(this)
-    this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
-    this.handleOpenTableView = this.handleOpenTableView.bind(this)
-    this.handleOpenEditRecordView = this.handleOpenEditRecordView.bind(this)
-    this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
-    this.handleSelectPreviousRecord = this.handleSelectPreviousRecord.bind(this)
     this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
-    this.handleResetFilters = this.handleResetFilters.bind(this)
-    this.handleSearchSpecimens = this.handleSearchSpecimens.bind(this)
+    this.handleSpecimenIdUpdate = this.handleSpecimenIdUpdate.bind(this)
+    this.handleToggleFilters = this.handleToggleFilters.bind(this)
 
     this.shortcuts = [
       {
@@ -322,18 +317,16 @@ class MammalManager extends Component {
     return getColumns(this.props)
   }
 
-  handleDelete() {
-    const { createNotification, delSpecimen, specimenId } = this.props
-
-    return delSpecimen({ id: specimenId }).then(() => {
-      createNotification({
-        componentProps: {
-          header: 'The record was deleted',
-        },
-        type: 'SUCCESS',
-      })
-      this.handleSearchSpecimens()
-    })
+  handleInteraction(type) {
+    switch (type) {
+      case DEL_SUCCESS: {
+        setTimeout(() => this.handleSearchSpecimens(), 3000)
+        break
+      }
+      default: {
+        break
+      }
+    }
   }
 
   handleSpecimenIdUpdate(props = this.props) {
@@ -496,9 +489,9 @@ class MammalManager extends Component {
           isNewRecordView={isNewRecordView}
           isTableViewOrSettings={isTableViewOrSettings}
           mainColumnActiveTab={mainColumnActiveTab}
-          onDelete={this.handleDelete}
           onExportCsv={isTableView && this.handleExportToCsv}
           onFormTabClick={isTableView && this.handleOpenEditRecordView}
+          onInteraction={this.handleInteraction}
           onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
           onResetFilters={this.handleResetFilters}
           onSearchSpecimens={this.handleSearchSpecimens}

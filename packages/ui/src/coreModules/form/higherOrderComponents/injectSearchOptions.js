@@ -26,6 +26,7 @@ const propTypes = {
     value: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
   }),
   createNestedItem: PropTypes.func.isRequired,
+  enablePlainTextOption: PropTypes.bool,
   extractText: PropTypes.func,
   filterFunctionName: PropTypes.string,
   getManySearch: PropTypes.func.isRequired,
@@ -67,6 +68,7 @@ const propTypes = {
 
 const defaultProps = {
   baseFilter: undefined,
+  enablePlainTextOption: undefined,
   extractText: defaultExtractValue,
   filterFunctionName: 'nameSearch',
   include: undefined,
@@ -84,9 +86,11 @@ const defaultProps = {
   textAttributeName: undefined,
 }
 
-const injectSearchOptions = (
-  { enablePlainTextOption = false } = {}
-) => ComposedComponent => {
+const injectSearchOptions = (hocInput = {}) => ComposedComponent => {
+  const {
+    enablePlainTextOption: enablePlainTextOptionHocInput = false,
+  } = hocInput
+
   class SearchOptionsInjector extends Component {
     constructor(props) {
       super(props)
@@ -217,6 +221,13 @@ const injectSearchOptions = (
     ) {
       const { searchQuery } = this.state
       if ((searchQuery && Array.isArray(response)) || (!searchQuery && id)) {
+        const { enablePlainTextOption: enablePlainTextOptionProp } = this.props
+
+        const enablePlainTextOption =
+          enablePlainTextOptionProp === undefined
+            ? enablePlainTextOptionHocInput
+            : enablePlainTextOptionProp
+
         const options = []
 
         if (enablePlainTextOption && searchQuery && !skipPlainTextOption) {
