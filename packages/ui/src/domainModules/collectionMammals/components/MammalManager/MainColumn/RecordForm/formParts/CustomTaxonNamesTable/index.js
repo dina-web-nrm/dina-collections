@@ -20,7 +20,7 @@ const log = createLog(
 const mapStateToProps = (state, { formValueSelector, name }) => {
   return {
     allCustomTaxonNameTypesFetched: crudKeyObjectSelectors.get[
-      ':resource.allItemsFetched'
+      ':resource.allItems.fetched'
     ](state, { resource: 'customTaxonNameType' }),
     customTaxonNames: formValueSelector(state, name),
     customTaxonNameTypeOptions: globalCrudSelectors.customTaxonNameType.getAllAsOptions(

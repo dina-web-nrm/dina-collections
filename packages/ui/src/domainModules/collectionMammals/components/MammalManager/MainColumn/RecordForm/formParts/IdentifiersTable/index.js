@@ -20,7 +20,7 @@ const log = createLog(
 const mapStateToProps = (state, { formValueSelector, name }) => {
   return {
     allIdentifierTypesFetched: crudKeyObjectSelectors.get[
-      ':resource.allItemsFetched'
+      ':resource.allItems.fetched'
     ](state, { resource: 'identifierType' }),
     identifiers: formValueSelector(state, name),
     identifierTypeOptions: globalCrudSelectors.identifierType

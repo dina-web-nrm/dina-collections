@@ -159,11 +159,11 @@ SegmentCollectionItems.defaultProps = defaultProps
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   createEnsureAllItemsFetched({
-    allFetchedKey: 'allStorageLocationsFetched',
+    allItemsFetchedKey: 'allStorageLocationsFetched',
     resource: 'storageLocation',
   }),
   createEnsureAllItemsFetched({
-    allFetchedKey: 'allPreparationTypesFetched',
+    allItemsFetchedKey: 'allPreparationTypesFetched',
     resource: 'preparationType',
   }),
   pathBuilder({

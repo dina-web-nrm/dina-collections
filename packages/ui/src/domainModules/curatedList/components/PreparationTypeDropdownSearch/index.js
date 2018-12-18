@@ -52,7 +52,7 @@ PreparationTypeDropdownSearch.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({
-    allFetchedKey: 'allPreparationTypesFetched',
+    allItemsFetchedKey: 'allPreparationTypesFetched',
     resource: 'preparationType',
   }),
   connect(mapStateToProps)

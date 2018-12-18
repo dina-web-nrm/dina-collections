@@ -150,7 +150,7 @@ export default compose(
     resource: 'specimen',
   }),
   createEnsureAllItemsFetched({
-    allFetchedKey: 'featureTypesFetched',
+    allItemsFetchedKey: 'featureTypesFetched',
     resource: 'featureType',
   }),
   createEnsureAllItemsFetched({

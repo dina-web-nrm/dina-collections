@@ -68,7 +68,7 @@ const getShouldExpandFirstItemOnMount = (item = {}) => {
 const mapStateToProps = (state, { formValueSelector, name }) => {
   return {
     allPreparationTypesFetched: crudKeyObjectSelectors.get[
-      ':resource.allItemsFetched'
+      ':resource.allItems.fetched'
     ](state, { resource: 'preparationType' }),
     collectionItems: formValueSelector(state, name),
     preparationTypes: crudSelectors.preparationType.getItemsObject(state),
