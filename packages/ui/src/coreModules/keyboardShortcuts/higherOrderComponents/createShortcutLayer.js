@@ -35,7 +35,7 @@ export default function createShortcutLayer({ layer }) {
           layer: this.props.layer,
         }
       }
-      componentDidMount() {
+      componentWillMount() {
         this.props.setLayer(this.props.layer)
       }
 
