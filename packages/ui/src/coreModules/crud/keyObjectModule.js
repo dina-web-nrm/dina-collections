@@ -12,6 +12,9 @@ const {
   keys: [
     ':resource.allItemsFetched',
     ':resource.fetchingAllItems',
+    ':resource.count.value',
+    ':resource.count.fetched',
+    ':resource.count.fetching',
     'nestedCache',
     'nestedCache.:namespace.items',
     'nestedCache.:namespace.items.:id',
