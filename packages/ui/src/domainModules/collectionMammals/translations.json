@@ -187,6 +187,124 @@
         "en": "Read only"
       }
     },
+    "features": {
+      "age": {
+        "en": "age in years",
+        "sv": ""
+      },
+      "age-stage": {
+        "en": "stage",
+        "sv": ""
+      },
+      "sex": {
+        "en": "sex",
+        "sv": ""
+      },
+      "carcass-condition": {
+        "en": "condition",
+        "sv": ""
+      },
+      "cranium-count": {
+        "en": "cranium count",
+        "sv": ""
+      },
+      "mandibula-count": {
+        "en": "mandibula count",
+        "sv": ""
+      },
+      "vertebrae-count": {
+        "en": "vertebrae count",
+        "sv": ""
+      },
+      "costae-count": {
+        "en": "costae count",
+        "sv": ""
+      },
+      "scapula-count": {
+        "en": "scapula count",
+        "sv": ""
+      },
+      "humerus-count": {
+        "en": "humerus count",
+        "sv": ""
+      },
+      "ulna-count": {
+        "en": "ulna count",
+        "sv": ""
+      },
+      "radius-count": {
+        "en": "radius count",
+        "sv": ""
+      },
+      "manus-count": {
+        "en": "manus count",
+        "sv": ""
+      },
+      "pelvis-count": {
+        "en": "pelvis count",
+        "sv": ""
+      },
+      "femur-count": {
+        "en": "femur count",
+        "sv": ""
+      },
+      "tibia-count": {
+        "en": "tibia count",
+        "sv": ""
+      },
+      "pedis-count": {
+        "en": "pedis count",
+        "sv": ""
+      },
+      "bacculum-count": {
+        "en": "bacculum count",
+        "sv": ""
+      },
+      "complete-body-weight": {
+        "en": "Complete body",
+        "sv": ""
+      },
+      "skinned-weight": {
+        "en": "skinned",
+        "sv": ""
+      },
+      "gutted-weight": {
+        "en": "gutted",
+        "sv": ""
+      },
+      "slaughtered-weight": {
+        "en": "slaughtered",
+        "sv": ""
+      },
+      "unknown-weight-type": {
+        "en": "other",
+        "sv": ""
+      },
+      "total-length": {
+        "en": "total length",
+        "sv": ""
+      },
+      "body-length": {
+        "en": "body length",
+        "sv": ""
+      },
+      "tail-to-anus-length": {
+        "en": "tail-anus length",
+        "sv": ""
+      },
+      "tail-to-pelvis-length": {
+        "en": "tail-pelvis length",
+        "sv": ""
+      },
+      "ear-length": {
+        "en": "ear length",
+        "sv": ""
+      },
+      "hind-foot-length": {
+        "en": "hind-foot length",
+        "sv": ""
+      }
+    },
     "individual": {
       "causeOfDeathStandardized": {
         "en": "Cause of death",
