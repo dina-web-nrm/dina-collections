@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { Grid, List, Modal } from 'semantic-ui-react'
-
+import { Grid, Modal, List } from 'semantic-ui-react'
 import { buildYYYYMMDD } from 'common/es5/date'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'

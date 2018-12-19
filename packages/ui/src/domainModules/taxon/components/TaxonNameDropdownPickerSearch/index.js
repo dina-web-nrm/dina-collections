@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Modal, Button } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
+import { LayerModal } from 'coreModules/commonUi/components'
 import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 
 import TaxonNameDropdownSearch from '../TaxonNameDropdownSearch'
@@ -44,7 +45,7 @@ export class TaxonNameDropdownPickerSearch extends Component {
           }
         : undefined
       return (
-        <Modal onClose={onClose} open style={{ overflow: 'hidden' }}>
+        <LayerModal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <TaxonNameManager
               initialFilterValues={initialFilterValues}
@@ -55,7 +56,7 @@ export class TaxonNameDropdownPickerSearch extends Component {
               treeEnabled={false}
             />
           </Modal.Content>
-        </Modal>
+        </LayerModal>
       )
     }
 

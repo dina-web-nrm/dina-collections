@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Modal, Button } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
+import { LayerModal } from 'coreModules/commonUi/components'
 import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 
 import TaxonNameDropdownSearch from '../TaxonNameDropdownSearch'
@@ -38,11 +39,11 @@ export class AcceptedTaxonNameDropdownPickerSearch extends Component {
     } = this.props
     if (pickerActive) {
       return (
-        <Modal onClose={onClose} open style={{ overflow: 'hidden' }}>
+        <LayerModal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <TaxonManager isPicker onInteraction={onInteraction} treeEnabled />
           </Modal.Content>
-        </Modal>
+        </LayerModal>
       )
     }
 

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-
-import { Icon, Modal, Table } from 'semantic-ui-react'
+import { LayerModal } from 'coreModules/commonUi/components'
+import { Modal, Icon, Table } from 'semantic-ui-react'
 
 import config from 'config'
 import createLog from 'utilities/log'
@@ -62,7 +62,7 @@ const ShortcutsDisplay = ({
         },
       ]}
     >
-      <Modal
+      <LayerModal
         closeOnDocumentClick
         onClick={setShortcutsModalHidden}
         onClose={setShortcutsModalHidden}
@@ -103,7 +103,7 @@ const ShortcutsDisplay = ({
             </Table>
           </Modal.Description>
         </Modal.Content>
-      </Modal>
+      </LayerModal>
     </KeyboardShortcuts>
   )
 }
