@@ -16,9 +16,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Ermine",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -171,7 +176,7 @@
         "RubinNo": "5200312",
         "RubinNo_related": [
           {
-            "_sourceId": "1",
+            "_sourceId": "3",
             "ID": "346",
             "RUBINNo": "5200312",
             "ENGLISH_NAME": "Ermine",
@@ -283,12 +288,14 @@
         {
           "featureType_key": "age-stage",
           "featureObservationText": "adult",
-          "methodText_key": "other"
+          "methodText_key": "other",
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "female",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -319,9 +326,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Xeric Four-striped Grass Rat",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -482,7 +494,7 @@
         "RubinNo": "9457503",
         "RubinNo_related": [
           {
-            "_sourceId": "6",
+            "_sourceId": "8",
             "ID": "1354",
             "RUBINNo": "9457503",
             "ENGLISH_NAME": "Xeric Four-striped Grass Rat, Four-striped Grass Rat",
@@ -592,7 +604,8 @@
         {
           "featureType_key": "sex",
           "featureObservationText": "unknown",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -630,9 +643,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Whiskered Bat",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -777,7 +795,21 @@
         "RegDate": "2006-11-14 00:00:00",
         "RubinID": null,
         "RubinNo": "3810444",
-        "RubinNo_related": null,
+        "RubinNo_related": [
+          {
+            "_sourceId": "0",
+            "ID": "59",
+            "RUBINNo": "3810444",
+            "ENGLISH_NAME": "Whiskered Bat",
+            "SWEDISH_NAME": "Mustaschfladdermus",
+            "LATIN_NAME": "Myotis mystacinus",
+            "ORDER": "Chiroptera",
+            "FAMILY": "Vespertilionidae",
+            "GENUS": "Myotis",
+            "SPECIES": "mystacinus",
+            "SUBSPECIES": null
+          }
+        ],
         "Scientific_Name": "Myotis mystacinus",
         "Signature": "[masked]",
         "Signature_related": null,
@@ -859,8 +891,8 @@
       "originInformation": null,
       "deathInformation": null,
       "taxonInformation": {
-        "curatorialTaxonName": null,
-        "curatorialTaxonNameRank": null,
+        "curatorialTaxonName": "Myotis mystacinus",
+        "curatorialTaxonNameRank": "species",
         "taxonRemarks": null,
         "typeStatus_key": null,
         "customTaxonNames": [
@@ -881,27 +913,32 @@
         {
           "featureType_key": "sex",
           "featureObservationText": "male",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "body-length",
           "featureObservationText": "46",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "ear-length",
           "featureObservationText": "15",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "hind-foot-length",
           "featureObservationText": "6",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "tail-to-anus-length",
           "featureObservationText": "40",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         }
       ],
       "physicalObjects": [
@@ -939,9 +976,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Brown Bear",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -1091,7 +1133,7 @@
         "RubinNo": "5100906",
         "RubinNo_related": [
           {
-            "_sourceId": "0",
+            "_sourceId": "2",
             "ID": "313",
             "RUBINNo": "5100906",
             "ENGLISH_NAME": "Brown Bear",
@@ -1190,18 +1232,13 @@
         "typeStatus_key": null,
         "customTaxonNames": null
       },
-      "determinations": {
-        "determinedByAgent_textI": null,
-        "taxonNameI": "Ursus arctos",
-        "date_year": null,
-        "date_month": null,
-        "date_day": null
-      },
+      "determinations": null,
       "featureObservations": [
         {
           "featureType_key": "age-stage",
           "featureObservationText": "adult",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -1232,9 +1269,14 @@
       "locationDistinct.longEW": "N",
       "locationDistinct.longM": "0",
       "locationDistinct.longS": "40",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": null,
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -1387,7 +1429,7 @@
         "RubinNo": "5520606",
         "RubinNo_related": [
           {
-            "_sourceId": "3",
+            "_sourceId": "5",
             "ID": "489",
             "RUBINNo": "5520606",
             "ENGLISH_NAME": "Eurasian Lynx",
@@ -1496,7 +1538,8 @@
         {
           "featureType_key": "sex",
           "featureObservationText": "female",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -1527,9 +1570,14 @@
       "locationDistinct.longEW": "N",
       "locationDistinct.longM": "40",
       "locationDistinct.longS": "0",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Wolverine",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": "Järv"
     },
     "sourceData": {
@@ -1693,7 +1741,7 @@
         "RubinNo": "5203003",
         "RubinNo_related": [
           {
-            "_sourceId": "2",
+            "_sourceId": "4",
             "ID": "371",
             "RUBINNo": "5203003",
             "ENGLISH_NAME": "Wolverine",
@@ -1800,83 +1848,91 @@
         "typeStatus_key": null,
         "customTaxonNames": null
       },
-      "determinations": {
-        "determinedByAgent_textI": null,
-        "taxonNameI": "Gulo gulo",
-        "date_year": null,
-        "date_month": null,
-        "date_day": null
-      },
+      "determinations": null,
       "featureObservations": [
         {
           "featureType_key": "age-stage",
           "featureObservationText": "unknown",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "male",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "cranium-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "mandibula-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "vertebrae-count",
           "featureObservationText": "x",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "costae-count",
           "featureObservationText": "x",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "scapula-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "humerus-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "ulna-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "radius-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "manus-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "femur-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "tibia-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "pedis-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -1921,9 +1977,14 @@
       "locationDistinct.longEW": "S",
       "locationDistinct.longM": "39",
       "locationDistinct.longS": "43",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Subsaharan Pygmy Mouse",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -2074,7 +2135,21 @@
         "RegDate": "2016-08-19 00:00:00",
         "RubinID": null,
         "RubinNo": "9472969",
-        "RubinNo_related": null,
+        "RubinNo_related": [
+          {
+            "_sourceId": "11",
+            "ID": "1914",
+            "RUBINNo": "9472969",
+            "ENGLISH_NAME": "Subsaharan Pygmy Mouse",
+            "SWEDISH_NAME": null,
+            "LATIN_NAME": "Mus musculoides",
+            "ORDER": "Rodentia",
+            "FAMILY": "Muridae",
+            "GENUS": "Mus",
+            "SPECIES": "musculoides",
+            "SUBSPECIES": null
+          }
+        ],
         "Scientific_Name": "Mus musculoides",
         "Signature": "[masked]",
         "Signature_related": null,
@@ -2146,8 +2221,8 @@
       "originInformation": null,
       "deathInformation": null,
       "taxonInformation": {
-        "curatorialTaxonName": null,
-        "curatorialTaxonNameRank": null,
+        "curatorialTaxonName": "Mus musculoides",
+        "curatorialTaxonNameRank": "species",
         "taxonRemarks": "Sungenus Nannomys",
         "typeStatus_key": null,
         "customTaxonNames": [
@@ -2168,22 +2243,26 @@
         {
           "featureType_key": "sex",
           "featureObservationText": "female",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "body-length",
           "featureObservationText": "52",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "ear-length",
           "featureObservationText": "14",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "tail-to-anus-length",
           "featureObservationText": "47",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         }
       ],
       "physicalObjects": [
@@ -2192,7 +2271,7 @@
           "remarks": null,
           "storageLevel1": "Plåtskåpsrum",
           "storageLevel2": null,
-          "storageLevel4": null
+          "storageLevel4": "9472969 Mus musculoides"
         }
       ]
     }
@@ -2214,9 +2293,14 @@
       "locationDistinct.longEW": "S",
       "locationDistinct.longM": "31",
       "locationDistinct.longS": "40",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Black Howler",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -2378,7 +2462,21 @@
         "RegDate": "2007-05-24 00:00:00",
         "RubinID": "FÖ 983950001128",
         "RubinNo": "4352406",
-        "RubinNo_related": null,
+        "RubinNo_related": [
+          {
+            "_sourceId": "1",
+            "ID": "159",
+            "RUBINNo": "4352406",
+            "ENGLISH_NAME": "Black Howler",
+            "SWEDISH_NAME": null,
+            "LATIN_NAME": "Alouatta caraya",
+            "ORDER": "Primates",
+            "FAMILY": "Atelidae",
+            "GENUS": "Alouatta",
+            "SPECIES": "caraya",
+            "SUBSPECIES": null
+          }
+        ],
         "Scientific_Name": "Alouatta caraya",
         "Signature": "[masked]",
         "Signature_related": null,
@@ -2465,8 +2563,8 @@
         "remarks": null
       },
       "taxonInformation": {
-        "curatorialTaxonName": null,
-        "curatorialTaxonNameRank": null,
+        "curatorialTaxonName": "Alouatta caraya",
+        "curatorialTaxonNameRank": "species",
         "taxonRemarks": null,
         "typeStatus_key": null,
         "customTaxonNames": [
@@ -2476,58 +2574,61 @@
           }
         ]
       },
-      "determinations": {
-        "determinedByAgent_textI": null,
-        "taxonNameI": "Alouatta caraya",
-        "date_year": null,
-        "date_month": null,
-        "date_day": null
-      },
+      "determinations": null,
       "featureObservations": [
         {
           "featureType_key": "age-stage",
           "featureObservationText": "adult",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "female",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "total-length",
           "featureObservationText": "1038",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "hind-foot-length",
           "featureObservationText": "130",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "tail-to-pelvis-length",
           "featureObservationText": "544",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "cranium-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "mandibula-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "manus-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "pedis-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -2536,14 +2637,14 @@
           "remarks": null,
           "storageLevel1": "Bensalen",
           "storageLevel2": null,
-          "storageLevel4": null
+          "storageLevel4": "4352406 Alouatta caraya"
         },
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
           "storageLevel1": "Skinnrum kylda",
           "storageLevel2": null,
-          "storageLevel4": null
+          "storageLevel4": "4352406 Alouatta caraya"
         }
       ]
     }
@@ -2565,9 +2666,14 @@
       "locationDistinct.longEW": "S",
       "locationDistinct.longM": "30",
       "locationDistinct.longS": "28",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Eastern Gorilla",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": "Gorilla"
     },
     "sourceData": {
@@ -2731,7 +2837,7 @@
         "RubinNo": "4500906",
         "RubinNo_related": [
           {
-            "_sourceId": "8",
+            "_sourceId": "10",
             "ID": "1791",
             "RUBINNo": "4500906",
             "ENGLISH_NAME": "Eastern Gorilla",
@@ -2828,33 +2934,31 @@
           }
         ]
       },
-      "determinations": {
-        "determinedByAgent_textI": null,
-        "taxonNameI": "Gorilla beringei",
-        "date_year": null,
-        "date_month": null,
-        "date_day": null
-      },
+      "determinations": null,
       "featureObservations": [
         {
           "featureType_key": "age-stage",
           "featureObservationText": "adult",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "male",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "cranium-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "mandibula-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -2892,9 +2996,14 @@
       "locationDistinct.longEW": "N",
       "locationDistinct.longM": "47",
       "locationDistinct.longS": "25",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": null,
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -3051,7 +3160,7 @@
         "RubinNo": "5700503",
         "RubinNo_related": [
           {
-            "_sourceId": "7",
+            "_sourceId": "9",
             "ID": "1684",
             "RUBINNo": "5700503",
             "ENGLISH_NAME": "Ringed Seal",
@@ -3156,28 +3265,25 @@
         "typeStatus_key": null,
         "customTaxonNames": null
       },
-      "determinations": {
-        "determinedByAgent_textI": null,
-        "taxonNameI": "Pusa hispida",
-        "date_year": null,
-        "date_month": null,
-        "date_day": null
-      },
+      "determinations": null,
       "featureObservations": [
         {
           "featureType_key": "age-stage",
           "featureObservationText": "juvenile",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "total-length",
           "featureObservationText": "715",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "hind-foot-length",
           "featureObservationText": "203",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         }
       ],
       "physicalObjects": [
@@ -3215,9 +3321,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Tailless Bat sp.",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -3378,7 +3489,7 @@
         "RubinNo": "3631800",
         "RubinNo_related": [
           {
-            "_sourceId": "5",
+            "_sourceId": "7",
             "ID": "1191",
             "RUBINNo": "3631800",
             "ENGLISH_NAME": "Tailless Bat sp.",
@@ -3490,17 +3601,20 @@
         {
           "featureType_key": "sex",
           "featureObservationText": "male",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "cranium-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "mandibula-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -3538,9 +3652,14 @@
       "locationDistinct.longEW": "N",
       "locationDistinct.longM": "10",
       "locationDistinct.longS": "0",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": null,
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -3704,7 +3823,7 @@
         "RubinNo": "5520606",
         "RubinNo_related": [
           {
-            "_sourceId": "3",
+            "_sourceId": "5",
             "ID": "489",
             "RUBINNo": "5520606",
             "ENGLISH_NAME": "Eurasian Lynx",
@@ -3811,48 +3930,49 @@
         "typeStatus_key": null,
         "customTaxonNames": null
       },
-      "determinations": {
-        "determinedByAgent_textI": null,
-        "taxonNameI": "Lynx lynx",
-        "date_year": null,
-        "date_month": null,
-        "date_day": null
-      },
+      "determinations": null,
       "featureObservations": [
         {
           "featureType_key": "unknown-weight-type",
           "featureObservationText": "16000",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "age-stage",
           "featureObservationText": "adult",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "female",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "total-length",
           "featureObservationText": "1090",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "ear-length",
           "featureObservationText": "90",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "hind-foot-length",
           "featureObservationText": "250",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "tail-to-anus-length",
           "featureObservationText": "210",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         }
       ],
       "physicalObjects": [
@@ -3897,9 +4017,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Wolverine",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": "Järv"
     },
     "sourceData": {
@@ -4063,7 +4188,7 @@
         "RubinNo": "5203003",
         "RubinNo_related": [
           {
-            "_sourceId": "2",
+            "_sourceId": "4",
             "ID": "371",
             "RUBINNo": "5203003",
             "ENGLISH_NAME": "Wolverine",
@@ -4094,7 +4219,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": "Skin at another institution",
+      "collectionItemsRemarks": null,
       "publishRecord": "True",
       "remarks": "Skin to other institution.\nLänstyrelsens naturvårdsenhet har framfört önskemål om att djuret ska ingå i Naturrum, Ammarnäs.\nJakttillstånd finns enligt uppgift.\nPenisben finnes.\nBiocidprov tagna.",
       "identifiers": [
@@ -4172,78 +4297,85 @@
         "typeStatus_key": null,
         "customTaxonNames": null
       },
-      "determinations": {
-        "determinedByAgent_textI": null,
-        "taxonNameI": "Gulo gulo",
-        "date_year": null,
-        "date_month": null,
-        "date_day": null
-      },
+      "determinations": null,
       "featureObservations": [
         {
           "featureType_key": "age-stage",
           "featureObservationText": "unknown",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "male",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "total-length",
           "featureObservationText": "95.5",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "ear-length",
           "featureObservationText": "54",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "hind-foot-length",
           "featureObservationText": "174",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "tail-to-anus-length",
           "featureObservationText": "220",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "complete-body-weight",
           "featureObservationText": "13.4",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "cranium-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "mandibula-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "costae-count",
           "featureObservationText": "6",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "scapula-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "pelvis-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "femur-count",
           "featureObservationText": "0,5",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -4256,7 +4388,7 @@
         },
         {
           "preparationType_key": "unspecified-skin",
-          "remarks": null,
+          "remarks": "Skin at another institution",
           "storageLevel1": "Annan Institution",
           "storageLevel2": null,
           "storageLevel4": null
@@ -4288,9 +4420,14 @@
       "locationDistinct.longEW": "N",
       "locationDistinct.longM": "25",
       "locationDistinct.longS": "10",
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": null,
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": null
     },
     "sourceData": {
@@ -4455,7 +4592,7 @@
         "RubinNo": "7803903",
         "RubinNo_related": [
           {
-            "_sourceId": "4",
+            "_sourceId": "6",
             "ID": "672",
             "RUBINNo": "7803903",
             "ENGLISH_NAME": "Western Roe Deer",
@@ -4486,7 +4623,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": "Skin discarded from collection",
+      "collectionItemsRemarks": null,
       "publishRecord": "True",
       "remarks": "Kranie finns på Grimsö med nummer B215-93",
       "identifiers": [
@@ -4559,22 +4696,26 @@
         {
           "featureType_key": "unknown-weight-type",
           "featureObservationText": "9333",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "age-stage",
           "featureObservationText": "juvenile",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "male",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "carcass-condition",
           "featureObservationText": "fresh",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -4584,6 +4725,13 @@
           "storageLevel1": "Bensalen",
           "storageLevel2": null,
           "storageLevel4": "7803903 Capreolus capreolus"
+        },
+        {
+          "preparationType_key": "unspecified-skin",
+          "remarks": "Skin discarded from collection",
+          "storageLevel1": "Ingen information",
+          "storageLevel2": null,
+          "storageLevel4": null
         }
       ]
     }
@@ -4605,9 +4753,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": null,
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": "Lo"
     },
     "sourceData": {
@@ -4764,7 +4917,7 @@
         "RubinNo": "5520606",
         "RubinNo_related": [
           {
-            "_sourceId": "3",
+            "_sourceId": "5",
             "ID": "489",
             "RUBINNo": "5520606",
             "ENGLISH_NAME": "Eurasian Lynx",
@@ -4795,7 +4948,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": "Kan vara förväxlat med 98/5647\n\nSkin missing",
+      "collectionItemsRemarks": "Kan vara förväxlat med 98/5647",
       "publishRecord": "True",
       "remarks": null,
       "identifiers": [
@@ -4878,32 +5031,38 @@
         {
           "featureType_key": "age",
           "featureObservationText": "2",
-          "methodText_key": "sectioned-teeth"
+          "methodText_key": "sectioned-teeth",
+          "unit": null
         },
         {
           "featureType_key": "age-stage",
           "featureObservationText": "adult",
-          "methodText_key": "sectioned-teeth"
+          "methodText_key": "sectioned-teeth",
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "male",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "complete-body-weight",
           "featureObservationText": "13000",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "cranium-count",
           "featureObservationText": "x",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "mandibula-count",
           "featureObservationText": "x",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -4913,6 +5072,13 @@
           "storageLevel1": "Bensalen",
           "storageLevel2": null,
           "storageLevel4": "5520606 Lynx lynx"
+        },
+        {
+          "preparationType_key": "unspecified-skin",
+          "remarks": "Skin missing",
+          "storageLevel1": "Ingen information",
+          "storageLevel2": null,
+          "storageLevel4": null
         },
         {
           "preparationType_key": "unspecified-wet-preparation",
@@ -4941,9 +5107,14 @@
       "locationDistinct.longEW": null,
       "locationDistinct.longM": null,
       "locationDistinct.longS": null,
+      "objects.collDay": null,
+      "objects.collMonth": null,
+      "objects.collYear": null,
       "objects.commonName": "Wolverine",
+      "objects.dateType": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
+      "objects.scientificName": null,
       "objects.swedishName": "Järv"
     },
     "sourceData": {
@@ -5100,7 +5271,7 @@
         "RubinNo": "5203003",
         "RubinNo_related": [
           {
-            "_sourceId": "2",
+            "_sourceId": "4",
             "ID": "371",
             "RUBINNo": "5203003",
             "ENGLISH_NAME": "Wolverine",
@@ -5131,7 +5302,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": "Skin missing",
+      "collectionItemsRemarks": null,
       "publishRecord": "True",
       "remarks": "00-0k0-925F",
       "identifiers": [
@@ -5220,82 +5391,98 @@
         {
           "featureType_key": "age-stage",
           "featureObservationText": "adult",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "sex",
           "featureObservationText": "female",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "complete-body-weight",
           "featureObservationText": "10.88",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": "unspecified"
         },
         {
           "featureType_key": "cranium-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "mandibula-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "vertebrae-count",
           "featureObservationText": "x",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "costae-count",
           "featureObservationText": "x",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "scapula-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "humerus-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "ulna-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "radius-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "manus-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "pelvis-count",
           "featureObservationText": "1",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "femur-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "tibia-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         },
         {
           "featureType_key": "pedis-count",
           "featureObservationText": "2",
-          "methodText_key": null
+          "methodText_key": null,
+          "unit": null
         }
       ],
       "physicalObjects": [
@@ -5305,6 +5492,13 @@
           "storageLevel1": "Bensalen",
           "storageLevel2": null,
           "storageLevel4": "5203003 Gulo gulo"
+        },
+        {
+          "preparationType_key": "unspecified-skin",
+          "remarks": "Skin missing",
+          "storageLevel1": "Ingen information",
+          "storageLevel2": null,
+          "storageLevel4": null
         }
       ]
     }

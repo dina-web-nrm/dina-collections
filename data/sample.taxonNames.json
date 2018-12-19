@@ -18,15 +18,58 @@
       "Nr3": "0",
       "Namn": "ANOURA SP.",
       "Nr": "3631800",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": "28",
+      "acceptedToTaxonId": "27",
       "id": "2",
+      "language": null,
+      "name": "Myotis mystacinus",
+      "rank": "species",
+      "rubinNumber": "3810444",
+      "synonymToTaxonId": null,
+      "type": "scientific",
+      "vernacularToTaxonId": null
+    },
+    "sourceData": {
+      "Nr1": "381",
+      "Nr2": "4",
+      "Nr3": "44",
+      "Namn": "Myotis mystacinus",
+      "Nr": "3810444",
+      "Last_modified": null
+    }
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": "31",
+      "id": "3",
+      "language": null,
+      "name": "Alouatta caraya",
+      "rank": "species",
+      "rubinNumber": "4352406",
+      "synonymToTaxonId": null,
+      "type": "scientific",
+      "vernacularToTaxonId": null
+    },
+    "sourceData": {
+      "Nr1": "435",
+      "Nr2": "24",
+      "Nr3": "6",
+      "Namn": "Alouatta caraya",
+      "Nr": "4352406",
+      "Last_modified": null
+    }
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": "34",
+      "id": "4",
       "language": null,
       "name": "Gorilla beringei",
       "rank": "species",
@@ -41,15 +84,14 @@
       "Nr3": "6",
       "Namn": "Gorilla beringei",
       "Nr": "4500906",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "21",
-      "id": "3",
+      "id": "5",
       "language": null,
       "name": "Ursus arctos",
       "rank": "species",
@@ -64,15 +106,14 @@
       "Nr3": "6",
       "Namn": "Ursus arctos",
       "Nr": "5100906",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "15",
-      "id": "4",
+      "id": "6",
       "language": null,
       "name": "Mustela erminea",
       "rank": "species",
@@ -87,15 +128,14 @@
       "Nr3": "12",
       "Namn": "Mustela erminea",
       "Nr": "5200312",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "13",
-      "id": "5",
+      "id": "7",
       "language": null,
       "name": "Gulo gulo",
       "rank": "species",
@@ -110,15 +150,14 @@
       "Nr3": "3",
       "Namn": "Gulo gulo",
       "Nr": "5203003",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "10",
-      "id": "6",
+      "id": "8",
       "language": null,
       "name": "Lynx lynx",
       "rank": "species",
@@ -133,15 +172,14 @@
       "Nr3": "6",
       "Namn": "Lynx lynx   see also LYNX CAN",
       "Nr": "5520606",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "7",
+      "id": "9",
       "language": null,
       "name": "Phoca hispida",
       "rank": "species",
@@ -156,15 +194,14 @@
       "Nr3": "12",
       "Namn": "Phoca hispida; non-valid taxon name; see Pusa",
       "Nr": "5700312",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "6",
-      "id": "8",
+      "id": "10",
       "language": null,
       "name": "Capreolus capreolus",
       "rank": "species",
@@ -179,15 +216,14 @@
       "Nr3": "3",
       "Namn": "Capreolus capreolus",
       "Nr": "7803903",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": "32",
-      "id": "9",
+      "acceptedToTaxonId": "40",
+      "id": "11",
       "language": null,
       "name": "Rhabdomys pumilio",
       "rank": "species",
@@ -202,15 +238,14 @@
       "Nr3": "3",
       "Namn": "Rhabdomys pumilio",
       "Nr": "9457503",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": null,
-      "id": "10",
+      "acceptedToTaxonId": "38",
+      "id": "12",
       "language": null,
       "name": "Mus musculoides",
       "rank": "species",
@@ -225,15 +260,14 @@
       "Nr3": "69",
       "Namn": "Mus musculoides",
       "Nr": "9472969",
-      "Last_modified": "[masked]",
-      "include": "yes"
+      "Last_modified": "[masked]"
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "1",
-      "id": "11",
+      "id": "13",
       "language": null,
       "name": "root",
       "rank": "root",
@@ -248,7 +282,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "2",
-      "id": "12",
+      "id": "14",
       "language": null,
       "name": "Mammalia",
       "rank": "class",
@@ -263,7 +297,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "3",
-      "id": "13",
+      "id": "15",
       "language": null,
       "name": "Artiodactyla",
       "rank": "order",
@@ -278,7 +312,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "4",
-      "id": "14",
+      "id": "16",
       "language": null,
       "name": "Cervidae",
       "rank": "family",
@@ -293,7 +327,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "5",
-      "id": "15",
+      "id": "17",
       "language": null,
       "name": "Capreolus",
       "rank": "genus",
@@ -308,7 +342,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "7",
-      "id": "16",
+      "id": "18",
       "language": null,
       "name": "Carnivora",
       "rank": "order",
@@ -323,7 +357,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "8",
-      "id": "17",
+      "id": "19",
       "language": null,
       "name": "Felidae",
       "rank": "family",
@@ -338,7 +372,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "9",
-      "id": "18",
+      "id": "20",
       "language": null,
       "name": "Lynx",
       "rank": "genus",
@@ -353,7 +387,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "11",
-      "id": "19",
+      "id": "21",
       "language": null,
       "name": "Mustelidae",
       "rank": "family",
@@ -368,7 +402,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "12",
-      "id": "20",
+      "id": "22",
       "language": null,
       "name": "Gulo",
       "rank": "genus",
@@ -383,7 +417,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "14",
-      "id": "21",
+      "id": "23",
       "language": null,
       "name": "Mustela",
       "rank": "genus",
@@ -398,7 +432,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "16",
-      "id": "22",
+      "id": "24",
       "language": null,
       "name": "Phocidae",
       "rank": "family",
@@ -413,7 +447,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "17",
-      "id": "23",
+      "id": "25",
       "language": null,
       "name": "Pusa",
       "rank": "genus",
@@ -428,7 +462,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "18",
-      "id": "24",
+      "id": "26",
       "language": null,
       "name": "Pusa hispida",
       "rank": "species",
@@ -443,15 +477,14 @@
       "Nr3": "3",
       "Namn": "Capreolus capreolus",
       "Nr": "7803903",
-      "Last_modified": null,
-      "include": "yes"
+      "Last_modified": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "19",
-      "id": "25",
+      "id": "27",
       "language": null,
       "name": "Ursidae",
       "rank": "family",
@@ -466,7 +499,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "20",
-      "id": "26",
+      "id": "28",
       "language": null,
       "name": "Ursus",
       "rank": "genus",
@@ -481,7 +514,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "22",
-      "id": "27",
+      "id": "29",
       "language": null,
       "name": "Chiroptera",
       "rank": "order",
@@ -496,7 +529,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "23",
-      "id": "28",
+      "id": "30",
       "language": null,
       "name": "Phyllostomidae",
       "rank": "family",
@@ -511,7 +544,37 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": "25",
-      "id": "29",
+      "id": "31",
+      "language": null,
+      "name": "Vespertilionidae",
+      "rank": "family",
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "scientific",
+      "vernacularToTaxonId": null
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": "26",
+      "id": "32",
+      "language": null,
+      "name": "Myotis",
+      "rank": "genus",
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "scientific",
+      "vernacularToTaxonId": null
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": "28",
+      "id": "33",
       "language": null,
       "name": "Primates",
       "rank": "order",
@@ -525,8 +588,38 @@
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": "26",
-      "id": "30",
+      "acceptedToTaxonId": "29",
+      "id": "34",
+      "language": null,
+      "name": "Atelidae",
+      "rank": "family",
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "scientific",
+      "vernacularToTaxonId": null
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": "30",
+      "id": "35",
+      "language": null,
+      "name": "Alouatta",
+      "rank": "genus",
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "scientific",
+      "vernacularToTaxonId": null
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": "32",
+      "id": "36",
       "language": null,
       "name": "Hominidae",
       "rank": "family",
@@ -540,8 +633,8 @@
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": "27",
-      "id": "31",
+      "acceptedToTaxonId": "33",
+      "id": "37",
       "language": null,
       "name": "Gorilla",
       "rank": "genus",
@@ -555,8 +648,8 @@
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": "29",
-      "id": "32",
+      "acceptedToTaxonId": "35",
+      "id": "38",
       "language": null,
       "name": "Rodentia",
       "rank": "order",
@@ -570,8 +663,8 @@
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": "30",
-      "id": "33",
+      "acceptedToTaxonId": "36",
+      "id": "39",
       "language": null,
       "name": "Muridae",
       "rank": "family",
@@ -585,8 +678,23 @@
   {
     "legacyData": null,
     "migrationData": {
-      "acceptedToTaxonId": "31",
-      "id": "34",
+      "acceptedToTaxonId": "37",
+      "id": "40",
+      "language": null,
+      "name": "Mus",
+      "rank": "genus",
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "scientific",
+      "vernacularToTaxonId": null
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": "39",
+      "id": "41",
       "language": null,
       "name": "Rhabdomys",
       "rank": "genus",
@@ -601,7 +709,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "35",
+      "id": "42",
       "language": "en",
       "name": "Western Roe Deer",
       "rank": null,
@@ -616,7 +724,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "36",
+      "id": "43",
       "language": "en",
       "name": "Eurasian Lynx",
       "rank": null,
@@ -631,7 +739,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "37",
+      "id": "44",
       "language": "en",
       "name": "Wolverine",
       "rank": null,
@@ -646,7 +754,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "38",
+      "id": "45",
       "language": "en",
       "name": "Ermine",
       "rank": null,
@@ -661,7 +769,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "39",
+      "id": "46",
       "language": "en",
       "name": "Ringed Seal",
       "rank": null,
@@ -676,7 +784,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "40",
+      "id": "47",
       "language": "en",
       "name": "Brown Bear",
       "rank": null,
@@ -691,7 +799,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "41",
+      "id": "48",
       "language": "en",
       "name": "Tailless Bat sp.",
       "rank": null,
@@ -706,14 +814,44 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "42",
+      "id": "49",
+      "language": "en",
+      "name": "Whiskered Bat",
+      "rank": null,
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "vernacular",
+      "vernacularToTaxonId": "27"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": null,
+      "id": "50",
+      "language": "en",
+      "name": "Black Howler",
+      "rank": null,
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "vernacular",
+      "vernacularToTaxonId": "31"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": null,
+      "id": "51",
       "language": "en",
       "name": "Eastern Gorilla",
       "rank": null,
       "rubinNumber": null,
       "synonymToTaxonId": null,
       "type": "vernacular",
-      "vernacularToTaxonId": "28"
+      "vernacularToTaxonId": "34"
     },
     "sourceData": null
   },
@@ -721,14 +859,29 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "43",
+      "id": "52",
+      "language": "en",
+      "name": "Subsaharan Pygmy Mouse",
+      "rank": null,
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "vernacular",
+      "vernacularToTaxonId": "38"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": null,
+      "id": "53",
       "language": "en",
       "name": "Xeric Four-striped Grass Rat, Four-striped Grass Rat",
       "rank": null,
       "rubinNumber": null,
       "synonymToTaxonId": null,
       "type": "vernacular",
-      "vernacularToTaxonId": "32"
+      "vernacularToTaxonId": "40"
     },
     "sourceData": null
   },
@@ -736,7 +889,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "44",
+      "id": "54",
       "language": "sv",
       "name": "Järv",
       "rank": null,
@@ -751,7 +904,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "45",
+      "id": "55",
       "language": "sv",
       "name": "Hermelin",
       "rank": null,
@@ -766,7 +919,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "46",
+      "id": "56",
       "language": "sv",
       "name": "Vikare",
       "rank": null,
@@ -781,7 +934,7 @@
     "legacyData": null,
     "migrationData": {
       "acceptedToTaxonId": null,
-      "id": "47",
+      "id": "57",
       "language": "sv",
       "name": "Brunbjörn",
       "rank": null,
@@ -789,6 +942,21 @@
       "synonymToTaxonId": null,
       "type": "vernacular",
       "vernacularToTaxonId": "21"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "acceptedToTaxonId": null,
+      "id": "58",
+      "language": "sv",
+      "name": "Mustaschfladdermus",
+      "rank": null,
+      "rubinNumber": null,
+      "synonymToTaxonId": null,
+      "type": "vernacular",
+      "vernacularToTaxonId": "27"
     },
     "sourceData": null
   }

@@ -272,7 +272,7 @@
     "legacyData": null,
     "migrationData": {
       "id": "25",
-      "parentId": "2"
+      "parentId": "22"
     },
     "sourceData": null
   },
@@ -290,32 +290,32 @@
       "id": "27",
       "parentId": "26"
     },
-    "sourceData": null
-  },
-  {
-    "legacyData": null,
-    "migrationData": {
-      "id": "28",
-      "parentId": "27"
-    },
     "sourceData": {
-      "ID": "1791",
-      "RUBINNo": "4500906",
-      "ENGLISH_NAME": "Eastern Gorilla",
-      "SWEDISH_NAME": null,
-      "LATIN_NAME": "Gorilla beringei",
-      "ORDER": "Primates",
-      "FAMILY": "Hominidae",
-      "GENUS": "Gorilla",
-      "SPECIES": "beringei",
+      "ID": "59",
+      "RUBINNo": "3810444",
+      "ENGLISH_NAME": "Whiskered Bat",
+      "SWEDISH_NAME": "Mustaschfladdermus",
+      "LATIN_NAME": "Myotis mystacinus",
+      "ORDER": "Chiroptera",
+      "FAMILY": "Vespertilionidae",
+      "GENUS": "Myotis",
+      "SPECIES": "mystacinus",
       "SUBSPECIES": null
     }
   },
   {
     "legacyData": null,
     "migrationData": {
-      "id": "29",
+      "id": "28",
       "parentId": "2"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "29",
+      "parentId": "28"
     },
     "sourceData": null
   },
@@ -333,13 +333,110 @@
       "id": "31",
       "parentId": "30"
     },
-    "sourceData": null
+    "sourceData": {
+      "ID": "159",
+      "RUBINNo": "4352406",
+      "ENGLISH_NAME": "Black Howler",
+      "SWEDISH_NAME": null,
+      "LATIN_NAME": "Alouatta caraya",
+      "ORDER": "Primates",
+      "FAMILY": "Atelidae",
+      "GENUS": "Alouatta",
+      "SPECIES": "caraya",
+      "SUBSPECIES": null
+    }
   },
   {
     "legacyData": null,
     "migrationData": {
       "id": "32",
-      "parentId": "31"
+      "parentId": "28"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "33",
+      "parentId": "32"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "34",
+      "parentId": "33"
+    },
+    "sourceData": {
+      "ID": "1791",
+      "RUBINNo": "4500906",
+      "ENGLISH_NAME": "Eastern Gorilla",
+      "SWEDISH_NAME": null,
+      "LATIN_NAME": "Gorilla beringei",
+      "ORDER": "Primates",
+      "FAMILY": "Hominidae",
+      "GENUS": "Gorilla",
+      "SPECIES": "beringei",
+      "SUBSPECIES": null
+    }
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "35",
+      "parentId": "2"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "36",
+      "parentId": "35"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "37",
+      "parentId": "36"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "38",
+      "parentId": "37"
+    },
+    "sourceData": {
+      "ID": "1914",
+      "RUBINNo": "9472969",
+      "ENGLISH_NAME": "Subsaharan Pygmy Mouse",
+      "SWEDISH_NAME": null,
+      "LATIN_NAME": "Mus musculoides",
+      "ORDER": "Rodentia",
+      "FAMILY": "Muridae",
+      "GENUS": "Mus",
+      "SPECIES": "musculoides",
+      "SUBSPECIES": null
+    }
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "39",
+      "parentId": "36"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "id": "40",
+      "parentId": "39"
     },
     "sourceData": {
       "ID": "1354",

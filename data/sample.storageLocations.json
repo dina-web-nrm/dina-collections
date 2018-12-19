@@ -34,7 +34,7 @@
     "migrationData": {
       "group": "level 4",
       "id": "4",
-      "name": "4500906 Gorilla beringei",
+      "name": "4352406 Alouatta caraya",
       "parentId": "3"
     },
     "sourceData": null
@@ -44,7 +44,7 @@
     "migrationData": {
       "group": "level 4",
       "id": "5",
-      "name": "5100906 Ursus arctos",
+      "name": "4500906 Gorilla beringei",
       "parentId": "3"
     },
     "sourceData": null
@@ -54,7 +54,7 @@
     "migrationData": {
       "group": "level 4",
       "id": "6",
-      "name": "5203003 Gulo gulo",
+      "name": "5100906 Ursus arctos",
       "parentId": "3"
     },
     "sourceData": null
@@ -64,7 +64,7 @@
     "migrationData": {
       "group": "level 4",
       "id": "7",
-      "name": "5520606 Lynx lynx",
+      "name": "5203003 Gulo gulo",
       "parentId": "3"
     },
     "sourceData": null
@@ -74,6 +74,16 @@
     "migrationData": {
       "group": "level 4",
       "id": "8",
+      "name": "5520606 Lynx lynx",
+      "parentId": "3"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "level 4",
+      "id": "9",
       "name": "7803903 Capreolus capreolus",
       "parentId": "3"
     },
@@ -83,7 +93,7 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 1",
-      "id": "9",
+      "id": "10",
       "name": "Ingen information",
       "parentId": "1"
     },
@@ -93,7 +103,7 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 1",
-      "id": "10",
+      "id": "11",
       "name": "Lodjursrum, köl 1213",
       "parentId": "1"
     },
@@ -103,9 +113,9 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 2",
-      "id": "11",
+      "id": "12",
       "name": "Låda 25",
-      "parentId": "10"
+      "parentId": "11"
     },
     "sourceData": null
   },
@@ -113,9 +123,9 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 2",
-      "id": "12",
+      "id": "13",
       "name": "Låda 6",
-      "parentId": "10"
+      "parentId": "11"
     },
     "sourceData": null
   },
@@ -123,7 +133,7 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 1",
-      "id": "13",
+      "id": "14",
       "name": "Okänd",
       "parentId": "1"
     },
@@ -133,7 +143,7 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 1",
-      "id": "14",
+      "id": "15",
       "name": "Omistliga samlingar",
       "parentId": "1"
     },
@@ -143,9 +153,9 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 4",
-      "id": "15",
+      "id": "16",
       "name": "363 Glossophaginae",
-      "parentId": "14"
+      "parentId": "15"
     },
     "sourceData": null
   },
@@ -153,7 +163,7 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 1",
-      "id": "16",
+      "id": "17",
       "name": "Omistliga sprit",
       "parentId": "1"
     },
@@ -163,18 +173,8 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 1",
-      "id": "17",
-      "name": "Plåtskåpsrum",
-      "parentId": "1"
-    },
-    "sourceData": null
-  },
-  {
-    "legacyData": null,
-    "migrationData": {
-      "group": "level 1",
       "id": "18",
-      "name": "Skinnrum kylda",
+      "name": "Plåtskåpsrum",
       "parentId": "1"
     },
     "sourceData": null
@@ -184,7 +184,7 @@
     "migrationData": {
       "group": "level 4",
       "id": "19",
-      "name": "5203003 Gulo gulo",
+      "name": "9472969 Mus musculoides",
       "parentId": "18"
     },
     "sourceData": null
@@ -194,6 +194,36 @@
     "migrationData": {
       "group": "level 1",
       "id": "20",
+      "name": "Skinnrum kylda",
+      "parentId": "1"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "level 4",
+      "id": "21",
+      "name": "4352406 Alouatta caraya",
+      "parentId": "20"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "level 4",
+      "id": "22",
+      "name": "5203003 Gulo gulo",
+      "parentId": "20"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "level 1",
+      "id": "23",
       "name": "Utlånad",
       "parentId": "1"
     },
@@ -203,7 +233,7 @@
     "legacyData": null,
     "migrationData": {
       "group": "level 1",
-      "id": "21",
+      "id": "24",
       "name": "Vindsrum kylda",
       "parentId": "1"
     },
