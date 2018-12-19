@@ -43,22 +43,19 @@ export class ResultOptionsBar extends Component {
           active={isItemViewOrSettings}
           link
           name="form"
-          onClick={event => handleFormTabClick(event)}
+          onClick={event => {
+            if (handleFormTabClick) {
+              handleFormTabClick(event)
+            }
+          }}
         >
           <Icon name="wordpress forms" />
         </Menu.Item>
         <Menu.Menu className="icon secondary  ui" position="right">
-          {handleExportToCsv && (
-            <Menu.Item link>
-              <CsvExporter />
-            </Menu.Item>
-          )}
+          {handleExportToCsv && <CsvExporter />}
           {handleSettingClick && (
-            <Menu.Item link>
-              <Icon
-                name="setting"
-                onClick={event => handleSettingClick(event)}
-              />
+            <Menu.Item link onClick={event => handleSettingClick(event)}>
+              <Icon name="setting" />
             </Menu.Item>
           )}
           <Menu.Item

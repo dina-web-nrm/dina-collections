@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Button, Grid, Modal } from 'semantic-ui-react'
-
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Field, FormModal, Input } from 'coreModules/form/components'
 

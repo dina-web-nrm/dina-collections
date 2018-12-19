@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Prompt } from 'react-router-dom'
-import { Modal } from 'semantic-ui-react'
+import { LayerModal } from 'coreModules/commonUi/components'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -19,9 +19,9 @@ class FormModal extends PureComponent {
     const { children, ...rest } = this.props
 
     return (
-      <Modal className="ui form" {...rest}>
+      <LayerModal className="ui form" {...rest}>
         {children}
-      </Modal>
+      </LayerModal>
     )
   }
 

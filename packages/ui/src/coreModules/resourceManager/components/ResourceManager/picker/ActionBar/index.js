@@ -24,7 +24,7 @@ class ItemHeader extends Component {
     this.handlePickItem = this.handlePickItem.bind(this)
     this.shortcuts = [
       {
-        command: 'enter',
+        command: 'space',
         description: 'Picker: Select current item',
         onPress: this.handlePickItem,
       },

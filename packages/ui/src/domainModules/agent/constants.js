@@ -1,5 +1,6 @@
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 
+export const MODULE_NAME = 'agent'
 export const ALL = 'all'
 export const PERSON = 'person'
 export const ORGANIZATION = 'organization'

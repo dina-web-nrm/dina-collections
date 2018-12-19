@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header, Modal } from 'semantic-ui-react'
-
+import { Modal, Header } from 'semantic-ui-react'
 import { FormModal } from '../../../form/components'
 import TagGroup from './TagGroup'
 

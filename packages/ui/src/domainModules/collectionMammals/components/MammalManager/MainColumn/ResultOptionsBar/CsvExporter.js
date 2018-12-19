@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { Button, Icon, Modal, Popup } from 'semantic-ui-react'
+import { Button, Icon, Menu, Modal, Popup } from 'semantic-ui-react'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import downloadFileActionCreator from 'coreModules/api/actionCreators/downloadFile'
@@ -260,7 +260,11 @@ export class CsvExporter extends Component {
           }
           on="click"
           position="bottom right"
-          trigger={<Icon name="share" style={{ cursor: 'pointer' }} />}
+          trigger={
+            <Menu.Item link>
+              <Icon name="share" style={{ cursor: 'pointer' }} />
+            </Menu.Item>
+          }
         />
       </React.Fragment>
     )

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Dimmer } from 'semantic-ui-react'
 
+import { createApplicationLayer } from 'coreModules/layout/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
@@ -11,6 +12,8 @@ import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
 } from '../keyObjectModule'
+import { APPLICATION_LAYER_VIEW } from '../constants'
+
 import TopMenu from './TopMenu'
 
 export const getViewWrapStyle = ({
@@ -143,6 +146,9 @@ ViewWrap.propTypes = propTypes
 ViewWrap.defaultProps = defaultProps
 
 export default compose(
+  createApplicationLayer({
+    layer: APPLICATION_LAYER_VIEW,
+  }),
   injectWindowHeight,
   connect(mapStateToProps, mapDispatchToProps)
 )(ViewWrap)

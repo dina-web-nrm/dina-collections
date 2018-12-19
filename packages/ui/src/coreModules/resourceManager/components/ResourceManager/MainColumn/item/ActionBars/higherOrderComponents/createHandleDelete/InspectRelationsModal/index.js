@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Modal } from 'semantic-ui-react'
-
+import { Modal, Button } from 'semantic-ui-react'
+import { LayerModal } from 'coreModules/commonUi/components'
 import ModalContent from './ModalContent'
 
 const propTypes = {
@@ -34,7 +34,7 @@ class InspectRelationsModal extends PureComponent {
     const { onClose: handleClose, recordHeader, relationships } = this.props
 
     return (
-      <Modal onClose={handleClose} open size="small">
+      <LayerModal onClose={handleClose} open size="small">
         <Modal.Header>{`Relations for: ${recordHeader}`}</Modal.Header>
         <ModalContent relationships={relationships} />
         <Modal.Actions style={{ textAlign: 'left' }}>
@@ -42,7 +42,7 @@ class InspectRelationsModal extends PureComponent {
             Close
           </Button>
         </Modal.Actions>
-      </Modal>
+      </LayerModal>
     )
   }
 }

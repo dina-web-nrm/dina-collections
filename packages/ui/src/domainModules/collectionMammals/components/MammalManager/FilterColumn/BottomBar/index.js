@@ -27,7 +27,7 @@ class BottomBar extends PureComponent {
 
     this.shortcuts = [
       {
-        command: 'mod+shift+enter',
+        command: 'enter',
         description: 'Execute search',
         onPress: this.handleSearch,
       },

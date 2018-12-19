@@ -1,3 +1,4 @@
+import createApplicationLayer from './createApplicationLayer'
 import withLayout from './withLayout'
 
-export { withLayout }
+export { createApplicationLayer, withLayout }

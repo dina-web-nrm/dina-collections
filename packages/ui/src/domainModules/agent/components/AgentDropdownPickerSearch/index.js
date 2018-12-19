@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Modal, Button } from 'semantic-ui-react'
+import { LayerModal } from 'coreModules/commonUi/components'
+import { Button, Modal } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
 import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
@@ -62,7 +63,7 @@ export class AgentDropdownPickerSearch extends Component {
         : undefined
 
       return (
-        <Modal onClose={onClose} open style={{ overflow: 'hidden' }}>
+        <LayerModal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <AgentManager
               initialFilterValues={initialFilterValues}
@@ -73,7 +74,7 @@ export class AgentDropdownPickerSearch extends Component {
               treeEnabled={false}
             />
           </Modal.Content>
-        </Modal>
+        </LayerModal>
       )
     }
 
