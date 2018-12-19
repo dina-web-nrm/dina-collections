@@ -8404,35 +8404,33 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     <div
       className="right menu icon secondary  ui"
     >
-      <div
+      <a
         className="link item"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <i
           aria-hidden="true"
           className="share icon"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           style={
             Object {
               "cursor": "pointer",
             }
           }
         />
-      </div>
-      <div
+      </a>
+      <a
         className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
           className="setting icon"
-          onClick={[Function]}
         />
-      </div>
+      </a>
       <a
         className="link item"
         onClick={[Function]}
@@ -8478,35 +8476,33 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     <div
       className="right menu icon secondary  ui"
     >
-      <div
+      <a
         className="link item"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <i
           aria-hidden="true"
           className="share icon"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           style={
             Object {
               "cursor": "pointer",
             }
           }
         />
-      </div>
-      <div
+      </a>
+      <a
         className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
           className="setting icon"
-          onClick={[Function]}
         />
-      </div>
+      </a>
       <a
         className="link item"
         onClick={[Function]}
@@ -8552,35 +8548,33 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     <div
       className="right menu icon secondary  ui"
     >
-      <div
+      <a
         className="link item"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <i
           aria-hidden="true"
           className="share icon"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           style={
             Object {
               "cursor": "pointer",
             }
           }
         />
-      </div>
-      <div
+      </a>
+      <a
         className="link item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
           className="setting icon"
-          onClick={[Function]}
         />
-      </div>
+      </a>
       <a
         className="link item"
         onClick={[Function]}
