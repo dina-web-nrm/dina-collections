@@ -17,7 +17,6 @@ const childContextTypes = {
 
 const propTypes = {
   layer: PropTypes.oneOf([APPLICATION_LAYER_VIEW, APPLICATION_LAYER_MODAL]),
-  layerActive: PropTypes.boolean,
   setApplicationLayer: PropTypes.func.isRequired,
 }
 
@@ -31,7 +30,6 @@ export default function createApplicationLayer({ layer }) {
   }
   const defaultProps = {
     layer,
-    layerActive: true,
   }
   return function applicationLayer(ComposedComponent) {
     class ApplicationLayer extends Component {
@@ -41,29 +39,12 @@ export default function createApplicationLayer({ layer }) {
         }
       }
       componentWillMount() {
-        const { layerActive } = this.props
-        if (layerActive) {
-          this.props.setApplicationLayer(this.props.layer)
-        }
-      }
-
-      componentWillReceiveProps(nextProps) {
-        const parentLayer = this.context.layer
-        if (this.props.layerActive !== nextProps.layerActive) {
-          if (nextProps.layerActive) {
-            this.props.setApplicationLayer(this.props.layer)
-          } else {
-            this.props.setApplicationLayer(parentLayer || '')
-          }
-        }
+        this.props.setApplicationLayer(this.props.layer)
       }
 
       componentWillUnmount() {
-        const { layerActive } = this.props
         const parentLayer = this.context.layer
-        if (layerActive) {
-          this.props.setApplicationLayer(parentLayer || '')
-        }
+        this.props.setApplicationLayer(parentLayer || '')
       }
 
       render() {
