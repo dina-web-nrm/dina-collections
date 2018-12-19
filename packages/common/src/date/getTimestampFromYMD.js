@@ -114,9 +114,17 @@ module.exports = function getTimestampFromYMD({
     return undefined
   }
 
-  const interpretedTimestamp = isEndDate
-    ? moment(YYYYMMDD).endOf('date')
-    : moment(YYYYMMDD)
+  const isCurrentDay = moment().isSame(YYYYMMDD, 'day')
+
+  let interpretedTimestamp
+
+  if (isCurrentDay && isEndDate) {
+    interpretedTimestamp = moment()
+  } else if (isEndDate) {
+    interpretedTimestamp = moment(YYYYMMDD).endOf('date')
+  } else {
+    interpretedTimestamp = moment(YYYYMMDD).startOf('date')
+  }
 
   return interpretedTimestamp.isValid()
     ? interpretedTimestamp.toISOString()
