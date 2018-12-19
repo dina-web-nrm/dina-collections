@@ -75,7 +75,6 @@ class CuratorialAssessmentsList extends Component {
           </List>
         )}
         <FormModal
-          onClose={this.handleClose}
           open={open}
           size="small"
           trigger={

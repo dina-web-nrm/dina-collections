@@ -130,7 +130,17 @@ module.exports = function getTimestampFromYMD(_ref4) {
     return undefined;
   }
 
-  var interpretedTimestamp = isEndDate ? moment(YYYYMMDD).endOf('date') : moment(YYYYMMDD);
+  var isCurrentDay = moment().isSame(YYYYMMDD, 'day');
+
+  var interpretedTimestamp = void 0;
+
+  if (isCurrentDay && isEndDate) {
+    interpretedTimestamp = moment();
+  } else if (isEndDate) {
+    interpretedTimestamp = moment(YYYYMMDD).endOf('date');
+  } else {
+    interpretedTimestamp = moment(YYYYMMDD).startOf('date');
+  }
 
   return interpretedTimestamp.isValid() ? interpretedTimestamp.toISOString() : undefined;
 };
