@@ -81,7 +81,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
 
           this.setState({
             options,
-            searchQuery,
           })
         })
       },
