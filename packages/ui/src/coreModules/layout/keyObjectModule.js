@@ -14,7 +14,7 @@ const {
       isOpen: false,
     },
   },
-  keys: ['leftSidebar.isOpen', ':name.layoutMode'],
+  keys: ['applicationLayer', 'leftSidebar.isOpen', ':name.layoutMode'],
   name,
 })
 export {
