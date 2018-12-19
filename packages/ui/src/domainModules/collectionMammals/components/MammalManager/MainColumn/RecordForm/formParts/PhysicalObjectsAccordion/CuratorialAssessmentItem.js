@@ -78,7 +78,6 @@ class CuratorialAssessmentItem extends PureComponent {
       <List.Item>
         <List.Content style={{ padding: '0.5em' }} verticalAlign="bottom">
           <FormModal
-            onClose={this.handleClose}
             open={open}
             size="small"
             trigger={

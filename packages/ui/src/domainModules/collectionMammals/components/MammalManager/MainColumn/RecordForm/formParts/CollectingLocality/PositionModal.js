@@ -59,7 +59,7 @@ class PositionModal extends PureComponent {
     } = this.props
 
     return (
-      <FormModal onClose={handleClose} open={open} size="tiny">
+      <FormModal open={open} size="tiny">
         <Modal.Header>
           <ModuleTranslate module={module} textKey="headers.localityPosition" />
         </Modal.Header>
