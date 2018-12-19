@@ -1,6 +1,7 @@
 const {
   createRegisterResourceActivityHook,
 } = require('../../../../../historyService/serviceInteractions')
+const { removeTaxonFromTaxonNames } = require('../../../../serviceInteractions')
 
 exports.create = [
   createRegisterResourceActivityHook({
@@ -21,4 +22,5 @@ exports.del = [
     action: 'delete',
     service: 'taxonomyService',
   }),
+  removeTaxonFromTaxonNames,
 ]
