@@ -90,14 +90,14 @@ class PositionModal extends PureComponent {
                     name={getPath('position')}
                   />
                 </Grid.Column>
-                <Grid.Column width={13}>
+                <Grid.Column width={7}>
                   <Field
                     autoComplete="off"
                     component={Input}
                     fluid
                     module={module}
-                    name={getPath('georeferenceSourcesText')}
-                    type="text"
+                    name={getPath('position.uncertaintyInMeters')}
+                    type="number"
                   />
                 </Grid.Column>
                 <Grid.Column width={13}>
@@ -106,8 +106,8 @@ class PositionModal extends PureComponent {
                     component={Input}
                     fluid
                     module={module}
-                    name={getPath('position.uncertaintyInMeters')}
-                    type="number"
+                    name={getPath('georeferenceSourcesText')}
+                    type="text"
                   />
                 </Grid.Column>
                 <Grid.Column width={16}>
