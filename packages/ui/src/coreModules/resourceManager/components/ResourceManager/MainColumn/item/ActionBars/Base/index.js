@@ -76,7 +76,7 @@ export class RecordActionBar extends PureComponent {
       <Grid padded style={{ pointerEvents: 'none' }} verticalAlign="middle">
         <Grid.Column>
           <Button
-            disabled={!handleSubmit || hasSyncErrors || invalid || pristine}
+            disabled={hasSyncErrors || invalid || pristine}
             loading={submitting}
             onClick={handleSubmit}
             primary
