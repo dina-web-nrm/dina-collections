@@ -2,6 +2,7 @@ export const moduleOrder = [
   'public',
   'start',
   'app',
+  'dataViewer',
   'specimensMammals',
   'home',
   'manageAgents',

@@ -19,6 +19,7 @@ import registerServiceWorker from 'registerServiceWorker'
 import { ErrorBoundary } from 'coreModules/error/components'
 import { moduleOrder } from './viewModules'
 import App from './viewModules/app/Async'
+import DataViewer from './viewModules/dataViewer/Async'
 import Docs from './viewModules/docs/Async'
 import config from './config'
 import modules from './initialModules'
@@ -33,6 +34,7 @@ ReactDOM.render(
         <ErrorBoundary>
           <React.Fragment>
             <Switch>
+              <Route component={DataViewer} path="/dataViewer" />
               <Route component={App} path="/app" />
               <Route component={Docs} path="/docs" />
               <Route component={Public} />
