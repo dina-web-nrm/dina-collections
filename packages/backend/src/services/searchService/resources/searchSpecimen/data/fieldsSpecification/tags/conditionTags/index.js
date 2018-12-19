@@ -16,7 +16,7 @@ const aggregationName = 'aggregateConditionTags'
 const searchFilterName = 'searchConditionTags'
 const matchFilterName = 'matchConditionTags'
 
-const FEATURE_TYPE = 'condition'
+const FEATURE_TYPE = 'carcass-condition'
 
 const transformation = ({ migrator, src, target }) => {
   const featureTexts = extractFeatureText({
