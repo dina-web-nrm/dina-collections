@@ -16,6 +16,7 @@ const parts = [
     initiallyShown: true,
   },
   ...createRangeDate({
+    baseName: 'lifespan',
     displayDateTypeRadios: false,
     displayEndDateLabel: true,
     displayLabel: false,
@@ -24,7 +25,6 @@ const parts = [
     endDateLabel: 'Death date',
     initialDateType: 'openRange',
     initiallyHidden: true,
-    name: 'lifespan',
     stack: true,
     startDateLabel: 'Birth date',
   }),

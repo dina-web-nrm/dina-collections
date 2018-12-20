@@ -5,7 +5,7 @@ import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import { Field, Input } from 'coreModules/form/components'
+import { Field, FieldTemplate, Input } from 'coreModules/form/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
@@ -59,15 +59,17 @@ const getColumnWidth = group => {
 
 const getLabelWidth = group => {
   switch (group) {
-    case 'sex':
-    case 'carcass-condition': {
-      return 1
+    case 'sex': {
+      return 2
     }
-    case 'weight': {
-      return 4
+    case 'carcass-condition': {
+      return 3
+    }
+    case 'length': {
+      return 5
     }
     default: {
-      return 3
+      return 4
     }
   }
 }
@@ -118,16 +120,21 @@ class FeatureObservationTableRow extends PureComponent {
 
     const columnWidth = getColumnWidth(group)
     const labelWidth = getLabelWidth(group)
-
     log.render()
     return (
       <Table.Row key={index}>
         <Table.Cell key={getPath('featureType.id')} width={labelWidth}>
-          <ModuleTranslate
-            fallback={key}
+          <FieldTemplate
+            label={
+              <ModuleTranslate
+                fallback={key}
+                module={module}
+                scope="featureObservations"
+                textKey={`other.${key}`}
+              />
+            }
             module={module}
-            scope="featureObservations"
-            textKey={`other.${key}`}
+            name={`features.${key}`}
           />
         </Table.Cell>
         {hasSelectableValues ? (
