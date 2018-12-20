@@ -5,7 +5,7 @@ export default function search(
   {
     aggregations,
     excludeFields,
-    idsInMeta = true,
+    idsInMeta = false,
     includeDeactivated,
     includeFields,
     limit = 100000,
