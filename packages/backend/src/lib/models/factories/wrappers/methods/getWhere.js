@@ -19,6 +19,9 @@ const inputSchema = {
     filterSpecification: {
       type: 'object',
     },
+    idsInMeta: {
+      type: 'boolean',
+    },
     include: {
       type: 'array',
     },

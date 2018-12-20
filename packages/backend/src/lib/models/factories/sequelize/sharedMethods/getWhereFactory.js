@@ -42,6 +42,7 @@ module.exports = function getWhereFactory({
       excludeFieldsInput = [],
       filterInput,
       filterSpecification,
+      idsInMeta,
       include = [],
       includeDeactivated = false,
       includeFieldsInput = [],
@@ -98,14 +99,14 @@ module.exports = function getWhereFactory({
         }
 
         return Model.findAll(options).then(res => {
-          const items = formatModelItemsResponse({ input: res })
+          const items = formatModelItemsResponse({ idsInMeta, input: res })
 
           const fields = extractFieldsFromUserInput({
             includeFieldsInput,
             selectableFields,
           })
 
-          const meta = extractMetaFromResult({ result: res })
+          const meta = extractMetaFromResult({ idsInMeta, result: res })
 
           if (fields.length || excludeFieldsInput.length) {
             return {
