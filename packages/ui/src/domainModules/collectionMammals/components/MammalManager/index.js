@@ -209,6 +209,7 @@ const propTypes = {
     params: PropTypes.object.isRequired,
     path: PropTypes.string.isRequired,
   }).isRequired,
+  prefetchLimit: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   push: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
@@ -228,6 +229,7 @@ const defaultProps = {
   currentTableRowNumber: undefined,
   filterValues: undefined,
   focusedSpecimenId: undefined,
+  prefetchLimit: 50,
   rightSidebarWidth: emToPixels(25),
   searchResult: undefined,
   specimenId: undefined,
@@ -397,16 +399,19 @@ class MammalManager extends Component {
       this.handleOpenTableView()
     }
 
-    const { buildQuery, tableColumnsToSort } = props
+    const { buildQuery, tableColumnsToSort, prefetchLimit } = props
 
     const sort =
       tableColumnsToSort &&
       tableColumnsToSort.map(({ name, sort: order }) => {
         return `attributes.${name}:${order}`
       })
+
+    const { query } = buildQuery()
     return this.props
       .search({
-        query: buildQuery().query,
+        limit: prefetchLimit,
+        query,
         sort,
       })
       .then(items => {
@@ -417,6 +422,15 @@ class MammalManager extends Component {
           this.props.delCurrentTableRowNumber()
           this.props.delFocusedSpecimenId()
         }
+
+        const limitReached = items && items.length === prefetchLimit
+        if (limitReached) {
+          return this.props.search({
+            query,
+            sort,
+          })
+        }
+        return null
       })
   }
 
