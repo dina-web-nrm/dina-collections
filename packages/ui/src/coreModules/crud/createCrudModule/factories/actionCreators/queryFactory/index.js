@@ -38,6 +38,7 @@ export default function queryAcFactory(
       aggregations,
       batchLimit,
       excludeFields,
+      idsInMeta,
       includeDeactivated,
       includeFields,
       limit = 1000,
@@ -53,6 +54,7 @@ export default function queryAcFactory(
     log.debug(`${resource}.create called`, {
       aggregations,
       excludeFields,
+      idsInMeta,
       includeDeactivated,
       includeFields,
       limit,
@@ -67,6 +69,7 @@ export default function queryAcFactory(
       const callParams = createCallParams({
         aggregations,
         excludeFields,
+        idsInMeta,
         includeDeactivated,
         includeFields,
         limit,

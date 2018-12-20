@@ -3,6 +3,7 @@ export default function createCallParams({
   batchLimit = 3000,
   batchNumber = 0,
   excludeFields,
+  idsInMeta,
   includeDeactivated,
   includeFields,
   lastBatchOffset = 0,
@@ -34,6 +35,7 @@ export default function createCallParams({
         attributes: {
           aggregations,
           excludeFields,
+          idsInMeta,
           includeDeactivated,
           includeFields,
           limit,

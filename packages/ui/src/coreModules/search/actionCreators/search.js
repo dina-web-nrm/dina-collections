@@ -5,6 +5,7 @@ export default function search(
   {
     aggregations,
     excludeFields,
+    idsInMeta = true,
     includeDeactivated,
     includeFields,
     limit = 100000,
@@ -33,6 +34,7 @@ export default function search(
       queryAc({
         aggregations,
         excludeFields,
+        idsInMeta,
         includeDeactivated,
         includeFields,
         limit,

@@ -36,8 +36,25 @@ export default function performQuery({
           (response && response.meta) || {}
         lastScrollId = scrollId
 
+        const {
+          offset: lastOffset,
+          limit: lastLimit,
+          idsInMeta,
+        } = lastBatchCallParams.body.data.attributes
+
         nFetchedItems += nResponseItems
-        data.push(...response.data)
+        let items = []
+        if (idsInMeta && response.meta.ids) {
+          items = response.meta.ids.map(id => {
+            return {
+              id,
+            }
+          })
+        } else {
+          items = response.data
+        }
+
+        data.push(...items)
 
         let doAnotherCall = false
         if (multipleBatches) {
@@ -48,11 +65,6 @@ export default function performQuery({
               nFetchedItems < nTotalItems &&
               nFetchedItems < limit
           } else {
-            const {
-              offset: lastOffset,
-              limit: lastLimit,
-            } = lastBatchCallParams.body.data.attributes
-
             doAnotherCall =
               lastOffset < limit &&
               nResponseItems !== 0 &&
