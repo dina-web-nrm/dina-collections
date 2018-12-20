@@ -15,7 +15,7 @@ const propTypes = {
 const defaultProps = {
   includeSourceLink: false,
   recordHistoryId: undefined,
-  username: undefined,
+  username: 'Admin',
 }
 
 class EventRow extends PureComponent {
