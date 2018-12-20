@@ -43,6 +43,7 @@ const propTypes = {
   displayLabel: PropTypes.bool,
   displayStartDateLabel: PropTypes.bool,
   displaySubLabels: PropTypes.bool,
+  enableHelpNotifications: PropTypes.bool,
   endDateLabel: PropTypes.node,
   initialDateType: PropTypes.oneOf([LATEST, OPEN_RANGE, RANGE, SINGLE]),
   input: PropTypes.shape({
@@ -82,6 +83,7 @@ const defaultProps = {
   displayLabel: false,
   displayStartDateLabel: false,
   displaySubLabels: true,
+  enableHelpNotifications: undefined,
   endDateLabel: undefined,
   initialDateType: 'single',
   module: 'form',
@@ -224,9 +226,11 @@ class DateRange extends Component {
       displayEndDateLabel,
       displayStartDateLabel,
       displaySubLabels,
+      enableHelpNotifications,
       endDateLabel,
       input,
       meta,
+      module,
       mountHidden,
       stack,
       startDateLabel,
@@ -245,7 +249,7 @@ class DateRange extends Component {
       <FieldTemplate
         {...fieldTemplateProps}
         displayError={hasError}
-        enableHelpNotifications={false}
+        enableHelpNotifications={enableHelpNotifications}
         errorStyle={
           dateType === SINGLE ? onePartErrorLabelStyle : twoPartErrorLabelStyle
         }
@@ -258,6 +262,9 @@ class DateRange extends Component {
           <DateTypeRadios
             dateType={dateType}
             dateTypes={SELECTABLE_DATE_TYPES}
+            enableHelpNotifications={enableHelpNotifications}
+            module={module}
+            name={input.name}
             onDateTypeChange={this.handleDateTypeChange}
           />
         )}
@@ -268,10 +275,15 @@ class DateRange extends Component {
                 disabled={dateType === LATEST}
                 displayLabel={displayStartDateLabel}
                 displaySubLabel={displaySubLabels}
+                enableHelpNotifications={
+                  enableHelpNotifications && displayStartDateLabel
+                }
                 input={this.getFieldInput('startDate')}
                 isStartDate
                 label={startDateLabel}
                 meta={{}}
+                module={module}
+                name={`${input.name}.startDate`}
                 setYearInputRef={this.setStartYearInputRef}
               />
             </div>
@@ -282,11 +294,16 @@ class DateRange extends Component {
               <DatePart
                 displayLabel={displayEndDateLabel}
                 displaySubLabel={displaySubLabels}
+                enableHelpNotifications={
+                  enableHelpNotifications && displayEndDateLabel
+                }
                 hidden={dateType === SINGLE}
                 input={this.getFieldInput('endDate')}
                 isEndDate
                 label={endDateLabel}
                 meta={{}}
+                module={module}
+                name={`${input.name}.endDate`}
                 setYearInputRef={this.setEndYearInputRef}
               />
             </div>
@@ -302,10 +319,15 @@ class DateRange extends Component {
                 disabled={dateType === LATEST}
                 displayLabel={displayStartDateLabel}
                 displaySubLabel={displaySubLabels}
+                enableHelpNotifications={
+                  enableHelpNotifications && displayStartDateLabel
+                }
                 input={this.getFieldInput('startDate')}
                 isStartDate
                 label={startDateLabel}
                 meta={{}}
+                module={module}
+                name={`${input.name}.startDate`}
                 setYearInputRef={this.setStartYearInputRef}
               />
             </div>
@@ -313,11 +335,16 @@ class DateRange extends Component {
               <DatePart
                 displayLabel={displayEndDateLabel}
                 displaySubLabel={displaySubLabels}
+                enableHelpNotifications={
+                  enableHelpNotifications && displayEndDateLabel
+                }
                 hidden={dateType === SINGLE}
                 input={this.getFieldInput('endDate')}
                 isEndDate
                 label={endDateLabel}
                 meta={{}}
+                module={module}
+                name={`${input.name}.endDate`}
                 setYearInputRef={this.setEndYearInputRef}
               />
             </div>

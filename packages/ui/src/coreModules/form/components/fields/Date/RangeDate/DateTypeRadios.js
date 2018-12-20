@@ -7,20 +7,33 @@ import FieldTemplate from '../../../FieldTemplate'
 const propTypes = {
   dateType: PropTypes.string.isRequired,
   dateTypes: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  enableHelpNotifications: PropTypes.bool,
+  module: PropTypes.string,
+  name: PropTypes.string,
   onDateTypeChange: PropTypes.func.isRequired,
+}
+
+const defaultProps = {
+  enableHelpNotifications: undefined,
+  module: undefined,
+  name: undefined,
 }
 
 const DateTypeRadios = ({
   dateType: currentDateType,
   dateTypes,
+  enableHelpNotifications,
+  module,
+  name,
   onDateTypeChange: handleDateTypeChange,
 }) => {
   return (
     <FieldTemplate
-      enableHelpNotifications={false}
+      enableHelpNotifications={enableHelpNotifications}
       label="Date type"
       meta={{}}
-      name="radioGroup"
+      module={module}
+      name={name}
       style={{ marginBottom: '0.5em', width: '100%' }}
       subLabel
     >
@@ -42,5 +55,6 @@ const DateTypeRadios = ({
 }
 
 DateTypeRadios.propTypes = propTypes
+DateTypeRadios.defaultProps = defaultProps
 
 export default DateTypeRadios

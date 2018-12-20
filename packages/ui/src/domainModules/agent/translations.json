@@ -56,6 +56,26 @@
         "sv": ""
       }
     },
+    "lifespan": {
+      "startDate": {
+        "en": "birth date",
+        "sv": ""
+      },
+      "endDate": {
+        "en": "death date",
+        "sv": ""
+      }
+    },
+    "dateRange": {
+      "startDate": {
+        "en": "start date",
+        "sv": ""
+      },
+      "endDate": {
+        "en": "end date",
+        "sv": ""
+      }
+    },
     "legacyData": {
       "en": "Legacy data",
       "sv": ""

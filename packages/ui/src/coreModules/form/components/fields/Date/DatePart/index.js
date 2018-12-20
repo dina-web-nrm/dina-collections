@@ -51,17 +51,21 @@ const propTypes = {
   isEndDate: PropTypes.bool,
   isStartDate: PropTypes.bool,
   label: PropTypes.node,
+  module: PropTypes.string,
+  name: PropTypes.string,
   setYearInputRef: PropTypes.func,
 }
 const defaultProps = {
   disabled: false,
   displayLabel: undefined,
   displaySubLabel: undefined,
-  enableHelpNotifications: false,
+  enableHelpNotifications: undefined,
   hidden: false,
   isEndDate: false,
   isStartDate: false,
   label: undefined,
+  module: undefined,
+  name: undefined,
   setYearInputRef: undefined,
 }
 
@@ -131,17 +135,21 @@ class DatePart extends Component {
       enableHelpNotifications,
       hidden,
       input: { value },
+      module,
+      name,
       setYearInputRef,
     } = this.props
     const { day, month, year } = value || {}
 
     return (
       <FieldTemplate
-        displayLabel={label && displayLabel}
+        displayLabel={label !== undefined && displayLabel}
         enableHelpNotifications={enableHelpNotifications}
         float="left"
         label={label}
         meta={{}}
+        module={module}
+        name={name}
         style={{ display: hidden ? 'none' : undefined, width: 'initial' }}
       >
         <div style={inputYearStyle}>
