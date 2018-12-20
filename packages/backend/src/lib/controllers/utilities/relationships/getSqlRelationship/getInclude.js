@@ -4,7 +4,7 @@ module.exports = ({ relationshipModel, targetAs }) => {
         {
           as: targetAs,
           model: relationshipModel.Model,
-          paranoid: false,
+          paranoid: true,
         },
       ]
     : undefined
