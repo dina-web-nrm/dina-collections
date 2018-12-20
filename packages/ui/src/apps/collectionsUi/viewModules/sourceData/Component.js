@@ -35,24 +35,41 @@ class SourceData extends Component {
         id: this.props.sourceDataId,
 
         queryParams: {
-          includeFields: ['id', 'attributes.sourceData'],
+          includeFields: [
+            'id',
+            'attributes.sourceData',
+            'attributes.resource',
+            'attributes.resourceId',
+          ],
         },
         relationships: [],
       })
       .then(res => {
-        const { sourceData } = res.attributes
+        const { resource, resourceId, sourceData } = res.attributes
         this.setState({
+          resource,
+          resourceId,
           sourceData,
         })
       })
   }
   render() {
-    const { sourceData } = this.state
+    const { resource, resourceId, sourceData } = this.state
+    let header = `Source data for ${resource}. Id: ${resourceId}`
+
+    if (resource === 'specimen') {
+      const catalogNumber =
+        sourceData && sourceData.Objects && sourceData.Objects.AccessionNo
+      if (catalogNumber) {
+        header = `Source data for ${resource} ${catalogNumber}`
+      }
+    }
+
     return (
-      <PageTemplate container fullViewHeight>
+      <PageTemplate>
         <Grid columns={1} textAlign="left">
           <Grid.Column>
-            <Header>Source data</Header>
+            <Header>{sourceData && header}</Header>
             <div className="ui form">
               {sourceData && (
                 <ReadOnly defaultExpanded input={{ value: sourceData }} />

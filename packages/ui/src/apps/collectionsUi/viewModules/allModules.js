@@ -1,4 +1,5 @@
 import * as app from './app'
+import * as dataViewer from './dataViewer'
 import * as docs from './docs'
 import * as specimensMammals from './specimensMammals'
 import * as home from './home'
@@ -19,6 +20,7 @@ const modules = [
   publicModule,
   start,
   app,
+  dataViewer,
   specimensMammals,
   home,
   manageAgents,

@@ -15,7 +15,7 @@ const propTypes = {
 const defaultProps = {
   includeSourceLink: false,
   recordHistoryId: undefined,
-  username: undefined,
+  username: 'Admin',
 }
 
 class EventRow extends PureComponent {
@@ -36,7 +36,7 @@ class EventRow extends PureComponent {
       eventRow = (
         <span>
           {eventRow}{' '}
-          <a href={`/app/sourceData/${recordHistoryId}`} target="_blank">
+          <a href={`/dataViewer/sourceData/${recordHistoryId}`} target="_blank">
             Source data <Icon name="external alternate" />
           </a>
         </span>

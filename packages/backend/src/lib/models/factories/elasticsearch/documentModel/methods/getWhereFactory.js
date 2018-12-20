@@ -45,6 +45,7 @@ module.exports = function getWhereFactory({
       excludeFieldsInput = [],
       filterInput = {},
       filterSpecification = {},
+      idsInMeta,
       includeFieldsInput,
       limit = 10,
       offset = 0,
@@ -102,12 +103,19 @@ module.exports = function getWhereFactory({
               includeFieldsInput,
               selectableFields,
             }) || []
-          const sourceOptions = {
-            _sourceExclude: excludeFieldsInput.length
-              ? excludeFieldsInput
-              : undefined,
-            _sourceInclude: fields.length ? fields : undefined,
-          }
+
+          let sourceOptions = {}
+          if (fields.length === 1 && fields[0] === 'id') {
+            sourceOptions = {
+              _source: false,
+            }
+          } else
+            sourceOptions = {
+              _sourceExclude: excludeFieldsInput.length
+                ? excludeFieldsInput
+                : undefined,
+              _sourceInclude: fields.length ? fields : undefined,
+            }
 
           methodName = 'search'
           options = {
@@ -123,7 +131,7 @@ module.exports = function getWhereFactory({
         }
 
         return elasticsearch[methodName](options).then(res => {
-          const meta = extractMetaFromResult({ result: res })
+          const meta = extractMetaFromResult({ idsInMeta, result: res })
           let items = []
           if (aggregations && aggregations.length) {
             items = extractItemsFromAggregations({
@@ -133,6 +141,7 @@ module.exports = function getWhereFactory({
             })
           } else {
             items = extractItemsFromResult({
+              idsInMeta,
               result: res,
             })
           }

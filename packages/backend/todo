@@ -1,8 +1,15 @@
+NEXT YEAR
+* Implement delete for relationships
+* Implement ensure user in controller + fix event row to not have admin as default
+* Separate tree items from list items in resource manager. Dont fetch stuff all the time. Use count to check if need to refetch
+* Merge resource manager and mammals
+
+
 IMPORTANT
 * Add all catalog numbers as part of migrations
 * Add them as part of migrating specimens
 * Add validations to centralized model
-* Ensure not possible to run migrations by mistake 
+* Ensure not possible to run migrations by mistake
 
 
 TODO
@@ -47,53 +54,3 @@ In Common
 ** https://stackoverflow.com/questions/24718706/backup-restore-a-dockerized-postgresql-database
 
 
-Done migrations
-.causeOfDeathTypes
-.customTaxonNameTypes
-.establishmentMeansType
-  * keys are changed
-  * sv added
-  * should be renamed to types with s
-.featureTypes
-  * sv added
-.identifierTypes
-  * scoped names in the data
-.preparationTypes
-  * names now scoped
-.typeSpecimenTypes
-  * names now scoped
-.localities
-  * use continentOcean instead of continent
-.normalizedAgents
-  * add legacyData and title to datamodel
-.specimen
-.specimen.migrationData.publishRecord
-.specimen.migrationData.remarks
-.specimen.migrationData.identifiers
-  * need new mapping to key instead of name
-.specimen.migrationData.recordHistoryEvents
-  * New descriptions
-  * Think about how to do with dates here. translate into timestamp?
-.specimen.migrationData.recordHistoryEvents
-.specimen.migrationData.collectingInformation
-* what to do with locationInformation_district?
-.specimen.migrationData.taxonInformation
-# todo
-.specimen.migrationData.determinations
-* change `determinedByAgent` till `determinedByAgent_textI``
-.specimen.migrationData.physicalObjects
-* Unclear how to handle remarks
-.specimen.migrationData.acquisitions
-.specimen.migrationData.originInformation
-.specimen.migrationData.deathInformation
-
-.specimen.migrationData.featureObservations
-
-
-Missing search data
-* otherPreparation
-* condition
-
-* cataloged
-* registered
-* last modified
