@@ -8,6 +8,7 @@ import createLog from 'utilities/log'
 import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
+import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
 import setDefaultValues from '../RecordForm/transformations/input'
 import RecordForm from '../RecordForm'
 
@@ -26,6 +27,7 @@ const mapDispatchToProps = {
 const propTypes = {
   createSpecimen: PropTypes.func.isRequired,
   fetchResourceCount: PropTypes.func.isRequired,
+  onInteraction: PropTypes.func.isRequired,
 }
 
 class CreateSpecimen extends PureComponent {
@@ -33,6 +35,7 @@ class CreateSpecimen extends PureComponent {
     const {
       createSpecimen,
       fetchResourceCount,
+      onInteraction,
       ...rest
     } = this.props
     const initialValues = setDefaultValues({ specimen: {} })
@@ -51,6 +54,7 @@ class CreateSpecimen extends PureComponent {
           })
           return createSpecimen({ item }).then(res => {
             fetchResourceCount()
+            onInteraction(CREATE_SUCCESS, { itemId: res.id })
             return res
           })
         }}
