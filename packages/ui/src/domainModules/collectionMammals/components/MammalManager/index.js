@@ -373,7 +373,7 @@ class MammalManager extends Component {
           ({ id }) => id === specimenId
         )
 
-        if (index) {
+        if (index > -1) {
           this.props.setCurrentTableRowNumber(index + 1)
         }
       }
