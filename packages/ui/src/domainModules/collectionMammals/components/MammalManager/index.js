@@ -450,7 +450,7 @@ class MammalManager extends Component {
     const { query } = buildQuery()
     return this.props
       .search({
-        limit: prefetchLimit,
+        limit: usePrefetchLimit ? prefetchLimit : 50000,
         query: skipFilter ? {} : query,
         sort,
       })
