@@ -31,7 +31,7 @@ a {
     height: 8px;
   }
   .rangeslider__fill {
-    background-color: @green;
+    background-color: @grey;
   }
   .rangeslider__handle {
     width: 10px;
