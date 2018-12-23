@@ -42,6 +42,10 @@ module.exports = {
       type: 'getMany',
     },
     {
+      filterSpecification: getManyFilterSpecification,
+      type: 'count',
+    },
+    {
       filterSpecification: queryFilterSpecification,
       selectableFields: ['id', 'attributes.agentType', 'attributes.fullName'],
       sortableFields: ['id', 'attributes.name'],
