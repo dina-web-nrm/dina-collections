@@ -24,7 +24,7 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   buildEditItemHeaders: PropTypes.func,
   itemId: PropTypes.string.isRequired,
-  loadingDelete: PropTypes.bool.isRequired,
+  loadingDelete: PropTypes.bool,
   nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
   relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
@@ -33,6 +33,7 @@ const propTypes = {
 }
 const defaultProps = {
   buildEditItemHeaders: defaultBuildItemHeaders,
+  loadingDelete: false,
   nestedItem: undefined,
   relationshipsToCheckBeforeDelete: [],
 }
