@@ -50,6 +50,7 @@ const mapDispatchToProps = {
 const propTypes = {
   currentTableRowNumber: PropTypes.number,
   fetchItemById: PropTypes.func.isRequired,
+  focusedItemId: PropTypes.string,
   language: PropTypes.string.isRequired,
   searchResult: PropTypes.object,
   setCurrentTableRowNumber: PropTypes.func.isRequired,
@@ -60,6 +61,7 @@ const propTypes = {
 
 const defaultProps = {
   currentTableRowNumber: 1,
+  focusedItemId: undefined,
   searchResult: undefined,
 }
 
@@ -105,12 +107,23 @@ export class InfiniteTable extends Component {
   }
 
   scroll(prevProps = {}) {
-    const { currentTableRowNumber } = this.props
+    const { currentTableRowNumber, focusedItemId } = this.props
 
-    const { currentTableRowNumber: prevCurrentTableRowNumber } = prevProps
+    const {
+      currentTableRowNumber: prevCurrentTableRowNumber,
+      focusedItemId: prevFocusedItemId,
+    } = prevProps
 
-    if (this.list && currentTableRowNumber !== prevCurrentTableRowNumber) {
+    if (
+      this.list &&
+      (currentTableRowNumber !== prevCurrentTableRowNumber ||
+        (focusedItemId && focusedItemId !== prevFocusedItemId))
+    ) {
       const [firstVisibleRow] = this.list.getVisibleRange()
+
+      if (firstVisibleRow === undefined) {
+        setTimeout(() => this.scroll())
+      }
 
       // this special case is to avoid that the focused row is hidden behind the
       // table header, which is fixed positioned and therefore seen by
