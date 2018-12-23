@@ -384,6 +384,8 @@
 │   ├── capitalizeFirstLetter
 │   │   ├── index.js
 │   │   └── index.test.js
+│   ├── capitalizeFirstLetterOfEachWord
+│   │   └── index.js
 │   ├── index.js
 │   └── index.test.js
 ├── testUtilities

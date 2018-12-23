@@ -7,6 +7,11 @@
 │   ├── Component.js
 │   ├── constants.js
 │   └── index.js
+├── dataViewer
+│   ├── Async.js
+│   ├── Component.js
+│   ├── constants.js
+│   └── index.js
 ├── docs
 │   ├── Async.js
 │   ├── Component.js
@@ -21,15 +26,12 @@
 │   ├── Async.js
 │   ├── Component.js
 │   ├── __markdown__
-│   │   ├── footer
-│   │   │   ├── links.en.md
-│   │   │   └── links.sv.md
-│   │   ├── index.json
-│   │   └── introduction
-│   │       ├── hero.en.md
-│   │       └── hero.sv.md
+│   │   ├── changelog.en.md
+│   │   ├── changelog.sv.md
+│   │   └── index.json
 │   ├── constants.js
 │   ├── index.js
+│   ├── logo.png
 │   └── translations.json
 ├── index.js
 ├── login
@@ -85,6 +87,11 @@
 │   ├── constants.js
 │   ├── index.js
 │   └── translations.json
+├── sourceData
+│   ├── Async.js
+│   ├── Component.js
+│   ├── constants.js
+│   └── index.js
 ├── specimensMammals
 │   ├── Async.js
 │   ├── Component.js
@@ -93,13 +100,17 @@
 ├── start
 │   ├── Async.js
 │   ├── Component.js
+│   ├── DINA_logo_only.png
 │   ├── __markdown__
-│   │   ├── changelog.en.md
-│   │   ├── changelog.sv.md
-│   │   └── index.json
+│   │   ├── footer
+│   │   │   ├── links.en.md
+│   │   │   └── links.sv.md
+│   │   ├── index.json
+│   │   └── introduction
+│   │       ├── hero.en.md
+│   │       └── hero.sv.md
 │   ├── constants.js
 │   ├── index.js
-│   ├── logo.png
 │   └── translations.json
 └── tree.md
 

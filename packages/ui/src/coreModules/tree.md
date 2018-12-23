@@ -4,7 +4,10 @@
 ├── allModules.js
 ├── api
 │   ├── actionCreators
-│   │   └── downloadFile.js
+│   │   ├── callOperation.js
+│   │   ├── downloadFile.js
+│   │   └── index.js
+│   ├── actionTypes.js
 │   ├── constants.js
 │   ├── index.js
 │   └── middleware.js
@@ -71,6 +74,9 @@
 │   │   │   └── index.js
 │   │   ├── Footer.js
 │   │   ├── Footer.stories.js
+│   │   ├── LayerModal
+│   │   │   ├── ModalContentWrapper.js
+│   │   │   └── index.js
 │   │   ├── PageTemplate.js
 │   │   ├── PageTemplate.stories.js
 │   │   ├── ThreeColumnGrid
@@ -116,6 +122,7 @@
 │   │   ├── createEnsureAllItemsFetched.js
 │   │   ├── createGetItemById.js
 │   │   ├── createGetNestedItemById.js
+│   │   ├── createGetResourceCount.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── keyObjectModule.js
@@ -187,10 +194,6 @@
 │   │   │   ├── FormSectionNavigation
 │   │   │   ├── FormSectionView
 │   │   │   └── index.js
-│   │   ├── RecordActionBar
-│   │   │   ├── DeleteRecordModal.js
-│   │   │   ├── InspectRelationsModal
-│   │   │   └── index.js
 │   │   ├── Section
 │   │   │   └── index.js
 │   │   ├── TogglableField
@@ -234,6 +237,7 @@
 │   │   │   └── index.js
 │   │   └── units
 │   │       ├── index.js
+│   │       ├── legacyData
 │   │       └── recordHistoryEvents
 │   ├── constants.js
 │   ├── globalSelectors.js
@@ -270,6 +274,9 @@
 │       ├── wrapReduxFormFieldParts.js
 │       └── wrapStaticContentParts.js
 ├── formSupport
+│   ├── actionCreators
+│   │   ├── index.js
+│   │   └── validateSections.js
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── index.js
@@ -380,6 +387,7 @@
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── higherOrderComponents
+│   │   ├── createApplicationLayer.js
 │   │   ├── index.js
 │   │   └── withLayout.js
 │   ├── index.js
@@ -417,6 +425,7 @@
 │   ├── globalSelectors.js
 │   ├── index.js
 │   ├── middleware.js
+│   ├── notifications.js
 │   ├── reducer.js
 │   ├── schemas.js
 │   ├── selectors.js
@@ -425,10 +434,11 @@
 │       ├── index.js
 │       └── testNotificationSpecification.js
 ├── resourceManager
+│   ├── actionCreators
+│   │   └── index.js
+│   ├── actionTypes.js
 │   ├── components
 │   │   ├── ResourceManager
-│   │   │   ├── CreateItemColumn
-│   │   │   ├── EditItemColumn
 │   │   │   ├── FilterColumn
 │   │   │   ├── MainColumn
 │   │   │   ├── index.js
@@ -447,6 +457,7 @@
 │   │   └── index.js
 │   ├── index.js
 │   ├── keyObjectModule.js
+│   ├── translations.json
 │   └── utilities
 │       ├── buildList.js
 │       ├── getTableWidth.js

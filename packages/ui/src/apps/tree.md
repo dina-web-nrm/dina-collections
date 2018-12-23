@@ -14,6 +14,11 @@
 │       │   ├── Component.js
 │       │   ├── constants.js
 │       │   └── index.js
+│       ├── dataViewer
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   └── index.js
 │       ├── docs
 │       │   ├── Async.js
 │       │   ├── Component.js
@@ -26,6 +31,7 @@
 │       │   ├── __markdown__
 │       │   ├── constants.js
 │       │   ├── index.js
+│       │   ├── logo.png
 │       │   └── translations.json
 │       ├── index.js
 │       ├── login
@@ -81,6 +87,11 @@
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   └── translations.json
+│       ├── sourceData
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   └── index.js
 │       ├── specimensMammals
 │       │   ├── Async.js
 │       │   ├── Component.js
@@ -89,10 +100,10 @@
 │       ├── start
 │       │   ├── Async.js
 │       │   ├── Component.js
+│       │   ├── DINA_logo_only.png
 │       │   ├── __markdown__
 │       │   ├── constants.js
 │       │   ├── index.js
-│       │   ├── logo.png
 │       │   └── translations.json
 │       └── tree.md
 └── tree.md

@@ -9,7 +9,8 @@
 │       │   └── index.js
 │       ├── errorHandler.js
 │       ├── logIncoming.js
-│       └── pingRoute.js
+│       ├── pingRoute.js
+│       └── responseTime.js
 ├── auth
 │   ├── createUser.js
 │   ├── index.js
@@ -39,6 +40,7 @@
 ├── controllers
 │   ├── crud
 │   │   ├── bulkCreate.js
+│   │   ├── count.js
 │   │   ├── create.js
 │   │   ├── del.js
 │   │   ├── getMany.js
@@ -63,6 +65,7 @@
 │   │   ├── setJobFailed.js
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
+│   ├── relationshipsUtilities
 │   ├── utilities
 │   │   ├── applyHooks
 │   │   │   └── index.js
@@ -139,6 +142,7 @@
 │   │   │   ├── createEqualFilter.js
 │   │   │   ├── createFeatureRangeFilter.js
 │   │   │   ├── createForeignKeyMatchFilter.js
+│   │   │   ├── createManyJsonRelationshipFilter.js
 │   │   │   ├── createNumberRangeFilter.js
 │   │   │   ├── createStringMatchFilter.js
 │   │   │   ├── createStringSearchFilter.js
@@ -285,6 +289,7 @@
 ├── operations
 │   ├── crudOperations
 │   │   ├── bulkCreate.js
+│   │   ├── count.js
 │   │   ├── create.js
 │   │   ├── del.js
 │   │   ├── getMany.js
@@ -295,6 +300,7 @@
 │   │   ├── schemas
 │   │   │   ├── base.js
 │   │   │   ├── bulkCreate.js
+│   │   │   ├── count.js
 │   │   │   ├── create.js
 │   │   │   ├── del.js
 │   │   │   ├── getMany.js

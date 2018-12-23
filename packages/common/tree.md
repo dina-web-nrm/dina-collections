@@ -5,6 +5,7 @@
 ├── dist
 │   ├── components
 │   ├── openApi.json
+│   ├── repoVersionInfo.json
 │   ├── schemas
 │   ├── semantic.css
 │   ├── semantic.js

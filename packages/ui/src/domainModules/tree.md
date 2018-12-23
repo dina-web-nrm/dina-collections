@@ -28,7 +28,6 @@
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
-│   ├── keyObjectModule.js
 │   ├── schemas.js
 │   └── translations.json
 ├── allModules.js
@@ -110,7 +109,6 @@
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
-│   ├── keyObjectModule.js
 │   └── translations.json
 ├── storage
 │   ├── __markdown__
@@ -138,7 +136,6 @@
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
-│   ├── keyObjectModule.js
 │   └── translations.json
 ├── taxon
 │   ├── actionCreators
@@ -183,7 +180,7 @@
 │   │   │   └── index.js
 │   │   ├── TaxonNameTaxonStatus
 │   │   │   └── index.js
-│   │   ├── TogglableAcceptedTaxonNameDropdownPickerSearch
+│   │   ├── TogglableTaxonDropdownPickerSearch
 │   │   │   └── index.js
 │   │   ├── VernacularNamesTable
 │   │   │   ├── Row.js
