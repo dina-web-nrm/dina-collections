@@ -15,6 +15,7 @@ const mapStateToProps = state => {
 const propTypes = {
   currentTableRowNumber: PropTypes.number,
   isLargeScreen: PropTypes.bool.isRequired,
+  numberOfListItems: PropTypes.number.isRequired,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -55,6 +56,7 @@ export class RecordNavigationBar extends Component {
     const {
       currentTableRowNumber,
       isLargeScreen,
+      numberOfListItems,
       onOpenNewRecordForm: handleOpenNewRecordForm,
       onSelectNextRecord: handleSelectNextRecord,
       onSelectPreviousRecord: handleSelectPreviousRecord,
@@ -73,6 +75,8 @@ export class RecordNavigationBar extends Component {
       (handleSetCurrentTableRowNumber
         ? sliderRowNumber || currentTableRowNumber
         : currentTableRowNumber) || ''
+    const isShowingAll =
+      !handleShowAllRecords || numberOfListItems === totalNumberOfRecords
 
     return (
       <Grid padded textAlign="center" verticalAlign="middle">
@@ -96,16 +100,28 @@ export class RecordNavigationBar extends Component {
             </Button.Group>
           </div>
           {showRecordInput && (
-            <div style={{ float: 'left', marginLeft: 15, marginTop: 1 }}>
+            <div
+              style={{
+                float: 'left',
+                marginLeft: 15,
+                marginTop: 1,
+              }}
+            >
               <Input
-                disabled={!handleSetCurrentTableRowNumber}
-                max={totalNumberOfRecords}
-                min={totalNumberOfRecords && 1}
+                className="center aligned bold"
+                disabled={
+                  !handleSetCurrentTableRowNumber || numberOfListItems === 0
+                }
+                fluid
+                max={numberOfListItems}
+                min={numberOfListItems && 1}
                 onChange={event => {
                   handleSetCurrentTableRowNumber(null, event.target.value)
                 }}
-                size="mini"
-                style={{ width: '80px' }}
+                size="small"
+                style={{
+                  width: '6.5em',
+                }}
                 type="number"
                 value={sliderValue}
               />
@@ -118,14 +134,14 @@ export class RecordNavigationBar extends Component {
                 className="slider-slim"
                 style={{
                   float: 'left',
-                  marginLeft: 15,
-                  marginTop: 11,
-                  width: 150,
+                  marginLeft: '0.625em',
+                  marginTop: '0.9375em',
+                  width: '6.25em',
                 }}
               >
                 <Slider
-                  max={totalNumberOfRecords}
-                  min={totalNumberOfRecords && 1}
+                  max={numberOfListItems}
+                  min={numberOfListItems && 1}
                   onChange={newTableRowNumber => {
                     if (!handleSetCurrentTableRowNumber) {
                       return
@@ -156,40 +172,77 @@ export class RecordNavigationBar extends Component {
                 />
               </div>
             )}
-          {!treeActive &&
-            (handleOpenNewRecordForm ? (
-              <div style={{ float: 'left', marginLeft: 15, marginTop: 5 }}>
-                {totalNumberOfRecords} records
-              </div>
-            ) : (
-              <div style={{ float: 'left', marginLeft: 15, marginTop: -3 }}>
-                {totalNumberOfRecords} records
-                <br />
-                <i>*Adding new*</i>
-              </div>
-            ))}
-          <div style={{ float: 'left', marginLeft: 15 }}>
+          <div
+            style={{
+              float: 'left',
+              marginLeft: '0.625em',
+              marginTop: '0.46875em',
+              textAlign: 'left',
+              width: '7.25em',
+            }}
+          >
+            {!treeActive && (
+              <React.Fragment>
+                <span style={{ fontWeight: 700 }}>
+                  {numberOfListItems} records
+                </span>{' '}
+              </React.Fragment>
+            )}
+          </div>
+          <div
+            style={{
+              float: 'left',
+              marginLeft: '0.625em',
+              marginTop: '0.46875em',
+              textAlign: 'left',
+              width: '4.25em',
+            }}
+          >
+            {!treeActive && (
+              <React.Fragment>
+                <span
+                  style={{
+                    color: 'rgba(0,0,0,.6)',
+                    display: 'block',
+                    float: 'right',
+                    fontStyle: 'italic',
+                  }}
+                >
+                  of {totalNumberOfRecords}
+                </span>
+              </React.Fragment>
+            )}
+          </div>
+          <div
+            style={{
+              float: 'left',
+              marginLeft: 15,
+            }}
+          >
             {showShowAllButton && (
               <Button
-                disabled={!handleShowAllRecords}
+                basic
+                disabled={isShowingAll}
                 icon
                 onClick={event => handleShowAllRecords(event)}
-                size="tiny"
               >
-                <Icon name="book" />
-                {' Show All'}
+                <div style={{ width: '6.5625em' }}>
+                  {isShowingAll ? 'Showing all' : 'Show all'}
+                </div>
               </Button>
             )}
-
+          </div>
+          <div style={{ float: 'left', marginLeft: 15 }}>
             {showNewRecordButton && (
               <Button
                 disabled={!handleOpenNewRecordForm}
                 icon
                 onClick={event => handleOpenNewRecordForm(event)}
-                size="tiny"
+                primary
               >
-                <Icon name="plus" />
-                {' New record'}
+                <div style={{ width: '7.5em' }}>
+                  <Icon name="plus" />New record
+                </div>
               </Button>
             )}
           </div>
