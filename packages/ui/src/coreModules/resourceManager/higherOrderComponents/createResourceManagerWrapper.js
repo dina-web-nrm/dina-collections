@@ -7,6 +7,7 @@ import { reset as resetActionCreator } from 'redux-form'
 import createLog from 'utilities/log'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
+import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 
@@ -33,28 +34,30 @@ import {
 const log = createLog('resourceManager:resourceManagerWrapper')
 
 const createResourceManagerWrapper = () => ComposedComponent => {
-  const mapStateToProps = (state, { isPicker, resource }) => {
+  const mapStateToProps = (state, { isPicker, resource, resourceCount }) => {
+    const totalNumberOfRecords = resourceCount
+
     const managerScope = isPicker ? `${resource}Picker` : resource
     const { get } = keyObjectGlobalSelectors
     const baseItems = get[':managerScope.baseItems'](state, { managerScope })
     const listItems = get[':managerScope.listItems'](state, { managerScope })
-    const currentTableRowNumber =
-      get[':managerScope.currentTableRowNumber'](state, { managerScope }) || 1
+    const numberOfListItems = (listItems || []).length
 
     const showAll = get[':managerScope.showAll'](state, { managerScope })
     const expandedIds = get[':managerScope.expandedIds'](state, {
       managerScope,
     })
+
+    const currentTableRowNumber =
+      get[':managerScope.currentTableRowNumber'](state, { managerScope }) || 1
     const focusedIndex = currentTableRowNumber - 1
-    const totalNumberOfRecords = (listItems || []).length
-    const nextRowAvailable = currentTableRowNumber < totalNumberOfRecords
+    const nextRowAvailable = currentTableRowNumber < numberOfListItems
     const prevRowAvailable = currentTableRowNumber > 1
     const filterValues = get[':managerScope.listFilterValues'](state, {
       managerScope,
     })
     const focusedItemId =
       listItems && listItems[focusedIndex] && listItems[focusedIndex].id
-
     const focusIdWhenLoaded = get[':managerScope.focusIdWhenLoaded'](state, {
       managerScope,
     })
@@ -71,6 +74,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       listItems,
       managerScope,
       nextRowAvailable,
+      numberOfListItems,
       prevRowAvailable,
       showAll,
       totalNumberOfRecords,
@@ -123,6 +127,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     managerScope: PropTypes.string.isRequired,
     nestedCacheNamespaces: PropTypes.arrayOf(PropTypes.string),
     nextRowAvailable: PropTypes.bool.isRequired,
+    numberOfListItems: PropTypes.number.isRequired,
     onInteraction: PropTypes.func.isRequired,
     open: PropTypes.func.isRequired,
     prefetchLimit: PropTypes.number,
@@ -143,7 +148,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     sortOrder: PropTypes.array,
     tableActive: PropTypes.bool.isRequired,
     tableColumnSpecifications: PropTypes.array.isRequired,
-    totalNumberOfRecords: PropTypes.number.isRequired,
+    totalNumberOfRecords: PropTypes.number,
     treeActive: PropTypes.bool.isRequired,
   }
 
@@ -166,6 +171,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     recordOptionsHeight: emToPixels(3.5625),
     showAll: false,
     sortOrder: [],
+    totalNumberOfRecords: 0,
   }
 
   class ResourceManagerWrapper extends Component {
@@ -285,7 +291,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       const {
         currentTableRowNumber,
         managerScope,
-        totalNumberOfRecords,
+        numberOfListItems,
       } = this.props
 
       const activeViews = this.getActiveViews()
@@ -344,8 +350,8 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         }
       })
 
-      if (totalNumberOfRecords < currentTableRowNumber) {
-        this.props.setCurrentTableRowNumber(totalNumberOfRecords, {
+      if (numberOfListItems < currentTableRowNumber) {
+        this.props.setCurrentTableRowNumber(numberOfListItems, {
           managerScope,
         })
       }
@@ -885,6 +891,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       includeFields: ['id'],
       storeSearchResult: false,
     }),
+    createGetResourceCount(),
     connect(mapStateToProps, mapDispatchToProps),
     connect(),
     createShortcutLayer({ layer: 'resourceManager' })

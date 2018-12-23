@@ -162,6 +162,7 @@ class ResourceManager extends Component {
             'listItems',
             'managerScope',
             'nextRowAvailable',
+            'numberOfListItems',
             'onClickRow',
             'onFormTabClick',
             'onInteraction',
