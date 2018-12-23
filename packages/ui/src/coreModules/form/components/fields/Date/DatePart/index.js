@@ -163,7 +163,7 @@ class DatePart extends Component {
             subLabel
           >
             <Input
-              className="arrowless right-aligned"
+              className="arrowless right aligned"
               disabled={disabled}
               fluid
               onBlur={event => {
@@ -192,7 +192,7 @@ class DatePart extends Component {
             subLabel
           >
             <Input
-              className="arrowless right-aligned"
+              className="arrowless right aligned"
               disabled={disabled}
               fluid
               max={12}
@@ -222,7 +222,7 @@ class DatePart extends Component {
             subLabel
           >
             <Input
-              className="arrowless right-aligned"
+              className="arrowless right aligned"
               disabled={disabled}
               fluid
               max={31}
