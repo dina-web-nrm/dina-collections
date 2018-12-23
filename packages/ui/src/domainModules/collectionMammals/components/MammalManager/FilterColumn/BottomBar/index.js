@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { isInvalid } from 'redux-form'
+import { isInvalid, isPristine } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
 const mapStateToProps = (state, { form }) => {
   return {
     invalid: isInvalid(form)(state),
+    pristine: isPristine(form)(state),
   }
 }
 
@@ -16,6 +17,7 @@ const propTypes = {
   invalid: PropTypes.bool.isRequired,
   onResetFilters: PropTypes.func.isRequired,
   onSearchSpecimens: PropTypes.func.isRequired,
+  pristine: PropTypes.bool.isRequired,
 }
 const defaultProps = {}
 
@@ -43,7 +45,7 @@ class BottomBar extends PureComponent {
   }
 
   render() {
-    const { invalid, onResetFilters: handleReset } = this.props
+    const { invalid, onResetFilters: handleReset, pristine } = this.props
 
     return (
       <React.Fragment>
@@ -51,7 +53,7 @@ class BottomBar extends PureComponent {
         <Grid padded>
           <Grid.Column>
             <Button
-              disabled={invalid}
+              disabled={invalid || pristine}
               loading={this.state.loading}
               onClick={this.handleSearch}
               size="large"
@@ -61,6 +63,7 @@ class BottomBar extends PureComponent {
             </Button>
             <Button
               basic
+              disabled={pristine}
               onClick={handleReset}
               size="large"
               style={{ float: 'right' }}
