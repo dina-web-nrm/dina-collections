@@ -113,7 +113,7 @@ module.exports = function getWhereFactory({
         return Model.findAll(options).then(res => {
           if (count) {
             const meta = {
-              count: res[0].dataValues.count,
+              count: Number(res[0].dataValues.count),
             }
             return {
               items: [],

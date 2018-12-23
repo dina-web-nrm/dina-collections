@@ -13,7 +13,7 @@ module.exports = function getCountFactory({ Model }) {
     }
 
     return Model.findAll(options).then(res => {
-      return res[0].dataValues.count
+      return Number(res[0].dataValues.count)
     })
   }
 }
