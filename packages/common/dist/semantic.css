@@ -793,7 +793,7 @@ a {
 }
 
 .slider-slim.slider-slim .rangeslider__fill {
-  background-color: #1e8c45;
+  background-color: #767676;
 }
 
 .slider-slim.slider-slim .rangeslider__handle {
@@ -12725,10 +12725,26 @@ img.ui.bordered.image {
 }
 
 /*
+* bold content
+*/
+
+.ui.input.bold input {
+  font-weight: 700;
+}
+
+/*
+* center aligned content
+*/
+
+.ui.input.center.aligned input {
+  text-align: center;
+}
+
+/*
 * right aligned content
 */
 
-.ui.input.right-aligned input {
+.ui.input.right.aligned input {
   text-align: right;
 }
 /*!
