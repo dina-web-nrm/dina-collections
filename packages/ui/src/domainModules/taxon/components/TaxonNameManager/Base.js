@@ -20,7 +20,7 @@ const createGetNestedItemHocInput = {
   resolveRelationships: ['resourceActivity', 'taxon'],
   resource: 'taxonName',
 }
-
+const filterResourceCount = { taxonNameType: 'scientific' }
 const relationshipsToCheckBeforeDelete = ['acceptedToTaxon', 'synonymToTaxon']
 
 const sortOrder = ['attributes.name:asc']
@@ -89,6 +89,7 @@ class TaxonNameManager extends Component {
         buildEditItemHeaders={this.buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        filterResourceCount={filterResourceCount}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
