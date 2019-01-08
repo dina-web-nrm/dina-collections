@@ -88,14 +88,6 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
   const mapStateToProps = (state, { resource: resourceProp }) => {
     const resource = resourceProp || resourceHocInput
 
-    if (!resource) {
-      console.error(`Missing resource`) // eslint-disable-line no-console
-    }
-
-    if (!getResourceCountGetter(resource)) {
-      setResourceCountGetter(resource, createDebouncedGetCount())
-    }
-
     return {
       [resourceCountFetchedKey]: resourceCountFetchedSelector(state, {
         resource,
@@ -134,6 +126,16 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
   class ResourceCountGetter extends Component {
     constructor(props) {
       super(props)
+
+      const { resource: resourceProp } = props
+      const resource = resourceProp || resourceHocInput
+
+      if (!resource) {
+        console.error(`Missing resource`) // eslint-disable-line no-console
+      }
+
+      setResourceCountGetter(resource, createDebouncedGetCount())
+
       this.fetchResourceCount = this.fetchResourceCount.bind(this)
     }
 
