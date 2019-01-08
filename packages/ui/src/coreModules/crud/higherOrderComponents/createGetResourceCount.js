@@ -53,7 +53,7 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
         resource,
       })
 
-      props
+      return props
         .callOperation({
           operationId: `${resource}Count`,
           request: { queryParams: { filter } },
@@ -75,6 +75,8 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
           })
         })
     }
+
+    return null
   }
 
   const createDebouncedGetCount = () =>
