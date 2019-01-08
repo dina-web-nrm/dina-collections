@@ -218,7 +218,7 @@ const propTypes = {
     params: PropTypes.object.isRequired,
     path: PropTypes.string.isRequired,
   }).isRequired,
-  numberOfListItems: PropTypes.number.isRequired,
+  numberOfListItems: PropTypes.number,
   prefetchLimit: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   push: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
@@ -240,6 +240,7 @@ const defaultProps = {
   currentTableRowNumber: undefined,
   filterValues: undefined,
   focusedSpecimenId: undefined,
+  numberOfListItems: undefined,
   prefetchLimit: 50,
   rightSidebarWidth: emToPixels(25),
   searchResult: undefined,

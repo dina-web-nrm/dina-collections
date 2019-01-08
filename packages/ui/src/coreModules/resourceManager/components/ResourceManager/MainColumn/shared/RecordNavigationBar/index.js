@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 const propTypes = {
   currentTableRowNumber: PropTypes.number,
   isLargeScreen: PropTypes.bool.isRequired,
-  numberOfListItems: PropTypes.number.isRequired,
+  numberOfListItems: PropTypes.number,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -33,6 +33,7 @@ const propTypes = {
 }
 const defaultProps = {
   currentTableRowNumber: undefined,
+  numberOfListItems: undefined,
   onOpenNewRecordForm: false,
   onSelectNextRecord: false,
   onSelectPreviousRecord: false,
