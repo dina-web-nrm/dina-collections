@@ -174,15 +174,17 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   └── resources
-│       ├── index.js
-│       ├── taxon
-│       │   ├── data
-│       │   └── index.js
-│       └── taxonName
-│           ├── data
-│           ├── index.js
-│           └── operations
+│   ├── resources
+│   │   ├── index.js
+│   │   ├── taxon
+│   │   │   ├── data
+│   │   │   └── index.js
+│   │   └── taxonName
+│   │       ├── data
+│   │       ├── index.js
+│   │       └── operations
+│   └── serviceInteractions
+│       └── index.js
 └── tree.md
 
 ```

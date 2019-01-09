@@ -779,7 +779,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -828,7 +828,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -878,7 +878,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -949,7 +949,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -998,7 +998,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1048,7 +1048,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1151,7 +1151,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 Year
               </label>
               <div
-                className="ui disabled fluid input arrowless right-aligned"
+                className="ui disabled fluid input arrowless right aligned"
               >
                 <input
                   disabled={true}
@@ -1200,7 +1200,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 Month
               </label>
               <div
-                className="ui disabled fluid input arrowless right-aligned"
+                className="ui disabled fluid input arrowless right aligned"
               >
                 <input
                   disabled={true}
@@ -1250,7 +1250,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 Day
               </label>
               <div
-                className="ui disabled fluid input arrowless right-aligned"
+                className="ui disabled fluid input arrowless right aligned"
               >
                 <input
                   disabled={true}
@@ -1333,7 +1333,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1382,7 +1382,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1432,7 +1432,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty late
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1535,7 +1535,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1584,7 +1584,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1634,7 +1634,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1717,7 +1717,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1766,7 +1766,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1816,7 +1816,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1919,7 +1919,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -1968,7 +1968,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2018,7 +2018,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2089,7 +2089,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2138,7 +2138,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2188,7 +2188,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2291,7 +2291,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 Year
               </label>
               <div
-                className="ui disabled fluid input arrowless right-aligned"
+                className="ui disabled fluid input arrowless right aligned"
               >
                 <input
                   disabled={true}
@@ -2340,7 +2340,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 Month
               </label>
               <div
-                className="ui disabled fluid input arrowless right-aligned"
+                className="ui disabled fluid input arrowless right aligned"
               >
                 <input
                   disabled={true}
@@ -2390,7 +2390,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 Day
               </label>
               <div
-                className="ui disabled fluid input arrowless right-aligned"
+                className="ui disabled fluid input arrowless right aligned"
               >
                 <input
                   disabled={true}
@@ -2473,7 +2473,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2522,7 +2522,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2572,7 +2572,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled lat
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2678,7 +2678,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2727,7 +2727,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2777,7 +2777,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2860,7 +2860,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2909,7 +2909,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -2959,7 +2959,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3070,7 +3070,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3119,7 +3119,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3169,7 +3169,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3240,7 +3240,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3289,7 +3289,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3339,7 +3339,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3554,7 +3554,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3603,7 +3603,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3653,7 +3653,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3724,7 +3724,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 Year
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3773,7 +3773,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 Month
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3823,7 +3823,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 Day
               </label>
               <div
-                className="ui fluid input arrowless right-aligned"
+                className="ui fluid input arrowless right aligned"
               >
                 <input
                   disabled={false}
@@ -3908,7 +3908,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
             Year
           </label>
           <div
-            className="ui fluid input arrowless right-aligned"
+            className="ui fluid input arrowless right aligned"
           >
             <input
               disabled={false}
@@ -3957,7 +3957,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
             Month
           </label>
           <div
-            className="ui fluid input arrowless right-aligned"
+            className="ui fluid input arrowless right aligned"
           >
             <input
               disabled={false}
@@ -4007,7 +4007,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
             Day
           </label>
           <div
-            className="ui fluid input arrowless right-aligned"
+            className="ui fluid input arrowless right aligned"
           >
             <input
               disabled={false}
@@ -4076,7 +4076,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
             Year
           </label>
           <div
-            className="ui fluid input arrowless right-aligned"
+            className="ui fluid input arrowless right aligned"
           >
             <input
               disabled={false}
@@ -4125,7 +4125,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
             Month
           </label>
           <div
-            className="ui fluid input arrowless right-aligned"
+            className="ui fluid input arrowless right aligned"
           >
             <input
               disabled={false}
@@ -4175,7 +4175,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
             Day
           </label>
           <div
-            className="ui fluid input arrowless right-aligned"
+            className="ui fluid input arrowless right aligned"
           >
             <input
               disabled={false}
@@ -5957,17 +5957,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar addingNewRecordComplete 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -5999,26 +5995,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50001}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -6027,50 +6017,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50001
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50001
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6081,17 +6100,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar changeTableRowNumber 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6123,26 +6138,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -6151,50 +6160,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6205,17 +6243,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar default 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6247,26 +6281,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -6275,50 +6303,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6329,17 +6386,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar firstRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6371,26 +6424,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -6399,50 +6446,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6453,17 +6529,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar lastRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6495,26 +6567,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -6523,50 +6589,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6577,17 +6672,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar nextRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6619,26 +6710,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -6647,50 +6732,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6701,17 +6815,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar openFilter 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6743,26 +6853,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -6771,50 +6875,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6825,17 +6958,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar openNewRecordForm 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6867,26 +6996,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini disabled input"
+          className="ui small disabled fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={true}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={-1}
             type="number"
@@ -6895,54 +7018,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": -3,
-          }
-        }
+        className="column"
       >
-        50000
-         records
-        <br />
-        <i>
-          *Adding new*
-        </i>
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon disabled button"
+          className="ui basic icon disabled button"
           disabled={true}
           onClick={[Function]}
           role="button"
           tabIndex={-1}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Showing all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon disabled button"
+          className="ui icon primary disabled button"
           disabled={true}
           onClick={[Function]}
           role="button"
           tabIndex={-1}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -6953,17 +7101,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar previousRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6995,26 +7139,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -7023,50 +7161,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>
@@ -7077,17 +7244,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar showAllRecords 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -7119,26 +7282,20 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
-          className="ui mini input"
+          className="ui small fluid input center aligned bold"
           style={
             Object {
-              "width": "80px",
+              "width": "6.5em",
             }
           }
         >
           <input
             disabled={false}
-            max={50000}
-            min={1}
+            max={undefined}
+            min={undefined}
             onChange={[Function]}
             tabIndex={undefined}
             type="number"
@@ -7147,50 +7304,79 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 5,
-          }
-        }
+        className="column"
       >
-        50000
-         records
+        <div
+          style={
+            Object {
+              "fontWeight": 700,
+              "width": "7.25em",
+            }
+          }
+        >
+           records
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
+        className="column"
+      >
+        <div
+          style={
+            Object {
+              "color": "rgba(0,0,0,.6)",
+              "fontStyle": "italic",
+              "width": "4.25em",
+            }
           }
-        }
+        >
+          of 
+          50000
+        </div>
+      </div>
+      <div
+        className="column"
       >
         <button
-          className="ui tiny icon button"
+          className="ui basic icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="book icon"
-          />
-           Show All
+          <div
+            style={
+              Object {
+                "width": "6.5625em",
+              }
+            }
+          >
+            Show all
+          </div>
         </button>
+      </div>
+      <div
+        className="column"
+      >
         <button
-          className="ui tiny icon button"
+          className="ui icon primary button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
           tabIndex={undefined}
         >
-          <i
-            aria-hidden="true"
-            className="plus icon"
-          />
-           New record
+          <div
+            style={
+              Object {
+                "width": "7.5em",
+              }
+            }
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </div>
         </button>
       </div>
     </div>

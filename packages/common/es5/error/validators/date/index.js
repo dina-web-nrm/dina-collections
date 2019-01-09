@@ -99,7 +99,7 @@ var pastSingleDate = function pastSingleDate(value) {
 };
 
 var pastDateRange = function pastDateRange(value) {
-  return pastSingleDate(value && value.startDate) && pastSingleDate(value && value.endDate, true);
+  return pastSingleDate(value && value.startDate) && pastSingleDate(value && value.endDate);
 };
 
 var dateRangeStartDateNotAfterEndDate = function dateRangeStartDateNotAfterEndDate(value) {

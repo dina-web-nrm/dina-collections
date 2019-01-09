@@ -53,7 +53,7 @@ TypeSpecimenTypeDropdownSearch.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({
-    allFetchedKey: 'allTypeSpecimenTypeFetched',
+    allItemsFetchedKey: 'allTypeSpecimenTypeFetched',
     resource: 'typeSpecimenType',
   }),
   connect(mapStateToProps)

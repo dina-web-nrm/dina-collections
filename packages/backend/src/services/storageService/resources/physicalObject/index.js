@@ -33,6 +33,10 @@ module.exports = {
       type: 'getMany',
     },
     {
+      filterSpecification: getManyFilterSpecification,
+      type: 'count',
+    },
+    {
       postHooks: updatePostHooks,
       type: 'update',
     },

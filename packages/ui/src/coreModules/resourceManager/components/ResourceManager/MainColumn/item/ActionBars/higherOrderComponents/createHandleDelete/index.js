@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 
+import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { DEL_SUCCESS } from 'coreModules/resourceManager/constants'
 import { createNotification as createNotificationActionCreator } from 'coreModules/notifications/actionCreators'
 import crudActionCreators from 'coreModules/crud/actionCreators'
@@ -17,6 +18,7 @@ const propTypes = {
   createNotification: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   fetchRelationshipsBeforeDelete: PropTypes.func,
+  fetchResourceCount: PropTypes.func.isRequired,
   itemHeader: PropTypes.string,
   itemId: PropTypes.string,
   itemSubHeader: PropTypes.string,
@@ -88,6 +90,7 @@ const createHandleDelete = () => ComposedComponent => {
       const {
         createNotification,
         dispatch,
+        fetchResourceCount,
         itemId,
         onInteraction,
         resource,
@@ -149,6 +152,7 @@ const createHandleDelete = () => ComposedComponent => {
               }
 
         createNotification(notification)
+        fetchResourceCount()
 
         if (onInteraction) {
           onInteraction(DEL_SUCCESS)
@@ -193,6 +197,7 @@ const createHandleDelete = () => ComposedComponent => {
   DeleteHandler.defaultProps = defaultProps
 
   return compose(
+    createGetResourceCount(),
     connect(undefined, mapDispatchToProps),
     connect(null) // needed to get dispatch
   )(DeleteHandler)

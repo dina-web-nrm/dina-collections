@@ -31,7 +31,7 @@ const GROUPS_AND_HEADLINES = [
 const mapStateToProps = state => {
   return {
     allFeatureTypesFetched: crudKeyObjectSelectors.get[
-      ':resource.allItemsFetched'
+      ':resource.allItems.fetched'
     ](state, { resource: 'featureType' }),
   }
 }

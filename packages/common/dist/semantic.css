@@ -793,7 +793,7 @@ a {
 }
 
 .slider-slim.slider-slim .rangeslider__fill {
-  background-color: #1e8c45;
+  background-color: #767676;
 }
 
 .slider-slim.slider-slim .rangeslider__handle {
@@ -12725,10 +12725,26 @@ img.ui.bordered.image {
 }
 
 /*
+* bold content
+*/
+
+.ui.input.bold input {
+  font-weight: 700;
+}
+
+/*
+* center aligned content
+*/
+
+.ui.input.center.aligned input {
+  text-align: center;
+}
+
+/*
 * right aligned content
 */
 
-.ui.input.right-aligned input {
+.ui.input.right.aligned input {
   text-align: right;
 }
 /*!
@@ -21318,6 +21334,19 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .row.relaxed > .column {
   margin-top: 0.4em;
   margin-bottom: 0.4em;
+}
+
+/*
+* Row with columns "floating" left or right
+*/
+
+.ui.grid > .row.left.floated .column:not(:last-child) {
+  padding-right: 0;
+  width: auto;
+}
+
+.ui.grid > .row.left.floated .column:last-child {
+  width: auto;
 }
 /*
  * # Semantic - Menu

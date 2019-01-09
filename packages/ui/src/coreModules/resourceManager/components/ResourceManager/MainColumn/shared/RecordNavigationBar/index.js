@@ -15,6 +15,7 @@ const mapStateToProps = state => {
 const propTypes = {
   currentTableRowNumber: PropTypes.number,
   isLargeScreen: PropTypes.bool.isRequired,
+  numberOfListItems: PropTypes.number,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -32,6 +33,7 @@ const propTypes = {
 }
 const defaultProps = {
   currentTableRowNumber: undefined,
+  numberOfListItems: undefined,
   onOpenNewRecordForm: false,
   onSelectNextRecord: false,
   onSelectPreviousRecord: false,
@@ -55,6 +57,7 @@ export class RecordNavigationBar extends Component {
     const {
       currentTableRowNumber,
       isLargeScreen,
+      numberOfListItems,
       onOpenNewRecordForm: handleOpenNewRecordForm,
       onSelectNextRecord: handleSelectNextRecord,
       onSelectPreviousRecord: handleSelectPreviousRecord,
@@ -73,11 +76,13 @@ export class RecordNavigationBar extends Component {
       (handleSetCurrentTableRowNumber
         ? sliderRowNumber || currentTableRowNumber
         : currentTableRowNumber) || ''
+    const isShowingAll =
+      !handleShowAllRecords || numberOfListItems === totalNumberOfRecords
 
     return (
-      <Grid padded textAlign="center" verticalAlign="middle">
-        <Grid.Column>
-          <div style={{ float: 'left' }}>
+      <Grid padded textAlign="left" verticalAlign="middle">
+        <Grid.Row className="left floated">
+          <Grid.Column>
             <Button.Group>
               <Button
                 disabled={!handleSelectPreviousRecord}
@@ -94,106 +99,122 @@ export class RecordNavigationBar extends Component {
                 <Icon name="chevron right" />
               </Button>
             </Button.Group>
-          </div>
+          </Grid.Column>
           {showRecordInput && (
-            <div style={{ float: 'left', marginLeft: 15, marginTop: 1 }}>
+            <Grid.Column>
               <Input
-                disabled={!handleSetCurrentTableRowNumber}
-                max={totalNumberOfRecords}
-                min={totalNumberOfRecords && 1}
+                className="center aligned bold"
+                disabled={
+                  !handleSetCurrentTableRowNumber || numberOfListItems === 0
+                }
+                fluid
+                max={numberOfListItems}
+                min={numberOfListItems && 1}
                 onChange={event => {
                   handleSetCurrentTableRowNumber(null, event.target.value)
                 }}
-                size="mini"
-                style={{ width: '80px' }}
+                size="small"
+                style={{ width: '6.5em' }}
                 type="number"
                 value={sliderValue}
               />
-            </div>
+            </Grid.Column>
           )}
-
           {isLargeScreen &&
             showSlider && (
+              <Grid.Column className="slider-slim">
+                <div
+                  style={{
+                    width: '6.25em',
+                  }}
+                >
+                  <Slider
+                    max={numberOfListItems}
+                    min={numberOfListItems && 1}
+                    onChange={newTableRowNumber => {
+                      if (!handleSetCurrentTableRowNumber) {
+                        return
+                      }
+                      // those ifs are a needed hack to avoid double increment when
+                      // using hotkey directly after sliding
+                      if (newTableRowNumber === currentTableRowNumber + 1) {
+                        this.setState({
+                          sliderRowNumber: newTableRowNumber - 1,
+                        })
+                      } else if (
+                        newTableRowNumber ===
+                        currentTableRowNumber - 1
+                      ) {
+                        this.setState({
+                          sliderRowNumber: newTableRowNumber + 1,
+                        })
+                      } else {
+                        this.setState({ sliderRowNumber: newTableRowNumber })
+                      }
+                    }}
+                    onChangeComplete={() => {
+                      if (!handleSetCurrentTableRowNumber) {
+                        return
+                      }
+                      handleSetCurrentTableRowNumber(null, sliderRowNumber)
+                      this.setState({ sliderRowNumber: null })
+                    }}
+                    step={1}
+                    tooltip={false}
+                    value={sliderRowNumber || currentTableRowNumber}
+                  />
+                </div>
+              </Grid.Column>
+            )}
+          <Grid.Column>
+            {!treeActive && (
+              <div style={{ fontWeight: 700, width: '7.25em' }}>
+                {numberOfListItems} records
+              </div>
+            )}
+          </Grid.Column>
+          <Grid.Column>
+            {!treeActive && (
               <div
-                className="slider-slim"
                 style={{
-                  float: 'left',
-                  marginLeft: 15,
-                  marginTop: 11,
-                  width: 150,
+                  color: 'rgba(0,0,0,.6)',
+                  fontStyle: 'italic',
+                  width: '4.25em',
                 }}
               >
-                <Slider
-                  max={totalNumberOfRecords}
-                  min={totalNumberOfRecords && 1}
-                  onChange={newTableRowNumber => {
-                    if (!handleSetCurrentTableRowNumber) {
-                      return
-                    }
-                    // those ifs are a needed hack to avoid double increment when
-                    // using hotkey directly after sliding
-                    if (newTableRowNumber === currentTableRowNumber + 1) {
-                      this.setState({ sliderRowNumber: newTableRowNumber - 1 })
-                    } else if (
-                      newTableRowNumber ===
-                      currentTableRowNumber - 1
-                    ) {
-                      this.setState({ sliderRowNumber: newTableRowNumber + 1 })
-                    } else {
-                      this.setState({ sliderRowNumber: newTableRowNumber })
-                    }
-                  }}
-                  onChangeComplete={() => {
-                    if (!handleSetCurrentTableRowNumber) {
-                      return
-                    }
-                    handleSetCurrentTableRowNumber(null, sliderRowNumber)
-                    this.setState({ sliderRowNumber: null })
-                  }}
-                  step={1}
-                  tooltip={false}
-                  value={sliderRowNumber || currentTableRowNumber}
-                />
+                of {totalNumberOfRecords}
               </div>
             )}
-          {!treeActive &&
-            (handleOpenNewRecordForm ? (
-              <div style={{ float: 'left', marginLeft: 15, marginTop: 5 }}>
-                {totalNumberOfRecords} records
-              </div>
-            ) : (
-              <div style={{ float: 'left', marginLeft: 15, marginTop: -3 }}>
-                {totalNumberOfRecords} records
-                <br />
-                <i>*Adding new*</i>
-              </div>
-            ))}
-          <div style={{ float: 'left', marginLeft: 15 }}>
+          </Grid.Column>
+          <Grid.Column>
             {showShowAllButton && (
               <Button
-                disabled={!handleShowAllRecords}
+                basic
+                disabled={isShowingAll}
                 icon
                 onClick={event => handleShowAllRecords(event)}
-                size="tiny"
               >
-                <Icon name="book" />
-                {' Show All'}
+                <div style={{ width: '6.5625em' }}>
+                  {isShowingAll ? 'Showing all' : 'Show all'}
+                </div>
               </Button>
             )}
-
+          </Grid.Column>
+          <Grid.Column>
             {showNewRecordButton && (
               <Button
                 disabled={!handleOpenNewRecordForm}
                 icon
                 onClick={event => handleOpenNewRecordForm(event)}
-                size="tiny"
+                primary
               >
-                <Icon name="plus" />
-                {' New record'}
+                <div style={{ width: '7.5em' }}>
+                  <Icon name="plus" />New record
+                </div>
               </Button>
             )}
-          </div>
-        </Grid.Column>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     )
   }

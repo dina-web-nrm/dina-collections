@@ -5,8 +5,12 @@
 ├── LICENCE
 ├── README.md
 ├── build
+│   ├── asset-manifest.json
 │   ├── favicon.ico
-│   └── manifest.json
+│   ├── index.html
+│   ├── manifest.json
+│   ├── service-worker.js
+│   └── static
 ├── build-storybook
 │   ├── favicon.ico
 │   ├── iframe.html
@@ -40,10 +44,11 @@
 │   ├── test
 │   ├── tree.md
 │   └── utilities
+├── storybook-static
+│   └── static
 ├── test
 │   └── __mocks__
 ├── tree.md
-├── yarn-error.log
 └── yarn.lock
 
 ```

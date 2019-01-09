@@ -124,6 +124,7 @@ class MainColumn extends Component {
           keys = [
             ...keys,
             'currentTableRowNumber',
+            'numberOfListItems',
             'onSelectNextRecord',
             'onSelectPreviousRecord',
             'onSetCurrentTableRowNumber',
@@ -182,6 +183,7 @@ class MainColumn extends Component {
           keys: [
             'currentTableRowNumber',
             'focusedIndex',
+            'focusedItemId',
             'listItems',
             'managerScope',
             'onClickRow',

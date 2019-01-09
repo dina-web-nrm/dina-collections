@@ -12,6 +12,7 @@ module.exports = function createArrayResponse({
       status,
     },
   }
+
   if (!items || items.length === 0) {
     return {
       data: [],

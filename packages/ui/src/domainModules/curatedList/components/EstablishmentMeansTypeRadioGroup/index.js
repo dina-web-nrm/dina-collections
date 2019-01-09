@@ -60,7 +60,7 @@ EstablishmentMeansTypeRadioGroup.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({
-    allFetchedKey: 'allTypeFetched',
+    allItemsFetchedKey: 'allTypeFetched',
     resource: 'establishmentMeansType',
   }),
   connect(mapStateToProps)

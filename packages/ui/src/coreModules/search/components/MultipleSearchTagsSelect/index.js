@@ -241,20 +241,28 @@ class RawMultipleSearchTagsSelect extends PureComponent {
 
   createOptions({ searchQuery, items }) {
     const { addTagTypeToText } = this.props
-    const itemOptions = items.map(({ attributes }) => {
-      const tagTypeText = addTagTypeToText ? ` (${attributes.tagType}) ` : ' '
-      return {
-        key: attributes.key,
-        other: {
-          tagType: attributes.tagType,
-          tagValue: attributes.tagValue,
-        },
-        text: `${attributes.tagValue}${tagTypeText}`,
+    const itemOptions = items
+      .map(({ attributes }) => {
+        if (attributes) {
+          const tagTypeText = addTagTypeToText
+            ? ` (${attributes.tagType}) `
+            : ' '
+          return {
+            key: attributes.key,
+            other: {
+              tagType: attributes.tagType,
+              tagValue: attributes.tagValue,
+            },
+            text: `${attributes.tagValue}${tagTypeText}`,
 
-        type: 'string',
-        value: attributes.key,
-      }
-    })
+            type: 'string',
+            value: attributes.key,
+          }
+        }
+
+        return null
+      })
+      .filter(item => !!item)
     const freeTextOption = {
       key: searchQuery,
       other: {

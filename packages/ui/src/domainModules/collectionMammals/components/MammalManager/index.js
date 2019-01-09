@@ -8,12 +8,16 @@ import { createSelector } from 'reselect'
 import { push } from 'react-router-redux'
 import objectPath from 'object-path'
 
+import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { createShortcutLayer } from 'coreModules/keyboardShortcuts/higherOrderComponents'
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
-import { DEL_SUCCESS } from 'coreModules/resourceManager/constants'
+import {
+  CREATE_SUCCESS,
+  DEL_SUCCESS,
+} from 'coreModules/resourceManager/constants'
 import userSelectors from 'coreModules/user/globalSelectors'
 import {
   createInjectSearch,
@@ -21,6 +25,7 @@ import {
 } from 'coreModules/search/higherOrderComponents'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import sizeSelectors from 'coreModules/size/globalSelectors'
+import { updateUserPreference } from 'coreModules/user/actionCreators'
 import {
   SPECIMEN_FILTERS_FORM_NAME,
   SPECIMENS_MAMMALS_TABLE_COLUMNS,
@@ -112,7 +117,7 @@ const getMainColumnActiveTab = createSelector(
 
 const mapStateToProps = (
   state,
-  { match: { params, url }, searchResultResourceType: resource }
+  { match: { params, url }, resourceCount, searchResultResourceType: resource }
 ) => {
   const userPreferences = userSelectors.getUserPreferences(state)
   const tableColumnsToShow =
@@ -132,7 +137,8 @@ const mapStateToProps = (
 
   const mainColumnActiveTab = getMainColumnActiveTab(url)
 
-  const totalNumberOfRecords =
+  const totalNumberOfRecords = resourceCount
+  const numberOfListItems =
     specimenSearchState &&
     specimenSearchState.items &&
     specimenSearchState.items.length
@@ -148,14 +154,15 @@ const mapStateToProps = (
   const isTableViewOrSettings = mainColumnActiveTab.startsWith('resultTable')
 
   const showSelectNextRecordButton =
-    !isNewRecordView && currentTableRowNumber < totalNumberOfRecords
+    !isNewRecordView && currentTableRowNumber < numberOfListItems
   const showSelectPreviousRecordButton =
     !isNewRecordView && currentTableRowNumber > 1
 
   const filterFormIsDirty = isDirty(SPECIMEN_FILTERS_FORM_NAME)(state)
-  const enableShowAllRecordsButton = isEditRecordView
-    ? false
-    : filterFormIsDirty || totalNumberOfRecords === 0
+  const enableShowAllRecordsButton =
+    !isEditRecordView &&
+    filterFormIsDirty &&
+    numberOfListItems !== totalNumberOfRecords
 
   return {
     currentTableRowNumber,
@@ -170,6 +177,7 @@ const mapStateToProps = (
     isTableView,
     isTableViewOrSettings,
     mainColumnActiveTab,
+    numberOfListItems,
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     showSelectNextRecordButton,
     showSelectPreviousRecordButton,
@@ -188,6 +196,7 @@ const mapDispatchToProps = {
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
   setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
+  updateUserPreference,
 }
 
 const propTypes = {
@@ -209,6 +218,7 @@ const propTypes = {
     params: PropTypes.object.isRequired,
     path: PropTypes.string.isRequired,
   }).isRequired,
+  numberOfListItems: PropTypes.number,
   prefetchLimit: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   push: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
@@ -224,11 +234,13 @@ const propTypes = {
   specimenId: PropTypes.string,
   tableColumnsToSort: PropTypes.array, // eslint-disable-line react/no-unused-prop-types
   totalNumberOfRecords: PropTypes.number,
+  updateUserPreference: PropTypes.func.isRequired,
 }
 const defaultProps = {
   currentTableRowNumber: undefined,
   filterValues: undefined,
   focusedSpecimenId: undefined,
+  numberOfListItems: undefined,
   prefetchLimit: 50,
   rightSidebarWidth: emToPixels(25),
   searchResult: undefined,
@@ -287,7 +299,10 @@ class MammalManager extends Component {
   }
 
   componentDidMount() {
-    this.handleSearchSpecimens(this.props, false)
+    this.handleSearchSpecimens(this.props, {
+      openTableView: false,
+      usePrefetchLimit: true,
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -295,14 +310,21 @@ class MammalManager extends Component {
       objectPath.get(this.props, 'tableColumnsToSort') !==
       objectPath.get(nextProps, 'tableColumnsToSort')
     ) {
-      this.handleSearchSpecimens(nextProps)
+      this.handleSearchSpecimens(nextProps, {
+        openTableView: false,
+        skipFilter: nextProps.isItemViewOrSettings,
+        usePrefetchLimit: false,
+      })
     }
 
     if (
       objectPath.get(this.props, 'tableColumnsToShow') !==
       objectPath.get(nextProps, 'tableColumnsToShow')
     ) {
-      this.handleSearchSpecimens(nextProps)
+      this.handleSearchSpecimens(nextProps, {
+        openTableView: true,
+        usePrefetchLimit: false,
+      })
     }
 
     if (
@@ -321,6 +343,16 @@ class MammalManager extends Component {
 
   handleInteraction(type) {
     switch (type) {
+      case CREATE_SUCCESS: {
+        setTimeout(() => {
+          // this will trigger a new search
+          this.props.updateUserPreference(
+            SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
+            [{ name: 'idNumeric', sort: 'asc' }]
+          )
+        }, 2000)
+        break
+      }
       case DEL_SUCCESS: {
         setTimeout(() => this.handleSearchSpecimens(), 3000)
         break
@@ -342,7 +374,7 @@ class MammalManager extends Component {
           ({ id }) => id === specimenId
         )
 
-        if (index) {
+        if (index > -1) {
           this.props.setCurrentTableRowNumber(index + 1)
         }
       }
@@ -394,12 +426,21 @@ class MammalManager extends Component {
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
-  handleSearchSpecimens(props = this.props, openTableView = true) {
+  handleSearchSpecimens(
+    props = this.props,
+    { openTableView = true, skipFilter = false, usePrefetchLimit = true } = {}
+  ) {
     if (!props.isTableView && openTableView) {
       this.handleOpenTableView()
     }
 
-    const { buildQuery, tableColumnsToSort, prefetchLimit } = props
+    const {
+      buildQuery,
+      currentTableRowNumber,
+      focusedSpecimenId,
+      tableColumnsToSort,
+      prefetchLimit,
+    } = props
 
     const sort =
       tableColumnsToSort &&
@@ -410,14 +451,19 @@ class MammalManager extends Component {
     const { query } = buildQuery()
     return this.props
       .search({
-        limit: prefetchLimit,
-        query,
+        limit: usePrefetchLimit ? prefetchLimit : 50000,
+        query: skipFilter ? {} : query,
         sort,
       })
       .then(items => {
         if (items && items.length) {
-          this.props.setCurrentTableRowNumber(1)
-          this.props.setFocusedSpecimenId(items[0].id)
+          if (!currentTableRowNumber && !focusedSpecimenId) {
+            this.props.setCurrentTableRowNumber(1)
+            this.props.setFocusedSpecimenId(items[0].id)
+          } else if (items.length < currentTableRowNumber) {
+            this.props.setCurrentTableRowNumber(items.length)
+            this.props.setFocusedSpecimenId(items[items.length - 1].id)
+          }
         } else {
           this.props.delCurrentTableRowNumber()
           this.props.delFocusedSpecimenId()
@@ -480,11 +526,13 @@ class MammalManager extends Component {
     const {
       currentTableRowNumber,
       enableShowAllRecordsButton,
+      focusedSpecimenId,
       isItemViewOrSettings,
       isNewRecordView,
       isTableView,
       isTableViewOrSettings,
       mainColumnActiveTab,
+      numberOfListItems,
       showSelectNextRecordButton,
       showSelectPreviousRecordButton,
       totalNumberOfRecords,
@@ -499,10 +547,12 @@ class MammalManager extends Component {
         <ColumnLayout
           columns={this.getColumns()}
           currentTableRowNumber={currentTableRowNumber}
+          focusedItemId={focusedSpecimenId}
           isItemViewOrSettings={isItemViewOrSettings}
           isNewRecordView={isNewRecordView}
           isTableViewOrSettings={isTableViewOrSettings}
           mainColumnActiveTab={mainColumnActiveTab}
+          numberOfListItems={numberOfListItems}
           onExportCsv={isTableView && this.handleExportToCsv}
           onFormTabClick={isTableView && this.handleOpenEditRecordView}
           onInteraction={this.handleInteraction}
@@ -536,6 +586,7 @@ MammalManager.defaultProps = defaultProps
 
 export default compose(
   withRouter,
+  createGetResourceCount({ resource: 'specimen' }),
   createInjectSearch({
     includeFields: ['id'],
     resource: 'searchSpecimen',

@@ -24,8 +24,22 @@
 }
 
 /*
+* bold content
+*/
+.ui.input.bold input {
+  font-weight: 700;
+}
+
+/*
+* center aligned content
+*/
+.ui.input.center.aligned input {
+  text-align: center;
+}
+
+/*
 * right aligned content
 */
-.ui.input.right-aligned input {
+.ui.input.right.aligned input {
   text-align: right;
 }

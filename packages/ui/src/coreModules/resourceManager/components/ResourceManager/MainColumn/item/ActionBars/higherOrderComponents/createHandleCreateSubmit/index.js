@@ -10,6 +10,7 @@ import {
 } from 'redux-form'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
+import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
 
 const mapStateToProps = (state, { formName }) => {
@@ -26,6 +27,7 @@ const mapDispatchToProps = {
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
+  fetchResourceCount: PropTypes.func.isRequired,
   formName: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
@@ -52,6 +54,7 @@ const createHandleCreateSubmit = () => ComposedComponent => {
 
       const {
         dispatch,
+        fetchResourceCount,
         formName,
         onInteraction,
         resource,
@@ -72,6 +75,7 @@ const createHandleCreateSubmit = () => ComposedComponent => {
           nested: true,
         })
       ).then(({ id }) => {
+        fetchResourceCount()
         onInteraction(CREATE_SUCCESS, { itemId: id })
         stopSubmit(formName)
       })
@@ -86,6 +90,7 @@ const createHandleCreateSubmit = () => ComposedComponent => {
   CreateSubmitHandler.defaultProps = defaultProps
 
   return compose(
+    createGetResourceCount(),
     connect(mapStateToProps, mapDispatchToProps),
     connect(null) // needed to get dispatch
   )(CreateSubmitHandler)

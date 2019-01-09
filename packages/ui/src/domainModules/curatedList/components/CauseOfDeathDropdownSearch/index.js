@@ -52,7 +52,7 @@ CauseOfDeathDropdownSearch.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({
-    allFetchedKey: 'allDeathTypeFetched',
+    allItemsFetchedKey: 'allDeathTypeFetched',
     resource: 'causeOfDeathType',
   }),
   connect(mapStateToProps)

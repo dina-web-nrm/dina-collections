@@ -2,11 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import {
-  getFormValues,
-  isDirty as isDirtySelector,
-  isInvalid,
-} from 'redux-form'
+import { getFormValues, isInvalid, isPristine } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 
 const mapStateToProps = (state, { resource }) => {
@@ -14,16 +10,16 @@ const mapStateToProps = (state, { resource }) => {
   return {
     formName,
     invalid: isInvalid(formName)(state),
-    isDirty: isDirtySelector(formName)(state),
+    pristine: isPristine(formName)(state),
     values: getFormValues(formName)(state),
   }
 }
 
 const propTypes = {
   invalid: PropTypes.bool.isRequired,
-  isDirty: PropTypes.bool.isRequired,
   onShowAllRecords: PropTypes.func.isRequired,
   onUpdateFilterValues: PropTypes.func.isRequired,
+  pristine: PropTypes.bool.isRequired,
   values: PropTypes.object,
 }
 const defaultProps = {
@@ -50,13 +46,13 @@ class BottomBar extends PureComponent {
   }
 
   render() {
-    const { isDirty, invalid } = this.props
+    const { invalid, pristine } = this.props
 
     return (
       <Grid padded>
         <Grid.Column>
           <Button
-            disabled={invalid}
+            disabled={invalid || pristine}
             loading={this.state.loading}
             onClick={this.handleSubmit}
             size="large"
@@ -66,12 +62,12 @@ class BottomBar extends PureComponent {
           </Button>
           <Button
             basic
-            disabled={!isDirty}
+            disabled={pristine}
             onClick={this.handleReset}
             size="large"
             style={{ float: 'right' }}
           >
-            Reset
+            Clear all filters
           </Button>
         </Grid.Column>
       </Grid>

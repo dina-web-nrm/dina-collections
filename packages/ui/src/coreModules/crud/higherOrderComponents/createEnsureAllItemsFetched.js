@@ -1,8 +1,8 @@
-/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import objectPath from 'object-path'
 
 import config from 'config'
 import actionCreators from '../actionCreators'
@@ -12,21 +12,27 @@ import {
 } from '../keyObjectModule'
 
 const createEnsureAllItemsFetched = (hocInput = {}) => ComposedComponent => {
-  const { allFetchedKey, include = [], relationships, resource } = hocInput
+  const {
+    allItemsFetchedKey = 'allItemsFetched',
+    allItemsFetchingKey = 'allItemsFetching',
+    include = [],
+    relationships,
+    resource,
+  } = hocInput
 
   /* eslint-disable no-console */
   if (!resource) {
     console.error(`Missing resource`)
   }
   const allItemsFetchedSelector =
-    keyObjectGlobalSelectors.get[':resource.allItemsFetched']
-  const fetchingAllItemsSelector =
-    keyObjectGlobalSelectors.get[':resource.fetchingAllItems']
+    keyObjectGlobalSelectors.get[':resource.allItems.fetched']
+  const allItemsFetchingSelector =
+    keyObjectGlobalSelectors.get[':resource.allItems.fetching']
 
   const setAllItemsFetched =
-    keyObjectActionCreators.set[':resource.allItemsFetched']
-  const setFetchingAllItems =
-    keyObjectActionCreators.set[':resource.fetchingAllItems']
+    keyObjectActionCreators.set[':resource.allItems.fetched']
+  const setAllItemsFetching =
+    keyObjectActionCreators.set[':resource.allItems.fetching']
 
   const getManyActionCreator =
     actionCreators[resource] && actionCreators[resource].getMany
@@ -37,44 +43,41 @@ const createEnsureAllItemsFetched = (hocInput = {}) => ComposedComponent => {
   /* eslint-enable no-console */
 
   const mapStateToProps = state => {
-    const allItemsFetched = allItemsFetchedSelector(state, { resource })
-    if (allFetchedKey) {
-      return {
-        [allFetchedKey]: allItemsFetched || false,
-        allItemsFetched,
-        fetchingAllItems: fetchingAllItemsSelector(state, { resource }),
-      }
-    }
     return {
-      allItemsFetched,
-      fetchingAllItems: fetchingAllItemsSelector(state, { resource }),
+      [allItemsFetchedKey]: allItemsFetchedSelector(state, {
+        resource,
+      }),
+      [allItemsFetchingKey]:
+        allItemsFetchingSelector(state, { resource }) || false,
     }
   }
 
-  const mapDispathToProps = {
+  const mapDispatchToProps = {
     getMany: getManyActionCreator,
     setAllItemsFetched,
-    setFetchingAllItems,
+    setAllItemsFetching,
   }
 
   const propTypes = {
-    allItemsFetched: PropTypes.bool,
-    fetchingAllItems: PropTypes.bool,
+    [allItemsFetchedKey]: PropTypes.bool,
+    [allItemsFetchingKey]: PropTypes.bool,
     getMany: PropTypes.func.isRequired,
     setAllItemsFetched: PropTypes.func.isRequired,
-    setFetchingAllItems: PropTypes.func.isRequired,
+    setAllItemsFetching: PropTypes.func.isRequired,
   }
 
   const defaultProps = {
-    allItemsFetched: false,
-    fetchingAllItems: false,
+    [allItemsFetchedKey]: false,
+    [allItemsFetchingKey]: false,
   }
 
   class EnsureAllItemsFetched extends Component {
     componentDidMount() {
-      const { allItemsFetched, fetchingAllItems } = this.props
-      if (!config.isTest && !allItemsFetched && !fetchingAllItems) {
-        this.props.setFetchingAllItems(true, {
+      const fetched = objectPath.get(this.props, allItemsFetchedKey)
+      const fetching = objectPath.get(this.props, allItemsFetchingKey)
+
+      if (!config.isTest && !fetched && !fetching) {
+        this.props.setAllItemsFetching(true, {
           resource,
         })
 
@@ -88,28 +91,27 @@ const createEnsureAllItemsFetched = (hocInput = {}) => ComposedComponent => {
             this.props.setAllItemsFetched(true, {
               resource,
             })
-            this.props.setFetchingAllItems(false, {
+            this.props.setAllItemsFetching(false, {
               resource,
             })
           })
       }
     }
-    render() {
-      const { allItemsFetched, fetchingAllItems } = this.props
 
-      return (
-        <ComposedComponent
-          allItemsFetched={allItemsFetched}
-          fetchingAllItems={fetchingAllItems}
-          {...this.props}
-        />
-      )
+    render() {
+      const flags = {
+        [allItemsFetchedKey]: objectPath.get(this.props, allItemsFetchedKey),
+        [allItemsFetchingKey]: objectPath.get(this.props, allItemsFetchingKey),
+      }
+
+      return <ComposedComponent {...this.props} {...flags} />
     }
   }
 
   EnsureAllItemsFetched.propTypes = propTypes
   EnsureAllItemsFetched.defaultProps = defaultProps
-  return compose(connect(mapStateToProps, mapDispathToProps))(
+
+  return compose(connect(mapStateToProps, mapDispatchToProps))(
     EnsureAllItemsFetched
   )
 }

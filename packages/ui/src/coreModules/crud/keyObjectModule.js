@@ -10,8 +10,11 @@ const {
 } = keyObjectModuleFactory({
   actionPrefix: 'CRUD',
   keys: [
-    ':resource.allItemsFetched',
-    ':resource.fetchingAllItems',
+    ':resource.allItems.fetched',
+    ':resource.allItems.fetching',
+    ':resource.count.value',
+    ':resource.count.fetched',
+    ':resource.count.fetching',
     'nestedCache',
     'nestedCache.:namespace.items',
     'nestedCache.:namespace.items.:id',

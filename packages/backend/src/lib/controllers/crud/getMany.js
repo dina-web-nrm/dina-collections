@@ -25,7 +25,7 @@ module.exports = function getMany(options) {
     requiredModelMethods: ['buildWhereFilter', 'getById', 'getWhere'],
     responseFormat: 'array',
     responseSuccessStatus: 200,
-  })(({ model, request }) => {
+  })(({ count, model, request }) => {
     const {
       queryParams: {
         excludeFields: excludeFieldsInput,
@@ -47,9 +47,9 @@ module.exports = function getMany(options) {
         relations,
       })
     }
-
     return model
       .getWhere({
+        count,
         excludeFieldsInput,
         filterInput,
         filterSpecification,
