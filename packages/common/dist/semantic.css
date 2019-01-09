@@ -21335,6 +21335,19 @@ ol.ui.horizontal.list li:before,
   margin-top: 0.4em;
   margin-bottom: 0.4em;
 }
+
+/*
+* Row with columns "floating" left or right
+*/
+
+.ui.grid > .row.left.floated .column:not(:last-child) {
+  padding-right: 0;
+  width: auto;
+}
+
+.ui.grid > .row.left.floated .column:last-child {
+  width: auto;
+}
 /*
  * # Semantic - Menu
  * http://github.com/semantic-org/semantic-ui/
