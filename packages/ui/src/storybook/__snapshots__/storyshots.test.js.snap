@@ -5957,17 +5957,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar addingNewRecordComplete 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -5999,13 +5995,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -6027,59 +6017,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50001
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -6100,12 +6068,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -6137,17 +6100,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar changeTableRowNumber 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6179,13 +6138,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -6207,59 +6160,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -6280,12 +6211,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -6317,17 +6243,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar default 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6359,13 +6281,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -6387,59 +6303,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -6460,12 +6354,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -6497,17 +6386,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar firstRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6539,13 +6424,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -6567,59 +6446,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -6640,12 +6497,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -6677,17 +6529,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar lastRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6719,13 +6567,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -6747,59 +6589,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -6820,12 +6640,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -6857,17 +6672,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar nextRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -6899,13 +6710,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -6927,59 +6732,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -7000,12 +6783,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -7037,17 +6815,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar openFilter 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -7079,13 +6853,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -7107,59 +6875,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -7180,12 +6926,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -7217,17 +6958,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar openNewRecordForm 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -7259,13 +6996,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small disabled fluid input center aligned bold"
@@ -7287,59 +7018,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon disabled button"
@@ -7360,12 +7069,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary disabled button"
@@ -7397,17 +7101,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar previousRecord 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -7439,13 +7139,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -7467,59 +7161,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -7540,12 +7212,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
@@ -7577,17 +7244,13 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
 exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceManager/MainColumn/shared/RecordNavigationBar showAllRecords 1`] = `
 <div>
   <div
-    className="ui padded center aligned middle aligned grid"
+    className="ui padded left aligned middle aligned grid"
   >
     <div
-      className="column"
+      className="row left floated"
     >
       <div
-        style={
-          Object {
-            "float": "left",
-          }
-        }
+        className="column"
       >
         <div
           className="ui buttons"
@@ -7619,13 +7282,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-            "marginTop": 1,
-          }
-        }
+        className="column"
       >
         <div
           className="ui small fluid input center aligned bold"
@@ -7647,59 +7304,37 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "7.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "fontWeight": 700,
+              "width": "7.25em",
             }
           }
         >
            records
-        </span>
-         
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": "0.625em",
-            "marginTop": "0.46875em",
-            "textAlign": "left",
-            "width": "4.25em",
-          }
-        }
+        className="column"
       >
-        <span
+        <div
           style={
             Object {
               "color": "rgba(0,0,0,.6)",
-              "display": "block",
-              "float": "right",
               "fontStyle": "italic",
+              "width": "4.25em",
             }
           }
         >
           of 
           50000
-        </span>
+        </div>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui basic icon button"
@@ -7720,12 +7355,7 @@ exports[`storyshots Storyshots coreModules/resourceManager/components/ResourceMa
         </button>
       </div>
       <div
-        style={
-          Object {
-            "float": "left",
-            "marginLeft": 15,
-          }
-        }
+        className="column"
       >
         <button
           className="ui icon primary button"
