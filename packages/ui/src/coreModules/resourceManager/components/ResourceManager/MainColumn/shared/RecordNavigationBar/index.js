@@ -80,9 +80,9 @@ export class RecordNavigationBar extends Component {
       !handleShowAllRecords || numberOfListItems === totalNumberOfRecords
 
     return (
-      <Grid padded textAlign="center" verticalAlign="middle">
-        <Grid.Column>
-          <div style={{ float: 'left' }}>
+      <Grid padded textAlign="left" verticalAlign="middle">
+        <Grid.Row className="left floated">
+          <Grid.Column>
             <Button.Group>
               <Button
                 disabled={!handleSelectPreviousRecord}
@@ -99,15 +99,9 @@ export class RecordNavigationBar extends Component {
                 <Icon name="chevron right" />
               </Button>
             </Button.Group>
-          </div>
+          </Grid.Column>
           {showRecordInput && (
-            <div
-              style={{
-                float: 'left',
-                marginLeft: 15,
-                marginTop: 1,
-              }}
-            >
+            <Grid.Column>
               <Input
                 className="center aligned bold"
                 disabled={
@@ -120,106 +114,79 @@ export class RecordNavigationBar extends Component {
                   handleSetCurrentTableRowNumber(null, event.target.value)
                 }}
                 size="small"
-                style={{
-                  width: '6.5em',
-                }}
+                style={{ width: '6.5em' }}
                 type="number"
                 value={sliderValue}
               />
-            </div>
+            </Grid.Column>
           )}
-
           {isLargeScreen &&
             showSlider && (
-              <div
-                className="slider-slim"
-                style={{
-                  float: 'left',
-                  marginLeft: '0.625em',
-                  marginTop: '0.9375em',
-                  width: '6.25em',
-                }}
-              >
-                <Slider
-                  max={numberOfListItems}
-                  min={numberOfListItems && 1}
-                  onChange={newTableRowNumber => {
-                    if (!handleSetCurrentTableRowNumber) {
-                      return
-                    }
-                    // those ifs are a needed hack to avoid double increment when
-                    // using hotkey directly after sliding
-                    if (newTableRowNumber === currentTableRowNumber + 1) {
-                      this.setState({ sliderRowNumber: newTableRowNumber - 1 })
-                    } else if (
-                      newTableRowNumber ===
-                      currentTableRowNumber - 1
-                    ) {
-                      this.setState({ sliderRowNumber: newTableRowNumber + 1 })
-                    } else {
-                      this.setState({ sliderRowNumber: newTableRowNumber })
-                    }
-                  }}
-                  onChangeComplete={() => {
-                    if (!handleSetCurrentTableRowNumber) {
-                      return
-                    }
-                    handleSetCurrentTableRowNumber(null, sliderRowNumber)
-                    this.setState({ sliderRowNumber: null })
-                  }}
-                  step={1}
-                  tooltip={false}
-                  value={sliderRowNumber || currentTableRowNumber}
-                />
-              </div>
-            )}
-          <div
-            style={{
-              float: 'left',
-              marginLeft: '0.625em',
-              marginTop: '0.46875em',
-              textAlign: 'left',
-              width: '7.25em',
-            }}
-          >
-            {!treeActive && (
-              <React.Fragment>
-                <span style={{ fontWeight: 700 }}>
-                  {numberOfListItems} records
-                </span>{' '}
-              </React.Fragment>
-            )}
-          </div>
-          <div
-            style={{
-              float: 'left',
-              marginLeft: '0.625em',
-              marginTop: '0.46875em',
-              textAlign: 'left',
-              width: '4.25em',
-            }}
-          >
-            {!treeActive && (
-              <React.Fragment>
-                <span
+              <Grid.Column className="slider-slim">
+                <div
                   style={{
-                    color: 'rgba(0,0,0,.6)',
-                    display: 'block',
-                    float: 'right',
-                    fontStyle: 'italic',
+                    width: '6.25em',
                   }}
                 >
-                  of {totalNumberOfRecords}
-                </span>
-              </React.Fragment>
+                  <Slider
+                    max={numberOfListItems}
+                    min={numberOfListItems && 1}
+                    onChange={newTableRowNumber => {
+                      if (!handleSetCurrentTableRowNumber) {
+                        return
+                      }
+                      // those ifs are a needed hack to avoid double increment when
+                      // using hotkey directly after sliding
+                      if (newTableRowNumber === currentTableRowNumber + 1) {
+                        this.setState({
+                          sliderRowNumber: newTableRowNumber - 1,
+                        })
+                      } else if (
+                        newTableRowNumber ===
+                        currentTableRowNumber - 1
+                      ) {
+                        this.setState({
+                          sliderRowNumber: newTableRowNumber + 1,
+                        })
+                      } else {
+                        this.setState({ sliderRowNumber: newTableRowNumber })
+                      }
+                    }}
+                    onChangeComplete={() => {
+                      if (!handleSetCurrentTableRowNumber) {
+                        return
+                      }
+                      handleSetCurrentTableRowNumber(null, sliderRowNumber)
+                      this.setState({ sliderRowNumber: null })
+                    }}
+                    step={1}
+                    tooltip={false}
+                    value={sliderRowNumber || currentTableRowNumber}
+                  />
+                </div>
+              </Grid.Column>
             )}
-          </div>
-          <div
-            style={{
-              float: 'left',
-              marginLeft: 15,
-            }}
-          >
+          <Grid.Column>
+            {!treeActive && (
+              <div style={{ fontWeight: 700, width: '7.25em' }}>
+                {numberOfListItems} records
+              </div>
+            )}
+          </Grid.Column>
+          <Grid.Column>
+            {!treeActive && (
+              <div
+                style={{
+                  color: 'rgba(0,0,0,.6)',
+                  fontStyle: 'italic',
+                  width: '4.25em',
+                }}
+              >
+                of {totalNumberOfRecords}
+              </div>
+            )}
+          </Grid.Column>
+          <Grid.Column>
             {showShowAllButton && (
               <Button
                 basic
@@ -232,8 +199,8 @@ export class RecordNavigationBar extends Component {
                 </div>
               </Button>
             )}
-          </div>
-          <div style={{ float: 'left', marginLeft: 15 }}>
+          </Grid.Column>
+          <Grid.Column>
             {showNewRecordButton && (
               <Button
                 disabled={!handleOpenNewRecordForm}
@@ -246,8 +213,8 @@ export class RecordNavigationBar extends Component {
                 </div>
               </Button>
             )}
-          </div>
-        </Grid.Column>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     )
   }
