@@ -187,7 +187,7 @@ module.exports = function createControllerWrapper({
                 const relationships =
                   includeRelations &&
                   extractRelationships({
-                    externalJsonRelationships: itemExternalRelationships,
+                    externalRelationships: itemExternalRelationships,
                     item,
                     queryParamRelationships,
                     relations,
