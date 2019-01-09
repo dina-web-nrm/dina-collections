@@ -75,7 +75,7 @@ class DeleteRecordButton extends PureComponent {
           <Modal.Header>Are you sure?</Modal.Header>
           <Modal.Content>
             <Grid>
-              <Grid.Column>The record will be permanently deleted</Grid.Column>
+              <Grid.Column>The record will be permanently deleted.</Grid.Column>
             </Grid>
           </Modal.Content>
           <Modal.Actions
