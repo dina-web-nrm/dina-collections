@@ -7,7 +7,7 @@ import objectPath from 'object-path'
 
 import config from 'config'
 import extractProps from 'utilities/extractProps'
-import { callOperation } from 'coreModules/api/actionCreators'
+import { callOperation as callOperationAC } from 'coreModules/api/actionCreators'
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
@@ -37,43 +37,46 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
   const resourceCountFetchingSelector =
     keyObjectGlobalSelectors.get[':resource.count.fetching']
 
-  const setResourceCount = keyObjectActionCreators.set[':resource.count.value']
-  const setResourceCountFetched =
+  const setResourceCountAC =
+    keyObjectActionCreators.set[':resource.count.value']
+  const setResourceCountFetchedAC =
     keyObjectActionCreators.set[':resource.count.fetched']
-  const setResourceCountFetching =
+  const setResourceCountFetchingAC =
     keyObjectActionCreators.set[':resource.count.fetching']
 
-  const getCount = props => {
-    const fetching = objectPath.get(props, resourceCountFetchingKey)
-    const filter = props.filterResourceCount || filterHocInput
-    const resource = props.resource || resourceHocInput
-
+  const getCount = ({
+    callOperation,
+    fetching,
+    filter,
+    resource,
+    setResourceCount,
+    setResourceCountFetched,
+    setResourceCountFetching,
+  }) => {
     if (!config.isTest && !fetching) {
-      props.setResourceCountFetching(true, {
+      setResourceCountFetching(true, {
         resource,
       })
 
-      return props
-        .callOperation({
-          operationId: `${resource}Count`,
-          request: { queryParams: { filter } },
-        })
-        .then(res => {
-          const count = objectPath.get(res, 'attributes.count')
+      return callOperation({
+        operationId: `${resource}Count`,
+        request: { queryParams: { filter } },
+      }).then(res => {
+        const count = objectPath.get(res, 'attributes.count')
 
-          if (count) {
-            props.setResourceCount(count, {
-              resource,
-            })
-            props.setResourceCountFetched(true, {
-              resource,
-            })
-          }
-
-          props.setResourceCountFetching(false, {
+        if (count) {
+          setResourceCount(count, {
             resource,
           })
+          setResourceCountFetched(true, {
+            resource,
+          })
+        }
+
+        setResourceCountFetching(false, {
+          resource,
         })
+      })
     }
 
     return null
@@ -84,6 +87,21 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
       leading: true,
       maxWait: 20 * 1000,
     })
+
+  const extractResourceCountParams = props => {
+    const { callOperation, filterResourceCount, resource: resourceProp } = props
+
+    return {
+      callOperation,
+      fetching: props[resourceCountFetchingKey],
+      filter: filterResourceCount || filterHocInput,
+      filterResourceCount,
+      resource: resourceProp || resourceHocInput,
+      setResourceCount: props.setResourceCount,
+      setResourceCountFetched: props.setResourceCountFetched,
+      setResourceCountFetching: props.setResourceCountFetching,
+    }
+  }
 
   const mapStateToProps = (state, { resource: resourceProp }) => {
     const resource = resourceProp || resourceHocInput
@@ -99,14 +117,15 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
   }
 
   const mapDispatchToProps = {
-    callOperation,
-    setResourceCount,
-    setResourceCountFetched,
-    setResourceCountFetching,
+    callOperation: callOperationAC,
+    setResourceCount: setResourceCountAC,
+    setResourceCountFetched: setResourceCountFetchedAC,
+    setResourceCountFetching: setResourceCountFetchingAC,
   }
 
   const propTypes = {
     callOperation: PropTypes.func.isRequired,
+    filterResourceCount: PropTypes.object,
     resource: PropTypes.string,
     [resourceCountFetchedKey]: PropTypes.bool,
     [resourceCountFetchingKey]: PropTypes.bool,
@@ -117,6 +136,7 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
   }
 
   const defaultProps = {
+    filterResourceCount: undefined,
     resource: undefined,
     [resourceCountFetchedKey]: false,
     [resourceCountFetchingKey]: false,
@@ -131,7 +151,7 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
       const resource = resourceProp || resourceHocInput
 
       if (!resource) {
-        console.error(`Missing resource`) // eslint-disable-line no-console
+        throw new Error(`Missing resource`)
       }
 
       setResourceCountGetter(resource, createDebouncedGetCount())
@@ -143,9 +163,12 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
       const { resource: resourceProp } = this.props
       const resource = resourceProp || resourceHocInput
 
-      getResourceCountGetter(resource)(this.props)
+      getResourceCountGetter(resource)(extractResourceCountParams(this.props))
       this.pollCount = setInterval(
-        () => getResourceCountGetter(resource)(this.props),
+        () =>
+          getResourceCountGetter(resource)(
+            extractResourceCountParams(this.props)
+          ),
         30 * 1000
       )
     }
@@ -155,7 +178,7 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
     }
 
     fetchResourceCount() {
-      getCount(this.props)
+      getCount(extractResourceCountParams(this.props))
     }
 
     render() {
