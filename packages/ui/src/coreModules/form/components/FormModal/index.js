@@ -5,8 +5,11 @@ import { LayerModal } from 'coreModules/commonUi/components'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
   open: PropTypes.bool.isRequired,
+}
+const defaultProps = {
+  onClose: undefined,
 }
 
 class FormModal extends PureComponent {
@@ -49,5 +52,6 @@ class FormModal extends PureComponent {
 }
 
 FormModal.propTypes = propTypes
+FormModal.defaultProps = defaultProps
 
 export default FormModal
