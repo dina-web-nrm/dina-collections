@@ -98,6 +98,7 @@
         },
         "specimens": {
           "type": "object",
+          "x-inverse-relationship-key": "normalizedAgents",
           "x-key-stored-in-model": "specimen",
           "x-key-type": "json",
           "properties": {

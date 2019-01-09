@@ -119,6 +119,7 @@
         },
         "specimens": {
           "type": "object",
+          "x-inverse-relationship-key": "places",
           "x-key-stored-in-model": "specimen",
           "x-key-type": "json",
           "properties": {
