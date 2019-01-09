@@ -9,3 +9,16 @@
   margin-top: 0.4em;
   margin-bottom: 0.4em;
 }
+
+/*
+* Row with columns "floating" left
+*/
+.ui.grid > .row.left.floated {
+  .column:not(:last-child) {
+    padding-right: 0;
+    width: auto;
+  }
+  .column:last-child {
+    width: auto;
+  }
+}
