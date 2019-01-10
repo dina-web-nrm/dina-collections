@@ -133,24 +133,41 @@ export class ScientificNamesTable extends Component {
   }
 
   handleInteraction(interactionType, { itemId, stateIndex } = {}) {
-    if (interactionType === ADD_SYNONYM) {
-      this.setState({ connectingScientificName: false })
-      if (!this.props.scientificNames.length) {
-        this.setTaxonNameAsAccepted({ itemId })
-      } else {
+    switch (interactionType) {
+      case ADD_SYNONYM: {
+        this.setState({ connectingScientificName: false })
+
+        if (!this.props.scientificNames.length) {
+          this.setTaxonNameAsAccepted({ itemId })
+          break
+        }
+
+        // do nothing if name has already been added to list
+        if (this.props.scientificNames.find(({ id }) => itemId === id)) {
+          break
+        }
+
         this.addSynonym({
           itemId,
         })
+        break
       }
-    } else if (interactionType === DISCONNECT_TAXON_NAME) {
-      this.disconnectTaxonName({
-        itemId,
-        stateIndex,
-      })
-    } else if (interactionType === SET_TAXON_NAME_AS_ACCEPTED) {
-      this.setTaxonNameAsAccepted({
-        itemId,
-      })
+      case DISCONNECT_TAXON_NAME: {
+        this.disconnectTaxonName({
+          itemId,
+          stateIndex,
+        })
+        break
+      }
+      case SET_TAXON_NAME_AS_ACCEPTED: {
+        this.setTaxonNameAsAccepted({
+          itemId,
+        })
+        break
+      }
+      default: {
+        break
+      }
     }
   }
 
