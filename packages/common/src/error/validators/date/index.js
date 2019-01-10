@@ -3,7 +3,10 @@ const objectPath = require('object-path')
 
 const createValidationIfDateTypeRange = func => {
   return value => {
-    if (value && value.dateType === 'range') {
+    if (
+      value &&
+      (value.dateType === 'range' || value.dateType === 'openRange')
+    ) {
       return func(value)
     }
 
