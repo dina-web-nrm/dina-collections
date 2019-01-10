@@ -11,9 +11,13 @@ import {
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { Form, FormRow } from 'coreModules/form/components'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { formModels } from '../../../../schemas'
 import customParts from '../../../formParts'
-import { taxonFormModels } from '../../../../schemas'
 import sectionSpecs from './sectionSpecs'
+import {
+  mapAcceptedTaxonNameError,
+  mapParentError,
+} from './transformations/syncErrors'
 
 const formActionBarHeight = emToPixels(4.625)
 
@@ -87,8 +91,12 @@ const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
 
 export default reduxForm({
   enableReinitialize: true,
-  validate: customFormValidator({
-    model: 'taxon',
-    models: taxonFormModels,
-  }),
+  validate: compose(
+    mapAcceptedTaxonNameError,
+    mapParentError,
+    customFormValidator({
+      model: 'taxon',
+      models: formModels,
+    })
+  ),
 })(EnhancedForm)

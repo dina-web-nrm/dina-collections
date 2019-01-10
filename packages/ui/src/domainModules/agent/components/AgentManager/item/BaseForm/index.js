@@ -7,7 +7,7 @@ import { arrayRemove, change, reduxForm, reset } from 'redux-form'
 import { Form, FormRow } from 'coreModules/form/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
-import { agentFormModels } from 'domainModules/agent/schemas'
+import { formModels } from '../../../../schemas'
 import customParts from '../../../formParts'
 import sectionSpecs from './sectionSpecs'
 
@@ -103,7 +103,7 @@ export default reduxForm({
   validate: compose(
     customFormValidator({
       model: 'normalizedAgent',
-      models: agentFormModels,
+      models: formModels,
     })
   ),
 })(EnhancedForm)

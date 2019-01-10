@@ -3,10 +3,14 @@ import schemaInterface from 'common/es5/schemaInterface'
 
 const models = schemaInterface.getModels()
 
-const createAgentFormModels = () => {
+const createFormModels = () => {
   let updatedModels = { ...models }
 
-  // date range validation
+  updatedModels = immutable.set(updatedModels, 'normalizedAgent.required', [
+    'agentType',
+    'fullName',
+  ])
+
   updatedModels = immutable.set(updatedModels, 'dateRange', {
     ...updatedModels.dateRange,
     allOf: [
@@ -26,6 +30,6 @@ const createAgentFormModels = () => {
   return updatedModels
 }
 
-const agentFormModels = createAgentFormModels()
+const formModels = createFormModels()
 
-export { agentFormModels }
+export { formModels }
