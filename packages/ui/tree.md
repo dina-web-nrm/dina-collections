@@ -49,6 +49,7 @@
 ├── test
 │   └── __mocks__
 ├── tree.md
+├── yarn-error.log
 └── yarn.lock
 
 ```

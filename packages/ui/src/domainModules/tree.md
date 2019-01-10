@@ -109,6 +109,7 @@
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
+│   ├── schemas.js
 │   └── translations.json
 ├── storage
 │   ├── __markdown__
@@ -136,6 +137,7 @@
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
+│   ├── schemas.js
 │   └── translations.json
 ├── taxon
 │   ├── actionCreators
