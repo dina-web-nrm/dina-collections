@@ -10,6 +10,15 @@ a {
   cursor: pointer;
 }
 
+/*--------------------
+     "required" asterisk :after
+---------------------*/
+.required.asterisk:after {
+  margin: @requiredAsteriskTableHeaderMargin;
+  content: '*';
+  color: #db2828;
+}
+
 /*******************************
          react-rangeslider
 *******************************/

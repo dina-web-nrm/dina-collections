@@ -21,3 +21,9 @@
 @green: #1e8c45;
 @black: #2e2e2e;
 @blue: #1d78b2;
+
+/*--------------------
+     Required Field
+---------------------*/
+@requiredAsteriskFieldLabelMargin: -0.1em 0em 0em -0.1em;
+@requiredAsteriskTableHeaderMargin: -0.2em 0em 0em 0em;
