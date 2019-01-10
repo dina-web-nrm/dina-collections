@@ -5,7 +5,7 @@ var objectPath = require('object-path');
 
 var createValidationIfDateTypeRange = function createValidationIfDateTypeRange(func) {
   return function (value) {
-    if (value && value.dateType === 'range') {
+    if (value && (value.dateType === 'range' || value.dateType === 'openRange')) {
       return func(value);
     }
 

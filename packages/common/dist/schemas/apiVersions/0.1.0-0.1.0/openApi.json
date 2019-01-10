@@ -21353,7 +21353,8 @@
                   "DATE_CANNOT_BE_INTERPRETED",
                   "DIGITS_AND_DECIMAL_POINT",
                   "INVALID_LATITUDE",
-                  "INVALID_LONGITUDE"
+                  "INVALID_LONGITUDE",
+                  "PARENT_REQUIRED"
                 ],
                 "type": "string"
               }

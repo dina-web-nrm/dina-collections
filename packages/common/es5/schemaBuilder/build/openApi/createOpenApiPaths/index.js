@@ -23,6 +23,9 @@ module.exports = function createOpenApiPaths(endpoints) {
     if (!updatedPaths[endpoint.path]) {
       updatedPaths = (0, _extends6.default)({}, updatedPaths, (0, _defineProperty3.default)({}, endpoint.path, {}));
     }
+    if (updatedPaths[endpoint.path][endpoint.method]) {
+      throw new Error('Detected duplicated method: ' + endpoint.method + ' for path: ' + endpoint.path);
+    }
     var path = buildPath(endpoint);
     return (0, _extends6.default)({}, updatedPaths, (0, _defineProperty3.default)({}, endpoint.path, (0, _extends6.default)({}, updatedPaths[endpoint.path], (0, _defineProperty3.default)({}, endpoint.method, path))));
   }, {});
