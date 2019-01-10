@@ -57,21 +57,23 @@ class RadioField extends Component {
         name={name}
         style={{ marginBottom: '0.5em', width: '100%' }}
       >
-        {radioOptions.map(type => {
-          const { key, text, value } = type
+        <div>
+          {radioOptions.map(type => {
+            const { key, text, value } = type
 
-          return (
-            <Radio
-              checked={selectedValue === value}
-              className="inline group"
-              key={key}
-              label={text}
-              name={name}
-              onChange={this.handleChange}
-              value={value}
-            />
-          )
-        })}
+            return (
+              <Radio
+                checked={selectedValue === value}
+                className="inline group"
+                key={key}
+                label={text}
+                name={name}
+                onChange={this.handleChange}
+                value={value}
+              />
+            )
+          })}
+        </div>
       </FieldTemplate>
     )
   }

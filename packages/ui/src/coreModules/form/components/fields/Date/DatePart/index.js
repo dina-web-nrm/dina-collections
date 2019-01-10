@@ -152,94 +152,96 @@ class DatePart extends Component {
         name={name}
         style={{ display: hidden ? 'none' : undefined, width: 'initial' }}
       >
-        <div style={inputYearStyle}>
-          <FieldTemplate
-            displayLabel={displaySubLabel}
-            enableHelpNotifications={false}
-            float="left"
-            label="Year"
-            meta={{}}
-            name="year"
-            subLabel
-          >
-            <Input
-              className="arrowless right aligned"
-              disabled={disabled}
-              fluid
-              onBlur={event => {
-                this.handleOnBlur({ event, field: 'year' })
-              }}
-              onChange={event => {
-                this.handleOnChange({ event, field: 'year' })
-              }}
-              onFocus={event => {
-                this.handleOnFocus({ event, field: 'year' })
-              }}
-              ref={setYearInputRef}
-              type="number"
-              value={year || ''}
-            />
-          </FieldTemplate>
-        </div>
-        <div style={inputMonthStyle}>
-          <FieldTemplate
-            displayLabel={displaySubLabel}
-            enableHelpNotifications={false}
-            float="left"
-            label="Month"
-            meta={{}}
-            name="month"
-            subLabel
-          >
-            <Input
-              className="arrowless right aligned"
-              disabled={disabled}
-              fluid
-              max={12}
-              min={1}
-              onBlur={event => {
-                this.handleOnBlur({ event, field: 'month' })
-              }}
-              onChange={event => {
-                this.handleOnChange({ event, field: 'month' })
-              }}
-              onFocus={event => {
-                this.handleOnFocus({ event, field: 'month' })
-              }}
-              type="number"
-              value={month || ''}
-            />
-          </FieldTemplate>
-        </div>
-        <div style={inputDayStyle}>
-          <FieldTemplate
-            displayLabel={displaySubLabel}
-            enableHelpNotifications={false}
-            float="left"
-            label="Day"
-            meta={{}}
-            name="day"
-            subLabel
-          >
-            <Input
-              className="arrowless right aligned"
-              disabled={disabled}
-              fluid
-              max={31}
-              min={1}
-              onBlur={event => {
-                this.handleOnBlur({ event, field: 'day' })
-              }}
-              onChange={event => {
-                this.handleOnChange({ event, field: 'day' })
-              }}
-              onFocus={event => {
-                this.handleOnFocus({ event, field: 'day' })
-              }}
-              type="number"
-              value={day || ''}
-            />
-          </FieldTemplate>
+        <div>
+          <div style={inputYearStyle}>
+            <FieldTemplate
+              displayLabel={displaySubLabel}
+              enableHelpNotifications={false}
+              float="left"
+              label="Year"
+              meta={{}}
+              name="year"
+              subLabel
+            >
+              <Input
+                className="arrowless right aligned"
+                disabled={disabled}
+                fluid
+                onBlur={event => {
+                  this.handleOnBlur({ event, field: 'year' })
+                }}
+                onChange={event => {
+                  this.handleOnChange({ event, field: 'year' })
+                }}
+                onFocus={event => {
+                  this.handleOnFocus({ event, field: 'year' })
+                }}
+                ref={setYearInputRef}
+                type="number"
+                value={year || ''}
+              />
+            </FieldTemplate>
+          </div>
+          <div style={inputMonthStyle}>
+            <FieldTemplate
+              displayLabel={displaySubLabel}
+              enableHelpNotifications={false}
+              float="left"
+              label="Month"
+              meta={{}}
+              name="month"
+              subLabel
+            >
+              <Input
+                className="arrowless right aligned"
+                disabled={disabled}
+                fluid
+                max={12}
+                min={1}
+                onBlur={event => {
+                  this.handleOnBlur({ event, field: 'month' })
+                }}
+                onChange={event => {
+                  this.handleOnChange({ event, field: 'month' })
+                }}
+                onFocus={event => {
+                  this.handleOnFocus({ event, field: 'month' })
+                }}
+                type="number"
+                value={month || ''}
+              />
+            </FieldTemplate>
+          </div>
+          <div style={inputDayStyle}>
+            <FieldTemplate
+              displayLabel={displaySubLabel}
+              enableHelpNotifications={false}
+              float="left"
+              label="Day"
+              meta={{}}
+              name="day"
+              subLabel
+            >
+              <Input
+                className="arrowless right aligned"
+                disabled={disabled}
+                fluid
+                max={31}
+                min={1}
+                onBlur={event => {
+                  this.handleOnBlur({ event, field: 'day' })
+                }}
+                onChange={event => {
+                  this.handleOnChange({ event, field: 'day' })
+                }}
+                onFocus={event => {
+                  this.handleOnFocus({ event, field: 'day' })
+                }}
+                type="number"
+                value={day || ''}
+              />
+            </FieldTemplate>
+          </div>
         </div>
       </FieldTemplate>
     )

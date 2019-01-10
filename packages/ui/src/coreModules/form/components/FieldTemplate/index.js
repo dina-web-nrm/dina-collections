@@ -97,6 +97,7 @@ const FieldTemplate = ({
           labelKey={labelKey}
           module={module}
           parameterKey={parameterKey}
+          required={required}
           subLabel={subLabel}
         />
       )}
