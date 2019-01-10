@@ -57,7 +57,9 @@ export class ScientificNamesTable extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { connectingScientificName: false }
+    this.state = {
+      connectingScientificName: props.scientificNames.length === 0,
+    }
 
     this.handleInteraction = this.handleInteraction.bind(this)
     this.setTaxonNameAsAccepted = this.setTaxonNameAsAccepted.bind(this)
@@ -163,7 +165,9 @@ export class ScientificNamesTable extends Component {
           <Table celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={6}>Name</Table.HeaderCell>
+                <Table.HeaderCell width={6}>
+                  <span className="required asterisk">Name</span>
+                </Table.HeaderCell>
                 <Table.HeaderCell>Rank</Table.HeaderCell>
                 <Table.HeaderCell>RUBIN</Table.HeaderCell>
                 <Table.HeaderCell>Status</Table.HeaderCell>
@@ -183,7 +187,10 @@ export class ScientificNamesTable extends Component {
                 )
               })}
               {connectingScientificName && (
-                <NewTaxonNameRow onInteraction={this.handleInteraction} />
+                <NewTaxonNameRow
+                  isFirstName={scientificNames.length === 0}
+                  onInteraction={this.handleInteraction}
+                />
               )}
             </Table.Body>
           </Table>
