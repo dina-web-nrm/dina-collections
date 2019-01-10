@@ -114,6 +114,7 @@ class DropdownSearchInput extends Component {
   }
 
   handleOnBlur() {
+    this.props.input.onBlur() // need onBlur to touch field for redux-form validation
     this.handleSearchChange(null, { searchQuery: '' })
   }
 
