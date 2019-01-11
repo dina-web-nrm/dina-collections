@@ -21,6 +21,7 @@
       "objects.collYear": null,
       "objects.commonName": "Ermine",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -302,9 +303,9 @@
         {
           "preparationType_key": "complete-mounted-skin",
           "remarks": null,
-          "storageLevel1": "Utlånad",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Utlånad",
+          "mountingWall": null,
+          "shelf": null
         }
       ]
     }
@@ -331,6 +332,7 @@
       "objects.collYear": null,
       "objects.commonName": "Xeric Four-striped Grass Rat",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -612,16 +614,16 @@
         {
           "preparationType_key": "skeleton-in-alcohol",
           "remarks": null,
-          "storageLevel1": "Omistliga sprit",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Omistliga sprit",
+          "mountingWall": null,
+          "shelf": null
         },
         {
           "preparationType_key": "skin-in-alcohol",
           "remarks": null,
-          "storageLevel1": "Omistliga sprit",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Omistliga sprit",
+          "mountingWall": null,
+          "shelf": null
         }
       ]
     }
@@ -648,6 +650,7 @@
       "objects.collYear": null,
       "objects.commonName": "Whiskered Bat",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -945,16 +948,16 @@
         {
           "preparationType_key": "skull",
           "remarks": null,
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Ingen information",
+          "mountingWall": null,
+          "shelf": "3810444 Myotis mystacinus"
         },
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Ingen information",
+          "mountingWall": null,
+          "shelf": "3810444 Myotis mystacinus"
         }
       ]
     }
@@ -981,6 +984,7 @@
       "objects.collYear": null,
       "objects.commonName": "Brown Bear",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -1245,9 +1249,9 @@
         {
           "preparationType_key": "skull",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "5100906 Ursus arctos"
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "5100906 Ursus arctos"
         }
       ]
     }
@@ -1274,6 +1278,7 @@
       "objects.collYear": null,
       "objects.commonName": null,
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -1546,9 +1551,9 @@
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
-          "storageLevel1": "Lodjursrum, köl 1213",
-          "storageLevel2": "Låda 6",
-          "storageLevel4": null
+          "room": "Lodjursrum, köl 1213",
+          "mountingWall": "Låda 6",
+          "shelf": null
         }
       ]
     }
@@ -1575,6 +1580,7 @@
       "objects.collYear": null,
       "objects.commonName": "Wolverine",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -1939,23 +1945,23 @@
         {
           "preparationType_key": "partial-skeleton-with-skull",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "5203003 Gulo gulo"
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "5203003 Gulo gulo"
         },
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
-          "storageLevel1": "Skinnrum kylda",
-          "storageLevel2": null,
-          "storageLevel4": "5203003 Gulo gulo"
+          "room": "Skinnrum kylda",
+          "mountingWall": null,
+          "shelf": "5203003 Gulo gulo"
         },
         {
           "preparationType_key": "unspecified-wet-preparation",
           "remarks": "Urogenitalsystem i sprit, se kommentar",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Ingen information",
+          "mountingWall": null,
+          "shelf": "5203003 Gulo gulo"
         }
       ]
     }
@@ -1982,6 +1988,7 @@
       "objects.collYear": null,
       "objects.commonName": "Subsaharan Pygmy Mouse",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -2269,9 +2276,9 @@
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
-          "storageLevel1": "Plåtskåpsrum",
-          "storageLevel2": null,
-          "storageLevel4": "9472969 Mus musculoides"
+          "room": "Plåtskåpsrum",
+          "mountingWall": null,
+          "shelf": "9472969 Mus musculoides"
         }
       ]
     }
@@ -2298,6 +2305,7 @@
       "objects.collYear": null,
       "objects.commonName": "Black Howler",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -2554,9 +2562,9 @@
         "locationInformation_uncertaintyInMeters": "5000"
       },
       "originInformation": {
-        "originLocality": "Altitude 196 m",
-        "establishmentMeans_key": "unknown",
-        "isResultOfSelectiveBreeding": null
+        "establishmentMeans_key": "wild-and-native",
+        "isResultOfSelectiveBreeding": "no",
+        "originLocality": "Altitude 196 m"
       },
       "deathInformation": {
         "causeOfDeath_key": "collected",
@@ -2635,16 +2643,16 @@
         {
           "preparationType_key": "skull",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "4352406 Alouatta caraya"
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "4352406 Alouatta caraya"
         },
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
-          "storageLevel1": "Skinnrum kylda",
-          "storageLevel2": null,
-          "storageLevel4": "4352406 Alouatta caraya"
+          "room": "Skinnrum kylda",
+          "mountingWall": null,
+          "shelf": "4352406 Alouatta caraya"
         }
       ]
     }
@@ -2671,6 +2679,7 @@
       "objects.collYear": null,
       "objects.commonName": "Eastern Gorilla",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -2965,16 +2974,16 @@
         {
           "preparationType_key": "skull",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "4500906 Gorilla beringei"
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "4500906 Gorilla beringei"
         },
         {
           "preparationType_key": "unspecified-skin",
           "remarks": "Skin missing but should be here",
-          "storageLevel1": "Okänd",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Okänd",
+          "mountingWall": null,
+          "shelf": null
         }
       ]
     }
@@ -3001,6 +3010,7 @@
       "objects.collYear": null,
       "objects.commonName": null,
       "objects.dateType": null,
+      "objects.originStatus": "Zoo animal",
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -3230,7 +3240,7 @@
         "date_day": "3",
         "date_dateType": "single",
         "date_remarks": "Till Skansen 28/3-1960",
-        "establishmentMeans_key": "wild-and-introduced",
+        "establishmentMeans_key": "captive",
         "expeditionText": null,
         "isDeathDate": "True",
         "locationInformation_continentOcean": "Europe",
@@ -3250,9 +3260,9 @@
         "locationInformation_uncertaintyInMeters": "5000"
       },
       "originInformation": {
-        "originLocality": "Lärbo, Gotland",
-        "establishmentMeans_key": "captive",
-        "isResultOfSelectiveBreeding": null
+        "establishmentMeans_key": "wild-and-native",
+        "isResultOfSelectiveBreeding": "no",
+        "originLocality": "Lärbo, Gotland"
       },
       "deathInformation": {
         "causeOfDeath_key": "unknown",
@@ -3290,16 +3300,16 @@
         {
           "preparationType_key": "complete-disarticulated-skeleton",
           "remarks": null,
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Ingen information",
+          "mountingWall": null,
+          "shelf": "5700503 Pusa hispida"
         },
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
-          "storageLevel1": "Vindsrum kylda",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Vindsrum kylda",
+          "mountingWall": null,
+          "shelf": null
         }
       ]
     }
@@ -3326,6 +3336,7 @@
       "objects.collYear": null,
       "objects.commonName": "Tailless Bat sp.",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -3621,16 +3632,16 @@
         {
           "preparationType_key": "skull",
           "remarks": null,
-          "storageLevel1": "Omistliga samlingar",
-          "storageLevel2": null,
-          "storageLevel4": "363 Glossophaginae"
+          "room": "Omistliga samlingar",
+          "mountingWall": null,
+          "shelf": "363 Glossophaginae"
         },
         {
           "preparationType_key": "complete-mounted-skin",
           "remarks": null,
-          "storageLevel1": "Omistliga samlingar",
-          "storageLevel2": null,
-          "storageLevel4": "363 Glossophaginae"
+          "room": "Omistliga samlingar",
+          "mountingWall": null,
+          "shelf": "363 Glossophaginae"
         }
       ]
     }
@@ -3657,6 +3668,7 @@
       "objects.collYear": null,
       "objects.commonName": null,
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -3979,23 +3991,23 @@
         {
           "preparationType_key": "complete-mounted-skeleton",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "5520606 Lynx lynx"
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "5520606 Lynx lynx"
         },
         {
           "preparationType_key": "complete-study-skin",
           "remarks": null,
-          "storageLevel1": "Lodjursrum, köl 1213",
-          "storageLevel2": "Låda 25",
-          "storageLevel4": null
+          "room": "Lodjursrum, köl 1213",
+          "mountingWall": "Låda 25",
+          "shelf": null
         },
         {
           "preparationType_key": "unspecified-wet-preparation",
           "remarks": "MGG-sample",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Ingen information",
+          "mountingWall": null,
+          "shelf": "5520606 Lynx lynx"
         }
       ]
     }
@@ -4022,6 +4034,7 @@
       "objects.collYear": null,
       "objects.commonName": "Wolverine",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -4382,23 +4395,23 @@
         {
           "preparationType_key": "partial-skeleton-with-skull",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "5203003 Gulo gulo"
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "5203003 Gulo gulo"
         },
         {
           "preparationType_key": "unspecified-skin",
           "remarks": "Skin at another institution",
-          "storageLevel1": "Annan Institution",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Annan Institution",
+          "mountingWall": null,
+          "shelf": null
         },
         {
           "preparationType_key": "unspecified-wet-preparation",
           "remarks": "MGG-sample",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Ingen information",
+          "mountingWall": null,
+          "shelf": "5203003 Gulo gulo"
         }
       ]
     }
@@ -4425,6 +4438,7 @@
       "objects.collYear": null,
       "objects.commonName": null,
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -4623,7 +4637,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": null,
+      "collectionItemsRemarks": "Skin discarded from collection",
       "publishRecord": "True",
       "remarks": "Kranie finns på Grimsö med nummer B215-93",
       "identifiers": [
@@ -4722,16 +4736,9 @@
         {
           "preparationType_key": "some-bones",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "7803903 Capreolus capreolus"
-        },
-        {
-          "preparationType_key": "unspecified-skin",
-          "remarks": "Skin discarded from collection",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "7803903 Capreolus capreolus"
         }
       ]
     }
@@ -4758,6 +4765,7 @@
       "objects.collYear": null,
       "objects.commonName": null,
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -4948,7 +4956,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": "Kan vara förväxlat med 98/5647",
+      "collectionItemsRemarks": "Kan vara förväxlat med 98/5647\n\nSkin not added to collection",
       "publishRecord": "True",
       "remarks": null,
       "identifiers": [
@@ -5069,23 +5077,16 @@
         {
           "preparationType_key": "skull",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "5520606 Lynx lynx"
-        },
-        {
-          "preparationType_key": "unspecified-skin",
-          "remarks": "Skin missing",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "5520606 Lynx lynx"
         },
         {
           "preparationType_key": "unspecified-wet-preparation",
           "remarks": "Biocidprover",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Ingen information",
+          "mountingWall": null,
+          "shelf": "5520606 Lynx lynx"
         }
       ]
     }
@@ -5112,6 +5113,7 @@
       "objects.collYear": null,
       "objects.commonName": "Wolverine",
       "objects.dateType": null,
+      "objects.originStatus": null,
       "objects.publishCoord": null,
       "objects.publishRecord": null,
       "objects.scientificName": null,
@@ -5302,7 +5304,7 @@
       }
     },
     "migrationData": {
-      "collectionItemsRemarks": null,
+      "collectionItemsRemarks": "Skin not added to collection",
       "publishRecord": "True",
       "remarks": "00-0k0-925F",
       "identifiers": [
@@ -5489,16 +5491,9 @@
         {
           "preparationType_key": "complete-disarticulated-skeleton",
           "remarks": null,
-          "storageLevel1": "Bensalen",
-          "storageLevel2": null,
-          "storageLevel4": "5203003 Gulo gulo"
-        },
-        {
-          "preparationType_key": "unspecified-skin",
-          "remarks": "Skin missing",
-          "storageLevel1": "Ingen information",
-          "storageLevel2": null,
-          "storageLevel4": null
+          "room": "Bensalen",
+          "mountingWall": null,
+          "shelf": "5203003 Gulo gulo"
         }
       ]
     }

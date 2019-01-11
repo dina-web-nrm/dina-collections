@@ -12,7 +12,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
+      "group": "room",
       "id": "2",
       "name": "Annan Institution",
       "parentId": "1"
@@ -22,7 +22,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
+      "group": "room",
       "id": "3",
       "name": "Bensalen",
       "parentId": "1"
@@ -32,7 +32,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
+      "group": "shelf",
       "id": "4",
       "name": "4352406 Alouatta caraya",
       "parentId": "3"
@@ -42,7 +42,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
+      "group": "shelf",
       "id": "5",
       "name": "4500906 Gorilla beringei",
       "parentId": "3"
@@ -52,7 +52,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
+      "group": "shelf",
       "id": "6",
       "name": "5100906 Ursus arctos",
       "parentId": "3"
@@ -62,7 +62,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
+      "group": "shelf",
       "id": "7",
       "name": "5203003 Gulo gulo",
       "parentId": "3"
@@ -72,7 +72,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
+      "group": "shelf",
       "id": "8",
       "name": "5520606 Lynx lynx",
       "parentId": "3"
@@ -82,7 +82,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
+      "group": "shelf",
       "id": "9",
       "name": "7803903 Capreolus capreolus",
       "parentId": "3"
@@ -92,7 +92,7 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
+      "group": "room",
       "id": "10",
       "name": "Ingen information",
       "parentId": "1"
@@ -102,8 +102,48 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
+      "group": "shelf",
       "id": "11",
+      "name": "3810444 Myotis mystacinus",
+      "parentId": "10"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "shelf",
+      "id": "12",
+      "name": "5203003 Gulo gulo",
+      "parentId": "10"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "shelf",
+      "id": "13",
+      "name": "5520606 Lynx lynx",
+      "parentId": "10"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "shelf",
+      "id": "14",
+      "name": "5700503 Pusa hispida",
+      "parentId": "10"
+    },
+    "sourceData": null
+  },
+  {
+    "legacyData": null,
+    "migrationData": {
+      "group": "room",
+      "id": "15",
       "name": "Lodjursrum, köl 1213",
       "parentId": "1"
     },
@@ -112,28 +152,28 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 2",
-      "id": "12",
+      "group": "mountingWall",
+      "id": "16",
       "name": "Låda 25",
-      "parentId": "11"
+      "parentId": "15"
     },
     "sourceData": null
   },
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 2",
-      "id": "13",
+      "group": "mountingWall",
+      "id": "17",
       "name": "Låda 6",
-      "parentId": "11"
+      "parentId": "15"
     },
     "sourceData": null
   },
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
-      "id": "14",
+      "group": "room",
+      "id": "18",
       "name": "Okänd",
       "parentId": "1"
     },
@@ -142,8 +182,8 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
-      "id": "15",
+      "group": "room",
+      "id": "19",
       "name": "Omistliga samlingar",
       "parentId": "1"
     },
@@ -152,18 +192,18 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
-      "id": "16",
+      "group": "shelf",
+      "id": "20",
       "name": "363 Glossophaginae",
-      "parentId": "15"
+      "parentId": "19"
     },
     "sourceData": null
   },
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
-      "id": "17",
+      "group": "room",
+      "id": "21",
       "name": "Omistliga sprit",
       "parentId": "1"
     },
@@ -172,8 +212,8 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
-      "id": "18",
+      "group": "room",
+      "id": "22",
       "name": "Plåtskåpsrum",
       "parentId": "1"
     },
@@ -182,18 +222,18 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
-      "id": "19",
+      "group": "shelf",
+      "id": "23",
       "name": "9472969 Mus musculoides",
-      "parentId": "18"
+      "parentId": "22"
     },
     "sourceData": null
   },
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
-      "id": "20",
+      "group": "room",
+      "id": "24",
       "name": "Skinnrum kylda",
       "parentId": "1"
     },
@@ -202,28 +242,28 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
-      "id": "21",
+      "group": "shelf",
+      "id": "25",
       "name": "4352406 Alouatta caraya",
-      "parentId": "20"
+      "parentId": "24"
     },
     "sourceData": null
   },
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 4",
-      "id": "22",
+      "group": "shelf",
+      "id": "26",
       "name": "5203003 Gulo gulo",
-      "parentId": "20"
+      "parentId": "24"
     },
     "sourceData": null
   },
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
-      "id": "23",
+      "group": "room",
+      "id": "27",
       "name": "Utlånad",
       "parentId": "1"
     },
@@ -232,8 +272,8 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "level 1",
-      "id": "24",
+      "group": "room",
+      "id": "28",
       "name": "Vindsrum kylda",
       "parentId": "1"
     },
