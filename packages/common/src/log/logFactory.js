@@ -101,7 +101,11 @@ const createTreeLog = ({
 
         if (nodeMessage) {
           if (consoleGroupAvailable) {
-            console.log(nodeMessage, options)
+            if (options !== undefined) {
+              console.log(nodeMessage, options)
+            } else {
+              console.log(nodeMessage)
+            }
           } else {
             logMethods[level](nodeMessage, options)
           }
