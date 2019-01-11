@@ -99,10 +99,5 @@ const tableColumnSpecifications = [
     label: 'modules.storage.fieldLabels.shelf',
     width: 250,
   },
-  {
-    fieldPath: 'description',
-    label: 'modules.storage.fieldLabels.description',
-    width: 350,
-  },
 ]
 export default tableColumnSpecifications
