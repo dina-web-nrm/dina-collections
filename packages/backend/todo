@@ -1,13 +1,32 @@
+Search
+* Implement suggesting from type dropdown
+* Add new suggestions in new all places
+* Remove not needed code
+* Committ
+* Clean up
 
-Fix api client
-1. Fix tests
-2. Ensure update is working
 
-3. Update interface and adapt to new update (in crud config)
-4. Add logs for create
-5. Implement for create
-6. Update tests for create
 
+How does search work?
+1. Create a queryBuilder using coreModules/search/utilities/queryBuilderFactory
+* As input  querySpecifications which is located in each filter section is used by calling factories from search module
+
+
+
+* Search
+* 
+** Implement multipleTagRefine
+
+
+Search todo
+* make queryBuilder accept arrays in the array and dont spread in all individual querySpecifications
+
+
+
+
+* Call t
+* Book t
+* write diff
 
 
 

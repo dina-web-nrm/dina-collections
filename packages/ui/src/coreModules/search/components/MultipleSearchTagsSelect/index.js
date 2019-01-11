@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
@@ -10,6 +9,7 @@ import { MultipleSearchSelectionDropdown } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import RefineTagSelection from './RefineTagSelection'
+import TagTypeFilterInlineDropdown from './TagTypeFilterInlineDropdown'
 import * as selectors from './selectors'
 
 const propTypes = {
@@ -34,10 +34,15 @@ const propTypes = {
   }).isRequired,
 
   search: PropTypes.func.isRequired,
+  tagTypeFilterEnabled: PropTypes.bool,
+  tagTypeFilterInitialValue: PropTypes.string.isRequired,
+  tagTypeFilterMatchAllOption: PropTypes.string.isRequired,
+  tagTypeFilterText: PropTypes.string.isRequired,
 }
 const defaultProps = {
   addTagTypeToText: true,
   inlineRefine: false,
+  tagTypeFilterEnabled: false,
 }
 
 class RawMultipleSearchTagsSelect extends PureComponent {
@@ -62,16 +67,23 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       this
     )
     this.handleToggleTagSelected = this.handleToggleTagSelected.bind(this)
-
+    this.handleUpdateTagFilterValue = this.handleUpdateTagFilterValue.bind(this)
+    this.fetchAvailableTags = this.fetchAvailableTags.bind(this)
     this.state = {
       options: [],
       refineOpen: false,
       searchQuery: '',
+      tagTypeFilterValue: '',
     }
 
     this.debouncedGetItemsForSearchQuery = debounce(
       searchQuery => {
+        const { tagTypeFilterValue } = this.state
         return this.getItemsForSearchQuery({
+          tagType:
+            tagTypeFilterValue && tagTypeFilterValue !== 'any'
+              ? tagTypeFilterValue
+              : undefined,
           tagValue: searchQuery,
         }).then(items => {
           const options = this.createOptions({
@@ -95,9 +107,16 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.debouncedGetItemsForSearchQuery.cancel()
   }
 
-  getItemsForSearchQuery({ exact, tagType, tagValue, limit = 10 }) {
+  getItemsForSearchQuery({
+    aggregationFunctionType = 'value',
+    exact,
+    limit = 10,
+    tagType,
+    tagValue,
+  }) {
     const query = this.props.buildLocalAggregationQuery({
       input: {
+        aggregationFunctionType,
         exact,
         limit,
         tagType,
@@ -305,16 +324,34 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     }
   }
 
+  fetchAvailableTags() {
+    return this.getItemsForSearchQuery({
+      aggregationFunctionType: 'type',
+    }).then(items => {
+      return items
+    })
+  }
+
+  handleUpdateTagFilterValue(value) {
+    this.setState({
+      tagTypeFilterValue: value,
+    })
+  }
+
   render() {
     const {
       addTagTypeToText,
       i18n: { moduleTranslate },
       inlineRefine,
       input,
+      tagTypeFilterEnabled,
+      tagTypeFilterInitialValue,
+      tagTypeFilterMatchAllOption,
+      tagTypeFilterText,
       ...rest
     } = this.props
 
-    const { refineOpen, options } = this.state
+    const { refineOpen, options, tagTypeFilterValue } = this.state
     const { value: reduxFormValues } = input
 
     const patchedInput = {
@@ -332,6 +369,16 @@ class RawMultipleSearchTagsSelect extends PureComponent {
 
     return (
       <React.Fragment>
+        {tagTypeFilterEnabled && (
+          <TagTypeFilterInlineDropdown
+            fetchAvailableTags={this.fetchAvailableTags}
+            onChange={this.handleUpdateTagFilterValue}
+            tagTypeFilterInitialValue={tagTypeFilterInitialValue}
+            tagTypeFilterMatchAllOption={tagTypeFilterMatchAllOption}
+            tagTypeFilterText={tagTypeFilterText}
+            value={tagTypeFilterValue}
+          />
+        )}
         <MultipleSearchSelectionDropdown
           {...rest}
           enableHelpNotifications={false}

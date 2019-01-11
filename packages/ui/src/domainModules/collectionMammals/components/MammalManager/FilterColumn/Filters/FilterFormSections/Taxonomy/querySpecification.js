@@ -5,7 +5,6 @@ export default createTagSpecification({
   searchFilterFunctionName: 'searchTaxonomyTags',
   sectionName: 'taxonomy',
   tagTypeAggregationFunctionName: 'aggregateTaxonomyTagTypes',
-  tagTypesFieldName: 'taxonomy.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateTaxonomyTagValues',
   tagValuesFieldName: 'taxonomy.tagValues',
 })

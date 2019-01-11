@@ -5,7 +5,6 @@ const tagSpecifications = createTagSpecification({
   searchFilterFunctionName: 'searchLocationTags',
   sectionName: 'locality.localities',
   tagTypeAggregationFunctionName: 'aggregateLocationTagTypes',
-  tagTypesFieldName: 'locality.localities.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateLocationTagValues',
   tagValuesFieldName: 'locality.localities.tagValues',
 })
@@ -15,7 +14,6 @@ const higherGeographySpecifications = createTagSpecification({
   searchFilterFunctionName: 'searchHigherGeographyTags',
   sectionName: 'locality.higherGeography',
   tagTypeAggregationFunctionName: 'aggregateHigherGeographyTagTypes',
-  tagTypesFieldName: 'locality.higherGeography.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateHigherGeographyTagValues',
   tagValuesFieldName: 'locality.higherGeography.tagValues',
 })

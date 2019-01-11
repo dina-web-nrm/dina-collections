@@ -5,7 +5,6 @@ export default createTagSpecification({
   searchFilterFunctionName: 'searchStorageLocationTags',
   sectionName: 'storage',
   tagTypeAggregationFunctionName: 'aggregateStorageLocationTagTypes',
-  tagTypesFieldName: 'storage.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateStorageLocationTagValues',
   tagValuesFieldName: 'storage.tagValues',
 })

@@ -5,7 +5,6 @@ export default createTagSpecification({
   searchFilterFunctionName: 'searchIdentifierTags',
   sectionName: 'identifier',
   tagTypeAggregationFunctionName: 'aggregateIdentifierTagTypes',
-  tagTypesFieldName: 'identifier.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateIdentifierTagValues',
   tagValuesFieldName: 'identifier.tagValues',
 })

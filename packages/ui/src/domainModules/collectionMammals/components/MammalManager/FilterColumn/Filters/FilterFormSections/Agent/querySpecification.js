@@ -5,7 +5,6 @@ export default createTagSpecification({
   searchFilterFunctionName: 'searchAgentTags',
   sectionName: 'agent',
   tagTypeAggregationFunctionName: 'aggregateAgentTagTypes',
-  tagTypesFieldName: 'agent.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateAgentTagValues',
   tagValuesFieldName: 'agent.tagValues',
 })
