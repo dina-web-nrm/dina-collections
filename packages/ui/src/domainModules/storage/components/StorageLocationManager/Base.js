@@ -10,6 +10,7 @@ import EditForm from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
 import tableColumnSpecifications from './tableColumnSpecifications'
+import ItemTitle from './ItemTitle'
 
 const resource = 'storageLocation'
 const include = ['parent', 'resourceActivities']
@@ -19,11 +20,18 @@ const createGetNestedItemHocInput = {
   relationships: include,
   resolveRelationships: [
     'storageLocation',
+    'parent',
     'preparationType',
     'resourceActivity',
     'taxon',
   ],
   resource,
+}
+
+const itemFetchOptions = {
+  include: ['parent'],
+  relationships: ['parent', 'children'],
+  resolveRelationships: ['storageLocation'],
 }
 
 const baseTreeFilter = {
@@ -151,6 +159,8 @@ class StorageLocationManager extends Component {
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         fetchRelationshipsBeforeDelete={this.fetchRelationshipsBeforeDelete}
         filterHeader="Find storage locations"
+        itemFetchOptions={itemFetchOptions}
+        ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
