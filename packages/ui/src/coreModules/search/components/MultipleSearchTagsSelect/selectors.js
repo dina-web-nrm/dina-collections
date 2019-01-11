@@ -15,6 +15,22 @@ export const getAllFreeTextSearchResults = createSelector(
   }
 )
 
+export const getAllFreeTextQueries = createSelector(
+  searchQueryResultsMap => searchQueryResultsMap,
+  searchQueryResultsMap => {
+    return Object.keys(searchQueryResultsMap || {}).reduce(
+      (allResults, searchQuery) => {
+        const { searchOption } = searchQueryResultsMap[searchQuery]
+        if (searchOption.other.tagType) {
+          return allResults
+        }
+        return allResults.push(searchQuery)
+      },
+      []
+    )
+  }
+)
+
 export const getNumberOfFreeTextSearchResults = createSelector(
   getAllFreeTextSearchResults,
   allResults => {

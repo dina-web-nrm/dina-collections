@@ -2,7 +2,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
-import { Button, Icon } from 'semantic-ui-react'
 import { debounce } from 'lodash'
 
 import { MultipleSearchSelectionDropdown } from 'coreModules/form/components'

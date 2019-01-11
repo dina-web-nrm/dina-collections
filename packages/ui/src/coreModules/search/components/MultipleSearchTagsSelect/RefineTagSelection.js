@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Modal, Header } from 'semantic-ui-react'
 import { FormModal } from '../../../form/components'
 import TagGroup from './TagGroup'
+import * as selectors from './selectors'
 
 const propTypes = {
   addTagTypeToText: PropTypes.bool.isRequired,
@@ -33,6 +34,10 @@ const RefineTagSelection = ({
   onToggleTagSelected: handleToggleTagSelected,
   reduxFormValues,
 }) => {
+  console.log(
+    'selectors.getAllFreeTextQueries(reduxFormValues)',
+    selectors.getAllFreeTextQueries(reduxFormValues)
+  )
   if (inline) {
     return (
       <React.Fragment>
