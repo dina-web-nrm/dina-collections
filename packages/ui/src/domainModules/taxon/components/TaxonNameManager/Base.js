@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import CreateForm from './item/CreateForm'

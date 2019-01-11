@@ -186,7 +186,7 @@ export class ScientificNamesTable extends Component {
                   <span className="required asterisk">Name</span>
                 </Table.HeaderCell>
                 <Table.HeaderCell>Rank</Table.HeaderCell>
-                <Table.HeaderCell>RUBIN</Table.HeaderCell>
+                <Table.HeaderCell>RUBIN no.</Table.HeaderCell>
                 <Table.HeaderCell>Status</Table.HeaderCell>
                 <Table.HeaderCell>Actions</Table.HeaderCell>
               </Table.Row>

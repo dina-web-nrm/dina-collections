@@ -1,7 +1,7 @@
 {
   "fieldLabels": {
     "group": {
-      "en": "level",
+      "en": "storage level",
       "sv": ""
     },
     "name": {
@@ -20,16 +20,20 @@
       "en": "room"
     },
     "mountingWall": {
-      "en": "mountingWall"
+      "en": "mounting wall"
     },
-    "level3": {
-      "en": "level 3"
+    "cabinet": {
+      "en": "cabinet"
     },
     "shelf": {
       "en": "shelf"
     }
   },
   "headers": {
+    "storageLocation": {
+      "en": "storage location",
+      "sv": ""
+    },
     "connectedPreparationTypes": {
       "en": "connected preparation types",
       "sv": ""
@@ -39,7 +43,7 @@
       "sv": ""
     },
     "newStorageLocation": {
-      "en": "new storage",
+      "en": "new storage location",
       "sv": ""
     },
     "recordHistory": {

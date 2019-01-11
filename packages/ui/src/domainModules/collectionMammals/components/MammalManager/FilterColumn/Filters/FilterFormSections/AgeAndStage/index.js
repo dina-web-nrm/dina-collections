@@ -20,7 +20,7 @@ class AgeStageFilterForm extends PureComponent {
               autoComplete="off"
               component={Input}
               fluid
-              label="from"
+              label="From"
               module="collectionMammals"
               name="ageAndStage.age.min"
               type="number"
@@ -34,7 +34,7 @@ class AgeStageFilterForm extends PureComponent {
               autoComplete="off"
               component={Input}
               fluid
-              label="to"
+              label="To"
               module="collectionMammals"
               name="ageAndStage.age.max"
               type="number"

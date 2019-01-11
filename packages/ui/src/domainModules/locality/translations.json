@@ -1,7 +1,7 @@
 {
   "fieldLabels": {
     "name": {
-      "en": "locality name",
+      "en": "name",
       "sv": ""
     },
     "group": {
@@ -14,7 +14,7 @@
     },
     "place": {
       "name": { "en": "name" },
-      "group": { "en": "group" },
+      "group": { "en": "geographic level" },
       "parent": { "en": "parent" }
     },
     "verticalPosition": {
@@ -34,6 +34,10 @@
     "province": { "en": "province" }
   },
   "headers": {
+    "geography": {
+      "en": "geography",
+      "sv": ""
+    },
     "recordHistory": {
       "en": "Record history",
       "sv": ""
@@ -50,7 +54,7 @@
     }
   },
   "newLocality": {
-    "en": "new locality",
+    "en": "new geography record",
     "sv": ""
   },
   "save": {

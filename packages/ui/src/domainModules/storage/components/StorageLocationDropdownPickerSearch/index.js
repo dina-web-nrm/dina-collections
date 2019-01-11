@@ -51,7 +51,7 @@ export class StorageLocationDropdownPickerSearch extends Component {
               initialItemId={fieldValue}
               isPicker
               onInteraction={onInteraction}
-              pickerTitle="Pick Storage"
+              pickerTitle="Pick storage location"
               treeEnabled
             />
           </Modal.Content>
@@ -59,7 +59,7 @@ export class StorageLocationDropdownPickerSearch extends Component {
       )
     }
 
-    const picker = <Button onClick={onPickerButtonClick}>Picker</Button>
+    const picker = <Button onClick={onPickerButtonClick}>Pick</Button>
 
     return <StorageLocationDropdownSearch rightButton={picker} {...rest} />
   }

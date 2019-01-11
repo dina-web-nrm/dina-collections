@@ -1,7 +1,7 @@
 export default function createAgentInputs(
   {
     baseName,
-    buttonTextKey = 'other.addAgent',
+    buttonTextKey = 'other.interpretThisName',
     initiallyHidden,
     model,
     module = 'collectionMammals',

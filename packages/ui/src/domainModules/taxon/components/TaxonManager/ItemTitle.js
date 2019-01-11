@@ -16,7 +16,7 @@ const ItemTitle = ({ nestedItem }) => {
       <span style={{ fontWeight: 'bold', marginRight: '0.5em' }}>
         {acceptedTaxonName.name}
       </span>
-      <span>({acceptedTaxonName.rank})</span>
+      <span>[{acceptedTaxonName.rank}]</span>
     </span>
   )
 }

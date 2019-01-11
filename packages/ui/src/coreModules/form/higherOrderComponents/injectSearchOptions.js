@@ -121,9 +121,9 @@ const injectSearchOptions = (hocInput = {}) => ComposedComponent => {
       const defaultMapTextToOption = (text, value) => {
         return {
           key: text,
-          text: `${text} (${props.i18n.moduleTranslate({
+          text: `${text} [${props.i18n.moduleTranslate({
             textKey: 'plainText',
-          })})`,
+          })}]`,
           value: deleteUndefinedProperties({
             ...value,
             [props.pathToTextInValue]: text,

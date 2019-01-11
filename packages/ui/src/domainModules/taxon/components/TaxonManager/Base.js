@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import objectPath from 'object-path'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import CreateForm from './item/CreateForm'
@@ -103,12 +102,15 @@ class TaxonManager extends Component {
     const rank = objectPath.get(nestedItem, 'acceptedTaxonName.rank')
 
     return {
-      itemHeader:
-        name &&
-        `${name} (${this.props.i18n.moduleTranslate({
-          textKey: 'taxon',
-        })})`,
-      itemSubHeader: capitalizeFirstLetter(rank),
+      itemHeader: name && <span>{name}</span>,
+      itemSubHeader: (
+        <span>
+          {this.props.i18n.moduleTranslate({
+            textKey: 'taxonOfRank',
+          })}{' '}
+          {rank}
+        </span>
+      ),
     }
   }
 

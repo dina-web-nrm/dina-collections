@@ -34,7 +34,7 @@ class LocalityFilterForm extends PureComponent {
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             fluid
-            label="Higher Geography"
+            label="Higher Geography (collecting)"
             name="locality.higherGeography.tagValues"
             resource="searchSpecimen"
           />
@@ -54,7 +54,7 @@ class LocalityFilterForm extends PureComponent {
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             fluid
-            label="Locality"
+            label="Locality (collecting or origin)"
             name="locality.localities.tagValues"
             resource="searchSpecimen"
           />

@@ -75,7 +75,7 @@ class WeightFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Weight type"
+            enableHelpNotifications={false}
             name="weight.rangeTypes"
             resource="searchSpecimen"
           />

@@ -65,6 +65,8 @@ const getLabelWidth = group => {
     case 'carcass-condition': {
       return 3
     }
+    case 'age-and-stage':
+    case 'age-stage':
     case 'length': {
       return 5
     }

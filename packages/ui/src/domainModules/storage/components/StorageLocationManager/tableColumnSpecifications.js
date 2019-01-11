@@ -65,7 +65,7 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'level 3')
+      const parent = findParentWithSpecificGroup(value, 'cabinet')
       if (!parent) {
         return ''
       }
@@ -78,7 +78,7 @@ const tableColumnSpecifications = [
       return parent.name
     },
     fieldPath: '',
-    label: 'modules.storage.fieldLabels.level3',
+    label: 'modules.storage.fieldLabels.cabinet',
     width: 250,
   },
   {

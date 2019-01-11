@@ -13,7 +13,7 @@ const extractText = nestedItem => {
     return ''
   }
 
-  return `${acceptedTaxonName.name} (${acceptedTaxonName.rank})`
+  return `${acceptedTaxonName.name} [${acceptedTaxonName.rank}]`
 }
 
 class TaxonDropdownSearch extends Component {

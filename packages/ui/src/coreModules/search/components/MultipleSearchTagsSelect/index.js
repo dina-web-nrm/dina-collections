@@ -244,19 +244,18 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     const itemOptions = items
       .map(({ attributes }) => {
         if (attributes) {
-          const tagTypeText = addTagTypeToText
-            ? ` (${attributes.tagType}) `
-            : ' '
+          const { key, tagType, tagValue } = attributes
+          const tagTypeText = addTagTypeToText ? ` [${tagType}] ` : ' '
           return {
-            key: attributes.key,
+            key,
             other: {
-              tagType: attributes.tagType,
-              tagValue: attributes.tagValue,
+              tagType,
+              tagValue,
             },
-            text: `${attributes.tagValue}${tagTypeText}`,
+            text: `${tagValue}${tagTypeText}`,
 
             type: 'string',
-            value: attributes.key,
+            value: key,
           }
         }
 

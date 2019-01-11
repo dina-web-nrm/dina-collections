@@ -63,7 +63,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
-                    label="RUBIN number"
+                    label="RUBIN no."
                     model="taxonName"
                     module="taxon"
                     name="rubinNumber"

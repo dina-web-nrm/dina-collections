@@ -100,7 +100,7 @@ class AgentRoleContent extends Component {
               })}
               confirmButtonText={moduleTranslate({
                 capitalize: true,
-                textKey: 'remove',
+                textKey: 'delete',
               })}
               header={moduleTranslate({
                 capitalize: true,

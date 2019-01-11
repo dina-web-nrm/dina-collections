@@ -32,10 +32,9 @@ class StorageFilterForm extends PureComponent {
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            addTagTypeToText={false}
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
-            label="Normal storage"
+            label="Normal storage location"
             name="storage.tagValues"
             resource="searchSpecimen"
           />

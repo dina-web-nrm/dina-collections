@@ -47,7 +47,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
-                    label="Locality name"
+                    label="Name"
                     model="place"
                     module="locality"
                     name="name"
@@ -59,7 +59,7 @@ export class BaseForm extends Component {
                     autoComplete="off"
                     component={DropdownSearch}
                     fluid
-                    label="Geographical level"
+                    label="Geographic level"
                     model="place"
                     module="locality"
                     name="group"
