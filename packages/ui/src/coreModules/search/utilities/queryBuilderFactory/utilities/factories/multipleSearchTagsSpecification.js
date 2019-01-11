@@ -1,4 +1,4 @@
-export default function createTagSpecification({
+export default function multipleSearchTagsSpecification({
   sectionName,
   includeTagTypesInAggregation = true,
   matchFilterFunctionName,

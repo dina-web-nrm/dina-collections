@@ -397,7 +397,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
             <RefineTagSelectionButton
               onCloseRefine={this.handleCloseRefine}
               onOpenRefine={this.handleOpenRefine}
-              reduxFormValues={reduxFormValues}
+              reduxFormValues={reduxFormValues || undefined}
               refineOpen={refineOpen}
             />
           }

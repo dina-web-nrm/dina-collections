@@ -1,6 +1,6 @@
-import createTagSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagSpecification'
+import createMultipleSearchTagsSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/multipleSearchTagsSpecification'
 
-const tagSpecifications = createTagSpecification({
+const multipleSearchTagsSpecifications = createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchLocationTags',
   searchFilterFunctionName: 'searchLocationTags',
   sectionName: 'locality.localities',
@@ -9,7 +9,7 @@ const tagSpecifications = createTagSpecification({
   tagValuesFieldName: 'locality.localities.tagValues',
 })
 
-const higherGeographySpecifications = createTagSpecification({
+const higherGeographySpecifications = createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchHigherGeographyTags',
   searchFilterFunctionName: 'searchHigherGeographyTags',
   sectionName: 'locality.higherGeography',
@@ -18,4 +18,7 @@ const higherGeographySpecifications = createTagSpecification({
   tagValuesFieldName: 'locality.higherGeography.tagValues',
 })
 
-export default [...tagSpecifications, ...higherGeographySpecifications]
+export default [
+  ...multipleSearchTagsSpecifications,
+  ...higherGeographySpecifications,
+]

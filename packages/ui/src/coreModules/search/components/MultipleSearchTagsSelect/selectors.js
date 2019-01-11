@@ -24,7 +24,7 @@ export const getAllFreeTextQueries = createSelector(
         if (searchOption.other.tagType) {
           return allResults
         }
-        return allResults.push(searchQuery)
+        return [...allResults, searchQuery]
       },
       []
     )

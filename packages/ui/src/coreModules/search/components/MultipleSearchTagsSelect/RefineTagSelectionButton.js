@@ -41,7 +41,7 @@ class RefineTagSelectionButton extends Component {
           width: '3.5em',
         }}
       >
-        <Icon name="sliders horizontal" style={{ margin: '0px' }} />
+        <Icon name="sliders" style={{ margin: '0px' }} />
         {!!numberOfSearchResults &&
           numberOfSearchResults !== numberOfSelectedResults && (
             <Icon

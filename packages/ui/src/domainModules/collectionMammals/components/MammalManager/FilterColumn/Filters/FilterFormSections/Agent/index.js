@@ -2,10 +2,7 @@ import React, { PureComponent } from 'react'
 // import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
-import {
-  MultipleSearchTagsSelectField,
-  MultipleChoiceCheckboxesField,
-} from 'coreModules/search/components'
+import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 
 import { higherOrderComponents } from '../../../queryBuilder'
 

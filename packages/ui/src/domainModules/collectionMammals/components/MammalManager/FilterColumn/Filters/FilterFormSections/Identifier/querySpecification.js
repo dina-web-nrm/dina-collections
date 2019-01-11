@@ -1,6 +1,6 @@
-import createTagSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagSpecification'
+import createMultipleSearchTagsSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/multipleSearchTagsSpecification'
 
-export default createTagSpecification({
+export default createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchIdentifierTags',
   searchFilterFunctionName: 'searchIdentifierTags',
   sectionName: 'identifier',
