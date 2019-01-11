@@ -1,4 +1,4 @@
-function stripRelationshipNotToModify({ relationship } = {}) {
+function stripRelationshipNotToModify({ relationship = {} } = {}) {
   const isArray = Array.isArray(relationship.data)
   if (isArray) {
     return {
