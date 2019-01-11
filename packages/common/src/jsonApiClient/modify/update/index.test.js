@@ -17,7 +17,6 @@ describe('jsonApiClient/modify/update', () => {
           id: '123',
           type: 'user',
         },
-        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('provide openApiClient')
   })
@@ -27,7 +26,6 @@ describe('jsonApiClient/modify/update', () => {
     return expect(
       update({
         openApiClient: {},
-        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('item required')
   })
@@ -43,7 +41,6 @@ describe('jsonApiClient/modify/update', () => {
           id: '123',
         },
         openApiClient: {},
-        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('type is required')
   })
@@ -59,44 +56,8 @@ describe('jsonApiClient/modify/update', () => {
           type: 'user',
         },
         openApiClient: {},
-        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('id is required')
-  })
-
-  it('rejects if resourcesToModify not provided', () => {
-    expect.assertions(1)
-    return expect(
-      update({
-        item: {
-          attributes: {
-            name: 'Alan',
-          },
-          id: 1,
-          type: 'user',
-        },
-        openApiClient: {},
-      })
-    ).rejects.toThrow('resourcesToModify is required')
-  })
-
-  it('rejects if item.type not in resourcesToModify', () => {
-    expect.assertions(1)
-    return expect(
-      update({
-        item: {
-          attributes: {
-            name: 'Alan',
-          },
-          id: 1,
-          type: 'user',
-        },
-        openApiClient: {},
-        resourcesToModify: ['project'],
-      })
-    ).rejects.toThrow(
-      'resource: user is not included in resourcesToModify: [project]'
-    )
   })
 
   describe('with dependor', () => {
@@ -127,7 +88,6 @@ describe('jsonApiClient/modify/update', () => {
       return update({
         item,
         openApiClient,
-        resourcesToModify: ['user'],
       }).then(res => {
         expect(depSpies.buildOperationId.mock.calls.length).toEqual(1)
         expect(depSpies.buildOperationId.mock.calls[0][0]).toEqual({
