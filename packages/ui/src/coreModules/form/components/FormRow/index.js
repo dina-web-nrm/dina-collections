@@ -126,7 +126,8 @@ class FormRow extends PureComponent {
       this.props.setActiveFormSectionIndex(null, { formName })
       this.props.setShowAllFormSections(true, { formName })
     }
-    this.props.validateSections({ formName: props.formName })
+
+    setTimeout(() => this.props.validateSections({ formName: props.formName }))
   }
 
   handleSetActiveFormSection(event, activeFormSectionIndex) {
