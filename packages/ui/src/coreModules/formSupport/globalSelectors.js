@@ -126,7 +126,10 @@ const getSectionIsInvalid = (state, { formName, sectionName }) => {
   return sectionInvalidStatus[sectionName]
 }
 
-const computeSectionIsInvalid = (state, { formName, sectionName }) => {
+const computeSectionIsInvalid = (
+  state,
+  { formName, requireTouched, sectionName } = {}
+) => {
   const sectionFieldNamesMap = selectors.getSectionFieldNamesMap(
     state.formSupport,
     {
@@ -139,7 +142,7 @@ const computeSectionIsInvalid = (state, { formName, sectionName }) => {
   return getAnyFieldIsInvalid(state, {
     fieldNames: sectionFieldNames,
     formName,
-    requireTouched: false,
+    requireTouched,
   })
 }
 
