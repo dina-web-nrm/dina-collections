@@ -8,6 +8,10 @@ const tableColumnSpecifications = [
     width: 250,
   },
   {
+    name: 'taxonomyRank',
+    width: 150,
+  },
+  {
     name: 'taxonomyFamily',
     width: 150,
   },
@@ -41,6 +45,10 @@ const tableColumnSpecifications = [
   },
   {
     name: 'collectingEventLocality',
+    width: 300,
+  },
+  {
+    name: 'collectingEventInterpretedLocality',
     width: 300,
   },
   {
