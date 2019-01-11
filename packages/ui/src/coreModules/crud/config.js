@@ -247,14 +247,14 @@ const config = {
         {
           operationId: 'specimenUpdate',
           options: {
-            resourcesToModify: ['specimen', 'physicalObject'],
+            includesToModify: ['physicalObjects'],
           },
           type: 'update',
         },
         {
           operationId: 'specimenCreate',
           options: {
-            resourcesToModify: ['specimen', 'physicalObject'],
+            includesToModify: ['physicalObjects'],
           },
           type: 'create',
         },
@@ -309,7 +309,13 @@ const config = {
         {
           operationId: 'taxonCreate',
           options: {
-            resourcesToModify: ['taxon', 'taxonName'],
+            includesToModify: ['vernacularNames'],
+            relationshipsToModify: [
+              'acceptedTaxonName',
+              'parent',
+              'synonyms',
+              'vernacularNames',
+            ],
           },
           type: 'create',
         },
@@ -320,7 +326,13 @@ const config = {
         {
           operationId: 'taxonUpdate',
           options: {
-            resourcesToModify: ['taxon', 'taxonName'],
+            includesToModify: ['vernacularNames'],
+            relationshipsToModify: [
+              'acceptedTaxonName',
+              'parent',
+              'synonyms',
+              'vernacularNames',
+            ],
           },
           type: 'update',
         },
