@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import {
   formValueSelector as formValueSelectorFactory,
   reduxForm,
 } from 'redux-form'
 
-import formValidator from 'common/es5/error/validators/formValidator'
+import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { Form, FormRow } from 'coreModules/form/components'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { formModels } from '../../../../schemas'
 import customParts from '../../../formParts'
 import sectionSpecs from './sectionSpecs'
+import { mapParentError } from './transformations/syncErrors'
 
 const formActionBarHeight = emToPixels(4.625)
 
@@ -71,5 +74,11 @@ BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
   enableReinitialize: true,
-  validate: formValidator({ model: 'place' }),
+  validate: compose(
+    mapParentError,
+    customFormValidator({
+      model: 'place',
+      models: formModels,
+    })
+  ),
 })(BaseForm)

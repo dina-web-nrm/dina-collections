@@ -12,6 +12,7 @@ const propTypes = {
   htmlFor: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   labelKey: PropTypes.string,
+  required: PropTypes.bool.isRequired,
   subLabel: PropTypes.bool,
 }
 const defaultProps = {
@@ -28,36 +29,51 @@ const FieldLabel = ({
   htmlFor,
   label: translatedLabel,
   labelKey,
+  required,
   subLabel,
 }) => {
   const style = subLabel
     ? {
-        display: 'block',
+        display: 'inline-block',
         fontSize: '0.9em',
         fontStyle: 'italic',
         fontWeight: 400,
         margin: 0,
       }
     : {
-        display: 'block',
+        display: 'inline-block',
+      }
+
+  const helpIconWrapperStyle = required
+    ? {
+        display: 'inline-block',
+        marginLeft: '0.25em',
+      }
+    : {
+        display: 'inline-block',
       }
 
   const label = translatedLabel || <Translate capitalize textKey={labelKey} />
   return (
-    <label htmlFor={htmlFor} style={style}>
-      {label}
-      {
-        // this ugly stuff is required since currently translations can only
-        // be components
-      }
-      {helpText && ' ('}
-      {helpText && helpText}
-      {helpText && ')'}
-      {helpNotificationProps && ' '}
+    <React.Fragment>
+      <label htmlFor={htmlFor} style={style}>
+        {label}
+        {
+          // this ugly stuff is required since currently translations can only
+          // be components
+        }
+        {helpText && ' ('}
+        {helpText && helpText}
+        {helpText && ')'}
+        {helpNotificationProps && ' '}
+      </label>
       {helpNotificationProps && (
-        <FormFieldHelpIcon helpNotificationProps={helpNotificationProps} />
+        // this is outside of label to make required asterisk come before help icon
+        <div style={helpIconWrapperStyle}>
+          <FormFieldHelpIcon helpNotificationProps={helpNotificationProps} />
+        </div>
       )}
-    </label>
+    </React.Fragment>
   )
 }
 

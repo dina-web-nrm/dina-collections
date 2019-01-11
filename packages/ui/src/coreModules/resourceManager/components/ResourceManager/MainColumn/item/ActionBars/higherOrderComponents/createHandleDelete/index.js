@@ -138,8 +138,8 @@ const createHandleDelete = () => ComposedComponent => {
           resource === 'specimen' // special case for specimen to wait for elasticsearch to update
             ? {
                 componentProps: {
-                  header:
-                    'The specimen was deleted. Please wait while the table is updated...',
+                  description: 'Please wait while the table is updated...',
+                  header: 'The specimen was deleted',
                 },
                 ttl: 3000,
                 type: 'SUCCESS',

@@ -37,19 +37,21 @@ const DateTypeRadios = ({
       style={{ marginBottom: '0.5em', width: '100%' }}
       subLabel
     >
-      {dateTypes.map(dateType => {
-        return (
-          <Radio
-            checked={currentDateType === dateType}
-            className="inline group"
-            key={dateType}
-            label={dateType}
-            name="radioGroup"
-            onChange={handleDateTypeChange}
-            value={dateType}
-          />
-        )
-      })}
+      <div>
+        {dateTypes.map(dateType => {
+          return (
+            <Radio
+              checked={currentDateType === dateType}
+              className="inline group"
+              key={dateType}
+              label={dateType}
+              name="radioGroup"
+              onChange={handleDateTypeChange}
+              value={dateType}
+            />
+          )
+        })}
+      </div>
     </FieldTemplate>
   )
 }

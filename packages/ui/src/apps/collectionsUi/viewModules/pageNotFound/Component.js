@@ -8,13 +8,15 @@ const PageNotFound = () => (
   <PageTemplate container fullViewHeight>
     <Grid columns={1} textAlign="left">
       <Grid.Column>
-        <Header>The page you are looking for could not be found.</Header>
-        Check the web address and try again. Or navigate to DINA Collections
-        start page.
+        <Header as="h1">Sorry, the page could not be found.</Header>
+        <p>
+          You may want to check the web address or perhaps that page does not
+          exist anymore.
+        </p>
       </Grid.Column>
       <Grid.Column>
         <Link to="/">
-          <Button primary>DINA Collections start</Button>
+          <Button primary>Go to Dina Collections start page</Button>
         </Link>
       </Grid.Column>
     </Grid>

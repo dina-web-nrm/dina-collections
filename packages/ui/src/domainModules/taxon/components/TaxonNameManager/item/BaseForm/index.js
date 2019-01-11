@@ -8,9 +8,10 @@ import {
   reset,
 } from 'redux-form'
 
-import formValidator from 'common/es5/error/validators/formValidator'
+import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { Form, FormRow } from 'coreModules/form/components'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { formModels } from '../../../../schemas'
 import customParts from '../../../formParts'
 import sectionSpecs from './sectionSpecs'
 
@@ -86,5 +87,7 @@ const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
 
 export default reduxForm({
   enableReinitialize: true,
-  validate: formValidator({ model: 'taxonName' }),
+  validate: compose(
+    customFormValidator({ model: 'taxonName', models: formModels })
+  ),
 })(EnhancedForm)

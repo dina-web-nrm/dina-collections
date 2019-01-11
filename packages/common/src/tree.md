@@ -139,7 +139,8 @@
 │       ├── date
 │       │   └── index.js
 │       ├── dbValidator.js
-│       └── formValidator.js
+│       ├── formValidator.js
+│       └── objectProperties
 ├── formatObject
 │   ├── coreToNested.js
 │   ├── coreToNested.test.js

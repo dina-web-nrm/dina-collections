@@ -7,6 +7,7 @@ const parts = [
       type: 'text',
     },
     name: 'name',
+    required: true,
     wrapInField: true,
   },
   {
@@ -15,6 +16,7 @@ const parts = [
       columnProps: { clear: true, width: 9 },
     },
     name: 'rank',
+    required: true,
     wrapInField: true,
   },
   {

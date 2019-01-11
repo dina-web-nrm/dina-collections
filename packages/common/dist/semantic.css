@@ -767,6 +767,16 @@ a {
   cursor: pointer;
 }
 
+/*--------------------
+     "required" asterisk :after
+---------------------*/
+
+.required.asterisk:after {
+  margin: -0.2em 0em 0em 0em;
+  content: '*';
+  color: #db2828;
+}
+
 /*******************************
          react-rangeslider
 *******************************/
@@ -19017,6 +19027,18 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------------
+     Required Field
+---------------------*/
+
+.ui.form .required.fields:not(.grouped) > .field > label:after,
+.ui.form .required.fields.grouped > label:after,
+.ui.form .required.field > label:after,
+.ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
+.ui.form .required.field > .checkbox:after {
+  margin: -0.1em 0em 0em -0.1em;
+}
 /*!
  * # Semantic UI 2.2.13 - Grid
  * http://github.com/semantic-org/semantic-ui/
@@ -21337,7 +21359,7 @@ ol.ui.horizontal.list li:before,
 }
 
 /*
-* Row with columns "floating" left or right
+* Row with columns "floating" left
 */
 
 .ui.grid > .row.left.floated .column:not(:last-child) {

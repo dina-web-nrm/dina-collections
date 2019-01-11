@@ -208,6 +208,16 @@ a {
   cursor: pointer;
 }
 
+/*--------------------
+     "required" asterisk :after
+---------------------*/
+
+.required.asterisk:after {
+  margin: -0.2em 0em 0em 0em;
+  content: '*';
+  color: #db2828;
+}
+
 
 /*******************************
          react-rangeslider

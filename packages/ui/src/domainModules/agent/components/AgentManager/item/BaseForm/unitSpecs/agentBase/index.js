@@ -18,6 +18,7 @@ const parts = [
       type: 'text',
     },
     name: 'fullName',
+    required: true,
     wrapInField: true,
   },
   {

@@ -7,6 +7,7 @@ const parts = [
       type: 'text',
     },
     name: 'name',
+    required: true,
     wrapInField: true,
   },
   {
@@ -15,6 +16,7 @@ const parts = [
       columnProps: { width: 9 },
     },
     name: 'group',
+    required: true,
     wrapInField: true,
   },
   {
@@ -23,6 +25,7 @@ const parts = [
       columnProps: { width: 9 },
     },
     name: 'parent.id',
+    required: true,
     wrapInField: true,
   },
 ]
