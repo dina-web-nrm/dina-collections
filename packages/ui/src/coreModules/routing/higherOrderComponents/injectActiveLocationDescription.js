@@ -31,23 +31,9 @@ const getActiveLocationTitleKey = createSelector(
   }
 )
 
-const getActiveLocationSubtitleKey = createSelector(
-  getSecondArgument,
-  (path = '') => {
-    if (path.includes('/specimens/mammals')) {
-      return 'mammals'
-    }
-    return undefined
-  }
-)
-
 const injectActiveLocationDescription = ComposedComponent => {
   const mapStateToProps = (_, { navigationItems, location: { pathname } }) => {
     return {
-      activeLocationSubtitleKey: getActiveLocationSubtitleKey(
-        navigationItems,
-        pathname
-      ),
       activeLocationTitleKey: getActiveLocationTitleKey(
         navigationItems,
         pathname
@@ -56,7 +42,6 @@ const injectActiveLocationDescription = ComposedComponent => {
   }
 
   const propTypes = {
-    activeLocationSubtitleKey: PropTypes.string,
     activeLocationTitleKey: PropTypes.string,
     i18n: PropTypes.shape({
       moduleTranslate: PropTypes.func.isRequired,
@@ -74,28 +59,22 @@ const injectActiveLocationDescription = ComposedComponent => {
     ),
   }
   const defaultProps = {
-    activeLocationSubtitleKey: undefined,
     activeLocationTitleKey: undefined,
     navigationItems: [],
   }
 
   class WithActiveLocationDescription extends Component {
     render() {
-      const {
-        activeLocationTitleKey,
-        activeLocationSubtitleKey,
-        i18n: { moduleTranslate },
-      } = this.props
-
+      const { activeLocationTitleKey, i18n: { moduleTranslate } } = this.props
       return (
         <ComposedComponent
           {...this.props}
           activeLocationSubtitle={
-            activeLocationSubtitleKey &&
+            activeLocationTitleKey !== 'start' &&
             moduleTranslate({
               capitalize: true,
-              fallback: activeLocationSubtitleKey,
-              textKey: activeLocationSubtitleKey,
+              fallback: 'pageSubtitle',
+              textKey: 'pageSubtitle',
             })
           }
           activeLocationTitle={
