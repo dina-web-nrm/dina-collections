@@ -114,7 +114,8 @@ function updateRelationship(_ref4) {
       log = _ref4$log === undefined ? defaultLog : _ref4$log,
       openApiClient = _ref4.openApiClient,
       relationKey = _ref4.relationKey,
-      relationship = _ref4.relationship;
+      relationship = _ref4.relationship,
+      resourcePath = _ref4.resourcePath;
   var id = item.id,
       type = item.type;
   var data = relationship.data;
@@ -127,7 +128,7 @@ function updateRelationship(_ref4) {
   });
   var inverseOperationId = inverseOperationIdMap[operationId];
   if (inverseOperationId) {
-    log.debug('inverse updateRelationship with ' + inverseOperationId + ' for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
+    log.debug('inverse updateRelationship with ' + inverseOperationId + ' for ' + resourcePath + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
 
     return deleteNotIncludedRelationships({
       inverseOperationId: inverseOperationId,
@@ -139,7 +140,7 @@ function updateRelationship(_ref4) {
       relationKey: relationKey,
       type: type
     }).then(function (removedRelationships) {
-      log.debug('inverse updateRelationship for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
+      log.debug('inverse updateRelationship for ' + resourcePath + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
       if (isArray) {
         var promises = data.map(function (relationshipItem) {
           return openApiClient.call(inverseOperationId, {
@@ -185,7 +186,7 @@ function updateRelationship(_ref4) {
     relationKey: relationKey,
     type: type
   }).then(function () {
-    log.debug('updateRelationship for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
+    log.debug('updateRelationship for ' + resourcePath + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
     return openApiClient.call(operationId, {
       body: { data: data },
       pathParams: {

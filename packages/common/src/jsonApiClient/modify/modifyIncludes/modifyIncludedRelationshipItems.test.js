@@ -1,11 +1,11 @@
 const {
-  modifyRelatedResourceItems,
+  modifyIncludedRelationshipItems,
   dep,
-} = require('./modifyRelatedResourceItems')
+} = require('./modifyIncludedRelationshipItems')
 
-describe('jsonApiClient/modify/modifyRelatedResourceItems', () => {
-  it('exports function modifyRelatedResourceItems', () => {
-    expect(typeof modifyRelatedResourceItems).toEqual('function')
+describe('jsonApiClient/modify/modifyIncludedRelationshipItems', () => {
+  it('exports function modifyIncludedRelationshipItems', () => {
+    expect(typeof modifyIncludedRelationshipItems).toEqual('function')
   })
 
   it('exports dep', () => {
@@ -17,7 +17,7 @@ describe('jsonApiClient/modify/modifyRelatedResourceItems', () => {
     let openApiClient
     beforeEach(() => {
       depSpies = dep.createSpies({
-        modifyRelatedResourceItem: () => {
+        modifyIncludedRelationshipItem: () => {
           return Promise.resolve({
             id: 1235,
             type: 'project',
@@ -28,7 +28,7 @@ describe('jsonApiClient/modify/modifyRelatedResourceItems', () => {
     })
 
     describe('Update case', () => {
-      it('Call modifyRelatedResourceItem for each item', () => {
+      it('Call modifyIncludedRelationshipItem for each item', () => {
         const items = [
           {
             id: 1234,
@@ -37,15 +37,15 @@ describe('jsonApiClient/modify/modifyRelatedResourceItems', () => {
             id: 1234,
           },
         ]
-        return modifyRelatedResourceItems({
+        return modifyIncludedRelationshipItems({
           items,
           openApiClient,
           relationKey: 'projects',
           resourcesToModify: ['projects'],
         }).then(() => {
-          expect(depSpies.modifyRelatedResourceItem.mock.calls.length).toEqual(
-            2
-          )
+          expect(
+            depSpies.modifyIncludedRelationshipItem.mock.calls.length
+          ).toEqual(2)
         })
       })
     })

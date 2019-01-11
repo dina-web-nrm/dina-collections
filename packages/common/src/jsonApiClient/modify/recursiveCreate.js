@@ -1,22 +1,24 @@
 const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 
-const { modifyRelationshipResources } = require('./modifyRelationshipResources')
+const { modifyIncludes } = require('./modifyIncludes')
 const { createWithRelationships } = require('./createWithRelationships')
 
 const dep = new Dependor({
   createWithRelationships,
-  modifyRelationshipResources,
+  modifyIncludes,
 })
 
 const defaultLog = createLog('common:jsonApiClient:recursiveCreate')
 
 function recursiveCreate(
   {
+    includesToModify,
     item,
     log = defaultLog,
     openApiClient,
-    resourcesToModify,
+    relationshipsToModify,
+    resourcePath: resourcePathInput,
     resourceType,
   } = {}
 ) {
@@ -49,33 +51,34 @@ function recursiveCreate(
       )
     }
 
-    log.debug('recursiveCreate: start', item)
+    const resourcePath = resourcePathInput || resourceType
+
+    log.debug(`${resourcePath} -> recursiveCreate`, item)
 
     return dep
-      .modifyRelationshipResources({
-        log: log.scope(),
+      .modifyIncludes({
+        includesToModify,
+        log: log.scope(`${resourcePath} -> modifyIncludes`),
         openApiClient,
         relationships,
-        resourcesToModify,
+        relationshipsToModify,
+        resourcePath,
       })
       .then(updatedRelationships => {
         const itemWithUpdatedRelationships = {
           ...item,
           relationships: updatedRelationships,
         }
-        log.debug(
-          'relationship resources updated. Item with updated relationships:',
-          itemWithUpdatedRelationships
-        )
+
         return dep
           .createWithRelationships({
             item: itemWithUpdatedRelationships,
-            log: log.scope(),
+            log: log.scope(`${resourcePath} -> createWithRelationships`),
             openApiClient,
-            resourcesToModify,
+            relationshipsToModify,
+            resourcePath,
           })
           .then(result => {
-            log.debug('recursiveCreate: done', result)
             return result
           })
       })

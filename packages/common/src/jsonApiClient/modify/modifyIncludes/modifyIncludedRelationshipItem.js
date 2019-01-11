@@ -1,7 +1,10 @@
 const createLog = require('../../../log')
 const { Dependor } = require('../../../Dependor')
+const shouldModifyInclude = require('../../utilities/shouldModifyInclude')
 
-const dep = new Dependor({})
+const dep = new Dependor({
+  shouldModifyInclude,
+})
 
 const setDependencies = (
   {
@@ -23,20 +26,24 @@ const setDependencies = (
   })
 }
 
-const defaultLog = createLog('common:jsonApiClient:modifyRelatedResourceItem')
+const defaultLog = createLog(
+  'common:jsonApiClient:modifyIncludedRelationshipItem'
+)
 
-function modifyRelatedResourceItem(
+function modifyIncludedRelationshipItem(
   {
+    includesToModify,
+    relationshipsToModify,
     item: itemInput,
     log = defaultLog,
     openApiClient,
     relationKey,
-    resourcesToModify,
+    resourcePath,
   } = {}
 ) {
   return Promise.resolve().then(() => {
     if (itemInput === null) {
-      log.debug(`Not updating relation: ${relationKey}, it is null`)
+      log.debug(`Not modifying ${relationKey}, it is null`)
       return null
     }
 
@@ -46,17 +53,10 @@ function modifyRelatedResourceItem(
 
     const item = itemInput
 
-    if (!resourcesToModify.includes(itemInput.type)) {
-      return {
-        id: itemInput.id,
-        type: itemInput.type,
-      }
-    }
-
     if (item.id) {
       if (!(item.attributes || item.relationships)) {
         log.debug(
-          `Not updating relation: ${relationKey}, id:${
+          `Not modifying ${relationKey}, id:${
             item.id
           }. has no attributes or relationships`,
           item
@@ -66,16 +66,15 @@ function modifyRelatedResourceItem(
           type: item.type,
         }
       }
-      log.debug(
-        `Recursive updating relation: ${relationKey}, id:${item.id}`,
-        item
-      )
+
       return dep
         .recursiveUpdate({
+          includesToModify,
           item,
-          log: log.scope(),
+          log,
           openApiClient,
-          resourcesToModify,
+          relationshipsToModify,
+          resourcePath,
           resourceType: item.type,
         })
         .then(response => {
@@ -88,14 +87,14 @@ function modifyRelatedResourceItem(
         })
     }
 
-    log.debug(`Recursive creating relation: ${relationKey}`, item)
-
     return dep
       .recursiveCreate({
+        includesToModify,
         item,
-        log: log.scope(),
+        log,
         openApiClient,
-        resourcesToModify,
+        relationshipsToModify,
+        resourcePath,
         resourceType: item.type,
       })
       .then(response => {
@@ -111,6 +110,6 @@ function modifyRelatedResourceItem(
 
 module.exports = {
   dep,
-  modifyRelatedResourceItem,
+  modifyIncludedRelationshipItem,
   setDependencies,
 }

@@ -29,21 +29,24 @@ function updateRelationships(_ref) {
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
       openApiClient = _ref.openApiClient,
-      relationships = _ref.relationships;
+      relationships = _ref.relationships,
+      resourcePath = _ref.resourcePath;
 
-  log.debug('updateRelationships: start', relationships);
+  if (!(0, _keys2.default)(relationships)) {
+    return _promise2.default.resolve();
+  }
   var promises = (0, _keys2.default)(relationships).map(function (relationKey) {
     var relationship = relationships[relationKey];
     return updateRelationship({
       item: item,
-      log: log.scope(),
+      log: log.scope(resourcePath + ' -> updateRelationship: ' + relationKey),
       openApiClient: openApiClient,
       relationKey: relationKey,
-      relationship: relationship
+      relationship: relationship,
+      resourcePath: resourcePath
     });
   });
   return _promise2.default.all(promises).then(function (result) {
-    log.debug('updateRelationships: done');
     return result;
   });
 }

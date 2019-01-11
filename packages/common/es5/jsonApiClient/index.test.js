@@ -1,5 +1,9 @@
 'use strict';
 
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 var _values = require('babel-runtime/core-js/object/values');
 
 var _values2 = _interopRequireDefault(_values);
@@ -13,6 +17,8 @@ var _typeof2 = require('babel-runtime/helpers/typeof');
 var _typeof3 = _interopRequireDefault(_typeof2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var clone = require('./utilities/clone');
 
 var _require = require('./index'),
     createJsonApiClient = _require.createJsonApiClient,
@@ -52,6 +58,12 @@ describe('jsonApiClient', function () {
       depSpies = dep.createSpies({
         createOpenApiClient: jest.fn(function () {
           return openApiClient;
+        }),
+        jsonApiCreate: jest.fn(function () {
+          return _promise2.default.resolve(openApiClient);
+        }),
+        jsonApiUpdate: jest.fn(function () {
+          return _promise2.default.resolve(openApiClient);
         })
       });
     });
@@ -78,7 +90,7 @@ describe('jsonApiClient', function () {
       expect(openApiClient.call).toHaveBeenCalledWith('placeGetOne');
     });
 
-    it('calls jsonApiUpdate with resourcesToModify based on resourceType', function () {
+    it('calls jsonApiUpdate with relationshipsToModify based on resourceType', function () {
       var input = { apiConfigInput: {}, createEndpoint: function createEndpoint() {} };
       var jsonApiClient = createJsonApiClient(input);
 
@@ -91,15 +103,17 @@ describe('jsonApiClient', function () {
       });
 
       expect(depSpies.jsonApiUpdate).toHaveBeenCalled();
-      expect(depSpies.jsonApiUpdate).toHaveBeenCalledWith({
+      expect(clone(depSpies.jsonApiUpdate.mock.calls[0][0])).toEqual(clone({
+        includesToModify: [],
         item: { id: '1' },
+        log: {},
         openApiClient: openApiClient,
-        resourcesToModify: [],
+        relationshipsToModify: ['all'],
         resourceType: 'agent'
-      });
+      }));
     });
 
-    it('calls jsonApiCreate with custom resourcesToModify', function () {
+    it('calls jsonApiCreate with custom relationshipsToModify', function () {
       var input = { apiConfigInput: {}, createEndpoint: function createEndpoint() {} };
       var jsonApiClient = createJsonApiClient(input);
 
@@ -109,38 +123,19 @@ describe('jsonApiClient', function () {
             age: 30
           }
         },
-        resourcesToModify: ['agent', 'user']
+        relationshipsToModify: ['user']
       });
 
       expect(depSpies.jsonApiCreate).toHaveBeenCalled();
-      expect(depSpies.jsonApiCreate).toHaveBeenCalledWith({
+
+      expect(clone(depSpies.jsonApiCreate.mock.calls[0][0])).toEqual(clone({
+        includesToModify: [],
         item: { age: 30 },
+        log: {},
         openApiClient: openApiClient,
-        resourcesToModify: ['agent', 'user'],
+        relationshipsToModify: ['agent.user'],
         resourceType: 'agent'
-      });
-    });
-
-    it('calls jsonApiCreate with custom resourcesToModify', function () {
-      var input = { apiConfigInput: {}, createEndpoint: function createEndpoint() {} };
-      var jsonApiClient = createJsonApiClient(input);
-
-      jsonApiClient.create('agent', {
-        body: {
-          data: {
-            age: 30
-          }
-        },
-        resourcesToModify: ['agent', 'user']
-      });
-
-      expect(depSpies.jsonApiCreate).toHaveBeenCalled();
-      expect(depSpies.jsonApiCreate).toHaveBeenCalledWith({
-        item: { age: 30 },
-        openApiClient: openApiClient,
-        resourcesToModify: ['agent', 'user'],
-        resourceType: 'agent'
-      });
+      }));
     });
 
     it('calls jsonApiGetOne', function () {

@@ -33,7 +33,12 @@ export default function updateAcFactory(
   }
 
   return function updateAc(
-    { item: rawItem, nested = false, throwError = true } = {}
+    {
+      item: rawItem,
+      nested = false,
+      throwError = true,
+      options: optionsOverride = {},
+    } = {}
   ) {
     log.debug(`${resource}.update called`, {
       item: rawItem,
@@ -58,6 +63,7 @@ export default function updateAcFactory(
 
       const callParams = {
         ...options,
+        ...optionsOverride,
         body: {
           data: {
             ...item,

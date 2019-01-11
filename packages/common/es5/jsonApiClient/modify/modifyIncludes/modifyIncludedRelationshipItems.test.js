@@ -10,13 +10,13 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _require = require('./modifyRelatedResourceItems'),
-    modifyRelatedResourceItems = _require.modifyRelatedResourceItems,
+var _require = require('./modifyIncludedRelationshipItems'),
+    modifyIncludedRelationshipItems = _require.modifyIncludedRelationshipItems,
     dep = _require.dep;
 
-describe('jsonApiClient/modify/modifyRelatedResourceItems', function () {
-  it('exports function modifyRelatedResourceItems', function () {
-    expect(typeof modifyRelatedResourceItems === 'undefined' ? 'undefined' : (0, _typeof3.default)(modifyRelatedResourceItems)).toEqual('function');
+describe('jsonApiClient/modify/modifyIncludedRelationshipItems', function () {
+  it('exports function modifyIncludedRelationshipItems', function () {
+    expect(typeof modifyIncludedRelationshipItems === 'undefined' ? 'undefined' : (0, _typeof3.default)(modifyIncludedRelationshipItems)).toEqual('function');
   });
 
   it('exports dep', function () {
@@ -28,7 +28,7 @@ describe('jsonApiClient/modify/modifyRelatedResourceItems', function () {
     var openApiClient = void 0;
     beforeEach(function () {
       depSpies = dep.createSpies({
-        modifyRelatedResourceItem: function modifyRelatedResourceItem() {
+        modifyIncludedRelationshipItem: function modifyIncludedRelationshipItem() {
           return _promise2.default.resolve({
             id: 1235,
             type: 'project'
@@ -39,19 +39,19 @@ describe('jsonApiClient/modify/modifyRelatedResourceItems', function () {
     });
 
     describe('Update case', function () {
-      it('Call modifyRelatedResourceItem for each item', function () {
+      it('Call modifyIncludedRelationshipItem for each item', function () {
         var items = [{
           id: 1234
         }, {
           id: 1234
         }];
-        return modifyRelatedResourceItems({
+        return modifyIncludedRelationshipItems({
           items: items,
           openApiClient: openApiClient,
           relationKey: 'projects',
           resourcesToModify: ['projects']
         }).then(function () {
-          expect(depSpies.modifyRelatedResourceItem.mock.calls.length).toEqual(2);
+          expect(depSpies.modifyIncludedRelationshipItem.mock.calls.length).toEqual(2);
         });
       });
     });

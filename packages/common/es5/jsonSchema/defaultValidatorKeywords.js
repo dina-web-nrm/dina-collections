@@ -14,9 +14,6 @@ var _require2 = require('../error/validators/date'),
     pastDateRange = _require2.pastDateRange,
     validIfNotEmptyRange = _require2.validIfNotEmptyRange;
 
-var _require3 = require('../error/validators/objectProperties'),
-    idRequired = _require3.idRequired;
-
 module.exports = {
   'x-validation-date-range-end-after-start': {
     schema: false,
@@ -62,10 +59,5 @@ module.exports = {
     schema: false,
     type: 'string',
     validate: longitude
-  },
-  'x-validation-parent-required': {
-    schema: false,
-    type: 'object',
-    validate: idRequired
   }
 };

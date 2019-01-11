@@ -1,13 +1,13 @@
 const createLogMock = require('../../../log/createLogMock')
 const {
-  modifyRelationshipResource,
+  modifyIncludedRelationship,
   dep,
-} = require('./modifyRelationshipResource')
+} = require('./modifyIncludedRelationship')
 const clone = require('../../utilities/clone')
 
-describe('jsonApiClient/modify/modifyRelationshipResource', () => {
-  it('exports function modifyRelationshipResource', () => {
-    expect(typeof modifyRelationshipResource).toEqual('function')
+describe('jsonApiClient/modify/modifyIncludedRelationship', () => {
+  it('exports function modifyIncludedRelationship', () => {
+    expect(typeof modifyIncludedRelationship).toEqual('function')
   })
   it('exports dep', () => {
     expect(typeof dep).toEqual('object')
@@ -15,7 +15,7 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
 
   it('rejects if relationship not provided', () => {
     expect.assertions(1)
-    return expect(modifyRelationshipResource({})).rejects.toThrow(
+    return expect(modifyIncludedRelationship({})).rejects.toThrow(
       'provide relationship'
     )
   })
@@ -23,7 +23,7 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
   it('rejects if relationship.data not provided', () => {
     expect.assertions(1)
     return expect(
-      modifyRelationshipResource({ relationship: {} })
+      modifyIncludedRelationship({ relationship: {} })
     ).rejects.toThrow('provide relationship.data')
   })
 
@@ -35,10 +35,10 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
       testLog = createLogMock('test')
 
       depSpies = dep.createSpies({
-        modifyRelatedResourceItem: () => {
+        modifyIncludedRelationshipItem: () => {
           return Promise.resolve({ id: 1, type: 'role' })
         },
-        modifyRelatedResourceItems: () => {
+        modifyIncludedRelationshipItems: () => {
           return Promise.resolve([
             { id: 1, type: 'project' },
             { id: 2, type: 'project' },
@@ -59,7 +59,7 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
             type: 'role',
           },
         }
-        return modifyRelationshipResource({
+        return modifyIncludedRelationship({
           log: testLog,
           openApiClient,
           relationship: relationshipInput,
@@ -67,10 +67,12 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
           result = res
         })
       })
-      it('call modifyRelatedResourceItem', () => {
-        expect(depSpies.modifyRelatedResourceItem.mock.calls.length).toEqual(1)
+      it('call modifyIncludedRelationshipItem', () => {
         expect(
-          clone(depSpies.modifyRelatedResourceItem.mock.calls[0][0])
+          depSpies.modifyIncludedRelationshipItem.mock.calls.length
+        ).toEqual(1)
+        expect(
+          clone(depSpies.modifyIncludedRelationshipItem.mock.calls[0][0])
         ).toEqual(
           clone({
             item: {
@@ -79,13 +81,15 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
               },
               type: 'role',
             },
-            log: testLog,
+            log: { scopeLevel: 1 },
             openApiClient,
           })
         )
       })
-      it('dont call modifyRelatedResourceItems', () => {
-        expect(depSpies.modifyRelatedResourceItems.mock.calls.length).toEqual(0)
+      it('dont call modifyIncludedRelationshipItems', () => {
+        expect(
+          depSpies.modifyIncludedRelationshipItems.mock.calls.length
+        ).toEqual(0)
       })
 
       it('return updated relationship', () => {
@@ -112,7 +116,7 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
             },
           ],
         }
-        return modifyRelationshipResource({
+        return modifyIncludedRelationship({
           log: testLog,
           openApiClient,
           relationship: relationshipInput,
@@ -120,13 +124,17 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
           result = res
         })
       })
-      it('dont call modifyRelatedResourceItem', () => {
-        expect(depSpies.modifyRelatedResourceItem.mock.calls.length).toEqual(0)
-      })
-      it('call modifyRelatedResourceItems', () => {
-        expect(depSpies.modifyRelatedResourceItems.mock.calls.length).toEqual(1)
+      it('dont call modifyIncludedRelationshipItem', () => {
         expect(
-          clone(depSpies.modifyRelatedResourceItems.mock.calls[0][0])
+          depSpies.modifyIncludedRelationshipItem.mock.calls.length
+        ).toEqual(0)
+      })
+      it('call modifyIncludedRelationshipItems', () => {
+        expect(
+          depSpies.modifyIncludedRelationshipItems.mock.calls.length
+        ).toEqual(1)
+        expect(
+          clone(depSpies.modifyIncludedRelationshipItems.mock.calls[0][0])
         ).toEqual(
           clone({
             items: [
@@ -143,7 +151,7 @@ describe('jsonApiClient/modify/modifyRelationshipResource', () => {
                 type: 'project',
               },
             ],
-            log: testLog,
+            log: { scopeLevel: 0 },
             openApiClient,
           })
         )

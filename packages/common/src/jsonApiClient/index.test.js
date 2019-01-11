@@ -1,3 +1,4 @@
+const clone = require('./utilities/clone')
 const { createJsonApiClient, dep } = require('./index')
 
 describe('jsonApiClient', () => {
@@ -41,6 +42,12 @@ describe('jsonApiClient', () => {
         createOpenApiClient: jest.fn(() => {
           return openApiClient
         }),
+        jsonApiCreate: jest.fn(() => {
+          return Promise.resolve(openApiClient)
+        }),
+        jsonApiUpdate: jest.fn(() => {
+          return Promise.resolve(openApiClient)
+        }),
       })
     })
     afterAll(() => {
@@ -66,7 +73,7 @@ describe('jsonApiClient', () => {
       expect(openApiClient.call).toHaveBeenCalledWith('placeGetOne')
     })
 
-    it('calls jsonApiUpdate with resourcesToModify based on resourceType', () => {
+    it('calls jsonApiUpdate with relationshipsToModify based on resourceType', () => {
       const input = { apiConfigInput: {}, createEndpoint: () => {} }
       const jsonApiClient = createJsonApiClient(input)
 
@@ -79,15 +86,19 @@ describe('jsonApiClient', () => {
       })
 
       expect(depSpies.jsonApiUpdate).toHaveBeenCalled()
-      expect(depSpies.jsonApiUpdate).toHaveBeenCalledWith({
-        item: { id: '1' },
-        openApiClient,
-        resourcesToModify: [],
-        resourceType: 'agent',
-      })
+      expect(clone(depSpies.jsonApiUpdate.mock.calls[0][0])).toEqual(
+        clone({
+          includesToModify: [],
+          item: { id: '1' },
+          log: {},
+          openApiClient,
+          relationshipsToModify: ['all'],
+          resourceType: 'agent',
+        })
+      )
     })
 
-    it('calls jsonApiCreate with custom resourcesToModify', () => {
+    it('calls jsonApiCreate with custom relationshipsToModify', () => {
       const input = { apiConfigInput: {}, createEndpoint: () => {} }
       const jsonApiClient = createJsonApiClient(input)
 
@@ -97,38 +108,21 @@ describe('jsonApiClient', () => {
             age: 30,
           },
         },
-        resourcesToModify: ['agent', 'user'],
+        relationshipsToModify: ['user'],
       })
 
       expect(depSpies.jsonApiCreate).toHaveBeenCalled()
-      expect(depSpies.jsonApiCreate).toHaveBeenCalledWith({
-        item: { age: 30 },
-        openApiClient,
-        resourcesToModify: ['agent', 'user'],
-        resourceType: 'agent',
-      })
-    })
 
-    it('calls jsonApiCreate with custom resourcesToModify', () => {
-      const input = { apiConfigInput: {}, createEndpoint: () => {} }
-      const jsonApiClient = createJsonApiClient(input)
-
-      jsonApiClient.create('agent', {
-        body: {
-          data: {
-            age: 30,
-          },
-        },
-        resourcesToModify: ['agent', 'user'],
-      })
-
-      expect(depSpies.jsonApiCreate).toHaveBeenCalled()
-      expect(depSpies.jsonApiCreate).toHaveBeenCalledWith({
-        item: { age: 30 },
-        openApiClient,
-        resourcesToModify: ['agent', 'user'],
-        resourceType: 'agent',
-      })
+      expect(clone(depSpies.jsonApiCreate.mock.calls[0][0])).toEqual(
+        clone({
+          includesToModify: [],
+          item: { age: 30 },
+          log: {},
+          openApiClient,
+          relationshipsToModify: ['agent.user'],
+          resourceType: 'agent',
+        })
+      )
     })
 
     it('calls jsonApiGetOne', () => {

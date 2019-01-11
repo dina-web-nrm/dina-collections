@@ -16,8 +16,8 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "yarn lint:js",
-    "test:unit": "NODE_ENV=test jest --env=node",
-    "test:unit:watch": "NODE_ENV=test jest --env=node --watch"
+    "test:unit": "NODE_ENV=test jest --roots=src --env=node",
+    "test:unit:watch": "NODE_ENV=test jest --roots=src --env=node --watch"
   },
   "dependencies": {
     "ajv": "^5.2.3",

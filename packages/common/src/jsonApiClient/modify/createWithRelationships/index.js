@@ -14,7 +14,13 @@ const dep = new Dependor({
 const defaultLog = createLog('common:jsonApiClient:createWithRelationships')
 
 function createWithRelationships(
-  { item, log = defaultLog, openApiClient } = {}
+  {
+    item,
+    log = defaultLog,
+    openApiClient,
+    relationshipsToModify,
+    resourcePath,
+  } = {}
 ) {
   return Promise.resolve().then(() => {
     if (!item) {
@@ -23,33 +29,58 @@ function createWithRelationships(
 
     const { relationships } = item
     const {
+      relationshipsToNotModify,
       relationshipsToIncludeInRequest,
       relationshipsToAssociateSeparately,
     } = dep.splitRelationships({
       itemResourceType: item.type,
       relationships,
+      relationshipsToModify,
+      resourcePath,
     })
-    log.debug('createWithRelationships', {
-      relationshipsToAssociateSeparately,
-      relationshipsToIncludeInRequest,
-    })
+    if (relationshipsToNotModify && relationshipsToNotModify.length) {
+      log
+        .scope()
+        .debug(
+          `${
+            resourcePath
+          } -> not updating relationships: ${relationshipsToNotModify.join(
+            ', '
+          )}`
+        )
+    }
+
+    if (
+      relationshipsToIncludeInRequest &&
+      Object.keys(relationshipsToIncludeInRequest).length
+    ) {
+      log
+        .scope()
+        .debug(
+          `${resourcePath} -> creating relationships as part of ${
+            resourcePath
+          } request: ${Object.keys(relationshipsToIncludeInRequest).join(', ')}`
+        )
+    }
+
     return dep
       .create({
         item: {
           ...item,
           relationships: relationshipsToIncludeInRequest,
         },
-        log: log.scope(),
+        log: log.scope(`${resourcePath} -> create`),
         openApiClient,
-        resourcesToModify: [item.type],
+        resourcePath,
       })
       .then(response => {
         return dep
           .updateRelationships({
             item: response.data,
-            log: log.scope(),
+            log: log.scope(`${resourcePath} -> updateRelationships`),
             openApiClient,
             relationships: relationshipsToAssociateSeparately,
+            resourcePath,
           })
           .then(() => {
             return response

@@ -34,26 +34,77 @@ const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
 
   const update = (resourceType, userOptions) => {
     log.debug(`update ${resourceType}`, userOptions)
-    const { body = {}, resourcesToModify = [] } = userOptions
+    const {
+      body = {},
+      relationshipsToModify: relativeRelationshipsToModify = [],
+      includesToModify: relativeIncludesToModify = [],
+    } = userOptions
+
     const item = body.data
-    return dep.jsonApiUpdate({
-      item,
-      openApiClient,
-      resourcesToModify,
-      resourceType,
+    const updateTreeLog = log.tree(`update ${resourceType} id: ${item.id}`)
+    const relationshipsToModify = !relativeRelationshipsToModify.length
+      ? ['all']
+      : relativeRelationshipsToModify.map(rel => {
+          return `${resourceType}.${rel}`
+        })
+    const includesToModify = relativeIncludesToModify.map(rel => {
+      return `${resourceType}.${rel}`
     })
+
+    return dep
+      .jsonApiUpdate({
+        includesToModify,
+        item,
+        log: updateTreeLog,
+        openApiClient,
+        relationshipsToModify,
+        resourceType,
+      })
+      .then(res => {
+        updateTreeLog.print()
+        return res
+      })
+      .catch(err => {
+        updateTreeLog.print()
+        throw err
+      })
   }
 
   const create = (resourceType, userOptions) => {
     log.debug(`create ${resourceType}`, userOptions)
-    const { body = {}, resourcesToModify = [] } = userOptions
+    const {
+      body = {},
+      relationshipsToModify: relativeRelationshipsToModify = [],
+      includesToModify: relativeIncludesToModify = [],
+    } = userOptions
     const item = body.data
-    return dep.jsonApiCreate({
-      item,
-      openApiClient,
-      resourcesToModify,
-      resourceType,
+    const createTreeLog = log.tree(`create ${resourceType}`)
+    const relationshipsToModify = !relativeRelationshipsToModify.length
+      ? ['all']
+      : relativeRelationshipsToModify.map(rel => {
+          return `${resourceType}.${rel}`
+        })
+    const includesToModify = relativeIncludesToModify.map(rel => {
+      return `${resourceType}.${rel}`
     })
+
+    return dep
+      .jsonApiCreate({
+        includesToModify,
+        item,
+        log: createTreeLog,
+        openApiClient,
+        relationshipsToModify,
+        resourceType,
+      })
+      .then(res => {
+        createTreeLog.print()
+        return res
+      })
+      .catch(err => {
+        createTreeLog.print()
+        throw err
+      })
   }
 
   const getOne = (resourceType, userOptions) => {

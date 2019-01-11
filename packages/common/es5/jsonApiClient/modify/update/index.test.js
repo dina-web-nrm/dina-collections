@@ -26,16 +26,14 @@ describe('jsonApiClient/modify/update', function () {
       item: {
         id: '123',
         type: 'user'
-      },
-      resourcesToModify: ['user']
+      }
     })).rejects.toThrow('provide openApiClient');
   });
 
   it('rejects if item not provided', function () {
     expect.assertions(1);
     return expect(update({
-      openApiClient: {},
-      resourcesToModify: ['user']
+      openApiClient: {}
     })).rejects.toThrow('item required');
   });
 
@@ -48,8 +46,7 @@ describe('jsonApiClient/modify/update', function () {
         },
         id: '123'
       },
-      openApiClient: {},
-      resourcesToModify: ['user']
+      openApiClient: {}
     })).rejects.toThrow('type is required');
   });
 
@@ -62,38 +59,8 @@ describe('jsonApiClient/modify/update', function () {
         },
         type: 'user'
       },
-      openApiClient: {},
-      resourcesToModify: ['user']
-    })).rejects.toThrow('id is required');
-  });
-
-  it('rejects if resourcesToModify not provided', function () {
-    expect.assertions(1);
-    return expect(update({
-      item: {
-        attributes: {
-          name: 'Alan'
-        },
-        id: 1,
-        type: 'user'
-      },
       openApiClient: {}
-    })).rejects.toThrow('resourcesToModify is required');
-  });
-
-  it('rejects if item.type not in resourcesToModify', function () {
-    expect.assertions(1);
-    return expect(update({
-      item: {
-        attributes: {
-          name: 'Alan'
-        },
-        id: 1,
-        type: 'user'
-      },
-      openApiClient: {},
-      resourcesToModify: ['project']
-    })).rejects.toThrow('resource: user is not included in resourcesToModify: [project]');
+    })).rejects.toThrow('id is required');
   });
 
   describe('with dependor', function () {
@@ -123,8 +90,7 @@ describe('jsonApiClient/modify/update', function () {
       };
       return update({
         item: item,
-        openApiClient: openApiClient,
-        resourcesToModify: ['user']
+        openApiClient: openApiClient
       }).then(function (res) {
         expect(depSpies.buildOperationId.mock.calls.length).toEqual(1);
         expect(depSpies.buildOperationId.mock.calls[0][0]).toEqual({

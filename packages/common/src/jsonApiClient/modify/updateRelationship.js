@@ -110,6 +110,7 @@ function updateRelationship({
   openApiClient,
   relationKey,
   relationship,
+  resourcePath,
 }) {
   const { id, type } = item
   const { data } = relationship
@@ -123,7 +124,7 @@ function updateRelationship({
   if (inverseOperationId) {
     log.debug(
       `inverse updateRelationship with ${inverseOperationId} for ${
-        item.type
+        resourcePath
       } -> ${item.id} @ key: ${relationKey}. relationships: `,
       data
     )
@@ -139,7 +140,7 @@ function updateRelationship({
       type,
     }).then(removedRelationships => {
       log.debug(
-        `inverse updateRelationship for ${item.type} -> ${item.id} @ key: ${
+        `inverse updateRelationship for ${resourcePath} -> ${item.id} @ key: ${
           relationKey
         }. relationships: `,
         data
@@ -190,7 +191,7 @@ function updateRelationship({
     type,
   }).then(() => {
     log.debug(
-      `updateRelationship for ${item.type} -> ${item.id} @ key: ${
+      `updateRelationship for ${resourcePath} -> ${item.id} @ key: ${
         relationKey
       }. relationships: `,
       data

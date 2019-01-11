@@ -51,15 +51,34 @@ var createJsonApiClient = function createJsonApiClient(_ref) {
     log.debug('update ' + resourceType, userOptions);
     var _userOptions$body = userOptions.body,
         body = _userOptions$body === undefined ? {} : _userOptions$body,
-        _userOptions$resource = userOptions.resourcesToModify,
-        resourcesToModify = _userOptions$resource === undefined ? [] : _userOptions$resource;
+        _userOptions$relation = userOptions.relationshipsToModify,
+        relativeRelationshipsToModify = _userOptions$relation === undefined ? [] : _userOptions$relation,
+        _userOptions$includes = userOptions.includesToModify,
+        relativeIncludesToModify = _userOptions$includes === undefined ? [] : _userOptions$includes;
+
 
     var item = body.data;
+    var updateTreeLog = log.tree('update ' + resourceType + ' id: ' + item.id);
+    var relationshipsToModify = !relativeRelationshipsToModify.length ? ['all'] : relativeRelationshipsToModify.map(function (rel) {
+      return resourceType + '.' + rel;
+    });
+    var includesToModify = relativeIncludesToModify.map(function (rel) {
+      return resourceType + '.' + rel;
+    });
+
     return dep.jsonApiUpdate({
+      includesToModify: includesToModify,
       item: item,
+      log: updateTreeLog,
       openApiClient: openApiClient,
-      resourcesToModify: resourcesToModify,
+      relationshipsToModify: relationshipsToModify,
       resourceType: resourceType
+    }).then(function (res) {
+      updateTreeLog.print();
+      return res;
+    }).catch(function (err) {
+      updateTreeLog.print();
+      throw err;
     });
   };
 
@@ -67,15 +86,33 @@ var createJsonApiClient = function createJsonApiClient(_ref) {
     log.debug('create ' + resourceType, userOptions);
     var _userOptions$body2 = userOptions.body,
         body = _userOptions$body2 === undefined ? {} : _userOptions$body2,
-        _userOptions$resource2 = userOptions.resourcesToModify,
-        resourcesToModify = _userOptions$resource2 === undefined ? [] : _userOptions$resource2;
+        _userOptions$relation2 = userOptions.relationshipsToModify,
+        relativeRelationshipsToModify = _userOptions$relation2 === undefined ? [] : _userOptions$relation2,
+        _userOptions$includes2 = userOptions.includesToModify,
+        relativeIncludesToModify = _userOptions$includes2 === undefined ? [] : _userOptions$includes2;
 
     var item = body.data;
+    var createTreeLog = log.tree('create ' + resourceType);
+    var relationshipsToModify = !relativeRelationshipsToModify.length ? ['all'] : relativeRelationshipsToModify.map(function (rel) {
+      return resourceType + '.' + rel;
+    });
+    var includesToModify = relativeIncludesToModify.map(function (rel) {
+      return resourceType + '.' + rel;
+    });
+
     return dep.jsonApiCreate({
+      includesToModify: includesToModify,
       item: item,
+      log: createTreeLog,
       openApiClient: openApiClient,
-      resourcesToModify: resourcesToModify,
+      relationshipsToModify: relationshipsToModify,
       resourceType: resourceType
+    }).then(function (res) {
+      createTreeLog.print();
+      return res;
+    }).catch(function (err) {
+      createTreeLog.print();
+      throw err;
     });
   };
 

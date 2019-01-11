@@ -11,9 +11,7 @@ const dep = new Dependor({
 
 const defaultLog = createLog('common:jsonApiClient:create')
 
-function create(
-  { item, log = defaultLog, openApiClient, resourcesToModify } = {}
-) {
+function create({ item, log = defaultLog, openApiClient } = {}) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
       throw new Error('provide openApiClient')
@@ -29,20 +27,6 @@ function create(
 
     if (item.id) {
       throw new Error('not allowed to create with id')
-    }
-
-    if (!resourcesToModify) {
-      throw new Error('resourcesToModify is required')
-    }
-
-    if (!resourcesToModify.includes(item.type)) {
-      throw new Error(
-        `resource: ${
-          item.type
-        } is not included in resourcesToModify: [${resourcesToModify.join(
-          ', '
-        )}]`
-      )
     }
 
     const { relationships, type } = item
