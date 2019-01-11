@@ -120,6 +120,10 @@
   "name": {
     "en": "name"
   },
+  "scientificNameOfRank": {
+    "en": "Scientific name of rank",
+    "sv": ""
+  },
   "notAssociatedWithTaxon": {
     "en": "this name is not associated with any taxon",
     "sv": ""

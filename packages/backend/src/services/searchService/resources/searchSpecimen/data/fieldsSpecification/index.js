@@ -29,6 +29,7 @@ const collectingEventCountry = require('./fields/collectingEventCountry')
 const collectingEventDistrict = require('./fields/collectingEventDistrict')
 const collectingEventEndDate = require('./fields/collectingEventEndDate')
 const collectingEventLocality = require('./fields/collectingEventLocality')
+const collectingEventInterpretedLocality = require('./fields/collectingEventInterpretedLocality')
 const collectingEventProvince = require('./fields/collectingEventProvince')
 const collectingEventStartDate = require('./fields/collectingEventStartDate')
 const deathInformationDeath = require('./fields/deathInformationDeath')
@@ -52,6 +53,7 @@ const recordEventCataloged = require('./fields/recordEventCataloged')
 const recordEventLastModified = require('./fields/recordEventLastModified')
 const recordEventRegistered = require('./fields/recordEventRegistered')
 const taxonomyCuratorialName = require('./fields/taxonomyCuratorialName')
+const taxonomyRank = require('./fields/taxonomyRank')
 const taxonomyFamily = require('./fields/taxonomyFamily')
 const taxonomyGenus = require('./fields/taxonomyGenus')
 const taxonomySpecies = require('./fields/taxonomySpecies')
@@ -87,6 +89,7 @@ module.exports = {
     collectingEventDistrict,
     collectingEventEndDate,
     collectingEventLocality,
+    collectingEventInterpretedLocality,
     collectingEventProvince,
     collectingEventStartDate,
     deathInformationDeath,
@@ -110,6 +113,7 @@ module.exports = {
     recordEventLastModified,
     recordEventRegistered,
     taxonomyCuratorialName,
+    taxonomyRank,
     taxonomyFamily,
     taxonomyGenus,
     taxonomySpecies,
