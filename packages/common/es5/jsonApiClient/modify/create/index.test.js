@@ -25,16 +25,14 @@ describe('jsonApiClient/modify/create', function () {
     return expect(create({
       item: {
         type: 'user'
-      },
-      resourcesToModify: ['user']
+      }
     })).rejects.toThrow('provide openApiClient');
   });
 
   it('rejects if item not provided', function () {
     expect.assertions(1);
     return expect(create({
-      openApiClient: {},
-      resourcesToModify: ['user']
+      openApiClient: {}
     })).rejects.toThrow('item required');
   });
 
@@ -42,8 +40,7 @@ describe('jsonApiClient/modify/create', function () {
     expect.assertions(1);
     return expect(create({
       item: {},
-      openApiClient: {},
-      resourcesToModify: ['user']
+      openApiClient: {}
     })).rejects.toThrow('type is required');
   });
 
@@ -54,30 +51,8 @@ describe('jsonApiClient/modify/create', function () {
         id: 2,
         type: 'user'
       },
-      openApiClient: {},
-      resourcesToModify: ['user']
-    })).rejects.toThrow('not allowed to create with id');
-  });
-
-  it('rejects if resourcesToModify not provided', function () {
-    expect.assertions(1);
-    return expect(create({
-      item: {
-        type: 'user'
-      },
       openApiClient: {}
-    })).rejects.toThrow('resourcesToModify is required');
-  });
-
-  it('rejects if item.type not in resourcesToModify', function () {
-    expect.assertions(1);
-    return expect(create({
-      item: {
-        type: 'user'
-      },
-      openApiClient: {},
-      resourcesToModify: ['project']
-    })).rejects.toThrow('resource: user is not included in resourcesToModify: [project]');
+    })).rejects.toThrow('not allowed to create with id');
   });
 
   describe('with dependor', function () {
@@ -106,8 +81,7 @@ describe('jsonApiClient/modify/create', function () {
       };
       return create({
         item: item,
-        openApiClient: openApiClient,
-        resourcesToModify: ['user']
+        openApiClient: openApiClient
       }).then(function (res) {
         expect(depSpies.buildOperationId.mock.calls.length).toEqual(1);
         expect(depSpies.buildOperationId.mock.calls[0][0]).toEqual({

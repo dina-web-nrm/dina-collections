@@ -15,8 +15,8 @@ var createLog = require('../../log');
 var _require = require('../../Dependor'),
     Dependor = _require.Dependor;
 
-var _require2 = require('./modifyRelationshipResources'),
-    modifyRelationshipResources = _require2.modifyRelationshipResources;
+var _require2 = require('./modifyIncludes'),
+    modifyIncludes = _require2.modifyIncludes;
 
 var _require3 = require('./updateWithRelationships'),
     updateWithRelationships = _require3.updateWithRelationships;
@@ -25,7 +25,7 @@ var _require4 = require('./updateRelationships'),
     updateRelationships = _require4.updateRelationships;
 
 var dep = new Dependor({
-  modifyRelationshipResources: modifyRelationshipResources,
+  modifyIncludes: modifyIncludes,
   updateRelationships: updateRelationships,
   updateWithRelationships: updateWithRelationships
 });
@@ -34,11 +34,13 @@ var defaultLog = createLog('common:jsonApiClient:recursiveUpdate');
 
 function recursiveUpdate() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      includesToModify = _ref.includesToModify,
       item = _ref.item,
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
       openApiClient = _ref.openApiClient,
-      resourcesToModify = _ref.resourcesToModify,
+      relationshipsToModify = _ref.relationshipsToModify,
+      resourcePathInput = _ref.resourcePath,
       resourceType = _ref.resourceType;
 
   return _promise2.default.resolve().then(function () {
@@ -71,25 +73,29 @@ function recursiveUpdate() {
       throw new Error('wrong item type: ' + type + ' for resourceType: ' + resourceType);
     }
 
-    log.debug('recursiveUpdate: start. id: ' + item.id, item);
+    var resourcePath = resourcePathInput || resourceType;
 
-    return dep.modifyRelationshipResources({
-      log: log.scope(),
+    log.debug(resourcePath + ' -> recursiveUpdate, id: ' + item.id, item);
+
+    return dep.modifyIncludes({
+      includesToModify: includesToModify,
+      log: log.scope(resourcePath + ' -> modifyIncludes'),
       openApiClient: openApiClient,
       relationships: relationships,
-      resourcesToModify: resourcesToModify
+      relationshipsToModify: relationshipsToModify,
+      resourcePath: resourcePath
     }).then(function (updatedRelationships) {
       var itemWithUpdatedRelationships = (0, _extends3.default)({}, item, {
         relationships: updatedRelationships
       });
-      log.debug('relationship resources updated. Item with updated relationships:', itemWithUpdatedRelationships);
+
       return dep.updateWithRelationships({
         item: itemWithUpdatedRelationships,
-        log: log.scope(),
+        log: log.scope(resourcePath + ' -> updateWithRelationships'),
         openApiClient: openApiClient,
-        resourcesToModify: resourcesToModify
+        relationshipsToModify: relationshipsToModify,
+        resourcePath: resourcePath
       }).then(function (result) {
-        log.debug('recursiveUpdate: done', result);
         return result;
       });
     });

@@ -10,17 +10,16 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createLogMock = require('../../../log/createLogMock');
 var clone = require('../../utilities/clone');
 
-var _require = require('./modifyRelatedResourceItem'),
-    modifyRelatedResourceItem = _require.modifyRelatedResourceItem,
+var _require = require('./modifyIncludedRelationshipItem'),
+    modifyIncludedRelationshipItem = _require.modifyIncludedRelationshipItem,
     dep = _require.dep,
     setDependencies = _require.setDependencies;
 
-describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
-  it('exports function modifyRelatedResourceItem', function () {
-    expect(typeof modifyRelatedResourceItem === 'undefined' ? 'undefined' : (0, _typeof3.default)(modifyRelatedResourceItem)).toEqual('function');
+describe('jsonApiClient/modify/modifyIncludedRelationshipItem', function () {
+  it('exports function modifyIncludedRelationshipItem', function () {
+    expect(typeof modifyIncludedRelationshipItem === 'undefined' ? 'undefined' : (0, _typeof3.default)(modifyIncludedRelationshipItem)).toEqual('function');
   });
   it('exports function setDependencies', function () {
     expect(typeof setDependencies === 'undefined' ? 'undefined' : (0, _typeof3.default)(setDependencies)).toEqual('function');
@@ -31,18 +30,17 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
 
   it('rejects if item not provided', function () {
     expect.assertions(1);
-    return expect(modifyRelatedResourceItem({})).rejects.toThrow('missing item and it is not null');
+    return expect(modifyIncludedRelationshipItem({})).rejects.toThrow('missing item and it is not null');
   });
   it('accepts if item is null', function () {
     expect(function () {
-      return modifyRelatedResourceItem({ item: null });
+      return modifyIncludedRelationshipItem({ item: null });
     }).not.toThrow();
   });
 
   describe('with dependor', function () {
     var depSpies = void 0;
     var openApiClient = void 0;
-    var testLog = void 0;
     beforeEach(function () {
       setDependencies({
         recursiveCreate: function recursiveCreate() {
@@ -52,7 +50,7 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
           return null;
         }
       });
-      testLog = createLogMock('test');
+
       depSpies = dep.createSpies({
         recursiveCreate: function recursiveCreate() {
           return _promise2.default.resolve({
@@ -78,11 +76,11 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
         var item = {
           id: 1234
         };
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item: item,
           openApiClient: openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['projects']
+          relationshipsToModify: ['projects']
         }).then(function () {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(0);
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0);
@@ -96,20 +94,20 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
           id: 1234,
           type: 'project'
         };
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item: item,
           openApiClient: openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['project']
+          relationshipsToModify: ['project']
         }).then(function () {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(1);
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0);
 
           expect(clone(depSpies.recursiveUpdate.mock.calls[0][0])).toEqual(clone({
             item: item,
-            log: testLog.scope(),
+            log: { scopeLevel: 0 },
             openApiClient: openApiClient,
-            resourcesToModify: ['project'],
+            relationshipsToModify: ['project'],
             resourceType: 'project'
           }));
         });
@@ -125,20 +123,20 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
           },
           type: 'project'
         };
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item: item,
           openApiClient: openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['project']
+          relationshipsToModify: ['project']
         }).then(function () {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(1);
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0);
 
           expect(clone(depSpies.recursiveUpdate.mock.calls[0][0])).toEqual(clone({
             item: item,
-            log: testLog.scope(),
+            log: { scopeLevel: 0 },
             openApiClient: openApiClient,
-            resourcesToModify: ['project'],
+            relationshipsToModify: ['project'],
             resourceType: 'project'
           }));
         });
@@ -152,20 +150,20 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
           },
           type: 'project'
         };
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item: item,
           openApiClient: openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['project']
+          relationshipsToModify: ['project']
         }).then(function () {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(0);
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(1);
 
           expect(clone(depSpies.recursiveCreate.mock.calls[0][0])).toEqual(clone({
             item: item,
-            log: testLog.scope(),
+            log: { scopeLevel: 0 },
             openApiClient: openApiClient,
-            resourcesToModify: ['project'],
+            relationshipsToModify: ['project'],
             resourceType: 'project'
           }));
         });

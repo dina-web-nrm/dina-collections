@@ -4,6 +4,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
 var _promise = require('babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
@@ -37,7 +41,9 @@ function createWithRelationships() {
       item = _ref.item,
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
-      openApiClient = _ref.openApiClient;
+      openApiClient = _ref.openApiClient,
+      relationshipsToModify = _ref.relationshipsToModify,
+      resourcePath = _ref.resourcePath;
 
   return _promise2.default.resolve().then(function () {
     if (!item) {
@@ -48,28 +54,36 @@ function createWithRelationships() {
 
     var _dep$splitRelationshi = dep.splitRelationships({
       itemResourceType: item.type,
-      relationships: relationships
+      relationships: relationships,
+      relationshipsToModify: relationshipsToModify,
+      resourcePath: resourcePath
     }),
+        relationshipsToNotModify = _dep$splitRelationshi.relationshipsToNotModify,
         relationshipsToIncludeInRequest = _dep$splitRelationshi.relationshipsToIncludeInRequest,
         relationshipsToAssociateSeparately = _dep$splitRelationshi.relationshipsToAssociateSeparately;
 
-    log.debug('createWithRelationships', {
-      relationshipsToAssociateSeparately: relationshipsToAssociateSeparately,
-      relationshipsToIncludeInRequest: relationshipsToIncludeInRequest
-    });
+    if (relationshipsToNotModify && relationshipsToNotModify.length) {
+      log.scope().debug(resourcePath + ' -> not updating relationships: ' + relationshipsToNotModify.join(', '));
+    }
+
+    if (relationshipsToIncludeInRequest && (0, _keys2.default)(relationshipsToIncludeInRequest).length) {
+      log.scope().debug(resourcePath + ' -> creating relationships as part of ' + resourcePath + ' request: ' + (0, _keys2.default)(relationshipsToIncludeInRequest).join(', '));
+    }
+
     return dep.create({
       item: (0, _extends3.default)({}, item, {
         relationships: relationshipsToIncludeInRequest
       }),
-      log: log.scope(),
+      log: log.scope(resourcePath + ' -> create'),
       openApiClient: openApiClient,
-      resourcesToModify: [item.type]
+      resourcePath: resourcePath
     }).then(function (response) {
       return dep.updateRelationships({
         item: response.data,
-        log: log.scope(),
+        log: log.scope(resourcePath + ' -> updateRelationships'),
         openApiClient: openApiClient,
-        relationships: relationshipsToAssociateSeparately
+        relationships: relationshipsToAssociateSeparately,
+        resourcePath: resourcePath
       }).then(function () {
         return response;
       });

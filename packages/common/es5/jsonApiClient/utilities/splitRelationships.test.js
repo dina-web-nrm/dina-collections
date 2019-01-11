@@ -8,11 +8,13 @@ describe('jsonApiClient/utilities/splitRelationships', function () {
   test('returns empty objects if no relationships', function () {
     var testValue = splitRelationships({
       itemResourceType: 'agent',
-      relationships: {}
+      relationships: {},
+      relationshipsToModify: []
     });
     var expectedResult = {
       relationshipsToAssociateSeparately: {},
-      relationshipsToIncludeInRequest: {}
+      relationshipsToIncludeInRequest: {},
+      relationshipsToNotModify: []
     };
 
     expect(testValue).toEqual(expectedResult);
@@ -31,7 +33,9 @@ describe('jsonApiClient/utilities/splitRelationships', function () {
         agents: { type: 'agent' },
         identifierTypes: { type: 'identifierType' },
         places: { type: 'place' }
-      }
+      },
+      relationshipsToModify: ['specimen.agents', 'specimen.identifierTypes', 'specimen.places'],
+      resourcePath: 'specimen'
     });
 
     var expectedResult = {
@@ -41,7 +45,8 @@ describe('jsonApiClient/utilities/splitRelationships', function () {
       relationshipsToIncludeInRequest: {
         identifierTypes: { type: 'identifierType' },
         places: { type: 'place' }
-      }
+      },
+      relationshipsToNotModify: []
     };
 
     expect(testValue).toEqual(expectedResult);

@@ -11,7 +11,11 @@ var createLog = require('../../../log');
 var _require = require('../../../Dependor'),
     Dependor = _require.Dependor;
 
-var dep = new Dependor({});
+var shouldModifyInclude = require('../../utilities/shouldModifyInclude');
+
+var dep = new Dependor({
+  shouldModifyInclude: shouldModifyInclude
+});
 
 var setDependencies = function setDependencies() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -32,20 +36,22 @@ var setDependencies = function setDependencies() {
   });
 };
 
-var defaultLog = createLog('common:jsonApiClient:modifyRelatedResourceItem');
+var defaultLog = createLog('common:jsonApiClient:modifyIncludedRelationshipItem');
 
-function modifyRelatedResourceItem() {
+function modifyIncludedRelationshipItem() {
   var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      includesToModify = _ref2.includesToModify,
+      relationshipsToModify = _ref2.relationshipsToModify,
       itemInput = _ref2.item,
       _ref2$log = _ref2.log,
       log = _ref2$log === undefined ? defaultLog : _ref2$log,
       openApiClient = _ref2.openApiClient,
       relationKey = _ref2.relationKey,
-      resourcesToModify = _ref2.resourcesToModify;
+      resourcePath = _ref2.resourcePath;
 
   return _promise2.default.resolve().then(function () {
     if (itemInput === null) {
-      log.debug('Not updating relation: ' + relationKey + ', it is null');
+      log.debug('Not modifying ' + relationKey + ', it is null');
       return null;
     }
 
@@ -55,27 +61,22 @@ function modifyRelatedResourceItem() {
 
     var item = itemInput;
 
-    if (!resourcesToModify.includes(itemInput.type)) {
-      return {
-        id: itemInput.id,
-        type: itemInput.type
-      };
-    }
-
     if (item.id) {
       if (!(item.attributes || item.relationships)) {
-        log.debug('Not updating relation: ' + relationKey + ', id:' + item.id + '. has no attributes or relationships', item);
+        log.debug('Not modifying ' + relationKey + ', id:' + item.id + '. has no attributes or relationships', item);
         return {
           id: item.id,
           type: item.type
         };
       }
-      log.debug('Recursive updating relation: ' + relationKey + ', id:' + item.id, item);
+
       return dep.recursiveUpdate({
+        includesToModify: includesToModify,
         item: item,
-        log: log.scope(),
+        log: log,
         openApiClient: openApiClient,
-        resourcesToModify: resourcesToModify,
+        relationshipsToModify: relationshipsToModify,
+        resourcePath: resourcePath,
         resourceType: item.type
       }).then(function (response) {
         var updatedItem = response.data;
@@ -89,13 +90,13 @@ function modifyRelatedResourceItem() {
       });
     }
 
-    log.debug('Recursive creating relation: ' + relationKey, item);
-
     return dep.recursiveCreate({
+      includesToModify: includesToModify,
       item: item,
-      log: log.scope(),
+      log: log,
       openApiClient: openApiClient,
-      resourcesToModify: resourcesToModify,
+      relationshipsToModify: relationshipsToModify,
+      resourcePath: resourcePath,
       resourceType: item.type
     }).then(function (response) {
       var createdItem = response.data;
@@ -112,6 +113,6 @@ function modifyRelatedResourceItem() {
 
 module.exports = {
   dep: dep,
-  modifyRelatedResourceItem: modifyRelatedResourceItem,
+  modifyIncludedRelationshipItem: modifyIncludedRelationshipItem,
   setDependencies: setDependencies
 };

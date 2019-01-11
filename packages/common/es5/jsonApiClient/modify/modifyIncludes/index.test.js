@@ -13,14 +13,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var createLogMock = require('../../../log/createLogMock');
 
 var _require = require('./index'),
-    modifyRelationshipResources = _require.modifyRelationshipResources,
+    modifyIncludes = _require.modifyIncludes,
     dep = _require.dep;
 
 var clone = require('../../utilities/clone');
 
-describe('jsonApiClient/modify/modifyRelationshipResources', function () {
-  it('exports function modifyRelationshipResources', function () {
-    expect(typeof modifyRelationshipResources === 'undefined' ? 'undefined' : (0, _typeof3.default)(modifyRelationshipResources)).toEqual('function');
+describe('jsonApiClient/modify/modifyIncludes', function () {
+  it('exports function modifyIncludes', function () {
+    expect(typeof modifyIncludes === 'undefined' ? 'undefined' : (0, _typeof3.default)(modifyIncludes)).toEqual('function');
   });
   it('exports dep', function () {
     expect(typeof dep === 'undefined' ? 'undefined' : (0, _typeof3.default)(dep)).toEqual('object');
@@ -28,14 +28,14 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
 
   it('rejects if openApiClient not provided', function () {
     expect.assertions(1);
-    return expect(modifyRelationshipResources({
+    return expect(modifyIncludes({
       relationships: {}
     })).rejects.toThrow('provide openApiClient');
   });
 
   it('return empty object if relationships not provided', function () {
     expect.assertions(1);
-    return modifyRelationshipResources({
+    return modifyIncludes({
       openApiClient: {}
     }).then(function (output) {
       expect(output).toEqual({});
@@ -44,7 +44,7 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
 
   it('return empty object if relationships is empty object ', function () {
     expect.assertions(1);
-    return modifyRelationshipResources({
+    return modifyIncludes({
       openApiClient: {}
     }).then(function (output) {
       expect(output).toEqual({});
@@ -59,7 +59,7 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
       testLog = createLogMock('test');
 
       depSpies = dep.createSpies({
-        modifyRelationshipResource: function modifyRelationshipResource(_ref) {
+        modifyIncludedRelationship: function modifyIncludedRelationship(_ref) {
           var relationKey = _ref.relationKey;
 
           if (relationKey === 'role') {
@@ -94,20 +94,23 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
             }]
           }
         };
-        return modifyRelationshipResources({
+        return modifyIncludes({
+          includesToModify: ['user.projects'],
           log: testLog,
           openApiClient: openApiClient,
           relationships: relationshipsInput,
-          resourcesToModify: ['project']
+          resourcePath: 'user'
         }).then(function (res) {
           result = res;
         });
       });
-      it('call modifyRelationshipResource', function () {
-        expect(depSpies.modifyRelationshipResource.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.modifyRelationshipResource.mock.calls[0][0])).toEqual(clone({
-          log: testLog.scope(),
+      it('call modifyIncludedRelationship', function () {
+        expect(depSpies.modifyIncludedRelationship.mock.calls.length).toEqual(1);
+        expect(clone(depSpies.modifyIncludedRelationship.mock.calls[0][0])).toEqual(clone({
+          includesToModify: ['user.projects'],
+          log: { scopeLevel: 0 },
           openApiClient: openApiClient,
+          parentPath: 'user',
           relationKey: 'projects',
           relationship: {
             data: [{
@@ -117,11 +120,11 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
               type: 'project'
             }]
           },
-          resourcesToModify: ['project']
+          resourcePath: 'user.projects'
         }));
       });
       it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(2);
+        expect(testLog.debug.mock.calls.length).toEqual(1);
       });
       it('return updated relationships', function () {
         expect(result).toEqual({
@@ -153,19 +156,21 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
             }
           }
         };
-        return modifyRelationshipResources({
+        return modifyIncludes({
           log: testLog,
           openApiClient: openApiClient,
-          relationships: relationshipsInput
+          relationships: relationshipsInput,
+          resourcePath: 'user'
         }).then(function (res) {
           result = res;
         });
       });
-      it('call modifyRelationshipResource for each relationship', function () {
-        expect(depSpies.modifyRelationshipResource.mock.calls.length).toEqual(2);
-        expect(clone(depSpies.modifyRelationshipResource.mock.calls[0][0])).toEqual(clone({
-          log: testLog.scope(),
+      it('call modifyIncludedRelationship for each relationship', function () {
+        expect(depSpies.modifyIncludedRelationship.mock.calls.length).toEqual(2);
+        expect(clone(depSpies.modifyIncludedRelationship.mock.calls[0][0])).toEqual(clone({
+          log: { scopeLevel: 0 },
           openApiClient: openApiClient,
+          parentPath: 'user',
           relationKey: 'projects',
           relationship: {
             data: [{
@@ -174,12 +179,14 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
               },
               type: 'project'
             }]
-          }
+          },
+          resourcePath: 'user.projects'
         }));
 
-        expect(clone(depSpies.modifyRelationshipResource.mock.calls[1][0])).toEqual(clone({
-          log: testLog.scope(),
+        expect(clone(depSpies.modifyIncludedRelationship.mock.calls[1][0])).toEqual(clone({
+          log: { scopeLevel: 0 },
           openApiClient: openApiClient,
+          parentPath: 'user',
           relationKey: 'role',
           relationship: {
             data: {
@@ -188,11 +195,12 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
               },
               type: 'role'
             }
-          }
+          },
+          resourcePath: 'user.role'
         }));
       });
       it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(2);
+        expect(testLog.debug.mock.calls.length).toEqual(1);
       });
       it('return updated relationships', function () {
         expect(result).toEqual({

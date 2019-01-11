@@ -104,7 +104,7 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         createWithRelationships: function createWithRelationships() {
           return _promise2.default.resolve({ data: createdItem });
         },
-        modifyRelationshipResources: function modifyRelationshipResources(_ref) {
+        modifyIncludes: function modifyIncludes(_ref) {
           var relationships = _ref.relationships;
 
           if (!relationships) {
@@ -151,12 +151,13 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         });
       });
 
-      it('call modifyRelationshipResources', function () {
-        expect(depSpies.modifyRelationshipResources.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.modifyRelationshipResources.mock.calls[0][0])).toEqual(clone({
+      it('call modifyIncludes', function () {
+        expect(depSpies.modifyIncludes.mock.calls.length).toEqual(1);
+        expect(clone(depSpies.modifyIncludes.mock.calls[0][0])).toEqual(clone({
           log: testLog.scope(),
           openApiClient: openApiClient,
-          relationships: item.relationships
+          relationships: item.relationships,
+          resourcePath: 'user'
         }));
       });
 
@@ -171,7 +172,8 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
             type: item.type
           },
           log: testLog.scope(),
-          openApiClient: openApiClient
+          openApiClient: openApiClient,
+          resourcePath: 'user'
         }));
       });
 
@@ -200,11 +202,12 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         });
       });
 
-      it('call modifyRelationshipResources', function () {
-        expect(depSpies.modifyRelationshipResources.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.modifyRelationshipResources.mock.calls[0][0])).toEqual(clone({
+      it('call modifyIncludes', function () {
+        expect(depSpies.modifyIncludes.mock.calls.length).toEqual(1);
+        expect(clone(depSpies.modifyIncludes.mock.calls[0][0])).toEqual(clone({
           log: testLog.scope(),
-          openApiClient: openApiClient
+          openApiClient: openApiClient,
+          resourcePath: 'user'
         }));
       });
 
@@ -217,7 +220,8 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
             type: item.type
           },
           log: testLog.scope(),
-          openApiClient: openApiClient
+          openApiClient: openApiClient,
+          resourcePath: 'user'
         }));
       });
       it('return created item', function () {

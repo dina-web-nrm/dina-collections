@@ -11,26 +11,29 @@ var createLog = require('../../../log');
 var _require = require('../../../Dependor'),
     Dependor = _require.Dependor;
 
-var _require2 = require('./modifyRelatedResourceItem'),
-    modifyRelatedResourceItem = _require2.modifyRelatedResourceItem;
+var _require2 = require('./modifyIncludedRelationshipItem'),
+    modifyIncludedRelationshipItem = _require2.modifyIncludedRelationshipItem;
 
-var _require3 = require('./modifyRelatedResourceItems'),
-    modifyRelatedResourceItems = _require3.modifyRelatedResourceItems;
+var _require3 = require('./modifyIncludedRelationshipItems'),
+    modifyIncludedRelationshipItems = _require3.modifyIncludedRelationshipItems;
 
 var dep = new Dependor({
-  modifyRelatedResourceItem: modifyRelatedResourceItem,
-  modifyRelatedResourceItems: modifyRelatedResourceItems
+  modifyIncludedRelationshipItem: modifyIncludedRelationshipItem,
+  modifyIncludedRelationshipItems: modifyIncludedRelationshipItems
 });
 
-var defaultLog = createLog('common:jsonApiClient:modifyRelationshipResource');
+var defaultLog = createLog('common:jsonApiClient:modifyIncludedRelationship');
 
-function modifyRelationshipResource(_ref) {
-  var _ref$log = _ref.log,
+function modifyIncludedRelationship(_ref) {
+  var includesToModify = _ref.includesToModify,
+      _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
       openApiClient = _ref.openApiClient,
+      parentPath = _ref.parentPath,
       relationKey = _ref.relationKey,
       relationship = _ref.relationship,
-      resourcesToModify = _ref.resourcesToModify;
+      relationshipsToModify = _ref.relationshipsToModify,
+      resourcePath = _ref.resourcePath;
 
   return _promise2.default.resolve().then(function () {
     if (!relationship) {
@@ -40,26 +43,33 @@ function modifyRelationshipResource(_ref) {
     if (relationship.data === undefined) {
       throw new Error('provide relationship.data');
     }
+
     var isArray = Array.isArray(relationship.data);
+
     if (isArray) {
-      return dep.modifyRelatedResourceItems({
+      return dep.modifyIncludedRelationshipItems({
+        includesToModify: includesToModify,
         items: relationship.data,
         log: log,
         openApiClient: openApiClient,
+        parentPath: parentPath,
         relationKey: relationKey,
-        resourcesToModify: resourcesToModify
+        relationshipsToModify: relationshipsToModify,
+        resourcePath: resourcePath
       }).then(function (updatedItems) {
         return {
           data: updatedItems
         };
       });
     }
-    return dep.modifyRelatedResourceItem({
+    return dep.modifyIncludedRelationshipItem({
+      includesToModify: includesToModify,
       item: relationship.data,
-      log: log,
+      log: log.scope(parentPath + ' -> modifyIncludedRelationshipItem for ' + resourcePath),
       openApiClient: openApiClient,
       relationKey: relationKey,
-      resourcesToModify: resourcesToModify
+      relationshipsToModify: relationshipsToModify,
+      resourcePath: resourcePath
     }).then(function (updatedItem) {
       return {
         data: updatedItem
@@ -70,5 +80,5 @@ function modifyRelationshipResource(_ref) {
 
 module.exports = {
   dep: dep,
-  modifyRelationshipResource: modifyRelationshipResource
+  modifyIncludedRelationship: modifyIncludedRelationship
 };

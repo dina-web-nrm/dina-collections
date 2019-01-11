@@ -32,8 +32,7 @@ function create() {
       item = _ref.item,
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
-      openApiClient = _ref.openApiClient,
-      resourcesToModify = _ref.resourcesToModify;
+      openApiClient = _ref.openApiClient;
 
   return _promise2.default.resolve().then(function () {
     if (!openApiClient) {
@@ -50,14 +49,6 @@ function create() {
 
     if (item.id) {
       throw new Error('not allowed to create with id');
-    }
-
-    if (!resourcesToModify) {
-      throw new Error('resourcesToModify is required');
-    }
-
-    if (!resourcesToModify.includes(item.type)) {
-      throw new Error('resource: ' + item.type + ' is not included in resourcesToModify: [' + resourcesToModify.join(', ') + ']');
     }
 
     var relationships = item.relationships,

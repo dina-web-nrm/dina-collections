@@ -12,29 +12,41 @@ var _require = require('../../Dependor'),
 var _require2 = require('../../schemaInterface'),
     getResourceRelationshipKeysToIncludeInBodyMap = _require2.getResourceRelationshipKeysToIncludeInBodyMap;
 
+var shouldModifyRelationship = require('./shouldModifyRelationship');
+
 var resourceRelationshipKeysToIncludeInBodyMap = getResourceRelationshipKeysToIncludeInBodyMap();
 
 var dep = new Dependor({
-  resourceRelationshipKeysToIncludeInBodyMap: resourceRelationshipKeysToIncludeInBodyMap
+  resourceRelationshipKeysToIncludeInBodyMap: resourceRelationshipKeysToIncludeInBodyMap,
+  shouldModifyRelationship: shouldModifyRelationship
 });
 
 function splitRelationships() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       itemResourceType = _ref.itemResourceType,
-      relationships = _ref.relationships;
+      relationships = _ref.relationships,
+      relationshipsToModify = _ref.relationshipsToModify,
+      resourcePath = _ref.resourcePath;
 
   var res = {
     relationshipsToAssociateSeparately: {},
-    relationshipsToIncludeInRequest: {}
+    relationshipsToIncludeInRequest: {},
+    relationshipsToNotModify: []
   };
 
   var relationshipKeysToIncludeInBody = dep.resourceRelationshipKeysToIncludeInBodyMap[itemResourceType] || [];
 
-  (0, _keys2.default)(relationships).forEach(function (key) {
-    if (relationshipKeysToIncludeInBody.includes(key)) {
-      res.relationshipsToIncludeInRequest[key] = relationships[key];
+  (0, _keys2.default)(relationships).forEach(function (relationKey) {
+    if (!shouldModifyRelationship({
+      relationKey: relationKey,
+      relationshipsToModify: relationshipsToModify,
+      resourcePath: resourcePath
+    })) {
+      res.relationshipsToNotModify.push(relationKey);
+    } else if (relationshipKeysToIncludeInBody.includes(relationKey)) {
+      res.relationshipsToIncludeInRequest[relationKey] = relationships[relationKey];
     } else {
-      res.relationshipsToAssociateSeparately[key] = relationships[key];
+      res.relationshipsToAssociateSeparately[relationKey] = relationships[relationKey];
     }
   });
   return res;

@@ -29,7 +29,7 @@ function update() {
       item = _ref.item,
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
-      resourcesToModify = _ref.resourcesToModify;
+      resourcePath = _ref.resourcePath;
 
   return _promise2.default.resolve().then(function () {
     if (!openApiClient) {
@@ -54,14 +54,6 @@ function update() {
       };
     }
 
-    if (!resourcesToModify) {
-      throw new Error('resourcesToModify is required');
-    }
-
-    if (!resourcesToModify.includes(item.type)) {
-      throw new Error('resource: ' + item.type + ' is not included in resourcesToModify: [' + resourcesToModify.join(', ') + ']');
-    }
-
     var id = item.id,
         relationships = item.relationships,
         type = item.type;
@@ -83,7 +75,7 @@ function update() {
       delete input.body.data.relationships;
     }
 
-    log.debug('Update resource ' + type + ' with operationId: ' + operationId + ' input:', input);
+    log.debug(resourcePath + ' -> Update resource with id: ' + id + ' through openApiClien: ' + operationId + ', input:', input);
 
     return openApiClient.call(operationId, input);
   });
