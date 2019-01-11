@@ -39,31 +39,11 @@ const RefineTagSelection = ({
         <Header size="medium">{`Refine filter (${numberOfSelectedResults}/${
           numberOfSearchResults
         })`}</Header>
-        {Object.keys(reduxFormValues).map(searchQuery => {
-          return (
-            <TagGroup
-              addTagTypeToText={addTagTypeToText}
-              key={searchQuery}
-              onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
-              onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
-              onToggleTagSelected={handleToggleTagSelected}
-              results={reduxFormValues[searchQuery].matchingTags}
-              searchQuery={searchQuery}
-            />
-          )
-        })}
-      </React.Fragment>
-    )
-  }
-
-  return (
-    <FormModal closeIcon onClose={handleClose} open>
-      <Modal.Header>{`Refine filter (${numberOfSelectedResults}/${
-        numberOfSearchResults
-      })`}</Modal.Header>
-      <Modal.Content>
-        <Modal.Description>
-          {Object.keys(reduxFormValues).map(searchQuery => {
+        {Object.keys(reduxFormValues)
+          .filter(key => {
+            return !reduxFormValues[key].searchOption.other.tagType
+          })
+          .map(searchQuery => {
             return (
               <TagGroup
                 addTagTypeToText={addTagTypeToText}
@@ -76,6 +56,34 @@ const RefineTagSelection = ({
               />
             )
           })}
+      </React.Fragment>
+    )
+  }
+
+  return (
+    <FormModal closeIcon onClose={handleClose} open>
+      <Modal.Header>{`Refine filter (${numberOfSelectedResults}/${
+        numberOfSearchResults
+      })`}</Modal.Header>
+      <Modal.Content>
+        <Modal.Description>
+          {Object.keys(reduxFormValues)
+            .filter(key => {
+              return !reduxFormValues[key].searchOption.other.tagType
+            })
+            .map(searchQuery => {
+              return (
+                <TagGroup
+                  addTagTypeToText={addTagTypeToText}
+                  key={searchQuery}
+                  onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
+                  onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
+                  onToggleTagSelected={handleToggleTagSelected}
+                  results={reduxFormValues[searchQuery].matchingTags}
+                  searchQuery={searchQuery}
+                />
+              )
+            })}
         </Modal.Description>
       </Modal.Content>
     </FormModal>

@@ -2,13 +2,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import { debounce } from 'lodash'
 
 import { MultipleSearchSelectionDropdown } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import RefineTagSelection from './RefineTagSelection'
+import RefineTagSelectionButton from './RefineTagSelectionButton'
 import TagTypeFilterInlineDropdown from './TagTypeFilterInlineDropdown'
 import * as selectors from './selectors'
 
@@ -360,10 +361,10 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       value: Object.keys(reduxFormValues || {}),
     }
 
-    const numberOfSearchResults = selectors.getNumberOfSearchResults(
+    const numberOfSearchResults = selectors.getNumberOfFreeTextSearchResults(
       reduxFormValues
     )
-    const numberOfSelectedResults = selectors.getNumberOfSelectedResults(
+    const numberOfSelectedResults = selectors.getNumberOfSelectedFreeTextResults(
       reduxFormValues
     )
 
@@ -394,14 +395,12 @@ class RawMultipleSearchTagsSelect extends PureComponent {
           })}
           onSearchChange={this.handleSearchChange}
           rightButton={
-            <Button
-              disabled={!reduxFormValues}
-              onClick={
-                refineOpen ? this.handleCloseRefine : this.handleOpenRefine
-              }
-            >
-              {`${numberOfSelectedResults}/${numberOfSearchResults}`}
-            </Button>
+            <RefineTagSelectionButton
+              onCloseRefine={this.handleCloseRefine}
+              onOpenRefine={this.handleOpenRefine}
+              reduxFormValues={reduxFormValues}
+              refineOpen={refineOpen}
+            />
           }
           type="multiple-search-selection-dropdown-connect"
         />

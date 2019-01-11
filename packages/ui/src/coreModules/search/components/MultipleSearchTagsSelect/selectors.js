@@ -1,22 +1,28 @@
 import { createSelector } from 'reselect'
 
-export const getAllSearchResults = createSelector(
+export const getAllFreeTextSearchResults = createSelector(
   searchQueryResultsMap => searchQueryResultsMap,
   searchQueryResultsMap => {
     return Object.values(searchQueryResultsMap || {}).reduce(
-      (allResults, { matchingTags }) => {
+      (allResults, { matchingTags, searchOption }) => {
+        if (searchOption.other.tagType) {
+          return allResults
+        }
         return allResults.concat(matchingTags)
       },
       []
     )
   }
 )
-export const getNumberOfSearchResults = createSelector(
-  getAllSearchResults,
-  allResults => allResults.length
+
+export const getNumberOfFreeTextSearchResults = createSelector(
+  getAllFreeTextSearchResults,
+  allResults => {
+    return allResults.length
+  }
 )
-export const getNumberOfSelectedResults = createSelector(
-  getAllSearchResults,
+export const getNumberOfSelectedFreeTextResults = createSelector(
+  getAllFreeTextSearchResults,
   allResults => {
     return allResults.reduce((count, { selected }) => {
       if (!selected) {
