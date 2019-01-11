@@ -1,17 +1,28 @@
-export default function createTagSpecification({
+export default function multipleSearchTagsSpecification({
   sectionName,
   includeTagTypesInAggregation = true,
   matchFilterFunctionName,
   searchFilterFunctionName,
   tagTypeAggregationFunctionName,
-  tagTypesFieldName,
   tagValuesAggregationFunctionName,
   tagValuesFieldName,
 }) {
   const tagValuesAggregation = ({ input = {}, sectionValues }) => {
     const selectedTagTypes = sectionValues && sectionValues.tagTypes
 
-    const { exact, tagType: tagInputType, tagValue, limit = 10 } = input
+    const {
+      exact,
+      tagType: tagInputType,
+      tagValue,
+      limit = 10,
+      aggregationFunctionType = 'value',
+    } = input
+
+    if (aggregationFunctionType === 'type') {
+      return {
+        aggregationFunction: tagTypeAggregationFunctionName,
+      }
+    }
 
     const tagTypes = tagInputType ? [tagInputType] : selectedTagTypes
 
@@ -23,12 +34,6 @@ export default function createTagSpecification({
         tagTypes: includeTagTypesInAggregation ? tagTypes : undefined,
         tagValue,
       },
-    }
-  }
-
-  const tagTypesAggregation = () => {
-    return {
-      aggregationFunction: tagTypeAggregationFunctionName,
     }
   }
 
@@ -77,43 +82,12 @@ export default function createTagSpecification({
     }
   }
 
-  const matchTagTypesFilter = (input = {}) => {
-    const { fieldValue } = input
-
-    if (!(fieldValue && fieldValue.length)) {
-      return null
-    }
-
-    const tagFilters = []
-
-    fieldValue.forEach(tagType => {
-      tagFilters.push({
-        filter: {
-          filterFunction: matchFilterFunctionName,
-          input: {
-            tagType,
-          },
-        },
-      })
-    })
-
-    return {
-      or: tagFilters,
-    }
-  }
-
   return [
     {
       aggregation: tagValuesAggregation,
       fieldName: tagValuesFieldName,
       matchFilter: matchTagValuesFilter,
       searchFilter: searchFilterFunctionName && searchFilter,
-      sectionName,
-    },
-    {
-      aggregation: tagTypesAggregation,
-      fieldName: tagTypesFieldName,
-      matchFilter: matchTagTypesFilter,
       sectionName,
     },
   ]
