@@ -1,11 +1,10 @@
-import createTagSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagSpecification'
+import createMultipleSearchTagsSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/multipleSearchTagsSpecification'
 
-export default createTagSpecification({
+export default createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchStorageLocationTags',
   searchFilterFunctionName: 'searchStorageLocationTags',
   sectionName: 'storage',
   tagTypeAggregationFunctionName: 'aggregateStorageLocationTagTypes',
-  tagTypesFieldName: 'storage.tagTypes',
   tagValuesAggregationFunctionName: 'aggregateStorageLocationTagValues',
   tagValuesFieldName: 'storage.tagValues',
 })
