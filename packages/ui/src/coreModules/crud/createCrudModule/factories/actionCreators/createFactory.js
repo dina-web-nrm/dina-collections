@@ -33,7 +33,12 @@ export default function createAcFactory(
   }
 
   return function createAc(
-    { item: rawItem, nested = false, throwError = true } = {}
+    {
+      item: rawItem,
+      nested = false,
+      throwError = true,
+      options: optionsOverride = {},
+    } = {}
   ) {
     log.debug(`${resource}.create called`, { item: rawItem, throwError })
 
@@ -57,6 +62,7 @@ export default function createAcFactory(
 
       const callParams = {
         ...options,
+        ...optionsOverride,
         body,
       }
 
