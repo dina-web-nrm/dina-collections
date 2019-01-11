@@ -84,7 +84,7 @@ function modifyIncludes(
         })
     })
     return Promise.all(promises).then(() => {
-      log.debug(`${resourcePath} -> includes modified`, {
+      log.debug(`${resourcePath} -> includes stripped from relationships`, {
         updatedRelationships,
       })
 
