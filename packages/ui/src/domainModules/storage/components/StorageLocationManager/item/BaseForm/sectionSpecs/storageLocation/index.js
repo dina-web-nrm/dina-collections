@@ -1,18 +1,9 @@
 import { recordHistoryEvents } from 'coreModules/form/components/units'
 import unitSpecs from '../../unitSpecs'
 
-const {
-  // connectedPreparationTypes,
-  // connectedTaxa,
-  storageLocationRoot,
-} = unitSpecs
+const { storageLocationRoot } = unitSpecs
 
-const units = [
-  storageLocationRoot,
-  // connectedTaxa,
-  // connectedPreparationTypes,
-  recordHistoryEvents,
-]
+const units = [storageLocationRoot, recordHistoryEvents]
 
 export default {
   name: 'storageLocation',

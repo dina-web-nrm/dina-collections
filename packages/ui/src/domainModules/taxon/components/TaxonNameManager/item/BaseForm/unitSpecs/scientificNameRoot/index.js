@@ -1,5 +1,12 @@
 const parts = [
   {
+    componentName: 'TranslatedHeader',
+    componentProps: {
+      as: 'h2',
+      textKey: 'headers.scientificName',
+    },
+  },
+  {
     componentName: 'Input',
     componentProps: {
       columnProps: { width: 9 },
@@ -32,6 +39,6 @@ const parts = [
 ]
 
 export default {
-  name: 'scientificName',
+  name: 'scientificNameRoot',
   parts,
 }

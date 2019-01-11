@@ -5,7 +5,7 @@ import {
 import unitSpecs from '../../unitSpecs'
 
 const {
-  agentBase,
+  agentRoot,
   agentBirthAndDeath,
   agentContactDetails,
   agentNameDetails,
@@ -13,7 +13,7 @@ const {
 } = unitSpecs
 
 const units = [
-  agentBase,
+  agentRoot,
   agentNameDetails,
   agentRoles,
   agentContactDetails,
