@@ -9,6 +9,7 @@ const findAndClearTaxonRelationship = ({
   relationshipKey,
   serviceInteractor,
   taxonId,
+  taxonNameId: taxonNameIdToClear,
 }) => {
   log.debug(`clear taxonId: ${taxonId} from taxonNames ${relationshipKey}`)
 
@@ -28,9 +29,12 @@ const findAndClearTaxonRelationship = ({
         return Promise.all(
           taxonNames
             .map(taxonName => {
-              if (taxonName && taxonName.id) {
-                const { id } = taxonName
+              const taxonNameId = taxonName && taxonName.id
 
+              if (
+                taxonNameId &&
+                (!taxonNameIdToClear || taxonNameIdToClear === taxonNameId)
+              ) {
                 return serviceInteractor.call({
                   operationId: `taxonNameUpdateRelationship${capitalizeFirstLetter(
                     relationshipKey
@@ -39,7 +43,7 @@ const findAndClearTaxonRelationship = ({
                     body: {
                       data: null,
                     },
-                    pathParams: { id },
+                    pathParams: { id: taxonNameId },
                   },
                 })
               }
@@ -77,6 +81,7 @@ exports.removeTaxonFromTaxonNames = ({ item, serviceInteractor }) => {
 
 exports.removeRelatedTaxonFromTaxonNames = ({ request, serviceInteractor }) => {
   const taxonId = objectPath.get(request, 'body.data.id')
+  const taxonNameId = objectPath.get(request, 'pathParams.id')
 
   if (!taxonId) {
     return null
@@ -87,11 +92,13 @@ exports.removeRelatedTaxonFromTaxonNames = ({ request, serviceInteractor }) => {
       relationshipKey: 'acceptedToTaxon',
       serviceInteractor,
       taxonId,
+      taxonNameId,
     }),
     findAndClearTaxonRelationship({
       relationshipKey: 'synonymToTaxon',
       serviceInteractor,
       taxonId,
+      taxonNameId,
     }),
   ])
 }
