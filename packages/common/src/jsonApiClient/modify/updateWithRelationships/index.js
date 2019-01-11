@@ -29,7 +29,7 @@ function updateWithRelationships(
 
     const { relationships } = item
     const {
-      relationshipsToNotUpdate,
+      relationshipsToNotModify,
       relationshipsToIncludeInRequest,
       relationshipsToAssociateSeparately,
     } = dep.splitRelationships({
@@ -39,13 +39,13 @@ function updateWithRelationships(
       resourcePath,
     })
 
-    if (relationshipsToNotUpdate && relationshipsToNotUpdate.length) {
+    if (relationshipsToNotModify && relationshipsToNotModify.length) {
       log
         .scope()
         .debug(
           `${
             resourcePath
-          } -> not updating relationships: ${relationshipsToNotUpdate.join(
+          } -> not updating relationships: ${relationshipsToNotModify.join(
             ', '
           )}`
         )
@@ -73,7 +73,6 @@ function updateWithRelationships(
         log: log.scope(`${resourcePath} -> update`),
         openApiClient,
         resourcePath,
-        resourcesToModify: [item.type],
       })
       .then(response => {
         return dep

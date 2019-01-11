@@ -10,7 +10,7 @@ describe('jsonApiClient/utilities/splitRelationships', () => {
     const expectedResult = {
       relationshipsToAssociateSeparately: {},
       relationshipsToIncludeInRequest: {},
-      relationshipsToNotUpdate: [],
+      relationshipsToNotModify: [],
     }
 
     expect(testValue).toEqual(expectedResult)
@@ -46,7 +46,7 @@ describe('jsonApiClient/utilities/splitRelationships', () => {
         identifierTypes: { type: 'identifierType' },
         places: { type: 'place' },
       },
-      relationshipsToNotUpdate: [],
+      relationshipsToNotModify: [],
     }
 
     expect(testValue).toEqual(expectedResult)

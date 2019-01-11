@@ -18,7 +18,7 @@ function splitRelationships(
   const res = {
     relationshipsToAssociateSeparately: {},
     relationshipsToIncludeInRequest: {},
-    relationshipsToNotUpdate: [],
+    relationshipsToNotModify: [],
   }
 
   const relationshipKeysToIncludeInBody =
@@ -32,7 +32,7 @@ function splitRelationships(
         resourcePath,
       })
     ) {
-      res.relationshipsToNotUpdate.push(relationKey)
+      res.relationshipsToNotModify.push(relationKey)
     } else if (relationshipKeysToIncludeInBody.includes(relationKey)) {
       res.relationshipsToIncludeInRequest[relationKey] =
         relationships[relationKey]
