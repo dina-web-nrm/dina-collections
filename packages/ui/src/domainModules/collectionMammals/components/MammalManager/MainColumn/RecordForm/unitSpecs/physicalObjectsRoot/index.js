@@ -12,6 +12,7 @@ const parts = [
     componentProps: {
       emptyStateTextKey: 'remarks.emptyState.collectionItems',
       model,
+      resultPrefixTextKey: 'remarks.resultPrefix.physicalObjects',
     },
     name: 'collectionItemsRemarks',
     wrapInField: true,
