@@ -1,12 +1,12 @@
 const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 
-const { modifyRelationshipResources } = require('./modifyRelationshipResources')
+const { modifyIncludes } = require('./modifyIncludes')
 const { updateWithRelationships } = require('./updateWithRelationships')
 const { updateRelationships } = require('./updateRelationships')
 
 const dep = new Dependor({
-  modifyRelationshipResources,
+  modifyIncludes,
   updateRelationships,
   updateWithRelationships,
 })
@@ -15,10 +15,12 @@ const defaultLog = createLog('common:jsonApiClient:recursiveUpdate')
 
 function recursiveUpdate(
   {
+    includesToModify,
     item,
     log = defaultLog,
     openApiClient,
-    resourcesToModify,
+    relationshipsToModify,
+    resourcePath: resourcePathInput,
     resourceType,
   } = {}
 ) {
@@ -51,33 +53,34 @@ function recursiveUpdate(
       )
     }
 
-    log.debug(`recursiveUpdate: start. id: ${item.id}`, item)
+    const resourcePath = resourcePathInput || resourceType
+
+    log.debug(`${resourcePath} -> recursiveUpdate, id: ${item.id}`, item)
 
     return dep
-      .modifyRelationshipResources({
-        log: log.scope(),
+      .modifyIncludes({
+        includesToModify,
+        log: log.scope(`${resourcePath} -> modifyIncludes`),
         openApiClient,
         relationships,
-        resourcesToModify,
+        relationshipsToModify,
+        resourcePath,
       })
       .then(updatedRelationships => {
         const itemWithUpdatedRelationships = {
           ...item,
           relationships: updatedRelationships,
         }
-        log.debug(
-          'relationship resources updated. Item with updated relationships:',
-          itemWithUpdatedRelationships
-        )
+
         return dep
           .updateWithRelationships({
             item: itemWithUpdatedRelationships,
-            log: log.scope(),
+            log: log.scope(`${resourcePath} -> updateWithRelationships`),
             openApiClient,
-            resourcesToModify,
+            relationshipsToModify,
+            resourcePath,
           })
           .then(result => {
-            log.debug('recursiveUpdate: done', result)
             return result
           })
       })

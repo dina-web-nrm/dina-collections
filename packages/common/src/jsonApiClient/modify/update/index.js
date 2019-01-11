@@ -10,7 +10,13 @@ const dep = new Dependor({
 const defaultLog = createLog('common:jsonApiClient:update')
 
 function update(
-  { openApiClient, item, log = defaultLog, resourcesToModify } = {}
+  {
+    openApiClient,
+    item,
+    log = defaultLog,
+    resourcesToModify,
+    resourcePath,
+  } = {}
 ) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
@@ -71,7 +77,9 @@ function update(
     }
 
     log.debug(
-      `Update resource ${type} with operationId: ${operationId} input:`,
+      `${resourcePath} -> Update resource with id: ${
+        id
+      } through openApiClien: ${operationId}, input:`,
       input
     )
 

@@ -4,17 +4,17 @@ const { recursiveUpdate } = require('./recursiveUpdate')
 const { recursiveCreate } = require('./recursiveCreate')
 
 const {
-  setDependencies: setModifyRelatedResourceItemDependencies,
-} = require('./modifyRelationshipResources/modifyRelatedResourceItem')
+  setDependencies: setModifyIncludesDependencies,
+} = require('./modifyIncludes/modifyIncludedRelationshipItem')
 
 const dep = new Dependor({
   recursiveCreate,
   recursiveUpdate,
-  setModifyRelatedResourceItemDependencies,
+  setModifyIncludesDependencies,
 })
 
 function setDependencies() {
-  dep.setModifyRelatedResourceItemDependencies({
+  dep.setModifyIncludesDependencies({
     recursiveCreate: dep.recursiveCreate,
     recursiveUpdate: dep.recursiveUpdate,
   })

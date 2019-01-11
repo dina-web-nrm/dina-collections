@@ -100,7 +100,7 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         type: 'user',
       }
       depSpies = dep.createSpies({
-        modifyRelationshipResources: ({ relationships }) => {
+        modifyIncludes: ({ relationships }) => {
           if (!relationships) {
             return Promise.resolve({})
           }
@@ -153,17 +153,14 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         })
       })
 
-      it('call modifyRelationshipResources', () => {
-        expect(depSpies.modifyRelationshipResources.mock.calls.length).toEqual(
-          1
-        )
-        expect(
-          clone(depSpies.modifyRelationshipResources.mock.calls[0][0])
-        ).toEqual(
+      it('call modifyIncludes', () => {
+        expect(depSpies.modifyIncludes.mock.calls.length).toEqual(1)
+        expect(clone(depSpies.modifyIncludes.mock.calls[0][0])).toEqual(
           clone({
             log: testLog.scope(),
             openApiClient,
             relationships: item.relationships,
+            resourcePath: 'user',
           })
         )
       })
@@ -184,6 +181,7 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
             },
             log: testLog.scope(),
             openApiClient,
+            resourcePath: 'user',
           })
         )
       })
@@ -214,16 +212,13 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         })
       })
 
-      it('call modifyRelationshipResources', () => {
-        expect(depSpies.modifyRelationshipResources.mock.calls.length).toEqual(
-          1
-        )
-        expect(
-          clone(depSpies.modifyRelationshipResources.mock.calls[0][0])
-        ).toEqual(
+      it('call modifyIncludes', () => {
+        expect(depSpies.modifyIncludes.mock.calls.length).toEqual(1)
+        expect(clone(depSpies.modifyIncludes.mock.calls[0][0])).toEqual(
           clone({
             log: testLog.scope(),
             openApiClient,
+            resourcePath: 'user',
           })
         )
       })
@@ -242,6 +237,7 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
             },
             log: testLog.scope(),
             openApiClient,
+            resourcePath: 'user',
           })
         )
       })

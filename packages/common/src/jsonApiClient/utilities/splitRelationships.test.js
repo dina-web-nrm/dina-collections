@@ -5,10 +5,12 @@ describe('jsonApiClient/utilities/splitRelationships', () => {
     const testValue = splitRelationships({
       itemResourceType: 'agent',
       relationships: {},
+      relationshipsToModify: [],
     })
     const expectedResult = {
       relationshipsToAssociateSeparately: {},
       relationshipsToIncludeInRequest: {},
+      relationshipsToNotUpdate: [],
     }
 
     expect(testValue).toEqual(expectedResult)
@@ -28,6 +30,12 @@ describe('jsonApiClient/utilities/splitRelationships', () => {
         identifierTypes: { type: 'identifierType' },
         places: { type: 'place' },
       },
+      relationshipsToModify: [
+        'specimen.agents',
+        'specimen.identifierTypes',
+        'specimen.places',
+      ],
+      resourcePath: 'specimen',
     })
 
     const expectedResult = {
@@ -38,6 +46,7 @@ describe('jsonApiClient/utilities/splitRelationships', () => {
         identifierTypes: { type: 'identifierType' },
         places: { type: 'place' },
       },
+      relationshipsToNotUpdate: [],
     }
 
     expect(testValue).toEqual(expectedResult)

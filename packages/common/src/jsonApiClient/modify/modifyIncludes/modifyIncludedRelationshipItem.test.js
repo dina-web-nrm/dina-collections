@@ -1,14 +1,13 @@
-const createLogMock = require('../../../log/createLogMock')
 const clone = require('../../utilities/clone')
 const {
-  modifyRelatedResourceItem,
+  modifyIncludedRelationshipItem,
   dep,
   setDependencies,
-} = require('./modifyRelatedResourceItem')
+} = require('./modifyIncludedRelationshipItem')
 
-describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
-  it('exports function modifyRelatedResourceItem', () => {
-    expect(typeof modifyRelatedResourceItem).toEqual('function')
+describe('jsonApiClient/modify/modifyIncludedRelationshipItem', () => {
+  it('exports function modifyIncludedRelationshipItem', () => {
+    expect(typeof modifyIncludedRelationshipItem).toEqual('function')
   })
   it('exports function setDependencies', () => {
     expect(typeof setDependencies).toEqual('function')
@@ -19,24 +18,23 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
 
   it('rejects if item not provided', () => {
     expect.assertions(1)
-    return expect(modifyRelatedResourceItem({})).rejects.toThrow(
+    return expect(modifyIncludedRelationshipItem({})).rejects.toThrow(
       'missing item and it is not null'
     )
   })
   it('accepts if item is null', () => {
-    expect(() => modifyRelatedResourceItem({ item: null })).not.toThrow()
+    expect(() => modifyIncludedRelationshipItem({ item: null })).not.toThrow()
   })
 
   describe('with dependor', () => {
     let depSpies
     let openApiClient
-    let testLog
     beforeEach(() => {
       setDependencies({
         recursiveCreate: () => null,
         recursiveUpdate: () => null,
       })
-      testLog = createLogMock('test')
+
       depSpies = dep.createSpies({
         recursiveCreate: () => {
           return Promise.resolve({
@@ -62,11 +60,11 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
         const item = {
           id: 1234,
         }
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item,
           openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['projects'],
+          relationshipsToModify: ['projects'],
         }).then(() => {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(0)
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0)
@@ -80,11 +78,11 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
           id: 1234,
           type: 'project',
         }
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item,
           openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['project'],
+          relationshipsToModify: ['project'],
         }).then(() => {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(1)
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0)
@@ -92,9 +90,9 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
           expect(clone(depSpies.recursiveUpdate.mock.calls[0][0])).toEqual(
             clone({
               item,
-              log: testLog.scope(),
+              log: { scopeLevel: 0 },
               openApiClient,
-              resourcesToModify: ['project'],
+              relationshipsToModify: ['project'],
               resourceType: 'project',
             })
           )
@@ -111,11 +109,11 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
           },
           type: 'project',
         }
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item,
           openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['project'],
+          relationshipsToModify: ['project'],
         }).then(() => {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(1)
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(0)
@@ -123,9 +121,9 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
           expect(clone(depSpies.recursiveUpdate.mock.calls[0][0])).toEqual(
             clone({
               item,
-              log: testLog.scope(),
+              log: { scopeLevel: 0 },
               openApiClient,
-              resourcesToModify: ['project'],
+              relationshipsToModify: ['project'],
               resourceType: 'project',
             })
           )
@@ -140,11 +138,11 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
           },
           type: 'project',
         }
-        return modifyRelatedResourceItem({
+        return modifyIncludedRelationshipItem({
           item,
           openApiClient,
           relationKey: 'projects',
-          resourcesToModify: ['project'],
+          relationshipsToModify: ['project'],
         }).then(() => {
           expect(depSpies.recursiveUpdate.mock.calls.length).toEqual(0)
           expect(depSpies.recursiveCreate.mock.calls.length).toEqual(1)
@@ -152,9 +150,9 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', () => {
           expect(clone(depSpies.recursiveCreate.mock.calls[0][0])).toEqual(
             clone({
               item,
-              log: testLog.scope(),
+              log: { scopeLevel: 0 },
               openApiClient,
-              resourcesToModify: ['project'],
+              relationshipsToModify: ['project'],
               resourceType: 'project',
             })
           )

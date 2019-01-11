@@ -13,24 +13,25 @@ function updateRelationships({
   log = defaultLog,
   openApiClient,
   relationships,
+  resourcePath,
 }) {
-  log.debug('updateRelationships: start', relationships)
+  if (!Object.keys(relationships)) {
+    return Promise.resolve()
+  }
   const promises = Object.keys(relationships).map(relationKey => {
     const relationship = relationships[relationKey]
     return updateRelationship({
       item,
-      log: log.scope(),
+      log: log.scope(`${resourcePath} -> updateRelationship: ${relationKey}`),
       openApiClient,
       relationKey,
       relationship,
+      resourcePath,
     })
   })
   return Promise.all(promises).then(result => {
-    log.debug('updateRelationships: done')
     return result
   })
-
-  // return Object.keys(relationships).map(relationKey => {})
 }
 
 module.exports = {

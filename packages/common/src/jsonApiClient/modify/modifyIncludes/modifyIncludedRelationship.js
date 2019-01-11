@@ -1,22 +1,29 @@
 const createLog = require('../../../log')
 const { Dependor } = require('../../../Dependor')
 
-const { modifyRelatedResourceItem } = require('./modifyRelatedResourceItem')
-const { modifyRelatedResourceItems } = require('./modifyRelatedResourceItems')
+const {
+  modifyIncludedRelationshipItem,
+} = require('./modifyIncludedRelationshipItem')
+const {
+  modifyIncludedRelationshipItems,
+} = require('./modifyIncludedRelationshipItems')
 
 const dep = new Dependor({
-  modifyRelatedResourceItem,
-  modifyRelatedResourceItems,
+  modifyIncludedRelationshipItem,
+  modifyIncludedRelationshipItems,
 })
 
-const defaultLog = createLog('common:jsonApiClient:modifyRelationshipResource')
+const defaultLog = createLog('common:jsonApiClient:modifyIncludedRelationship')
 
-function modifyRelationshipResource({
+function modifyIncludedRelationship({
+  includesToModify,
   log = defaultLog,
   openApiClient,
+  parentPath,
   relationKey,
   relationship,
-  resourcesToModify,
+  relationshipsToModify,
+  resourcePath,
 }) {
   return Promise.resolve().then(() => {
     if (!relationship) {
@@ -26,15 +33,20 @@ function modifyRelationshipResource({
     if (relationship.data === undefined) {
       throw new Error('provide relationship.data')
     }
+
     const isArray = Array.isArray(relationship.data)
+
     if (isArray) {
       return dep
-        .modifyRelatedResourceItems({
+        .modifyIncludedRelationshipItems({
+          includesToModify,
           items: relationship.data,
           log,
           openApiClient,
+          parentPath,
           relationKey,
-          resourcesToModify,
+          relationshipsToModify,
+          resourcePath,
         })
         .then(updatedItems => {
           return {
@@ -43,12 +55,16 @@ function modifyRelationshipResource({
         })
     }
     return dep
-      .modifyRelatedResourceItem({
+      .modifyIncludedRelationshipItem({
+        includesToModify,
         item: relationship.data,
-        log,
+        log: log.scope(
+          `${parentPath} -> modifyIncludedRelationshipItem for ${resourcePath}`
+        ),
         openApiClient,
         relationKey,
-        resourcesToModify,
+        relationshipsToModify,
+        resourcePath,
       })
       .then(updatedItem => {
         return {
@@ -60,5 +76,5 @@ function modifyRelationshipResource({
 
 module.exports = {
   dep,
-  modifyRelationshipResource,
+  modifyIncludedRelationship,
 }
