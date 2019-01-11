@@ -94,6 +94,10 @@ class StorageLocationManager extends Component {
       limit: 100, // something big enough to likely return >=30 specimens if available
       queryParams: { filter: { storageLocationId: itemId } },
     }).then(physicalObjects => {
+      if (!physicalObjects.length) {
+        return []
+      }
+
       const physicalObjectIds = physicalObjects.map(({ id }) => id)
 
       return getManySpecimen({
