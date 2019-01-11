@@ -93,6 +93,7 @@ class TaxonNameManager extends Component {
         buildEditItemHeaders={this.buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        filterHeader="Find scientific names"
         filterResourceCount={filterResourceCount}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}

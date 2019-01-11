@@ -10,6 +10,7 @@ import BottomBar from './BottomBar'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  filterHeader: PropTypes.string,
   filterValues: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
   renderFilterForm: PropTypes.func.isRequired,
@@ -17,6 +18,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  filterHeader: 'Filter',
   filterValues: undefined,
 }
 const rows = [
@@ -49,7 +51,9 @@ class FilterColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'header': {
-        return <ColumnRowHeader text="Filter" />
+        const { filterHeader } = this.props
+
+        return <ColumnRowHeader text={filterHeader} />
       }
       case 'filterForm': {
         const { filterValues: initialValues = {} } = this.props

@@ -150,6 +150,7 @@ class StorageLocationManager extends Component {
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         fetchRelationshipsBeforeDelete={this.fetchRelationshipsBeforeDelete}
+        filterHeader="Find storage locations"
         onInteraction={this.handleInteraction}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}

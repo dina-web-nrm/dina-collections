@@ -85,6 +85,7 @@ class LocalityManager extends Component {
         baseTreeFilter={baseTreeFilter}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        filterHeader="Find geography"
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}

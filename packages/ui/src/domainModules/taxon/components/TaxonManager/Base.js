@@ -140,6 +140,7 @@ class TaxonManager extends Component {
         buildEditItemHeaders={this.buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        filterHeader="Find taxa"
         itemFetchOptions={itemFetchOptions}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
