@@ -1,12 +1,36 @@
+* Setup new machine
+** docker
+*** with sample data
+*** with real data
+**** first with sample data then deploy data updates
 
-Fix api client
-1. Fix tests
-2. Ensure update is working
+** non docker
+*** with sample data
+*** with real data
+**** first with sample data then deploy data updates
 
-3. Update interface and adapt to new update (in crud config)
-4. Add logs for create
-5. Implement for create
-6. Update tests for create
+* Deploy new version without data updates
+** docker
+
+** non-docker
+
+* Deploy new version with data updates
+** docker
+*** with sample data
+*** with real data
+
+** non-docker
+*** with sample data
+*** with real data
+
+* Deploy data updates
+** docker
+*** with sample data
+*** with real data
+
+** non-docker
+*** with sample data
+*** with real data
 
 
 
