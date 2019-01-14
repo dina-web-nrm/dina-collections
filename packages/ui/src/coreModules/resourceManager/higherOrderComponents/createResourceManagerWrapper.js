@@ -592,15 +592,24 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     handleToggleCurrentRow(mode) {
-      const { focusedIndex, expandedIds, listItems, managerScope } = this.props
-      const listItem = listItems[focusedIndex]
-      const id = listItem && listItem.id
+      const {
+        focusedIndex,
+        expandedIds,
+        listItems,
+        managerScope,
+        treeActive,
+      } = this.props
 
-      const updatedExpandedIds = {
-        ...expandedIds,
-        [id]: mode === 'expand',
+      if (treeActive) {
+        const listItem = listItems[focusedIndex]
+        const id = listItem && listItem.id
+
+        const updatedExpandedIds = {
+          ...expandedIds,
+          [id]: mode === 'expand',
+        }
+        this.props.setExpandedIds(updatedExpandedIds, { managerScope })
       }
-      this.props.setExpandedIds(updatedExpandedIds, { managerScope })
     }
 
     handleClickRow(_, itemId) {
