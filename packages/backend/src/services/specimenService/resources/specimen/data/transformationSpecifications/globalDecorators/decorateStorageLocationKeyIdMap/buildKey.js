@@ -14,10 +14,10 @@ const internalBuildKey = segments => {
 
 module.exports = function buildKey({
   parents,
-  storageLevel1,
-  storageLevel2,
+  room,
+  mountingWall,
   storageLevel3,
-  storageLevel4,
+  shelf,
   storageLevel5,
   storageLocation,
 }) {
@@ -30,13 +30,7 @@ module.exports = function buildKey({
       storageLocation.attributes.name,
     ]
   } else {
-    segments = [
-      storageLevel1,
-      storageLevel2,
-      storageLevel3,
-      storageLevel4,
-      storageLevel5,
-    ]
+    segments = [room, mountingWall, storageLevel3, shelf, storageLevel5]
   }
 
   return internalBuildKey(segments)

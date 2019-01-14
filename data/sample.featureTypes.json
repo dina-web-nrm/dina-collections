@@ -296,8 +296,8 @@
     "group": "length",
     "key": "total-length",
     "name": {
-      "en": "total length",
-      "sv": "totallängd"
+      "en": "total",
+      "sv": "total"
     },
     "selectableUnits": [
       {
@@ -334,8 +334,8 @@
     "group": "length",
     "key": "body-length",
     "name": {
-      "en": "body length",
-      "sv": "kroppslängd"
+      "en": "body",
+      "sv": "kropp"
     },
     "selectableUnits": [
       {
@@ -372,8 +372,8 @@
     "group": "length",
     "key": "tail-to-anus-length",
     "name": {
-      "en": "tail–anus length",
-      "sv": "längd stjärt–anus"
+      "en": "tail–anus",
+      "sv": "stjärt–anus"
     },
     "selectableUnits": [
       {
@@ -410,8 +410,8 @@
     "group": "length",
     "key": "tail-to-pelvis-length",
     "name": {
-      "en": "tail–pelvis length",
-      "sv": "längd stjärt–pelvis"
+      "en": "tail–pelvis",
+      "sv": "stjärt–pelvis"
     },
     "selectableUnits": [
       {
@@ -448,8 +448,8 @@
     "group": "length",
     "key": "ear-length",
     "name": {
-      "en": "ear length",
-      "sv": "öronlängd"
+      "en": "ear",
+      "sv": "öra"
     },
     "selectableUnits": [
       {
@@ -486,8 +486,8 @@
     "group": "length",
     "key": "hind-foot-length",
     "name": {
-      "en": "hind foot length",
-      "sv": "bakfotens längd"
+      "en": "hind foot",
+      "sv": "bakfot"
     },
     "selectableUnits": [
       {
@@ -593,8 +593,8 @@
     "group": "weight",
     "key": "complete-body-weight",
     "name": {
-      "en": "complete body",
-      "sv": "totalvikt"
+      "en": "complete",
+      "sv": "total"
     },
     "selectableUnits": [
       {
@@ -625,7 +625,7 @@
     "key": "skinned-weight",
     "name": {
       "en": "skinned",
-      "sv": "flådd vikt"
+      "sv": "flådd"
     },
     "selectableUnits": [
       {
@@ -649,7 +649,7 @@
     "key": "gutted-weight",
     "name": {
       "en": "gutted",
-      "sv": "passad vikt"
+      "sv": "passad"
     },
     "selectableUnits": [
       {
@@ -680,7 +680,7 @@
     "key": "slaughtered-weight",
     "name": {
       "en": "slaughtered",
-      "sv": "slaktvikt"
+      "sv": "slakt"
     },
     "selectableUnits": [
       {

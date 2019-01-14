@@ -27,7 +27,7 @@ const findLevel2ParentSufix = storageLocation => {
     return ''
   }
 
-  const isLevel2 = storageLocation.group === 'Level 2'
+  const isLevel2 = storageLocation.group === 'mountingWall'
   if (isLevel2) {
     return ` ${storageLocation.name}`
   }
@@ -40,15 +40,15 @@ const findLevel2ParentSufix = storageLocation => {
 }
 
 const fetchSufix = storageLocation => {
-  if (storageLocation.group === 'Level 1') {
-    return ' on level 1'
+  if (storageLocation.group === 'room') {
+    return ` room`
   }
 
-  if (storageLocation.group === 'Level 2') {
+  if (storageLocation.group === 'mountingWall') {
     if (storageLocation.parent) {
       return ` in ${storageLocation.parent.name}`
     }
-    return ' on level 2'
+    return ' on mounting wall'
   }
 
   return findLevel2ParentSufix(storageLocation)

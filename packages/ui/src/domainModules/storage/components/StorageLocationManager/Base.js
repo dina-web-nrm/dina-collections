@@ -27,7 +27,7 @@ const createGetNestedItemHocInput = {
 }
 
 const baseTreeFilter = {
-  group: 'level 1',
+  group: 'room',
 }
 
 const sortOrder = ['attributes.name:asc']

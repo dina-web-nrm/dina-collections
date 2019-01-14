@@ -7,7 +7,12 @@ import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { DropdownSearch, Input } from 'coreModules/form/components'
 
-import { LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4 } from '../../../constants'
+import {
+  LEVEL_3,
+  LEVEL_MOUNTING_WALL,
+  LEVEL_ROOM,
+  LEVEL_SHELF,
+} from '../../../constants'
 
 export const FORM_NAME = 'storageLocationFilter'
 
@@ -24,7 +29,7 @@ const defaultProps = {
 
 const noop = () => {}
 
-const groups = [LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4]
+const groups = [LEVEL_ROOM, LEVEL_MOUNTING_WALL, LEVEL_3, LEVEL_SHELF]
 
 const dropdownOptions = groups.map(group => {
   return {
