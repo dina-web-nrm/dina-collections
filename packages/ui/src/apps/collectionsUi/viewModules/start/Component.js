@@ -88,7 +88,7 @@ class Start extends Component {
                 module: 'start',
                 textKey: 'needHelp',
               })}{' '}
-              <a href="mailto:team@mail.dina-web.net">team@mail.dina-web.net</a>
+              <a href="mailto:support-dina@nrm.se">support-dina@nrm.se</a>
             </div>
           </Grid.Column>
           <Grid.Column width={7}>
