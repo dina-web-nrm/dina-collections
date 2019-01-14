@@ -12,7 +12,7 @@ const propTypes = {
   htmlFor: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   labelKey: PropTypes.string,
-  required: PropTypes.bool.isRequired,
+  required: PropTypes.bool,
   subLabel: PropTypes.bool,
 }
 const defaultProps = {
@@ -21,6 +21,7 @@ const defaultProps = {
   htmlFor: undefined,
   label: undefined,
   labelKey: undefined,
+  required: false,
   subLabel: false,
 }
 const FieldLabel = ({
