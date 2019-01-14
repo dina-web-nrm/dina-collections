@@ -16,17 +16,17 @@
       "en": "description",
       "sv": "beskrivning"
     },
-    "level1": {
-      "en": "level 1"
+    "room": {
+      "en": "room"
     },
-    "level2": {
-      "en": "level 2"
+    "mountingWall": {
+      "en": "mountingWall"
     },
     "level3": {
       "en": "level 3"
     },
-    "level4": {
-      "en": "level 4"
+    "shelf": {
+      "en": "shelf"
     }
   },
   "headers": {

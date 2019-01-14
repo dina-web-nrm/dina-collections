@@ -29,7 +29,7 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'level 1')
+      const parent = findParentWithSpecificGroup(value, 'room')
       if (!parent) {
         return ''
       }
@@ -42,12 +42,12 @@ const tableColumnSpecifications = [
       return parent.name
     },
     fieldPath: '',
-    label: 'modules.storage.fieldLabels.level1',
+    label: 'modules.storage.fieldLabels.room',
     width: 250,
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'level 2')
+      const parent = findParentWithSpecificGroup(value, 'mountingWall')
       if (!parent) {
         return ''
       }
@@ -60,7 +60,7 @@ const tableColumnSpecifications = [
       return parent.name
     },
     fieldPath: '',
-    label: 'modules.storage.fieldLabels.level2',
+    label: 'modules.storage.fieldLabels.mountingWall',
     width: 250,
   },
   {
@@ -83,7 +83,7 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'level 4')
+      const parent = findParentWithSpecificGroup(value, 'shelf')
       if (!parent) {
         return ''
       }
@@ -96,7 +96,7 @@ const tableColumnSpecifications = [
       return parent.name
     },
     fieldPath: '',
-    label: 'modules.storage.fieldLabels.level4',
+    label: 'modules.storage.fieldLabels.shelf',
     width: 250,
   },
   {

@@ -5,16 +5,16 @@ example src data
     {
       "preparationType_key": "skeleton in alcohol",
       "remarks": null,
-      "storageLevel1": "NRM Zoology",
-      "storageLevel2": "Alcohol Collection",
+      "room": "NRM Zoology",
+      "mountingWall": "Alcohol Collection",
       "storageLevel3": null,
       "storageLevel5": "3815551 Eptesicus nilssonii"
     },
     {
       "preparationType_key": "skin in alcohol",
       "remarks": null,
-      "storageLevel1": "NRM Zoology",
-      "storageLevel2": "Alcohol Collection",
+      "room": "NRM Zoology",
+      "mountingWall": "Alcohol Collection",
       "storageLevel3": null,
       "storageLevel5": "3815551 Eptesicus nilssonii"
     }
@@ -43,19 +43,19 @@ module.exports = function migrateCollectionItems({
       const {
         preparationType_key: srcPreparationType,
         remarks: srcRemarks,
-        storageLevel1: srcStorageLevel1,
-        storageLevel2: srcStorageLevel2,
+        room: srcStorageLevel1,
+        mountingWall: srcStorageLevel2,
         storageLevel3: srcStorageLevel3,
-        storageLevel4: srcStorageLevel4,
+        shelf: srcStorageLevel4,
         storageLevel5: srcStorageLevel5,
       } = srcPhysicalObject
       const collectionItem = {}
 
       const storageLocationKey = buildKey({
-        storageLevel1: srcStorageLevel1,
-        storageLevel2: srcStorageLevel2,
+        mountingWall: srcStorageLevel2,
+        room: srcStorageLevel1,
+        shelf: srcStorageLevel4,
         storageLevel3: srcStorageLevel3,
-        storageLevel4: srcStorageLevel4,
         storageLevel5: srcStorageLevel5,
       })
 
