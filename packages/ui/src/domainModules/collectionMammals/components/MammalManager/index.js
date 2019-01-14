@@ -412,13 +412,19 @@ class MammalManager extends Component {
   }
 
   handleSelectNextRecord(event) {
-    const { currentTableRowNumber } = this.props
-    this.handleSetCurrentTableRowNumber(event, currentTableRowNumber + 1)
+    const { currentTableRowNumber, numberOfListItems } = this.props
+
+    if (numberOfListItems && currentTableRowNumber < numberOfListItems) {
+      this.handleSetCurrentTableRowNumber(event, currentTableRowNumber + 1)
+    }
   }
 
   handleSelectPreviousRecord(event) {
-    const { currentTableRowNumber } = this.props
-    this.handleSetCurrentTableRowNumber(event, currentTableRowNumber - 1)
+    const { currentTableRowNumber, numberOfListItems } = this.props
+
+    if (numberOfListItems && currentTableRowNumber > 1) {
+      this.handleSetCurrentTableRowNumber(event, currentTableRowNumber - 1)
+    }
   }
 
   handleToggleFilters(event) {
