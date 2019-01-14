@@ -131,10 +131,15 @@ class RecordForm extends Component {
     return handleFormSubmit(filterOutput({ establishmentMeansTypes, specimen }))
       .then(({ id: specimenId }) => {
         if (!match.params.specimenId && specimenId && redirectOnSuccess) {
-          pushRoute(
-            `/app/specimens/mammals/${specimenId}/edit/sections/${match.params
-              .sectionId || '0'}`
-          )
+          // delay route transition to give more time to elasticsearch to add
+          // new specimen to index, because if user quickly goes back to the
+          // table the new specimen will not be there, which is confusing
+          setTimeout(() => {
+            pushRoute(
+              `/app/specimens/mammals/${specimenId}/edit/sections/${match.params
+                .sectionId || '0'}`
+            )
+          }, 1000)
         }
       })
       .catch(handleReduxFormSubmitError)
