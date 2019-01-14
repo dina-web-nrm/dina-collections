@@ -197,11 +197,13 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         return option.key === queryString
       })
       const { key } = searchOption
-      const { tagType, tagValue } = searchOption.other
+
+      const { tagType, tagValue, optionType } = searchOption.other
+
       return this.getItemsForSearchQuery({
-        exact: !!(tagType && key),
+        exact: !!(tagType && key && optionType !== 'freeText'),
         limit: 1000,
-        tagType,
+        tagType: tagType === 'any' ? undefined : tagType,
         tagValue,
       }).then(items => {
         const newReduxFormValues = this.createReduxFormValues({
@@ -257,8 +259,20 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       this.props.input.onChange(updatedReduxFormValues)
     }
   }
-
+  createOption({ key, optionType, tagType, tagValue, text, value }) {
+    return {
+      key,
+      other: {
+        optionType,
+        tagType,
+        tagValue,
+      },
+      text,
+      value,
+    }
+  }
   createOptions({ searchQuery, items }) {
+    const { tagTypeFilterValue } = this.state
     const { addTagTypeToText } = this.props
     const itemOptions = items
       .map(({ attributes }) => {
@@ -266,31 +280,35 @@ class RawMultipleSearchTagsSelect extends PureComponent {
           const tagTypeText = addTagTypeToText
             ? ` (${attributes.tagType}) `
             : ' '
-          return {
-            key: attributes.key,
-            other: {
-              tagType: attributes.tagType,
-              tagValue: attributes.tagValue,
-            },
-            text: `${attributes.tagValue}${tagTypeText}`,
 
-            type: 'string',
-            value: attributes.key,
-          }
+          const { key, tagType, tagValue } = attributes
+
+          return this.createOption({
+            key,
+            optionType: 'tag',
+            tagType,
+            tagValue,
+            text: `${attributes.tagValue}${tagTypeText}`,
+            value: key,
+          })
         }
 
         return null
       })
       .filter(item => !!item)
-    const freeTextOption = {
+
+    const freeTextSufix =
+      tagTypeFilterValue === 'any'
+        ? '(free text)'
+        : `(free text ${tagTypeFilterValue})`
+    const freeTextOption = this.createOption({
       key: searchQuery,
-      other: {
-        tagValue: searchQuery,
-      },
-      text: `${searchQuery}`,
-      type: 'string',
+      optionType: 'freeText',
+      tagType: tagTypeFilterValue,
+      tagValue: searchQuery,
+      text: `${searchQuery} ${freeTextSufix}`,
       value: searchQuery,
-    }
+    })
 
     const options = [freeTextOption, ...itemOptions]
     return options

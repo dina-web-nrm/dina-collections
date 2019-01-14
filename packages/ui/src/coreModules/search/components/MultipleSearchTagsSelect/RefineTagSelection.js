@@ -46,6 +46,7 @@ const RefineTagSelection = ({
           numberOfSearchResults
         })`}</Header>
         {freeTextQueries.map(searchQuery => {
+          const title = reduxFormValues[searchQuery].searchOption.text
           return (
             <TagGroup
               addTagTypeToText={addTagTypeToText}
@@ -55,6 +56,7 @@ const RefineTagSelection = ({
               onToggleTagSelected={handleToggleTagSelected}
               results={reduxFormValues[searchQuery].matchingTags}
               searchQuery={searchQuery}
+              title={title}
             />
           )
         })}
@@ -70,6 +72,7 @@ const RefineTagSelection = ({
       <Modal.Content>
         <Modal.Description>
           {freeTextQueries.map(searchQuery => {
+            const title = reduxFormValues[searchQuery].searchOption.text
             return (
               <TagGroup
                 addTagTypeToText={addTagTypeToText}
@@ -79,6 +82,7 @@ const RefineTagSelection = ({
                 onToggleTagSelected={handleToggleTagSelected}
                 results={reduxFormValues[searchQuery].matchingTags}
                 searchQuery={searchQuery}
+                title={title}
               />
             )
           })}

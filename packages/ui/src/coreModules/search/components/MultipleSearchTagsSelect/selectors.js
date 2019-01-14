@@ -5,7 +5,7 @@ export const getAllFreeTextSearchResults = createSelector(
   searchQueryResultsMap => {
     return Object.values(searchQueryResultsMap || {}).reduce(
       (allResults, { matchingTags, searchOption }) => {
-        if (searchOption.other.tagType) {
+        if (searchOption.other.optionType !== 'freeText') {
           return allResults
         }
         return allResults.concat(matchingTags)
@@ -21,7 +21,7 @@ export const getAllFreeTextQueries = createSelector(
     return Object.keys(searchQueryResultsMap || {}).reduce(
       (allResults, searchQuery) => {
         const { searchOption } = searchQueryResultsMap[searchQuery]
-        if (searchOption.other.tagType) {
+        if (searchOption.other.optionType !== 'freeText') {
           return allResults
         }
         return [...allResults, searchQuery]

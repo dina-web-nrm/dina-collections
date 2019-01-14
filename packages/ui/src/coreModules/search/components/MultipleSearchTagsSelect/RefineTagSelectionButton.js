@@ -6,11 +6,12 @@ import * as selectors from './selectors'
 const propTypes = {
   onCloseRefine: PropTypes.func.isRequired,
   onOpenRefine: PropTypes.func.isRequired,
-  reduxFormValues: PropTypes.object.isRequired,
+  reduxFormValues: PropTypes.object,
   refineOpen: PropTypes.bool,
 }
 
 const defaultProps = {
+  reduxFormValues: {},
   refineOpen: false,
 }
 
