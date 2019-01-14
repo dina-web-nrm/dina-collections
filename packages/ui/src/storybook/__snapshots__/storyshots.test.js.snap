@@ -7568,9 +7568,25 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
             disabled={true}
             onClick={[Function]}
             role="button"
+            style={
+              Object {
+                "paddingLeft": "0.5em",
+                "paddingRight": "0.5em",
+                "textAlign": "left",
+                "width": "3.5em",
+              }
+            }
             tabIndex={-1}
           >
-            0/0
+            <i
+              aria-hidden="true"
+              className="sliders icon"
+              style={
+                Object {
+                  "margin": "0px",
+                }
+              }
+            />
           </button>
         </div>
       </div>
