@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { TogglableField } from 'coreModules/form/components'
 import TaxonDropdownPickerSearch from '../TaxonDropdownPickerSearch'
-import TaxonNameResult from '../TaxonNameResult'
+import TaxonResult from '../TaxonResult'
 
 const propTypes = {
   input: PropTypes.shape({
@@ -69,7 +69,7 @@ class TogglableTaxonDropdownPickerSearch extends PureComponent {
     const { forceRenderResult, isLatestActiveField } = props
 
     return (
-      <TaxonNameResult
+      <TaxonResult
         displayLabel={false}
         {...props}
         focusOnMount={isLatestActiveField && forceRenderResult}
