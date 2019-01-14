@@ -40,12 +40,14 @@ class CatalogNumberModal extends PureComponent {
   constructor() {
     super()
 
-    this.handleGotoModalTwo = this.handleGotoModalTwo.bind(this)
-    this.handleCancel = this.handleCancel.bind(this)
     this.handleBackToModalOne = this.handleBackToModalOne.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
+    this.handleGotoModalTwo = this.handleGotoModalTwo.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
     this.state = {
       createManually: false,
+      submitting: false,
     }
   }
 
@@ -63,9 +65,14 @@ class CatalogNumberModal extends PureComponent {
     this.setState({ createManually: true })
   }
 
+  handleSubmit(formData) {
+    this.setState({ submitting: true })
+    this.props.handleSubmit(formData)
+  }
+
   render() {
-    const { handleSubmit, valid } = this.props
-    const { createManually } = this.state
+    const { valid } = this.props
+    const { createManually, submitting } = this.state
 
     return (
       <FormModal open size="small">
@@ -97,7 +104,11 @@ class CatalogNumberModal extends PureComponent {
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions style={{ textAlign: 'left' }}>
-              <Button disabled={!valid} onClick={handleSubmit}>
+              <Button
+                disabled={!valid}
+                loading={submitting}
+                onClick={this.handleSubmit}
+              >
                 <ModuleTranslate textKey="other.useThisNumber" />
               </Button>
               <Button onClick={this.handleBackToModalOne}>
@@ -118,7 +129,7 @@ class CatalogNumberModal extends PureComponent {
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions style={{ textAlign: 'left' }}>
-              <Button onClick={handleSubmit}>
+              <Button loading={submitting} onClick={this.handleSubmit}>
                 <ModuleTranslate textKey="other.yesCreateNumber" />
               </Button>
               <Button onClick={this.handleGotoModalTwo}>
