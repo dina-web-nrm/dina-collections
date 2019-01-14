@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { change } from 'redux-form'
+import { blur, change } from 'redux-form'
 import { Prompt } from 'react-router-dom'
 import immutable from 'object-path-immutable'
 
@@ -16,6 +16,7 @@ const defaultExtractPickedId = data => {
 }
 
 const propTypes = {
+  blur: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
@@ -28,6 +29,7 @@ const defaultProps = {
 }
 
 const mapDispatchToProps = {
+  blur,
   change,
 }
 
@@ -98,7 +100,17 @@ const createPickerWrapper = (
           ? immutable.set(baseValue, idPath, itemId)
           : itemId
 
-        this.props.change(formName, input.name, value)
+        if (input.onChange) {
+          input.onChange(value)
+        } else {
+          this.props.change(formName, input.name, value)
+        }
+
+        if (input.onBlur) {
+          input.onBlur(value)
+        } else {
+          this.props.blur(formName, input.name, value)
+        }
       }
       this.handleOnClose()
     }
