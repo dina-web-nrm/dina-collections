@@ -53,15 +53,15 @@ const tableColumnSpecifications = [
   },
   {
     name: 'collectingEventCountry',
-    width: 150,
+    width: 200,
   },
   {
     name: 'collectingEventProvince',
-    width: 150,
+    width: 200,
   },
   {
     name: 'collectingEventDistrict',
-    width: 150,
+    width: 200,
   },
   {
     name: 'originInformationLocality',
@@ -101,7 +101,7 @@ const tableColumnSpecifications = [
   },
   {
     name: 'featureCompleteBodyWeight',
-    width: 150,
+    width: 180,
   },
   {
     name: 'featureTotalLength',
@@ -113,7 +113,7 @@ const tableColumnSpecifications = [
   },
   {
     name: 'featureCondition',
-    width: 150,
+    width: 180,
   },
   {
     name: 'identifiersOtherIdentifiers',
