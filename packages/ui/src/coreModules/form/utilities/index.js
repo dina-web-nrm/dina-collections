@@ -1,3 +1,4 @@
+import * as errorTransformations from './errorTransformations'
 import { formatBooleanRadio, parseBooleanRadio } from './radioTransformations'
 import createErrorKeys from './createErrorKeys'
 import createHelpNotificationProps from './createHelpNotificationProps'
@@ -14,6 +15,7 @@ export {
   createLabelKey,
   createParameterKey,
   createUpdateFormPartStatus,
+  errorTransformations,
   formatBooleanRadio,
   handleReduxFormSubmitError,
   parseBooleanRadio,
