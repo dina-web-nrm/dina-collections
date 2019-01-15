@@ -9,7 +9,7 @@ const parts = [
   {
     componentName: 'TaxonDropdownPickerSearch',
     componentProps: {
-      columnProps: { width: 10 },
+      columnProps: { width: 14 },
     },
     name: 'parent.id',
     wrapInField: true,
