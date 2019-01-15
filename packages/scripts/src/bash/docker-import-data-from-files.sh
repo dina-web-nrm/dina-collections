@@ -1,5 +1,5 @@
 #!/bin/sh -
-# ./packages/scripts/src/bash/hard-redeploy-docker.sh  -t 4.5.2
+# ./packages/scripts/src/bash/docker-import-data-from-files.sh  -t 4.5.2
 
 while getopts t: option
  do
@@ -17,11 +17,9 @@ fi
 
 FULL_PATH=$(dirname "$0")
 
-git pull origin master
-TAG=$TAG docker-compose pull
 TAG=$TAG docker-compose -f docker-compose.data.yaml pull
-$FULL_PATH/rm-data.sh
-$FULL_PATH/create-sample-data.sh
 TAG=$TAG docker-compose stop api worker
-$FULL_PATH/migrate-data.sh -t $TAG
+TAG=$TAG docker-compose -f docker-compose.data.yaml up -d import
+sleep 10
 TAG=$TAG docker-compose up -d
+
