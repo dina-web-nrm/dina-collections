@@ -4,26 +4,41 @@ const getBashScriptRelativePath = require('./getBashScriptRelativePath')
 const captureArgString = require('./captureArgString')
 const captureScriptName = require('./captureScriptName')
 
-module.exports = function localExecScript() {
+module.exports = function localExecScript(
+  { printResult = true, scriptName: scriptNameInput } = {}
+) {
   const rootPath = getLocalRootFullPath()
 
-  const scriptName = captureScriptName()
+  const scriptName = scriptNameInput || captureScriptName()
   const argString = captureArgString()
 
   const scriptRelativePath = getBashScriptRelativePath(scriptName)
 
   const cmd = `cd ${rootPath} && ./${scriptRelativePath} ${argString}`
-  return localExecCmd({ cmd, execFromRoot: false })
+  return localExecCmd({
+    cmd,
+    execFromRoot: false,
+    printResult,
+  })
     .then(res => {
-      console.log('SUCCESS')
-      console.log('---------')
-      console.log(res)
-      console.log('---------')
+      if (printResult) {
+        console.log('SUCCESS')
+        console.log('---------')
+        console.log(res)
+        console.log('---------')
+      }
+
+      return res
     })
     .catch(err => {
-      console.log('FAIL')
-      console.log('---------')
-      console.log(err)
-      console.log('---------')
+      if (printResult) {
+        console.log('FAIL')
+        console.log('---------')
+        console.log(err)
+        console.log('---------')
+      } else {
+        throw err
+      }
+      process.exit(1)
     })
 }
