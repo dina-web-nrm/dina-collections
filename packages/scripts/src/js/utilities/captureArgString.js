@@ -1,7 +1,8 @@
+const removeServerArg = require('./removeServerArg')
 const getLocalPackageVersion = require('./getLocalPackageVersion')
 
 module.exports = function captureArgString() {
-  const inputArgs = process.argv.slice(3)
+  const inputArgs = removeServerArg(process.argv.slice(3))
   const args = []
 
   inputArgs.forEach(arg => {
