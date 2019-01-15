@@ -143,6 +143,10 @@ export class RecordNavigationBar extends Component {
                     max={numberOfListItems}
                     min={numberOfListItems && 1}
                     onChange={newTableRowNumber => {
+                      console.log(
+                        'slider onChange newTableRowNumber',
+                        newTableRowNumber
+                      )
                       if (!handleSetCurrentTableRowNumber) {
                         return
                       }
@@ -167,6 +171,10 @@ export class RecordNavigationBar extends Component {
                       if (!handleSetCurrentTableRowNumber) {
                         return
                       }
+                      console.log(
+                        'slider onChangeComplete sliderRowNumber',
+                        sliderRowNumber
+                      )
                       handleSetCurrentTableRowNumber(null, sliderRowNumber)
                       this.setState({ sliderRowNumber: null })
                     }}

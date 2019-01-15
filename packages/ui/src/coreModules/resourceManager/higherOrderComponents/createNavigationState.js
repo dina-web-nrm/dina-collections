@@ -46,6 +46,7 @@ const createResourceUrlState = () => ComposedComponent => {
       switch (type) {
         case ITEM_SELECT: {
           const { itemId } = data
+          console.log('ITEM_SELECT', itemId)
           this.navigateEdit(itemId)
           break
         }
@@ -80,6 +81,7 @@ const createResourceUrlState = () => ComposedComponent => {
 
         case CREATE_SUCCESS: {
           const { itemId } = data
+          console.log('CREATE_SUCCESS', itemId)
           this.navigateEdit(itemId)
           break
         }
@@ -103,6 +105,7 @@ const createResourceUrlState = () => ComposedComponent => {
     }
 
     navigateEdit(itemId) {
+      console.log('navigateEdit', itemId)
       this.props.updateState({
         itemId,
         mainColumn: 'edit',
@@ -110,12 +113,14 @@ const createResourceUrlState = () => ComposedComponent => {
     }
 
     navigateFilter() {
+      console.log('navigateFilter')
       this.props.updateState({
         filterColumn: 'filter',
       })
     }
 
     navigateCreate() {
+      console.log('navigateCreate')
       this.props.updateState({
         filterColumn: '',
         mainColumn: 'create',
@@ -123,16 +128,19 @@ const createResourceUrlState = () => ComposedComponent => {
     }
 
     navigateRoot() {
+      console.log('navigateRoot')
       this.props.clearState()
     }
 
     navigateList() {
+      console.log('navigateList')
       this.props.updateState({
         mainColumn: 'table',
       })
     }
 
     navigateTree() {
+      console.log('navigateTree')
       this.props.updateState({
         filterColumn: '',
         mainColumn: 'tree',

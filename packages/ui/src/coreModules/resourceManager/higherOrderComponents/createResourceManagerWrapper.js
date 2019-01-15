@@ -655,7 +655,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     selectCurrentRow(newFocusedIndex) {
       const { listItems, focusedIndex: currentFocusedIndex } = this.props
-
+      console.log(
+        'selectCurrentRow: newFocusedIndex, currentFocusedIndex',
+        newFocusedIndex,
+        currentFocusedIndex
+      )
       const focusedIndex =
         newFocusedIndex !== undefined ? newFocusedIndex : currentFocusedIndex
       const listItem = listItems[focusedIndex]
