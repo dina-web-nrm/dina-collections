@@ -1,0 +1,24 @@
+### Changelog
+
+All notable changes to this project will be documented in this file. Dates are displayed in UTC.
+
+{{#each releases}}
+  {{#if href}}
+    ###{{#unless major}}#{{/unless}} [{{title}}]({{href}})
+  {{else}}
+    #### {{title}}
+  {{/if}}
+
+  {{#if tag}}
+    > {{niceDate}}
+  {{/if}}
+
+  {{#if summary}}
+    {{summary}}
+  {{/if}}
+
+  {{#each merges}}
+    - {{{message}}}{{#if href}} [`#{{id}}`]({{href}}){{/if}}
+  {{/each}}
+
+{{/each}}
