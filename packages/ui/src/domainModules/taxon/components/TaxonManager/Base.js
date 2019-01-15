@@ -102,15 +102,10 @@ class TaxonManager extends Component {
     const rank = objectPath.get(nestedItem, 'acceptedTaxonName.rank')
 
     return {
-      itemHeader: name && <span>{name}</span>,
-      itemSubHeader: (
-        <span>
-          {this.props.i18n.moduleTranslate({
-            textKey: 'taxonOfRank',
-          })}{' '}
-          {rank}
-        </span>
-      ),
+      itemHeader: name,
+      itemSubHeader: `${this.props.i18n.moduleTranslate({
+        textKey: 'taxonOfRank',
+      })} ${rank}`,
     }
   }
 

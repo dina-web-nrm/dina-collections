@@ -56,15 +56,10 @@ class TaxonNameManager extends Component {
     }
 
     return {
-      itemHeader: <span>{nestedItem.name}</span>,
-      itemSubHeader: (
-        <span>
-          {this.props.i18n.moduleTranslate({
-            textKey: 'scientificNameOfRank',
-          })}{' '}
-          {nestedItem.rank}
-        </span>
-      ),
+      itemHeader: nestedItem.name,
+      itemSubHeader: `${this.props.i18n.moduleTranslate({
+        textKey: 'scientificNameOfRank',
+      })} ${nestedItem.rank}`,
     }
   }
 
