@@ -1,14 +1,20 @@
+<<<<<<< HEAD
+=======
+* test migrations scripts
+* add and test sql dump and import and stuff
+* go through naming
+
+
+
+
+>>>>>>> bd63065... [BACKEND] Update todo
 
 * Setup new machine
 ** docker
 *** with sample data
-*** with real data
-**** first with sample data then deploy data updates
 
 ** non docker
 *** with sample data
-*** with real data
-**** first with sample data then deploy data updates
 
 * Deploy new version without data updates
 ** docker
@@ -32,6 +38,123 @@
 ** non-docker
 *** with sample data
 *** with real data
+
+Search
+
+Implement dropdown component for searching for specific tag
+* Talk to anton before
+* Should be used at least for storage and taxonomy
+1. Implement specification -> Very similar to checkboxSpecification but only work on 1 tag
+2. Implement search component -> Need to do an initial fetch like the search checkbox component and then build options. Could also make sense to look at MultipleSearchTagsSelect/TagTypeFilterInlineDropdown. Likely similar props will be needed like the free text and default value option.
+3. Add where needed like at taxonomy and storage
+
+Implement new feature range component
+* Talk to anton before
+* For weight and length
+* As it is now range and length dont have any specific components but just the specification
+* A new component is needed to enable only matching for the selected type
+* Should be quite straight forward to reuse TagTypeFilterInlineDropdown in a new FeatureRangeComponent
+* the specification factory needs to be adjusted to forward the type in the queries. the value should be available in sectionValues
+>>>>>>> 8326fc3... [BACKEND] Update todo
+
+Add new checkbox for appearance and selective breeding
+
+
+
+
+
+How does search work?
+1. Create a queryBuilder using coreModules/search/utilities/queryBuilderFactory
+* As input  querySpecifications which is located in each filter section is used by calling factories from search module
+
+
+
+* Search
+* 
+** Implement multipleTagRefine
+
+
+Search todo
+* make queryBuilder accept arrays in the array and dont spread in all individual querySpecifications
+
+
+Scripts
+* rm-data-files
+* create-data-files-from-sample
+* import-data-from-files
+* import-data-from-sample-files
+
+* deploy-docker.sh
+* deploy-docker-migrate.sh
+* deploy-docker-import-from-sample.sh
+* deploy-docker-import-from-files.sh
+
+Checks (variable in env files)
+* allowDropDatabaseOnMigrations (use to check if drop database is to be run)
+
+
+Todo
+* Update scripts and script envs to reflect updates
+* create script that prints info for all servers.
+* Remove
+
+Servers
+* demo (current alpha)
+** migration strategy: docker:import-from-sample
+
+* test (now used as stage)
+** migration strategy: docker:import-from-sample
+
+* stage (new)
+** migration strategy: docker:migrate:latest
+
+* production
+** migration strategy: docker:migrate:latest
+
+* local
+** when running docker locally
+
+
+Package.json
+yarn docker:deploy -t=v0.13.0 -s stage
+yarn docker:import:data-from-files -t v0.13.0 -s stage
+yarn docker:import:data-from-sample -t v0.13.0 -s stage
+
+yarn docker:migrate:latest -t 0.13.0 -s stage
+yarn docker:migrate:one -t 0.13.0 -s stage
+yarn docker:migrate:undo:one -t 0.13.0 -s stage
+
+yarn import:data-from-files
+yarn import:data-from-sample
+yarn migrate:latest
+yarn migrate:one
+yarn migrate:undo:one
+
+yarn import:from-dump
+yarn db:dump -s production
+
+
+
+yarn docker:deploy -t=my-test -s test
+
+
+changelog
+* 
+
+
+
+Order with new data
+* 1. create-pr-with-sample-data + add data to correct servers - transport in zip to all servers
+* 2. dev tests with data locally
+* 3. dev unzipps in the correct servers
+* 4. dev do deploystuff
+* 5. dev call yarn docker:import-from-sample, docker:import-from-files, yarn docker:migrate depending on env
+
+
+
+
+
+
 
 Search
 
