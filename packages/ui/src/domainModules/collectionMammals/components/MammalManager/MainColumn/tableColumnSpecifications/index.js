@@ -8,6 +8,10 @@ const tableColumnSpecifications = [
     width: 250,
   },
   {
+    name: 'taxonomyRank',
+    width: 150,
+  },
+  {
     name: 'taxonomyFamily',
     width: 150,
   },
@@ -44,16 +48,20 @@ const tableColumnSpecifications = [
     width: 300,
   },
   {
+    name: 'collectingEventInterpretedLocality',
+    width: 300,
+  },
+  {
     name: 'collectingEventCountry',
-    width: 150,
+    width: 200,
   },
   {
     name: 'collectingEventProvince',
-    width: 150,
+    width: 200,
   },
   {
     name: 'collectingEventDistrict',
-    width: 150,
+    width: 200,
   },
   {
     name: 'originInformationLocality',
@@ -93,7 +101,7 @@ const tableColumnSpecifications = [
   },
   {
     name: 'featureCompleteBodyWeight',
-    width: 150,
+    width: 180,
   },
   {
     name: 'featureTotalLength',
@@ -105,7 +113,7 @@ const tableColumnSpecifications = [
   },
   {
     name: 'featureCondition',
-    width: 150,
+    width: 180,
   },
   {
     name: 'identifiersOtherIdentifiers',

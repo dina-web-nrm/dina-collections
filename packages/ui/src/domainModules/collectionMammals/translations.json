@@ -10,7 +10,7 @@
         "sv": "Åldersbestämningsmetod"
       },
       "age-development-stage": {
-        "en": "Age and development stage",
+        "en": "Age and development",
         "sv": ""
       },
       "age-in-years": {
@@ -88,7 +88,7 @@
         "en": "Establishment means"
       },
       "isDeathDate": {
-        "en": "Died at collecting",
+        "en": "Died when collected",
         "sv": ""
       }
     },
@@ -442,7 +442,7 @@
     },
     "taxonInformation": {
       "curatorialTaxon": {
-        "en": "Curatorial taxon"
+        "en": "Taxon name"
       },
       "readOnly": {
         "en": "Read only"
@@ -490,7 +490,7 @@
       "sv": ""
     },
     "basicInformation": {
-      "en": "basic information",
+      "en": "Specimen basics",
       "sv": ""
     },
     "collectingDate": {
@@ -498,7 +498,7 @@
       "sv": ""
     },
     "collectingAndDeathDetails": {
-      "en": "collecting and death details",
+      "en": "collecting and death",
       "sv": ""
     },
     "collectorAndExpedition": {
@@ -540,7 +540,7 @@
       "en": "Legacy data"
     },
     "localityOrigin": {
-      "en": "collecting location and origin"
+      "en": "locality and origin"
     },
     "localityPosition": {
       "en": "Position of collecting locality",
@@ -561,11 +561,11 @@
         "sv": ""
       },
       "skeleton": {
-        "en": "skeleton",
+        "en": "skeletons",
         "sv": ""
       },
       "skin": {
-        "en": "skin",
+        "en": "skins",
         "sv": ""
       },
       "wetPreparation": {
@@ -589,7 +589,7 @@
       "sv": ""
     },
     "taxonOtherNames": {
-      "en": "other names",
+      "en": "additional names",
       "sv": ""
     },
     "typeInformation": {
@@ -649,7 +649,7 @@
   },
   "filterTitles": {
     "identifier": {
-      "en": "Identifier",
+      "en": "Catalog number/identifier",
       "sv": ""
     },
     "taxonomy": {
@@ -657,11 +657,11 @@
       "sv": ""
     },
     "locality": {
-      "en": "Locality",
+      "en": "Locality and origin",
       "sv": ""
     },
     "datePeriod": {
-      "en": "Date",
+      "en": "Collecting date",
       "sv": ""
     },
     "agent": {
@@ -677,7 +677,7 @@
       "sv": ""
     },
     "ageAndStage": {
-      "en": "Age & development",
+      "en": "Age and development",
       "sv": ""
     },
     "sex": {
@@ -703,11 +703,15 @@
   },
   "tableColumns": {
     "identifiersCatalogNumber": {
-      "en": "catalog number",
+      "en": "Catalog no.",
       "sv": ""
     },
     "taxonomyCuratorialName": {
-      "en": "Curatorial taxon name",
+      "en": "Taxon",
+      "sv": ""
+    },
+    "taxonomyRank": {
+      "en": "taxon rank",
       "sv": ""
     },
     "taxonomyFamily": {
@@ -727,7 +731,7 @@
       "sv": ""
     },
     "collectingEventCollectors": {
-      "en": "collectors",
+      "en": "collector",
       "sv": ""
     },
     "nomenclaturalTypeTypeStatus": {
@@ -735,15 +739,19 @@
       "sv": ""
     },
     "collectingEventStartDate": {
-      "en": "start date (collecting)",
+      "en": "collecting start",
       "sv": ""
     },
     "collectingEventEndDate": {
-      "en": "end date (collecting)",
+      "en": "collecting end",
       "sv": ""
     },
     "collectingEventLocality": {
-      "en": "locality (collecting)",
+      "en": "stated locality (collecting)",
+      "sv": ""
+    },
+    "collectingEventInterpretedLocality": {
+      "en": "interpreted locality (collecting)",
       "sv": ""
     },
     "collectingEventCountry": {
@@ -787,7 +795,7 @@
       "sv": ""
     },
     "featureAgeStage": {
-      "en": "age stage",
+      "en": "stage",
       "sv": ""
     },
     "featureAge": {
@@ -795,7 +803,7 @@
       "sv": ""
     },
     "featureCompleteBodyWeight": {
-      "en": "complete body weight",
+      "en": "complete weight",
       "sv": ""
     },
     "featureTotalLength": {
@@ -807,11 +815,11 @@
       "sv": ""
     },
     "featureCondition": {
-      "en": "condition",
+      "en": "carcass condition",
       "sv": ""
     },
     "identifiersOtherIdentifiers": {
-      "en": "other identifiers",
+      "en": "identifiers",
       "sv": ""
     },
     "recordEventCataloged": {
@@ -829,7 +837,7 @@
   },
   "formSectionTitles": {
     "basicInformation": {
-      "en": "basic information",
+      "en": "Specimen basics",
       "sv": ""
     },
     "taxonomy": {
@@ -837,11 +845,11 @@
       "sv": ""
     },
     "localityOrigin": {
-      "en": "Locality & origin",
+      "en": "Locality and origin",
       "sv": ""
     },
     "collectingDeath": {
-      "en": "Collecting & death",
+      "en": "Collecting and death",
       "sv": ""
     },
     "features": {
@@ -859,27 +867,27 @@
   },
   "formSectionDescriptions": {
     "basicInformation": {
-      "en": "Identifiers, acquisition, events...",
+      "en": "Identifiers, acquisition and record history",
       "sv": ""
     },
     "taxonomy": {
-      "en": "Taxon name, type status, determination",
+      "en": "Taxon name, type info, determination",
       "sv": ""
     },
     "localityOrigin": {
-      "en": "Collecting locality and origin information",
+      "en": "Collecting locality, origin and breeding",
       "sv": ""
     },
     "collectingDeath": {
-      "en": "Collector, expedition, date, death details",
+      "en": "Collector, expedition, date and death details",
       "sv": ""
     },
     "features": {
-      "en": "Age, sex, condition, measurements, bones",
+      "en": "Age, sex, condition, measurements and bones",
       "sv": ""
     },
     "physicalObjects": {
-      "en": "Skin, skeleton, wet and other preparations...",
+      "en": "Skin, skeleton, wet and other preparations",
       "sv": ""
     },
     "summary": {
@@ -904,7 +912,7 @@
         "sv": ""
       },
       "death": {
-        "en": "add death remarks",
+        "en": "add death remars...",
         "sv": ""
       },
       "date": {
@@ -916,7 +924,7 @@
         "sv": ""
       },
       "collectingLocationRemarks": {
-        "en": "Add collecting location remarks",
+        "en": "Add collecting locality remarks...",
         "sv": ""
       },
       "origin": {
@@ -924,8 +932,21 @@
         "sv": ""
       },
       "physicalObject": {
-        "en": "add object remarks...",
-        "sv": ""
+        "skeleton": {
+          "en": "add remarks for this skeleton...",
+          "sv": ""
+        },
+        "skin": {
+          "en": "add remarks for this skin...",
+          "sv": ""
+        },
+        "wet-preparation": {
+          "en": "add remarks for this wet preparation...",
+          "sv": ""
+        },
+        "other-preparation": {
+          "en": "add remarks for this other preparation..."
+        }
       },
       "specimen": {
         "en": "add remarks for the entire specimen...",
@@ -949,11 +970,15 @@
         "sv": ""
       },
       "collectingLocationRemarks": {
-        "en": "collecting location remarks",
+        "en": "collecting locality remarks",
         "sv": ""
       },
       "origin": {
         "en": "origin remarks",
+        "sv": ""
+      },
+      "physicalObjects": {
+        "en": "physical objects remarks",
         "sv": ""
       },
       "specimen": {
@@ -968,7 +993,7 @@
     "en": "Remarks"
   },
   "remove": {
-    "en": "Remove"
+    "en": "Delete"
   },
   "skeleton": {
     "en": "skeleton"
@@ -981,7 +1006,7 @@
         "sv": ""
       },
       "age-stage": {
-        "en": "Select age stage",
+        "en": "Select stage",
         "sv": ""
       },
       "sex": {
@@ -1014,14 +1039,14 @@
         "en": "Age in years"
       },
       "age-stage": {
-        "en": "Stage"
+        "en": "Development stage"
       },
       "sex": {
         "en": "Sex",
         "sv": ""
       },
       "complete-body-weight": {
-        "en": "Complete body"
+        "en": "Complete"
       },
       "skinned-weight": {
         "en": "Skinned"
@@ -1036,80 +1061,80 @@
         "en": "Other"
       },
       "total-length": {
-        "en": "Total length"
+        "en": "Total"
       },
       "body-length": {
-        "en": "Body length"
+        "en": "Body"
       },
       "tail-to-anus-length": {
-        "en": "Tail-anus length"
+        "en": "Tail-anus"
       },
       "tail-to-pelvis-length": {
-        "en": "Tail-pelvis length"
+        "en": "Tail-pelvis"
       },
       "ear-length": {
-        "en": "Ear length"
+        "en": "Ear"
       },
       "hind-foot-length": {
-        "en": "Hind-foot length"
+        "en": "Hind-foot"
       },
       "carcass-condition": {
         "en": "Condition"
       },
       "cranium-count": {
-        "en": "Cranium count",
+        "en": "Cranium",
         "sv": ""
       },
       "mandibula-count": {
-        "en": "Mandibula count",
+        "en": "Mandibula",
         "sv": ""
       },
       "vertebrae-count": {
-        "en": "Vertebrae count",
+        "en": "Vertebrae",
         "sv": ""
       },
       "costae-count": {
-        "en": "Costae count",
+        "en": "Costae",
         "sv": ""
       },
       "scapula-count": {
-        "en": "Scapula count",
+        "en": "Scapula",
         "sv": ""
       },
       "humerus-count": {
-        "en": "Humerus count",
+        "en": "Humerus",
         "sv": ""
       },
       "ulna-count": {
-        "en": "Ulna count",
+        "en": "Ulna",
         "sv": ""
       },
       "radius-count": {
-        "en": "Radius count",
+        "en": "Radius",
         "sv": ""
       },
       "manus-count": {
-        "en": "Manus count",
+        "en": "Manus",
         "sv": ""
       },
       "pelvis-count": {
-        "en": "Pelvis count",
+        "en": "Pelvis",
         "sv": ""
       },
       "femur-count": {
-        "en": "Femur count",
+        "en": "Femur",
         "sv": ""
       },
       "tibia-count": {
-        "en": "Tibia count",
+        "en": "Tibia",
         "sv": ""
       },
       "pedis-count": {
-        "en": "Pedis count",
+        "en": "Pedis",
         "sv": ""
       },
       "bacculum-count": {
-        "en": "Bacculum count",
+        "en": "Bacculum",
         "sv": ""
       }
     }
@@ -1135,12 +1160,16 @@
       "en": "add agent/name",
       "sv": ""
     },
+    "interpretThisName": {
+      "en": "interpret this name",
+      "sv": ""
+    },
     "addCatalogCardCreation": {
       "en": "Add catalog card creation",
       "sv": ""
     },
     "addCatalogCardInformation": {
-      "en": "Add catalog card information",
+      "en": "Catalog card information",
       "sv": ""
     },
     "addCatalogNumber": {
@@ -1156,11 +1185,11 @@
       "sv": ""
     },
     "addOtherName": {
-      "en": "Add other name",
+      "en": "Add additional name",
       "sv": ""
     },
     "addTypeStatus": {
-      "en": "Add type status",
+      "en": "Add type information",
       "sv": ""
     },
     "addDetermination": {
@@ -1183,11 +1212,11 @@
       "en": "Observed by (agent)"
     },
     "appearanceAtCollecting": {
-      "en": "Appearance at the collecting locality?",
+      "en": "Appearance at the collecting locality",
       "sv": ""
     },
     "appearanceAtOrigin": {
-      "en": "Appearance at the origin locality?",
+      "en": "Appearance at the origin locality",
       "sv": ""
     },
     "by": {
@@ -1317,19 +1346,35 @@
         "sv": ""
       },
       "removeSkeleton": {
-        "en": "Remove this skeleton?",
+        "en": "Delete this skeleton?",
         "sv": ""
       },
       "removeSkin": {
-        "en": "Remove this skin?",
+        "en": "Delete this skin?",
         "sv": ""
       },
       "removeWetPreparation": {
-        "en": "Remove this wet preparation?",
+        "en": "Delete this wet preparation?",
         "sv": ""
       },
       "removeOtherPreparation": {
-        "en": "Remove this other preparation?",
+        "en": "Delete this other preparation?",
+        "sv": ""
+      },
+      "deleteSkeleton": {
+        "en": "Delete skeleton",
+        "sv": ""
+      },
+      "deleteSkin": {
+        "en": "Delete skin",
+        "sv": ""
+      },
+      "deleteWetPreparation": {
+        "en": "Delete wet preparation",
+        "sv": ""
+      },
+      "deleteOtherPreparation": {
+        "en": "Delete other preparation",
         "sv": ""
       }
     },
@@ -1348,28 +1393,32 @@
     "remarks": {
       "en": "Remarks"
     },
+    "deleteDetermination": {
+      "en": "Delete determination",
+      "sv": ""
+    },
     "remove": {
-      "en": "Remove",
+      "en": "Delete",
       "sv": "Ta bort"
     },
     "removeThisCuratorialAssessment": {
-      "en": "Remove this curatorial assessment?",
+      "en": "Delete this curatorial assessment?",
       "sv": ""
     },
     "removeThisDetermination": {
-      "en": "remove this determination?",
+      "en": "Delete this determination?",
       "sv": ""
     },
     "removeThisIdentifier": {
-      "en": "Remove this identifier?",
+      "en": "Delete this identifier?",
       "sv": ""
     },
     "removeThisPhysicalObjects": {
-      "en": "Remove this physical object?",
+      "en": "Delete this physical object?",
       "sv": ""
     },
     "removeThisOtherName": {
-      "en": "Remove this other name?",
+      "en": "Delete this name?",
       "sv": ""
     },
     "reset": {

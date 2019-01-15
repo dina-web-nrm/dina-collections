@@ -33,7 +33,7 @@ class Remarks extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Remarks field"
+            label="Remarks for"
             name="remarks.srcFields"
             resource="searchSpecimen"
           />

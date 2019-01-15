@@ -59,13 +59,16 @@ const getColumnWidth = group => {
 
 const getLabelWidth = group => {
   switch (group) {
+    case 'bone-count':
     case 'sex': {
       return 2
     }
+    case 'length':
     case 'carcass-condition': {
       return 3
     }
-    case 'length': {
+    case 'age-and-stage':
+    case 'age-stage': {
       return 5
     }
     default: {

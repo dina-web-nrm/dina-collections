@@ -43,6 +43,7 @@ export class TaxonDropdownPickerSearch extends Component {
             name: fieldSearchQuery,
           }
         : undefined
+
       return (
         <LayerModal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
@@ -51,7 +52,7 @@ export class TaxonDropdownPickerSearch extends Component {
               initialItemId={fieldValue}
               isPicker
               onInteraction={onInteraction}
-              pickerTitle="Pick Taxon"
+              pickerTitle="Pick taxon"
               treeEnabled
             />
           </Modal.Content>
@@ -59,7 +60,7 @@ export class TaxonDropdownPickerSearch extends Component {
       )
     }
 
-    const picker = <Button onClick={onPickerButtonClick}>Picker</Button>
+    const picker = <Button onClick={onPickerButtonClick}>Pick</Button>
 
     return <TaxonDropdownSearch rightButton={picker} {...rest} />
   }

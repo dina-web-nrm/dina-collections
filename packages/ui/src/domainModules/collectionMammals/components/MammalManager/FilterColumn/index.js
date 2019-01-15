@@ -22,7 +22,7 @@ const main = {
 const header = {
   height: emToPixels(4.25),
   key: 'header',
-  renderRow: () => <ColumnRowHeader text="Find records" />,
+  renderRow: () => <ColumnRowHeader text="Find specimens" />,
 }
 
 const bottomBar = {

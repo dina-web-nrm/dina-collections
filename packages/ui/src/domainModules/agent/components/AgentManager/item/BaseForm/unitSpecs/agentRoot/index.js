@@ -2,6 +2,13 @@ import { AGENT_TYPE_OPTIONS } from 'domainModules/agent/constants'
 
 const parts = [
   {
+    componentName: 'TranslatedHeader',
+    componentProps: {
+      as: 'h2',
+      textKey: 'headers.agent',
+    },
+  },
+  {
     componentName: 'Radio',
     componentProps: {
       labelKey: 'modules.agent.fieldLabels.agentType',
@@ -35,6 +42,7 @@ const parts = [
     componentName: 'Remarks',
     componentProps: {
       emptyStateTextKey: 'remarks.emptyState.agent',
+      resultPrefixTextKey: 'remarks.resultPrefix.agent',
     },
     name: 'remarks',
     wrapInField: true,
@@ -42,6 +50,6 @@ const parts = [
 ]
 
 export default {
-  name: 'agentBase',
+  name: 'agentRoot',
   parts,
 }

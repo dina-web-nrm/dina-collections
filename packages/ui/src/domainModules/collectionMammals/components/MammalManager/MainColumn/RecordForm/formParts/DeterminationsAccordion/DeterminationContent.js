@@ -98,7 +98,7 @@ class DeterminationContent extends Component {
           <Grid.Column width={9}>
             <Field
               autoComplete="off"
-              buttonTextKey="other.addAgent"
+              buttonTextKey="other.interpretThisName"
               component={TogglableAgentDropdownPickerSearch}
               displayEmptyStateLabel={false}
               displayResultLabel={false}
@@ -157,7 +157,7 @@ class DeterminationContent extends Component {
                 onConfirm={this.handleRemove}
                 text={moduleTranslate({
                   capitalize: true,
-                  textKey: 'other.remove',
+                  textKey: 'other.deleteDetermination',
                 })}
               />
             )}

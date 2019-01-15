@@ -7,6 +7,7 @@ import EditForm from './item/EditForm'
 import FilterForm from './filter/Form'
 import buildFilterQuery from './filter/buildFilterQuery'
 import tableColumnSpecifications from './tableColumnSpecifications'
+import ItemTitle from './ItemTitle'
 
 const resource = 'place'
 const include = ['parent', 'resourceActivities']
@@ -44,6 +45,12 @@ const tableBatchFetchOptions = {
     'parent.parent.parent.parent',
     'parent.parent.parent.parent.parent',
   ],
+  resolveRelationships: ['place'],
+}
+
+const itemFetchOptions = {
+  include: ['parent'],
+  relationships: ['parent', 'children'],
   resolveRelationships: ['place'],
 }
 
@@ -85,6 +92,9 @@ class LocalityManager extends Component {
         baseTreeFilter={baseTreeFilter}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        filterHeader="Find geography"
+        itemFetchOptions={itemFetchOptions}
+        ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}

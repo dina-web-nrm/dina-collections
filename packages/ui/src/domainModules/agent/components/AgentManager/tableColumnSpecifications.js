@@ -7,7 +7,7 @@ const tableColumnSpecifications = [
   {
     fieldPath: 'disambiguatingDescription',
     label: 'modules.agent.fieldLabels.disambiguatingDescription',
-    width: 200,
+    width: 250,
   },
   {
     fieldPath: 'givenName',
@@ -37,26 +37,6 @@ const tableColumnSpecifications = [
   {
     fieldPath: 'remarks',
     label: 'modules.agent.fieldLabels.remarks',
-    width: 200,
-  },
-  {
-    fieldPath: 'telephone',
-    label: 'modules.agent.fieldLabels.telephone',
-    width: 200,
-  },
-  {
-    fieldPath: 'email',
-    label: 'modules.agent.fieldLabels.email',
-    width: 200,
-  },
-  {
-    fieldPath: 'postalAddress',
-    label: 'modules.agent.fieldLabels.postalAddress',
-    width: 200,
-  },
-  {
-    fieldPath: 'user',
-    label: 'modules.agent.fieldLabels.user',
     width: 200,
   },
 ]

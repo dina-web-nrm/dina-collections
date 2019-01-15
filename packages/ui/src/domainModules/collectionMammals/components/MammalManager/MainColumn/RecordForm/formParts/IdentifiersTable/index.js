@@ -61,7 +61,7 @@ function IdentifiersTable({
     <React.Fragment>
       {identifiers[0].value && (
         <Grid.Column width={16}>
-          {`Catalog number: ${identifiers[0].value}`}
+          {`Catalog no.: ${identifiers[0].value}`}
         </Grid.Column>
       )}
       {// TODO fix this and check for the value. Cant trust the order

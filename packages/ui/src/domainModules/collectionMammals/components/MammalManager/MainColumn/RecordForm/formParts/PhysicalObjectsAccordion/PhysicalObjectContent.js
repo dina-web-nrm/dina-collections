@@ -93,7 +93,6 @@ class PhysicalObjectContent extends Component {
       getPath,
       removeArrayFieldByIndex,
     } = this.props
-
     log.render()
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -130,7 +129,9 @@ class PhysicalObjectContent extends Component {
             <Field
               autoComplete="off"
               component={Remarks}
-              emptyStateTextKey="remarks.emptyState.physicalObject"
+              emptyStateTextKey={`remarks.emptyState.physicalObject.${
+                category
+              }`}
               model="specimen"
               module="collectionMammals"
               name={getPath('physicalObject.remarks')}
@@ -150,7 +151,13 @@ class PhysicalObjectContent extends Component {
               }
               hideOnScroll
               onConfirm={this.handleRemove}
-              text={<ModuleTranslate textKey="other.remove" />}
+              text={
+                <ModuleTranslate
+                  textKey={`other.physicalObjects.delete${capitalizeFirstLetter(
+                    camelCase(category)
+                  )}`}
+                />
+              }
             />
           </Grid.Column>
         </Grid.Row>

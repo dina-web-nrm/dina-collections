@@ -24,6 +24,10 @@
     }
   },
   "routes": {
+    "pageSubtitle": {
+      "en": "NRM mammals",
+      "sv": "NRM däggdjur"
+    },
     "start": {
       "en": "start",
       "sv": "start"
@@ -77,7 +81,7 @@
       "sv": "agenter"
     },
     "localities": {
-      "en": "localities",
+      "en": "geography",
       "sv": "platser"
     },
     "storage": {
@@ -85,7 +89,7 @@
       "sv": "förvaring"
     },
     "taxon": {
-      "en": "taxon",
+      "en": "taxa",
       "sv": ""
     },
     "scientificNames": {

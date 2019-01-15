@@ -2,13 +2,13 @@
   "fieldLabels": {
     "fullName": { "en": "Full name" },
     "disambiguatingDescription": { "en": "Disambiguating description" },
-    "givenName": { "en": "Given name" },
-    "familyName": { "en": "Family name" },
+    "givenName": { "en": "Given/first name" },
+    "familyName": { "en": "Family/last name" },
     "additionalName": { "en": "Additional name" },
     "abbreviation": { "en": "Abbreviation" },
     "alsoKnownAs": { "en": "Also known as" },
     "remarks": { "en": "Remarks" },
-    "telephone": { "en": "Telephone" },
+    "telephone": { "en": "phone" },
     "email": { "en": "Email" },
     "postalAddress": { "en": "Postal address" },
     "readOnly": { "en": "Read only" },
@@ -52,7 +52,7 @@
     },
     "roles": {
       "name": {
-        "en": "Role/position",
+        "en": "Affiliation/position",
         "sv": ""
       }
     },
@@ -82,6 +82,10 @@
     }
   },
   "headers": {
+    "agent": {
+      "en": "agent",
+      "sv": ""
+    },
     "birthAndDeath": {
       "en": "birth and death",
       "sv": ""
@@ -91,7 +95,7 @@
       "sv": ""
     },
     "nameDetails": {
-      "en": "name details and abbreviation",
+      "en": "name details",
       "sv": ""
     },
     "recordHistory": {
@@ -100,6 +104,10 @@
     },
     "roles": {
       "en": "roles",
+      "sv": ""
+    },
+    "affiliations": {
+      "en": "affiliations",
       "sv": ""
     },
     "legacyData": {
@@ -117,21 +125,27 @@
       "sv": ""
     },
     "nameDetails": {
-      "en": "add name details and abbreviation",
+      "en": "add name details",
       "sv": ""
     }
   },
   "remarks": {
     "emptyState": {
       "agent": {
-        "en": "add agent remarks",
+        "en": "add agent remarks...",
+        "sv": ""
+      }
+    },
+    "resultPrefix": {
+      "agent": {
+        "en": "agent remarks",
         "sv": ""
       }
     }
   },
   "other": {
     "addAgentRole": {
-      "en": "Add agent role",
+      "en": "Add affiliation",
       "sv": ""
     },
     "createdBy": {
@@ -143,7 +157,7 @@
       "sv": ""
     },
     "removeThisAgentRole": {
-      "en": "remove this role?"
+      "en": "Delete this affiliation?"
     }
   },
   "agent": {
@@ -195,8 +209,12 @@
     "sv": "Återställ"
   },
   "remove": {
-    "en": "Remove",
+    "en": "Delete affiliation",
     "sv": "Ta bort"
+  },
+  "delete": {
+    "en": "delete",
+    "sv": ""
   },
   "roles": {
     "en": "Roles",

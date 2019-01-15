@@ -1,5 +1,12 @@
 const parts = [
   {
+    componentName: 'TranslatedHeader',
+    componentProps: {
+      as: 'h2',
+      textKey: 'headers.storageLocation',
+    },
+  },
+  {
     componentName: 'Input',
     componentProps: {
       columnProps: { width: 9 },

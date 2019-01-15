@@ -53,6 +53,7 @@ const TaxonNameTaxonStatus = ({
             acceptedToTaxonId
           }&mainColumn=edit`}
         >{`${name}${rankString}`}</Link>
+        {'.'}
       </React.Fragment>
     )
   }
@@ -69,7 +70,7 @@ const TaxonNameTaxonStatus = ({
       'acceptedTaxonName.rank'
     )
     const rankString = acceptedTaxonNameRank
-      ? ` (${acceptedTaxonNameRank})`
+      ? ` (${acceptedTaxonNameRank}).`
       : ''
 
     return (

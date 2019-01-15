@@ -53,7 +53,7 @@ export class LocalityDropdownPickerSearch extends Component {
               initialItemId={fieldValue}
               isPicker
               onInteraction={onInteraction}
-              pickerTitle="Pick Locality"
+              pickerTitle="Pick geography"
               treeEnabled
             />
           </Modal.Content>
@@ -61,7 +61,7 @@ export class LocalityDropdownPickerSearch extends Component {
       )
     }
 
-    const picker = <Button onClick={onPickerButtonClick}>Picker</Button>
+    const picker = <Button onClick={onPickerButtonClick}>Pick</Button>
 
     return <LocalityDropdownSearch rightButton={picker} {...rest} />
   }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import CreateForm from './item/CreateForm'
@@ -57,10 +56,10 @@ class TaxonNameManager extends Component {
     }
 
     return {
-      itemHeader: `${nestedItem.name} (${this.props.i18n.moduleTranslate({
-        textKey: 'name',
-      })})`,
-      itemSubHeader: capitalizeFirstLetter(nestedItem.rank),
+      itemHeader: nestedItem.name,
+      itemSubHeader: `${this.props.i18n.moduleTranslate({
+        textKey: 'scientificNameOfRank',
+      })} ${nestedItem.rank}`,
     }
   }
 
@@ -89,6 +88,7 @@ class TaxonNameManager extends Component {
         buildEditItemHeaders={this.buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        filterHeader="Find scientific names"
         filterResourceCount={filterResourceCount}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}

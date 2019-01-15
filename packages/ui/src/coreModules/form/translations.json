@@ -1,6 +1,6 @@
 {
   "addRemarks": {
-    "en": "add remarks",
+    "en": "add remarks...",
     "sv": "lägg till kommentar"
   },
   "clickToAdd": {
@@ -12,7 +12,7 @@
     "sv": ""
   },
   "plainText": {
-    "en": "plain text",
+    "en": "name",
     "sv": "fritext"
   },
   "save": {

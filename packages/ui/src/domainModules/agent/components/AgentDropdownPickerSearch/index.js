@@ -70,7 +70,7 @@ export class AgentDropdownPickerSearch extends Component {
               initialItemId={objectPath.get(fieldValue, pathToIdInValue)}
               isPicker
               onInteraction={onInteraction}
-              pickerTitle="Pick Agent"
+              pickerTitle="Pick agent"
               treeEnabled={false}
             />
           </Modal.Content>
@@ -78,7 +78,7 @@ export class AgentDropdownPickerSearch extends Component {
       )
     }
 
-    const picker = <Button onClick={onPickerButtonClick}>Picker</Button>
+    const picker = <Button onClick={onPickerButtonClick}>Pick</Button>
 
     return (
       <AgentDropdownSearch

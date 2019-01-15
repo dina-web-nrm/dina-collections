@@ -4301,7 +4301,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks emptyState 1`] = 
                 }
               }
             >
-              Add remarks
+              Add remarks...
             </div>
           </div>
         </div>
@@ -7762,7 +7762,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Identifier
+              Catalog number/identifier
             </span>
           </div>
           <div
@@ -7810,7 +7810,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Locality
+              Locality and origin
             </span>
           </div>
           <div
@@ -7834,7 +7834,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Date
+              Collecting date
             </span>
           </div>
           <div
@@ -7930,7 +7930,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Age & development
+              Age and development
             </span>
           </div>
           <div
@@ -8142,14 +8142,14 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="title"
             >
               <span>
-                Basic information
+                Specimen basics
               </span>
             </div>
             <div
               className="description"
             >
               <span>
-                Identifiers, acquisition, events...
+                Identifiers, acquisition and record history
               </span>
             </div>
           </div>
@@ -8178,7 +8178,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="description"
             >
               <span>
-                Taxon name, type status, determination
+                Taxon name, type info, determination
               </span>
             </div>
           </div>
@@ -8200,14 +8200,14 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="title"
             >
               <span>
-                Collecting & death
+                Collecting and death
               </span>
             </div>
             <div
               className="description"
             >
               <span>
-                Collector, expedition, date, death details
+                Collector, expedition, date and death details
               </span>
             </div>
           </div>
@@ -8290,14 +8290,14 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="title"
             >
               <span>
-                Basic information
+                Specimen basics
               </span>
             </div>
             <div
               className="description"
             >
               <span>
-                Identifiers, acquisition, events...
+                Identifiers, acquisition and record history
               </span>
             </div>
           </div>
@@ -8326,7 +8326,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="description"
             >
               <span>
-                Taxon name, type status, determination
+                Taxon name, type info, determination
               </span>
             </div>
           </div>
@@ -8348,14 +8348,14 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="title"
             >
               <span>
-                Collecting & death
+                Collecting and death
               </span>
             </div>
             <div
               className="description"
             >
               <span>
-                Collector, expedition, date, death details
+                Collector, expedition, date and death details
               </span>
             </div>
           </div>
@@ -8654,7 +8654,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           className="content"
         >
           <span>
-            Catalog number
+            Catalog no.
           </span>
           <i
             aria-hidden="true"
@@ -8679,7 +8679,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           className="content"
         >
           <span>
-            Curatorial taxon name
+            Taxon
           </span>
         </div>
       </div>

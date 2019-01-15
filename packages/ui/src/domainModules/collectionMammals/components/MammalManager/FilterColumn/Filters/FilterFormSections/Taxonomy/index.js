@@ -25,7 +25,7 @@ class TaxonomyFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Ranks"
+            label="Limit to rank"
             name="taxonomy.tagTypes"
             resource="searchSpecimen"
           />
@@ -34,7 +34,7 @@ class TaxonomyFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
-            label="Taxon name"
+            label="Taxon"
             name="taxonomy.tagValues"
             resource="searchSpecimen"
           />

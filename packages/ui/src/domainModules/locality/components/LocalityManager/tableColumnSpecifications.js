@@ -25,7 +25,7 @@ const tableColumnSpecifications = [
   {
     fieldPath: 'group',
     label: 'modules.locality.fieldLabels.place.group',
-    width: 150,
+    width: 180,
   },
   {
     buildText: ({ value }) => {

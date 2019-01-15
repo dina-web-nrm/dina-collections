@@ -31,7 +31,7 @@
       }
     },
     "name": {
-      "en": "Scientific name"
+      "en": "name"
     },
     "taxonNameType": {
       "en": "Name type"
@@ -40,7 +40,7 @@
       "en": "Rank"
     },
     "rubinNumber": {
-      "en": "RUBIN"
+      "en": "RUBIN no."
     },
     "class": {
       "en": "class"
@@ -62,6 +62,14 @@
     }
   },
   "headers": {
+    "scientificName": {
+      "en": "scientific name",
+      "sv": ""
+    },
+    "taxon": {
+      "en": "taxon",
+      "sv": ""
+    },
     "connectedScientificNames": {
       "en": "connected scientific names",
       "sv": ""
@@ -120,8 +128,12 @@
   "name": {
     "en": "name"
   },
+  "scientificNameOfRank": {
+    "en": "Scientific name of rank",
+    "sv": ""
+  },
   "notAssociatedWithTaxon": {
-    "en": "this name is not associated with any taxon",
+    "en": "this name is not associated with any taxon.",
     "sv": ""
   },
   "selectLanguage": {
@@ -129,11 +141,15 @@
     "sv": ""
   },
   "synonymForTaxon": {
-    "en": "synonym of",
+    "en": "synonym of taxon",
     "sv": ""
   },
   "taxon": {
     "en": "taxon",
+    "sv": ""
+  },
+  "taxonOfRank": {
+    "en": "Taxon of rank",
     "sv": ""
   },
   "save": {
@@ -145,19 +161,19 @@
     "sv": "Tillbaka"
   },
   "remove": {
-    "en": "Remove",
+    "en": "delete",
     "sv": ""
   },
   "removeFromThisTaxon": {
-    "en": "Remove from this taxon",
+    "en": "Remove from this scientific name",
     "sv": ""
   },
   "removeThisTaxon": {
-    "en": "Remove this taxon?",
+    "en": "Remove this scientific name?",
     "sv": ""
   },
   "removeThisVernacularName": {
-    "en": "Remove this vernacular name?",
+    "en": "Delete this vernacular name?",
     "sv": ""
   },
   "reset": {

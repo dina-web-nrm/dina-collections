@@ -1,7 +1,7 @@
-import scientificName from './scientificName'
+import scientificNameRoot from './scientificNameRoot'
 import taxonStatus from './taxonStatus'
 
 export default {
-  scientificName,
+  scientificNameRoot,
   taxonStatus,
 }

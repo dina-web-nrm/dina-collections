@@ -106,14 +106,14 @@ class AgentIdTextResult extends Component {
     })
 
     if (textOnly) {
-      return <React.Fragment>{`${agentName} (${suffix})`}</React.Fragment>
+      return <React.Fragment>{`${agentName} [${suffix}]`}</React.Fragment>
     }
 
     return (
       <FieldTemplate {...extractedProps} name={name}>
         <div style={{ position: 'relative' }}>
           <strong>{agentName}</strong>
-          {` (${suffix})`}
+          {` [${suffix}]`}
           <Button
             icon
             onClick={this.handleClick}

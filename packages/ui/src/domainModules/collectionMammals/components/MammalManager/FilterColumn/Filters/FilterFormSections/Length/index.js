@@ -80,7 +80,7 @@ class LengthFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Length type"
+            enableHelpNotifications={false}
             name="length.rangeTypes"
             resource="searchSpecimen"
           />

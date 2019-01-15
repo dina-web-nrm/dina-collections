@@ -206,6 +206,7 @@ class ResourceManager extends Component {
         const { extractedProps } = extractProps({
           keys: [
             'buildFilterQuery',
+            'filterHeader',
             'filterValues',
             'onInteraction',
             'onShowAllRecords',

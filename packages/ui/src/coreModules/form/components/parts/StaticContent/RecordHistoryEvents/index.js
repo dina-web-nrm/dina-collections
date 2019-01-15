@@ -50,6 +50,8 @@ class RecordHistoryEvents extends PureComponent {
 
     const hasEvents = createdEvent || lastModifiedEvent
 
+    const username =
+      (createdEvent && createdEvent.username) || 'Admin (imported)'
     return (
       <React.Fragment>
         {hasEvents && (
@@ -69,7 +71,7 @@ class RecordHistoryEvents extends PureComponent {
             includeSourceLink={createdEvent.hasSourceData}
             recordHistoryId={createdEvent.id}
             timestamp={createdEvent.srcCreatedAt}
-            username={createdEvent.username}
+            username={username}
           />
         )}
 
