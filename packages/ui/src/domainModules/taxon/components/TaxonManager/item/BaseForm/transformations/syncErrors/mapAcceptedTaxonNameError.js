@@ -1,10 +1,9 @@
 import objectPath from 'object-path'
 
 const mapAcceptedTaxonNameError = syncErrors => {
-  const acceptedTaxonNameErrorPath = objectPath.get(
-    syncErrors,
-    'acceptedTaxonName.fullPath'
-  )
+  const acceptedTaxonNameErrorPath =
+    objectPath.get(syncErrors, 'acceptedTaxonName.fullPath') ||
+    objectPath.get(syncErrors, 'acceptedTaxonName.id.fullPath')
 
   if (acceptedTaxonNameErrorPath) {
     return {
@@ -12,7 +11,7 @@ const mapAcceptedTaxonNameError = syncErrors => {
       acceptedTaxonName: {
         id: {
           errorCode: 'REQUIRED',
-          fullPath: `${acceptedTaxonNameErrorPath}.id`,
+          fullPath: 'acceptedTaxonName.id',
         },
       },
     }

@@ -10,6 +10,7 @@ import {
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { Form, FormRow } from 'coreModules/form/components'
+import { createMapRequiredStrings } from 'coreModules/form/utilities/errorTransformations'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { formModels } from '../../../../schemas'
 import customParts from '../../../formParts'
@@ -88,6 +89,7 @@ const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
 export default reduxForm({
   enableReinitialize: true,
   validate: compose(
+    createMapRequiredStrings(['name', 'rank']),
     customFormValidator({ model: 'taxonName', models: formModels })
   ),
 })(EnhancedForm)

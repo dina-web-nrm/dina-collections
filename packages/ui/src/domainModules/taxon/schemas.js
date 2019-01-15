@@ -6,6 +6,14 @@ const models = schemaInterface.getModels()
 const createFormModels = () => {
   let updatedModels = { ...models }
 
+  /*
+  * taxon
+  */
+  updatedModels = immutable.set(updatedModels, 'taxon.required', [
+    'acceptedTaxonName',
+    'parent',
+  ])
+
   updatedModels = immutable.set(
     updatedModels,
     'taxon.properties.acceptedTaxonName',
@@ -21,6 +29,17 @@ const createFormModels = () => {
     }
   )
 
+  updatedModels = immutable.set(updatedModels, 'taxon.properties.parent', {
+    properties: {
+      id: {
+        minLength: 1,
+        type: 'string',
+      },
+    },
+    required: ['id'],
+    type: 'object',
+  })
+
   updatedModels = immutable.set(updatedModels, 'taxon.properties.synonyms', {
     items: {
       properties: {
@@ -33,26 +52,38 @@ const createFormModels = () => {
     type: 'array',
   })
 
-  updatedModels = immutable.set(updatedModels, 'taxon.required', [
-    'acceptedTaxonName',
-    'parent',
-  ])
-
-  updatedModels = immutable.set(updatedModels, 'taxon.properties.parent', {
-    properties: {
-      id: {
-        minLength: 1,
-        type: 'string',
+  updatedModels = immutable.set(
+    updatedModels,
+    'taxon.properties.vernacularNames',
+    {
+      items: {
+        properties: {
+          language: { type: 'string' },
+          name: { type: 'string' },
+        },
+        type: 'object',
       },
-    },
-    required: ['id'],
-    type: 'object',
-  })
+      type: 'array',
+    }
+  )
 
+  /*
+  * taxonName
+  */
   updatedModels = immutable.set(updatedModels, 'taxonName.required', [
     'name',
     'rank',
   ])
+
+  updatedModels = immutable.set(updatedModels, 'taxonName.properties.name', {
+    minLength: 1,
+    type: 'string',
+  })
+
+  updatedModels = immutable.set(updatedModels, 'taxonName.properties.rank', {
+    minLength: 1,
+    type: 'string',
+  })
 
   return updatedModels
 }

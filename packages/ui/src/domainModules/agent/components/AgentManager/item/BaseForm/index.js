@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { arrayRemove, change, reduxForm, reset } from 'redux-form'
 
 import { Form, FormRow } from 'coreModules/form/components'
+import { createMapRequiredStrings } from 'coreModules/form/utilities/errorTransformations'
 import { emToPixels } from 'coreModules/layout/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { formModels } from '../../../../schemas'
@@ -101,6 +102,7 @@ const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
 export default reduxForm({
   enableReinitialize: true,
   validate: compose(
+    createMapRequiredStrings(['agentType', 'fullName']),
     customFormValidator({
       model: 'normalizedAgent',
       models: formModels,
