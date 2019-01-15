@@ -1,8 +1,8 @@
 version: '3.3'
 services:
-  migrations:
+  import:
     image: "dina/dina-collections-migrations:${TAG}"
-    container_name: dina-migrations
+    container_name: dina-migrations-import
     env_file:
       - ./env/.backend
     environment:
@@ -11,7 +11,41 @@ services:
     volumes:
       - ./data:/data
       - ./userFiles:/userFiles
+  migrateOne:
+    image: "dina/dina-collections-migrations:${TAG}"
+    container_name: dina-migrations-migrate-one
+    env_file:
+      - ./env/.backend
+    environment:
+      BACKEND_IN_NODE_MODULES: 'true'
+    command: yarn --cwd=/etc/migrations db:production:migrate:one
+    volumes:
+      - ./data:/data
+      - ./userFiles:/userFiles
 
+  migrateLatest:
+    image: "dina/dina-collections-migrations:${TAG}"
+    container_name: dina-migrations-migrate-latest
+    env_file:
+      - ./env/.backend
+    environment:
+      BACKEND_IN_NODE_MODULES: 'true'
+    command: yarn --cwd=/etc/migrations db:production:migrate:latest
+    volumes:
+      - ./data:/data
+      - ./userFiles:/userFiles
+
+  migrateUndoOne:
+    image: "dina/dina-collections-migrations:${TAG}"
+    container_name: dina-migrations-migrate-undo-one
+    env_file:
+      - ./env/.backend
+    environment:
+      BACKEND_IN_NODE_MODULES: 'true'
+    command: yarn --cwd=/etc/migrations db:production:migrate:undo:one
+    volumes:
+      - ./data:/data
+      - ./userFiles:/userFiles
 
 networks:
   default:
@@ -21,4 +55,3 @@ networks:
 volumes:
   postgres_data:
   es_data:
-
