@@ -8,11 +8,14 @@ import {
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { Form, FormRow } from 'coreModules/form/components'
+import {
+  createMapRequiredStrings,
+  mapParentError,
+} from 'coreModules/form/utilities/errorTransformations'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { formModels } from '../../../../schemas'
 import customParts from '../../../formParts'
 import sectionSpecs from './sectionSpecs'
-import { mapParentError } from './transformations/syncErrors'
 
 const formActionBarHeight = emToPixels(4.625)
 
@@ -76,6 +79,7 @@ export default reduxForm({
   enableReinitialize: true,
   validate: compose(
     mapParentError,
+    createMapRequiredStrings(['group', 'name']),
     customFormValidator({
       model: 'storageLocation',
       models: formModels,

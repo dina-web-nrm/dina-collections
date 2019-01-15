@@ -7,10 +7,20 @@ const createFormModels = () => {
   let updatedModels = { ...models }
 
   updatedModels = immutable.set(updatedModels, 'place.required', [
-    'name',
     'group',
+    'name',
     'parent',
   ])
+
+  updatedModels = immutable.set(updatedModels, 'place.properties.group', {
+    minLength: 1,
+    type: 'string',
+  })
+
+  updatedModels = immutable.set(updatedModels, 'place.properties.name', {
+    minLength: 1,
+    type: 'string',
+  })
 
   updatedModels = immutable.set(updatedModels, 'place.properties.parent', {
     properties: {

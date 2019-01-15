@@ -11,6 +11,24 @@ const createFormModels = () => {
     'fullName',
   ])
 
+  updatedModels = immutable.set(
+    updatedModels,
+    'normalizedAgent.properties.agentType',
+    {
+      minLength: 1,
+      type: 'string',
+    }
+  )
+
+  updatedModels = immutable.set(
+    updatedModels,
+    'normalizedAgent.properties.fullName',
+    {
+      minLength: 1,
+      type: 'string',
+    }
+  )
+
   updatedModels = immutable.set(updatedModels, 'dateRange', {
     ...updatedModels.dateRange,
     allOf: [
