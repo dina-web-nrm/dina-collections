@@ -4,8 +4,12 @@ const getServerRootFullPath = require('./getServerRootFullPath')
 const captureArgString = require('./captureArgString')
 const captureScriptName = require('./captureScriptName')
 
-module.exports = function remoteExecScript({ server }) {
-  const scriptName = captureScriptName()
+module.exports = function remoteExecScript({
+  printResult = true,
+  scriptName: scriptNameInput,
+  server,
+}) {
+  const scriptName = scriptNameInput || captureScriptName()
   const argString = captureArgString()
   const repoRootPath = getServerRootFullPath(server)
   const scriptPath = getBashScriptRelativePath(scriptName)
@@ -13,20 +17,29 @@ module.exports = function remoteExecScript({ server }) {
   const cmd = `./${scriptPath} ${argString}`
   return remoteExecCmd({
     cmd,
+    printResult,
     rootPath: repoRootPath,
     server,
   })
     .then(res => {
-      console.log('SUCCESS')
-      console.log('---------')
-      console.log(res)
-      console.log('---------')
+      if (printResult) {
+        console.log('SUCCESS')
+        console.log('---------')
+        console.log(res)
+        console.log('---------')
+      }
+
+      return res
     })
     .catch(err => {
-      console.log('FAIL')
-      console.log('---------')
-      console.log(err)
-      console.log('---------')
+      if (printResult) {
+        console.log('FAIL')
+        console.log('---------')
+        console.log(err)
+        console.log('---------')
+      } else {
+        throw err
+      }
       process.exit(1)
     })
 }

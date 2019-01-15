@@ -8,6 +8,7 @@ module.exports = function remoteExecCmd({
   cmd: cmdInput = 'ls',
   envMap,
   execFromRoot = true,
+  printResult = true,
   rootPath: rootPathInput,
   server,
 }) {
@@ -33,7 +34,10 @@ module.exports = function remoteExecCmd({
         user,
       },
       (err, stdout, stderr) => {
-        console.log(stdout)
+        if (printResult) {
+          console.log(stdout)
+        }
+
         if (stderr) {
           return reject(stderr)
         }
