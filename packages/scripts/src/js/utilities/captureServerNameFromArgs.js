@@ -1,7 +1,7 @@
 const captureFlagFromArgs = require('./captureFlagFromArgs')
 const getAvailableServerNames = require('./getAvailableServerNames')
 
-module.exports = function captureServerNameFromArg() {
+module.exports = function captureServerNameFromArgs() {
   const serverName = captureFlagFromArgs({
     flag: '-s',
   })
