@@ -130,7 +130,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     numberOfListItems: PropTypes.number.isRequired,
     onInteraction: PropTypes.func.isRequired,
     open: PropTypes.func.isRequired,
-    prefetchLimit: PropTypes.number,
     prevRowAvailable: PropTypes.bool.isRequired,
     recordNavigationHeight: PropTypes.number,
     recordOptionsHeight: PropTypes.number,
@@ -166,7 +165,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     itemId: undefined,
     listItems: [],
     nestedCacheNamespaces: undefined,
-    prefetchLimit: 50,
     recordNavigationHeight: emToPixels(4.25),
     recordOptionsHeight: emToPixels(3.5625),
     showAll: false,
@@ -592,15 +590,24 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     handleToggleCurrentRow(mode) {
-      const { focusedIndex, expandedIds, listItems, managerScope } = this.props
-      const listItem = listItems[focusedIndex]
-      const id = listItem && listItem.id
+      const {
+        focusedIndex,
+        expandedIds,
+        listItems,
+        managerScope,
+        treeActive,
+      } = this.props
 
-      const updatedExpandedIds = {
-        ...expandedIds,
-        [id]: mode === 'expand',
+      if (treeActive) {
+        const listItem = listItems[focusedIndex]
+        const id = listItem && listItem.id
+
+        const updatedExpandedIds = {
+          ...expandedIds,
+          [id]: mode === 'expand',
+        }
+        this.props.setExpandedIds(updatedExpandedIds, { managerScope })
       }
-      this.props.setExpandedIds(updatedExpandedIds, { managerScope })
     }
 
     handleClickRow(_, itemId) {
@@ -658,31 +665,19 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     tableSearch(filterValues) {
-      const { managerScope, search, sortOrder, prefetchLimit } = this.props
+      const { managerScope, search, sortOrder } = this.props
 
       const query = this.props.buildFilterQuery({
         values: filterValues || {},
       })
 
       return search({
-        limit: prefetchLimit,
         query,
         sort: sortOrder,
         useScroll: false,
       }).then(prefetchItems => {
         this.props.setListItems(prefetchItems, { managerScope })
 
-        const limitReached =
-          prefetchItems && prefetchItems.length === prefetchLimit
-        if (limitReached) {
-          return search({
-            query,
-            sort: sortOrder,
-            useScroll: false,
-          }).then(items => {
-            this.props.setListItems(items, { managerScope })
-          })
-        }
         return null
       })
     }

@@ -269,7 +269,7 @@ class DateRange extends Component {
           />
         )}
         {!stack && (
-          <React.Fragment>
+          <div>
             <div style={datePartStyle}>
               <DatePart
                 disabled={dateType === LATEST}
@@ -307,11 +307,11 @@ class DateRange extends Component {
                 setYearInputRef={this.setEndYearInputRef}
               />
             </div>
-          </React.Fragment>
+          </div>
         )}
 
         {stack && (
-          <React.Fragment>
+          <div>
             <div
               style={{ float: 'left', marginBottom: '0.8em', width: '100%' }}
             >
@@ -348,7 +348,7 @@ class DateRange extends Component {
                 setYearInputRef={this.setEndYearInputRef}
               />
             </div>
-          </React.Fragment>
+          </div>
         )}
 
         {mountHidden && (

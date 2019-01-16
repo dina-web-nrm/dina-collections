@@ -10,14 +10,12 @@ import {
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { Form, FormRow } from 'coreModules/form/components'
+import { mapParentError } from 'coreModules/form/utilities/errorTransformations'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { formModels } from '../../../../schemas'
 import customParts from '../../../formParts'
 import sectionSpecs from './sectionSpecs'
-import {
-  mapAcceptedTaxonNameError,
-  mapParentError,
-} from './transformations/syncErrors'
+import { mapAcceptedTaxonNameError } from './transformations/syncErrors'
 
 const formActionBarHeight = emToPixels(4.625)
 

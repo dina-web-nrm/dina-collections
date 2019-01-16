@@ -2,9 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Icon, Grid, Input } from 'semantic-ui-react'
-import Slider from 'react-rangeslider'
+import ReactRangeSlider from 'react-rangeslider'
 
 import sizeSelectors from 'coreModules/size/globalSelectors'
+
+/*
+* Override handleKeyDown to avoid conflict with other arrow KeyboardShortcuts
+* and fix this: https://github.com/whoisandy/react-rangeslider/pull/82
+*/
+class Slider extends ReactRangeSlider {
+  constructor(props) {
+    super(props)
+    this.handleKeyDown = () => {}
+  }
+}
 
 const mapStateToProps = state => {
   return {

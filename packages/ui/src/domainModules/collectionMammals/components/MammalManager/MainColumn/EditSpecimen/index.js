@@ -13,6 +13,7 @@ import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import {
   createEnsureAllItemsFetched,
   createGetNestedItemById,
+  createGetResourceCount,
 } from 'coreModules/crud/higherOrderComponents'
 import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
 import setDefaultValues from '../RecordForm/transformations/input'
@@ -127,6 +128,7 @@ EditSpecimen.defaultProps = defaultProps
 
 export default compose(
   withRouter,
+  createGetResourceCount({ resource: 'specimen' }),
   createGetNestedItemById({
     idPath: 'match.params.specimenId',
     include: [
