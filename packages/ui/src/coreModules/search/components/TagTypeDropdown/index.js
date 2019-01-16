@@ -39,34 +39,28 @@ class TagTypeDropdown extends Component {
     } = this.props
 
     return this.fetchAvailableTags().then(tags => {
-      const options = tags.map(tag => {
-        return {
-          key: tag.attributes.key,
-          text: tag.attributes.key,
-          value: tag.attributes.key,
-        }
-      })
+      const options = tags
+        .map(tag => {
+          return tag.attributes.key
+        })
+        .sort()
+        .map(tagKey => {
+          return {
+            key: tagKey,
+            text: tagKey,
+            value: tagKey,
+          }
+        })
 
       if (tagTypeFilterMatchAllOption) {
-        options.push({
+        options.unshift({
           key: tagTypeFilterMatchAllOption,
           text: tagTypeFilterMatchAllOption,
           value: 'any',
         })
       }
 
-      this.setState({
-        options: options.sort((a, b) => {
-          if (a.key > b.key) {
-            return 1
-          }
-
-          if (a.key < b.key) {
-            return -1
-          }
-          return 0
-        }),
-      })
+      this.setState({ options })
 
       if (tagTypeFilterInitialValue) {
         if (tagTypeFilterInitialValue === tagTypeFilterMatchAllOption) {
