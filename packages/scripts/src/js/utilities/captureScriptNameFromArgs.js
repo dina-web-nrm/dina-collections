@@ -1,4 +1,4 @@
-module.exports = function captureScriptName() {
+module.exports = function captureScriptNameFromArgs() {
   const scriptName = process.argv[2] || ''
   if (!(scriptName.indexOf('.sh') > -1)) {
     throw new Error(

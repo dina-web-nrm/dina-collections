@@ -124,7 +124,7 @@ const determineRunningVersions = serverName => {
     })
 }
 
-const promises = ['local'].map(serverName => {
+const promises = serverNames.map(serverName => {
   return determineRunningVersions(serverName)
 })
 
