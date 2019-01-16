@@ -1,8 +1,8 @@
 const localExecScript = require('./utilities/localExecScript')
 const remoteExecScript = require('./utilities/remoteExecScript')
-const captureServerNameFromArg = require('./utilities/captureServerNameFromArg')
+const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs')
 
-const serverName = captureServerNameFromArg()
+const serverName = captureServerNameFromArgs()
 
 if (serverName === 'local') {
   localExecScript()

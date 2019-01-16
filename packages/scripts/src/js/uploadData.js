@@ -1,10 +1,10 @@
 const path = require('path')
 const remoteExecScript = require('./utilities/remoteExecScript')
 const remoteExecCmd = require('./utilities/remoteExecCmd')
-const captureServerNameFromArg = require('./utilities/captureServerNameFromArg')
+const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs')
 const sendFile = require('./utilities/sendFile')
 
-const serverName = captureServerNameFromArg()
+const serverName = captureServerNameFromArgs()
 
 const relativeDataZipFolderPath = 'data'
 const relativeDataZipFileName = 'data.zip'

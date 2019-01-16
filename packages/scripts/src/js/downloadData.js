@@ -1,10 +1,10 @@
 const path = require('path')
 const localExecScript = require('./utilities/localExecScript')
 const localExecCmd = require('./utilities/localExecCmd')
-const captureServerNameFromArg = require('./utilities/captureServerNameFromArg')
+const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs')
 const downloadFile = require('./utilities/downloadFile')
 
-const serverName = captureServerNameFromArg()
+const serverName = captureServerNameFromArgs()
 
 const relativeDataZipFolderPath = 'data'
 const relativeDataZipFileName = 'data.zip'
