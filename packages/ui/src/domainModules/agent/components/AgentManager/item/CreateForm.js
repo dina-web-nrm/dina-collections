@@ -6,8 +6,9 @@ import { ModuleTranslate } from 'coreModules/i18n/components'
 import BaseForm from './BaseForm'
 import setDefaultValues from './BaseForm/transformations/input'
 
+const FORM_NAME = 'normalizedAgentCreate'
+
 const propTypes = {
-  form: PropTypes.string.isRequired,
   itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
 }
@@ -18,11 +19,11 @@ const defaultProps = {
 export class Create extends PureComponent {
   constructor(props) {
     super(props)
-    this.formValueSelector = formValueSelectorFactory(props.form)
+    this.formValueSelector = formValueSelectorFactory(FORM_NAME)
   }
 
   render() {
-    const { form, itemId, onInteraction, ...rest } = this.props
+    const { itemId, onInteraction, ...rest } = this.props
 
     const initialValues = setDefaultValues({ agent: {} })
 
@@ -31,7 +32,7 @@ export class Create extends PureComponent {
         {...rest}
         displayBackButton
         displayResetButton
-        form={form}
+        form={FORM_NAME}
         formValueSelector={this.formValueSelector}
         initialValues={initialValues}
         itemHeader={

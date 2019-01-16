@@ -8,7 +8,9 @@ import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
 import { AGENT_TYPE_OPTIONS } from '../../../constants'
 
-const log = createLog('modules:locality:BaseForm')
+export const FORM_NAME = 'normalizedAgentFilter'
+
+const log = createLog('modules:agent:BaseForm')
 
 const propTypes = {
   error: PropTypes.string,
@@ -67,4 +69,6 @@ export class BaseForm extends Component {
 BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
-export default reduxForm({})(BaseForm)
+export default reduxForm({
+  form: FORM_NAME,
+})(BaseForm)

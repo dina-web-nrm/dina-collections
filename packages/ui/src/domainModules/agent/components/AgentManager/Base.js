@@ -71,30 +71,17 @@ class AgentManager extends Component {
     return (
       <EditForm
         {...props}
-        form="normalizedAgentEdit"
         itemId={itemId}
         onInteraction={this.handleInteraction}
       />
     )
   }
   renderCreateForm(props = {}) {
-    return (
-      <CreateForm
-        {...props}
-        form="normalizedAgentCreate"
-        onInteraction={this.handleInteraction}
-      />
-    )
+    return <CreateForm {...props} onInteraction={this.handleInteraction} />
   }
 
   renderFilterForm(props = {}) {
-    return (
-      <FilterForm
-        {...props}
-        form="normalizedAgentFilter"
-        onInteraction={this.handleInteraction}
-      />
-    )
+    return <FilterForm {...props} onInteraction={this.handleInteraction} />
   }
 
   render() {
