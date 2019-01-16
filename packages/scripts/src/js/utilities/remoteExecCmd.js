@@ -11,6 +11,7 @@ module.exports = function remoteExecCmd({
   printResult = true,
   rootPath: rootPathInput,
   server,
+  throwOnError = true,
 }) {
   const rootPath = rootPathInput || getServerRootFullPath(server)
 
@@ -39,11 +40,17 @@ module.exports = function remoteExecCmd({
         }
 
         if (stderr) {
-          return reject(stderr)
+          if (throwOnError) {
+            return reject(stderr)
+          }
+          return resolve(stderr)
         }
 
         if (err) {
-          return reject(err)
+          if (throwOnError) {
+            return reject(err)
+          }
+          return resolve(err)
         }
         return resolve(stdout)
       }
