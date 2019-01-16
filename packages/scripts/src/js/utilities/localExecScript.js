@@ -2,14 +2,14 @@ const localExecCmd = require('./localExecCmd')
 const getLocalRootFullPath = require('./getLocalRootFullPath')
 const getBashScriptRelativePath = require('./getBashScriptRelativePath')
 const captureArgString = require('./captureArgString')
-const captureScriptName = require('./captureScriptName')
+const captureScriptNameFromArgs = require('./captureScriptNameFromArgs')
 
 module.exports = function localExecScript(
   { printResult = true, scriptName: scriptNameInput, throwOnError } = {}
 ) {
   const rootPath = getLocalRootFullPath()
 
-  const scriptName = scriptNameInput || captureScriptName()
+  const scriptName = scriptNameInput || captureScriptNameFromArgs()
   const argString = captureArgString()
 
   const scriptRelativePath = getBashScriptRelativePath(scriptName)
