@@ -1,4 +1,4 @@
-export default function createCheckboxSpecification({
+export default function createTagTypesSpecification({
   sectionName,
   fieldName,
   matchFilterFunctionName,
