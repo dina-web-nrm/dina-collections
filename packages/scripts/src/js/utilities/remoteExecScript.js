@@ -8,6 +8,7 @@ module.exports = function remoteExecScript({
   printResult = true,
   scriptName: scriptNameInput,
   server,
+  throwOnError,
 }) {
   const scriptName = scriptNameInput || captureScriptName()
   const argString = captureArgString()
@@ -20,6 +21,7 @@ module.exports = function remoteExecScript({
     printResult,
     rootPath: repoRootPath,
     server,
+    throwOnError,
   })
     .then(res => {
       if (printResult) {

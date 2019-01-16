@@ -5,7 +5,7 @@ const captureArgString = require('./captureArgString')
 const captureScriptName = require('./captureScriptName')
 
 module.exports = function localExecScript(
-  { printResult = true, scriptName: scriptNameInput } = {}
+  { printResult = true, scriptName: scriptNameInput, throwOnError } = {}
 ) {
   const rootPath = getLocalRootFullPath()
 
@@ -19,6 +19,7 @@ module.exports = function localExecScript(
     cmd,
     execFromRoot: false,
     printResult,
+    throwOnError,
   })
     .then(res => {
       if (printResult) {

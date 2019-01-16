@@ -6,6 +6,7 @@ module.exports = function localExecCmd({
   envMap,
   printResult,
   rootPath,
+  throwOnError = true,
 }) {
   const cmd = createFullCmdString({
     cmdInput,
@@ -20,11 +21,17 @@ module.exports = function localExecCmd({
       }
 
       if (stderr) {
-        return reject(stderr)
+        if (throwOnError) {
+          return reject(stderr)
+        }
+        return resolve(stderr)
       }
 
       if (err) {
-        return reject(err)
+        if (throwOnError) {
+          return reject(err)
+        }
+        return resolve(stderr)
       }
       return resolve(stdout)
     })
