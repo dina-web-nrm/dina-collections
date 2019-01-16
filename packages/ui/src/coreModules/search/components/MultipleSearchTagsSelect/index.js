@@ -32,7 +32,7 @@ const propTypes = {
       PropTypes.string.isRequired,
     ]).isRequired,
   }).isRequired,
-
+  resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   tagTypeFilterEnabled: PropTypes.bool,
   tagTypeFilterInitialValue: PropTypes.string.isRequired,
@@ -60,15 +60,13 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.handleSelectAllForSearchQuery = this.handleSelectAllForSearchQuery.bind(
       this
     )
-
     this.getSelectedOptions = this.getSelectedOptions.bind(this)
-
     this.handleDeselectAllForSearchQuery = this.handleDeselectAllForSearchQuery.bind(
       this
     )
     this.handleToggleTagSelected = this.handleToggleTagSelected.bind(this)
     this.handleUpdateTagFilterValue = this.handleUpdateTagFilterValue.bind(this)
-    this.fetchAvailableTags = this.fetchAvailableTags.bind(this)
+
     this.state = {
       options: [],
       refineOpen: false,
@@ -339,14 +337,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     }
   }
 
-  fetchAvailableTags() {
-    return this.getItemsForSearchQuery({
-      aggregationFunctionType: 'type',
-    }).then(items => {
-      return items
-    })
-  }
-
   handleUpdateTagFilterValue(value) {
     this.setState({
       tagTypeFilterValue: value,
@@ -356,9 +346,11 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   render() {
     const {
       addTagTypeToText,
+      buildLocalAggregationQuery,
       i18n: { moduleTranslate },
       inlineRefine,
       input,
+      resource,
       tagTypeFilterEnabled,
       tagTypeFilterInitialValue,
       tagTypeFilterMatchAllOption,
@@ -386,9 +378,10 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       <React.Fragment>
         {tagTypeFilterEnabled && (
           <TagTypeDropdown
-            fetchAvailableTags={this.fetchAvailableTags}
+            buildLocalAggregationQuery={buildLocalAggregationQuery}
             inline
             onChange={this.handleUpdateTagFilterValue}
+            resource={resource}
             tagTypeFilterInitialValue={tagTypeFilterInitialValue}
             tagTypeFilterMatchAllOption={tagTypeFilterMatchAllOption}
             tagTypeFilterText={tagTypeFilterText}
@@ -409,6 +402,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
             textKey: 'typeQueryAndPressEnter',
           })}
           onSearchChange={this.handleSearchChange}
+          resource={resource}
           rightButton={
             <RefineTagSelectionButton
               onCloseRefine={this.handleCloseRefine}
