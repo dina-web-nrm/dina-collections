@@ -9,6 +9,8 @@ import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
 
 import BaseForm from './BaseForm'
 
+const FORM_NAME = 'normalizedAgentEdit'
+
 const mapStateToProps = (state, ownProps) => {
   const { item: normalizedAgent } = ownProps
   const parentId = getParentId(normalizedAgent)
@@ -31,7 +33,6 @@ const mapStateToProps = (state, ownProps) => {
 export const include = ['resourceActivities']
 
 const propTypes = {
-  form: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
 }
@@ -43,11 +44,11 @@ const defaultProps = {
 export class Edit extends PureComponent {
   constructor(props) {
     super(props)
-    this.formValueSelector = formValueSelectorFactory(props.form)
+    this.formValueSelector = formValueSelectorFactory(FORM_NAME)
   }
 
   render() {
-    const { form, nestedItem, onInteraction, ...rest } = this.props
+    const { nestedItem, onInteraction, ...rest } = this.props
 
     if (!nestedItem) {
       return null
@@ -60,7 +61,7 @@ export class Edit extends PureComponent {
         {...rest}
         displayBackButton
         displayResetButton
-        form={form}
+        form={FORM_NAME}
         formValueSelector={this.formValueSelector}
         initialValues={nestedItem}
         onClose={event => {
