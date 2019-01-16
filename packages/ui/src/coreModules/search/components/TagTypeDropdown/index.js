@@ -4,6 +4,7 @@ import { Dropdown } from 'semantic-ui-react'
 
 const propTypes = {
   fetchAvailableTags: PropTypes.func.isRequired,
+  inline: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   tagTypeFilterInitialValue: PropTypes.string.isRequired,
   tagTypeFilterMatchAllOption: PropTypes.string.isRequired,
@@ -12,10 +13,11 @@ const propTypes = {
 }
 
 const defaultProps = {
+  inline: false,
   value: '',
 }
 
-class TagTypeFilterInlineDropdown extends Component {
+class TagTypeDropdown extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -70,13 +72,13 @@ class TagTypeFilterInlineDropdown extends Component {
     this.props.onChange(data.value)
   }
   render() {
-    const { value, tagTypeFilterText } = this.props
+    const { inline, value, tagTypeFilterText } = this.props
     const { options } = this.state
     return (
       <div style={{ fontStyle: 'italic' }}>
         <span>{tagTypeFilterText} </span>
         <Dropdown
-          inline
+          inline={inline}
           onChange={this.handleOnChange}
           options={options}
           value={value}
@@ -86,7 +88,7 @@ class TagTypeFilterInlineDropdown extends Component {
   }
 }
 
-TagTypeFilterInlineDropdown.defaultProps = defaultProps
-TagTypeFilterInlineDropdown.propTypes = propTypes
+TagTypeDropdown.defaultProps = defaultProps
+TagTypeDropdown.propTypes = propTypes
 
-export default TagTypeFilterInlineDropdown
+export default TagTypeDropdown

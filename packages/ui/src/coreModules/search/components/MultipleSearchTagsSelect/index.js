@@ -7,9 +7,9 @@ import { debounce } from 'lodash'
 import { MultipleSearchSelectionDropdown } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+import TagTypeDropdown from '../TagTypeDropdown'
 import RefineTagSelection from './RefineTagSelection'
 import RefineTagSelectionButton from './RefineTagSelectionButton'
-import TagTypeFilterInlineDropdown from './TagTypeFilterInlineDropdown'
 import * as selectors from './selectors'
 
 const propTypes = {
@@ -385,8 +385,9 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     return (
       <React.Fragment>
         {tagTypeFilterEnabled && (
-          <TagTypeFilterInlineDropdown
+          <TagTypeDropdown
             fetchAvailableTags={this.fetchAvailableTags}
+            inline
             onChange={this.handleUpdateTagFilterValue}
             tagTypeFilterInitialValue={tagTypeFilterInitialValue}
             tagTypeFilterMatchAllOption={tagTypeFilterMatchAllOption}
