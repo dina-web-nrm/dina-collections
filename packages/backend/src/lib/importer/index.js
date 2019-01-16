@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
 const asyncReduce = require('common/src/asyncReduce')
 const createLog = require('../../utilities/log')
 
@@ -7,8 +8,17 @@ const log = createLog('lib/importer')
 
 const saveToFile = false
 
-module.exports = function importer({ config, serviceInteractor }) {
+module.exports = function importer({
+  config,
+  fileInteractor,
+  serviceInteractor,
+}) {
   log.info('Start importer')
+  const dataInfo = fileInteractor.readSync({
+    filePath: '.info.json',
+    folderPath: 'data',
+    parseJson: true,
+  })
 
   const resources = [
     'causeOfDeathType',
@@ -53,6 +63,13 @@ module.exports = function importer({ config, serviceInteractor }) {
   }).then(importReport => {
     log.info('Import done')
     log.info('Start rebuilding searchSpecimen')
+
+    fileInteractor.writeSync({
+      content: JSON.stringify({ ...dataInfo, date: getCurrentUTCTimestamp() }),
+      filePath: '.importInfo.json',
+      folderPath: 'data',
+    })
+
     if (saveToFile) {
       fs.writeFileSync(
         path.join(__dirname, 'importReport.json'),
