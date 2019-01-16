@@ -103,8 +103,7 @@ const fileInteractor = {
     __dirname,
     process.env.BACKEND_IN_NODE_MODULES
       ? '../../../../../../../'
-      : '../../../../../',
-    'userFiles'
+      : '../../../../../'
   ),
 }
 

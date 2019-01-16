@@ -11,47 +11,90 @@ module.exports = function createFileInteractor({ config }) {
     throw new Error(`No folder at path ${rootPath}`)
   }
 
-  const createPath = ({ filePath }) => {
+  const createPath = ({ filePath, folderPath = 'userFiles' }) => {
     return createFullPath({
       filePath,
+      folderPath,
       rootPath,
     })
   }
 
-  const read = ({ filePath, encoding = 'utf8' }) => {
+  const readSync = ({
+    encoding = 'utf8',
+    filePath,
+    folderPath,
+    parseJson = false,
+  }) => {
+    const fullPath = createFullPath({
+      filePath,
+      folderPath,
+      rootPath,
+    })
+    const content = fs.readFileSync(fullPath, encoding)
+    if (!parseJson) {
+      return content
+    }
+    return JSON.parse(content)
+  }
+
+  const read = ({ encoding = 'utf8', filePath, folderPath, parseJson }) => {
     return Promise.resolve().then(() => {
-      const fullPath = createFullPath({
+      return readSync({
+        encoding,
         filePath,
-        rootPath,
+        folderPath,
+        parseJson,
       })
-      fs.readFileSync(fullPath, encoding)
     })
   }
 
-  const write = ({ filePath, content, encoding = 'utf8' }) => {
+  const writeSync = ({ filePath, folderPath, content, encoding = 'utf8' }) => {
+    const fullPath = createFullPath({
+      filePath,
+      folderPath,
+      rootPath,
+    })
+    return fs.writeFileSync(fullPath, content, encoding)
+  }
+
+  const write = ({ filePath, folderPath, content, encoding = 'utf8' }) => {
     return Promise.resolve().then(() => {
-      const fullPath = createFullPath({
+      return writeSync({
+        content,
+        encoding,
         filePath,
-        rootPath,
+        folderPath,
       })
-      fs.writeFileSync(fullPath, content, encoding)
     })
   }
 
-  const append = ({ filePath, content, encoding = 'utf8' }) => {
+  const appendSync = ({ filePath, folderPath, content, encoding = 'utf8' }) => {
+    const fullPath = createFullPath({
+      filePath,
+      folderPath,
+      rootPath,
+    })
+    return fs.appendFileSync(fullPath, content, encoding)
+  }
+
+  const append = ({ filePath, folderPath, content, encoding = 'utf8' }) => {
     return Promise.resolve().then(() => {
-      const fullPath = createFullPath({
+      return appendSync({
+        content,
+        encoding,
         filePath,
-        rootPath,
+        folderPath,
       })
-      fs.appendFileSync(fullPath, content, encoding)
     })
   }
 
   return {
     append,
+    appendSync,
     createPath,
     read,
+    readSync,
     write,
+    writeSync,
   }
 }
