@@ -80,5 +80,6 @@ BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
+  destroyOnUnmount: false,
   form: FORM_NAME,
 })(BaseForm)
