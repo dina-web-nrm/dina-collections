@@ -44,16 +44,19 @@ const execCmd = ({ serverName, cmd }) => {
 
 const determineRunningVersions = serverName => {
   let serverStatusObject = {
-    scriptEnvServerName: serverName,
+    envName: serverName,
     scriptEnvHost: getServerHost(serverName),
     externalIp: 'unknown',
     gitBranch: 'unknown',
     lastGitTag: 'unknown',
     hostName: 'unknown',
     connected: 'false',
+    importVersion: 'unknown',
+    importDate: 'unknown',
+    dataFilesVersion: 'unknown',
   }
   let serviceStatusObject = {
-    scriptEnvServerName: serverName,
+    envName: serverName,
     'dina-api': 'unknown',
     'dina-collections-ui': 'unknown',
     'dina-semantic-ui-docs': 'unknown',
@@ -82,7 +85,11 @@ const determineRunningVersions = serverName => {
           lastGitTag: info.lastTag,
           hostName: info.hostName,
           connected: 'true',
+          importVersion: info.importInfo && info.importInfo.version,
+          importDate: info.importInfo && info.importInfo.date,
+          dataFilesVersion: info.dataInfo && info.dataInfo.version,
         }
+
         serviceStatusObject = {
           ...serviceStatusObject,
           'dina-api': 'not running',
@@ -117,7 +124,7 @@ const determineRunningVersions = serverName => {
     })
 }
 
-const promises = serverNames.map(serverName => {
+const promises = ['local'].map(serverName => {
   return determineRunningVersions(serverName)
 })
 
