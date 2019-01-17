@@ -1,7 +1,56 @@
-* test migrations scripts
-* add and test sql dump and import and stuff
-* go through naming
+Verify script env
+* Make sure the env/.scripts reflect sample.scripts
 
+Keep on terminal in the root locally (where you execute commands) and one terminal in demo server dina-collections repo
+
+
+Check server status
+* run yarn admin:print:server-status
+** If not on nrm connection to internal machines will fail and it will take some time for the command to finish
+** use yarn admin:print:server-status -s demo to only print demo server status or -s local to check local server
+
+Load data from sample data locally
+* stand in root and make sure backend is not running
+* run yarn import:data:sample
+* start backend and verify you have data
+
+Create a new json data version
+* Edit data in ex .agents (in a way so you can find it in interfaces later). Make sure to edit migrationData and not sourceData
+* run yarn admin:build:data:json:zip -s local and provide a new version in the questions
+* make sure data.zip is created
+
+Upload the new version to demo
+* run yarn admin:upload:data:json -s demo
+* run yarn admin:print:server-status -s demo
+* Make sure dataFilesVersion reflects the new version name
+* ssh into demo and make sure that all files are unpacked from zip-file 
+
+Import the new version in demo
+* run yarn admin:import:data:json -s demo -t v0.13.0 (or later tag if exist)
+* Go to demo site and verify your changes
+* yarn admin:print:server-status -s demo. importVersion and importDate will be added after new images with this branch is deployed
+
+Create sql dump
+* Go to demo site and make some changes in the interface (like edit agent name)
+* run yarn admin:export:data:sql -s demo
+* Make sure dump.sql is created in ./data on the demo server
+
+Download sql dump
+* run yarn admin:download:data:sql -s demo
+* make sure ./data/dump.sql exist locally and that it is ignored by git
+
+Import sql dump
+* Close backend
+* run yarn admin:import:data:sql -s local
+* start backend
+* go into interface and make sure changes you made on demo is there
+* run yarn admin:import:data:json -s local and make sure importVersion and importDate makes sense
+
+Deploy old version
+* run yarn admin:deploy -s demo -t v0.12.0
+* Not that stuff might brack if version is compatible with current data version
+* run yarn admin:print:server-status -s demo and make sure correct version is running
+* login and check the version flag on logged in home page
 
 
 
