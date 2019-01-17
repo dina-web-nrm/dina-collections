@@ -6,8 +6,10 @@ const remoteExecScript = require('./utilities/remoteExecScript')
 const getServerHost = require('./utilities/getServerHost')
 const remoteExecCmd = require('./utilities/remoteExecCmd')
 const getAvailableServerNames = require('./utilities/getAvailableServerNames')
+const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs')
 
-const serverNames = getAvailableServerNames()
+const argServerName = captureServerNameFromArgs({ throwOnMissing: false })
+const serverNames = argServerName ? [argServerName] : getAvailableServerNames()
 
 const execScript = ({ serverName, scriptName }) => {
   return Promise.resolve().then(() => {
