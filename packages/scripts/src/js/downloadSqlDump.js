@@ -27,7 +27,7 @@ return promptContinue({
         server: serverName,
       }).then(transferreMessage => {
         console.log(transferreMessage)
-        console.log('Data downloaded and unpacked success')
+        console.log('Data downloaded success')
       })
     })
   })
