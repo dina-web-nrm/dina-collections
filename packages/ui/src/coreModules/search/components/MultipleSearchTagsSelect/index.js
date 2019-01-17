@@ -11,6 +11,7 @@ import TagTypeDropdown from '../TagTypeDropdown'
 import RefineTagSelection from './RefineTagSelection'
 import RefineTagSelectionButton from './RefineTagSelectionButton'
 import * as selectors from './selectors'
+import { ANY } from '../../constants'
 
 const propTypes = {
   addTagTypeToText: PropTypes.bool,
@@ -79,7 +80,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         const { tagTypeFilterValue } = this.state
         return this.getItemsForSearchQuery({
           tagType:
-            tagTypeFilterValue && tagTypeFilterValue !== 'any'
+            tagTypeFilterValue && tagTypeFilterValue !== ANY
               ? tagTypeFilterValue
               : undefined,
           tagValue: searchQuery,
@@ -201,7 +202,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       return this.getItemsForSearchQuery({
         exact: !!(tagType && key && optionType !== 'freeText'),
         limit: 1000,
-        tagType: tagType === 'any' ? undefined : tagType,
+        tagType: tagType === ANY ? undefined : tagType,
         tagValue,
       }).then(items => {
         const newReduxFormValues = this.createReduxFormValues({
@@ -293,7 +294,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       .filter(item => !!item)
 
     const freeTextSufix =
-      tagTypeFilterValue === 'any'
+      tagTypeFilterValue === ANY
         ? '(free text)'
         : `(free text ${tagTypeFilterValue})`
     const freeTextOption = this.createOption({

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Dropdown } from 'semantic-ui-react'
 
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+import { ANY } from '../../constants'
 
 const propTypes = {
   buildLocalAggregationQuery: PropTypes.func.isRequired,
@@ -56,7 +57,7 @@ class TagTypeDropdown extends Component {
         options.unshift({
           key: tagTypeFilterMatchAllOption,
           text: tagTypeFilterMatchAllOption,
-          value: 'any',
+          value: ANY,
         })
       }
 
