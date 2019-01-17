@@ -29,7 +29,7 @@ const InlineNotificationBody = ({
         {description && description}
         {descriptionKey && (
           <p style={{ whiteSpace: 'pre-line' }}>
-            <Translate fallback="" textKey={descriptionKey} />
+            <Translate textKey={descriptionKey} />
           </p>
         )}
         {linkTextKey &&
