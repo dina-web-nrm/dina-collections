@@ -116,7 +116,6 @@ class PositionModal extends PureComponent {
                     min={getPath('verticalPosition.minimumElevationInMeters')}
                     module={module}
                     name={getPath('verticalPosition.elevation')}
-                    positionType="elevation"
                   />
                 </Grid.Column>
                 <Grid.Column width={16}>
@@ -125,7 +124,6 @@ class PositionModal extends PureComponent {
                     min={getPath('verticalPosition.minimumDepthInMeters')}
                     module={module}
                     name={getPath('verticalPosition.depth')}
-                    positionType="depth"
                   />
                 </Grid.Column>
               </Grid.Row>
