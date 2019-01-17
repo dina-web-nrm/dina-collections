@@ -621,6 +621,11 @@
         "sv": ""
       }
     },
+    "identifiers": {
+      "en":
+        "Identifiers are any \"numbers\" (which may be numeric or not) associated with the specimen. The catalog number is the primary identifier and is not possible to edit.\n\nSelect the identifier type from the dropdown and add the value(s) for the selected type.",
+      "sv": ""
+    },
     "acquisition": {
       "date": {
         "en":
