@@ -51,6 +51,20 @@
       "sv": ""
     }
   },
+  "helpTexts": {
+    "name": {
+      "en": "Name of the storage location.",
+      "sv": ""
+    },
+    "group": {
+      "en": "Level in the hierarchy of storage locations.",
+      "sv": ""
+    },
+    "parent": {
+      "en": "Storage location that this location belongs to.",
+      "sv": ""
+    }
+  },
   "other": {
     "createdBy": {
       "en": "Created by",

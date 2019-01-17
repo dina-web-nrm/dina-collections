@@ -143,6 +143,124 @@
       }
     }
   },
+  "helpTexts": {
+    "agentType": {
+      "en": "The kind of agent.",
+      "sv": ""
+    },
+    "fullName": {
+      "en":
+        "Full name of the agent, normally in the format \"family name, given name\" for persons. \n\n The full name has to be unique in combination with disambiguating description, if the full name is the same as for another agent, you must add a disambiguating description.",
+      "sv": ""
+    },
+    "disambiguatingDescription": {
+      "en":
+        "A phrase that distinguishes the agent from another agents with the same  or similar name. \n\n You should add a description if there is a risk that two or more agents are confused.",
+      "sv": ""
+    },
+    "givenName": {
+      "en": "The given/first name of the agent.",
+      "sv": ""
+    },
+    "familyName": {
+      "en": "The family/last name of the agent.",
+      "sv": ""
+    },
+    "additionalName": {
+      "en":
+        "Name(s) the agent may have in addition to the given and family names.",
+      "sv": ""
+    },
+    "alsoKnownAs": {
+      "en":
+        "Other name(s) or name variants used for the agent, like for example if the family name has changed or if there are different spellings of the name.",
+      "sv": ""
+    },
+    "title": {
+      "en":
+        "Other name(s) or name variants used for the agent, like for example if the family name has changed or if there are different spellings of the name.",
+      "sv": ""
+    },
+    "abbreviation": {
+      "en":
+        "Abbreviation of the agent according to the standard of the collection.",
+      "sv": ""
+    },
+    "roles": {
+      "name": {
+        "en": "Role or position for the agent in relation to an affiliation.",
+        "sv": ""
+      }
+    },
+    "affiliation": {
+      "name": {
+        "en":
+          "Name or description of the affiliation. Normally some kind of organization.",
+        "sv": ""
+      }
+    },
+    "dateRange": {
+      "startDate": {
+        "en":
+          "The start date of the affiliation. \n\n Allowed dates are: \n - year \n - year/month \n - year/month/day",
+        "sv": ""
+      },
+      "endDate": {
+        "en":
+          "The end date of this affiliation. \n\n Allowed dates are: \n - year \n  - year/month \n - year/month/day",
+        "sv": ""
+      }
+    },
+    "telephone": {
+      "en": "The agents phone number.",
+      "sv": ""
+    },
+    "email": {
+      "en": "The agents email address.",
+      "sv": ""
+    },
+    "streetAddress": {
+      "en": "The street address in the address.",
+      "sv": ""
+    },
+    "postOfficeBoxNumber": {
+      "en": "The postal box in the address",
+      "sv": ""
+    },
+    "city": {
+      "en": "The city of the address.",
+      "sv": ""
+    },
+    "stateProvince": {
+      "en": "The state or province of the address.",
+      "sv": ""
+    },
+    "postalCode": {
+      "en": "The postal code of the  address.",
+      "sv": ""
+    },
+    "country": {
+      "en": "The country of the address.",
+      "sv": ""
+    },
+    "lifespan": {
+      "startDate": {
+        "en":
+          "The agents birth date. \n\n Allowed dates are: \n - year \n - year/month \n - year/month/day",
+        "sv": ""
+      },
+      "endDate": {
+        "en":
+          "The agents death date. \n\n Allowed dates are: \n - year \n - year/month \n - year/month/day",
+        "sv": ""
+      }
+    },
+    "legacyData": {
+      "en":
+        "Data that was not mapped to the current data model when data was migrated from another system.",
+      "sv": ""
+    }
+  },
   "other": {
     "addAgentRole": {
       "en": "Add affiliation",
