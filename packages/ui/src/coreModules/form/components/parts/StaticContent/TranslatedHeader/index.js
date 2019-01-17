@@ -6,14 +6,17 @@ import { ModuleTranslate } from 'coreModules/i18n/components'
 
 const propTypes = {
   as: PropTypes.string,
+  children: PropTypes.node,
   module: PropTypes.string.isRequired,
   textKey: PropTypes.string.isRequired,
 }
+
 const defaultProps = {
   as: 'h1',
+  children: undefined,
 }
 
-const TranslatedHeader = ({ as, module, textKey }) => {
+const TranslatedHeader = ({ as, children, module, textKey }) => {
   return (
     <Header as={as}>
       <ModuleTranslate
@@ -22,6 +25,7 @@ const TranslatedHeader = ({ as, module, textKey }) => {
         module={module}
         textKey={textKey}
       />
+      {children}
     </Header>
   )
 }
