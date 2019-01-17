@@ -25,11 +25,13 @@ const propTypes = {
     value: PropTypes.string.isRequired,
   }).isRequired,
   label: PropTypes.string,
+  module: PropTypes.string,
 }
 
 const defaultProps = {
   establishmentMeansTypeOptions: [],
   label: undefined,
+  module: 'collectionMammals',
 }
 
 class EstablishmentMeansTypeRadioGroup extends Component {
@@ -39,6 +41,7 @@ class EstablishmentMeansTypeRadioGroup extends Component {
       establishmentMeansTypeOptions,
       label,
       input,
+      module,
     } = this.props
 
     if (!allTypeFetched) {
@@ -48,7 +51,8 @@ class EstablishmentMeansTypeRadioGroup extends Component {
     return (
       <Radio
         input={input}
-        label={<ModuleTranslate module="collectionMammals" textKey={label} />}
+        label={<ModuleTranslate module={module} textKey={label} />}
+        module={module}
         radioOptions={establishmentMeansTypeOptions}
       />
     )

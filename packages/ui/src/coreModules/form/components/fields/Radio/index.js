@@ -13,6 +13,7 @@ const propTypes = {
   }).isRequired,
   label: PropTypes.node,
   labelKey: PropTypes.string,
+  module: PropTypes.string,
   radioOptions: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
@@ -26,6 +27,7 @@ const defaultProps = {
   enableHelpNotifications: undefined,
   label: undefined,
   labelKey: undefined,
+  module: 'collectionMammals',
 }
 
 class RadioField extends Component {
@@ -45,6 +47,7 @@ class RadioField extends Component {
       input: { name, value: selectedValue },
       label,
       labelKey,
+      module,
       radioOptions,
     } = this.props
 
@@ -54,6 +57,7 @@ class RadioField extends Component {
         label={label}
         labelKey={labelKey}
         meta={{}}
+        module={module}
         name={name}
         style={{ marginBottom: '0.5em', width: '100%' }}
       >
