@@ -28,7 +28,7 @@ const InlineNotificationBody = ({
       <Grid.Column>
         {description && description}
         {descriptionKey && (
-          <p>
+          <p style={{ whiteSpace: 'pre-line' }}>
             <Translate fallback="" textKey={descriptionKey} />
           </p>
         )}

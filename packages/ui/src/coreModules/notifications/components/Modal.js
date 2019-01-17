@@ -58,7 +58,11 @@ export const NotificationModal = ({
             </Header>
           )}
           {description && description}
-          {descriptionKey && <Translate textKey={descriptionKey} />}
+          {descriptionKey && (
+            <p style={{ whiteSpace: 'pre-line' }}>
+              <Translate textKey={descriptionKey} />
+            </p>
+          )}
           {linkTextKey &&
             linkTo && (
               <p key="link">
