@@ -36,14 +36,17 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   tagTypeFilterEnabled: PropTypes.bool,
-  tagTypeFilterInitialValue: PropTypes.string.isRequired,
-  tagTypeFilterMatchAllOption: PropTypes.string.isRequired,
-  tagTypeFilterText: PropTypes.string.isRequired,
+  tagTypeInitialOptionValue: PropTypes.string,
+  tagTypeInlineDescription: PropTypes.string,
+  tagTypeMatchAllOptionText: PropTypes.string,
 }
 const defaultProps = {
   addTagTypeToText: true,
   inlineRefine: false,
   tagTypeFilterEnabled: false,
+  tagTypeInitialOptionValue: undefined,
+  tagTypeInlineDescription: undefined,
+  tagTypeMatchAllOptionText: undefined,
 }
 
 class RawMultipleSearchTagsSelect extends PureComponent {
@@ -353,9 +356,9 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       input,
       resource,
       tagTypeFilterEnabled,
-      tagTypeFilterInitialValue,
-      tagTypeFilterMatchAllOption,
-      tagTypeFilterText,
+      tagTypeInlineDescription,
+      tagTypeInitialOptionValue,
+      tagTypeMatchAllOptionText,
       ...rest
     } = this.props
 
@@ -381,11 +384,11 @@ class RawMultipleSearchTagsSelect extends PureComponent {
           <TagTypeDropdown
             buildLocalAggregationQuery={buildLocalAggregationQuery}
             inline
+            inlineDescription={tagTypeInlineDescription}
             onChange={this.handleUpdateTagFilterValue}
             resource={resource}
-            tagTypeFilterInitialValue={tagTypeFilterInitialValue}
-            tagTypeFilterMatchAllOption={tagTypeFilterMatchAllOption}
-            tagTypeFilterText={tagTypeFilterText}
+            tagTypeInitialOptionValue={tagTypeInitialOptionValue}
+            tagTypeMatchAllOptionText={tagTypeMatchAllOptionText}
             value={tagTypeFilterValue}
           />
         )}
