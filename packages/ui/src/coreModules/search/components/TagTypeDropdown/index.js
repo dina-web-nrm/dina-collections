@@ -1,43 +1,56 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown } from 'semantic-ui-react'
+import objectPath from 'object-path'
 
-import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+import { createInjectSearch } from '../../higherOrderComponents'
 import { ANY } from '../../constants'
 
 const propTypes = {
   buildLocalAggregationQuery: PropTypes.func.isRequired,
-  inline: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
+  inlineDescription: PropTypes.node,
+  input: PropTypes.shape({
+    onBlur: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string,
+  }),
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
   search: PropTypes.func.isRequired,
-  tagTypeFilterInitialValue: PropTypes.string.isRequired,
-  tagTypeFilterMatchAllOption: PropTypes.string.isRequired,
-  tagTypeFilterText: PropTypes.string.isRequired,
+  tagTypeInitialOptionValue: PropTypes.string,
+  tagTypeMatchAllOptionText: PropTypes.string,
   value: PropTypes.string,
 }
 
 const defaultProps = {
-  inline: false,
+  inlineDescription: undefined,
+  input: undefined,
+  onBlur: undefined,
+  onChange: undefined,
+  tagTypeInitialOptionValue: undefined,
+  tagTypeMatchAllOptionText: undefined,
   value: '',
 }
 
 class TagTypeDropdown extends Component {
   constructor(props) {
     super(props)
+    this.onChange = objectPath.get(props, 'input.onChange') || props.onChange
+
+    if (!this.onChange) {
+      throw new Error('onChange or input.onChange must be provided')
+    }
 
     this.state = {
       options: [],
     }
 
-    this.handleOnChange = this.handleOnChange.bind(this)
     this.fetchAvailableTags = this.fetchAvailableTags.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
-    const {
-      tagTypeFilterInitialValue,
-      tagTypeFilterMatchAllOption,
-    } = this.props
+    const { tagTypeInitialOptionValue, tagTypeMatchAllOptionText } = this.props
 
     return this.fetchAvailableTags().then(tags => {
       const options = tags
@@ -53,22 +66,18 @@ class TagTypeDropdown extends Component {
           }
         })
 
-      if (tagTypeFilterMatchAllOption) {
+      if (tagTypeMatchAllOptionText) {
         options.unshift({
-          key: tagTypeFilterMatchAllOption,
-          text: tagTypeFilterMatchAllOption,
+          key: tagTypeMatchAllOptionText,
+          text: tagTypeMatchAllOptionText,
           value: ANY,
         })
       }
 
       this.setState({ options })
 
-      if (tagTypeFilterInitialValue) {
-        if (tagTypeFilterInitialValue === tagTypeFilterMatchAllOption) {
-          this.props.onChange('any')
-        } else {
-          this.props.onChange(tagTypeFilterInitialValue)
-        }
+      if (tagTypeInitialOptionValue) {
+        this.onChange(tagTypeInitialOptionValue)
       }
     })
   }
@@ -86,24 +95,40 @@ class TagTypeDropdown extends Component {
     })
   }
 
-  handleOnChange(event, data) {
-    this.props.onChange(data.value)
+  handleChange(event, data) {
+    this.onChange(data.value)
+
+    if (this.props.input && this.props.input.onBlur) {
+      this.props.input.onBlur(data.value)
+    }
   }
 
   render() {
-    const { inline, value, tagTypeFilterText } = this.props
+    const { input, value, inlineDescription } = this.props
     const { options } = this.state
 
+    if (inlineDescription) {
+      return (
+        <div style={{ fontStyle: 'italic' }}>
+          <span>{inlineDescription} </span>
+          <Dropdown
+            inline
+            onChange={this.handleChange}
+            options={options}
+            value={value}
+          />
+        </div>
+      )
+    }
+
     return (
-      <div style={{ fontStyle: 'italic' }}>
-        <span>{tagTypeFilterText} </span>
-        <Dropdown
-          inline={inline}
-          onChange={this.handleOnChange}
-          options={options}
-          value={value}
-        />
-      </div>
+      <Dropdown
+        onChange={this.handleChange}
+        options={options}
+        search
+        selection
+        value={value || (input && input.value) || ''}
+      />
     )
   }
 }
