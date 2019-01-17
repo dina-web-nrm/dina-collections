@@ -10,7 +10,6 @@ const inputStyle = {
 }
 
 const propTypes = {
-  label: PropTypes.object,
   max: PropTypes.string.isRequired,
   min: PropTypes.string.isRequired,
   module: PropTypes.string.isRequired,
@@ -18,22 +17,14 @@ const propTypes = {
 }
 
 export const defaultProps = {
-  label: undefined,
   name: undefined,
 }
 
 class VerticalPosition extends PureComponent {
   render() {
-    const { label, name, max, min, module } = this.props
-
+    const { name, max, min, module } = this.props
     return (
-      <FieldTemplate
-        enableHelpNotifications={false}
-        float="left"
-        label={label}
-        meta={{}}
-        name={name}
-      >
+      <FieldTemplate float="left" meta={{}} module={module} name={name}>
         <div style={inputStyle}>
           <Field
             autoComplete="off"
