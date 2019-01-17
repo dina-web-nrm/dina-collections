@@ -25,43 +25,45 @@ class VerticalPosition extends PureComponent {
     const { name, max, min, module } = this.props
     return (
       <FieldTemplate float="left" meta={{}} module={module} name={name}>
-        <div style={inputStyle}>
-          <Field
-            autoComplete="off"
-            className="transparent"
-            component={Input}
-            displayLabel={false}
-            displaySubLabels={false}
-            fluid
-            labelPosition="right"
-            module={module}
-            name={min}
-            type="number"
-          />
-        </div>
-        <div
-          style={{
-            float: 'left',
-            marginTop: '0.5em',
-            textAlign: 'center',
-            width: '2em',
-          }}
-        >
-          {'/'}
-        </div>
-        <div style={inputStyle}>
-          <Field
-            autoComplete="off"
-            className="transparent"
-            component={Input}
-            displayLabel={false}
-            displaySubLabels={false}
-            fluid
-            labelPosition="right"
-            module={module}
-            name={max}
-            type="number"
-          />
+        <div>
+          <div style={inputStyle}>
+            <Field
+              autoComplete="off"
+              className="transparent"
+              component={Input}
+              displayLabel={false}
+              displaySubLabels={false}
+              fluid
+              labelPosition="right"
+              module={module}
+              name={min}
+              type="number"
+            />
+          </div>
+          <div
+            style={{
+              float: 'left',
+              marginTop: '0.5em',
+              textAlign: 'center',
+              width: '2em',
+            }}
+          >
+            {'/'}
+          </div>
+          <div style={inputStyle}>
+            <Field
+              autoComplete="off"
+              className="transparent"
+              component={Input}
+              displayLabel={false}
+              displaySubLabels={false}
+              fluid
+              labelPosition="right"
+              module={module}
+              name={max}
+              type="number"
+            />
+          </div>
         </div>
       </FieldTemplate>
     )
