@@ -1,4 +1,4 @@
-import createCheckboxSpecification from './checkboxSpecification'
+import createTagTypesSpecification from './tagTypesSpecification'
 
 export default function featureRangeSpecification({
   rangeFilterFunctionName,
@@ -44,14 +44,14 @@ export default function featureRangeSpecification({
   })
 
   if (rangeTypesFieldName) {
-    const checkboxSpecification = createCheckboxSpecification({
+    const tagTypesSpecification = createTagTypesSpecification({
       aggregationFunctionName: rangeTypesAggregateTagsFunctionName,
       fieldName: rangeTypesFieldName,
       matchFilterFunctionName: rangeTypesMatchFilterFunctionName,
       sectionName,
     })
 
-    specifications.push(checkboxSpecification[0])
+    specifications.push(tagTypesSpecification[0])
   }
 
   return specifications

@@ -1,4 +1,4 @@
-import createCheckboxSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/checkboxSpecification'
+import createCheckboxSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagTypesSpecification'
 
 export default createCheckboxSpecification({
   aggregationFunctionName: 'aggregateSexTags',

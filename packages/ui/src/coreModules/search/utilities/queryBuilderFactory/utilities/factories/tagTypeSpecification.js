@@ -1,3 +1,5 @@
+import { ANY } from '../../../../constants'
+
 export default function createTagTypeSpecification({
   sectionName,
   fieldName,
@@ -11,7 +13,7 @@ export default function createTagTypeSpecification({
   }
 
   const stringMatchFilter = ({ fieldValue }) => {
-    if (!(fieldValue && fieldValue.length)) {
+    if (!(fieldValue && fieldValue.length) || fieldValue === ANY) {
       return null
     }
 
