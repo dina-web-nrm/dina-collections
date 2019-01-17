@@ -10,4 +10,8 @@ TEST_SERVER_HOST=82.196.9.188
 TEST_SERVER_USER=anton
 TEST_SERVER_REPO_ROOT=/home/dina/repos/dina-collections
 
+DEMO_SERVER_HOST=82.196.9.188
+DEMO_SERVER_USER=anton
+DEMO_SERVER_REPO_ROOT=/home/dina/repos/dina-collections
+
 LOCAL_SERVER_HOST=127.0.0.1
