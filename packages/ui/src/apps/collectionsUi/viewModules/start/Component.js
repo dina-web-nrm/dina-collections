@@ -108,7 +108,14 @@ class Start extends Component {
               module: 'start',
               textKey: 'currentlyVersion',
             })}
-            {version}
+            {version}{' '}
+            <a
+              href="https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              changelog
+            </a>
           </i>
         </div>
       </React.Fragment>
