@@ -1,13 +1,21 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
-import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+import {
+  MultipleSearchTagsSelectField,
+  TagTypeDropdownField,
+} from 'coreModules/search/components'
+
+import { ANY } from 'coreModules/search/constants'
 
 import { higherOrderComponents } from '../../../queryBuilder'
 
 const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
   MultipleSearchTagsSelectField
+)
+
+const WrappedTagTypeDropdownField = higherOrderComponents.createFieldHoc()(
+  TagTypeDropdownField
 )
 
 class TaxonomyFilterForm extends PureComponent {
@@ -16,15 +24,27 @@ class TaxonomyFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
+            addTagTypeToText={false}
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             label="Taxon"
             name="taxonomy.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
-            tagTypeFilterInitialValue="any rank"
-            tagTypeFilterMatchAllOption="any rank"
-            tagTypeFilterText="Suggesting from"
+            tagTypeInitialOptionValue={ANY}
+            tagTypeInlineDescription="Suggesting from"
+            tagTypeMatchAllOptionText="any rank"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            autoComplete="off"
+            component={WrappedTagTypeDropdownField}
+            label="Limit to specimens of rank"
+            name="taxonomy.tagType"
+            resource="searchSpecimen"
+            tagTypeInitialOptionValue={ANY}
+            tagTypeMatchAllOptionText="Any rank level"
           />
         </Grid.Column>
       </Grid>

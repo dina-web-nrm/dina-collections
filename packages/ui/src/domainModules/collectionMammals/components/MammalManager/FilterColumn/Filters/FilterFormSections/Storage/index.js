@@ -1,13 +1,21 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
-import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+import {
+  MultipleSearchTagsSelectField,
+  TagTypeDropdownField,
+} from 'coreModules/search/components'
+
+import { ANY } from 'coreModules/search/constants'
 
 import { higherOrderComponents } from '../../../queryBuilder'
 
 const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
   MultipleSearchTagsSelectField
+)
+
+const WrappedTagTypeDropdownField = higherOrderComponents.createFieldHoc()(
+  TagTypeDropdownField
 )
 
 class StorageFilterForm extends PureComponent {
@@ -23,9 +31,20 @@ class StorageFilterForm extends PureComponent {
             name="storage.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
-            tagTypeFilterInitialValue="any storage level"
-            tagTypeFilterMatchAllOption="any storage level"
-            tagTypeFilterText="Suggesting from"
+            tagTypeInitialOptionValue={ANY}
+            tagTypeInlineDescription="Suggesting from"
+            tagTypeMatchAllOptionText="any storage level"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            autoComplete="off"
+            component={WrappedTagTypeDropdownField}
+            label="Limit to specimens with storage level"
+            name="storage.tagType"
+            resource="searchSpecimen"
+            tagTypeInitialOptionValue={ANY}
+            tagTypeMatchAllOptionText="Any storage level"
           />
         </Grid.Column>
       </Grid>
