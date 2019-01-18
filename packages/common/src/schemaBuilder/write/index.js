@@ -37,7 +37,7 @@ module.exports = function write(
       throw new Error(
         `Not allowed to override non candidate schema. Tried to override apiVersion: ${
           apiVersion
-        }`
+        }. If you are going to change the api schema update the version in backend/package.json`
       )
     }
 
@@ -91,7 +91,7 @@ module.exports = function write(
       throw new Error(
         `Not allowed to override non candidate schema. Tried to override modelVersion: ${
           modelVersion
-        }`
+        }. If you are going to change the models update the version in models/package.json. `
       )
     }
     const info = {
