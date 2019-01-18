@@ -60,6 +60,10 @@
     }
   },
   "fieldLabels": {
+    "identifiers": {
+      "en": "Identifiers",
+      "sv": ""
+    },
     "acquisition": {
       "acquisitionTypeText": {
         "en": "Acquisition type"
@@ -361,6 +365,10 @@
       "places": {
         "en": "Higher geography",
         "sv": ""
+      },
+      "position": {
+        "en": "Coordinate (interpreted, decimal degrees WGS84)",
+        "sv": ""
       }
     },
     "originInformation": {
@@ -466,6 +474,14 @@
       }
     },
     "verticalPosition": {
+      "elevation": {
+        "en": "Elevation",
+        "sv": ""
+      },
+      "depth": {
+        "en": "Depth",
+        "sv": ""
+      },
       "maximumDepthInMeters": {
         "en": "Depth max (m)",
         "sv": "Max"
@@ -598,14 +614,151 @@
     }
   },
   "helpTexts": {
+    "specimen": {
+      "publishRecord": {
+        "en":
+          "Public visibility setting that controls whether the specimen can be published externally or not. Not all data will be publicly visible even when set to public. The data manager of the collection controls which data is to be shared. \n\n Mark the specimen as public to allow it to be published externally. Uncheck public to keep it visible only to users logged in to this collection. ",
+        "sv": ""
+      }
+    },
+    "identifiers": {
+      "en":
+        "Identifiers are any \"numbers\" (which may be numeric or not) associated with the specimen. The catalog number is the primary identifier and is not possible to edit.\n\nSelect the identifier type from the dropdown and add the value(s) for the selected type.",
+      "sv": ""
+    },
+    "acquisition": {
+      "date": {
+        "en":
+          "The date the specimen was acquired by the museum. This is often the arrival date.  \n\n Allowed dates are: \n - year \n - year/month \n - year/month/day",
+        "sv": ""
+      },
+      "handedInByAgent": {
+        "en":
+          "Interpreted name (or names) of the person or organisation that handed the specimen in to the museum. Does not have to be the donor.  \n\n You have two options: \n\n  If you are not sure of who the name represents, enter the name according to the standard of your collection and select this text option in the dropdown. \n\n If you know which agent the name represents, select the agent from the dropdown or by using the picker. If the agent is missing you can add a new by opening Agents from the left side main menu in a new window.",
+        "sv": "",
+        "textV": {
+          "en":
+            "The stated name (or names) of the person or organisation that handed the specimen in to the museum. Does not have to be the donor. \n\n  Write the text exactly as stated on the label or similar. \n\n It is recommended that you always add stated information, if available.",
+          "sv": ""
+        }
+      }
+    },
+    "recordHistoryEvents": {
+      "agent": {
+        "en":
+          "Interpreted name of the person that created the catalog card. \n\n You have two options: \n\n  If you are not sure of who the name represents, enter the name according to the standard of your collection and select this text option in the dropdown. \n\n  If you know which agent the name represents, select the agent from the dropdown or by using the picker. If the agent is missing you can add a new by opening Agents from the left side main menu in a new window.",
+        "sv": ""
+      },
+      "date": {
+        "en":
+          "The date when the catalog card was added. \n\n Allowed dates are: \n - year \n - year/month \n - year/month/day",
+        "sv": ""
+      }
+    },
+    "legacyData": {
+      "en":
+        "Data that was not mapped to the current data model when it was migrated from another system.",
+      "sv": ""
+    },
+    "taxonInformation": {
+      "curatorialTaxon": {
+        "en": "The taxon to which the specimen belongs.",
+        "sv": ""
+      },
+      "typeStatus": {
+        "en": "Tthe current type status of the specimen (if it is a type).",
+        "sv": ""
+      },
+      "typifiedName": {
+        "en": "The taxon name for which the specimen is a type.",
+        "sv": ""
+      }
+    },
+    "determinations": {
+      "taxonNameV": {
+        "en":
+          "Stated determination. May include vernacular names. \n\n Write the text exactly as stated on the label or similar, for example: \"C. lupus\". \n\n It is recommended that you always add stated information, if available.",
+        "sv": ""
+      },
+      "taxonNameI": {
+        "en":
+          "Interpreted taxon name written according to the standard of the collection, for example \"Canis lupus\" or \"wolf\". May be a vernacular name.",
+        "sv": ""
+      },
+      "determinedByAgent": {
+        "en":
+          "Interpreted name of the person that made the determination. \n\n You have two options:  \n\nIf you are not sure of who the name represents, enter the name according to the standard of your collection and select this text option in the dropdown. \n\n If you know which agent the name represents, select the agent from the dropdown or by using the picker. If the agent is missing you can add a new by opening Agents from the left side main menu in a new window.",
+        "sv": "",
+        "textV": {
+          "en":
+            "Stated name (or names) of the person(s) that made the determination. \n\n Write the text exactly as stated on the label or similar. \n\n It is recommended that you always add stated information, if available.",
+          "sv": ""
+        }
+      },
+      "date": {
+        "en":
+          "The date of the determination. \n\n Allowed dates are: \n - year \n  - year/month \n - year/month/day",
+        "sv": ""
+      }
+    },
     "locationInformation": {
       "localityI": {
         "en":
-          "Locality name(s) which don’t fit to other fields. E.g. detailed place or water body (e.g. “Frescati” or “Baltic sea”)",
+          "Interpreted locality written according to the standard of the collection.",
+        "sv": ""
+      },
+      "localityV": {
+        "en":
+          "Stated locality. \n\n  Write the text exactly as stated on the label or similar, it should include all locality information that is available. \n\n It is strongly recommended that you always add this stated information, if it is available.",
+        "sv": ""
+      },
+      "places": {
+        "en":
+          "The closest higher geography that the locality belongs to. \n\n  Choose from dropdown suggestions or use the picker to find the higher geography. If the geography is missing you can add a new by opening Geography from the left side main menu in a new window.",
+        "sv": ""
+      },
+      "swedishGrid5km": {
+        "en": "Old Swedish map square coordinates, for example \"09A7e\".",
+        "sv": ""
+      },
+      "coordinatesVerbatim": {
+        "en":
+          "Stated coordinate of the collecting locality. \n\n Write the text exactly as stated on the label or similar, in whatever coordinate reference system used. \n\n It is recommended that you always add stated information, if available.",
+        "sv": ""
+      },
+      "georeferenceSourcesText": {
+        "en":
+          "Description of the maps or other resources that was used to georeference the collecting locality. \n\n Make the descrption specific enough to allow anyone in the future to use the same resources.",
+        "sv": ""
+      },
+      "position": {
+        "en":
+          "Coordinate that has been interpreted (from stated coordinates or other data) and transformed to WGS84 decimal degrees. \n\n Interpret the coordinates and transform using an external tool if necessary.",
         "sv": ""
       },
       "remarks": {
         "en": "Notes on the locality",
+        "sv": ""
+      }
+    },
+    "collectingInformation": {
+      "establishmentMeansType": {
+        "en":
+          "Appearance of the specimen at the collecting locality at the time of collecting. \n\n Normally this is \"Wild and native\" but you can note if the animal was introduced to the locality or if it was captive.",
+        "sv": ""
+      },
+      "collectedByAgent": {
+        "en":
+          "The interpreted name of the agent that collected the specimen. \n\n You have two options:  \n\n If you are not sure of who the name represents, enter the name according to the standard of your collection and select this text option in the dropdown. \n\n If you know which agent the name represents, select the agent from the dropdown or by using the picker. If the agent is missing you can add a new by opening Agents from the left side main menu in a new window.",
+        "sv": "",
+        "textV": {
+          "en":
+            "Stated name (or names) of the person or organisation that collected the specimen. \n\n  Write the text exactly as stated on the label or similar. \n\n It is strongly recommended that you always add this stated information, if it is available.",
+          "sv": ""
+        }
+      },
+      "isDeathDate": {
+        "en": "Whether the animal died during the collecting period or not. ",
         "sv": ""
       }
     },
@@ -621,7 +774,22 @@
         "sv": ""
       },
       "uncertaintyInMeters": {
-        "en": "Uncertainty (m)"
+        "en":
+          "The horizontal distance in meters from the interpreted coordinate that describes the smallest circle containing the whole of the collecting locality. \n\n It is recommended that you try to assess the uncertainty, but leave the value empty if this is not possible."
+      }
+    },
+    "event": {
+      "expeditionText": {
+        "en":
+          "Interpreted name of the expedition (if any) during which the collecting took place.",
+        "sv": ""
+      }
+    },
+    "deathInformation": {
+      "causeOfDeathType": {
+        "en":
+          "General cause of death of the individual. \n\n Select \"unknown\" from the list if you do not know the cause of death.",
+        "sv": ""
       }
     },
     "verticalPosition": {
@@ -643,6 +811,188 @@
       "minimumElevationInMeters": {
         "en":
           "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+        "sv": ""
+      },
+      "elevation": {
+        "en":
+          "Elevation of the collecting locality as measured by the vertical distance in meters from mean sea level.",
+        "sv": ""
+      },
+      "depth": {
+        "en":
+          "Depth of the collecting locality as measured by the vertical distance in meters below a local surface.",
+        "sv": ""
+      }
+    },
+    "originInformation": {
+      "originLocality": {
+        "en":
+          "Interpreted origin locality written according to the standard of the collection.\n\n  An individual may be associated with several localities. If you want to mention several localities you should add one as the origin locality and add the rest to origin remarks.",
+        "sv": ""
+      },
+      "establishmentMeansType": {
+        "en":
+          "Appearance of the specimen at the specified origin locality. \n\n You can note whether the animal was wild and native, introduced or if it was captive.",
+        "sv": ""
+      },
+      "isResultOfSelectiveBreeding": {
+        "en":
+          "Genetic origin of the individual, not necessarily related to the origin locality.",
+        "sv": ""
+      }
+    },
+    "collectionItems": {
+      "preparationType": {
+        "en":
+          "The kind of physical object. \n\n Select the best match from the list.",
+        "sv": ""
+      }
+    },
+    "physicalObject": {
+      "storageLocation": {
+        "en":
+          "Storage location where the object is normally located (if not on loan etc.). \n\n You should choose the most detailed storage location possible and not change it unless the object is moved to a new place (i.e. you should not change the storage location when the object is on loan or is missing).",
+        "sv": ""
+      }
+    },
+    "curatorialAssessment": {
+      "date": {
+        "en":
+          "The date when the curatorial assessment was made. \n\n Allowed dates are: \n - year \n - year/month \n - year/month/day",
+        "sv": ""
+      },
+      "agent": {
+        "en":
+          "The person that made this assesment. Normally this would be you. \n\n Start typing or use the picker to find an agent. If the agent is missing you can add a new by opening Agents from the left side main menu in a new window.n/ n/",
+        "sv": ""
+      },
+      "condition": {
+        "en":
+          "The condition of the specimen at the time of the assesment. \n\n You can leave this blank in case the assessment is about the object's storage. If you want to make a note about the storage (for example if the object is on loan) you add it as a remark.",
+        "sv": ""
+      }
+    },
+    "features": {
+      "age": {
+        "en":
+          "Age in years together with the method of assessing the age. \n\n Currently the age field allows for any text value, but it is recommended that you only add a number representing the age in years. ",
+        "sv": ""
+      },
+      "age-stage": {
+        "en": "Development stage and method of assessing the stage.",
+        "sv": ""
+      },
+      "sex": {
+        "en": "Biological sex of the individual.",
+        "sv": ""
+      },
+      "carcass-condition": {
+        "en": "Condition of the carcass when it was collected.",
+        "sv": ""
+      },
+      "cranium-count": {
+        "en":
+          "Count of cranium for this specimen. Normally this would be 1 or 0.",
+        "sv": ""
+      },
+      "mandibula-count": {
+        "en":
+          "Count of mandibula in this specimen. Normally this would be 1 or 0.",
+        "sv": ""
+      },
+      "vertebrae-count": {
+        "en": "Number of vertebrae in this specimen.",
+        "sv": ""
+      },
+      "costae-count": {
+        "en": "Number of costae in this specimen.",
+        "sv": ""
+      },
+      "scapula-count": {
+        "en": "Number of  scapulae in this specimen.",
+        "sv": ""
+      },
+      "humerus-count": {
+        "en": "Number of humeri in this specimen.",
+        "sv": ""
+      },
+      "ulna-count": {
+        "en": "Number of ulnae in this specimen.",
+        "sv": ""
+      },
+      "radius-count": {
+        "en": "Number of radial bones in this specimen.",
+        "sv": ""
+      },
+      "manus-count": {
+        "en": "Number of manus bones in this specimen.",
+        "sv": ""
+      },
+      "pelvis-count": {
+        "en":
+          "Count of pelvis for this specimen. Normally this would be 1 or 0.",
+        "sv": ""
+      },
+      "femur-count": {
+        "en": "Number of femurs in this specimen.",
+        "sv": ""
+      },
+      "tibia-count": {
+        "en": "Number of tibiae in this specimen.",
+        "sv": ""
+      },
+      "pedis-count": {
+        "en": "Number of pedis in this specimen.",
+        "sv": ""
+      },
+      "bacculum-count": {
+        "en":
+          "Count of bacculum for this specimen. Normally this would be 1 or 0.",
+        "sv": ""
+      },
+      "complete-body-weight": {
+        "en": "Complete body weight with unit.",
+        "sv": ""
+      },
+      "skinned-weight": {
+        "en": "Skinned weight with unit.",
+        "sv": ""
+      },
+      "gutted-weight": {
+        "en": "Gutted weight with unit.",
+        "sv": ""
+      },
+      "slaughtered-weight": {
+        "en": "Slaughtered weight with unit.",
+        "sv": ""
+      },
+      "unknown-weight-type": {
+        "en":
+          "Weight (in selected unit) that is neither complete body, skinned gutted or slaughtered.",
+        "sv": ""
+      },
+      "total-length": {
+        "en": "Total length with unit.",
+        "sv": ""
+      },
+      "body-length": {
+        "en": "Body length with unit.",
+        "sv": ""
+      },
+      "tail-to-anus-length": {
+        "en": "Tail to anus length with  unit.",
+        "sv": ""
+      },
+      "tail-to-pelvis-length": {
+        "en": "Tail to pelvis length with unit.",
+        "sv": ""
+      },
+      "ear-length": {
+        "en": "Ear length with unit.",
+        "sv": ""
+      },
+      "hind-foot-length": {
+        "en": "Hind foot length with unit.",
         "sv": ""
       }
     }

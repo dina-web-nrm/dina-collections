@@ -4,10 +4,12 @@ import AddButton from './AddButton'
 import IconButton from './IconButton'
 import RecordHistoryEvents from './RecordHistoryEvents'
 import TranslatedHeader from './TranslatedHeader'
+import TranslatedHeaderWithHelpIcon from './TranslatedHeaderWithHelpIcon'
 
 export default wrapStaticContentParts({
   AddButton,
   IconButton,
   RecordHistoryEvents,
   TranslatedHeader,
+  TranslatedHeaderWithHelpIcon,
 })

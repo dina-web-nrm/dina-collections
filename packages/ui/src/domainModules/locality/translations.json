@@ -53,6 +53,20 @@
       "sv": ""
     }
   },
+  "helpTexts": {
+    "name": {
+      "en": "A name for the geographic place or area.",
+      "sv": ""
+    },
+    "group": {
+      "en": "Geographic level of the geographic place or area.",
+      "sv": ""
+    },
+    "parent": {
+      "en": "Geopgraphic place or area that this geographic record belongs to.",
+      "sv": ""
+    }
+  },
   "newLocality": {
     "en": "new geography record",
     "sv": ""

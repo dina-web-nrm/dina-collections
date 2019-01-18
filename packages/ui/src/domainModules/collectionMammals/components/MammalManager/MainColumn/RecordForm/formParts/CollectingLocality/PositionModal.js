@@ -112,20 +112,18 @@ class PositionModal extends PureComponent {
                 </Grid.Column>
                 <Grid.Column width={16}>
                   <VerticalPosition
-                    label={<ModuleTranslate textKey="other.elevation" />}
                     max={getPath('verticalPosition.maximumElevationInMeters')}
                     min={getPath('verticalPosition.minimumElevationInMeters')}
                     module={module}
-                    name={getPath('verticalPosition')}
+                    name={getPath('verticalPosition.elevation')}
                   />
                 </Grid.Column>
                 <Grid.Column width={16}>
                   <VerticalPosition
-                    label={<ModuleTranslate textKey="other.depth" />}
                     max={getPath('verticalPosition.maximumDepthInMeters')}
                     min={getPath('verticalPosition.minimumDepthInMeters')}
                     module={module}
-                    name={getPath('verticalPosition')}
+                    name={getPath('verticalPosition.depth')}
                   />
                 </Grid.Column>
               </Grid.Row>

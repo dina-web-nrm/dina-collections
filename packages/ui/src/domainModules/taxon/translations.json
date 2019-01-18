@@ -95,6 +95,24 @@
       "sv": ""
     }
   },
+  "helpTexts": {
+    "parent": {
+      "en": "Parent taxon that this taxon belongs to.",
+      "sv": ""
+    },
+    "name": {
+      "en": "Scientific name.",
+      "sv": ""
+    },
+    "rank": {
+      "en": "Rank of the scientific name.",
+      "sv": ""
+    },
+    "rubinNumber": {
+      "en": "Number for the scientific name according to the RUBIN standard.",
+      "sv": ""
+    }
+  },
   "other": {
     "createdBy": {
       "en": "Created by",
