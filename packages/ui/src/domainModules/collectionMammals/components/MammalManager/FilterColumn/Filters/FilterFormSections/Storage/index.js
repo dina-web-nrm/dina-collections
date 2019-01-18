@@ -1,20 +1,21 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import {
   MultipleSearchTagsSelectField,
-  MultipleChoiceCheckboxesField,
+  TagTypeDropdownField,
 } from 'coreModules/search/components'
+
+import { ANY } from 'coreModules/search/constants'
 
 import { higherOrderComponents } from '../../../queryBuilder'
 
-const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
-  MultipleChoiceCheckboxesField
-)
-
 const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
   MultipleSearchTagsSelectField
+)
+
+const WrappedTagTypeDropdownField = higherOrderComponents.createFieldHoc()(
+  TagTypeDropdownField
 )
 
 class StorageFilterForm extends PureComponent {
@@ -23,20 +24,27 @@ class StorageFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            component={WrappedMultipleChoiceCheckboxesField}
-            displayCount
-            label="Level"
-            name="storage.tagTypes"
-            resource="searchSpecimen"
-          />
-        </Grid.Column>
-        <Grid.Column width={16}>
-          <Field
+            addTagTypeToText={false}
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             label="Normal storage location"
             name="storage.tagValues"
             resource="searchSpecimen"
+            tagTypeFilterEnabled
+            tagTypeInitialOptionValue={ANY}
+            tagTypeInlineDescription="Suggesting from"
+            tagTypeMatchAllOptionText="any storage level"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            autoComplete="off"
+            component={WrappedTagTypeDropdownField}
+            label="Limit to specimens with storage level"
+            name="storage.tagType"
+            resource="searchSpecimen"
+            tagTypeInitialOptionValue={ANY}
+            tagTypeMatchAllOptionText="Any storage level"
           />
         </Grid.Column>
       </Grid>

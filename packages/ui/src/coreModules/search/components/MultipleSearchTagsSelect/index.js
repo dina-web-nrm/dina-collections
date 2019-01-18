@@ -1,16 +1,17 @@
 /* eslint-disable class-methods-use-this */
-
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
-import { Button } from 'semantic-ui-react'
 import { debounce } from 'lodash'
 
 import { MultipleSearchSelectionDropdown } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+import TagTypeDropdown from '../TagTypeDropdown'
 import RefineTagSelection from './RefineTagSelection'
+import RefineTagSelectionButton from './RefineTagSelectionButton'
 import * as selectors from './selectors'
+import { ANY } from '../../constants'
 
 const propTypes = {
   addTagTypeToText: PropTypes.bool,
@@ -32,12 +33,20 @@ const propTypes = {
       PropTypes.string.isRequired,
     ]).isRequired,
   }).isRequired,
-
+  resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
+  tagTypeFilterEnabled: PropTypes.bool,
+  tagTypeInitialOptionValue: PropTypes.string,
+  tagTypeInlineDescription: PropTypes.string,
+  tagTypeMatchAllOptionText: PropTypes.string,
 }
 const defaultProps = {
   addTagTypeToText: true,
   inlineRefine: false,
+  tagTypeFilterEnabled: false,
+  tagTypeInitialOptionValue: undefined,
+  tagTypeInlineDescription: undefined,
+  tagTypeMatchAllOptionText: undefined,
 }
 
 class RawMultipleSearchTagsSelect extends PureComponent {
@@ -55,23 +64,28 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.handleSelectAllForSearchQuery = this.handleSelectAllForSearchQuery.bind(
       this
     )
-
     this.getSelectedOptions = this.getSelectedOptions.bind(this)
-
     this.handleDeselectAllForSearchQuery = this.handleDeselectAllForSearchQuery.bind(
       this
     )
     this.handleToggleTagSelected = this.handleToggleTagSelected.bind(this)
+    this.handleUpdateTagFilterValue = this.handleUpdateTagFilterValue.bind(this)
 
     this.state = {
       options: [],
       refineOpen: false,
       searchQuery: '',
+      tagTypeFilterValue: '',
     }
 
     this.debouncedGetItemsForSearchQuery = debounce(
       searchQuery => {
+        const { tagTypeFilterValue } = this.state
         return this.getItemsForSearchQuery({
+          tagType:
+            tagTypeFilterValue && tagTypeFilterValue !== ANY
+              ? tagTypeFilterValue
+              : undefined,
           tagValue: searchQuery,
         }).then(items => {
           const options = this.createOptions({
@@ -95,9 +109,16 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.debouncedGetItemsForSearchQuery.cancel()
   }
 
-  getItemsForSearchQuery({ exact, tagType, tagValue, limit = 10 }) {
+  getItemsForSearchQuery({
+    aggregationFunctionType = 'value',
+    exact,
+    limit = 10,
+    tagType,
+    tagValue,
+  }) {
     const query = this.props.buildLocalAggregationQuery({
       input: {
+        aggregationFunctionType,
         exact,
         limit,
         tagType,
@@ -178,11 +199,13 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         return option.key === queryString
       })
       const { key } = searchOption
-      const { tagType, tagValue } = searchOption.other
+
+      const { tagType, tagValue, optionType } = searchOption.other
+
       return this.getItemsForSearchQuery({
-        exact: !!(tagType && key),
+        exact: !!(tagType && key && optionType !== 'freeText'),
         limit: 1000,
-        tagType,
+        tagType: tagType === ANY ? undefined : tagType,
         tagValue,
       }).then(items => {
         const newReduxFormValues = this.createReduxFormValues({
@@ -238,39 +261,53 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       this.props.input.onChange(updatedReduxFormValues)
     }
   }
-
+  createOption({ key, optionType, tagType, tagValue, text, value }) {
+    return {
+      key,
+      other: {
+        optionType,
+        tagType,
+        tagValue,
+      },
+      text,
+      value,
+    }
+  }
   createOptions({ searchQuery, items }) {
+    const { tagTypeFilterValue } = this.state
     const { addTagTypeToText } = this.props
     const itemOptions = items
       .map(({ attributes }) => {
         if (attributes) {
           const { key, tagType, tagValue } = attributes
           const tagTypeText = addTagTypeToText ? ` [${tagType}] ` : ' '
-          return {
-            key,
-            other: {
-              tagType,
-              tagValue,
-            },
-            text: `${tagValue}${tagTypeText}`,
 
-            type: 'string',
+          return this.createOption({
+            key,
+            optionType: 'tag',
+            tagType,
+            tagValue,
+            text: `${tagValue}${tagTypeText}`,
             value: key,
-          }
+          })
         }
 
         return null
       })
       .filter(item => !!item)
-    const freeTextOption = {
+
+    const freeTextSufix =
+      tagTypeFilterValue === ANY
+        ? '(free text)'
+        : `(free text ${tagTypeFilterValue})`
+    const freeTextOption = this.createOption({
       key: searchQuery,
-      other: {
-        tagValue: searchQuery,
-      },
-      text: `${searchQuery}`,
-      type: 'string',
+      optionType: 'freeText',
+      tagType: tagTypeFilterValue,
+      tagValue: searchQuery,
+      text: `${searchQuery} ${freeTextSufix}`,
       value: searchQuery,
-    }
+    })
 
     const options = [freeTextOption, ...itemOptions]
     return options
@@ -304,16 +341,28 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     }
   }
 
+  handleUpdateTagFilterValue(value) {
+    this.setState({
+      tagTypeFilterValue: value,
+    })
+  }
+
   render() {
     const {
       addTagTypeToText,
+      buildLocalAggregationQuery,
       i18n: { moduleTranslate },
       inlineRefine,
       input,
+      resource,
+      tagTypeFilterEnabled,
+      tagTypeInlineDescription,
+      tagTypeInitialOptionValue,
+      tagTypeMatchAllOptionText,
       ...rest
     } = this.props
 
-    const { refineOpen, options } = this.state
+    const { refineOpen, options, tagTypeFilterValue } = this.state
     const { value: reduxFormValues } = input
 
     const patchedInput = {
@@ -322,15 +371,27 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       value: Object.keys(reduxFormValues || {}),
     }
 
-    const numberOfSearchResults = selectors.getNumberOfSearchResults(
+    const numberOfSearchResults = selectors.getNumberOfFreeTextSearchResults(
       reduxFormValues
     )
-    const numberOfSelectedResults = selectors.getNumberOfSelectedResults(
+    const numberOfSelectedResults = selectors.getNumberOfSelectedFreeTextResults(
       reduxFormValues
     )
 
     return (
       <React.Fragment>
+        {tagTypeFilterEnabled && (
+          <TagTypeDropdown
+            buildLocalAggregationQuery={buildLocalAggregationQuery}
+            inline
+            inlineDescription={tagTypeInlineDescription}
+            onChange={this.handleUpdateTagFilterValue}
+            resource={resource}
+            tagTypeInitialOptionValue={tagTypeInitialOptionValue}
+            tagTypeMatchAllOptionText={tagTypeMatchAllOptionText}
+            value={tagTypeFilterValue}
+          />
+        )}
         <MultipleSearchSelectionDropdown
           {...rest}
           enableHelpNotifications={false}
@@ -345,15 +406,14 @@ class RawMultipleSearchTagsSelect extends PureComponent {
             textKey: 'typeQueryAndPressEnter',
           })}
           onSearchChange={this.handleSearchChange}
+          resource={resource}
           rightButton={
-            <Button
-              disabled={!reduxFormValues}
-              onClick={
-                refineOpen ? this.handleCloseRefine : this.handleOpenRefine
-              }
-            >
-              {`${numberOfSelectedResults}/${numberOfSearchResults}`}
-            </Button>
+            <RefineTagSelectionButton
+              onCloseRefine={this.handleCloseRefine}
+              onOpenRefine={this.handleOpenRefine}
+              reduxFormValues={reduxFormValues || undefined}
+              refineOpen={refineOpen}
+            />
           }
           type="multiple-search-selection-dropdown-connect"
         />

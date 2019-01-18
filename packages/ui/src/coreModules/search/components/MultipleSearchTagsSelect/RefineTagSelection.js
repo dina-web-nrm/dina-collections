@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Modal, Header } from 'semantic-ui-react'
 import { FormModal } from '../../../form/components'
 import TagGroup from './TagGroup'
+import * as selectors from './selectors'
 
 const propTypes = {
   addTagTypeToText: PropTypes.bool.isRequired,
@@ -19,7 +20,11 @@ const propTypes = {
       matchingTags: PropTypes.array.isRequired,
       searchOption: PropTypes.object.isRequired,
     }).isRequired
-  ).isRequired,
+  ),
+}
+
+const defaultProps = {
+  reduxFormValues: {},
 }
 
 const RefineTagSelection = ({
@@ -33,13 +38,15 @@ const RefineTagSelection = ({
   onToggleTagSelected: handleToggleTagSelected,
   reduxFormValues,
 }) => {
+  const freeTextQueries = selectors.getAllFreeTextQueries(reduxFormValues)
   if (inline) {
     return (
       <React.Fragment>
         <Header size="medium">{`Refine filter (${numberOfSelectedResults}/${
           numberOfSearchResults
         })`}</Header>
-        {Object.keys(reduxFormValues).map(searchQuery => {
+        {freeTextQueries.map(searchQuery => {
+          const title = reduxFormValues[searchQuery].searchOption.text
           return (
             <TagGroup
               addTagTypeToText={addTagTypeToText}
@@ -49,6 +56,7 @@ const RefineTagSelection = ({
               onToggleTagSelected={handleToggleTagSelected}
               results={reduxFormValues[searchQuery].matchingTags}
               searchQuery={searchQuery}
+              title={title}
             />
           )
         })}
@@ -63,7 +71,8 @@ const RefineTagSelection = ({
       })`}</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          {Object.keys(reduxFormValues).map(searchQuery => {
+          {freeTextQueries.map(searchQuery => {
+            const title = reduxFormValues[searchQuery].searchOption.text
             return (
               <TagGroup
                 addTagTypeToText={addTagTypeToText}
@@ -73,6 +82,7 @@ const RefineTagSelection = ({
                 onToggleTagSelected={handleToggleTagSelected}
                 results={reduxFormValues[searchQuery].matchingTags}
                 searchQuery={searchQuery}
+                title={title}
               />
             )
           })}
@@ -83,5 +93,6 @@ const RefineTagSelection = ({
 }
 
 RefineTagSelection.propTypes = propTypes
+RefineTagSelection.defaultProps = defaultProps
 
 export default RefineTagSelection

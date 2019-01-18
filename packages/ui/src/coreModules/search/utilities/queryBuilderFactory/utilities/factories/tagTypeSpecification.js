@@ -1,4 +1,6 @@
-export default function createCheckboxSpecification({
+import { ANY } from '../../../../constants'
+
+export default function createTagTypeSpecification({
   sectionName,
   fieldName,
   matchFilterFunctionName,
@@ -11,7 +13,7 @@ export default function createCheckboxSpecification({
   }
 
   const stringMatchFilter = ({ fieldValue }) => {
-    if (!(fieldValue && fieldValue.length)) {
+    if (!(fieldValue && fieldValue.length) || fieldValue === ANY) {
       return null
     }
 
@@ -19,7 +21,7 @@ export default function createCheckboxSpecification({
       filter: {
         filterFunction: matchFilterFunctionName,
         input: {
-          tagTypes: fieldValue,
+          tagType: fieldValue,
         },
       },
     }

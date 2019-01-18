@@ -14,6 +14,7 @@ const propTypes = {
     })
   ).isRequired,
   searchQuery: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }
 const TagGroup = ({
   addTagTypeToText,
@@ -22,12 +23,13 @@ const TagGroup = ({
   onToggleTagSelected: handleToggleTagSelected,
   results,
   searchQuery,
+  title,
 }) => {
   return (
     <Grid verticalAlign="middle">
       <Grid.Column width={16}>
         <Header size="medium">
-          {searchQuery}
+          {title}
           <Button
             onClick={() => handleDeselectAllForSearchQuery(searchQuery)}
             style={{ marginLeft: '1em' }}
