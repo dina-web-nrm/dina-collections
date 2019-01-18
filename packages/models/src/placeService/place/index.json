@@ -45,6 +45,7 @@
         "district",
         "geodeticDatum",
         "locality",
+        "planet",
         "province",
         "root",
         "rubin"
