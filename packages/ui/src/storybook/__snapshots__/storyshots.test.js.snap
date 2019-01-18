@@ -3471,21 +3471,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           }
         >
           Date type
-           
         </label>
-        <div
-          style={
-            Object {
-              "display": "inline-block",
-            }
-          }
-        >
-          <i
-            aria-hidden="true"
-            className="blue help circle outline link icon"
-            onClick={[Function]}
-          />
-        </div>
         <div>
           <div
             className="ui checked radio checkbox inline group"
