@@ -23,6 +23,9 @@
     "id": {
       "$ref": "__ROOT__id"
     },
+    "isRoot": {
+      "type": "boolean"
+    },
     "type": {
       "$ref": "__ROOT__type"
     },

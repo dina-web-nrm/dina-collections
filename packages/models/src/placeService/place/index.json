@@ -65,6 +65,9 @@
       "type": "object",
       "$ref": "__ROOT__verticalPosition"
     },
+    "isRoot": {
+      "type": "boolean"
+    },
     "id": {
       "$ref": "__ROOT__id"
     },
