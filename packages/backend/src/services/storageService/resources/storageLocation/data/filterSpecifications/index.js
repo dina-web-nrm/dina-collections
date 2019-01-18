@@ -14,6 +14,8 @@ const filters = createGetManyFilterSpecifications({
     'group',
     'id',
     'ids',
+    'isRootNode',
+    'name',
     'nameSearch',
     'nodesWithCircularDependencies',
     'parentId',

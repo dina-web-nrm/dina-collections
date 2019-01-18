@@ -141,6 +141,7 @@ exports.getMany = createGetManyFilterSpecifications({
     'group',
     'id',
     'ids',
+    'isRootNode',
     'name',
     'nodesWithCircularDependencies',
     'parentId',
