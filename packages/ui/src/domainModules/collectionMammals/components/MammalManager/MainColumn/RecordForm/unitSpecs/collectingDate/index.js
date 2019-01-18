@@ -4,9 +4,15 @@ const model = 'collectingInformation'
 
 const parts = [
   {
-    componentName: 'TranslatedHeader',
+    componentName: 'TranslatedHeaderWithHelpIcon',
     componentProps: {
       as: 'h3',
+      helpNotificationProps: {
+        descriptionHeaderKey:
+          'modules.collectionMammals.headers.collectingDate',
+        descriptionKey:
+          'modules.collectionMammals.helpTexts.collectingInformation.collectingDate',
+      },
       textKey: 'headers.collectingDate',
     },
   },
