@@ -21087,7 +21087,8 @@
                   "enum": [
                     "id",
                     "attributes.agentType",
-                    "attributes.fullName"
+                    "attributes.fullName",
+                    "attributes.disambiguatingDescription"
                   ],
                   "type": "string"
                 },
@@ -21099,7 +21100,8 @@
                   "enum": [
                     "id",
                     "attributes.agentType",
-                    "attributes.fullName"
+                    "attributes.fullName",
+                    "attributes.disambiguatingDescription"
                   ],
                   "type": "string"
                 },
@@ -23676,6 +23678,7 @@
                     "attributes.collectingEventDistrict",
                     "attributes.collectingEventEndDate",
                     "attributes.collectingEventLocality",
+                    "attributes.collectingEventInterpretedLocality",
                     "attributes.collectingEventProvince",
                     "attributes.collectingEventStartDate",
                     "attributes.deathInformationDeath",
@@ -23699,6 +23702,7 @@
                     "attributes.recordEventLastModified",
                     "attributes.recordEventRegistered",
                     "attributes.taxonomyCuratorialName",
+                    "attributes.taxonomyRank",
                     "attributes.taxonomyFamily",
                     "attributes.taxonomyGenus",
                     "attributes.taxonomySpecies",
@@ -23737,6 +23741,7 @@
                     "attributes.collectingEventDistrict",
                     "attributes.collectingEventEndDate",
                     "attributes.collectingEventLocality",
+                    "attributes.collectingEventInterpretedLocality",
                     "attributes.collectingEventProvince",
                     "attributes.collectingEventStartDate",
                     "attributes.deathInformationDeath",
@@ -23760,6 +23765,7 @@
                     "attributes.recordEventLastModified",
                     "attributes.recordEventRegistered",
                     "attributes.taxonomyCuratorialName",
+                    "attributes.taxonomyRank",
                     "attributes.taxonomyFamily",
                     "attributes.taxonomyGenus",
                     "attributes.taxonomySpecies",
@@ -23812,6 +23818,8 @@
                     "attributes.collectingEventEndDate:desc",
                     "attributes.collectingEventLocality:asc",
                     "attributes.collectingEventLocality:desc",
+                    "attributes.collectingEventInterpretedLocality:asc",
+                    "attributes.collectingEventInterpretedLocality:desc",
                     "attributes.collectingEventProvince:asc",
                     "attributes.collectingEventProvince:desc",
                     "attributes.collectingEventStartDate:asc",
@@ -23858,6 +23866,8 @@
                     "attributes.recordEventRegistered:desc",
                     "attributes.taxonomyCuratorialName:asc",
                     "attributes.taxonomyCuratorialName:desc",
+                    "attributes.taxonomyRank:asc",
+                    "attributes.taxonomyRank:desc",
                     "attributes.taxonomyFamily:asc",
                     "attributes.taxonomyFamily:desc",
                     "attributes.taxonomyGenus:asc",
