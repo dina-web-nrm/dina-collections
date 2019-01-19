@@ -82,6 +82,7 @@ class EditItemColumn extends Component {
             'fetchRelationshipsBeforeDelete',
             'itemId',
             'loadingDelete',
+            'nestedItem',
             'onInteraction',
             'relationshipsToCheckBeforeDelete',
             'resource',

@@ -45,6 +45,7 @@ const propTypes = {
   hasSyncErrors: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
   loadingDelete: PropTypes.bool,
+  nestedItem: PropTypes.object.isRequired,
   onDelete: PropTypes.func,
   onSubmit: PropTypes.func,
   onUndoChanges: PropTypes.func,
@@ -53,6 +54,7 @@ const propTypes = {
 }
 const defaultProps = {
   loadingDelete: undefined,
+  nestedItem: undefined,
   onDelete: undefined,
   onSubmit: undefined,
   onUndoChanges: undefined,
@@ -65,18 +67,19 @@ export class RecordActionBar extends PureComponent {
       hasSyncErrors,
       invalid,
       loadingDelete,
+      nestedItem,
       onDelete: handleDelete,
       onSubmit: handleSubmit,
       onUndoChanges: handleUndoChanges,
       pristine,
       submitting,
     } = this.props
-
+    const { isRoot } = nestedItem || {}
     return (
       <Grid padded style={{ pointerEvents: 'none' }} verticalAlign="middle">
         <Grid.Column>
           <Button
-            disabled={hasSyncErrors || invalid || pristine}
+            disabled={isRoot || hasSyncErrors || invalid || pristine}
             loading={submitting}
             onClick={handleSubmit}
             primary
@@ -96,7 +99,13 @@ export class RecordActionBar extends PureComponent {
           >
             Undo changes
           </Button>
-          {!pristine &&
+          {isRoot && (
+            <em style={textStyle}>
+              <ModuleTranslate textKey="notAllowedToEditRootNode" />
+            </em>
+          )}
+          {!isRoot &&
+            !pristine &&
             (hasSyncErrors || invalid ? (
               <em style={textStyle}>
                 <ModuleTranslate textKey="issuesPreventSaving" />
