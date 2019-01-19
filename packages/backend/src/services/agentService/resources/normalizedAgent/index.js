@@ -47,7 +47,12 @@ module.exports = {
     },
     {
       filterSpecification: queryFilterSpecification,
-      selectableFields: ['id', 'attributes.agentType', 'attributes.fullName'],
+      selectableFields: [
+        'id',
+        'attributes.agentType',
+        'attributes.fullName',
+        'attributes.disambiguatingDescription',
+      ],
       sortableFields: ['id', 'attributes.name'],
       type: 'query',
     },
