@@ -60,7 +60,10 @@
           "type": "object",
           "x-key-stored-in-model": "specimen",
           "x-key-type": "json",
-          "x-path": "individual.collectingInformation.*.establishmentMeansType",
+          "x-path": [
+            "individual.collectingInformation.*.establishmentMeansType",
+            "individual.originInformation.*.establishmentMeansType"
+          ],
           "properties": {
             "data": {
               "type": "array",
