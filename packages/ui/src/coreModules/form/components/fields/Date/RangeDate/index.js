@@ -262,7 +262,7 @@ class DateRange extends Component {
           <DateTypeRadios
             dateType={dateType}
             dateTypes={SELECTABLE_DATE_TYPES}
-            enableHelpNotifications={enableHelpNotifications}
+            enableHelpNotifications={false}
             module={module}
             name={input.name}
             onDateTypeChange={this.handleDateTypeChange}

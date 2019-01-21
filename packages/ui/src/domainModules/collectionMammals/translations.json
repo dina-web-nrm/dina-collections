@@ -757,6 +757,11 @@
           "sv": ""
         }
       },
+      "collectingDate": {
+        "en":
+          "The date of collecting. \n\n You can add it as: \n - single date (you know the exact date)  \n - range between two dates (earliest/latest possible)  \n - latest possible date n/ Allowed dates are: \n - year \n  - year/month \n - year/month/day",
+        "sv": ""
+      },
       "isDeathDate": {
         "en": "Whether the animal died during the collecting period or not. ",
         "sv": ""
@@ -852,6 +857,11 @@
       "storageLocation": {
         "en":
           "Storage location where the object is normally located (if not on loan etc.). \n\n You should choose the most detailed storage location possible and not change it unless the object is moved to a new place (i.e. you should not change the storage location when the object is on loan or is missing).",
+        "sv": ""
+      },
+      "curatorialAssessments": {
+        "en":
+          "Assess the specimens condition (optional) and whether it is in storage or not. Use curatorial assessment to record e.g. if a specimen has been lost or damaged.",
         "sv": ""
       }
     },

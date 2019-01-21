@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { Button, Header, List, Modal } from 'semantic-ui-react'
+import { Button, List, Modal } from 'semantic-ui-react'
 
 import config from 'config'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { FormModal } from 'coreModules/form/components'
+import TranslatedHeaderWithHelpIcon from 'coreModules/form/components/parts/StaticContent/TranslatedHeaderWithHelpIcon'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import CuratorialAssessmentItem from './CuratorialAssessmentItem'
 import CreateCuratorialAssessment from './CuratorialAssessmentForm/Create'
@@ -21,6 +22,13 @@ const propTypes = {
 }
 const defaultProps = {
   curatorialAssessments: [],
+}
+
+const helpNotificationProps = {
+  descriptionHeaderKey:
+    'modules.collectionMammals.headers.curatorialAssessments',
+  descriptionKey:
+    'modules.collectionMammals.helpTexts.physicalObject.curatorialAssessments',
 }
 
 class CuratorialAssessmentsList extends Component {
@@ -53,9 +61,12 @@ class CuratorialAssessmentsList extends Component {
 
     return (
       <React.Fragment>
-        <Header size="small" style={{ marginBottom: 0, marginTop: '0.5em' }}>
-          <ModuleTranslate textKey="headers.curatorialAssessments" />
-        </Header>
+        <TranslatedHeaderWithHelpIcon
+          as="h4"
+          helpNotificationProps={helpNotificationProps}
+          module="collectionMammals"
+          textKey="headers.curatorialAssessments"
+        />
         {curatorialAssessments.length > 0 && (
           <List divided>
             {[...curatorialAssessments]
