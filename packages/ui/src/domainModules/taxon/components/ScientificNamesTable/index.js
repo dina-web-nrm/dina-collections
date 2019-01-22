@@ -67,6 +67,15 @@ export class ScientificNamesTable extends Component {
     this.addSynonym = this.addSynonym.bind(this)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.scientificNames.length > 0 &&
+      nextProps.scientificNames.length === 0
+    ) {
+      this.setState({ connectingScientificName: true })
+    }
+  }
+
   setTaxonNameAsAccepted({ itemId } = {}) {
     const currentAcceptedName = this.props.acceptedTaxonName
 
@@ -178,21 +187,21 @@ export class ScientificNamesTable extends Component {
 
     return (
       <React.Fragment>
-        {(scientificNames.length > 0 || connectingScientificName) && (
-          <Table celled>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell width={6}>
-                  <span className="required asterisk">Name</span>
-                </Table.HeaderCell>
-                <Table.HeaderCell>Rank</Table.HeaderCell>
-                <Table.HeaderCell>RUBIN no.</Table.HeaderCell>
-                <Table.HeaderCell>Status</Table.HeaderCell>
-                <Table.HeaderCell>Actions</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {scientificNames.map(taxonItem => {
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell width={6}>
+                <span className="required asterisk">Name</span>
+              </Table.HeaderCell>
+              <Table.HeaderCell>Rank</Table.HeaderCell>
+              <Table.HeaderCell>RUBIN no.</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>Actions</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {scientificNames.length > 0 &&
+              scientificNames.map(taxonItem => {
                 return (
                   <TaxonNameRow
                     itemId={taxonItem.id}
@@ -203,15 +212,14 @@ export class ScientificNamesTable extends Component {
                   />
                 )
               })}
-              {connectingScientificName && (
-                <NewTaxonNameRow
-                  isFirstName={scientificNames.length === 0}
-                  onInteraction={this.handleInteraction}
-                />
-              )}
-            </Table.Body>
-          </Table>
-        )}
+            {connectingScientificName && (
+              <NewTaxonNameRow
+                isFirstName={scientificNames.length === 0}
+                onInteraction={this.handleInteraction}
+              />
+            )}
+          </Table.Body>
+        </Table>
         {!connectingScientificName && (
           <AddButton
             id="connect-scientific-name"
