@@ -1,5 +1,5 @@
 #!/bin/sh -
-# ./packages/scripts/src/bash/deploy-docker.sh  -t 4.5.2
+# ./packages/scripts/src/bash/docker-migrate-latest.sh  -t 4.5.2
 
 while getopts t: option
  do
@@ -15,8 +15,5 @@ then
    exit 1
 fi
 
-echo "pulling TAG=$TAG and deploying locally using 'docker-compose up -d'"
-
-
 # uses local images if they exist, otherwise fetches the images from hub.docker.com
-TAG=$TAG docker-compose up -d
+TAG=$TAG docker-compose -f docker-compose.data.yaml up -d migrateOne

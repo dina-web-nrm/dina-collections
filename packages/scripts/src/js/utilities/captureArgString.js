@@ -1,16 +1,9 @@
-const getLocalPackageVersion = require('./getLocalPackageVersion')
+const removeFlagsFromArgArray = require('./removeFlagsFromArgArray')
 
-module.exports = function captureArgString() {
-  const inputArgs = process.argv.slice(3)
-  const args = []
-
-  inputArgs.forEach(arg => {
-    if (arg === '--includeTag') {
-      args.push('-t')
-      args.push(getLocalPackageVersion())
-    } else {
-      args.push(arg)
-    }
+module.exports = function captureArgString({ removeFlags = ['-s'] } = {}) {
+  const args = removeFlagsFromArgArray({
+    args: process.argv.slice(3),
+    flags: removeFlags,
   })
 
   return args.join(' ')

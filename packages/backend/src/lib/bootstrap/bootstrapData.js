@@ -1,4 +1,5 @@
 const bootstrapBase = require('./bootstrapBase')
+const createFileInteractor = require('../fileInteractor')
 const importer = require('../importer')
 
 module.exports = function bootstrapData({
@@ -7,8 +8,10 @@ module.exports = function bootstrapData({
   serviceOrder,
 }) {
   const main = ({ config, serviceInteractor }) => {
+    const fileInteractor = createFileInteractor({ config })
     return importer({
       config,
+      fileInteractor,
       serviceInteractor,
     }).then(() => {
       return null

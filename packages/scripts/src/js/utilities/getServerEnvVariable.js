@@ -1,13 +1,19 @@
 const readScriptEnv = require('./readScriptEnv')
 
-module.exports = function getServerEnvVariable({ server = '', variableName }) {
+module.exports = function getServerEnvVariable({
+  required = true,
+  serverName = '',
+  variableName,
+}) {
   const env = readScriptEnv()
-  const envVariableFullName = [server.toUpperCase(), variableName].join('_')
+  const envVariableFullName = [serverName.toUpperCase(), variableName].join('_')
 
   const variable = env[envVariableFullName]
-  if (!variable) {
+  if (!variable && required) {
     throw new Error(
-      `${variableName} for server server: ${server} not found in env file at ${envVariableFullName}`
+      `${variableName} for server server: ${
+        serverName
+      } not found in env file at ${envVariableFullName}`
     )
   }
   return variable

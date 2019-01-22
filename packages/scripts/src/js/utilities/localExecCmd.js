@@ -1,7 +1,13 @@
 const createFullCmdString = require('./createFullCmdString')
 const { exec } = require('child_process')
 
-module.exports = function localExecCmd({ cmd: cmdInput, envMap, rootPath }) {
+module.exports = function localExecCmd({
+  cmd: cmdInput,
+  envMap,
+  printResult,
+  rootPath,
+  throwOnError = true,
+}) {
   const cmd = createFullCmdString({
     cmdInput,
     envMap,
@@ -10,13 +16,22 @@ module.exports = function localExecCmd({ cmd: cmdInput, envMap, rootPath }) {
 
   return new Promise((resolve, reject) => {
     exec(cmd, (err, stdout, stderr) => {
-      console.log(stdout)
+      if (printResult) {
+        console.log(stdout)
+      }
+
       if (stderr) {
-        return reject(stderr)
+        if (err && throwOnError) {
+          return reject(stderr)
+        }
+        return resolve(`${stdout} \n${stderr}`)
       }
 
       if (err) {
-        return reject(err)
+        if (throwOnError) {
+          return reject(err)
+        }
+        return resolve(err)
       }
       return resolve(stdout)
     })

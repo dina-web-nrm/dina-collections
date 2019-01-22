@@ -16,7 +16,10 @@
     "test:unit:watch": "NODE_ENV=test jest --env=node --watch"
   },
   "dependencies": {
+    "console.table": "^0.10.0",
     "dotenv": "^6.1.0",
+    "prompt": "^1.0.0",
+    "scp": "^0.0.3",
     "ssh-exec": "^2.0.0"
   },
   "devDependencies": {

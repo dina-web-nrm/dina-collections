@@ -2,19 +2,23 @@ const getServerRootFullPath = require('./getServerRootFullPath')
 const createFullCmdString = require('./createFullCmdString')
 const exec = require('ssh-exec')
 const getServerHost = require('./getServerHost')
+const getServerKeyFile = require('./getServerKeyFile')
 const getServerUser = require('./getServerUser')
 
 module.exports = function remoteExecCmd({
   cmd: cmdInput = 'ls',
   envMap,
   execFromRoot = true,
+  printResult = true,
   rootPath: rootPathInput,
-  server,
+  serverName,
+  throwOnError = true,
 }) {
-  const rootPath = rootPathInput || getServerRootFullPath(server)
+  const rootPath = rootPathInput || getServerRootFullPath(serverName)
 
-  const host = getServerHost(server)
-  const user = getServerUser(server)
+  const host = getServerHost(serverName)
+  const key = getServerKeyFile(serverName)
+  const user = getServerUser(serverName)
 
   const cmd = createFullCmdString({
     cmdInput,
@@ -30,16 +34,26 @@ module.exports = function remoteExecCmd({
       cmd,
       {
         host,
+        key,
         user,
       },
       (err, stdout, stderr) => {
-        console.log(stdout)
+        if (printResult) {
+          console.log(stdout)
+        }
+
         if (stderr) {
-          return reject(stderr)
+          if (err && throwOnError) {
+            return reject(stderr)
+          }
+          return resolve(`${stdout} \n${stderr}`)
         }
 
         if (err) {
-          return reject(err)
+          if (throwOnError) {
+            return reject(err)
+          }
+          return resolve(err)
         }
         return resolve(stdout)
       }

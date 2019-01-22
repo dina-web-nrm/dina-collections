@@ -6,23 +6,31 @@ setup:
 	./packages/scripts/src/bash/create-env.sh
 	./packages/scripts/src/bash/create-sample-data.sh
 
+
+# Run with env variable tag version like: TAG='v0.1.1' make up
 up:
-	TAG=latest docker-compose up -d
+	docker-compose up -d
 
+# Run with env variable tag version like: TAG='v0.1.1' make stop
 stop:
-	TAG=latest docker-compose stop
+	docker-compose stop
 
+# Run with env variable tag version like: TAG='v0.1.1' make rm
 rm:
-	TAG=latest docker-compose rm -vf
+	docker-compose rm -vf
 
+# Run with env variable tag version like: TAG='v0.1.1' make up-utils
 up-utils:
-	TAG=latest docker-compose -f docker-compose.dev-utils.yaml up -d
+	docker-compose -f docker-compose.dev-utils.yaml up -d
 
+# Run with env variable tag version like: TAG='v0.1.1' make stop-utils
 stop-utils:
-	TAG=latest docker-compose -f docker-compose.dev-utils.yaml stop
+	docker-compose -f docker-compose.dev-utils.yaml stop
 
+# Run with env variable tag version like: TAG='v0.1.1' make rm-utils
 rm-utils:
-	TAG=latest docker-compose -f docker-compose.dev-utils.yaml rm -vf
+	docker-compose -f docker-compose.dev-utils.yaml rm -vf
 
+# Run with env variable tag version like: TAG='v0.1.1' make load-sample-data
 load-sample-data:
-	TAG=latest docker-compose -f docker-compose.data.yaml up -d migrations
+	./packages/scripts/src/bash/docker-import-data-from-sample.sh -t $(TAG)
