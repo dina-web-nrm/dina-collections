@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import { DropdownSearch } from 'coreModules/form/components'
-import { CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../constants'
+import { CONTINENT, COUNTRY, DISTRICT, PLANET, PROVINCE } from '../../constants'
 
-const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
+const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE, PLANET]
 
 const dropdownOptions = groups.map(group => {
   return {
