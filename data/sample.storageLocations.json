@@ -2,9 +2,9 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "root",
+      "group": "institution",
       "id": "1",
-      "name": "root",
+      "name": "NRM",
       "parentId": null
     },
     "sourceData": null
