@@ -2,9 +2,10 @@
   {
     "legacyData": null,
     "migrationData": {
-      "group": "root",
+      "group": "planet",
       "id": "1",
-      "name": "root",
+      "isRoot": true,
+      "name": "The Earth",
       "parentId": null
     },
     "sourceData": null
