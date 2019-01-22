@@ -12,6 +12,7 @@ const parts = [
       columnProps: { width: 14 },
     },
     name: 'parent.id',
+    required: true,
     wrapInField: true,
   },
 ]
