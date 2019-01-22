@@ -1,7 +1,7 @@
 {
   "overview": {
     "general": {
-      "en": "<h1>Data model documentation</h1>\n<p>Docs contains documentation of our current datamodel. Brows the navigation to<br>\nthe left to explore our current models. More information tba</p>\n<p><a href=\"/docs/0.1.0/models/individual/lid\">individual.lid</a></p>\n"
+      "en": "<h1>Data model documentation</h1>\n<p>Docs contains documentation of our current datamodel. Brows the navigation to<br>\nthe left to explore our current models. More information tba</p>\n<p><a href=\"/docs/current/models/individual/lid\">individual.lid</a></p>\n"
     },
     "test": {
       "en": "<h1>Test</h1>\n<p>test test</p>\n"
