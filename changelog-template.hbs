@@ -10,7 +10,9 @@ All notable changes to this project will be documented in this file. Dates are d
   {{/if}}
 
   {{#if tag}}
-    > {{niceDate}}
+    {{#unless @first}}
+      > {{niceDate}}
+    {{/unless}}
   {{/if}}
 
   {{#if summary}}
