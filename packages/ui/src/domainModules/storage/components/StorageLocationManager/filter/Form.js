@@ -8,7 +8,8 @@ import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { DropdownSearch, Input } from 'coreModules/form/components'
 
 import {
-  LEVEL_3,
+  LEVEL_CABINET,
+  LEVEL_INSTITUTION,
   LEVEL_MOUNTING_WALL,
   LEVEL_ROOM,
   LEVEL_SHELF,
@@ -29,7 +30,13 @@ const defaultProps = {
 
 const noop = () => {}
 
-const groups = [LEVEL_ROOM, LEVEL_MOUNTING_WALL, LEVEL_3, LEVEL_SHELF]
+const groups = [
+  LEVEL_ROOM,
+  LEVEL_MOUNTING_WALL,
+  LEVEL_CABINET,
+  LEVEL_SHELF,
+  LEVEL_INSTITUTION,
+]
 
 const dropdownOptions = groups.map(group => {
   return {
