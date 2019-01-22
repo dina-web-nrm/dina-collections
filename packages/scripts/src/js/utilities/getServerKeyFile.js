@@ -6,9 +6,14 @@ const HOME = process.env.HOME || process.env.USERPROFILE
 
 module.exports = function getServerKeyFile(serverName) {
   const serverKeyFilePath = getServerEnvVariable({
+    required: false,
     serverName,
     variableName: 'SERVER_KEY_FILE',
   })
+
+  if (!serverKeyFilePath) {
+    return undefined
+  }
 
   return path.join(HOME, serverKeyFilePath)
 }

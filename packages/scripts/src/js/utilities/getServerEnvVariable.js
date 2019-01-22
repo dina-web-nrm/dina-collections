@@ -1,6 +1,7 @@
 const readScriptEnv = require('./readScriptEnv')
 
 module.exports = function getServerEnvVariable({
+  required = true,
   serverName = '',
   variableName,
 }) {
@@ -8,7 +9,7 @@ module.exports = function getServerEnvVariable({
   const envVariableFullName = [serverName.toUpperCase(), variableName].join('_')
 
   const variable = env[envVariableFullName]
-  if (!variable) {
+  if (!variable && required) {
     throw new Error(
       `${variableName} for server server: ${
         serverName
