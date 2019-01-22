@@ -14,7 +14,7 @@ export default function transformOriginInformation(
       } = origin
 
       const mappedOrigin = { ...origin }
-      const defaultEstablishmentMeansTypes = establishmentMeansTypes.find(
+      const defaultEstablishmentMeansType = establishmentMeansTypes.find(
         ({ attributes }) => {
           return attributes.key === 'unknown'
         }
@@ -23,7 +23,7 @@ export default function transformOriginInformation(
       if (
         !originLocality &&
         !remarks &&
-        establishmentMeansType.id === defaultEstablishmentMeansTypes.id &&
+        establishmentMeansType.id === defaultEstablishmentMeansType.id &&
         isResultOfSelectiveBreeding === 'unknown'
       ) {
         delete mappedOrigin.establishmentMeansType

@@ -1,4 +1,5 @@
 import createMultipleSearchTagsSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/multipleSearchTagsSpecification'
+import createCheckboxSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagTypesSpecification'
 
 const multipleSearchTagsSpecifications = createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchLocationTags',
@@ -18,7 +19,23 @@ const higherGeographySpecifications = createMultipleSearchTagsSpecification({
   tagValuesFieldName: 'locality.higherGeography.tagValues',
 })
 
+const appearanceCheckboxSpecification = createCheckboxSpecification({
+  aggregationFunctionName: 'aggregateAppearanceTags',
+  fieldName: 'collectingInformation.establishmentMeansType',
+  matchFilterFunctionName: 'matchAppearanceTags',
+  sectionName: 'locality.appearance',
+})
+
+const selectiveBreedingCheckboxSpecification = createCheckboxSpecification({
+  aggregationFunctionName: 'aggregateSelectiveBreedingTags',
+  fieldName: 'originInformation.isResultOfSelectiveBreeding',
+  matchFilterFunctionName: 'matchSelectiveBreedingTags',
+  sectionName: 'locality.selectiveBreeding',
+})
+
 export default [
-  ...multipleSearchTagsSpecifications,
+  ...appearanceCheckboxSpecification,
   ...higherGeographySpecifications,
+  ...multipleSearchTagsSpecifications,
+  ...selectiveBreedingCheckboxSpecification,
 ]

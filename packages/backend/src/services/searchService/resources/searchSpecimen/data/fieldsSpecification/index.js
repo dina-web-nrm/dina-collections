@@ -7,6 +7,7 @@ const searchDate = require('./searchOnlyFields/searchDate')
 const searchRemarks = require('./searchOnlyFields/searchRemarks')
 
 const agentTags = require('./tags/agentTags')
+const appearanceTags = require('./tags/appearanceTags')
 const ageStageTags = require('./tags/ageStageTags')
 const boneTags = require('./tags/boneTags')
 const conditionTags = require('./tags/conditionTags')
@@ -16,6 +17,7 @@ const lengthTags = require('./tags/lengthTags')
 const locationTags = require('./tags/locationTags')
 const otherPreparationTags = require('./tags/otherPreparationTags')
 const higherGeographyTags = require('./tags/higherGeographyTags')
+const selectiveBreedingTags = require('./tags/selectiveBreedingTags')
 const sexTags = require('./tags/sexTags')
 const skeletonTags = require('./tags/skeletonTags')
 const skinTags = require('./tags/skinTags')
@@ -67,6 +69,7 @@ module.exports = {
     searchRemarks,
 
     agentTags,
+    appearanceTags,
     ageStageTags,
     boneTags,
     conditionTags,
@@ -76,6 +79,7 @@ module.exports = {
     locationTags,
     otherPreparationTags,
     higherGeographyTags,
+    selectiveBreedingTags,
     sexTags,
     skeletonTags,
     skinTags,
