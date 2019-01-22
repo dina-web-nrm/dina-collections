@@ -21,17 +21,17 @@ module.exports = function localExecCmd({
       }
 
       if (stderr) {
-        if (throwOnError) {
+        if (err && throwOnError) {
           return reject(stderr)
         }
-        return resolve(stderr)
+        return resolve(`${stdout} \n${stderr}`)
       }
 
       if (err) {
         if (throwOnError) {
           return reject(err)
         }
-        return resolve(stderr)
+        return resolve(err)
       }
       return resolve(stdout)
     })

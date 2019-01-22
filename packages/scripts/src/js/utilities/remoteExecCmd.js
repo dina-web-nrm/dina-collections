@@ -43,10 +43,10 @@ module.exports = function remoteExecCmd({
         }
 
         if (stderr) {
-          if (throwOnError) {
+          if (err && throwOnError) {
             return reject(stderr)
           }
-          return resolve(stderr)
+          return resolve(`${stdout} \n${stderr}`)
         }
 
         if (err) {
