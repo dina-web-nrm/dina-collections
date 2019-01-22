@@ -2,7 +2,7 @@ const objectPath = require('object-path')
 
 const setExtractedRelationshipData = ({
   item,
-  relationshipArray,
+  relationshipArray = [],
   relationshipFormat,
   relationshipKey,
   relationshipObject,
@@ -15,7 +15,7 @@ const setExtractedRelationshipData = ({
     )
   }
 
-  if (relationshipFormat === 'array' && relationshipArray !== undefined) {
+  if (relationshipFormat === 'array') {
     objectPath.set(
       item,
       `relationships.${relationshipKey}.data`,
