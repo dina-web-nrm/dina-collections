@@ -4,5 +4,5 @@ const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs
 const serverName = captureServerNameFromArgs()
 
 execScript({
-  server: serverName.toUpperCase(),
+  serverName,
 })

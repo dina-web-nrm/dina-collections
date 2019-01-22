@@ -1,5 +1,5 @@
 const getServerEnvVariable = require('./getServerEnvVariable')
 
-module.exports = function getServerHost(server) {
-  return getServerEnvVariable({ server, variableName: 'SERVER_HOST' })
+module.exports = function getServerHost(serverName) {
+  return getServerEnvVariable({ serverName, variableName: 'SERVER_HOST' })
 }

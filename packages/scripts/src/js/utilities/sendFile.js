@@ -5,14 +5,14 @@ const getServerRootFullPath = require('./getServerRootFullPath')
 const getServerHost = require('./getServerHost')
 const getServerUser = require('./getServerUser')
 
-module.exports = function sendFile({ filePath, server } = {}) {
+module.exports = function sendFile({ filePath, serverName } = {}) {
   const rootPath = getLocalRootFullPath()
   const localFilePath = path.join(rootPath, filePath)
-  const remoteRepoRootPath = getServerRootFullPath(server)
+  const remoteRepoRootPath = getServerRootFullPath(serverName)
   const remoteFilePath = path.join(remoteRepoRootPath, filePath)
 
-  const host = getServerHost(server)
-  const user = getServerUser(server)
+  const host = getServerHost(serverName)
+  const user = getServerUser(serverName)
 
   const options = {
     file: localFilePath,

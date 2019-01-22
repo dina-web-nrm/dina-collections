@@ -21,17 +21,17 @@ return promptContinue({
 }).then(() => {
   return remoteExecScript({
     scriptName: 'rm-data.sh',
-    server: serverName,
+    serverName,
     throwOnError: false,
   }).then(() => {
     return remoteExecCmd({
       cmd: `rm ${relativeDataZipFilePath}`,
-      server: serverName,
+      serverName,
       throwOnError: false,
     }).then(() => {
       return sendFile({
         filePath: relativeDataZipFilePath,
-        server: serverName,
+        serverName,
       })
         .then(transferreMessage => {
           console.log(transferreMessage)
@@ -39,7 +39,7 @@ return promptContinue({
             cmd: `cd ${relativeDataZipFolderPath} && unzip -n ${
               relativeDataZipFileName
             }`,
-            server: serverName,
+            serverName,
           }).then(() => {
             console.log('Data uploaded and unpacked success')
           })

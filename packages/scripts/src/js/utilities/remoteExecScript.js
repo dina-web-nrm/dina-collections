@@ -7,12 +7,12 @@ const captureScriptNameFromArgs = require('./captureScriptNameFromArgs')
 module.exports = function remoteExecScript({
   printResult = true,
   scriptName: scriptNameInput,
-  server,
+  serverName,
   throwOnError,
 }) {
   const scriptName = scriptNameInput || captureScriptNameFromArgs()
   const argString = captureArgString()
-  const repoRootPath = getServerRootFullPath(server)
+  const repoRootPath = getServerRootFullPath(serverName)
   const scriptPath = getBashScriptRelativePath(scriptName)
 
   const cmd = `./${scriptPath} ${argString}`
@@ -20,7 +20,7 @@ module.exports = function remoteExecScript({
     cmd,
     printResult,
     rootPath: repoRootPath,
-    server,
+    serverName,
     throwOnError,
   })
     .then(res => {

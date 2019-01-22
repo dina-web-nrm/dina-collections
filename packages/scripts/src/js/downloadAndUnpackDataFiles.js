@@ -26,12 +26,12 @@ return promptContinue({
     }).then(() => {
       return localExecCmd({
         cmd: `rm ${relativeDataZipFilePath}`,
-        server: serverName,
+        serverName,
         throwOnError: false,
       }).then(() => {
         return downloadFile({
           filePath: relativeDataZipFilePath,
-          server: serverName,
+          serverName,
         }).then(transferreMessage => {
           console.log(transferreMessage)
           return localExecCmd({

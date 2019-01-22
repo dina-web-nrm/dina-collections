@@ -24,7 +24,7 @@ return promptContinue({
     }).then(() => {
       return downloadFile({
         filePath: relativeSqlFilePath,
-        server: serverName,
+        serverName,
       }).then(transferreMessage => {
         console.log(transferreMessage)
         console.log('Data downloaded success')

@@ -15,15 +15,15 @@ const execScript = ({ serverName, scriptName }) => {
   return Promise.resolve().then(() => {
     if (serverName === 'local') {
       return localExecScript({
-        scriptName,
         printResult: false,
-        server: serverName,
+        scriptName,
+        serverName,
       })
     }
     return remoteExecScript({
-      scriptName,
       printResult: false,
-      server: serverName,
+      scriptName,
+      serverName,
     })
   })
 }
@@ -39,7 +39,7 @@ const execCmd = ({ serverName, cmd }) => {
     return remoteExecCmd({
       cmd,
       printResult: false,
-      server: serverName,
+      serverName,
     })
   })
 }

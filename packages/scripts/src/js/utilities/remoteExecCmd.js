@@ -11,14 +11,14 @@ module.exports = function remoteExecCmd({
   execFromRoot = true,
   printResult = true,
   rootPath: rootPathInput,
-  server,
+  serverName,
   throwOnError = true,
 }) {
-  const rootPath = rootPathInput || getServerRootFullPath(server)
+  const rootPath = rootPathInput || getServerRootFullPath(serverName)
 
-  const host = getServerHost(server)
-  const key = getServerKeyFile(server)
-  const user = getServerUser(server)
+  const host = getServerHost(serverName)
+  const key = getServerKeyFile(serverName)
+  const user = getServerUser(serverName)
 
   const cmd = createFullCmdString({
     cmdInput,
