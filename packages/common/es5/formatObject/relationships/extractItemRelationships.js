@@ -11,7 +11,8 @@ var extractItemRelationship = require('./extractItemRelationship');
 module.exports = function extractItemRelationships(_ref) {
   var item = _ref.item,
       nestedToCoreSync = _ref.nestedToCoreSync,
-      relationshipSpecification = _ref.relationshipSpecification;
+      relationshipSpecification = _ref.relationshipSpecification,
+      stripRelationships = _ref.stripRelationships;
 
   var updatedItem = item;
   (0, _keys2.default)(relationshipSpecification).forEach(function (relationshipKey) {
@@ -27,7 +28,8 @@ module.exports = function extractItemRelationships(_ref) {
       path: path,
       relationshipFormat: relationshipFormat,
       relationshipKey: relationshipKey,
-      relationshipType: relationshipType
+      relationshipType: relationshipType,
+      stripRelationships: stripRelationships
     });
   });
 

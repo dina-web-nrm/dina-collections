@@ -14,11 +14,12 @@ var _require4 = require('./utilities/setExtractedRelationshipData'),
 
 module.exports = function extractItemRelationship(_ref) {
   var item = _ref.item,
+      nestedToCoreSync = _ref.nestedToCoreSync,
       path = _ref.path,
       relationshipFormat = _ref.relationshipFormat,
       relationshipKey = _ref.relationshipKey,
       relationshipType = _ref.relationshipType,
-      nestedToCoreSync = _ref.nestedToCoreSync;
+      stripRelationships = _ref.stripRelationships;
 
   var relationshipObject = void 0;
   var relationshipArray = void 0;
@@ -59,6 +60,7 @@ module.exports = function extractItemRelationship(_ref) {
     relationshipArray: relationshipArray,
     relationshipFormat: relationshipFormat,
     relationshipKey: relationshipKey,
-    relationshipObject: relationshipObject
+    relationshipObject: relationshipObject,
+    stripRelationships: stripRelationships
   });
 };

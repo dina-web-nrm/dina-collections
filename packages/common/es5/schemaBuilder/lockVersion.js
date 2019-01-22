@@ -23,10 +23,6 @@ var apiVersionPath = path.join(buildDirectory, 'apiVersions', apiVersion);
 var apiInfoPath = path.join(apiVersionPath, 'info.json');
 var apiInfo = require(apiInfoPath);
 
-if (!apiInfo.candidate) {
-  throw new Error('Not allowed to lock non candidate schema. Tried to override apiVersion: ' + apiVersion);
-}
-
 apiInfo.candidate = false;
 
 fs.writeFileSync(path.join(apiInfoPath), (0, _stringify2.default)(apiInfo, null, 2));
@@ -39,10 +35,6 @@ var modelVersionPath = path.join(buildDirectory, 'modelVersions', modelVersion);
 
 var modelInfoPath = path.join(modelVersionPath, 'info.json');
 var modelInfo = require(modelInfoPath);
-
-if (!modelInfo.candidate) {
-  throw new Error('Not allowed to lock non candidate schema. Tried to override modelVersion: ' + modelVersion);
-}
 
 modelInfo.candidate = false;
 
