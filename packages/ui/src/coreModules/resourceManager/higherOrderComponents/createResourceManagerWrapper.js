@@ -675,8 +675,8 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         query,
         sort: sortOrder,
         useScroll: false,
-      }).then(prefetchItems => {
-        this.props.setListItems(prefetchItems, { managerScope })
+      }).then(items => {
+        this.props.setListItems(items, { managerScope })
 
         return null
       })
