@@ -1,9 +1,16 @@
 import React, { PureComponent } from 'react'
 import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
-import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+import {
+  MultipleChoiceCheckboxesField,
+  MultipleSearchTagsSelectField,
+} from 'coreModules/search/components'
 
 import { higherOrderComponents } from '../../../queryBuilder'
+
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
 
 const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
   MultipleSearchTagsSelectField
@@ -27,7 +34,6 @@ class LocalityFilterForm extends PureComponent {
             tagTypeFilterText="Suggesting from"
           />
         </Grid.Column>
-
         <Grid.Column width={16}>
           <Field
             autoComplete="off"
@@ -42,9 +48,26 @@ class LocalityFilterForm extends PureComponent {
             tagTypeFilterText="Suggesting from"
           />
         </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Appearance"
+            name="collectingInformation.establishmentMeansType"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Selective breeding"
+            name="originInformation.isResultOfSelectiveBreeding"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
       </Grid>
     )
   }
 }
-
 export default LocalityFilterForm
