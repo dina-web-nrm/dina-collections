@@ -636,12 +636,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       log.debug(`Got interaction: ${type}`, data)
       switch (type) {
         case CREATE_SUCCESS: {
-          const { tableActive } = this.props
-
-          if (tableActive) {
-            this.tableSearch()
-          }
-
+          this.tableSearch()
           break
         }
         default: {
@@ -694,6 +689,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       } = this.props
 
       if (!tableActive) {
+        this.tableSearch()
         return
       }
       // assume initialMount
@@ -835,8 +831,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
     transitionToEditItemView() {
       log.debug('transition to view: EditItem')
-      const { filterValues } = this.props
-      this.tableSearch(filterValues)
     }
     transitionFromEditItemView() {
       log.debug('transition from view: EditItem')
