@@ -18,7 +18,7 @@ return Promise.resolve()
       return null
     }
     return promptPromise({
-      description: 'Create new version or keep current?. y/n',
+      description: 'Create new version?. y/n',
       message: 'provide y/n',
       name: 'answer',
       required: true,
