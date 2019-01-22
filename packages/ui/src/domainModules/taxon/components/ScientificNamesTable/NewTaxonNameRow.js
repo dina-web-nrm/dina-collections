@@ -18,9 +18,11 @@ export class NewTaxonNameRow extends Component {
   }
 
   handleChange(itemId) {
-    this.props.onInteraction(ADD_SYNONYM, {
-      itemId,
-    })
+    if (itemId) {
+      this.props.onInteraction(ADD_SYNONYM, {
+        itemId,
+      })
+    }
   }
 
   render() {
