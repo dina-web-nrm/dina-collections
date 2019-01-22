@@ -14,5 +14,7 @@ for f in sample.*; do
 
 done
 
+rm -f data.zip
 zip data.zip ${args[@]}
+chmod 777 data.zip
 
