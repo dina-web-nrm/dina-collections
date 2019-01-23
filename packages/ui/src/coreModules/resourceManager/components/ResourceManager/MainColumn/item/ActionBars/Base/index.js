@@ -45,7 +45,7 @@ const propTypes = {
   hasSyncErrors: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
   loadingDelete: PropTypes.bool,
-  nestedItem: PropTypes.object.isRequired,
+  nestedItem: PropTypes.object,
   onDelete: PropTypes.func,
   onSubmit: PropTypes.func,
   onUndoChanges: PropTypes.func,
