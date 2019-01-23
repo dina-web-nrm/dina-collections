@@ -271,7 +271,13 @@ class ResourceManager extends Component {
 
       case 'pickerActionBar': {
         const { extractedProps } = extractProps({
-          keys: ['managerScope', 'ItemTitle', 'onPickItem', 'resource'],
+          keys: [
+            'excludeRootNode',
+            'ItemTitle',
+            'managerScope',
+            'onPickItem',
+            'resource',
+          ],
           props: this.props,
         })
 
