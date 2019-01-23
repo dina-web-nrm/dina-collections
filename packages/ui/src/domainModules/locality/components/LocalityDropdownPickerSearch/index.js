@@ -13,6 +13,7 @@ export function setLocalManager(injected) {
 }
 
 const propTypes = {
+  excludeRootNode: PropTypes.bool,
   fieldSearchQuery: PropTypes.string,
   fieldValue: PropTypes.string,
   onClose: PropTypes.func.isRequired,
@@ -22,6 +23,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  excludeRootNode: true,
   fieldSearchQuery: undefined,
   fieldValue: undefined,
 }
@@ -29,6 +31,7 @@ const defaultProps = {
 export class LocalityDropdownPickerSearch extends Component {
   render() {
     const {
+      excludeRootNode,
       fieldSearchQuery,
       fieldValue,
       onClose,
@@ -49,6 +52,7 @@ export class LocalityDropdownPickerSearch extends Component {
         <LayerModal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <LocalityManager
+              excludeRootNode={excludeRootNode}
               initialFilterValues={initialFilterValues}
               initialItemId={fieldValue}
               isPicker
@@ -63,7 +67,13 @@ export class LocalityDropdownPickerSearch extends Component {
 
     const picker = <Button onClick={onPickerButtonClick}>Pick</Button>
 
-    return <LocalityDropdownSearch rightButton={picker} {...rest} />
+    return (
+      <LocalityDropdownSearch
+        excludeRootNode={excludeRootNode}
+        rightButton={picker}
+        {...rest}
+      />
+    )
   }
 }
 

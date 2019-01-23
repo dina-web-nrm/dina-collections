@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { DropdownSearch } from 'coreModules/form/components'
 
 const extractText = nestedItem => {
@@ -11,12 +12,21 @@ const extractText = nestedItem => {
   return `${attributes.name} (${attributes.group})`
 }
 
+const propTypes = {
+  excludeRootNode: PropTypes.bool,
+}
+
+const defaultProps = {
+  excludeRootNode: true,
+}
+
 class LocalityDropdownSearch extends Component {
   render() {
-    const { ...rest } = this.props
+    const { excludeRootNode, ...rest } = this.props
     return (
       <DropdownSearch
         {...rest}
+        excludeRootNode={excludeRootNode}
         extractText={extractText}
         resource="place"
         type="dropdown-search-resource"
@@ -24,5 +34,8 @@ class LocalityDropdownSearch extends Component {
     )
   }
 }
+
+LocalityDropdownSearch.propTypes = propTypes
+LocalityDropdownSearch.defaultProps = defaultProps
 
 export default LocalityDropdownSearch
