@@ -7,6 +7,7 @@ import { Button, Grid, Header } from 'semantic-ui-react'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
 const propTypes = {
+  excludeRootNode: PropTypes.bool.isRequired,
   itemTitle: PropTypes.node,
   managerScope: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
@@ -32,12 +33,17 @@ class ItemHeader extends Component {
   }
 
   handlePickItem() {
-    const { nestedItem } = this.props
-    this.props.onPickItem(nestedItem.id, nestedItem)
+    const { excludeRootNode, nestedItem } = this.props
+    const { isRoot } = nestedItem || {}
+    if (!(isRoot && excludeRootNode)) {
+      this.props.onPickItem(nestedItem.id, nestedItem)
+    }
   }
 
   render() {
-    const { managerScope, nestedItem, itemTitle } = this.props
+    const { excludeRootNode, managerScope, nestedItem, itemTitle } = this.props
+
+    const { isRoot } = nestedItem || {}
 
     return (
       <React.Fragment>
@@ -49,7 +55,7 @@ class ItemHeader extends Component {
           <Grid.Column>
             <Header>
               <Button
-                disabled={!nestedItem}
+                disabled={!nestedItem || (excludeRootNode && isRoot)}
                 onClick={() => this.handlePickItem(nestedItem.id, nestedItem)}
                 size="large"
                 type="button"
