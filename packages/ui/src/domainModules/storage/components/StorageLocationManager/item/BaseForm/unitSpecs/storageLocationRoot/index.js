@@ -30,6 +30,7 @@ const parts = [
     componentName: 'StorageLocationDropdownPickerSearch',
     componentProps: {
       columnProps: { width: 9 },
+      excludeRootNode: false,
     },
     name: 'parent.id',
     required: true,

@@ -12,6 +12,7 @@ export function setLocalStorageLocationManager(injected) {
   StorageLocationManager = injected
 }
 const propTypes = {
+  excludeRootNode: PropTypes.bool,
   fieldSearchQuery: PropTypes.string,
   fieldValue: PropTypes.string,
   onClose: PropTypes.func.isRequired,
@@ -21,6 +22,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  excludeRootNode: true,
   fieldSearchQuery: undefined,
   fieldValue: undefined,
 }

@@ -1,5 +1,16 @@
-export default function buildFilterQuery({ values }) {
+export default function buildFilterQuery({ excludeRootNode, values }) {
   const and = []
+
+  if (excludeRootNode) {
+    and.push({
+      filter: {
+        filterFunction: 'excludeRootNode',
+        input: {
+          value: true,
+        },
+      },
+    })
+  }
 
   if (values.name) {
     and.push({
