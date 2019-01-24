@@ -5,12 +5,14 @@ exports.transformStorageLocation = function transformStorageLocation({
   target,
 }) {
   const {
-    migrationData: { name, group, id, isRoot, parentId },
+    migrationData: { name, group, id, isRoot: isRootString, parentId },
     sourceData,
   } = src
   if (!name) {
     return
   }
+
+  const isRoot = isRootString === 'True'
 
   if (isRoot && parentId) {
     throw new Error(`id: ${id} is root but have a parent id`)
