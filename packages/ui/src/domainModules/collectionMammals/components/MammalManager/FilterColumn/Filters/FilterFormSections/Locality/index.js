@@ -6,6 +6,8 @@ import {
   MultipleSearchTagsSelectField,
 } from 'coreModules/search/components'
 
+import { ANY } from 'coreModules/search/constants'
+
 import { higherOrderComponents } from '../../../queryBuilder'
 
 const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
@@ -29,9 +31,9 @@ class LocalityFilterForm extends PureComponent {
             name="locality.higherGeography.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
-            tagTypeFilterInitialValue="any geographic level"
-            tagTypeFilterMatchAllOption="any geographic level"
-            tagTypeFilterText="Suggesting from"
+            tagTypeInitialOptionValue={ANY}
+            tagTypeInlineDescription="Suggesting from"
+            tagTypeMatchAllOptionText="any geographic level"
           />
         </Grid.Column>
         <Grid.Column width={16}>
@@ -43,9 +45,8 @@ class LocalityFilterForm extends PureComponent {
             name="locality.localities.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
-            tagTypeFilterInitialValue="any locality type"
-            tagTypeFilterMatchAllOption="any locality type"
-            tagTypeFilterText="Suggesting from"
+            tagTypeInitialOptionValue="collecting-interpreted"
+            tagTypeInlineDescription="Suggesting from"
           />
         </Grid.Column>
         <Grid.Column width={16}>

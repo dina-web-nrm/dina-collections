@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
+
 import { Field } from 'coreModules/form/components'
 import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 
@@ -22,9 +22,9 @@ class IdentifierFilterForm extends PureComponent {
             name="identifier.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
-            tagTypeFilterInitialValue="any identifier type"
-            tagTypeFilterMatchAllOption="any identifier type"
-            tagTypeFilterText="Suggesting from"
+            tagTypeInitialOptionValue="catalog-no"
+            tagTypeInlineDescription="Suggesting from"
+            tagTypeMatchAllOptionText="any identifier type"
           />
         </Grid.Column>
       </Grid>
