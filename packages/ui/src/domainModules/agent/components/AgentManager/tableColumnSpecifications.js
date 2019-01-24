@@ -11,12 +11,12 @@ const tableColumnSpecifications = [
   },
   {
     fieldPath: 'givenName',
-    label: 'modules.agent.fieldLabels.givenName',
+    label: 'modules.agent.tableColumns.givenName',
     width: 200,
   },
   {
     fieldPath: 'familyName',
-    label: 'modules.agent.fieldLabels.familyName',
+    label: 'modules.agent.tableColumns.familyName',
     width: 200,
   },
   {

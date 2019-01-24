@@ -1,7 +1,7 @@
 const tableColumnSpecifications = [
   {
     fieldPath: 'name',
-    label: 'modules.taxon.fieldLabels.name',
+    label: 'modules.taxon.fieldLabels.scientificName',
     width: 250,
   },
   {

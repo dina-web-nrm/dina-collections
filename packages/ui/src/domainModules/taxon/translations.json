@@ -33,6 +33,10 @@
     "name": {
       "en": "name"
     },
+    "scientificName": {
+      "en": "scientific name",
+      "sv": ""
+    },
     "taxonNameType": {
       "en": "Name type"
     },
@@ -183,11 +187,11 @@
     "sv": ""
   },
   "removeFromThisTaxon": {
-    "en": "Remove from this scientific name",
+    "en": "Remove from this taxon",
     "sv": ""
   },
   "removeThisTaxon": {
-    "en": "Remove this scientific name?",
+    "en": "Remove this taxon?",
     "sv": ""
   },
   "removeThisVernacularName": {
