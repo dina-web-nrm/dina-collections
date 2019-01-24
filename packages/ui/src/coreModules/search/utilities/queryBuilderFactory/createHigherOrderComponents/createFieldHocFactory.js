@@ -24,8 +24,8 @@ export default function createFieldHocFactory({
       sectionValues: {},
     }
 
-    const mapStateToProps = (state, { input }) => {
-      const fieldName = input.name
+    const mapStateToProps = (state, { input, name }) => {
+      const fieldName = (input && input.name) || name
       if (!fieldName) {
         throw new Error('fieldName is required')
       }
