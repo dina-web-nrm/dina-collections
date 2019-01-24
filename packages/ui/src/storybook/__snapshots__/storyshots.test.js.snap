@@ -8243,7 +8243,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           }
         }
       >
-        Show all
+        Expand all sections
       </div>
     </div>
   </div>
@@ -8391,7 +8391,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           }
         }
       >
-        Show all
+        Expand all sections
       </div>
     </div>
   </div>
