@@ -19,7 +19,17 @@ const recordNavigationHeight = emToPixels(4.25)
 const recordNavigation = {
   height: `${recordNavigationHeight}px`,
   key: 'recordNavigation',
-  renderRow: props => <RecordNavigationBar {...props} />,
+  renderRow: props => {
+    const isCreateItemActive = props.mainColumnActiveTab === 'recordNew' // eslint-disable-line react/prop-types
+
+    return (
+      <RecordNavigationBar
+        {...props}
+        createItemActive={isCreateItemActive}
+        disabled={isCreateItemActive}
+      />
+    )
+  },
 }
 
 const recordOptionsHeight = emToPixels(3.625)
