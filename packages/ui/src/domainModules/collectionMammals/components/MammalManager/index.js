@@ -463,7 +463,10 @@ class MammalManager extends Component {
       })
       .then(items => {
         if (items && items.length) {
-          if (!currentTableRowNumber && !focusedSpecimenId) {
+          if (
+            (!currentTableRowNumber && !focusedSpecimenId) ||
+            !items.find(({ id }) => id === focusedSpecimenId)
+          ) {
             this.props.setCurrentTableRowNumber(1)
             this.props.setFocusedSpecimenId(items[0].id)
           } else if (items.length < currentTableRowNumber) {
