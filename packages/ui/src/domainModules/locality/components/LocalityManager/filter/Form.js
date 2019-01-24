@@ -6,7 +6,13 @@ import { reduxForm } from 'redux-form'
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
-import { CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../../constants'
+import {
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  PLANET,
+  PROVINCE,
+} from '../../../constants'
 
 export const FORM_NAME = 'placeFilter'
 
@@ -21,7 +27,7 @@ const defaultProps = {
   error: '',
 }
 
-const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
+const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE, PLANET]
 
 const dropdownOptions = groups.map(group => {
   return {

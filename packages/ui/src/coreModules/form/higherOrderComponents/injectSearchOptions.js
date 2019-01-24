@@ -27,6 +27,7 @@ const propTypes = {
   }),
   createNestedItem: PropTypes.func.isRequired,
   enablePlainTextOption: PropTypes.bool,
+  excludeRootNode: PropTypes.bool,
   extractText: PropTypes.func,
   filterFunctionName: PropTypes.string,
   getManySearch: PropTypes.func.isRequired,
@@ -69,6 +70,7 @@ const propTypes = {
 const defaultProps = {
   baseFilter: undefined,
   enablePlainTextOption: undefined,
+  excludeRootNode: false,
   extractText: defaultExtractValue,
   filterFunctionName: 'nameSearch',
   include: undefined,
@@ -243,7 +245,12 @@ const injectSearchOptions = (hocInput = {}) => ComposedComponent => {
     }
 
     handleSearchQueryChange({ searchQuery }) {
-      const { baseFilter, filterFunctionName, limit } = this.props
+      const {
+        excludeRootNode,
+        baseFilter,
+        filterFunctionName,
+        limit,
+      } = this.props
       this.setState({
         searchQuery,
       })
@@ -256,6 +263,10 @@ const injectSearchOptions = (hocInput = {}) => ComposedComponent => {
 
       if (baseFilter) {
         filters.push(baseFilter)
+      }
+
+      if (excludeRootNode) {
+        filters.push({ filterFunctionName: 'excludeRootNode', value: true })
       }
 
       this.search({ filters, limit }).then(res => {

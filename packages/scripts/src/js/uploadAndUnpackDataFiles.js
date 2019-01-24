@@ -3,7 +3,7 @@ const promptContinue = require('./utilities/promptContinue')
 const remoteExecScript = require('./utilities/remoteExecScript')
 const remoteExecCmd = require('./utilities/remoteExecCmd')
 const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs')
-const sendFile = require('./utilities/sendFile')
+const uploadFile = require('./utilities/uploadFile')
 
 const serverName = captureServerNameFromArgs()
 
@@ -29,7 +29,7 @@ return promptContinue({
       serverName,
       throwOnError: false,
     }).then(() => {
-      return sendFile({
+      return uploadFile({
         filePath: relativeDataZipFilePath,
         serverName,
       })
@@ -42,6 +42,7 @@ return promptContinue({
             serverName,
           }).then(() => {
             console.log('Data uploaded and unpacked success')
+            process.exit(0)
           })
         })
         .catch(err => {

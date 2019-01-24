@@ -7,13 +7,15 @@
     "Fredrik Olovsson <fogithub@gmail.com>"
   ],
   "scripts": {
-    "build": "rm -rf es5 && babel ./src -d es5 --copy-files && node ./src/schemaBuilder/buildModels.js && node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
     "build:js": "rm -rf es5 && babel ./src -d es5 --copy-files && yarn test:unit",
-    "build:schema": "node ./src/schemaBuilder/buildModels.js && node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
+    "build:schema:models": "node ./src/schemaBuilder/buildModels.js && yarn test:unit",
+    "build:schema:api": "node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
     "build:trees": "node ./src/scripts/buildFileStructureTrees.js",
     "lint:js": "eslint 'src/**/*.js'",
     "lint:js:fix": "eslint 'src/**/*.js' --fix",
+    "lock-schema": "node ./src/schemaBuilder/lockVersion.js",
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
+    "test:schema-locked": "node ./src/schemaBuilder/ensureVersionLocked.js",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "yarn lint:js",
     "test:unit": "NODE_ENV=test jest --roots=src --env=node",

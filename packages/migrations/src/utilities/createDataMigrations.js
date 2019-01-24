@@ -18,38 +18,42 @@ module.exports = function createDataMigrations({
   const reversedMigrations = [...migrations].reverse()
 
   const dataUpFunctions = extractSchemaFunctions({
-    key: 'upData',
+    key: 'up',
     migrations,
   })
   const dataDownFunctions = extractSchemaFunctions({
-    key: 'downData',
+    key: 'down',
     migrations: reversedMigrations,
   })
 
   const up = (queryInterface, Sequelize) => {
-    return setupServiceInteractor({ apiVersion, dataModelVersion }).then(
-      serviceInteractor => {
+    return setupServiceInteractor({ apiVersion, dataModelVersion })
+      .then(serviceInteractor => {
         return runMigrationFunctions({
           migrationFunctions: dataUpFunctions,
           queryInterface,
           Sequelize,
           serviceInteractor,
         })
-      }
-    )
+      })
+      .catch(err => {
+        throw new Error(err.stack)
+      })
   }
 
   const down = (queryInterface, Sequelize) => {
-    return setupServiceInteractor({ apiVersion, dataModelVersion }).then(
-      serviceInteractor => {
+    return setupServiceInteractor({ apiVersion, dataModelVersion })
+      .then(serviceInteractor => {
         return runMigrationFunctions({
           migrationFunctions: dataDownFunctions,
           queryInterface,
           Sequelize,
           serviceInteractor,
         })
-      }
-    )
+      })
+      .catch(err => {
+        throw new Error(err.stack)
+      })
   }
 
   return {

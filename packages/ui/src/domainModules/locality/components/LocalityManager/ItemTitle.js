@@ -5,13 +5,17 @@ const propTypes = {
   nestedItem: PropTypes.object.isRequired,
 }
 
-const ItemTitle = ({ nestedItem }) => {
-  const { group, name, parent: { name: parentName } } = nestedItem
+const ItemTitle = ({ nestedItem = {} }) => {
+  const {
+    group,
+    name,
+    parent: { name: parentName, isRoot: parentIsRoot } = {},
+  } = nestedItem
   if (!name) {
     return ''
   }
 
-  if (parentName !== 'root') {
+  if (parentName && !parentIsRoot) {
     return (
       <React.Fragment>
         <span style={{ fontWeight: 'bold', marginRight: '0.5em' }}>{name}</span>

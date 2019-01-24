@@ -11,6 +11,10 @@
     "en": "There are issues that prevent saving",
     "sv": ""
   },
+  "notAllowedToEditRootNode": {
+    "en": "It's not possible to save changes to a tree root node",
+    "sv": ""
+  },
   "plainText": {
     "en": "name",
     "sv": "fritext"

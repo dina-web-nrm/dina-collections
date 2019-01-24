@@ -45,6 +45,7 @@
         "district",
         "geodeticDatum",
         "locality",
+        "planet",
         "province",
         "root",
         "rubin"
@@ -64,6 +65,9 @@
       "description": "A vertical position",
       "type": "object",
       "$ref": "__ROOT__verticalPosition"
+    },
+    "isRoot": {
+      "type": "boolean"
     },
     "id": {
       "$ref": "__ROOT__id"

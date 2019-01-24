@@ -134,7 +134,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "resourceActivity"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -148,7 +148,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "specimen"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -160,7 +160,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "user"
+                "$ref": "externalModelReference"
               }
             }
           }
@@ -170,12 +170,12 @@
       "resourceActivities": {
         "type": "array",
         "items": {
-          "$ref": "resourceActivity"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "user": {
-        "$ref": "user",
+        "$ref": "externalModelReference",
         "x-summary": ""
       }
     },
@@ -221,7 +221,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "normalizedAgent"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -232,7 +232,7 @@
       "normalizedAgents": {
         "type": "array",
         "items": {
-          "$ref": "normalizedAgent"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
@@ -259,7 +259,7 @@
     "additionalProperties": false,
     "properties": {
       "normalized": {
-        "$ref": "normalizedAgent",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "textI": {
@@ -1441,7 +1441,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "place"
+                "$ref": "externalModelReference"
               }
             }
           },
@@ -1454,7 +1454,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "place"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -1468,7 +1468,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "resourceActivity"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -1482,7 +1482,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "specimen"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -1500,14 +1500,14 @@
         "type": "array",
         "description": "Children places",
         "items": {
-          "$ref": "place"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "resourceActivities": {
         "type": "array",
         "items": {
-          "$ref": "resourceActivity"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       }
@@ -1531,7 +1531,7 @@
             "x-key-type": "json",
             "properties": {
               "data": {
-                "$ref": "storageLocation"
+                "$ref": "externalModelReference"
               }
             }
           }
@@ -1601,7 +1601,7 @@
         "x-summary": ""
       },
       "establishmentMeansType": {
-        "$ref": "establishmentMeansType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "collectedByAgent": {
@@ -1673,7 +1673,7 @@
         "x-summary": ""
       },
       "preparationType": {
-        "$ref": "preparationType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "physicalObjectText": {
@@ -1682,7 +1682,7 @@
         "x-summary": ""
       },
       "physicalObject": {
-        "$ref": "physicalObject",
+        "$ref": "externalModelReference",
         "x-summary": ""
       }
     },
@@ -1731,7 +1731,7 @@
     "additionalProperties": false,
     "properties": {
       "customTaxonNameType": {
-        "$ref": "customTaxonNameType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "language": {
@@ -1758,7 +1758,7 @@
         "x-summary": ""
       },
       "causeOfDeathType": {
-        "$ref": "causeOfDeathType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "remarks": {
@@ -1866,7 +1866,7 @@
         "x-summary": ""
       },
       "featureType": {
-        "$ref": "featureType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "methodText": {
@@ -1899,7 +1899,7 @@
         "x-summary": ""
       },
       "identifierType": {
-        "$ref": "identifierType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "value": {
@@ -2025,7 +2025,7 @@
         "description": "An array with curated localities",
         "type": "array",
         "items": {
-          "$ref": "place"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
@@ -2097,7 +2097,7 @@
         "x-summary": ""
       },
       "establishmentMeansType": {
-        "$ref": "establishmentMeansType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "remarks": {
@@ -2221,7 +2221,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "causeOfDeathType"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2230,15 +2230,12 @@
             "type": "object",
             "x-key-stored-in-model": "specimen",
             "x-key-type": "json",
-            "x-path": [
-              "individual.collectingInformation.*.establishmentMeansType",
-              "individual.originInformation.*.establishmentMeansType"
-            ],
+            "x-path": "individual.collectingInformation.*.establishmentMeansType",
             "properties": {
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "establishmentMeansType"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2252,7 +2249,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "featureType"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2266,7 +2263,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "identifierType"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2287,7 +2284,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "normalizedAgent"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2301,7 +2298,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "physicalObject"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2315,7 +2312,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "place"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2329,7 +2326,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "preparationType"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2343,7 +2340,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "resourceActivity"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2359,7 +2356,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "taxon"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2375,7 +2372,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "taxonName"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2388,7 +2385,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "typeSpecimenType"
+                "$ref": "externalModelReference"
               }
             }
           }
@@ -2398,82 +2395,82 @@
       "causeOfDeathTypes": {
         "type": "array",
         "items": {
-          "$ref": "causeOfDeathType"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "establishmentMeansTypes": {
         "type": "array",
         "items": {
-          "$ref": "establishmentMeansType"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "featureTypes": {
         "type": "array",
         "items": {
-          "$ref": "featureType"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "identifierTypes": {
         "type": "array",
         "items": {
-          "$ref": "identifierType"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "normalizedAgents": {
         "type": "array",
         "items": {
-          "$ref": "normalizedAgent"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "physicalObjects": {
         "type": "array",
         "items": {
-          "$ref": "physicalObject"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "places": {
         "type": "array",
         "items": {
-          "$ref": "place"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "preparationTypes": {
         "type": "array",
         "items": {
-          "$ref": "preparationType"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "resourceActivities": {
         "type": "array",
         "items": {
-          "$ref": "resourceActivity"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "taxa": {
         "type": "array",
         "items": {
-          "$ref": "taxon"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "taxonNames": {
         "type": "array",
         "items": {
-          "$ref": "taxonName"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "typeSpecimenType": {
-        "$ref": "typeSpecimenType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       }
     },
@@ -2505,7 +2502,7 @@
         "x-summary": ""
       },
       "typeStatus": {
-        "$ref": "typeSpecimenType",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "typifiedName": {
@@ -2570,7 +2567,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "specimen"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2583,7 +2580,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "storageLocation"
+                "$ref": "externalModelReference"
               }
             }
           }
@@ -2593,12 +2590,12 @@
       "specimens": {
         "type": "array",
         "items": {
-          "$ref": "specimen"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "storageLocation": {
-        "$ref": "storageLocation",
+        "$ref": "externalModelReference",
         "x-summary": ""
       }
     },
@@ -2685,7 +2682,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "physicalObject"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2698,7 +2695,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "preparationType"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2711,7 +2708,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "resourceActivity"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2724,7 +2721,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "taxon"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2735,39 +2732,39 @@
       "children": {
         "type": "array",
         "items": {
-          "$ref": "storageLocation"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "parent": {
-        "$ref": "storageLocation",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "physicalObjects": {
         "type": "array",
         "items": {
-          "$ref": "physicalObject"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "preparationTypes": {
         "type": "array",
         "items": {
-          "$ref": "preparationType"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "resourceActivities": {
         "type": "array",
         "items": {
-          "$ref": "resourceActivity"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "taxa": {
         "type": "array",
         "items": {
-          "$ref": "taxon"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       }
@@ -2810,7 +2807,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "taxonName"
+                "$ref": "externalModelReference"
               }
             }
           },
@@ -2823,7 +2820,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "taxon"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2836,7 +2833,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "taxon"
+                "$ref": "externalModelReference"
               }
             }
           },
@@ -2849,7 +2846,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "resourceActivity"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2863,7 +2860,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "specimen"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2877,7 +2874,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "storageLocation"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2892,7 +2889,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "taxonName"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2907,7 +2904,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "taxonName"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -2916,52 +2913,52 @@
         "x-summary": ""
       },
       "acceptedTaxonName": {
-        "$ref": "taxonName",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "children": {
         "type": "array",
         "items": {
-          "$ref": "taxon"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "parent": {
-        "$ref": "taxon",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "resourceActivities": {
         "type": "array",
         "items": {
-          "$ref": "resourceActivity"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "specimens": {
         "type": "array",
         "items": {
-          "$ref": "specimen"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "storageLocations": {
         "type": "array",
         "items": {
-          "$ref": "storageLocation"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "synonyms": {
         "type": "array",
         "items": {
-          "$ref": "taxonName"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "vernacularNames": {
         "type": "array",
         "items": {
-          "$ref": "taxonName"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       }
@@ -3030,7 +3027,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "taxon"
+                "$ref": "externalModelReference"
               }
             }
           },
@@ -3043,7 +3040,7 @@
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "resourceActivity"
+                  "$ref": "externalModelReference"
                 }
               }
             }
@@ -3057,7 +3054,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "taxon"
+                "$ref": "externalModelReference"
               }
             }
           },
@@ -3070,7 +3067,7 @@
             "properties": {
               "data": {
                 "type": "object",
-                "$ref": "taxon"
+                "$ref": "externalModelReference"
               }
             }
           }
@@ -3078,22 +3075,22 @@
         "x-summary": ""
       },
       "acceptedToTaxon": {
-        "$ref": "taxon",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "resourceActivities": {
         "type": "array",
         "items": {
-          "$ref": "resourceActivity"
+          "$ref": "externalModelReference"
         },
         "x-summary": ""
       },
       "synonymToTaxon": {
-        "$ref": "taxon",
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "vernacularToTaxon": {
-        "$ref": "taxon",
+        "$ref": "externalModelReference",
         "x-summary": ""
       }
     },
@@ -21103,8 +21100,7 @@
                   "enum": [
                     "id",
                     "attributes.agentType",
-                    "attributes.fullName",
-                    "attributes.disambiguatingDescription"
+                    "attributes.fullName"
                   ],
                   "type": "string"
                 },
@@ -21116,8 +21112,7 @@
                   "enum": [
                     "id",
                     "attributes.agentType",
-                    "attributes.fullName",
-                    "attributes.disambiguatingDescription"
+                    "attributes.fullName"
                   ],
                   "type": "string"
                 },
@@ -23673,7 +23668,6 @@
                     "attributes.searchOnlyFields.searchDate",
                     "attributes.searchOnlyFields.remarksObject",
                     "attributes.tags.agentTags",
-                    "attributes.tags.appearanceTags",
                     "attributes.tags.ageStageTags",
                     "attributes.tags.boneTags",
                     "attributes.tags.conditionTags",
@@ -23683,7 +23677,6 @@
                     "attributes.tags.locationTags",
                     "attributes.tags.otherPreparationTags",
                     "attributes.tags.higherGeographyTags",
-                    "attributes.tags.selectiveBreedingTags",
                     "attributes.tags.sexTags",
                     "attributes.tags.skeletonTags",
                     "attributes.tags.skinTags",
@@ -23738,7 +23731,6 @@
                     "attributes.searchOnlyFields.searchDate",
                     "attributes.searchOnlyFields.remarksObject",
                     "attributes.tags.agentTags",
-                    "attributes.tags.appearanceTags",
                     "attributes.tags.ageStageTags",
                     "attributes.tags.boneTags",
                     "attributes.tags.conditionTags",
@@ -23748,7 +23740,6 @@
                     "attributes.tags.locationTags",
                     "attributes.tags.otherPreparationTags",
                     "attributes.tags.higherGeographyTags",
-                    "attributes.tags.selectiveBreedingTags",
                     "attributes.tags.sexTags",
                     "attributes.tags.skeletonTags",
                     "attributes.tags.skinTags",

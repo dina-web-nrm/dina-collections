@@ -137,9 +137,11 @@ exports.getMany = createGetManyFilterSpecifications({
   },
   include: [
     'ancestorsToId',
+    'excludeRootNode',
     'group',
     'id',
     'ids',
+    'isRootNode',
     'name',
     'nodesWithCircularDependencies',
     'parentId',
@@ -153,5 +155,13 @@ exports.query = createGetManyFilterSpecifications({
     nameSearch,
     vernacularNameSearch,
   },
-  include: ['id', 'ids', 'updatedAfter', 'parentId', 'group', 'name'],
+  include: [
+    'excludeRootNode',
+    'group',
+    'id',
+    'ids',
+    'name',
+    'parentId',
+    'updatedAfter',
+  ],
 })

@@ -31,7 +31,7 @@ const defaultProps = {
 }
 
 const baseTreeFilter = {
-  group: 'continent-ocean',
+  name: 'The Earth',
 }
 
 const sortOrder = ['attributes.name:asc']

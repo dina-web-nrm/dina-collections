@@ -22,7 +22,7 @@ const matchFilterName = 'matchStorageLocationTags'
 const delimiter = 'ddaadd'
 
 const findLevel2ParentSufix = storageLocation => {
-  const isRoot = storageLocation.group === 'root'
+  const { isRoot } = storageLocation
   if (isRoot) {
     return ''
   }

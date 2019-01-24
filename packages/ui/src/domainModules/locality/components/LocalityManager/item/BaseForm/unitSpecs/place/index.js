@@ -1,3 +1,5 @@
+import { PLANET } from '../../../../../../constants'
+
 const parts = [
   {
     componentName: 'TranslatedHeader',
@@ -21,6 +23,7 @@ const parts = [
     componentName: 'GeographicLevelDropdown',
     componentProps: {
       columnProps: { width: 9 },
+      disableLevels: [PLANET],
     },
     name: 'group',
     required: true,
@@ -30,6 +33,7 @@ const parts = [
     componentName: 'LocalityDropdownPickerSearch',
     componentProps: {
       columnProps: { width: 9 },
+      excludeRootNode: false,
     },
     name: 'parent.id',
     required: true,

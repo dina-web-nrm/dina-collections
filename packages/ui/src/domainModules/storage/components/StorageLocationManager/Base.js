@@ -35,7 +35,7 @@ const itemFetchOptions = {
 }
 
 const baseTreeFilter = {
-  group: 'room',
+  name: 'NRM',
 }
 
 const sortOrder = ['attributes.name:asc']

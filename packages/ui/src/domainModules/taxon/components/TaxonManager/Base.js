@@ -35,7 +35,7 @@ const relationshipsToCheckBeforeDelete = [
 ]
 
 const baseTreeFilter = {
-  parentId: '1',
+  id: '1',
 }
 
 const tableBatchFetchOptions = {

@@ -2230,10 +2230,7 @@
             "type": "object",
             "x-key-stored-in-model": "specimen",
             "x-key-type": "json",
-            "x-path": [
-              "individual.collectingInformation.*.establishmentMeansType",
-              "individual.originInformation.*.establishmentMeansType"
-            ],
+            "x-path": "individual.collectingInformation.*.establishmentMeansType",
             "properties": {
               "data": {
                 "type": "array",
@@ -21103,8 +21100,7 @@
                   "enum": [
                     "id",
                     "attributes.agentType",
-                    "attributes.fullName",
-                    "attributes.disambiguatingDescription"
+                    "attributes.fullName"
                   ],
                   "type": "string"
                 },
@@ -21116,8 +21112,7 @@
                   "enum": [
                     "id",
                     "attributes.agentType",
-                    "attributes.fullName",
-                    "attributes.disambiguatingDescription"
+                    "attributes.fullName"
                   ],
                   "type": "string"
                 },
@@ -23673,7 +23668,6 @@
                     "attributes.searchOnlyFields.searchDate",
                     "attributes.searchOnlyFields.remarksObject",
                     "attributes.tags.agentTags",
-                    "attributes.tags.appearanceTags",
                     "attributes.tags.ageStageTags",
                     "attributes.tags.boneTags",
                     "attributes.tags.conditionTags",
@@ -23683,7 +23677,6 @@
                     "attributes.tags.locationTags",
                     "attributes.tags.otherPreparationTags",
                     "attributes.tags.higherGeographyTags",
-                    "attributes.tags.selectiveBreedingTags",
                     "attributes.tags.sexTags",
                     "attributes.tags.skeletonTags",
                     "attributes.tags.skinTags",
@@ -23738,7 +23731,6 @@
                     "attributes.searchOnlyFields.searchDate",
                     "attributes.searchOnlyFields.remarksObject",
                     "attributes.tags.agentTags",
-                    "attributes.tags.appearanceTags",
                     "attributes.tags.ageStageTags",
                     "attributes.tags.boneTags",
                     "attributes.tags.conditionTags",
@@ -23748,7 +23740,6 @@
                     "attributes.tags.locationTags",
                     "attributes.tags.otherPreparationTags",
                     "attributes.tags.higherGeographyTags",
-                    "attributes.tags.selectiveBreedingTags",
                     "attributes.tags.sexTags",
                     "attributes.tags.skeletonTags",
                     "attributes.tags.skinTags",

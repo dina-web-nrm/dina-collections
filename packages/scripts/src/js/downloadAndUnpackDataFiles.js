@@ -41,6 +41,7 @@ return promptContinue({
           }).then(res => {
             console.log('res', res)
             console.log('Data downloaded and unpacked success')
+            process.exit(0)
           })
         })
       })

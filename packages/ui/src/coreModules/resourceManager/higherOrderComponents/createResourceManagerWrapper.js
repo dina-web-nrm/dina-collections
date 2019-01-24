@@ -112,6 +112,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     editItemActive: PropTypes.bool.isRequired,
+    excludeRootNode: PropTypes.bool,
     expandedIds: PropTypes.object,
     filterActive: PropTypes.bool.isRequired,
     filterValues: PropTypes.object,
@@ -154,6 +155,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   const defaultProps = {
     baseItems: [],
     baseTreeFilter: {},
+    excludeRootNode: false,
     expandedIds: {},
     filterValues: undefined,
     focusedItemId: undefined,
@@ -660,9 +662,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     tableSearch(filterValues) {
-      const { managerScope, search, sortOrder } = this.props
+      const { excludeRootNode, managerScope, search, sortOrder } = this.props
 
       const query = this.props.buildFilterQuery({
+        excludeRootNode,
         values: filterValues || {},
       })
 

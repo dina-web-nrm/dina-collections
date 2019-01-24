@@ -15,14 +15,6 @@ const apiVersionPath = path.join(buildDirectory, 'apiVersions', apiVersion)
 const apiInfoPath = path.join(apiVersionPath, 'info.json')
 const apiInfo = require(apiInfoPath) // eslint-disable-line
 
-if (!apiInfo.candidate) {
-  throw new Error(
-    `Not allowed to lock non candidate schema. Tried to override apiVersion: ${
-      apiVersion
-    }`
-  )
-}
-
 apiInfo.candidate = false
 
 fs.writeFileSync(path.join(apiInfoPath), JSON.stringify(apiInfo, null, 2))
@@ -42,14 +34,6 @@ const modelVersionPath = path.join(
 
 const modelInfoPath = path.join(modelVersionPath, 'info.json')
 const modelInfo = require(modelInfoPath) // eslint-disable-line
-
-if (!modelInfo.candidate) {
-  throw new Error(
-    `Not allowed to lock non candidate schema. Tried to override modelVersion: ${
-      modelVersion
-    }`
-  )
-}
 
 modelInfo.candidate = false
 

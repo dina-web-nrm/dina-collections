@@ -12,6 +12,7 @@ export function setLocalStorageLocationManager(injected) {
   StorageLocationManager = injected
 }
 const propTypes = {
+  excludeRootNode: PropTypes.bool,
   fieldSearchQuery: PropTypes.string,
   fieldValue: PropTypes.string,
   onClose: PropTypes.func.isRequired,
@@ -21,6 +22,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  excludeRootNode: true,
   fieldSearchQuery: undefined,
   fieldValue: undefined,
 }
@@ -34,6 +36,7 @@ export class StorageLocationDropdownPickerSearch extends Component {
       onInteraction,
       onPickerButtonClick,
       pickerActive,
+      excludeRootNode,
       ...rest
     } = this.props
     const initialFilterValues = fieldSearchQuery
@@ -47,6 +50,7 @@ export class StorageLocationDropdownPickerSearch extends Component {
         <LayerModal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <StorageLocationManager
+              excludeRootNode={excludeRootNode}
               initialFilterValues={initialFilterValues}
               initialItemId={fieldValue}
               isPicker
@@ -61,7 +65,13 @@ export class StorageLocationDropdownPickerSearch extends Component {
 
     const picker = <Button onClick={onPickerButtonClick}>Pick</Button>
 
-    return <StorageLocationDropdownSearch rightButton={picker} {...rest} />
+    return (
+      <StorageLocationDropdownSearch
+        excludeRootNode={excludeRootNode}
+        rightButton={picker}
+        {...rest}
+      />
+    )
   }
 }
 
