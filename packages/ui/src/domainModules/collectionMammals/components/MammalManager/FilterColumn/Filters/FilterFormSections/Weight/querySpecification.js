@@ -3,8 +3,7 @@ import createFeatureRangeSpecification from 'coreModules/search/utilities/queryB
 const featureRangeSpecification = createFeatureRangeSpecification({
   fieldName: 'weight',
   rangeFilterFunctionName: 'rangeWeight',
-  rangeTypesAggregateTagsFunctionName: 'aggregateWeightTags',
-  rangeTypesMatchFilterFunctionName: 'matchWeightTags',
+  rangeTypeAggregateTagsFunctionName: 'aggregateWeightTags',
   sectionName: 'weight',
 })
 
