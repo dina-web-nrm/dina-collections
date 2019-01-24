@@ -9,13 +9,14 @@ const {
   createFeatureRangeFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
-const fieldPath = 'attributes.searchOnlyFields.weightObject'
+const fieldPath = 'attributes.tags.weightTags'
 const key = 'weightTags'
-const searchFilterName = 'rangeWeight'
-
 const resource = 'weightTag'
 const aggregationName = 'aggregateWeightTags'
+const searchFilterName = 'rangeWeight'
 const matchFilterName = 'matchWeightTags'
+
+const FEATURE_GROUP = 'weight'
 
 const transformation = ({ migrator, src, target }) => {
   const featureObservations = migrator.getValue({
@@ -34,7 +35,7 @@ const transformation = ({ migrator, src, target }) => {
     }
 
     if (
-      featureType.group === 'weight' &&
+      featureType.group === FEATURE_GROUP &&
       featureObservation.featureObservationText !== undefined
     ) {
       const rangeValue = Number(featureObservation.featureObservationText)
