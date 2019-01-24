@@ -28,6 +28,7 @@ return promptContinue({
       }).then(transferreMessage => {
         console.log(transferreMessage)
         console.log('Data downloaded success')
+        process.exit(0)
       })
     })
   })
