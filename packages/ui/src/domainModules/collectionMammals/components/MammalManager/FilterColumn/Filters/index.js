@@ -21,8 +21,8 @@ const items = [
   { name: 'ageAndStage' },
   { name: 'sex' },
   { name: 'collectingCondition' },
-  { name: 'weight' },
-  { name: 'length' },
+  { doDeepEqualInitialValuesComparison: true, name: 'weight' },
+  { doDeepEqualInitialValuesComparison: true, name: 'length' },
   { name: 'bones' },
   { name: 'remarks' },
 ]
@@ -88,6 +88,10 @@ const EnhancedFilters = compose(connect(mapStateToProps))(RawFilters)
 export default reduxForm({
   destroyOnUnmount: false,
   enableReinitialize: true,
+  initialValues: {
+    length: { rangeType: 'total-length' },
+    weight: { rangeType: 'complete-body-weight' },
+  },
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
 })(EnhancedFilters)
