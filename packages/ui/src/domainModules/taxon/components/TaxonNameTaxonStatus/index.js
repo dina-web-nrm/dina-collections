@@ -70,7 +70,7 @@ const TaxonNameTaxonStatus = ({
       'acceptedTaxonName.rank'
     )
     const rankString = acceptedTaxonNameRank
-      ? ` (${acceptedTaxonNameRank}).`
+      ? ` (${acceptedTaxonNameRank})`
       : ''
 
     return (
@@ -84,6 +84,7 @@ const TaxonNameTaxonStatus = ({
             synonymToTaxonId
           }&mainColumn=edit`}
         >{`${acceptedTaxonName}${rankString}`}</Link>
+        {'.'}
       </React.Fragment>
     )
   }
