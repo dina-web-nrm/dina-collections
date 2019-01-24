@@ -83,7 +83,9 @@ export class RecordNavigationBar extends Component {
     } = this.props
 
     const { sliderRowNumber } = this.state
-    const sliderValue = disabled ? '' : sliderRowNumber || currentTableRowNumber
+    const sliderValue = disabled
+      ? ''
+      : sliderRowNumber || currentTableRowNumber || ''
     const isShowingAll =
       !handleShowAllRecords || numberOfListItems === totalNumberOfRecords
 
