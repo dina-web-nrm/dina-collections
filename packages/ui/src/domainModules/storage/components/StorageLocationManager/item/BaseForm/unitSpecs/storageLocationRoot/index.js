@@ -1,3 +1,5 @@
+import { LEVEL_INSTITUTION } from '../../../../../../constants'
+
 const parts = [
   {
     componentName: 'TranslatedHeader',
@@ -21,6 +23,7 @@ const parts = [
     componentName: 'StorageLocationLevelDropdown',
     componentProps: {
       columnProps: { width: 9 },
+      disableLevels: [LEVEL_INSTITUTION],
     },
     name: 'group',
     required: true,
