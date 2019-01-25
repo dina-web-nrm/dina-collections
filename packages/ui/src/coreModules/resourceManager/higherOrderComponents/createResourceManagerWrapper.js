@@ -255,7 +255,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       if (!props.isPicker) {
         // picker case is handled in picker action bar
         this.shortcuts.push({
-          command: 'enter',
+          command: 'space',
           description: 'Select current item',
           onPress: event => {
             event.preventDefault()
