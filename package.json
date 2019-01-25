@@ -1,6 +1,6 @@
 {
   "name": "dina-collections",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -69,7 +69,7 @@
     "test:backend:integration": "cd ./packages/backend && yarn test:integration",
     "test:backend:unit": "cd ./packages/backend && yarn test",
     "test:common": "cd ./packages/common && yarn test",
-    "test:common:schema-locked" :"cd ./packages/common && yarn test:schema-locked",
+    "test:common:schema-locked": "cd ./packages/common && yarn test:schema-locked",
     "test:schema": "cd ./packages/models && yarn test",
     "test:ui": "cd ./packages/ui && yarn test:coverage",
     "uninstall": "yarn uninstall:backend && yarn uninstall:ui && yarn uninstall:schema && yarn uninstall:semantic-ui && yarn uninstall:common && yarn uninstall:migrations && yarn uninstall:scripts",
