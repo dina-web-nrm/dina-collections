@@ -3,8 +3,7 @@ import createFeatureRangeSpecification from 'coreModules/search/utilities/queryB
 const featureRangeSpecification = createFeatureRangeSpecification({
   fieldName: 'length',
   rangeFilterFunctionName: 'rangeLength',
-  rangeTypesAggregateTagsFunctionName: 'aggregateLengthTags',
-  rangeTypesMatchFilterFunctionName: 'matchLengthTags',
+  rangeTypeAggregateTagsFunctionName: 'aggregateLengthTags',
   sectionName: 'length',
 })
 

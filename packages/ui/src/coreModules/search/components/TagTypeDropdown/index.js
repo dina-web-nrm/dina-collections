@@ -8,6 +8,7 @@ import { ANY } from '../../constants'
 
 const propTypes = {
   buildLocalAggregationQuery: PropTypes.func.isRequired,
+  inline: PropTypes.bool,
   inlineDescription: PropTypes.node,
   input: PropTypes.shape({
     onBlur: PropTypes.func.isRequired,
@@ -16,6 +17,7 @@ const propTypes = {
   }),
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  placeholder: PropTypes.string,
   search: PropTypes.func.isRequired,
   tagTypeInitialOptionValue: PropTypes.string,
   tagTypeMatchAllOptionText: PropTypes.string,
@@ -23,10 +25,12 @@ const propTypes = {
 }
 
 const defaultProps = {
+  inline: false,
   inlineDescription: undefined,
   input: undefined,
   onBlur: undefined,
   onChange: undefined,
+  placeholder: undefined,
   tagTypeInitialOptionValue: undefined,
   tagTypeMatchAllOptionText: undefined,
   value: '',
@@ -104,20 +108,43 @@ class TagTypeDropdown extends Component {
   }
 
   render() {
-    const { input, value, inlineDescription } = this.props
+    const {
+      inline,
+      inlineDescription,
+      input,
+      placeholder,
+      value: valueFromParent,
+    } = this.props
+
     const { options } = this.state
+    const value = valueFromParent || (input && input.value) || ''
 
     if (inlineDescription) {
       return (
         <div style={{ fontStyle: 'italic' }}>
           <span>{inlineDescription} </span>
           <Dropdown
+            className="placeholder-same-color-as-text"
             inline
             onChange={this.handleChange}
             options={options}
+            placeholder={placeholder}
             value={value}
           />
         </div>
+      )
+    }
+
+    if (inline) {
+      return (
+        <Dropdown
+          className="placeholder-same-color-as-text"
+          inline
+          onChange={this.handleChange}
+          options={options}
+          placeholder={placeholder}
+          value={value}
+        />
       )
     }
 
@@ -125,9 +152,10 @@ class TagTypeDropdown extends Component {
       <Dropdown
         onChange={this.handleChange}
         options={options}
+        placeholder={placeholder}
         search
         selection
-        value={value || (input && input.value) || ''}
+        value={value}
       />
     )
   }

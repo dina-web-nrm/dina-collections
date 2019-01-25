@@ -25,6 +25,7 @@ const mapStateToProps = state => {
 
 const propTypes = {
   currentTableRowNumber: PropTypes.number,
+  disabled: PropTypes.bool,
   isLargeScreen: PropTypes.bool.isRequired,
   numberOfListItems: PropTypes.number,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -40,10 +41,10 @@ const propTypes = {
   showShowAllButton: PropTypes.bool,
   showSlider: PropTypes.bool,
   totalNumberOfRecords: PropTypes.number,
-  treeActive: PropTypes.bool,
 }
 const defaultProps = {
   currentTableRowNumber: undefined,
+  disabled: false,
   numberOfListItems: undefined,
   onOpenNewRecordForm: false,
   onSelectNextRecord: false,
@@ -55,7 +56,6 @@ const defaultProps = {
   showShowAllButton: true,
   showSlider: true,
   totalNumberOfRecords: undefined,
-  treeActive: false,
 }
 
 export class RecordNavigationBar extends Component {
@@ -67,6 +67,7 @@ export class RecordNavigationBar extends Component {
   render() {
     const {
       currentTableRowNumber,
+      disabled,
       isLargeScreen,
       numberOfListItems,
       onOpenNewRecordForm: handleOpenNewRecordForm,
@@ -78,15 +79,13 @@ export class RecordNavigationBar extends Component {
       showRecordInput,
       showShowAllButton,
       showSlider,
-      treeActive,
       totalNumberOfRecords,
     } = this.props
 
     const { sliderRowNumber } = this.state
-    const sliderValue =
-      (handleSetCurrentTableRowNumber
-        ? sliderRowNumber || currentTableRowNumber
-        : currentTableRowNumber) || ''
+    const sliderValue = disabled
+      ? ''
+      : sliderRowNumber || currentTableRowNumber || ''
     const isShowingAll =
       !handleShowAllRecords || numberOfListItems === totalNumberOfRecords
 
@@ -96,14 +95,14 @@ export class RecordNavigationBar extends Component {
           <Grid.Column>
             <Button.Group>
               <Button
-                disabled={!handleSelectPreviousRecord}
+                disabled={disabled || !handleSelectPreviousRecord}
                 icon
                 onClick={event => handleSelectPreviousRecord(event)}
               >
                 <Icon name="chevron left" />
               </Button>
               <Button
-                disabled={!handleSelectNextRecord}
+                disabled={disabled || !handleSelectNextRecord}
                 icon
                 onClick={event => handleSelectNextRecord(event)}
               >
@@ -116,7 +115,9 @@ export class RecordNavigationBar extends Component {
               <Input
                 className="center aligned bold"
                 disabled={
-                  !handleSetCurrentTableRowNumber || numberOfListItems === 0
+                  disabled ||
+                  !handleSetCurrentTableRowNumber ||
+                  numberOfListItems === 0
                 }
                 fluid
                 max={numberOfListItems}
@@ -143,7 +144,7 @@ export class RecordNavigationBar extends Component {
                     max={numberOfListItems}
                     min={numberOfListItems && 1}
                     onChange={newTableRowNumber => {
-                      if (!handleSetCurrentTableRowNumber) {
+                      if (disabled || !handleSetCurrentTableRowNumber) {
                         return
                       }
                       // those ifs are a needed hack to avoid double increment when
@@ -172,20 +173,20 @@ export class RecordNavigationBar extends Component {
                     }}
                     step={1}
                     tooltip={false}
-                    value={sliderRowNumber || currentTableRowNumber}
+                    value={sliderValue}
                   />
                 </div>
               </Grid.Column>
             )}
           <Grid.Column>
-            {!treeActive && (
+            {!disabled && (
               <div style={{ fontWeight: 700, width: '7.25em' }}>
                 {numberOfListItems} records
               </div>
             )}
           </Grid.Column>
           <Grid.Column>
-            {!treeActive && (
+            {!disabled && (
               <div
                 style={{
                   color: 'rgba(0,0,0,.6)',
@@ -201,7 +202,7 @@ export class RecordNavigationBar extends Component {
             {showShowAllButton && (
               <Button
                 basic
-                disabled={isShowingAll}
+                disabled={disabled || isShowingAll}
                 icon
                 onClick={event => handleShowAllRecords(event)}
               >

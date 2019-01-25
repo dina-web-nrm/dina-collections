@@ -201,15 +201,18 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.tableSearch = this.tableSearch.bind(this)
       this.resetFilters = this.resetFilters.bind(this)
 
-      this.viewUpdateTableView = this.viewUpdateTableView.bind(this)
+      this.mountTableView = this.mountTableView.bind(this)
+      this.updateTableView = this.updateTableView.bind(this)
       this.transitionToTableView = this.transitionToTableView.bind(this)
       this.transitionFromTableView = this.transitionFromTableView.bind(this)
 
-      this.viewUpdateTreeView = this.viewUpdateTreeView.bind(this)
+      this.mountTreeView = this.mountTreeView.bind(this)
+      this.updateTreeView = this.updateTreeView.bind(this)
       this.transitionToTreeView = this.transitionToTreeView.bind(this)
       this.transitionFromTreeView = this.transitionFromTreeView.bind(this)
 
-      this.viewUpdateEditItemView = this.viewUpdateEditItemView.bind(this)
+      this.mountEditItemView = this.mountEditItemView.bind(this)
+      this.updateEditItemView = this.updateEditItemView.bind(this)
       this.transitionToEditItemView = this.transitionToEditItemView.bind(this)
       this.transitionFromEditItemView = this.transitionFromEditItemView.bind(
         this
@@ -272,16 +275,27 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     componentDidMount() {
       this.props.open()
-      const { initialFilterValues, managerScope } = this.props
+      const {
+        initialFilterValues,
+        managerScope,
+        treeActive,
+        tableActive,
+      } = this.props
 
       if (initialFilterValues) {
         this.props.setFilterValues(initialFilterValues, { managerScope })
         this.handleInteraction(NAVIGATE_FILTER)
       }
 
-      this.viewUpdateTableView(undefined, initialFilterValues)
-      this.viewUpdateTreeView()
-      this.viewUpdateEditItemView()
+      if (tableActive) {
+        this.mountTableView()
+      } else if (treeActive) {
+        this.mountTreeView()
+      } else {
+        this.mountEditItemView()
+        this.tableSearch(initialFilterValues)
+      }
+
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),
       })
@@ -295,18 +309,19 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       } = this.props
 
       const activeViews = this.getActiveViews()
+
       activeViews.forEach(activeView => {
         switch (activeView) {
           case 'table': {
-            this.viewUpdateTableView(prevProps)
+            this.updateTableView(prevProps)
             break
           }
           case 'tree': {
-            this.viewUpdateTreeView(prevProps)
+            this.updateTreeView(prevProps)
             break
           }
           case 'edit-item': {
-            this.viewUpdateEditItemView(prevProps)
+            this.updateEditItemView(prevProps)
             break
           }
 
@@ -333,7 +348,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             break
           }
           case 'from-tree': {
-            this.transitionFromTreeView(prevProps)
+            this.transitionFromTreeView(prevProps, {
+              skipTableSearch: transitions.length === 1, // if going to new record
+            })
             break
           }
           case 'to-edit-item': {
@@ -528,12 +545,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return null
     }
 
-    handleUpdateFilterValues(filters = {}) {
+    handleUpdateFilterValues(filterValues = {}) {
       const { managerScope, tableActive } = this.props
       if (!tableActive) {
         this.props.onInteraction(NAVIGATE_LIST)
       }
-      this.props.setFilterValues(filters, { managerScope })
+      this.props.setFilterValues(filterValues, { managerScope })
+      this.tableSearch(filterValues)
     }
 
     handleClosePicker() {
@@ -680,43 +698,30 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       })
     }
 
-    viewUpdateTableView(prevProps, initialFilterValues) {
+    mountTableView() {
+      log.debug('initial mount view: Table')
       const {
-        filterValues,
-        focusIdWhenLoaded,
+        initialFilterValues,
         initialItemId,
         itemId,
-        listItems,
         managerScope,
-        tableActive,
       } = this.props
 
-      if (!tableActive) {
-        this.tableSearch()
-        return
-      }
-      // assume initialMount
-      if (!prevProps) {
-        log.debug('initial update view: Table')
-        if (
-          itemId === undefined &&
-          initialItemId !== undefined &&
-          initialItemId !== ''
-        ) {
-          this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
-        }
-        this.transitionToTableView(initialFilterValues)
-        return
+      if (
+        itemId === undefined &&
+        initialItemId !== undefined &&
+        initialItemId !== ''
+      ) {
+        this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
       }
 
-      const {
-        filterValues: prevFilterValues,
-        listItems: prevListItems,
-      } = prevProps
+      this.tableSearch(initialFilterValues)
+    }
 
-      if (filterValues !== prevFilterValues) {
-        this.tableSearch(filterValues)
-      }
+    updateTableView(prevProps) {
+      const { focusIdWhenLoaded, itemId, listItems, managerScope } = this.props
+
+      const { listItems: prevListItems } = prevProps
       if (itemId && listItems !== prevListItems) {
         this.focusRowWithId(itemId)
       }
@@ -732,16 +737,15 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       }
     }
 
-    transitionToTableView(initialFilterValues) {
+    transitionToTableView() {
       log.debug('transition to view: Table')
 
-      const { filterValues, focusedItemId, managerScope } = this.props
+      const { focusedItemId, managerScope } = this.props
       if (focusedItemId) {
         this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
       }
-
-      this.tableSearch(filterValues || initialFilterValues)
     }
+
     transitionFromTableView() {
       log.debug('transition from view: Table')
 
@@ -750,31 +754,31 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       })
     }
 
-    viewUpdateTreeView(prevProps) {
+    mountTreeView() {
+      log.debug('initial mount view: Tree')
+      const { initialItemId, itemId, managerScope } = this.props
+
+      if (
+        itemId === undefined &&
+        initialItemId !== undefined &&
+        initialItemId !== ''
+      ) {
+        this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
+        this.expandAncestorsForItemId(initialItemId)
+      }
+
+      this.transitionToTreeView()
+    }
+
+    updateTreeView(prevProps) {
       const {
         focusIdWhenLoaded,
-        initialItemId,
-        itemId,
         listItems,
         managerScope,
         treeActive,
       } = this.props
 
       if (!treeActive) {
-        return
-      }
-
-      if (!prevProps) {
-        log.debug('initial update view: Tree')
-        if (
-          itemId === undefined &&
-          initialItemId !== undefined &&
-          initialItemId !== ''
-        ) {
-          this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
-          this.expandAncestorsForItemId(initialItemId)
-        }
-        this.transitionToTreeView()
         return
       }
 
@@ -790,33 +794,40 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         }
       }
     }
+
     transitionToTreeView() {
       log.debug('transition to view: Tree')
-      this.resetFilters()
       const { focusedItemId, managerScope } = this.props
+
       if (focusedItemId) {
         this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
         this.expandAncestorsForItemId(focusedItemId)
       }
+
       this.fetchTreeBase()
     }
-    transitionFromTreeView() {
+
+    transitionFromTreeView(_, { skipTableSearch }) {
       log.debug('transition from view: Tree')
       const { managerScope } = this.props
+
+      if (!skipTableSearch) {
+        this.tableSearch()
+      }
 
       this.props.setExpandedIds({}, { managerScope })
     }
 
-    viewUpdateEditItemView(prevProps) {
+    mountEditItemView() {
+      log.debug('initial mount view: EditItem')
+      this.tableSearch()
+      this.transitionToEditItemView()
+    }
+
+    updateEditItemView(prevProps) {
       const { editItemActive, focusedIndex, listItems, itemId } = this.props
 
       if (!editItemActive) {
-        return
-      }
-
-      if (!prevProps) {
-        log.debug('initial update view: EditItem')
-        this.transitionToEditItemView()
         return
       }
 

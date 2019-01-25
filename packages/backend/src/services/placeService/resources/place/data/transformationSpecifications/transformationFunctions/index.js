@@ -2,9 +2,11 @@
 
 exports.transformPlace = function transformPlace({ src, target }) {
   const {
-    migrationData: { name, group, id, isRoot, parentId },
+    migrationData: { name, group, id, isRoot: isRootString, parentId },
     sourceData,
   } = src
+
+  const isRoot = isRootString === 'True'
 
   if (isRoot && parentId) {
     throw new Error(`id: ${id} is root but have a parent id`)

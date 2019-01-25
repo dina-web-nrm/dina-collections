@@ -1,19 +1,17 @@
 import React, { PureComponent } from 'react'
-import { Grid } from 'semantic-ui-react'
 
-import { DropdownSearch, Field, Input } from 'coreModules/form/components'
-import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
+import { FeatureTypeRange } from 'coreModules/search/components'
 
 import { higherOrderComponents } from '../../../queryBuilder'
 
-const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
-  MultipleChoiceCheckboxesField
+const WrappedFeatureTypeRange = higherOrderComponents.createFieldHoc()(
+  FeatureTypeRange
 )
 
-const weightUnitOptions = [
+const unitOptions = [
   {
-    key: 'any unit',
-    text: 'any unit',
+    key: 'unknown',
+    text: 'unknown',
     value: '',
   },
   {
@@ -31,56 +29,13 @@ const weightUnitOptions = [
 class WeightFilterForm extends PureComponent {
   render() {
     return (
-      <Grid textAlign="left" verticalAlign="top">
-        <Grid.Row>
-          <Grid.Column width={5}>
-            <Field
-              autoComplete="off"
-              component={Input}
-              fluid
-              label="from"
-              min={0}
-              module="collectionMammals"
-              name="weight.rangeValue.min"
-              type="number"
-            />
-          </Grid.Column>
-          <Grid.Column width={5}>
-            <Field
-              autoComplete="off"
-              component={Input}
-              fluid
-              label="to"
-              min={0}
-              module="collectionMammals"
-              name="weight.rangeValue.max"
-              type="number"
-            />
-          </Grid.Column>
-          <Grid.Column width={6}>
-            <Field
-              autoComplete="off"
-              component={DropdownSearch}
-              fluid
-              label="unit"
-              module="collectionMammals"
-              name="weight.rangeUnit"
-              options={weightUnitOptions}
-              type="dropdown-search-local"
-            />
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Column width={16}>
-          <Field
-            component={WrappedMultipleChoiceCheckboxesField}
-            displayCount
-            enableHelpNotifications={false}
-            name="weight.rangeTypes"
-            resource="searchSpecimen"
-          />
-        </Grid.Column>
-      </Grid>
+      <WrappedFeatureTypeRange
+        module="collectionMammals"
+        name="weight"
+        resource="searchSpecimen"
+        tagTypeDropdownPlaceholder="Choose weight type"
+        unitOptions={unitOptions}
+      />
     )
   }
 }

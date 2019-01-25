@@ -1,27 +1,24 @@
-import createTagTypesSpecification from './tagTypesSpecification'
-
 export default function featureRangeSpecification({
-  rangeFilterFunctionName,
-  sectionName,
   fieldName,
-
-  rangeTypesAggregateTagsFunctionName,
-  rangeTypesMatchFilterFunctionName,
+  rangeFilterFunctionName,
+  rangeTypeAggregateTagsFunctionName,
+  sectionName,
 }) {
-  const valueFieldName = `${fieldName}.rangeValue`
-  const rangeTypesFieldName = `${fieldName}.rangeTypes`
-
-  const specifications = []
+  const stringAggregation = () => {
+    return {
+      aggregationFunction: rangeTypeAggregateTagsFunctionName,
+    }
+  }
 
   const rangeFilter = (options = {}) => {
-    const {
-      fieldValue: { min, max } = {},
-      sectionValues: { rangeTypes, rangeUnit } = {},
-    } = options
+    const { fieldValue: { rangeType, rangeValue, rangeUnit } = {} } = options
+
+    const { max, min } = rangeValue || {}
 
     if (min === undefined && max === undefined) {
       return null
     }
+
     return {
       filter: {
         filterFunction: rangeFilterFunctionName,
@@ -30,29 +27,19 @@ export default function featureRangeSpecification({
             max,
             min,
             rangeUnit,
-            tagTypes: rangeTypes,
+            tagType: rangeType,
           },
         },
       },
     }
   }
 
-  specifications.push({
-    fieldName: valueFieldName,
-    matchFilter: rangeFilter,
-    sectionName,
-  })
-
-  if (rangeTypesFieldName) {
-    const tagTypesSpecification = createTagTypesSpecification({
-      aggregationFunctionName: rangeTypesAggregateTagsFunctionName,
-      fieldName: rangeTypesFieldName,
-      matchFilterFunctionName: rangeTypesMatchFilterFunctionName,
+  return [
+    {
+      aggregation: stringAggregation,
+      fieldName,
+      matchFilter: rangeFilter,
       sectionName,
-    })
-
-    specifications.push(tagTypesSpecification[0])
-  }
-
-  return specifications
+    },
+  ]
 }

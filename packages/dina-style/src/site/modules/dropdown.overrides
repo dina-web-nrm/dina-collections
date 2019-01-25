@@ -8,3 +8,9 @@
 .ui.selection.dropdown > .delete.icon {
   margin: -1em !important;
 }
+
+.ui.inline.dropdown.placeholder-same-color-as-text:not(.button) > .default.text,
+.ui.default.inline.dropdown.placeholder-same-color-as-text:not(.button)
+  > .text {
+  color: @inlineTextColor;
+}

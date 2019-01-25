@@ -6,7 +6,7 @@ module.exports = function createFeatureRangeFilter({ description, fieldPath }) {
   return {
     description: description || `Match for ${fieldPath}`,
     elasticsearch: ({ value = {} }) => {
-      const { min, max, tagTypes, rangeUnit } = value
+      const { min, max, tagType, rangeUnit } = value
       const must = []
       if (min || max) {
         must.push({
@@ -19,9 +19,9 @@ module.exports = function createFeatureRangeFilter({ description, fieldPath }) {
         })
       }
 
-      if (tagTypes && tagTypes.length) {
+      if (tagType) {
         must.push({
-          terms: { [`${tagTypePath}`]: tagTypes },
+          term: { [`${tagTypePath}`]: tagType },
         })
       }
 

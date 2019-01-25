@@ -14,7 +14,7 @@ storiesOf('domainModules/collectionMammals/MammalManager/Filters', module)
         ...defaultTestConfig(),
         form: true,
       },
-      initialState: { form: {} },
+      initialState: { form: { specimenFilters: {} } },
       wrap: false,
     })
   )
@@ -26,6 +26,7 @@ storiesOf('domainModules/collectionMammals/MammalManager/Filters', module)
           <Filters
             formName="specimenFilters"
             formValueSelector={() => undefined}
+            getFormInitialValues={() => undefined}
           />
         </div>
       )

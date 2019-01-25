@@ -116,21 +116,22 @@ class MainColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'recordNavigationBar': {
-        const { treeActive } = this.props
+        const { createItemActive, treeActive } = this.props
 
-        let keys = ['onOpenNewRecordForm', 'treeActive']
+        const keys = [
+          'createItemActive',
+          'currentTableRowNumber',
+          'numberOfListItems',
+          'onSelectNextRecord',
+          'onSelectPreviousRecord',
+          'onSetCurrentTableRowNumber',
+          'onShowAllRecords',
+          'totalNumberOfRecords',
+          'treeActive',
+        ]
 
-        if (!treeActive) {
-          keys = [
-            ...keys,
-            'currentTableRowNumber',
-            'numberOfListItems',
-            'onSelectNextRecord',
-            'onSelectPreviousRecord',
-            'onSetCurrentTableRowNumber',
-            'onShowAllRecords',
-            'totalNumberOfRecords',
-          ]
+        if (!createItemActive) {
+          keys.push('onOpenNewRecordForm')
         }
 
         const { extractedProps } = extractProps({
@@ -138,12 +139,12 @@ class MainColumn extends Component {
           props: this.props,
         })
 
-        // showNewRecordButton={!isPicker}
-        // showRecordInput={!isPicker && !treeActive}
-        // showShowAllButton={!isPicker && !treeActive}
-        // showSlider={!isPicker && !treeActive}
-        // showTotalRecords={!isPicker && !treeActive}
-        return <RecordNavigationBar {...extractedProps} />
+        return (
+          <RecordNavigationBar
+            {...extractedProps}
+            disabled={treeActive || createItemActive}
+          />
+        )
       }
       case 'treeView': {
         const { extractedProps } = extractProps({

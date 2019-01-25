@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { formValueSelector as formValueSelectorFactory } from 'redux-form'
+import {
+  formValueSelector as formValueSelectorFactory,
+  getFormInitialValues as getFormInitialValuesFactory,
+} from 'redux-form'
 
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import { RowLayout } from 'coreModules/layout/components'
@@ -12,6 +15,9 @@ import BottomBar from './BottomBar'
 import Filters from './Filters'
 
 const formValueSelector = formValueSelectorFactory(SPECIMEN_FILTERS_FORM_NAME)
+const getFormInitialValues = getFormInitialValuesFactory(
+  SPECIMEN_FILTERS_FORM_NAME
+)
 
 const main = {
   key: 'main',
@@ -46,6 +52,7 @@ class FilterColumn extends PureComponent {
         availableHeight={windowHeight - emToPixels(3.4375)}
         form={SPECIMEN_FILTERS_FORM_NAME}
         formValueSelector={formValueSelector}
+        getFormInitialValues={getFormInitialValues}
         rows={rows}
         {...this.props}
       />
