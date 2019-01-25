@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { arrayRemove, change, reduxForm, reset } from 'redux-form'
 
+import { createLinkFieldErrors } from 'coreModules/form/higherOrderComponents'
 import { Form, FormRow } from 'coreModules/form/components'
 import { createMapRequiredStrings } from 'coreModules/form/utilities/errorTransformations'
 import { emToPixels } from 'coreModules/layout/utilities'
@@ -99,13 +100,18 @@ BaseForm.defaultProps = defaultProps
 
 const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
 
-export default reduxForm({
-  enableReinitialize: true,
-  validate: compose(
-    createMapRequiredStrings(['agentType', 'fullName']),
-    customFormValidator({
-      model: 'normalizedAgent',
-      models: formModels,
-    })
-  ),
-})(EnhancedForm)
+export default compose(
+  reduxForm({
+    enableReinitialize: true,
+    validate: compose(
+      createMapRequiredStrings(['agentType', 'fullName']),
+      customFormValidator({
+        model: 'normalizedAgent',
+        models: formModels,
+      })
+    ),
+  }),
+  createLinkFieldErrors({
+    fieldPaths: ['fullName', 'disambiguatingDescription'],
+  })
+)(EnhancedForm)
