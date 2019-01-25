@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
+
 import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 
 import { higherOrderComponents } from '../../../queryBuilder'
@@ -22,9 +22,8 @@ class AgentFilterForm extends PureComponent {
             name="agent.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
-            tagTypeFilterInitialValue="any agent type"
-            tagTypeFilterMatchAllOption="any agent type"
-            tagTypeFilterText="Suggesting for"
+            tagTypeInitialOptionValue="collector"
+            tagTypeInlineDescription="Suggesting matches for"
           />
         </Grid.Column>
       </Grid>
