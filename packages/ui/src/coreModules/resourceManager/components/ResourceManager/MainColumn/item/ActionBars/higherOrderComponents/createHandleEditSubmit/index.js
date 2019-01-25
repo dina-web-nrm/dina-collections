@@ -8,6 +8,7 @@ import {
   startSubmit as startSubmitActionCreator,
   stopSubmit as stopSubmitActionCreator,
 } from 'redux-form'
+import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { EDIT_SUCCESS } from 'coreModules/resourceManager/constants'
@@ -78,12 +79,17 @@ const createHandleEditSubmit = () => ComposedComponent => {
           },
           nested: true,
         })
-      ).then(() => {
-        fetchOneItemById(itemId)
+      )
+        .then(() => {
+          fetchOneItemById(itemId)
 
-        this.props.onInteraction(EDIT_SUCCESS)
-        stopSubmit(formName)
-      })
+          this.props.onInteraction(EDIT_SUCCESS)
+          stopSubmit(formName)
+        })
+        .catch(handleReduxFormSubmitError)
+        .catch(err => {
+          stopSubmit(formName, err.errors)
+        })
     }
 
     render() {

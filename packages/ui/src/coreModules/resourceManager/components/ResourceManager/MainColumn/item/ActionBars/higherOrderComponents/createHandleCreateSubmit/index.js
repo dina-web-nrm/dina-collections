@@ -8,6 +8,7 @@ import {
   startSubmit as startSubmitActionCreator,
   stopSubmit as stopSubmitActionCreator,
 } from 'redux-form'
+import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
@@ -74,11 +75,16 @@ const createHandleCreateSubmit = () => ComposedComponent => {
           item: transformOutput ? transformOutput(values) : values,
           nested: true,
         })
-      ).then(({ id }) => {
-        fetchResourceCount()
-        onInteraction(CREATE_SUCCESS, { itemId: id })
-        stopSubmit(formName)
-      })
+      )
+        .then(({ id }) => {
+          fetchResourceCount()
+          onInteraction(CREATE_SUCCESS, { itemId: id })
+          stopSubmit(formName)
+        })
+        .catch(handleReduxFormSubmitError)
+        .catch(err => {
+          stopSubmit(formName, err.errors)
+        })
     }
 
     render() {
