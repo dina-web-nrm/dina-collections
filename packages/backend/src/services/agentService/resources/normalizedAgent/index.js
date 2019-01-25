@@ -17,6 +17,11 @@ const {
   update: updatePostHooks,
 } = require('./data/postHooks')
 
+const {
+  create: createPreHooks,
+  update: updatePreHooks,
+} = require('./data/preHooks')
+
 module.exports = {
   basePath: '/api/agent/v01',
   migrations,
@@ -29,6 +34,7 @@ module.exports = {
     {
       exampleRequests: { primary: createRequestSuccess },
       postHooks: createPostHooks,
+      preHooks: createPreHooks,
       type: 'create',
     },
     {
@@ -58,6 +64,7 @@ module.exports = {
     },
     {
       postHooks: updatePostHooks,
+      preHooks: updatePreHooks,
       type: 'update',
     },
     {

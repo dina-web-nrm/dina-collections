@@ -21,7 +21,7 @@ const filters = createGetManyFilterSpecifications({
     }),
     matchFullName: createStringMatchFilter({
       fieldPath: 'fullName',
-      key: 'matchFillName',
+      key: 'matchFullName',
     }),
   },
   include: ['id', 'ids', 'updatedAfter', 'parentId', 'group', 'name'],
