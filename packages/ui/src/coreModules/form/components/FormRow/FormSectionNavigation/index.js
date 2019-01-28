@@ -109,7 +109,7 @@ export class FormSectionNavigation extends PureComponent {
                 style={showAllFormSections ? activeStyle : inactiveStyle}
                 sub
               >
-                Show all
+                Expand all sections
               </Header>
             )}
         </Grid.Column>

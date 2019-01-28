@@ -115,6 +115,16 @@
       "sv": ""
     }
   },
+  "tableColumns": {
+    "givenName": {
+      "en": "Given name",
+      "sv": ""
+    },
+    "familyName": {
+      "en": "Family name",
+      "sv": ""
+    }
+  },
   "buttons": {
     "birthAndDeath": {
       "en": "add birth and death",
