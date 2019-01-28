@@ -33,7 +33,7 @@ module.exports = function setupMethods({ elasticsearch, Model, forceRefresh }) {
   })
   const create = createFactory({
     elasticsearch,
-    forceRefresh,
+    forceRefresh: true,
     Model,
   })
 
@@ -53,13 +53,14 @@ module.exports = function setupMethods({ elasticsearch, Model, forceRefresh }) {
 
   const del = delFactory({
     elasticsearch,
+    forceRefresh: true,
     getById,
     Model,
   })
 
   const update = updateFactory({
     elasticsearch,
-    forceRefresh,
+    forceRefresh: true,
     Model,
   })
 

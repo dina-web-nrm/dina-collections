@@ -5,7 +5,9 @@ const log = createLog(
   'lib/elasticsearch/modelFactories/normalizedElasticModel/methods/delFactory'
 )
 
-module.exports = function delFactory({ Model, elasticsearch, getById } = {}) {
+module.exports = function delFactory(
+  { Model, elasticsearch, getById, forceRefresh } = {}
+) {
   if (!Model) {
     throw new Error('Have to provide model')
   }
@@ -18,8 +20,7 @@ module.exports = function delFactory({ Model, elasticsearch, getById } = {}) {
         .delete({
           id,
           index: Model.index,
-          // refresh: !config.env.isProduction,
-          refresh: false,
+          refresh: forceRefresh,
           type: Model.name,
         })
         .then(() => {
