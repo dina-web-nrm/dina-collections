@@ -33,6 +33,7 @@ module.exports = function remoteExecCmd({
     exec(
       cmd,
       {
+        agent: process.env.SSH_AUTH_SOCK,
         host,
         key,
         user,

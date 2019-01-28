@@ -2,6 +2,7 @@ module.exports = function createStringMatchFilter({
   description,
   fieldPath,
   key,
+  lowerCase = true,
 }) {
   const rawPath = `${fieldPath}.raw`
   return {
@@ -23,7 +24,7 @@ module.exports = function createStringMatchFilter({
       }
 
       return {
-        [`document.${fieldPath}`]: value.toLowerCase(),
+        [`document.${fieldPath}`]: lowerCase ? value.toLowerCase() : value,
       }
     },
   }

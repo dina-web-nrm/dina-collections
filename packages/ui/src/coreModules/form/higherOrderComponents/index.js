@@ -1,3 +1,4 @@
+import createLinkFieldErrors from './createLinkFieldErrors'
 import injectErrorKeys from './injectErrorKeys'
 import injectHelpNotificationProps from './injectHelpNotificationProps'
 import injectIsLatestActiveField from './injectIsLatestActiveField'
@@ -10,6 +11,7 @@ import wrapInColumn from './wrapInColumn'
 import wrapInFieldTemplate from './wrapInFieldTemplate'
 
 export {
+  createLinkFieldErrors,
   injectErrorKeys,
   injectHelpNotificationProps,
   injectIsLatestActiveField,

@@ -347,5 +347,10 @@
   "roles": {
     "en": "Roles",
     "sv": "Roller"
+  },
+  "duplicate": {
+    "en":
+      "Agent with specified name and disambiguating description already exists",
+    "sv": ""
   }
 }
