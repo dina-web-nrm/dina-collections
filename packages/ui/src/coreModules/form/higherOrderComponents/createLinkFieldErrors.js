@@ -37,6 +37,7 @@ export default function createLinkFieldErrors({ fieldPaths = [] } = {}) {
       }
       linkedFieldErrorValues[fieldPath] = fieldValue
     })
+
     if (!anyLinkedFieldHasErrors) {
       return {
         formName,
@@ -55,18 +56,11 @@ export default function createLinkFieldErrors({ fieldPaths = [] } = {}) {
         const { linkedFieldErrorValues } = this.props
         const nextLinkedFieldErrorValues = nextProps.linkedFieldErrorValues
 
-        if (
-          linkedFieldErrorValues &&
-          nextLinkedFieldErrorValues &&
-          linkedFieldErrorValues !== nextLinkedFieldErrorValues
-        ) {
+        if (linkedFieldErrorValues && nextLinkedFieldErrorValues) {
           let anyLinkedFieldChanged = false
           Object.keys(nextLinkedFieldErrorValues).forEach(fieldPath => {
-            const prevValue =
-              linkedFieldErrorValues && linkedFieldErrorValues[fieldPath]
-            const nextValue =
-              nextLinkedFieldErrorValues &&
-              nextLinkedFieldErrorValues[fieldPath]
+            const prevValue = linkedFieldErrorValues[fieldPath]
+            const nextValue = nextLinkedFieldErrorValues[fieldPath]
             anyLinkedFieldChanged =
               anyLinkedFieldChanged || prevValue !== nextValue
           })
