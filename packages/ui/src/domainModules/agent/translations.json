@@ -165,7 +165,7 @@
     },
     "disambiguatingDescription": {
       "en":
-        "A phrase that distinguishes the agent from another agents with the same  or similar name. \n\n You should add a description if there is a risk that two or more agents are confused.",
+        "A phrase that distinguishes the agent from another agent with the same or similar name. \n\n You should add a description if there is a risk that two or more agents are confused.",
       "sv": ""
     },
     "givenName": {
@@ -188,7 +188,7 @@
     },
     "title": {
       "en":
-        "Other name(s) or name variants used for the agent, like for example if the family name has changed or if there are different spellings of the name.",
+        "Title for the agent that is not tied to a specific affiliation. Usually an official position or a professional or academic qualification, like for example \"dr\", \"mr\", \"mrs\".",
       "sv": ""
     },
     "abbreviation": {

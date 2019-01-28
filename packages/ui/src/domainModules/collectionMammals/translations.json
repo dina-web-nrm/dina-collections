@@ -89,7 +89,7 @@
         "en": "Collected by (stated)"
       },
       "establishmentMeansType": {
-        "en": "Establishment means"
+        "en": "Appearance at the collecting locality"
       },
       "isDeathDate": {
         "en": "Died when collected",
@@ -372,6 +372,10 @@
       }
     },
     "originInformation": {
+      "establishmentMeansType": {
+        "en": "Appearance at the origin locality",
+        "sv": ""
+      },
       "isResultOfSelectiveBreeding": {
         "en": "Result of selective breeding"
       },
@@ -759,7 +763,7 @@
       },
       "collectingDate": {
         "en":
-          "The date of collecting. \n\n You can add it as: \n - single date (you know the exact date)  \n - range between two dates (earliest/latest possible)  \n - latest possible date n/ Allowed dates are: \n - year \n  - year/month \n - year/month/day",
+          "The date of collecting. \n\n You can add it as: \n - single date (you know the exact date)  \n - range between two dates (earliest/latest possible)  \n - latest possible date \n\n Allowed dates are: \n - year \n  - year/month \n - year/month/day",
         "sv": ""
       },
       "isDeathDate": {
@@ -873,7 +877,7 @@
       },
       "agent": {
         "en":
-          "The person that made this assesment. Normally this would be you. \n\n Start typing or use the picker to find an agent. If the agent is missing you can add a new by opening Agents from the left side main menu in a new window.n/ n/",
+          "The person that made this assesment. Normally this would be you. \n\n Start typing or use the picker to find an agent. If the agent is missing you can add a new by opening Agents from the left side main menu in a new window.",
         "sv": ""
       },
       "condition": {
@@ -885,11 +889,11 @@
     "features": {
       "age": {
         "en":
-          "Age in years together with the method of assessing the age. \n\n Currently the age field allows for any text value, but it is recommended that you only add a number representing the age in years. ",
+          "Age in years together with the method of assessing the age. \n\n Currently the age field allows for any text value, but it is recommended that you only add a number representing the age in years.",
         "sv": ""
       },
       "age-stage": {
-        "en": "Development stage and method of assessing the stage.",
+        "en": "Developmental stage and method of assessing the stage.",
         "sv": ""
       },
       "sex": {
