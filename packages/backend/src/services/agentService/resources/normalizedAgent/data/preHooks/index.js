@@ -17,7 +17,7 @@ const ensureUniqueAgentOnUpdate = ({ config, request, serviceInteractor }) => {
       backendError400({
         code: 'REQUEST_ERROR',
         detail:
-          'The combination of fullName and Disambiguating description has to be unique',
+          'The combination of full name and disambiguating description has to be unique',
         parameterErrors: [
           {
             errorCode: 'duplicate',
@@ -43,7 +43,7 @@ const ensureUniqueAgentOnCreate = ({ config, request, serviceInteractor }) => {
       backendError400({
         code: 'REQUEST_ERROR',
         detail:
-          'The combination of fullName and Disambiguating description has to be unique',
+          'The combination of full name and disambiguating description has to be unique',
         parameterErrors: [
           {
             errorCode: 'duplicate',
