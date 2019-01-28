@@ -12,6 +12,7 @@ module.exports = function nestedToCoreSync({
   formatRelationships = true,
   item: rawItem,
   normalize = true,
+  stripRelationships = false,
   type: resourceType,
 }) {
   if (typeof rawItem === 'string') {
@@ -31,6 +32,7 @@ module.exports = function nestedToCoreSync({
       item,
       nestedToCoreSync: formatRelationships ? nestedToCoreSync : null,
       relationshipSpecification,
+      stripRelationships,
     })
   }
 

@@ -16,6 +16,7 @@ module.exports = function nestedToCore(_ref) {
       rawItem = _ref.item,
       _ref$normalize = _ref.normalize,
       normalize = _ref$normalize === undefined ? true : _ref$normalize,
+      stripRelationships = _ref.stripRelationships,
       resourceType = _ref.type;
 
   return _promise2.default.resolve().then(function () {
@@ -24,6 +25,7 @@ module.exports = function nestedToCore(_ref) {
       formatRelationships: formatRelationships,
       item: rawItem,
       normalize: normalize,
+      stripRelationships: stripRelationships,
       type: resourceType
     });
   });

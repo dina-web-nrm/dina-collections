@@ -11,11 +11,12 @@ const {
 
 module.exports = function extractItemRelationship({
   item,
+  nestedToCoreSync,
   path,
   relationshipFormat,
   relationshipKey,
   relationshipType,
-  nestedToCoreSync,
+  stripRelationships,
 }) {
   let relationshipObject
   let relationshipArray
@@ -57,5 +58,6 @@ module.exports = function extractItemRelationship({
     relationshipFormat,
     relationshipKey,
     relationshipObject,
+    stripRelationships,
   })
 }

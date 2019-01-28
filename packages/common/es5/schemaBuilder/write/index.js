@@ -46,7 +46,7 @@ module.exports = function write() {
     }
 
     if (!currentInfo.candidate) {
-      throw new Error('Not allowed to override non candidate schema. Tried to override apiVersion: ' + apiVersion);
+      throw new Error('Not allowed to override non candidate schema. Tried to override apiVersion: ' + apiVersion + '. If you are going to change the api schema update the version in backend/package.json');
     }
 
     var info = {
@@ -80,7 +80,7 @@ module.exports = function write() {
     }
 
     if (!_currentInfo.candidate) {
-      throw new Error('Not allowed to override non candidate schema. Tried to override modelVersion: ' + modelVersion);
+      throw new Error('Not allowed to override non candidate schema. Tried to override modelVersion: ' + modelVersion + '. If you are going to change the models update the version in models/package.json. ');
     }
     var _info = {
       candidate: true,

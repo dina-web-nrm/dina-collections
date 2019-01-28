@@ -31,6 +31,8 @@ module.exports = function nestedToCoreSync(_ref) {
       rawItem = _ref.item,
       _ref$normalize = _ref.normalize,
       normalize = _ref$normalize === undefined ? true : _ref$normalize,
+      _ref$stripRelationshi = _ref.stripRelationships,
+      stripRelationships = _ref$stripRelationshi === undefined ? false : _ref$stripRelationshi,
       resourceType = _ref.type;
 
   if (typeof rawItem === 'string') {
@@ -49,7 +51,8 @@ module.exports = function nestedToCoreSync(_ref) {
     item = extractItemRelationships({
       item: item,
       nestedToCoreSync: formatRelationships ? nestedToCoreSync : null,
-      relationshipSpecification: relationshipSpecification
+      relationshipSpecification: relationshipSpecification,
+      stripRelationships: stripRelationships
     });
   }
 
