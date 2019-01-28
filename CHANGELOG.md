@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.15.1](https://github.com/DINA-Web/dina-collections/compare/v0.15.0...v0.15.1)
+
+- Change shortcut select in picker from enter to space [`#393`](https://github.com/DINA-Web/dina-collections/pull/393)
+- Fix agent filter suggestions dropdown [`#397`](https://github.com/DINA-Web/dina-collections/pull/397)
+
 #### [v0.15.0](https://github.com/DINA-Web/dina-collections/compare/v0.14.0...v0.15.0)
+
+> 25 January 2019
 
 - Improve navigation and weight & length filter [`#392`](https://github.com/DINA-Web/dina-collections/pull/392)
 - Improve tree data root  [`#387`](https://github.com/DINA-Web/dina-collections/pull/387)
