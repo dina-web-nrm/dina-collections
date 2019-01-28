@@ -14,7 +14,7 @@ const indexHook = ({ item, serviceInteractor }) => {
         },
       },
     }
-    return serviceInteractor.requestUpdateView({
+    return serviceInteractor.updateView({
       request,
       resource: 'searchSpecimen',
     })
