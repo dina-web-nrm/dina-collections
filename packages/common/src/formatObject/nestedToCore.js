@@ -5,6 +5,7 @@ module.exports = function nestedToCore({
   formatRelationships = true,
   item: rawItem,
   normalize = true,
+  stripRelationships,
   type: resourceType,
 }) {
   return Promise.resolve().then(() => {
@@ -13,6 +14,7 @@ module.exports = function nestedToCore({
       formatRelationships,
       item: rawItem,
       normalize,
+      stripRelationships,
       type: resourceType,
     })
   })

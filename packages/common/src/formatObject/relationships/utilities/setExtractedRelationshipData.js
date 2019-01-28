@@ -6,12 +6,15 @@ const setExtractedRelationshipData = ({
   relationshipFormat,
   relationshipKey,
   relationshipObject,
+  stripRelationships,
 }) => {
   if (relationshipFormat === 'object' && relationshipObject !== undefined) {
     objectPath.set(
       item,
       `relationships.${relationshipKey}.data`,
-      relationshipObject
+      stripRelationships
+        ? { id: relationshipObject.id, type: relationshipObject.type }
+        : relationshipObject
     )
   }
 
@@ -19,7 +22,14 @@ const setExtractedRelationshipData = ({
     objectPath.set(
       item,
       `relationships.${relationshipKey}.data`,
-      relationshipArray
+      stripRelationships
+        ? relationshipArray.map(({ id, type }) => {
+            return {
+              id,
+              type,
+            }
+          })
+        : relationshipArray
     )
   }
 

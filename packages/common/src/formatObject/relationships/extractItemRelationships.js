@@ -4,6 +4,7 @@ module.exports = function extractItemRelationships({
   item,
   nestedToCoreSync,
   relationshipSpecification,
+  stripRelationships,
 }) {
   let updatedItem = item
   Object.keys(relationshipSpecification).forEach(relationshipKey => {
@@ -20,6 +21,7 @@ module.exports = function extractItemRelationships({
       relationshipFormat,
       relationshipKey,
       relationshipType,
+      stripRelationships,
     })
   })
 
