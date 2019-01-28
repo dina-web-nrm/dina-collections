@@ -18,10 +18,12 @@ const filters = createGetManyFilterSpecifications({
     matchDisambiguatingDescription: createStringMatchFilter({
       fieldPath: 'disambiguatingDescription',
       key: 'matchDisambiguatingDescription',
+      lowerCase: false,
     }),
     matchFullName: createStringMatchFilter({
       fieldPath: 'fullName',
       key: 'matchFullName',
+      lowerCase: false,
     }),
   },
   include: ['id', 'ids', 'updatedAfter', 'parentId', 'group', 'name'],
