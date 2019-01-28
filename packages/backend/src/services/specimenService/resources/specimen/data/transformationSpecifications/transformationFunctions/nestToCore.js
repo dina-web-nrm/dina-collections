@@ -16,6 +16,7 @@ module.exports = function nestToCore({ globalIndex, target, reporter }) {
   const coreSpecimen =
     nestedToCoreSync({
       item: attributes,
+      stripRelationships: true,
       type: 'specimen',
     }) || {}
 
