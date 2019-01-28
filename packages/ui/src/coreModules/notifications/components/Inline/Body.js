@@ -32,7 +32,8 @@ const InlineNotificationBody = ({
             <Translate textKey={descriptionKey} />
           </p>
         )}
-        {linkTextKey &&
+        {false && // temporary disable links
+          linkTextKey &&
           linkTo && (
             <p key="link">
               <a href={linkTo} rel="noopener noreferrer" target="_blank">
