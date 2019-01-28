@@ -139,7 +139,7 @@ class RecordForm extends Component {
               `/app/specimens/mammals/${specimenId}/edit/sections/${match.params
                 .sectionId || '0'}`
             )
-          }, 1500)
+          })
         }
       })
       .catch(handleReduxFormSubmitError)
