@@ -310,10 +310,28 @@ class MammalManager extends Component {
       objectPath.get(this.props, 'tableColumnsToSort') !==
       objectPath.get(nextProps, 'tableColumnsToSort')
     ) {
+      let currentId
+      // Need to check that we are not in the edit record view.
+      // If not this check the user will be redirected away from a newly created specimen
+      if (!this.props.isEditRecordView && nextProps.currentTableRowNumber > 0) {
+        const currentSpecimen =
+          nextProps.searchResult.items &&
+          nextProps.searchResult.items[nextProps.currentTableRowNumber - 1]
+        currentId = currentSpecimen.id
+      }
+
       this.handleSearchSpecimens(nextProps, {
         openTableView: false,
         skipFilter: nextProps.isItemViewOrSettings,
         usePrefetchLimit: false,
+      }).then(() => {
+        if (currentId) {
+          const newIndex = this.props.searchResult.items.findIndex(
+            ({ id }) => id === currentId
+          )
+
+          this.handleSetCurrentTableRowNumber(null, newIndex + 1)
+        }
       })
     }
 
