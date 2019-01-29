@@ -350,11 +350,11 @@ class MammalManager extends Component {
             SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
             [{ name: 'idNumeric', sort: 'asc' }]
           )
-        }, 2000)
+        })
         break
       }
       case DEL_SUCCESS: {
-        setTimeout(() => this.handleSearchSpecimens(), 3000)
+        setTimeout(() => this.handleSearchSpecimens())
         break
       }
       default: {
