@@ -4,7 +4,7 @@
     "migrationData": {
       "group": "institution",
       "id": "1",
-      "isRoot": true,
+      "isRoot": "True",
       "name": "NRM",
       "parentId": null
     },
@@ -15,6 +15,7 @@
     "migrationData": {
       "group": "room",
       "id": "2",
+      "isRoot": "False",
       "name": "Annan Institution",
       "parentId": "1"
     },
@@ -25,6 +26,7 @@
     "migrationData": {
       "group": "room",
       "id": "3",
+      "isRoot": "False",
       "name": "Bensalen",
       "parentId": "1"
     },
@@ -35,6 +37,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "4",
+      "isRoot": "False",
       "name": "4352406 Alouatta caraya",
       "parentId": "3"
     },
@@ -45,6 +48,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "5",
+      "isRoot": "False",
       "name": "4500906 Gorilla beringei",
       "parentId": "3"
     },
@@ -55,6 +59,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "6",
+      "isRoot": "False",
       "name": "5100906 Ursus arctos",
       "parentId": "3"
     },
@@ -65,6 +70,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "7",
+      "isRoot": "False",
       "name": "5203003 Gulo gulo",
       "parentId": "3"
     },
@@ -75,6 +81,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "8",
+      "isRoot": "False",
       "name": "5520606 Lynx lynx",
       "parentId": "3"
     },
@@ -85,6 +92,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "9",
+      "isRoot": "False",
       "name": "7803903 Capreolus capreolus",
       "parentId": "3"
     },
@@ -95,6 +103,7 @@
     "migrationData": {
       "group": "room",
       "id": "10",
+      "isRoot": "False",
       "name": "Ingen information",
       "parentId": "1"
     },
@@ -105,6 +114,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "11",
+      "isRoot": "False",
       "name": "3810444 Myotis mystacinus",
       "parentId": "10"
     },
@@ -115,6 +125,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "12",
+      "isRoot": "False",
       "name": "5203003 Gulo gulo",
       "parentId": "10"
     },
@@ -125,6 +136,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "13",
+      "isRoot": "False",
       "name": "5520606 Lynx lynx",
       "parentId": "10"
     },
@@ -135,6 +147,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "14",
+      "isRoot": "False",
       "name": "5700503 Pusa hispida",
       "parentId": "10"
     },
@@ -145,6 +158,7 @@
     "migrationData": {
       "group": "room",
       "id": "15",
+      "isRoot": "False",
       "name": "Lodjursrum, köl 1213",
       "parentId": "1"
     },
@@ -155,6 +169,7 @@
     "migrationData": {
       "group": "mountingWall",
       "id": "16",
+      "isRoot": "False",
       "name": "Låda 25",
       "parentId": "15"
     },
@@ -165,6 +180,7 @@
     "migrationData": {
       "group": "mountingWall",
       "id": "17",
+      "isRoot": "False",
       "name": "Låda 6",
       "parentId": "15"
     },
@@ -175,6 +191,7 @@
     "migrationData": {
       "group": "room",
       "id": "18",
+      "isRoot": "False",
       "name": "Okänd",
       "parentId": "1"
     },
@@ -185,6 +202,7 @@
     "migrationData": {
       "group": "room",
       "id": "19",
+      "isRoot": "False",
       "name": "Omistliga samlingar",
       "parentId": "1"
     },
@@ -195,6 +213,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "20",
+      "isRoot": "False",
       "name": "363 Glossophaginae",
       "parentId": "19"
     },
@@ -205,6 +224,7 @@
     "migrationData": {
       "group": "room",
       "id": "21",
+      "isRoot": "False",
       "name": "Omistliga sprit",
       "parentId": "1"
     },
@@ -215,6 +235,7 @@
     "migrationData": {
       "group": "room",
       "id": "22",
+      "isRoot": "False",
       "name": "Plåtskåpsrum",
       "parentId": "1"
     },
@@ -225,6 +246,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "23",
+      "isRoot": "False",
       "name": "9472969 Mus musculoides",
       "parentId": "22"
     },
@@ -235,6 +257,7 @@
     "migrationData": {
       "group": "room",
       "id": "24",
+      "isRoot": "False",
       "name": "Skinnrum kylda",
       "parentId": "1"
     },
@@ -245,6 +268,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "25",
+      "isRoot": "False",
       "name": "4352406 Alouatta caraya",
       "parentId": "24"
     },
@@ -255,6 +279,7 @@
     "migrationData": {
       "group": "shelf",
       "id": "26",
+      "isRoot": "False",
       "name": "5203003 Gulo gulo",
       "parentId": "24"
     },
@@ -265,6 +290,7 @@
     "migrationData": {
       "group": "room",
       "id": "27",
+      "isRoot": "False",
       "name": "Utlånad",
       "parentId": "1"
     },
@@ -275,6 +301,7 @@
     "migrationData": {
       "group": "room",
       "id": "28",
+      "isRoot": "False",
       "name": "Vindsrum kylda",
       "parentId": "1"
     },
