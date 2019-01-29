@@ -24,11 +24,15 @@ const transformation = ({ migrator, src, target }) => {
 
   const tags = []
 
-  originInformation.forEach(({ isResultOfSelectiveBreeding }) => {
-    if (isResultOfSelectiveBreeding) {
-      tags.push(isResultOfSelectiveBreeding)
-    }
-  })
+  if (originInformation.length > 0) {
+    originInformation.forEach(({ isResultOfSelectiveBreeding }) => {
+      if (isResultOfSelectiveBreeding) {
+        tags.push(isResultOfSelectiveBreeding)
+      }
+    })
+  } else {
+    tags.push('unknown')
+  }
 
   migrator.setValue({
     obj: target,
