@@ -24,6 +24,7 @@ class AgentFilterForm extends PureComponent {
             tagTypeFilterEnabled
             tagTypeInitialOptionValue="collector"
             tagTypeInlineDescription="Suggesting matches for"
+            tagTypeMatchAllOptionText="any agent type"
           />
         </Grid.Column>
       </Grid>
