@@ -7,6 +7,7 @@ import TagTypeDropdown from '../TagTypeDropdown'
 
 const propTypes = {
   buildLocalAggregationQuery: PropTypes.func.isRequired,
+  disableClearUnitValue: PropTypes.bool,
   module: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   resource: PropTypes.string.isRequired,
@@ -24,6 +25,7 @@ const propTypes = {
   ).isRequired,
 }
 const defaultProps = {
+  disableClearUnitValue: undefined,
   tagTypeDropdownPlaceholder: undefined,
   tagTypeInitialOptionValue: undefined,
   tagTypeInlineDescription: undefined,
@@ -32,6 +34,7 @@ const defaultProps = {
 
 const FeatureTypeRange = ({
   buildLocalAggregationQuery,
+  disableClearUnitValue,
   module,
   name: baseName,
   resource,
@@ -93,6 +96,7 @@ const FeatureTypeRange = ({
           <Field
             autoComplete="off"
             component={DropdownSearch}
+            disableClearValue={disableClearUnitValue}
             enableHelpNotifications={false}
             fluid
             label="unit"
