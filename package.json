@@ -1,6 +1,6 @@
 {
   "name": "dina-collections",
-  "version": "0.15.1",
+  "version": "0.15.2-rc1",
   "description": "",
   "main": "index.js",
   "scripts": {

@@ -2,7 +2,24 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.15.2-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.15.1...v0.15.2-rc1)
+
+- Ignore release candidates in changelog [`#408`](https://github.com/DINA-Web/dina-collections/pull/408)
+- Fix checkboxes for appearance and selective breeding [`#407`](https://github.com/DINA-Web/dina-collections/pull/407)
+- Fix issue storage locations missing from import [`#406`](https://github.com/DINA-Web/dina-collections/pull/406)
+- Update sample data [`#405`](https://github.com/DINA-Web/dina-collections/pull/405)
+- Update length & weight input & filters [`#403`](https://github.com/DINA-Web/dina-collections/pull/403)
+- Fix bug focusing wrong specimen when sorting [`#402`](https://github.com/DINA-Web/dina-collections/pull/402)
+- Fix elastic index not updated in time [`#398`](https://github.com/DINA-Web/dina-collections/pull/398)
+- Add disambiguatingDescription in agent name filter [`#400`](https://github.com/DINA-Web/dina-collections/pull/400)
+- Fix help texts [`#399`](https://github.com/DINA-Web/dina-collections/pull/399)
+- Add validation for unique agent name + disambiguating desc [`#396`](https://github.com/DINA-Web/dina-collections/pull/396)
+- Fix nested to core - always set array relationships [`#394`](https://github.com/DINA-Web/dina-collections/pull/394)
+- Implement content updates [`#395`](https://github.com/DINA-Web/dina-collections/pull/395)
+
 #### [v0.15.1](https://github.com/DINA-Web/dina-collections/compare/v0.15.0...v0.15.1)
+
+> 28 January 2019
 
 - Change shortcut select in picker from enter to space [`#393`](https://github.com/DINA-Web/dina-collections/pull/393)
 - Fix agent filter suggestions dropdown [`#397`](https://github.com/DINA-Web/dina-collections/pull/397)
