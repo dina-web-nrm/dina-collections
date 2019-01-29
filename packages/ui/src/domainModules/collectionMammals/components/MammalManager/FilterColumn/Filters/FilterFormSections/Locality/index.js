@@ -47,6 +47,7 @@ class LocalityFilterForm extends PureComponent {
             tagTypeFilterEnabled
             tagTypeInitialOptionValue="collecting-interpreted"
             tagTypeInlineDescription="Suggesting from"
+            tagTypeMatchAllOptionText="any locality type"
           />
         </Grid.Column>
         <Grid.Column width={16}>
