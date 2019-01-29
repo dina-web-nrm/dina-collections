@@ -89,8 +89,8 @@ export default reduxForm({
   destroyOnUnmount: false,
   enableReinitialize: true,
   initialValues: {
-    length: { rangeType: 'total-length' },
-    weight: { rangeType: 'complete-body-weight' },
+    length: { rangeType: 'total-length', rangeUnit: 'unspecified' },
+    weight: { rangeType: 'complete-body-weight', rangeUnit: 'unspecified' },
   },
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
