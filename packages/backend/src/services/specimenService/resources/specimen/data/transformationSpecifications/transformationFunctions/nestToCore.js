@@ -10,13 +10,39 @@ const validate = obj => {
   })(obj)
 }
 
+const cleanRelationship = relationship => {
+  const relationshipData = relationship.data
+  if (relationshipData) {
+    const isArray = Array.isArray(relationshipData)
+
+    if (isArray) {
+      return {
+        data: relationshipData.map(item => {
+          return {
+            id: item.id,
+            type: item.type,
+          }
+        }),
+      }
+    }
+    return {
+      data: {
+        id: relationshipData.id,
+        type: relationshipData.type,
+      },
+    }
+  }
+  return {
+    data: null,
+  }
+}
+
 module.exports = function nestToCore({ globalIndex, target, reporter }) {
   const { id, attributes } = target
 
   const coreSpecimen =
     nestedToCoreSync({
       item: attributes,
-      stripRelationships: true,
       type: 'specimen',
     }) || {}
 
@@ -32,6 +58,17 @@ module.exports = function nestToCore({ globalIndex, target, reporter }) {
     return
   }
 
-  target.relationships = coreSpecimen.relationships
+  const cleanedRelationships = {}
+
+  Object.keys(coreSpecimen.relationships).forEach(key => {
+    if (key === 'physicalObjects') {
+      cleanedRelationships[key] = coreSpecimen.relationships[key]
+    } else {
+      cleanedRelationships[key] = cleanRelationship(
+        coreSpecimen.relationships[key]
+      )
+    }
+  })
+  target.relationships = cleanedRelationships
   target.attributes = coreSpecimen.attributes
 }
