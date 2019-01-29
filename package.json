@@ -19,7 +19,7 @@
     "admin:upload:data:json": "node ./packages/scripts/src/js/uploadAndUnpackDataFiles.js",
     "admin:exec:script": "node ./packages/scripts/src/js/exec.js",
     "admin:exec:cmd": "node ./packages/scripts/src/js/execCmd.js",
-    "admin:pull-master": "node ./packages/scripts/src/js/exec.js git-pull-master.sh",
+    "admin:git:checkout-tag": "node ./packages/scripts/src/js/exec.js git-checkout-tag.sh",
     "admin:index:specimen-search": "node ./packages/scripts/src/js/exec.js docker-rebuild-search.sh",
     "build": "npm-run-all -p build:ui build:semantic-ui",
     "build:changelog": "auto-changelog -p --tag-pattern '^((?!rc).)*$' --template changelog-template.hbs && git add CHANGELOG.md",
