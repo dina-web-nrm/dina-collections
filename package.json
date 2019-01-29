@@ -18,7 +18,7 @@
     "admin:print:server-status": "node ./packages/scripts/src/js/checkAllServers.js",
     "admin:upload:data:json": "node ./packages/scripts/src/js/uploadAndUnpackDataFiles.js",
     "build": "npm-run-all -p build:ui build:semantic-ui",
-    "build:changelog": "auto-changelog -p --template changelog-template.hbs && git add CHANGELOG.md",
+    "build:changelog": "auto-changelog -p --tag-pattern '^((?!rc).)*$' --template changelog-template.hbs && git add CHANGELOG.md",
     "build:common:js": "cd ./packages/common && yarn build:js",
     "build:common:schema:api": "cd ./packages/common && yarn build:schema:api",
     "build:common:schema:models": "cd ./packages/common && yarn build:schema:models",
