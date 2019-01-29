@@ -616,14 +616,7 @@
       ],
       "physicalObjects": [
         {
-          "preparationType_key": "skeleton-in-alcohol",
-          "remarks": null,
-          "room": "Omistliga sprit",
-          "mountingWall": null,
-          "shelf": null
-        },
-        {
-          "preparationType_key": "skin-in-alcohol",
+          "preparationType_key": "entire-specimen-in-alcohol",
           "remarks": null,
           "room": "Omistliga sprit",
           "mountingWall": null,
@@ -2146,7 +2139,7 @@
         "OldLocalName": null,
         "OldScientificName": "Mus (Leggada) bellus gondokorae",
         "Order": "Rodentia",
-        "Origin": "Wild caught",
+        "Origin": null,
         "OriginLocality": null,
         "OriginStatus": null,
         "Publish_Coord": "Y",
@@ -2477,7 +2470,7 @@
         "OldScientificName": null,
         "Order": "Primates",
         "Origin": null,
-        "OriginLocality": "Altitude 196 m",
+        "OriginLocality": null,
         "OriginStatus": null,
         "Publish_Coord": "Y",
         "Publish_Record": "Y",
@@ -2577,11 +2570,7 @@
         "locationInformation_swedishGrid5km": null,
         "locationInformation_uncertaintyInMeters": "5000"
       },
-      "originInformation": {
-        "establishmentMeans_key": "wild-and-native",
-        "isResultOfSelectiveBreeding": "no",
-        "originLocality": "Altitude 196 m"
-      },
+      "originInformation": null,
       "deathInformation": {
         "causeOfDeath_key": "collected",
         "remarks": null

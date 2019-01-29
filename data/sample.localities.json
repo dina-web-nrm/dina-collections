@@ -4,7 +4,7 @@
     "migrationData": {
       "group": "planet",
       "id": "1",
-      "isRoot": true,
+      "isRoot": "True",
       "name": "The Earth",
       "parentId": null
     },
@@ -15,6 +15,7 @@
     "migrationData": {
       "group": "continent-ocean",
       "id": "2",
+      "isRoot": "False",
       "name": "Africa",
       "parentId": "1"
     },
@@ -25,6 +26,7 @@
     "migrationData": {
       "group": "country",
       "id": "3",
+      "isRoot": "False",
       "name": "Congo, The Democratic Republic of the",
       "parentId": "2"
     },
@@ -35,6 +37,7 @@
     "migrationData": {
       "group": "province",
       "id": "4",
+      "isRoot": "False",
       "name": "Rutshuru",
       "parentId": "3"
     },
@@ -45,6 +48,7 @@
     "migrationData": {
       "group": "country",
       "id": "5",
+      "isRoot": "False",
       "name": "South africa",
       "parentId": "2"
     },
@@ -55,6 +59,7 @@
     "migrationData": {
       "group": "continent-ocean",
       "id": "6",
+      "isRoot": "False",
       "name": "Europe",
       "parentId": "1"
     },
@@ -65,6 +70,7 @@
     "migrationData": {
       "group": "country",
       "id": "7",
+      "isRoot": "False",
       "name": "Germany",
       "parentId": "6"
     },
@@ -75,6 +81,7 @@
     "migrationData": {
       "group": "province",
       "id": "8",
+      "isRoot": "False",
       "name": "Baden-Württemberg",
       "parentId": "7"
     },
@@ -85,6 +92,7 @@
     "migrationData": {
       "group": "country",
       "id": "9",
+      "isRoot": "False",
       "name": "Sweden",
       "parentId": "6"
     },
@@ -95,6 +103,7 @@
     "migrationData": {
       "group": "province",
       "id": "10",
+      "isRoot": "False",
       "name": "Gotland",
       "parentId": "9"
     },
@@ -105,6 +114,7 @@
     "migrationData": {
       "group": "province",
       "id": "11",
+      "isRoot": "False",
       "name": "Jämtland",
       "parentId": "9"
     },
@@ -115,6 +125,7 @@
     "migrationData": {
       "group": "province",
       "id": "12",
+      "isRoot": "False",
       "name": "Lule Lappmark",
       "parentId": "9"
     },
@@ -125,6 +136,7 @@
     "migrationData": {
       "group": "province",
       "id": "13",
+      "isRoot": "False",
       "name": "Lycksele Lappmark",
       "parentId": "9"
     },
@@ -135,6 +147,7 @@
     "migrationData": {
       "group": "province",
       "id": "14",
+      "isRoot": "False",
       "name": "Pite Lappmark",
       "parentId": "9"
     },
@@ -145,6 +158,7 @@
     "migrationData": {
       "group": "district",
       "id": "15",
+      "isRoot": "False",
       "name": "Arjeplog",
       "parentId": "14"
     },
@@ -155,6 +169,7 @@
     "migrationData": {
       "group": "province",
       "id": "16",
+      "isRoot": "False",
       "name": "Uppland",
       "parentId": "9"
     },
@@ -165,6 +180,7 @@
     "migrationData": {
       "group": "province",
       "id": "17",
+      "isRoot": "False",
       "name": "Ångermanland",
       "parentId": "9"
     },
@@ -175,6 +191,7 @@
     "migrationData": {
       "group": "continent-ocean",
       "id": "18",
+      "isRoot": "False",
       "name": "No information",
       "parentId": "1"
     },
@@ -185,6 +202,7 @@
     "migrationData": {
       "group": "country",
       "id": "19",
+      "isRoot": "False",
       "name": "No information",
       "parentId": "18"
     },
@@ -195,6 +213,7 @@
     "migrationData": {
       "group": "continent-ocean",
       "id": "20",
+      "isRoot": "False",
       "name": "South America",
       "parentId": "1"
     },
@@ -205,6 +224,7 @@
     "migrationData": {
       "group": "country",
       "id": "21",
+      "isRoot": "False",
       "name": "Bolivia",
       "parentId": "20"
     },
@@ -215,6 +235,7 @@
     "migrationData": {
       "group": "province",
       "id": "22",
+      "isRoot": "False",
       "name": "Beni",
       "parentId": "21"
     },
@@ -225,6 +246,7 @@
     "migrationData": {
       "group": "district",
       "id": "23",
+      "isRoot": "False",
       "name": "Yacuma",
       "parentId": "22"
     },
@@ -235,6 +257,7 @@
     "migrationData": {
       "group": "country",
       "id": "24",
+      "isRoot": "False",
       "name": "Ecuador",
       "parentId": "20"
     },
@@ -245,6 +268,7 @@
     "migrationData": {
       "group": "province",
       "id": "25",
+      "isRoot": "False",
       "name": "Pichincha",
       "parentId": "24"
     },

@@ -4,17 +4,17 @@
     "key": "age-stage",
     "selectableMethods": [
       {
-        "key": "known-age",
+        "key": "dentition-status",
         "name": {
-          "en": "known age",
-          "sv": "känd ålder"
+          "en": "dentition status",
+          "sv": "tandstatus"
         }
       },
       {
-        "key": "sectioned-teeth",
+        "key": "bone-age",
         "name": {
-          "en": "sectioned teeth",
-          "sv": "tandsnittning"
+          "en": "bone age",
+          "sv": "skelettålder"
         }
       },
       {
@@ -640,6 +640,13 @@
         "name": {
           "en": "g",
           "sv": "g"
+        }
+      },
+      {
+        "key": "unspecified",
+        "name": {
+          "en": "unspecified",
+          "sv": "ospecificerad"
         }
       }
     ]
