@@ -3,7 +3,7 @@ module.exports = function createFeatureRangeMapping({ fieldPath }) {
     elasticsearch: () => {
       return {
         properties: {
-          rangeType: {
+          rangeUnit: {
             fields: {
               raw: {
                 ignore_above: 256,
@@ -13,7 +13,6 @@ module.exports = function createFeatureRangeMapping({ fieldPath }) {
             },
             type: 'text',
           },
-
           rangeValue: {
             scaling_factor: 100,
             type: 'scaled_float',

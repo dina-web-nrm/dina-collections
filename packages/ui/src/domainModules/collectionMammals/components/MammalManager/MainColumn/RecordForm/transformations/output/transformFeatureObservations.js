@@ -13,6 +13,10 @@ export default function transformFeatureObservations(featureObservations = {}) {
         return null
       }
 
+      if (!featureObservation.featureObservationText) {
+        return null
+      }
+
       const transformedFeatureType = {
         id: featureType.id,
       }

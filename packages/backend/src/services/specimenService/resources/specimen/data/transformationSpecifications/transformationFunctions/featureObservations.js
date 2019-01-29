@@ -48,7 +48,8 @@ module.exports = function migrateFeatureObservations({
       const {
         featureType_key: srcFeatureTypeKey,
         featureObservationText: srcFeatureObservationText,
-        methodText: srcMethodText,
+        methodText_key: srcMethodText,
+        unit: srcUnit,
       } = srcFeatureObservation
 
       const featureObservation = {}
@@ -72,6 +73,10 @@ module.exports = function migrateFeatureObservations({
 
       if (srcMethodText) {
         featureObservation.methodText = srcMethodText
+      }
+
+      if (srcUnit) {
+        featureObservation.featureObservationUnit = srcUnit
       }
 
       return featureObservation

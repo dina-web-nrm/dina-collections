@@ -10,9 +10,9 @@ const WrappedFeatureTypeRange = higherOrderComponents.createFieldHoc()(
 
 const unitOptions = [
   {
-    key: 'unknown',
-    text: 'unknown',
-    value: '',
+    key: 'unspecified',
+    text: 'not set',
+    value: 'unspecified',
   },
   {
     key: 'kg',
@@ -30,6 +30,7 @@ class WeightFilterForm extends PureComponent {
   render() {
     return (
       <WrappedFeatureTypeRange
+        disableClearUnitValue
         module="collectionMammals"
         name="weight"
         resource="searchSpecimen"

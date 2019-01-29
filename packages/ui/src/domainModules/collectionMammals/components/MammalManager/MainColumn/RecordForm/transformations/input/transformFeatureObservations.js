@@ -14,7 +14,7 @@ export default function transformFeatureObservations({
 
   const transformedFeatureObservations = Object.values(featureTypes).reduce(
     (obj, featureType) => {
-      const { id } = featureType
+      const { attributes, id } = featureType
 
       const existingFeatureObservation = featureObservations.find(
         featureObservation => {
@@ -22,15 +22,22 @@ export default function transformFeatureObservations({
         }
       )
 
+      if (existingFeatureObservation) {
+        return {
+          ...obj,
+          [id]: existingFeatureObservation,
+        }
+      }
+
+      const initialFeatureObservation = { featureType }
+
+      if (attributes.group === 'length' || attributes.group === 'weight') {
+        initialFeatureObservation.featureObservationUnit = 'unspecified'
+      }
+
       return {
         ...obj,
-        [id]: existingFeatureObservation
-          ? {
-              ...existingFeatureObservation,
-            }
-          : {
-              featureType,
-            },
+        [id]: initialFeatureObservation,
       }
     },
     {}

@@ -121,8 +121,11 @@ class FeatureObservationTableRow extends PureComponent {
 
     const moreThanTwoColumns = hasSelectableUnits || hasSelectableMethods
 
+    const isLengthOrWeight = group === 'length' || group === 'weight'
+
     const columnWidth = getColumnWidth(group)
     const labelWidth = getLabelWidth(group)
+
     log.render()
     return (
       <Table.Row key={index}>
@@ -196,6 +199,8 @@ class FeatureObservationTableRow extends PureComponent {
               autoComplete="off"
               className="transparent"
               component={FeatureObservationDropdownSearch}
+              defaultOptionValue={isLengthOrWeight ? 'unspecified' : undefined}
+              disableClearValue={isLengthOrWeight}
               displayLabel={false}
               module={module}
               name={getPath('featureObservationUnit')}
