@@ -6,13 +6,20 @@ export const mapCollectionItemError = collectionItem => {
     'physicalObject.fullPath'
   )
 
-  if (physicalObjectErrorPath) {
+  const storageLocationErrorPath = objectPath.get(
+    collectionItem,
+    'physicalObject.storageLocation.fullPath'
+  )
+
+  if (physicalObjectErrorPath || storageLocationErrorPath) {
     return {
       physicalObject: {
         storageLocation: {
           id: {
             errorCode: 'REQUIRED',
-            fullPath: `${physicalObjectErrorPath}.storageLocation.id`,
+            fullPath: physicalObjectErrorPath
+              ? `${physicalObjectErrorPath}.storageLocation.id`
+              : `${storageLocationErrorPath}.id`,
           },
         },
       },
