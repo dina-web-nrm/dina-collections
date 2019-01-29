@@ -30,29 +30,37 @@ const transformation = ({ migrator, src, target }) => {
 
   const tags = []
 
-  collectingInformation.forEach(({ establishmentMeansType }) => {
-    if (establishmentMeansType) {
-      const name = migrator.getValue({
-        obj: establishmentMeansType,
-        path: 'name.en',
-      })
-      if (name) {
-        tags.push(`${name} (collecting)`)
+  if (collectingInformation.length > 0) {
+    collectingInformation.forEach(({ establishmentMeansType }) => {
+      if (establishmentMeansType) {
+        const name = migrator.getValue({
+          obj: establishmentMeansType,
+          path: 'name.en',
+        })
+        if (name) {
+          tags.push(`${name} (collecting)`)
+        }
       }
-    }
-  })
+    })
+  } else {
+    tags.push('unknown (collecting)')
+  }
 
-  originInformation.forEach(({ establishmentMeansType }) => {
-    if (establishmentMeansType) {
-      const name = migrator.getValue({
-        obj: establishmentMeansType,
-        path: 'name.en',
-      })
-      if (name) {
-        tags.push(`${name} (origin)`)
+  if (originInformation.length > 0) {
+    originInformation.forEach(({ establishmentMeansType }) => {
+      if (establishmentMeansType) {
+        const name = migrator.getValue({
+          obj: establishmentMeansType,
+          path: 'name.en',
+        })
+        if (name) {
+          tags.push(`${name} (origin)`)
+        }
       }
-    }
-  })
+    })
+  } else {
+    tags.push('unknown (origin)')
+  }
 
   migrator.setValue({
     obj: target,
