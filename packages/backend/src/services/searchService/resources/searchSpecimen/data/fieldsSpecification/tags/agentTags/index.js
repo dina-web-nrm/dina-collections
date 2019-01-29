@@ -46,10 +46,25 @@ const extractAgentProps = ({ agent, migrator }) => {
     props.normalizedAgentFullName = normalizedAgentFullName
   }
 
+  const disambiguatingDescription = migrator.getValue({
+    obj: agent,
+    path: 'normalized.disambiguatingDescription',
+  })
+
+  if (disambiguatingDescription) {
+    props.disambiguatingDescription = disambiguatingDescription
+  }
+
   return props
 }
 
-const addTags = ({ tags, tagType, textI, normalizedAgentFullName }) => {
+const addTags = ({
+  tags,
+  tagType,
+  textI,
+  disambiguatingDescription,
+  normalizedAgentFullName,
+}) => {
   if (textI) {
     const tagValue = textI
     tags.push({
@@ -60,7 +75,10 @@ const addTags = ({ tags, tagType, textI, normalizedAgentFullName }) => {
   }
 
   if (normalizedAgentFullName) {
-    const tagValue = normalizedAgentFullName
+    const tagValue = disambiguatingDescription
+      ? `${normalizedAgentFullName} (${disambiguatingDescription})`
+      : normalizedAgentFullName
+
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
       tagType,
@@ -79,12 +97,17 @@ const transformation = ({ migrator, src, target }) => {
   const tags = []
 
   collectingInformation.forEach(collectingInformationItem => {
-    const { textI, normalizedAgentFullName } = extractAgentProps({
+    const {
+      textI,
+      normalizedAgentFullName,
+      disambiguatingDescription,
+    } = extractAgentProps({
       agent: collectingInformationItem.collectedByAgent,
       migrator,
     })
 
     addTags({
+      disambiguatingDescription,
       normalizedAgentFullName,
       tags,
       tagType: 'Collector',
@@ -98,11 +121,16 @@ const transformation = ({ migrator, src, target }) => {
   })
 
   if (acquisition) {
-    const { textI, normalizedAgentFullName } = extractAgentProps({
+    const {
+      textI,
+      disambiguatingDescription,
+      normalizedAgentFullName,
+    } = extractAgentProps({
       agent: acquisition.handedInByAgent,
       migrator,
     })
     addTags({
+      disambiguatingDescription,
       normalizedAgentFullName,
       tags,
       tagType: 'Handed in by',
@@ -119,11 +147,16 @@ const transformation = ({ migrator, src, target }) => {
   collectionItems.forEach(collectionItem => {
     const curatorialAssessments = collectionItem.curatorialAssessments || []
     curatorialAssessments.forEach(curatorialAssessment => {
-      const { textI, normalizedAgentFullName } = extractAgentProps({
+      const {
+        textI,
+        normalizedAgentFullName,
+        disambiguatingDescription,
+      } = extractAgentProps({
         agent: curatorialAssessment && curatorialAssessment.agent,
         migrator,
       })
       addTags({
+        disambiguatingDescription,
         normalizedAgentFullName,
         tags,
         tagType: 'Curatorial assessed by',
@@ -139,11 +172,16 @@ const transformation = ({ migrator, src, target }) => {
     }) || []
 
   determinations.forEach(determination => {
-    const { textI, normalizedAgentFullName } = extractAgentProps({
+    const {
+      textI,
+      normalizedAgentFullName,
+      disambiguatingDescription,
+    } = extractAgentProps({
       agent: determination && determination.determinedByAgent,
       migrator,
     })
     addTags({
+      disambiguatingDescription,
       normalizedAgentFullName,
       tags,
       tagType: 'Determined by',
@@ -158,11 +196,16 @@ const transformation = ({ migrator, src, target }) => {
     }) || []
 
   featureObservations.forEach(featureObservation => {
-    const { textI, normalizedAgentFullName } = extractAgentProps({
+    const {
+      textI,
+      normalizedAgentFullName,
+      disambiguatingDescription,
+    } = extractAgentProps({
       agent: featureObservation && featureObservation.featureObservationAgent,
       migrator,
     })
     addTags({
+      disambiguatingDescription,
       normalizedAgentFullName,
       tags,
       tagType: 'Feature observed by',
@@ -177,11 +220,16 @@ const transformation = ({ migrator, src, target }) => {
     }) || []
 
   recordHistoryEvents.forEach(recordHistoryEvent => {
-    const { textI, normalizedAgentFullName } = extractAgentProps({
+    const {
+      textI,
+      normalizedAgentFullName,
+      disambiguatingDescription,
+    } = extractAgentProps({
       agent: recordHistoryEvent && recordHistoryEvent.agent,
       migrator,
     })
     addTags({
+      disambiguatingDescription,
       normalizedAgentFullName,
       tags,
       tagType: 'Record history by',
