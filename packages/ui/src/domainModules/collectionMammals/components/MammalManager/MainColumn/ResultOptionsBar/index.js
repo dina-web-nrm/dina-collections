@@ -35,7 +35,11 @@ export class ResultOptionsBar extends Component {
           active={isTableViewOrSettings}
           link
           name="table"
-          onClick={event => handleTableTabClick(event)}
+          onClick={event => {
+            if (handleTableTabClick) {
+              handleTableTabClick(event)
+            }
+          }}
         >
           <Icon name="table" />
         </Menu.Item>
