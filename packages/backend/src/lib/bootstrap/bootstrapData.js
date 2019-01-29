@@ -4,6 +4,8 @@ const importer = require('../importer')
 
 module.exports = function bootstrapData({
   env,
+  importData = true,
+  rebuildElastic = true,
   serviceDefinitions,
   serviceOrder,
 }) {
@@ -12,6 +14,8 @@ module.exports = function bootstrapData({
     return importer({
       config,
       fileInteractor,
+      importData,
+      rebuildElastic,
       serviceInteractor,
     }).then(() => {
       return null
