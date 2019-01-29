@@ -36,7 +36,7 @@
     "exec:production": "node ./packages/scripts/src/js/remoteExecProduction.js",
     "exec:stage": "node ./packages/scripts/src/js/remoteExecStage.js",
     "exec:test": "node ./packages/scripts/src/js/remoteExecTest.js",
-    "import:data:files": "yarn start:dbs && cd ./packages/migrations && yarn setup:development",
+    "import:data:json": "yarn start:dbs && cd ./packages/migrations && yarn setup:development",
     "import:data:sample": "yarn start:dbs && yarn exec:local rm-data.sh || true && yarn setup:sample-data && cd ./packages/migrations && yarn setup:development",
     "install": "yarn install:schema && yarn install:semantic-ui && yarn install:ui && yarn install:backend && yarn install:common && yarn install:scripts && yarn install:migrations",
     "install:backend": "cd ./packages/backend && yarn install",
