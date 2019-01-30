@@ -18,21 +18,23 @@ module.exports = function migrateLocationInformation({
   srcCollectingInformation,
 }) {
   const {
+    locationInformation_geoReferenceSourcesText,
     locationInformation_latitude,
+    locationInformation_localityI,
+    locationInformation_localityV,
     locationInformation_longitude,
-    locationInformation_uncertaintyInMeters,
     locationInformation_maxDepthInMeters,
     locationInformation_maxElevationhInMeters,
     locationInformation_minDepthInMeters,
     locationInformation_minElevationInMeters,
-    locationInformation_localityI,
-    locationInformation_localityV,
     locationInformation_remarks,
     locationInformation_swedishGrid5km,
+    locationInformation_uncertaintyInMeters,
   } = srcCollectingInformation
   /* event.locationInformation */
 
   const locationInformation = deleteNullProperties({
+    georeferenceSourcesText: locationInformation_geoReferenceSourcesText,
     localityI: locationInformation_localityI,
     localityV: locationInformation_localityV,
     remarks: locationInformation_remarks,
