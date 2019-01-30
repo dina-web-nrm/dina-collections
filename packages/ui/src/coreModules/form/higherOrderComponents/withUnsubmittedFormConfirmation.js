@@ -29,13 +29,13 @@ const defaultProps = {
   unsavedChangesMessage: undefined,
 }
 
-const withUnsavedChangesConfirmation = (
+const withUnsubmittedFormConfirmation = (
   {
     getAllowTransition: getAllowTransitionDefault,
     unsavedChangesMessage: unsavedChangesMessageDefault,
   } = {}
 ) => ComposedComponent => {
-  class UnsavedChangesConfirmation extends Component {
+  class UnsubmittedFormConfirmation extends Component {
     constructor(props) {
       super(props)
       this.handleBeforeUnload = this.handleBeforeUnload.bind(this)
@@ -98,10 +98,10 @@ const withUnsavedChangesConfirmation = (
     }
   }
 
-  UnsavedChangesConfirmation.propTypes = propTypes
-  UnsavedChangesConfirmation.defaultProps = defaultProps
+  UnsubmittedFormConfirmation.propTypes = propTypes
+  UnsubmittedFormConfirmation.defaultProps = defaultProps
 
-  return compose(connect(mapStateToProps))(UnsavedChangesConfirmation)
+  return compose(connect(mapStateToProps))(UnsubmittedFormConfirmation)
 }
 
-export default withUnsavedChangesConfirmation
+export default withUnsubmittedFormConfirmation
