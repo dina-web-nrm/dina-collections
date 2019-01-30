@@ -3,9 +3,9 @@ import { compose } from 'redux'
 import RecordActionBar from './Base'
 import {
   createHandleCreateSubmit,
-  createHandleUndoChanges,
+  createHandleCancelCreate,
 } from './higherOrderComponents'
 
-export default compose(createHandleCreateSubmit(), createHandleUndoChanges())(
+export default compose(createHandleCreateSubmit(), createHandleCancelCreate())(
   RecordActionBar
 )

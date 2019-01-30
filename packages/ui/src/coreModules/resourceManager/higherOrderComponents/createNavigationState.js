@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
+  CREATE_CANCEL,
   DEL_SUCCESS,
   ITEM_SELECT,
   NAVIGATE_CREATE,
@@ -17,6 +18,7 @@ import {
 const createResourceUrlState = () => ComposedComponent => {
   const propTypes = {
     clearState: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
     isPicker: PropTypes.bool,
     onInteraction: PropTypes.func,
     state: PropTypes.object.isRequired,
@@ -84,6 +86,18 @@ const createResourceUrlState = () => ComposedComponent => {
           break
         }
 
+        case CREATE_CANCEL: {
+          if (this.props.goBack) {
+            this.props.goBack()
+          } else {
+            this.navigateList({
+              disablePrompt: true,
+            })
+          }
+
+          break
+        }
+
         case DEL_SUCCESS: {
           this.navigateList()
           break
@@ -126,10 +140,13 @@ const createResourceUrlState = () => ComposedComponent => {
       this.props.clearState()
     }
 
-    navigateList() {
-      this.props.updateState({
-        mainColumn: 'table',
-      })
+    navigateList(state) {
+      this.props.updateState(
+        {
+          mainColumn: 'table',
+        },
+        state
+      )
     }
 
     navigateTree() {

@@ -46,6 +46,7 @@ const propTypes = {
   invalid: PropTypes.bool.isRequired,
   loadingDelete: PropTypes.bool,
   nestedItem: PropTypes.object,
+  onCancelCreate: PropTypes.func,
   onDelete: PropTypes.func,
   onSubmit: PropTypes.func,
   onUndoChanges: PropTypes.func,
@@ -55,6 +56,7 @@ const propTypes = {
 const defaultProps = {
   loadingDelete: undefined,
   nestedItem: undefined,
+  onCancelCreate: undefined,
   onDelete: undefined,
   onSubmit: undefined,
   onUndoChanges: undefined,
@@ -68,6 +70,7 @@ export class RecordActionBar extends PureComponent {
       invalid,
       loadingDelete,
       nestedItem,
+      onCancelCreate: handleCancelCreate,
       onDelete: handleDelete,
       onSubmit: handleSubmit,
       onUndoChanges: handleUndoChanges,
@@ -75,6 +78,7 @@ export class RecordActionBar extends PureComponent {
       submitting,
     } = this.props
     const { isRoot } = nestedItem || {}
+    const displayChangedMessage = !handleCancelCreate
     return (
       <Grid padded style={{ pointerEvents: 'none' }} verticalAlign="middle">
         <Grid.Column>
@@ -89,16 +93,31 @@ export class RecordActionBar extends PureComponent {
           >
             <ModuleTranslate textKey="save" />
           </Button>
-          <Button
-            basic
-            disabled={!handleUndoChanges || pristine || submitting}
-            onClick={handleUndoChanges}
-            size="large"
-            style={{ float: 'left', pointerEvents: 'initial' }}
-            type="button"
-          >
-            Undo changes
-          </Button>
+          {handleCancelCreate && (
+            <Button
+              basic
+              disabled={!handleCancelCreate || submitting}
+              onClick={handleCancelCreate}
+              size="large"
+              style={{ float: 'left', pointerEvents: 'initial' }}
+              type="button"
+            >
+              Cancel create
+            </Button>
+          )}
+          {!handleCancelCreate && (
+            <Button
+              basic
+              disabled={!handleUndoChanges || pristine || submitting}
+              onClick={handleUndoChanges}
+              size="large"
+              style={{ float: 'left', pointerEvents: 'initial' }}
+              type="button"
+            >
+              Undo changes
+            </Button>
+          )}
+
           {isRoot && (
             <em style={textStyle}>
               <ModuleTranslate textKey="notAllowedToEditRootNode" />
@@ -111,7 +130,9 @@ export class RecordActionBar extends PureComponent {
                 <ModuleTranslate textKey="issuesPreventSaving" />
               </em>
             ) : (
-              <em style={textStyle}>Unsaved changes</em>
+              displayChangedMessage && (
+                <em style={textStyle}>Unsaved changes</em>
+              )
             ))}
           {config.isDevelopment && <ConnectedFormSchemaError form={formName} />}
           {handleDelete && (
