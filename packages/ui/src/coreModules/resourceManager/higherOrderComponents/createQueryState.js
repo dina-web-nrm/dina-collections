@@ -47,13 +47,13 @@ const createQueryNavigationState = () => ComposedComponent => {
       }, {})
     }
 
-    replaceQueryParams(newQueryObject) {
+    replaceQueryParams(newQueryObject, state = {}) {
       const { pathname } = this.props.location
       const search = queryString.stringify(newQueryObject)
-      this.props.routerPush({ pathname, search })
+      this.props.routerPush({ pathname, search, state })
     }
 
-    updateQueryParams(newQueryObject) {
+    updateQueryParams(newQueryObject, state = {}) {
       const queryObject = this.getQueryParams()
       const updateQueryParamsQueryObject = {
         ...queryObject,
@@ -61,7 +61,7 @@ const createQueryNavigationState = () => ComposedComponent => {
       }
       const search = queryString.stringify(updateQueryParamsQueryObject)
       const { pathname } = this.props.location
-      this.props.routerPush({ pathname, search })
+      this.props.routerPush({ pathname, search, state })
     }
 
     clearQueryParams(params) {
