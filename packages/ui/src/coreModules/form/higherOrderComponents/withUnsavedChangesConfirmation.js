@@ -6,16 +6,17 @@ import { isDirty, isSubmitting } from 'redux-form'
 import { Prompt } from 'react-router-dom'
 
 const mapStateToProps = (state, { formName }) => {
+  const dirty = isDirty(formName)(state)
+  const submitting = isSubmitting(formName)(state)
+  const preventTransition = dirty && !submitting
   return {
-    dirty: isDirty(formName)(state),
-    submitting: isSubmitting(formName)(state),
+    preventTransition,
   }
 }
 
 const propTypes = {
-  dirty: PropTypes.bool.isRequired,
   getAllowTransition: PropTypes.func,
-  submitting: PropTypes.bool.isRequired,
+  preventTransition: PropTypes.bool.isRequired,
   unsavedChangesMessage: PropTypes.string,
 }
 
@@ -49,7 +50,8 @@ const withUnsavedChangesConfirmation = (
     }
 
     handleBeforeUnload(event) {
-      if (this.props.dirty && !this.props.submitting) {
+      const { preventTransition } = this.props
+      if (preventTransition) {
         // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload#Example
         // Cancel the event as stated by the standard.
         event.preventDefault()
@@ -60,9 +62,8 @@ const withUnsavedChangesConfirmation = (
 
     render() {
       const {
-        dirty,
         getAllowTransition: getAllowTransitionOverride,
-        submitting,
+        preventTransition,
         unsavedChangesMessage: unsavedChangesMessageOverride,
       } = this.props
 
@@ -85,7 +86,7 @@ const withUnsavedChangesConfirmation = (
                 unsavedChangesMessage
               )
             }}
-            when={dirty && !submitting}
+            when={preventTransition}
           />
           <ComposedComponent {...this.props} />
         </React.Fragment>
