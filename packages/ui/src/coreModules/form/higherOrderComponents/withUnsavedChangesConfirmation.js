@@ -5,10 +5,14 @@ import { connect } from 'react-redux'
 import { isDirty, isSubmitting } from 'redux-form'
 import { Prompt } from 'react-router-dom'
 
-const mapStateToProps = (state, { formName }) => {
+const mapStateToProps = (
+  state,
+  { formName, preventLeavingDirty = true, preventLeavingForm = false }
+) => {
   const dirty = isDirty(formName)(state)
   const submitting = isSubmitting(formName)(state)
-  const preventTransition = dirty && !submitting
+  const preventTransition =
+    !submitting && ((preventLeavingDirty && dirty) || preventLeavingForm)
   return {
     preventTransition,
   }
