@@ -16,6 +16,13 @@ const defaultProps = {
   itemId: undefined,
 }
 
+const getAllowTransition = (location, action) => {
+  if (action === 'POP') {
+    return false
+  }
+  return location.search.includes('mainColumn=edit')
+}
+
 export class Create extends PureComponent {
   constructor(props) {
     super(props)
@@ -34,6 +41,7 @@ export class Create extends PureComponent {
         displayResetButton
         form={FORM_NAME}
         formValueSelector={this.formValueSelector}
+        getAllowTransition={getAllowTransition}
         initialValues={initialValues}
         itemHeader={
           <ModuleTranslate capitalize module="agent" textKey="newAgent" />
@@ -42,6 +50,8 @@ export class Create extends PureComponent {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
         }}
+        preventLeavingForm
+        unsavedChangesMessage="You have not saved the new record, are you sure you want to leave?"
       />
     )
   }

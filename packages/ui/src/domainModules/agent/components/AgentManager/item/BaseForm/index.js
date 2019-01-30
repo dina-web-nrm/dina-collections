@@ -26,14 +26,20 @@ const propTypes = {
   changeFormValue: PropTypes.func.isRequired,
   form: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
+  getAllowTransition: PropTypes.func,
   handleSubmit: PropTypes.func.isRequired,
   itemHeader: PropTypes.node.isRequired,
   itemSubHeader: PropTypes.node,
+  preventLeavingForm: PropTypes.bool,
   removeArrayField: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
+  unsavedChangesMessage: PropTypes.string,
 }
 const defaultProps = {
+  getAllowTransition: undefined,
   itemSubHeader: undefined,
+  preventLeavingForm: false,
+  unsavedChangesMessage: undefined,
 }
 
 class BaseForm extends Component {
@@ -60,21 +66,27 @@ class BaseForm extends Component {
     const {
       availableHeight,
       form,
+      formValueSelector,
+      getAllowTransition,
+      handleSubmit,
       itemHeader,
       itemSubHeader,
-      formValueSelector,
-      handleSubmit,
+      preventLeavingForm,
+      unsavedChangesMessage,
       ...rest
     } = this.props
 
     return (
       <Form
         formName={form}
+        getAllowTransition={getAllowTransition}
         onSubmit={handleSubmit(() => {
           /* submit handled in resource manager */
         })}
+        preventLeavingForm={preventLeavingForm}
         sectionSpecs={sectionSpecs}
         setFormRef={this.setFormRef}
+        unsavedChangesMessage={unsavedChangesMessage}
       >
         <FormRow
           {...rest}
