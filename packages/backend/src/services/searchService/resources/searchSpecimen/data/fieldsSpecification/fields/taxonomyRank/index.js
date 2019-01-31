@@ -6,17 +6,16 @@ const fieldPath = 'attributes.taxonomyRank'
 const key = 'taxonomyRank'
 
 const transformation = ({ migrator, target, locals }) => {
-  const { acceptedTaxonNames } = locals
-  if (!(acceptedTaxonNames && acceptedTaxonNames.length)) {
+  const { curatorialTaxonRank } = locals
+
+  if (!curatorialTaxonRank) {
     return null
   }
-
-  const taxonName = acceptedTaxonNames[acceptedTaxonNames.length - 1]
 
   migrator.setValue({
     obj: target,
     path: fieldPath,
-    value: taxonName.attributes.rank,
+    value: curatorialTaxonRank,
   })
   return null
 }
