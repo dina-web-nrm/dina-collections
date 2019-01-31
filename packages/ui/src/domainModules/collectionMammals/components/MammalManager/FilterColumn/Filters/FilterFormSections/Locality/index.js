@@ -26,6 +26,7 @@ class LocalityFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
+            enableHelpNotifications={false}
             fluid
             label="Higher Geography (collecting)"
             name="locality.higherGeography.tagValues"
@@ -40,6 +41,7 @@ class LocalityFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
+            enableHelpNotifications={false}
             fluid
             label="Locality (collecting or origin)"
             name="locality.localities.tagValues"
@@ -54,6 +56,7 @@ class LocalityFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
+            enableHelpNotifications={false}
             label="Appearance"
             name="collectingInformation.establishmentMeansType"
             resource="searchSpecimen"
@@ -63,6 +66,7 @@ class LocalityFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
+            enableHelpNotifications={false}
             label="Selective breeding"
             name="originInformation.isResultOfSelectiveBreeding"
             resource="searchSpecimen"

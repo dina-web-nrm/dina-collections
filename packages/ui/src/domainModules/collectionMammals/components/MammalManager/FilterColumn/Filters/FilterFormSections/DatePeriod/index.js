@@ -14,6 +14,7 @@ class DatePeriodFilterForm extends PureComponent {
             displayEndDateLabel
             displayStartDateLabel
             displaySubLabels
+            enableHelpNotifications={false}
             endDateLabel="Latest date"
             initialDateType="range"
             module="collectionMammals"

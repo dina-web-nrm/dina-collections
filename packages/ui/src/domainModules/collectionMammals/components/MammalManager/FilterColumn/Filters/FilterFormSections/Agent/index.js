@@ -18,6 +18,7 @@ class AgentFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
+            enableHelpNotifications={false}
             label="Name"
             name="agent.tagValues"
             resource="searchSpecimen"
