@@ -47,6 +47,7 @@ const identifiersCatalogNumber = require('./fields/identifiersCatalogNumber')
 const identifiersOtherIdentifiers = require('./fields/identifiersOtherIdentifiers')
 const idNumeric = require('./fields/idNumeric')
 const originInformationLocality = require('./fields/originInformationLocality')
+const physicalObjectStorageLocationGroups = require('./fields/physicalObjectStorageLocationGroups')
 const physicalUnitOtherPreparation = require('./fields/physicalUnitOtherPreparation')
 const physicalUnitSkeleton = require('./fields/physicalUnitSkeleton')
 const physicalUnitSkin = require('./fields/physicalUnitSkin')
@@ -109,6 +110,7 @@ module.exports = {
     identifiersOtherIdentifiers,
     idNumeric,
     originInformationLocality,
+    physicalObjectStorageLocationGroups,
     physicalUnitOtherPreparation,
     physicalUnitSkeleton,
     physicalUnitSkin,
