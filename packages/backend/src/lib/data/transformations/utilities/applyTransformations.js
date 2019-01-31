@@ -12,6 +12,7 @@ module.exports = function applyTransformationFunctions({
   serviceInteractor,
   srcResource,
   startCount,
+  throwError = false,
   transformationFunctions,
 }) {
   if (reporter) {
@@ -59,7 +60,9 @@ module.exports = function applyTransformationFunctions({
             err,
             index: globalIndex,
           })
-
+          if (throwError) {
+            throw err
+          }
           return null
         })
     })
