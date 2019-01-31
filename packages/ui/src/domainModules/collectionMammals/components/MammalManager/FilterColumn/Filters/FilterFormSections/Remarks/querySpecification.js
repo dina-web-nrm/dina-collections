@@ -1,12 +1,3 @@
-// import createCheckboxSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagTypesSpecification'
-
-// export default createCheckboxSpecification({
-//   aggregationFunctionName: 'aggregateRemarkTypes',
-//   fieldName: 'remarks.remarkTypes',
-//   matchFilterFunctionName: 'matchRemarkTypes',
-//   sectionName: 'remarks',
-// })
-
 import createPreviewSearchSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/previewSearchSpecification'
 
 export default createPreviewSearchSpecification({
@@ -14,8 +5,7 @@ export default createPreviewSearchSpecification({
   searchFilterFunctionName: 'searchRemarks',
   searchPreviewAggregationFunctionName: 'aggregateRemarksTextPreview',
   sectionName: 'remarks',
+  srcFieldFieldName: 'remarks.srcField',
   srcFieldMatchFilterFunctionName: 'matchRemarksSrcField',
   srcFieldsAggregationFunctionName: 'aggregateRemarkSrcFields',
-  srcFieldsFieldName: 'remarks.srcFields',
-  tagValuesFieldName: 'remarks.tagValues',
 })
