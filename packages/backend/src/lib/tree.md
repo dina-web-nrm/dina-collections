@@ -156,10 +156,12 @@
 │   │   ├── sharedFilters
 │   │   │   ├── ancestorsToId.js
 │   │   │   ├── deactivated.js
+│   │   │   ├── excludeRootNode.js
 │   │   │   ├── group.js
 │   │   │   ├── id.js
 │   │   │   ├── ids.js
 │   │   │   ├── index.js
+│   │   │   ├── isRootNode.js
 │   │   │   ├── name.js
 │   │   │   ├── nameSearch.js
 │   │   │   ├── nodesWithCircularDependencies.js

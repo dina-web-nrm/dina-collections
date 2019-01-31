@@ -99,6 +99,7 @@
 │   │   │   └── index.js
 │   │   ├── LocalityManager
 │   │   │   ├── Base.js
+│   │   │   ├── ItemTitle.js
 │   │   │   ├── Local.js
 │   │   │   ├── Query.js
 │   │   │   ├── filter
@@ -125,6 +126,7 @@
 │   │   │   └── index.js
 │   │   ├── StorageLocationManager
 │   │   │   ├── Base.js
+│   │   │   ├── ItemTitle.js
 │   │   │   ├── Local.js
 │   │   │   ├── Query.js
 │   │   │   ├── filter
@@ -178,9 +180,9 @@
 │   │   │   ├── filter
 │   │   │   ├── item
 │   │   │   └── tableColumnSpecifications.js
-│   │   ├── TaxonNameResult
-│   │   │   └── index.js
 │   │   ├── TaxonNameTaxonStatus
+│   │   │   └── index.js
+│   │   ├── TaxonResult
 │   │   │   └── index.js
 │   │   ├── TogglableTaxonDropdownPickerSearch
 │   │   │   └── index.js
