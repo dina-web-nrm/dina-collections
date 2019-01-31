@@ -1,3 +1,4 @@
+const objectPath = require('object-path')
 const fetchParents = require('../../../../../../../lib/data/transformations/utilities/fetchParents')
 /* eslint-disable no-param-reassign */
 
@@ -63,6 +64,17 @@ const transformation = ({ getItemByTypeId, locals, migrator, src }) => {
     getItemByTypeId,
     taxonId: curatorialTaxonId,
   }).then(taxonNames => {
+    const curatorialTaxonRank = objectPath.get(
+      taxonNames,
+      `${taxonNames.length - 1}.attributes.rank`
+    )
+
+    migrator.setValue({
+      obj: locals,
+      path: 'curatorialTaxonRank',
+      value: curatorialTaxonRank,
+    })
+
     migrator.setValue({
       obj: locals,
       path: 'acceptedTaxonNames',
