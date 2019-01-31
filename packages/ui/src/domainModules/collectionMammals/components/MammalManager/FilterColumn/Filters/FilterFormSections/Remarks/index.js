@@ -21,8 +21,14 @@ class Remarks extends PureComponent {
   render() {
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Row className="relaxed">
-          <Grid.Column width={16}>
+        <Grid.Row>
+          <Grid.Column
+            style={{
+              // to be above grid margin inside WrappedSearchPreviewField
+              zIndex: 10,
+            }}
+            width={16}
+          >
             <Field
               autoComplete="off"
               component={WrappedTagTypeDropdownField}

@@ -120,39 +120,34 @@ class SearchPreview extends Component {
 
     return (
       <Grid textAlign="left" verticalAlign="middle">
-        <Grid.Row>
-          <Grid.Column width={16}>
-            <Input
-              {...rest}
-              icon="search"
-              iconPosition="right"
-              input={patchedInput}
-              type="text"
-            />
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column width={16}>
-            <Segment
-              style={{ background: 'white', height: 300, overflowY: 'scroll' }}
-            >
-              {!displayPreview && <p> Preview (top 50 matches)</p>}
-              {!displayPreview
-                ? null
-                : previews.map(item => {
-                    return (
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: `${item.preview} (${item.srcField})`,
-                        }}
-                        key={`${item.id}-${item.srcField}-${item.preview}`}
-                      />
-                    )
-                  })}
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
+        <Grid.Column width={16}>
+          <Input
+            {...rest}
+            icon="search"
+            iconPosition="right"
+            input={patchedInput}
+            type="text"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Segment
+            style={{ background: 'white', height: 300, overflowY: 'scroll' }}
+          >
+            {!displayPreview && <p> Preview (top 50 matches)</p>}
+            {!displayPreview
+              ? null
+              : previews.map(item => {
+                  return (
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: `${item.preview} (${item.srcField})`,
+                      }}
+                      key={`${item.id}-${item.srcField}-${item.preview}`}
+                    />
+                  )
+                })}
+          </Segment>
+        </Grid.Column>
       </Grid>
     )
   }
