@@ -19,11 +19,16 @@ const matchFilterName = 'matchAgeStageTags'
 const FEATURE_TYPE = 'age-stage'
 
 const transformation = ({ migrator, src, target }) => {
-  const featureTexts = extractFeatureText({
+  let featureTexts = extractFeatureText({
     featureTypeKey: FEATURE_TYPE,
     migrator,
     src,
   })
+
+  if (!featureTexts || !featureTexts.length) {
+    featureTexts = ['unknown']
+  }
+
   migrator.setValue({
     obj: target,
     path: fieldPath,
