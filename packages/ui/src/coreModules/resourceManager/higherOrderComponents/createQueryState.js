@@ -2,18 +2,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import { push } from 'react-router-redux'
+import { push, goBack } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import queryString from 'query-string'
 
 const createQueryNavigationState = () => ComposedComponent => {
   const mapDispatchToProps = {
+    routerGoBack: goBack,
     routerPush: push,
   }
 
   const propTypes = {
     location: PropTypes.object.isRequired,
+    routerGoBack: PropTypes.func.isRequired,
     routerPush: PropTypes.func.isRequired,
   }
 
@@ -26,6 +28,7 @@ const createQueryNavigationState = () => ComposedComponent => {
       this.replaceQueryParams = this.replaceQueryParams.bind(this)
       this.updateQueryParams = this.updateQueryParams.bind(this)
       this.clearQueryParams = this.clearQueryParams.bind(this)
+      this.goBack = this.goBack.bind(this)
     }
     getQueryParams() {
       const { location } = this.props
@@ -63,6 +66,9 @@ const createQueryNavigationState = () => ComposedComponent => {
       const { pathname } = this.props.location
       this.props.routerPush({ pathname, search, state })
     }
+    goBack() {
+      this.props.routerGoBack()
+    }
 
     clearQueryParams(params) {
       const { pathname } = this.props.location
@@ -85,6 +91,7 @@ const createQueryNavigationState = () => ComposedComponent => {
         <ComposedComponent
           {...this.props}
           clearState={this.clearQueryParams}
+          goBack={this.goBack}
           replaceState={this.replaceQueryParams}
           state={queryParams}
           updateState={this.updateQueryParams}
