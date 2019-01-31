@@ -1,9 +1,13 @@
 const {
+  createStringMatchFilter,
+} = require('../../../../../../../../lib/data/filters/factories')
+const {
   createKeywordMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
 const fieldPath = 'attributes.taxonomyRank'
 const key = 'taxonomyRank'
+const matchFilterName = 'matchCuratorialTaxonRank'
 
 const transformation = ({ migrator, target, locals }) => {
   const { curatorialTaxonRank } = locals
@@ -22,6 +26,9 @@ const transformation = ({ migrator, target, locals }) => {
 
 module.exports = {
   fieldPath,
+  filters: {
+    [matchFilterName]: createStringMatchFilter({ fieldPath, raw: false }),
+  },
   key,
   mapping: createKeywordMapping({
     fieldPath,
