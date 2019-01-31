@@ -2,6 +2,7 @@ module.exports = function createStringMatchFilter({
   description,
   fieldPath,
   key,
+  raw = true,
   lowerCase = true,
 }) {
   const rawPath = `${fieldPath}.raw`
@@ -10,7 +11,7 @@ module.exports = function createStringMatchFilter({
     elasticsearch: ({ value }) => {
       return {
         term: {
-          [rawPath]: value,
+          [raw ? rawPath : fieldPath]: value,
         },
       }
     },
