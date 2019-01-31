@@ -159,7 +159,7 @@ const transformation = ({ migrator, src, target }) => {
         disambiguatingDescription,
         normalizedAgentFullName,
         tags,
-        tagType: 'Curatorial assessed by',
+        tagType: 'Assessed by',
         textI,
       })
     })
