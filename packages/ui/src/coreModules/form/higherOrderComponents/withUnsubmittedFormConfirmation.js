@@ -24,17 +24,17 @@ const propTypes = {
   unsavedChangesMessage: PropTypes.string,
 }
 
-const defaultProps = {
-  getAllowTransition: undefined,
-  unsavedChangesMessage: undefined,
-}
-
 const withUnsubmittedFormConfirmation = (
   {
     getAllowTransition: getAllowTransitionDefault,
     unsavedChangesMessage: unsavedChangesMessageDefault,
   } = {}
 ) => ComposedComponent => {
+  const defaultProps = {
+    getAllowTransition: undefined,
+    unsavedChangesMessage: unsavedChangesMessageDefault,
+  }
+
   class UnsubmittedFormConfirmation extends Component {
     constructor(props) {
       super(props)
@@ -42,13 +42,13 @@ const withUnsubmittedFormConfirmation = (
     }
 
     componentDidMount() {
-      if (this.props.unsavedChangesMessage || unsavedChangesMessageDefault) {
+      if (this.props.unsavedChangesMessage) {
         window.addEventListener('beforeunload', this.handleBeforeUnload)
       }
     }
 
     componentWillUnmount() {
-      if (this.props.unsavedChangesMessage || unsavedChangesMessageDefault) {
+      if (this.props.unsavedChangesMessage) {
         window.removeEventListener('beforeunload', this.handleBeforeUnload)
       }
     }
@@ -84,9 +84,9 @@ const withUnsubmittedFormConfirmation = (
       return (
         <React.Fragment>
           <Prompt
-            message={location => {
+            message={(location, action) => {
               return (
-                (getAllowTransition && getAllowTransition(location)) ||
+                (getAllowTransition && getAllowTransition(location, action)) ||
                 unsavedChangesMessage
               )
             }}
