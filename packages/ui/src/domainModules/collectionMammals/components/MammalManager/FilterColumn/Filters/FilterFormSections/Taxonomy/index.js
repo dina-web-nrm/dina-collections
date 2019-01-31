@@ -44,7 +44,7 @@ class TaxonomyFilterForm extends PureComponent {
             name="taxonomy.tagType"
             resource="searchSpecimen"
             tagTypeInitialOptionValue={ANY}
-            tagTypeMatchAllOptionText="Any rank level"
+            tagTypeMatchAllOptionText="Any rank"
           />
         </Grid.Column>
       </Grid>
