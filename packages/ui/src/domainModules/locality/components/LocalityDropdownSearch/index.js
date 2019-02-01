@@ -2,14 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { DropdownSearch } from 'coreModules/form/components'
 
+const include = ['parent']
+const resolveRelationships = ['place']
+
 const extractText = nestedItem => {
-  const { attributes = {} } = nestedItem
-  const name = attributes && attributes.name
-  if (!name) {
+  if (!nestedItem) {
     return ''
   }
 
-  return `${attributes.name} (${attributes.group})`
+  const { name, group, parent } = nestedItem
+  if (!parent) {
+    return `${name} [${group}]`
+  }
+
+  return `${name} [${group} in ${parent.name}]`
 }
 
 const propTypes = {
@@ -28,6 +34,10 @@ class LocalityDropdownSearch extends Component {
         {...rest}
         excludeRootNode={excludeRootNode}
         extractText={extractText}
+        include={include}
+        nestItems
+        relationships={include}
+        resolveRelationships={resolveRelationships}
         resource="place"
         type="dropdown-search-resource"
       />
