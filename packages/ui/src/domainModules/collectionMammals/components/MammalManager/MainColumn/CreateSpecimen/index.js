@@ -26,6 +26,9 @@ const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
 const mapStateToProps = state => {
   return {
+    establishmentMeansTypes: crudGlobalSelectors.establishmentMeansType.getAll(
+      state
+    ),
     identifierTypes: crudGlobalSelectors.identifierType.getAll(state),
   }
 }
@@ -35,26 +38,43 @@ const mapDispatchToProps = {
 
 const propTypes = {
   createSpecimen: PropTypes.func.isRequired,
+  establishmentMeansTypes: PropTypes.array.isRequired,
+  establishmentMeansTypesFetched: PropTypes.bool.isRequired,
   fetchResourceCount: PropTypes.func.isRequired,
   identifierTypes: PropTypes.array.isRequired,
+  identifierTypesFetched: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
 }
 
 class CreateSpecimen extends PureComponent {
   render() {
+    log.render()
+
     const {
       createSpecimen,
+      establishmentMeansTypes,
+      establishmentMeansTypesFetched,
       fetchResourceCount,
       identifierTypes,
+      identifierTypesFetched,
       onInteraction,
       ...rest
     } = this.props
-    const initialValues = setDefaultValues({ identifierTypes, specimen: {} })
 
-    log.render()
+    if (!establishmentMeansTypesFetched || !identifierTypesFetched) {
+      return null
+    }
+
+    const initialValues = setDefaultValues({
+      establishmentMeansTypes,
+      identifierTypes,
+      specimen: {},
+    })
+
     log.debug('initialValues', initialValues)
     return (
       <RecordForm
+        establishmentMeansTypes={establishmentMeansTypes}
         form={FORM_NAME}
         formName={FORM_NAME}
         formValueSelector={formValueSelector}
@@ -82,6 +102,13 @@ CreateSpecimen.propTypes = propTypes
 
 export default compose(
   createGetResourceCount({ resource: 'specimen' }),
-  createEnsureAllItemsFetched({ resource: 'identifierType' }),
+  createEnsureAllItemsFetched({
+    allItemsFetchedKey: 'establishmentMeansTypesFetched',
+    resource: 'establishmentMeansType',
+  }),
+  createEnsureAllItemsFetched({
+    allItemsFetchedKey: 'identifierTypesFetched',
+    resource: 'identifierType',
+  }),
   connect(mapStateToProps, mapDispatchToProps)
 )(CreateSpecimen)
