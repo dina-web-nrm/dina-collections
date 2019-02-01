@@ -54,7 +54,7 @@ class BottomBar extends PureComponent {
       <Grid padded>
         <Grid.Column>
           <Button
-            disabled={invalid || pristine}
+            disabled={invalid}
             loading={this.state.loading}
             onClick={this.handleSubmit}
             size={isPicker ? 'small' : 'large'}
