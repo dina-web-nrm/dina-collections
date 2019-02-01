@@ -26,6 +26,7 @@ module.exports = {
     mappingSpecification,
     modelFactory: 'elasticsearchDocumentModel',
     name: 'searchSpecimen',
+    rebuildStrategy: 'swap',
   },
   operations: [
     {
