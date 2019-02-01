@@ -6,11 +6,13 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   └── resources
-│       ├── index.js
-│       └── normalizedAgent
-│           ├── data
-│           └── index.js
+│   ├── resources
+│   │   ├── index.js
+│   │   └── normalizedAgent
+│   │       ├── data
+│   │       └── index.js
+│   └── serviceInteractions
+│       └── index.js
 ├── authService
 │   ├── controllers
 │   │   └── index.js

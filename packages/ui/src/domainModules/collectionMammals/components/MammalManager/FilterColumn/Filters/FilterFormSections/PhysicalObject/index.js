@@ -17,6 +17,7 @@ class BonesFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
+            enableHelpNotifications={false}
             label="Skeleton"
             name="physicalObject.skeleton"
             resource="searchSpecimen"
@@ -26,6 +27,7 @@ class BonesFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
+            enableHelpNotifications={false}
             label="Skin"
             name="physicalObject.skin"
             resource="searchSpecimen"
@@ -35,6 +37,7 @@ class BonesFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
+            enableHelpNotifications={false}
             label="Wet preparation"
             name="physicalObject.wetPreparation"
             resource="searchSpecimen"
@@ -44,6 +47,7 @@ class BonesFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
+            enableHelpNotifications={false}
             label="Other preparation"
             name="physicalObject.otherPreparation"
             resource="searchSpecimen"

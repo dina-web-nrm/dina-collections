@@ -53,6 +53,7 @@ const FeatureTypeRange = ({
             autoComplete="off"
             buildLocalAggregationQuery={buildLocalAggregationQuery}
             component={TagTypeDropdown}
+            enableHelpNotifications={false}
             inline
             inlineDescription={tagTypeInlineDescription}
             module={module}

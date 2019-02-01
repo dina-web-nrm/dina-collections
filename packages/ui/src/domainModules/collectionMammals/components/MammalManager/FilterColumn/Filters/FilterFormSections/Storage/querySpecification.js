@@ -1,5 +1,5 @@
 import createMultipleSearchTagsSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/multipleSearchTagsSpecification'
-import createTagTypeSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagTypeSpecification'
+import createStringSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/stringSpecification'
 
 const multipleSearchTagsSpecification = createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchStorageLocationTags',
@@ -10,11 +10,11 @@ const multipleSearchTagsSpecification = createMultipleSearchTagsSpecification({
   tagValuesFieldName: 'storage.tagValues',
 })
 
-const tagTypeSpecification = createTagTypeSpecification({
+const stringSpecification = createStringSpecification({
   aggregationFunctionName: 'aggregateStorageLocationTagTypes',
   fieldName: 'storage.tagType',
-  matchFilterFunctionName: 'matchStorageLocationTags',
+  matchFilterFunctionName: 'matchPhysicalObjectStorageLocationGroups',
   sectionName: 'storage',
 })
 
-export default [...multipleSearchTagsSpecification, ...tagTypeSpecification]
+export default [...multipleSearchTagsSpecification, ...stringSpecification]

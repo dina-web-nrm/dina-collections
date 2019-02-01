@@ -1,15 +1,15 @@
 export default function createPreviewSearchSpecification({
   inputFieldName,
-  srcFieldMatchFilterFunctionName,
   searchFilterFunctionName,
   searchPreviewAggregationFunctionName,
   sectionName,
+  srcFieldFieldName,
+  srcFieldMatchFilterFunctionName,
   srcFieldsAggregationFunctionName,
-  srcFieldsFieldName,
 }) {
   const searchPreviewAggregation = ({ input = {}, sectionValues }) => {
     const { searchString = '' } = input
-    const { srcFields } = sectionValues
+    const { srcField } = sectionValues
     if (!searchString) {
       return null
     }
@@ -17,7 +17,7 @@ export default function createPreviewSearchSpecification({
       aggregationFunction: searchPreviewAggregationFunctionName,
       input: {
         searchString,
-        srcFields,
+        srcFields: srcField === 'any' ? undefined : [srcField],
       },
     }
   }
@@ -30,7 +30,7 @@ export default function createPreviewSearchSpecification({
 
   const searchFilter = ({ input, sectionValues = {} }) => {
     const { searchString } = input
-    const { srcFields } = sectionValues
+    const { srcField } = sectionValues
     if (!searchString) {
       return null
     }
@@ -40,14 +40,14 @@ export default function createPreviewSearchSpecification({
         filterFunction: searchFilterFunctionName,
         input: {
           searchString,
-          srcFields,
+          srcFields: srcField === 'any' ? undefined : [srcField],
         },
       },
     }
   }
 
   const matchSearchFilter = ({ fieldValue, sectionValues = {} }) => {
-    const { srcFields } = sectionValues
+    const { srcField } = sectionValues
     if (!fieldValue) {
       return null
     }
@@ -56,34 +56,26 @@ export default function createPreviewSearchSpecification({
         filterFunction: searchFilterFunctionName,
         input: {
           searchString: fieldValue,
-          srcFields,
+          srcFields: srcField === 'any' ? undefined : [srcField],
         },
       },
     }
   }
 
-  const matchSrcFieldsFilter = (input = {}) => {
+  const matchSrcFieldFilter = (input = {}) => {
     const { fieldValue } = input
 
-    if (!(fieldValue && fieldValue.length)) {
+    if (!fieldValue) {
       return null
     }
 
-    const tagFilters = []
-
-    fieldValue.forEach(srcField => {
-      tagFilters.push({
-        filter: {
-          filterFunction: srcFieldMatchFilterFunctionName,
-          input: {
-            value: srcField,
-          },
-        },
-      })
-    })
-
     return {
-      or: tagFilters,
+      filter: {
+        filterFunction: srcFieldMatchFilterFunctionName,
+        input: {
+          value: fieldValue,
+        },
+      },
     }
   }
 
@@ -106,8 +98,8 @@ export default function createPreviewSearchSpecification({
     },
     {
       aggregation: srcFieldsAggregation,
-      fieldName: srcFieldsFieldName,
-      matchFilter: matchSrcFieldsFilter,
+      fieldName: srcFieldFieldName,
+      matchFilter: matchSrcFieldFilter,
       sectionName,
     },
   ]

@@ -45,6 +45,7 @@ module.exports = function updateView({ operation, models, serviceInteractor }) {
         serviceInteractor,
         srcResource,
         startCount,
+        throwError: true,
         transformationFunctions,
       })
     }

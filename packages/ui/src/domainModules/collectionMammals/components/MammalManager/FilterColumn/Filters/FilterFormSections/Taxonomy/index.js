@@ -27,6 +27,7 @@ class TaxonomyFilterForm extends PureComponent {
             addTagTypeToText={false}
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
+            enableHelpNotifications={false}
             label="Taxon"
             name="taxonomy.tagValues"
             resource="searchSpecimen"
@@ -40,11 +41,12 @@ class TaxonomyFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedTagTypeDropdownField}
+            enableHelpNotifications={false}
             label="Limit to specimens of rank"
             name="taxonomy.tagType"
             resource="searchSpecimen"
             tagTypeInitialOptionValue={ANY}
-            tagTypeMatchAllOptionText="Any rank level"
+            tagTypeMatchAllOptionText="Any rank"
           />
         </Grid.Column>
       </Grid>

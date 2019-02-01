@@ -17,9 +17,17 @@ const resource = 'remarkTags'
 const textPreviewAggregationName = 'aggregateRemarksTextPreview'
 
 const availableSrcFields = [
+  'acquisitionRemarks',
+  'collectingDateRemarks',
+  'collectingInformationRemarks',
+  'curatorialAssessmentRemarks',
   'deathRemarks',
-  'locationRemarks',
+  'determinationRemarks',
+  'originRemarks',
+  'physicalObjectsRemarks',
+  'singlePhysicalObjectRemarks',
   'specimenRemarks',
+  'taxonomyRemarks',
 ]
 
 const srcFieldSpecifications = availableSrcFields.map(fieldKey => {
@@ -29,20 +37,24 @@ const srcFieldSpecifications = availableSrcFields.map(fieldKey => {
   }
 })
 
+const elasticsearchFieldProperties = availableSrcFields.reduce(
+  (properties, fieldKey) => {
+    return {
+      ...properties,
+      [fieldKey]: {
+        type: 'text',
+      },
+    }
+  },
+  {}
+)
+
 const createMapping = () => {
   return {
     elasticsearch: () => {
       return {
         properties: {
-          deathRemarks: {
-            type: 'text',
-          },
-          locationRemarks: {
-            type: 'text',
-          },
-          specimenRemarks: {
-            type: 'text',
-          },
+          ...elasticsearchFieldProperties,
           srcFields: {
             fields: {
               raw: {
@@ -60,31 +72,27 @@ const createMapping = () => {
 }
 
 const transformation = ({ migrator, src, target }) => {
-  const remarksObjects = {}
+  const remarksMap = availableSrcFields.reduce((map, remarksKey) => {
+    map[remarksKey] = [] // eslint-disable-line no-param-reassign
+    return map
+  }, {})
+
   const srcFields = []
 
-  const specimenRemarks = migrator.getValue({
-    obj: src,
-    path: 'remarks',
-  })
+  const registerRemarksIfNotEmpty = (remarksKey, value) => {
+    if (!value) {
+      return
+    }
 
-  if (specimenRemarks) {
-    remarksObjects.specimenRemarks = specimenRemarks
-    srcFields.push('specimenRemarks')
+    remarksMap[remarksKey].push(value)
+    srcFields.push(remarksKey)
   }
 
-  const deathInformation =
-    migrator.getValue({
-      obj: src,
-      path: 'individual.deathInformation',
-    }) || []
-
-  deathInformation.forEach(({ remarks }) => {
-    if (remarks) {
-      remarksObjects.deathRemarks = remarks
-      srcFields.push('deathRemarks')
-    }
+  const acquisitionRemarks = migrator.getValue({
+    obj: src,
+    path: 'individual.acquisition.remarks',
   })
+  registerRemarksIfNotEmpty('acquisitionRemarks', acquisitionRemarks)
 
   const collectingInformation =
     migrator.getValue({
@@ -92,23 +100,108 @@ const transformation = ({ migrator, src, target }) => {
       path: 'individual.collectingInformation',
     }) || []
 
-  collectingInformation.forEach(({ event }) => {
-    const remarks = migrator.getValue({
-      obj: event,
-      path: 'locationInformation.remarks',
-    })
-    if (remarks) {
-      remarksObjects.locationRemarks = remarks
-      srcFields.push('locationRemarks')
+  collectingInformation.forEach(
+    ({ event, remarks: collectingInformationRemarks }) => {
+      if (event) {
+        const collectingDateRemarks = migrator.getValue({
+          obj: event,
+          path: 'dateRange.remarks',
+        })
+
+        registerRemarksIfNotEmpty(
+          'collectingDateRemarks',
+          collectingDateRemarks
+        )
+      }
+
+      registerRemarksIfNotEmpty(
+        'collectingInformationRemarks',
+        collectingInformationRemarks
+      )
     }
+  )
+
+  const deathInformation =
+    migrator.getValue({
+      obj: src,
+      path: 'individual.deathInformation',
+    }) || []
+
+  deathInformation.forEach(({ remarks: deathRemarks }) => {
+    registerRemarksIfNotEmpty('deathRemarks', deathRemarks)
   })
 
-  remarksObjects.srcFields = srcFields
+  const originInformation =
+    migrator.getValue({
+      obj: src,
+      path: 'individual.originInformation',
+    }) || []
+
+  originInformation.forEach(({ remarks: originRemarks }) => {
+    registerRemarksIfNotEmpty('originRemarks', originRemarks)
+  })
+
+  const physicalObjectsRemarks = migrator.getValue({
+    obj: src,
+    path: 'collectionItemsRemarks',
+  })
+  registerRemarksIfNotEmpty('physicalObjectsRemarks', physicalObjectsRemarks)
+
+  const collectionItems =
+    migrator.getValue({
+      obj: src,
+      path: 'individual.collectionItems',
+    }) || []
+
+  collectionItems.forEach(({ curatorialAssessments = [], physicalObject }) => {
+    curatorialAssessments.forEach(
+      ({ remarks: curatorialAssessmentRemarks }) => {
+        registerRemarksIfNotEmpty(
+          'curatorialAssessmentRemarks',
+          curatorialAssessmentRemarks
+        )
+      }
+    )
+
+    const singlePhysicalObjectRemarks = migrator.getValue({
+      obj: physicalObject,
+      path: 'remarks',
+    })
+
+    registerRemarksIfNotEmpty(
+      'singlePhysicalObjectRemarks',
+      singlePhysicalObjectRemarks
+    )
+  })
+
+  const taxonomyRemarks = migrator.getValue({
+    obj: src,
+    path: 'individual.taxonInformation.taxonRemarks',
+  })
+  registerRemarksIfNotEmpty('taxonomyRemarks', taxonomyRemarks)
+
+  const determinations =
+    migrator.getValue({
+      obj: src,
+      path: 'individual.determinations',
+    }) || []
+
+  determinations.forEach(({ remarks: determinationRemarks }) => {
+    registerRemarksIfNotEmpty('determinationRemarks', determinationRemarks)
+  })
+
+  const specimenRemarks = migrator.getValue({
+    obj: src,
+    path: 'remarks',
+  })
+  registerRemarksIfNotEmpty('specimenRemarks', specimenRemarks)
+
+  remarksMap.srcFields = srcFields
 
   migrator.setValue({
     obj: target,
     path: fieldPath,
-    value: remarksObjects,
+    value: remarksMap,
   })
 
   return null
@@ -116,6 +209,7 @@ const transformation = ({ migrator, src, target }) => {
 module.exports = {
   aggregations: {
     [srcFieldAggregationName]: createStringAggregation({
+      defaultLimit: availableSrcFields.length,
       fieldPath: `${fieldPath}.srcFields`,
       resource,
     }),

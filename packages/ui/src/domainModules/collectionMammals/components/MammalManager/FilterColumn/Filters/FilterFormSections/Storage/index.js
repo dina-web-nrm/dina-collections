@@ -27,6 +27,7 @@ class StorageFilterForm extends PureComponent {
             addTagTypeToText={false}
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
+            enableHelpNotifications={false}
             label="Normal storage location"
             name="storage.tagValues"
             resource="searchSpecimen"
@@ -40,6 +41,7 @@ class StorageFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedTagTypeDropdownField}
+            enableHelpNotifications={false}
             label="Limit to specimens with storage level"
             name="storage.tagType"
             resource="searchSpecimen"

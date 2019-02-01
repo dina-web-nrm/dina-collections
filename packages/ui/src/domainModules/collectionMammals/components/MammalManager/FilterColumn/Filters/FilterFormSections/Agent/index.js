@@ -18,12 +18,14 @@ class AgentFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
+            enableHelpNotifications={false}
             label="Name"
             name="agent.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
             tagTypeInitialOptionValue="collector"
             tagTypeInlineDescription="Suggesting matches for"
+            tagTypeMatchAllOptionText="any agent type"
           />
         </Grid.Column>
       </Grid>

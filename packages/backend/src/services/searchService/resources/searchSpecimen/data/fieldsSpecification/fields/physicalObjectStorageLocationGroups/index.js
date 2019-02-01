@@ -5,21 +5,21 @@ const {
   createKeywordMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
-const fieldPath = 'attributes.taxonomyRank'
-const key = 'taxonomyRank'
-const matchFilterName = 'matchCuratorialTaxonRank'
+const fieldPath = 'attributes.physicalObjectStorageLocationGroups'
+const key = 'physicalObjectStorageLocationGroups'
+const matchFilterName = 'matchPhysicalObjectStorageLocationGroups'
 
 const transformation = ({ migrator, target, locals }) => {
-  const { curatorialTaxonRank } = locals
+  const { storageLocationLeafGroups } = locals
 
-  if (!curatorialTaxonRank) {
+  if (!(storageLocationLeafGroups && storageLocationLeafGroups.length)) {
     return null
   }
 
   migrator.setValue({
     obj: target,
     path: fieldPath,
-    value: curatorialTaxonRank,
+    value: storageLocationLeafGroups,
   })
   return null
 }

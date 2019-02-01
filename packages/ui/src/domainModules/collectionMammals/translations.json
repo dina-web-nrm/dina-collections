@@ -57,6 +57,41 @@
         "en": "Weights",
         "sv": "Vikter"
       }
+    },
+    "remarks": {
+      "acquisitionRemarks": {
+        "en": "Acquisition remarks"
+      },
+      "collectingDateRemarks": {
+        "en": "Collecting date remarks"
+      },
+      "collectingInformationRemarks": {
+        "en": "Collecting information remarks"
+      },
+      "curatorialAssessmentRemarks": {
+        "en": "Curatorial assessment remarks"
+      },
+      "deathRemarks": {
+        "en": "Death remarks"
+      },
+      "determinationRemarks": {
+        "en": "Determination remarks"
+      },
+      "originRemarks": {
+        "en": "Origin remarks"
+      },
+      "physicalObjectsRemarks": {
+        "en": "Physical objects remarks"
+      },
+      "singlePhysicalObjectRemarks": {
+        "en": "Single physical object remarks"
+      },
+      "specimenRemarks": {
+        "en": "Specimen remarks"
+      },
+      "taxonomyRemarks": {
+        "en": "Taxonomy remarks"
+      }
     }
   },
   "fieldLabels": {

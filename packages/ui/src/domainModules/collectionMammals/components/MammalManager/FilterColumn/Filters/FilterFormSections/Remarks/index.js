@@ -4,12 +4,13 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import {
   SearchPreviewField,
-  MultipleChoiceCheckboxesField,
+  TagTypeDropdownField,
 } from 'coreModules/search/components'
+import { ANY } from 'coreModules/search/constants'
 import { higherOrderComponents } from '../../../queryBuilder'
 
-const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
-  MultipleChoiceCheckboxesField
+const WrappedTagTypeDropdownField = higherOrderComponents.createFieldHoc()(
+  TagTypeDropdownField
 )
 
 const WrappedSearchPreviewField = higherOrderComponents.createFieldHoc()(
@@ -20,24 +21,35 @@ class Remarks extends PureComponent {
   render() {
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Column width={16}>
-          <Field
-            autoComplete="off"
-            component={WrappedSearchPreviewField}
-            label="Remarks"
-            name="remarks.search"
-            resource="searchSpecimen"
-          />
-        </Grid.Column>
-        <Grid.Column width={16}>
-          <Field
-            component={WrappedMultipleChoiceCheckboxesField}
-            displayCount
-            label="Remarks for"
-            name="remarks.srcFields"
-            resource="searchSpecimen"
-          />
-        </Grid.Column>
+        <Grid.Row>
+          <Grid.Column
+            style={{
+              // to be above grid margin inside WrappedSearchPreviewField
+              zIndex: 10,
+            }}
+            width={16}
+          >
+            <Field
+              autoComplete="off"
+              component={WrappedTagTypeDropdownField}
+              enableHelpNotifications={false}
+              inline
+              name="remarks.srcField"
+              resource="searchSpecimen"
+              tagTypeInitialOptionValue={ANY}
+              tagTypeMatchAllOptionText="Any remarks type"
+            />
+          </Grid.Column>
+          <Grid.Column width={16}>
+            <Field
+              autoComplete="off"
+              component={WrappedSearchPreviewField}
+              enableHelpNotifications={false}
+              name="remarks.search"
+              resource="searchSpecimen"
+            />
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     )
   }

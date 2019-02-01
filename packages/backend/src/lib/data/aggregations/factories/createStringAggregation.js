@@ -1,4 +1,5 @@
 module.exports = function createStringAggregation({
+  defaultLimit = 10,
   description,
   fieldPath,
   resource,
@@ -7,7 +8,7 @@ module.exports = function createStringAggregation({
   return {
     description: description || `Aggregation for: ${fieldPath}`,
     elasticsearch: ({ input = {} }) => {
-      const { contains: containsInput, limit = 10 } = input
+      const { contains: containsInput, limit = defaultLimit } = input
 
       if (containsInput) {
         const contains = containsInput.replace(/(?=[() ])/g, '\\').toLowerCase()

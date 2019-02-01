@@ -1,5 +1,5 @@
 import createMultipleSearchTagsSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/multipleSearchTagsSpecification'
-import createTagTypeSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/tagTypeSpecification'
+import createStringSpecification from 'coreModules/search/utilities/queryBuilderFactory/utilities/factories/stringSpecification'
 
 const multipleSearchTagsSpecification = createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchTaxonomyTags',
@@ -10,11 +10,11 @@ const multipleSearchTagsSpecification = createMultipleSearchTagsSpecification({
   tagValuesFieldName: 'taxonomy.tagValues',
 })
 
-const tagTypeSpecification = createTagTypeSpecification({
+const stringSpecification = createStringSpecification({
   aggregationFunctionName: 'aggregateTaxonomyTagTypes',
   fieldName: 'taxonomy.tagType',
-  matchFilterFunctionName: 'matchTaxonomyTags',
+  matchFilterFunctionName: 'matchCuratorialTaxonRank',
   sectionName: 'taxonomy',
 })
 
-export default [...multipleSearchTagsSpecification, ...tagTypeSpecification]
+export default [...multipleSearchTagsSpecification, ...stringSpecification]

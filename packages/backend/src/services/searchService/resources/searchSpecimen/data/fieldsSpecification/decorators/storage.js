@@ -12,8 +12,10 @@ const transformation = ({ migrator, src, locals }) => {
     return null
   }
 
+  const storageLocationLeafGroups = []
   const storageLocations = []
   const storageLocationTexts = []
+
   collectionItems.forEach(collectionItem => {
     const storageLocation = migrator.getValue({
       obj: collectionItem,
@@ -33,6 +35,7 @@ const transformation = ({ migrator, src, locals }) => {
       return
     }
 
+    storageLocationLeafGroups.push(storageLocation.group)
     storageLocations.push(storageLocation)
 
     const parents = extractFetchParents({
@@ -45,6 +48,11 @@ const transformation = ({ migrator, src, locals }) => {
     })
   })
 
+  migrator.setValue({
+    obj: locals,
+    path: 'storageLocationLeafGroups',
+    value: storageLocationLeafGroups,
+  })
   migrator.setValue({
     obj: locals,
     path: 'storageLocations',
