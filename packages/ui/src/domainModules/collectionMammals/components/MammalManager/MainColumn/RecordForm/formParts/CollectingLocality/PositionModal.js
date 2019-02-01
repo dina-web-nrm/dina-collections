@@ -10,6 +10,7 @@ import {
   Field,
   FormModal,
   Input,
+  TextArea,
 } from 'coreModules/form/components'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import VerticalPosition from './VerticalPosition'
@@ -100,16 +101,6 @@ class PositionModal extends PureComponent {
                     type="number"
                   />
                 </Grid.Column>
-                <Grid.Column width={13}>
-                  <Field
-                    autoComplete="off"
-                    component={Input}
-                    fluid
-                    module={module}
-                    name={getPath('georeferenceSourcesText')}
-                    type="text"
-                  />
-                </Grid.Column>
                 <Grid.Column width={16}>
                   <VerticalPosition
                     max={getPath('verticalPosition.maximumElevationInMeters')}
@@ -124,6 +115,16 @@ class PositionModal extends PureComponent {
                     min={getPath('verticalPosition.minimumDepthInMeters')}
                     module={module}
                     name={getPath('verticalPosition.depth')}
+                  />
+                </Grid.Column>
+                <Grid.Column width={13}>
+                  <Field
+                    autoComplete="off"
+                    component={TextArea}
+                    fluid
+                    module={module}
+                    name={getPath('georeferenceSourcesText')}
+                    type="text"
                   />
                 </Grid.Column>
               </Grid.Row>
