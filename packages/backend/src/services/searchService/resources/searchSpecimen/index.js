@@ -66,6 +66,9 @@ module.exports = {
     {
       type: 'requestUpdateView',
     },
+    {
+      type: 'getViewMeta',
+    },
   ],
   resource,
 }
