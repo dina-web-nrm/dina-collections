@@ -326,6 +326,7 @@ class MainColumn extends Component {
         'currentTableRowNumber',
         'expandedIds',
         'focusedIndex',
+        'isPicker',
         'itemId',
         'listItems',
         'showAll',

@@ -208,6 +208,7 @@ class ResourceManager extends Component {
             'buildFilterQuery',
             'filterHeader',
             'filterValues',
+            'isPicker',
             'onInteraction',
             'onShowAllRecords',
             'onUpdateFilterValues',
