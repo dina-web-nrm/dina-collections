@@ -15,6 +15,13 @@ const defaultProps = {
   itemId: undefined,
 }
 
+const getAllowTransition = (location, action) => {
+  if (action === 'POP') {
+    return false
+  }
+  return location.search.includes('mainColumn=edit')
+}
+
 export class Create extends PureComponent {
   render() {
     const { itemId, onInteraction, ...rest } = this.props
@@ -25,6 +32,7 @@ export class Create extends PureComponent {
         displayBackButton
         displayResetButton
         form="taxonCreate"
+        getAllowTransition={getAllowTransition}
         itemHeader={
           <ModuleTranslate
             capitalize
@@ -36,6 +44,8 @@ export class Create extends PureComponent {
           event.preventDefault()
           onInteraction('FORM_CANCEL')
         }}
+        preventLeavingForm
+        unsavedChangesMessage="You have not saved the new record, are you sure you want to leave?"
       />
     )
   }

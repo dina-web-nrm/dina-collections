@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import { withUnsavedChangesConfirmation } from 'coreModules/form/higherOrderComponents'
+import { withUnsubmittedFormConfirmation } from 'coreModules/form/higherOrderComponents'
 import { actionCreators } from 'coreModules/formSupport/keyObjectModule'
 import { transformFormSpecToFieldMap } from 'coreModules/formSupport/utilities'
 
@@ -55,7 +55,7 @@ Form.propTypes = propTypes
 Form.defaultProps = defaultProps
 
 export default compose(
-  withUnsavedChangesConfirmation({
+  withUnsubmittedFormConfirmation({
     unsavedChangesMessage:
       'You have unsaved changes, are you sure you want to leave?',
   }),

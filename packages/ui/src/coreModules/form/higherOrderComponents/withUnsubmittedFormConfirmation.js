@@ -5,51 +5,57 @@ import { connect } from 'react-redux'
 import { isDirty, isSubmitting } from 'redux-form'
 import { Prompt } from 'react-router-dom'
 
-const mapStateToProps = (state, { formName }) => {
+const mapStateToProps = (
+  state,
+  { formName, preventLeavingDirty = true, preventLeavingForm = false }
+) => {
+  const dirty = isDirty(formName)(state)
+  const submitting = isSubmitting(formName)(state)
+  const preventTransition =
+    !submitting && ((preventLeavingDirty && dirty) || preventLeavingForm)
   return {
-    dirty: isDirty(formName)(state),
-    submitting: isSubmitting(formName)(state),
+    preventTransition,
   }
 }
 
 const propTypes = {
-  dirty: PropTypes.bool.isRequired,
   getAllowTransition: PropTypes.func,
-  submitting: PropTypes.bool.isRequired,
+  preventTransition: PropTypes.bool.isRequired,
   unsavedChangesMessage: PropTypes.string,
 }
 
-const defaultProps = {
-  getAllowTransition: undefined,
-  unsavedChangesMessage: undefined,
-}
-
-const withUnsavedChangesConfirmation = (
+const withUnsubmittedFormConfirmation = (
   {
     getAllowTransition: getAllowTransitionDefault,
     unsavedChangesMessage: unsavedChangesMessageDefault,
   } = {}
 ) => ComposedComponent => {
-  class UnsavedChangesConfirmation extends Component {
+  const defaultProps = {
+    getAllowTransition: undefined,
+    unsavedChangesMessage: unsavedChangesMessageDefault,
+  }
+
+  class UnsubmittedFormConfirmation extends Component {
     constructor(props) {
       super(props)
       this.handleBeforeUnload = this.handleBeforeUnload.bind(this)
     }
 
     componentDidMount() {
-      if (this.props.unsavedChangesMessage || unsavedChangesMessageDefault) {
+      if (this.props.unsavedChangesMessage) {
         window.addEventListener('beforeunload', this.handleBeforeUnload)
       }
     }
 
     componentWillUnmount() {
-      if (this.props.unsavedChangesMessage || unsavedChangesMessageDefault) {
+      if (this.props.unsavedChangesMessage) {
         window.removeEventListener('beforeunload', this.handleBeforeUnload)
       }
     }
 
     handleBeforeUnload(event) {
-      if (this.props.dirty && !this.props.submitting) {
+      const { preventTransition } = this.props
+      if (preventTransition) {
         // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload#Example
         // Cancel the event as stated by the standard.
         event.preventDefault()
@@ -60,9 +66,8 @@ const withUnsavedChangesConfirmation = (
 
     render() {
       const {
-        dirty,
         getAllowTransition: getAllowTransitionOverride,
-        submitting,
+        preventTransition,
         unsavedChangesMessage: unsavedChangesMessageOverride,
       } = this.props
 
@@ -79,13 +84,13 @@ const withUnsavedChangesConfirmation = (
       return (
         <React.Fragment>
           <Prompt
-            message={location => {
+            message={(location, action) => {
               return (
-                (getAllowTransition && getAllowTransition(location)) ||
+                (getAllowTransition && getAllowTransition(location, action)) ||
                 unsavedChangesMessage
               )
             }}
-            when={dirty && !submitting}
+            when={preventTransition}
           />
           <ComposedComponent {...this.props} />
         </React.Fragment>
@@ -93,10 +98,10 @@ const withUnsavedChangesConfirmation = (
     }
   }
 
-  UnsavedChangesConfirmation.propTypes = propTypes
-  UnsavedChangesConfirmation.defaultProps = defaultProps
+  UnsubmittedFormConfirmation.propTypes = propTypes
+  UnsubmittedFormConfirmation.defaultProps = defaultProps
 
-  return compose(connect(mapStateToProps))(UnsavedChangesConfirmation)
+  return compose(connect(mapStateToProps))(UnsubmittedFormConfirmation)
 }
 
-export default withUnsavedChangesConfirmation
+export default withUnsubmittedFormConfirmation

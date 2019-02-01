@@ -65,7 +65,7 @@ const createHandleCreateSubmit = () => ComposedComponent => {
         values,
       } = this.props
 
-      startSubmit(formName) // needed for withUnsavedChangesConfirmation
+      startSubmit(formName) // needed for withUnsubmittedFormConfirmation
 
       const create =
         crudActionCreators[resource] && crudActionCreators[resource].create

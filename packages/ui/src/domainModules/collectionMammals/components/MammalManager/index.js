@@ -313,7 +313,12 @@ class MammalManager extends Component {
       let currentId
       // Need to check that we are not in the edit record view.
       // If not this check the user will be redirected away from a newly created specimen
-      if (!this.props.isEditRecordView && nextProps.currentTableRowNumber > 0) {
+
+      if (
+        !this.props.isNewRecordView &&
+        !this.props.isEditRecordView &&
+        nextProps.currentTableRowNumber > 0
+      ) {
         const currentSpecimen =
           nextProps.searchResult.items &&
           nextProps.searchResult.items[nextProps.currentTableRowNumber - 1]
@@ -362,13 +367,11 @@ class MammalManager extends Component {
   handleInteraction(type) {
     switch (type) {
       case CREATE_SUCCESS: {
-        setTimeout(() => {
-          // this will trigger a new search
-          this.props.updateUserPreference(
-            SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
-            [{ name: 'idNumeric', sort: 'asc' }]
-          )
-        })
+        this.props.updateUserPreference(
+          SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
+          [{ name: 'idNumeric', sort: 'asc' }]
+        )
+
         break
       }
       case DEL_SUCCESS: {

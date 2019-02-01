@@ -22,12 +22,18 @@ const formActionBarHeight = emToPixels(4.625)
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   form: PropTypes.string.isRequired,
+  getAllowTransition: PropTypes.func,
   handleSubmit: PropTypes.func.isRequired,
   itemHeader: PropTypes.node.isRequired,
   itemSubHeader: PropTypes.node,
+  preventLeavingForm: PropTypes.bool,
+  unsavedChangesMessage: PropTypes.string,
 }
 const defaultProps = {
+  getAllowTransition: undefined,
   itemSubHeader: undefined,
+  preventLeavingForm: false,
+  unsavedChangesMessage: undefined,
 }
 
 class BaseForm extends Component {
@@ -40,20 +46,26 @@ class BaseForm extends Component {
     const {
       availableHeight,
       form,
+      getAllowTransition,
+      handleSubmit,
       itemHeader,
       itemSubHeader,
-      handleSubmit,
+      preventLeavingForm,
+      unsavedChangesMessage,
       ...rest
     } = this.props
 
     return (
       <Form
         formName={form}
+        getAllowTransition={getAllowTransition}
         onSubmit={handleSubmit(() => {
           /* submit handled in resource manager */
         })}
+        preventLeavingForm={preventLeavingForm}
         sectionSpecs={sectionSpecs}
         setFormRef={this.setFormRef}
+        unsavedChangesMessage={unsavedChangesMessage}
       >
         <FormRow
           {...rest}
