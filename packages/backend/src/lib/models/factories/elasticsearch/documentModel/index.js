@@ -6,6 +6,7 @@ module.exports = function createModel({
   forceRefresh = false,
   mappingSpecification,
   name,
+  rebuildStrategy = 'replace',
   schemaModelName,
 }) {
   const mappings =
@@ -38,8 +39,13 @@ module.exports = function createModel({
     elasticsearch,
     forceRefresh,
     Model,
+    rebuildStrategy,
     schemaModelName,
   })
 
-  return { modelType: 'elasticsearchDocumentModel', name, ...methods }
+  return {
+    modelType: 'elasticsearchDocumentModel',
+    name,
+    ...methods,
+  }
 }

@@ -6,7 +6,7 @@ const log = createLog(
 )
 
 module.exports = function bulkCreateFactory(
-  { Model, elasticsearch, forceRefresh } = {}
+  { Model, elasticsearch, forceRefresh, indexVersionManager } = {}
 ) {
   if (!Model) {
     throw new Error('Have to provide model')
@@ -25,34 +25,39 @@ module.exports = function bulkCreateFactory(
       return Promise.resolve(true)
     }
 
-    const body = items.reduce((rows, item) => {
-      const { attributes, id, internals = {}, relationships } = item
+    return indexVersionManager
+      .getLatestVersionName()
+      .then(latestVersionName => {
+        const indexName = latestVersionName
+        const body = items.reduce((rows, item) => {
+          const { attributes, id, internals = {}, relationships } = item
 
-      rows.push({
-        index: { _id: id, _index: Model.index, _type: Model.name },
-      })
+          rows.push({
+            index: { _id: id, _index: indexName, _type: Model.name },
+          })
 
-      rows.push({
-        attributes,
-        id,
-        internals,
-        relationships,
-      })
-      return rows
-    }, [])
+          rows.push({
+            attributes,
+            id,
+            internals,
+            relationships,
+          })
+          return rows
+        }, [])
 
-    return elasticsearch
-      .bulk({
-        body,
-        refresh: forceRefresh,
-      })
-      .then(res => {
-        if (res.errors) {
-          throw res
-        }
+        return elasticsearch
+          .bulk({
+            body,
+            refresh: forceRefresh,
+          })
+          .then(res => {
+            if (res.errors) {
+              throw res
+            }
 
-        log.debug(`Successfully created ${items.length} items`)
-        return { meta: { count: res && res.items && res.items.length } }
+            log.debug(`Successfully created ${items.length} items`)
+            return { meta: { count: res && res.items && res.items.length } }
+          })
       })
   })
 }
