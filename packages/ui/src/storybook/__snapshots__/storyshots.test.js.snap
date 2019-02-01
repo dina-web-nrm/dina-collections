@@ -7876,7 +7876,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Agent/name
+              Agent
             </span>
           </div>
           <div
