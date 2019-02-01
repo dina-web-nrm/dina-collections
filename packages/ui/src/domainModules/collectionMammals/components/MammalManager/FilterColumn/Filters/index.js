@@ -6,6 +6,7 @@ import { getFormValues, reduxForm } from 'redux-form'
 
 import { Accordion } from 'coreModules/commonUi/components'
 import { MULTI } from 'coreModules/commonUi/constants'
+import { ANY } from 'coreModules/search/constants'
 import buildQuery from '../../../../utilities/buildQuery'
 import FilterContent from './FilterContent'
 import FilterTitle from './FilterTitle'
@@ -24,7 +25,7 @@ const items = [
   { doDeepEqualInitialValuesComparison: true, name: 'weight' },
   { doDeepEqualInitialValuesComparison: true, name: 'length' },
   { name: 'bones' },
-  { name: 'remarks' },
+  { doDeepEqualInitialValuesComparison: true, name: 'remarks' },
 ]
 
 const mapStateToProps = (state, { form }) => {
@@ -90,6 +91,7 @@ export default reduxForm({
   enableReinitialize: true,
   initialValues: {
     length: { rangeType: 'total-length', rangeUnit: 'unspecified' },
+    remarks: { srcField: ANY },
     weight: { rangeType: 'complete-body-weight', rangeUnit: 'unspecified' },
   },
   keepDirtyOnReinitialize: true,

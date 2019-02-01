@@ -6,6 +6,5 @@ export default createPreviewSearchSpecification({
   searchPreviewAggregationFunctionName: 'aggregateRemarksTextPreview',
   sectionName: 'remarks',
   srcFieldFieldName: 'remarks.srcField',
-  srcFieldMatchFilterFunctionName: 'matchRemarksSrcField',
   srcFieldsAggregationFunctionName: 'aggregateRemarkSrcFields',
 })
