@@ -19,6 +19,7 @@ module.exports = function createControllerWrapper({
   responseFormat,
   responseSuccessStatus = 200,
   serviceInteractor,
+  type: typeOverride,
 }) {
   const {
     filterSpecification,
@@ -199,7 +200,7 @@ module.exports = function createControllerWrapper({
                   meta,
                   relationships,
                   status: responseSuccessStatus,
-                  type: resource,
+                  type: typeOverride || resource,
                 })
               }
 
@@ -223,7 +224,7 @@ module.exports = function createControllerWrapper({
                   }
                 }),
                 meta,
-                type: resource,
+                type: typeOverride || resource,
               })
             })
           }
