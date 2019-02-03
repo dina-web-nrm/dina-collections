@@ -96,17 +96,17 @@ class AgentIdTextResult extends Component {
     )
 
     const agentName = fullName || inputText
-    const suffix =
-      (fullName && moduleTranslate({ module: 'agent', textKey: 'agent' })) ||
-      (inputText &&
-        moduleTranslate({
-          module: 'form',
-          textKey: 'plainText',
-        }))
-
-    const agentNameSuffix = disambiguatingDescription
-      ? `(${disambiguatingDescription}) [${suffix}]`
-      : `[${suffix}]`
+    let agentNameSuffix
+    if (textOnly) {
+      agentNameSuffix = disambiguatingDescription
+    } else {
+      const suffix =
+        (fullName && moduleTranslate({ module: 'agent', textKey: 'agent' })) ||
+        (inputText && moduleTranslate({ module: 'form', textKey: 'plainText' }))
+      agentNameSuffix = disambiguatingDescription
+        ? `(${disambiguatingDescription}) [${suffix}]`
+        : `[${suffix}]`
+    }
 
     const { extractedProps } = extractProps({
       keys: Object.keys(fieldTemplateProps),
@@ -115,7 +115,9 @@ class AgentIdTextResult extends Component {
 
     if (textOnly) {
       return (
-        <React.Fragment>{`${agentName} ${agentNameSuffix}`}</React.Fragment>
+        <React.Fragment>
+          {agentNameSuffix ? `${agentName} ${agentNameSuffix}` : agentName}
+        </React.Fragment>
       )
     }
 
