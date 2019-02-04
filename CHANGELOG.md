@@ -2,8 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.15.2-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.15.1...v0.15.2-rc1)
+#### [v0.15.2](https://github.com/DINA-Web/dina-collections/compare/v0.15.1...v0.15.2)
 
+- Anton prompt the user when leaving create form [`#410`](https://github.com/DINA-Web/dina-collections/pull/410)
+- Implement search improvements [`#411`](https://github.com/DINA-Web/dina-collections/pull/411)
+- Fix content update [`#412`](https://github.com/DINA-Web/dina-collections/pull/412)
+- Add missing georeferenceSourcesText to migrations [`#409`](https://github.com/DINA-Web/dina-collections/pull/409)
 - Ignore release candidates in changelog [`#408`](https://github.com/DINA-Web/dina-collections/pull/408)
 - Fix checkboxes for appearance and selective breeding [`#407`](https://github.com/DINA-Web/dina-collections/pull/407)
 - Fix issue storage locations missing from import [`#406`](https://github.com/DINA-Web/dina-collections/pull/406)
