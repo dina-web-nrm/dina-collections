@@ -90,12 +90,16 @@ class AgentIdTextResult extends Component {
 
     const fullName = objectPath.get(normalizedAgent, 'attributes.fullName')
 
+    const agentName = fullName || inputText
+    if (!agentName) {
+      return null
+    }
+
     const disambiguatingDescription = objectPath.get(
       normalizedAgent,
       'attributes.disambiguatingDescription'
     )
 
-    const agentName = fullName || inputText
     let agentNameSuffix
     if (textOnly) {
       agentNameSuffix = disambiguatingDescription
