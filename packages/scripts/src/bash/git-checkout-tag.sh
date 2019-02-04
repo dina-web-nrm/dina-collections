@@ -18,7 +18,7 @@ fi
 echo "pulling TAG=$TAG and deploying locally using 'docker-compose up -d'"
 
 
-
+umask 002
 if [[ -z $(git status -s) ]]
 then
   echo "tree is clean. fetching tags"
