@@ -1,3 +1,4 @@
+const objectPath = require('object-path')
 const createStringAggregation = require('../../../../../../../../lib/data/aggregations/factories/createStringAggregation')
 const {
   createTagMatchFilter,
@@ -15,7 +16,45 @@ const aggregationName = 'aggregateAppearanceTags'
 const searchFilterName = 'searchAppearanceTags'
 const matchFilterName = 'matchAppearanceTags'
 
-const transformation = ({ migrator, src, target }) => {
+const extractAppearanceTags = ({
+  information = [],
+  serviceInteractor,
+  tagSuffix,
+}) => {
+  const unknownTag = `unknown (${tagSuffix})`
+
+  if (!information.length) {
+    return Promise.resolve([unknownTag])
+  }
+
+  return Promise.all(
+    information.map(({ establishmentMeansType }) => {
+      if (establishmentMeansType) {
+        const { id, name } = establishmentMeansType
+
+        if (name && name.en) {
+          return Promise.resolve(`${name.en} (${tagSuffix})`)
+        }
+
+        return serviceInteractor
+          .getOne({
+            request: {
+              pathParams: { id },
+            },
+            resource: 'establishmentMeansType',
+          })
+          .then(({ data }) => {
+            const translatedName = objectPath.get(data, 'attributes.name.en')
+            return Promise.resolve(`${translatedName} (${tagSuffix})`)
+          })
+      }
+
+      return Promise.resolve(unknownTag)
+    })
+  )
+}
+
+const transformation = ({ migrator, src, target, serviceInteractor }) => {
   const collectingInformation =
     migrator.getValue({
       obj: src,
@@ -28,46 +67,28 @@ const transformation = ({ migrator, src, target }) => {
       path: 'individual.originInformation',
     }) || []
 
-  const tags = []
+  return Promise.all([
+    extractAppearanceTags({
+      information: collectingInformation,
+      serviceInteractor,
+      tagSuffix: 'collecting',
+    }),
+    extractAppearanceTags({
+      information: originInformation,
+      serviceInteractor,
+      tagSuffix: 'origin',
+    }),
+  ]).then(([collectingTags, originTags]) => {
+    const tags = [...collectingTags, ...originTags]
 
-  if (collectingInformation.length > 0) {
-    collectingInformation.forEach(({ establishmentMeansType }) => {
-      if (establishmentMeansType) {
-        const name = migrator.getValue({
-          obj: establishmentMeansType,
-          path: 'name.en',
-        })
-        if (name) {
-          tags.push(`${name} (collecting)`)
-        }
-      }
+    migrator.setValue({
+      obj: target,
+      path: fieldPath,
+      value: tags,
     })
-  } else {
-    tags.push('unknown (collecting)')
-  }
 
-  if (originInformation.length > 0) {
-    originInformation.forEach(({ establishmentMeansType }) => {
-      if (establishmentMeansType) {
-        const name = migrator.getValue({
-          obj: establishmentMeansType,
-          path: 'name.en',
-        })
-        if (name) {
-          tags.push(`${name} (origin)`)
-        }
-      }
-    })
-  } else {
-    tags.push('unknown (origin)')
-  }
-
-  migrator.setValue({
-    obj: target,
-    path: fieldPath,
-    value: tags,
+    return null
   })
-  return null
 }
 
 module.exports = {

@@ -12,6 +12,7 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   filterHeader: PropTypes.string,
   filterValues: PropTypes.object,
+  isPicker: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
   renderFilterForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
@@ -63,6 +64,7 @@ class FilterColumn extends Component {
         const { extractedProps } = extractProps({
           keys: [
             'buildFilterQuery',
+            'isPicker',
             'onInteraction',
             'onUpdateFilterValues',
             'onShowAllRecords',

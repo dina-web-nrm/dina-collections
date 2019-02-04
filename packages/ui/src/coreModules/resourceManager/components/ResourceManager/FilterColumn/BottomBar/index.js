@@ -17,12 +17,14 @@ const mapStateToProps = (state, { resource }) => {
 
 const propTypes = {
   invalid: PropTypes.bool.isRequired,
+  isPicker: PropTypes.bool,
   onShowAllRecords: PropTypes.func.isRequired,
   onUpdateFilterValues: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   values: PropTypes.object,
 }
 const defaultProps = {
+  isPicker: false,
   values: undefined,
 }
 
@@ -46,16 +48,16 @@ class BottomBar extends PureComponent {
   }
 
   render() {
-    const { invalid, pristine } = this.props
+    const { invalid, isPicker, pristine } = this.props
 
     return (
       <Grid padded>
         <Grid.Column>
           <Button
-            disabled={invalid || pristine}
+            disabled={invalid}
             loading={this.state.loading}
             onClick={this.handleSubmit}
-            size="large"
+            size={isPicker ? 'small' : 'large'}
             style={{ float: 'left' }}
           >
             Search
@@ -64,10 +66,10 @@ class BottomBar extends PureComponent {
             basic
             disabled={pristine}
             onClick={this.handleReset}
-            size="large"
+            size={isPicker ? 'small' : 'large'}
             style={{ float: 'right' }}
           >
-            Clear all filters
+            {isPicker ? 'Clear filters' : 'Clear all filters'}
           </Button>
         </Grid.Column>
       </Grid>

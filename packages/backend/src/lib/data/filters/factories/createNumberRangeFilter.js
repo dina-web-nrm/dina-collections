@@ -19,7 +19,7 @@ module.exports = function createNumberRangeFilter({ description, fieldPath }) {
         }
       }
 
-      if (max) {
+      if (max !== undefined) {
         return {
           range: {
             [rawPath]: {
@@ -29,7 +29,7 @@ module.exports = function createNumberRangeFilter({ description, fieldPath }) {
         }
       }
 
-      if (min) {
+      if (min !== undefined) {
         return {
           range: {
             [rawPath]: {
@@ -38,6 +38,7 @@ module.exports = function createNumberRangeFilter({ description, fieldPath }) {
           },
         }
       }
+
       return null
     },
     inputSchema: {

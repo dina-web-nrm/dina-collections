@@ -4,7 +4,6 @@ export default function createPreviewSearchSpecification({
   searchPreviewAggregationFunctionName,
   sectionName,
   srcFieldFieldName,
-  srcFieldMatchFilterFunctionName,
   srcFieldsAggregationFunctionName,
 }) {
   const searchPreviewAggregation = ({ input = {}, sectionValues }) => {
@@ -62,23 +61,6 @@ export default function createPreviewSearchSpecification({
     }
   }
 
-  const matchSrcFieldFilter = (input = {}) => {
-    const { fieldValue } = input
-
-    if (!fieldValue) {
-      return null
-    }
-
-    return {
-      filter: {
-        filterFunction: srcFieldMatchFilterFunctionName,
-        input: {
-          value: fieldValue,
-        },
-      },
-    }
-  }
-
   const rootQueryModifier = ({ rootQuery }) => {
     return {
       ...rootQuery,
@@ -99,7 +81,6 @@ export default function createPreviewSearchSpecification({
     {
       aggregation: srcFieldsAggregation,
       fieldName: srcFieldFieldName,
-      matchFilter: matchSrcFieldFilter,
       sectionName,
     },
   ]
