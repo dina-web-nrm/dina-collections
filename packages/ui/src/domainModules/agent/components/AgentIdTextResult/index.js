@@ -90,23 +90,27 @@ class AgentIdTextResult extends Component {
 
     const fullName = objectPath.get(normalizedAgent, 'attributes.fullName')
 
+    const agentName = fullName || inputText
+    if (!agentName) {
+      return null
+    }
+
     const disambiguatingDescription = objectPath.get(
       normalizedAgent,
       'attributes.disambiguatingDescription'
     )
 
-    const agentName = fullName || inputText
-    const suffix =
-      (fullName && moduleTranslate({ module: 'agent', textKey: 'agent' })) ||
-      (inputText &&
-        moduleTranslate({
-          module: 'form',
-          textKey: 'plainText',
-        }))
-
-    const agentNameSuffix = disambiguatingDescription
-      ? `(${disambiguatingDescription}) [${suffix}]`
-      : `[${suffix}]`
+    let agentNameSuffix
+    if (textOnly) {
+      agentNameSuffix = disambiguatingDescription
+    } else {
+      const suffix =
+        (fullName && moduleTranslate({ module: 'agent', textKey: 'agent' })) ||
+        (inputText && moduleTranslate({ module: 'form', textKey: 'plainText' }))
+      agentNameSuffix = disambiguatingDescription
+        ? `(${disambiguatingDescription}) [${suffix}]`
+        : `[${suffix}]`
+    }
 
     const { extractedProps } = extractProps({
       keys: Object.keys(fieldTemplateProps),
@@ -115,7 +119,9 @@ class AgentIdTextResult extends Component {
 
     if (textOnly) {
       return (
-        <React.Fragment>{`${agentName} ${agentNameSuffix}`}</React.Fragment>
+        <React.Fragment>
+          {agentNameSuffix ? `${agentName} ${agentNameSuffix}` : agentName}
+        </React.Fragment>
       )
     }
 
