@@ -1,4 +1,5 @@
 module.exports = function extractFeatureText({
+  excludeUnitValue,
   extractKey = false,
   fallbackUnit,
   featureGroupKey,
@@ -31,10 +32,9 @@ module.exports = function extractFeatureText({
       featureObservation.featureObservationText &&
       featureType.key === featureTypeKey
     ) {
-      if (
-        includeUnit &&
-        (featureObservation.featureObservationUnit || fallbackUnit)
-      ) {
+      const unit = featureObservation.featureObservationUnit || fallbackUnit
+
+      if (includeUnit && unit && unit !== excludeUnitValue) {
         featureValues.push(
           `${
             featureObservation.featureObservationText

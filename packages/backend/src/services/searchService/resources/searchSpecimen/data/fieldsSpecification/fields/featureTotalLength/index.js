@@ -10,6 +10,7 @@ const FEATURE_TYPE = 'total-length'
 
 const transformation = ({ migrator, src, target }) => {
   const featureTexts = extractFeatureText({
+    excludeUnitValue: 'unspecified',
     featureTypeKey: FEATURE_TYPE,
     includeUnit: true,
     migrator,
