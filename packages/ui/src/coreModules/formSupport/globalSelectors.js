@@ -1,4 +1,5 @@
 import {
+  getFormInitialValues,
   getFormMeta,
   getFormSyncErrors,
   getFormAsyncErrors,
@@ -7,7 +8,7 @@ import {
   isDirty,
 } from 'redux-form'
 import objectPath from 'object-path'
-import { isEmpty } from 'lodash'
+import { isEmpty, isEqual } from 'lodash'
 
 import wrapSelectors from 'utilities/wrapSelectors'
 
@@ -17,7 +18,7 @@ import * as selectors from './selectors'
 
 const getInitiallyHiddenFieldsHaveValue = (
   state,
-  { formName, formValueSelector, unit }
+  { compareInitiallyHiddenWithInitialValues, formName, formValueSelector, unit }
 ) => {
   const initiallyHiddenFieldNames = selectors.getUnitInitiallyHiddenFieldNames(
     state.formSupport,
@@ -31,14 +32,25 @@ const getInitiallyHiddenFieldsHaveValue = (
     return undefined
   }
 
+  const initialValues = getFormInitialValues(formName)(state)
+
   for (let index = 0; index < initiallyHiddenFieldNames.length; index += 1) {
-    const value = formValueSelector(state, initiallyHiddenFieldNames[index])
+    const fieldName = initiallyHiddenFieldNames[index]
+    const value = formValueSelector(state, fieldName)
+    const initialValue = objectPath.get(initialValues, fieldName)
 
     const valueIsEmpty =
       (!value && value !== 0) || (typeof value === 'object' && isEmpty(value))
+    const hasValue = !valueIsEmpty
 
-    if (!valueIsEmpty) {
-      return true
+    if (hasValue) {
+      if (
+        !compareInitiallyHiddenWithInitialValues ||
+        (compareInitiallyHiddenWithInitialValues &&
+          !isEqual(initialValue, value))
+      ) {
+        return true
+      }
     }
   }
 

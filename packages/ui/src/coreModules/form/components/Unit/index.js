@@ -9,11 +9,12 @@ import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import formParts from '../parts'
 
 const mapStateToProps = (state, { formName, formValueSelector, unitSpec }) => {
-  const unit = unitSpec.name
+  const { compareInitiallyHiddenWithInitialValues, name: unit } = unitSpec
 
   const initiallyHiddenFieldsHaveValue = formSupportSelectors.getInitiallyHiddenFieldsHaveValue(
     state,
     {
+      compareInitiallyHiddenWithInitialValues,
       formName,
       formValueSelector,
       unit,
