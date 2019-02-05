@@ -13,7 +13,9 @@ import {
   createGetResourceCount,
 } from 'coreModules/crud/higherOrderComponents'
 import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
-import setDefaultValues from '../RecordForm/transformations/input'
+import transformInput, {
+  getBaseValues,
+} from '../RecordForm/transformations/input'
 import RecordForm from '../RecordForm'
 
 const log = createLog(
@@ -65,7 +67,12 @@ class CreateSpecimen extends PureComponent {
       return null
     }
 
-    const initialValues = setDefaultValues({
+    const baseValues = getBaseValues({
+      establishmentMeansTypes,
+      identifierTypes,
+    })
+
+    const initialValues = transformInput({
       establishmentMeansTypes,
       identifierTypes,
       specimen: {},
@@ -74,6 +81,7 @@ class CreateSpecimen extends PureComponent {
     log.debug('initialValues', initialValues)
     return (
       <RecordForm
+        baseValues={baseValues}
         establishmentMeansTypes={establishmentMeansTypes}
         form={FORM_NAME}
         formName={FORM_NAME}

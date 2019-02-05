@@ -8,13 +8,17 @@ import { Field } from 'coreModules/form/components'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import formParts from '../parts'
 
-const mapStateToProps = (state, { formName, formValueSelector, unitSpec }) => {
-  const { compareInitiallyHiddenWithInitialValues, name: unit } = unitSpec
+const mapStateToProps = (
+  state,
+  { baseValues, formName, formValueSelector, unitSpec }
+) => {
+  const { compareInitiallyHiddenWithBaseValues, name: unit } = unitSpec
 
   const initiallyHiddenFieldsHaveValue = formSupportSelectors.getInitiallyHiddenFieldsHaveValue(
     state,
     {
-      compareInitiallyHiddenWithInitialValues,
+      baseValues,
+      compareInitiallyHiddenWithBaseValues,
       formName,
       formValueSelector,
       unit,
@@ -27,6 +31,7 @@ const mapStateToProps = (state, { formName, formValueSelector, unitSpec }) => {
 }
 
 const propTypes = {
+  baseValues: PropTypes.object,
   changeFieldValue: PropTypes.func,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
@@ -44,6 +49,7 @@ const propTypes = {
   }).isRequired,
 }
 const defaultProps = {
+  baseValues: undefined,
   changeFieldValue: undefined,
   customParts: {},
   formValueSelector: undefined,

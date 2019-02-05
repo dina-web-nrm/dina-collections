@@ -7,6 +7,7 @@ import Section from '../../Section'
 export const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
+  baseValues: PropTypes.object,
   changeFieldValue: PropTypes.func,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
@@ -25,6 +26,7 @@ export const propTypes = {
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
+  baseValues: undefined,
   changeFieldValue: undefined,
   customParts: undefined,
   formValueSelector: undefined,
@@ -42,6 +44,7 @@ class FormSectionView extends PureComponent {
   renderActiveSection() {
     const {
       activeFormSectionIndex,
+      baseValues,
       changeFieldValue,
       customParts,
       formName,
@@ -75,6 +78,7 @@ class FormSectionView extends PureComponent {
       <Grid.Column width={16}>
         <Section
           {...rest}
+          baseValues={baseValues}
           changeFieldValue={changeFieldValue}
           customParts={customParts}
           formName={formName}

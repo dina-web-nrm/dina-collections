@@ -6,6 +6,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 import Unit from '../Unit'
 
 const propTypes = {
+  baseValues: PropTypes.object,
   changeFieldValue: PropTypes.func,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
@@ -22,6 +23,7 @@ const propTypes = {
   }).isRequired,
 }
 const defaultProps = {
+  baseValues: undefined,
   changeFieldValue: undefined,
   customParts: undefined,
   formValueSelector: undefined,
@@ -31,6 +33,7 @@ const defaultProps = {
 class Section extends PureComponent {
   render() {
     const {
+      baseValues,
       changeFieldValue,
       customParts,
       formName,
@@ -48,6 +51,7 @@ class Section extends PureComponent {
             return (
               <Unit
                 {...rest}
+                baseValues={baseValues}
                 changeFieldValue={changeFieldValue}
                 customParts={customParts}
                 formName={formName}
