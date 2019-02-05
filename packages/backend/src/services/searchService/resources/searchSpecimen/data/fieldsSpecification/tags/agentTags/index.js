@@ -11,6 +11,8 @@ const {
   createValueTagMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
+const CATALOG_CARD_CREATION_DESCRIPTION = 'New catalog card'
+
 const fieldPath = 'attributes.tags.agentTags'
 const key = 'agentTags'
 const resource = 'agentTag'
@@ -220,21 +222,29 @@ const transformation = ({ migrator, src, target }) => {
     }) || []
 
   recordHistoryEvents.forEach(recordHistoryEvent => {
-    const {
-      textI,
-      normalizedAgentFullName,
-      disambiguatingDescription,
-    } = extractAgentProps({
-      agent: recordHistoryEvent && recordHistoryEvent.agent,
-      migrator,
-    })
-    addTags({
-      disambiguatingDescription,
-      normalizedAgentFullName,
-      tags,
-      tagType: 'Record history by',
-      textI,
-    })
+    if (recordHistoryEvent) {
+      const {
+        textI,
+        normalizedAgentFullName,
+        disambiguatingDescription,
+      } = extractAgentProps({
+        agent: recordHistoryEvent.agent,
+        migrator,
+      })
+
+      const isCatalogCardCreation =
+        recordHistoryEvent.description === CATALOG_CARD_CREATION_DESCRIPTION
+
+      addTags({
+        disambiguatingDescription,
+        normalizedAgentFullName,
+        tags,
+        tagType: isCatalogCardCreation
+          ? 'Catalog card created by'
+          : 'Record history by',
+        textI,
+      })
+    }
   })
 
   if (tags && tags.length) {
