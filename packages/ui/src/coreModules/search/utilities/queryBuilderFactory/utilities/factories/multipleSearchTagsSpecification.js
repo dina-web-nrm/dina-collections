@@ -1,3 +1,5 @@
+import objectPath from 'object-path'
+
 export default function multipleSearchTagsSpecification({
   sectionName,
   includeTagTypesInAggregation = true,
@@ -57,22 +59,48 @@ export default function multipleSearchTagsSpecification({
 
     const tagFilters = []
     Object.keys(fieldValue).forEach(key => {
-      fieldValue[key].matchingTags
-        .filter(tag => {
-          return !!tag.selected
-        })
-        .forEach(tag => {
-          tagFilters.push({
-            filter: {
-              filterFunction: matchFilterFunctionName,
-              input: {
-                tagType: tag.attributes.tagType,
-                tagValue: tag.attributes.tagValue,
-              },
+      const dropdownEntry = fieldValue[key]
+
+      const isFreeText =
+        objectPath.get(dropdownEntry, 'searchOption.other.optionType') ===
+        'freeText'
+      const hasNoMatchingTag = !objectPath.get(dropdownEntry, 'matchingTags')
+        .length
+
+      if (isFreeText && hasNoMatchingTag) {
+        tagFilters.push({
+          filter: {
+            filterFunction: matchFilterFunctionName,
+            input: {
+              tagType: objectPath.get(
+                dropdownEntry,
+                'searchOption.other.tagType'
+              ),
+              // using the verbose text to make it more clear for any developer
+              // inspecting the query
+              tagValue: objectPath.get(dropdownEntry, 'searchOption.text'),
             },
-          })
+          },
         })
+      } else {
+        fieldValue[key].matchingTags
+          .filter(tag => {
+            return !!tag.selected
+          })
+          .forEach(tag => {
+            tagFilters.push({
+              filter: {
+                filterFunction: matchFilterFunctionName,
+                input: {
+                  tagType: tag.attributes.tagType,
+                  tagValue: tag.attributes.tagValue,
+                },
+              },
+            })
+          })
+      }
     })
+
     if (!tagFilters.length) {
       return null
     }
