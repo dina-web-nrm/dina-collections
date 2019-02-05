@@ -23,6 +23,7 @@ import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
+  DEL_SUCCESS,
   ITEM_SELECT,
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
@@ -656,6 +657,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       log.debug(`Got interaction: ${type}`, data)
       switch (type) {
         case CREATE_SUCCESS: {
+          this.tableSearch()
+          break
+        }
+        case DEL_SUCCESS: {
           this.tableSearch()
           break
         }
