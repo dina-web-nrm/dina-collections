@@ -18,6 +18,7 @@ module.exports = function bootstrapApi({
     const auth = createAuth({ config })
 
     setupJobs({
+      config,
       log,
       schedulerActive,
       serviceInteractor,

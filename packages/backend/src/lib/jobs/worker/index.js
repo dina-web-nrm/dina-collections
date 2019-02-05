@@ -4,11 +4,45 @@ const findNext = require('./findNext')
 
 const log = createLog('lib/jobs/worker')
 
+const workerRoleJobGroupMapping = {
+  all: {},
+  'search-index': {
+    includeGroups: ['search-index'],
+  },
+  simple: {
+    excludeGroups: ['search-index'],
+  },
+}
+
 module.exports = function createWorker({
+  config,
   idleDelay = 200,
   pollDelay = 1000,
   serviceInteractor,
 }) {
+  let excludeGroups = []
+  let includeGroups = []
+  if (!config.jobs.workerRole) {
+    throw new Error(`Worker role is required`)
+  }
+
+  const activeWorkerRole = workerRoleJobGroupMapping[config.jobs.workerRole]
+  if (!activeWorkerRole) {
+    throw new Error(
+      `Unknown worker role: ${
+        config.jobs.workerRole
+      }. Pick one of [${Object.keys(workerRoleJobGroupMapping).join(', ')}]`
+    )
+  }
+
+  if (activeWorkerRole.includeGroups) {
+    includeGroups = activeWorkerRole.includeGroups // eslint-disable-line
+  }
+
+  if (activeWorkerRole.excludeGroups) {
+    excludeGroups = activeWorkerRole.excludeGroups // eslint-disable-line
+  }
+
   log.info('Start worker')
   let active = false
   const run = () => {
@@ -16,7 +50,11 @@ module.exports = function createWorker({
       return null
     }
     log.info('Looking for next job')
-    return findNext({ serviceInteractor })
+    return findNext({
+      excludeGroups,
+      includeGroups,
+      serviceInteractor,
+    })
       .then(job => {
         if (!job) {
           log.info('No jobs found')

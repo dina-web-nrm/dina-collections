@@ -1,3 +1,5 @@
+exports.createStringNotInFilter = require('./createStringNotInFilter')
+exports.createStringInFilter = require('./createStringInFilter')
 exports.createEqualFilter = require('./createEqualFilter')
 exports.createFeatureRangeFilter = require('./createFeatureRangeFilter')
 exports.createForeignKeyMatchFilter = require('./createForeignKeyMatchFilter')
