@@ -1,6 +1,8 @@
+import { createSelector } from 'reselect'
+
 import transformFeatureObservations from './transformFeatureObservations'
 
-export default function transformInput({
+function transformInput({
   establishmentMeansTypes = [],
   featureTypes = [],
   identifierTypes = [],
@@ -80,3 +82,18 @@ export default function transformInput({
 
   return transformedSpecimen
 }
+
+export const getBaseValues = createSelector(
+  ({ establishmentMeansTypes }) => establishmentMeansTypes,
+  ({ featureTypes }) => featureTypes,
+  ({ identifierTypes }) => identifierTypes,
+  (establishmentMeansTypes, featureTypes, identifierTypes) => {
+    return transformInput({
+      establishmentMeansTypes,
+      featureTypes,
+      identifierTypes,
+    })
+  }
+)
+
+export default transformInput
