@@ -34,3 +34,7 @@ exports.updateView = {
   },
   required: [...base.required],
 }
+
+exports.getViewMeta = {
+  ...base,
+}
