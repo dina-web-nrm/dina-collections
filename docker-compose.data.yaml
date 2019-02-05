@@ -11,6 +11,18 @@ services:
     volumes:
       - ./data:/data
       - ./userFiles:/userFiles
+  rebuildSearch:
+    image: "dina/dina-collections-migrations:${TAG}"
+    container_name: dina-migrations-rebuild-search
+    env_file:
+      - ./env/.backend
+    environment:
+      BACKEND_IN_NODE_MODULES: 'true'
+    command: yarn --cwd=/etc/migrations elasticsearch:development:rebuild-index:specimen-search
+    volumes:
+      - ./data:/data
+      - ./userFiles:/userFiles
+
   migrateOne:
     image: "dina/dina-collections-migrations:${TAG}"
     container_name: dina-migrations-migrate-one

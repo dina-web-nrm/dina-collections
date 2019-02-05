@@ -8,6 +8,7 @@ module.exports = ({ serverName, ...rest } = {}) => {
     })
   }
   return remoteExecCmd({
+    serverName,
     ...rest,
   })
 }
