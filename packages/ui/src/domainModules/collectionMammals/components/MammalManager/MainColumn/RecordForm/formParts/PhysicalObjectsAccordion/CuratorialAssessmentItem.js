@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Grid, Modal, List } from 'semantic-ui-react'
+import objectPath from 'object-path'
+
 import { buildYYYYMMDD } from 'common/es5/date'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
@@ -73,6 +75,13 @@ class CuratorialAssessmentItem extends PureComponent {
 
     const { open } = this.state
 
+    const fullName =
+      objectPath.get(normalizedAgent, 'attributes.fullName') ||
+      (agent && agent.textI)
+    const disambiguatingDescription = objectPath.get(
+      normalizedAgent,
+      'attributes.disambiguatingDescription'
+    )
     return (
       <List.Item>
         <List.Content style={{ padding: '0.5em' }} verticalAlign="bottom">
@@ -91,16 +100,15 @@ class CuratorialAssessmentItem extends PureComponent {
                     <Grid.Column width={16}>
                       {[
                         date && date.startDate && buildYYYYMMDD(date.startDate),
-                        (normalizedAgent &&
-                          normalizedAgent.attributes &&
-                          normalizedAgent.attributes.fullName) ||
-                          (agent && agent.textI),
+                        disambiguatingDescription
+                          ? `${fullName} (${disambiguatingDescription})`
+                          : fullName,
                         isInStorage !== undefined &&
                           (isInStorage ? 'In storage' : 'Not in storage'),
                         condition,
                         remarks,
                       ]
-                        .filter(str => !!str)
+                        .filter(Boolean)
                         .join('; ')}
                     </Grid.Column>
                   </Grid.Row>

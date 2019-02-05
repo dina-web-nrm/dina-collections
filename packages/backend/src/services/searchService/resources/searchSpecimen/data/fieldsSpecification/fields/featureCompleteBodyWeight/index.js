@@ -10,6 +10,7 @@ const FEATURE_TYPE = 'complete-body-weight'
 
 const transformation = ({ migrator, src, target }) => {
   const featureTexts = extractFeatureText({
+    excludeUnitValue: 'unspecified',
     featureTypeKey: FEATURE_TYPE,
     includeUnit: true,
     migrator,

@@ -55,6 +55,7 @@ const parts = [
 ]
 
 export default {
+  compareInitiallyHiddenWithInitialValues: true,
   name: 'origin',
   parts,
 }
