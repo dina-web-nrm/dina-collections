@@ -382,7 +382,13 @@ class MammalManager extends Component {
             if (!isTableView) {
               setTimeout(() => {
                 this.handleOpenTableView()
-                this.handleSetCurrentTableRowNumber(null, currentTableRowNumber)
+                this.handleSetCurrentTableRowNumber(
+                  null,
+                  Math.min(
+                    currentTableRowNumber,
+                    this.props.searchResult.items.length
+                  )
+                )
               }, 3000)
             }
           }
