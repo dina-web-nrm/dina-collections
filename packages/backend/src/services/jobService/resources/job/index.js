@@ -11,6 +11,7 @@ module.exports = {
     columns: {
       error: { type: Sequelize.TEXT },
       failedAt: { type: Sequelize.DATE },
+      group: { type: Sequelize.STRING },
       operationId: { type: Sequelize.STRING },
       operationRequest: { type: Sequelize.JSONB },
       startedAt: { type: Sequelize.DATE },

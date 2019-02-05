@@ -15,6 +15,7 @@ module.exports = {
       diff: {
         type: Sequelize.JSONB,
       },
+      group: { type: Sequelize.STRING },
       id: {
         allowNull: false,
         autoIncrement: true,
