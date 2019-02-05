@@ -389,7 +389,7 @@ class MammalManager extends Component {
                     this.props.searchResult.items.length
                   )
                 )
-              }, 3000)
+              })
             }
           }
         )

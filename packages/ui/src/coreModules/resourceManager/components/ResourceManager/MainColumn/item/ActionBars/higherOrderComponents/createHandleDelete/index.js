@@ -153,7 +153,7 @@ const createHandleDelete = () => ComposedComponent => {
         fetchResourceCount()
         setTimeout(() => {
           this.setState({ loadingDelete: false })
-        }, 3000)
+        }, 2000)
 
         if (onInteraction) {
           onInteraction(DEL_SUCCESS)
