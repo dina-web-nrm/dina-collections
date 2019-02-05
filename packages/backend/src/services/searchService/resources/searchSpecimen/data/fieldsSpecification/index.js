@@ -5,6 +5,7 @@ const taxonomy = require('./decorators/taxonomy')
 const searchAge = require('./searchOnlyFields/searchAge')
 const searchDate = require('./searchOnlyFields/searchDate')
 const searchRemarks = require('./searchOnlyFields/searchRemarks')
+const relatedResources = require('./searchOnlyFields/relatedResources')
 
 const agentTags = require('./tags/agentTags')
 const appearanceTags = require('./tags/appearanceTags')
@@ -68,6 +69,7 @@ module.exports = {
     searchAge,
     searchDate,
     searchRemarks,
+    relatedResources,
 
     agentTags,
     appearanceTags,
