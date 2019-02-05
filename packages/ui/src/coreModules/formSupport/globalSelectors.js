@@ -1,5 +1,4 @@
 import {
-  getFormInitialValues,
   getFormMeta,
   getFormSyncErrors,
   getFormAsyncErrors,
@@ -18,7 +17,13 @@ import * as selectors from './selectors'
 
 const getInitiallyHiddenFieldsHaveValue = (
   state,
-  { compareInitiallyHiddenWithInitialValues, formName, formValueSelector, unit }
+  {
+    baseValues = {},
+    compareInitiallyHiddenWithBaseValues,
+    formName,
+    formValueSelector,
+    unit,
+  }
 ) => {
   const initiallyHiddenFieldNames = selectors.getUnitInitiallyHiddenFieldNames(
     state.formSupport,
@@ -32,12 +37,10 @@ const getInitiallyHiddenFieldsHaveValue = (
     return undefined
   }
 
-  const initialValues = getFormInitialValues(formName)(state)
-
   for (let index = 0; index < initiallyHiddenFieldNames.length; index += 1) {
     const fieldName = initiallyHiddenFieldNames[index]
     const value = formValueSelector(state, fieldName)
-    const initialValue = objectPath.get(initialValues, fieldName)
+    const initialValue = objectPath.get(baseValues, fieldName)
 
     const valueIsEmpty =
       (!value && value !== 0) || (typeof value === 'object' && isEmpty(value))
@@ -45,9 +48,8 @@ const getInitiallyHiddenFieldsHaveValue = (
 
     if (hasValue) {
       if (
-        !compareInitiallyHiddenWithInitialValues ||
-        (compareInitiallyHiddenWithInitialValues &&
-          !isEqual(initialValue, value))
+        !compareInitiallyHiddenWithBaseValues ||
+        (compareInitiallyHiddenWithBaseValues && !isEqual(initialValue, value))
       ) {
         return true
       }
