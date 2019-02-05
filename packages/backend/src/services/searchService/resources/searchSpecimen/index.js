@@ -26,6 +26,7 @@ module.exports = {
     mappingSpecification,
     modelFactory: 'elasticsearchDocumentModel',
     name: 'searchSpecimen',
+    rebuildStrategy: 'swap',
   },
   operations: [
     {
@@ -64,6 +65,9 @@ module.exports = {
     },
     {
       type: 'requestUpdateView',
+    },
+    {
+      type: 'getViewMeta',
     },
   ],
   resource,
