@@ -110,8 +110,7 @@ const createHandleDelete = () => ComposedComponent => {
         )
 
         if (!relationshipsAreEmpty) {
-          this.setState({ relationships })
-          this.setState({ loadingDelete: false })
+          this.setState({ loadingDelete: false, relationships })
           return createNotification({
             componentProps: {
               /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
@@ -154,7 +153,7 @@ const createHandleDelete = () => ComposedComponent => {
         fetchResourceCount()
         setTimeout(() => {
           this.setState({ loadingDelete: false })
-        }, 2000)
+        }, 3000)
 
         if (onInteraction) {
           onInteraction(DEL_SUCCESS)
