@@ -81,7 +81,6 @@ const createHandleDelete = () => ComposedComponent => {
         })
       ).then(res => {
         const { relationships } = res || {}
-        this.setState({ loadingDelete: false })
         return this.deleteItemOrShowRelationships(relationships)
       })
     }
@@ -112,7 +111,7 @@ const createHandleDelete = () => ComposedComponent => {
 
         if (!relationshipsAreEmpty) {
           this.setState({ relationships })
-
+          this.setState({ loadingDelete: false })
           return createNotification({
             componentProps: {
               /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
@@ -153,6 +152,9 @@ const createHandleDelete = () => ComposedComponent => {
 
         createNotification(notification)
         fetchResourceCount()
+        setTimeout(() => {
+          this.setState({ loadingDelete: false })
+        }, 2000)
 
         if (onInteraction) {
           onInteraction(DEL_SUCCESS)

@@ -375,7 +375,18 @@ class MammalManager extends Component {
         break
       }
       case DEL_SUCCESS: {
-        setTimeout(() => this.handleSearchSpecimens())
+        const { currentTableRowNumber, isTableView } = this.props
+
+        this.handleSearchSpecimens(undefined, { openTableView: false }).then(
+          () => {
+            if (!isTableView) {
+              setTimeout(() => {
+                this.handleOpenTableView()
+                this.handleSetCurrentTableRowNumber(null, currentTableRowNumber)
+              }, 3000)
+            }
+          }
+        )
         break
       }
       default: {
