@@ -94,7 +94,11 @@ class CreateSpecimen extends PureComponent {
           return createSpecimen({ item }).then(res => {
             fetchResourceCount()
             onInteraction(CREATE_SUCCESS, { itemId: res.id })
-            return res
+            return new Promise(resolve => {
+              setTimeout(() => {
+                return resolve(res)
+              }, 3000)
+            })
           })
         }}
         initialValues={initialValues}
