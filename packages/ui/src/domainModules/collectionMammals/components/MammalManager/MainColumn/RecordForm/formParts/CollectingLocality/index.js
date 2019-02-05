@@ -9,7 +9,7 @@ import { ModuleTranslate } from 'coreModules/i18n/components'
 import { Field, TextArea } from 'coreModules/form/components'
 import createLog from 'utilities/log'
 
-import Coordinates from './Coordinates'
+import CollectingPosition from './CollectingPosition'
 import PositionModal from './PositionModal'
 
 const log = createLog('modules:collectionMammals:MammalForm:CollectingLocality')
@@ -22,22 +22,34 @@ const buttonStyle = {
 }
 
 const propTypes = {
+  coordinatesVerbatim: PropTypes.string,
   formName: PropTypes.string.isRequired,
+  georeferenceSourcesText: PropTypes.string,
   getPath: PropTypes.func.isRequired,
-  latitude: PropTypes.string,
-  longitude: PropTypes.string,
   module: PropTypes.string.isRequired,
+  position: PropTypes.object,
+  verticalPosition: PropTypes.object,
 }
 
 const defaultProps = {
-  latitude: undefined,
-  longitude: undefined,
+  coordinatesVerbatim: undefined,
+  georeferenceSourcesText: undefined,
+  position: undefined,
+  verticalPosition: undefined,
 }
 
 const mapStateToProps = (state, { formValueSelector, getPath }) => {
   return {
-    latitude: formValueSelector(state, getPath('position.latitude')),
-    longitude: formValueSelector(state, getPath('position.longitude')),
+    coordinatesVerbatim: formValueSelector(
+      state,
+      getPath('coordinatesVerbatim')
+    ),
+    georeferenceSourcesText: formValueSelector(
+      state,
+      getPath('georeferenceSourcesText')
+    ),
+    position: formValueSelector(state, getPath('position')),
+    verticalPosition: formValueSelector(state, getPath('verticalPosition')),
   }
 }
 
@@ -62,10 +74,26 @@ class CollectingLocality extends PureComponent {
   }
 
   render() {
-    const { formName, getPath, latitude, longitude, module } = this.props
+    const {
+      coordinatesVerbatim,
+      georeferenceSourcesText,
+      getPath,
+      formName,
+      module,
+      position,
+      verticalPosition,
+    } = this.props
 
     const { open } = this.state
-    const hasCoordinates = latitude || longitude
+
+    const hasPosition = position && Object.keys(position).length
+    const hasVerticalPosition =
+      verticalPosition && Object.keys(verticalPosition).length
+    const hasPositionData =
+      coordinatesVerbatim ||
+      georeferenceSourcesText ||
+      hasPosition ||
+      hasVerticalPosition
 
     log.render()
     return (
@@ -82,13 +110,15 @@ class CollectingLocality extends PureComponent {
             type="text"
           />
         </Grid.Column>
-        {hasCoordinates ? (
-          <Grid.Column width={16}>
-            <Coordinates
-              latitude={latitude}
-              longitude={longitude}
+        {hasPositionData ? (
+          <Grid.Column width={11}>
+            <CollectingPosition
+              coordinatesVerbatim={coordinatesVerbatim}
+              georeferenceSourcesText={georeferenceSourcesText}
               module={module}
               onEdit={this.handleOpen}
+              position={position}
+              verticalPosition={verticalPosition}
             />
           </Grid.Column>
         ) : (

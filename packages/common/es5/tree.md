@@ -215,15 +215,16 @@
 │   │   │   └── index.js
 │   │   ├── del
 │   │   │   └── index.js
-│   │   ├── modifyRelationshipResources
+│   │   ├── modifyIncludes
 │   │   │   ├── index.js
 │   │   │   ├── index.test.js
-│   │   │   ├── modifyRelatedResourceItem.js
-│   │   │   ├── modifyRelatedResourceItem.test.js
-│   │   │   ├── modifyRelatedResourceItems.js
-│   │   │   ├── modifyRelatedResourceItems.test.js
-│   │   │   ├── modifyRelationshipResource.js
-│   │   │   └── modifyRelationshipResource.test.js
+│   │   │   ├── modifyIncludedRelationship.js
+│   │   │   ├── modifyIncludedRelationship.test.js
+│   │   │   ├── modifyIncludedRelationshipItem.js
+│   │   │   ├── modifyIncludedRelationshipItem.test.js
+│   │   │   ├── modifyIncludedRelationshipItems.js
+│   │   │   ├── modifyIncludedRelationshipItems.test.js
+│   │   │   └── stripRelationshipNotToModify.js
 │   │   ├── recursiveCreate.js
 │   │   ├── recursiveCreate.test.js
 │   │   ├── recursiveUpdate.js
@@ -243,6 +244,8 @@
 │       ├── createRelationSpecification.test.js
 │       ├── getRelativeRelationships.js
 │       ├── getRelativeRelationships.test.js
+│       ├── shouldModifyInclude.js
+│       ├── shouldModifyRelationship.js
 │       ├── splitRelationships.js
 │       └── splitRelationships.test.js
 ├── jsonSchema
@@ -300,6 +303,7 @@
 │   │   │   └── swagger.json
 │   │   └── testImports.test.js
 │   ├── e2e.spec.js
+│   ├── ensureVersionLocked.js
 │   ├── lockVersion.js
 │   ├── read
 │   │   ├── index.js
