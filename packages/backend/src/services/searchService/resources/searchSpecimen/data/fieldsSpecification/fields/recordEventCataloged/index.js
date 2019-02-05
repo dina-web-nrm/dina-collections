@@ -7,11 +7,11 @@ const {
 const fieldPath = 'attributes.recordEventCataloged'
 
 // TODO this seams to not be migrate yet
-const MATCHING_DESCRIPTION = 'New catalog card'
+const CATALOG_CARD_CREATION_DESCRIPTION = 'New catalog card'
 
 const transformation = ({ migrator, src, target }) => {
   const recordEventStrings = extractRecordEventText({
-    matchingDescription: MATCHING_DESCRIPTION, // TODO should use enum instead
+    matchingDescription: CATALOG_CARD_CREATION_DESCRIPTION, // TODO should use enum instead
     migrator,
     src,
   })
