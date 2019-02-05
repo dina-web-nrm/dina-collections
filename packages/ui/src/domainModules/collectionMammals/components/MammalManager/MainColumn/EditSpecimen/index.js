@@ -16,7 +16,9 @@ import {
   createGetResourceCount,
 } from 'coreModules/crud/higherOrderComponents'
 import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
-import setDefaultValues from '../RecordForm/transformations/input'
+import transformInput, {
+  getBaseValues,
+} from '../RecordForm/transformations/input'
 import RecordForm from '../RecordForm'
 
 const log = createLog(
@@ -84,7 +86,13 @@ class EditSpecimen extends PureComponent {
       'individual.taxonInformation.curatorialTaxon'
     )
 
-    const { resourceActivities, ...initialValues } = setDefaultValues({
+    const baseValues = getBaseValues({
+      establishmentMeansTypes,
+      featureTypes,
+      identifierTypes,
+    })
+
+    const { resourceActivities, ...initialValues } = transformInput({
       establishmentMeansTypes,
       featureTypes,
       identifierTypes,
@@ -95,6 +103,7 @@ class EditSpecimen extends PureComponent {
     return (
       <RecordForm
         {...rest}
+        baseValues={baseValues}
         curatorialTaxon={curatorialTaxon}
         establishmentMeansTypes={establishmentMeansTypes}
         form={FORM_NAME}
