@@ -62,6 +62,9 @@
     "schemaVersion": {
       "type": "string"
     },
+    "group": {
+      "type": "string"
+    },
     "id": {
       "$ref": "__ROOT__id"
     },
