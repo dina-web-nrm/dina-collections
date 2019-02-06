@@ -65,6 +65,7 @@
     "start:backend": "yarn start:dbs && cd ./packages/backend && yarn start",
     "start:dbs": "yarn start:postgres && yarn start:elasticsearch && yarn start:mysql",
     "start:elasticsearch": "docker-compose -f docker-compose.yaml up -d elasticsearch",
+    "start:kibana": "docker-compose -f docker-compose.dev-utils.yaml up -d kibana",
     "start:keycloak": "yarn start:mysql && docker-compose -f docker-compose.yaml up -d keycloak",
     "start:mysql": "docker-compose -f docker-compose.yaml up -d mysql",
     "start:postgres": "docker-compose -f docker-compose.yaml up -d postgres",
