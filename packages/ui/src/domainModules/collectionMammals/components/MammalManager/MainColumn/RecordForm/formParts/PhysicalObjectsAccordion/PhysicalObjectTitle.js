@@ -6,10 +6,15 @@ import { Icon, Label } from 'semantic-ui-react'
 
 import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
-import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+import {
+  createGetItemById,
+  createGetNestedItemById,
+} from 'coreModules/crud/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import createLog from 'utilities/log'
+
+import { extractNameWithFirstLevelParent } from 'domainModules/storage/utilities'
 
 const log = createLog('modules:collectionMammals:formParts:PhysicalObjectTitle')
 
@@ -68,10 +73,9 @@ function PhysicalObjectTitle({
   return (
     <ThreeColumnGrid
       center={
-        storageLocation &&
-        storageLocation.attributes && (
+        storageLocation && (
           <span style={{ fontWeight: 'normal' }}>
-            {storageLocation.attributes.name}
+            {extractNameWithFirstLevelParent(storageLocation)}
           </span>
         )
       }
@@ -121,10 +125,18 @@ export default compose(
     relationships: null,
     resource: 'preparationType',
   }),
-  createGetItemById({
+  createGetNestedItemById({
     idPath: 'physicalObject.storageLocation.id',
-    itemKey: 'storageLocation',
-    relationships: null,
+    include: ['parent.parent.parent.parent.parent'],
+    nestedItemKey: 'storageLocation',
+    relationships: [
+      'parent',
+      'parent.parent',
+      'parent.parent.parent',
+      'parent.parent.parent.parent',
+      'parent.parent.parent.parent.parent',
+    ],
+    resolveRelationships: ['storageLocation'],
     resource: 'storageLocation',
   }),
   pathBuilder(),
