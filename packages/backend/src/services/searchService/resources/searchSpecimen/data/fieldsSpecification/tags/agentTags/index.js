@@ -1,4 +1,7 @@
 const {
+  CATALOG_CARD_CREATION_DESCRIPTION,
+} = require('common/src/constants/recordHistoryEvents')
+const {
   createTagValueAggregation,
   createTagTypeAggregation,
 } = require('../../../../../../../../lib/data/aggregations/factories')
@@ -10,8 +13,6 @@ const {
 const {
   createValueTagMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
-
-const CATALOG_CARD_CREATION_DESCRIPTION = 'New catalog card'
 
 const fieldPath = 'attributes.tags.agentTags'
 const key = 'agentTags'
