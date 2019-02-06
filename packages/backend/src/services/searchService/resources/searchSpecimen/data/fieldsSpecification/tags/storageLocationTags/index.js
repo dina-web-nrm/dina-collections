@@ -21,7 +21,7 @@ const matchFilterName = 'matchStorageLocationTags'
 
 const delimiter = 'ddaadd'
 
-const findLevel2ParentSufix = storageLocation => {
+const findLevel2ParentSuffix = storageLocation => {
   const { isRoot } = storageLocation
   if (isRoot) {
     return ''
@@ -36,7 +36,7 @@ const findLevel2ParentSufix = storageLocation => {
     return ` ${storageLocation.group}`
   }
 
-  return findLevel2ParentSufix(storageLocation.parent)
+  return findLevel2ParentSuffix(storageLocation.parent)
 }
 
 const fetchSufix = storageLocation => {
@@ -51,7 +51,7 @@ const fetchSufix = storageLocation => {
     return ' on mounting wall'
   }
 
-  return findLevel2ParentSufix(storageLocation)
+  return findLevel2ParentSuffix(storageLocation)
 }
 
 const transformation = ({ migrator, target, locals }) => {
