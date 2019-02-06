@@ -175,6 +175,7 @@ module.exports = function createControllerWrapper({
               item,
               items,
               log,
+              request,
               requestId,
               resource,
               serviceInteractor,
