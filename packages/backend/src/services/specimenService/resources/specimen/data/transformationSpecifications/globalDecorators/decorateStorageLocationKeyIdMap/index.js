@@ -2,7 +2,7 @@ const fetchParentsSync = require('../../../../../../../../lib/data/transformatio
 const buildKey = require('./buildKey')
 
 /* eslint-disable no-param-reassign */
-module.exports = function decoratePlaceKeyIdMap({
+module.exports = function decorateStorageLocationKeyIdMap({
   serviceInteractor,
   globals,
 }) {
