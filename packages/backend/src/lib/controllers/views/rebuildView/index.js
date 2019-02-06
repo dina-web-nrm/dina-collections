@@ -55,7 +55,7 @@ module.exports = function rebuildView(options) {
     responseFormat: 'object',
     responseSuccessStatus: 200,
   })(({ model, request }) => {
-    const { queryParams: { limit = defaultLimit } = {} } = request
+    const { queryParams: { limit = defaultLimit, force = true } = {} } = request
     const reporter = createReporter()
     const serviceInteractorCache = cacheRequestsToResources
       ? createServiceInteractorCache({
@@ -79,7 +79,7 @@ module.exports = function rebuildView(options) {
 
     reporter.start()
     return model
-      .synchronize({ force: true })
+      .synchronize({ force })
       .then(() => {
         log.scope().info(`warming views for ${resource}`)
         return createGlobals({
@@ -163,7 +163,9 @@ module.exports = function rebuildView(options) {
       })
       .catch(err => {
         if (model.swap) {
-          model.swap({ err })
+          return model.swap({ err }).then(() => {
+            throw err
+          })
         }
         throw err
       })

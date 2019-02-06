@@ -81,6 +81,14 @@ module.exports = {
             type: 'boolean',
           },
         },
+        force: {
+          description:
+            'Will rebuild view even if last rebuild ended with error',
+          schema: {
+            default: true,
+            type: 'boolean',
+          },
+        },
       },
       transformationSpecification: rebuildViewTransformationSpecification,
       type: 'rebuildView',
