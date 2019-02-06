@@ -37,6 +37,10 @@ const filters = createGetManyFilterSpecifications({
         fieldPath: 'group',
         key: 'includeGroups',
       }),
+      includeOperationIds: createStringInFilter({
+        fieldPath: 'operationId',
+        key: 'includeOperationIds',
+      }),
     }
   ),
 })
