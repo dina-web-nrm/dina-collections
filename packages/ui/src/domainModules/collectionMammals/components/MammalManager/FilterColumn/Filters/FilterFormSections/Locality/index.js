@@ -24,6 +24,7 @@ class LocalityFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
+            addTagTypeToText={false}
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}
