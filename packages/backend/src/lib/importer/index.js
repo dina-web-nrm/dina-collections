@@ -111,7 +111,7 @@ module.exports = function importer({
       return serviceInteractor
         .call({
           operationId: 'searchSpecimenRebuildView',
-          request: { queryParams: { limit: 100000 } },
+          request: { queryParams: { consolidateJobs: true, limit: 100000 } },
         })
         .then(rebuildSearchSpecimenReport => {
           /* eslint-disable no-console */
