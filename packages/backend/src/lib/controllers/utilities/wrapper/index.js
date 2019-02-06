@@ -7,6 +7,7 @@ const createObjectResponse = require('../transformations/createObjectResponse')
 const createPreHooks = require('../createPreHooks')
 const extractRelationships = require('../relationships/extractRelationships')
 
+// TODO make sure all controllers are using controllerWrapper
 module.exports = function createControllerWrapper({
   config,
   enableInterceptors = false,
