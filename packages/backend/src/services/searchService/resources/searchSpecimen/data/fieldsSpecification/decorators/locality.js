@@ -94,10 +94,21 @@ const transformation = ({ getItemByTypeId, migrator, src, locals }) => {
       })
     })
 
+    const collectingPlacesMap = collectingPlaces.reduce((map, place) => {
+      map[place.id] = place
+      return map
+    }, {})
+
     migrator.setValue({
       obj: locals,
       path: 'collectingPlaces',
       value: collectingPlaces,
+    })
+
+    migrator.setValue({
+      obj: locals,
+      path: 'collectingPlacesMap',
+      value: collectingPlacesMap,
     })
 
     migrator.setValue({
