@@ -1,10 +1,13 @@
 const createReporter = require('common/src/reporter')
+const createControllerWrapper = require('../../utilities/wrapper')
 const applyTransformations = require('../../../data/transformations/utilities/applyTransformations')
 const update = require('./update')
 const defaultPreTransformationFunction = require('../../../data/transformations/utilities/preTransformationCoreToNested')
 const defaultPostTransformationFunction = require('../../../data/transformations/utilities/postTransformationNoop')
 
-module.exports = function updateView({ operation, models, serviceInteractor }) {
+module.exports = function updateView(options) {
+  const { operation, serviceInteractor } = options
+
   const {
     transformationSpecification: {
       postTransformationFunction = defaultPostTransformationFunction,
@@ -15,19 +18,21 @@ module.exports = function updateView({ operation, models, serviceInteractor }) {
       transformationFunctions,
       warmViews,
     } = {},
-    resource,
   } = operation
-
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
 
   if (!srcResource) {
     throw new Error(`srcResource not provided for ${srcResource}`)
   }
 
-  return ({ request = {} }) => {
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: true,
+    enablePostHooks: true,
+    enablePreHooks: true,
+    requiredModelMethods: ['create', 'update', 'del'],
+    responseFormat: 'object',
+    responseSuccessStatus: 200,
+  })(({ model, request }) => {
     const { body } = request
     const { data: { attributes: { ids } = {} } = {} } = body
     if (!ids && ids.length) {
@@ -62,10 +67,14 @@ module.exports = function updateView({ operation, models, serviceInteractor }) {
     }).then(() => {
       reporter.done()
       return {
-        data: {
-          attributes: reporter.getReport(),
+        item: {
+          data: {
+            attributes: reporter.getReport(),
+          },
+          id: '1',
+          type: 'customObject',
         },
       }
     })
-  }
+  })
 }

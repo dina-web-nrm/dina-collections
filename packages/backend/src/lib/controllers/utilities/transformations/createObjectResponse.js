@@ -33,7 +33,7 @@ module.exports = function createObjectResponse({
 
   // const relationshipsResponse = relationships || storedRelationships
 
-  if (relationships) {
+  if (relationships && Object.keys(relationships).length) {
     response.data.relationships = relationships
   }
 

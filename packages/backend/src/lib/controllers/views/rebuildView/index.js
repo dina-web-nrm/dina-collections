@@ -1,4 +1,5 @@
 const { execute: batchExecute } = require('common/src/batch')
+const createControllerWrapper = require('../../utilities/wrapper')
 const rebuildCacheViews = require('./rebuildCacheViews')
 const emptyCacheViews = require('./emptyCacheViews')
 const createLog = require('../../../../utilities/log')
@@ -14,11 +15,9 @@ const createServiceInteractorCache = require('../../../serviceInteractor/cache')
 
 const log = createLog('lib/controllers/views/rebuildView/rebuild')
 
-module.exports = function rebuildView({
-  models,
-  operation,
-  serviceInteractor,
-}) {
+module.exports = function rebuildView(options) {
+  const { models, operation, serviceInteractor } = options
+
   const {
     transformationSpecification: {
       cacheRequestsToResources,
@@ -43,16 +42,19 @@ module.exports = function rebuildView({
     resource,
   } = operation
 
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
-
   if (!srcResource && !srcFileName) {
     throw new Error(`srcResource not provided for ${srcResource}`)
   }
 
-  return ({ request = {} } = {}) => {
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: true,
+    enablePostHooks: true,
+    enablePreHooks: true,
+    requiredModelMethods: ['create', 'update', 'del'],
+    responseFormat: 'object',
+    responseSuccessStatus: 200,
+  })(({ model, request }) => {
     const { queryParams: { limit = defaultLimit } = {} } = request
     const reporter = createReporter()
     const serviceInteractorCache = cacheRequestsToResources
@@ -139,15 +141,19 @@ module.exports = function rebuildView({
                 if (model.swap) {
                   return model.swap().then(() => {
                     return {
-                      data: {
+                      item: {
                         attributes: reporter.getReport(),
+                        id: '1',
+                        type: 'customObject',
                       },
                     }
                   })
                 }
                 return {
-                  data: {
+                  item: {
                     attributes: reporter.getReport(),
+                    id: '1',
+                    type: 'customObject',
                   },
                 }
               })
@@ -161,5 +167,5 @@ module.exports = function rebuildView({
         }
         throw err
       })
-  }
+  })
 }

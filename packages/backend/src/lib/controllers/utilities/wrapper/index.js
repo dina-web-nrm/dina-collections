@@ -29,9 +29,12 @@ module.exports = function createControllerWrapper({
     relations,
     resource,
     operationId,
+    response: { resource: customResponseResource } = {},
   } = operation
-  const model = models[resource]
 
+  const responseType = customResponseResource || resource
+
+  const model = models[resource]
   if (!operationId) {
     throw new Error(`Operation id missing for controller`)
   }
@@ -199,7 +202,7 @@ module.exports = function createControllerWrapper({
                   meta,
                   relationships,
                   status: responseSuccessStatus,
-                  type: resource,
+                  type: responseType,
                 })
               }
 
@@ -223,7 +226,7 @@ module.exports = function createControllerWrapper({
                   }
                 }),
                 meta,
-                type: resource,
+                type: responseType,
               })
             })
           }
