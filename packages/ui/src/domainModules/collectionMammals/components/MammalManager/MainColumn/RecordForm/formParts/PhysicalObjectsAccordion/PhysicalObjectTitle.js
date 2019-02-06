@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Icon, Label } from 'semantic-ui-react'
 
+import extractNameWithFirstLevelParent from 'common/es5/storage/extractNameWithFirstLevelParent'
 import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import {
@@ -13,8 +14,6 @@ import {
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import createLog from 'utilities/log'
-
-import { extractNameWithFirstLevelParent } from 'domainModules/storage/utilities'
 
 const log = createLog('modules:collectionMammals:formParts:PhysicalObjectTitle')
 

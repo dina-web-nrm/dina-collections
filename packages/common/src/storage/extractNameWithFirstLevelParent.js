@@ -1,6 +1,6 @@
-import { LEVEL_ROOM } from '../constants'
+const { LEVEL_ROOM } = require('../constants/storage')
 
-export const extractNameWithFirstLevelParent = nestedStorageLocation => {
+const extractNameWithFirstLevelParent = nestedStorageLocation => {
   if (!nestedStorageLocation) {
     return ''
   }
@@ -15,3 +15,5 @@ export const extractNameWithFirstLevelParent = nestedStorageLocation => {
   )
   return `${name} [${group} in ${parentName}]`
 }
+
+module.exports = extractNameWithFirstLevelParent
