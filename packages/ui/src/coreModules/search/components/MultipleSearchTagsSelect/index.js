@@ -301,7 +301,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       })
       .filter(item => !!item)
 
-    const freeTextSufix =
+    const freeTextSuffix =
       tagTypeFilterValue === ANY
         ? '(free text)'
         : `(free text ${tagTypeFilterValue})`
@@ -310,7 +310,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       optionType: 'freeText',
       tagType: tagTypeFilterValue,
       tagValue: searchQuery,
-      text: `${searchQuery} ${freeTextSufix}`,
+      text: `${searchQuery} ${freeTextSuffix}`,
       value: searchQuery,
     })
 
