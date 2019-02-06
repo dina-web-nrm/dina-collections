@@ -13,6 +13,11 @@ const {
   query: queryFilterSpecification,
 } = require('./data/filterSpecifications')
 
+const {
+  rebuildView: rebuildViewPostHooks,
+  updateView: updateViewPostHooks,
+} = require('./data/postHooks')
+
 const aggregationSpecification = require('./data/aggregationSpecification')
 
 const resource = 'searchSpecimen'
@@ -53,10 +58,30 @@ module.exports = {
       type: 'emptyView',
     },
     {
+      postHooks: updateViewPostHooks,
+      queryParams: {
+        consolidateJobs: {
+          description: 'Will consolidate jobs in postHook',
+          schema: {
+            default: false,
+            type: 'boolean',
+          },
+        },
+      },
       transformationSpecification: updateViewTransformationSpecification,
       type: 'updateView',
     },
     {
+      postHooks: rebuildViewPostHooks,
+      queryParams: {
+        consolidateJobs: {
+          description: 'Will consolidate jobs in postHook',
+          schema: {
+            default: false,
+            type: 'boolean',
+          },
+        },
+      },
       transformationSpecification: rebuildViewTransformationSpecification,
       type: 'rebuildView',
     },
