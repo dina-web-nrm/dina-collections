@@ -1,3 +1,5 @@
+const extractNameWithFirstLevelParent = require('common/src/storage/extractNameWithFirstLevelParent')
+
 const {
   createTagValueAggregation,
   createTagTypeAggregation,
@@ -21,49 +23,16 @@ const matchFilterName = 'matchStorageLocationTags'
 
 const delimiter = 'ddaadd'
 
-const findLevel2ParentSuffix = storageLocation => {
-  const { isRoot } = storageLocation
-  if (isRoot) {
-    return ''
-  }
-
-  const isLevel2 = storageLocation.group === 'mountingWall'
-  if (isLevel2) {
-    return ` ${storageLocation.name}`
-  }
-
-  if (!storageLocation.parent) {
-    return ` ${storageLocation.group}`
-  }
-
-  return findLevel2ParentSuffix(storageLocation.parent)
-}
-
-const fetchSufix = storageLocation => {
-  if (storageLocation.group === 'room') {
-    return ` room`
-  }
-
-  if (storageLocation.group === 'mountingWall') {
-    if (storageLocation.parent) {
-      return ` in ${storageLocation.parent.name}`
-    }
-    return ' on mounting wall'
-  }
-
-  return findLevel2ParentSuffix(storageLocation)
-}
-
 const transformation = ({ migrator, target, locals }) => {
   const { storageLocations = [], storageLocationTexts = [] } = locals
 
   const tags = []
 
   storageLocations.forEach(storageLocation => {
-    const { name, group } = storageLocation
+    const { group } = storageLocation
     const tagType = group
-    const sufix = fetchSufix(storageLocation)
-    const tagValue = `${name}${sufix}`
+    const tagValue = extractNameWithFirstLevelParent(storageLocation)
+
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
       tagType,
