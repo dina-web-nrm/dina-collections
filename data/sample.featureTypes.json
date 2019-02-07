@@ -521,6 +521,44 @@
     ]
   },
   {
+    "group": "length",
+    "key": "forearm-length",
+    "name": {
+      "en": "forearm",
+      "sv": "underarm"
+    },
+    "selectableUnits": [
+      {
+        "key": "mm",
+        "name": {
+          "en": "mm",
+          "sv": "mm"
+        }
+      },
+      {
+        "key": "cm",
+        "name": {
+          "en": "cm",
+          "sv": "cm"
+        }
+      },
+      {
+        "key": "m",
+        "name": {
+          "en": "m",
+          "sv": "m"
+        }
+      },
+      {
+        "key": "unspecified",
+        "name": {
+          "en": "unspecified",
+          "sv": "ospecificerad"
+        }
+      }
+    ]
+  },
+  {
     "group": "sex",
     "key": "sex",
     "selectableValues": [
