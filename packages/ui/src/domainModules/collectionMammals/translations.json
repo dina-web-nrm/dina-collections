@@ -58,39 +58,164 @@
         "sv": "Vikter"
       }
     },
+    "identifiers": {
+      "catalog-no": {
+        "en": "catalog no.",
+        "sv": ""
+      },
+      "old-skeleton-no": {
+        "en": "old skeleton no.",
+        "sv": ""
+      },
+      "old-skin-no": {
+        "en": "old skin no.",
+        "sv": ""
+      },
+      "other-institution-no": {
+        "en": "other institution no.",
+        "sv": ""
+      },
+      "sva-no": {
+        "en": "SVA no.",
+        "sv": ""
+      },
+      "loan-no": {
+        "en": "loan no.",
+        "sv": ""
+      }
+    },
+    "length": {
+      "body-length": {
+        "en": "Body length",
+        "sv": ""
+      },
+      "ear-length": {
+        "en": "Ear length",
+        "sv": ""
+      },
+      "forearm-length": {
+        "en": "Forearm length",
+        "sv": ""
+      },
+      "hind-foot-length": {
+        "en": "Hind-foot length",
+        "sv": ""
+      },
+      "tail-to-anus-length": {
+        "en": "Tail-anus length",
+        "sv": ""
+      },
+      "tail-to-pelvis-length": {
+        "en": "Tail-pelvis length",
+        "sv": ""
+      },
+      "total-length": {
+        "en": "Total length",
+        "sv": ""
+      }
+    },
+    "locality": {
+      "collecting-interpreted": {
+        "en": "collecting (interpreted)",
+        "sv": ""
+      },
+      "collecting-stated": {
+        "en": "collecting (stated)",
+        "sv": ""
+      },
+      "origin": {
+        "en": "origin",
+        "sv": ""
+      }
+    },
     "remarks": {
       "acquisitionRemarks": {
-        "en": "Acquisition remarks"
+        "en": "acquisition",
+        "sv": ""
       },
       "collectingDateRemarks": {
-        "en": "Collecting date remarks"
+        "en": "collecting date",
+        "sv": ""
       },
       "collectingInformationRemarks": {
-        "en": "Collecting information remarks"
+        "en": "collecting locality",
+        "sv": ""
       },
       "curatorialAssessmentRemarks": {
-        "en": "Curatorial assessment remarks"
+        "en": "curatorial assessment",
+        "sv": ""
       },
       "deathRemarks": {
-        "en": "Death remarks"
+        "en": "death",
+        "sv": ""
       },
       "determinationRemarks": {
-        "en": "Determination remarks"
+        "en": "determination",
+        "sv": ""
       },
       "originRemarks": {
-        "en": "Origin remarks"
+        "en": "origin",
+        "sv": ""
       },
       "physicalObjectsRemarks": {
-        "en": "Physical objects remarks"
+        "en": "physical objects",
+        "sv": ""
       },
-      "singlePhysicalObjectRemarks": {
-        "en": "Single physical object remarks"
+      "aSinglePhysicalObjectRemarks": {
+        "en": "a single physical object",
+        "sv": ""
       },
       "specimenRemarks": {
-        "en": "Specimen remarks"
+        "en": "specimen",
+        "sv": ""
       },
       "taxonomyRemarks": {
-        "en": "Taxonomy remarks"
+        "en": "taxonomy",
+        "sv": ""
+      }
+    },
+    "storageLocations": {
+      "cabinet": {
+        "en": "cabinet",
+        "sv": ""
+      },
+      "institution": {
+        "en": "institution",
+        "sv": ""
+      },
+      "mountingwall": {
+        "en": "mounting wall",
+        "sv": ""
+      },
+      "room": {
+        "en": "room",
+        "sv": ""
+      },
+      "shelf": {
+        "en": "shelf",
+        "sv": ""
+      }
+    },
+    "weight": {
+      "complete-body-weight": {
+        "en": "Complete body weight",
+        "sv": ""
+      },
+      "skinned-weight": {
+        "en": "Skinned weight",
+        "sv": ""
+      },
+      "gutted-weight": {
+        "en": "Gutted weight",
+        "sv": ""
+      },
+      "slaughtered-weight": {
+        "en": "Slaughtered weight",
+        "sv": ""
+      },
+      "unknown-weight-type": {
+        "en": "Other weight",
+        "sv": ""
       }
     }
   },

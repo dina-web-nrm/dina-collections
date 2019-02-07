@@ -31,13 +31,16 @@ class Remarks extends PureComponent {
           >
             <Field
               autoComplete="off"
+              capitalize
               component={WrappedTagTypeDropdownField}
               enableHelpNotifications={false}
               inline
+              module="collectionMammals"
               name="remarks.srcField"
               resource="searchSpecimen"
               tagTypeInitialOptionValue={ANY}
               tagTypeMatchAllOptionText="Any remarks type"
+              translationScope="enums.remarks"
             />
           </Grid.Column>
           <Grid.Column width={16}>

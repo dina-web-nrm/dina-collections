@@ -44,12 +44,14 @@ class LocalityFilterForm extends PureComponent {
             enableHelpNotifications={false}
             fluid
             label="Locality (collecting or origin)"
+            module="collectionMammals"
             name="locality.localities.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
             tagTypeInitialOptionValue="collecting-interpreted"
             tagTypeInlineDescription="Suggesting from"
             tagTypeMatchAllOptionText="any locality type"
+            translationScope="enums.locality"
           />
         </Grid.Column>
         <Grid.Column width={16}>
