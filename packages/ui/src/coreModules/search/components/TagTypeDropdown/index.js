@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import { Dropdown } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
+import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from '../../higherOrderComponents'
 import { ANY } from '../../constants'
 
 const propTypes = {
   buildLocalAggregationQuery: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
   inline: PropTypes.bool,
   inlineDescription: PropTypes.node,
   input: PropTypes.shape({
@@ -15,12 +20,14 @@ const propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string,
   }),
+  module: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   search: PropTypes.func.isRequired,
   tagTypeInitialOptionValue: PropTypes.string,
   tagTypeMatchAllOptionText: PropTypes.string,
+  translationScope: PropTypes.string,
   value: PropTypes.string,
 }
 
@@ -33,6 +40,7 @@ const defaultProps = {
   placeholder: undefined,
   tagTypeInitialOptionValue: undefined,
   tagTypeMatchAllOptionText: undefined,
+  translationScope: undefined,
   value: '',
 }
 
@@ -54,7 +62,13 @@ class TagTypeDropdown extends Component {
   }
 
   componentDidMount() {
-    const { tagTypeInitialOptionValue, tagTypeMatchAllOptionText } = this.props
+    const {
+      i18n: { moduleTranslate },
+      module,
+      translationScope,
+      tagTypeInitialOptionValue,
+      tagTypeMatchAllOptionText,
+    } = this.props
 
     return this.fetchAvailableTags().then(tags => {
       const options = tags
@@ -65,7 +79,12 @@ class TagTypeDropdown extends Component {
         .map(tagKey => {
           return {
             key: tagKey,
-            text: tagKey,
+            text: moduleTranslate({
+              fallback: tagKey,
+              module,
+              scope: translationScope,
+              textKey: tagKey,
+            }),
             value: tagKey,
           }
         })
@@ -164,6 +183,9 @@ class TagTypeDropdown extends Component {
 TagTypeDropdown.defaultProps = defaultProps
 TagTypeDropdown.propTypes = propTypes
 
-export default createInjectSearch({
-  storeSearchResult: false,
-})(TagTypeDropdown)
+export default compose(
+  createInjectSearch({
+    storeSearchResult: false,
+  }),
+  withI18n({})
+)(TagTypeDropdown)
