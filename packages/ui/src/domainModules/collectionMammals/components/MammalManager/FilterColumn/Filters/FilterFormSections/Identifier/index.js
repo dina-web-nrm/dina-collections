@@ -20,12 +20,14 @@ class IdentifierFilterForm extends PureComponent {
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}
             label="Identifier value"
+            module="collectionMammals"
             name="identifier.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
             tagTypeInitialOptionValue="catalog-no"
             tagTypeInlineDescription="Suggesting from"
             tagTypeMatchAllOptionText="any identifier type"
+            translationScope="enums.identifiers"
           />
         </Grid.Column>
       </Grid>
