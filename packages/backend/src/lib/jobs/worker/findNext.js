@@ -24,6 +24,7 @@ module.exports = function getNext({
         queryParams: {
           filter,
           limit: 1,
+          sort: 'priority:desc',
         },
       },
       resource: 'job',
