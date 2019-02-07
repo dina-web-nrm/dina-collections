@@ -14,6 +14,7 @@ module.exports = {
       group: { type: Sequelize.STRING },
       operationId: { type: Sequelize.STRING },
       operationRequest: { type: Sequelize.JSONB },
+      priority: { type: Sequelize.INTEGER },
       startedAt: { type: Sequelize.DATE },
       succeededAt: { type: Sequelize.DATE },
     },
@@ -37,6 +38,7 @@ module.exports = {
     },
     {
       filterSpecification: getManyFilterSpecification,
+      sortableFields: ['id', 'priority'],
       type: 'getMany',
     },
     {

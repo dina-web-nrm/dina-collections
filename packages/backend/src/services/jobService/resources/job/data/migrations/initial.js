@@ -33,6 +33,7 @@ module.exports = {
       failedAt: { type: Sequelize.DATE },
       operationId: { type: Sequelize.STRING },
       operationRequest: { type: Sequelize.JSONB },
+      priority: { defaultValue: 0, type: Sequelize.INTEGER },
       startedAt: { type: Sequelize.DATE },
       succeededAt: { type: Sequelize.DATE },
     })
