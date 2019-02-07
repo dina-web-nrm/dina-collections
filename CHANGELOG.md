@@ -2,8 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.15.2](https://github.com/DINA-Web/dina-collections/compare/v0.15.1...v0.15.2)
+#### [v0.15.3-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.15.1...v0.15.3-rc1)
 
+- Display storageLocation full text in physicalObjects header [`#420`](https://github.com/DINA-Web/dina-collections/pull/420)
+- Fix navigation issue after creating and deleting [`#418`](https://github.com/DINA-Web/dina-collections/pull/418)
+- Fix origin visibility in specimen form [`#419`](https://github.com/DINA-Web/dina-collections/pull/419)
+- Show collecting position and other minor improvements [`#416`](https://github.com/DINA-Web/dina-collections/pull/416)
+- Make origin fields initially hidden and fix some display of data [`#417`](https://github.com/DINA-Web/dina-collections/pull/417)
+- Improve scripts - checkout tag branch, rebuild elastic, remote exec cmd [`#404`](https://github.com/DINA-Web/dina-collections/pull/404)
+- Fix miscellaneous issues in specimen search and form [`#414`](https://github.com/DINA-Web/dina-collections/pull/414)
+- Update external events text [`#415`](https://github.com/DINA-Web/dina-collections/pull/415)
 - Anton prompt the user when leaving create form [`#410`](https://github.com/DINA-Web/dina-collections/pull/410)
 - Implement search improvements [`#411`](https://github.com/DINA-Web/dina-collections/pull/411)
 - Fix content update [`#412`](https://github.com/DINA-Web/dina-collections/pull/412)
