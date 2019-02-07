@@ -10,6 +10,7 @@ import { ANY } from '../../constants'
 
 const propTypes = {
   buildLocalAggregationQuery: PropTypes.func.isRequired,
+  capitalize: PropTypes.bool,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
@@ -32,6 +33,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  capitalize: false,
   inline: false,
   inlineDescription: undefined,
   input: undefined,
@@ -63,6 +65,7 @@ class TagTypeDropdown extends Component {
 
   componentDidMount() {
     const {
+      capitalize,
       i18n: { moduleTranslate },
       module,
       translationScope,
@@ -80,6 +83,7 @@ class TagTypeDropdown extends Component {
           return {
             key: tagKey,
             text: moduleTranslate({
+              capitalize,
               fallback: tagKey,
               module,
               scope: translationScope,

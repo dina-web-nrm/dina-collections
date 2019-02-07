@@ -7,6 +7,7 @@ import TagTypeDropdown from '../TagTypeDropdown'
 
 const propTypes = {
   buildLocalAggregationQuery: PropTypes.func.isRequired,
+  capitalize: PropTypes.bool,
   disableClearUnitValue: PropTypes.bool,
   module: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -16,6 +17,7 @@ const propTypes = {
   tagTypeInitialOptionValue: PropTypes.string,
   tagTypeInlineDescription: PropTypes.node,
   tagTypeMatchAllOptionText: PropTypes.string,
+  translationScope: PropTypes.string,
   unitOptions: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
@@ -25,15 +27,18 @@ const propTypes = {
   ).isRequired,
 }
 const defaultProps = {
+  capitalize: undefined,
   disableClearUnitValue: undefined,
   tagTypeDropdownPlaceholder: undefined,
   tagTypeInitialOptionValue: undefined,
   tagTypeInlineDescription: undefined,
   tagTypeMatchAllOptionText: undefined,
+  translationScope: undefined,
 }
 
 const FeatureTypeRange = ({
   buildLocalAggregationQuery,
+  capitalize,
   disableClearUnitValue,
   module,
   name: baseName,
@@ -43,6 +48,7 @@ const FeatureTypeRange = ({
   tagTypeInitialOptionValue,
   tagTypeInlineDescription,
   tagTypeMatchAllOptionText,
+  translationScope,
   unitOptions,
 }) => {
   return (
@@ -52,6 +58,7 @@ const FeatureTypeRange = ({
           <Field
             autoComplete="off"
             buildLocalAggregationQuery={buildLocalAggregationQuery}
+            capitalize={capitalize}
             component={TagTypeDropdown}
             enableHelpNotifications={false}
             inline
@@ -63,6 +70,7 @@ const FeatureTypeRange = ({
             search={search}
             tagTypeInitialOptionValue={tagTypeInitialOptionValue}
             tagTypeMatchAllOptionText={tagTypeMatchAllOptionText}
+            translationScope={translationScope}
           />
         </Grid.Column>
         <Grid.Column width={5}>

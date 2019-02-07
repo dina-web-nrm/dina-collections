@@ -16,6 +16,7 @@ import { ANY } from '../../constants'
 const propTypes = {
   addTagTypeToText: PropTypes.bool,
   buildLocalAggregationQuery: PropTypes.func.isRequired,
+  capitalize: PropTypes.bool,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
@@ -33,20 +34,24 @@ const propTypes = {
       PropTypes.string.isRequired,
     ]).isRequired,
   }).isRequired,
+  module: PropTypes.string.isRequired,
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   tagTypeFilterEnabled: PropTypes.bool,
   tagTypeInitialOptionValue: PropTypes.string,
   tagTypeInlineDescription: PropTypes.string,
   tagTypeMatchAllOptionText: PropTypes.string,
+  translationScope: PropTypes.string,
 }
 const defaultProps = {
   addTagTypeToText: true,
+  capitalize: undefined,
   inlineRefine: false,
   tagTypeFilterEnabled: false,
   tagTypeInitialOptionValue: undefined,
   tagTypeInlineDescription: undefined,
   tagTypeMatchAllOptionText: undefined,
+  translationScope: undefined,
 }
 
 class RawMultipleSearchTagsSelect extends PureComponent {
@@ -351,6 +356,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     const {
       addTagTypeToText,
       buildLocalAggregationQuery,
+      capitalize,
       i18n: { moduleTranslate },
       inlineRefine,
       input,
@@ -385,6 +391,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         {tagTypeFilterEnabled && (
           <TagTypeDropdown
             buildLocalAggregationQuery={buildLocalAggregationQuery}
+            capitalize={capitalize}
             inline
             inlineDescription={tagTypeInlineDescription}
             module={module}
