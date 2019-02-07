@@ -71,7 +71,7 @@ export default function wrapInFieldTemplate(ComposedComponent) {
         meta={meta}
         name={input.name}
       >
-        <ComposedComponent {...rest} meta={meta} />
+        <ComposedComponent {...rest} meta={meta} module={module} />
       </FieldTemplate>
     )
   }

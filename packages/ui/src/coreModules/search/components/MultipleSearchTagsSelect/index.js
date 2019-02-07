@@ -354,11 +354,13 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       i18n: { moduleTranslate },
       inlineRefine,
       input,
+      module,
       resource,
       tagTypeFilterEnabled,
       tagTypeInlineDescription,
       tagTypeInitialOptionValue,
       tagTypeMatchAllOptionText,
+      translationScope,
       ...rest
     } = this.props
 
@@ -385,10 +387,12 @@ class RawMultipleSearchTagsSelect extends PureComponent {
             buildLocalAggregationQuery={buildLocalAggregationQuery}
             inline
             inlineDescription={tagTypeInlineDescription}
+            module={module}
             onChange={this.handleUpdateTagFilterValue}
             resource={resource}
             tagTypeInitialOptionValue={tagTypeInitialOptionValue}
             tagTypeMatchAllOptionText={tagTypeMatchAllOptionText}
+            translationScope={translationScope}
             value={tagTypeFilterValue}
           />
         )}
@@ -402,6 +406,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
           getSelectedOptions={this.getSelectedOptions}
           icon="search"
           input={patchedInput}
+          label={false}
           noResultsMessage={moduleTranslate({
             textKey: 'typeQueryAndPressEnter',
           })}
