@@ -5429,10 +5429,10 @@ supports-color@^4.0.0:
   dependencies:
     has-flag "^2.0.0"
 
-swagger-ui-dist@^3.19.0:
-  version "3.19.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.19.0.tgz#95942ce1a556e7fe2705d7c92c6004a628d53207"
-  integrity sha512-4/S7ZP8uPVn3vrCls46QG6RF4paqRFkDBcfSlyFetZHdPcjAu0hr38ZkaG4n8689R0tiqWDiubnEQUII+ulymA==
+swagger-ui-dist@3.20.6:
+  version "3.20.6"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.20.6.tgz#ec30a88994686ac2346b0727368957c347a669bf"
+  integrity sha512-CN+2z6AP0/KR6Z7wPtBA9ZWr9z28dzA5R88VturLmDSVtYIAB3D6aTt1bCj39sUtLsVwxFVrBDbNtdXcZCvFHQ==
 
 symbol-observable@^1.0.3:
   version "1.2.0"
