@@ -2,6 +2,11 @@ const {
   createRegisterResourceActivityHook,
 } = require('../../../../../historyService/serviceInteractions')
 
+const {
+  createIndexJob,
+  rebuildInProgress,
+} = require('../../../../../searchService/serviceInteractions')
+
 const indexHook = ({ item, serviceInteractor }) => {
   return Promise.resolve().then(() => {
     const id = item && item.id
@@ -14,10 +19,24 @@ const indexHook = ({ item, serviceInteractor }) => {
         },
       },
     }
-    return serviceInteractor.updateView({
-      request,
-      resource: 'searchSpecimen',
-    })
+    return serviceInteractor
+      .updateView({
+        request,
+        resource: 'searchSpecimen',
+      })
+      .then(() => {
+        return rebuildInProgress({ serviceInteractor }).then(inProgress => {
+          if (!inProgress) {
+            return null
+          }
+          return createIndexJob({
+            consolidateJobs: false,
+            priority: 1,
+            searchSpecimenIds: [id],
+            serviceInteractor,
+          })
+        })
+      })
   })
 }
 
