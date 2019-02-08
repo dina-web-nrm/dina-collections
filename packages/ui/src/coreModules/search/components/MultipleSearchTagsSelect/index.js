@@ -58,6 +58,8 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   constructor(props) {
     super(props)
     this.getItemsForSearchQuery = this.getItemsForSearchQuery.bind(this)
+    this.getOptions = this.getOptions.bind(this)
+    this.getSelectedOptions = this.getSelectedOptions.bind(this)
     this.setSearchQueryResultsSelected = this.setSearchQueryResultsSelected.bind(
       this
     )
@@ -69,7 +71,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.handleSelectAllForSearchQuery = this.handleSelectAllForSearchQuery.bind(
       this
     )
-    this.getSelectedOptions = this.getSelectedOptions.bind(this)
     this.handleDeselectAllForSearchQuery = this.handleDeselectAllForSearchQuery.bind(
       this
     )
@@ -134,6 +135,10 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     return this.props.search(query).then(items => {
       return items
     })
+  }
+
+  getOptions() {
+    return this.state.options
   }
 
   setSearchQueryResultsSelected(searchQuery, selected = true) {
@@ -370,7 +375,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       ...rest
     } = this.props
 
-    const { refineOpen, options, tagTypeFilterValue } = this.state
+    const { refineOpen, tagTypeFilterValue } = this.state
     const { value: reduxFormValues } = input
 
     const patchedInput = {
@@ -406,9 +411,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         <MultipleSearchSelectionDropdown
           {...rest}
           enableHelpNotifications={false}
-          getOptions={() => {
-            return options
-          }}
+          getOptions={this.getOptions}
           getSearchQuery={this.handleGetSearchQuery}
           getSelectedOptions={this.getSelectedOptions}
           icon="search"
