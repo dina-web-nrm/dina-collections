@@ -199,6 +199,7 @@ module.exports = function indexVersionManagerFactory(
             })
             .then(() => {
               return updateMeta({
+                error: false,
                 nextVersion: null,
                 version: nextVersion,
               })

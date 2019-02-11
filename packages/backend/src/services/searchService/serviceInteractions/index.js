@@ -43,7 +43,7 @@ exports.createIndexJob = ({
               operationRequest: {
                 queryParams: {
                   consolidateJobs,
-                  force: false,
+                  force: true,
                   limit: 100000,
                 },
               },
