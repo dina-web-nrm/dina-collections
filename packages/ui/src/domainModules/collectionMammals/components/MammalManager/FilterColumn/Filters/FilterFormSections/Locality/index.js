@@ -29,7 +29,7 @@ class LocalityFilterForm extends PureComponent {
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}
             fluid
-            label="Higher Geography (collecting)"
+            label="Higher geography (collecting)"
             name="locality.higherGeography.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
