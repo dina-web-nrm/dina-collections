@@ -17,12 +17,12 @@ const getCoordinates = (latitude, longitude) => {
 
   if (latitude && longitude) {
     return `${Math.abs(latNumber)} ${lat}, ${Math.abs(lonNumber)}
-      ${lon}, (WGS84)`
+      ${lon} (WGS84)`
   }
   if (latitude) {
-    return `${Math.abs(latNumber)} ${lat}, (WGS84)`
+    return `${Math.abs(latNumber)} ${lat} (WGS84)`
   }
-  return `${Math.abs(lonNumber)} ${lon}, (WGS84)`
+  return `${Math.abs(lonNumber)} ${lon} (WGS84)`
 }
 
 const getElevation = (maximumElevationInMeters, minimumElevationInMeters) => {
