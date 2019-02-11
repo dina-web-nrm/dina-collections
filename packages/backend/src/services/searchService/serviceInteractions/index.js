@@ -7,8 +7,8 @@ exports.rebuildInProgress = ({ serviceInteractor }) => {
     .call({
       operationId: 'searchSpecimenGetViewMeta',
     })
-    .then(({ nextVersion }) => {
-      return !!nextVersion
+    .then(({ data }) => {
+      return !!data.attributes.nextVersion
     })
 }
 
