@@ -1,6 +1,5 @@
 const path = require('path')
 const promptContinue = require('./utilities/promptContinue')
-const remoteExecScript = require('./utilities/remoteExecScript')
 const remoteExecCmd = require('./utilities/remoteExecCmd')
 const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs')
 const uploadFile = require('./utilities/uploadFile')
@@ -15,39 +14,25 @@ const relativeDataZipFilePath = path.join(
 )
 
 return promptContinue({
-  message: `This will upload [REPO]/data/data.zip to server: ${
-    serverName
-  } and unpack in [REPO]/data/ `,
-}).then(() => {
-  return remoteExecScript({
-    scriptName: 'rm-data.sh',
-    serverName,
-    throwOnError: false,
-  }).then(() => {
+  message: `This will upload [REPO]/data/data.zip to server: ${serverName}`,
+})
+  .then(() => {
     return remoteExecCmd({
       cmd: `rm ${relativeDataZipFilePath}`,
       serverName,
       throwOnError: false,
     }).then(() => {
+      console.log('Removed current zip (if existed). Now uploading')
       return uploadFile({
         filePath: relativeDataZipFilePath,
         serverName,
+      }).then(transferMessage => {
+        console.log(transferMessage)
+        console.log('Data uploaded success')
+        process.exit(0)
       })
-        .then(transferreMessage => {
-          console.log(transferreMessage)
-          return remoteExecCmd({
-            cmd: `cd ${relativeDataZipFolderPath} && unzip -n ${
-              relativeDataZipFileName
-            }`,
-            serverName,
-          }).then(() => {
-            console.log('Data uploaded and unpacked success')
-            process.exit(0)
-          })
-        })
-        .catch(err => {
-          console.log('err', err)
-        })
     })
   })
-})
+  .catch(err => {
+    console.log('err', err)
+  })
