@@ -49,10 +49,8 @@ module.exports = function updateFactory(
             refresh: forceRefresh,
             type: Model.name,
           })
-          .then(updatedItem => {
-            log.debug(
-              `Update instance for model ${Model.name}. id: ${updatedItem.id}`
-            )
+          .then(() => {
+            log.debug(`Update instance for model ${Model.name}. id: ${id}`)
 
             return {
               item: newItem,
