@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 import { Button, Grid, Modal } from 'semantic-ui-react'
 import { isEmpty } from 'lodash'
 
+import {
+  CATALOG_CARD,
+  CATALOG_CARD_CREATION_DESCRIPTION,
+} from 'common/es5/constants/recordHistoryEvents'
 import config from 'config'
 import { FormModal } from 'coreModules/form/components'
 import formParts from 'coreModules/form/components/parts'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import {
-  CATALOG_CARD,
-  CATALOG_CARD_CREATION_DESCRIPTION,
-} from 'domainModules/collectionMammals/constants'
 
 import Fields from './Fields'
 import EventRow from './EventRow'

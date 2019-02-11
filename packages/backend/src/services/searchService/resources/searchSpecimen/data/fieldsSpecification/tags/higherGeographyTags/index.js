@@ -1,3 +1,5 @@
+const objectPath = require('object-path')
+
 const {
   createTagValueAggregation,
   createTagTypeAggregation,
@@ -21,15 +23,38 @@ const matchFilterName = 'matchHigherGeographyTags'
 
 const delimiter = 'ddaadd'
 
+const extractText = nestedItem => {
+  if (!nestedItem) {
+    return ''
+  }
+
+  const { name, group, parent } = nestedItem
+  if (!parent) {
+    return `${name} [${group}]`
+  }
+
+  return `${name} [${group} in ${parent.name}]`
+}
 const transformation = ({ migrator, target, locals }) => {
-  const { collectingPlaces } = locals
+  const { collectingPlaces, collectingPlacesMap } = locals
 
   const tags = []
 
   if (collectingPlaces) {
-    collectingPlaces.forEach(({ attributes: { name, group } }) => {
+    collectingPlaces.forEach(place => {
+      const parentId = objectPath.get(place, 'relationships.parent.data.id')
+      const parentName = parentId
+        ? objectPath.get(collectingPlacesMap, `${parentId}.attributes.name`)
+        : undefined
+
+      const { name, group } = place.attributes
       const tagType = group
-      const tagValue = name
+      const tagValue = extractText({
+        group,
+        name,
+        parent: { name: parentName },
+      })
+
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
         tagType,

@@ -25,7 +25,7 @@ const availableSrcFields = [
   'determinationRemarks',
   'originRemarks',
   'physicalObjectsRemarks',
-  'singlePhysicalObjectRemarks',
+  'aSinglePhysicalObjectRemarks',
   'specimenRemarks',
   'taxonomyRemarks',
 ]
@@ -163,14 +163,14 @@ const transformation = ({ migrator, src, target }) => {
       }
     )
 
-    const singlePhysicalObjectRemarks = migrator.getValue({
+    const aSinglePhysicalObjectRemarks = migrator.getValue({
       obj: physicalObject,
       path: 'remarks',
     })
 
     registerRemarksIfNotEmpty(
-      'singlePhysicalObjectRemarks',
-      singlePhysicalObjectRemarks
+      'aSinglePhysicalObjectRemarks',
+      aSinglePhysicalObjectRemarks
     )
   })
 

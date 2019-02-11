@@ -13,12 +13,12 @@ import FilterTitle from './FilterTitle'
 
 const items = [
   { name: 'identifier' },
-  { name: 'taxonomy' },
+  { doDeepEqualInitialValuesComparison: true, name: 'taxonomy' },
   { name: 'locality' },
   { name: 'datePeriod' },
   { name: 'agent' },
   { name: 'physicalObject' },
-  { name: 'storage' },
+  { doDeepEqualInitialValuesComparison: true, name: 'storage' },
   { name: 'ageAndStage' },
   { name: 'sex' },
   { name: 'collectingCondition' },
@@ -92,6 +92,8 @@ export default reduxForm({
   initialValues: {
     length: { rangeType: 'total-length', rangeUnit: 'unspecified' },
     remarks: { srcField: ANY },
+    storage: { tagType: ANY },
+    taxonomy: { tagType: ANY },
     weight: { rangeType: 'complete-body-weight', rangeUnit: 'unspecified' },
   },
   keepDirtyOnReinitialize: true,

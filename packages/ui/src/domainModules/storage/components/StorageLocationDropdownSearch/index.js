@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+
+import extractNameWithFirstLevelParent from 'common/es5/storage/extractNameWithFirstLevelParent'
 import { DropdownSearch } from 'coreModules/form/components'
-import { extractNameWithFirstLevelParent } from '../../utilities'
 
 const include = ['parent.parent.parent.parent.parent']
 const relationships = [

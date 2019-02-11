@@ -20,7 +20,7 @@ const FEATURE_GROUP = 'bone-count'
 
 const transformation = ({ migrator, src, target }) => {
   const featureTexts = extractFeatureText({
-    extractKey: true,
+    extractFeatureTypeName: true,
     featureGroupKey: FEATURE_GROUP,
     migrator,
     src,
@@ -38,6 +38,7 @@ const transformation = ({ migrator, src, target }) => {
 module.exports = {
   aggregations: {
     [aggregationName]: createStringAggregation({
+      defaultLimit: 20,
       fieldPath,
       resource,
     }),

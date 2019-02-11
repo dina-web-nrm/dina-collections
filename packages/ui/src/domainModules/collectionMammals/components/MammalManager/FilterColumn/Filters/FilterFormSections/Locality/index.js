@@ -24,11 +24,12 @@ class LocalityFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
+            addTagTypeToText={false}
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}
             fluid
-            label="Higher Geography (collecting)"
+            label="Higher geography (collecting)"
             name="locality.higherGeography.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
@@ -44,12 +45,14 @@ class LocalityFilterForm extends PureComponent {
             enableHelpNotifications={false}
             fluid
             label="Locality (collecting or origin)"
+            module="collectionMammals"
             name="locality.localities.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
             tagTypeInitialOptionValue="collecting-interpreted"
             tagTypeInlineDescription="Suggesting from"
             tagTypeMatchAllOptionText="any locality type"
+            translationScope="enums.locality"
           />
         </Grid.Column>
         <Grid.Column width={16}>

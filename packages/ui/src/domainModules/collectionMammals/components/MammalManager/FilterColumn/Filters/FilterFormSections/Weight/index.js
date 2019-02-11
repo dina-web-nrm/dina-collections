@@ -30,11 +30,13 @@ class WeightFilterForm extends PureComponent {
   render() {
     return (
       <WrappedFeatureTypeRange
+        capitalize
         disableClearUnitValue
         module="collectionMammals"
         name="weight"
         resource="searchSpecimen"
         tagTypeDropdownPlaceholder="Choose weight type"
+        translationScope="enums.weight"
         unitOptions={unitOptions}
       />
     )

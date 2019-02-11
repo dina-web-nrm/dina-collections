@@ -56,7 +56,7 @@ class AgeStageFilterForm extends PureComponent {
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
             enableHelpNotifications={false}
-            label="Development stage"
+            label="Developmental stage"
             name="ageAndStage.stages"
             resource="searchSpecimen"
           />

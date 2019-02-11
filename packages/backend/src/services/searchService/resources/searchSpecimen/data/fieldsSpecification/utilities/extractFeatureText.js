@@ -1,5 +1,8 @@
+const objectPath = require('object-path')
+
 module.exports = function extractFeatureText({
   excludeUnitValue,
+  extractFeatureTypeName = false,
   extractKey = false,
   fallbackUnit,
   featureGroupKey,
@@ -22,8 +25,15 @@ module.exports = function extractFeatureText({
     if (!featureType) {
       return
     }
-    if (featureGroupKey && extractKey) {
-      if (featureGroupKey === featureType.group) {
+
+    if (featureType.group === featureGroupKey) {
+      const featureTypeName = objectPath.get(featureType, 'name.en')
+
+      if (extractFeatureTypeName && featureTypeName) {
+        featureValues.push(featureTypeName)
+      }
+
+      if (extractKey) {
         featureValues.push(featureType.key)
       }
     }

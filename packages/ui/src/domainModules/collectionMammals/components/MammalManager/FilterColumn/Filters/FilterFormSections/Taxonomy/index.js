@@ -24,7 +24,7 @@ class TaxonomyFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            addTagTypeToText={false}
+            addTagTypeToText
             autoComplete="off"
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}

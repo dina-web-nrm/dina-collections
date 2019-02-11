@@ -26,27 +26,33 @@ class StorageFilterForm extends PureComponent {
           <Field
             addTagTypeToText={false}
             autoComplete="off"
+            capitalize
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}
             label="Normal storage location"
+            module="collectionMammals"
             name="storage.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
             tagTypeInitialOptionValue={ANY}
             tagTypeInlineDescription="Suggesting from"
             tagTypeMatchAllOptionText="any storage level"
+            translationScope="enums.storageLocations"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
             autoComplete="off"
+            capitalize
             component={WrappedTagTypeDropdownField}
             enableHelpNotifications={false}
             label="Limit to specimens with storage level"
+            module="collectionMammals"
             name="storage.tagType"
             resource="searchSpecimen"
             tagTypeInitialOptionValue={ANY}
             tagTypeMatchAllOptionText="Any storage level"
+            translationScope="enums.storageLocations"
           />
         </Grid.Column>
       </Grid>

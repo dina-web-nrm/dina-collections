@@ -3,17 +3,16 @@ import React, { Component } from 'react'
 import { Form, Grid } from 'semantic-ui-react'
 import { reduxForm } from 'redux-form'
 
-import createLog from 'utilities/log'
-import FieldWrapper from 'coreModules/form/components/FieldWrapper'
-import { DropdownSearch, Input } from 'coreModules/form/components'
-
 import {
   LEVEL_CABINET,
   LEVEL_INSTITUTION,
   LEVEL_MOUNTING_WALL,
   LEVEL_ROOM,
   LEVEL_SHELF,
-} from '../../../constants'
+} from 'common/es5/constants/storage'
+import createLog from 'utilities/log'
+import FieldWrapper from 'coreModules/form/components/FieldWrapper'
+import { DropdownSearch, Input } from 'coreModules/form/components'
 
 export const FORM_NAME = 'storageLocationFilter'
 

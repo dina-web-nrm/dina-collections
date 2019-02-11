@@ -1,4 +1,7 @@
 const {
+  CATALOG_CARD_CREATION_DESCRIPTION,
+} = require('common/src/constants/recordHistoryEvents')
+const {
   createTagValueAggregation,
   createTagTypeAggregation,
 } = require('../../../../../../../../lib/data/aggregations/factories')
@@ -220,21 +223,29 @@ const transformation = ({ migrator, src, target }) => {
     }) || []
 
   recordHistoryEvents.forEach(recordHistoryEvent => {
-    const {
-      textI,
-      normalizedAgentFullName,
-      disambiguatingDescription,
-    } = extractAgentProps({
-      agent: recordHistoryEvent && recordHistoryEvent.agent,
-      migrator,
-    })
-    addTags({
-      disambiguatingDescription,
-      normalizedAgentFullName,
-      tags,
-      tagType: 'Record history by',
-      textI,
-    })
+    if (recordHistoryEvent) {
+      const {
+        textI,
+        normalizedAgentFullName,
+        disambiguatingDescription,
+      } = extractAgentProps({
+        agent: recordHistoryEvent.agent,
+        migrator,
+      })
+
+      const isCatalogCardCreation =
+        recordHistoryEvent.description === CATALOG_CARD_CREATION_DESCRIPTION
+
+      addTags({
+        disambiguatingDescription,
+        normalizedAgentFullName,
+        tags,
+        tagType: isCatalogCardCreation
+          ? 'Catalog card created by'
+          : 'Record history by',
+        textI,
+      })
+    }
   })
 
   if (tags && tags.length) {

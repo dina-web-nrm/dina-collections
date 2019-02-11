@@ -1,7 +1,7 @@
 import {
   CATALOG_CARD,
   CATALOG_CARD_CREATION_DESCRIPTION,
-} from 'domainModules/collectionMammals/constants'
+} from 'common/es5/constants/recordHistoryEvents'
 
 export default function transformRecordHistoryEvents(recordHistoryEvents = []) {
   const catalogCardExist = recordHistoryEvents.find(({ system }) => {
