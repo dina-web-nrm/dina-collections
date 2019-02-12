@@ -1146,7 +1146,7 @@
       },
       "unknown-weight-type": {
         "en":
-          "Weight (in selected unit) that is neither complete body, skinned gutted or slaughtered.",
+          "Weight (in selected unit) that is neither complete body, skinned, gutted or slaughtered.",
         "sv": ""
       },
       "total-length": {
