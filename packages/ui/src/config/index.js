@@ -4,6 +4,10 @@ const config = {
   },
   enableServiceWorker: process.env.REACT_APP_ENABLE_SERVICE_WORKER === 'true',
   env: process.env.NODE_ENV || 'development',
+  errorLogger: {
+    enabled: process.env.REACT_APP_ERROR_LOGGER_ENABLED === 'true',
+    endpointUrl: process.env.REACT_APP_ERROR_LOGGER_ENDPOINT_URL,
+  },
   isDevelopment: process.env.NODE_ENV === 'development',
   isProduction: process.env.NODE_ENV === 'production',
   isTest: process.env.NODE_ENV === 'test',
