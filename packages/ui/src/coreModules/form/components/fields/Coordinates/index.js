@@ -64,8 +64,8 @@ class Coordinates extends Component {
         module={module}
         name={name}
       >
-        <Grid>
-          <Grid.Column width={8}>
+        <Grid style={{ display: 'inline-block' }}>
+          <Grid.Column style={{ paddingTop: 0 }} width={8}>
             <Field
               component={CoordinateInput}
               coordinateLabel={latitudeLabel}
@@ -76,7 +76,7 @@ class Coordinates extends Component {
               options={latitudeOptions}
             />
           </Grid.Column>
-          <Grid.Column width={8}>
+          <Grid.Column style={{ paddingTop: 0 }} width={8}>
             <Field
               component={CoordinateInput}
               coordinateLabel={longitudeLabel}
