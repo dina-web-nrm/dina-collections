@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.16.1](https://github.com/DINA-Web/dina-collections/compare/v0.16.0...v0.16.1)
+
+- Fix issues found in specimen form [`#426`](https://github.com/DINA-Web/dina-collections/pull/426)
+- Help text updates [`#427`](https://github.com/DINA-Web/dina-collections/pull/427)
+
 #### [v0.16.0](https://github.com/DINA-Web/dina-collections/compare/v0.15.2...v0.16.0)
+
+> 12 February 2019
 
 - Add dev script to export and import sql [`#424`](https://github.com/DINA-Web/dina-collections/pull/424)
 - Make specimen search index update when non specimen resources are updated [`#421`](https://github.com/DINA-Web/dina-collections/pull/421)
