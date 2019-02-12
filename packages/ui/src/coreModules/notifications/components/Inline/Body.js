@@ -29,7 +29,7 @@ const InlineNotificationBody = ({
         {description && description}
         {descriptionKey && (
           <p style={{ whiteSpace: 'pre-line' }}>
-            <Translate textKey={descriptionKey} />
+            <Translate capitalize textKey={descriptionKey} />
           </p>
         )}
         {false && // temporary disable links

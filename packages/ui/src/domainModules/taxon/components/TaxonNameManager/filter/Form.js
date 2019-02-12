@@ -37,6 +37,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    enableHelpNotifications={false}
                     label="Scientific name"
                     model="taxonName"
                     module="taxon"
@@ -49,6 +50,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={DropdownSearch}
+                    enableHelpNotifications={false}
                     fluid
                     label="Rank"
                     model="taxonName"
@@ -63,6 +65,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    enableHelpNotifications={false}
                     label="RUBIN no."
                     model="taxonName"
                     module="taxon"

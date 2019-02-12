@@ -37,6 +37,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    enableHelpNotifications={false}
                     label="Full agent name"
                     model="agent"
                     module="agent"
@@ -48,6 +49,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={DropdownSearch}
+                    enableHelpNotifications={false}
                     fluid
                     label="Agent type"
                     model="agent"
