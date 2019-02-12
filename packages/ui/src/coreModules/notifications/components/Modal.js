@@ -47,20 +47,20 @@ export const NotificationModal = ({
     >
       {headerKey && (
         <Modal.Header>
-          <Translate textKey={headerKey} />
+          <Translate capitalize textKey={headerKey} />
         </Modal.Header>
       )}
       <Modal.Content>
         <Modal.Description>
           {descriptionHeaderKey && (
             <Header>
-              <Translate textKey={descriptionHeaderKey} />
+              <Translate capitalize textKey={descriptionHeaderKey} />
             </Header>
           )}
           {description && description}
           {descriptionKey && (
             <p style={{ whiteSpace: 'pre-line' }}>
-              <Translate textKey={descriptionKey} />
+              <Translate capitalize textKey={descriptionKey} />
             </p>
           )}
           {false && // temporary disable links
