@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react'
-import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { isSubmitting } from 'redux-form'
 import { Button, Grid, Modal } from 'semantic-ui-react'
+
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Field, FormModal, Input } from 'coreModules/form/components'
 
@@ -23,11 +27,18 @@ const mustBe6Or8Digits = value => {
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
+const mapStateToProps = (state, { formName }) => {
+  return {
+    submitting: isSubmitting(formName)(state),
+  }
+}
+
 const propTypes = {
   formName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func,
   history: PropTypes.object,
   reset: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
   valid: PropTypes.bool,
 }
 const defaultProps = {
@@ -47,7 +58,6 @@ class CatalogNumberModal extends PureComponent {
 
     this.state = {
       createManually: false,
-      submitting: false,
     }
   }
 
@@ -66,13 +76,12 @@ class CatalogNumberModal extends PureComponent {
   }
 
   handleSubmit(formData) {
-    this.setState({ submitting: true })
     this.props.handleSubmit(formData)
   }
 
   render() {
-    const { valid } = this.props
-    const { createManually, submitting } = this.state
+    const { submitting, valid } = this.props
+    const { createManually } = this.state
 
     return (
       <FormModal open size="small">
@@ -149,4 +158,4 @@ class CatalogNumberModal extends PureComponent {
 CatalogNumberModal.propTypes = propTypes
 CatalogNumberModal.defaultProps = defaultProps
 
-export default withRouter(CatalogNumberModal)
+export default compose(connect(mapStateToProps), withRouter)(CatalogNumberModal)
