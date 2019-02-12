@@ -1,9 +1,9 @@
-const removeFlagsFromArgArray = require('./removeFlagsFromArgArray')
+const extractArgsToForward = require('./extractArgsToForward')
 
 module.exports = function captureArgString({ removeFlags = ['-s'] } = {}) {
-  const args = removeFlagsFromArgArray({
+  const args = extractArgsToForward({
     args: process.argv.slice(2),
-    flags: removeFlags,
+    removeFlags,
   })
 
   return args.join(' ')

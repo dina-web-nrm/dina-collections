@@ -1,3 +1,9 @@
+const removeScriptFromArgArray = ({ args }) => {
+  return args.filter(arg => {
+    return !arg.endsWith('.sh')
+  })
+}
+
 const removeFlagFromArgArray = ({ args: inputArgs, flag }) => {
   const args = [...inputArgs]
   let serverArgPosition
@@ -18,16 +24,21 @@ const removeFlagFromArgArray = ({ args: inputArgs, flag }) => {
   })
 }
 
-module.exports = function removeFlagsFromArgArray({
+module.exports = function extractArgsToForward({
   args: inputArgs,
-  flags = [],
+  removeFlags = [],
+  removeScript = true,
 }) {
   let args = inputArgs
-  flags.forEach(flag => {
+  removeFlags.forEach(flag => {
     args = removeFlagFromArgArray({
       args,
       flag,
+      removeScript,
     })
   })
+  if (removeScript) {
+    return removeScriptFromArgArray({ args })
+  }
   return args
 }
