@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { URL } from 'common/es5/constants/frontendErrorLogging'
 import FullPageError from './FullPageError'
 
 const propTypes = {
@@ -28,6 +29,16 @@ class ErrorBoundary extends Component {
         hasError: true,
         info: stringifiedInfo,
       })
+
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(
+          URL,
+          JSON.stringify({
+            source: window.location.href,
+            stack: `${stringifiedError} - ${stringifiedInfo}`,
+          })
+        )
+      }
     } catch (_) {
       this.setState({ hasError: true })
     }
