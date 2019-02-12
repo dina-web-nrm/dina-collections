@@ -24,7 +24,7 @@ return promptContinue({
         console.log('Dump created with success')
         if (serverName !== 'local') {
           console.log(
-            `Run: "yarn admin:download:data:files:sql -s ${
+            `Run: "yarn remote:download:data:sql -s ${
               serverName
             }" to download dump`
           )
