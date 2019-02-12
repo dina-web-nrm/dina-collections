@@ -10,7 +10,6 @@ module.exports = function createTagValueAggregation({
     description: description || `Aggregation for: ${fieldPath}`,
     elasticsearch: ({ input = {} }) => {
       const { exact, tagTypes, tagValue, limit = 10 } = input
-
       const identifierKeyFilter = {
         field: keyRawPath,
         size: limit,
@@ -34,6 +33,10 @@ module.exports = function createTagValueAggregation({
       } else if (tagTypes) {
         identifierKeyFilter.include = `.*${tagTypes}${delimiter}.*`
       }
+
+      identifierKeyFilter.include = identifierKeyFilter.include
+        .replace('[', '\\[')
+        .replace(']', '\\]')
 
       return {
         aggs: {
