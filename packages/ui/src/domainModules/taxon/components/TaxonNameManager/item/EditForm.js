@@ -27,7 +27,13 @@ export class Edit extends PureComponent {
       return null
     }
 
-    const { name, rank, resourceActivities, rubinNumber } = nestedItem
+    const {
+      name,
+      rank,
+      resourceActivities,
+      rubinNumber,
+      taxonNameType,
+    } = nestedItem
 
     return (
       <BaseForm
@@ -39,6 +45,7 @@ export class Edit extends PureComponent {
           name,
           rank,
           rubinNumber,
+          taxonNameType,
         }}
         nestedTaxonName={nestedItem}
         onClose={event => {
