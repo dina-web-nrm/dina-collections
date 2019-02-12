@@ -1,4 +1,5 @@
 const { execute: batchExecute } = require('common/src/batch')
+const createControllerWrapper = require('../../utilities/wrapper')
 const rebuildCacheViews = require('./rebuildCacheViews')
 const emptyCacheViews = require('./emptyCacheViews')
 const createLog = require('../../../../utilities/log')
@@ -14,11 +15,9 @@ const createServiceInteractorCache = require('../../../serviceInteractor/cache')
 
 const log = createLog('lib/controllers/views/rebuildView/rebuild')
 
-module.exports = function rebuildView({
-  models,
-  operation,
-  serviceInteractor,
-}) {
+module.exports = function rebuildView(options) {
+  const { models, operation, serviceInteractor } = options
+
   const {
     transformationSpecification: {
       cacheRequestsToResources,
@@ -43,17 +42,20 @@ module.exports = function rebuildView({
     resource,
   } = operation
 
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
-
   if (!srcResource && !srcFileName) {
     throw new Error(`srcResource not provided for ${srcResource}`)
   }
 
-  return ({ request = {} } = {}) => {
-    const { queryParams: { limit = defaultLimit } = {} } = request
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: true,
+    enablePostHooks: true,
+    enablePreHooks: true,
+    requiredModelMethods: ['create', 'update', 'del'],
+    responseFormat: 'object',
+    responseSuccessStatus: 200,
+  })(({ model, request }) => {
+    const { queryParams: { limit = defaultLimit, force = true } = {} } = request
     const reporter = createReporter()
     const serviceInteractorCache = cacheRequestsToResources
       ? createServiceInteractorCache({
@@ -76,73 +78,96 @@ module.exports = function rebuildView({
     }
 
     reporter.start()
-    return model.synchronize({ force: true }).then(() => {
-      log.scope().info(`warming views for ${resource}`)
-      return createGlobals({
-        globalDecorators,
-        serviceInteractor,
-      }).then(globals => {
-        const wrapperTransformationFunction = ({ startCount, items }) => {
-          return transformationFunction({
-            globals,
-            items,
-            postTransformationFunction,
-            preTransformationFunction,
-            reporter,
-            resolveRelations,
-            resourceCacheMap,
-            serviceInteractor: serviceInteractorCache,
-            srcResource,
-            startCount,
-            transformationFunctions,
-          })
-        }
-
-        const wrappedBatchFunction = ({ ...args }) => {
-          return createBatchFunction({
-            ...args,
-            serviceInteractor: serviceInteractorCache,
-            srcFileName,
-            srcRelationships,
-            srcResource,
-            transformationFunction: wrapperTransformationFunction,
-          })
-        }
-
-        return rebuildCacheViews({
+    return model
+      .synchronize({ force })
+      .then(() => {
+        log.scope().info(`warming views for ${resource}`)
+        return createGlobals({
+          globalDecorators,
           serviceInteractor,
-          views: warmViews,
-        }).then(dependencyReport => {
-          log.scope().info(`Start: migrate data for ${resource}`)
-          return batchExecute({
-            createBatch: wrappedBatchFunction,
-            execute: wrapperExecute,
-            numberOfEntries: limit,
-            numberOfEntriesEachBatch,
-            reporter,
-          }).then(() => {
-            log.scope().info(`Done: migrate data for ${resource}`)
-            return emptyCacheViews({
-              serviceInteractor,
-              views: warmViews,
-            }).then(() => {
-              reporter.done()
-              if (cacheRequestsToResources) {
-                serviceInteractorCache.emptyCache()
-              }
-              reporter.rebuildViewDependencyReport({
-                dependencyReport,
-              })
+        }).then(globals => {
+          const wrapperTransformationFunction = ({ startCount, items }) => {
+            return transformationFunction({
+              globals,
+              items,
+              postTransformationFunction,
+              preTransformationFunction,
+              reporter,
+              resolveRelations,
+              resourceCacheMap,
+              serviceInteractor: serviceInteractorCache,
+              srcResource,
+              startCount,
+              transformationFunctions,
+            })
+          }
 
-              return {
-                data: {
-                  attributes: reporter.getReport(),
-                },
-              }
+          const wrappedBatchFunction = ({ ...args }) => {
+            return createBatchFunction({
+              ...args,
+              serviceInteractor: serviceInteractorCache,
+              srcFileName,
+              srcRelationships,
+              srcResource,
+              transformationFunction: wrapperTransformationFunction,
+            })
+          }
+
+          return rebuildCacheViews({
+            serviceInteractor,
+            views: warmViews,
+          }).then(dependencyReport => {
+            log.scope().info(`Start: migrate data for ${resource}`)
+            return batchExecute({
+              createBatch: wrappedBatchFunction,
+              execute: wrapperExecute,
+              numberOfEntries: limit,
+              numberOfEntriesEachBatch,
+              reporter,
+            }).then(() => {
+              log.scope().info(`Done: migrate data for ${resource}`)
+              return emptyCacheViews({
+                serviceInteractor,
+                views: warmViews,
+              }).then(() => {
+                reporter.done()
+                if (cacheRequestsToResources) {
+                  serviceInteractorCache.emptyCache()
+                }
+                reporter.rebuildViewDependencyReport({
+                  dependencyReport,
+                })
+
+                if (model.swap) {
+                  return model.swap().then(() => {
+                    return {
+                      item: {
+                        attributes: reporter.getReport(),
+                        id: '1',
+                        type: 'customObject',
+                      },
+                    }
+                  })
+                }
+                return {
+                  item: {
+                    attributes: reporter.getReport(),
+                    id: '1',
+                    type: 'customObject',
+                  },
+                }
+              })
             })
           })
         })
       })
-    })
-  }
+      .catch(err => {
+        if (model.swap) {
+          return model.swap({ err }).then(() => {
+            throw err
+          })
+        }
+        throw err
+      })
+  })
 }

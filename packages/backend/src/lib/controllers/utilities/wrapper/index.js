@@ -7,6 +7,7 @@ const createObjectResponse = require('../transformations/createObjectResponse')
 const createPreHooks = require('../createPreHooks')
 const extractRelationships = require('../relationships/extractRelationships')
 
+// TODO make sure all controllers are using controllerWrapper
 module.exports = function createControllerWrapper({
   config,
   enableInterceptors = false,
@@ -29,9 +30,12 @@ module.exports = function createControllerWrapper({
     relations,
     resource,
     operationId,
+    response: { resource: customResponseResource } = {},
   } = operation
-  const model = models[resource]
 
+  const responseType = customResponseResource || resource
+
+  const model = models[resource]
   if (!operationId) {
     throw new Error(`Operation id missing for controller`)
   }
@@ -172,6 +176,7 @@ module.exports = function createControllerWrapper({
               item,
               items,
               log,
+              request,
               requestId,
               resource,
               serviceInteractor,
@@ -199,7 +204,7 @@ module.exports = function createControllerWrapper({
                   meta,
                   relationships,
                   status: responseSuccessStatus,
-                  type: resource,
+                  type: responseType,
                 })
               }
 
@@ -223,7 +228,7 @@ module.exports = function createControllerWrapper({
                   }
                 }),
                 meta,
-                type: resource,
+                type: responseType,
               })
             })
           }

@@ -3,8 +3,9 @@ const getItemByTypeId = require('./getItemByTypeId')
 
 module.exports = function preTransformationCoreToNested({
   items,
-  resolveRelations,
+  keepCoreRelationships = true,
   reporter,
+  resolveRelations,
   resourceCacheMap,
   serviceInteractor,
   srcResource,
@@ -39,6 +40,12 @@ module.exports = function preTransformationCoreToNested({
           : null,
         item,
         type: srcResource,
+      }).then(nestedItem => {
+        if (keepCoreRelationships) {
+          nestedItem.coreRelationships = item && item.relationships // eslint-disable-line
+        }
+
+        return nestedItem
       })
     })
   )

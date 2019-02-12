@@ -39,7 +39,17 @@ const getTaxonAndParentAcceptedNames = ({ taxonId, getItemByTypeId }) => {
           id: taxonTaxonNameId,
           type: 'taxonName',
         }).then(taxonTaxonName => {
-          return taxonTaxonName
+          return {
+            ...taxonTaxonName,
+            relationships: {
+              acceptedToTaxon: {
+                data: {
+                  id: taxon.id,
+                  type: 'taxon',
+                },
+              },
+            },
+          }
         })
       })
       return Promise.all(promises).then(taxonNames => {

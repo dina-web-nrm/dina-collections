@@ -1,6 +1,11 @@
 const {
+  createUpdateRelatedSearchSpecimensPostHook,
+} = require('../../../../../searchService/serviceInteractions')
+
+const {
   createRegisterResourceActivityHook,
 } = require('../../../../../historyService/serviceInteractions')
+
 const { removeTaxonFromTaxonNames } = require('../../../../serviceInteractions')
 
 exports.create = [
@@ -14,6 +19,9 @@ exports.update = [
   createRegisterResourceActivityHook({
     action: 'update',
     service: 'taxonomyService',
+  }),
+  createUpdateRelatedSearchSpecimensPostHook({
+    resource: 'taxon',
   }),
 ]
 

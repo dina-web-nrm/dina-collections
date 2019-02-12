@@ -8,8 +8,9 @@ module.exports = function bootstrapWorker({
   serviceOrder,
   workerActive = true,
 }) {
-  const main = ({ log, serviceInteractor }) => {
+  const main = ({ config, log, serviceInteractor }) => {
     setupJobs({
+      config,
       log,
       schedulerActive,
       serviceInteractor,

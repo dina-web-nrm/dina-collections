@@ -1,4 +1,8 @@
 const {
+  createUpdateRelatedSearchSpecimensPostHook,
+} = require('../../../../../searchService/serviceInteractions')
+
+const {
   createRegisterResourceActivityHook,
 } = require('../../../../../historyService/serviceInteractions')
 
@@ -13,6 +17,9 @@ exports.update = [
   createRegisterResourceActivityHook({
     action: 'update',
     service: 'placeService',
+  }),
+  createUpdateRelatedSearchSpecimensPostHook({
+    resource: 'place',
   }),
 ]
 

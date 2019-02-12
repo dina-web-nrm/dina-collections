@@ -101,11 +101,28 @@ services:
       - api
       - keycloak
 
-  worker:
+  baseWorker:
     image: "dina/dina-collections-api:${TAG}"
-    container_name: dina-worker
+    container_name: dina-base-worker
     env_file:
       - ./env/.backend
+    environment:
+      - WORKER_ROLE=simple
+    command: pm2-runtime start /etc/api/src/apps/production/worker/index.js
+    depends_on:
+      - postgres
+      - elasticsearch
+    volumes:
+      - ./data:/data
+      - ./userFiles:/userFiles
+
+  searchIndexWorker:
+    image: "dina/dina-collections-api:${TAG}"
+    container_name: dina-search-index-worker
+    env_file:
+      - ./env/.backend
+    environment:
+      - WORKER_ROLE=search-index
     command: pm2-runtime start /etc/api/src/apps/production/worker/index.js
     depends_on:
       - postgres

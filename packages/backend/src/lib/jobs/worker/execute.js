@@ -2,6 +2,7 @@ const createLog = require('../../../utilities/log')
 
 const log = createLog('lib/jobs/worker/execute')
 
+// TODO move to job service
 module.exports = function execute({ job, serviceInteractor }) {
   return Promise.resolve().then(() => {
     const operationId = job && job.attributes && job.attributes.operationId

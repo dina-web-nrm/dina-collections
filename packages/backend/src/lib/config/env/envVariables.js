@@ -13,7 +13,11 @@ const requiredEnvVariables = [
   'NODE_ENV',
 ]
 
-const optionalEnvVariables = ['IMPORT_DATA_NUMBER_OF_SPECIMENS', 'IMPORT_DATA']
+const optionalEnvVariables = [
+  'IMPORT_DATA_NUMBER_OF_SPECIMENS',
+  'IMPORT_DATA',
+  'WORKER_ROLE',
+]
 
 const devVariables = ['DISABLE_AUTH', 'RUN_MEMWATCH']
 

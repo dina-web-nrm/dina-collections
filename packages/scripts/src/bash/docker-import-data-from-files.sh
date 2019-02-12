@@ -18,7 +18,7 @@ fi
 FULL_PATH=$(dirname "$0")
 
 TAG=$TAG docker-compose -f docker-compose.data.yaml pull
-TAG=$TAG docker-compose stop api worker
+TAG=$TAG docker-compose stop api baseWorker searchIndexWorker
 TAG=$TAG docker-compose -f docker-compose.data.yaml up -d import
 sleep 10
 TAG=$TAG docker-compose stop ui

@@ -92,6 +92,7 @@ const jobs = {
   schedulerActive: false,
   schedulerIndexElastic: false,
   workerActive: false,
+  workerRole: readKey('WORKER_ROLE'),
 }
 
 const elasticsearch = {

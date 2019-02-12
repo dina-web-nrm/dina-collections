@@ -5,12 +5,23 @@ const createFactory = require('./methods/createFactory')
 const delFactory = require('./methods/delFactory')
 const emptyFactory = require('./methods/emptyFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
-const getWhereFactory = require('./methods/getWhereFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
+const getWhereFactory = require('./methods/getWhereFactory')
+const indexVersionManagerFactory = require('./methods/indexVersionManagerFactory')
 const synchronizeFactory = require('./methods/synchronizeFactory')
 const updateFactory = require('./methods/updateFactory')
 
-module.exports = function setupMethods({ elasticsearch, Model, forceRefresh }) {
+module.exports = function setupMethods({
+  elasticsearch,
+  forceRefresh,
+  Model,
+  rebuildStrategy,
+}) {
+  const indexVersionManager = indexVersionManagerFactory({
+    elasticsearch,
+    Model,
+    rebuildStrategy,
+  })
   const buildWhereQuery = buildWhereQueryFactory({
     elasticsearch,
     Model,
@@ -39,7 +50,9 @@ module.exports = function setupMethods({ elasticsearch, Model, forceRefresh }) {
 
   const synchronize = synchronizeFactory({
     elasticsearch,
+    indexVersionManager,
     Model,
+    rebuildStrategy,
   })
 
   const getById = getByIdFactory({
@@ -67,6 +80,7 @@ module.exports = function setupMethods({ elasticsearch, Model, forceRefresh }) {
   const bulkCreate = bulkCreateFactory({
     elasticsearch,
     forceRefresh,
+    indexVersionManager,
     Model,
   })
 
@@ -79,7 +93,9 @@ module.exports = function setupMethods({ elasticsearch, Model, forceRefresh }) {
     empty,
     getById,
     getOneWhere,
+    getViewMeta: indexVersionManager.getViewMeta,
     getWhere,
+    swap: indexVersionManager.swap,
     synchronize,
     update,
   }

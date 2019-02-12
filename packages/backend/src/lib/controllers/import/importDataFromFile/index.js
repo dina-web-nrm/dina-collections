@@ -1,10 +1,7 @@
 const rebuildView = require('../../views/rebuildView')
 
-module.exports = function importDataFromFile({
-  operation,
-  models,
-  serviceInteractor,
-}) {
+module.exports = function importDataFromFile(options) {
+  const { operation, models } = options
   const {
     resource,
     transformationSpecification: { srcFileName } = {},
@@ -18,11 +15,7 @@ module.exports = function importDataFromFile({
     throw new Error(`Filename not provided for ${resource}`)
   }
 
-  const rebuild = rebuildView({
-    models,
-    operation,
-    serviceInteractor,
-  })
+  const rebuild = rebuildView(options)
 
   return ({ request }) => {
     return rebuild({ request })
