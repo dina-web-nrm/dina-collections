@@ -55,7 +55,7 @@ class AgentIdTextResult extends Component {
   }
 
   componentDidMount() {
-    if (this.props.focusOnMount && !config.isTest) {
+    if (this.props.focusOnMount && this.button && !config.isTest) {
       this.button.focus()
     }
   }

@@ -467,6 +467,10 @@
       "hind-foot-length": {
         "en": "hind-foot length",
         "sv": ""
+      },
+      "forearm-length": {
+        "en": "forearm length",
+        "sv": ""
       }
     },
     "individual": {
@@ -1142,7 +1146,7 @@
       },
       "unknown-weight-type": {
         "en":
-          "Weight (in selected unit) that is neither complete body, skinned gutted or slaughtered.",
+          "Weight (in selected unit) that is neither complete body, skinned, gutted or slaughtered.",
         "sv": ""
       },
       "total-length": {
@@ -1167,6 +1171,10 @@
       },
       "hind-foot-length": {
         "en": "Hind foot length with unit.",
+        "sv": ""
+      },
+      "forearm-length": {
+        "en": "Forearm length with unit",
         "sv": ""
       }
     }
@@ -1601,6 +1609,10 @@
       },
       "hind-foot-length": {
         "en": "Hind-foot"
+      },
+      "forearm-length": {
+        "en": "Forearm",
+        "sv": ""
       },
       "carcass-condition": {
         "en": "Condition"
