@@ -37,6 +37,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    enableHelpNotifications={false}
                     label="Accepted name"
                     model="taxonName"
                     module="taxon"
@@ -49,6 +50,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={DropdownSearch}
+                    enableHelpNotifications={false}
                     fluid
                     label="Accepted name rank"
                     model="taxonName"
@@ -62,6 +64,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    enableHelpNotifications={false}
                     label="Vernacular name"
                     model="taxonName"
                     module="taxon"

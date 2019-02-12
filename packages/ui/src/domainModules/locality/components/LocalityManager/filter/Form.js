@@ -53,6 +53,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
+                    enableHelpNotifications={false}
                     label="Name"
                     model="place"
                     module="locality"
@@ -64,6 +65,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={DropdownSearch}
+                    enableHelpNotifications={false}
                     fluid
                     label="Geographic level"
                     model="place"
