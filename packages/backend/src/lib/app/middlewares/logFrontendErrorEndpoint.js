@@ -14,7 +14,7 @@ module.exports = function createLogFrontendError({ config }) {
   if (config.env.isProduction) {
     errorLogger = createErrorLogger({
       config,
-      errorCode: 'FRONTEND_ERROR',
+      defaultErrorCode: 'FRONTEND_ERROR',
       log,
       origin: 'frontend',
     })
