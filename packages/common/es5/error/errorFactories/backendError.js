@@ -13,7 +13,7 @@ var errorStatus = require('../constants/errorStatus');
 
 module.exports = function backendError(_ref) {
   var inputCode = _ref.code,
-      detail = _ref.detail,
+      detailInput = _ref.detailInput,
       parameterErrors = _ref.parameterErrors,
       path = _ref.path,
       source = _ref.source,
@@ -33,6 +33,8 @@ module.exports = function backendError(_ref) {
     baseError = errorCodes.INTERNAL_SERVER_ERROR_INVALID_STATUS_CODE;
     status = 500;
   }
+  var errorId = createErrorId();
+  var detail = detailInput || errorId;
 
   var message = status + ', ' + baseError.code + ', ' + detail + ' ';
 
