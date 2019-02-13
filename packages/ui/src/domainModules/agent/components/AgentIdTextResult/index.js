@@ -91,9 +91,6 @@ class AgentIdTextResult extends Component {
     const fullName = objectPath.get(normalizedAgent, 'attributes.fullName')
 
     const agentName = fullName || inputText
-    if (!agentName) {
-      return null
-    }
 
     const disambiguatingDescription = objectPath.get(
       normalizedAgent,
@@ -118,6 +115,10 @@ class AgentIdTextResult extends Component {
     })
 
     if (textOnly) {
+      if (!agentName) {
+        return null
+      }
+
       return (
         <React.Fragment>
           {agentNameSuffix ? `${agentName} ${agentNameSuffix}` : agentName}
