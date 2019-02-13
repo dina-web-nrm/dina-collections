@@ -13,3 +13,6 @@ KEYCLOAK_AUTH_BASE_URL=http://keycloak:8080
 KEYCLOAK_REALM_NAME=dina
 NODE_ENV=production
 VIRTUAL_HOST=local-api.dina-web.net
+SLACK_WEB_HOOK=test
+SLACK_ACTIVE=false
+SLACK_VERBOSE=false
