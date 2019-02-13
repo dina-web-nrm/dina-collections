@@ -91,6 +91,7 @@ const env = {
   isDevelopment: readKey('NODE_ENV') === 'development',
   isProduction: readKey('NODE_ENV') === 'production',
   isTest: readKey('NODE_ENV') === 'test',
+  serverAlias: readKey('SERVER_ALIAS'),
 }
 
 const jobs = {
