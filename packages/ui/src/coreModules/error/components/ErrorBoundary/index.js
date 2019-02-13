@@ -30,8 +30,8 @@ class ErrorBoundary extends Component {
         info: stringifiedInfo,
       })
 
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(
+      if (window && window.navigator && window.navigator.sendBeacon) {
+        window.navigator.sendBeacon(
           URL,
           JSON.stringify({
             source: window.location.href,
