@@ -15,7 +15,7 @@ module.exports = function setupIntegrations({ config } = {}) {
     Object.keys(config.integrations).reduce((integrations, integrationName) => {
       const integrationConfig = config.integrations[integrationName]
 
-      if (integrationConfig.active) {
+      if (integrationConfig.active && integrationFactories[integrationName]) {
         log.scope().info(`Initializing ${integrationName}`)
         return integrationFactories[integrationName](integrationConfig).then(
           integration => {
