@@ -2,8 +2,10 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.16.1-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.16.0...v0.16.1-rc1)
+#### [v0.16.1-rc2](https://github.com/DINA-Web/dina-collections/compare/v0.16.0...v0.16.1-rc2)
 
+- [BACKEND] Fix missing sanitized tag [`#431`](https://github.com/DINA-Web/dina-collections/pull/431)
+- Log UI errors on the server and notify on Slack [`#430`](https://github.com/DINA-Web/dina-collections/pull/430)
 - WIP Anton/fix search specimen [`#428`](https://github.com/DINA-Web/dina-collections/pull/428)
 - Fix issues found in specimen form [`#426`](https://github.com/DINA-Web/dina-collections/pull/426)
 - Help text updates [`#427`](https://github.com/DINA-Web/dina-collections/pull/427)
