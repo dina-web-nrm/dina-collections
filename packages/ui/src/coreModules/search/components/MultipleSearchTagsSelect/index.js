@@ -205,9 +205,14 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     const { value: prevReduxFormValues } = this.props.input
     if (queryStrings.length > Object.keys(prevReduxFormValues || {}).length) {
       const queryString = queryStrings[queryStrings.length - 1]
+
       const searchOption = this.state.options.find(option => {
         return option.key === queryString
       })
+      if (!searchOption) {
+        return null
+      }
+
       const { key } = searchOption
 
       const { tagType, tagValue, optionType } = searchOption.other
