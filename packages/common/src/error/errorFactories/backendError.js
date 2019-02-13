@@ -5,7 +5,7 @@ const errorStatus = require('../constants/errorStatus')
 
 module.exports = function backendError({
   code: inputCode,
-  detail,
+  detail: detailInput,
   parameterErrors,
   path,
   source,
@@ -22,6 +22,8 @@ module.exports = function backendError({
     baseError = errorCodes.INTERNAL_SERVER_ERROR_INVALID_STATUS_CODE
     status = 500
   }
+  const errorId = createErrorId()
+  const detail = detailInput || errorId
 
   const message = `${status}, ${baseError.code}, ${detail} `
 
