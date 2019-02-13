@@ -1,5 +1,5 @@
-AUTH_BASE_URL=http://keycloak:8080/auth
 API_PORT=80
+AUTH_BASE_URL=http://keycloak:8080/auth
 DB_DATABASE=dina_production
 DB_PASSWORD=mysecretpassword
 DB_URL=postgres
@@ -12,7 +12,7 @@ KEYCLOAK_ADMIN_USERNAME=admin
 KEYCLOAK_AUTH_BASE_URL=http://keycloak:8080
 KEYCLOAK_REALM_NAME=dina
 NODE_ENV=production
-VIRTUAL_HOST=local-api.dina-web.net
-SLACK_WEB_HOOK=test
 SLACK_ACTIVE=false
-SLACK_VERBOSE=false
+SLACK_ERROR_WEBHOOK=url
+SLACK_WARNING_WEBHOOK=url
+VIRTUAL_HOST=local-api.dina-web.net

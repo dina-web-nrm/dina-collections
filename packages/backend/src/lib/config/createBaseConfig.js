@@ -37,8 +37,8 @@ const integrations = {
   },
   slack: {
     active: readBoolKey('SLACK_ACTIVE'),
-    verbose: readBoolKey('SLACK_VERBOSE'),
-    webhook: readKey('SLACK_WEB_HOOK'),
+    errorWebhook: readKey('SLACK_ERROR_WEBHOOK'),
+    warningWebhook: readKey('SLACK_WARNING_WEBHOOK'),
   },
 }
 
