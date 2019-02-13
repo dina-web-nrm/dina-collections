@@ -47,12 +47,9 @@ module.exports = function createBackendApiClientValidator({
     }
 
     const parameterErrors = createParameterErrorsFromAjv(ajvErrors)
-    const parameterErrorsString = JSON.stringify(parameterErrors || {})
-    const detail = `${detailInput}: ${parameterErrorsString}`
-
     return backendError({
       ...options,
-      detail,
+      detail: detailInput,
       model,
       parameterErrors,
       schema,

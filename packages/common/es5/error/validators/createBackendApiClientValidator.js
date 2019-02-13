@@ -4,10 +4,6 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createSchemaValidator = require('../../jsonSchema/createNormalizedValidator');
@@ -57,11 +53,8 @@ module.exports = function createBackendApiClientValidator(_ref) {
     }
 
     var parameterErrors = createParameterErrorsFromAjv(ajvErrors);
-    var parameterErrorsString = (0, _stringify2.default)(parameterErrors || {});
-    var detail = detailInput + ': ' + parameterErrorsString;
-
     return backendError((0, _extends3.default)({}, options, {
-      detail: detail,
+      detail: detailInput,
       model: model,
       parameterErrors: parameterErrors,
       schema: schema,

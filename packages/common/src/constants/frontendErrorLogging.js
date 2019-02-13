@@ -1,0 +1,1 @@
+exports.URL = '/api/logFrontendError'

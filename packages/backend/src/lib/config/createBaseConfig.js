@@ -35,6 +35,11 @@ const integrations = {
     realmName: readKey('KEYCLOAK_REALM_NAME'),
     username: readKey('KEYCLOAK_ADMIN_USERNAME'),
   },
+  slack: {
+    active: readBoolKey('SLACK_ACTIVE'),
+    errorWebhook: readKey('SLACK_ERROR_WEBHOOK'),
+    warningWebhook: readKey('SLACK_WARNING_WEBHOOK'),
+  },
 }
 
 const api = {
@@ -86,6 +91,7 @@ const env = {
   isDevelopment: readKey('NODE_ENV') === 'development',
   isProduction: readKey('NODE_ENV') === 'production',
   isTest: readKey('NODE_ENV') === 'test',
+  serverAlias: readKey('SERVER_ALIAS'),
 }
 
 const jobs = {

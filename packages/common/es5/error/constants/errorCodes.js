@@ -16,12 +16,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var errorCodes = {
   CONFIG_ERROR: {
-    description: 'Something is wrong with configuration. See details',
+    description: 'Something is wrong with configuration.',
     title: 'Config error'
   },
   FORBIDDEN_ERROR: {
     description: 'See details',
     title: 'Forbidden error'
+  },
+  FRONTEND_ERROR: {
+    description: 'Error sent from frontend',
+    title: 'Frontend error'
   },
   INTERNAL_SERVER_ERROR: {
     description: 'Error occurred on server',
@@ -36,11 +40,11 @@ var errorCodes = {
     title: 'Internal server error'
   },
   MODEL_WRAPPER_INPUT_ERROR: {
-    description: 'Something went wrong in the model layer. See details',
+    description: 'Something went wrong in the model layer.',
     title: 'Model error'
   },
   MODEL_WRAPPER_OUTPUT_ERROR: {
-    description: 'Something went wrong in the model layer. See details',
+    description: 'Something went wrong in the model layer.',
     title: 'Model error'
   },
   NOT_FOUND_ERROR: {
@@ -52,7 +56,7 @@ var errorCodes = {
     title: 'Request body validation error'
   },
   REQUEST_ERROR: {
-    description: 'Something is wrong with the request. See details',
+    description: 'Something is wrong with the request',
     title: 'Request error'
   },
   REQUEST_QUERY_VALIDATION_ERROR: {
@@ -60,7 +64,7 @@ var errorCodes = {
     title: 'Query validation error'
   },
   RESOURCE_NOT_FOUND_ERROR: {
-    description: 'Requested resource not found. See details',
+    description: 'Requested resource not found.',
     title: 'Not found error'
   },
   RESPONSE_VALIDATION_ERROR: {
