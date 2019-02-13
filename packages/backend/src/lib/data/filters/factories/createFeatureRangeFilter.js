@@ -8,12 +8,12 @@ module.exports = function createFeatureRangeFilter({ description, fieldPath }) {
     elasticsearch: ({ value = {} }) => {
       const { min, max, tagType, rangeUnit } = value
       const must = []
-      if (min || max) {
+      if (min !== undefined || max !== undefined) {
         must.push({
           range: {
             [`${rangeValuePath}`]: {
-              gte: min || undefined,
-              lte: max || undefined,
+              gte: min,
+              lte: max,
             },
           },
         })
