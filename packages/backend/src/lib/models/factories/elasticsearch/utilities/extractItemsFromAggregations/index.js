@@ -21,7 +21,7 @@ module.exports = function extractItemsFromAggregations({
   const aggregationResult = []
 
   aggregationsInput.forEach(
-    ({ aggregationFunction: aggregationFunctionName }) => {
+    ({ aggregationFunction: aggregationFunctionName, input }) => {
       const { key, resource, extractItems } = aggregations[
         aggregationFunctionName
       ]
@@ -37,7 +37,7 @@ module.exports = function extractItemsFromAggregations({
 
       let items = []
       if (extractItems) {
-        items = extractItems({ key, result })
+        items = extractItems({ input, key, result })
       } else if (aggregation) {
         items = aggregation.buckets
       }

@@ -1,3 +1,22 @@
+const computeItemSortWeight = ({ item, input }) => {
+  if (!item.tagValue) {
+    return 0
+  }
+
+  const matchBeginning = item.tagValue.indexOf(input.tagValue) === 0
+  if (matchBeginning) {
+    return 1
+  }
+  return -1
+}
+
+const sanitizeInput = input => {
+  if (!input) {
+    return input
+  }
+  return input.replace('[', '\\[').replace(']', '\\]')
+}
+
 module.exports = function createTagValueAggregation({
   delimiter = 'dddd',
   description,
@@ -10,29 +29,35 @@ module.exports = function createTagValueAggregation({
     description: description || `Aggregation for: ${fieldPath}`,
     elasticsearch: ({ input = {} }) => {
       const { exact, tagTypes, tagValue, limit = 10 } = input
-
       const identifierKeyFilter = {
         field: keyRawPath,
-        size: limit,
+        size: limit * 2,
       }
+      const sanitizedTagValue = sanitizeInput(tagValue)
+      const sanitizedTagTypes = tagTypes && tagTypes.map(sanitizeInput)
+
       if (exact) {
-        identifierKeyFilter.include = `${tagTypes[0]}${delimiter}${tagValue}`
-      } else if (tagValue && tagTypes) {
-        if (tagTypes.length === 1) {
-          identifierKeyFilter.include = `${tagTypes[0]}${
+        identifierKeyFilter.include = `${sanitizedTagTypes[0]}${delimiter}${
+          tagValue
+        }`
+      } else if (sanitizedTagValue && sanitizedTagTypes) {
+        if (sanitizedTagTypes.length === 1) {
+          identifierKeyFilter.include = `${sanitizedTagTypes[0]}${
             delimiter
-          }${tagValue.toLowerCase()}.*`
+          }[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
         } else {
-          identifierKeyFilter.include = `.*(${tagTypes.join('|')})${
+          identifierKeyFilter.include = `.*(${sanitizedTagTypes.join('|')})${
             delimiter
-          }${tagValue.toLowerCase()}.*`
+          }[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
         }
-      } else if (tagValue) {
+      } else if (sanitizedTagValue) {
         identifierKeyFilter.include = `.*${
           delimiter
-        }${tagValue.toLowerCase()}.*`
-      } else if (tagTypes) {
-        identifierKeyFilter.include = `.*${tagTypes}${delimiter}.*`
+        }[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
+      } else if (sanitizedTagTypes) {
+        identifierKeyFilter.include = `.*${sanitizedTagTypes.join('|')}${
+          delimiter
+        }.*`
       }
 
       return {
@@ -46,10 +71,10 @@ module.exports = function createTagValueAggregation({
         },
       }
     },
-    extractItems: ({ key, result }) => {
+    extractItems: ({ key, result, input = {} }) => {
+      const { limit = 10 } = input
       const rootAggregations = result.aggregations[key]
       const tagKeys = rootAggregations.tagKeys.buckets
-
       const items = []
       tagKeys.forEach(tagKey => {
         const sections = tagKey.key.split(delimiter)
@@ -67,7 +92,23 @@ module.exports = function createTagValueAggregation({
         })
       })
 
-      return items
+      let sortedResult = items
+      if (input.tagValue) {
+        sortedResult = items.sort((a, b) => {
+          return (
+            computeItemSortWeight({
+              input,
+              item: b,
+            }) -
+            computeItemSortWeight({
+              input,
+              item: a,
+            })
+          )
+        })
+      }
+
+      return sortedResult.slice(0, limit)
     },
     inputSchema: {
       type: 'object',

@@ -43,7 +43,7 @@
     "remote:build:data:zip": "node ./packages/scripts/src/js/packageJsonDataFiles.js",
     "remote:build:index:specimen": "node ./packages/scripts/src/js/exec.js docker-rebuild-search.sh",
     "remote:deploy": "node ./packages/scripts/src/js/exec.js docker-deploy.sh",
-    "remote:download:data:json": "node ./packages/scripts/src/js/downloadAndUnpackDataFiles.js",
+    "remote:download:data:zip": "node ./packages/scripts/src/js/downloadZippedFiles.js",
     "remote:download:data:sql": "node ./packages/scripts/src/js/downloadSqlDump.js",
     "remote:exec:cmd": "node ./packages/scripts/src/js/execCmd.js",
     "remote:exec:script": "node ./packages/scripts/src/js/exec.js",
