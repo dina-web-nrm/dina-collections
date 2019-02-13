@@ -20,29 +20,60 @@ module.exports = function createErrorLogger({
 
   const log = logInput || createLog(`errorLogger:${origin}`)
 
-  const { active, verbose, webhook } = config.integrations.slack || {}
-  let slack
-  if (active && webhook) {
-    slack = new Slack()
-    slack.setWebhook(webhook)
+  const { active, errorWebhook, warningWebhook } =
+    config.integrations.slack || {}
+
+  let slackError
+  let slackWarning
+
+  if (active && errorWebhook) {
+    slackError = new Slack()
+    slackError.setWebhook(errorWebhook)
+  }
+  if (active && warningWebhook) {
+    slackWarning = new Slack()
+    slackWarning.setWebhook(warningWebhook)
   }
 
   const sendErrorToSlack = error => {
+    const stringErrorStatus = error && error.status && String(error.status)
+
     const errorIsWarning =
-      origin === 'backend' && error.status && `${error.status[0]}` === '4'
-    let sendError = false
-    if (origin === 'frontend') {
-      sendError = true
-    } else if (verbose) {
-      sendError = true
-    } else if (!errorIsWarning) {
-      sendError = true
+      origin === 'backend' && stringErrorStatus && stringErrorStatus[0] === '4'
+
+    const { serverAlias } = config.env || {}
+
+    const text = serverAlias
+      ? `*${error.title}*. Check logs with command: _yarn remote:exec:cmd -s ${
+          serverAlias
+        } -c 'docker-compose logs --tail=2000 api | grep -a20 -b20 ${
+          error.id
+        }'_`
+      : `*${error.title}* | ${error.id}`
+
+    const callback = (err, response) => {
+      if (err) {
+        return log.err('Slack webhook error', err)
+      }
+
+      return log.info(
+        `Posted error ${error.id} to Slack, response: ${response &&
+          response.response}`
+      )
     }
 
-    if (sendError) {
-      // Use these 3 params when sending to slack.
-      // errorIsWarning can be used to insert different emojis. error vs warning
-      // console.log('send error to slack', errorIsWarning, error.title, error.id)
+    const payload = {
+      icon_emoji: ':loudspeaker:',
+      text,
+      username: 'webhookbot',
+    }
+
+    if (errorIsWarning && slackWarning) {
+      slackWarning.webhook(payload, callback)
+    }
+
+    if (!errorIsWarning && slackError) {
+      slackError.webhook(payload, callback)
     }
   }
 
