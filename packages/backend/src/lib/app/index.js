@@ -1,10 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
-const createLogIncomingMiddleware = require('./middlewares/logIncoming')
-const createDocsMiddleware = require('./middlewares/docs')
-const createPingRouteMiddleware = require('./middlewares/pingRoute')
+
 const createAuthenticateMiddleware = require('../auth/middleware')
+const createDocsMiddleware = require('./middlewares/docs')
+const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
+const createLogFrontendErrorEndpointMiddleware = require('./middlewares/logFrontendErrorEndpoint')
+const createLogIncomingMiddleware = require('./middlewares/logIncoming')
+const createPingRouteMiddleware = require('./middlewares/pingRoute')
 const createResponseTimeMiddleware = require('./middlewares/responseTime')
 
 module.exports = function createApp(
@@ -12,13 +14,15 @@ module.exports = function createApp(
 ) {
   const app = express()
 
-  const docsMiddleware = createDocsMiddleware({ openApiSpec })
-  const logIncomingMiddleware = createLogIncomingMiddleware()
-  const errorHandlerMiddleware = createErrorHandlerMiddleware()
-  const pingRouteMiddleware = createPingRouteMiddleware()
   const authenticateMiddleware = createAuthenticateMiddleware({ auth, config })
+  const docsMiddleware = createDocsMiddleware({ openApiSpec })
+  const errorHandlerMiddleware = createErrorHandlerMiddleware()
+  const logFrontendErrorEndpointMiddleware = createLogFrontendErrorEndpointMiddleware(
+    { config }
+  )
+  const logIncomingMiddleware = createLogIncomingMiddleware()
+  const pingRouteMiddleware = createPingRouteMiddleware()
   const responseTimeMiddleware = createResponseTimeMiddleware()
-
   app.use(responseTimeMiddleware)
   app.use(logIncomingMiddleware)
   app.use('/docs', docsMiddleware)
@@ -35,7 +39,7 @@ module.exports = function createApp(
     })
   )
   app.use(authenticateMiddleware)
-
+  app.use(logFrontendErrorEndpointMiddleware)
   app.use(pingRouteMiddleware)
 
   if (routers) {
