@@ -13,7 +13,7 @@ var errorStatus = require('../constants/errorStatus');
 
 module.exports = function backendError(_ref) {
   var inputCode = _ref.code,
-      detailInput = _ref.detailInput,
+      detailInput = _ref.detail,
       parameterErrors = _ref.parameterErrors,
       path = _ref.path,
       source = _ref.source,

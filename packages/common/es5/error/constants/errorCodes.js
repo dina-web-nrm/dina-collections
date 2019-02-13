@@ -23,6 +23,10 @@ var errorCodes = {
     description: 'See details',
     title: 'Forbidden error'
   },
+  FRONTEND_ERROR: {
+    description: 'Error sent from frontend',
+    title: 'Frontend error'
+  },
   INTERNAL_SERVER_ERROR: {
     description: 'Error occurred on server',
     title: 'Internal server error'
