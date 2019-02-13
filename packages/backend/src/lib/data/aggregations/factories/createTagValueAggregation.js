@@ -35,10 +35,9 @@ module.exports = function createTagValueAggregation({
       }
       const sanitizedTagValue = sanitizeInput(tagValue)
       const sanitizedTagTypes = tagTypes && tagTypes.map(sanitizeInput)
-
       if (exact) {
         identifierKeyFilter.include = `${sanitizedTagTypes[0]}${delimiter}${
-          tagValue
+          sanitizedTagValue
         }`
       } else if (sanitizedTagValue && sanitizedTagTypes) {
         if (sanitizedTagTypes.length === 1) {
