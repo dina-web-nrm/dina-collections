@@ -20,16 +20,16 @@ module.exports = function createTagValueAggregation({
         if (tagTypes.length === 1) {
           identifierKeyFilter.include = `${tagTypes[0]}${
             delimiter
-          }${tagValue.toLowerCase()}.*`
+          }.*${tagValue.toLowerCase()}.*`
         } else {
           identifierKeyFilter.include = `.*(${tagTypes.join('|')})${
             delimiter
-          }${tagValue.toLowerCase()}.*`
+          }.*${tagValue.toLowerCase()}.*`
         }
       } else if (tagValue) {
         identifierKeyFilter.include = `.*${
           delimiter
-        }${tagValue.toLowerCase()}.*`
+        }.*${tagValue.toLowerCase()}.*`
       } else if (tagTypes) {
         identifierKeyFilter.include = `.*${tagTypes}${delimiter}.*`
       }
