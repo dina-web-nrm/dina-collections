@@ -1,6 +1,6 @@
 const errorCodes = {
   CONFIG_ERROR: {
-    description: 'Something is wrong with configuration. See details',
+    description: 'Something is wrong with configuration.',
     title: 'Config error',
   },
   FORBIDDEN_ERROR: {
@@ -22,11 +22,11 @@ const errorCodes = {
     title: 'Internal server error',
   },
   MODEL_WRAPPER_INPUT_ERROR: {
-    description: 'Something went wrong in the model layer. See details',
+    description: 'Something went wrong in the model layer.',
     title: 'Model error',
   },
   MODEL_WRAPPER_OUTPUT_ERROR: {
-    description: 'Something went wrong in the model layer. See details',
+    description: 'Something went wrong in the model layer.',
     title: 'Model error',
   },
   NOT_FOUND_ERROR: {
@@ -38,7 +38,7 @@ const errorCodes = {
     title: 'Request body validation error',
   },
   REQUEST_ERROR: {
-    description: 'Something is wrong with the request. See details',
+    description: 'Something is wrong with the request',
     title: 'Request error',
   },
   REQUEST_QUERY_VALIDATION_ERROR: {
@@ -46,7 +46,7 @@ const errorCodes = {
     title: 'Query validation error',
   },
   RESOURCE_NOT_FOUND_ERROR: {
-    description: 'Requested resource not found. See details',
+    description: 'Requested resource not found.',
     title: 'Not found error',
   },
   RESPONSE_VALIDATION_ERROR: {
