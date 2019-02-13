@@ -16,6 +16,9 @@ const requiredEnvVariables = [
 const optionalEnvVariables = [
   'IMPORT_DATA_NUMBER_OF_SPECIMENS',
   'IMPORT_DATA',
+  'SLACK_ACTIVE',
+  'SLACK_WEB_HOOK',
+  'SLACK_VERBOSE',
   'WORKER_ROLE',
 ]
 

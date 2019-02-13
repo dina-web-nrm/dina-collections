@@ -35,6 +35,11 @@ const integrations = {
     realmName: readKey('KEYCLOAK_REALM_NAME'),
     username: readKey('KEYCLOAK_ADMIN_USERNAME'),
   },
+  slack: {
+    active: readBoolKey('SLACK_ACTIVE'),
+    verbose: readBoolKey('SLACK_VERBOSE'),
+    webhook: readKey('SLACK_WEB_HOOK'),
+  },
 }
 
 const api = {
