@@ -86,6 +86,7 @@ class EditItemColumn extends Component {
             'onInteraction',
             'relationshipsToCheckBeforeDelete',
             'resource',
+            'transformOutput',
           ],
           props: this.props,
         })

@@ -41,7 +41,7 @@ class CreateItemColumn extends Component {
       }
       case 'bottomBar': {
         const { extractedProps } = extractProps({
-          keys: ['onInteraction', 'resource'],
+          keys: ['onInteraction', 'resource', 'transformOutput'],
           props: this.props,
         })
 
