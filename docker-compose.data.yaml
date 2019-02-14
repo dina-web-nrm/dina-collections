@@ -18,7 +18,7 @@ services:
       - ./env/.backend
     environment:
       BACKEND_IN_NODE_MODULES: 'true'
-    command: yarn --cwd=/etc/migrations elasticsearch:development:rebuild-index:specimen-search
+    command: yarn --cwd=/etc/migrations elasticsearch:production:rebuild-index:specimen-search
     volumes:
       - ./data:/data
       - ./userFiles:/userFiles
