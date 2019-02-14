@@ -3,7 +3,7 @@ const serviceDefinitions = require('../../../services')
 const serviceOrder = require('../../../services/serviceOrder')
 
 bootstrapData({
-  env: 'development',
+  env: 'production',
   importData: false,
   serviceDefinitions,
   serviceOrder,
