@@ -68,7 +68,12 @@ module.exports = function createFileInteractor({ config }) {
     })
   }
 
-  const appendSync = ({ filePath, folderPath, content, encoding = 'utf8' }) => {
+  const appendSync = ({
+    filePath,
+    folderPath = 'userFiles',
+    content,
+    encoding = 'utf8',
+  }) => {
     const fullPath = createFullPath({
       filePath,
       folderPath,
