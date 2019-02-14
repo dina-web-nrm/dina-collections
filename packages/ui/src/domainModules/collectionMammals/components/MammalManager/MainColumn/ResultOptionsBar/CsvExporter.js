@@ -156,8 +156,10 @@ export class CsvExporter extends Component {
   handleExportToCsv(event) {
     event.preventDefault()
     event.stopPropagation()
-    this.updateStatus('exporting')
     this.exportToCsv()
+    setTimeout(() => {
+      this.updateStatus('exporting')
+    })
   }
 
   updateStatus(status, params = {}) {
@@ -248,24 +250,26 @@ export class CsvExporter extends Component {
       <React.Fragment>
         {exportModal}
 
-        <Popup
-          content={
-            !exportModal && (
-              <Button
-                content="Export result to CSV"
-                onClick={event => this.handleExportToCsv(event)}
-                type="button"
-              />
-            )
-          }
-          on="click"
-          position="bottom right"
-          trigger={
-            <Menu.Item link>
-              <Icon name="share" style={{ cursor: 'pointer' }} />
-            </Menu.Item>
-          }
-        />
+        {!modalContent && (
+          <Popup
+            content={
+              !exportModal && (
+                <Button
+                  content="Export result to CSV"
+                  onClick={event => this.handleExportToCsv(event)}
+                  type="button"
+                />
+              )
+            }
+            on="click"
+            position="bottom right"
+            trigger={
+              <Menu.Item link>
+                <Icon name="share" style={{ cursor: 'pointer' }} />
+              </Menu.Item>
+            }
+          />
+        )}
       </React.Fragment>
     )
   }
