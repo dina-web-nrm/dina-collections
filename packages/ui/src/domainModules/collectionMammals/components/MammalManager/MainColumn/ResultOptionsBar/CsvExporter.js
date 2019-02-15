@@ -49,7 +49,7 @@ const defaultProps = {
     return name
   }),
   pollInterval: 500,
-  pollLimit: 50,
+  pollLimit: 100,
   searchResult: undefined,
 }
 

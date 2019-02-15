@@ -22,8 +22,13 @@ module.exports = function createStringInFilter({
       }
 
       return {
-        [`${fieldPath}`]: {
-          [Op.notIn]: value,
+        [Op.or]: {
+          [`${fieldPath}`]: {
+            [Op.notIn]: value,
+          },
+          [`${fieldPath}`]: {
+            [Op.eq]: null,
+          },
         },
       }
     },
