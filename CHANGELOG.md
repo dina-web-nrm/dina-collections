@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.16.4-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.16.3...v0.16.4-rc1)
+
+- Fix simple worker not doing non search jobs [`#435`](https://github.com/DINA-Web/dina-collections/pull/435)
+
 #### [v0.16.3](https://github.com/DINA-Web/dina-collections/compare/v0.16.1...v0.16.3)
+
+> 14 February 2019
 
 - Fix rebuild search in docker [`#434`](https://github.com/DINA-Web/dina-collections/pull/434)
 - Fix create agent with affiliation & focus edit button in agent dropdown [`#433`](https://github.com/DINA-Web/dina-collections/pull/433)
