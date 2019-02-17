@@ -82,7 +82,7 @@ module.exports = ({ models, operation }) => {
           result,
           targetAs,
         })
-        log.scope().debug(selectedResult)
+        log.scope().debug('selectedResult', selectedResult)
         return selectedResult
       })
       .then(transformOutput)
