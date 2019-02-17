@@ -13,6 +13,7 @@ module.exports = function extractRelationship({
   }
   const {
     format: relationFormat,
+    keyType,
     targetResource: relationResource,
     storeInDocument,
     storeInExternalDocument,
@@ -22,7 +23,7 @@ module.exports = function extractRelationship({
     return objectPath.get(item, `relationships.${relationKey}`)
   }
 
-  if (storeInExternalDocument) {
+  if (storeInExternalDocument || keyType === 'polymorphic') {
     return objectPath.get(externalRelationships, relationKey)
   }
 

@@ -1,6 +1,6 @@
 const objectPath = require('object-path')
 
-const shouldIncludeRelation = require('../shouldIncludeRelation')
+const shouldIncludeRelation = require('../../shouldIncludeRelation')
 
 /* eslint-disable no-param-reassign */
 const addItemToData = ({ id, item, map }) => {
@@ -13,7 +13,7 @@ const addItemToData = ({ id, item, map }) => {
   }
 }
 
-module.exports = function fetchJsonExternalRelationships({
+module.exports = function fetchPolymorphicExternalRelationships({
   item: sourceItem,
   items: sourceItems,
   relations,
@@ -29,18 +29,13 @@ module.exports = function fetchJsonExternalRelationships({
 
   const remoteRequestSpecifications = Object.keys(relations)
     .map(relationKey => {
-      const { storeInExternalDocument } = relations[relationKey]
+      const { keyType } = relations[relationKey]
 
       if (!shouldIncludeRelation({ queryParamRelationships, relationKey })) {
         return null
       }
 
-      // TODO: make it work for resourceActivities
-      if (relationKey === 'resourceActivities' && !sourceItem) {
-        return null
-      }
-
-      if (storeInExternalDocument) {
+      if (keyType === 'polymorphic') {
         const relation = relations[relationKey]
         const {
           oneOrMany,
@@ -53,23 +48,12 @@ module.exports = function fetchJsonExternalRelationships({
           oneOrMany,
           relationKey,
           request: {
-            queryParams:
-              relationKey === 'resourceActivities' && sourceItem
-                ? {
-                    filter: {
-                      relationshipId: sourceItemId,
-                      relationshipType: sourceResource,
-                    },
-                    includeFields: ['id'],
-                  }
-                : {
-                    filter: {
-                      [filterKey]: sourceItemIds,
-                    },
-                    relationships: inverseRelationshipKey
-                      ? [inverseRelationshipKey]
-                      : undefined,
-                  },
+            queryParams: {
+              filter: {
+                [filterKey]: sourceItemIds,
+              },
+              limit: 10000,
+            },
           },
           targetResource,
         }
@@ -82,13 +66,7 @@ module.exports = function fetchJsonExternalRelationships({
     })
 
   const getExternalRelationshipsPromises = remoteRequestSpecifications.map(
-    ({
-      inverseRelationshipKey,
-      oneOrMany,
-      relationKey,
-      request,
-      targetResource,
-    }) => {
+    ({ oneOrMany, relationKey, request, targetResource }) => {
       return serviceInteractor
         .getMany({
           request,
@@ -103,31 +81,23 @@ module.exports = function fetchJsonExternalRelationships({
               type: targetResource,
             }
 
-            const sourceItemsRelatedToTarget = objectPath.get(
+            const sourceItemIdRelatedToTarget = objectPath.get(
               relatedItem,
-              `relationships.${inverseRelationshipKey}.data`
+              `attributes.resourceId`
             )
 
-            if (sourceItemsRelatedToTarget) {
+            if (sourceItemIdRelatedToTarget) {
               if (oneOrMany === 'one') {
-                sourceIdRelationshipsMap[sourceItemId] = {
+                sourceIdRelationshipsMap[sourceItemIdRelatedToTarget] = {
                   data: mappedRelationshipItem,
                 }
               } else {
-                sourceItemsRelatedToTarget.forEach(({ id }) =>
-                  addItemToData({
-                    id,
-                    item: mappedRelationshipItem,
-                    map: sourceIdRelationshipsMap,
-                  })
-                )
+                addItemToData({
+                  id: sourceItemIdRelatedToTarget,
+                  item: mappedRelationshipItem,
+                  map: sourceIdRelationshipsMap,
+                })
               }
-            } else if (targetResource === 'resourceActivity' && sourceItem) {
-              addItemToData({
-                id: sourceItemId,
-                item: mappedRelationshipItem,
-                map: sourceIdRelationshipsMap,
-              })
             }
           })
 
