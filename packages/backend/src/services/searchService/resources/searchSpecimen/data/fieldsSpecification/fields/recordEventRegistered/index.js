@@ -1,3 +1,5 @@
+const getYYYYMMDDFromTimestamp = require('common/src/date/getYYYYMMDDFromTimestamp')
+
 const extractRecordEventText = require('../../utilities/extractRecordEventText')
 
 const {
@@ -10,9 +12,15 @@ const MATCHING_DESCRIPTION = 'New specimen record'
 
 const transformation = ({ migrator, src, target }) => {
   const recordEventStrings = extractRecordEventText({
-    matchingDescription: MATCHING_DESCRIPTION, // TODO should use enum instead
+    dateOnly: true,
+    matchingDescription: MATCHING_DESCRIPTION,
     migrator,
     src,
+  })
+
+  const resourceActivities = migrator.getValue({
+    obj: src,
+    path: 'resourceActivities',
   })
 
   if (recordEventStrings && recordEventStrings.length) {
@@ -20,6 +28,15 @@ const transformation = ({ migrator, src, target }) => {
       obj: target,
       path: fieldPath,
       value: recordEventStrings,
+    })
+  } else if (resourceActivities && resourceActivities.length) {
+    const { srcCreatedAt } = resourceActivities[0]
+    const dateText = getYYYYMMDDFromTimestamp(srcCreatedAt)
+
+    migrator.setValue({
+      obj: target,
+      path: fieldPath,
+      value: [dateText],
     })
   }
 
