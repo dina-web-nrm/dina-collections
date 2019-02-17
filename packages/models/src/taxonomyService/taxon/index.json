@@ -61,9 +61,9 @@
         },
         "resourceActivities": {
           "type": "object",
-          "x-inverse-relationship-key": "taxa",
+          "x-inverse-relationship-key": "taxon",
           "x-key-stored-in-model": "resourceActivity",
-          "x-key-type": "json",
+          "x-key-type": "polymorphic",
           "properties": {
             "data": {
               "type": "array",

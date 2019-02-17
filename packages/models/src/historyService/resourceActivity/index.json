@@ -70,6 +70,130 @@
     },
     "type": {
       "$ref": "__ROOT__type"
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "normalizedAgent": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "x-key-name": "resourceId",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__normalizedAgent",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "physicalObject": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "x-key-name": "resourceId",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__physicalObject",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "place": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "x-key-name": "resourceId",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__place",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "specimen": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "x-key-name": "resourceId",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__specimen",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "storageLocation": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "x-key-name": "resourceId",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__storageLocation",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "taxon": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "x-key-name": "resourceId",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxon",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "taxonName": {
+          "type": "object",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "x-key-name": "resourceId",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxonName",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    },
+    "normalizedAgent": {
+      "$ref": "__ROOT__normalizedAgent",
+      "x-reference-type": "external"
+    },
+    "physicalObject": {
+      "$ref": "__ROOT__physicalObject",
+      "x-reference-type": "external"
+    },
+    "place": {
+      "$ref": "__ROOT__place",
+      "x-reference-type": "external"
+    },
+    "specimen": {
+      "$ref": "__ROOT__specimen",
+      "x-reference-type": "external"
+    },
+    "storageLocation": {
+      "$ref": "__ROOT__storageLocation",
+      "x-reference-type": "external"
+    },
+    "taxon": {
+      "$ref": "__ROOT__taxon",
+      "x-reference-type": "external"
+    },
+    "taxonName": {
+      "$ref": "__ROOT__taxonName",
+      "x-reference-type": "external"
     }
   }
 }
