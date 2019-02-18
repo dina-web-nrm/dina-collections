@@ -118,6 +118,7 @@ const createResourceUrlState = () => ComposedComponent => {
 
     navigateEdit(itemId) {
       this.props.updateState({
+        filterColumn: '',
         itemId,
         mainColumn: 'edit',
       })
