@@ -73,21 +73,32 @@ module.exports = function performExport({
       })
   }
 
+  const extractValue = value => {
+    if (Array.isArray(value) && value.length === 0) {
+      return null
+    }
+    return value
+  }
   const fields = exportFields.map(exportField => {
     if (exportField.fieldPaths) {
       return {
         default: exportField.default,
         label: exportField.label,
-        value: row =>
-          exportField.fieldPaths.map(fieldPath => {
+        value: row => {
+          const value = exportField.fieldPaths.map(fieldPath => {
             return objectPath.get(row, fieldPath)
-          }),
+          })
+          return extractValue(value)
+        },
       }
     }
     return {
       default: exportField.default,
       label: exportField.label,
-      value: exportField.fieldPath,
+      value: row => {
+        const value = objectPath.get(row, exportField.fieldPath)
+        return extractValue(value)
+      },
     }
   })
 
