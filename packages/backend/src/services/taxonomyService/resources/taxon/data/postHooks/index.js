@@ -25,6 +25,22 @@ exports.update = [
   }),
 ]
 
+exports.updateInternalRelationship = [
+  createRegisterResourceActivityHook({
+    action: 'update',
+    getIdFromPath: true,
+    service: 'taxonomyService',
+  }),
+]
+
+exports.updateExternalRelationship = [
+  createRegisterResourceActivityHook({
+    action: 'update',
+    getIdFromBody: true,
+    service: 'taxonomyService',
+  }),
+]
+
 exports.del = [
   createRegisterResourceActivityHook({
     action: 'delete',
