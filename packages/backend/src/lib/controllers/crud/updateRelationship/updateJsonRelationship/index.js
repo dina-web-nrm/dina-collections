@@ -8,7 +8,7 @@ const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/controllers/updateJsonRelationship')
 
-module.exports = ({ models, operation, serviceInteractor }) => {
+module.exports = ({ config, models, operation, serviceInteractor }) => {
   const {
     operationId,
     postHooks = [],
@@ -32,7 +32,9 @@ module.exports = ({ models, operation, serviceInteractor }) => {
 
   return ({ request, user, requestId }) => {
     return applyHooks({
+      config,
       hooks: preHooks,
+      operation,
       request,
       requestId,
       resource,
@@ -75,8 +77,11 @@ module.exports = ({ models, operation, serviceInteractor }) => {
             log.scope().debug('extracted relationship', relationship)
 
             return applyHooks({
+              config,
               hooks: postHooks,
               item: updatedItem,
+              operation,
+              request,
               requestId,
               resource,
               serviceInteractor,
