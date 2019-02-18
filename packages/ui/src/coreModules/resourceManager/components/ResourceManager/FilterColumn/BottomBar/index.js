@@ -38,7 +38,8 @@ class BottomBar extends PureComponent {
 
   handleReset(event) {
     event.preventDefault()
-    this.props.onShowAllRecords()
+    const { isPicker } = this.props
+    this.props.onShowAllRecords({ isPicker })
   }
 
   handleSubmit(event) {
