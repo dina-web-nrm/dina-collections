@@ -64,7 +64,7 @@ class BottomBar extends PureComponent {
           </Button>
           <Button
             basic
-            disabled={pristine}
+            disabled={pristine && !isPicker}
             onClick={this.handleReset}
             size={isPicker ? 'small' : 'large'}
             style={{ float: 'right' }}
