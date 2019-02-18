@@ -11,15 +11,12 @@ module.exports = function createSetupRelations(modelNames = []) {
   return function setupRelations({ models } = {}) {
     relationshipsParamsArray.forEach(relationshipsParamsItem => {
       // TODO: replace this first check with validation through a schema
-      if (!relationshipsParamsItem.sourceResource) {
-        return
+      if (
+        relationshipsParamsItem.sourceResource &&
+        relationshipsParamsItem.keyType === 'sql'
+      ) {
+        setupAssociation({ ...relationshipsParamsItem, models })
       }
-
-      if (relationshipsParamsItem.keyType === 'json') {
-        return
-      }
-
-      setupAssociation({ ...relationshipsParamsItem, models })
     })
   }
 }

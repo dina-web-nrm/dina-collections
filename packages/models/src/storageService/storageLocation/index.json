@@ -88,8 +88,9 @@
         },
         "resourceActivities": {
           "type": "object",
+          "x-inverse-relationship-key": "storageLocation",
           "x-key-stored-in-model": "resourceActivity",
-          "x-key-type": "json",
+          "x-key-type": "polymorphic",
           "properties": {
             "data": {
               "type": "array",

@@ -10,6 +10,7 @@ module.exports = function buildIncludeArray(
   return Object.keys(relations)
     .map(relationKey => {
       const {
+        keyType,
         storeInDocument,
         storeInExternalDocument,
         targetResource: relationResource,
@@ -19,6 +20,11 @@ module.exports = function buildIncludeArray(
       }
 
       if (storeInExternalDocument) {
+        return null
+      }
+
+      // TODO: implement proper support for polymorphic relationships
+      if (keyType === 'polymorphic') {
         return null
       }
 

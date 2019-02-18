@@ -1,7 +1,15 @@
+const objectPath = require('object-path')
+
+const buildYYYYMMDD = require('common/src/date/buildYYYYMMDD')
+const getYMDHMSFromTimestamp = require('common/src/date/getYMDHMSFromTimestamp')
+const getYYYYMMDDFromTimestamp = require('common/src/date/getYYYYMMDDFromTimestamp')
+
 module.exports = function extractRecordEventText({
+  dateOnly = false,
   migrator,
   src,
   matchingDescription, // TODO should use enum instead
+  withTime = false,
 }) {
   const recordHistoryEvents = migrator.getValue({
     obj: src,
@@ -11,28 +19,64 @@ module.exports = function extractRecordEventText({
   if (!recordHistoryEvents) {
     return null
   }
-  const strings = []
-  recordHistoryEvents.forEach(recordHistoryEvent => {
-    const { description } = recordHistoryEvent
-    if (!description) {
-      return
-    }
 
-    if (matchingDescription && matchingDescription.indexOf(description) > -1) {
-      const { agent } = recordHistoryEvent
-      const date = recordHistoryEvent.date && recordHistoryEvent.date.dateText
+  return recordHistoryEvents
+    .map(recordHistoryEvent => {
+      const { description } = recordHistoryEvent
 
-      let str
-      if (date) {
-        str = `${date}`
+      if (
+        description &&
+        matchingDescription &&
+        matchingDescription.indexOf(description) > -1
+      ) {
+        const timestamp =
+          objectPath.get(recordHistoryEvent, 'date.dateText') ||
+          objectPath.get(
+            recordHistoryEvent,
+            'date.startDate.interpretedTimestamp'
+          )
+
+        const dateParts = objectPath.get(recordHistoryEvent, 'date.startDate')
+        const hasDateParts = !!objectPath.get(
+          recordHistoryEvent,
+          'date.startDate.year'
+        )
+
+        let date
+
+        if (dateOnly) {
+          if (withTime) {
+            date = timestamp && getYMDHMSFromTimestamp(timestamp)
+          } else {
+            date =
+              (hasDateParts && buildYYYYMMDD(dateParts)) ||
+              (timestamp && getYYYYMMDDFromTimestamp(timestamp))
+          }
+        } else {
+          date =
+            (hasDateParts && buildYYYYMMDD(dateParts)) ||
+            (timestamp && getYYYYMMDDFromTimestamp(timestamp))
+        }
+
+        const agentName =
+          objectPath.get(recordHistoryEvent, 'agent.normalized.fullName') ||
+          objectPath.get(recordHistoryEvent, 'agent.textI') ||
+          objectPath.get(recordHistoryEvent, 'agent.textV')
+
+        if (agentName && date && !dateOnly) {
+          return `${date} by ${agentName}`
+        }
+
+        if (agentName && !dateOnly) {
+          return agentName
+        }
+
+        if (date) {
+          return date
+        }
       }
 
-      if (agent && agent.textV) {
-        str = `${str} by ${agent.textV}`
-      }
-
-      strings.push(str)
-    }
-  })
-  return strings
+      return null
+    })
+    .filter(Boolean)
 }

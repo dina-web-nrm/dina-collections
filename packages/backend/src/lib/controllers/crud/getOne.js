@@ -1,7 +1,8 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 const createControllerWrapper = require('../utilities/wrapper')
 const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
-const fetchJsonExternalRelationships = require('../utilities/relationships/fetchJsonExternalRelationships')
+const fetchExternalRelationships = require('../utilities/relationships/fetchExternalRelationships')
+
 // const buildQueryIncludeArray = require('../utilities/relationships/buildQueryIncludeArray')
 
 module.exports = function getOne(options) {
@@ -60,7 +61,7 @@ module.exports = function getOne(options) {
             : defaultFields,
         selectableFields,
       })
-      .then(({ item } = {}) => {
+      .then(({ item, meta } = {}) => {
         if (!item) {
           backendError404({
             code: 'RESOURCE_NOT_FOUND_ERROR',
@@ -68,7 +69,7 @@ module.exports = function getOne(options) {
           })
         }
 
-        return fetchJsonExternalRelationships({
+        return fetchExternalRelationships({
           filterSpecification,
           item,
           queryParamRelationships,
@@ -79,6 +80,8 @@ module.exports = function getOne(options) {
           return {
             item,
             itemExternalRelationships,
+            meta,
+            request,
           }
         })
       })

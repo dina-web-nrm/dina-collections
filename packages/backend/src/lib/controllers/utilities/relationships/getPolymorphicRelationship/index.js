@@ -1,15 +1,10 @@
 const transformOutputObject = require('../../transformations/outputObject')
 const transformOutputArray = require('../../transformations/outputArray')
 const getFormatOutput = require('../getFormatOutput')
-const getGetterName = require('./getGetterName')
-const getInclude = require('./getInclude')
 const getQueryModels = require('./getQueryModels')
-const getSelectedResult = require('./getSelectedResult')
-const getWhereParams = require('./getWhereParams')
-const getForeignKeyName = require('../../../../models/factories/sequelize/utilities/getForeignKeyName')
 const createLog = require('../../../../../utilities/log')
 
-const log = createLog('lib/controllers/getSqlRelationship')
+const log = createLog('lib/controllers/getPolymorphicRelationship')
 
 module.exports = ({ models, operation }) => {
   const {
@@ -18,14 +13,12 @@ module.exports = ({ models, operation }) => {
       format,
       keyName,
       keyStoredInModel,
-      oneOrMany,
       sourceResource,
-      targetAs,
       targetResource,
     },
   } = operation
 
-  const { idIsForeignKey, model, relationshipModel } = getQueryModels({
+  const { model } = getQueryModels({
     keyStoredInModel,
     models,
     sourceResource,
@@ -36,15 +29,9 @@ module.exports = ({ models, operation }) => {
     throw new Error(`Model not found for operationId ${operationId}`)
   }
 
-  const getterName = getGetterName({ oneOrMany, targetAs })
-  const include = getInclude({ relationshipModel, targetAs })
-  const foreignKeyName = getForeignKeyName({
-    keyName,
-    keyStoredInModelName: keyStoredInModel,
-    sourceModelName: sourceResource,
-    targetAs,
-    targetModelName: targetResource,
-  })
+  const getterName = 'getWhere'
+  const foreignKeyName = keyName
+
   const transformOutput =
     format === 'object' ? transformOutputObject : transformOutputArray
   const formatOutput = getFormatOutput({
@@ -57,33 +44,25 @@ module.exports = ({ models, operation }) => {
 
     const { pathParams: { id } } = request
 
-    const where = getWhereParams({
-      foreignKeyName,
-      id,
-      idIsForeignKey,
-    })
+    const storedInSource = sourceResource === keyStoredInModel
+    const where = storedInSource
+      ? { id }
+      : {
+          [foreignKeyName]: id,
+          resource: targetResource,
+        }
 
     log.scope().debug('model', model)
-    log.scope().debug('include', include)
     log.scope().debug('where', where)
 
     return model[getterName]({
-      include,
       includeDeactivated: true,
       where,
     })
       .then(({ items, item } = {}) => {
         const result = items || item.internals
-        log
-          .scope()
-          .debug('idIsForeignKey', idIsForeignKey, 'targetAs', targetAs)
-        const selectedResult = getSelectedResult({
-          idIsForeignKey,
-          result,
-          targetAs,
-        })
-        log.scope().debug('selectedResult', selectedResult)
-        return selectedResult
+        log.scope().debug('result', result)
+        return result
       })
       .then(transformOutput)
       .then(formatOutput)

@@ -8,6 +8,9 @@ module.exports = function updateRelationship({ models, operation, ...rest }) {
     case 'json': {
       return updateJsonRelationship({ models, operation, ...rest })
     }
+    case 'polymorphic': {
+      throw new Error(`update polymorphic relationship not yet implemented`)
+    }
     case 'sql': {
       return updateSqlRelationship({ models, operation, ...rest })
     }

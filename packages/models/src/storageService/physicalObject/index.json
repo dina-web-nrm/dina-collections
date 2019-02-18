@@ -29,6 +29,21 @@
     "relationships": {
       "type": "object",
       "properties": {
+        "resourceActivities": {
+          "type": "object",
+          "x-inverse-relationship-key": "physicalObject",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__resourceActivity",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "specimens": {
           "type": "object",
           "x-inverse-relationship-key": "physicalObjects",

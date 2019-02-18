@@ -118,4 +118,5 @@ module.exports = {
     },
   ],
   resource: 'resourceActivity',
+  resourcePath: 'resourceActivities',
 }

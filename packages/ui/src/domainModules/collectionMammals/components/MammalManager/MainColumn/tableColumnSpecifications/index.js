@@ -121,11 +121,11 @@ const tableColumnSpecifications = [
   },
   {
     name: 'recordEventCataloged',
-    width: 200,
+    width: 250,
   },
   {
     name: 'recordEventRegistered',
-    width: 200,
+    width: 150,
   },
   {
     name: 'recordEventLastModified',
