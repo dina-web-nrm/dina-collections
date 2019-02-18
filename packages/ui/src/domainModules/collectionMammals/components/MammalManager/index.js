@@ -551,6 +551,7 @@ class MammalManager extends Component {
   handleOpenEditRecordView(event) {
     if (event) event.preventDefault()
 
+    this.props.setFilterColumnIsOpen(false)
     const specimenId = this.props.focusedSpecimenId
     if (specimenId) {
       this.props.push(`/app/specimens/mammals/${specimenId}/edit/sections/0`)
