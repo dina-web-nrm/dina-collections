@@ -127,6 +127,7 @@ const createResourceUrlState = () => ComposedComponent => {
     navigateFilter() {
       this.props.updateState({
         filterColumn: 'filter',
+        mainColumn: 'table',
       })
     }
 
