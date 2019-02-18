@@ -69,7 +69,7 @@ class BottomBar extends PureComponent {
             size={isPicker ? 'small' : 'large'}
             style={{ float: 'right' }}
           >
-            {isPicker ? 'Clear filters' : 'Clear all filters'}
+            {isPicker ? 'Show all' : 'Clear all filters'}
           </Button>
         </Grid.Column>
       </Grid>
