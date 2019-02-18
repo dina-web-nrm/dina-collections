@@ -467,6 +467,11 @@ class MammalManager extends Component {
 
   handleToggleFilters(event) {
     event.preventDefault()
+
+    if (!this.props.filterColumnIsOpen) {
+      this.handleOpenTableView(event)
+    }
+
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
