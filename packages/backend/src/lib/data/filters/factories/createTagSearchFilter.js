@@ -28,12 +28,16 @@ module.exports = function createTagSearchFilter({
       }
 
       if (tagValue) {
-        baseQuery.nested.query.bool.must.push({
-          match_phrase_prefix: {
-            [valuePath]: {
-              query: tagValue.toLowerCase(),
+        const tagValueSegments = tagValue.split(' ').filter(segment => {
+          return !!segment
+        })
+
+        tagValueSegments.forEach(segment => {
+          baseQuery.nested.query.bool.must.push({
+            wildcard: {
+              [valuePath]: segment.toLowerCase(),
             },
-          },
+          })
         })
       }
       return baseQuery

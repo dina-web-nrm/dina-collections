@@ -134,7 +134,9 @@ class MultipleSearchSelectionDropdownInput extends Component {
           onSearchChange={this.handleSearchChange}
           options={options}
           placeholder={initialText}
-          search
+          search={items => {
+            return items
+          }}
           searchQuery={searchQuery}
           selection
           selectOnBlur={false}
