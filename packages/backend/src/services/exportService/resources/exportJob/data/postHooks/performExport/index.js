@@ -77,6 +77,10 @@ module.exports = function performExport({
     if (Array.isArray(value)) {
       return value.join(' | ')
     }
+
+    if (value === null || value === undefined) {
+      return ''
+    }
     return value
   }
   const fields = exportFields.map(exportField => {
