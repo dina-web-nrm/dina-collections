@@ -10,6 +10,8 @@ const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
+  updateInternalRelationship: updateInternalRelationshipPostHooks,
+  updateExternalRelationship: updateExternalRelationshipPostHooks,
 } = require('./data/postHooks')
 
 const {
@@ -66,6 +68,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      postHooks: updateInternalRelationshipPostHooks,
       preHooks: updateRelationshipParentPreHooks,
       relationKey: 'parent',
       type: 'updateRelationship',
@@ -131,6 +134,7 @@ module.exports = {
         relationKey: 'synonymToTaxon',
         resource: 'taxonName',
       }),
+      postHooks: updateExternalRelationshipPostHooks,
       relationKey: 'synonyms',
       type: 'updateRelationship',
     },
@@ -145,6 +149,7 @@ module.exports = {
         relationKey: 'vernacularToTaxon',
         resource: 'taxonName',
       }),
+      postHooks: updateExternalRelationshipPostHooks,
       relationKey: 'vernacularNames',
       type: 'updateRelationship',
     },

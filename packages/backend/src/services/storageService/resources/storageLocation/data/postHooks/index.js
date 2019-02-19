@@ -23,6 +23,14 @@ exports.update = [
   }),
 ]
 
+exports.updateInternalRelationship = [
+  createRegisterResourceActivityHook({
+    action: 'update',
+    getIdFromPath: true,
+    service: 'storageService',
+  }),
+]
+
 exports.del = [
   createRegisterResourceActivityHook({
     action: 'delete',

@@ -8,7 +8,7 @@ const applyHooks = require('../../../utilities/applyHooks')
 
 const log = createLog('lib/controllers/updateSqlRelationship')
 
-module.exports = ({ models, operation, serviceInteractor }) => {
+module.exports = ({ config, models, operation, serviceInteractor }) => {
   const {
     operationId,
     postHooks = [],
@@ -46,6 +46,7 @@ module.exports = ({ models, operation, serviceInteractor }) => {
 
   return ({ request, user, requestId }) => {
     return applyHooks({
+      config,
       hooks: preHooks,
       operation,
       request,
@@ -74,7 +75,6 @@ module.exports = ({ models, operation, serviceInteractor }) => {
         .update(updateValues)
         .then(({ item }) => {
           const internals = item.internals || {}
-
           log
             .scope()
             .debug('internals[foreignKeyName]', internals[foreignKeyName])
@@ -87,8 +87,11 @@ module.exports = ({ models, operation, serviceInteractor }) => {
             : null
 
           return applyHooks({
+            config,
             hooks: postHooks,
             item: updatedItem,
+            operation,
+            request,
             requestId,
             resource,
             serviceInteractor,

@@ -52,14 +52,14 @@ var createJsonApiClient = function createJsonApiClient(_ref) {
     var _userOptions$body = userOptions.body,
         body = _userOptions$body === undefined ? {} : _userOptions$body,
         _userOptions$relation = userOptions.relationshipsToModify,
-        relativeRelationshipsToModify = _userOptions$relation === undefined ? [] : _userOptions$relation,
+        relativeRelationshipsToModify = _userOptions$relation === undefined ? ['all'] : _userOptions$relation,
         _userOptions$includes = userOptions.includesToModify,
         relativeIncludesToModify = _userOptions$includes === undefined ? [] : _userOptions$includes;
 
 
     var item = body.data;
     var updateTreeLog = log.tree('update ' + resourceType + ' id: ' + item.id);
-    var relationshipsToModify = !relativeRelationshipsToModify.length ? ['all'] : relativeRelationshipsToModify.map(function (rel) {
+    var relationshipsToModify = relativeRelationshipsToModify.includes('all') ? ['all'] : relativeRelationshipsToModify.map(function (rel) {
       return resourceType + '.' + rel;
     });
     var includesToModify = relativeIncludesToModify.map(function (rel) {
@@ -87,13 +87,13 @@ var createJsonApiClient = function createJsonApiClient(_ref) {
     var _userOptions$body2 = userOptions.body,
         body = _userOptions$body2 === undefined ? {} : _userOptions$body2,
         _userOptions$relation2 = userOptions.relationshipsToModify,
-        relativeRelationshipsToModify = _userOptions$relation2 === undefined ? [] : _userOptions$relation2,
+        relativeRelationshipsToModify = _userOptions$relation2 === undefined ? ['all'] : _userOptions$relation2,
         _userOptions$includes2 = userOptions.includesToModify,
         relativeIncludesToModify = _userOptions$includes2 === undefined ? [] : _userOptions$includes2;
 
     var item = body.data;
     var createTreeLog = log.tree('create ' + resourceType);
-    var relationshipsToModify = !relativeRelationshipsToModify.length ? ['all'] : relativeRelationshipsToModify.map(function (rel) {
+    var relationshipsToModify = relativeRelationshipsToModify.includes('all') ? ['all'] : relativeRelationshipsToModify.map(function (rel) {
       return resourceType + '.' + rel;
     });
     var includesToModify = relativeIncludesToModify.map(function (rel) {

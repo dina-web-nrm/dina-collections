@@ -1,4 +1,7 @@
+const objectPath = require('object-path')
+
 const formatAsTimestamp = require('common/src/date/formatAsTimestamp')
+const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
 const createLog = require('../../../utilities/log')
 
 const log = createLog(
@@ -59,12 +62,38 @@ const createResourceActivity = ({
 exports.createRegisterResourceActivityHook = function createRegisterResourceActivityHook({
   action,
   service,
+  getIdFromBody = false,
+  getIdFromPath = false,
   includeDiff = false,
   includeSnapshot = false,
 }) {
-  return ({ config, item, requestId, resource, serviceInteractor, user }) => {
+  return ({
+    config,
+    item,
+    request: requestInput,
+    requestId,
+    resource,
+    serviceInteractor,
+    user,
+  }) => {
     if (config.env.isTest) {
       return Promise.resolve(true)
+    }
+
+    let resourceActivityItem = item
+
+    if (getIdFromBody) {
+      resourceActivityItem = {
+        id: objectPath.get(requestInput, 'body.data.id'),
+        internals: { updatedAt: getCurrentUTCTimestamp() },
+      }
+    }
+
+    if (getIdFromPath) {
+      resourceActivityItem = {
+        id: objectPath.get(requestInput, 'pathParams.id'),
+        internals: { updatedAt: getCurrentUTCTimestamp() },
+      }
     }
 
     return Promise.resolve().then(() => {
@@ -72,7 +101,7 @@ exports.createRegisterResourceActivityHook = function createRegisterResourceActi
         action,
         includeDiff,
         includeSnapshot,
-        item,
+        item: resourceActivityItem,
         requestId,
         resource,
         service,

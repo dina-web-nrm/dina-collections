@@ -15,6 +15,7 @@ const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
+  updateInternalRelationship: updateInternalRelationshipPostHooks,
 } = require('./data/postHooks')
 
 const {
@@ -85,6 +86,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      postHooks: updateInternalRelationshipPostHooks,
       preHooks: updateRelationshipParentPreHooks,
       relationKey: 'parent',
       type: 'updateRelationship',

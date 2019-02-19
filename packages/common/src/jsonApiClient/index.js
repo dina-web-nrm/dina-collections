@@ -36,13 +36,13 @@ const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
     log.debug(`update ${resourceType}`, userOptions)
     const {
       body = {},
-      relationshipsToModify: relativeRelationshipsToModify = [],
+      relationshipsToModify: relativeRelationshipsToModify = ['all'],
       includesToModify: relativeIncludesToModify = [],
     } = userOptions
 
     const item = body.data
     const updateTreeLog = log.tree(`update ${resourceType} id: ${item.id}`)
-    const relationshipsToModify = !relativeRelationshipsToModify.length
+    const relationshipsToModify = relativeRelationshipsToModify.includes('all')
       ? ['all']
       : relativeRelationshipsToModify.map(rel => {
           return `${resourceType}.${rel}`
@@ -74,12 +74,12 @@ const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
     log.debug(`create ${resourceType}`, userOptions)
     const {
       body = {},
-      relationshipsToModify: relativeRelationshipsToModify = [],
+      relationshipsToModify: relativeRelationshipsToModify = ['all'],
       includesToModify: relativeIncludesToModify = [],
     } = userOptions
     const item = body.data
     const createTreeLog = log.tree(`create ${resourceType}`)
-    const relationshipsToModify = !relativeRelationshipsToModify.length
+    const relationshipsToModify = relativeRelationshipsToModify.includes('all')
       ? ['all']
       : relativeRelationshipsToModify.map(rel => {
           return `${resourceType}.${rel}`

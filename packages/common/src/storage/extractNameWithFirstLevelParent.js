@@ -1,15 +1,19 @@
 const { LEVEL_INSTITUTION, LEVEL_ROOM } = require('../constants/storage')
 
-const extractNameWithFirstLevelParent = nestedStorageLocation => {
+const extractNameWithFirstLevelParent = (
+  nestedStorageLocation,
+  { skipParentSuffix = false } = {}
+) => {
   if (!nestedStorageLocation) {
     return ''
   }
   const { group, name } = nestedStorageLocation
   if (group === LEVEL_INSTITUTION || group === LEVEL_ROOM) {
-    return `${name} [${group}]`
+    return skipParentSuffix ? name : `${name} [${group}]`
   }
   const parentName = extractNameWithFirstLevelParent(
-    nestedStorageLocation.parent
+    nestedStorageLocation.parent,
+    { skipParentSuffix: true }
   )
   return `${name} [${group} in ${parentName}]`
 }
