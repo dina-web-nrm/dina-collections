@@ -124,6 +124,9 @@ const config = {
         },
         {
           operationId: 'normalizedAgentCreate',
+          options: {
+            relationshipsToModify: [],
+          },
           type: 'create',
         },
         {
@@ -132,6 +135,9 @@ const config = {
         },
         {
           operationId: 'normalizedAgentUpdate',
+          options: {
+            relationshipsToModify: [],
+          },
           type: 'update',
         },
         {
@@ -148,6 +154,9 @@ const config = {
         },
         {
           operationId: 'physicalObjectCreate',
+          options: {
+            relationshipsToModify: ['storageLocation'],
+          },
           type: 'create',
         },
         {
@@ -156,6 +165,9 @@ const config = {
         },
         {
           operationId: 'physicalObjectUpdate',
+          options: {
+            relationshipsToModify: ['storageLocation'],
+          },
           type: 'update',
         },
       ],
@@ -172,6 +184,9 @@ const config = {
         },
         {
           operationId: 'placeCreate',
+          options: {
+            relationshipsToModify: ['parent'],
+          },
           type: 'create',
         },
         {
@@ -180,6 +195,9 @@ const config = {
         },
         {
           operationId: 'placeUpdate',
+          options: {
+            relationshipsToModify: ['parent'],
+          },
           type: 'update',
         },
         {
@@ -304,6 +322,9 @@ const config = {
         },
         {
           operationId: 'storageLocationCreate',
+          options: {
+            relationshipsToModify: ['parent'],
+          },
           type: 'create',
         },
         {
@@ -312,6 +333,9 @@ const config = {
         },
         {
           operationId: 'storageLocationUpdate',
+          options: {
+            relationshipsToModify: ['parent'],
+          },
           type: 'update',
         },
         {
@@ -378,6 +402,9 @@ const config = {
         },
         {
           operationId: 'taxonNameCreate',
+          options: {
+            relationshipsToModify: [],
+          },
           type: 'create',
         },
         {
@@ -386,6 +413,9 @@ const config = {
         },
         {
           operationId: 'taxonNameUpdate',
+          options: {
+            relationshipsToModify: [],
+          },
           type: 'update',
         },
         {
