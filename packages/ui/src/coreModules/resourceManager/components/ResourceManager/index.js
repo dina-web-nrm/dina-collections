@@ -153,6 +153,7 @@ class ResourceManager extends Component {
             'fetchRelationshipsBeforeDelete',
             'fetchTreeBase',
             'filterActive',
+            'filterResourceCount',
             'focusedIndex',
             'isPicker',
             'itemEnabled',

@@ -218,6 +218,7 @@ class MainColumn extends Component {
           keys: [
             'buildEditItemHeaders',
             'fetchRelationshipsBeforeDelete',
+            'filterResourceCount',
             'itemId',
             'ItemTitle',
             'onInteraction',
@@ -249,7 +250,12 @@ class MainColumn extends Component {
           transformOutput,
         } = this.props
         const { extractedProps } = extractProps({
-          keys: ['onInteraction', 'resource', 'renderCreateForm'],
+          keys: [
+            'onInteraction',
+            'filterResourceCount',
+            'resource',
+            'renderCreateForm',
+          ],
           props: this.props,
         })
 

@@ -80,6 +80,7 @@ class EditItemColumn extends Component {
           keys: [
             'fetchOneItemById',
             'fetchRelationshipsBeforeDelete',
+            'filterResourceCount',
             'itemId',
             'loadingDelete',
             'nestedItem',
