@@ -10,11 +10,46 @@ const computeItemSortWeight = ({ item, input }) => {
   return -1
 }
 
+const buildRegex = ({
+  delimiter,
+  exact,
+  sanitizedTagTypes,
+  sanitizedTagValue,
+}) => {
+  if (exact) {
+    return `${sanitizedTagTypes.join('|')}${delimiter}${sanitizedTagValue}`
+  }
+
+  const tagValueRegex =
+    sanitizedTagValue && `[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
+  const tagTypesRegex =
+    sanitizedTagTypes && `.*(${sanitizedTagTypes.join('|')})`
+  const delimiterRegex = delimiter
+
+  if (tagValueRegex && tagTypesRegex) {
+    return `${tagTypesRegex}${delimiterRegex}${tagValueRegex}`
+  }
+
+  if (sanitizedTagValue) {
+    return `(.*?${delimiter}${tagValueRegex})`
+  }
+
+  if (sanitizedTagTypes) {
+    return `${tagTypesRegex}${delimiter}.*`
+  }
+
+  return ''
+}
+
 const sanitizeInput = input => {
   if (!input) {
     return input
   }
-  return input.replace('[', '\\[').replace(']', '\\]')
+  return input
+    .replace('[', '\\[')
+    .replace(']', '\\]')
+    .replace(new RegExp('\\*', 'g'), '[^\\]|\\[]*')
+    .replace(new RegExp(' ', 'g'), '[^\\]|\\[]*')
 }
 
 module.exports = function createTagValueAggregation({
@@ -35,28 +70,16 @@ module.exports = function createTagValueAggregation({
       }
       const sanitizedTagValue = sanitizeInput(tagValue)
       const sanitizedTagTypes = tagTypes && tagTypes.map(sanitizeInput)
-      if (exact) {
-        identifierKeyFilter.include = `${sanitizedTagTypes[0]}${delimiter}${
-          sanitizedTagValue
-        }`
-      } else if (sanitizedTagValue && sanitizedTagTypes) {
-        if (sanitizedTagTypes.length === 1) {
-          identifierKeyFilter.include = `${sanitizedTagTypes[0]}${
-            delimiter
-          }[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
-        } else {
-          identifierKeyFilter.include = `.*(${sanitizedTagTypes.join('|')})${
-            delimiter
-          }[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
-        }
-      } else if (sanitizedTagValue) {
-        identifierKeyFilter.include = `.*${
-          delimiter
-        }[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
-      } else if (sanitizedTagTypes) {
-        identifierKeyFilter.include = `.*${sanitizedTagTypes.join('|')}${
-          delimiter
-        }.*`
+
+      const includeRegex = buildRegex({
+        delimiter,
+        exact,
+        sanitizedTagTypes,
+        sanitizedTagValue,
+      })
+
+      if (includeRegex) {
+        identifierKeyFilter.include = includeRegex
       }
 
       return {
