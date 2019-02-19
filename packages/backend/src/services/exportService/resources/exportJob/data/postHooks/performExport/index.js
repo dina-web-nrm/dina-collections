@@ -74,8 +74,8 @@ module.exports = function performExport({
   }
 
   const extractValue = value => {
-    if (Array.isArray(value) && value.length === 0) {
-      return null
+    if (Array.isArray(value)) {
+      return value.join(' | ')
     }
     return value
   }
