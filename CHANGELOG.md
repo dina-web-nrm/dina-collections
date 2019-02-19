@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.17.0](https://github.com/DINA-Web/dina-collections/compare/v0.16.4...v0.17.0)
+
+- Fix record event times, filter open-close effects, keyboard shortcuts bug and storage dropdown text [`#438`](https://github.com/DINA-Web/dina-collections/pull/438)
+- Replace empty array with null in export [`#437`](https://github.com/DINA-Web/dina-collections/pull/437)
+- Fix specimen record event timestamps & resource activity relationships [`#436`](https://github.com/DINA-Web/dina-collections/pull/436)
+
 #### [v0.16.4](https://github.com/DINA-Web/dina-collections/compare/v0.16.3...v0.16.4)
+
+> 18 February 2019
 
 - Fix simple worker not doing non search jobs [`#435`](https://github.com/DINA-Web/dina-collections/pull/435)
 
