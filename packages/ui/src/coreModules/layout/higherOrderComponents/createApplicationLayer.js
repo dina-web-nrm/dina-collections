@@ -8,11 +8,11 @@ import { actionCreators } from '../keyObjectModule'
 import { APPLICATION_LAYER_VIEW, APPLICATION_LAYER_MODAL } from '../constants'
 
 const contextTypes = {
-  layer: PropTypes.string,
+  applicationLayer: PropTypes.string,
 }
 
 const childContextTypes = {
-  layer: PropTypes.string.isRequired,
+  applicationLayer: PropTypes.string.isRequired,
 }
 
 const propTypes = {
@@ -35,7 +35,7 @@ export default function createApplicationLayer({ layer }) {
     class ApplicationLayer extends Component {
       getChildContext() {
         return {
-          layer: this.props.layer,
+          applicationLayer: this.props.layer,
         }
       }
       componentWillMount() {
@@ -43,7 +43,7 @@ export default function createApplicationLayer({ layer }) {
       }
 
       componentWillUnmount() {
-        const parentLayer = this.context.layer
+        const parentLayer = this.context.applicationLayer
         this.props.setApplicationLayer(parentLayer || '')
       }
 

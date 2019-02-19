@@ -38,7 +38,8 @@ class BottomBar extends PureComponent {
 
   handleReset(event) {
     event.preventDefault()
-    this.props.onShowAllRecords()
+    const { isPicker } = this.props
+    this.props.onShowAllRecords({ isPicker })
   }
 
   handleSubmit(event) {
@@ -64,12 +65,12 @@ class BottomBar extends PureComponent {
           </Button>
           <Button
             basic
-            disabled={pristine}
+            disabled={pristine && !isPicker}
             onClick={this.handleReset}
             size={isPicker ? 'small' : 'large'}
             style={{ float: 'right' }}
           >
-            {isPicker ? 'Clear filters' : 'Clear all filters'}
+            {isPicker ? 'Show all' : 'Clear all filters'}
           </Button>
         </Grid.Column>
       </Grid>

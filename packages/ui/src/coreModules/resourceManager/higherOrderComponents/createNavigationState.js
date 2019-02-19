@@ -118,6 +118,7 @@ const createResourceUrlState = () => ComposedComponent => {
 
     navigateEdit(itemId) {
       this.props.updateState({
+        filterColumn: '',
         itemId,
         mainColumn: 'edit',
       })
@@ -126,6 +127,7 @@ const createResourceUrlState = () => ComposedComponent => {
     navigateFilter() {
       this.props.updateState({
         filterColumn: 'filter',
+        mainColumn: 'table',
       })
     }
 

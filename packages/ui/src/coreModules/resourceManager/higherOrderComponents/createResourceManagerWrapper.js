@@ -590,13 +590,15 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         })
       }
     }
-    handleShowAllRecords() {
+    handleShowAllRecords({ isPicker }) {
       const { managerScope, showAll, treeActive } = this.props
 
       if (treeActive) {
         this.props.setShowAll(!showAll, { managerScope })
       } else {
-        this.resetFilters()
+        if (!isPicker) {
+          this.resetFilters()
+        }
         this.tableSearch()
       }
     }
