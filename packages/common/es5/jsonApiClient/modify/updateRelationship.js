@@ -92,7 +92,7 @@ var deleteNotIncludedRelationships = function deleteNotIncludedRelationships(_re
               data: null
             },
             pathParams: {
-              id: relationToRemove.id || item.id
+              id: inverseOperationId ? relationToRemove.id : item.id
             }
           });
         });

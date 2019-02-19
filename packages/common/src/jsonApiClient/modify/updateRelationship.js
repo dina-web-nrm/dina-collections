@@ -87,7 +87,7 @@ const deleteNotIncludedRelationships = ({
                   data: null,
                 },
                 pathParams: {
-                  id: relationToRemove.id || item.id,
+                  id: inverseOperationId ? relationToRemove.id : item.id,
                 },
               }
             )
