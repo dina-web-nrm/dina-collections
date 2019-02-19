@@ -34,8 +34,10 @@ const transformation = ({ migrator, src, locals }) => {
     if (!storageLocation) {
       return
     }
+    if (storageLocation.group) {
+      storageLocationLeafGroups.push(storageLocation.group.toLowerCase())
+    }
 
-    storageLocationLeafGroups.push(storageLocation.group)
     storageLocations.push(storageLocation)
 
     const parents = extractFetchParents({
