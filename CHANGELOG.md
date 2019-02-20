@@ -2,12 +2,23 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.17.1](https://github.com/DINA-Web/dina-collections/compare/v0.16.4...v0.17.1)
+#### [v0.17.2-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.17.1...v0.17.2-rc1)
+
+- Fix relationship bugs [`#443`](https://github.com/DINA-Web/dina-collections/pull/443)
+
+#### [v0.17.1](https://github.com/DINA-Web/dina-collections/compare/v0.17.0...v0.17.1)
+
+> 19 February 2019
 
 - Change export format: array to pipe-separated string, null to empty string [`#442`](https://github.com/DINA-Web/dina-collections/pull/442)
 - Fix issues with saving records and other misc. bugs [`#439`](https://github.com/DINA-Web/dina-collections/pull/439)
 - Fix no matches on mounting wall search [`#441`](https://github.com/DINA-Web/dina-collections/pull/441)
 - Use wildcard for tag search [`#440`](https://github.com/DINA-Web/dina-collections/pull/440)
+
+#### [v0.17.0](https://github.com/DINA-Web/dina-collections/compare/v0.16.4...v0.17.0)
+
+> 19 February 2019
+
 - Fix record event times, filter open-close effects, keyboard shortcuts bug and storage dropdown text [`#438`](https://github.com/DINA-Web/dina-collections/pull/438)
 - Replace empty array with null in export [`#437`](https://github.com/DINA-Web/dina-collections/pull/437)
 - Fix specimen record event timestamps & resource activity relationships [`#436`](https://github.com/DINA-Web/dina-collections/pull/436)
