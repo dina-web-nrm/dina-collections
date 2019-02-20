@@ -21,7 +21,7 @@ const buildRegex = ({
   }
 
   const tagValueRegex =
-    sanitizedTagValue && `[^\\]|\\[]*${sanitizedTagValue.toLowerCase()}.*`
+    sanitizedTagValue && `${sanitizedTagValue.toLowerCase()}.*`
   const tagTypesRegex =
     sanitizedTagTypes && `.*(${sanitizedTagTypes.join('|')})`
   const delimiterRegex = delimiter
@@ -46,8 +46,8 @@ const sanitizeInput = input => {
     return input
   }
   return input
-    .replace('[', '\\[')
-    .replace(']', '\\]')
+    .replace(new RegExp('\\[', 'g'), '\\[')
+    .replace(new RegExp('\\]', 'g'), '\\]')
     .replace(new RegExp('\\*', 'g'), '[^\\]|\\[]*')
     .replace(new RegExp(' ', 'g'), '[^\\]|\\[]*')
 }

@@ -28,17 +28,31 @@ module.exports = function createTagSearchFilter({
       }
 
       if (tagValue) {
-        const tagValueSegments = tagValue.split(' ').filter(segment => {
-          return !!segment
-        })
+        const assumeExactValue = tagValue.indexOf('[') !== -1
 
-        tagValueSegments.forEach(segment => {
+        if (assumeExactValue) {
           baseQuery.nested.query.bool.must.push({
-            wildcard: {
-              [valuePath]: segment.toLowerCase(),
+            match_phrase_prefix: {
+              [valuePath]: {
+                query: tagValue.toLowerCase(),
+              },
             },
           })
-        })
+        } else {
+          const tagValueSegments = tagValue
+            .split(/[\s\\/-]+/)
+            .filter(segment => {
+              return !!segment
+            })
+
+          tagValueSegments.forEach(segment => {
+            baseQuery.nested.query.bool.must.push({
+              wildcard: {
+                [valuePath]: segment.toLowerCase(),
+              },
+            })
+          })
+        }
       }
       return baseQuery
     },
