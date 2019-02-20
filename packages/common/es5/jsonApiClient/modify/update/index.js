@@ -49,6 +49,8 @@ function update() {
     }
 
     if (!(item.attributes && (0, _keys2.default)(item.attributes).length) && !(item.relationships && (0, _keys2.default)(item.relationships).length)) {
+      log.debug(resourcePath + ' -> id: ' + item.id + '. Not updating. No attributes or relationships ');
+
       return {
         data: item
       };
