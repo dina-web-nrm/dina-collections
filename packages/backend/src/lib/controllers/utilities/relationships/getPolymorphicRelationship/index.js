@@ -60,7 +60,7 @@ module.exports = ({ models, operation }) => {
       where,
     })
       .then(({ items, item } = {}) => {
-        const result = items || item.internals
+        const result = items || (item && item.internals)
         log.scope().debug('result', result)
         return result
       })

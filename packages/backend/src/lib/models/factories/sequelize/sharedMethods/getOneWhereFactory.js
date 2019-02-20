@@ -14,10 +14,12 @@ module.exports = function getOneWhereFactory({ buildWhereFilter, Model }) {
       includeFieldsInput = [],
       raw = true,
       selectableFields = [],
+      where: customWhere,
     }) => {
       return buildWhereFilter({
         filterInput,
         filterSpecification,
+        where: customWhere,
       }).then(where => {
         return Model.findOne({
           include,
