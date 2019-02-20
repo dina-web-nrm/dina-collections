@@ -31,6 +31,12 @@ function update({ openApiClient, item, log = defaultLog, resourcePath } = {}) {
       !(item.attributes && Object.keys(item.attributes).length) &&
       !(item.relationships && Object.keys(item.relationships).length)
     ) {
+      log.debug(
+        `${resourcePath} -> id: ${
+          item.id
+        }. Not updating. No attributes or relationships `
+      )
+
       return {
         data: item,
       }
