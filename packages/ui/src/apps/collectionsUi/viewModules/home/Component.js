@@ -4,15 +4,12 @@ import { NavLink } from 'react-router-dom'
 import {
   Button,
   Container,
-  Divider,
   Grid,
   Header,
   Icon,
   Image,
   Segment,
 } from 'semantic-ui-react'
-
-import { Markdown } from 'coreModules/i18n/components'
 
 import logo from './logo.png'
 
@@ -87,7 +84,8 @@ class Home extends Component {
                   institution.`}
                   </p>
                 </Segment>
-                <Divider horizontal />
+              </Grid.Column>
+              <Grid.Column width={8}>
                 <Segment padded="very">
                   <Header as="h3" style={{ fontSize: '2em' }}>
                     An international partnership for open-source development
@@ -105,14 +103,6 @@ class Home extends Component {
                   with a modern, web-based national collection management
                   system.`}
                   </p>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column floated="right" width={6}>
-                <Segment padded="very">
-                  <Markdown
-                    fallbackLanguage="en"
-                    textKey="modules.start.changelog"
-                  />
                 </Segment>
               </Grid.Column>
             </Grid.Row>
