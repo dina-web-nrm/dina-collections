@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.17.3](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.17.3)
+
+- Exclude tags containing "test" in changelog [`#447`](https://github.com/DINA-Web/dina-collections/pull/447)
+
 #### [v0.17.2](https://github.com/DINA-Web/dina-collections/compare/v0.17.1...v0.17.2)
+
+> 21 February 2019
 
 - Tune search [`#445`](https://github.com/DINA-Web/dina-collections/pull/445)
 - Fix relationship bugs [`#443`](https://github.com/DINA-Web/dina-collections/pull/443)
