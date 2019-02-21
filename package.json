@@ -1,6 +1,6 @@
 {
   "name": "dina-collections",
-  "version": "0.17.2",
+  "version": "0.17.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -38,8 +38,11 @@
     "migrate:latest": "cd ./packages/migrations && yarn db:development:migrate:latest",
     "migrate:one": "cd ./packages/migrations && yarn db:development:migrate:one",
     "migrate:undo:one": "cd ./packages/migrations && yarn db:development:migrate:undo:one",
-    "postversion": "git push origin master && git push --tags",
-    "preversion": "./packages/scripts/src/bash/ensure-master-is-clean.sh && yarn test:common:schema-locked",
+    "version:release": "VERSION_TYPE=version yarn version",
+    "version:pre-release": "VERSION_TYPE=pre-release yarn version",
+    "version:test-release": "VERSION_TYPE=test-release yarn version",
+    "postversion": "./packages/scripts/src/bash/release-post-version.sh",
+    "preversion": "./packages/scripts/src/bash/release-pre-version.sh",
     "remote:build:data:zip": "node ./packages/scripts/src/js/packageJsonDataFiles.js",
     "remote:build:index:specimen": "node ./packages/scripts/src/js/exec.js docker-rebuild-search.sh",
     "remote:deploy": "node ./packages/scripts/src/js/exec.js docker-deploy.sh",
