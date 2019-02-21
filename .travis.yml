@@ -1,5 +1,48 @@
 language: node_js
 
+matrix:
+  include:
+    - stage: test
+      name: "Test UI lint"
+      env: TEST_SUITE_UI_LINT=true YARN_INSTALL_UI=true
+      script: ./packages/scripts/src/bash/travis-test.sh
+
+    - stage: test
+      name: "Test UI unit"
+      env: TEST_SUITE_UI_UNIT=true YARN_INSTALL_UI=true
+      script: ./packages/scripts/src/bash/travis-test.sh
+
+    - stage: test
+      name: "Test models and common"
+      env: TEST_SUITE_MODELS=true YARN_INSTALL_MODELS=true TEST_SUITE_COMMON=true YARN_INSTALL_COMMON=true
+      script: ./packages/scripts/src/bash/travis-test.sh
+
+    - stage: test
+      name: "Test backend and migrations"
+      env: TEST_SUITE_BACKEND=true YARN_INSTALL_BACKEND=true TEST_SUITE_MIGRATIONS=true YARN_INSTALL_MIGRATIONS=true
+      script: ./packages/scripts/src/bash/travis-test.sh
+
+    - stage: build
+      name: "Build backend and migrations"
+      script: ./packages/scripts/src/bash/docker-build-backend.sh && ./packages/scripts/src/bash/docker-build-migrations.sh
+
+    - stage: build
+      name: "Build ui"
+      env: YARN_INSTALL_UI=true
+      script: ./packages/scripts/src/bash/docker-build-ui.sh
+
+    - stage: publish
+      name: "Test publish"
+      script: ./packages/scripts/src/bash/docker-publish.sh
+
+
+stages:
+  - name: test
+  - name: build
+    if: tag IS present
+  - name: publish
+    if: tag IS present
+
 branches:
   except:
     - master
@@ -11,13 +54,13 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.10.1
   - export PATH="$HOME/.yarn/bin:$PATH"
 
-cache:
-  - yarn install
+cache: yarn
+
+install:
+  - echo "$TRAVIS_TAG"
+  - ./packages/scripts/src/bash/travis-yarn-install.sh
 
 before_script:
   - export PUSH_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo ""; fi)
   - echo "PUSH_BRANCH=$PUSH_BRANCH, TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST, TRAVIS_BRANCH=$TRAVIS_BRANCH"
 
-script:
-  - yarn test
-  - ./packages/scripts/src/bash/travis-deploy.sh
