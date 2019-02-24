@@ -1,0 +1,127 @@
+{
+  "groups": {
+
+  },
+  "scripts": {
+    "build:changelog":{
+      "short": "Build changelog",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:common:js": {
+      "short": "Build common js",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:common:schema:api":{
+      "short": "Build schema api",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:common:schema:models":{
+      "short": "Build schema models",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:data:zip":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:index:specimen":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:semantic-ui":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:trees:backend":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:trees:common":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:trees:ui":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:trees":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "build:ui":{
+      "short": "Exec a local script",
+      "description": "",
+      "args": {
+
+      },
+      "example": {
+      }
+    },
+    "exec:local": {
+      "usage": "yarn exec:local [scriptName] ...",
+      "short": "Exec a local script",
+      "description": "Will execute a local bash script located in ./packages/scripts/src/bash. Arguments will be forwarded to script",
+      "args": {
+        "[scriptName]": "Name of script",
+        "...": "Rest will be forwarded to script"
+      },
+      "examples": {
+        "yarn exec:local rm-data.sh": "Will run the rm-data.sh script"
+      }
+    }
+  }
+}
