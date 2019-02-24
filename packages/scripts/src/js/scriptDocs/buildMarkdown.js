@@ -40,7 +40,7 @@ function buildMarkdownToc({ scriptDocs }) {
 
   return groups
     .map(groupName => {
-      const groupContent = getScriptsInGroupAsArray(groupName)
+      const groupContent = getScriptsInGroupAsArray({ groupName, scriptDocs })
         .map(({ scriptKey, scriptLink }) => {
           return `* [${scriptKey}](#${scriptLink})`
         })

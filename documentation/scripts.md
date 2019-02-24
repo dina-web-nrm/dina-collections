@@ -1,46 +1,5 @@
 # Scripts
 
-## build
-* [build:docs](#build-docs)
-* [build:changelog](#build-changelog)
-* [build:common:js](#build-common-js)
-* [build:common:schema:api](#build-common-schema-api)
-* [build:common:schema:models](#build-common-schema-models)
-* [build:data:zip](#build-data-zip)
-* [build:index:specimen](#build-index-specimen)
-* [build:semantic-ui](#build-semantic-ui)
-* [build:trees:backend](#build-trees-backend)
-* [build:trees:common](#build-trees-common)
-* [build:trees:ui](#build-trees-ui)
-* [build:trees](#build-trees)
-* [build:ui](#build-ui)
-
-## test
-* [test:all](#test-all)
-* [test:backend:integration](#test-backend-integration)
-* [test:backend:unit](#test-backend-unit)
-* [test:common:schema-locked](#test-common-schema-locked)
-* [test:common](#test-common)
-* [test:schema](#test-schema)
-* [test:ui](#test-ui)
-* [test](#test)
-
-## utilities
-* [exec:local](#exec-local)
-* [exec:production](#exec-production)
-* [exec:stage](#exec-stage)
-* [exec:test](#exec-test)
-
-## data
-* [export:data:sql](#export-data-sql)
-* [import:data:json](#import-data-json)
-* [import:data:sample](#import-data-sample)
-* [import:data:sql](#import-data-sql)
-* [import:data:zip](#import-data-zip)
-* [migrate:latest](#migrate-latest)
-* [migrate:one](#migrate-one)
-* [migrate:undo:one](#migrate-undo-one)
-
 ## setup
 * [install:backend](#install-backend)
 * [install:common](#install-common)
@@ -68,10 +27,25 @@
 * [uninstall:ui](#uninstall-ui)
 * [uninstall](#uninstall)
 
-## release
-* [postversion](#postversion)
-* [preversion](#preversion)
-* [version](#version)
+## data
+* [export:data:sql](#export-data-sql)
+* [import:data:json](#import-data-json)
+* [import:data:sample](#import-data-sample)
+* [import:data:sql](#import-data-sql)
+* [import:data:zip](#import-data-zip)
+* [migrate:latest](#migrate-latest)
+* [migrate:one](#migrate-one)
+* [migrate:undo:one](#migrate-undo-one)
+
+## test
+* [test:all](#test-all)
+* [test:backend:integration](#test-backend-integration)
+* [test:backend:unit](#test-backend-unit)
+* [test:common:schema-locked](#test-common-schema-locked)
+* [test:common](#test-common)
+* [test:schema](#test-schema)
+* [test:ui](#test-ui)
+* [test](#test)
 
 ## local-services
 * [start:backend](#start-backend)
@@ -82,6 +56,26 @@
 * [start:mysql](#start-mysql)
 * [start:postgres](#start-postgres)
 * [start:ui](#start-ui)
+
+## build
+* [build:docs](#build-docs)
+* [build:changelog](#build-changelog)
+* [build:common:js](#build-common-js)
+* [build:common:schema:api](#build-common-schema-api)
+* [build:common:schema:models](#build-common-schema-models)
+* [build:data:zip](#build-data-zip)
+* [build:index:specimen](#build-index-specimen)
+* [build:semantic-ui](#build-semantic-ui)
+* [build:trees:backend](#build-trees-backend)
+* [build:trees:common](#build-trees-common)
+* [build:trees:ui](#build-trees-ui)
+* [build:trees](#build-trees)
+* [build:ui](#build-ui)
+
+## release
+* [postversion](#postversion)
+* [preversion](#preversion)
+* [version](#version)
 
 ## remote-services
 * [remote:build:data:zip](#remote-build-data-zip)
@@ -104,203 +98,16 @@
 * [remote:unpack:zip](#remote-unpack-zip)
 * [remote:upload:data:zip](#remote-upload-data-zip)
 
+## utilities
+* [exec:local](#exec-local)
+* [exec:production](#exec-production)
+* [exec:stage](#exec-stage)
+* [exec:test](#exec-test)
+
 ## other
 * [docs](#docs)
 * [docs:ls](#docs-ls)
 
-## build
-<a name="build-docs" />
-
-### build:docs
-
-Build script markdown documentation
-
-```yarn build:docs```
-
-#### Description 
- Will build markdown documentation based on ./scriptDocs/index.json
-<a name="build-changelog" />
-
-### build:changelog
-
-Build changelog
-
-#### Description 
- Will build a changelog
-<a name="build-common-js" />
-
-### build:common:js
-
-Build common js
-<a name="build-common-schema-api" />
-
-### build:common:schema:api
-
-Build schema api
-<a name="build-common-schema-models" />
-
-### build:common:schema:models
-
-Build schema models
-<a name="build-data-zip" />
-
-### build:data:zip
-
-Exec a local script
-<a name="build-index-specimen" />
-
-### build:index:specimen
-
-Exec a local script
-<a name="build-semantic-ui" />
-
-### build:semantic-ui
-
-Exec a local script
-<a name="build-trees-backend" />
-
-### build:trees:backend
-
-Exec a local script
-<a name="build-trees-common" />
-
-### build:trees:common
-
-Exec a local script
-<a name="build-trees-ui" />
-
-### build:trees:ui
-
-Exec a local script
-<a name="build-trees" />
-
-### build:trees
-
-Exec a local script
-<a name="build-ui" />
-
-### build:ui
-
-Exec a local script
-## test
-<a name="test-all" />
-
-### test:all
-
-```yarn test:all```
-<a name="test-backend-integration" />
-
-### test:backend:integration
-
-```yarn test:backend:integration```
-<a name="test-backend-unit" />
-
-### test:backend:unit
-
-```yarn test:backend:unit```
-<a name="test-common-schema-locked" />
-
-### test:common:schema-locked
-
-```yarn test:common:schema-locked```
-<a name="test-common" />
-
-### test:common
-
-```yarn test:common```
-<a name="test-schema" />
-
-### test:schema
-
-```yarn test:schema```
-<a name="test-ui" />
-
-### test:ui
-
-```yarn test:ui```
-<a name="test" />
-
-### test
-
-```yarn test```
-## utilities
-<a name="exec-local" />
-
-### exec:local
-
-Exec a local script
-
-```yarn exec:local [scriptName] ...```
-
-#### Description 
- Will execute a local bash script located in ./packages/scripts/src/bash. Arguments will be forwarded to script
-
-### Args
-Flag | Description
---------- | ---------
-[scriptName] | Name of script
-... | Rest will be forwarded to script
-
-### Examples
-Example | Description
---------- | ---------
-yarn exec:local rm-data.sh | Will run the rm-data.sh script
-<a name="exec-production" />
-
-### exec:production
-
-```yarn exec:production```
-<a name="exec-stage" />
-
-### exec:stage
-
-```yarn exec:stage```
-<a name="exec-test" />
-
-### exec:test
-
-```yarn exec:test```
-## data
-<a name="export-data-sql" />
-
-### export:data:sql
-
-```yarn export:data:sql```
-<a name="import-data-json" />
-
-### import:data:json
-
-```yarn import:data:json```
-<a name="import-data-sample" />
-
-### import:data:sample
-
-```yarn import:data:sample```
-<a name="import-data-sql" />
-
-### import:data:sql
-
-```yarn import:data:sql```
-<a name="import-data-zip" />
-
-### import:data:zip
-
-```yarn import:data:zip```
-<a name="migrate-latest" />
-
-### migrate:latest
-
-```yarn migrate:latest```
-<a name="migrate-one" />
-
-### migrate:one
-
-```yarn migrate:one```
-<a name="migrate-undo-one" />
-
-### migrate:undo:one
-
-```yarn migrate:undo:one```
 ## setup
 <a name="install-backend" />
 
@@ -427,22 +234,93 @@ yarn exec:local rm-data.sh | Will run the rm-data.sh script
 ### uninstall
 
 ```yarn uninstall```
-## release
-<a name="postversion" />
+## data
+<a name="export-data-sql" />
 
-### postversion
+### export:data:sql
 
-```yarn postversion```
-<a name="preversion" />
+Export data from sql
 
-### preversion
+```yarn export:data:sql```
 
-```yarn preversion```
-<a name="version" />
+#### Description 
+ Will export data to ./data/dump.sql. 
+<a name="import-data-json" />
 
-### version
+### import:data:json
 
-```yarn version```
+```yarn import:data:json```
+<a name="import-data-sample" />
+
+### import:data:sample
+
+```yarn import:data:sample```
+<a name="import-data-sql" />
+
+### import:data:sql
+
+```yarn import:data:sql```
+<a name="import-data-zip" />
+
+### import:data:zip
+
+```yarn import:data:zip```
+<a name="migrate-latest" />
+
+### migrate:latest
+
+```yarn migrate:latest```
+<a name="migrate-one" />
+
+### migrate:one
+
+```yarn migrate:one```
+<a name="migrate-undo-one" />
+
+### migrate:undo:one
+
+```yarn migrate:undo:one```
+## test
+<a name="test-all" />
+
+### test:all
+
+```yarn test:all```
+<a name="test-backend-integration" />
+
+### test:backend:integration
+
+```yarn test:backend:integration```
+<a name="test-backend-unit" />
+
+### test:backend:unit
+
+```yarn test:backend:unit```
+<a name="test-common-schema-locked" />
+
+### test:common:schema-locked
+
+```yarn test:common:schema-locked```
+<a name="test-common" />
+
+### test:common
+
+```yarn test:common```
+<a name="test-schema" />
+
+### test:schema
+
+```yarn test:schema```
+<a name="test-ui" />
+
+### test:ui
+
+```yarn test:ui```
+<a name="test" />
+
+### test
+
+```yarn test```
 ## local-services
 <a name="start-backend" />
 
@@ -484,6 +362,105 @@ yarn exec:local rm-data.sh | Will run the rm-data.sh script
 ### start:ui
 
 ```yarn start:ui```
+## build
+<a name="build-docs" />
+
+### build:docs
+
+Build script markdown documentation
+
+```yarn build:docs```
+
+#### Description 
+ Will build markdown documentation based on ./scriptDocs/index.json
+<a name="build-changelog" />
+
+### build:changelog
+
+Build changelog
+
+#### Description 
+ Will build a changelog
+<a name="build-common-js" />
+
+### build:common:js
+
+Build common js
+<a name="build-common-schema-api" />
+
+### build:common:schema:api
+
+Build schema api
+<a name="build-common-schema-models" />
+
+### build:common:schema:models
+
+Build schema models
+<a name="build-data-zip" />
+
+### build:data:zip
+
+Build an exportable data.zip
+
+#### Description 
+ Will create a new exportable data.zip based on the current data files
+<a name="build-index-specimen" />
+
+### build:index:specimen
+
+Build specimen index
+
+#### Description 
+ Will create a new specimen index and hot swap the current one
+<a name="build-semantic-ui" />
+
+### build:semantic-ui
+
+Build semantic ui
+<a name="build-trees-backend" />
+
+### build:trees:backend
+
+Build tree documentation in backend
+<a name="build-trees-common" />
+
+### build:trees:common
+
+Build tree documentation in common
+<a name="build-trees-ui" />
+
+### build:trees:ui
+
+Build tree documentation in ui
+<a name="build-trees" />
+
+### build:trees
+
+Build tree documentation in backend, common and ui
+<a name="build-ui" />
+
+### build:ui
+
+Build the ui
+
+#### Description 
+ This will transpile es6 to es5 and create a production ready dist of the ui. Not needed in dev mode
+## release
+<a name="postversion" />
+
+### postversion
+
+```yarn postversion```
+<a name="preversion" />
+
+### preversion
+
+```yarn preversion```
+<a name="version" />
+
+### version
+
+```yarn version```
 ## remote-services
 <a name="remote-build-data-zip" />
 
@@ -580,6 +557,69 @@ yarn exec:local rm-data.sh | Will run the rm-data.sh script
 ### remote:upload:data:zip
 
 ```yarn remote:upload:data:zip```
+## utilities
+<a name="exec-local" />
+
+### exec:local
+
+Exec a local bash script
+
+```yarn exec:local [scriptName] ...```
+
+#### Description 
+ Will execute a local bash script located in ./packages/scripts/src/bash. Arguments will be forwarded to script
+
+### Args
+Flag | Description
+--------- | ---------
+[scriptName] | Name of script
+... | Rest will be forwarded to script
+
+### Examples
+Example | Description
+--------- | ---------
+yarn exec:local rm-data.sh | Will run the rm-data.sh script
+<a name="exec-production" />
+
+### exec:production
+
+Exec a bash script on the production machine
+
+```yarn exec:production [scriptName] ...```
+
+#### Description 
+ Will execute a bash script located in ./packages/scripts/src/bash on the production server. Arguments will be forwarded to script
+
+### Args
+Flag | Description
+--------- | ---------
+[scriptName] | Name of script
+... | Rest will be forwarded to script
+
+### Examples
+Example | Description
+--------- | ---------
+yarn exec:local rm-data.sh | Will run the rm-data.sh script
+<a name="exec-stage" />
+
+### exec:stage
+
+Exec a bash script on the stage machine
+
+```yarn exec:stage```
+
+#### Description 
+ See exec:production
+<a name="exec-test" />
+
+### exec:test
+
+Exec a bash script on the stage machine
+
+```yarn exec:test```
+
+#### Description 
+ See exec:test
 ## other
 <a name="docs" />
 

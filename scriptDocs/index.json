@@ -1,172 +1,122 @@
 {
-  "groups": ["build","test", "utilities", "data", "setup", "release", "local-services", "remote-services"],
+  "groups": [
+    "setup",
+    "data",
+    "test",
+    "local-services",
+    "build",
+    "release",
+    "remote-services",
+    "utilities"
+  ],
   "scripts": {
     "docs":{
-      "usage": "yarn docs [scriptName]",
-      "short": "Show script docs",
+      "args": { "[scriptName]": "Name of script"},
       "description": "Use to read script documentation",
-      "args": {
-        "[scriptName]": "Name of script"
-      },
-      "examples": {
-        "yarn docs build:changelog": "Will display documentation for script build:changelog"
-      }
+      "examples": {"yarn docs build:changelog": "Will display documentation for script build:changelog"},
+      "short": "Show script docs",
+      "usage": "yarn docs [scriptName]"
     },
     "docs:ls":{
-      "usage": "yarn docs:ls",
+      "description": "Use to list all scripts",
       "short": "Show script overview",
-      "description": "Use to list all scripts"
+      "usage": "yarn docs:ls"
     },
     "build:docs":{
+      "description": "Will build markdown documentation based on ./scriptDocs/index.json",
       "group": "build",
-      "usage": "yarn build:docs",
       "short": "Build script markdown documentation",
-      "description": "Will build markdown documentation based on ./scriptDocs/index.json"
+      "usage": "yarn build:docs"
     },
 
     "build:changelog":{
+      "description": "Will build a changelog",
       "group": "build",
-      "short": "Build changelog",
-      "description": "Will build a changelog"
+      "short": "Build changelog"
     },
     "build:common:js": {
-      "group": "build",
-      "short": "Build common js",
       "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "group": "build",
+      "short": "Build common js"
     },
     "build:common:schema:api":{
-      "group": "build",
-      "short": "Build schema api",
       "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "group": "build",
+      "short": "Build schema api"
     },
     "build:common:schema:models":{
-      "group": "build",
-      "short": "Build schema models",
       "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "group": "build",
+      "short": "Build schema models"
     },
     "build:data:zip":{
+      "description": "Will create a new exportable data.zip based on the current data files",
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build an exportable data.zip"
     },
     "build:index:specimen":{
+      "description": "Will create a new specimen index and hot swap the current one",
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build specimen index"
     },
     "build:semantic-ui":{
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build semantic ui"
     },
     "build:trees:backend":{
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build tree documentation in backend"
     },
     "build:trees:common":{
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build tree documentation in common"
     },
     "build:trees:ui":{
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build tree documentation in ui"
     },
     "build:trees":{
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build tree documentation in backend, common and ui"
     },
     "build:ui":{
+      "description": "This will transpile es6 to es5 and create a production ready dist of the ui. Not needed in dev mode",
       "group": "build",
-      "short": "Exec a local script",
-      "description": "",
-      "args": {
-
-      },
-      "example": {
-      }
+      "short": "Build the ui"
     },
     "exec:local": {
-      "group": "utilities",
-      "usage": "yarn exec:local [scriptName] ...",
-      "short": "Exec a local script",
+      "args": {"[scriptName]": "Name of script","...": "Rest will be forwarded to script"},
       "description": "Will execute a local bash script located in ./packages/scripts/src/bash. Arguments will be forwarded to script",
-      "args": {
-        "[scriptName]": "Name of script",
-        "...": "Rest will be forwarded to script"
-      },
-      "examples": {
-        "yarn exec:local rm-data.sh": "Will run the rm-data.sh script"
-      }
+      "examples": {"yarn exec:local rm-data.sh": "Will run the rm-data.sh script"},
+      "group": "utilities",
+      "short": "Exec a local bash script",
+      "usage": "yarn exec:local [scriptName] ..."
     },
 
     "exec:production": {
+      "args": {"[scriptName]": "Name of script","...": "Rest will be forwarded to script"},
+      "description": "Will execute a bash script located in ./packages/scripts/src/bash on the production server. Arguments will be forwarded to script",
+      "examples": {"yarn exec:local rm-data.sh": "Will run the rm-data.sh script"},
       "group": "utilities",
-      "usage": "yarn exec:production"
+      "short": "Exec a bash script on the production machine",
+      "usage": "yarn exec:production [scriptName] ..."
     },
     "exec:stage": {
+      "description" :"See exec:production",
       "group": "utilities",
+      "short": "Exec a bash script on the stage machine",
       "usage": "yarn exec:stage"
     },
     "exec:test": {
+      "description" :"See exec:test",
       "group": "utilities",
+      "short": "Exec a bash script on the stage machine",
       "usage": "yarn exec:test"
     },
     "export:data:sql": {
+      "description" : "Will export data to ./data/dump.sql. ",
       "group": "data",
+      "short": "Export data from sql",
       "usage": "yarn export:data:sql"
     },
     "import:data:json": {
