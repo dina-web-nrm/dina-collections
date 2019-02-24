@@ -108,7 +108,7 @@
 * [docs](#docs)
 * [docs:ls](#docs-ls)
 
-## setup
+# setup
 <a name="install-backend" />
 
 ## install:backend
@@ -234,7 +234,7 @@
 ## uninstall
 
 ```yarn uninstall```
-## data
+# data
 <a name="export-data-sql" />
 
 ## export:data:sql
@@ -280,7 +280,7 @@ Export data from sql
 ## migrate:undo:one
 
 ```yarn migrate:undo:one```
-## test
+# test
 <a name="test-all" />
 
 ## test:all
@@ -321,7 +321,7 @@ Export data from sql
 ## test
 
 ```yarn test```
-## local-services
+# local-services
 <a name="start-backend" />
 
 ## start:backend
@@ -362,7 +362,7 @@ Export data from sql
 ## start:ui
 
 ```yarn start:ui```
-## build
+# build
 <a name="build-docs" />
 
 ## build:docs
@@ -445,7 +445,7 @@ Build the ui
 
 #### Description 
  This will transpile es6 to es5 and create a production ready dist of the ui. Not needed in dev mode
-## release
+# release
 <a name="postversion" />
 
 ## postversion
@@ -461,7 +461,7 @@ Build the ui
 ## version
 
 ```yarn version```
-## remote-services
+# remote-services
 <a name="remote-build-data-zip" />
 
 ## remote:build:data:zip
@@ -557,7 +557,7 @@ Build the ui
 ## remote:upload:data:zip
 
 ```yarn remote:upload:data:zip```
-## utilities
+# utilities
 <a name="exec-local" />
 
 ## exec:local
@@ -620,7 +620,7 @@ Exec a bash script on the stage machine
 
 #### Description 
  See exec:test
-## other
+# other
 <a name="docs" />
 
 ## docs
