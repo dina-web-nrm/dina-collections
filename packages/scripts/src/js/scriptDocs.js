@@ -175,24 +175,31 @@ function testFormat() {
   }
 }
 
+function getScripts(groupName) {
+  return Object.keys(scriptDocs.scripts)
+    .map(key => {
+      return { scriptKey: key, ...scriptDocs.scripts[key] }
+    })
+    .filter(script => {
+      if (!groupName) {
+        return true
+      }
+      const scriptGroup = script.group
+      if (groupName === 'other' && !scriptGroup) {
+        return true
+      }
+      return groupName === scriptGroup
+    })
+}
+
 function buildMarkdownToc() {
-  const scriptKeys = Object.keys(scriptDocs.scripts)
   const groupsInput = scriptDocs.groups || []
   const groups = [...groupsInput, 'other']
 
   return groups
     .map((groupName, groupIndex) => {
-      console.log('groupName', groupName)
-      const groupContent = scriptKeys
-        .filter(scriptKey => {
-          const scriptGroup = scriptDocs.scripts[scriptKey].group
-          console.log('scriptGroup', scriptGroup)
-          if (groupName === 'other' && !scriptGroup) {
-            return true
-          }
-          return groupName === scriptGroup
-        })
-        .map((scriptKey, index) => {
+      const groupContent = getScripts(groupName)
+        .map(({ scriptKey }, index) => {
           return `  ${index + 1}. [${scriptKey}](#${scriptKey})`
         })
         .join('\n')
@@ -202,65 +209,126 @@ function buildMarkdownToc() {
     .join('\n')
 }
 
+function buildMarkdownContent() {
+  const groupsInput = scriptDocs.groups || []
+  const groups = [...groupsInput, 'other']
+  return groups
+    .map(groupName => {
+      const groupContent = getScripts(groupName)
+        .map(scriptDoc => {
+          const {
+            args,
+            description,
+            examples,
+            scriptKey,
+            short,
+            usage,
+          } = scriptDoc
+
+          return [
+            `<a name="${scriptKey}" />`,
+            scriptKey && `### ${scriptKey}`,
+            short && `${short}`,
+            usage && `${createScriptTag(usage)}`,
+            description && `#### Description \n ${description}`,
+            args &&
+              Object.keys(args).length &&
+              createMarkdownTable({
+                array: Object.keys(args).map(flag => {
+                  return {
+                    description: args[flag],
+                    flag,
+                  }
+                }),
+                headers: [
+                  { key: 'flag', text: 'Flag' },
+                  { key: 'description', text: 'Description' },
+                ],
+                title: 'Args',
+              }),
+            examples &&
+              Object.keys(examples).length &&
+              createMarkdownTable({
+                array: Object.keys(examples).map(example => {
+                  return {
+                    description: examples[example],
+                    example,
+                  }
+                }),
+                headers: [
+                  { key: 'example', text: 'Example' },
+                  { key: 'description', text: 'Description' },
+                ],
+                title: 'Examples',
+              }),
+          ]
+            .filter(Boolean)
+            .join('\n\n')
+        })
+        .join('\n')
+
+      return [`## ${groupName}`, `${groupContent}`].join('\n')
+    })
+    .join('\n')
+}
+
 function buildMarkdown() {
   const scriptKeys = Object.keys(scriptDocs.scripts)
   const groupsInput = scriptKeys.groups || []
   const groups = [...groupsInput, 'other']
 
-  console.log(buildMarkdownToc())
-
   const tableOfContent = buildMarkdownToc()
-  const content = scriptKeys
-    .map(scriptKey => {
-      const { usage, short, description, args, examples } = scriptDocs.scripts[
-        scriptKey
-      ]
+  const content = buildMarkdownContent()
+  // const content = scriptKeys
+  //   .map(scriptKey => {
+  //     const { usage, short, description, args, examples } = scriptDocs.scripts[
+  //       scriptKey
+  //     ]
 
-      return [
-        `<a name="${scriptKey}" />`,
-        scriptKey && `## ${scriptKey}`,
-        short && `${short}`,
-        usage && `${createScriptTag(usage)}`,
-        description && `### Description \n ${description}`,
-        args &&
-          Object.keys(args).length &&
-          createMarkdownTable({
-            array: Object.keys(args).map(flag => {
-              return {
-                description: args[flag],
-                flag,
-              }
-            }),
-            headers: [
-              { key: 'flag', text: 'Flag' },
-              { key: 'description', text: 'Description' },
-            ],
-            title: 'Args',
-          }),
-        examples &&
-          Object.keys(examples).length &&
-          createMarkdownTable({
-            array: Object.keys(examples).map(example => {
-              return {
-                description: examples[example],
-                example,
-              }
-            }),
-            headers: [
-              { key: 'example', text: 'Example' },
-              { key: 'description', text: 'Description' },
-            ],
-            title: 'Examples',
-          }),
-      ]
-        .filter(Boolean)
-        .join('\n\n')
-    })
-    .join('\n\n')
+  //     return [
+  //       `<a name="${scriptKey}" />`,
+  //       scriptKey && `## ${scriptKey}`,
+  //       short && `${short}`,
+  //       usage && `${createScriptTag(usage)}`,
+  //       description && `### Description \n ${description}`,
+  //       args &&
+  //         Object.keys(args).length &&
+  //         createMarkdownTable({
+  //           array: Object.keys(args).map(flag => {
+  //             return {
+  //               description: args[flag],
+  //               flag,
+  //             }
+  //           }),
+  //           headers: [
+  //             { key: 'flag', text: 'Flag' },
+  //             { key: 'description', text: 'Description' },
+  //           ],
+  //           title: 'Args',
+  //         }),
+  //       examples &&
+  //         Object.keys(examples).length &&
+  //         createMarkdownTable({
+  //           array: Object.keys(examples).map(example => {
+  //             return {
+  //               description: examples[example],
+  //               example,
+  //             }
+  //           }),
+  //           headers: [
+  //             { key: 'example', text: 'Example' },
+  //             { key: 'description', text: 'Description' },
+  //           ],
+  //           title: 'Examples',
+  //         }),
+  //     ]
+  //       .filter(Boolean)
+  //       .join('\n\n')
+  //   })
+  //   .join('\n\n')
 
   const markdown = ['# Scripts', tableOfContent, content].join('\n\n')
   writeMarkdown(markdown)
-  // console.log(markdown)
 }
 if (options.test) {
   testFormat()
