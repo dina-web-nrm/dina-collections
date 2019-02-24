@@ -178,7 +178,11 @@ function testFormat() {
 function getScripts(groupName) {
   return Object.keys(scriptDocs.scripts)
     .map(key => {
-      return { scriptKey: key, ...scriptDocs.scripts[key] }
+      return {
+        scriptKey: key,
+        scriptLink: key.split(':').join('-'),
+        ...scriptDocs.scripts[key],
+      }
     })
     .filter(script => {
       if (!groupName) {
@@ -199,8 +203,8 @@ function buildMarkdownToc() {
   return groups
     .map(groupName => {
       const groupContent = getScripts(groupName)
-        .map(({ scriptKey }) => {
-          return `* [${scriptKey}](#${scriptKey})`
+        .map(({ scriptKey, scriptLink }) => {
+          return `* [${scriptKey}](#${scriptLink})`
         })
         .join('\n')
 
@@ -221,12 +225,13 @@ function buildMarkdownContent() {
             description,
             examples,
             scriptKey,
+            scriptLink,
             short,
             usage,
           } = scriptDoc
 
           return [
-            `<a name="${scriptKey}" />`,
+            `<a name="${scriptLink}" />`,
             scriptKey && `### ${scriptKey}`,
             short && `${short}`,
             usage && `${createScriptTag(usage)}`,
