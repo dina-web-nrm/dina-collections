@@ -110,7 +110,7 @@ function buildMarkdownContent({ scriptDocs }) {
         })
         .join('\n')
 
-      return [`## ${groupName}`, `${groupContent}`].join('\n')
+      return [`# ${groupName}`, `${groupContent}`].join('\n')
     })
     .join('\n')
 }
