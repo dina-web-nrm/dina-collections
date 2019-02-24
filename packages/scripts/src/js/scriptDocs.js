@@ -197,16 +197,16 @@ function buildMarkdownToc() {
   const groups = [...groupsInput, 'other']
 
   return groups
-    .map((groupName, groupIndex) => {
+    .map(groupName => {
       const groupContent = getScripts(groupName)
-        .map(({ scriptKey }, index) => {
-          return `  ${index + 1}. [${scriptKey}](#${scriptKey})`
+        .map(({ scriptKey }) => {
+          return `* [${scriptKey}](#${scriptKey})`
         })
         .join('\n')
 
-      return [`${groupIndex + 1}. ${groupName}`, `${groupContent}`].join('\n')
+      return [`## ${groupName}`, `${groupContent}`].join('\n')
     })
-    .join('\n')
+    .join('\n\n')
 }
 
 function buildMarkdownContent() {
