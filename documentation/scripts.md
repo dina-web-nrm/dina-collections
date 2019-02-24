@@ -750,14 +750,14 @@ Exec a local bash script
  Will execute a local bash script located in ./packages/scripts/src/bash. Arguments will be forwarded to script
 
 
-### Args
+#### Args
 Flag | Description
 --------- | ---------
 [scriptName] | Name of script
 ... | Rest will be forwarded to script
 
 
-### Examples
+#### Examples
 Example | Description
 --------- | ---------
 yarn exec:local rm-data.sh | Will run the rm-data.sh script
@@ -777,14 +777,14 @@ Exec a bash script on the production machine
  Will execute a bash script located in ./packages/scripts/src/bash on the production server. Arguments will be forwarded to script
 
 
-### Args
+#### Args
 Flag | Description
 --------- | ---------
 [scriptName] | Name of script
 ... | Rest will be forwarded to script
 
 
-### Examples
+#### Examples
 Example | Description
 --------- | ---------
 yarn exec:local rm-data.sh | Will run the rm-data.sh script
@@ -833,13 +833,13 @@ Show script docs
  Use to read script documentation
 
 
-### Args
+#### Args
 Flag | Description
 --------- | ---------
 [scriptName] | Name of script
 
 
-### Examples
+#### Examples
 Example | Description
 --------- | ---------
 yarn docs build:changelog | Will display documentation for script build:changelog
