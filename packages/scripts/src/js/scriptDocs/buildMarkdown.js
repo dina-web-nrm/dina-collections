@@ -70,7 +70,7 @@ function buildMarkdownContent({ scriptDocs }) {
 
           return [
             `<a name="${scriptLink}" />`,
-            scriptKey && `### ${scriptKey}`,
+            scriptKey && `## ${scriptKey}`,
             short && `${short}`,
             usage && `${createScriptTag(usage)}`,
             description && `#### Description \n ${description}`,
