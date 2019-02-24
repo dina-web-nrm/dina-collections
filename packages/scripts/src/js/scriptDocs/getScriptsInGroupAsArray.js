@@ -1,10 +1,13 @@
 module.exports = function getScriptsInGroupAsArray({ groupName, scriptDocs }) {
   return Object.keys(scriptDocs.scripts)
     .map(key => {
+      const scriptDoc = scriptDocs.scripts[key]
+      const usage = scriptDoc.usage || `yarn ${key}`
       return {
         scriptKey: key,
         scriptLink: key.split(':').join('-'),
-        ...scriptDocs.scripts[key],
+        ...scriptDoc,
+        usage,
       }
     })
     .filter(script => {

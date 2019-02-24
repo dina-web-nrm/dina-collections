@@ -486,6 +486,9 @@ Build script markdown documentation
 Build changelog
 
 
+```yarn build:changelog```
+
+
 #### Description 
  Will build a changelog
 <a name="build-common-js" />
@@ -495,6 +498,9 @@ Build changelog
 
 
 Build common js
+
+
+```yarn build:common:js```
 <a name="build-common-schema-api" />
 
 
@@ -502,6 +508,9 @@ Build common js
 
 
 Build schema api
+
+
+```yarn build:common:schema:api```
 <a name="build-common-schema-models" />
 
 
@@ -509,6 +518,9 @@ Build schema api
 
 
 Build schema models
+
+
+```yarn build:common:schema:models```
 <a name="build-data-zip" />
 
 
@@ -516,6 +528,9 @@ Build schema models
 
 
 Build an exportable data.zip
+
+
+```yarn build:data:zip```
 
 
 #### Description 
@@ -529,6 +544,9 @@ Build an exportable data.zip
 Build specimen index
 
 
+```yarn build:index:specimen```
+
+
 #### Description 
  Will create a new specimen index and hot swap the current one
 <a name="build-semantic-ui" />
@@ -538,6 +556,9 @@ Build specimen index
 
 
 Build semantic ui
+
+
+```yarn build:semantic-ui```
 <a name="build-trees-backend" />
 
 
@@ -545,6 +566,9 @@ Build semantic ui
 
 
 Build tree documentation in backend
+
+
+```yarn build:trees:backend```
 <a name="build-trees-common" />
 
 
@@ -552,6 +576,9 @@ Build tree documentation in backend
 
 
 Build tree documentation in common
+
+
+```yarn build:trees:common```
 <a name="build-trees-ui" />
 
 
@@ -559,6 +586,9 @@ Build tree documentation in common
 
 
 Build tree documentation in ui
+
+
+```yarn build:trees:ui```
 <a name="build-trees" />
 
 
@@ -566,6 +596,9 @@ Build tree documentation in ui
 
 
 Build tree documentation in backend, common and ui
+
+
+```yarn build:trees```
 <a name="build-ui" />
 
 
@@ -573,6 +606,9 @@ Build tree documentation in backend, common and ui
 
 
 Build the ui
+
+
+```yarn build:ui```
 
 
 #### Description 
