@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs": "node ./packages/scripts/src/js/scriptDocs.js",
-    "docs:ls": "node ./packages/scripts/src/js/scriptDocs.js ls",
-    "build:docs": "node ./packages/scripts/src/js/scriptDocs.js --build=true",
+    "docs": "node ./packages/scripts/src/js/scriptDocs",
+    "docs:ls": "node ./packages/scripts/src/js/scriptDocs ls",
+    "build:docs": "node ./packages/scripts/src/js/scriptDocs --build=true",
     "build:changelog": "auto-changelog -p --tag-pattern '^((?!rc|test).)*$' --template changelog-template.hbs && git add CHANGELOG.md",
     "build:common:js": "cd ./packages/common && yarn build:js",
     "build:common:schema:api": "cd ./packages/common && yarn build:schema:api",
