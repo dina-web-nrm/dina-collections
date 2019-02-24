@@ -66,7 +66,7 @@ function inspectScript(scriptKey) {
   ]
   const space = '  '
   console.log(`${scriptKey}\n`)
-  console.log(`\Usage: \n${space}${usage}`)
+  console.log(`\nUsage: \n${space}${usage}`)
   console.log(`\nShort: \n${space}${short}`)
   console.log(`\nDescription: \n${space}${description}\n`)
   if (examples) {
@@ -127,7 +127,7 @@ function createMarkdownTable({ headers, array, title }) {
   return [`### ${title}`, tableHeader, delimiter, tableContent].join('\n')
 }
 
-function test() {
+function testFormat() {
   const scriptsInPackageJson =
     packageJson && packageJson.scripts && Object.keys(packageJson.scripts)
   const scriptsInScriptDocs =
@@ -175,19 +175,41 @@ function test() {
   }
 }
 
+function buildMarkdownToc() {
+  const scriptKeys = Object.keys(scriptDocs.scripts)
+  const groupsInput = scriptDocs.groups || []
+  const groups = [...groupsInput, 'other']
+
+  return groups
+    .map((groupName, groupIndex) => {
+      console.log('groupName', groupName)
+      const groupContent = scriptKeys
+        .filter(scriptKey => {
+          const scriptGroup = scriptDocs.scripts[scriptKey].group
+          console.log('scriptGroup', scriptGroup)
+          if (groupName === 'other' && !scriptGroup) {
+            return true
+          }
+          return groupName === scriptGroup
+        })
+        .map((scriptKey, index) => {
+          return `  ${index + 1}. [${scriptKey}](#${scriptKey})`
+        })
+        .join('\n')
+
+      return [`${groupIndex + 1}. ${groupName}`, `${groupContent}`].join('\n')
+    })
+    .join('\n')
+}
+
 function buildMarkdown() {
   const scriptKeys = Object.keys(scriptDocs.scripts)
-  const tableOfContent = `# Scripts\n\n${scriptKeys
-    .map((scriptKey, index) => {
-      return `${index + 1}. [${scriptKey}](#${scriptKey})`
-    })
-    .join('\n')}`
+  const groupsInput = scriptKeys.groups || []
+  const groups = [...groupsInput, 'other']
 
-  // | First Header | Second Header |
-  // | ------------- | ------------- |
-  // | Content Cell | Content Cell |
-  // | Content Cell | Content Cell |
+  console.log(buildMarkdownToc())
 
+  const tableOfContent = buildMarkdownToc()
   const content = scriptKeys
     .map(scriptKey => {
       const { usage, short, description, args, examples } = scriptDocs.scripts[
@@ -236,12 +258,12 @@ function buildMarkdown() {
     })
     .join('\n\n')
 
-  const markdown = [tableOfContent, content].join('\n\n')
+  const markdown = ['# Scripts', tableOfContent, content].join('\n\n')
   writeMarkdown(markdown)
   // console.log(markdown)
 }
 if (options.test) {
-  test()
+  testFormat()
 } else if (options.build) {
   buildMarkdown()
 } else if (cmd === 'ls') {

@@ -1,18 +1,36 @@
 {
-  "groups": {
-
-  },
+  "groups": ["build","test", "utilities", "data", "setup", "release", "local-services", "remote-services"],
   "scripts": {
-    "build:changelog":{
-      "short": "Build changelog",
-      "description": "",
+    "docs":{
+      "usage": "yarn docs [scriptName]",
+      "short": "Show script docs",
+      "description": "Use to read script documentation",
       "args": {
-
+        "[scriptName]": "Name of script"
       },
-      "example": {
+      "examples": {
+        "yarn docs build:changelog": "Will display documentation for script build:changelog"
       }
     },
+    "docs:ls":{
+      "usage": "yarn docs:ls",
+      "short": "Show script overview",
+      "description": "Use to list all scripts"
+    },
+    "build:docs":{
+      "group": "build",
+      "usage": "yarn build:docs",
+      "short": "Build script markdown documentation",
+      "description": "Will build markdown documentation based on ./scriptDocs/index.json"
+    },
+
+    "build:changelog":{
+      "group": "build",
+      "short": "Build changelog",
+      "description": "Will build a changelog"
+    },
     "build:common:js": {
+      "group": "build",
       "short": "Build common js",
       "description": "",
       "args": {
@@ -22,6 +40,7 @@
       }
     },
     "build:common:schema:api":{
+      "group": "build",
       "short": "Build schema api",
       "description": "",
       "args": {
@@ -31,6 +50,7 @@
       }
     },
     "build:common:schema:models":{
+      "group": "build",
       "short": "Build schema models",
       "description": "",
       "args": {
@@ -40,6 +60,7 @@
       }
     },
     "build:data:zip":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -49,6 +70,7 @@
       }
     },
     "build:index:specimen":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -58,6 +80,7 @@
       }
     },
     "build:semantic-ui":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -67,6 +90,7 @@
       }
     },
     "build:trees:backend":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -76,6 +100,7 @@
       }
     },
     "build:trees:common":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -85,6 +110,7 @@
       }
     },
     "build:trees:ui":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -94,6 +120,7 @@
       }
     },
     "build:trees":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -103,6 +130,7 @@
       }
     },
     "build:ui":{
+      "group": "build",
       "short": "Exec a local script",
       "description": "",
       "args": {
@@ -112,6 +140,7 @@
       }
     },
     "exec:local": {
+      "group": "utilities",
       "usage": "yarn exec:local [scriptName] ...",
       "short": "Exec a local script",
       "description": "Will execute a local bash script located in ./packages/scripts/src/bash. Arguments will be forwarded to script",
@@ -122,6 +151,303 @@
       "examples": {
         "yarn exec:local rm-data.sh": "Will run the rm-data.sh script"
       }
+    },
+
+    "exec:production": {
+      "group": "utilities",
+      "usage": "yarn exec:production"
+    },
+    "exec:stage": {
+      "group": "utilities",
+      "usage": "yarn exec:stage"
+    },
+    "exec:test": {
+      "group": "utilities",
+      "usage": "yarn exec:test"
+    },
+    "export:data:sql": {
+      "group": "data",
+      "usage": "yarn export:data:sql"
+    },
+    "import:data:json": {
+      "group": "data",
+      "usage": "yarn import:data:json"
+    },
+    "import:data:sample": {
+      "group": "data",
+      "usage": "yarn import:data:sample"
+    },
+    "import:data:sql": {
+      "group": "data",
+      "usage": "yarn import:data:sql"
+    },
+    "import:data:zip": {
+      "group": "data",
+      "usage": "yarn import:data:zip"
+    },
+    "install:backend": {
+      "group": "setup",
+      "usage": "yarn install:backend"
+    },
+    "install:common": {
+      "group": "setup",
+      "usage": "yarn install:common"
+    },
+    "install:migrations": {
+      "group": "setup",
+      "usage": "yarn install:migrations"
+    },
+    "install:schema": {
+      "group": "setup",
+      "usage": "yarn install:schema"
+    },
+    "install:scripts": {
+      "group": "setup",
+      "usage": "yarn install:scripts"
+    },
+    "install:semantic-ui": {
+      "group": "setup",
+      "usage": "yarn install:semantic-ui"
+    },
+    "install:ui": {
+      "group": "setup",
+      "usage": "yarn install:ui"
+    },
+    "install": {
+      "group": "setup",
+      "usage": "yarn install"
+    },
+    "migrate:latest": {
+      "group": "data",
+      "usage": "yarn migrate:latest"
+    },
+    "migrate:one": {
+      "group": "data",
+      "usage": "yarn migrate:one"
+    },
+    "migrate:undo:one": {
+      "group": "data",
+      "usage": "yarn migrate:undo:one"
+    },
+    "postversion": {
+      "group": "release",
+      "usage": "yarn postversion"
+    },
+    "preversion": {
+      "group": "release",
+      "usage": "yarn preversion"
+    },
+    "remote:build:data:zip": {
+      "group": "remote-services",
+      "usage": "yarn remote:build:data:zip"
+    },
+    "remote:build:index:specimen": {
+      "group": "remote-services",
+      "usage": "yarn remote:build:index:specimen"
+    },
+    "remote:deploy": {
+      "group": "remote-services",
+      "usage": "yarn remote:deploy"
+    },
+    "remote:download:data:zip": {
+      "group": "remote-services",
+      "usage": "yarn remote:download:data:zip"
+    },
+    "remote:download:data:sql": {
+      "group": "remote-services",
+      "usage": "yarn remote:download:data:sql"
+    },
+    "remote:exec:cmd": {
+      "group": "remote-services",
+      "usage": "yarn remote:exec:cmd"
+    },
+    "remote:exec:script": {
+      "group": "remote-services",
+      "usage": "yarn remote:exec:script"
+    },
+    "remote:export:data:sql": {
+      "group": "remote-services",
+      "usage": "yarn remote:export:data:sql"
+    },
+    "remote:git:checkout-tag": {
+      "group": "remote-services",
+      "usage": "yarn remote:git:checkout-tag"
+    },
+    "remote:import:data:json": {
+      "group": "remote-services",
+      "usage": "yarn remote:import:data:json"
+    },
+    "remote:import:data:sample": {
+      "group": "remote-services",
+      "usage": "yarn remote:import:data:sample"
+    },
+    "remote:import:data:sql": {
+      "group": "remote-services",
+      "usage": "yarn remote:import:data:sql"
+    },
+    "remote:import:data:zip": {
+      "group": "remote-services",
+      "usage": "yarn remote:import:data:zip"
+    },
+    "remote:migrate:latest": {
+      "group": "remote-services",
+      "usage": "yarn remote:migrate:latest"
+    },
+    "remote:migrate:one": {
+      "group": "remote-services",
+      "usage": "yarn remote:migrate:one"
+    },
+    "remote:migrate:undo:one": {
+      "group": "remote-services",
+      "usage": "yarn remote:migrate:undo:one"
+    },
+    "remote:print:server-status": {
+      "group": "remote-services",
+      "usage": "yarn remote:print:server-status"
+    },
+    "remote:unpack:zip": {
+      "group": "remote-services",
+      "usage": "yarn remote:unpack:zip"
+    },
+    "remote:upload:data:zip": {
+      "group": "remote-services",
+      "usage": "yarn remote:upload:data:zip"
+    },
+    "setup:env": {
+      "group": "setup",
+      "usage": "yarn setup:env"
+    },
+    "setup:links:backend": {
+      "group": "setup",
+      "usage": "yarn setup:links:backend"
+    },
+    "setup:links:common": {
+      "group": "setup",
+      "usage": "yarn setup:links:common"
+    },
+    "setup:links:migrations": {
+      "group": "setup",
+      "usage": "yarn setup:links:migrations"
+    },
+    "setup:links:scripts": {
+      "group": "setup",
+      "usage": "yarn setup:links:scripts"
+    },
+    "setup:links:ui": {
+      "group": "setup",
+      "usage": "yarn setup:links:ui"
+    },
+    "setup:links": {
+      "group": "setup",
+      "usage": "yarn setup:links"
+    },
+    "setup:sample-data": {
+      "group": "setup",
+      "usage": "yarn setup:sample-data"
+    },
+    "setup": {
+      "group": "setup",
+      "usage": "yarn setup"
+    },
+    "start:backend": {
+      "group": "local-services",
+      "usage": "yarn start:backend"
+    },
+    "start:dbs": {
+      "group": "local-services",
+      "usage": "yarn start:dbs"
+    },
+    "start:elasticsearch": {
+      "group": "local-services",
+      "usage": "yarn start:elasticsearch"
+    },
+    "start:kibana": {
+      "group": "local-services",
+      "usage": "yarn start:kibana"
+    },
+    "start:keycloak": {
+      "group": "local-services",
+      "usage": "yarn start:keycloak"
+    },
+    "start:mysql": {
+      "group": "local-services",
+      "usage": "yarn start:mysql"
+    },
+    "start:postgres": {
+      "group": "local-services",
+      "usage": "yarn start:postgres"
+    },
+    "start:ui": {
+      "group": "local-services",
+      "usage": "yarn start:ui"
+    },
+    "test:all": {
+      "group": "test",
+      "usage": "yarn test:all"
+    },
+    "test:backend:integration": {
+      "group": "test",
+      "usage": "yarn test:backend:integration"
+    },
+    "test:backend:unit": {
+      "group": "test",
+      "usage": "yarn test:backend:unit"
+    },
+    "test:common:schema-locked": {
+      "group": "test",
+      "usage": "yarn test:common:schema-locked"
+    },
+    "test:common": {
+      "group": "test",
+      "usage": "yarn test:common"
+    },
+    "test:schema": {
+      "group": "test",
+      "usage": "yarn test:schema"
+    },
+    "test:ui": {
+      "group": "test",
+      "usage": "yarn test:ui"
+    },
+    "test": {
+      "group": "test",
+      "usage": "yarn test"
+    },
+    "uninstall:backend": {
+      "group": "setup",
+      "usage": "yarn uninstall:backend"
+    },
+    "uninstall:common": {
+      "group": "setup",
+      "usage": "yarn uninstall:common"
+    },
+    "uninstall:migrations": {
+      "group": "setup",
+      "usage": "yarn uninstall:migrations"
+    },
+    "uninstall:schema": {
+      "group": "setup",
+      "usage": "yarn uninstall:schema"
+    },
+    "uninstall:scripts": {
+      "group": "setup",
+      "usage": "yarn uninstall:scripts"
+    },
+    "uninstall:semantic-ui": {
+      "group": "setup",
+      "usage": "yarn uninstall:semantic-ui"
+    },
+    "uninstall:ui": {
+      "group": "setup",
+      "usage": "yarn uninstall:ui"
+    },
+    "uninstall": {
+      "group": "setup",
+      "usage": "yarn uninstall"
+    },
+    "version": {
+      "group": "release",
+      "usage": "yarn version"
     }
   }
 }
