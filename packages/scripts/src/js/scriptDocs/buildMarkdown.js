@@ -32,7 +32,7 @@ function createMarkdownTable({ headers, array, title }) {
       return '---------'
     })
     .join(' | ')
-  return [`#### ${title}`, tableHeader, delimiter, tableContent].join('\n')
+  return [`### ${title}`, tableHeader, delimiter, tableContent].join('\n')
 }
 
 function buildMarkdownToc({ scriptDocs }) {
@@ -70,7 +70,7 @@ function buildMarkdownContent({ scriptDocs }) {
 
           return [
             `<a name="${scriptLink}" />`,
-            scriptKey && `## ${scriptKey}`,
+            scriptKey && `### ${scriptKey}`,
             short && `${short}`,
             usage && `${createScriptTag(usage)}`,
             description && `#### Description \n ${description}`,
@@ -106,11 +106,11 @@ function buildMarkdownContent({ scriptDocs }) {
               }),
           ]
             .filter(Boolean)
-            .join('\n\n')
+            .join('\n\n\n')
         })
         .join('\n')
 
-      return [`# ${groupName}`, `${groupContent}`].join('\n')
+      return [`## ${groupName}`, `${groupContent}`].join('\n')
     })
     .join('\n')
 }
