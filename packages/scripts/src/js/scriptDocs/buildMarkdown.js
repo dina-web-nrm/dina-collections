@@ -32,7 +32,7 @@ function createMarkdownTable({ headers, array, title }) {
       return '---------'
     })
     .join(' | ')
-  return [`### ${title}`, tableHeader, delimiter, tableContent].join('\n')
+  return [`#### ${title}`, tableHeader, delimiter, tableContent].join('\n')
 }
 
 function buildMarkdownToc({ scriptDocs }) {
