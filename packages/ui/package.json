@@ -41,6 +41,7 @@
     "prop-types": "^15.6.0",
     "query-string": "5",
     "react": "^16.0.0",
+    "react-app-polyfill": "^0.2.1",
     "react-dom": "^16.0.0",
     "react-infinite": "^0.13.0",
     "react-json-inspector": "^7.1.1",
@@ -110,6 +111,12 @@
     "react-test-renderer": "^16.2.0",
     "source-map-explorer": "^1.5.0"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "engines": {
     "node": "10.15.1",
     "yarn": "1.10.1"
