@@ -49,7 +49,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "5.0.0-alpha.9",
-    "react-scripts": "1.0.17",
+    "react-scripts": "2.1.5",
     "react-sizeme": "^2.4.4",
     "react-sortable-tree": "^2.1.0",
     "redux": "^3.7.2",
