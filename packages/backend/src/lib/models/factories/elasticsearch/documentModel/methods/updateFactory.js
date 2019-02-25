@@ -6,9 +6,11 @@ const log = createLog(
   'lib/elasticsearch/modelFactories/normalizedElasticModel/methods/updateFactory'
 )
 
-module.exports = function updateFactory(
-  { Model, elasticsearch, forceRefresh } = {}
-) {
+module.exports = function updateFactory({
+  Model,
+  elasticsearch,
+  forceRefresh,
+} = {}) {
   if (!Model) {
     throw new Error('Have to provide model')
   }

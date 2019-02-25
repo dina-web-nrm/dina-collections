@@ -1,7 +1,6 @@
 {
   "title": "JSON API Schema",
-  "description":
-    "This is a schema for responses in the JSON API format. For more, see http://jsonapi.org",
+  "description": "This is a schema for responses in the JSON API format. For more, see http://jsonapi.org",
   "oneOf": [
     {
       "$ref": "#/definitions/success"
@@ -23,8 +22,7 @@
           "$ref": "#/definitions/data"
         },
         "included": {
-          "description":
-            "To reduce the number of HTTP requests, servers **MAY** allow responses that include related resources along with the requested primary resources. Such responses are called \"compound documents\".",
+          "description": "To reduce the number of HTTP requests, servers **MAY** allow responses that include related resources along with the requested primary resources. Such responses are called \"compound documents\".",
           "type": "array",
           "items": {
             "$ref": "#/definitions/resource"
@@ -92,21 +90,18 @@
     },
 
     "meta": {
-      "description":
-        "Non-standard meta-information that can not be represented as an attribute or relationship.",
+      "description": "Non-standard meta-information that can not be represented as an attribute or relationship.",
       "type": "object",
       "additionalProperties": true
     },
     "data": {
-      "description":
-        "The document's \"primary data\" is a representation of the resource or collection of resources targeted by a request.",
+      "description": "The document's \"primary data\" is a representation of the resource or collection of resources targeted by a request.",
       "oneOf": [
         {
           "$ref": "#/definitions/resource"
         },
         {
-          "description":
-            "An array of resource objects, an array of resource identifier objects, or an empty array ([]), for requests that target resource collections.",
+          "description": "An array of resource objects, an array of resource identifier objects, or an empty array ([]), for requests that target resource collections.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/resource"
@@ -114,15 +109,13 @@
           "uniqueItems": true
         },
         {
-          "description":
-            "null if the request is one that might correspond to a single resource, but doesn't currently.",
+          "description": "null if the request is one that might correspond to a single resource, but doesn't currently.",
           "type": "null"
         }
       ]
     },
     "resource": {
-      "description":
-        "\"Resource objects\" appear in a JSON API document to represent resources.",
+      "description": "\"Resource objects\" appear in a JSON API document to represent resources.",
       "type": "object",
       "required": ["type", "id"],
       "properties": {
@@ -149,13 +142,11 @@
     },
 
     "relationshipLinks": {
-      "description":
-        "A resource object **MAY** contain references to other resource objects (\"relationships\"). Relationships may be to-one or to-many. Relationships can be specified by including a member in a resource's links object.",
+      "description": "A resource object **MAY** contain references to other resource objects (\"relationships\"). Relationships may be to-one or to-many. Relationships can be specified by including a member in a resource's links object.",
       "type": "object",
       "properties": {
         "self": {
-          "description":
-            "A `self` member, whose value is a URL for the relationship itself (a \"relationship URL\"). This URL allows the client to directly manipulate the relationship. For example, it would allow a client to remove an `author` from an `article` without deleting the people resource itself.",
+          "description": "A `self` member, whose value is a URL for the relationship itself (a \"relationship URL\"). This URL allows the client to directly manipulate the relationship. For example, it would allow a client to remove an `author` from an `article` without deleting the people resource itself.",
           "$ref": "#/definitions/link"
         },
         "related": {
@@ -171,8 +162,7 @@
       }
     },
     "link": {
-      "description":
-        "A link **MUST** be represented as either: a string containing the link's URL or a link object.",
+      "description": "A link **MUST** be represented as either: a string containing the link's URL or a link object.",
       "oneOf": [
         {
           "description": "A string containing the link's URL.",
@@ -197,8 +187,7 @@
     },
 
     "attributes": {
-      "description":
-        "Members of the attributes object (\"attributes\") represent information about the resource object in which it's defined.",
+      "description": "Members of the attributes object (\"attributes\") represent information about the resource object in which it's defined.",
       "type": "object",
       "patternProperties": {
         "^(?!relationships$|links$|id$|type$)\\w[-\\w_]*$": {
@@ -209,8 +198,7 @@
     },
 
     "relationships": {
-      "description":
-        "Members of the relationships object (\"relationships\") represent references from the resource object in which it's defined to other resource objects.",
+      "description": "Members of the relationships object (\"relationships\") represent references from the resource object in which it's defined to other resource objects.",
       "type": "object",
       "patternProperties": {
         "^(?!id$|type$)\\w[-\\w_]*$": {
@@ -219,8 +207,7 @@
               "$ref": "#/definitions/relationshipLinks"
             },
             "data": {
-              "description":
-                "Member, whose value represents \"resource linkage\".",
+              "description": "Member, whose value represents \"resource linkage\".",
               "oneOf": [
                 {
                   "$ref": "#/definitions/relationshipToOne"
@@ -245,8 +232,7 @@
       "additionalProperties": false
     },
     "relationshipToOne": {
-      "description":
-        "References to other resource objects in a to-one (\"relationship\"). Relationships can be specified by including a member in a resource's links object.",
+      "description": "References to other resource objects in a to-one (\"relationship\"). Relationships can be specified by including a member in a resource's links object.",
       "anyOf": [
         {
           "$ref": "#/definitions/empty"
@@ -257,8 +243,7 @@
       ]
     },
     "relationshipToMany": {
-      "description":
-        "An array of objects each containing \"type\" and \"id\" members for to-many relationships.",
+      "description": "An array of objects each containing \"type\" and \"id\" members for to-many relationships.",
       "type": "array",
       "items": {
         "$ref": "#/definitions/linkage"
@@ -338,44 +323,37 @@
       "type": "object",
       "properties": {
         "id": {
-          "description":
-            "A unique identifier for this particular occurrence of the problem.",
+          "description": "A unique identifier for this particular occurrence of the problem.",
           "type": "string"
         },
         "links": {
           "$ref": "#/definitions/links"
         },
         "status": {
-          "description":
-            "The HTTP status code applicable to this problem, expressed as a string value.",
+          "description": "The HTTP status code applicable to this problem, expressed as a string value.",
           "type": "string"
         },
         "code": {
-          "description":
-            "An application-specific error code, expressed as a string value.",
+          "description": "An application-specific error code, expressed as a string value.",
           "type": "string"
         },
         "title": {
-          "description":
-            "A short, human-readable summary of the problem. It **SHOULD NOT** change from occurrence to occurrence of the problem, except for purposes of localization.",
+          "description": "A short, human-readable summary of the problem. It **SHOULD NOT** change from occurrence to occurrence of the problem, except for purposes of localization.",
           "type": "string"
         },
         "detail": {
-          "description":
-            "A human-readable explanation specific to this occurrence of the problem.",
+          "description": "A human-readable explanation specific to this occurrence of the problem.",
           "type": "string"
         },
         "source": {
           "type": "object",
           "properties": {
             "pointer": {
-              "description":
-                "A JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute].",
+              "description": "A JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute].",
               "type": "string"
             },
             "parameter": {
-              "description":
-                "A string indicating which query parameter caused the error.",
+              "description": "A string indicating which query parameter caused the error.",
               "type": "string"
             }
           }

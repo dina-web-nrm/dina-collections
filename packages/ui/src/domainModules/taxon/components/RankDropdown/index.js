@@ -31,7 +31,9 @@ const propTypes = {
 
 class RankDropdown extends Component {
   render() {
-    const { input: { value } } = this.props
+    const {
+      input: { value },
+    } = this.props
 
     // allow value 'class' to be shown, but disabled and not selectable
     return (

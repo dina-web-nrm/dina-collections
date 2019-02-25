@@ -13,9 +13,7 @@ module.exports = function runMigrationFunctions({
       ({ migrationFunction, migrationName, resourceName, serviceName }) => {
         return () => {
           log.info(
-            `Running migration: ${serviceName} -> ${resourceName} -> ${
-              migrationName
-            }`
+            `Running migration: ${serviceName} -> ${resourceName} -> ${migrationName}`
           )
           return migrationFunction({
             ...rest,

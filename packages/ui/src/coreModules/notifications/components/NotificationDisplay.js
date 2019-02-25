@@ -57,6 +57,9 @@ export class NotificationDisplay extends Component {
 NotificationDisplay.propTypes = propTypes
 NotificationDisplay.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  NotificationDisplay
-)
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(NotificationDisplay)

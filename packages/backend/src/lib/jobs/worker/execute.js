@@ -33,9 +33,9 @@ module.exports = function execute({ job, serviceInteractor }) {
           .call({ operationId, request })
           .then(() => {
             log.info(
-              `Job with id: :${job.id} and operationId: ${
-                operationId
-              } finished successfully`
+              `Job with id: :${
+                job.id
+              } and operationId: ${operationId} finished successfully`
             )
             return serviceInteractor
               .call({
@@ -51,9 +51,9 @@ module.exports = function execute({ job, serviceInteractor }) {
               })
               .then(() => {
                 log.info(
-                  `Job with id: :${job.id} and operationId: ${
-                    operationId
-                  } marked as success`
+                  `Job with id: :${
+                    job.id
+                  } and operationId: ${operationId} marked as success`
                 )
               })
           })
@@ -80,9 +80,9 @@ module.exports = function execute({ job, serviceInteractor }) {
               })
               .then(() => {
                 log.info(
-                  `Job with id: :${job.id} and operationId: ${
-                    operationId
-                  } marked as failed`
+                  `Job with id: :${
+                    job.id
+                  } and operationId: ${operationId} marked as failed`
                 )
               })
           })

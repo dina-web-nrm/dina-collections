@@ -143,48 +143,45 @@ class PhysicalObjectsAccordion extends PureComponent {
 
     return (
       <React.Fragment>
-        {this.getShouldRenderAccordion() &&
-          collectionItems.length > 0 && (
-            <Grid.Column computer={16}>
-              <Accordion
-                expandItemOnAdd
-                getShouldExpandFirstItemOnMount={
-                  getShouldExpandFirstItemOnMount
-                }
-                getShouldRenderItem={this.getShouldRenderItem}
-                initialActiveMode={ALL_COLLAPSED}
-                items={collectionItems}
-                renderActiveOnly
-                renderContent={props => {
-                  return (
-                    <PhysicalObjectContent
-                      category={category}
-                      changeFieldValue={changeFieldValue}
-                      formName={formName}
-                      formValueSelector={formValueSelector}
-                      preparationTypeId={
-                        props.preparationType && props.preparationType.id
-                      }
-                      removeArrayFieldByIndex={removeArrayFieldByIndex}
-                      {...props}
-                    />
-                  )
-                }}
-                renderTitle={props => {
-                  return (
-                    <PhysicalObjectTitle
-                      category={category}
-                      formName={formName}
-                      preparationTypeId={
-                        props.preparationType && props.preparationType.id
-                      }
-                      {...props}
-                    />
-                  )
-                }}
-              />
-            </Grid.Column>
-          )}
+        {this.getShouldRenderAccordion() && collectionItems.length > 0 && (
+          <Grid.Column computer={16}>
+            <Accordion
+              expandItemOnAdd
+              getShouldExpandFirstItemOnMount={getShouldExpandFirstItemOnMount}
+              getShouldRenderItem={this.getShouldRenderItem}
+              initialActiveMode={ALL_COLLAPSED}
+              items={collectionItems}
+              renderActiveOnly
+              renderContent={props => {
+                return (
+                  <PhysicalObjectContent
+                    category={category}
+                    changeFieldValue={changeFieldValue}
+                    formName={formName}
+                    formValueSelector={formValueSelector}
+                    preparationTypeId={
+                      props.preparationType && props.preparationType.id
+                    }
+                    removeArrayFieldByIndex={removeArrayFieldByIndex}
+                    {...props}
+                  />
+                )
+              }}
+              renderTitle={props => {
+                return (
+                  <PhysicalObjectTitle
+                    category={category}
+                    formName={formName}
+                    preparationTypeId={
+                      props.preparationType && props.preparationType.id
+                    }
+                    {...props}
+                  />
+                )
+              }}
+            />
+          </Grid.Column>
+        )}
         <Grid.Column width={16}>
           <AddButton
             module="collectionMammals"
@@ -213,7 +210,10 @@ PhysicalObjectsAccordion.propTypes = propTypes
 PhysicalObjectsAccordion.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   pathBuilder({
     name: 'individual.collectionItems',
   })

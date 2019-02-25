@@ -178,15 +178,14 @@ class DropdownSearchInput extends Component {
     return (
       <React.Fragment>
         <div style={containerStyle}>
-          {!disableClearValue &&
-            value && (
-              <Icon
-                link
-                name="close"
-                onClick={this.handleClear}
-                style={closeIconStyle}
-              />
-            )}
+          {!disableClearValue && value && (
+            <Icon
+              link
+              name="close"
+              onClick={this.handleClear}
+              style={closeIconStyle}
+            />
+          )}
           <Dropdown
             autoComplete={autoComplete}
             button={displayAsButton}

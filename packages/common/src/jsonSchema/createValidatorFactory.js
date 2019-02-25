@@ -14,9 +14,10 @@ const defaultOptions = {
   verbose: false, // to have information about the error.parentSchema
 }
 
-const createValidatorFactory = (
-  { keywords: keywordsInput = {}, models } = {}
-) => {
+const createValidatorFactory = ({
+  keywords: keywordsInput = {},
+  models,
+} = {}) => {
   const rawModels = JSON.parse(JSON.stringify(models))
 
   const createAjv = options => {

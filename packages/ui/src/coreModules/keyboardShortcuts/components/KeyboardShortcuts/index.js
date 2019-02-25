@@ -185,4 +185,7 @@ class KeyboardShortcuts extends Component {
 KeyboardShortcuts.propTypes = propTypes
 KeyboardShortcuts.defaultProps = defaultProps
 
-export default connect(mapStateToProps, mapDispatchToProps)(KeyboardShortcuts)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(KeyboardShortcuts)

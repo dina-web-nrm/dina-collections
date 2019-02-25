@@ -8,9 +8,12 @@ export const dep = new Dependor({
 
 const log = createLog('coreModules:crud:actionCreators:create')
 
-export default function delAcFactory(
-  { operationId, operationType, resource, resourceActionTypes } = {}
-) {
+export default function delAcFactory({
+  operationId,
+  operationType,
+  resource,
+  resourceActionTypes,
+} = {}) {
   const actionTypes = dep.getActionActionTypes({
     operationType,
     resource,

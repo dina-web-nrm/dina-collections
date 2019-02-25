@@ -25,4 +25,7 @@ export const InformationSidebar = ({ rightSidebarIsOpen }) => {
 
 InformationSidebar.propTypes = propTypes
 
-export default compose(withRouter, connect(mapStateToProps))(InformationSidebar)
+export default compose(
+  withRouter,
+  connect(mapStateToProps)
+)(InformationSidebar)

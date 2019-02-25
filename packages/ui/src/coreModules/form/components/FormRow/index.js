@@ -255,5 +255,8 @@ FormRow.defaultProps = defaultProps
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(FormRow)

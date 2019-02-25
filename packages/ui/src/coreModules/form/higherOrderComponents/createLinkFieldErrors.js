@@ -86,6 +86,9 @@ export default function createLinkFieldErrors({ fieldPaths = [] } = {}) {
     LinkFieldErrors.defaultProps = defaultProps
     LinkFieldErrors.propTypes = propTypes
 
-    return connect(mapStateToProps, mapDispatchToProps)(LinkFieldErrors)
+    return connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(LinkFieldErrors)
   }
 }

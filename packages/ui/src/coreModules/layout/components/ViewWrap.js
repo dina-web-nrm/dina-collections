@@ -150,5 +150,8 @@ export default compose(
     layer: APPLICATION_LAYER_VIEW,
   }),
   injectWindowHeight,
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(ViewWrap)

@@ -103,17 +103,23 @@ const getTaxonNamesWithAcceptedToTaxon = createSelector(
   }
 )
 
-const getTaxonNameOption = createSelector(getTaxonName, taxonName => {
-  return taxonName && mapTaxonNameToOption(taxonName)
-})
+const getTaxonNameOption = createSelector(
+  getTaxonName,
+  taxonName => {
+    return taxonName && mapTaxonNameToOption(taxonName)
+  }
+)
 
-const getTaxaSortedArray = createSelector(getTaxaArray, taxaArray => {
-  return taxaArray.sort(({ attributes: a = {} }, { attributes: b = {} }) => {
-    if (a.name < b.name) return -1
-    if (a.name > b.name) return 1
-    return 0
-  })
-})
+const getTaxaSortedArray = createSelector(
+  getTaxaArray,
+  taxaArray => {
+    return taxaArray.sort(({ attributes: a = {} }, { attributes: b = {} }) => {
+      if (a.name < b.name) return -1
+      if (a.name > b.name) return 1
+      return 0
+    })
+  }
+)
 
 const getTaxonOptions = createSelector(
   getTaxaSortedArray,

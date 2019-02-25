@@ -44,7 +44,10 @@ module.exports = function createTextPreviewAggregation({
       const hits = objectPath.get(result, `hits.hits`)
       const items = []
       hits.forEach(hit => {
-        const { highlight = {}, _source: { id } } = hit
+        const {
+          highlight = {},
+          _source: { id },
+        } = hit
         const highlightKeys = Object.keys(highlight)
         if (highlightKeys.length) {
           highlightKeys.forEach(highlightKey => {

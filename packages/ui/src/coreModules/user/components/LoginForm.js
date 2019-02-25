@@ -94,4 +94,9 @@ export const LoginForm = reduxForm({
   validate: formValidator({ schema: loginRequestSchema }),
 })(RawLoginForm)
 
-export default compose(connect(null, mapDispatchToProps))(LoginForm)
+export default compose(
+  connect(
+    null,
+    mapDispatchToProps
+  )
+)(LoginForm)

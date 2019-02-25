@@ -13,9 +13,7 @@ const sqlFileName = 'dump.sql'
 const relativeSqlFilePath = path.join(relativeSqlZipFolderPath, sqlFileName)
 
 return promptContinue({
-  message: `This will download [REPO]/data/dump.sql from server: ${
-    serverName
-  } to [REPO]/data/ `,
+  message: `This will download [REPO]/data/dump.sql from server: ${serverName} to [REPO]/data/ `,
 })
   .then(() => {
     return localExecCmd({

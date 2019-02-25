@@ -70,4 +70,7 @@ function AgentRoleTitle({
 AgentRoleTitle.propTypes = propTypes
 AgentRoleTitle.defaultProps = defaultProps
 
-export default compose(pathBuilder(), connect(mapStateToProps))(AgentRoleTitle)
+export default compose(
+  pathBuilder(),
+  connect(mapStateToProps)
+)(AgentRoleTitle)

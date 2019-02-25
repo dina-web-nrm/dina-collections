@@ -17,9 +17,12 @@ module.exports = function bulkCreateFactory({ Model }) {
         ...currentItems,
       }
 
-      const addItem = (
-        { attributes, id, internals = {}, relationships } = {}
-      ) => {
+      const addItem = ({
+        attributes,
+        id,
+        internals = {},
+        relationships,
+      } = {}) => {
         if (updatedItems[id] !== undefined) {
           if (!collidingIdPrefix) {
             throw new Error(`Id ${id} already exist`)

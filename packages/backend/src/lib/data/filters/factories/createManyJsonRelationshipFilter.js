@@ -31,9 +31,9 @@ module.exports = function createManyJsonRelationshipFilter({
           const obj = {
             id,
           }
-          const query = `"relationships"->'${
-            relationshipKey
-          }'->'data' @> '[${JSON.stringify(obj)}]'`
+          const query = `"relationships"->'${relationshipKey}'->'data' @> '[${JSON.stringify(
+            obj
+          )}]'`
           return sequelize.literal(query)
         }),
       }

@@ -10,7 +10,9 @@ module.exports = function del(options) {
     responseFormat: 'object',
     responseSuccessStatus: 201,
   })(({ model, request }) => {
-    const { pathParams: { id } } = request
+    const {
+      pathParams: { id },
+    } = request
 
     return model.del({ id }).then(({ item } = {}) => {
       return { item }

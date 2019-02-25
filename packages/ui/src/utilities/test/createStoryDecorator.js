@@ -9,9 +9,11 @@ import I18nProvider from 'coreModules/i18n/components/I18nProvider'
 
 const defaultConfig = defaultTestConfig()
 
-export default function createStoryDecorator(
-  { config: customConfig, initialState, wrap = true } = {}
-) {
+export default function createStoryDecorator({
+  config: customConfig,
+  initialState,
+  wrap = true,
+} = {}) {
   return getStory => {
     const config = customConfig || defaultConfig
     const store = createTestStore({ config, initialState })

@@ -6,7 +6,10 @@ module.exports = function ensureNoCircularAncestorsPreHook({
   serviceInteractor,
 }) {
   return Promise.resolve().then(() => {
-    const { body: { data }, pathParams: { id } } = request
+    const {
+      body: { data },
+      pathParams: { id },
+    } = request
     const parentId = data && data.id
     if (!parentId) {
       return null

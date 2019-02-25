@@ -199,7 +199,10 @@ const createHandleDelete = () => ComposedComponent => {
 
   return compose(
     createGetResourceCount(),
-    connect(undefined, mapDispatchToProps),
+    connect(
+      undefined,
+      mapDispatchToProps
+    ),
     connect(null) // needed to get dispatch
   )(DeleteHandler)
 }

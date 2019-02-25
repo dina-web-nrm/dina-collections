@@ -9,15 +9,13 @@ export const dep = new Dependor({
 
 const log = createLog('coreModules:crud:actionCreators:create')
 
-export default function createAcFactory(
-  {
-    operationId,
-    operationType,
-    options = {},
-    resource,
-    resourceActionTypes,
-  } = {}
-) {
+export default function createAcFactory({
+  operationId,
+  operationType,
+  options = {},
+  resource,
+  resourceActionTypes,
+} = {}) {
   const actionTypes = dep.getActionActionTypes({
     operationType,
     resource,
@@ -32,14 +30,12 @@ export default function createAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function createAc(
-    {
-      item: rawItem,
-      nested = false,
-      throwError = true,
-      options: optionsOverride = {},
-    } = {}
-  ) {
+  return function createAc({
+    item: rawItem,
+    nested = false,
+    throwError = true,
+    options: optionsOverride = {},
+  } = {}) {
     log.debug(`${resource}.create called`, { item: rawItem, throwError })
 
     const item = nested

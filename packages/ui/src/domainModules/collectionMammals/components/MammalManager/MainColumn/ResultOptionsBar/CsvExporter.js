@@ -185,9 +185,7 @@ export class CsvExporter extends Component {
 
   render() {
     const { exportJobId, fileName, exportStatus } = this.state
-    const fileUrl = `/api/export/v01/exportJobs/${
-      exportJobId
-    }/actions/downloadExport/${fileName}`
+    const fileUrl = `/api/export/v01/exportJobs/${exportJobId}/actions/downloadExport/${fileName}`
 
     let modalContent
     if (exportStatus === 'failed') {
@@ -279,6 +277,9 @@ CsvExporter.defaultProps = defaultProps
 CsvExporter.propTypes = propTypes
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withI18n({ module: 'collectionMammals' })
 )(CsvExporter)

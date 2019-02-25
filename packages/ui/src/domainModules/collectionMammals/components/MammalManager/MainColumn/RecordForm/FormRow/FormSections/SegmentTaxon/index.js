@@ -181,6 +181,7 @@ const SegmentDeterminations = ({
 SegmentDeterminations.propTypes = propTypes
 SegmentDeterminations.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps), pathBuilder())(
-  SegmentDeterminations
-)
+export default compose(
+  connect(mapStateToProps),
+  pathBuilder()
+)(SegmentDeterminations)

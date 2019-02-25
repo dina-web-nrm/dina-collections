@@ -6,16 +6,12 @@ export default function getActionActionType({
 }) {
   if (!(resourceActionTypes && resourceActionTypes[operationType])) {
     throw new Error(
-      `Resource: ${resource} dont have actionTypes for operationType: ${
-        operationType
-      }`
+      `Resource: ${resource} dont have actionTypes for operationType: ${operationType}`
     )
   }
   if (!resourceActionTypes[operationType][actionType]) {
     throw new Error(
-      `Resource: ${resource} dont have actionType ${
-        actionType
-      } for operationType: ${operationType}`
+      `Resource: ${resource} dont have actionType ${actionType} for operationType: ${operationType}`
     )
   }
 

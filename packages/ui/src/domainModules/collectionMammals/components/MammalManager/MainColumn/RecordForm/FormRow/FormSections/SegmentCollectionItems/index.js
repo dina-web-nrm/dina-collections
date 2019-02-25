@@ -70,43 +70,41 @@ class SegmentCollectionItems extends PureComponent {
           <ModuleTranslate capitalize textKey="headers.physicalObjects" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
-          {collectionItems &&
-            collectionItems.length > 0 && (
-              <Grid.Column computer={16}>
-                <Accordion
-                  initialActiveMode={editMode ? ALL_COLLAPSED : FIRST_EXPANDED}
-                  items={collectionItems}
-                  renderContent={props => {
-                    return (
-                      <PhysicalObjectContent
-                        category={
-                          props.preparationType &&
-                          props.preparationType.category
-                        }
-                        changeFieldValue={changeFieldValue}
-                        formValueSelector={formValueSelector}
-                        preparationTypeId={
-                          props.preparationType && props.preparationType.id
-                        }
-                        removeArrayFieldByIndex={removeArrayFieldByIndex}
-                        {...props}
-                      />
-                    )
-                  }}
-                  renderTitle={props => (
-                    <PhysicalObjectTitle
+          {collectionItems && collectionItems.length > 0 && (
+            <Grid.Column computer={16}>
+              <Accordion
+                initialActiveMode={editMode ? ALL_COLLAPSED : FIRST_EXPANDED}
+                items={collectionItems}
+                renderContent={props => {
+                  return (
+                    <PhysicalObjectContent
                       category={
                         props.preparationType && props.preparationType.category
                       }
+                      changeFieldValue={changeFieldValue}
+                      formValueSelector={formValueSelector}
                       preparationTypeId={
                         props.preparationType && props.preparationType.id
                       }
+                      removeArrayFieldByIndex={removeArrayFieldByIndex}
                       {...props}
                     />
-                  )}
-                />
-              </Grid.Column>
-            )}
+                  )
+                }}
+                renderTitle={props => (
+                  <PhysicalObjectTitle
+                    category={
+                      props.preparationType && props.preparationType.category
+                    }
+                    preparationTypeId={
+                      props.preparationType && props.preparationType.id
+                    }
+                    {...props}
+                  />
+                )}
+              />
+            </Grid.Column>
+          )}
           <Grid.Column width={16}>
             <Button.Group>
               <Button
@@ -157,7 +155,10 @@ SegmentCollectionItems.propTypes = propTypes
 SegmentCollectionItems.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   createEnsureAllItemsFetched({
     allItemsFetchedKey: 'allStorageLocationsFetched',
     resource: 'storageLocation',

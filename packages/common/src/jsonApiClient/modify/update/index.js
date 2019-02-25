@@ -55,9 +55,7 @@ function update({ openApiClient, item, log = defaultLog, resourcePath } = {}) {
     }
 
     log.debug(
-      `${resourcePath} -> Update resource with id: ${
-        id
-      } through openApiClien: ${operationId}, input:`,
+      `${resourcePath} -> Update resource with id: ${id} through openApiClien: ${operationId}, input:`,
       input
     )
 

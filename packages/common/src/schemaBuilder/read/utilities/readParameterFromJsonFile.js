@@ -5,9 +5,9 @@ const path = require('path')
 const readParameterFromMarkdownFile = require('./readParameterFromMarkdownFile')
 
 /*
-* Some magic going on here. Should be divided into differet functions
-*
-*/
+ * Some magic going on here. Should be divided into differet functions
+ *
+ */
 module.exports = function readParameterFromJsonFile({
   basePath,
   parameterName,

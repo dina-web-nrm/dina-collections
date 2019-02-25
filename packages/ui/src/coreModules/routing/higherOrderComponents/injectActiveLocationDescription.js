@@ -65,7 +65,10 @@ const injectActiveLocationDescription = ComposedComponent => {
 
   class WithActiveLocationDescription extends Component {
     render() {
-      const { activeLocationTitleKey, i18n: { moduleTranslate } } = this.props
+      const {
+        activeLocationTitleKey,
+        i18n: { moduleTranslate },
+      } = this.props
       return (
         <ComposedComponent
           {...this.props}

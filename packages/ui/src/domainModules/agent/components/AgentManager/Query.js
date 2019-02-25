@@ -6,6 +6,7 @@ import {
 
 import LocalityManager from './Base'
 
-export default compose(createQueryState(), createNavigationState())(
-  LocalityManager
-)
+export default compose(
+  createQueryState(),
+  createNavigationState()
+)(LocalityManager)

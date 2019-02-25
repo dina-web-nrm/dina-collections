@@ -53,33 +53,32 @@ const AgentRolesAccordion = ({
   log.render()
   return (
     <React.Fragment>
-      {agentRoles &&
-        agentRoles.length > 0 && (
-          <Grid.Column width={16}>
-            <Accordion
-              expandFirstItemOnMountIfEmptyOrOnlyHasKey
-              initialActiveMode={ALL_COLLAPSED}
-              items={agentRoles}
-              renderContent={({ handleSetInactive, index }) => {
-                return (
-                  <AgentRoleContent
-                    handleSetInactive={handleSetInactive}
-                    index={index}
-                    removeArrayFieldByIndex={removeArrayFieldByIndex}
-                  />
-                )
-              }}
-              renderTitle={({ index, ...rest }) => (
-                <AgentRoleTitle
-                  formName={formName}
+      {agentRoles && agentRoles.length > 0 && (
+        <Grid.Column width={16}>
+          <Accordion
+            expandFirstItemOnMountIfEmptyOrOnlyHasKey
+            initialActiveMode={ALL_COLLAPSED}
+            items={agentRoles}
+            renderContent={({ handleSetInactive, index }) => {
+              return (
+                <AgentRoleContent
+                  handleSetInactive={handleSetInactive}
                   index={index}
-                  {...agentRoles[index] || {}}
-                  {...rest}
+                  removeArrayFieldByIndex={removeArrayFieldByIndex}
                 />
-              )}
-            />
-          </Grid.Column>
-        )}
+              )
+            }}
+            renderTitle={({ index, ...rest }) => (
+              <AgentRoleTitle
+                formName={formName}
+                index={index}
+                {...agentRoles[index] || {}}
+                {...rest}
+              />
+            )}
+          />
+        </Grid.Column>
+      )}
       <Grid.Column width={16}>
         <AddButton
           id="add-role"
@@ -105,6 +104,7 @@ const AgentRolesAccordion = ({
 AgentRolesAccordion.propTypes = propTypes
 AgentRolesAccordion.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps), pathBuilder())(
-  AgentRolesAccordion
-)
+export default compose(
+  connect(mapStateToProps),
+  pathBuilder()
+)(AgentRolesAccordion)

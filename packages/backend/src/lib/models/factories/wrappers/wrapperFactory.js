@@ -18,9 +18,13 @@ const createOutputSchemaValidationFunction = ({ methodName, schema }) => {
   })
 }
 
-module.exports = function wrapperFactory(
-  { methodName, inputSchema, outputSchema, validateInput, validateOutput } = {}
-) {
+module.exports = function wrapperFactory({
+  methodName,
+  inputSchema,
+  outputSchema,
+  validateInput,
+  validateOutput,
+} = {}) {
   const inputSchemaValidationFunction = inputSchema
     ? createInputSchemaValidationFunction({ methodName, schema: inputSchema })
     : null

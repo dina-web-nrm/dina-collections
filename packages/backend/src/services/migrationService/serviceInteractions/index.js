@@ -24,9 +24,7 @@ exports.ensureDataSyncedWithVersion = ({
       }
       if (dataModelVersion !== dataModelVersionInput) {
         throw new Error(
-          `Missmatch version. System version: ${
-            dataModelVersion
-          }. Db version: ${dataModelVersionInput} `
+          `Missmatch version. System version: ${dataModelVersion}. Db version: ${dataModelVersionInput} `
         )
       }
       return {

@@ -17,9 +17,7 @@ const getActionActionType = ({
   }
   if (!resourceActionTypes[type][actionType]) {
     throw new Error(
-      `Resource: ${resource} dont have actionType ${
-        actionType
-      } for operationType: ${type}`
+      `Resource: ${resource} dont have actionType ${actionType} for operationType: ${type}`
     )
   }
 

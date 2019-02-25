@@ -24,11 +24,11 @@ export default function createSyncView({ modules = [], name, view, Wrapper }) {
 
     componentWillUnmount() {
       /*
-      * If the same component is remounted componentWillUnmount
-      * of the old component will be called after componentWillMount
-      * for the new component and because of that this check is needed
-      * to not immediately remove the newly mounted component
-      */
+       * If the same component is remounted componentWillUnmount
+       * of the old component will be called after componentWillMount
+       * for the new component and because of that this check is needed
+       * to not immediately remove the newly mounted component
+       */
       if (!mounting) {
         log.unmount('Start')
         const { store } = this.context

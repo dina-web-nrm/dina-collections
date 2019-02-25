@@ -49,9 +49,12 @@ const deleteIndex = ({ name, elasticsearch, deleteIfAlias = false }) => {
   })
 }
 
-module.exports = function synchronizeFactory(
-  { Model, elasticsearch, indexVersionManager, rebuildStrategy } = {}
-) {
+module.exports = function synchronizeFactory({
+  Model,
+  elasticsearch,
+  indexVersionManager,
+  rebuildStrategy,
+} = {}) {
   if (!Model) {
     throw new Error('Have to provide model')
   }

@@ -1,6 +1,7 @@
-module.exports = function extractFieldsFromUserInput(
-  { includeFieldsInput, selectableFields } = {}
-) {
+module.exports = function extractFieldsFromUserInput({
+  includeFieldsInput,
+  selectableFields,
+} = {}) {
   if (!(includeFieldsInput && includeFieldsInput.length)) {
     return []
   }

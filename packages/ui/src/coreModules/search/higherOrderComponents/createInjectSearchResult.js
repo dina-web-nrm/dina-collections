@@ -5,9 +5,9 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { globalSelectors } from '../keyObjectModule'
 
-const createInjectSearchResult = (
-  { resource = 'searchSpecimen' } = {}
-) => ComposedComponent => {
+const createInjectSearchResult = ({
+  resource = 'searchSpecimen',
+} = {}) => ComposedComponent => {
   const mapStateToProps = (state, ownProps) => {
     const { resource: propResource } = ownProps
     return {

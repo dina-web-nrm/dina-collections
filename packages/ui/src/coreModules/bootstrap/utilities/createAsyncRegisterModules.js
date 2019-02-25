@@ -1,13 +1,13 @@
 /* not used atm
-* use in enhancer like:
-*    const unregisterModulesAsync = dep.createAsyncUnregisterModules({
-*      getModuleRegisterPipe,
-*      getModuleUnregisterPipe,
-*      setModuleUnregisterPipe,
-*      unregisterModules,
-*    })
-*
-*/
+ * use in enhancer like:
+ *    const unregisterModulesAsync = dep.createAsyncUnregisterModules({
+ *      getModuleRegisterPipe,
+ *      getModuleUnregisterPipe,
+ *      setModuleUnregisterPipe,
+ *      unregisterModules,
+ *    })
+ *
+ */
 
 export default function createAsyncRegisterModules({
   getModuleRegisterPipe,

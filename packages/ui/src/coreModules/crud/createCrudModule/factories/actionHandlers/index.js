@@ -59,9 +59,7 @@ export default function createActionHandlers({
         resourceActionTypes[operationType][API_ACTION_TYPE_SUCCESS]
       if (!actionType) {
         throw new Error(
-          `actionType not found in resourceActionTypes for resource: ${
-            resource
-          } and operationType: ${operationType}`
+          `actionType not found in resourceActionTypes for resource: ${resource} and operationType: ${operationType}`
         )
       }
       let actionHandler
@@ -100,9 +98,7 @@ export default function createActionHandlers({
         }
       }
       log.info(
-        `Adding actionHandler: ${resource}.${operationType} for actionType: ${
-          actionType
-        }`
+        `Adding actionHandler: ${resource}.${operationType} for actionType: ${actionType}`
       )
       return {
         ...actionHandlers,

@@ -32,9 +32,11 @@ export const dep = new Dependor({
 
 const log = createLog('coreModules:crud:actionCreators')
 
-export default function createActionCreators(
-  { actionTypes, resourceActionTypes, resourceSpecification = {} } = {}
-) {
+export default function createActionCreators({
+  actionTypes,
+  resourceActionTypes,
+  resourceSpecification = {},
+} = {}) {
   const { resource, operations } = resourceSpecification
 
   if (!resource) {

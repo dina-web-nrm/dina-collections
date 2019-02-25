@@ -1,11 +1,9 @@
-module.exports = function buildRelationship(
-  {
-    format: relationFormat = 'object',
-    key,
-    link,
-    targetResource: resourceInput,
-  } = {}
-) {
+module.exports = function buildRelationship({
+  format: relationFormat = 'object',
+  key,
+  link,
+  targetResource: resourceInput,
+} = {}) {
   const resource = resourceInput || key
   const existingResourceData = {
     additionalProperties: false,

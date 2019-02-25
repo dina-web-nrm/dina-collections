@@ -21,7 +21,9 @@ const propTypes = {
 class DataModel extends Component {
   render() {
     const {
-      match: { params: { modelId, parameterId, schemaVersion } },
+      match: {
+        params: { modelId, parameterId, schemaVersion },
+      },
     } = this.props
 
     if (!schemaVersion) {

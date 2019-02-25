@@ -18,8 +18,6 @@ const versionInfo = {
 
 fs.writeFileSync(targetPath, JSON.stringify(versionInfo, null, 2))
 
-const cmd = `git add ${
-  targetPath
-} && git commit -m '[COMMON] Build version info for ${version} '`
+const cmd = `git add ${targetPath} && git commit -m '[COMMON] Build version info for ${version} '`
 
 execSync(cmd)

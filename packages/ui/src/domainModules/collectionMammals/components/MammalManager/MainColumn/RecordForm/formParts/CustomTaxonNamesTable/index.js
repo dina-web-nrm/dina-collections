@@ -91,6 +91,7 @@ function CustomTaxonNamesTable({
 CustomTaxonNamesTable.propTypes = propTypes
 CustomTaxonNamesTable.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps), pathBuilder())(
-  CustomTaxonNamesTable
-)
+export default compose(
+  connect(mapStateToProps),
+  pathBuilder()
+)(CustomTaxonNamesTable)

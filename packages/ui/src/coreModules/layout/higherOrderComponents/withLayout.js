@@ -59,7 +59,12 @@ const withLayout = (layoutName = 'default') => ComposedComponent => {
   LayoutHoc.propTypes = propTypes
   LayoutHoc.defaultProps = defaultProps
 
-  return compose(connect(mapStateToProps, mapDispatchToProps))(LayoutHoc)
+  return compose(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )
+  )(LayoutHoc)
 }
 
 export default withLayout

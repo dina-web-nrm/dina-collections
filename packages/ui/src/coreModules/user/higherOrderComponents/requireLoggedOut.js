@@ -46,5 +46,10 @@ export default function requireLoggedOutUser(ComposedComponent) {
 
   LoggedOutUser.propTypes = propTypes
 
-  return compose(connect(mapStateToProps, mapDispathToProps))(LoggedOutUser)
+  return compose(
+    connect(
+      mapStateToProps,
+      mapDispathToProps
+    )
+  )(LoggedOutUser)
 }

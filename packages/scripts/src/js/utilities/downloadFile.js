@@ -37,9 +37,7 @@ module.exports = function downloadFile({ filePath, serverName } = {}) {
         return reject(err)
       }
       return resolve(
-        `File downloaded successfully from ${remoteFilePath} to ${
-          localFilePath
-        } `
+        `File downloaded successfully from ${remoteFilePath} to ${localFilePath} `
       )
     })
   })

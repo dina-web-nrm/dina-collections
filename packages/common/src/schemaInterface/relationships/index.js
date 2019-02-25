@@ -72,28 +72,34 @@ const getRelationshipParamsForModelNames = createSelector(
   }
 )
 
-const getRelationshipParamsForAllModels = createSelector(getModels, models => {
-  const allModelNames = getAllModelNames(models)
-  return getRelationshipParamsForModelNames(models, allModelNames)
-})
+const getRelationshipParamsForAllModels = createSelector(
+  getModels,
+  models => {
+    const allModelNames = getAllModelNames(models)
+    return getRelationshipParamsForModelNames(models, allModelNames)
+  }
+)
 
-const getResourceRelationshipParamsMap = createSelector(getModels, models => {
-  const allModelNames = getAllModelNames(models)
+const getResourceRelationshipParamsMap = createSelector(
+  getModels,
+  models => {
+    const allModelNames = getAllModelNames(models)
 
-  return allModelNames.reduce((map, modelName) => {
-    const relationshipParams = getRelationshipParamsForModelNames(models, [
-      modelName,
-    ])
+    return allModelNames.reduce((map, modelName) => {
+      const relationshipParams = getRelationshipParamsForModelNames(models, [
+        modelName,
+      ])
 
-    if (relationshipParams && relationshipParams.length) {
-      relationshipParams.forEach(params => {
-        objectPath.set(map, `${modelName}.${params.targetAs}`, params)
-      })
-    }
+      if (relationshipParams && relationshipParams.length) {
+        relationshipParams.forEach(params => {
+          objectPath.set(map, `${modelName}.${params.targetAs}`, params)
+        })
+      }
 
-    return map
-  }, {})
-})
+      return map
+    }, {})
+  }
+)
 
 const getResourceRelationshipKeysToIncludeInBodyMap = createSelector(
   getModels,

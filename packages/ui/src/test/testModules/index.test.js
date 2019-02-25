@@ -68,9 +68,9 @@ const testComponents = moduleBasePath => {
           if (!hasStories) {
             /* eslint-disable no-console */
             console.warn(
-              `Component: ${module.name} -> ${
-                component
-              } missing stories. Expected ${expectedStoriesName}`
+              `Component: ${
+                module.name
+              } -> ${component} missing stories. Expected ${expectedStoriesName}`
             )
             /* eslint-enable no-console */
           }

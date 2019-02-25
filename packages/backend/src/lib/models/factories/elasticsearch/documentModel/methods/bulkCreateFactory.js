@@ -5,9 +5,12 @@ const log = createLog(
   'lib/elasticsearch/modelFactories/normalizedElasticModel/methods/bulkCreateFactory'
 )
 
-module.exports = function bulkCreateFactory(
-  { Model, elasticsearch, forceRefresh, indexVersionManager } = {}
-) {
+module.exports = function bulkCreateFactory({
+  Model,
+  elasticsearch,
+  forceRefresh,
+  indexVersionManager,
+} = {}) {
   if (!Model) {
     throw new Error('Have to provide model')
   }

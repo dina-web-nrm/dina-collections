@@ -12,16 +12,22 @@ export const getLookup = state => {
   return state.lookup
 }
 
-export const getLookupError = createSelector(getLookup, lookup => lookup.error)
+export const getLookupError = createSelector(
+  getLookup,
+  lookup => lookup.error
+)
 
 export const getLookupLoading = createSelector(
   getLookup,
   lookup => lookup.loading
 )
 
-export const getLookupResult = createSelector(getLookup, lookup => {
-  return lookup.result || []
-})
+export const getLookupResult = createSelector(
+  getLookup,
+  lookup => {
+    return lookup.result || []
+  }
+)
 
 export const getLookupDropdownOptions = createSelector(
   getLookupResult,

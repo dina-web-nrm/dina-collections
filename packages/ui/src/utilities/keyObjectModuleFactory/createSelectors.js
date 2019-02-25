@@ -21,7 +21,10 @@ export default function createSelectors({
   const getSelectors = Object.keys(keySpecifications.set).reduce(
     (selectors, key) => {
       const keySpecification = keySpecifications.set[key]
-      const selector = createSelector(keySpecification, reducerKey)
+      const selector = createSelector(
+        keySpecification,
+        reducerKey
+      )
 
       return {
         ...selectors,

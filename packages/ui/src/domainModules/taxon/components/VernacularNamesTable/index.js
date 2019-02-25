@@ -95,6 +95,9 @@ VernacularNamesTable.propTypes = propTypes
 VernacularNamesTable.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   pathBuilder()
 )(VernacularNamesTable)

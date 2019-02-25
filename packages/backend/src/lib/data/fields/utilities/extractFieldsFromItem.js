@@ -1,9 +1,11 @@
 const immutable = require('object-path-immutable')
 const objectPath = require('object-path')
 
-module.exports = function extractFieldsFromItem(
-  { item, fields = [], excludeFieldsInput } = {}
-) {
+module.exports = function extractFieldsFromItem({
+  item,
+  fields = [],
+  excludeFieldsInput,
+} = {}) {
   if (!(fields.length || excludeFieldsInput)) {
     return item
   }

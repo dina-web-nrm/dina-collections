@@ -129,9 +129,7 @@ class PhysicalObjectContent extends Component {
             <Field
               autoComplete="off"
               component={Remarks}
-              emptyStateTextKey={`remarks.emptyState.physicalObject.${
-                category
-              }`}
+              emptyStateTextKey={`remarks.emptyState.physicalObject.${category}`}
               model="specimen"
               module="collectionMammals"
               name={getPath('physicalObject.remarks')}
@@ -175,6 +173,9 @@ export default compose(
     relationships: null,
     resource: 'preparationType',
   }),
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   pathBuilder()
 )(PhysicalObjectContent)

@@ -46,9 +46,12 @@ export default function requireLoggedInUser(ComposedComponent) {
   }
 
   LoggedInUser.propTypes = propTypes
-  const wrappedComponent = compose(connect(mapStateToProps, mapDispathToProps))(
-    LoggedInUser
-  )
+  const wrappedComponent = compose(
+    connect(
+      mapStateToProps,
+      mapDispathToProps
+    )
+  )(LoggedInUser)
   wrappedComponent.requireLoggedInUser = true
   return wrappedComponent
 }

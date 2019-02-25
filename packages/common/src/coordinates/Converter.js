@@ -2,7 +2,7 @@
  * # Coordinates converter API
  * https://github.com/perfectline/geopoint.git
  *
- * Javascript library to convert latitude/longitude between 
+ * Javascript library to convert latitude/longitude between
  * decimal degrees and degrees,minutes and seconds.
  *
  * Released under the MIT license

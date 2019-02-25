@@ -10,9 +10,9 @@ export const dep = new Dependor({
 })
 
 const log = createLog('coreModules:crud:selectors')
-export default function createResourceSelectors(
-  { resourceSpecification } = {}
-) {
+export default function createResourceSelectors({
+  resourceSpecification,
+} = {}) {
   const { resource } = resourceSpecification
   if (!resource) {
     throw new Error('resource required')
@@ -29,9 +29,12 @@ export default function createResourceSelectors(
     return localResourceState.items
   }
 
-  const getAll = createSelector(getItemsObject, items => {
-    return Object.values(items)
-  })
+  const getAll = createSelector(
+    getItemsObject,
+    items => {
+      return Object.values(items)
+    }
+  )
 
   const getOne = (localState, id) => {
     const itemsObject = getItemsObject(localState)

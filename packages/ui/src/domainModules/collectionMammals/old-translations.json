@@ -69,10 +69,8 @@
       "sv": "Verbatim taxonnamn"
     },
     "warningChangedDetermination": {
-      "en":
-        "Warning: Another determination \"{{taxonName}}\" was already marked as current.",
-      "sv":
-        "Varning: En annan bestämning \"{{taxonName}}\" var redan markerad som aktuell."
+      "en": "Warning: Another determination \"{{taxonName}}\" was already marked as current.",
+      "sv": "Varning: En annan bestämning \"{{taxonName}}\" var redan markerad som aktuell."
     }
   },
 

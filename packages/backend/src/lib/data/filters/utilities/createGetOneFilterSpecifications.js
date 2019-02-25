@@ -1,8 +1,9 @@
 const sharedFilters = require('../sharedFilters')
 
-module.exports = function createGetOneFilterSpecifications(
-  { include: includeInput = ['id', 'updatedAfter'], custom = {} } = {}
-) {
+module.exports = function createGetOneFilterSpecifications({
+  include: includeInput = ['id', 'updatedAfter'],
+  custom = {},
+} = {}) {
   const include = includeInput
   if (!include.includes('id')) {
     include.push('id')

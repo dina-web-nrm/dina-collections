@@ -42,9 +42,7 @@ const RefineTagSelection = ({
   if (inline) {
     return (
       <React.Fragment>
-        <Header size="medium">{`Refine filter (${numberOfSelectedResults}/${
-          numberOfSearchResults
-        })`}</Header>
+        <Header size="medium">{`Refine filter (${numberOfSelectedResults}/${numberOfSearchResults})`}</Header>
         {freeTextQueries.map(searchQuery => {
           const title = reduxFormValues[searchQuery].searchOption.text
           return (
@@ -66,9 +64,7 @@ const RefineTagSelection = ({
 
   return (
     <FormModal closeIcon onClose={handleClose} open>
-      <Modal.Header>{`Refine filter (${numberOfSelectedResults}/${
-        numberOfSearchResults
-      })`}</Modal.Header>
+      <Modal.Header>{`Refine filter (${numberOfSelectedResults}/${numberOfSearchResults})`}</Modal.Header>
       <Modal.Content>
         <Modal.Description>
           {freeTextQueries.map(searchQuery => {

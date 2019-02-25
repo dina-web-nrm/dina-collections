@@ -2,7 +2,9 @@ const createControllerWrapper = require('../utilities/wrapper')
 const transformInput = require('../utilities/transformations/inputObject')
 
 module.exports = function update(options) {
-  const { operation: { relations, resource } } = options
+  const {
+    operation: { relations, resource },
+  } = options
 
   return createControllerWrapper({
     ...options,
@@ -14,7 +16,9 @@ module.exports = function update(options) {
     responseSuccessStatus: 200,
   })(({ model, request }) => {
     const { body: { data: input = {} } = {} } = request
-    const { pathParams: { id } } = request
+    const {
+      pathParams: { id },
+    } = request
 
     return model
       .update({

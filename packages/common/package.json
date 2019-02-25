@@ -14,7 +14,7 @@
     "lint:js": "eslint 'src/**/*.js'",
     "lint:js:fix": "eslint 'src/**/*.js' --fix",
     "lock-schema": "node ./src/schemaBuilder/lockVersion.js",
-    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
+    "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
     "test:schema-locked": "node ./src/schemaBuilder/ensureVersionLocked.js",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "yarn lint:js",
@@ -55,7 +55,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^22.1.4",
-    "prettier": "1.8.2"
+    "prettier": "1.16.4"
   },
   "engines": {
     "node": "8.9.1",

@@ -110,6 +110,9 @@ const ShortcutsDisplay = ({
 
 ShortcutsDisplay.propTypes = propTypes
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  ShortcutsDisplay
-)
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(ShortcutsDisplay)

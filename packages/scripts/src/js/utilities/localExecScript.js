@@ -4,9 +4,11 @@ const getBashScriptRelativePath = require('./getBashScriptRelativePath')
 const captureArgString = require('./captureArgString')
 const captureScriptNameFromArgs = require('./captureScriptNameFromArgs')
 
-module.exports = function localExecScript(
-  { printResult = true, scriptName: scriptNameInput, throwOnError } = {}
-) {
+module.exports = function localExecScript({
+  printResult = true,
+  scriptName: scriptNameInput,
+  throwOnError,
+} = {}) {
   const rootPath = getLocalRootFullPath()
 
   const scriptName = scriptNameInput || captureScriptNameFromArgs()

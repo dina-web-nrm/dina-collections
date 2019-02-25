@@ -902,7 +902,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       storeSearchResult: false,
     }),
     createGetResourceCount(),
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    ),
     connect(),
     createShortcutLayer({ layer: 'resourceManager' })
   )(ResourceManagerWrapper)

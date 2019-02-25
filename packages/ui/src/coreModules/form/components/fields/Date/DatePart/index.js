@@ -88,7 +88,11 @@ class DatePart extends Component {
   }
 
   handleOnChange({ event, field }) {
-    const { input: { onChange, value }, isEndDate, isStartDate } = this.props
+    const {
+      input: { onChange, value },
+      isEndDate,
+      isStartDate,
+    } = this.props
 
     if (!onChange) {
       return null

@@ -154,4 +154,7 @@ class MainColumn extends PureComponent {
 
 MainColumn.propTypes = propTypes
 
-export default compose(withRouter, injectWindowHeight)(MainColumn)
+export default compose(
+  withRouter,
+  injectWindowHeight
+)(MainColumn)

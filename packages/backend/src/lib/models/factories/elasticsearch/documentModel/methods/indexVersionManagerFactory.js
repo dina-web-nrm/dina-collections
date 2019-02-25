@@ -5,9 +5,12 @@ const log = createLog(
   'lib/elasticsearch/modelFactories/normalizedElasticModel/methods/indexVersionMamagerFactory'
 )
 
-module.exports = function indexVersionManagerFactory(
-  { Model, elasticsearch, rebuildStrategy, versions = ['a', 'b'] } = {}
-) {
+module.exports = function indexVersionManagerFactory({
+  Model,
+  elasticsearch,
+  rebuildStrategy,
+  versions = ['a', 'b'],
+} = {}) {
   const createVersionedIndexName = ({ index, version }) => {
     if (!version) {
       return index

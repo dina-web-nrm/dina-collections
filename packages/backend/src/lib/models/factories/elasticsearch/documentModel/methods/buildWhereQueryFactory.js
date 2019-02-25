@@ -2,14 +2,12 @@ const buildElasticAggregations = require('../../utilities/buildElasticAggregatio
 const buildElasticQuery = require('../../utilities/buildElasticQuery')
 
 module.exports = function buildWhereQueryFactory() {
-  return function buildWhereQuery(
-    {
-      aggregationSpecification,
-      filterSpecification,
-      aggregations = [],
-      query = {},
-    } = {}
-  ) {
+  return function buildWhereQuery({
+    aggregationSpecification,
+    filterSpecification,
+    aggregations = [],
+    query = {},
+  } = {}) {
     return Promise.resolve().then(() => {
       const elasticQuery = buildElasticQuery({
         filterSpecification,

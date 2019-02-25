@@ -424,7 +424,10 @@ class MammalManager extends Component {
       event.preventDefault()
     }
 
-    const { mainColumnActiveTab, match: { path, params } } = this.props
+    const {
+      mainColumnActiveTab,
+      match: { path, params },
+    } = this.props
 
     this.props.setCurrentTableRowNumber(newTableRowNumber)
 
@@ -649,5 +652,8 @@ export default compose(
   }),
   higherOrderComponents.createFormHoc(),
   createShortcutLayer({ layer: 'mammalManager' }),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(MammalManager)

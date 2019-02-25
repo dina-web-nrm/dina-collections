@@ -66,4 +66,7 @@ export const LanguageSelect = ({
 LanguageSelect.propTypes = propTypes
 LanguageSelect.defaultProps = defaultProps
 
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageSelect)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LanguageSelect)

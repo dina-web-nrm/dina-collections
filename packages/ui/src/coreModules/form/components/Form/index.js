@@ -59,5 +59,8 @@ export default compose(
     unsavedChangesMessage:
       'You have unsaved changes, are you sure you want to leave?',
   }),
-  connect(undefined, mapDispatchToProps)
+  connect(
+    undefined,
+    mapDispatchToProps
+  )
 )(Form)

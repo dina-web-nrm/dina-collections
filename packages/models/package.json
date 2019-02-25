@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint:js": "eslint 'src/**/*.js'",
-    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
+    "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
     "test": "npm run test:lint && npm run test:unit",
     "test:lint": "npm run lint:js",
     "test:unit": "jest"
@@ -31,7 +31,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.5.1",
     "jest": "^21.2.1",
-    "prettier": "^1.8.2"
+    "prettier": "1.16.4"
   },
   "engines": {
     "node": "8.9.1",

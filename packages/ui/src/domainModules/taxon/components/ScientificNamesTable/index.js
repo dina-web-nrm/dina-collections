@@ -238,6 +238,9 @@ export class ScientificNamesTable extends Component {
 
 ScientificNamesTable.propTypes = propTypes
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  ScientificNamesTable
-)
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(ScientificNamesTable)

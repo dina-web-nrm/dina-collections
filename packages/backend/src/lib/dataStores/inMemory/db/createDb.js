@@ -39,23 +39,26 @@ module.exports = function createDb() {
       return items
     }
 
-    const getArraySelector = createSelector(selectorCache, items => {
-      return Object.keys(items)
-        .sort((a, b) => {
-          if (Number(a) < Number(b)) {
-            return 1
-          }
+    const getArraySelector = createSelector(
+      selectorCache,
+      items => {
+        return Object.keys(items)
+          .sort((a, b) => {
+            if (Number(a) < Number(b)) {
+              return 1
+            }
 
-          if (Number(b) < Number(a)) {
-            return -1
-          }
+            if (Number(b) < Number(a)) {
+              return -1
+            }
 
-          return 0
-        })
-        .map(id => {
-          return items[id]
-        })
-    })
+            return 0
+          })
+          .map(id => {
+            return items[id]
+          })
+      }
+    )
 
     const get = () => {
       return getCollectionItems(key)

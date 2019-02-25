@@ -6,14 +6,12 @@ import { compose } from 'redux'
 import actionCreators from 'coreModules/crud/actionCreators'
 import { search } from '../actionCreators'
 
-const createInjectSearch = (
-  {
-    excludeFields: defaultExcludeFields,
-    includeFields: defaultIncludeFields,
-    resource,
-    storeSearchResult = true,
-  } = {}
-) => ComposedComponent => {
+const createInjectSearch = ({
+  excludeFields: defaultExcludeFields,
+  includeFields: defaultIncludeFields,
+  resource,
+  storeSearchResult = true,
+} = {}) => ComposedComponent => {
   const mapDispatchToProps = {
     search,
   }
@@ -54,19 +52,17 @@ const createInjectSearch = (
         })
       )
     }
-    search(
-      {
-        aggregations,
-        excludeFields: excludeFieldsInput,
-        includeDeactivated,
-        includeFields: includeFieldsInput,
-        limit,
-        query,
-        resource: resourceInput,
-        sort,
-        useScroll = true,
-      } = {}
-    ) {
+    search({
+      aggregations,
+      excludeFields: excludeFieldsInput,
+      includeDeactivated,
+      includeFields: includeFieldsInput,
+      limit,
+      query,
+      resource: resourceInput,
+      sort,
+      useScroll = true,
+    } = {}) {
       const { resource: propResource } = this.props
       return this.props.search({
         aggregations,
@@ -96,7 +92,13 @@ const createInjectSearch = (
   Search.propTypes = propTypes
   Search.defaultProps = defaultProps
 
-  return compose(connect(null, mapDispatchToProps), connect())(Search)
+  return compose(
+    connect(
+      null,
+      mapDispatchToProps
+    ),
+    connect()
+  )(Search)
 }
 
 export default createInjectSearch

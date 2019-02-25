@@ -29,8 +29,6 @@ module.exports = ({
   }
 
   throw new Error(
-    `Invalid relationship specification sourceResource ${
-      sourceResource
-    } targetResource ${targetResource} keyStoredInModel ${keyStoredInModel} `
+    `Invalid relationship specification sourceResource ${sourceResource} targetResource ${targetResource} keyStoredInModel ${keyStoredInModel} `
   )
 }

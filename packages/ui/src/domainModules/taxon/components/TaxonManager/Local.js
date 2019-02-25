@@ -6,6 +6,7 @@ import {
 
 import TaxonManager from './Base'
 
-export default compose(createLocalState(), createNavigationState())(
-  TaxonManager
-)
+export default compose(
+  createLocalState(),
+  createNavigationState()
+)(TaxonManager)

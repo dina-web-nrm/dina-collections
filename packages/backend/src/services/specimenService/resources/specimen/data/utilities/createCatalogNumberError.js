@@ -16,9 +16,7 @@ module.exports = function createCatalogNumberError({
       parameterError => {
         return {
           ...parameterError,
-          fullPath: `individual.identifiers.${
-            catalogNumberIdentifierIndex
-          }.value`,
+          fullPath: `individual.identifiers.${catalogNumberIdentifierIndex}.value`,
         }
       }
     )

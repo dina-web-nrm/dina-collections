@@ -12,24 +12,24 @@ const log = createLog(
   'coreModules:crud:actionHandlers:updateStateWithOneFactory'
 )
 
-export default function updateStateWithOneFactory(
-  { operationType, resource } = {}
-) {
+export default function updateStateWithOneFactory({
+  operationType,
+  resource,
+} = {}) {
   return function handleOne(state, action) {
     if (!(action && action.payload && action.payload.id)) {
       log.debug(
-        `Received action ${action && action.type} for ${resource}.${
-          operationType
-        }. Aborting`
+        `Received action ${action &&
+          action.type} for ${resource}.${operationType}. Aborting`
       )
 
       return state
     }
 
     log.debug(
-      `Received action ${action.type} for ${resource}.${
-        operationType
-      }. Updating state from action: `,
+      `Received action ${
+        action.type
+      } for ${resource}.${operationType}. Updating state from action: `,
       action
     )
 

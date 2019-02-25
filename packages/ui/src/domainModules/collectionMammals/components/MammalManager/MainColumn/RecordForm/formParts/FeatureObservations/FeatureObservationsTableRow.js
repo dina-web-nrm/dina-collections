@@ -243,4 +243,7 @@ class FeatureObservationTableRow extends PureComponent {
 
 FeatureObservationTableRow.propTypes = propTypes
 
-export default compose(withI18n(), pathBuilder())(FeatureObservationTableRow)
+export default compose(
+  withI18n(),
+  pathBuilder()
+)(FeatureObservationTableRow)

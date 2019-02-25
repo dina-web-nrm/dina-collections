@@ -9,9 +9,7 @@ module.exports = function resolveMigrations({ migrations }) {
       resource && resource.migrations && resource.migrations[migrationName]
     if (!resolvedMigration) {
       throw new Error(
-        `Cant find migration. serviceName: ${serviceName}, resourceName: ${
-          resourceName
-        }, migrationName: ${migrationName}`
+        `Cant find migration. serviceName: ${serviceName}, resourceName: ${resourceName}, migrationName: ${migrationName}`
       )
     }
 

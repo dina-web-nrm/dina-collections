@@ -42,7 +42,10 @@ module.exports = ({ config, models, operation, serviceInteractor }) => {
       user,
     }).then(() => {
       log.debug('operation.relation', operation.relation)
-      const { body: { data }, pathParams: { id } } = request
+      const {
+        body: { data },
+        pathParams: { id },
+      } = request
 
       log.scope().debug('model', model)
       log.scope().debug('data', data)

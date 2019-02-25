@@ -2,7 +2,9 @@ const createControllerWrapper = require('../utilities/wrapper')
 const transformInput = require('../utilities/transformations/inputArray')
 
 module.exports = function bulkCreate(options) {
-  const { operation: { relations, resource } } = options
+  const {
+    operation: { relations, resource },
+  } = options
   return createControllerWrapper({
     ...options,
     enableInterceptors: true,

@@ -74,6 +74,7 @@ class FeatureObservations extends PureComponent {
 FeatureObservations.defaultProps = defaultProps
 FeatureObservations.propTypes = propTypes
 
-export default compose(connect(mapStateToProps), pathBuilder())(
-  FeatureObservations
-)
+export default compose(
+  connect(mapStateToProps),
+  pathBuilder()
+)(FeatureObservations)

@@ -2,7 +2,10 @@ const updateJsonRelationship = require('./updateJsonRelationship')
 const updateSqlRelationship = require('./updateSqlRelationship')
 
 module.exports = function updateRelationship({ models, operation, ...rest }) {
-  const { operationId, relation: { keyType } } = operation
+  const {
+    operationId,
+    relation: { keyType },
+  } = operation
 
   switch (keyType) {
     case 'json': {

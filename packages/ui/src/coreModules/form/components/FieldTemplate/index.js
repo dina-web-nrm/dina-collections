@@ -102,15 +102,14 @@ const FieldTemplate = ({
         />
       )}
       {children}
-      {!displayError &&
-        displayWarning && (
-          <FieldError
-            error={warning}
-            module={module}
-            parameterKey={parameterKey}
-            warning
-          />
-        )}
+      {!displayError && displayWarning && (
+        <FieldError
+          error={warning}
+          module={module}
+          parameterKey={parameterKey}
+          warning
+        />
+      )}
       {displayError && (
         <FieldError
           error={error}

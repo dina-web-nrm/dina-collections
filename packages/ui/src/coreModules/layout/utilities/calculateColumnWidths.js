@@ -23,7 +23,7 @@ const calculateColumnWidths = ({ availableWidth, columns } = {}) => {
     }
 
     if (width.endsWith('%')) {
-      return availableWidth * Number(width.slice(0, -1)) / 100
+      return (availableWidth * Number(width.slice(0, -1))) / 100
     }
 
     throw new Error('width must be in % or px')

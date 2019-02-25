@@ -98,8 +98,7 @@
         },
         "description": {
           "type": "string",
-          "description":
-            "A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed."
+          "description": "A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed."
         },
         "termsOfService": {
           "type": "string",
@@ -120,8 +119,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "description":
-            "The identifying name of the contact person/organization."
+          "description": "The identifying name of the contact person/organization."
         },
         "url": {
           "type": "string",
@@ -130,8 +128,7 @@
         },
         "email": {
           "type": "string",
-          "description":
-            "The email address of the contact person/organization.",
+          "description": "The email address of the contact person/organization.",
           "format": "email"
         }
       },
@@ -148,8 +145,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "description":
-            "The name of the license type. It's encouraged to use an OSI compatible license."
+          "description": "The name of the license type. It's encouraged to use an OSI compatible license."
         },
         "url": {
           "type": "string",
@@ -165,8 +161,7 @@
     },
     "paths": {
       "type": "object",
-      "description":
-        "Relative paths to the individual endpoints. They must be relative to the 'basePath'.",
+      "description": "Relative paths to the individual endpoints. They must be relative to the 'basePath'.",
       "patternProperties": {
         "^x-": {
           "$ref": "#/definitions/vendorExtension"
@@ -182,8 +177,7 @@
       "additionalProperties": {
         "$ref": "#/definitions/schema"
       },
-      "description":
-        "One or more JSON objects describing the schemas being consumed and produced by the API."
+      "description": "One or more JSON objects describing the schemas being consumed and produced by the API."
     },
     "parameterDefinitions": {
       "type": "object",
@@ -250,8 +244,7 @@
         },
         "description": {
           "type": "string",
-          "description":
-            "A longer description of the operation, GitHub Flavored Markdown is allowed."
+          "description": "A longer description of the operation, GitHub Flavored Markdown is allowed."
         },
         "externalDocs": {
           "$ref": "#/definitions/externalDocs"
@@ -334,8 +327,7 @@
     },
     "responses": {
       "type": "object",
-      "description":
-        "Response objects names can either be any valid HTTP status code or 'default'.",
+      "description": "Response objects names can either be any valid HTTP status code or 'default'.",
       "minProperties": 1,
       "additionalProperties": false,
       "patternProperties": {
@@ -486,8 +478,7 @@
       "properties": {
         "description": {
           "type": "string",
-          "description":
-            "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
+          "description": "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
         },
         "name": {
           "type": "string",
@@ -500,8 +491,7 @@
         },
         "required": {
           "type": "boolean",
-          "description":
-            "Determines whether or not this parameter is required or optional.",
+          "description": "Determines whether or not this parameter is required or optional.",
           "default": false
         },
         "schema": {
@@ -520,8 +510,7 @@
       "properties": {
         "required": {
           "type": "boolean",
-          "description":
-            "Determines whether or not this parameter is required or optional.",
+          "description": "Determines whether or not this parameter is required or optional.",
           "default": false
         },
         "in": {
@@ -531,8 +520,7 @@
         },
         "description": {
           "type": "string",
-          "description":
-            "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
+          "description": "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
         },
         "name": {
           "type": "string",
@@ -602,8 +590,7 @@
       "properties": {
         "required": {
           "type": "boolean",
-          "description":
-            "Determines whether or not this parameter is required or optional.",
+          "description": "Determines whether or not this parameter is required or optional.",
           "default": false
         },
         "in": {
@@ -613,8 +600,7 @@
         },
         "description": {
           "type": "string",
-          "description":
-            "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
+          "description": "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
         },
         "name": {
           "type": "string",
@@ -623,8 +609,7 @@
         "allowEmptyValue": {
           "type": "boolean",
           "default": false,
-          "description":
-            "allows sending a parameter by name only or with an empty value."
+          "description": "allows sending a parameter by name only or with an empty value."
         },
         "type": {
           "type": "string",
@@ -690,8 +675,7 @@
       "properties": {
         "required": {
           "type": "boolean",
-          "description":
-            "Determines whether or not this parameter is required or optional.",
+          "description": "Determines whether or not this parameter is required or optional.",
           "default": false
         },
         "in": {
@@ -701,8 +685,7 @@
         },
         "description": {
           "type": "string",
-          "description":
-            "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
+          "description": "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
         },
         "name": {
           "type": "string",
@@ -711,8 +694,7 @@
         "allowEmptyValue": {
           "type": "boolean",
           "default": false,
-          "description":
-            "allows sending a parameter by name only or with an empty value."
+          "description": "allows sending a parameter by name only or with an empty value."
         },
         "type": {
           "type": "string",
@@ -780,8 +762,7 @@
         "required": {
           "type": "boolean",
           "enum": [true],
-          "description":
-            "Determines whether or not this parameter is required or optional."
+          "description": "Determines whether or not this parameter is required or optional."
         },
         "in": {
           "type": "string",
@@ -790,8 +771,7 @@
         },
         "description": {
           "type": "string",
-          "description":
-            "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
+          "description": "A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."
         },
         "name": {
           "type": "string",
@@ -898,64 +878,52 @@
           "$ref": "http://json-schema.org/draft-04/schema#/properties/title"
         },
         "description": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/properties/description"
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/description"
         },
         "default": {
           "$ref": "http://json-schema.org/draft-04/schema#/properties/default"
         },
         "multipleOf": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/properties/multipleOf"
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/multipleOf"
         },
         "maximum": {
           "$ref": "http://json-schema.org/draft-04/schema#/properties/maximum"
         },
         "exclusiveMaximum": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"
         },
         "minimum": {
           "$ref": "http://json-schema.org/draft-04/schema#/properties/minimum"
         },
         "exclusiveMinimum": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"
         },
         "maxLength": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
         },
         "minLength": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
         },
         "pattern": {
           "$ref": "http://json-schema.org/draft-04/schema#/properties/pattern"
         },
         "maxItems": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
         },
         "minItems": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
         },
         "uniqueItems": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/properties/uniqueItems"
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/uniqueItems"
         },
         "maxProperties": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
         },
         "minProperties": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
         },
         "required": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/stringArray"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/stringArray"
         },
         "enum": {
           "$ref": "http://json-schema.org/draft-04/schema#/properties/enum"
@@ -1037,15 +1005,13 @@
           "$ref": "http://json-schema.org/draft-04/schema#/properties/title"
         },
         "description": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/properties/description"
+          "$ref": "http://json-schema.org/draft-04/schema#/properties/description"
         },
         "default": {
           "$ref": "http://json-schema.org/draft-04/schema#/properties/default"
         },
         "required": {
-          "$ref":
-            "http://json-schema.org/draft-04/schema#/definitions/stringArray"
+          "$ref": "http://json-schema.org/draft-04/schema#/definitions/stringArray"
         },
         "type": {
           "type": "string",
@@ -1449,34 +1415,28 @@
       "$ref": "http://json-schema.org/draft-04/schema#/properties/maximum"
     },
     "exclusiveMaximum": {
-      "$ref":
-        "http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"
+      "$ref": "http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"
     },
     "minimum": {
       "$ref": "http://json-schema.org/draft-04/schema#/properties/minimum"
     },
     "exclusiveMinimum": {
-      "$ref":
-        "http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"
+      "$ref": "http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"
     },
     "maxLength": {
-      "$ref":
-        "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+      "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
     },
     "minLength": {
-      "$ref":
-        "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+      "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
     },
     "pattern": {
       "$ref": "http://json-schema.org/draft-04/schema#/properties/pattern"
     },
     "maxItems": {
-      "$ref":
-        "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+      "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
     },
     "minItems": {
-      "$ref":
-        "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+      "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
     },
     "uniqueItems": {
       "$ref": "http://json-schema.org/draft-04/schema#/properties/uniqueItems"

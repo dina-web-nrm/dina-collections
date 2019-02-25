@@ -242,7 +242,10 @@ RecordForm.defaultProps = defaultProps
 
 const EnhancedForm = compose(
   withRouter,
-  connect(undefined, mapDispatchToProps)
+  connect(
+    undefined,
+    mapDispatchToProps
+  )
 )(RecordForm)
 
 export default reduxForm({

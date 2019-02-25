@@ -11,9 +11,7 @@ module.exports = function getServerEnvVariable({
   const variable = env[envVariableFullName]
   if (!variable && required) {
     throw new Error(
-      `${variableName} for server server: ${
-        serverName
-      } not found in env file at ${envVariableFullName}`
+      `${variableName} for server server: ${serverName} not found in env file at ${envVariableFullName}`
     )
   }
   return variable

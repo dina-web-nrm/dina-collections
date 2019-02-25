@@ -9,15 +9,13 @@ export const dep = new Dependor({
 
 const log = createLog('coreModules:crud:actionCreators:getOne')
 
-export default function getOneAcFactory(
-  {
-    actionTypes,
-    operationId,
-    operationType,
-    resource,
-    resourceActionTypes,
-  } = {}
-) {
+export default function getOneAcFactory({
+  actionTypes,
+  operationId,
+  operationType,
+  resource,
+  resourceActionTypes,
+} = {}) {
   const operationActionTypes = dep.getActionActionTypes({
     operationType,
     resource,
@@ -32,16 +30,14 @@ export default function getOneAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function getOneAc(
-    {
-      id,
-      include,
-      relationships = ['all'],
-      throwError = true,
-      storeInState = true,
-      queryParams: queryParamInput = {},
-    } = {}
-  ) {
+  return function getOneAc({
+    id,
+    include,
+    relationships = ['all'],
+    throwError = true,
+    storeInState = true,
+    queryParams: queryParamInput = {},
+  } = {}) {
     log.debug(`${resource}.getOne called`, {
       id,
       relationships,

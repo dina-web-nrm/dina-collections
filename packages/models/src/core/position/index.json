@@ -4,13 +4,11 @@
   "properties": {
     "latitude": {
       "type": "string",
-      "description":
-        "Latitude or northing. Prefixed with minus for coordinates on southern hemisphere."
+      "description": "Latitude or northing. Prefixed with minus for coordinates on southern hemisphere."
     },
     "longitude": {
       "type": "string",
-      "description":
-        "Longitude or easting. Prefixed with minus for coordinates on western hemisphere."
+      "description": "Longitude or easting. Prefixed with minus for coordinates on western hemisphere."
     },
     "geodeticDatum": {
       "type": "string",

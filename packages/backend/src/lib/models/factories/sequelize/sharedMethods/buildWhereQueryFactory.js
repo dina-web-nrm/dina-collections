@@ -4,9 +4,11 @@ const Sequelize = require('sequelize')
 const { Op } = Sequelize
 
 module.exports = function buildWhereQueryFactory({ sequelize }) {
-  return function buildWhereQuery(
-    { filterSpecification, query = {}, serviceInteractor } = {}
-  ) {
+  return function buildWhereQuery({
+    filterSpecification,
+    query = {},
+    serviceInteractor,
+  } = {}) {
     if (query.or) {
       throw new Error('Or not supported')
     }
@@ -35,9 +37,7 @@ module.exports = function buildWhereQueryFactory({ sequelize }) {
 
         if (!sequelizeFilterFunction) {
           throw new Error(
-            `sequelizeFilterFunction missing for filterFunction: ${
-              filterFunctionName
-            }`
+            `sequelizeFilterFunction missing for filterFunction: ${filterFunctionName}`
           )
         }
 

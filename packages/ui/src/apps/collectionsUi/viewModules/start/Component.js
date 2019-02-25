@@ -25,7 +25,10 @@ const propTypes = {
 
 class Start extends Component {
   render() {
-    const { i18n: { moduleTranslate }, name } = this.props
+    const {
+      i18n: { moduleTranslate },
+      name,
+    } = this.props
 
     return (
       <React.Fragment>
@@ -124,4 +127,7 @@ class Start extends Component {
 }
 
 Start.propTypes = propTypes
-export default compose(connect(mapStateToProps), withI18n())(Start)
+export default compose(
+  connect(mapStateToProps),
+  withI18n()
+)(Start)

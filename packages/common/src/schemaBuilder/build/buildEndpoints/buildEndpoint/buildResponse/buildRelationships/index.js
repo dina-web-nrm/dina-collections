@@ -15,9 +15,10 @@ const buildRelationshipsArray = ({ relations }) => {
   })
 }
 
-module.exports = function buildRelationships(
-  { relations: relationsObject, versionsLink } = {}
-) {
+module.exports = function buildRelationships({
+  relations: relationsObject,
+  versionsLink,
+} = {}) {
   const relations = buildRelationshipsArray({
     relations: relationsObject,
   })

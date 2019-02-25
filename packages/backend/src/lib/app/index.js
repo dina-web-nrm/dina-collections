@@ -9,9 +9,12 @@ const createLogIncomingMiddleware = require('./middlewares/logIncoming')
 const createPingRouteMiddleware = require('./middlewares/pingRoute')
 const createResponseTimeMiddleware = require('./middlewares/responseTime')
 
-module.exports = function createApp(
-  { auth, config, openApiSpec, routers } = {}
-) {
+module.exports = function createApp({
+  auth,
+  config,
+  openApiSpec,
+  routers,
+} = {}) {
   const app = express()
 
   const authenticateMiddleware = createAuthenticateMiddleware({ auth, config })

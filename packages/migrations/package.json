@@ -35,7 +35,7 @@
     "elasticsearch:production:rebuild-index:specimen-search": "IMPORT_DATA_NUMBER_OF_SPECIMENS=1000000 NODE_ENV=production DEBUG='DINA*' node ./src/rebuildIndex/specimenSearch.js",
     "lint:js": "eslint 'src/**/*.js'",
     "lint:js:fix": "eslint 'src/**/*.js' --fix",
-    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
+    "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
     "setup:development": "yarn db:development:drop ; yarn db:development:create && yarn db:development:migrate:latest && yarn db:development:import:fromJson",
     "setup:production": "yarn db:production:drop ; yarn db:production:create && yarn db:production:migrate:latest && yarn db:production:import:fromJson",
     "setup:test": "yarn db:test:drop ; yarn db:test:create && yarn db:test:migrate:latest && yarn db:test:import:fromJson",
@@ -72,7 +72,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^22.1.4",
-    "prettier": "1.8.2"
+    "prettier": "1.16.4"
   },
   "engines": {
     "node": "8.9.1",

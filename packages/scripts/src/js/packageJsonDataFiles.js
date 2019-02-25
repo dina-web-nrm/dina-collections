@@ -40,9 +40,7 @@ return Promise.resolve()
   .then(() => {
     const versionString = !newVersion ? '' : `with version: ${newVersion}`
     return promptContinue({
-      message: `This will create ./data/data.zip on server: ${
-        serverName
-      } in [REPO]/data/ ${versionString}`,
+      message: `This will create ./data/data.zip on server: ${serverName} in [REPO]/data/ ${versionString}`,
     })
       .then(() => {
         if (newVersion && serverName === 'local') {

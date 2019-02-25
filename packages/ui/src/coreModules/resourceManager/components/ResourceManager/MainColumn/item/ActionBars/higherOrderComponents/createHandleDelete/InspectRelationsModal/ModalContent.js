@@ -76,16 +76,16 @@ class ModalContent extends PureComponent {
                       <ModuleTranslate
                         module="resourceManager"
                         textKey="relations"
-                      />)
+                      />
+                      )
                       {numberOfItems > 30 && (
                         <Header.Subheader>
-                          {`Below are 30 of the relations. To see all ${
-                            numberOfItems
-                          } relations, please use the search for `}
+                          {`Below are 30 of the relations. To see all ${numberOfItems} relations, please use the search for `}
                           <ModuleTranslate
                             module="resourceManager"
                             textKey={`resourcePlural.${relationshipResource}`}
-                          />.
+                          />
+                          .
                         </Header.Subheader>
                       )}
                     </Header>
