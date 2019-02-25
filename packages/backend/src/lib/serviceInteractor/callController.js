@@ -26,18 +26,14 @@ module.exports = function callController({
   const connector = connectors[operationId]
   if (!connector) {
     throw new Error(
-      `No connector found for operationId: ${operationId} resource: ${
-        resource
-      } and operationType: ${operationType}`
+      `No connector found for operationId: ${operationId} resource: ${resource} and operationType: ${operationType}`
     )
   }
 
   const { requestHandler } = connector
   if (!requestHandler) {
     throw new Error(
-      `No controller found for operationId: ${operationId} resource: ${
-        resource
-      } and operationType: ${operationType}`
+      `No controller found for operationId: ${operationId} resource: ${resource} and operationType: ${operationType}`
     )
   }
   return requestHandler({

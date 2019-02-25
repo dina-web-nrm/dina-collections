@@ -14,9 +14,13 @@ const getModelsFileName = normalize => {
   return normalize ? 'normalizedModels.json' : 'models.json'
 }
 
-module.exports = function write(
-  { apiVersion, modelVersion, models, normalize, openApi } = {}
-) {
+module.exports = function write({
+  apiVersion,
+  modelVersion,
+  models,
+  normalize,
+  openApi,
+} = {}) {
   const buildDirectory = path.join(__dirname, '../../../../common/dist/schemas')
 
   ensureDirectoryExistence(buildDirectory)
@@ -35,9 +39,7 @@ module.exports = function write(
 
     if (!currentInfo.candidate) {
       throw new Error(
-        `Not allowed to override non candidate schema. Tried to override apiVersion: ${
-          apiVersion
-        }. If you are going to change the api schema update the version in backend/package.json`
+        `Not allowed to override non candidate schema. Tried to override apiVersion: ${apiVersion}. If you are going to change the api schema update the version in backend/package.json`
       )
     }
 
@@ -89,9 +91,7 @@ module.exports = function write(
 
     if (!currentInfo.candidate) {
       throw new Error(
-        `Not allowed to override non candidate schema. Tried to override modelVersion: ${
-          modelVersion
-        }. If you are going to change the models update the version in models/package.json. `
+        `Not allowed to override non candidate schema. Tried to override modelVersion: ${modelVersion}. If you are going to change the models update the version in models/package.json. `
       )
     }
     const info = {

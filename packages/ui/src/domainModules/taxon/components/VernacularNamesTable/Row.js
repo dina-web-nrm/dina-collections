@@ -51,7 +51,10 @@ class VernacularNamesTableRow extends PureComponent {
   }
 
   render() {
-    const { getPath, i18n: { moduleTranslate } } = this.props
+    const {
+      getPath,
+      i18n: { moduleTranslate },
+    } = this.props
 
     log.render()
     return (
@@ -116,6 +119,7 @@ class VernacularNamesTableRow extends PureComponent {
 
 VernacularNamesTableRow.propTypes = propTypes
 
-export default compose(withI18n({ module: 'taxon' }), pathBuilder())(
-  VernacularNamesTableRow
-)
+export default compose(
+  withI18n({ module: 'taxon' }),
+  pathBuilder()
+)(VernacularNamesTableRow)

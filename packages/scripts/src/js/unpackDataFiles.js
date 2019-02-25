@@ -9,9 +9,7 @@ const relativeDataZipFolderPath = 'data'
 const relativeDataZipFileName = 'data.zip'
 
 return promptContinue({
-  message: `This will unpack [REPO]/data/data.zip on server: ${
-    serverName
-  } in [REPO]/data/. Note that current data json files will be discarded`,
+  message: `This will unpack [REPO]/data/data.zip on server: ${serverName} in [REPO]/data/. Note that current data json files will be discarded`,
 }).then(() => {
   return execScript({
     scriptName: 'rm-data.sh',
@@ -20,9 +18,7 @@ return promptContinue({
   }).then(() => {
     console.log('Removed current json files. Now unpacking')
     return execCmd({
-      cmd: `cd ${relativeDataZipFolderPath} && unzip -n ${
-        relativeDataZipFileName
-      }`,
+      cmd: `cd ${relativeDataZipFolderPath} && unzip -n ${relativeDataZipFileName}`,
       serverName,
     }).then(() => {
       console.log('Data unpacked success')

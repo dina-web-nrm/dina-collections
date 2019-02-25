@@ -161,9 +161,13 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
 
   GetNestedItemById.propTypes = propTypes
   GetNestedItemById.defaultProps = defaultProps
-  return compose(getItemById, connect(mapStateToProps, mapDispatchToProps))(
-    GetNestedItemById
-  )
+  return compose(
+    getItemById,
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )
+  )(GetNestedItemById)
 }
 
 export default createGetNestedItemById

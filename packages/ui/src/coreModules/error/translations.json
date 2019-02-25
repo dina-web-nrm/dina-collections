@@ -1,10 +1,8 @@
 {
   "schemaErrors": {
     "ADDITIONAL_PROPERTIES": {
-      "en":
-        "Form contains unknown properties: {{fullPath}}: {{additionalProperty}}",
-      "sv":
-        "Formuläret innehåller okända fält: {{fullPath}}: {{additionalProperty}}"
+      "en": "Form contains unknown properties: {{fullPath}}: {{additionalProperty}}",
+      "sv": "Formuläret innehåller okända fält: {{fullPath}}: {{additionalProperty}}"
     },
     "REQUIRED": {
       "en": "Required: {{fullPath}}",
@@ -47,8 +45,7 @@
     "en": "Only past dates allowed"
   },
   "DATE_PAST_CURRENT_YEAR": {
-    "en":
-      "Only past dates allowed, a more exact range has to be specified for the current year"
+    "en": "Only past dates allowed, a more exact range has to be specified for the current year"
   },
   "DATE_FUTURE": {
     "en": "Only future dates allowed"

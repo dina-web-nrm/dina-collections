@@ -44,7 +44,9 @@ module.exports = ({ models, operation }) => {
   return ({ request }) => {
     log.debug('operation.relation', operation.relation)
 
-    const { pathParams: { id } } = request
+    const {
+      pathParams: { id },
+    } = request
 
     const where = getWhereParams({ id })
 

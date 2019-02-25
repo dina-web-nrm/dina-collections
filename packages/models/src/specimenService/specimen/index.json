@@ -145,8 +145,7 @@
           "type": "object",
           "x-key-stored-in-model": "specimen",
           "x-key-type": "json",
-          "x-path":
-            "individual.collectingInformation.*.event.locationInformation.places.*.",
+          "x-path": "individual.collectingInformation.*.event.locationInformation.places.*.",
           "properties": {
             "data": {
               "type": "array",

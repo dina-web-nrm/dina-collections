@@ -94,6 +94,7 @@ class RecordHistoryEvents extends PureComponent {
 RecordHistoryEvents.propTypes = propTypes
 RecordHistoryEvents.defaultProps = defaultProps
 
-export default compose(withI18n(), connect(mapStateToProps))(
-  RecordHistoryEvents
-)
+export default compose(
+  withI18n(),
+  connect(mapStateToProps)
+)(RecordHistoryEvents)

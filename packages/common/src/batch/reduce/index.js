@@ -8,14 +8,12 @@ const dep = new Dependor({
 
 exports.dep = dep
 
-exports.batchReduce = function batchReduce(
-  {
-    items = [],
-    reduceFunction,
-    numberOfEntriesEachBatch = 100,
-    initialValue = {},
-  } = {}
-) {
+exports.batchReduce = function batchReduce({
+  items = [],
+  reduceFunction,
+  numberOfEntriesEachBatch = 100,
+  initialValue = {},
+} = {}) {
   if (!reduceFunction) {
     throw new Error('Reduce function is required')
   }

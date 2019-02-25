@@ -187,6 +187,7 @@ const ResultTableSettingsForm = reduxForm({
   form: 'resultTableSettingsForm',
 })(ResultTableSettings)
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ResultTableSettingsForm
-)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResultTableSettingsForm)

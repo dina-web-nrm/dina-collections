@@ -4,7 +4,9 @@ const transformOutput = require('../../../../../../lib/controllers/utilities/tra
 module.exports = function getMany({ operation, integrations }) {
   const { resource } = operation
   return ({ request }) => {
-    const { pathParams: { id } } = request
+    const {
+      pathParams: { id },
+    } = request
 
     return integrations.keycloakAdmin.getUserById(id).then(fetchedResource => {
       const output = transformOutput(fetchedResource)

@@ -6,9 +6,7 @@ module.exports = function buildDescription({
     return description
   }
 
-  const inverseOperationIdNotice = `NOTE: Use endpoint with operationId "${
-    inverseOperationId
-  }" instead. This endpoint is not active.`
+  const inverseOperationIdNotice = `NOTE: Use endpoint with operationId "${inverseOperationId}" instead. This endpoint is not active.`
 
   return description
     ? `${inverseOperationIdNotice}\n\n${description}`

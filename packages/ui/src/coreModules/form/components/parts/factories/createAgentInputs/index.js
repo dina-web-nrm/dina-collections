@@ -1,12 +1,10 @@
-export default function createAgentInputs(
-  {
-    baseName,
-    buttonTextKey = 'other.interpretThisName',
-    initiallyHidden,
-    model,
-    module = 'collectionMammals',
-  } = {}
-) {
+export default function createAgentInputs({
+  baseName,
+  buttonTextKey = 'other.interpretThisName',
+  initiallyHidden,
+  model,
+  module = 'collectionMammals',
+} = {}) {
   return [
     {
       componentName: 'Input',

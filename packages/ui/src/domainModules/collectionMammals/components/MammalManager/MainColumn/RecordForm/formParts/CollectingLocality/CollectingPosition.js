@@ -103,8 +103,7 @@ class CollectingPosition extends PureComponent {
       maximumElevationInMeters,
       minimumDepthInMeters,
       minimumElevationInMeters,
-    } =
-      verticalPosition || {}
+    } = verticalPosition || {}
 
     const hasElevation =
       maximumElevationInMeters !== undefined ||

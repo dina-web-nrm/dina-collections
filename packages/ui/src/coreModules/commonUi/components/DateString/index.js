@@ -58,13 +58,15 @@ const DateString = ({
       textKey: 'between',
     })} ${startDate} ${moduleTranslate({ textKey: 'and' })} ${endDate}`
   } else if (startDate) {
-    dateString = `${moduleTranslate({ capitalize: true, textKey: 'after' })} ${
-      startDate
-    }`
+    dateString = `${moduleTranslate({
+      capitalize: true,
+      textKey: 'after',
+    })} ${startDate}`
   } else if (endDate) {
-    dateString = `${moduleTranslate({ capitalize: true, textKey: 'before' })} ${
-      endDate
-    }`
+    dateString = `${moduleTranslate({
+      capitalize: true,
+      textKey: 'before',
+    })} ${endDate}`
   } else if (year || month || day) {
     dateString = getPaddedDateString({ day, month, year })
   } else if (interpretedTimestamp || timestamp) {

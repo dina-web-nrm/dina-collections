@@ -111,9 +111,12 @@ const createEnsureAllItemsFetched = (hocInput = {}) => ComposedComponent => {
   EnsureAllItemsFetched.propTypes = propTypes
   EnsureAllItemsFetched.defaultProps = defaultProps
 
-  return compose(connect(mapStateToProps, mapDispatchToProps))(
-    EnsureAllItemsFetched
-  )
+  return compose(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )
+  )(EnsureAllItemsFetched)
 }
 
 export default createEnsureAllItemsFetched

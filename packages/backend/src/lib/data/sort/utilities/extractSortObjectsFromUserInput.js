@@ -1,8 +1,10 @@
 const backendError400 = require('common/src/error/errorFactories/backendError400')
 
-module.exports = function extractSortObjectsFromUserInput(
-  { sortInput, sortableFields = [], replaceAttributesWithDocument = false } = {}
-) {
+module.exports = function extractSortObjectsFromUserInput({
+  sortInput,
+  sortableFields = [],
+  replaceAttributesWithDocument = false,
+} = {}) {
   if (!(sortInput && sortInput.length)) {
     return []
   }
@@ -24,9 +26,7 @@ module.exports = function extractSortObjectsFromUserInput(
       if (sortSegments.length !== 2) {
         backendError400({
           code: 'REQUEST_QUERY_VALIDATION_ERROR',
-          detail: `Wrong format for sort  ${
-            sortString
-          }. Follow format: [path]:[order] ex attributes.id:desc`,
+          detail: `Wrong format for sort  ${sortString}. Follow format: [path]:[order] ex attributes.id:desc`,
         })
       }
       const path = sortSegments[0]

@@ -45,17 +45,16 @@ class EventRow extends PureComponent {
       <Grid.Column width={16}>
         {dateToShow && `${dateToShow}: `}
         {`${description} `}
-        {eventAgent &&
-          !isEmpty(eventAgent) && (
-            <React.Fragment>
-              <ModuleTranslate textKey="other.by" />{' '}
-              <AgentIdTextResult
-                includeVerbatimAgent
-                input={{ value: eventAgent }}
-                textOnly
-              />
-            </React.Fragment>
-          )}
+        {eventAgent && !isEmpty(eventAgent) && (
+          <React.Fragment>
+            <ModuleTranslate textKey="other.by" />{' '}
+            <AgentIdTextResult
+              includeVerbatimAgent
+              input={{ value: eventAgent }}
+              textOnly
+            />
+          </React.Fragment>
+        )}
         {handleEdit && (
           <Icon
             name="edit"

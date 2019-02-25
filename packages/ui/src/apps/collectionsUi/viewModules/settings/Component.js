@@ -63,4 +63,7 @@ const Settings = props => {
 
 Settings.propTypes = propTypes
 
-export default connect(undefined, mapDispatchToProps)(Settings)
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(Settings)

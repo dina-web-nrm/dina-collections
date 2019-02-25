@@ -8,9 +8,11 @@ const dep = new Dependor({
 
 exports.dep = dep
 
-exports.batchMap = function batchMap(
-  { items = [], mapFunction, numberOfEntriesEachBatch = 100 } = {}
-) {
+exports.batchMap = function batchMap({
+  items = [],
+  mapFunction,
+  numberOfEntriesEachBatch = 100,
+} = {}) {
   if (!mapFunction) {
     throw new Error('Map function is required')
   }

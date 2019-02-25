@@ -51,9 +51,7 @@ export const getTranslationByPath = (
   if (!translation && fallbackLanguage) {
     /* eslint-disable no-console */
     console.warn(
-      `Translation for key ${fallbackTranslation} language ${
-        language
-      } not found trying fallback language ${fallbackLanguage}`
+      `Translation for key ${fallbackTranslation} language ${language} not found trying fallback language ${fallbackLanguage}`
     )
     /* eslint-enable no-console */
     return getTranslationByPath(translations, {

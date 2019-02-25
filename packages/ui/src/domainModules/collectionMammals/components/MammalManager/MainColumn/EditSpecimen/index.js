@@ -172,5 +172,8 @@ export default compose(
   createEnsureAllItemsFetched({
     resource: 'preparationType',
   }),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(EditSpecimen)

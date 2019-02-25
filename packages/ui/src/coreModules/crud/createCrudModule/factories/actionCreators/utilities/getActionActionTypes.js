@@ -10,9 +10,11 @@ export const dep = new Dependor({
   getActionActionType,
 })
 
-export default function getActionActionTypes(
-  { operationType, resource, resourceActionTypes } = {}
-) {
+export default function getActionActionTypes({
+  operationType,
+  resource,
+  resourceActionTypes,
+} = {}) {
   const fail = dep.getActionActionType({
     actionType: API_ACTION_TYPE_FAIL,
     operationType,

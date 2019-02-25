@@ -1,8 +1,9 @@
 const { makeTestCall } = require('./testApiClient')
 
-module.exports = function waitForApiRestart(
-  { operationId = 'getStatus', maxTime = 5000 } = {}
-) {
+module.exports = function waitForApiRestart({
+  operationId = 'getStatus',
+  maxTime = 5000,
+} = {}) {
   return new Promise((resolve, reject) => {
     let timedOut = false
 

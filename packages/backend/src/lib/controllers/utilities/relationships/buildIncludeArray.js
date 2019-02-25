@@ -1,8 +1,10 @@
 const shouldIncludeRelation = require('./shouldIncludeRelation')
 
-module.exports = function buildIncludeArray(
-  { models, queryParamRelationships, relations = [] } = {}
-) {
+module.exports = function buildIncludeArray({
+  models,
+  queryParamRelationships,
+  relations = [],
+} = {}) {
   if (!(models && typeof models === 'object')) {
     throw new Error('Provide model object')
   }
@@ -34,9 +36,7 @@ module.exports = function buildIncludeArray(
 
       if (!models[relationResource].Model) {
         throw new Error(
-          `Model with key: ${
-            relationResource
-          } dont have sequalize Model instance`
+          `Model with key: ${relationResource} dont have sequalize Model instance`
         )
       }
 

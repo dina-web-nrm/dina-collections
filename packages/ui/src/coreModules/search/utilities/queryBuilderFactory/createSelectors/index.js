@@ -95,16 +95,19 @@ export default function createSelectors({ formName, querySpecifications }) {
           return !!selector
         })
 
-      const selector = createSelector(subSelectors, (...otherQueries) => {
-        if (otherQueries && otherQueries.length) {
-          return {
-            and: otherQueries.filter(filter => {
-              return !!filter
-            }),
+      const selector = createSelector(
+        subSelectors,
+        (...otherQueries) => {
+          if (otherQueries && otherQueries.length) {
+            return {
+              and: otherQueries.filter(filter => {
+                return !!filter
+              }),
+            }
           }
+          return null
         }
-        return null
-      })
+      )
       return {
         ...selectors,
         [fieldName]: selector,

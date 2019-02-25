@@ -74,7 +74,9 @@ class CoordinateInput extends Component {
   }
 
   handleDirectionChange(_, { value: direction }) {
-    const { input: { onChange } } = this.props
+    const {
+      input: { onChange },
+    } = this.props
     const { number } = this.state
 
     const updatedCoordinate = updateCoordinateWithDirection(number, direction)
@@ -87,7 +89,9 @@ class CoordinateInput extends Component {
   }
 
   handleNumberChange({ target: { value: number } }) {
-    const { input: { onChange } } = this.props
+    const {
+      input: { onChange },
+    } = this.props
     const { direction } = this.state
 
     const updatedCoordinate = updateCoordinateWithDirection(number, direction)

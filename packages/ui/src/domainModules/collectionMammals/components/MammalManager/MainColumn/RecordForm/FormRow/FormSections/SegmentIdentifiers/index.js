@@ -155,17 +155,16 @@ class SegmentIdentifiers extends PureComponent {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            {identifiers &&
-              identifiers.length > 1 && (
-                <Grid.Column width={16}>
-                  <IdentifiersTable
-                    changeFieldValue={changeFieldValue}
-                    identifiers={identifiers}
-                    identifierTypeOptions={identifierTypeOptions}
-                    removeArrayFieldByIndex={removeArrayFieldByIndex}
-                  />
-                </Grid.Column>
-              )}
+            {identifiers && identifiers.length > 1 && (
+              <Grid.Column width={16}>
+                <IdentifiersTable
+                  changeFieldValue={changeFieldValue}
+                  identifiers={identifiers}
+                  identifierTypeOptions={identifierTypeOptions}
+                  removeArrayFieldByIndex={removeArrayFieldByIndex}
+                />
+              </Grid.Column>
+            )}
             <Grid.Column width={16}>
               <Button
                 id="add-identifier"

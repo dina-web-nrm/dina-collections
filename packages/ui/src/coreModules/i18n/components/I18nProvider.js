@@ -43,4 +43,7 @@ I18nProvider.propTypes = propTypes
 
 // using withRouter to avoid location updates being blocked
 // https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
-export default compose(withRouter, connect(mapStateToProps))(I18nProvider)
+export default compose(
+  withRouter,
+  connect(mapStateToProps)
+)(I18nProvider)

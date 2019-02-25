@@ -6,6 +6,7 @@ import {
 
 import StorageLocationManager from './Base'
 
-export default compose(createQueryState(), createNavigationState())(
-  StorageLocationManager
-)
+export default compose(
+  createQueryState(),
+  createNavigationState()
+)(StorageLocationManager)

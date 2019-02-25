@@ -111,4 +111,9 @@ class AgentManager extends Component {
 AgentManager.propTypes = propTypes
 AgentManager.defaultProps = defaultProps
 
-export default compose(connect(undefined, mapDispatchToProps))(AgentManager)
+export default compose(
+  connect(
+    undefined,
+    mapDispatchToProps
+  )
+)(AgentManager)

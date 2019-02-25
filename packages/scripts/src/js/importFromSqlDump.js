@@ -13,9 +13,7 @@ const importInfoPath = path.join(
 const env = 'development'
 
 return promptContinue({
-  message: `This will drop the database configured for env: ${
-    env
-  } and import [REPO]/data/dump.sql`,
+  message: `This will drop the database configured for env: ${env} and import [REPO]/data/dump.sql`,
 })
   .then(() => {
     return localExecCmd({

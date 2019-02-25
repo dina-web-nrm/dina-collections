@@ -13,6 +13,9 @@ export const getFormState = createSelector(
 )
 
 // returns name of active field if any, else undefined
-export const getFormActive = createSelector(getFormState, formState => {
-  return formState.active
-})
+export const getFormActive = createSelector(
+  getFormState,
+  formState => {
+    return formState.active
+  }
+)

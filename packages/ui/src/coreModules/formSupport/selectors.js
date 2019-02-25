@@ -11,13 +11,19 @@ export const getFormSpec = (state, { formName }) => {
   return state[formName]
 }
 
-export const getSectionFieldNamesMap = createSelector(getFormSpec, formSpec => {
-  return reduceFieldSpecsToSectionFieldNamesMap(Object.values(formSpec))
-})
+export const getSectionFieldNamesMap = createSelector(
+  getFormSpec,
+  formSpec => {
+    return reduceFieldSpecsToSectionFieldNamesMap(Object.values(formSpec))
+  }
+)
 
-export const getUnitFieldNamesMap = createSelector(getFormSpec, formSpec => {
-  return reduceFieldSpecsToUnitFieldNamesMap(Object.values(formSpec))
-})
+export const getUnitFieldNamesMap = createSelector(
+  getFormSpec,
+  formSpec => {
+    return reduceFieldSpecsToUnitFieldNamesMap(Object.values(formSpec))
+  }
+)
 
 export const getUnitInitiallyHiddenFieldNamesMap = createSelector(
   getFormSpec,

@@ -158,4 +158,7 @@ class CatalogNumberModal extends PureComponent {
 CatalogNumberModal.propTypes = propTypes
 CatalogNumberModal.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps), withRouter)(CatalogNumberModal)
+export default compose(
+  connect(mapStateToProps),
+  withRouter
+)(CatalogNumberModal)

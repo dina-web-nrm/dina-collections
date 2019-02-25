@@ -13,17 +13,15 @@ const dep = new Dependor({
 
 const defaultLog = createLog('common:jsonApiClient:recursiveUpdate')
 
-function recursiveUpdate(
-  {
-    includesToModify,
-    item,
-    log = defaultLog,
-    openApiClient,
-    relationshipsToModify,
-    resourcePath: resourcePathInput,
-    resourceType,
-  } = {}
-) {
+function recursiveUpdate({
+  includesToModify,
+  item,
+  log = defaultLog,
+  openApiClient,
+  relationshipsToModify,
+  resourcePath: resourcePathInput,
+  resourceType,
+} = {}) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
       throw new Error('provide openApiClient')

@@ -19,11 +19,10 @@ const createDropdownSelector = (categoryFilter, numberOfResults) => {
     (preparationTypes, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
       const mappedPreparationTypes = preparationTypes
-        .filter(
-          ({ attributes }) =>
-            categoryFilter === 'all'
-              ? true
-              : attributes.category === categoryFilter
+        .filter(({ attributes }) =>
+          categoryFilter === 'all'
+            ? true
+            : attributes.category === categoryFilter
         )
         .map(({ id, attributes }) => {
           return {

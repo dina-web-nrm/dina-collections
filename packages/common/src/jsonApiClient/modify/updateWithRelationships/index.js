@@ -13,15 +13,13 @@ const dep = new Dependor({
 
 const defaultLog = createLog('common:jsonApiClient:updateWithRelationships')
 
-function updateWithRelationships(
-  {
-    item,
-    log = defaultLog,
-    openApiClient,
-    relationshipsToModify,
-    resourcePath,
-  } = {}
-) {
+function updateWithRelationships({
+  item,
+  log = defaultLog,
+  openApiClient,
+  relationshipsToModify,
+  resourcePath,
+} = {}) {
   return Promise.resolve().then(() => {
     if (!item) {
       throw new Error('item required')
@@ -43,9 +41,7 @@ function updateWithRelationships(
       log
         .scope()
         .debug(
-          `${
-            resourcePath
-          } -> not updating relationships: ${relationshipsToNotModify.join(
+          `${resourcePath} -> not updating relationships: ${relationshipsToNotModify.join(
             ', '
           )}`
         )
@@ -58,9 +54,9 @@ function updateWithRelationships(
       log
         .scope()
         .debug(
-          `${resourcePath} -> updating relationships as part of ${
-            resourcePath
-          } request: ${Object.keys(relationshipsToIncludeInRequest).join(', ')}`
+          `${resourcePath} -> updating relationships as part of ${resourcePath} request: ${Object.keys(
+            relationshipsToIncludeInRequest
+          ).join(', ')}`
         )
     }
 

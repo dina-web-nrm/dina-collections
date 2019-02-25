@@ -99,9 +99,7 @@ exports.createUpdateRelatedSearchSpecimensPostHook = ({
   }) {
     const { id: updatedResourceId } = item
     log.debug(
-      `updateRelatedSearchSpecimens for resource: ${resource}. id: ${
-        updatedResourceId
-      }`
+      `updateRelatedSearchSpecimens for resource: ${resource}. id: ${updatedResourceId}`
     )
     return serviceInteractor
       .call({

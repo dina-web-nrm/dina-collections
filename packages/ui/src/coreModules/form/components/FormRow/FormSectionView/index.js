@@ -68,9 +68,7 @@ class FormSectionView extends PureComponent {
 
     if (!units) {
       throw new Error(
-        `Missing units for form section with index ${
-          activeFormSectionIndex
-        } with name ${name}`
+        `Missing units for form section with index ${activeFormSectionIndex} with name ${name}`
       )
     }
 
@@ -157,32 +155,31 @@ class FormSectionView extends PureComponent {
           {showAllFormSections
             ? this.renderAllSections()
             : this.renderActiveSection()}
-          {showSectionsInNavigation &&
-            !showAllFormSections && (
-              <Grid.Column textAlign="right" width={16}>
-                <Button
-                  disabled={activeFormSectionIndex === 0}
-                  icon
-                  labelPosition="left"
-                  onClick={handleGoToPreviousSection}
-                  type="button"
-                >
-                  <Icon name="left arrow" />
-                  Previous
-                </Button>
+          {showSectionsInNavigation && !showAllFormSections && (
+            <Grid.Column textAlign="right" width={16}>
+              <Button
+                disabled={activeFormSectionIndex === 0}
+                icon
+                labelPosition="left"
+                onClick={handleGoToPreviousSection}
+                type="button"
+              >
+                <Icon name="left arrow" />
+                Previous
+              </Button>
 
-                <Button
-                  disabled={activeFormSectionIndex === sectionSpecs.length - 1}
-                  icon
-                  labelPosition="right"
-                  onClick={handleGoToNextSection}
-                  type="button"
-                >
-                  Next
-                  <Icon name="right arrow" />
-                </Button>
-              </Grid.Column>
-            )}
+              <Button
+                disabled={activeFormSectionIndex === sectionSpecs.length - 1}
+                icon
+                labelPosition="right"
+                onClick={handleGoToNextSection}
+                type="button"
+              >
+                Next
+                <Icon name="right arrow" />
+              </Button>
+            </Grid.Column>
+          )}
         </Grid>
       </div>
     )

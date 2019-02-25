@@ -123,9 +123,9 @@ function updateRelationship({
   const inverseOperationId = inverseOperationIdMap[operationId]
   if (inverseOperationId) {
     log.debug(
-      `inverse updateRelationship with ${inverseOperationId} for ${
-        resourcePath
-      } -> ${item.id} @ key: ${relationKey}. relationships: `,
+      `inverse updateRelationship with ${inverseOperationId} for ${resourcePath} -> ${
+        item.id
+      } @ key: ${relationKey}. relationships: `,
       data
     )
 
@@ -140,9 +140,9 @@ function updateRelationship({
       type,
     }).then(removedRelationships => {
       log.debug(
-        `inverse updateRelationship for ${resourcePath} -> ${item.id} @ key: ${
-          relationKey
-        }. relationships: `,
+        `inverse updateRelationship for ${resourcePath} -> ${
+          item.id
+        } @ key: ${relationKey}. relationships: `,
         data
       )
       if (isArray) {
@@ -191,9 +191,9 @@ function updateRelationship({
     type,
   }).then(() => {
     log.debug(
-      `updateRelationship for ${resourcePath} -> ${item.id} @ key: ${
-        relationKey
-      }. relationships: `,
+      `updateRelationship for ${resourcePath} -> ${
+        item.id
+      } @ key: ${relationKey}. relationships: `,
       data
     )
     return openApiClient.call(operationId, {

@@ -178,6 +178,9 @@ class StorageLocationManager extends Component {
 StorageLocationManager.propTypes = propTypes
 StorageLocationManager.defaultProps = defaultProps
 
-export default compose(connect(undefined, mapDispatchToProps))(
-  StorageLocationManager
-)
+export default compose(
+  connect(
+    undefined,
+    mapDispatchToProps
+  )
+)(StorageLocationManager)

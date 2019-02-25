@@ -1,21 +1,19 @@
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { actionCreators } from '../keyObjectModule'
 
-export default function search(
-  {
-    aggregations,
-    excludeFields,
-    idsInMeta = false,
-    includeDeactivated,
-    includeFields,
-    limit = 100000,
-    query,
-    resource,
-    sort,
-    storeSearchResult = false,
-    useScroll,
-  } = {}
-) {
+export default function search({
+  aggregations,
+  excludeFields,
+  idsInMeta = false,
+  includeDeactivated,
+  includeFields,
+  limit = 100000,
+  query,
+  resource,
+  sort,
+  storeSearchResult = false,
+  useScroll,
+} = {}) {
   const updateSearchResult = actionCreators.set[':resource.searchState']
   const queryAc = crudActionCreators[resource].query
 

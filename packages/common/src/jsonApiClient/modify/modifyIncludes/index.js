@@ -15,16 +15,14 @@ const dep = new Dependor({
 
 const defaultLog = createLog('common:jsonApiClient:modifyIncludes')
 
-function modifyIncludes(
-  {
-    includesToModify,
-    log = defaultLog,
-    openApiClient,
-    relationships,
-    relationshipsToModify,
-    resourcePath,
-  } = {}
-) {
+function modifyIncludes({
+  includesToModify,
+  log = defaultLog,
+  openApiClient,
+  relationships,
+  relationshipsToModify,
+  resourcePath,
+} = {}) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
       throw new Error('provide openApiClient')
@@ -52,9 +50,9 @@ function modifyIncludes(
 
     if (relationKeysNotToModify && relationKeysNotToModify.length) {
       log.debug(
-        `${
-          resourcePath
-        } -> not updating includes: ${relationKeysNotToModify.join(', ')}`
+        `${resourcePath} -> not updating includes: ${relationKeysNotToModify.join(
+          ', '
+        )}`
       )
     }
 

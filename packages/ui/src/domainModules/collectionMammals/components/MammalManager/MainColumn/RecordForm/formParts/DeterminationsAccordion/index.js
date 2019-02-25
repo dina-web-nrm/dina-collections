@@ -55,32 +55,31 @@ const DeterminationsAccordion = ({
 
   return (
     <React.Fragment>
-      {determinations &&
-        determinations.length > 0 && (
-          <Grid.Column width={16}>
-            <Accordion
-              expandFirstItemOnMountIfEmptyOrOnlyHasKey
-              initialActiveMode={ALL_COLLAPSED}
-              items={determinations}
-              renderContent={props => (
-                <DeterminationContent
-                  removeArrayFieldByIndex={removeArrayFieldByIndex}
-                  skipRemoveDeterminationConfirmation={config.isTest}
-                  {...props}
-                />
-              )}
-              renderTitle={({ index, ...rest }) => (
-                <DeterminationTitle
-                  formName={formName}
-                  index={index}
-                  {...determinations[index] || {}}
-                  {...rest}
-                />
-              )}
-              skipRemoveDeterminationConfirmation={config.isTest}
-            />
-          </Grid.Column>
-        )}
+      {determinations && determinations.length > 0 && (
+        <Grid.Column width={16}>
+          <Accordion
+            expandFirstItemOnMountIfEmptyOrOnlyHasKey
+            initialActiveMode={ALL_COLLAPSED}
+            items={determinations}
+            renderContent={props => (
+              <DeterminationContent
+                removeArrayFieldByIndex={removeArrayFieldByIndex}
+                skipRemoveDeterminationConfirmation={config.isTest}
+                {...props}
+              />
+            )}
+            renderTitle={({ index, ...rest }) => (
+              <DeterminationTitle
+                formName={formName}
+                index={index}
+                {...determinations[index] || {}}
+                {...rest}
+              />
+            )}
+            skipRemoveDeterminationConfirmation={config.isTest}
+          />
+        </Grid.Column>
+      )}
       <Grid.Column width={16}>
         <AddButton
           id="add-determination"
@@ -106,6 +105,7 @@ const DeterminationsAccordion = ({
 DeterminationsAccordion.propTypes = propTypes
 DeterminationsAccordion.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps), pathBuilder())(
-  DeterminationsAccordion
-)
+export default compose(
+  connect(mapStateToProps),
+  pathBuilder()
+)(DeterminationsAccordion)

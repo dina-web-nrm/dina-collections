@@ -74,12 +74,11 @@ export class FormSectionNavigation extends PureComponent {
           >
             {loading && <Loader active inline size="tiny" />}
             {!loading && header}
-            {!loading &&
-              subHeader && (
-                <Header.Subheader size="large">
-                  <em>{subHeader}</em>
-                </Header.Subheader>
-              )}
+            {!loading && subHeader && (
+              <Header.Subheader size="large">
+                <em>{subHeader}</em>
+              </Header.Subheader>
+            )}
           </Header>
 
           {showSectionsInNavigation && (
@@ -100,18 +99,17 @@ export class FormSectionNavigation extends PureComponent {
             </Step.Group>
           )}
 
-          {showSectionsInNavigation &&
-            handleShowAllFormSections && (
-              <Header
-                block
-                onClick={handleShowAllFormSections}
-                size="small"
-                style={showAllFormSections ? activeStyle : inactiveStyle}
-                sub
-              >
-                Expand all sections
-              </Header>
-            )}
+          {showSectionsInNavigation && handleShowAllFormSections && (
+            <Header
+              block
+              onClick={handleShowAllFormSections}
+              size="small"
+              style={showAllFormSections ? activeStyle : inactiveStyle}
+              sub
+            >
+              Expand all sections
+            </Header>
+          )}
         </Grid.Column>
       </Grid>
     )

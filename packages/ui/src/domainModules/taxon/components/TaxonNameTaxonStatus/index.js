@@ -49,9 +49,7 @@ const TaxonNameTaxonStatus = ({
           textKey: 'acceptedNameForTaxon',
         })} `}
         <Link
-          to={`/app/taxa?filterColumn=&itemId=${
-            acceptedToTaxonId
-          }&mainColumn=edit`}
+          to={`/app/taxa?filterColumn=&itemId=${acceptedToTaxonId}&mainColumn=edit`}
         >{`${name}${rankString}`}</Link>
         {'.'}
       </React.Fragment>
@@ -80,9 +78,7 @@ const TaxonNameTaxonStatus = ({
           textKey: 'synonymForTaxon',
         })} `}
         <Link
-          to={`/app/taxa?filterColumn=&itemId=${
-            synonymToTaxonId
-          }&mainColumn=edit`}
+          to={`/app/taxa?filterColumn=&itemId=${synonymToTaxonId}&mainColumn=edit`}
         >{`${acceptedTaxonName}${rankString}`}</Link>
         {'.'}
       </React.Fragment>

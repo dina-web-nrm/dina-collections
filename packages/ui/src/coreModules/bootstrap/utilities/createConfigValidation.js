@@ -42,9 +42,11 @@ export const validateConfigWithSchema = (config, configSchemas = {}) => {
     })
     const errors = validate(moduleConfig)
     if (errors) {
-      const errorMessage = `Validating config for module: ${
-        moduleName
-      }: ${JSON.stringify(errors, null, 2)}`
+      const errorMessage = `Validating config for module: ${moduleName}: ${JSON.stringify(
+        errors,
+        null,
+        2
+      )}`
       throw new Error(errorMessage)
     }
   })

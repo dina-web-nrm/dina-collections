@@ -204,9 +204,12 @@ const createGetResourceCount = (hocInput = {}) => ComposedComponent => {
   ResourceCountGetter.propTypes = propTypes
   ResourceCountGetter.defaultProps = defaultProps
 
-  return compose(connect(mapStateToProps, mapDispatchToProps))(
-    ResourceCountGetter
-  )
+  return compose(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )
+  )(ResourceCountGetter)
 }
 
 export default createGetResourceCount

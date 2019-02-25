@@ -3,7 +3,10 @@ const getPolymorphicRelationship = require('../utilities/relationships/getPolymo
 const getSqlRelationship = require('../utilities/relationships/getSqlRelationship')
 
 module.exports = function getRelationship({ models, operation }) {
-  const { operationId, relation: { keyType } } = operation
+  const {
+    operationId,
+    relation: { keyType },
+  } = operation
 
   switch (keyType) {
     case 'json': {

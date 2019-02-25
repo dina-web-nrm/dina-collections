@@ -82,46 +82,39 @@ export class FormActions extends PureComponent {
               <ModuleTranslate textKey="other.cancel" />
             </Button>
           )}
-          {displayRemoveButton &&
-            skipRemoveConfirmation &&
-            handleRemove && (
-              <Button onClick={handleRemove} size="large" type="button">
-                <ModuleTranslate textKey="other.remove" />
-              </Button>
-            )}
+          {displayRemoveButton && skipRemoveConfirmation && handleRemove && (
+            <Button onClick={handleRemove} size="large" type="button">
+              <ModuleTranslate textKey="other.remove" />
+            </Button>
+          )}
 
-          {displayRemoveButton &&
-            !skipRemoveConfirmation &&
-            handleRemove && (
-              <ConfirmationPopup
-                cancelButtonText={<ModuleTranslate textKey="other.cancel" />}
-                confirmButtonText={<ModuleTranslate textKey="other.remove" />}
-                header={
-                  <ModuleTranslate textKey="other.removeThisCuratorialAssessment" />
-                }
-                hideOnScroll
-                onConfirm={handleRemove}
-                size="large"
-                text={<ModuleTranslate textKey="other.remove" />}
-              />
-            )}
+          {displayRemoveButton && !skipRemoveConfirmation && handleRemove && (
+            <ConfirmationPopup
+              cancelButtonText={<ModuleTranslate textKey="other.cancel" />}
+              confirmButtonText={<ModuleTranslate textKey="other.remove" />}
+              header={
+                <ModuleTranslate textKey="other.removeThisCuratorialAssessment" />
+              }
+              hideOnScroll
+              onConfirm={handleRemove}
+              size="large"
+              text={<ModuleTranslate textKey="other.remove" />}
+            />
+          )}
           <ConnectedFormSchemaError form={form} />
-          {invalid &&
-            !error &&
-            submitFailed && (
-              <Message
-                error
-                header={<ModuleTranslate textKey="other.formContainsErrors" />}
-              />
-            )}
-          {submitFailed &&
-            error && (
-              <Message
-                content={error}
-                error
-                header={<ModuleTranslate textKey="other.submitFailed" />}
-              />
-            )}
+          {invalid && !error && submitFailed && (
+            <Message
+              error
+              header={<ModuleTranslate textKey="other.formContainsErrors" />}
+            />
+          )}
+          {submitFailed && error && (
+            <Message
+              content={error}
+              error
+              header={<ModuleTranslate textKey="other.submitFailed" />}
+            />
+          )}
           {submitSucceeded && (
             <Message
               header={<ModuleTranslate textKey="other.saved" />}

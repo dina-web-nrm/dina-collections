@@ -9,9 +9,7 @@ const relativeDataZipFolderPath = 'data'
 const relativeDataZipFileName = 'data.zip'
 
 return promptContinue({
-  message: `This will unpack [REPO]/data/data.zip on server: ${
-    serverName
-  } and start an import. Note that current data json files will be discarded`,
+  message: `This will unpack [REPO]/data/data.zip on server: ${serverName} and start an import. Note that current data json files will be discarded`,
 }).then(() => {
   return execScript({
     scriptName: 'rm-data.sh',
@@ -19,9 +17,7 @@ return promptContinue({
     throwOnError: false,
   }).then(() => {
     return execCmd({
-      cmd: `cd ${relativeDataZipFolderPath} && unzip -n ${
-        relativeDataZipFileName
-      }`,
+      cmd: `cd ${relativeDataZipFolderPath} && unzip -n ${relativeDataZipFileName}`,
       serverName,
     })
       .then(() => {

@@ -34,9 +34,7 @@ module.exports = function createConnector({
     log
       .scope()
       .warning(
-        `no controller for ${operationId}. operationType: ${
-          operationType
-        }, connect: ${connect}, customControllerKey: ${customControllerKey}`
+        `no controller for ${operationId}. operationType: ${operationType}, connect: ${connect}, customControllerKey: ${customControllerKey}`
       )
   }
 

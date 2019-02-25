@@ -1,9 +1,10 @@
 import createLog from 'utilities/log'
 
 const log = createLog('coreModules:crud:resourceReducer')
-export default function createResourceReducer(
-  { resourceActionHandlers = {}, resourceSpecification = {} } = {}
-) {
+export default function createResourceReducer({
+  resourceActionHandlers = {},
+  resourceSpecification = {},
+} = {}) {
   const { resource } = resourceSpecification
   const initialState = { items: {} }
   log.info(

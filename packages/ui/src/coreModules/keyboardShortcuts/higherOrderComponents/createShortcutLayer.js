@@ -55,6 +55,11 @@ export default function createShortcutLayer({ layer }) {
     ShortcutLayer.propTypes = propTypes
     ShortcutLayer.defaultProps = defaultProps
 
-    return compose(connect(undefined, mapDispatchToProps))(ShortcutLayer)
+    return compose(
+      connect(
+        undefined,
+        mapDispatchToProps
+      )
+    )(ShortcutLayer)
   }
 }

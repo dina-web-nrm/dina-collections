@@ -96,7 +96,11 @@ class TaxonResult extends Component {
   }
 
   render() {
-    const { input: { name }, taxon, textOnly } = this.props
+    const {
+      input: { name },
+      taxon,
+      textOnly,
+    } = this.props
 
     const acceptedTaxonName =
       taxon && objectPath.get(taxon, 'acceptedTaxonName.name')

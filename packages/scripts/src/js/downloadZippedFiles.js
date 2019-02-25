@@ -14,9 +14,7 @@ const relativeDataZipFilePath = path.join(
 )
 
 return promptContinue({
-  message: `This will download [REPO]/data/data.zip from server: ${
-    serverName
-  } to [REPO]/data/ `,
+  message: `This will download [REPO]/data/data.zip from server: ${serverName} to [REPO]/data/ `,
 })
   .then(() => {
     return localExecCmd({

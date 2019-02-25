@@ -84,4 +84,7 @@ class SourceData extends Component {
 
 SourceData.propTypes = propTypes
 
-export default connect(mapStateToProps, mapDispatchToProps)(SourceData)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SourceData)

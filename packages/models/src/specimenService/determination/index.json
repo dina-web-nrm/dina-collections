@@ -10,8 +10,7 @@
     },
     "taxonNameV": {
       "type": "string",
-      "description":
-        "Verbatim taxon name, in exactly the same words as were used originally"
+      "description": "Verbatim taxon name, in exactly the same words as were used originally"
     },
     "taxonNameI": {
       "type": "string",

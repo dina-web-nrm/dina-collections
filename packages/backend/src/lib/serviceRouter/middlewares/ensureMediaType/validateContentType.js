@@ -13,9 +13,7 @@ module.exports = function validateContentType(headerString, body) {
   ) {
     return backendError({
       code: 'REQUEST_ERROR',
-      detail: `Provide correct json api content-type header got: ${
-        headerString
-      }`,
+      detail: `Provide correct json api content-type header got: ${headerString}`,
       status: 415,
       throwError: false,
     })
@@ -24,9 +22,7 @@ module.exports = function validateContentType(headerString, body) {
   if (body && headerString !== JSON_API_HEADER) {
     return backendError({
       code: 'REQUEST_ERROR',
-      detail: `Provide correct json api content-type header got: ${
-        headerString
-      }`,
+      detail: `Provide correct json api content-type header got: ${headerString}`,
       status: 415,
       throwError: false,
     })

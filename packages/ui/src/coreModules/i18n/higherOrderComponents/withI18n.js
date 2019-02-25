@@ -6,9 +6,10 @@ import {
   getTranslationByPath,
 } from '../utilities'
 
-export default function createWithI18n(
-  { module: defaultModule = '', scope: defaultScope = '' } = {}
-) {
+export default function createWithI18n({
+  module: defaultModule = '',
+  scope: defaultScope = '',
+} = {}) {
   return function withI18n(ComposedComponent) {
     const contextTypes = {
       language: PropTypes.string.isRequired,
@@ -29,15 +30,13 @@ export default function createWithI18n(
         }
       }
 
-      moduleTranslate(
-        {
-          module: moduleInput = defaultModule,
-          modules: modulesInput,
-          textKey,
-          scope = defaultScope,
-          ...rest
-        } = {}
-      ) {
+      moduleTranslate({
+        module: moduleInput = defaultModule,
+        modules: modulesInput,
+        textKey,
+        scope = defaultScope,
+        ...rest
+      } = {}) {
         const modules =
           modulesInput && modulesInput.length ? modulesInput : [moduleInput]
         const textKeys = buildTextKeys({ modules, scope, textKey })

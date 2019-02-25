@@ -67,8 +67,6 @@ module.exports = function getInterpretedDateRangeFromOneDate({
   }
 
   throw new Error(
-    `dateType ${
-      dateType
-    } not compatible with getInterpretedDateRangeFromOneDate. maybe you should use getInterpretedDateRangeFromTwoDates?`
+    `dateType ${dateType} not compatible with getInterpretedDateRangeFromOneDate. maybe you should use getInterpretedDateRangeFromTwoDates?`
   )
 }

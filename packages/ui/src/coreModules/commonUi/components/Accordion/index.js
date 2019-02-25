@@ -249,18 +249,17 @@ class AccordionWrapper extends Component {
                   ...item,
                 })}
               </Accordion.Title>
-              {this.shouldRenderContent(index) &&
-                renderContent && (
-                  <Accordion.Content active={isActive}>
-                    {renderContent({
-                      active: isActive,
-                      handleSetActive: this.handleSetActive,
-                      handleSetInactive: this.handleSetInactive,
-                      index,
-                      ...item,
-                    })}
-                  </Accordion.Content>
-                )}
+              {this.shouldRenderContent(index) && renderContent && (
+                <Accordion.Content active={isActive}>
+                  {renderContent({
+                    active: isActive,
+                    handleSetActive: this.handleSetActive,
+                    handleSetInactive: this.handleSetInactive,
+                    index,
+                    ...item,
+                  })}
+                </Accordion.Content>
+              )}
             </React.Fragment>
           )
         })}

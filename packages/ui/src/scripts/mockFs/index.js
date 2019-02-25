@@ -1,17 +1,17 @@
 /*
-* Pass fileSystem object on this format:
-* dir: {
-*   type: 'DIR',
-*   'index.json': {
-*     key1: {
-*       key2: 'foo',
-*       key3: 'bar',
-*     },
-*   },
-* },
-* Note: 'DIR' key is required in all objects that should be treated as
-* directories with other files.
-*/
+ * Pass fileSystem object on this format:
+ * dir: {
+ *   type: 'DIR',
+ *   'index.json': {
+ *     key1: {
+ *       key2: 'foo',
+ *       key3: 'bar',
+ *     },
+ *   },
+ * },
+ * Note: 'DIR' key is required in all objects that should be treated as
+ * directories with other files.
+ */
 
 class MockStat {
   constructor(type) {

@@ -62,4 +62,7 @@ export const FormFieldHelpIcon = ({
 
 FormFieldHelpIcon.propTypes = propTypes
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormFieldHelpIcon)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FormFieldHelpIcon)

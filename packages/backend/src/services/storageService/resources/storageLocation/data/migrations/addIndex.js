@@ -15,11 +15,7 @@ module.exports = {
   up: ({ queryInterface }) => {
     const promises = relationshipIndexes.map(({ name, relationship }) => {
       return queryInterface.sequelize.query(
-        `CREATE INDEX ${
-          name
-        } ON "storageLocations" USING gin ((relationships->'${
-          relationship
-        }'->'data'));`
+        `CREATE INDEX ${name} ON "storageLocations" USING gin ((relationships->'${relationship}'->'data'));`
       )
     })
     return Promise.all(promises)

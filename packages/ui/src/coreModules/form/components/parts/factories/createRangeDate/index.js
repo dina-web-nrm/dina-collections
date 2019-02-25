@@ -1,18 +1,16 @@
-export default function createRangeDate(
-  {
-    baseName,
-    displayDateTypeRadios,
-    displayEndDateLabel,
-    displayLabel,
-    displayStartDateLabel,
-    displaySubLabels,
-    endDateLabel,
-    initialDateType,
-    initiallyHidden,
-    stack,
-    startDateLabel,
-  } = {}
-) {
+export default function createRangeDate({
+  baseName,
+  displayDateTypeRadios,
+  displayEndDateLabel,
+  displayLabel,
+  displayStartDateLabel,
+  displaySubLabels,
+  endDateLabel,
+  initialDateType,
+  initiallyHidden,
+  stack,
+  startDateLabel,
+} = {}) {
   return [
     {
       componentName: 'RangeDate',

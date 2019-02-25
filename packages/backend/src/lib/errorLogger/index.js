@@ -44,9 +44,9 @@ module.exports = function createErrorLogger({
     const { serverAlias } = config.env || {}
 
     const text = serverAlias
-      ? `*${error.title}*. Check logs with command: _yarn remote:exec:cmd -s ${
-          serverAlias
-        } -c 'docker-compose logs --tail=2000 api | grep -a20 -b20 ${
+      ? `*${
+          error.title
+        }*. Check logs with command: _yarn remote:exec:cmd -s ${serverAlias} -c 'docker-compose logs --tail=2000 api | grep -a20 -b20 ${
           error.id
         }'_`
       : `*${error.title}* | ${error.id}`
@@ -77,9 +77,11 @@ module.exports = function createErrorLogger({
     }
   }
 
-  const logError = (
-    { error: errorInput, response, source = 'backend' } = {}
-  ) => {
+  const logError = ({
+    error: errorInput,
+    response,
+    source = 'backend',
+  } = {}) => {
     try {
       let error = errorInput
       if (!isDinaError(errorInput)) {

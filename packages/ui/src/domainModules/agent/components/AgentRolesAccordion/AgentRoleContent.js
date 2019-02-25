@@ -45,7 +45,10 @@ class AgentRoleContent extends Component {
   }
 
   render() {
-    const { getPath, i18n: { moduleTranslate } } = this.props
+    const {
+      getPath,
+      i18n: { moduleTranslate },
+    } = this.props
     log.render()
     return (
       <Grid textAlign="left" verticalAlign="bottom">
@@ -122,6 +125,7 @@ class AgentRoleContent extends Component {
 
 AgentRoleContent.propTypes = propTypes
 
-export default compose(withI18n({ module: 'agent' }), pathBuilder())(
-  AgentRoleContent
-)
+export default compose(
+  withI18n({ module: 'agent' }),
+  pathBuilder()
+)(AgentRoleContent)

@@ -369,7 +369,10 @@ const injectSearchOptions = (hocInput = {}) => ComposedComponent => {
     createInjectSearch({
       storeSearchResult: false,
     }),
-    connect(null, mapDispatchToProps)
+    connect(
+      null,
+      mapDispatchToProps
+    )
   )(SearchOptionsInjector)
 }
 

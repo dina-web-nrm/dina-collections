@@ -33,14 +33,12 @@ const mapDispatchToProps = {
   change,
 }
 
-const createPickerWrapper = (
-  {
-    extractPickedId = defaultExtractPickedId,
-    pathToIdInValue = '',
-    pathToTextInValue = '',
-    requireEitherIdOrValue = false,
-  } = {}
-) => ComposedComponent => {
+const createPickerWrapper = ({
+  extractPickedId = defaultExtractPickedId,
+  pathToIdInValue = '',
+  pathToTextInValue = '',
+  requireEitherIdOrValue = false,
+} = {}) => ComposedComponent => {
   class PickerWrapper extends Component {
     constructor(props) {
       super(props)
@@ -192,7 +190,10 @@ const createPickerWrapper = (
   PickerWrapper.propTypes = propTypes
   PickerWrapper.defaultProps = defaultProps
 
-  return connect(null, mapDispatchToProps)(PickerWrapper)
+  return connect(
+    null,
+    mapDispatchToProps
+  )(PickerWrapper)
 }
 
 export default createPickerWrapper

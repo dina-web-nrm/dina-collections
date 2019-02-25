@@ -103,7 +103,9 @@ export class InfiniteTable extends Component {
     const isFocused = focusedIndex === index
     const background = isFocused // eslint-disable-line no-nested-ternary
       ? '#b5b5b5'
-      : index % 2 === 0 ? '#e5e7e9' : '#fff'
+      : index % 2 === 0
+      ? '#e5e7e9'
+      : '#fff'
     if (id !== undefined) {
       fetchItemById(id)
     }

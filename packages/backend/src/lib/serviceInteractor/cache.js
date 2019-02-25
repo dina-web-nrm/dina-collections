@@ -31,9 +31,7 @@ module.exports = function createServiceInteractorCache({
         }
       }
       log.info(
-        `Creating service interaction cache for operation: ${
-          serviceInteractorMethod
-        }`
+        `Creating service interaction cache for operation: ${serviceInteractorMethod}`
       )
 
       return {

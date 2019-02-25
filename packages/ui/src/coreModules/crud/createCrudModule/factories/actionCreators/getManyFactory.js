@@ -10,15 +10,13 @@ export const dep = new Dependor({
 
 const log = createLog('coreModules:crud:actionCreators:getMany')
 
-export default function getManyAcFactory(
-  {
-    actionTypes,
-    operationId,
-    operationType,
-    resource,
-    resourceActionTypes,
-  } = {}
-) {
+export default function getManyAcFactory({
+  actionTypes,
+  operationId,
+  operationType,
+  resource,
+  resourceActionTypes,
+} = {}) {
   const operationActionTypes = dep.getActionActionTypes({
     operationType,
     resource,
@@ -32,20 +30,18 @@ export default function getManyAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function getManyAc(
-    {
-      ids,
-      include,
-      isLookup, // TODO - remove this
-      limit,
-      numberOfEntriesEachBatch = 5000,
-      queryParams: queryParamsInput = {},
-      relationships,
-      removeFromState = false,
-      storeInState = true,
-      throwError = true,
-    } = {}
-  ) {
+  return function getManyAc({
+    ids,
+    include,
+    isLookup, // TODO - remove this
+    limit,
+    numberOfEntriesEachBatch = 5000,
+    queryParams: queryParamsInput = {},
+    relationships,
+    removeFromState = false,
+    storeInState = true,
+    throwError = true,
+  } = {}) {
     if (removeFromState) {
       if (include || relationships) {
         throw new Error(

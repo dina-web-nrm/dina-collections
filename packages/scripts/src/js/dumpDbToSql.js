@@ -7,9 +7,7 @@ const captureServerNameFromArgs = require('./utilities/captureServerNameFromArgs
 const serverName = captureServerNameFromArgs()
 
 return promptContinue({
-  message: `This will create an sql dump of the database server: ${
-    serverName
-  } and store in [root]/data/dump.sql`,
+  message: `This will create an sql dump of the database server: ${serverName} and store in [root]/data/dump.sql`,
 })
   .then(() => {
     return execCmd({
@@ -24,9 +22,7 @@ return promptContinue({
         console.log('Dump created with success')
         if (serverName !== 'local') {
           console.log(
-            `Run: "yarn remote:download:data:sql -s ${
-              serverName
-            }" to download dump`
+            `Run: "yarn remote:download:data:sql -s ${serverName}" to download dump`
           )
         }
       })

@@ -154,7 +154,9 @@ export class InfiniteTable extends Component {
 
     const background = isFocused // eslint-disable-line no-nested-ternary
       ? '#b5b5b5'
-      : index % 2 === 0 ? '#e5e7e9' : '#fff'
+      : index % 2 === 0
+      ? '#e5e7e9'
+      : '#fff'
 
     return (
       <InfiniteTableRow
@@ -219,5 +221,8 @@ export default compose(
     includeFields: ['id', 'attributes'],
     resource: SEARCH_SPECIMEN,
   }),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(InfiniteTable)

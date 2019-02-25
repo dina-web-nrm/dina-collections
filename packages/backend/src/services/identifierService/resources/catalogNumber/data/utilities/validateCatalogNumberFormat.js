@@ -6,9 +6,7 @@ module.exports = function validateCatalogNumberFormat(
   const nCharacters = catalogNumberIdentifier.length
   if (![6, 8, 10].includes(nCharacters)) {
     throw new Error(
-      `Identifier: ${catalogNumberIdentifier} has wrong length. got: ${
-        nCharacters
-      } expected 6,8 or 10`
+      `Identifier: ${catalogNumberIdentifier} has wrong length. got: ${nCharacters} expected 6,8 or 10`
     )
   }
 

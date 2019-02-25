@@ -6,12 +6,10 @@ const dep = new Dependor({
   shouldModifyInclude,
 })
 
-const setDependencies = (
-  {
-    recursiveCreate: injectedRecursiveCreate,
-    recursiveUpdate: injectedRecursiveUpdate,
-  } = {}
-) => {
+const setDependencies = ({
+  recursiveCreate: injectedRecursiveCreate,
+  recursiveUpdate: injectedRecursiveUpdate,
+} = {}) => {
   if (!injectedRecursiveCreate) {
     throw new Error('recursiveCreate is required')
   }
@@ -30,17 +28,15 @@ const defaultLog = createLog(
   'common:jsonApiClient:modifyIncludedRelationshipItem'
 )
 
-function modifyIncludedRelationshipItem(
-  {
-    includesToModify,
-    relationshipsToModify,
-    item: itemInput,
-    log = defaultLog,
-    openApiClient,
-    relationKey,
-    resourcePath,
-  } = {}
-) {
+function modifyIncludedRelationshipItem({
+  includesToModify,
+  relationshipsToModify,
+  item: itemInput,
+  log = defaultLog,
+  openApiClient,
+  relationKey,
+  resourcePath,
+} = {}) {
   return Promise.resolve().then(() => {
     if (itemInput === null) {
       log.debug(`Not modifying ${relationKey}, it is null`)

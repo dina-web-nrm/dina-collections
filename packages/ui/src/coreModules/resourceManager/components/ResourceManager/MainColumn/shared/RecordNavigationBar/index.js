@@ -7,9 +7,9 @@ import ReactRangeSlider from 'react-rangeslider'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 
 /*
-* Override handleKeyDown to avoid conflict with other arrow KeyboardShortcuts
-* and fix this: https://github.com/whoisandy/react-rangeslider/pull/82
-*/
+ * Override handleKeyDown to avoid conflict with other arrow KeyboardShortcuts
+ * and fix this: https://github.com/whoisandy/react-rangeslider/pull/82
+ */
 class Slider extends ReactRangeSlider {
   constructor(props) {
     super(props)
@@ -132,52 +132,51 @@ export class RecordNavigationBar extends Component {
               />
             </Grid.Column>
           )}
-          {isLargeScreen &&
-            showSlider && (
-              <Grid.Column className="slider-slim">
-                <div
-                  style={{
-                    width: '6.25em',
+          {isLargeScreen && showSlider && (
+            <Grid.Column className="slider-slim">
+              <div
+                style={{
+                  width: '6.25em',
+                }}
+              >
+                <Slider
+                  max={numberOfListItems}
+                  min={numberOfListItems && 1}
+                  onChange={newTableRowNumber => {
+                    if (disabled || !handleSetCurrentTableRowNumber) {
+                      return
+                    }
+                    // those ifs are a needed hack to avoid double increment when
+                    // using hotkey directly after sliding
+                    if (newTableRowNumber === currentTableRowNumber + 1) {
+                      this.setState({
+                        sliderRowNumber: newTableRowNumber - 1,
+                      })
+                    } else if (
+                      newTableRowNumber ===
+                      currentTableRowNumber - 1
+                    ) {
+                      this.setState({
+                        sliderRowNumber: newTableRowNumber + 1,
+                      })
+                    } else {
+                      this.setState({ sliderRowNumber: newTableRowNumber })
+                    }
                   }}
-                >
-                  <Slider
-                    max={numberOfListItems}
-                    min={numberOfListItems && 1}
-                    onChange={newTableRowNumber => {
-                      if (disabled || !handleSetCurrentTableRowNumber) {
-                        return
-                      }
-                      // those ifs are a needed hack to avoid double increment when
-                      // using hotkey directly after sliding
-                      if (newTableRowNumber === currentTableRowNumber + 1) {
-                        this.setState({
-                          sliderRowNumber: newTableRowNumber - 1,
-                        })
-                      } else if (
-                        newTableRowNumber ===
-                        currentTableRowNumber - 1
-                      ) {
-                        this.setState({
-                          sliderRowNumber: newTableRowNumber + 1,
-                        })
-                      } else {
-                        this.setState({ sliderRowNumber: newTableRowNumber })
-                      }
-                    }}
-                    onChangeComplete={() => {
-                      if (!handleSetCurrentTableRowNumber) {
-                        return
-                      }
-                      handleSetCurrentTableRowNumber(null, sliderRowNumber)
-                      this.setState({ sliderRowNumber: null })
-                    }}
-                    step={1}
-                    tooltip={false}
-                    value={sliderValue}
-                  />
-                </div>
-              </Grid.Column>
-            )}
+                  onChangeComplete={() => {
+                    if (!handleSetCurrentTableRowNumber) {
+                      return
+                    }
+                    handleSetCurrentTableRowNumber(null, sliderRowNumber)
+                    this.setState({ sliderRowNumber: null })
+                  }}
+                  step={1}
+                  tooltip={false}
+                  value={sliderValue}
+                />
+              </div>
+            </Grid.Column>
+          )}
           <Grid.Column>
             {!disabled && (
               <div style={{ fontWeight: 700, width: '7.25em' }}>
@@ -221,7 +220,8 @@ export class RecordNavigationBar extends Component {
                 primary
               >
                 <div style={{ width: '7.5em' }}>
-                  <Icon name="plus" />New record
+                  <Icon name="plus" />
+                  New record
                 </div>
               </Button>
             )}

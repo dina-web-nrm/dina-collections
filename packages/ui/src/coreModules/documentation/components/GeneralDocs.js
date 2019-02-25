@@ -11,7 +11,9 @@ const propTypes = {
 }
 
 const GeneralDocs = ({ match }) => {
-  const { params: { docName = 'general' } } = match
+  const {
+    params: { docName = 'general' },
+  } = match
 
   return (
     <div>

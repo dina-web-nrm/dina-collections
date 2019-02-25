@@ -39,7 +39,12 @@ const createHandleUndoChanges = () => ComposedComponent => {
 
   UndoChangesHandler.propTypes = propTypes
 
-  return compose(connect(undefined, mapDispatchToProps))(UndoChangesHandler)
+  return compose(
+    connect(
+      undefined,
+      mapDispatchToProps
+    )
+  )(UndoChangesHandler)
 }
 
 export default createHandleUndoChanges

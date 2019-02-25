@@ -6,6 +6,7 @@ import {
   createHandleCancelCreate,
 } from './higherOrderComponents'
 
-export default compose(createHandleCreateSubmit(), createHandleCancelCreate())(
-  RecordActionBar
-)
+export default compose(
+  createHandleCreateSubmit(),
+  createHandleCancelCreate()
+)(RecordActionBar)

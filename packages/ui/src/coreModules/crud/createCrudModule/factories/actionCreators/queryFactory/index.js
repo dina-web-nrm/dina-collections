@@ -10,15 +10,13 @@ export const dep = new Dependor({
 
 const log = createLog('coreModules:crud:actionCreators:query')
 
-export default function queryAcFactory(
-  {
-    operationId,
-    operationType,
-    options = {},
-    resource,
-    resourceActionTypes,
-  } = {}
-) {
+export default function queryAcFactory({
+  operationId,
+  operationType,
+  options = {},
+  resource,
+  resourceActionTypes,
+} = {}) {
   const actionTypes = dep.getActionActionTypes({
     operationType,
     resource,
@@ -33,22 +31,20 @@ export default function queryAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function queryAc(
-    {
-      aggregations,
-      batchLimit,
-      excludeFields,
-      idsInMeta,
-      includeDeactivated,
-      includeFields,
-      limit = 1000,
-      offset = 0,
-      query,
-      sort,
-      throwError = false,
-      useScroll,
-    } = {}
-  ) {
+  return function queryAc({
+    aggregations,
+    batchLimit,
+    excludeFields,
+    idsInMeta,
+    includeDeactivated,
+    includeFields,
+    limit = 1000,
+    offset = 0,
+    query,
+    sort,
+    throwError = false,
+    useScroll,
+  } = {}) {
     const multipleBatches = limit + offset > 2000
 
     log.debug(`${resource}.create called`, {

@@ -110,7 +110,12 @@ class BaseForm extends Component {
 BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
-const EnhancedForm = compose(connect(undefined, mapDispatchToProps))(BaseForm)
+const EnhancedForm = compose(
+  connect(
+    undefined,
+    mapDispatchToProps
+  )
+)(BaseForm)
 
 export default compose(
   reduxForm({

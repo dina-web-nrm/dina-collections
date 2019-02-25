@@ -6,9 +6,11 @@ const log = createLog(
   'lib/modelFactories/simpleSqlModel/methods/bulkCreateFactory'
 )
 
-module.exports = function bulkCreateFactory(
-  { Model, updatePrimaryKey, validate: validateFunction } = {}
-) {
+module.exports = function bulkCreateFactory({
+  Model,
+  updatePrimaryKey,
+  validate: validateFunction,
+} = {}) {
   if (!Model) {
     throw new Error('Have to provide model')
   }

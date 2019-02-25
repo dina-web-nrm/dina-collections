@@ -7,9 +7,7 @@ module.exports = function createEqualFilter({
   isBoolean = false,
 }) {
   return {
-    description: `Filter by ${
-      filterParameter
-    }. Provide true to check existance. null to check no existance`,
+    description: `Filter by ${filterParameter}. Provide true to check existance. null to check no existance`,
     inputSchema: filterSchema,
     jsFilterFunction: () => {},
     key: filterParameter,

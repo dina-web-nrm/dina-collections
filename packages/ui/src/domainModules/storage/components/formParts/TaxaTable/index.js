@@ -101,6 +101,9 @@ export class AcceptedTaxonNamesTable extends Component {
 AcceptedTaxonNamesTable.propTypes = propTypes
 AcceptedTaxonNamesTable.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  AcceptedTaxonNamesTable
-)
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(AcceptedTaxonNamesTable)

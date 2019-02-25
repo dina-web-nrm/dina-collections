@@ -155,6 +155,7 @@ class CollectingLocality extends PureComponent {
 CollectingLocality.propTypes = propTypes
 CollectingLocality.defaultProps = defaultProps
 
-export default compose(pathBuilder(), connect(mapStateToProps))(
-  CollectingLocality
-)
+export default compose(
+  pathBuilder(),
+  connect(mapStateToProps)
+)(CollectingLocality)

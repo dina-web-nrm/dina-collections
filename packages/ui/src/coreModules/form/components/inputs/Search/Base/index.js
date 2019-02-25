@@ -55,7 +55,12 @@ class SearchBase extends Component {
     }
   }
 
-  handleResultSelect(event, { result: { value } }) {
+  handleResultSelect(
+    event,
+    {
+      result: { value },
+    }
+  ) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
     this.handleSearchChange(null, { value: '' })
 

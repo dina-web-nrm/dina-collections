@@ -80,9 +80,7 @@ class TaxonNameRow extends PureComponent {
                   </React.Fragment>
                 )}
                 <Link
-                  to={`/app/taxonNames?filterColumn=&itemId=${
-                    itemId
-                  }&mainColumn=edit`}
+                  to={`/app/taxonNames?filterColumn=&itemId=${itemId}&mainColumn=edit`}
                 >
                   Edit scientific name
                 </Link>

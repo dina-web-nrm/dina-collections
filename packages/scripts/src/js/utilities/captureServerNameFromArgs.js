@@ -1,9 +1,9 @@
 const captureFlagFromArgs = require('./captureFlagFromArgs')
 const getAvailableServerNames = require('./getAvailableServerNames')
 
-module.exports = function captureServerNameFromArgs(
-  { throwOnMissing = true } = {}
-) {
+module.exports = function captureServerNameFromArgs({
+  throwOnMissing = true,
+} = {}) {
   const serverName = captureFlagFromArgs({
     flag: '-s',
   })
@@ -19,9 +19,7 @@ module.exports = function captureServerNameFromArgs(
 
   if (!availableServerNames.includes(serverName)) {
     throw new Error(
-      `Invalid server name: "${
-        serverName
-      }" not found in script env. Provide one of [${availableServerNames.join(
+      `Invalid server name: "${serverName}" not found in script env. Provide one of [${availableServerNames.join(
         ', '
       )}]`
     )

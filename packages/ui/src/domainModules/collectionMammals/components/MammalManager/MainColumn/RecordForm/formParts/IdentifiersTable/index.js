@@ -100,6 +100,7 @@ function IdentifiersTable({
 IdentifiersTable.propTypes = propTypes
 IdentifiersTable.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps), pathBuilder())(
-  IdentifiersTable
-)
+export default compose(
+  connect(mapStateToProps),
+  pathBuilder()
+)(IdentifiersTable)

@@ -28,7 +28,9 @@ class SelectiveBreeding extends Component {
   constructor(props) {
     super(props)
 
-    const { i18n: { moduleTranslate } } = props
+    const {
+      i18n: { moduleTranslate },
+    } = props
 
     this.radioOptions = [
       {
@@ -76,4 +78,7 @@ class SelectiveBreeding extends Component {
 }
 
 SelectiveBreeding.propTypes = propTypes
-export default compose(withI18n(), wrapInColumn)(SelectiveBreeding)
+export default compose(
+  withI18n(),
+  wrapInColumn
+)(SelectiveBreeding)

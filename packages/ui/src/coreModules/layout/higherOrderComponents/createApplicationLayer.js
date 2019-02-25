@@ -58,6 +58,11 @@ export default function createApplicationLayer({ layer }) {
     ApplicationLayer.propTypes = propTypes
     ApplicationLayer.defaultProps = defaultProps
 
-    return compose(connect(undefined, mapDispatchToProps))(ApplicationLayer)
+    return compose(
+      connect(
+        undefined,
+        mapDispatchToProps
+      )
+    )(ApplicationLayer)
   }
 }

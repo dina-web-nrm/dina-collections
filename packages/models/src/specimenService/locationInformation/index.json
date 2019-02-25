@@ -23,13 +23,11 @@
     },
     "coordinatesVerbatim": {
       "type": "string",
-      "description":
-        "Verbatim coordinates (or corresponding information, e.g. map number) from the original source"
+      "description": "Verbatim coordinates (or corresponding information, e.g. map number) from the original source"
     },
     "georeferenceSourcesText": {
       "type": "string",
-      "description":
-        "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
+      "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
     },
     "localityI": {
       "type": "string",
@@ -37,8 +35,7 @@
     },
     "localityV": {
       "type": "string",
-      "description":
-        "Verbatim locality names and description, as in the original source, typos and all."
+      "description": "Verbatim locality names and description, as in the original source, typos and all."
     },
     "swedishGrid5km": {
       "type": "string",

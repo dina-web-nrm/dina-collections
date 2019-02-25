@@ -24,12 +24,10 @@ const propTypes = {
   unsavedChangesMessage: PropTypes.string,
 }
 
-const withUnsubmittedFormConfirmation = (
-  {
-    getAllowTransition: getAllowTransitionDefault,
-    unsavedChangesMessage: unsavedChangesMessageDefault,
-  } = {}
-) => ComposedComponent => {
+const withUnsubmittedFormConfirmation = ({
+  getAllowTransition: getAllowTransitionDefault,
+  unsavedChangesMessage: unsavedChangesMessageDefault,
+} = {}) => ComposedComponent => {
   const defaultProps = {
     getAllowTransition: undefined,
     unsavedChangesMessage: unsavedChangesMessageDefault,

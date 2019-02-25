@@ -101,6 +101,10 @@ export const NavigationSidebar = ({
 NavigationSidebar.propTypes = propTypes
 NavigationSidebar.defaultProps = defaultProps
 
-export default compose(withRouter, connect(undefined, mapDispatchToProps))(
-  NavigationSidebar
-)
+export default compose(
+  withRouter,
+  connect(
+    undefined,
+    mapDispatchToProps
+  )
+)(NavigationSidebar)

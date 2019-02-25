@@ -104,6 +104,9 @@ TopMenu.propTypes = propTypes
 TopMenu.defaultProps = defaultProps
 
 export default compose(
-  connect(undefined, mapDispatchToProps),
+  connect(
+    undefined,
+    mapDispatchToProps
+  ),
   injectActiveLocationDescription
 )(TopMenu)

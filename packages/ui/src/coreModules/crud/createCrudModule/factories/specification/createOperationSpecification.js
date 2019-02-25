@@ -14,9 +14,7 @@ export default function createOperationSpecification({
   const { type, operationId, options } = operationConfig
   if (!operationId) {
     throw new Error(
-      `Operation for resource: ${resourceName} with type: ${
-        type
-      } is missing operationId`
+      `Operation for resource: ${resourceName} with type: ${type} is missing operationId`
     )
   }
 

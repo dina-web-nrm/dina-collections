@@ -1,23 +1,21 @@
 import createRangeDate from '../createRangeDate'
 
-export default function createRangeDateWithRemarks(
-  {
-    baseName,
-    displayDateTypeRadios,
-    displayEndDateLabel,
-    displayLabel,
-    displayStartDateLabel,
-    displaySubLabels,
-    emptyStateTextKey,
-    endDateLabel,
-    initialDateType,
-    initiallyHidden,
-    model,
-    resultPrefixTextKey,
-    stack,
-    startDateLabel,
-  } = {}
-) {
+export default function createRangeDateWithRemarks({
+  baseName,
+  displayDateTypeRadios,
+  displayEndDateLabel,
+  displayLabel,
+  displayStartDateLabel,
+  displaySubLabels,
+  emptyStateTextKey,
+  endDateLabel,
+  initialDateType,
+  initiallyHidden,
+  model,
+  resultPrefixTextKey,
+  stack,
+  startDateLabel,
+} = {}) {
   return [
     ...createRangeDate({
       baseName,

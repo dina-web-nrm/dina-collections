@@ -122,5 +122,8 @@ export default compose(
     allItemsFetchedKey: 'identifierTypesFetched',
     resource: 'identifierType',
   }),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(CreateSpecimen)

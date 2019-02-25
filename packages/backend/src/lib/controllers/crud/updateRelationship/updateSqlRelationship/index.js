@@ -56,7 +56,10 @@ module.exports = ({ config, models, operation, serviceInteractor }) => {
       user,
     }).then(() => {
       log.debug('operation.relation', operation.relation)
-      const { body: { data }, pathParams: { id } } = request
+      const {
+        body: { data },
+        pathParams: { id },
+      } = request
       if (Array.isArray(data)) {
         throw new Error('updateSqlRelationship not implemented for array data')
       }

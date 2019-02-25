@@ -33,11 +33,7 @@ const getAssociationType = ({
   }
 
   throw new Error(
-    `Invalid association configuration for sourceModelName ${
-      sourceModelName
-    }, targetModelName ${targetModelName}, keyStoredInModelName ${
-      keyStoredInModelName
-    } and oneOrMany ${oneOrMany}`
+    `Invalid association configuration for sourceModelName ${sourceModelName}, targetModelName ${targetModelName}, keyStoredInModelName ${keyStoredInModelName} and oneOrMany ${oneOrMany}`
   )
 }
 
@@ -96,20 +92,18 @@ const getAssociationOptions = ({
   }
 }
 
-module.exports = function setupAssociation(
-  {
-    allowNull,
-    keyName,
-    keyStoredInModel: keyStoredInModelName,
-    models = {},
-    oneOrMany,
-    sourceResource: sourceModelName,
-    targetAs,
-    targetKey,
-    targetResource: targetModelName,
-    unique,
-  } = {}
-) {
+module.exports = function setupAssociation({
+  allowNull,
+  keyName,
+  keyStoredInModel: keyStoredInModelName,
+  models = {},
+  oneOrMany,
+  sourceResource: sourceModelName,
+  targetAs,
+  targetKey,
+  targetResource: targetModelName,
+  unique,
+} = {}) {
   const sourceModel = models[sourceModelName]
   const targetModel = models[targetModelName || sourceModelName]
 

@@ -109,6 +109,9 @@ export class PreparationTypesTable extends Component {
 PreparationTypesTable.propTypes = propTypes
 PreparationTypesTable.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  PreparationTypesTable
-)
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(PreparationTypesTable)

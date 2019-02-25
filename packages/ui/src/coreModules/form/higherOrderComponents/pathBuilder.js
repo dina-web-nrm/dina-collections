@@ -23,9 +23,12 @@ const defaultProps = {
   name: undefined,
 }
 
-export const buildPath = (
-  { name, index, parentPath, nameLast = true } = {}
-) => {
+export const buildPath = ({
+  name,
+  index,
+  parentPath,
+  nameLast = true,
+} = {}) => {
   const segments = []
   if (parentPath !== undefined && parentPath !== '') {
     segments.push(parentPath)
@@ -54,9 +57,10 @@ export const buildTranslationPath = ({ name, parentPath } = {}) => {
   return buildPath({ name, parentPath })
 }
 
-export default function pathBuilderFactory(
-  { nodeType = 'OBJECT', name: nodeName } = {}
-) {
+export default function pathBuilderFactory({
+  nodeType = 'OBJECT',
+  name: nodeName,
+} = {}) {
   return function pathBuilder(ComposedComponent) {
     class PathBuilder extends Component {
       constructor(props, context) {

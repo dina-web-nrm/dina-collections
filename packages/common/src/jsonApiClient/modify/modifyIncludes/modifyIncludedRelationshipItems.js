@@ -14,18 +14,16 @@ const defaultLog = createLog(
   'common:jsonApiClient:modifyIncludedRelationshipItems'
 )
 
-function modifyIncludedRelationshipItems(
-  {
-    includesToModify,
-    items = [],
-    log = defaultLog,
-    openApiClient,
-    parentPath,
-    relationKey,
-    relationshipsToModify,
-    resourcePath,
-  } = {}
-) {
+function modifyIncludedRelationshipItems({
+  includesToModify,
+  items = [],
+  log = defaultLog,
+  openApiClient,
+  parentPath,
+  relationKey,
+  relationshipsToModify,
+  resourcePath,
+} = {}) {
   if (!items.length) {
     log.debug(`Not modifying ${relationKey}, it is empty array`)
   }
@@ -36,9 +34,7 @@ function modifyIncludedRelationshipItems(
         includesToModify,
         item,
         log: log.scope(
-          `${parentPath} -> modifyIncludedRelationshipItem for ${
-            resourcePath
-          } @ index ${index}`
+          `${parentPath} -> modifyIncludedRelationshipItem for ${resourcePath} @ index ${index}`
         ),
         openApiClient,
         relationKey,

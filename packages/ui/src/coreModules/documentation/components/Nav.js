@@ -46,7 +46,11 @@ const propTypes = {
 
 class Nav extends Component {
   render() {
-    const { match: { params: { schemaVersion: version } } } = this.props
+    const {
+      match: {
+        params: { schemaVersion: version },
+      },
+    } = this.props
 
     const markdownNavItems = this.props.markdownKeys.map(markdownKey => {
       return {

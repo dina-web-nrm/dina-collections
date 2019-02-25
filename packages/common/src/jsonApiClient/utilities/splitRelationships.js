@@ -12,9 +12,12 @@ const dep = new Dependor({
   shouldModifyRelationship,
 })
 
-function splitRelationships(
-  { itemResourceType, relationships, relationshipsToModify, resourcePath } = {}
-) {
+function splitRelationships({
+  itemResourceType,
+  relationships,
+  relationshipsToModify,
+  resourcePath,
+} = {}) {
   const res = {
     relationshipsToAssociateSeparately: {},
     relationshipsToIncludeInRequest: {},

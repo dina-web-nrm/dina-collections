@@ -103,9 +103,13 @@ const createQueryNavigationState = () => ComposedComponent => {
   QueryNavigationState.propTypes = propTypes
   QueryNavigationState.defaultProps = defaultProps
 
-  return compose(connect(null, mapDispatchToProps), withRouter)(
-    QueryNavigationState
-  )
+  return compose(
+    connect(
+      null,
+      mapDispatchToProps
+    ),
+    withRouter
+  )(QueryNavigationState)
 }
 
 export default createQueryNavigationState

@@ -101,7 +101,10 @@ const createHandleEditSubmit = () => ComposedComponent => {
   EditSubmitHandler.defaultProps = defaultProps
 
   return compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    ),
     connect(null) // needed to get dispatch
   )(EditSubmitHandler)
 }

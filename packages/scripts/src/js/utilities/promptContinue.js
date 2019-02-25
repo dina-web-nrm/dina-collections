@@ -1,8 +1,9 @@
 const promptPromise = require('./promptPromise')
 
-module.exports = function promptContinue(
-  { message, question = 'Are you sure you want to proceed? y/n' } = {}
-) {
+module.exports = function promptContinue({
+  message,
+  question = 'Are you sure you want to proceed? y/n',
+} = {}) {
   if (message) {
     console.log(message)
   }

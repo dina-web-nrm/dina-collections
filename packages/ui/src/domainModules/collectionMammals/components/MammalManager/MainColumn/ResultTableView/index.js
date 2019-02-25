@@ -127,6 +127,9 @@ ResultTableView.propTypes = propTypes
 ResultTableView.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   injectWindowHeight
 )(ResultTableView)

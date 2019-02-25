@@ -7,8 +7,8 @@ const createFormModels = () => {
   let updatedModels = { ...models }
 
   /*
-  * taxon
-  */
+   * taxon
+   */
   updatedModels = immutable.set(updatedModels, 'taxon.required', [
     'acceptedTaxonName',
     'parent',
@@ -68,8 +68,8 @@ const createFormModels = () => {
   )
 
   /*
-  * taxonName
-  */
+   * taxonName
+   */
   updatedModels = immutable.set(updatedModels, 'taxonName.required', [
     'name',
     'rank',

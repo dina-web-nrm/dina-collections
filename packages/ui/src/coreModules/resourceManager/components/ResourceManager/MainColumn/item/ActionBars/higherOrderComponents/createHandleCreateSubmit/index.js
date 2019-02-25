@@ -97,7 +97,10 @@ const createHandleCreateSubmit = () => ComposedComponent => {
 
   return compose(
     createGetResourceCount(),
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    ),
     connect(null) // needed to get dispatch
   )(CreateSubmitHandler)
 }

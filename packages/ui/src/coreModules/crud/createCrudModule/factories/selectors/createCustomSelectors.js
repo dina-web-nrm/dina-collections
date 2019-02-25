@@ -74,9 +74,10 @@ const createCustomSelector = ({ customSelectorInput, resourceSelectors }) => {
   }
 }
 
-export default function createCustomSelectors(
-  { customSelectorsInput = [], resourceSelectors } = {}
-) {
+export default function createCustomSelectors({
+  customSelectorsInput = [],
+  resourceSelectors,
+} = {}) {
   return customSelectorsInput.reduce((customSelectors, customSelectorInput) => {
     const { selector, key } = createCustomSelector({
       customSelectorInput,
