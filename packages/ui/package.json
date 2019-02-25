@@ -91,7 +91,6 @@
     "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.1",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
