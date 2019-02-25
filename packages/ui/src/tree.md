@@ -49,8 +49,7 @@
 │   ├── buildFileStructureTrees.js
 │   ├── markdown
 │   ├── mockFs
-│   ├── snippets
-│   └── storybook
+│   └── snippets
 ├── setupTests.js
 ├── snippets
 │   ├── enhance-default-export-with-compose.js
@@ -64,9 +63,6 @@
 │   └── test-setup-test-reducer.js
 ├── store
 │   └── index.js
-├── storybook
-│   ├── __snapshots__
-│   └── storyshots.test.js
 ├── test
 │   └── testModules
 ├── tree.md

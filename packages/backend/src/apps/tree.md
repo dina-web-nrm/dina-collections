@@ -5,14 +5,16 @@
 │   ├── api
 │   │   └── index.js
 │   ├── data
-│   │   └── index.js
+│   │   ├── import.js
+│   │   └── rebuildSearch.js
 │   └── worker
 │       └── index.js
 ├── production
 │   ├── api
 │   │   └── index.js
 │   ├── data
-│   │   └── index.js
+│   │   ├── import.js
+│   │   └── rebuildSearch.js
 │   └── worker
 │       └── index.js
 ├── test

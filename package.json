@@ -16,7 +16,7 @@
     "build:trees:backend": "cd ./packages/backend && yarn build:trees",
     "build:trees:common": "cd ./packages/common && yarn build:trees",
     "build:trees:ui": "cd ./packages/ui && yarn build:trees",
-    "build:ui": "cd ./packages/ui && yarn build && yarn build:storybook",
+    "build:ui": "cd ./packages/ui && yarn build",
     "build:version-info": "node ./packages/scripts/src/js/buildAndCommitVersionInfo.js",
     "exec:local": "node ./packages/scripts/src/js/localExec.js",
     "exec:production": "node ./packages/scripts/src/js/remoteExecProduction.js",

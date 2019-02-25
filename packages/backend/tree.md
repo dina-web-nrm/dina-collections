@@ -17,7 +17,6 @@
 │   ├── tests
 │   ├── tree.md
 │   └── utilities
-├── todo
 ├── tree.md
 └── yarn.lock
 

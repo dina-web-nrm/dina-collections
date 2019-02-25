@@ -20,6 +20,7 @@
 │   ├── controllers
 │   ├── data
 │   ├── dataStores
+│   ├── errorLogger
 │   ├── fileInteractor
 │   ├── importer
 │   ├── integrations

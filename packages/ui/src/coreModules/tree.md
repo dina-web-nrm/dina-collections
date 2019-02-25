@@ -22,11 +22,9 @@
 │   ├── actionTypes.test.js
 │   ├── components
 │   │   ├── DefaultLoader.js
-│   │   ├── DefaultLoader.stories.js
 │   │   ├── DefaultLoader.test.js
 │   │   ├── DefaultLoadingError.js
 │   │   ├── DefaultWrapper.js
-│   │   ├── DefaultWrapper.stories.js
 │   │   ├── DefaultWrapper.test.js
 │   │   └── index.js
 │   ├── constants.js
@@ -73,16 +71,13 @@
 │   │   ├── DateString
 │   │   │   └── index.js
 │   │   ├── Footer.js
-│   │   ├── Footer.stories.js
 │   │   ├── LayerModal
 │   │   │   ├── ModalContentWrapper.js
 │   │   │   └── index.js
 │   │   ├── PageTemplate.js
-│   │   ├── PageTemplate.stories.js
 │   │   ├── ThreeColumnGrid
 │   │   │   └── index.js
 │   │   ├── TranslatedLabel.js
-│   │   ├── TranslatedLabel.stories.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
@@ -166,9 +161,7 @@
 │   │   │   ├── FullPageError.js
 │   │   │   └── index.js
 │   │   ├── FormFieldError.js
-│   │   ├── FormFieldError.stories.js
 │   │   ├── FormSchemaError.js
-│   │   ├── FormSchemaError.stories.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
@@ -306,19 +299,12 @@
 │   ├── actionTypes.test.js
 │   ├── components
 │   │   ├── I18nProvider.js
-│   │   ├── I18nProvider.stories.js
 │   │   ├── LanguageSelect.js
-│   │   ├── LanguageSelect.stories.js
 │   │   ├── Markdown.js
-│   │   ├── Markdown.stories.js
 │   │   ├── MarkdownToHtmlAsync.js
-│   │   ├── MarkdownToHtmlAsync.stories.js
 │   │   ├── ModuleTranslate.js
-│   │   ├── ModuleTranslate.stories.js
 │   │   ├── Translate.js
-│   │   ├── Translate.stories.js
 │   │   ├── createModuleTranslate.js
-│   │   ├── createModuleTranslate.stories.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
@@ -351,7 +337,6 @@
 │   │   ├── KeyboardShortcuts
 │   │   │   └── index.js
 │   │   ├── ShortcutsDisplay.js
-│   │   ├── ShortcutsDisplay.stories.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
@@ -373,23 +358,19 @@
 │   │   │   ├── Header
 │   │   │   └── index.js
 │   │   ├── ColumnLayout
-│   │   │   ├── index.js
-│   │   │   └── index.stories.js
+│   │   │   └── index.js
 │   │   ├── InformationSidebar
 │   │   │   └── index.js
 │   │   ├── NavigationSidebar
 │   │   │   ├── SidebarNavItem.js
 │   │   │   ├── SidebarNavItemGroup.js
-│   │   │   ├── index.js
-│   │   │   └── index.stories.js
+│   │   │   └── index.js
 │   │   ├── RowLayout
-│   │   │   ├── index.js
-│   │   │   └── index.stories.js
+│   │   │   └── index.js
 │   │   ├── TopMenu
 │   │   │   ├── UserMenu.js
 │   │   │   └── index.js
 │   │   ├── ViewWrap.js
-│   │   ├── ViewWrap.stories.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
@@ -417,16 +398,12 @@
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── Flash.js
-│   │   ├── Flash.stories.js
 │   │   ├── FormFieldHelpIcon.js
-│   │   ├── FormFieldHelpIcon.stories.js
 │   │   ├── Inline
 │   │   │   ├── Body.js
 │   │   │   └── index.js
 │   │   ├── Modal.js
-│   │   ├── Modal.stories.js
 │   │   ├── NotificationDisplay.js
-│   │   ├── NotificationDisplay.stories.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
@@ -494,11 +471,9 @@
 │   │   │   ├── RefineTagSelectionButton.js
 │   │   │   ├── TagGroup.js
 │   │   │   ├── index.js
-│   │   │   ├── index.stories.js
 │   │   │   └── selectors.js
 │   │   ├── NoResultsFound
-│   │   │   ├── index.js
-│   │   │   └── index.stories.js
+│   │   │   └── index.js
 │   │   ├── SearchPreview
 │   │   │   └── Field.js
 │   │   ├── TagTypeDropdown
@@ -551,7 +526,6 @@
     ├── actionTypes.js
     ├── components
     │   ├── LoginForm.js
-    │   ├── LoginForm.stories.js
     │   └── index.js
     ├── constants.js
     ├── endpoints.js
