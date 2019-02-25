@@ -71,21 +71,13 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="external" />
-                    <a href="https://dina-test-style.nrm.se/">Style guide</a>
+                    <a href="https://dina-style.nrm.se/">Style guide</a>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Content>
                     <Icon name="external" />
-                    <a href="https://dina-test-api.nrm.se/docs">
-                      Api documentation
-                    </a>
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Content>
-                    <Icon name="external" />
-                    <a href="/storybook/index.html">Component documentation</a>
+                    <a href="https://dina-api.nrm.se/docs">Api documentation</a>
                   </List.Content>
                 </List.Item>
                 <List.Item>
