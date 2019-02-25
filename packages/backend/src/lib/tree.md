@@ -8,6 +8,7 @@
 │       │   ├── index.html
 │       │   └── index.js
 │       ├── errorHandler.js
+│       ├── logFrontendErrorEndpoint.js
 │       ├── logIncoming.js
 │       ├── pingRoute.js
 │       └── responseTime.js
@@ -65,7 +66,6 @@
 │   │   ├── setJobFailed.js
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
-│   ├── relationshipsUtilities
 │   ├── utilities
 │   │   ├── applyHooks
 │   │   │   └── index.js
@@ -79,9 +79,10 @@
 │   │   │   ├── buildIncludeArray.js
 │   │   │   ├── buildIncludeArray.spec.js
 │   │   │   ├── extractRelationships
-│   │   │   ├── fetchJsonExternalRelationships
+│   │   │   ├── fetchExternalRelationships
 │   │   │   ├── getFormatOutput.js
 │   │   │   ├── getJsonRelationship
+│   │   │   ├── getPolymorphicRelationship
 │   │   │   ├── getSqlRelationship
 │   │   │   ├── shouldIncludeRelation.js
 │   │   │   └── shouldIncludeRelation.spec.js
@@ -98,6 +99,7 @@
 │   │       └── index.js
 │   └── views
 │       ├── emptyView.js
+│       ├── getViewMeta.js
 │       ├── index.js
 │       ├── rebuildView
 │       │   ├── createBatch.js
@@ -144,7 +146,10 @@
 │   │   │   ├── createForeignKeyMatchFilter.js
 │   │   │   ├── createManyJsonRelationshipFilter.js
 │   │   │   ├── createNumberRangeFilter.js
+│   │   │   ├── createResourceActivityFilterByIds.js
+│   │   │   ├── createStringInFilter.js
 │   │   │   ├── createStringMatchFilter.js
+│   │   │   ├── createStringNotInFilter.js
 │   │   │   ├── createStringSearchFilter.js
 │   │   │   ├── createTagMatchFilter.js
 │   │   │   ├── createTagSearchFilter.js
@@ -179,18 +184,16 @@
 │   │       ├── ancestorsToId.js
 │   │       └── nodesWithCircularDependencies.js
 │   ├── mappings
-│   │   ├── factories
-│   │   │   ├── createDateMapping.js
-│   │   │   ├── createFeatureRangeMapping.js
-│   │   │   ├── createIntegerMapping.js
-│   │   │   ├── createKeywordAndRawMapping.js
-│   │   │   ├── createKeywordMapping.js
-│   │   │   ├── createNestedMapping.js
-│   │   │   ├── createNumberMapping.js
-│   │   │   ├── createValueTagMapping.js
-│   │   │   └── index.js
-│   │   └── utilities
-│   │       └── extractMappingsFromFieldSpecification.js
+│   │   └── factories
+│   │       ├── createDateMapping.js
+│   │       ├── createFeatureRangeMapping.js
+│   │       ├── createIntegerMapping.js
+│   │       ├── createKeywordAndRawMapping.js
+│   │       ├── createKeywordMapping.js
+│   │       ├── createNestedMapping.js
+│   │       ├── createNumberMapping.js
+│   │       ├── createValueTagMapping.js
+│   │       └── index.js
 │   ├── sort
 │   │   ├── schemas
 │   │   │   └── sortableFields.js
@@ -231,6 +234,8 @@
 │       ├── db
 │       │   └── index.js
 │       └── index.js
+├── errorLogger
+│   └── index.js
 ├── fileInteractor
 │   ├── createFullPath.js
 │   ├── ensurePathIsRelative.js
@@ -350,6 +355,7 @@
 │   │   └── startJob.js
 │   └── viewOperations
 │       ├── emptyView.js
+│       ├── getViewMeta.js
 │       ├── index.js
 │       ├── rebuildView.js
 │       ├── requestRebuildView.js

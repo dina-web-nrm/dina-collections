@@ -129,12 +129,14 @@
 │   ├── index.js
 │   ├── info
 │   │   └── index.js
-│   └── resources
-│       ├── cacheResources.js
-│       ├── index.js
-│       └── searchSpecimen
-│           ├── data
-│           └── index.js
+│   ├── resources
+│   │   ├── cacheResources.js
+│   │   ├── index.js
+│   │   └── searchSpecimen
+│   │       ├── data
+│   │       └── index.js
+│   └── serviceInteractions
+│       └── index.js
 ├── serviceOrder.js
 ├── specimenService
 │   ├── index.js
