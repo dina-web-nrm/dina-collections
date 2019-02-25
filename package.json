@@ -117,7 +117,7 @@
   },
   "engines": {
     "node": "10.15.1",
-    "yarn": "^1.10.1"
+    "yarn": "1.10.1"
   },
   "devDependencies": {
     "auto-changelog": "^1.11.0"
