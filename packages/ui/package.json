@@ -71,7 +71,7 @@
     "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
     "start-js": "react-scripts start",
     "start:mock": "REACT_APP_ENABLE_MOCK=true yarn start",
-    "test": "yarn lint:js && test:unit",
+    "test": "yarn lint:js && yarn test:unit",
     "test:coverage": "yarn test:unit --coverage",
     "test:unit": "react-scripts test",
     "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --watch",
