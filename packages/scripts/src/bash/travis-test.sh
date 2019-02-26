@@ -67,7 +67,7 @@ if [ "$TEST_SUITE_COMMON" = true ]; then
 fi
 
 if [ "$TEST_SUITE_MIGRATIONS" = true ]; then
-  echo "Running test suite $TEST_SUITE_MIGRATIONS"
+  echo "Running test suite TEST_SUITE_MIGRATIONS"
   echo "Note: only running lint tests"
   cd ./packages/migrations && yarn lint:js
   if [ $? -ne 0 ]; then
@@ -77,6 +77,21 @@ if [ "$TEST_SUITE_MIGRATIONS" = true ]; then
 
   cd $START_DIRECTORY
 fi
+
+
+if [ "$TEST_SUITE_BACKEND_DB" = true ]; then
+  echo "Running test suite TEST_SUITE_BACKEND_DB"
+  cd ./packages/backend && yarn test:db
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  cd $START_DIRECTORY && docker-compose stop
+  exit 0
+fi
+
+
 
 
 
