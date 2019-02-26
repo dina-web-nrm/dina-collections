@@ -28,9 +28,11 @@ const availableMethods = [
   'getById',
   'getCount',
   'getOneWhere',
+  'getViewMeta',
   'getWhere',
   'Model',
   'setupRelations',
+  'swap',
   'synchronize',
   'update',
 ]
