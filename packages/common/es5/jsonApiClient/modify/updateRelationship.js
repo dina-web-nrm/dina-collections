@@ -53,6 +53,7 @@ function updateRelationship(_ref) {
     relationKey: relationKey,
     resource: type
   });
+
   var inverseUpdateOperationId = inverseOperationIdMap[operationId];
   if (inverseUpdateOperationId) {
     return inverseUpdateRelationship({
