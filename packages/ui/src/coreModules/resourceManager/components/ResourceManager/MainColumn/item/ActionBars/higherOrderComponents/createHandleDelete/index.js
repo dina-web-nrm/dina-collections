@@ -113,14 +113,14 @@ const createHandleDelete = () => ComposedComponent => {
           this.setState({ loadingDelete: false, relationships })
           return createNotification({
             componentProps: {
-              /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+              /* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
               description: (
                 <React.Fragment>
                   {`It couldn't be deleted since it has related records. You can `}
                   <a onClick={this.handleModalOpen}>inspect relations here</a>.
                 </React.Fragment>
               ),
-              /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+              /* eslint-enable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
               header: 'The record was not deleted',
             },
             type: 'ERROR',
