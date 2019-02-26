@@ -73,9 +73,9 @@
     "start:mock": "REACT_APP_ENABLE_MOCK=true yarn start",
     "test": "yarn lint:js && test:unit",
     "test:coverage": "yarn test:unit --coverage",
-    "test:unit": "react-scripts test --env=jsdom",
-    "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --env=jsdom --watch",
-    "test:unit:watch": "react-scripts test --env=jsdom --watch",
+    "test:unit": "react-scripts test",
+    "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --watch",
+    "test:unit:watch": "react-scripts test --watch",
     "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
     "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
   },
