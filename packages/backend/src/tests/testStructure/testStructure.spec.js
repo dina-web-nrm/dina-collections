@@ -1,9 +1,10 @@
+const unitDescribe = require('common/src/testUtilities/unitDescribe')
 const testResourceSpecification = require('../../lib/services/utilities/testResourceSpecification')
 const testServiceSpecification = require('../../lib/services/utilities/testServiceSpecification')
 const testOperationSpecification = require('../../lib/services/utilities/testOperationSpecification')
 const serviceSpecifications = require('../../services')
 
-describe('lib/tests/testStructure', () => {
+unitDescribe('lib/tests/testStructure', () => {
   describe('services', () => {
     describe('serviceExport', () => {
       it('Services export object', () => {

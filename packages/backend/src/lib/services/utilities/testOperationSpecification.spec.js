@@ -1,6 +1,7 @@
+const unitDescribe = require('common/src/testUtilities/unitDescribe')
 const testOperationSpecification = require('./testOperationSpecification')
 
-describe('lib/services/utilities/testOperationSpecification', () => {
+unitDescribe('lib/services/utilities/testOperationSpecification', () => {
   const sampleSpecification = {
     exampleRequests: { primary: {} },
     type: 'create',

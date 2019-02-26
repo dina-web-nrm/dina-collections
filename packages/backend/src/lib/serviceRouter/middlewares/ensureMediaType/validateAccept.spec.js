@@ -1,6 +1,7 @@
+const unitDescribe = require('common/src/testUtilities/unitDescribe')
 const validateAccept = require('./validateAccept')
 
-describe('lib/serviceRouter/middlewares/validateAccept', () => {
+unitDescribe('lib/serviceRouter/middlewares/validateAccept', () => {
   it('Returns null if a non json api header provided', () => {
     const error = validateAccept('application/json')
     expect(error).toBe(null)

@@ -1,6 +1,7 @@
+const unitDescribe = require('common/src/testUtilities/unitDescribe')
 const testServiceSpecification = require('./testServiceSpecification')
 
-describe('lib/services/utilities/testServiceSpecification', () => {
+unitDescribe('lib/services/utilities/testServiceSpecification', () => {
   const sampleSpecification = {
     info: {},
     name: 'testService',

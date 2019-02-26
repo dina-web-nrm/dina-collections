@@ -58,13 +58,12 @@
     "start:test": "TEST_SYNC_MODELS=true NODE_ENV=test DEBUG='DINA*' nodemon src/apps/test/api/index.js",
     "start:inspect": "WORKER_ROLE=all NODE_ENV=development DEBUG='DINA*,-DINA:LOG_INFO:lib/jobs/worker' node --inspect src/apps/development/api/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
-    "test:api": "DEBUG='TEST:DINA*' API_TESTS=true jest --env=node --forceExit",
-    "test:batch": "DEBUG='TEST:DINA*' BATCH_TESTS=true jest --env=node --watch",
-    "test:db": "DEBUG='TEST:DINA*' DB_TESTS=true jest --env=node --forceExit",
+    "test:api": "TEST_API=true DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
+    "test:api:watch": "TEST_API=true DEBUG='TEST:DINA*' jest --env=node --watch --runInBand",
+    "test:db": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
+    "test:db:watch": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand --watch",
     "test:depcheck": "depcheck . --ignores='pg,memwatch-next'",
-    "test:integration": "DEBUG='TEST:DINA*' API_TESTS=true jest --env=node && DEBUG='TEST:DINA*' DB_TESTS=true jest --env=node",
-    "test:performance": "DEBUG='DINA:*:performance*' node src/performance/index.js",
-    "test:unit": "jest --env=node",
+    "test:unit": "TEST_UNIT=true jest --env=node",
     "test:unit:watch": "jest --env=node --watch"
   },
   "engines": {

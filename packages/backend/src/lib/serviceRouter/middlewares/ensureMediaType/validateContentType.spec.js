@@ -1,6 +1,7 @@
+const unitDescribe = require('common/src/testUtilities/unitDescribe')
 const validateContentType = require('./validateContentType')
 
-describe('lib/serviceRouter/middlewares/validateContentType', () => {
+unitDescribe('lib/serviceRouter/middlewares/validateContentType', () => {
   it('Returns null if no content type headers provided', () => {
     const error = validateContentType()
     expect(error).toBe(null)

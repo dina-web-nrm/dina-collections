@@ -1,6 +1,7 @@
+const unitDescribe = require('common/src/testUtilities/unitDescribe')
 const testResourceSpecification = require('./testResourceSpecification')
 
-describe('lib/services/utilities/testResourceSpecification', () => {
+unitDescribe('lib/services/utilities/testResourceSpecification', () => {
   const sampleSpecification = {
     basePath: '/api/something',
   }
