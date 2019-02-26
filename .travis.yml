@@ -1,6 +1,7 @@
 language: node_js
 
 matrix:
+  fast_finish: true
   include:
     - stage: test
       name: 'Test UI lint'
@@ -19,7 +20,7 @@ matrix:
 
     - stage: test
       name: 'Test backend and migrations'
-      env: TEST_SUITE_BACKEND=true YARN_INSTALL_BACKEND=true TEST_SUITE_MIGRATIONS=true YARN_INSTALL_MIGRATIONS=true
+      env: TEST_SUITE_BACKEND=true YARN_INSTALL_BACKEND=true TEST_SUITE_MIGRATIONS=true YARN_INSTALL_MIGRATIONS=true TEST_SUITE_BACKEND_DB=true DOCKER_START_DBS=true
       script: ./packages/scripts/src/bash/travis-test.sh
 
     - stage: build
@@ -60,5 +61,4 @@ install:
   - ./packages/scripts/src/bash/travis-yarn-install.sh
 
 before_script:
-  - export PUSH_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo ""; fi)
-  - echo "PUSH_BRANCH=$PUSH_BRANCH, TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST, TRAVIS_BRANCH=$TRAVIS_BRANCH"
+  - ./packages/scripts/src/bash/travis-before-script.sh
