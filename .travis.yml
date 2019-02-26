@@ -4,23 +4,52 @@ matrix:
   include:
     - stage: test
       name: 'Test UI lint'
-      env: TEST_SUITE_UI_LINT=true YARN_INSTALL_UI=true
-      script: ./packages/scripts/src/bash/travis-test.sh
+      env:
+        - CI_INSTALL_UI=true
+        - CI_TEST_UI_LINT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
       name: 'Test UI unit'
-      env: TEST_SUITE_UI_UNIT=true YARN_INSTALL_UI=true
-      script: ./packages/scripts/src/bash/travis-test.sh
+      env:
+        - CI_INSTALL_UI=true
+        - CI_TEST_UI_UNIT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
-      name: 'Test models and common'
-      env: TEST_SUITE_MODELS=true YARN_INSTALL_MODELS=true TEST_SUITE_COMMON=true YARN_INSTALL_COMMON=true
-      script: ./packages/scripts/src/bash/travis-test.sh
+      name: 'Test models and common and scripts'
+      env:
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_MODELS=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_TEST_COMMON_LINT=true
+        - CI_TEST_COMMON_UNIT=true
+        - CI_TEST_MODELS_LINT=true
+        - CI_TEST_MODELS_LINT=true
+        - CI_TEST_SCRIPTS_LINT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
       name: 'Test backend and migrations'
-      env: TEST_SUITE_BACKEND=true YARN_INSTALL_BACKEND=true TEST_SUITE_MIGRATIONS=true YARN_INSTALL_MIGRATIONS=true
-      script: ./packages/scripts/src/bash/travis-test.sh
+      env:
+        - CI_INSTALL_BACKEND=true
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_MIGRATIONS=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_LINK_BACKEND=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_MIGRATIONS=true
+        - CI_LINK_SCRIPTS=true
+        - CI_START_API=true
+        - CI_START_DATABASES=true
+        - CI_TEST_BACKEND_API=true
+        - CI_TEST_BACKEND_DB=true
+        - CI_TEST_BACKEND_LINT=true
+        - CI_TEST_BACKEND_UNIT=true
+        - CI_TEST_MIGRATIONS_LINT=true
+        - DISABLE_AUTH=true
+      script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: build
       name: 'Build backend and migrations'
@@ -28,7 +57,8 @@ matrix:
 
     - stage: build
       name: 'Build ui'
-      env: YARN_INSTALL_UI=true
+      env:
+        - CI_INSTALL_UI=true
       script: ./packages/scripts/src/bash/docker-build-ui.sh
 
     - stage: publish
@@ -57,8 +87,7 @@ cache: yarn
 
 install:
   - echo "$TRAVIS_TAG"
-  - ./packages/scripts/src/bash/travis-yarn-install.sh
+  - ./packages/scripts/src/bash/ci-install.sh
 
 before_script:
-  - export PUSH_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo ""; fi)
-  - echo "PUSH_BRANCH=$PUSH_BRANCH, TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST, TRAVIS_BRANCH=$TRAVIS_BRANCH"
+  - ./packages/scripts/src/bash/ci-before-script.sh
