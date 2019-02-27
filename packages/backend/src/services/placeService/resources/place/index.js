@@ -1,26 +1,26 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
-} = require('./data/transformationSpecifications')
+} = require('./transformationSpecifications')
 
 const buildOperationId = require('common/src/buildOperationId')
-const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+const createRequestSuccess = require('./exampleRequests/createSuccess.json')
 
 const {
   getMany: getManyFilterSpecification,
   query: queryFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
   updateInternalRelationship: updateInternalRelationshipPostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
 const {
   updateRelationshipParent: updateRelationshipParentPreHooks,
-} = require('./data/preHooks')
+} = require('./preHooks')
 
 module.exports = {
   basePath: '/api/locality/v01',

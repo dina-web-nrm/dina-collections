@@ -1,26 +1,23 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
-} = require('./data/transformationSpecifications')
+} = require('./transformationSpecifications')
 
-const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+const createRequestSuccess = require('./exampleRequests/createSuccess.json')
 
 const {
   getMany: getManyFilterSpecification,
   query: queryFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
-const {
-  create: createPreHooks,
-  update: updatePreHooks,
-} = require('./data/preHooks')
+const { create: createPreHooks, update: updatePreHooks } = require('./preHooks')
 
 module.exports = {
   basePath: '/api/agent/v01',

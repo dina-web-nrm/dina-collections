@@ -1,4 +1,4 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const Sequelize = require('sequelize')
 
 module.exports = {

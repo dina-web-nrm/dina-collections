@@ -1,25 +1,25 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
-} = require('./data/transformationSpecifications')
+} = require('./transformationSpecifications')
 
 const createTaxonNameRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 const {
   getMany: getManyFilterSpecification,
   query: queryFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 const {
   acceptedToTaxon: acceptedToTaxonPreHooks,
   synonymToTaxon: synonymToTaxonPreHooks,
-} = require('./data/preHooks')
+} = require('./preHooks')
 
 const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',

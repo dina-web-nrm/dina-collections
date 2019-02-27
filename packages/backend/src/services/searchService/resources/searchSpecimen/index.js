@@ -1,24 +1,24 @@
-const mappingSpecification = require('./data/mappingSpecification')
-const fieldsSpecification = require('./data/fieldsSpecification')
+const mappingSpecification = require('./mappingSpecification')
+const fieldsSpecification = require('./fieldsSpecification')
 const extractSortableFields = require('../../../../lib/data/fields/utilities/extractSortableFields')
 const extractSelectableFields = require('../../../../lib/data/fields/utilities/extractSelectableFields')
 
 const {
   updateView: updateViewTransformationSpecification,
   rebuildView: rebuildViewTransformationSpecification,
-} = require('./data/transformationSpecifications')
+} = require('./transformationSpecifications')
 
 const {
   getMany: getManyFilterSpecification,
   query: queryFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 const {
   rebuildView: rebuildViewPostHooks,
   updateView: updateViewPostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
-const aggregationSpecification = require('./data/aggregationSpecification')
+const aggregationSpecification = require('./aggregationSpecification')
 
 const resource = 'searchSpecimen'
 

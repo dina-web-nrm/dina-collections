@@ -1,8 +1,8 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const Sequelize = require('sequelize')
 const {
   getMany: getManyFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 module.exports = {
   basePath: '/api/jobs/v01',

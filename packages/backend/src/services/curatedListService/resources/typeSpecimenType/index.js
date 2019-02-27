@@ -1,14 +1,14 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
-} = require('./data/transformationSpecifications')
-const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+} = require('./transformationSpecifications')
+const createRequestSuccess = require('./exampleRequests/createSuccess.json')
 
 const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
 module.exports = {
   basePath: '/api/curatedList/v01',

@@ -1,26 +1,26 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const Sequelize = require('sequelize')
-const fieldsSpecification = require('./data/fieldsSpecification')
+const fieldsSpecification = require('./fieldsSpecification')
 const extractSortableFields = require('../../../../lib/data/fields/utilities/extractSortableFields')
 const extractSelectableFields = require('../../../../lib/data/fields/utilities/extractSelectableFields')
 
 const {
   getMany: getManyFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 const {
   generateCatalogNumber: generateCatalogNumberOperationFactory,
-} = require('./data/operationFactories')
+} = require('./operationFactories')
 
 const {
   updateView: updateViewTransformationSpecification,
   rebuildView: rebuildViewTransformationSpecification,
-} = require('./data/transformationSpecifications')
+} = require('./transformationSpecifications')
 
 const {
   create: createPreHooks,
   validate: validatePreHooks,
-} = require('./data/preHooks')
+} = require('./preHooks')
 
 const sortableFields = extractSortableFields({ fieldsSpecification })
 const selectableFields = extractSelectableFields({ fieldsSpecification })

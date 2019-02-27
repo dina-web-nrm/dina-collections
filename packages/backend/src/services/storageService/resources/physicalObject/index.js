@@ -1,13 +1,13 @@
-const migrations = require('./data/migrations')
-const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+const migrations = require('./migrations')
+const createRequestSuccess = require('./exampleRequests/createSuccess.json')
 const {
   getMany: getManyFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
 module.exports = {
   basePath: '/api/storage/v01',
