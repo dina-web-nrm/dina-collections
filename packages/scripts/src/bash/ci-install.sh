@@ -34,6 +34,10 @@ if [ "$CI_INSTALL_MIGRATIONS" = true ]; then
   yarn install:migrations
 fi
 
+if [ "$CI_INSTALL_STYLE" = true ]; then
+  echo "Installing style"
+  yarn install:semantic-ui
+fi
 
 if [ "$CI_LINK_COMMON" = true ]; then
   : "${CI_INSTALL_COMMON?CI_INSTALL_COMMON Has to be true}"
