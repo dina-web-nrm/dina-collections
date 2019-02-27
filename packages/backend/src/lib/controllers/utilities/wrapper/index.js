@@ -22,14 +22,15 @@ module.exports = function createControllerWrapper({
   serviceInteractor,
 }) {
   const {
+    disableWrapperLog,
     filterSpecification,
     includeRelations,
     interceptors: interceptorsInput,
+    operationId,
     postHooks: postHooksInput,
     preHooks: preHooksInput,
     relations,
     resource,
-    operationId,
     response: { resource: customResponseResource } = {},
   } = operation
 
@@ -96,7 +97,10 @@ module.exports = function createControllerWrapper({
       requestId,
       ...rest
     }) {
-      // log.debug(`Called with request id: ${requestId}`)
+      if (!disableWrapperLog) {
+        log.debug(`Called with request id: ${requestId}`)
+      }
+
       return applyHooks({
         config,
         fileInteractor,
