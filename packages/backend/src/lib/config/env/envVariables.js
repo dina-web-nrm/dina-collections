@@ -28,7 +28,7 @@ const devVariables = ['DISABLE_AUTH', 'RUN_MEMWATCH']
 const testVariables = [
   'API_TESTS',
   'BATCH_TESTS',
-  'DB_TESTS',
+  'TEST_DB',
   'TEST_API_URL',
   'TEST_AUTH_URL',
   'TEST_PASSWORD',

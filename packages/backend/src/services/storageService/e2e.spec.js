@@ -1,4 +1,4 @@
-const apiDescribe = require('../../utilities/test/apiDescribe')
+const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 const expectSingleResourceResponse = require('../../utilities/test/expectSingleResourceResponse')

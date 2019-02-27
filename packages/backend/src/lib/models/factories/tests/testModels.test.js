@@ -1,5 +1,6 @@
+const dbDescribe = require('common/src/testUtilities/backendDbDescribe')
+const unitDescribe = require('common/src/testUtilities/unitDescribe')
 const config = require('../../../../apps/test/config')
-// const dbDescribe = require('../../../../utilities/test/dbDescribe')
 const setupTestModels = require('./setupTestModels')
 const createModelTests = require('./createModelTests')
 const methodTests = require('./methodTests')
@@ -28,9 +29,11 @@ const availableMethods = [
   'getById',
   'getCount',
   'getOneWhere',
+  'getViewMeta',
   'getWhere',
   'Model',
   'setupRelations',
+  'swap',
   'synchronize',
   'update',
 ]
@@ -42,36 +45,41 @@ describe('lib/models/factories/test/modelFactories', () => {
     })
   })
 
-  // coreMethods.forEach(method => {
-  //   it(`Tests implemented for coreMethods: ${method}`, () => {
-  //     expect(methodTests[method]).toBeTruthy()
-  //   })
-  // })
+  unitDescribe('No external datasource', () => {
+    const modelsToTest = ['inMemoryDocumentModel', 'inMemoryViewDocumentModel']
+    const methodsToTest = availableMethods // ['getById']
 
-  // availableMethods.forEach(method => {
-  //   it(`Tests implemented for availableMethods: ${method}`, () => {
-  //     expect(methodTests[method]).toBeTruthy()
-  //   })
-  // })
+    modelsToTest.forEach(key => {
+      const setupFunction = setupTestModels[key]
+      createModelTests({
+        availableMethods,
+        availableTypes,
+        config,
+        coreMethods,
+        methodsToTest,
+        methodTests,
+        modelType: key,
+        setupModel: setupFunction,
+      })
+    })
+  })
 
-  const { runDbTests } = config.test
-  const modelsToTest = runDbTests
-    ? Object.keys(setupTestModels)
-    : ['inMemoryDocumentModel', 'inMemoryViewDocumentModel']
+  dbDescribe('With external datasources', () => {
+    const modelsToTest = Object.keys(setupTestModels)
+    const methodsToTest = availableMethods // ['getById']
 
-  const methodsToTest = availableMethods // ['getById']
-
-  modelsToTest.forEach(key => {
-    const setupFunction = setupTestModels[key]
-    createModelTests({
-      availableMethods,
-      availableTypes,
-      config,
-      coreMethods,
-      methodsToTest,
-      methodTests,
-      modelType: key,
-      setupModel: setupFunction,
+    modelsToTest.forEach(key => {
+      const setupFunction = setupTestModels[key]
+      createModelTests({
+        availableMethods,
+        availableTypes,
+        config,
+        coreMethods,
+        methodsToTest,
+        methodTests,
+        modelType: key,
+        setupModel: setupFunction,
+      })
     })
   })
 })

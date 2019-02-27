@@ -68,12 +68,6 @@ var deleteNotIncludedRelationships = function deleteNotIncludedRelationships(_re
     if (relationsToRemove.length) {
       log.debug('The following ' + relationKey + ' should be removed:', relationsToRemove);
 
-      var updateRelationshipOperationId = buildOperationId({
-        operationType: 'updateRelationship',
-        relationKey: relationKey,
-        resource: type
-      });
-
       var promises = relationsToRemove.map(function (relationToRemove) {
         var updateRequest = {
           body: {
@@ -84,7 +78,7 @@ var deleteNotIncludedRelationships = function deleteNotIncludedRelationships(_re
           }
         };
 
-        log.debug('Removing relation with updateRelationshipOperationId: ' + updateRelationshipOperationId, updateRequest);
+        log.debug('Removing relation with inverseUpdateOperationId: ' + inverseUpdateOperationId, updateRequest);
 
         return openApiClient.call(inverseUpdateOperationId, updateRequest);
       });

@@ -11,7 +11,7 @@ module.exports = {
   test: {
     runApiTests: readBoolKey('API_TESTS'),
     runBatchTests: readBoolKey('BATCH_TESTS'),
-    runDbTests: readBoolKey('DB_TESTS'),
+    runDbTests: readBoolKey('TEST_DB'),
     testApiUrl: readKey('TEST_API_URL'),
   },
 }
