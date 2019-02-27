@@ -61,7 +61,7 @@ const filterJobsToConsolidate = ({ jobs = [] }) => {
 const consolidateJobsPostHook = ({ serviceInteractor, request }) => {
   const consolidateJobs = objectPath.get(request, 'queryParams.consolidateJobs')
   if (!consolidateJobs) {
-    log.debug('Not consolidating jobs. consolidateJobs false')
+    log.info('Not consolidating jobs. consolidateJobs false')
     return Promise.resolve(true)
   }
 
@@ -91,16 +91,16 @@ const consolidateJobsPostHook = ({ serviceInteractor, request }) => {
       })
 
       if (jobsToConsolidate.length === 0) {
-        log.debug('Not consolidating jobs. no jobs')
+        log.info('Not consolidating jobs. no jobs')
         return null
       }
 
       if (jobsToConsolidate.length === 1) {
-        log.debug('Not consolidating jobs since its only one job in queue')
+        log.info('Not consolidating jobs since its only one job in queue')
         return null
       }
 
-      log.debug(`Consolidating ${jobsToConsolidate.length} jobs`)
+      log.info(`Consolidating ${jobsToConsolidate.length} jobs`)
       const containsRebuildJob = jobsToConsolidate.some(job => {
         return (
           objectPath.get(job, 'attributes.operationId') ===

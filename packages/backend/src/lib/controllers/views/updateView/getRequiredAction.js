@@ -50,13 +50,13 @@ module.exports = function getRequiredAction({
   serviceInteractor,
   srcResource,
 }) {
-  log.debug(`Getting src item ${srcResource} -> ${id}`)
+  log.info(`Getting src item ${srcResource} -> ${id}`)
   return getSrcItem({
     id,
     serviceInteractor,
     srcResource,
   }).then(srcItem => {
-    log.debug(`Getting targetItem with id -> ${id}`)
+    log.info(`Getting targetItem with id -> ${id}`)
     return getTargetItem({
       id,
       model,
@@ -64,8 +64,8 @@ module.exports = function getRequiredAction({
       const srcStatus = srcItem ? 'exist' : 'dont-exist'
       const targetStatus = targetItem ? 'exist' : 'dont-exist'
 
-      log.debug(`srcStatus: ${srcStatus}`)
-      log.debug(`targetStatus: ${targetStatus}`)
+      log.info(`srcStatus: ${srcStatus}`)
+      log.info(`targetStatus: ${targetStatus}`)
 
       if (srcStatus === 'exist' && targetStatus === 'dont-exist') {
         return 'create'

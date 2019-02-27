@@ -23,7 +23,7 @@ module.exports = function createFactory({
     }
     const id = providedId !== undefined ? providedId : uuidv1()
 
-    log.debug(`Creating instance for model ${Model.name}`)
+    log.info(`Creating instance for model ${Model.name}`)
     const newItem = {
       attributes,
       id,
@@ -40,7 +40,7 @@ module.exports = function createFactory({
         type: Model.name,
       })
       .then(res => {
-        log.debug(`Created instance for model ${Model.name}. id: ${res._id}`)
+        log.info(`Created instance for model ${Model.name}. id: ${res._id}`)
         return {
           item: {
             ...newItem,

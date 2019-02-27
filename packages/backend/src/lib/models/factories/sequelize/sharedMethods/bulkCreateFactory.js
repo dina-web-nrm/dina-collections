@@ -17,7 +17,7 @@ module.exports = function bulkCreateFactory({
 
   // This should only be used to create test initialData
   return bulkCreateWrapper(({ items = [], validate = true }) => {
-    log.debug(`Start create ${items.length} items for: ${Model.tableName}`)
+    log.info(`Start create ${items.length} items for: ${Model.tableName}`)
     if (items.length === 0) {
       return Promise.resolve({ items: [], meta: { count: 0 } })
     }
@@ -43,7 +43,7 @@ module.exports = function bulkCreateFactory({
     ).then(res => {
       const resultItems = formatModelItemsResponse({ input: res })
 
-      log.debug(`Successfully created ${resultItems.length} items`)
+      log.info(`Successfully created ${resultItems.length} items`)
       const lastId = Number(resultItems[resultItems.length - 1].id)
       const newId = lastId + 1
       return updatePrimaryKey(newId).then(() => {

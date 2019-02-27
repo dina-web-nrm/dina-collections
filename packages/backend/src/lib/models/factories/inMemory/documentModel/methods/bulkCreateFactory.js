@@ -49,7 +49,7 @@ module.exports = function bulkCreateFactory({ Model }) {
       })
 
       Model.set(updatedItems)
-      log.debug(`Successfully created ${items.length} items`)
+      log.info(`Successfully created ${items.length} items`)
       return { meta: { count: items.length } }
     })
   })

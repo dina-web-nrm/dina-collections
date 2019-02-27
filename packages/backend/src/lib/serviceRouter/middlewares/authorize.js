@@ -6,7 +6,7 @@ module.exports = function createAuthorizeMiddleware({ auth, config }) {
   if (!config.auth.active) {
     log.info('Auth disabled, creating inactive middleware')
     return (req, res, next) => {
-      log.debug(`${res.locals.id}: Specific auth not implemented`)
+      log.info(`${res.locals.id}: Specific auth not implemented`)
       next()
     }
   }

@@ -11,13 +11,13 @@ module.exports = function updatePrimaryKeyFactory({ Model, sequelize } = {}) {
 
   // This should only be used in test env when creating initial data
   return function updatePrimaryKey(index) {
-    log.debug(`Updating primary key sequenze for ${Model.tableName}`)
+    log.info(`Updating primary key sequenze for ${Model.tableName}`)
     const query = `ALTER SEQUENCE "${
       Model.tableName
     }_id_seq" RESTART WITH :index`
 
     return sequelize.query(query, { replacements: { index } }).then(() => {
-      log.debug('Successfully altered sequence')
+      log.info('Successfully altered sequence')
     })
   }
 }
