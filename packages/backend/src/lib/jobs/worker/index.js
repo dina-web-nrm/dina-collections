@@ -49,7 +49,7 @@ module.exports = function createWorker({
     if (!active) {
       return null
     }
-    log.info('Looking for next job')
+    log.debug('Looking for next job')
     return findNext({
       excludeGroups,
       includeGroups,
@@ -57,7 +57,7 @@ module.exports = function createWorker({
     })
       .then(job => {
         if (!job) {
-          log.info('No jobs found')
+          log.debug('No jobs found')
           return false
         }
         log.info(`Job with id :${job.id} found`)
