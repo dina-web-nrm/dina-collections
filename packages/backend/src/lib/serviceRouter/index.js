@@ -45,7 +45,7 @@ module.exports = function serviceRouterFactory({ auth, config, connectors }) {
 
       const expressifiedPath = expressifyPath(path)
 
-      scopedLog.info(
+      scopedLog.debug(
         `${method.toUpperCase()} - ${expressifiedPath} as ${operationId}`
       )
       serviceRouter.use(expressifiedPath, decorateLocalsUserInputMiddleware)
