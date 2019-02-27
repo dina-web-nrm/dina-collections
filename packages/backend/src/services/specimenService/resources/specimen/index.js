@@ -1,22 +1,22 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
-} = require('./data/transformationSpecifications')
+} = require('./transformationSpecifications')
 
 const {
   getMany: getManyFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
-const createSuccess = require('./data/exampleRequests/createSuccess.json')
-const updateRequestSuccess = require('./data/exampleRequests/updateSuccess.json')
+const createSuccess = require('./exampleRequests/createSuccess.json')
+const updateRequestSuccess = require('./exampleRequests/updateSuccess.json')
 
-const { update: updatePreHooks } = require('./data/preHooks')
+const { update: updatePreHooks } = require('./preHooks')
 
 const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
 module.exports = {
   basePath: '/api/specimen/v01',

@@ -1,10 +1,10 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
-} = require('./data/transformationSpecifications')
+} = require('./transformationSpecifications')
 
 const buildOperationId = require('common/src/buildOperationId')
-const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+const createRequestSuccess = require('./exampleRequests/createSuccess.json')
 
 const {
   create: createPostHooks,
@@ -12,16 +12,16 @@ const {
   update: updatePostHooks,
   updateInternalRelationship: updateInternalRelationshipPostHooks,
   updateExternalRelationship: updateExternalRelationshipPostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
 const {
   getMany: getManyFilterSpecification,
   query: queryFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 const {
   updateRelationshipParent: updateRelationshipParentPreHooks,
-} = require('./data/preHooks')
+} = require('./preHooks')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',

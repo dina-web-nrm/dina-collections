@@ -1,19 +1,19 @@
-const migrations = require('./data/migrations')
+const migrations = require('./migrations')
 const Sequelize = require('sequelize')
 const {
   getMany: getManyFilterSpecification,
-} = require('./data/filterSpecifications')
+} = require('./filterSpecifications')
 
 const {
   downloadExport: downloadExportOperationfactory,
-} = require('./data/operationFactories')
+} = require('./operationFactories')
 
 const {
   create: createPostHooks,
   startJob: startJobPostHooks,
-} = require('./data/postHooks')
+} = require('./postHooks')
 
-const { create: createPreHooks } = require('./data/preHooks')
+const { create: createPreHooks } = require('./preHooks')
 
 module.exports = {
   basePath: '/api/export/v01',
