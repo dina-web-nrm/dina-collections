@@ -37,6 +37,7 @@ module.exports = {
       type: 'getOne',
     },
     {
+      disableWrapperLog: true,
       filterSpecification: getManyFilterSpecification,
       sortableFields: ['id', 'priority'],
       type: 'getMany',
