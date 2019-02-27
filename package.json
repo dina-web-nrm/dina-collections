@@ -10,6 +10,10 @@
     "build:common:schema:api": "cd ./packages/common && yarn build:schema:api",
     "build:common:schema:models": "cd ./packages/common && yarn build:schema:models",
     "build:data:zip": "node ./packages/scripts/src/js/packageJsonDataFiles.js -s local",
+    "build:docker:backend": "CI_BUILD_BACKEND=true ./packages/scripts/src/bash/ci-build.sh",
+    "build:docker:migrations": "CI_BUILD_MIGRATIONS=true ./packages/scripts/src/bash/ci-build.sh",
+    "build:docker:style": "CI_BUILD_STYLE=true ./packages/scripts/src/bash/ci-build.sh",
+    "build:docker:ui": "CI_BUILD_UI=true ./packages/scripts/src/bash/ci-build.sh",
     "build:index:specimen": "yarn start:dbs && cd ./packages/migrations && yarn elasticsearch:development:rebuild-index:specimen-search",
     "build:semantic-ui": "cd ./packages/dina-style && yarn build:docs",
     "build:trees": "yarn build:trees:ui && yarn build:trees:common && yarn build:trees:backend",
@@ -99,12 +103,12 @@
     "uninstall:scripts": "rm -rf ./packages/scripts/node_modules",
     "uninstall:semantic-ui": "rm -rf ./packages/dina-style/node_modules",
     "uninstall:ui": "rm -rf ./packages/ui/node_modules",
+    "version": "./packages/scripts/src/bash/release-version.sh",
     "version:minor": "VERSION_TYPE=release yarn version --minor",
     "version:patch": "VERSION_TYPE=release yarn version --patch",
     "version:rc": "VERSION_TYPE=pre-release yarn version",
     "version:release": "VERSION_TYPE=release yarn version",
-    "version:test": "VERSION_TYPE=test-release yarn version",
-    "version": "./packages/scripts/src/bash/release-version.sh"
+    "version:test": "VERSION_TYPE=test-release yarn version"
   },
   "contributors": [
     "Anton Öberg <oberg.anton@gmail.com>",
@@ -116,8 +120,8 @@
     "prettier": "1.16.4"
   },
   "engines": {
-    "node": "8.9.1",
-    "yarn": "^1.10.1"
+    "node": "10.15.1",
+    "yarn": "1.10.1"
   },
   "devDependencies": {
     "auto-changelog": "^1.11.0"

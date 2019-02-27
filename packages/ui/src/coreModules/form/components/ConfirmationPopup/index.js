@@ -47,7 +47,7 @@ class ConfirmationPopup extends PureComponent {
     const { iconName, size, text, type } = this.props
     switch (type) {
       case 'link': {
-        return <a>{text}</a>
+        return <a>{text}</a> // eslint-disable-line jsx-a11y/anchor-is-valid
       }
       case 'icon': {
         return (

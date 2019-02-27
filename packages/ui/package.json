@@ -6,18 +6,6 @@
     "Anton Öberg <oberg.anton@gmail.com>",
     "Fredrik Olovsson <fogithub@gmail.com>"
   ],
-  "proxy": {
-    "/api": {
-      "target": "http://127.0.0.1:4444",
-      "xfwd": true,
-      "changeOrigin": true
-    },
-    "/auth": {
-      "target": "http://127.0.0.1:8080",
-      "xfwd": true,
-      "changeOrigin": true
-    }
-  },
   "dependencies": {
     "ajv": "^5.2.3",
     "babel-plugin-react-css-modules": "^3.3.3",
@@ -29,6 +17,7 @@
     "github-markdown-css": "^2.10.0",
     "glob": "^7.1.2",
     "history": "^4.7.2",
+    "http-proxy-middleware": "^0.19.1",
     "json-schema-faker": "^0.4.4",
     "lodash": "^4.17.11",
     "markdown-it": "^8.4.0",
@@ -41,6 +30,7 @@
     "prop-types": "^15.6.0",
     "query-string": "5",
     "react": "^16.0.0",
+    "react-app-polyfill": "^0.2.1",
     "react-dom": "^16.0.0",
     "react-infinite": "^0.13.0",
     "react-json-inspector": "^7.1.1",
@@ -49,7 +39,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "5.0.0-alpha.9",
-    "react-scripts": "1.0.17",
+    "react-scripts": "2.1.5",
     "react-sizeme": "^2.4.4",
     "react-sortable-tree": "^2.1.0",
     "redux": "^3.7.2",
@@ -81,16 +71,15 @@
     "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
     "start-js": "react-scripts start",
     "start:mock": "REACT_APP_ENABLE_MOCK=true yarn start",
-    "test": "yarn lint:js && test:unit",
+    "test": "yarn lint:js && yarn test:unit",
     "test:coverage": "yarn test:unit --coverage",
-    "test:unit": "react-scripts test --env=jsdom",
-    "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --env=jsdom --watch",
-    "test:unit:watch": "react-scripts test --env=jsdom --watch",
+    "test:unit": "react-scripts test",
+    "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --watch",
+    "test:unit:watch": "react-scripts test --watch",
     "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
     "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.1",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
@@ -110,8 +99,14 @@
     "react-test-renderer": "^16.2.0",
     "source-map-explorer": "^1.5.0"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "engines": {
-    "node": "8.9.1",
-    "yarn": "^1.10.1"
+    "node": "10.15.1",
+    "yarn": "1.10.1"
   }
 }

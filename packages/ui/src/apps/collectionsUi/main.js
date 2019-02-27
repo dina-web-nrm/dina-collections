@@ -3,7 +3,7 @@ import 'common/dist/semantic.css' // eslint-disable-line
 import 'react-rangeslider/lib/index.css'
 import 'react-sortable-tree/style.css'
 import 'react-json-inspector/json-inspector.css'
-import 'github-markdown-css'
+import 'github-markdown-css/github-markdown.css'
 import 'whatwg-fetch'
 import createStore from 'store/index'
 import { I18nProvider } from 'coreModules/i18n/components'

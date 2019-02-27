@@ -79,16 +79,16 @@ This guide assumes you have `git` installed
 ### Run API and UI outside docker
 
 1. [Install nvm](https://github.com/creationix/nvm#installation)
-2. Install Node.js version 8.9.1
+2. Install Node.js version 10.15.1
 
    ```
-   nvm install 8.9.1
+   nvm install 10.15.1
    ```
 
-3. Set Node v8.9.1 as default
+3. Set Node v10.15.1 as default
 
    ```
-   nvm alias default v8.9.1
+   nvm alias default v10.15.1
    ```
 
 4. [Install yarn](https://yarnpkg.com/lang/en/docs/install/)
