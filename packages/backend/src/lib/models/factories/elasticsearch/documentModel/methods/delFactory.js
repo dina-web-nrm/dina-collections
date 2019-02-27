@@ -16,7 +16,7 @@ module.exports = function delFactory({
   }
 
   return delWrapper(({ id }) => {
-    log.debug(`Deactivating instance for model ${Model.name}`)
+    log.info(`Deactivating instance for model ${Model.name}`)
 
     return getById({ id }).then(({ item }) => {
       return elasticsearch
@@ -27,7 +27,7 @@ module.exports = function delFactory({
           type: Model.name,
         })
         .then(() => {
-          log.debug(
+          log.info(
             `Deleted instance for model ${Model.name}. id: ${
               item.id
             }, versionId: ${item.versionId}`

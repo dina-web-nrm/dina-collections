@@ -40,7 +40,7 @@ module.exports = function updateFactory({ Model }) {
       }
 
       return existingModel.update(newModel).then(res => {
-        log.debug(
+        log.info(
           `Updated instance for model ${Model.tableName}. id: ${
             res.dataValues.id
           }`

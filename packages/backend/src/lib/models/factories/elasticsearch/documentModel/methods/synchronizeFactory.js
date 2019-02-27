@@ -59,8 +59,8 @@ module.exports = function synchronizeFactory({
     throw new Error('Have to provide model')
   }
   return function sync({ force }) {
-    log.debug(`Syncinc elastic model ${Model.name}`)
-    log.debug(`Deleting index if exist: ${Model.index}`)
+    log.info(`Syncinc elastic model ${Model.name}`)
+    log.info(`Deleting index if exist: ${Model.index}`)
     return deleteIndex({
       deleteIfAlias: rebuildStrategy !== 'swap',
       elasticsearch,
@@ -68,16 +68,16 @@ module.exports = function synchronizeFactory({
     })
       .then(() => {
         if (rebuildStrategy === 'swap') {
-          log.debug('Rebuild strategy: swap. Synchronizing indexVersionManager')
+          log.info('Rebuild strategy: swap. Synchronizing indexVersionManager')
           return indexVersionManager.synchronize().then(() => {
-            log.debug('Creating new version')
+            log.info('Creating new version')
             return indexVersionManager
               .createVersion({
                 throwOnRebuildError: !force,
               })
               .then(() => {
                 return indexVersionManager.getNextVersionName().then(index => {
-                  log.debug(`Deleting index if exist: ${index}`)
+                  log.info(`Deleting index if exist: ${index}`)
                   return deleteIndex({
                     elasticsearch,
                     name: index,
@@ -91,12 +91,12 @@ module.exports = function synchronizeFactory({
         return Model.index
       })
       .then(index => {
-        log.debug(`Setting up mappings for: ${index}`)
+        log.info(`Setting up mappings for: ${index}`)
         const { mappings, indexSettings } = Model
         const body = mappings
           ? { mappings, settings: indexSettings }
           : { settings: indexSettings }
-        log.debug(`Creating index: ${index}`)
+        log.info(`Creating index: ${index}`)
         return elasticsearch.indices.create({ body, index })
       })
   }

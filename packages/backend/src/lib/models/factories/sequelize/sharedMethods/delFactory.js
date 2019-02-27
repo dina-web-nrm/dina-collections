@@ -31,7 +31,7 @@ module.exports = function delFactory({ Model }) {
       }
 
       return existingModel.destroy().then(res => {
-        log.debug(
+        log.info(
           `Deactivated instance for model ${Model.tableName}. id: ${
             storedData.id
           }`

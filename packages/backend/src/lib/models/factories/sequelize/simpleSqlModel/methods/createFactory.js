@@ -14,10 +14,10 @@ module.exports = function createFactory({ Model } = {}) {
   return createWrapper(({ item = {} }) => {
     const data = { ...(item.attributes || {}) }
 
-    log.debug(`Creating instance for model ${Model.tableName}`)
+    log.info(`Creating instance for model ${Model.tableName}`)
 
     return Model.create(data).then(res => {
-      log.debug(
+      log.info(
         `Created instance for model ${Model.tableName}. id: ${
           res.dataValues.id
         }`

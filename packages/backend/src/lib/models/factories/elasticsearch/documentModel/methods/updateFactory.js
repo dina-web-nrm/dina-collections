@@ -21,7 +21,7 @@ module.exports = function updateFactory({
       return Promise.reject(new Error('attributes not provided'))
     }
 
-    log.debug(`Updating instance for model ${Model.name}`)
+    log.info(`Updating instance for model ${Model.name}`)
 
     return elasticsearch
       .get({
@@ -52,7 +52,7 @@ module.exports = function updateFactory({
             type: Model.name,
           })
           .then(() => {
-            log.debug(`Update instance for model ${Model.name}. id: ${id}`)
+            log.info(`Update instance for model ${Model.name}. id: ${id}`)
 
             return {
               item: newItem,

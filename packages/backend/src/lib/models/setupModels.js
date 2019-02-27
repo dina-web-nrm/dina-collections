@@ -14,7 +14,7 @@ module.exports = function setupModels({
   services,
 }) {
   return Promise.resolve().then(() => {
-    log.info('Creating models:')
+    log.info('Creating models')
     return createModels({
       config,
       elasticsearch,
@@ -23,7 +23,7 @@ module.exports = function setupModels({
       serviceOrder,
       services,
     }).then(({ modelArray, modelObject: models }) => {
-      log.scope().info('Created: ', Object.keys(models).join(', '))
+      log.scope().debug('Created: ', Object.keys(models).join(', '))
       log.info('Setting up relations')
       return createRelations({ modelArray, models }).then(() => {
         const syncModels = config.env.isTest && config.test.syncModels

@@ -17,20 +17,20 @@ module.exports = function bulkCreateFactory({
 
   // This should only be used to create test initialData
   return bulkCreateWrapper(({ items, requireId }) => {
-    log.debug(`Start create ${items.length} items for: ${Model.name}`)
+    log.info(`Start create ${items.length} items for: ${Model.name}`)
 
     if (requireId === false) {
       throw new Error('Id required for elasticsearch model')
     }
 
     if (items.length === 0) {
-      log.debug('No items added: input empty')
+      log.info('No items added: input empty')
       return Promise.resolve(true)
     }
 
     return indexVersionManager.getNextVersionName().then(latestVersionName => {
       const indexName = latestVersionName
-      log.debug(`Adding ${items.length} items to ${indexName}`)
+      log.info(`Adding ${items.length} items to ${indexName}`)
       const body = items.reduce((rows, item) => {
         const { attributes, id, internals = {}, relationships } = item
         rows.push({
@@ -56,7 +56,7 @@ module.exports = function bulkCreateFactory({
             throw res
           }
 
-          log.debug(`Successfully created ${items.length} items`)
+          log.info(`Successfully created ${items.length} items`)
           return { meta: { count: res && res.items && res.items.length } }
         })
     })

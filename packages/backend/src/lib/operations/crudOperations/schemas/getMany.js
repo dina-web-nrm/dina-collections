@@ -8,6 +8,9 @@ module.exports = {
   properties: {
     ...base.properties,
     defaultFields: selectableFields,
+    disableWrapperLog: {
+      type: 'boolean',
+    },
     filterSpecification,
     includeRelations: {
       type: 'boolean',

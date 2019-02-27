@@ -8,7 +8,7 @@ module.exports = function createServices({
   resourceRelationshipParamsMap = {},
   serviceDefinitions,
 }) {
-  log.info('Adding services:')
+  log.info('Adding services')
   const createdServiceNames = []
   const createdServices = Object.keys(serviceDefinitions).reduce(
     (services, serviceName) => {
@@ -30,6 +30,6 @@ module.exports = function createServices({
     },
     {}
   )
-  log.scope().info(`Added: ${createdServiceNames.join(', ')}`)
+  log.scope().debug(`Added: ${createdServiceNames.join(', ')}`)
   return createdServices
 }

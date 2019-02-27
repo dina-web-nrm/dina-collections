@@ -48,12 +48,12 @@ module.exports = function indexVersionManagerFactory({
     if (rebuildStrategy !== 'swap') {
       return Promise.resolve(null)
     }
-    log.debug(`Syncing index: ${metaIndexName}`)
+    log.info(`Syncing index: ${metaIndexName}`)
     return elasticsearch.indices
       .exists({ index: metaIndexName })
       .then(exists => {
         if (!exists) {
-          log.debug(`Index: ${metaIndexName} dont exist. Creating new index`)
+          log.info(`Index: ${metaIndexName} dont exist. Creating new index`)
           return elasticsearch.indices.create({
             body: {},
             index: metaIndexName,
@@ -136,7 +136,7 @@ module.exports = function indexVersionManagerFactory({
         currentVersion,
         rebuildStrategy,
       })
-      log.debug(
+      log.info(
         `Creating new index version index: ${newVersion} for index ${
           Model.index
         }`
@@ -179,16 +179,16 @@ module.exports = function indexVersionManagerFactory({
         version: currentVersion,
       })
 
-      log.debug(`Swapping index. Old: ${oldIndexName}. New: ${newIndexName}`)
+      log.info(`Swapping index. Old: ${oldIndexName}. New: ${newIndexName}`)
 
-      log.debug(`Creating new alias: ${newIndexName} -> ${Model.index}`)
+      log.info(`Creating new alias: ${newIndexName} -> ${Model.index}`)
       return elasticsearch.indices
         .putAlias({
           index: newIndexName,
           name: Model.index,
         })
         .then(() => {
-          log.debug(`Delete old alias: ${oldIndexName} -> ${Model.index}`)
+          log.info(`Delete old alias: ${oldIndexName} -> ${Model.index}`)
           return elasticsearch.indices
             .deleteAlias({
               index: oldIndexName,
