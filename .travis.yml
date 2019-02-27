@@ -53,17 +53,31 @@ matrix:
 
     - stage: build
       name: 'Build backend and migrations'
+      env:
+        - CI_BUILD_BACKEND=true
+        - CI_BUILD_MIGRATIONS=true
+        - CI_TAG_LATEST=true
       script: ./packages/scripts/src/bash/docker-build-backend.sh && ./packages/scripts/src/bash/docker-build-migrations.sh
 
     - stage: build
       name: 'Build ui'
       env:
         - CI_INSTALL_UI=true
-      script: ./packages/scripts/src/bash/docker-build-ui.sh
+        - CI_BUILD_UI=true
+        - CI_TAG_LATEST=true
+      script: ./packages/scripts/src/bash/ci-build.sh
+
+    - stage: build
+      name: 'Build style'
+      env:
+        - CI_INSTALL_STYLE=true
+        - CI_BUILD_STYLE=true
+        - CI_TAG_LATEST=true
+      script: ./packages/scripts/src/bash/ci-build.sh
 
     - stage: publish
       name: 'Publish docker'
-      script: ./packages/scripts/src/bash/docker-publish.sh
+      script: ./packages/scripts/src/bash/ci-publish-docker.sh
 
 stages:
   - name: test
