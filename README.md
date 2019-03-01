@@ -13,8 +13,9 @@ a region, or a large institution.
 
 ## Docs
 
-- [Setup](documentation/setup/index.md)
-- [Testing](documentation/testing/index.md)
+- [Setup](packages/docs/docs/setup/index.md)
+- [Testing](packages/docs/docs/testing/index.md)
+- [Changelog](CHANGELOG.md)
 - [Contributing guidelines](CONTRIBUTING.md)
 
 ## License
