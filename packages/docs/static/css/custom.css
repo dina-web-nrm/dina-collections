@@ -19,7 +19,10 @@
   background: #2e2e2e;
 }
 
-
 body {
   font-family: $base;
+}
+
+a {
+  color: #4183c4;
 }

@@ -12,8 +12,8 @@ const siteConfig = {
   baseUrl: '/',
   cleanUrl: true,
   colors: {
-    primaryColor: 'rgba(0,0,0,.87)',
-    secondaryColor: 'rgba(0,0,0,.87)',
+    primaryColor: '#2e2e2e',
+    secondaryColor: 'rgba(0,0,0,.92)',
   },
 
   copyright: `Copyright © ${new Date().getFullYear()} NRM`,
