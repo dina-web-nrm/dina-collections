@@ -25,3 +25,20 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 import 'cypress-testing-library/add-commands'
+
+Cypress.Commands.add('login', (username, password) => {
+  if (username && password) {
+    cy.request({
+      body: {
+        client_id: 'dina-rest',
+        grant_type: 'password',
+        password,
+        username,
+      },
+      method: 'POST',
+      url: '/auth/realms/dina/protocol/openid-connect/token',
+    })
+  } else {
+    cy.log('Did not receive username and password, assuming auth is disabled')
+  }
+})
