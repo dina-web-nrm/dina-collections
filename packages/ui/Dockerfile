@@ -4,3 +4,5 @@ FROM nginx:1.15
 ADD ./build/ /usr/share/nginx/html
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.template
+
+EXPOSE 80 3000

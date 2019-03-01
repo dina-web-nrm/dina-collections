@@ -11,6 +11,17 @@ if [ "$CI_TEST_ALL" = true ]; then
   fi
 fi
 
+if [ "$CI_TEST_E2E" = true ]; then
+  echo "Running test suite CI_TEST_E2E"
+  yarn test:e2e
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  cd $START_DIRECTORY
+fi
+
 if [ "$CI_TEST_UI_LINT" = true ]; then
   echo "Running test suite CI_TEST_UI_LINT"
   cd ./packages/ui && yarn lint:js

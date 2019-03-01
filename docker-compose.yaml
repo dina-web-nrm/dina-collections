@@ -1,10 +1,10 @@
 version: '3.3'
 services:
   api:
-    image: "dina/dina-collections-api:${TAG}"
+    image: 'dina/dina-collections-api:${TAG}'
     container_name: dina-api
     expose:
-    - "80"
+      - '80'
     env_file:
       - ./env/.backend
     command: pm2-runtime start /etc/api/src/apps/production/api/index.js
@@ -53,13 +53,12 @@ services:
     volumes:
       - mysql-keycloak-accounts:/var/lib/mysql
 
-
   postgres:
     image: postgres:10.5
     container_name: postgres
     env_file:
       - ./env/.postgres
-    restart: always    
+    restart: always
     ports:
       - 5432:5432
     volumes:
@@ -78,40 +77,51 @@ services:
       - ./certs:/etc/nginx/certs
       - ./packages/proxy/site.template:/etc/nginx/conf.d/site.template
       #- /etc/localtime:/etc/localtime
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/dina.conf && forego start -r"
+    command:
+      /bin/bash -c "envsubst < /etc/nginx/conf.d/site.template >
+      /etc/nginx/conf.d/dina.conf && forego start -r"
 
   style:
-    image: "dina/dina-semantic-ui-docs:latest"
+    image: 'dina/dina-semantic-ui-docs:latest'
     container_name: dina-semantic-ui-docs
     expose:
-    - "80"
+      - '80'
     env_file:
       - ./env/.style
-    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    command:
+      /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' <
+      /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf &&
+      nginx -g 'daemon off;'"
 
   ui:
-    image: "dina/dina-collections-ui:${TAG}"
+    image: 'dina/dina-collections-ui:${TAG}'
     container_name: dina-collections-ui
     expose:
-    - "80"
+      - '80'
     env_file:
       - ./env/.ui
-    command: /bin/bash -c "envsubst '$$NGINX_TAXONOMY_API_BASE_URL $$NGINX_API_BASE_URL $$NGINX_HOST $$NGINX_PORT $$NGINX_AUTH_BASE_URL' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    command:
+      /bin/bash -c "envsubst '$$NGINX_API_BASE_URL $$NGINX_HOST $$NGINX_PORT
+      $$NGINX_AUTH_BASE_URL' < /etc/nginx/conf.d/default.template >
+      /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
       - api
       - keycloak
 
   docs:
-    image: "dina/dina-collections-docs:${TAG}"
+    image: 'dina/dina-collections-docs:${TAG}'
     container_name: dina-collections-docs
     expose:
-    - "80"
+      - '80'
     env_file:
       - ./env/.docs
-    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    command:
+      /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' <
+      /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf &&
+      nginx -g 'daemon off;'"
 
   baseWorker:
-    image: "dina/dina-collections-api:${TAG}"
+    image: 'dina/dina-collections-api:${TAG}'
     container_name: dina-base-worker
     env_file:
       - ./env/.backend
@@ -126,7 +136,7 @@ services:
       - ./userFiles:/userFiles
 
   searchIndexWorker:
-    image: "dina/dina-collections-api:${TAG}"
+    image: 'dina/dina-collections-api:${TAG}'
     container_name: dina-search-index-worker
     env_file:
       - ./env/.backend
