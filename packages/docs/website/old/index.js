@@ -60,6 +60,7 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
+        <Logo img_src={`${baseUrl}img/docusaurus.svg`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
@@ -105,6 +106,7 @@ class Index extends React.Component {
         {[
           {
             content: 'Talk about trying this out',
+            image: `${baseUrl}img/docusaurus.svg`,
             imageAlign: 'left',
             title: 'Try it Out',
           },
@@ -118,6 +120,7 @@ class Index extends React.Component {
           {
             content:
               'This is another description of how this project is useful',
+            image: `${baseUrl}img/docusaurus.svg`,
             imageAlign: 'right',
             title: 'Description',
           },
@@ -130,6 +133,7 @@ class Index extends React.Component {
         {[
           {
             content: 'Talk about learning how to use this',
+            image: `${baseUrl}img/docusaurus.svg`,
             imageAlign: 'right',
             title: 'Learn How',
           },
@@ -142,11 +146,13 @@ class Index extends React.Component {
         {[
           {
             content: 'This is the content of my feature',
+            image: `${baseUrl}img/docusaurus.svg`,
             imageAlign: 'top',
             title: 'Feature One',
           },
           {
             content: 'The content of my second feature',
+            image: `${baseUrl}img/docusaurus.svg`,
             imageAlign: 'top',
             title: 'Feature Two',
           },
@@ -186,6 +192,14 @@ class Index extends React.Component {
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
+        <div className="mainContainer">
+          <Features />
+          <FeatureCallout />
+          <LearnHow />
+          <TryOut />
+          <Description />
+          <Showcase />
+        </div>
       </div>
     );
   }
