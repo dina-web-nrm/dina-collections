@@ -35,3 +35,8 @@ yarn-error.log*
 
 # Scripts
 **/src/snippets/private
+
+# cypress (integration is ignored to enable saving the provided examples locally)
+cypress/integration
+cypress/screenshots
+cypress/videos
