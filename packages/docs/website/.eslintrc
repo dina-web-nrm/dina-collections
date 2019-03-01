@@ -1,0 +1,83 @@
+{
+  "extends": [
+    "eslint-config-airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "globals": {
+    "document": true,
+    "it": true,
+    "window": true,
+    "fetch": true
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "./src"
+        ]
+      }
+    }
+  },
+  "plugins": [
+    "jest",
+    "json",
+    "react",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-sort-props": [
+      2,
+      {
+        "callbacksLast": false,
+        "ignoreCase": true,
+        "shorthandFirst": false
+      }
+    ],
+    "react/sort-prop-types": [
+      2,
+      {
+        "callbacksLast": false,
+        "ignoreCase": true,
+        "requiredFirst": false
+      }
+    ],
+    "semi": [
+      2,
+      "never"
+    ],
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": false,
+        "natural": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js"
+        ]
+      }
+    ],
+    "react/prefer-stateless-function": 0,
+    "arrow-parens": 0,
+    "arrow-body-style": 0,
+    "no-console": 2,
+    "import/prefer-default-export": 0,
+    "import/no-named-as-default": 0,
+    "indent": 0,
+    "react/forbid-prop-types": 0,
+    "prefer-destructuring": 1,
+    "react/default-props-match-prop-types": 1,
+    "jsx-a11y/anchor-is-valid": 0
+  }
+}
