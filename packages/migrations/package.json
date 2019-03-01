@@ -4,7 +4,8 @@
   "license": "AGPL-3.0",
   "contributors": [
     "Anton Öberg <oberg.anton@gmail.com>",
-    "Fredrik Olovsson <fogithub@gmail.com>"
+    "Fredrik Olovsson <fogithub@gmail.com>",
+    "Ida Li <ida.li@nrm.se>"
   ],
   "scripts": {
     "db:development": "NODE_ENV=development DEBUG='DINA*' node_modules/.bin/sequelize",
