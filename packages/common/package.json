@@ -4,7 +4,8 @@
   "license": "AGPL-3.0",
   "contributors": [
     "Anton Öberg <oberg.anton@gmail.com>",
-    "Fredrik Olovsson <fogithub@gmail.com>"
+    "Fredrik Olovsson <fogithub@gmail.com>",
+    "Ida Li <ida.li@nrm.se>"
   ],
   "scripts": {
     "build:js": "rm -rf es5 && babel ./src -d es5 --copy-files && yarn test:unit",

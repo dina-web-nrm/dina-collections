@@ -1,1 +1,6 @@
+/build
+/coverage
+/cypress/integration
+/node_modules
+/public
 /src/snippets

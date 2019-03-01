@@ -28,6 +28,7 @@ class Home extends Component {
           <Container text>
             <Image
               centered
+              data-testid="logo"
               size="small"
               src={logo}
               style={{ marginTop: '10em' }}

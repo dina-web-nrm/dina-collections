@@ -2,9 +2,11 @@
   "extends": [
     "eslint-config-airbnb",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:cypress/recommended"
   ],
   "env": {
+    "cypress/globals": true,
     "jest/globals": true
   },
   "globals": {
@@ -17,21 +19,31 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "moduleDirectory": [
-          "node_modules",
-          "./src"
-        ]
+        "moduleDirectory": ["node_modules", "./src"]
       }
     }
   },
-  "plugins": [
-    "jest",
-    "json",
-    "react",
-    "prettier"
-  ],
+  "plugins": ["jest", "json", "react", "cypress", "chai-friendly", "prettier"],
   "rules": {
+    "arrow-body-style": 0,
+    "arrow-parens": 0,
+    "chai-friendly/no-unused-expressions": 2,
+    "import/no-named-as-default": 0,
+    "import/prefer-default-export": 0,
+    "indent": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-console": 2,
+    "no-unused-expressions": 0,
+    "prefer-destructuring": 1,
     "prettier/prettier": "error",
+    "react/default-props-match-prop-types": 1,
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js"]
+      }
+    ],
     "react/jsx-sort-props": [
       2,
       {
@@ -40,6 +52,7 @@
         "shorthandFirst": false
       }
     ],
+    "react/prefer-stateless-function": 0,
     "react/sort-prop-types": [
       2,
       {
@@ -48,10 +61,7 @@
         "requiredFirst": false
       }
     ],
-    "semi": [
-      2,
-      "never"
-    ],
+    "semi": [2, "never"],
     "sort-keys": [
       "error",
       "asc",
@@ -59,25 +69,6 @@
         "caseSensitive": false,
         "natural": true
       }
-    ],
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".js"
-        ]
-      }
-    ],
-    "react/prefer-stateless-function": 0,
-    "arrow-parens": 0,
-    "arrow-body-style": 0,
-    "no-console": 2,
-    "import/prefer-default-export": 0,
-    "import/no-named-as-default": 0,
-    "indent": 0,
-    "react/forbid-prop-types": 0,
-    "prefer-destructuring": 1,
-    "react/default-props-match-prop-types": 1,
-    "jsx-a11y/anchor-is-valid": 0
+    ]
   }
 }
