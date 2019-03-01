@@ -14,3 +14,6 @@
 
 @media only screen and (min-width: 1500px) {
 }
+body {
+  font-family: $base;
+}

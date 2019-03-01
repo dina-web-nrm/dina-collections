@@ -58,18 +58,16 @@ const siteConfig = {
   },
 
   /* Custom fonts for website */
-  /*
+
   fonts: {
-    myFont: [
-      "Times New Roman",
-      "Serif"
+    base: [
+      "Lato",
+      "Helvetica Neue",
+      "Arial",
+      "Helvetica",
+      "sans-serif"
     ],
-    myOtherFont: [
-      "-apple-system",
-      "system-ui"
-    ]
   },
-  */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
   copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
