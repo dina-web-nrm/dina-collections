@@ -17,7 +17,7 @@ const siteConfig = {
   },
 
   copyright: `Copyright © ${new Date().getFullYear()} NRM`,
-
+  customDocsPath: 'website/docs',
   dinaLinks: {
     apiDocs: 'https://demo-api.dina-web.net/docs',
     dataModel: 'https://demo-cm.dina-web.net/docs/current/general',
