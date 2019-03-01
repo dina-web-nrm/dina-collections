@@ -39,6 +39,13 @@ if [ "$CI_INSTALL_STYLE" = true ]; then
   yarn install:semantic-ui
 fi
 
+
+if [ "$CI_INSTALL_DOCS" = true ]; then
+  echo "Installing docs"
+  yarn install:docs
+fi
+
+
 if [ "$CI_LINK_COMMON" = true ]; then
   : "${CI_INSTALL_COMMON?CI_INSTALL_COMMON Has to be true}"
 
