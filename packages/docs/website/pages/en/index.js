@@ -5,21 +5,27 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require('react');
+/* eslint-disable import/no-unresolved, import/no-extraneous-dependencies, react/no-multi-comp */
 
-const CompLibrary = require('../../core/CompLibrary.js');
+const React = require('react')
+const PropTypes = require('prop-types')
 
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
-const Container = CompLibrary.Container;
-const GridBlock = CompLibrary.GridBlock;
+const homePropTypes = {
+  language: PropTypes.string,
+  siteConfig: PropTypes.object.isRequired,
+}
+
+const homeDefaultProps = {
+  language: '',
+}
 
 class HomeSplash extends React.Component {
   render() {
-    const {siteConfig, language = ''} = this.props;
-    const {baseUrl, docsUrl} = siteConfig;
-    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-    const langPart = `${language ? `${language}/` : ''}`;
-    const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+    const { siteConfig, language = '' } = this.props
+    const { baseUrl, docsUrl } = siteConfig
+    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`
+    const langPart = `${language ? `${language}/` : ''}`
+    const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
 
     const SplashContainer = props => (
       <div className="homeContainer">
@@ -27,20 +33,14 @@ class HomeSplash extends React.Component {
           <div className="wrapper homeWrapper">{props.children}</div>
         </div>
       </div>
-    );
-
-    const Logo = props => (
-      <div className="projectLogo">
-        <img src={props.img_src} alt="Project Logo" />
-      </div>
-    );
+    )
 
     const ProjectTitle = () => (
       <h2 className="projectTitle">
         {siteConfig.title}
         <small>{siteConfig.tagline}</small>
       </h2>
-    );
+    )
 
     const PromoSection = props => (
       <div className="section promoSection">
@@ -48,7 +48,7 @@ class HomeSplash extends React.Component {
           <div className="pluginRowBlock">{props.children}</div>
         </div>
       </div>
-    );
+    )
 
     const Button = props => (
       <div className="pluginWrapper buttonWrapper">
@@ -56,7 +56,7 @@ class HomeSplash extends React.Component {
           {props.children}
         </a>
       </div>
-    );
+    )
 
     return (
       <SplashContainer>
@@ -64,131 +64,42 @@ class HomeSplash extends React.Component {
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
             <Button href={docUrl('setup/setup.html')}>Setup</Button>
-            <Button href={docUrl('documentationOverview/documentationOverview.html')}>Documentation Overview</Button>
+            <Button
+              href={docUrl('documentationOverview/documentationOverview.html')}
+            >
+              Documentation Overview
+            </Button>
           </PromoSection>
         </div>
       </SplashContainer>
-    );
+    )
   }
 }
 
+HomeSplash.propTypes = homePropTypes
+HomeSplash.defaultProps = homeDefaultProps
+
+const indexPropTypes = {
+  config: PropTypes.object.isRequired,
+  language: PropTypes.string,
+}
+
+const indexDefaultProps = {
+  language: '',
+}
 
 class Index extends React.Component {
   render() {
-    const {config: siteConfig, language = ''} = this.props;
-    const {baseUrl} = siteConfig;
-
-    const Block = props => (
-      <Container
-        padding={['bottom', 'top']}
-        id={props.id}
-        background={props.background}>
-        <GridBlock
-          align="center"
-          contents={props.children}
-          layout={props.layout}
-        />
-      </Container>
-    );
-
-    const FeatureCallout = () => (
-      <div
-        className="productShowcaseSection paddingBottom"
-        style={{textAlign: 'center'}}>
-        <h2>Feature Callout</h2>
-        <MarkdownBlock>These are features of this project</MarkdownBlock>
-      </div>
-    );
-
-    const TryOut = () => (
-      <Block id="try">
-        {[
-          {
-            content: 'Talk about trying this out',
-            imageAlign: 'left',
-            title: 'Try it Out',
-          },
-        ]}
-      </Block>
-    );
-
-    const Description = () => (
-      <Block background="dark">
-        {[
-          {
-            content:
-              'This is another description of how this project is useful',
-            imageAlign: 'right',
-            title: 'Description',
-          },
-        ]}
-      </Block>
-    );
-
-    const LearnHow = () => (
-      <Block background="light">
-        {[
-          {
-            content: 'Talk about learning how to use this',
-            imageAlign: 'right',
-            title: 'Learn How',
-          },
-        ]}
-      </Block>
-    );
-
-    const Features = () => (
-      <Block layout="fourColumn">
-        {[
-          {
-            content: 'This is the content of my feature',
-            imageAlign: 'top',
-            title: 'Feature One',
-          },
-          {
-            content: 'The content of my second feature',
-            imageAlign: 'top',
-            title: 'Feature Two',
-          },
-        ]}
-      </Block>
-    );
-
-    const Showcase = () => {
-      if ((siteConfig.users || []).length === 0) {
-        return null;
-      }
-
-      const showcase = siteConfig.users
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
-          </a>
-        ));
-
-      const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page;
-
-      return (
-        <div className="productShowcaseSection paddingBottom">
-          <h2>Who is Using This?</h2>
-          <p>This project is used by all these people</p>
-          <div className="logos">{showcase}</div>
-          <div className="more-users">
-            <a className="button" href={pageUrl('users.html')}>
-              More {siteConfig.title} Users
-            </a>
-          </div>
-        </div>
-      );
-    };
-
+    const { config: siteConfig, language = '' } = this.props
     return (
       <div>
-        <HomeSplash siteConfig={siteConfig} language={language} />
+        <HomeSplash language={language} siteConfig={siteConfig} />
       </div>
-    );
+    )
   }
 }
 
-module.exports = Index;
+Index.propTypes = indexPropTypes
+Index.defaultProps = indexDefaultProps
+
+module.exports = Index
