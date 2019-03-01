@@ -82,6 +82,13 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/DINA-Web/dina-collections',
+  dinaLinks: {
+    apiDocs: 'https://demo-api.dina-web.net/docs',
+    dataModel: 'https://demo-cm.dina-web.net/docs/current/general',
+    demo: 'https://demo-cm.dina-web.net/',
+    demoLogin: 'https://demo-cm.dina-web.net/login',
+    style: 'https://demo-style.dina-web.net/',
+  },
 };
 
 module.exports = siteConfig;
