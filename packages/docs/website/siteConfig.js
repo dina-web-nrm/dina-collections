@@ -86,6 +86,7 @@ const siteConfig = {
     demoLogin: 'https://demo-cm.dina-web.net/login',
     style: 'https://demo-style.dina-web.net/',
   },
+  docsSideNavCollapsible: true,
 };
 
 module.exports = siteConfig;
