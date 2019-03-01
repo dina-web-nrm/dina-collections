@@ -36,7 +36,6 @@ const siteConfig = {
   // If you have users set above, you add it here:
 
   /* path to images for header/footer */
-  footerIcon: 'img/docusaurus.svg',
   favicon: 'img/favicon/favicon.ico',
 
   /* Colors for website */
