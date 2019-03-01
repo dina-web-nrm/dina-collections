@@ -9,7 +9,14 @@
     ],
     "Overview": ["documentationOverview/documentationOverview"],
     "System overview": ["systemOverview/systemOverview"],
-    "Developer guide": ["developerGuide/developerGuide"]
+    "Developer guide": [
+      "developerGuide/developerGuide",
+      {
+        "type": "subcategory",
+        "label": "Testing",
+        "ids": ["testing/index", "testing/e2e/index"]
+      }
+    ]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
