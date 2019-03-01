@@ -78,6 +78,10 @@
     "test:unit": "react-scripts test",
     "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --watch",
     "test:unit:watch": "react-scripts test --watch",
+    "test:e2e": "yarn test:e2e:headless",
+    "test:e2e:watch": "yarn test:e2e:headful",
+    "test:e2e:headful": "yarn cypress open",
+    "test:e2e:headless": "yarn cypress run",
     "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
     "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
   },
