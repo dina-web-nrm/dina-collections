@@ -1,6 +1,12 @@
 {
   "docs": {
-    "Setup": ["setup/setup"],
+    "Setup": [
+      "setup/index",
+      "setup/setup-editor",
+      "setup/setup-locally-for-development",
+      "setup/setup-locally-with-docker",
+      "setup/configure-auth"
+    ],
     "Overview": ["documentationOverview/documentationOverview"],
     "System overview": ["systemOverview/systemOverview"],
     "Developer guide": ["developerGuide/developerGuide"]
