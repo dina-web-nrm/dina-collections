@@ -33,9 +33,7 @@ const siteConfig = {
     base: ['Lato', 'Helvetica Neue', 'Arial', 'Helvetica', 'sans-serif'],
   },
 
-  headerLinks: [
-    { doc: 'documentationOverview/documentationOverview', label: 'Docs' },
-  ],
+  headerLinks: [{ doc: 'index', label: 'Docs' }],
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
     theme: 'default',

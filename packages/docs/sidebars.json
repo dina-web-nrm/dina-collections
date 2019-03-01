@@ -1,5 +1,6 @@
 {
   "docs": {
+    "Overview": ["index"],
     "Setup": [
       "setup/index",
       "setup/setup-editor",
@@ -7,10 +8,17 @@
       "setup/setup-locally-with-docker",
       "setup/configure-auth"
     ],
-    "Overview": ["documentationOverview/documentationOverview"],
-    "System overview": ["systemOverview/systemOverview"],
+    "System overview": ["systemOverview/index"],
+    "Configuration": [
+      "configuration/index",
+      {
+        "type": "subcategory",
+        "label": "Testing",
+        "ids": ["configuration/env"]
+      }
+    ],
     "Developer guide": [
-      "developerGuide/developerGuide",
+      "developerGuide/index",
       {
         "type": "subcategory",
         "label": "Testing",
