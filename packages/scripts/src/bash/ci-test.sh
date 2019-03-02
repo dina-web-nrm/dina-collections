@@ -135,7 +135,7 @@ fi
 
 if [ "$CI_TEST_DOCS_LINT" = true ]; then
   echo "Running test suite CI_TEST_DOCS_LINT"
-  cd ./packages/docs && yarn lint:js
+  cd ./packages/docs && yarn lint
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
