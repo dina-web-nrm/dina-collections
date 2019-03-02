@@ -60,8 +60,8 @@ More specifically, this command will:
 2. Create default environment variables located in `./env/.*` based on sample
    env files. This should be fine for you to start with. If you want to learn
    more about the env-variables and adjust them read about them in
-   [env documentation](../configuration/env.md) When using the default env files the
-   services will run on the following ports:
+   [env documentation](../configuration/env.md) When using the default env files
+   the services will run on the following ports:
 
    - Api -> 4444
    - Elasticsearch -> 9200
