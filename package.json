@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all -p build:ui build:semantic-ui",
+    "build": "yarn build:ui && yarn build:semantic-ui",
     "build:changelog": "auto-changelog -p --tag-pattern '^((?!rc|test).)*$' --template changelog-template.hbs && git add CHANGELOG.md",
     "build:common:js": "cd ./packages/common && yarn build:js",
     "build:common:schema:api": "cd ./packages/common && yarn build:schema:api",
@@ -120,7 +120,6 @@
   ],
   "license": "AGPL-3.0",
   "dependencies": {
-    "npm-run-all": "^4.1.2",
     "prettier": "1.16.4"
   },
   "engines": {
