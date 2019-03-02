@@ -2,8 +2,10 @@
   "scripts": {
     "build": "docusaurus-build",
     "examples": "docusaurus-examples",
+    "lint": "yarn lint:js && yarn lint:md",
     "lint:js": "eslint '{,!(node_modules)/**/}*.js'",
     "lint:js:fix": "eslint '{,!(node_modules)/**/}*.js' --fix",
+    "lint:md": "markdownlint 'docs/**/*.md'",
     "publish-gh-pages": "docusaurus-publish",
     "rename-version": "docusaurus-rename-version",
     "start": "docusaurus-start",
@@ -11,7 +13,6 @@
     "write-translations": "docusaurus-write-translations"
   },
   "devDependencies": {
-    "docusaurus": "^1.7.2",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-plugin-dynamic-import-node": "^1.2.0",
@@ -20,6 +21,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
+    "docusaurus": "^1.7.2",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "^2.6.0",
@@ -30,6 +32,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^22.1.4",
+    "markdownlint-cli": "^0.14.0",
     "prettier": "1.16.4"
   },
   "engines": {
