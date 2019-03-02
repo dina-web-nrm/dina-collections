@@ -7,6 +7,7 @@
     "lint:js:fix": "eslint '**/*.js' --fix",
     "lint:md": "markdownlint 'docs/**/*.md'",
     "publish-gh-pages": "docusaurus-publish",
+    "test:unit": "yarn build && rm -rf ./build",
     "rename-version": "docusaurus-rename-version",
     "start": "docusaurus-start",
     "version": "docusaurus-version",
