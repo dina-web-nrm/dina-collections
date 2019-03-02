@@ -146,7 +146,7 @@ fi
 
 if [ "$CI_TEST_DOCS_UNIT" = true ]; then
   echo "Running test suite CI_TEST_DOCS_UNIT"
-  cd ./packages/docs && yarn build
+  cd ./packages/docs && yarn test:unit
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
