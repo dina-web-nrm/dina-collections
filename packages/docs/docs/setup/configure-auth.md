@@ -11,9 +11,9 @@ authentication or [setup keycloak](#run-and-configure-keycloak)
 
 // TODO: Explain how to disable auth
 
-#### Start keycloak
+### Start keycloak
 
-```
+```bash
 make up-keycloak
 ```
 
@@ -21,21 +21,21 @@ It will take a while for keycloak to start.
 
 // TODO: Explain how to read keycloak logs
 
-#### Import keycloak dev configuration
+### Import keycloak dev configuration
 
-- Open keycloak admin interface (http://127.0.0.1:8080)
+- Open keycloak admin interface <http://127.0.0.1:8080>
 - Navigate to Administration Console
 - Login with user: admin, password: admin (if you have not changed the
   `./env/.keycloak`)
 - Inspect top left nav item (should be dina)
 
-#### Add test user
+### Add test user
 
 - Press "Users" under "Manage" section in left nav. (Make sure the dina realm is
   selected)
 - Add user with the following params:
 
-  ```
+  ```bash
     username = john doe
     Email = johndoe@nrm.se
     First Name = John
