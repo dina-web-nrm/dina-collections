@@ -59,6 +59,7 @@
     "production:start:worker": "NODE_ENV=production DEBUG='DINA*' node src/apps/production/worker/index.js",
     "start": "WORKER_ROLE=all NODE_ENV=development DEBUG='DINA*, -DINA:LOG_DEBUG:lib/jobs/worker' nodemon --config ./nodemon.json src/apps/development/api/index.js",
     "start:inspect": "WORKER_ROLE=all NODE_ENV=development DEBUG='DINA*' node --inspect src/apps/development/api/index.js",
+    "start:node": "WORKER_ROLE=all NODE_ENV=development DEBUG='DINA*, -DINA:LOG_DEBUG:lib/jobs/worker' node src/apps/development/api/index.js",
     "start:test": "TEST_SYNC_MODELS=true NODE_ENV=test DEBUG='DINA*' nodemon src/apps/test/api/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
     "test:api": "TEST_API=true SAMPLE_DATA=true DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
