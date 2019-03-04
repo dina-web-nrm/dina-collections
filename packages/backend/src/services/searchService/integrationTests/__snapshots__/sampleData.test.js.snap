@@ -1,0 +1,5324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sample data returns expected sample data 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [],
+      "collectingEventCountry": "No information",
+      "collectingEventEndDate": "2010-01-01",
+      "collectingEventInterpretedLocality": Array [
+        "No information",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "adult",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "female",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 1,
+      "identifiersCatalogNumber": "500001",
+      "identifiersOtherIdentifiers": Array [
+        "2012-21",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "room",
+      ],
+      "physicalUnitSkin": Array [
+        "complete, mounted skin NRM / Utlånad",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2010-06-08",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "27",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "18",
+            "type": "place",
+          },
+          Object {
+            "id": "19",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "22",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "10",
+            "type": "taxon",
+          },
+          Object {
+            "id": "24",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "13",
+            "type": "taxon",
+          },
+          Object {
+            "id": "7",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "14",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [
+            "Collected: Before 2010",
+          ],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [
+            "Vinterdräkt",
+          ],
+          "specimenRemarks": Array [
+            "Donation från Lärarhögskolan, Stockholm, # 00062B7476 (Skuldra)
+Utlånad, lån 2012-21 (Dnr 52-78/2012)",
+          ],
+          "srcFields": Array [
+            "collectingDateRemarks",
+            "physicalObjectsRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "2009-12-31T23:00:00.000Z",
+            "startTimestamp": "1599-12-31T22:47:48.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "adult",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "Handed in byddaaddLärarhögskolan, Stockholm",
+            "tagType": "Handed in by",
+            "tagValue": "Lärarhögskolan, Stockholm",
+          },
+          Object {
+            "key": "Determined byddaaddMortensen, Peter",
+            "tagType": "Determined by",
+            "tagValue": "Mortensen, Peter",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddNo information [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "No information [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddNo information [country in No information]",
+            "tagType": "country",
+            "tagValue": "No information [country in No information]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd500001",
+            "tagType": "catalog-no",
+            "tagValue": "500001",
+          },
+          Object {
+            "key": "loan-noddaadd2012-21",
+            "tagType": "loan-no",
+            "tagValue": "2012-21",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddNo information",
+            "tagType": "collecting-interpreted",
+            "tagValue": "No information",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "female",
+        ],
+        "skeletonTags": Array [
+          "no skeleton",
+        ],
+        "skinTags": Array [
+          "complete, mounted skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "roomddaaddUtlånad [room]",
+            "tagType": "room",
+            "tagValue": "Utlånad [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddMustelidae",
+            "tagType": "family",
+            "tagValue": "Mustelidae",
+          },
+          Object {
+            "key": "genusddaaddMustela",
+            "tagType": "genus",
+            "tagValue": "Mustela",
+          },
+          Object {
+            "key": "speciesddaaddMustela erminea",
+            "tagType": "species",
+            "tagValue": "Mustela erminea",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Mustela erminea",
+      "taxonomyFamily": "Mustelidae",
+      "taxonomyGenus": "Mustela",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Mustela erminea",
+    },
+    "id": "1",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Sparrman, Andreas",
+      ],
+      "collectingEventCountry": "South africa",
+      "collectingEventEndDate": "1784-01-01",
+      "collectingEventInterpretedLocality": Array [
+        "Humansdorp",
+      ],
+      "collectingEventLocality": Array [
+        "S of Humansdorp, Slangriver area; Ö om Goda Hoppsudde",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "unknown",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 2,
+      "identifiersCatalogNumber": "530183",
+      "identifiersOtherIdentifiers": Array [
+        "925",
+        "925",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "room",
+      ],
+      "physicalUnitWetPreparation": Array [
+        "entire specimen in alcohol NRM / Omistliga sprit",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2016-09-26",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "21",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "2",
+            "type": "place",
+          },
+          Object {
+            "id": "5",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "39",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "34",
+            "type": "taxon",
+          },
+          Object {
+            "id": "12",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "35",
+            "type": "taxon",
+          },
+          Object {
+            "id": "41",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "38",
+            "type": "taxon",
+          },
+          Object {
+            "id": "13",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "39",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [
+            "S of Humansdorp, Slangriver area",
+          ],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [
+            "Quensels donationsbok:
+År 1784 Sparrman Prof. et. Mus pumilio från Södra Africa.
+Hornstedts katalog 1788: Mus Pumilio: Sparm. ˢɤ  v
+Quensels Catalog 1803
+Mus. 3 Pumilio - 131 Acta Holm. A:o 1784 p. 233 tab.6. Ipssis. / C.b.sp.// 1. / Sparrm.
+Mina kommentarer (Erik Åhlander)
+Two labels similar to Leufsta labels, but probably both written by Sparrman. 
+Type locality in Wilson and reeder doesn't agree with my coordinates.",
+          ],
+          "srcFields": Array [
+            "collectingInformationRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1783-12-31T22:47:48.000Z",
+            "startTimestamp": "1599-12-31T22:47:48.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "unknown",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddSparrman, Andreas",
+            "tagType": "Collector",
+            "tagValue": "Sparrman, Andreas",
+          },
+          Object {
+            "key": "Determined byddaaddSparrman, Andreas",
+            "tagType": "Determined by",
+            "tagValue": "Sparrman, Andreas",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddAfrica [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Africa [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSouth africa [country in Africa]",
+            "tagType": "country",
+            "tagValue": "South africa [country in Africa]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd530183",
+            "tagType": "catalog-no",
+            "tagValue": "530183",
+          },
+          Object {
+            "key": "old-skin-noddaadd925",
+            "tagType": "old-skin-no",
+            "tagValue": "925",
+          },
+          Object {
+            "key": "old-skeleton-noddaadd925",
+            "tagType": "old-skeleton-no",
+            "tagValue": "925",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddHumansdorp",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Humansdorp",
+          },
+          Object {
+            "key": "collecting-statedddaaddS of Humansdorp, Slangriver area; Ö om Goda Hoppsudde",
+            "tagType": "collecting-stated",
+            "tagValue": "S of Humansdorp, Slangriver area; Ö om Goda Hoppsudde",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "unknown",
+        ],
+        "skeletonTags": Array [
+          "no skeleton",
+        ],
+        "skinTags": Array [
+          "no skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "roomddaaddOmistliga sprit [room]",
+            "tagType": "room",
+            "tagValue": "Omistliga sprit [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddRodentia",
+            "tagType": "order",
+            "tagValue": "Rodentia",
+          },
+          Object {
+            "key": "familyddaaddMuridae",
+            "tagType": "family",
+            "tagValue": "Muridae",
+          },
+          Object {
+            "key": "genusddaaddRhabdomys",
+            "tagType": "genus",
+            "tagValue": "Rhabdomys",
+          },
+          Object {
+            "key": "speciesddaaddRhabdomys pumilio",
+            "tagType": "species",
+            "tagValue": "Rhabdomys pumilio",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "entire specimen in alcohol",
+        ],
+      },
+      "taxonomyCuratorialName": "Rhabdomys pumilio",
+      "taxonomyFamily": "Muridae",
+      "taxonomyGenus": "Rhabdomys",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Rhabdomys pumilio",
+    },
+    "id": "2",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Heinrich, G",
+      ],
+      "collectingEventCountry": "Germany",
+      "collectingEventEndDate": "1949-05-23",
+      "collectingEventInterpretedLocality": Array [
+        "Bodensee, Möggingen",
+      ],
+      "collectingEventLocality": Array [
+        "Tyskland, Möggingen Radolfzell, Bodensee",
+      ],
+      "collectingEventProvince": "Baden-Württemberg",
+      "featureAge": Array [],
+      "featureAgeStage": Array [],
+      "featureBodyLength": Array [
+        "46",
+      ],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "male",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 3,
+      "identifiersCatalogNumber": "534406",
+      "identifiersOtherIdentifiers": Array [
+        "1; 4406; 52",
+        "1; 4406",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "shelf",
+      ],
+      "physicalUnitSkeleton": Array [
+        "skull (with or without mandible) Ingen information / 3810444 Myotis mystacinus",
+      ],
+      "physicalUnitSkin": Array [
+        "complete study skin Ingen information / 3810444 Myotis mystacinus",
+      ],
+      "recordEventCataloged": Array [
+        "1995-06-22 by [masked]",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2006-11-14",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "11",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "10",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "11",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "10",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "7",
+            "type": "place",
+          },
+          Object {
+            "id": "8",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "30",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "21",
+            "type": "taxon",
+          },
+          Object {
+            "id": "32",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "24",
+            "type": "taxon",
+          },
+          Object {
+            "id": "33",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "25",
+            "type": "taxon",
+          },
+          Object {
+            "id": "3",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "26",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [],
+          "srcFields": Array [],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1949-05-22T23:00:00.000Z",
+            "startTimestamp": "1599-12-31T22:47:48.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "unknown",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddHeinrich, G",
+            "tagType": "Collector",
+            "tagValue": "Heinrich, G",
+          },
+          Object {
+            "key": "Determined byddaaddBaagoe, H J",
+            "tagType": "Determined by",
+            "tagValue": "Baagoe, H J",
+          },
+          Object {
+            "key": "Catalog card created byddaadd[masked]",
+            "tagType": "Catalog card created by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddGermany [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Germany [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddBaden-Württemberg [province in Germany]",
+            "tagType": "province",
+            "tagValue": "Baden-Württemberg [province in Germany]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd534406",
+            "tagType": "catalog-no",
+            "tagValue": "534406",
+          },
+          Object {
+            "key": "old-skin-noddaadd1; 4406; 52",
+            "tagType": "old-skin-no",
+            "tagValue": "1; 4406; 52",
+          },
+          Object {
+            "key": "old-skeleton-noddaadd1; 4406",
+            "tagType": "old-skeleton-no",
+            "tagValue": "1; 4406",
+          },
+        ],
+        "lengthTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 46,
+            "tagType": "body-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 15,
+            "tagType": "ear-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 6,
+            "tagType": "hind-foot-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 40,
+            "tagType": "tail-to-anus-length",
+          },
+        ],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddBodensee, Möggingen",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Bodensee, Möggingen",
+          },
+          Object {
+            "key": "collecting-statedddaaddTyskland, Möggingen Radolfzell, Bodensee",
+            "tagType": "collecting-stated",
+            "tagValue": "Tyskland, Möggingen Radolfzell, Bodensee",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "male",
+        ],
+        "skeletonTags": Array [
+          "skull (with or without mandible)",
+        ],
+        "skinTags": Array [
+          "complete study skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd3810444 Myotis mystacinus [shelf in Ingen information]",
+            "tagType": "shelf",
+            "tagValue": "3810444 Myotis mystacinus [shelf in Ingen information]",
+          },
+          Object {
+            "key": "roomddaaddIngen information [room]",
+            "tagType": "room",
+            "tagValue": "Ingen information [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd3810444 Myotis mystacinus [shelf in Ingen information]",
+            "tagType": "shelf",
+            "tagValue": "3810444 Myotis mystacinus [shelf in Ingen information]",
+          },
+          Object {
+            "key": "roomddaaddIngen information [room]",
+            "tagType": "room",
+            "tagValue": "Ingen information [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddChiroptera",
+            "tagType": "order",
+            "tagValue": "Chiroptera",
+          },
+          Object {
+            "key": "familyddaaddVespertilionidae",
+            "tagType": "family",
+            "tagValue": "Vespertilionidae",
+          },
+          Object {
+            "key": "genusddaaddMyotis",
+            "tagType": "genus",
+            "tagValue": "Myotis",
+          },
+          Object {
+            "key": "speciesddaaddMyotis mystacinus",
+            "tagType": "species",
+            "tagValue": "Myotis mystacinus",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Myotis mystacinus",
+      "taxonomyFamily": "Vespertilionidae",
+      "taxonomyGenus": "Myotis",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Myotis mystacinus",
+    },
+    "id": "3",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Bergman",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventDistrict": "Arjeplog",
+      "collectingEventInterpretedLocality": Array [
+        "Vuollak",
+      ],
+      "collectingEventLocality": Array [
+        "Vuollak 1.5 mil Norr om N. Bergnäs i Pite älvdal",
+      ],
+      "collectingEventProvince": "Pite Lappmark",
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "adult",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [],
+      "featureTotalLength": Array [],
+      "idNumeric": 4,
+      "identifiersCatalogNumber": "583124",
+      "identifiersOtherIdentifiers": Array [
+        "Bly 45, 1008, 3124",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+      ],
+      "physicalUnitSkeleton": Array [
+        "skull (with or without mandible) Bensalen / 5100906 Ursus arctos",
+      ],
+      "recordEventCataloged": Array [
+        "[masked]",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2007-05-24",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "6",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "14",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "28",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "18",
+            "type": "taxon",
+          },
+          Object {
+            "id": "29",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "19",
+            "type": "taxon",
+          },
+          Object {
+            "id": "6",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "20",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [
+            "Hösten/vintern 1929-30",
+          ],
+          "collectingInformationRemarks": Array [
+            "C:a 15 km N. Norra Bergnäs",
+          ],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [
+            "Skadeskjuten, sedan självdöd",
+          ],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [],
+          "srcFields": Array [
+            "collectingDateRemarks",
+            "collectingInformationRemarks",
+            "deathRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "adult",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddBergman",
+            "tagType": "Collector",
+            "tagValue": "Bergman",
+          },
+          Object {
+            "key": "Catalog card created byddaadd[masked]",
+            "tagType": "Catalog card created by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddPite Lappmark [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Pite Lappmark [province in Sweden]",
+          },
+          Object {
+            "key": "districtddaaddArjeplog [district in Pite Lappmark]",
+            "tagType": "district",
+            "tagValue": "Arjeplog [district in Pite Lappmark]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd583124",
+            "tagType": "catalog-no",
+            "tagValue": "583124",
+          },
+          Object {
+            "key": "old-skeleton-noddaaddBly 45, 1008, 3124",
+            "tagType": "old-skeleton-no",
+            "tagValue": "Bly 45, 1008, 3124",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddVuollak",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Vuollak",
+          },
+          Object {
+            "key": "collecting-statedddaaddVuollak 1.5 mil Norr om N. Bergnäs i Pite älvdal",
+            "tagType": "collecting-stated",
+            "tagValue": "Vuollak 1.5 mil Norr om N. Bergnäs i Pite älvdal",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [],
+        "skeletonTags": Array [
+          "skull (with or without mandible)",
+        ],
+        "skinTags": Array [
+          "no skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd5100906 Ursus arctos [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "5100906 Ursus arctos [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddUrsidae",
+            "tagType": "family",
+            "tagValue": "Ursidae",
+          },
+          Object {
+            "key": "genusddaaddUrsus",
+            "tagType": "genus",
+            "tagValue": "Ursus",
+          },
+          Object {
+            "key": "speciesddaaddUrsus arctos",
+            "tagType": "species",
+            "tagValue": "Ursus arctos",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Ursus arctos",
+      "taxonomyFamily": "Ursidae",
+      "taxonomyGenus": "Ursus",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Ursus arctos",
+    },
+    "id": "4",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Hollander, R.",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1941-04-15",
+      "collectingEventInterpretedLocality": Array [
+        "Arjeplog, V. Uddjaur",
+      ],
+      "collectingEventLocality": Array [
+        "Sjön Uddjaure, V. Uddjaure",
+      ],
+      "collectingEventProvince": "Pite Lappmark",
+      "collectingEventStartDate": "1941-04-15",
+      "deathInformationDeath": Array [
+        "collected",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "female",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 5,
+      "identifiersCatalogNumber": "585522",
+      "physicalObjectStorageLocationGroups": Array [
+        "mountingwall",
+      ],
+      "physicalUnitSkin": Array [
+        "complete study skin Lodjursrum, köl 1213 / Låda 6",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2015-03-04",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "17",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "15",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "14",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "20",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "7",
+            "type": "taxon",
+          },
+          Object {
+            "id": "21",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "8",
+            "type": "taxon",
+          },
+          Object {
+            "id": "9",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "9",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [
+            "Sampled for isotope analysis: Loan 2015-37",
+          ],
+          "srcFields": Array [
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1941-04-14T23:00:00.000Z",
+            "startTimestamp": "1941-04-14T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "unknown",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddHollander, R.",
+            "tagType": "Collector",
+            "tagValue": "Hollander, R.",
+          },
+          Object {
+            "key": "Determined byddaaddBergström, Ulf",
+            "tagType": "Determined by",
+            "tagValue": "Bergström, Ulf",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddPite Lappmark [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Pite Lappmark [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd585522",
+            "tagType": "catalog-no",
+            "tagValue": "585522",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddArjeplog, V. Uddjaur",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Arjeplog, V. Uddjaur",
+          },
+          Object {
+            "key": "collecting-statedddaaddSjön Uddjaure, V. Uddjaure",
+            "tagType": "collecting-stated",
+            "tagValue": "Sjön Uddjaure, V. Uddjaure",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "female",
+        ],
+        "skeletonTags": Array [
+          "no skeleton",
+        ],
+        "skinTags": Array [
+          "complete study skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "mountingWallddaaddLåda 6 [mountingWall in Lodjursrum, köl 1213]",
+            "tagType": "mountingWall",
+            "tagValue": "Låda 6 [mountingWall in Lodjursrum, köl 1213]",
+          },
+          Object {
+            "key": "roomddaaddLodjursrum, köl 1213 [room]",
+            "tagType": "room",
+            "tagValue": "Lodjursrum, köl 1213 [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddFelidae",
+            "tagType": "family",
+            "tagValue": "Felidae",
+          },
+          Object {
+            "key": "genusddaaddLynx",
+            "tagType": "genus",
+            "tagValue": "Lynx",
+          },
+          Object {
+            "key": "speciesddaaddLynx lynx",
+            "tagType": "species",
+            "tagValue": "Lynx lynx",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Lynx lynx",
+      "taxonomyFamily": "Felidae",
+      "taxonomyGenus": "Lynx",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Lynx lynx",
+    },
+    "id": "5",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Modin, Axel",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1931-10-13",
+      "collectingEventInterpretedLocality": Array [
+        "Uppsala, Vallby skogen",
+      ],
+      "collectingEventLocality": Array [
+        "Uppland, Danmarks socken, Vallby skogen (Bergsbrunna skogen)",
+      ],
+      "collectingEventProvince": "Uppland",
+      "collectingEventStartDate": "1931-10-13",
+      "deathInformationDeath": Array [
+        "hunt, shot",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "unknown",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "male",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 6,
+      "identifiersCatalogNumber": "587520",
+      "identifiersOtherIdentifiers": Array [
+        "20",
+        "20",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "shelf",
+        "shelf",
+      ],
+      "physicalUnitOtherPreparation": Array [
+        "unspecified other preparation Ingen information / 5203003 Gulo gulo",
+      ],
+      "physicalUnitSkeleton": Array [
+        "partial skeleton with skull Bensalen / 5203003 Gulo gulo",
+      ],
+      "physicalUnitSkin": Array [
+        "complete study skin Skinnrum kylda / 5203003 Gulo gulo",
+      ],
+      "recordEventCataloged": Array [
+        "[masked]",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2018-03-06",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "7",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "26",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "24",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "12",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "10",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "16",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "22",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "10",
+            "type": "taxon",
+          },
+          Object {
+            "id": "23",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "11",
+            "type": "taxon",
+          },
+          Object {
+            "id": "8",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "12",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [
+            "Urogenitalsystem i sprit, se kommentar",
+          ],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [
+            "Fynddatum ändrat från 15/10 till 13/10-",
+          ],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [
+            "Pelvis missing",
+          ],
+          "specimenRemarks": Array [
+            "Troligtvis samma individ som 929106 (urogenitalsystem i sprit) denna post är struken.  fyndet beskrivet i Fauna och flora 26:1931 269-272. Mått och vikt från texten längdmåttet är konturlängd 107cm svansen 23cm, drygt 24 kg oflått
+Lokalen ändrad från Knivsta s:n till Vallby skogen/PMN",
+          ],
+          "srcFields": Array [
+            "collectingDateRemarks",
+            "physicalObjectsRemarks",
+            "aSinglePhysicalObjectRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1931-10-12T23:00:00.000Z",
+            "startTimestamp": "1931-10-12T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "unknown",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddModin, Axel",
+            "tagType": "Collector",
+            "tagValue": "Modin, Axel",
+          },
+          Object {
+            "key": "Catalog card created byddaadd[masked]",
+            "tagType": "Catalog card created by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [
+          "cranium",
+          "mandibula",
+          "vertebrae",
+          "costae",
+          "scapula",
+          "humerus",
+          "ulna",
+          "radius",
+          "manus",
+          "femur",
+          "tibia",
+          "pedis",
+        ],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddUppland [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Uppland [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd587520",
+            "tagType": "catalog-no",
+            "tagValue": "587520",
+          },
+          Object {
+            "key": "old-skin-noddaadd20",
+            "tagType": "old-skin-no",
+            "tagValue": "20",
+          },
+          Object {
+            "key": "old-skeleton-noddaadd20",
+            "tagType": "old-skeleton-no",
+            "tagValue": "20",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddUppsala, Vallby skogen",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Uppsala, Vallby skogen",
+          },
+          Object {
+            "key": "collecting-statedddaaddUppland, Danmarks socken, Vallby skogen (Bergsbrunna skogen)",
+            "tagType": "collecting-stated",
+            "tagValue": "Uppland, Danmarks socken, Vallby skogen (Bergsbrunna skogen)",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "unspecified other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "male",
+        ],
+        "skeletonTags": Array [
+          "partial skeleton with skull",
+        ],
+        "skinTags": Array [
+          "complete study skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd5203003 Gulo gulo [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "5203003 Gulo gulo [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd5203003 Gulo gulo [shelf in Skinnrum kylda]",
+            "tagType": "shelf",
+            "tagValue": "5203003 Gulo gulo [shelf in Skinnrum kylda]",
+          },
+          Object {
+            "key": "roomddaaddSkinnrum kylda [room]",
+            "tagType": "room",
+            "tagValue": "Skinnrum kylda [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd5203003 Gulo gulo [shelf in Ingen information]",
+            "tagType": "shelf",
+            "tagValue": "5203003 Gulo gulo [shelf in Ingen information]",
+          },
+          Object {
+            "key": "roomddaaddIngen information [room]",
+            "tagType": "room",
+            "tagValue": "Ingen information [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddMustelidae",
+            "tagType": "family",
+            "tagValue": "Mustelidae",
+          },
+          Object {
+            "key": "genusddaaddGulo",
+            "tagType": "genus",
+            "tagValue": "Gulo",
+          },
+          Object {
+            "key": "speciesddaaddGulo gulo",
+            "tagType": "species",
+            "tagValue": "Gulo gulo",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Gulo gulo",
+      "taxonomyFamily": "Mustelidae",
+      "taxonomyGenus": "Gulo",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Gulo gulo",
+    },
+    "id": "6",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Gyldenstolpe, Nils",
+      ],
+      "collectingEventCountry": "Congo, The Democratic Republic of the",
+      "collectingEventEndDate": "1921-04-09",
+      "collectingEventInterpretedLocality": Array [
+        "Kabare",
+      ],
+      "collectingEventLocality": Array [
+        "Kabare - Lake Edward",
+      ],
+      "collectingEventProvince": "Rutshuru",
+      "collectingEventStartDate": "1921-04-09",
+      "featureAge": Array [],
+      "featureAgeStage": Array [],
+      "featureBodyLength": Array [
+        "52",
+      ],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "female",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 7,
+      "identifiersCatalogNumber": "590325",
+      "identifiersOtherIdentifiers": Array [
+        "321",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+      ],
+      "physicalUnitSkin": Array [
+        "complete study skin Plåtskåpsrum / 9472969 Mus musculoides",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2016-08-19",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "23",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "22",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "2",
+            "type": "place",
+          },
+          Object {
+            "id": "3",
+            "type": "place",
+          },
+          Object {
+            "id": "4",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "39",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "34",
+            "type": "taxon",
+          },
+          Object {
+            "id": "12",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "35",
+            "type": "taxon",
+          },
+          Object {
+            "id": "40",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "36",
+            "type": "taxon",
+          },
+          Object {
+            "id": "14",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "37",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [],
+          "srcFields": Array [
+            "taxonomyRemarks",
+          ],
+          "taxonomyRemarks": Array [
+            "Sungenus Nannomys",
+          ],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1921-04-08T23:00:00.000Z",
+            "startTimestamp": "1921-04-08T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "unknown",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddGyldenstolpe, Nils",
+            "tagType": "Collector",
+            "tagValue": "Gyldenstolpe, Nils",
+          },
+          Object {
+            "key": "Determined byddaaddGyldenstolpe, Nils",
+            "tagType": "Determined by",
+            "tagValue": "Gyldenstolpe, Nils",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddAfrica [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Africa [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddCongo, The Democratic Republic of the [country in Africa]",
+            "tagType": "country",
+            "tagValue": "Congo, The Democratic Republic of the [country in Africa]",
+          },
+          Object {
+            "key": "provinceddaaddRutshuru [province in Congo, The Democratic Republic of the]",
+            "tagType": "province",
+            "tagValue": "Rutshuru [province in Congo, The Democratic Republic of the]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd590325",
+            "tagType": "catalog-no",
+            "tagValue": "590325",
+          },
+          Object {
+            "key": "old-skin-noddaadd321",
+            "tagType": "old-skin-no",
+            "tagValue": "321",
+          },
+        ],
+        "lengthTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 52,
+            "tagType": "body-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 14,
+            "tagType": "ear-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 47,
+            "tagType": "tail-to-anus-length",
+          },
+        ],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddKabare",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Kabare",
+          },
+          Object {
+            "key": "collecting-statedddaaddKabare - Lake Edward",
+            "tagType": "collecting-stated",
+            "tagValue": "Kabare - Lake Edward",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "female",
+        ],
+        "skeletonTags": Array [
+          "no skeleton",
+        ],
+        "skinTags": Array [
+          "complete study skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd9472969 Mus musculoides [shelf in Plåtskåpsrum]",
+            "tagType": "shelf",
+            "tagValue": "9472969 Mus musculoides [shelf in Plåtskåpsrum]",
+          },
+          Object {
+            "key": "roomddaaddPlåtskåpsrum [room]",
+            "tagType": "room",
+            "tagValue": "Plåtskåpsrum [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddRodentia",
+            "tagType": "order",
+            "tagValue": "Rodentia",
+          },
+          Object {
+            "key": "familyddaaddMuridae",
+            "tagType": "family",
+            "tagValue": "Muridae",
+          },
+          Object {
+            "key": "genusddaaddMus",
+            "tagType": "genus",
+            "tagValue": "Mus",
+          },
+          Object {
+            "key": "speciesddaaddMus musculoides",
+            "tagType": "species",
+            "tagValue": "Mus musculoides",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Mus musculoides",
+      "taxonomyFamily": "Muridae",
+      "taxonomyGenus": "Mus",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Mus musculoides",
+    },
+    "id": "7",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Olalla, AM",
+      ],
+      "collectingEventCountry": "Bolivia",
+      "collectingEventDistrict": "Yacuma",
+      "collectingEventEndDate": "1938-05-14",
+      "collectingEventInterpretedLocality": Array [
+        "Mojos, Orión",
+      ],
+      "collectingEventLocality": Array [
+        "Bolovia, Mojos, Orioy",
+      ],
+      "collectingEventProvince": "Beni",
+      "collectingEventStartDate": "1938-05-14",
+      "deathInformationDeath": Array [
+        "collected",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "adult",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "female",
+      ],
+      "featureTotalLength": Array [
+        "1038",
+      ],
+      "idNumeric": 8,
+      "identifiersCatalogNumber": "620285",
+      "identifiersOtherIdentifiers": Array [
+        "1,285",
+        "1,285",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "shelf",
+      ],
+      "physicalUnitSkeleton": Array [
+        "skull (with or without mandible) Bensalen / 4352406 Alouatta caraya",
+      ],
+      "physicalUnitSkin": Array [
+        "complete study skin Skinnrum kylda / 4352406 Alouatta caraya",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2007-05-24",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "4",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "25",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "24",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "20",
+            "type": "place",
+          },
+          Object {
+            "id": "21",
+            "type": "place",
+          },
+          Object {
+            "id": "22",
+            "type": "place",
+          },
+          Object {
+            "id": "23",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "34",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "27",
+            "type": "taxon",
+          },
+          Object {
+            "id": "35",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "28",
+            "type": "taxon",
+          },
+          Object {
+            "id": "36",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "29",
+            "type": "taxon",
+          },
+          Object {
+            "id": "4",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "30",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [
+            "Ur Gyldenstolpe \\"A Cont. to the ornth. of Northern Bolivia\\": Orion är belägen ca 35 km söder om Reyes längs vägen till San Borja.",
+          ],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [
+            "Manus och pedis in skin",
+          ],
+          "srcFields": Array [
+            "collectingInformationRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1938-05-13T23:00:00.000Z",
+            "startTimestamp": "1938-05-13T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "adult",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddOlalla, AM",
+            "tagType": "Collector",
+            "tagValue": "Olalla, AM",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [
+          "cranium",
+          "mandibula",
+          "manus",
+          "pedis",
+        ],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddSouth America [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "South America [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddBolivia [country in South America]",
+            "tagType": "country",
+            "tagValue": "Bolivia [country in South America]",
+          },
+          Object {
+            "key": "provinceddaaddBeni [province in Bolivia]",
+            "tagType": "province",
+            "tagValue": "Beni [province in Bolivia]",
+          },
+          Object {
+            "key": "districtddaaddYacuma [district in Beni]",
+            "tagType": "district",
+            "tagValue": "Yacuma [district in Beni]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd620285",
+            "tagType": "catalog-no",
+            "tagValue": "620285",
+          },
+          Object {
+            "key": "old-skin-noddaadd1,285",
+            "tagType": "old-skin-no",
+            "tagValue": "1,285",
+          },
+          Object {
+            "key": "old-skeleton-noddaadd1,285",
+            "tagType": "old-skeleton-no",
+            "tagValue": "1,285",
+          },
+        ],
+        "lengthTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 1038,
+            "tagType": "total-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 130,
+            "tagType": "hind-foot-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 544,
+            "tagType": "tail-to-pelvis-length",
+          },
+        ],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddMojos, Orión",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Mojos, Orión",
+          },
+          Object {
+            "key": "collecting-statedddaaddBolovia, Mojos, Orioy",
+            "tagType": "collecting-stated",
+            "tagValue": "Bolovia, Mojos, Orioy",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "female",
+        ],
+        "skeletonTags": Array [
+          "skull (with or without mandible)",
+        ],
+        "skinTags": Array [
+          "complete study skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd4352406 Alouatta caraya [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "4352406 Alouatta caraya [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd4352406 Alouatta caraya [shelf in Skinnrum kylda]",
+            "tagType": "shelf",
+            "tagValue": "4352406 Alouatta caraya [shelf in Skinnrum kylda]",
+          },
+          Object {
+            "key": "roomddaaddSkinnrum kylda [room]",
+            "tagType": "room",
+            "tagValue": "Skinnrum kylda [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddPrimates",
+            "tagType": "order",
+            "tagValue": "Primates",
+          },
+          Object {
+            "key": "familyddaaddAtelidae",
+            "tagType": "family",
+            "tagValue": "Atelidae",
+          },
+          Object {
+            "key": "genusddaaddAlouatta",
+            "tagType": "genus",
+            "tagValue": "Alouatta",
+          },
+          Object {
+            "key": "speciesddaaddAlouatta caraya",
+            "tagType": "species",
+            "tagValue": "Alouatta caraya",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Alouatta caraya",
+      "taxonomyFamily": "Atelidae",
+      "taxonomyGenus": "Alouatta",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Alouatta caraya",
+    },
+    "id": "8",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Gyldenstolpe, Nils",
+      ],
+      "collectingEventCountry": "Congo, The Democratic Republic of the",
+      "collectingEventEndDate": "1921-03-24",
+      "collectingEventInterpretedLocality": Array [
+        "Mount Karisimbi",
+      ],
+      "collectingEventLocality": Array [
+        "N Ö sluttningen av Mt Karissimbi, Birunga volcanoes",
+      ],
+      "collectingEventStartDate": "1921-03-24",
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "adult",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "male",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 9,
+      "identifiersCatalogNumber": "621445",
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "room",
+      ],
+      "physicalUnitSkeleton": Array [
+        "skull (with or without mandible) Bensalen / 4500906 Gorilla beringei",
+      ],
+      "physicalUnitSkin": Array [
+        "unspecified skin NRM / Okänd",
+      ],
+      "recordEventCataloged": Array [
+        "[masked]",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2008-05-19",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "5",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "18",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "2",
+            "type": "place",
+          },
+          Object {
+            "id": "3",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "34",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "27",
+            "type": "taxon",
+          },
+          Object {
+            "id": "37",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "31",
+            "type": "taxon",
+          },
+          Object {
+            "id": "38",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "32",
+            "type": "taxon",
+          },
+          Object {
+            "id": "5",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "33",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [
+            "Skin missing but should be here",
+          ],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [
+            "Angående skinn, se A621441. Hör eventuellt till A621441. \\"Skinn finnes.\\" Endast skinn plus kranium enligt lappkat. (J. E.)
+Skin not in cold skinroom (2015-02-26 M. Caspers)",
+          ],
+          "srcFields": Array [
+            "aSinglePhysicalObjectRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1921-03-23T23:00:00.000Z",
+            "startTimestamp": "1921-03-23T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "adult",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddGyldenstolpe, Nils",
+            "tagType": "Collector",
+            "tagValue": "Gyldenstolpe, Nils",
+          },
+          Object {
+            "key": "Catalog card created byddaadd[masked]",
+            "tagType": "Catalog card created by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [
+          "cranium",
+          "mandibula",
+        ],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddAfrica [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Africa [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddCongo, The Democratic Republic of the [country in Africa]",
+            "tagType": "country",
+            "tagValue": "Congo, The Democratic Republic of the [country in Africa]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd621445",
+            "tagType": "catalog-no",
+            "tagValue": "621445",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddMount Karisimbi",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Mount Karisimbi",
+          },
+          Object {
+            "key": "collecting-statedddaaddN Ö sluttningen av Mt Karissimbi, Birunga volcanoes",
+            "tagType": "collecting-stated",
+            "tagValue": "N Ö sluttningen av Mt Karissimbi, Birunga volcanoes",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "male",
+        ],
+        "skeletonTags": Array [
+          "skull (with or without mandible)",
+        ],
+        "skinTags": Array [
+          "unspecified skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd4500906 Gorilla beringei [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "4500906 Gorilla beringei [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "roomddaaddOkänd [room]",
+            "tagType": "room",
+            "tagValue": "Okänd [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddPrimates",
+            "tagType": "order",
+            "tagValue": "Primates",
+          },
+          Object {
+            "key": "familyddaaddHominidae",
+            "tagType": "family",
+            "tagValue": "Hominidae",
+          },
+          Object {
+            "key": "genusddaaddGorilla",
+            "tagType": "genus",
+            "tagValue": "Gorilla",
+          },
+          Object {
+            "key": "speciesddaaddGorilla beringei",
+            "tagType": "species",
+            "tagValue": "Gorilla beringei",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Gorilla beringei",
+      "taxonomyFamily": "Hominidae",
+      "taxonomyGenus": "Gorilla",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Gorilla beringei",
+    },
+    "id": "9",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Skansen Zoological Park",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1960-04-03",
+      "collectingEventInterpretedLocality": Array [
+        "Lärbro",
+      ],
+      "collectingEventProvince": "Gotland",
+      "collectingEventStartDate": "1960-04-03",
+      "deathInformationDeath": Array [
+        "unknown",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "juvenile",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [],
+      "featureTotalLength": Array [
+        "715",
+      ],
+      "idNumeric": 10,
+      "identifiersCatalogNumber": "628009",
+      "identifiersOtherIdentifiers": Array [
+        "9",
+        "9",
+      ],
+      "originInformationLocality": Array [
+        "Lärbo, Gotland",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "room",
+      ],
+      "physicalUnitSkeleton": Array [
+        "complete, disarticulated skeleton Ingen information / 5700503 Pusa hispida",
+      ],
+      "physicalUnitSkin": Array [
+        "complete study skin NRM / Vindsrum kylda",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2008-11-28",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "14",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "10",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "28",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "10",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "25",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "15",
+            "type": "taxon",
+          },
+          Object {
+            "id": "26",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "16",
+            "type": "taxon",
+          },
+          Object {
+            "id": "27",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "17",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [
+            "Till Skansen 28/3-1960",
+          ],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [
+            "KR:1 MAND:1 VE:X CO:X SC:2 HU:2 UL:2 RA:2 MANIS:2 
+PE:1 FE:2 TI:2 PEDIS:2",
+          ],
+          "srcFields": Array [
+            "collectingDateRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1960-04-02T23:00:00.000Z",
+            "startTimestamp": "1960-04-02T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "juvenile",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddSkansen Zoological Park",
+            "tagType": "Collector",
+            "tagValue": "Skansen Zoological Park",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "captive (collecting)",
+          "wild and native (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddGotland [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Gotland [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd628009",
+            "tagType": "catalog-no",
+            "tagValue": "628009",
+          },
+          Object {
+            "key": "old-skin-noddaadd9",
+            "tagType": "old-skin-no",
+            "tagValue": "9",
+          },
+          Object {
+            "key": "old-skeleton-noddaadd9",
+            "tagType": "old-skeleton-no",
+            "tagValue": "9",
+          },
+        ],
+        "lengthTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 715,
+            "tagType": "total-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 203,
+            "tagType": "hind-foot-length",
+          },
+        ],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddLärbro",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Lärbro",
+          },
+          Object {
+            "key": "originddaaddLärbo, Gotland",
+            "tagType": "origin",
+            "tagValue": "Lärbo, Gotland",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "no",
+        ],
+        "sexTags": Array [],
+        "skeletonTags": Array [
+          "complete, disarticulated skeleton",
+        ],
+        "skinTags": Array [
+          "complete study skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd5700503 Pusa hispida [shelf in Ingen information]",
+            "tagType": "shelf",
+            "tagValue": "5700503 Pusa hispida [shelf in Ingen information]",
+          },
+          Object {
+            "key": "roomddaaddIngen information [room]",
+            "tagType": "room",
+            "tagValue": "Ingen information [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "roomddaaddVindsrum kylda [room]",
+            "tagType": "room",
+            "tagValue": "Vindsrum kylda [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddPhocidae",
+            "tagType": "family",
+            "tagValue": "Phocidae",
+          },
+          Object {
+            "key": "genusddaaddPusa",
+            "tagType": "genus",
+            "tagValue": "Pusa",
+          },
+          Object {
+            "key": "speciesddaaddPusa hispida",
+            "tagType": "species",
+            "tagValue": "Pusa hispida",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Pusa hispida",
+      "taxonomyFamily": "Phocidae",
+      "taxonomyGenus": "Pusa",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Pusa hispida",
+    },
+    "id": "10",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Söderström, L",
+      ],
+      "collectingEventCountry": "Ecuador",
+      "collectingEventEndDate": "1913-04-20",
+      "collectingEventInterpretedLocality": Array [
+        "Gualea",
+      ],
+      "collectingEventLocality": Array [
+        "Ecuador, Gualea, Ilambo.",
+      ],
+      "collectingEventProvince": "Pichincha",
+      "featureAge": Array [],
+      "featureAgeStage": Array [],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "male",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 11,
+      "identifiersCatalogNumber": "630096",
+      "identifiersOtherIdentifiers": Array [
+        "6",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "shelf",
+      ],
+      "physicalUnitSkeleton": Array [
+        "skull (with or without mandible) Omistliga samlingar / 3631800 Anoura sp.",
+      ],
+      "physicalUnitSkin": Array [
+        "complete, mounted skin Omistliga samlingar / 3631800 Anoura sp.",
+      ],
+      "recordEventCataloged": Array [
+        "1994-10-11 by [masked]",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2006-11-07",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "20",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "19",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "20",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "19",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "20",
+            "type": "place",
+          },
+          Object {
+            "id": "24",
+            "type": "place",
+          },
+          Object {
+            "id": "25",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "30",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "21",
+            "type": "taxon",
+          },
+          Object {
+            "id": "31",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "22",
+            "type": "taxon",
+          },
+          Object {
+            "id": "2",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "23",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [
+            "Described as new subsp. Lonchoglossa wiedi aequatoris by Lönnberg, E. (Arkiv för Zoologi (KVA) 14:4 p 65-66). Now regarded as a synonym for Anoura caudifer.",
+          ],
+          "srcFields": Array [
+            "taxonomyRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [
+            "Described as new subsp. Lonchoglossa wiedi aequatoris by Lönnberg, E. (Arkiv för Zoologi (KVA) 14:4 p 65-66). Now regarded as a synonym for Anoura caudifer.",
+          ],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1913-04-19T23:00:00.000Z",
+            "startTimestamp": "1599-12-31T22:47:48.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "unknown",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddSöderström, L",
+            "tagType": "Collector",
+            "tagValue": "Söderström, L",
+          },
+          Object {
+            "key": "Determined byddaaddStanczak, Adam",
+            "tagType": "Determined by",
+            "tagValue": "Stanczak, Adam",
+          },
+          Object {
+            "key": "Catalog card created byddaadd[masked]",
+            "tagType": "Catalog card created by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [
+          "cranium",
+          "mandibula",
+        ],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddSouth America [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "South America [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddEcuador [country in South America]",
+            "tagType": "country",
+            "tagValue": "Ecuador [country in South America]",
+          },
+          Object {
+            "key": "provinceddaaddPichincha [province in Ecuador]",
+            "tagType": "province",
+            "tagValue": "Pichincha [province in Ecuador]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd630096",
+            "tagType": "catalog-no",
+            "tagValue": "630096",
+          },
+          Object {
+            "key": "old-skeleton-noddaadd6",
+            "tagType": "old-skeleton-no",
+            "tagValue": "6",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddGualea",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Gualea",
+          },
+          Object {
+            "key": "collecting-statedddaaddEcuador, Gualea, Ilambo.",
+            "tagType": "collecting-stated",
+            "tagValue": "Ecuador, Gualea, Ilambo.",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "male",
+        ],
+        "skeletonTags": Array [
+          "skull (with or without mandible)",
+        ],
+        "skinTags": Array [
+          "complete, mounted skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd3631800 Anoura sp. [shelf in Omistliga samlingar]",
+            "tagType": "shelf",
+            "tagValue": "3631800 Anoura sp. [shelf in Omistliga samlingar]",
+          },
+          Object {
+            "key": "roomddaaddOmistliga samlingar [room]",
+            "tagType": "room",
+            "tagValue": "Omistliga samlingar [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd3631800 Anoura sp. [shelf in Omistliga samlingar]",
+            "tagType": "shelf",
+            "tagValue": "3631800 Anoura sp. [shelf in Omistliga samlingar]",
+          },
+          Object {
+            "key": "roomddaaddOmistliga samlingar [room]",
+            "tagType": "room",
+            "tagValue": "Omistliga samlingar [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddChiroptera",
+            "tagType": "order",
+            "tagValue": "Chiroptera",
+          },
+          Object {
+            "key": "familyddaaddPhyllostomidae",
+            "tagType": "family",
+            "tagValue": "Phyllostomidae",
+          },
+          Object {
+            "key": "genusddaaddAnoura",
+            "tagType": "genus",
+            "tagValue": "Anoura",
+          },
+        ],
+        "weightTags": Array [],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Anoura",
+      "taxonomyFamily": "Phyllostomidae",
+      "taxonomyGenus": "Anoura",
+      "taxonomyRank": "genus",
+    },
+    "id": "11",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Police",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1980-10-30",
+      "collectingEventInterpretedLocality": Array [
+        "Sollefteå, Multrå",
+      ],
+      "collectingEventLocality": Array [
+        "Ångermanland,",
+      ],
+      "collectingEventProvince": "Ångermanland",
+      "collectingEventStartDate": "1980-10-30",
+      "deathInformationDeath": Array [
+        "traffic",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "adult",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "female",
+      ],
+      "featureTotalLength": Array [
+        "1090",
+      ],
+      "idNumeric": 12,
+      "identifiersCatalogNumber": "805176",
+      "identifiersOtherIdentifiers": Array [
+        "5176",
+        "5176",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "mountingwall",
+        "shelf",
+      ],
+      "physicalUnitOtherPreparation": Array [
+        "unspecified other preparation Ingen information / 5520606 Lynx lynx",
+      ],
+      "physicalUnitSkeleton": Array [
+        "complete, mounted skeleton Bensalen / 5520606 Lynx lynx",
+      ],
+      "physicalUnitSkin": Array [
+        "complete study skin Lodjursrum, köl 1213 / Låda 25",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2007-05-24",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "8",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "16",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "15",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "13",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "10",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "17",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "20",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "7",
+            "type": "taxon",
+          },
+          Object {
+            "id": "21",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "8",
+            "type": "taxon",
+          },
+          Object {
+            "id": "9",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "9",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [
+            "MGG-sample",
+          ],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [
+            "Collected: During 1980; Date Arrived: 1980503",
+          ],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [
+            "Killed by car",
+          ],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [
+            "Greybrownish with black spots on back, legs and stomach",
+          ],
+          "specimenRemarks": Array [
+            "Gonader unders av JE 11/12 80\\\\n\\"; Sampled for isotope analysis: Loan 2015-37",
+          ],
+          "srcFields": Array [
+            "collectingDateRemarks",
+            "deathRemarks",
+            "physicalObjectsRemarks",
+            "aSinglePhysicalObjectRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1980-10-29T23:00:00.000Z",
+            "startTimestamp": "1980-10-29T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "adult",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddPolice",
+            "tagType": "Collector",
+            "tagValue": "Police",
+          },
+          Object {
+            "key": "Handed in byddaaddPolice Sollefteå",
+            "tagType": "Handed in by",
+            "tagValue": "Police Sollefteå",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddÅngermanland [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Ångermanland [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd805176",
+            "tagType": "catalog-no",
+            "tagValue": "805176",
+          },
+          Object {
+            "key": "old-skin-noddaadd5176",
+            "tagType": "old-skin-no",
+            "tagValue": "5176",
+          },
+          Object {
+            "key": "old-skeleton-noddaadd5176",
+            "tagType": "old-skeleton-no",
+            "tagValue": "5176",
+          },
+        ],
+        "lengthTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 1090,
+            "tagType": "total-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 90,
+            "tagType": "ear-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 250,
+            "tagType": "hind-foot-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 210,
+            "tagType": "tail-to-anus-length",
+          },
+        ],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddSollefteå, Multrå",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Sollefteå, Multrå",
+          },
+          Object {
+            "key": "collecting-statedddaaddÅngermanland,",
+            "tagType": "collecting-stated",
+            "tagValue": "Ångermanland,",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "unspecified other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "female",
+        ],
+        "skeletonTags": Array [
+          "complete, mounted skeleton",
+        ],
+        "skinTags": Array [
+          "complete study skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd5520606 Lynx lynx [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "5520606 Lynx lynx [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "mountingWallddaaddLåda 25 [mountingWall in Lodjursrum, köl 1213]",
+            "tagType": "mountingWall",
+            "tagValue": "Låda 25 [mountingWall in Lodjursrum, köl 1213]",
+          },
+          Object {
+            "key": "roomddaaddLodjursrum, köl 1213 [room]",
+            "tagType": "room",
+            "tagValue": "Lodjursrum, köl 1213 [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd5520606 Lynx lynx [shelf in Ingen information]",
+            "tagType": "shelf",
+            "tagValue": "5520606 Lynx lynx [shelf in Ingen information]",
+          },
+          Object {
+            "key": "roomddaaddIngen information [room]",
+            "tagType": "room",
+            "tagValue": "Ingen information [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddFelidae",
+            "tagType": "family",
+            "tagValue": "Felidae",
+          },
+          Object {
+            "key": "genusddaaddLynx",
+            "tagType": "genus",
+            "tagValue": "Lynx",
+          },
+          Object {
+            "key": "speciesddaaddLynx lynx",
+            "tagType": "species",
+            "tagValue": "Lynx lynx",
+          },
+        ],
+        "weightTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 16000,
+            "tagType": "unknown-weight-type",
+          },
+        ],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Lynx lynx",
+      "taxonomyFamily": "Felidae",
+      "taxonomyGenus": "Lynx",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Lynx lynx",
+    },
+    "id": "12",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Norén, Eric",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1982-01-26",
+      "collectingEventInterpretedLocality": Array [
+        "Sorsele,Vitnjuln",
+      ],
+      "collectingEventLocality": Array [
+        "Sorsele, Vitnjuln, Grans sameby.",
+      ],
+      "collectingEventProvince": "Lycksele Lappmark",
+      "deathInformationDeath": Array [
+        "hunt, shot",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "unknown",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [
+        "13.4",
+      ],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "male",
+      ],
+      "featureTotalLength": Array [
+        "95.5",
+      ],
+      "idNumeric": 13,
+      "identifiersCatalogNumber": "825005",
+      "identifiersOtherIdentifiers": Array [
+        "A825005",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "room",
+        "shelf",
+      ],
+      "physicalUnitOtherPreparation": Array [
+        "unspecified other preparation Ingen information / 5203003 Gulo gulo",
+      ],
+      "physicalUnitSkeleton": Array [
+        "partial skeleton with skull Bensalen / 5203003 Gulo gulo",
+      ],
+      "physicalUnitSkin": Array [
+        "unspecified skin NRM / Annan Institution",
+      ],
+      "recordEventCataloged": Array [
+        "[masked]",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2018-03-06",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "7",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "2",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "12",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "10",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "13",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "22",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "10",
+            "type": "taxon",
+          },
+          Object {
+            "id": "23",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "11",
+            "type": "taxon",
+          },
+          Object {
+            "id": "8",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "12",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [
+            "Skin at another institution",
+            "MGG-sample",
+          ],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [
+            "Uppgiven dödsdag:820122, kl  0830.",
+          ],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [],
+          "specimenRemarks": Array [
+            "Skin to other institution.
+Länstyrelsens naturvårdsenhet har framfört önskemål om att djuret ska ingå i Naturrum, Ammarnäs.
+Jakttillstånd finns enligt uppgift.
+Penisben finnes.
+Biocidprov tagna.",
+          ],
+          "srcFields": Array [
+            "collectingDateRemarks",
+            "aSinglePhysicalObjectRemarks",
+            "aSinglePhysicalObjectRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1982-01-25T23:00:00.000Z",
+            "startTimestamp": "1599-12-31T22:47:48.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "unknown",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddNorén, Eric",
+            "tagType": "Collector",
+            "tagValue": "Norén, Eric",
+          },
+          Object {
+            "key": "Handed in byddaaddPolice Sorsele",
+            "tagType": "Handed in by",
+            "tagValue": "Police Sorsele",
+          },
+          Object {
+            "key": "Catalog card created byddaadd[masked]",
+            "tagType": "Catalog card created by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [
+          "cranium",
+          "mandibula",
+          "costae",
+          "scapula",
+          "pelvis",
+          "femur",
+        ],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddLycksele Lappmark [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Lycksele Lappmark [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd825005",
+            "tagType": "catalog-no",
+            "tagValue": "825005",
+          },
+          Object {
+            "key": "old-skeleton-noddaaddA825005",
+            "tagType": "old-skeleton-no",
+            "tagValue": "A825005",
+          },
+        ],
+        "lengthTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 95.5,
+            "tagType": "total-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 54,
+            "tagType": "ear-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 174,
+            "tagType": "hind-foot-length",
+          },
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 220,
+            "tagType": "tail-to-anus-length",
+          },
+        ],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddSorsele,Vitnjuln",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Sorsele,Vitnjuln",
+          },
+          Object {
+            "key": "collecting-statedddaaddSorsele, Vitnjuln, Grans sameby.",
+            "tagType": "collecting-stated",
+            "tagValue": "Sorsele, Vitnjuln, Grans sameby.",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "unspecified other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "male",
+        ],
+        "skeletonTags": Array [
+          "partial skeleton with skull",
+        ],
+        "skinTags": Array [
+          "unspecified skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd5203003 Gulo gulo [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "5203003 Gulo gulo [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "roomddaaddAnnan Institution [room]",
+            "tagType": "room",
+            "tagValue": "Annan Institution [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd5203003 Gulo gulo [shelf in Ingen information]",
+            "tagType": "shelf",
+            "tagValue": "5203003 Gulo gulo [shelf in Ingen information]",
+          },
+          Object {
+            "key": "roomddaaddIngen information [room]",
+            "tagType": "room",
+            "tagValue": "Ingen information [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddMustelidae",
+            "tagType": "family",
+            "tagValue": "Mustelidae",
+          },
+          Object {
+            "key": "genusddaaddGulo",
+            "tagType": "genus",
+            "tagValue": "Gulo",
+          },
+          Object {
+            "key": "speciesddaaddGulo gulo",
+            "tagType": "species",
+            "tagValue": "Gulo gulo",
+          },
+        ],
+        "weightTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 13.4,
+            "tagType": "complete-body-weight",
+          },
+        ],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Gulo gulo",
+      "taxonomyFamily": "Mustelidae",
+      "taxonomyGenus": "Gulo",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Gulo gulo",
+    },
+    "id": "13",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Mortensen, Peter",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1994-02-02",
+      "collectingEventInterpretedLocality": Array [
+        "Bogesund, Röskär",
+      ],
+      "collectingEventLocality": Array [
+        "Bogesund, Rödskär",
+      ],
+      "collectingEventProvince": "Uppland",
+      "collectingEventStartDate": "1994-02-02",
+      "deathInformationDeath": Array [
+        "hunt, shot",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "juvenile",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "male",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 14,
+      "identifiersCatalogNumber": "956051",
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+      ],
+      "physicalUnitSkeleton": Array [
+        "some bones, < 30% Bensalen / 7803903 Capreolus capreolus",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2018-04-20",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "9",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "16",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "16",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "2",
+            "type": "taxon",
+          },
+          Object {
+            "id": "17",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "3",
+            "type": "taxon",
+          },
+          Object {
+            "id": "18",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "4",
+            "type": "taxon",
+          },
+          Object {
+            "id": "11",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "5",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [
+            "Skin discarded from collection",
+          ],
+          "specimenRemarks": Array [
+            "Kranie finns på Grimsö med nummer B215-93",
+          ],
+          "srcFields": Array [
+            "physicalObjectsRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1994-02-01T23:00:00.000Z",
+            "startTimestamp": "1994-02-01T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "juvenile",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddMortensen, Peter",
+            "tagType": "Collector",
+            "tagValue": "Mortensen, Peter",
+          },
+          Object {
+            "key": "Determined byddaaddMortensen, Peter",
+            "tagType": "Determined by",
+            "tagValue": "Mortensen, Peter",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [],
+        "conditionTags": Array [
+          "fresh",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddUppland [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Uppland [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd956051",
+            "tagType": "catalog-no",
+            "tagValue": "956051",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddBogesund, Röskär",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Bogesund, Röskär",
+          },
+          Object {
+            "key": "collecting-statedddaaddBogesund, Rödskär",
+            "tagType": "collecting-stated",
+            "tagValue": "Bogesund, Rödskär",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "male",
+        ],
+        "skeletonTags": Array [
+          "some bones, < 30%",
+        ],
+        "skinTags": Array [
+          "no skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd7803903 Capreolus capreolus [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "7803903 Capreolus capreolus [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddArtiodactyla",
+            "tagType": "order",
+            "tagValue": "Artiodactyla",
+          },
+          Object {
+            "key": "familyddaaddCervidae",
+            "tagType": "family",
+            "tagValue": "Cervidae",
+          },
+          Object {
+            "key": "genusddaaddCapreolus",
+            "tagType": "genus",
+            "tagValue": "Capreolus",
+          },
+          Object {
+            "key": "speciesddaaddCapreolus capreolus",
+            "tagType": "species",
+            "tagValue": "Capreolus capreolus",
+          },
+        ],
+        "weightTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 9333,
+            "tagType": "unknown-weight-type",
+          },
+        ],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Capreolus capreolus",
+      "taxonomyFamily": "Cervidae",
+      "taxonomyGenus": "Capreolus",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Capreolus capreolus",
+    },
+    "id": "14",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Löding, Tomas Olof",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1998-03-23",
+      "collectingEventInterpretedLocality": Array [
+        "Åre, Husåberget",
+      ],
+      "collectingEventLocality": Array [
+        "Husåberget",
+      ],
+      "collectingEventProvince": "Jämtland",
+      "collectingEventStartDate": "1998-03-23",
+      "deathInformationDeath": Array [
+        "hunt, trap",
+      ],
+      "featureAge": Array [
+        "2",
+      ],
+      "featureAgeStage": Array [
+        "adult",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [
+        "13000",
+      ],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "male",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 15,
+      "identifiersCatalogNumber": "985093",
+      "identifiersOtherIdentifiers": Array [
+        "V0253/98",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+        "shelf",
+      ],
+      "physicalUnitOtherPreparation": Array [
+        "unspecified other preparation Ingen information / 5520606 Lynx lynx",
+      ],
+      "physicalUnitSkeleton": Array [
+        "skull (with or without mandible) Bensalen / 5520606 Lynx lynx",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2018-02-13",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "8",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "13",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "10",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "11",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "20",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "7",
+            "type": "taxon",
+          },
+          Object {
+            "id": "21",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "8",
+            "type": "taxon",
+          },
+          Object {
+            "id": "9",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "9",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [
+            "Biocidprover",
+          ],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [
+            "skyddsjakt",
+          ],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [
+            "Kan vara förväxlat med 98/5647
+
+Skin not added to collection",
+          ],
+          "specimenRemarks": Array [],
+          "srcFields": Array [
+            "deathRemarks",
+            "physicalObjectsRemarks",
+            "aSinglePhysicalObjectRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [
+          2,
+        ],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1998-03-22T23:00:00.000Z",
+            "startTimestamp": "1998-03-22T23:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "adult",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddLöding, Tomas Olof",
+            "tagType": "Collector",
+            "tagValue": "Löding, Tomas Olof",
+          },
+          Object {
+            "key": "Handed in byddaaddSwedish Veterinary Association",
+            "tagType": "Handed in by",
+            "tagValue": "Swedish Veterinary Association",
+          },
+          Object {
+            "key": "Determined byddaaddCederholm, Ingrid",
+            "tagType": "Determined by",
+            "tagValue": "Cederholm, Ingrid",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [
+          "cranium",
+          "mandibula",
+        ],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddJämtland [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Jämtland [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd985093",
+            "tagType": "catalog-no",
+            "tagValue": "985093",
+          },
+          Object {
+            "key": "sva-noddaaddV0253/98",
+            "tagType": "sva-no",
+            "tagValue": "V0253/98",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddÅre, Husåberget",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Åre, Husåberget",
+          },
+          Object {
+            "key": "collecting-statedddaaddHusåberget",
+            "tagType": "collecting-stated",
+            "tagValue": "Husåberget",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "unspecified other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "male",
+        ],
+        "skeletonTags": Array [
+          "skull (with or without mandible)",
+        ],
+        "skinTags": Array [
+          "no skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd5520606 Lynx lynx [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "5520606 Lynx lynx [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+          Object {
+            "key": "shelfddaadd5520606 Lynx lynx [shelf in Ingen information]",
+            "tagType": "shelf",
+            "tagValue": "5520606 Lynx lynx [shelf in Ingen information]",
+          },
+          Object {
+            "key": "roomddaaddIngen information [room]",
+            "tagType": "room",
+            "tagValue": "Ingen information [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddFelidae",
+            "tagType": "family",
+            "tagValue": "Felidae",
+          },
+          Object {
+            "key": "genusddaaddLynx",
+            "tagType": "genus",
+            "tagValue": "Lynx",
+          },
+          Object {
+            "key": "speciesddaaddLynx lynx",
+            "tagType": "species",
+            "tagValue": "Lynx lynx",
+          },
+        ],
+        "weightTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 13000,
+            "tagType": "complete-body-weight",
+          },
+        ],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Lynx lynx",
+      "taxonomyFamily": "Felidae",
+      "taxonomyGenus": "Lynx",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Lynx lynx",
+    },
+    "id": "15",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "collectingEventCollectors": Array [
+        "Police - Jokkmokk",
+      ],
+      "collectingEventCountry": "Sweden",
+      "collectingEventEndDate": "1998-06-20",
+      "collectingEventInterpretedLocality": Array [
+        "Sareks nationalpark",
+      ],
+      "collectingEventLocality": Array [
+        "Lu., Sareks nationalpark",
+      ],
+      "collectingEventProvince": "Lule Lappmark",
+      "collectingEventStartDate": "1998-06-20",
+      "deathInformationDeath": Array [
+        "other",
+      ],
+      "featureAge": Array [],
+      "featureAgeStage": Array [
+        "adult",
+      ],
+      "featureBodyLength": Array [],
+      "featureCompleteBodyWeight": Array [
+        "10.88",
+      ],
+      "featureCondition": Array [],
+      "featureSex": Array [
+        "female",
+      ],
+      "featureTotalLength": Array [],
+      "idNumeric": 16,
+      "identifiersCatalogNumber": "985729",
+      "identifiersOtherIdentifiers": Array [
+        "V0615/98",
+      ],
+      "physicalObjectStorageLocationGroups": Array [
+        "shelf",
+      ],
+      "physicalUnitSkeleton": Array [
+        "complete, disarticulated skeleton Bensalen / 5203003 Gulo gulo",
+      ],
+      "recordEventCataloged": Array [
+        "[masked]",
+      ],
+      "recordEventLastModified": Array [
+        "timestamp",
+      ],
+      "recordEventRegistered": Array [
+        "2018-03-06",
+      ],
+      "searchOnlyFields": Object {
+        "relatedResources": Array [
+          Object {
+            "id": "7",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "3",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "storageLocation",
+          },
+          Object {
+            "id": "1",
+            "type": "place",
+          },
+          Object {
+            "id": "6",
+            "type": "place",
+          },
+          Object {
+            "id": "9",
+            "type": "place",
+          },
+          Object {
+            "id": "12",
+            "type": "place",
+          },
+          Object {
+            "id": "15",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "1",
+            "type": "taxon",
+          },
+          Object {
+            "id": "19",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "6",
+            "type": "taxon",
+          },
+          Object {
+            "id": "22",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "10",
+            "type": "taxon",
+          },
+          Object {
+            "id": "23",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "11",
+            "type": "taxon",
+          },
+          Object {
+            "id": "8",
+            "type": "taxonName",
+          },
+          Object {
+            "id": "12",
+            "type": "taxon",
+          },
+        ],
+        "remarksObject": Object {
+          "aSinglePhysicalObjectRemarks": Array [],
+          "acquisitionRemarks": Array [],
+          "collectingDateRemarks": Array [],
+          "collectingInformationRemarks": Array [],
+          "curatorialAssessmentRemarks": Array [],
+          "deathRemarks": Array [
+            "Såret efter sändare rupterat.",
+          ],
+          "determinationRemarks": Array [],
+          "originRemarks": Array [],
+          "physicalObjectsRemarks": Array [
+            "Skin not added to collection",
+          ],
+          "specimenRemarks": Array [
+            "00-0k0-925F",
+          ],
+          "srcFields": Array [
+            "deathRemarks",
+            "physicalObjectsRemarks",
+            "specimenRemarks",
+          ],
+          "taxonomyRemarks": Array [],
+        },
+        "searchAge": Array [],
+        "searchDate": Array [
+          Object {
+            "dateType": "collecting-event-start-date",
+            "endTimestamp": "1998-06-19T22:00:00.000Z",
+            "startTimestamp": "1998-06-19T22:00:00.000Z",
+          },
+        ],
+      },
+      "tags": Object {
+        "ageStageTags": Array [
+          "adult",
+        ],
+        "agentTags": Array [
+          Object {
+            "key": "CollectorddaaddPolice - Jokkmokk",
+            "tagType": "Collector",
+            "tagValue": "Police - Jokkmokk",
+          },
+          Object {
+            "key": "Handed in byddaaddSVA",
+            "tagType": "Handed in by",
+            "tagValue": "SVA",
+          },
+          Object {
+            "key": "Determined byddaaddHansson, Anders",
+            "tagType": "Determined by",
+            "tagValue": "Hansson, Anders",
+          },
+          Object {
+            "key": "Catalog card created byddaadd[masked]",
+            "tagType": "Catalog card created by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+          Object {
+            "key": "Record history byddaadd[masked]",
+            "tagType": "Record history by",
+            "tagValue": "[masked]",
+          },
+        ],
+        "appearanceTags": Array [
+          "wild and native (collecting)",
+          "unknown (origin)",
+        ],
+        "boneTags": Array [
+          "cranium",
+          "mandibula",
+          "vertebrae",
+          "costae",
+          "scapula",
+          "humerus",
+          "ulna",
+          "radius",
+          "manus",
+          "pelvis",
+          "femur",
+          "tibia",
+          "pedis",
+        ],
+        "conditionTags": Array [
+          "unknown",
+        ],
+        "dateTags": Array [
+          "collectingEventStartDate",
+        ],
+        "higherGeographyTags": Array [
+          Object {
+            "key": "planetddaaddThe Earth [planet in undefined]",
+            "tagType": "planet",
+            "tagValue": "The Earth [planet in undefined]",
+          },
+          Object {
+            "key": "continent-oceanddaaddEurope [continent-ocean in The Earth]",
+            "tagType": "continent-ocean",
+            "tagValue": "Europe [continent-ocean in The Earth]",
+          },
+          Object {
+            "key": "countryddaaddSweden [country in Europe]",
+            "tagType": "country",
+            "tagValue": "Sweden [country in Europe]",
+          },
+          Object {
+            "key": "provinceddaaddLule Lappmark [province in Sweden]",
+            "tagType": "province",
+            "tagValue": "Lule Lappmark [province in Sweden]",
+          },
+        ],
+        "identifierTags": Array [
+          Object {
+            "key": "catalog-noddaadd985729",
+            "tagType": "catalog-no",
+            "tagValue": "985729",
+          },
+          Object {
+            "key": "sva-noddaaddV0615/98",
+            "tagType": "sva-no",
+            "tagValue": "V0615/98",
+          },
+        ],
+        "lengthTags": Array [],
+        "locationTags": Array [
+          Object {
+            "key": "collecting-interpretedddaaddSareks nationalpark",
+            "tagType": "collecting-interpreted",
+            "tagValue": "Sareks nationalpark",
+          },
+          Object {
+            "key": "collecting-statedddaaddLu., Sareks nationalpark",
+            "tagType": "collecting-stated",
+            "tagValue": "Lu., Sareks nationalpark",
+          },
+        ],
+        "otherPreparationTags": Array [
+          "no other preparation",
+        ],
+        "selectiveBreedingTags": Array [
+          "unknown",
+        ],
+        "sexTags": Array [
+          "female",
+        ],
+        "skeletonTags": Array [
+          "complete, disarticulated skeleton",
+        ],
+        "skinTags": Array [
+          "no skin",
+        ],
+        "storageLocationTags": Array [
+          Object {
+            "key": "shelfddaadd5203003 Gulo gulo [shelf in Bensalen]",
+            "tagType": "shelf",
+            "tagValue": "5203003 Gulo gulo [shelf in Bensalen]",
+          },
+          Object {
+            "key": "roomddaaddBensalen [room]",
+            "tagType": "room",
+            "tagValue": "Bensalen [room]",
+          },
+          Object {
+            "key": "institutionddaaddNRM [institution]",
+            "tagType": "institution",
+            "tagValue": "NRM [institution]",
+          },
+        ],
+        "taxonomyTags": Array [
+          Object {
+            "key": "orderddaaddCarnivora",
+            "tagType": "order",
+            "tagValue": "Carnivora",
+          },
+          Object {
+            "key": "familyddaaddMustelidae",
+            "tagType": "family",
+            "tagValue": "Mustelidae",
+          },
+          Object {
+            "key": "genusddaaddGulo",
+            "tagType": "genus",
+            "tagValue": "Gulo",
+          },
+          Object {
+            "key": "speciesddaaddGulo gulo",
+            "tagType": "species",
+            "tagValue": "Gulo gulo",
+          },
+        ],
+        "weightTags": Array [
+          Object {
+            "rangeUnit": "unspecified",
+            "rangeValue": 10.88,
+            "tagType": "complete-body-weight",
+          },
+        ],
+        "wetPreparationTags": Array [
+          "no wet preparation",
+        ],
+      },
+      "taxonomyCuratorialName": "Gulo gulo",
+      "taxonomyFamily": "Mustelidae",
+      "taxonomyGenus": "Gulo",
+      "taxonomyRank": "species",
+      "taxonomySpecies": "Gulo gulo",
+    },
+    "id": "16",
+    "type": "customObject",
+  },
+]
+`;

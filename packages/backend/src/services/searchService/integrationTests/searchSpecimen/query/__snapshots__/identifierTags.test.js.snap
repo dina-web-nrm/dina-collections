@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`searchSpecimen operations - query tags - identifier tag aggregations no filters returns all aggregated identifiers when no filters are present 1`] = `
+exports[`searchSpecimen - query - tags - identifier tag aggregations no filters returns all aggregated identifiers when no filters are present 1`] = `
 Array [
   Object {
     "attributes": Object {
