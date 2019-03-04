@@ -45,7 +45,6 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
-    "fsevents": "^1.2.7",
     "jest": "^22.1.4",
     "nodemon": "^1.14.12",
     "prettier": "1.16.4"
@@ -73,5 +72,8 @@
   "engines": {
     "node": "10.15.1",
     "yarn": "1.10.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.2.7"
   }
 }
