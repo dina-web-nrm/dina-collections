@@ -20,7 +20,7 @@ if [ "$CI_START_API" = true ]; then
   yarn setup:sample-data && cd ./packages/migrations && yarn setup:development
   cd $START_DIRECTORY
   echo "Starting api"
-  cd ./packages/backend && yarn start &
+  cd ./packages/backend && yarn start:node &
   echo "Api started"
   cd $START_DIRECTORY
 fi
