@@ -29,8 +29,8 @@
     "reselect": "^3.0.1",
     "response-time": "^2.3.2",
     "sequelize": "^4.38.0",
-    "swagger-ui-dist": "3.20.6",
     "slack-node": "^0.1.8",
+    "swagger-ui-dist": "3.20.6",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -44,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
+    "fsevents": "^1.2.7",
     "jest": "^22.1.4",
     "nodemon": "^1.14.12",
     "prettier": "1.16.4"
