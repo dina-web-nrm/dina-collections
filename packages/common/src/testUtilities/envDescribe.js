@@ -13,10 +13,11 @@ module.exports = function createEnvDescribe(input) {
   }
 
   let shouldRun = false
-  runInEnv.forEach(env => {
+  shouldRun = runInEnv.every(env => {
     if (process.env[env]) {
-      shouldRun = true
+      return true
     }
+    return false
   })
 
   dontRunInEnv.forEach(env => {
