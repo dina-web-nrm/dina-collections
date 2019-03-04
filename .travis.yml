@@ -60,9 +60,7 @@ matrix:
         - CI_BUILD_BACKEND=true
         - CI_BUILD_MIGRATIONS=true
         - CI_TAG_LATEST=true
-      script:
-        ./packages/scripts/src/bash/docker-build-backend.sh &&
-        ./packages/scripts/src/bash/docker-build-migrations.sh
+      script: ./packages/scripts/src/bash/ci-build.sh
 
     - stage: build
       name: 'Build ui'
