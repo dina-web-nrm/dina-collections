@@ -42,3 +42,13 @@ Cypress.Commands.add('login', (username, password) => {
     cy.log('Did not receive username and password, assuming auth is disabled')
   }
 })
+
+Cypress.Commands.add(
+  'shouldHaveHref',
+  {
+    prevSubject: true,
+  },
+  (subject, href) => {
+    cy.wrap(subject).should('have.attr', 'href', href)
+  }
+)
