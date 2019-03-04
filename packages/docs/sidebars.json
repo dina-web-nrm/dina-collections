@@ -1,0 +1,32 @@
+{
+  "docs": {
+    "Overview": ["index"],
+    "Setup": [
+      "setup/index",
+      "setup/setup-editor",
+      "setup/setup-locally-for-development",
+      "setup/setup-locally-with-docker",
+      "setup/configure-auth"
+    ],
+    "System overview": ["systemOverview/index"],
+    "Configuration": [
+      "configuration/index",
+      {
+        "type": "subcategory",
+        "label": "Testing",
+        "ids": ["configuration/env"]
+      }
+    ],
+    "Developer guide": [
+      "developerGuide/index",
+      {
+        "type": "subcategory",
+        "label": "Testing",
+        "ids": ["testing/index", "testing/e2e/index"]
+      }
+    ]
+  },
+  "docs-other": {
+    "First Category": ["doc4", "doc5"]
+  }
+}

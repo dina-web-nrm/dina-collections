@@ -29,8 +29,10 @@ echo "Pushing TAG=$TRAVIS_TAG to Dockerhub"
 docker push dina/dina-collections-api:$TRAVIS_TAG
 docker push dina/dina-collections-ui:$TRAVIS_TAG
 docker push dina/dina-collections-migrations:$TRAVIS_TAG
+docker push dina/dina-collections-docs:$TRAVIS_TAG
 
 docker push dina/dina-collections-api:latest
 docker push dina/dina-collections-ui:latest
 docker push dina/dina-collections-migrations:latest
+docker push dina/dina-collections-docs:latest
 

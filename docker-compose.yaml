@@ -101,6 +101,15 @@ services:
       - api
       - keycloak
 
+  docs:
+    image: "dina/dina-collections-docs:${TAG}"
+    container_name: dina-collections-docs
+    expose:
+    - "80"
+    env_file:
+      - ./env/.docs
+    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
   baseWorker:
     image: "dina/dina-collections-api:${TAG}"
     container_name: dina-base-worker

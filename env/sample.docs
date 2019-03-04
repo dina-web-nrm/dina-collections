@@ -1,0 +1,3 @@
+VIRTUAL_HOST=local-docs.dina-web.net
+NGINX_HOST=local-docs.dina-web.net
+NGINX_PORT=80

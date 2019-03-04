@@ -133,6 +133,27 @@ if [ "$CI_TEST_MIGRATIONS_LINT" = true ]; then
   cd $START_DIRECTORY
 fi
 
+if [ "$CI_TEST_DOCS_LINT" = true ]; then
+  echo "Running test suite CI_TEST_DOCS_LINT"
+  cd ./packages/docs && yarn lint
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  cd $START_DIRECTORY
+fi
+
+if [ "$CI_TEST_DOCS_UNIT" = true ]; then
+  echo "Running test suite CI_TEST_DOCS_UNIT"
+  cd ./packages/docs && yarn test:unit
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  cd $START_DIRECTORY
+fi
 
 
 

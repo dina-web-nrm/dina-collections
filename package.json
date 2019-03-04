@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all -p build:ui build:semantic-ui",
+    "build": "yarn build:ui && yarn build:semantic-ui",
     "build:changelog": "auto-changelog -p --tag-pattern '^((?!rc|test).)*$' --template changelog-template.hbs && git add CHANGELOG.md",
     "build:common:js": "cd ./packages/common && yarn build:js",
     "build:common:schema:api": "cd ./packages/common && yarn build:schema:api",
@@ -14,6 +14,7 @@
     "build:docker:migrations": "CI_BUILD_MIGRATIONS=true ./packages/scripts/src/bash/ci-build.sh",
     "build:docker:style": "CI_BUILD_STYLE=true ./packages/scripts/src/bash/ci-build.sh",
     "build:docker:ui": "CI_BUILD_UI=true ./packages/scripts/src/bash/ci-build.sh",
+    "build:docs": "cd ./packages/docs && yarn build",
     "build:index:specimen": "yarn start:dbs && cd ./packages/migrations && yarn elasticsearch:development:rebuild-index:specimen-search",
     "build:semantic-ui": "cd ./packages/dina-style && yarn build:docs",
     "build:trees": "yarn build:trees:ui && yarn build:trees:common && yarn build:trees:backend",
@@ -31,7 +32,7 @@
     "import:data:sample": "yarn start:dbs && yarn exec:local rm-data.sh || true && yarn setup:sample-data && cd ./packages/migrations && yarn setup:development",
     "import:data:sql": "yarn remote:import:data:sql -s local && yarn build:index:specimen",
     "import:data:zip": "yarn start:dbs && node ./packages/scripts/src/js/unpackDataFiles.js -s local && cd ./packages/migrations && yarn setup:development",
-    "install": "yarn install:schema && yarn install:semantic-ui && yarn install:ui && yarn install:backend && yarn install:common && yarn install:scripts && yarn install:migrations",
+    "install": "yarn install:schema && yarn install:semantic-ui && yarn install:ui && yarn install:backend && yarn install:common && yarn install:scripts && yarn install:migrations && yarn install:docs",
     "install:backend": "cd ./packages/backend && yarn install",
     "install:common": "cd ./packages/common && yarn install",
     "install:migrations": "cd ./packages/migrations && yarn install",
@@ -39,6 +40,7 @@
     "install:scripts": "cd ./packages/scripts && yarn install",
     "install:semantic-ui": "cd ./packages/dina-style && yarn install",
     "install:ui": "cd ./packages/ui && yarn install",
+    "install:docs": "cd ./packages/docs && yarn install",
     "migrate:latest": "cd ./packages/migrations && yarn db:development:migrate:latest",
     "migrate:one": "cd ./packages/migrations && yarn db:development:migrate:one",
     "migrate:undo:one": "cd ./packages/migrations && yarn db:development:migrate:undo:one",
@@ -81,6 +83,7 @@
     "setup:sample-data": "yarn exec:local create-sample-data.sh",
     "start:backend": "yarn start:dbs && cd ./packages/backend && yarn start",
     "start:dbs": "yarn start:postgres && yarn start:elasticsearch && yarn start:mysql",
+    "start:docs": "cd ./packages/docs && yarn start",
     "start:elasticsearch": "docker-compose -f docker-compose.yaml up -d elasticsearch",
     "start:keycloak": "yarn start:mysql && docker-compose -f docker-compose.yaml up -d keycloak",
     "start:kibana": "docker-compose -f docker-compose.dev-utils.yaml up -d kibana",
@@ -117,7 +120,6 @@
   ],
   "license": "AGPL-3.0",
   "dependencies": {
-    "npm-run-all": "^4.1.2",
     "prettier": "1.16.4"
   },
   "engines": {
