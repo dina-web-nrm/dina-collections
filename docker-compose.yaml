@@ -42,7 +42,7 @@ services:
       - 8080:8080
     volumes:
       - ./packages/keycloak/themes/dina:/opt/jboss/keycloak/themes/dina
-      - ./packages/keycloak/dev-export.json:/opt/jboss/keycloak/dev-export.json
+      - ./packages/keycloak/dina-realm${REALM}.json:/opt/jboss/keycloak/dev-export.json
     depends_on:
       - mysql
 
@@ -59,7 +59,7 @@ services:
     container_name: postgres
     env_file:
       - ./env/.postgres
-    restart: always    
+    restart: always
     ports:
       - 5432:5432
     volumes:
