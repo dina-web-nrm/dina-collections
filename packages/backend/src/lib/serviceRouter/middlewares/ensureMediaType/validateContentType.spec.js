@@ -1,4 +1,4 @@
-const unitDescribe = require('common/src/testUtilities/unitDescribe')
+const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
 const validateContentType = require('./validateContentType')
 
 unitDescribe('lib/serviceRouter/middlewares/validateContentType', () => {

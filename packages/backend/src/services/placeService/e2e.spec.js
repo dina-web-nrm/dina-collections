@@ -1,4 +1,7 @@
-const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
+const {
+  describe: apiDescribe,
+  hook,
+} = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 
@@ -45,7 +48,7 @@ it('Runs place tests', () => {
 
 apiDescribe('place', () => {
   let authToken
-  beforeAll(() => {
+  hook(beforeAll, () => {
     return waitForApiRestart().then(() => {
       authToken = 1234
     })
@@ -69,7 +72,7 @@ apiDescribe('place', () => {
   })
   describe('getPlace', () => {
     let id
-    beforeEach(() => {
+    hook(beforeEach, () => {
       return makeTestCall({
         authToken,
         body: simplePlace,
@@ -93,7 +96,7 @@ apiDescribe('place', () => {
   })
   describe('updatePlace', () => {
     let id
-    beforeEach(() => {
+    hook(beforeEach, () => {
       return makeTestCall({
         authToken,
         body: simplePlace,

@@ -1,4 +1,7 @@
-const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
+const {
+  describe: apiDescribe,
+  hook,
+} = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../../utilities/test/waitForApiRestart')
 const expectError404 = require('../../../../../utilities/test/expectError404')
@@ -19,7 +22,7 @@ apiDescribe('specimen', () => {
     describe('update', () => {
       describe('base cases', () => {
         let existingId
-        beforeEach(() => {
+        hook(beforeEach, () => {
           return makeTestCall({
             body: fullFormExample,
             flushModels: ['catalogNumber'],
@@ -62,7 +65,7 @@ apiDescribe('specimen', () => {
       describe('relation cases', () => {
         describe('existing physicalObject relations', () => {
           let simpleDataPhysicalObjectRelationsId
-          beforeEach(() => {
+          hook(beforeEach, () => {
             return makeTestCall({
               body: getTestData('simpleDataPhysicalObjectRelations'),
               flushModels: ['catalogNumber'],
@@ -244,7 +247,7 @@ apiDescribe('specimen', () => {
 
       describe('no existing relations', () => {
         let simpleDataNoRelationsId
-        beforeEach(() => {
+        hook(beforeEach, () => {
           return makeTestCall({
             body: getTestData('simpleDataNoRelations'),
             flushModels: ['catalogNumber'],

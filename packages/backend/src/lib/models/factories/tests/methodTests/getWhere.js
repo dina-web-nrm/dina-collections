@@ -1,3 +1,4 @@
+const { hook } = require('common/src/testUtilities/envBackendDb')
 const createGetManyFilterSpecifications = require('../../../../data/filters/utilities/createGetManyFilterSpecifications')
 const { getTestData } = require('../testData')
 
@@ -14,7 +15,7 @@ module.exports = function testGetWhere({ config, setupModel }) {
       const firstItem = getTestData('itemPersonWithId', 0)
       const secondItem = getTestData('itemPersonWithId', 1)
 
-      beforeAll(() => {
+      hook(beforeAll, () => {
         return setupModel({ config }).then(createdModel => {
           model = createdModel
           return model.create({ allowId: true, item: firstItem }).then(() => {
@@ -36,7 +37,7 @@ module.exports = function testGetWhere({ config, setupModel }) {
       const firstItem = getTestData('itemPersonWithId', 0)
       const secondItem = getTestData('itemPersonWithId', 1)
 
-      beforeAll(() => {
+      hook(beforeAll, () => {
         return setupModel({ config }).then(createdModel => {
           model = createdModel
           return model.create({ allowId: true, item: secondItem }).then(() => {
@@ -61,7 +62,7 @@ module.exports = function testGetWhere({ config, setupModel }) {
     const firstItem = getTestData('itemPersonWithId', 0)
     const secondItem = getTestData('itemPersonWithId', 1)
     const thirdItem = getTestData('itemPersonWithId', 2)
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return setupModel({ config }).then(createdModel => {
         model = createdModel
         return model.create({ allowId: true, item: firstItem }).then(() => {
@@ -163,7 +164,7 @@ module.exports = function testGetWhere({ config, setupModel }) {
     const firstItem = getTestData('itemPersonWithId', 0)
     const secondItem = getTestData('itemPersonWithId', 1)
     const thirdItem = getTestData('itemPersonWithId', 2)
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return setupModel({ config }).then(createdModel => {
         model = createdModel
         return model.create({ allowId: true, item: firstItem }).then(() => {

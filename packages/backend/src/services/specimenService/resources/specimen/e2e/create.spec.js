@@ -1,4 +1,7 @@
-const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
+const {
+  describe: apiDescribe,
+  hook,
+} = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../../utilities/test/waitForApiRestart')
 const expectSingleResourceResponse = require('../../../../../utilities/test/expectSingleResourceResponse')
@@ -10,7 +13,7 @@ const fullFormExample = require('../exampleRequests/createSuccess')
 
 apiDescribe('specimen', () => {
   describe.skip('deactivated', () => {
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return waitForApiRestart()
     })
     describe('create', () => {

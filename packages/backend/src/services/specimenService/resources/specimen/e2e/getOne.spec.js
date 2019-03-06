@@ -1,4 +1,7 @@
-const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
+const {
+  describe: apiDescribe,
+  // hook,
+} = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../../utilities/test/waitForApiRestart')
 const expectSingleResourceResponse = require('../../../../../utilities/test/expectSingleResourceResponse')
@@ -6,16 +9,18 @@ const expectError404 = require('../../../../../utilities/test/expectError404')
 
 const { getTestData } = require('../testData')
 
+const hook = () => null
+
 apiDescribe('specimen', () => {
   describe.skip('deactivated', () => {
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return waitForApiRestart()
     })
 
     describe('getOne', () => {
       describe('base cases', () => {
         let simpleDataNoRelationsId
-        beforeAll(() => {
+        hook(beforeAll, () => {
           return makeTestCall({
             body: getTestData('simpleDataNoRelations'),
             flushModels: ['catalogNumber'],
@@ -55,7 +60,7 @@ apiDescribe('specimen', () => {
           const simpleDataPhysicalObjectRelations = getTestData(
             'simpleDataPhysicalObjectRelations'
           )
-          beforeAll(() => {
+          hook(beforeAll, () => {
             return makeTestCall({
               body: getTestData('simpleDataPhysicalObjectRelations'),
               flushModels: ['catalogNumber'],
@@ -90,7 +95,7 @@ apiDescribe('specimen', () => {
         })
         describe('existing relations dont include relationships if not in query', () => {
           let simpleDataPhysicalObjectRelationsId
-          beforeAll(() => {
+          hook(beforeAll, () => {
             return makeTestCall({
               body: getTestData('simpleDataPhysicalObjectRelations'),
               flushModels: ['catalogNumber'],
@@ -117,7 +122,7 @@ apiDescribe('specimen', () => {
         })
         describe('existing relations only include specific relationships if in query', () => {
           let simpleDataPhysicalObjectRelationsId
-          beforeAll(() => {
+          hook(beforeAll, () => {
             return makeTestCall({
               body: getTestData('simpleDataPhysicalObjectRelations'),
               flushModels: ['catalogNumber'],
@@ -152,7 +157,7 @@ apiDescribe('specimen', () => {
 
         describe('no existing relations', () => {
           let simpleDataNoRelationsId
-          beforeAll(() => {
+          hook(beforeAll, () => {
             return makeTestCall({
               body: getTestData('simpleDataNoRelations'),
               flushModels: ['catalogNumber'],

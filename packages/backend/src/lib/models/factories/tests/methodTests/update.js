@@ -1,3 +1,4 @@
+const { hook } = require('common/src/testUtilities/envBackendDb')
 const { getTestData } = require('../testData')
 
 module.exports = function testUpdate({ config, modelType, setupModel }) {
@@ -6,7 +7,7 @@ module.exports = function testUpdate({ config, modelType, setupModel }) {
     describe('Updating item without relationships', () => {
       let itemFirstVersion
       let itemSecondVersion
-      beforeEach(() => {
+      hook(beforeEach, () => {
         itemFirstVersion = getTestData('itemPersonWithIdVersions', 0)
         itemSecondVersion = getTestData('itemPersonWithIdVersions', 1)
         return setupModel({ config }).then(createdModel => {
@@ -125,7 +126,7 @@ module.exports = function testUpdate({ config, modelType, setupModel }) {
         let itemFirstVersion
         let itemSecondVersion
         let itemThirdVersion
-        beforeAll(() => {
+        hook(beforeAll, () => {
           itemFirstVersion = getTestData('itemPersonWithIdVersions', 0)
           itemSecondVersion = getTestData('itemPersonWithIdVersions', 1)
           itemThirdVersion = getTestData('itemPersonWithIdVersions', 2)
