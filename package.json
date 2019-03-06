@@ -85,7 +85,7 @@
     "start:dbs": "yarn start:postgres && yarn start:elasticsearch && yarn start:mysql",
     "start:docs": "cd ./packages/docs && yarn start",
     "start:elasticsearch": "docker-compose -f docker-compose.yaml up -d elasticsearch",
-    "start:keycloak": "yarn start:mysql && docker-compose -f docker-compose.yaml up -d keycloak",
+    "start:keycloak": "yarn start:mysql && REALM=-dev docker-compose -f docker-compose.yaml up -d keycloak",
     "start:kibana": "docker-compose -f docker-compose.dev-utils.yaml up -d kibana",
     "start:mysql": "docker-compose -f docker-compose.yaml up -d mysql",
     "start:postgres": "docker-compose -f docker-compose.yaml up -d postgres",
