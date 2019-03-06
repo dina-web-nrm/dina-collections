@@ -1,3 +1,5 @@
+const { hook } = require('common/src/testUtilities/envBackendDb')
+
 module.exports = function createModelTests({
   availableMethods,
   availableTypes,
@@ -10,7 +12,7 @@ module.exports = function createModelTests({
 }) {
   describe(`Test model: ${modelType}`, () => {
     let model
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return setupModel({ config }).then(createdModel => {
         model = createdModel
       })

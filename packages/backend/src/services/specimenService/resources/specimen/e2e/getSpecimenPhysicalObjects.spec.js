@@ -1,4 +1,7 @@
-const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
+const {
+  describe: apiDescribe,
+  // hook,
+} = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../../utilities/test/waitForApiRestart')
 const expectError404 = require('../../../../../utilities/test/expectError404')
@@ -6,16 +9,18 @@ const expectMultipleResourcesResponse = require('../../../../../utilities/test/e
 
 const { getTestData } = require('../testData')
 
+const hook = () => null
+
 apiDescribe('specimen', () => {
   describe.skip('deactivated', () => {
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return waitForApiRestart()
     })
 
     describe('getSpecimenPhysicalObjects', () => {
       describe('existing relations', () => {
         let simpleDataPhysicalObjectRelationsId
-        beforeAll(() => {
+        hook(beforeAll, () => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalObjectRelations'),
             flushModels: ['catalogNumber'],
@@ -60,7 +65,7 @@ apiDescribe('specimen', () => {
 
       describe('no existing relations', () => {
         let simpleDataNoRelationsId
-        beforeAll(() => {
+        hook(beforeAll, () => {
           return makeTestCall({
             body: getTestData('simpleDataNoRelations'),
             flushModels: ['catalogNumber'],

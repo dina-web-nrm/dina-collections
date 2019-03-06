@@ -1,4 +1,4 @@
-const unitDescribe = require('common/src/testUtilities/unitDescribe')
+const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
 const testOperationSpecification = require('./testOperationSpecification')
 
 unitDescribe('lib/services/utilities/testOperationSpecification', () => {

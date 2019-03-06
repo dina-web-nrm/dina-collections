@@ -1,9 +1,10 @@
+const { hook } = require('common/src/testUtilities/envBackendDb')
 const { getTestData } = require('../testData')
 
 module.exports = function testCreate({ config, setupModel }) {
   describe('Test create', () => {
     let model
-    beforeEach(() => {
+    hook(beforeEach, () => {
       return setupModel({ config }).then(createdModel => {
         model = createdModel
       })

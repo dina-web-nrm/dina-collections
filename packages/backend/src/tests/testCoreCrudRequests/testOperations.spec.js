@@ -1,5 +1,8 @@
 /* eslint-disable no-console  */
-const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
+const {
+  describe: apiDescribe,
+  hook,
+} = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 const serviceDefinitions = require('../../services')
@@ -246,7 +249,7 @@ const testApi = ({ service, serviceName }) => {
 }
 
 apiDescribe('lib/tests/testCoreCrudRequests', () => {
-  beforeAll(() => {
+  hook(beforeAll, () => {
     return waitForApiRestart()
   })
 
