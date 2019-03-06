@@ -46,7 +46,11 @@ export class RawLoginForm extends Component {
     log.render()
     const { error, handleSubmit, pristine, submitting } = this.props
     return (
-      <Form error={!!error} onSubmit={handleSubmit(this.handleLogin)}>
+      <Form
+        data-testid="login-form"
+        error={!!error}
+        onSubmit={handleSubmit(this.handleLogin)}
+      >
         <Segment size="large" stacked>
           <Field
             autoComplete="off"
@@ -71,6 +75,7 @@ export class RawLoginForm extends Component {
 
           <Button
             color="green"
+            data-testid="login-button"
             disabled={pristine || submitting}
             fluid
             name="btn-login" // used for trying cucumber test script
