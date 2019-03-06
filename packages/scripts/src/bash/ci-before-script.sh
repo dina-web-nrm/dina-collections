@@ -25,3 +25,12 @@ if [ "$CI_START_API" = true ]; then
   cd $START_DIRECTORY
 fi
 
+
+if [ "$CI_START_UI" = true ]; then
+  : "${CI_START_API?CI_START_API Has to be true}"
+  echo "Starting UI"
+  cd ./packages/ui && yarn start &
+  echo "UI started"
+  cd $START_DIRECTORY
+fi
+
