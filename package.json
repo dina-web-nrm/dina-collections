@@ -10,6 +10,7 @@
     "build:common:schema:api": "cd ./packages/common && yarn build:schema:api",
     "build:common:schema:models": "cd ./packages/common && yarn build:schema:models",
     "build:data:zip": "node ./packages/scripts/src/js/packageJsonDataFiles.js -s local",
+    "build:sample:sql": "yarn import:data:sample && yarn export:data:sql -f ./data/sample.dump.sql",
     "build:docker:backend": "CI_BUILD_BACKEND=true ./packages/scripts/src/bash/ci-build.sh",
     "build:docker:migrations": "CI_BUILD_MIGRATIONS=true ./packages/scripts/src/bash/ci-build.sh",
     "build:docker:style": "CI_BUILD_STYLE=true ./packages/scripts/src/bash/ci-build.sh",
