@@ -13,26 +13,100 @@ if [ -z "$CI" ]; then
 fi
 
 
-echo "Info: This script builds the ui docker-images"
-
-
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-
-
-echo "Info: This script publishes 3 images to Docker"
-echo "Pushing TAG=$TRAVIS_TAG to Dockerhub"
-
-#docker login
 
 #push to docker hub
 
-docker push dina/dina-collections-api:$TRAVIS_TAG
-docker push dina/dina-collections-ui:$TRAVIS_TAG
-docker push dina/dina-collections-migrations:$TRAVIS_TAG
-docker push dina/dina-collections-docs:$TRAVIS_TAG
+if [ "$CI_PUBLISH_UI" = true ]; then
+  echo "Pushing dina/dina-collections-ui:$TRAVIS_TAG"
+  docker push dina/dina-collections-ui:$TRAVIS_TAG
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
 
-docker push dina/dina-collections-api:latest
-docker push dina/dina-collections-ui:latest
-docker push dina/dina-collections-migrations:latest
-docker push dina/dina-collections-docs:latest
+  if [ "$CI_TAG_LATEST" = true ]; then
+    echo "Pushing dina/dina-collections-ui:latest"
+    docker push dina/dina-collections-ui:latest
+    if [ $? -ne 0 ]; then
+      echo "Aborting. exit is not 0"
+      exit 1
+    fi
+  fi
+fi
+
+if [ "$CI_PUBLISH_API" = true ]; then
+  echo "Pushing dina/dina-collections-api:$TRAVIS_TAG"
+  docker push dina/dina-collections-api:$TRAVIS_TAG
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  if [ "$CI_TAG_LATEST" = true ]; then
+    echo "Publishing dina/dina-collections-api:latest"
+    docker push dina/dina-collections-api:latest
+    if [ $? -ne 0 ]; then
+      echo "Aborting. exit is not 0"
+      exit 1
+    fi
+  fi
+fi
+
+if [ "$CI_PUBLISH_MIGRATIONS" = true ]; then
+  echo "Pushing dina/dina-collections-migrations:$TRAVIS_TAG"
+  docker push dina/dina-collections-migrations:$TRAVIS_TAG
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  if [ "$CI_TAG_LATEST" = true ]; then
+    echo "Publishing dina/dina-collections-migrations:latest"
+    docker push dina/dina-collections-migrations:latest
+    if [ $? -ne 0 ]; then
+      echo "Aborting. exit is not 0"
+      exit 1
+    fi
+  fi
+fi
+
+if [ "$CI_PUBLISH_DOCS" = true ]; then
+  echo "Pushing dina/dina-collections-docs:$TRAVIS_TAG"
+  docker push dina/dina-collections-docs:$TRAVIS_TAG
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  if [ "$CI_TAG_LATEST" = true ]; then
+    echo "Publishing dina/dina-collections-docs:latest"
+    docker push dina/dina-collections-docs:latest
+    if [ $? -ne 0 ]; then
+      echo "Aborting. exit is not 0"
+      exit 1
+    fi
+  fi
+fi
+
+if [ "$CI_PUBLISH_STYLE" = true ]; then
+  echo "Pushing dina/dina-semantic-ui-docs:$TRAVIS_TAG"
+  docker push dina/dina-semantic-ui-docs:$TRAVIS_TAG
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  if [ "$CI_TAG_LATEST" = true ]; then
+    echo "Publishing dina/dina-semantic-ui-docs:latest"
+    docker push dina/dina-semantic-ui-docs:latest
+    if [ $? -ne 0 ]; then
+      echo "Aborting. exit is not 0"
+      exit 1
+    fi
+  fi
+fi
+
+
+
 
