@@ -1,6 +1,9 @@
 {
   "helpTexts": {
     "individual": {
+      "taxonInformation": {
+        "typeStatus": {}
+      },
       "typeStatus": {
         "en": "<p>This is a type status</p>\n",
         "sv": "<p>Detta är en typstatus</p>\n"
