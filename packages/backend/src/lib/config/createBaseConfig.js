@@ -1,5 +1,5 @@
-const path = require('path')
 const schemaInterface = require('common/src/schemaInterface')
+const findRootPath = require('common/src/fs/findRootPath')
 const { ensureNodeEnv, readKey, readBoolKey } = require('../../lib/config/env')
 const createPostgresDbConfig = require('./createPostgresDbConfig')
 
@@ -106,12 +106,7 @@ const elasticsearch = {
 }
 
 const fileInteractor = {
-  rootPath: path.join(
-    __dirname,
-    process.env.BACKEND_IN_NODE_MODULES
-      ? '../../../../../../../'
-      : '../../../../../'
-  ),
+  rootPath: findRootPath(),
 }
 
 const baseConfig = {
