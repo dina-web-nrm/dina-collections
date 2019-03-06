@@ -1,9 +1,7 @@
+const findRootPath = require('common/src/fs/findRootPath')
 const path = require('path')
 
-const relativeRootPath = process.env.BACKEND_IN_NODE_MODULES
-  ? '../../../../../../../'
-  : '../../../../../'
-const dataPath = path.join(__dirname, relativeRootPath, 'data')
+const dataPath = path.join(findRootPath(), 'data')
 
 const buildInitialDataFileName = (resource, isJson) => {
   if (isJson) {
