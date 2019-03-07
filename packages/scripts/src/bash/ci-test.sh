@@ -11,6 +11,29 @@ if [ "$CI_TEST_ALL" = true ]; then
   fi
 fi
 
+if [ "$CI_TEST_E2E_LOCAL" = true ]; then
+  echo "Running test suite CI_TEST_E2E"
+  cd ./packages/ui && yarn test:e2e:ci:local
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  cd $START_DIRECTORY
+fi
+
+if [ "$CI_TEST_E2E_DOCKER" = true ]; then
+  echo "Running test suite CI_TEST_E2E_DOCKERIZED"
+  cd ./packages/ui && yarn test:e2e:ci:docker
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+
+  cd $START_DIRECTORY
+fi
+
+
 if [ "$CI_TEST_UI_LINT" = true ]; then
   echo "Running test suite CI_TEST_UI_LINT"
   cd ./packages/ui && yarn lint:js

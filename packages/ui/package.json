@@ -79,9 +79,11 @@
     "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --watch",
     "test:unit:watch": "react-scripts test --watch",
     "test:e2e": "yarn test:e2e:headless",
-    "test:e2e:watch": "yarn test:e2e:headful",
+    "test:e2e:ci:docker": "wait-on http://local-ui.dina-web.net && yarn test:e2e:headless --config baseUrl=http://local-ui.dina-web.net",
+    "test:e2e:ci:local": "wait-on http://127.0.0.1:3000 && yarn test:e2e:headless --record",
     "test:e2e:headful": "yarn cypress open",
     "test:e2e:headless": "yarn cypress run",
+    "test:e2e:watch": "yarn test:e2e:headful",
     "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
     "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
   },
@@ -106,7 +108,8 @@
     "npm-run-all": "^4.1.1",
     "raw-loader": "^0.5.1",
     "react-test-renderer": "^16.2.0",
-    "source-map-explorer": "^1.5.0"
+    "source-map-explorer": "^1.5.0",
+    "wait-on": "^3.2.0"
   },
   "browserslist": [
     ">0.2%",

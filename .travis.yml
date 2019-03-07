@@ -3,34 +3,41 @@ language: node_js
 matrix:
   include:
     - stage: test
-      name: 'Test UI lint'
+      name: 'Test e2e dockerized'
+      if: tag IS present
       env:
-        - CI_INSTALL_UI=true
-        - CI_TEST_UI_LINT=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    - stage: test
-      name: 'Test UI unit'
-      env:
-        - CI_INSTALL_UI=true
-        - CI_TEST_UI_UNIT=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    - stage: test
-      name: 'Test models, common, scripts and docs'
-      env:
+        - CI_INSTALL_BACKEND=true
         - CI_INSTALL_COMMON=true
-        - CI_INSTALL_DOCS=true
-        - CI_INSTALL_MODELS=true
+        - CI_INSTALL_MIGRATIONS=true
         - CI_INSTALL_SCRIPTS=true
+        - CI_INSTALL_UI=true
+        - CI_LINK_BACKEND=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_MIGRATIONS=true
+        - CI_LINK_SCRIPTS=true
+        - CI_LINK_UI=true
+        - CI_START_E2E_DOCKER=true
+        - CI_TEST_E2E_DOCKER=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test e2e locally'
+      if: tag IS blank
+      env:
+        - CI_INSTALL_BACKEND=true
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_MIGRATIONS=true
         - CI_INSTALL_SCRIPTS=true
-        - CI_TEST_COMMON_LINT=true
-        - CI_TEST_COMMON_UNIT=true
-        - CI_TEST_DOCS_LINT=true
-        - CI_TEST_DOCS_UNIT=true
-        - CI_TEST_MODELS_LINT=true
-        - CI_TEST_MODELS_LINT=true
-        - CI_TEST_SCRIPTS_LINT=true
+        - CI_INSTALL_UI=true
+        - CI_LINK_BACKEND=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_MIGRATIONS=true
+        - CI_LINK_SCRIPTS=true
+        - CI_LINK_UI=true
+        - CI_START_API=true
+        - CI_START_DATABASES=true
+        - CI_START_UI=true
+        - CI_TEST_E2E_LOCAL=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
@@ -52,6 +59,37 @@ matrix:
         - CI_TEST_BACKEND_UNIT=true
         - CI_TEST_MIGRATIONS_LINT=true
         - DISABLE_AUTH=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test models, common, scripts and docs'
+      env:
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_DOCS=true
+        - CI_INSTALL_MODELS=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_TEST_COMMON_LINT=true
+        - CI_TEST_COMMON_UNIT=true
+        - CI_TEST_DOCS_LINT=true
+        - CI_TEST_DOCS_UNIT=true
+        - CI_TEST_MODELS_LINT=true
+        - CI_TEST_MODELS_LINT=true
+        - CI_TEST_SCRIPTS_LINT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test UI unit'
+      env:
+        - CI_INSTALL_UI=true
+        - CI_TEST_UI_UNIT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test UI lint'
+      env:
+        - CI_INSTALL_UI=true
+        - CI_TEST_UI_LINT=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: build
@@ -103,6 +141,14 @@ stages:
   - name: test
   - name: build
     if: tag IS present
+
+addons:
+  hosts:
+    - local-api.dina-web.net
+    - local-docs.dina-web.net
+    - local-keycloak.dina-web.net
+    - local-style.dina-web.net
+    - local-ui.dina-web.net
 
 branches:
   except:

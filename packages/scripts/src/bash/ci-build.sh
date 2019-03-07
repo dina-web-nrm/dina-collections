@@ -94,7 +94,7 @@ if [ "$CI_BUILD_DOCS" = true ]; then
 
   if [ "$CI_TAG_LATEST" = true ]; then
     echo "Tagging latest"
-    docker build -f ./packages/docs/Dockerfile -t dina/dina-collections-docs:$TRAVIS_TAG -t dina/docs:latest ./packages/docs;
+    docker build -f ./packages/docs/Dockerfile -t dina/dina-collections-docs:$TRAVIS_TAG -t dina/dina-collections-docs:latest ./packages/docs;
   else
     echo "Not tagging latest"
     docker build -f ./packages/docs/Dockerfile -t dina/dina-collections-docs:$TRAVIS_TAG ./packages/docs;
