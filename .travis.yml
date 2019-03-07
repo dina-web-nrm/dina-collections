@@ -36,6 +36,7 @@ matrix:
         - CI_LINK_UI=true
         - CI_START_API=true
         - CI_START_DATABASES=true
+        - CI_START_KEYCLOAK=true
         - CI_START_UI=true
         - CI_TEST_E2E_LOCAL=true
       script: ./packages/scripts/src/bash/ci-test.sh
