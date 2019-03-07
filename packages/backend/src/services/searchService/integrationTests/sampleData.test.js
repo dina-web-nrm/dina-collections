@@ -4,10 +4,13 @@ const {
 } = require('common/src/testUtilities/envBackendApiSampleData')
 const waitForApiRestart = require('../../../utilities/test/waitForApiRestart')
 const { makeTestCall } = require('../../../utilities/test/testApiClient')
+const resetElasticSpecimenIndex = require('../../../utilities/test/db/resetElasticSpecimenIndex')
 
 apiSampleDescribe(`sample data`, () => {
   hook(beforeAll, () => {
-    return waitForApiRestart()
+    return waitForApiRestart().then(() => {
+      return resetElasticSpecimenIndex()
+    })
   })
 
   it('returns expected sample data', () => {
