@@ -1,4 +1,7 @@
-const apiDescribe = require('common/src/testUtilities/backendApiDescribe')
+const {
+  describe: apiDescribe,
+  // hook,
+} = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../../utilities/test/waitForApiRestart')
 const expectMultipleResourcesResponse = require('../../../../../utilities/test/expectMultipleResourcesResponse')
@@ -8,14 +11,16 @@ const { getTestData } = require('../testData')
 
 const validCatalogNumber = '123456'
 
+const hook = () => null
+
 apiDescribe('specimen', () => {
   describe.skip('deactivated', () => {
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return waitForApiRestart()
     })
 
     describe('get', () => {
-      beforeEach(() => {
+      hook(beforeEach, () => {
         return makeTestCall({
           body: fullFormExample,
           flushModels: ['catalogNumber'],
@@ -65,7 +70,7 @@ apiDescribe('specimen', () => {
         })
       })
       describe('relation cases', () => {
-        beforeAll(() => {
+        hook(beforeAll, () => {
           const modifiedSimpleDataRelations = getTestData(
             'simpleDataPhysicalObjectRelations'
           )

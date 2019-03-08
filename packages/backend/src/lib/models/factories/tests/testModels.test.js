@@ -1,5 +1,6 @@
-const dbDescribe = require('common/src/testUtilities/backendDbDescribe')
-const unitDescribe = require('common/src/testUtilities/unitDescribe')
+const {
+  describe: dbDescribe,
+} = require('common/src/testUtilities/envBackendDb')
 const config = require('../../../../apps/test/config')
 const setupTestModels = require('./setupTestModels')
 const createModelTests = require('./createModelTests')
@@ -38,48 +39,27 @@ const availableMethods = [
   'update',
 ]
 
-describe('lib/models/factories/test/modelFactories', () => {
+dbDescribe('lib/models/factories/test/modelFactories', () => {
   it('Core methods included in availableMethods', () => {
     coreMethods.forEach(coreMethod => {
       expect(availableMethods.includes(coreMethod)).toBeTruthy()
     })
   })
 
-  unitDescribe('No external datasource', () => {
-    const modelsToTest = ['inMemoryDocumentModel', 'inMemoryViewDocumentModel']
-    const methodsToTest = availableMethods // ['getById']
+  const modelsToTest = Object.keys(setupTestModels)
+  const methodsToTest = availableMethods // ['getById']
 
-    modelsToTest.forEach(key => {
-      const setupFunction = setupTestModels[key]
-      createModelTests({
-        availableMethods,
-        availableTypes,
-        config,
-        coreMethods,
-        methodsToTest,
-        methodTests,
-        modelType: key,
-        setupModel: setupFunction,
-      })
-    })
-  })
-
-  dbDescribe('With external datasources', () => {
-    const modelsToTest = Object.keys(setupTestModels)
-    const methodsToTest = availableMethods // ['getById']
-
-    modelsToTest.forEach(key => {
-      const setupFunction = setupTestModels[key]
-      createModelTests({
-        availableMethods,
-        availableTypes,
-        config,
-        coreMethods,
-        methodsToTest,
-        methodTests,
-        modelType: key,
-        setupModel: setupFunction,
-      })
+  modelsToTest.forEach(key => {
+    const setupFunction = setupTestModels[key]
+    createModelTests({
+      availableMethods,
+      availableTypes,
+      config,
+      coreMethods,
+      methodsToTest,
+      methodTests,
+      modelType: key,
+      setupModel: setupFunction,
     })
   })
 })

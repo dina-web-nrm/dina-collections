@@ -1,3 +1,4 @@
+const { hook } = require('common/src/testUtilities/envBackendDb')
 const { getTestData } = require('../testData')
 
 module.exports = function testDel({ config, setupModel }) {
@@ -5,7 +6,7 @@ module.exports = function testDel({ config, setupModel }) {
     let model
     const item = getTestData('itemPersonWithId')
 
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return setupModel({ config }).then(createdModel => {
         model = createdModel
         return model.create({ allowId: true, item })

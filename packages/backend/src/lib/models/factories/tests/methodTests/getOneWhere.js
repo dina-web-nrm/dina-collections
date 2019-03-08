@@ -1,3 +1,4 @@
+const { hook } = require('common/src/testUtilities/envBackendDb')
 const { getTestData } = require('../testData')
 
 const compareItemToRes = (item, res) => {
@@ -13,7 +14,7 @@ module.exports = function testGetOneWhere({ config, setupModel }) {
       const firstItem = getTestData('itemPersonWithId', 0)
       const secondItem = getTestData('itemPersonWithId', 1)
 
-      beforeAll(() => {
+      hook(beforeAll, () => {
         return setupModel({ config }).then(createdModel => {
           model = createdModel
           return model.create({ allowId: true, item: firstItem }).then(() => {
@@ -33,7 +34,7 @@ module.exports = function testGetOneWhere({ config, setupModel }) {
       const firstItem = getTestData('itemPersonWithId', 0)
       const secondItem = getTestData('itemPersonWithId', 1)
 
-      beforeAll(() => {
+      hook(beforeAll, () => {
         return setupModel({ config }).then(createdModel => {
           model = createdModel
           return model.create({ allowId: true, item: secondItem }).then(() => {
@@ -55,7 +56,7 @@ module.exports = function testGetOneWhere({ config, setupModel }) {
 
     const firstItem = getTestData('itemPersonWithId', 0)
     const secondItem = getTestData('itemPersonWithId', 1)
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return setupModel({ config }).then(createdModel => {
         model = createdModel
         return model.create({ allowId: true, item: secondItem }).then(() => {

@@ -1,4 +1,4 @@
-const unitDescribe = require('common/src/testUtilities/unitDescribe')
+const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
 const buildIncludeArray = require('./buildIncludeArray')
 
 unitDescribe(
