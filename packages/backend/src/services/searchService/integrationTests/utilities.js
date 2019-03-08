@@ -93,7 +93,14 @@ exports.logTags = res => {
 
 exports.runTestCases = ({ buildRequest, testCases }) => {
   testCases.forEach(testCase => {
-    const { aggregate, debug, snapshot, testFn, title } = testCase
+    const {
+      aggregate,
+      debug,
+      expectedCount,
+      snapshot,
+      testFn,
+      title,
+    } = testCase
     const jestTest = debug ? fit : it
 
     jestTest(title, () => {
@@ -113,7 +120,10 @@ exports.runTestCases = ({ buildRequest, testCases }) => {
         if (testFn) {
           testFn(res)
         }
-        expect(res.data.length).toBe(testCase.expectedCount)
+        if (expectedCount !== undefined) {
+          expect(res.data.length).toBe(expectedCount)
+        }
+
         if (snapshot) {
           expect(res.data).toMatchSnapshot()
         }
