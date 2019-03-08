@@ -22,7 +22,7 @@
       }
     ],
     "Developer guide": [
-      "developerGuide/index",
+      "developer-guide/index",
       {
         "type": "subcategory",
         "label": "Testing",
