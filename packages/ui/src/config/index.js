@@ -6,11 +6,6 @@ const config = {
   isDevelopment: process.env.NODE_ENV === 'development',
   isProduction: process.env.NODE_ENV === 'production',
   isTest: process.env.NODE_ENV === 'test',
-  mock:
-    (process.env.REACT_APP_ENABLE_MOCK &&
-      process.env.REACT_APP_ENABLE_MOCK === 'true') ||
-    false,
-  publicUrl: process.env.PUBLIC_URL,
   reduxLogger: {
     enabled:
       process.env.NODE_ENV === 'development' &&
