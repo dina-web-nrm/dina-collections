@@ -1,6 +1,5 @@
-const readInitialData = require('../../../../utilities/readInitialData')
-
 module.exports = function createBatch({
+  fileInteractor,
   numberOfBatchEntries,
   reporter,
   serviceInteractor,
@@ -12,7 +11,12 @@ module.exports = function createBatch({
 }) {
   if (srcFileName) {
     return Promise.resolve().then(() => {
-      const items = readInitialData(srcFileName)
+      const items = fileInteractor.readSync({
+        filePath: `.${srcFileName}.json`,
+        folderPath: 'data',
+        parseJson: true,
+      })
+
       if (!items) {
         return items
       }

@@ -16,7 +16,7 @@ const createServiceInteractorCache = require('../../../serviceInteractor/cache')
 const log = createLog('lib/controllers/views/rebuildView/rebuild')
 
 module.exports = function rebuildView(options) {
-  const { models, operation, serviceInteractor } = options
+  const { models, operation, serviceInteractor, fileInteractor } = options
 
   const {
     transformationSpecification: {
@@ -105,6 +105,7 @@ module.exports = function rebuildView(options) {
           const wrappedBatchFunction = ({ ...args }) => {
             return createBatchFunction({
               ...args,
+              fileInteractor,
               serviceInteractor: serviceInteractorCache,
               srcFileName,
               srcRelationships,
