@@ -23,4 +23,16 @@ describe('fs/findRootPath', () => {
 
     expect(getIsRootPath(rootPath)).toBe(true)
   })
+  it('Finds root path when start path is root path', () => {
+    const rootPath = findRootPath({
+      startPath: findRootPath(),
+    })
+
+    expect(getIsRootPath(rootPath)).toBe(true)
+  })
+  it('Throw error if root path not found', () => {
+    expect(() => {
+      findRootPath({ startPath: path.join(findRootPath(), '../') })
+    }).toThrow()
+  })
 })

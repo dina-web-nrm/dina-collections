@@ -6,6 +6,9 @@ const { REPO_ROOT_NAME } = require('../constants/repo')
 module.exports = function findRootPath({ startPath: startPathInput } = {}) {
   const startPath = startPathInput || path.join(__dirname, '../../../')
   return findRoot(startPath, dir => {
+    if (!dir) {
+      return false
+    }
     const packageJsonPath = path.join(dir, 'package.json')
     const hasPackageJson = fs.existsSync(packageJsonPath)
     if (!hasPackageJson) {
