@@ -37,7 +37,6 @@ const parameterMap = {
     runApiTests: 'API_TESTS',
     runBatchTests: 'BATCH_TESTS',
     runDbTests: 'TEST_DB',
-    testApiUrl: 'TEST_API_URL',
     testAuthUrl: 'TEST_AUTH_URL',
     testPassword: 'TEST_PASSWORD',
     testUsername: 'TEST_USERNAME',

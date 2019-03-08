@@ -12,6 +12,6 @@ module.exports = {
     runApiTests: readBoolKey('API_TESTS'),
     runBatchTests: readBoolKey('BATCH_TESTS'),
     runDbTests: readBoolKey('TEST_DB'),
-    testApiUrl: readKey('TEST_API_URL'),
+    testApiUrl: `http://127.0.0.1:${readKey('API_PORT')}`,
   },
 }

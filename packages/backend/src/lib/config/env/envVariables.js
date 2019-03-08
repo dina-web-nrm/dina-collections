@@ -29,7 +29,6 @@ const testVariables = [
   'API_TESTS',
   'BATCH_TESTS',
   'TEST_DB',
-  'TEST_API_URL',
   'TEST_AUTH_URL',
   'TEST_PASSWORD',
   'TEST_SYNC_MODELS',
