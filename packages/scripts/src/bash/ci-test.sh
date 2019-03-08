@@ -130,8 +130,8 @@ if [ "$CI_TEST_BACKEND_DB" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  exit 0
   echo "Test suite CI_TEST_BACKEND_DB passed"
+  cd $START_DIRECTORY
 fi
 
 
@@ -142,8 +142,8 @@ if [ "$CI_TEST_BACKEND_API" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  exit 0
   echo "Test suite CI_TEST_BACKEND_API passed"
+  cd $START_DIRECTORY
 fi
 
 
