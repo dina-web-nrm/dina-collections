@@ -36,6 +36,11 @@ apiSampleDescribe(`sample data`, () => {
               return 'timestamp'
             }
           )
+          item.attributes.searchOnlyFields.searchDate = item.attributes.searchOnlyFields.searchDate.map(
+            () => {
+              return 'date'
+            }
+          )
           /* eslint-enable no-param-reassign */
         }
         return item

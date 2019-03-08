@@ -128,11 +128,7 @@ Utlånad, lån 2012-21 (Dnr 52-78/2012)",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "2009-12-31T23:00:00.000Z",
-            "startTimestamp": "1599-12-31T22:47:48.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -405,11 +401,7 @@ Type locality in Wilson and reeder doesn't agree with my coordinates.",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1783-12-31T22:47:48.000Z",
-            "startTimestamp": "1599-12-31T22:47:48.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -708,11 +700,7 @@ Type locality in Wilson and reeder doesn't agree with my coordinates.",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1949-05-22T23:00:00.000Z",
-            "startTimestamp": "1599-12-31T22:47:48.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -1343,11 +1331,7 @@ Type locality in Wilson and reeder doesn't agree with my coordinates.",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1941-04-14T23:00:00.000Z",
-            "startTimestamp": "1941-04-14T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -1680,11 +1664,7 @@ Lokalen ändrad från Knivsta s:n till Vallby skogen/PMN",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1931-10-12T23:00:00.000Z",
-            "startTimestamp": "1931-10-12T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -2021,11 +2001,7 @@ Lokalen ändrad från Knivsta s:n till Vallby skogen/PMN",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1921-04-08T23:00:00.000Z",
-            "startTimestamp": "1921-04-08T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -2360,11 +2336,7 @@ Lokalen ändrad från Knivsta s:n till Vallby skogen/PMN",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1938-05-13T23:00:00.000Z",
-            "startTimestamp": "1938-05-13T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -2705,11 +2677,7 @@ Skin not in cold skinroom (2015-02-26 M. Caspers)",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1921-03-23T23:00:00.000Z",
-            "startTimestamp": "1921-03-23T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -3021,11 +2989,7 @@ PE:1 FE:2 TI:2 PEDIS:2",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1960-04-02T23:00:00.000Z",
-            "startTimestamp": "1960-04-02T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -3344,11 +3308,7 @@ PE:1 FE:2 TI:2 PEDIS:2",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1913-04-19T23:00:00.000Z",
-            "startTimestamp": "1599-12-31T22:47:48.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -3704,11 +3664,7 @@ PE:1 FE:2 TI:2 PEDIS:2",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1980-10-29T23:00:00.000Z",
-            "startTimestamp": "1980-10-29T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -4108,11 +4064,7 @@ Biocidprov tagna.",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1982-01-25T23:00:00.000Z",
-            "startTimestamp": "1599-12-31T22:47:48.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -4468,11 +4420,7 @@ Biocidprov tagna.",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1994-02-01T23:00:00.000Z",
-            "startTimestamp": "1994-02-01T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -4795,11 +4743,7 @@ Skin not added to collection",
           2,
         ],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1998-03-22T23:00:00.000Z",
-            "startTimestamp": "1998-03-22T23:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
@@ -5131,11 +5075,7 @@ Skin not added to collection",
         },
         "searchAge": Array [],
         "searchDate": Array [
-          Object {
-            "dateType": "collecting-event-start-date",
-            "endTimestamp": "1998-06-19T22:00:00.000Z",
-            "startTimestamp": "1998-06-19T22:00:00.000Z",
-          },
+          "date",
         ],
       },
       "tags": Object {
