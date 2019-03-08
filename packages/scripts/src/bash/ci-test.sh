@@ -18,7 +18,7 @@ if [ "$CI_TEST_E2E_LOCAL" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_E2E passed"
   cd $START_DIRECTORY
 fi
 
@@ -29,7 +29,7 @@ if [ "$CI_TEST_E2E_DOCKER" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_E2E_DOCKERIZED passed"
   cd $START_DIRECTORY
 fi
 
@@ -41,7 +41,7 @@ if [ "$CI_TEST_UI_LINT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_UI_LINT passed"
   cd $START_DIRECTORY
 fi
 
@@ -52,7 +52,7 @@ if [ "$CI_TEST_UI_UNIT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_UI_UNIT passed"
   cd $START_DIRECTORY
 fi
 
@@ -63,7 +63,7 @@ if [ "$CI_TEST_MODELS_LINT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_MODELS_LINT passed"
   cd $START_DIRECTORY
 fi
 
@@ -74,7 +74,7 @@ if [ "$CI_TEST_COMMON_LINT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_COMMON_LINT passed"
   cd $START_DIRECTORY
 fi
 
@@ -85,7 +85,7 @@ if [ "$CI_TEST_COMMON_UNIT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_COMMON_UNIT passed"
   cd $START_DIRECTORY
 fi
 
@@ -97,7 +97,7 @@ if [ "$CI_TEST_SCRIPTS_LINT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_SCRIPTS_LINT passed"
   cd $START_DIRECTORY
 fi
 
@@ -108,7 +108,7 @@ if [ "$CI_TEST_BACKEND_LINT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_BACKEND_LINT passed"
   cd $START_DIRECTORY
 fi
 
@@ -119,7 +119,7 @@ if [ "$CI_TEST_BACKEND_UNIT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_BACKEND_UNIT passed"
   cd $START_DIRECTORY
 fi
 
@@ -131,6 +131,7 @@ if [ "$CI_TEST_BACKEND_DB" = true ]; then
     exit 1
   fi
   exit 0
+  echo "Test suite CI_TEST_BACKEND_DB passed"
 fi
 
 
@@ -142,6 +143,7 @@ if [ "$CI_TEST_BACKEND_API" = true ]; then
     exit 1
   fi
   exit 0
+  echo "Test suite CI_TEST_BACKEND_API passed"
 fi
 
 
@@ -152,7 +154,7 @@ if [ "$CI_TEST_MIGRATIONS_LINT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_MIGRATIONS_LINT passed"
   cd $START_DIRECTORY
 fi
 
@@ -163,7 +165,7 @@ if [ "$CI_TEST_DOCS_LINT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_DOCS_LINT passed"
   cd $START_DIRECTORY
 fi
 
@@ -174,7 +176,7 @@ if [ "$CI_TEST_DOCS_UNIT" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
+  echo "Test suite CI_TEST_DOCS_UNIT passed"
   cd $START_DIRECTORY
 fi
 
