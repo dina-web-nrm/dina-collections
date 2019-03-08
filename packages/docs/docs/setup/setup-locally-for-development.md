@@ -4,6 +4,9 @@ title: Setup locally for development
 sidebar_label: Setup locally
 ---
 
+This guide will help you clone and setup the repository and then start the
+application with hot reloading for development.
+
 ## Setup Node.js and yarn
 
 We are using nvm (node version manager) to manage node versions. It is possible
@@ -32,7 +35,7 @@ nvm alias default v10.15.1
 
 [Install yarn](https://yarnpkg.com/lang/en/docs/install)
 
-// TODO: Expand on how to switch between versions
+> TODO: Expand on how to switch between versions
 
 ## Clone and setup the repository
 
@@ -122,7 +125,7 @@ compiled.
 
 ### Explore the application
 
-// TODO: Give examples
+> TODO: Give examples
 
 ### Setup editor/IDE
 

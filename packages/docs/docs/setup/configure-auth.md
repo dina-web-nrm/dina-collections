@@ -1,17 +1,15 @@
 ---
 id: configure-auth
-title: Configure auth
+title: Configure authentication
 sidebar_label: Configure auth
 ---
-
-## Configure authentication
 
 We are using keycloak for user authentication and either you disable
 authentication or [setup keycloak](#run-and-configure-keycloak)
 
-// TODO: Explain how to disable auth
+> TODO: Explain how to disable auth
 
-### Start keycloak
+## Start keycloak
 
 ```bash
 make up-keycloak
@@ -19,9 +17,9 @@ make up-keycloak
 
 It will take a while for keycloak to start.
 
-// TODO: Explain how to read keycloak logs
+> TODO: Explain how to read keycloak logs
 
-### Import keycloak dev configuration
+## Import keycloak dev configuration
 
 - Open keycloak admin interface <http://127.0.0.1:8080>
 - Navigate to Administration Console
@@ -29,7 +27,7 @@ It will take a while for keycloak to start.
   `./env/.keycloak`)
 - Inspect top left nav item (should be dina)
 
-### Add test user
+## Add test user
 
 - Press "Users" under "Manage" section in left nav. (Make sure the dina realm is
   selected)

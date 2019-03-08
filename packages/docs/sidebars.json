@@ -8,7 +8,11 @@
       "setup/setup-locally-with-docker",
       "setup/configure-auth"
     ],
-    "System overview": ["systemOverview/index"],
+    "System overview": [
+      "system-overview/index",
+      "system-overview/repository",
+      "system-overview/services"
+    ],
     "Configuration": [
       "configuration/index",
       {
@@ -18,7 +22,7 @@
       }
     ],
     "Developer guide": [
-      "developerGuide/index",
+      "developer-guide/index",
       {
         "type": "subcategory",
         "label": "Testing",

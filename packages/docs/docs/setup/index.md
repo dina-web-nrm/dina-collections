@@ -4,8 +4,6 @@ title: Setup
 sidebar_label: Setup
 ---
 
-# Setup
-
 DINA Collections can be setup in different ways.
 
 Either the system can be run fully with docker or partly with docker. When
@@ -19,4 +17,4 @@ assumes you have `git` installed
 - [Setup locally for development](./setup-locally-for-development.md)
 - [Setup locally with docker](./setup-locally-with-docker.md)
 
-// TODO: Add "Setup on server with docker"
+> TODO: Add "Setup on server with docker"

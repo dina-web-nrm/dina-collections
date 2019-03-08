@@ -4,6 +4,9 @@ title: Setup with docker
 sidebar_label: Setup with docker
 ---
 
+This guide will help you clone and setup the repository and then start the
+application with sample data.
+
 ## Clone and setup the repository
 
 ### Clone the repository
@@ -73,7 +76,7 @@ TAG=latest make load-sample-data
 
 ### Explore the application
 
-// TODO: Give examples
+> TODO: Give examples
 
 ### Stop on your local machine
 

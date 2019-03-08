@@ -4,8 +4,6 @@ title: Setup editor
 sidebar_label: Setup editor
 ---
 
-## Editor setup
-
 Here are some links that may be useful when you want to configure your editor:
 
 - [Syntax highlighting](http://babeljs.io/docs/editors)
