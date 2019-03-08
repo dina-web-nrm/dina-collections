@@ -36,6 +36,7 @@ class Home extends Component {
             <Header
               as="h1"
               content="Collections UI"
+              data-testid="home-header"
               style={{
                 fontSize: '4em',
                 fontWeight: 'normal',
@@ -47,7 +48,7 @@ class Home extends Component {
               content="The DINA project develops an open-source Web-based information management system for natural history data"
               style={{ fontSize: '1.7em', fontWeight: 'normal' }}
             />
-            <a href="#footer">
+            <a data-testid="home-readmore-button" href="#footer">
               <Button color="blue" size="huge">
                 Read more
                 <Icon
@@ -56,7 +57,7 @@ class Home extends Component {
                 />
               </Button>
             </a>
-            <NavLink to="/login">
+            <NavLink data-testid="home-login-button" to="/login">
               <Button color="green" size="huge">
                 Login
                 <Icon name="right arrow" />
@@ -67,7 +68,7 @@ class Home extends Component {
 
         <Segment style={{ padding: '8em 0em' }} vertical>
           <Grid container stackable verticalAlign="top">
-            <Grid.Row>
+            <Grid.Row data-testid="home-descriptions">
               <Grid.Column width={8}>
                 <Segment padded="very">
                   <Header as="h3" style={{ fontSize: '2em' }}>

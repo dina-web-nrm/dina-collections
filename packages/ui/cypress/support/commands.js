@@ -26,19 +26,42 @@
 
 import 'cypress-testing-library/add-commands'
 
-Cypress.Commands.add('login', (username, password) => {
-  if (username && password) {
-    cy.request({
-      body: {
-        client_id: 'dina-rest',
-        grant_type: 'password',
-        password,
-        username,
-      },
-      method: 'POST',
-      url: '/auth/realms/dina/protocol/openid-connect/token',
-    })
-  } else {
-    cy.log('Did not receive username and password, assuming auth is disabled')
+Cypress.Commands.add(
+  'login',
+  ({ username, password, failOnStatusCode = true } = {}) => {
+    if (username && password) {
+      cy.request({
+        body: {
+          client_id: 'dina-rest',
+          grant_type: 'password',
+          password,
+          username,
+        },
+        failOnStatusCode,
+        form: true,
+        method: 'POST',
+        url: '/auth/realms/dina/protocol/openid-connect/token',
+      })
+    } else {
+      cy.log('Did not receive username and password, assuming auth is disabled')
+    }
   }
+)
+
+Cypress.Commands.add('loginWithForm', (username, password) => {
+  cy.visit('/login')
+    .get('[name=username]')
+    .type(username)
+    .get('[name=password]')
+    .type(`${password}{enter}`)
 })
+
+Cypress.Commands.add(
+  'shouldHaveHref',
+  {
+    prevSubject: true,
+  },
+  (subject, href) => {
+    cy.wrap(subject).should('have.attr', 'href', href)
+  }
+)
