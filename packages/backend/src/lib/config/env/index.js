@@ -1,8 +1,19 @@
 const dotenv = require('dotenv')
 const resolveEnvVariables = require('./resolveEnvVariables')
 const ensureNodeEnv = require('./ensureNodeEnv')
+const getEnvFilePath = require('./getEnvFilePath')
 
-dotenv.config()
+const envFilePath = getEnvFilePath({
+  envFileName: '.backend',
+})
+
+if (envFilePath) {
+  dotenv.config({
+    path: envFilePath,
+  })
+} else {
+  dotenv.config()
+}
 
 const {
   requiredEnvVariables,
