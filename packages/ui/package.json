@@ -56,21 +56,15 @@
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
-    "build": "yarn build-css && yarn markdown:build && REACT_APP_ENABLE_MOCK=false react-scripts build",
-    "build-css": "node-less-chokidar src/ -o src/",
-    "build-snippets": "node ./src/scripts/snippets/index.js",
-    "build:mock": "yarn build-css && yarn markdown:build && REACT_APP_ENABLE_MOCK=true react-scripts build",
+    "build": "yarn markdown:build && REACT_APP_ENABLE_MOCK=false react-scripts build",
     "build:trees": "node ./src/scripts/buildFileStructureTrees.js",
-    "eject": "react-scripts eject",
-    "ensure-no-diff": "git diff --exit-code",
     "lint:js": "eslint '**/*.js'",
     "lint:js:fix": "eslint '**/*.js' --fix",
     "markdown:build": "node src/scripts/markdown/buildRenderedMarkdownFiles.js",
     "markdown:watch": "node src/scripts/markdown/watchMarkdownFiles.js",
     "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
-    "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
+    "start": "NODE_PATH=./src/ npm-run-all -p markdown:watch start-js",
     "start-js": "react-scripts start",
-    "start:mock": "REACT_APP_ENABLE_MOCK=true yarn start",
     "test": "yarn lint:js && yarn test:unit",
     "test:coverage": "yarn test:unit --coverage",
     "test:unit": "react-scripts test",
@@ -82,8 +76,7 @@
     "test:e2e:headful": "yarn cypress open",
     "test:e2e:headless": "yarn cypress run",
     "test:e2e:watch": "yarn test:e2e:headful",
-    "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
-    "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
+    "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui"
   },
   "devDependencies": {
     "babel-plugin-dynamic-import-node": "^1.2.0",
