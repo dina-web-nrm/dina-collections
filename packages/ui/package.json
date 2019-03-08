@@ -67,8 +67,6 @@
     "lint:js:fix": "eslint '**/*.js' --fix",
     "markdown:build": "node src/scripts/markdown/buildRenderedMarkdownFiles.js",
     "markdown:watch": "node src/scripts/markdown/watchMarkdownFiles.js",
-    "mount:admin": "MOUNT_APP=admin node ./src/scripts/app/mountApp.js",
-    "mount:collectionsUi": "MOUNT_APP=collectionsUi node ./src/scripts/app/mountApp.js",
     "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
     "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
     "start-js": "react-scripts start",

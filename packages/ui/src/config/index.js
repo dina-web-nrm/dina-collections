@@ -10,7 +10,6 @@ const config = {
     (process.env.REACT_APP_ENABLE_MOCK &&
       process.env.REACT_APP_ENABLE_MOCK === 'true') ||
     false,
-  mountApp: process.env.MOUNT_APP,
   publicUrl: process.env.PUBLIC_URL,
   reduxLogger: {
     enabled:
