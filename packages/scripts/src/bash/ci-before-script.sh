@@ -12,6 +12,13 @@ if [ "$CI_START_DATABASES" = true ]; then
   cd $START_DIRECTORY
 fi
 
+if [ "$CI_START_KEYCLOAK" = true ]; then
+  : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
+  echo "Starting keycloak"
+  yarn start:keycloak
+  cd $START_DIRECTORY
+fi
+
 
 if [ "$CI_START_API" = true ]; then
   : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
