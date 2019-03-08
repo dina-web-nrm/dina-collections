@@ -1,5 +1,4 @@
 API_PORT=80
-AUTH_BASE_URL=http://keycloak:8080/auth
 DB_DATABASE=dina_production
 DB_PASSWORD=mysecretpassword
 DB_URL=postgres
