@@ -73,7 +73,7 @@ TAG=latest make load-sample-data
 
 ### Explore the application
 
-// TODO: Give examples
+> TODO: Give examples
 
 ### Stop on your local machine
 

@@ -32,7 +32,7 @@ nvm alias default v10.15.1
 
 [Install yarn](https://yarnpkg.com/lang/en/docs/install)
 
-// TODO: Expand on how to switch between versions
+> TODO: Expand on how to switch between versions
 
 ## Clone and setup the repository
 
@@ -122,7 +122,7 @@ compiled.
 
 ### Explore the application
 
-// TODO: Give examples
+> TODO: Give examples
 
 ### Setup editor/IDE
 

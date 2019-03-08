@@ -9,7 +9,7 @@ sidebar_label: Configure auth
 We are using keycloak for user authentication and either you disable
 authentication or [setup keycloak](#run-and-configure-keycloak)
 
-// TODO: Explain how to disable auth
+> TODO: Explain how to disable auth
 
 ### Start keycloak
 
@@ -19,7 +19,7 @@ make up-keycloak
 
 It will take a while for keycloak to start.
 
-// TODO: Explain how to read keycloak logs
+> TODO: Explain how to read keycloak logs
 
 ### Import keycloak dev configuration
 

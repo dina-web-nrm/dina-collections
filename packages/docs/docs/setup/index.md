@@ -19,4 +19,4 @@ assumes you have `git` installed
 - [Setup locally for development](./setup-locally-for-development.md)
 - [Setup locally with docker](./setup-locally-with-docker.md)
 
-// TODO: Add "Setup on server with docker"
+> TODO: Add "Setup on server with docker"
