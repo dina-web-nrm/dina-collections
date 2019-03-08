@@ -42,10 +42,6 @@ const simplePlaceUpdate = {
   },
 }
 
-it('Runs place tests', () => {
-  expect(1).toBe(1)
-})
-
 apiDescribe('place', () => {
   let authToken
   hook(beforeAll, () => {
