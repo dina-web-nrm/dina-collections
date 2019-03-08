@@ -66,7 +66,7 @@
     "test:db": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
     "test:db:watch": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand --watch",
     "test:depcheck": "depcheck . --ignores='pg,memwatch-next'",
-    "test:unit": "TEST_UNIT=true jest --env=node",
+    "test:unit": "TEST_UNIT=true jest --env=node --forceExit",
     "test:unit:watch": "jest --env=node --watch"
   },
   "engines": {
