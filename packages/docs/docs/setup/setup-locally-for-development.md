@@ -4,6 +4,9 @@ title: Setup locally for development
 sidebar_label: Setup locally
 ---
 
+This guide will help you clone and setup the repository and then start the
+application with hot reloading for development.
+
 ## Setup Node.js and yarn
 
 We are using nvm (node version manager) to manage node versions. It is possible

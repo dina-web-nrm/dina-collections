@@ -4,8 +4,6 @@ title: Setup
 sidebar_label: Setup
 ---
 
-# Setup
-
 DINA Collections can be setup in different ways.
 
 Either the system can be run fully with docker or partly with docker. When
