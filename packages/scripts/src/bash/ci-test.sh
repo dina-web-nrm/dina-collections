@@ -12,24 +12,24 @@ if [ "$CI_TEST_ALL" = true ]; then
 fi
 
 if [ "$CI_TEST_E2E_LOCAL" = true ]; then
-  echo "Running test suite CI_TEST_E2E"
+  echo "Running test suite CI_TEST_E2E_LOCAL"
   cd ./packages/ui && yarn test:e2e:ci:local
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  echo "Test suite CI_TEST_E2E passed"
+  echo "Test suite CI_TEST_E2E_LOCAL passed"
   cd $START_DIRECTORY
 fi
 
 if [ "$CI_TEST_E2E_DOCKER" = true ]; then
-  echo "Running test suite CI_TEST_E2E_DOCKERIZED"
+  echo "Running test suite CI_TEST_E2E_DOCKER"
   cd ./packages/ui && yarn test:e2e:ci:docker
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  echo "Test suite CI_TEST_E2E_DOCKERIZED passed"
+  echo "Test suite CI_TEST_E2E_DOCKER passed"
   cd $START_DIRECTORY
 fi
 
