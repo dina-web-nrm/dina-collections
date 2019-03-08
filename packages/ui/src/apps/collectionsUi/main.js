@@ -51,3 +51,8 @@ ReactDOM.render(
 if (rootConfig.enableServiceWorker) {
   registerServiceWorker()
 }
+
+// expose store when run in Cypress
+if (window.Cypress) {
+  window.store = store
+}
