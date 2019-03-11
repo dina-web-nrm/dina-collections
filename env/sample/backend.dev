@@ -1,5 +1,5 @@
 API_PORT=4444
-DB_DATABASE=postgres
+DB_DATABASE=dina_dev
 DB_PASSWORD=mysecretpassword
 DB_URL=127.0.0.1:5432
 DB_USERNAME=postgres
