@@ -1,18 +1,9 @@
 version: '3.3'
 services:
-  api:
-    environment:
-      DB_DATABASE: collections
-
   keycloak:
     volumes:
       - ./packages/keycloak/themes/dina:/opt/jboss/keycloak/themes/dina
       - ./packages/keycloak/dina-realm-dev.json:/opt/jboss/keycloak/dev-export.json
-
-  postgres:
-    environment:
-      DB_NAME: collections
-      POSTGRES_DB: collections
 
   ui:
     ports:
