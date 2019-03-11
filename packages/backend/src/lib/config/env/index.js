@@ -1,6 +1,6 @@
 const dotenv = require('dotenv')
 const resolveEnvVariables = require('./resolveEnvVariables')
-const ensureNodeEnv = require('./ensureNodeEnv')
+const ensureNodeEnv = require('common/src/config/ensureNodeEnv')
 const getEnvFilePath = require('./getEnvFilePath')
 
 const envFilePath = getEnvFilePath({
