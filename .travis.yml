@@ -59,7 +59,6 @@ matrix:
         - CI_TEST_BACKEND_LINT=true
         - CI_TEST_BACKEND_UNIT=true
         - CI_TEST_MIGRATIONS_LINT=true
-        - DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
