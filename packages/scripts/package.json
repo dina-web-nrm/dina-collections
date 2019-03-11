@@ -12,6 +12,7 @@
     "lint:js:fix": "eslint 'src/**/*.js' --fix",
     "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
     "test": "yarn test:lint && yarn test:unit",
+    "test:depcheck": "depcheck . --ignores='elasticdump'",
     "test:lint": "yarn lint:js",
     "test:unit": "NODE_ENV=test jest --env=node",
     "test:unit:watch": "NODE_ENV=test jest --env=node --watch"
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
+    "depcheck": "^0.7.2",
     "eslint": "4.17.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "^2.6.0",
