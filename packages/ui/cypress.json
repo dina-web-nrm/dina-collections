@@ -1,5 +1,8 @@
 {
   "baseUrl": "http://127.0.0.1:3000",
+  "env": {
+    "NODE_ENV": "test"
+  },
   "projectId": "btwnu2",
   "integrationFolder": "cypress/e2e",
   "pluginsFile": false,
