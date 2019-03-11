@@ -1,4 +1,4 @@
-import createEnvReader from 'common/es5/config/createEnvReader'
+import createEnvReader from 'common/es5/env/createEnvReader'
 import envDefinitions from './envDefinitions'
 
 const { readKey, readBoolKey } = createEnvReader({
