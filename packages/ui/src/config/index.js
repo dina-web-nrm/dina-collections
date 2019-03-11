@@ -1,18 +1,29 @@
+import createEnvReader from 'common/es5/config/createEnvReader'
+import envDefinitions from './envDefinitions'
+
+const { readKey, readBoolKey } = createEnvReader({
+  envDefinitions,
+  processEnv: process.env,
+})
+
+const env = readKey('NODE_ENV')
+const isDevelopment = env === 'development'
+const isProduction = env === 'production'
+const isTest = env === 'test'
+
 const config = {
   auth: {
-    active: process.env.REACT_APP_DISABLE_AUTH !== 'true',
+    active: !readBoolKey('REACT_APP_DISABLE_AUTH'),
   },
-  env: process.env.NODE_ENV || 'development',
-  isDevelopment: process.env.NODE_ENV === 'development',
-  isProduction: process.env.NODE_ENV === 'production',
-  isTest: process.env.NODE_ENV === 'test',
+  env,
+  isDevelopment,
+  isProduction,
+  isTest,
   reduxLogger: {
-    enabled:
-      process.env.NODE_ENV === 'development' &&
-      process.env.REACT_APP_ENABLE_REDUX_LOGGER === 'true',
-    showDiff: process.env.REACT_APP_ENABLE_REDUX_LOGGER_DIFF === 'true',
+    enabled: isDevelopment && readBoolKey('REACT_APP_ENABLE_REDUX_LOGGER'),
+    showDiff: readBoolKey('REACT_APP_ENABLE_REDUX_LOGGER_DIFF'),
   },
-  testUi: process.env.REACT_APP_TEST_UI !== 'false',
+  testUi: readBoolKey('REACT_APP_TEST_UI'),
 }
 
 export default config
