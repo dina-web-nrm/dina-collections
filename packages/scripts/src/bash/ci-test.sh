@@ -103,7 +103,7 @@ fi
 
 if [ "$CI_TEST_BACKEND_LINT" = true ]; then
   echo "Running test suite CI_TEST_BACKEND_LINT"
-  yarn setup:env && cd ./packages/backend && yarn lint:js
+  cd ./packages/backend && yarn lint:js
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -114,7 +114,7 @@ fi
 
 if [ "$CI_TEST_BACKEND_UNIT" = true ]; then
   echo "Running test suite CI_TEST_BACKEND_UNIT"
-  yarn setup:env && cd ./packages/backend && yarn test:unit
+  cd ./packages/backend && yarn test:unit
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1

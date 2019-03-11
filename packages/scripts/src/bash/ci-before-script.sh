@@ -3,10 +3,15 @@
 
 START_DIRECTORY=$PWD
 
+if [ "$CI_SETUP_ENV_DOCKER" = true ]; then
+  yarn setup:env
+fi
+
+yarn setup:env:ci
+
 if [ "$CI_START_DATABASES" = true ]; then
   echo "Starting dbs"
   sudo /etc/init.d/postgresql stop
-  yarn setup:env
   yarn start:postgres && yarn start:elasticsearch
   cd ./packages/migrations && yarn db:test:create
   cd $START_DIRECTORY
@@ -42,13 +47,12 @@ if [ "$CI_START_UI" = true ]; then
 fi
 
 if [ "$CI_START_E2E_DOCKER" = true ]; then
+  : "${CI_SETUP_ENV_DOCKER?CI_SETUP_ENV_DOCKER Has to be true}"
   docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
 
-  echo "Setting up env"
-  yarn setup:env
 
   echo "Building UI bundle and image"
   yarn build:ui

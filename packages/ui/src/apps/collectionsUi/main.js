@@ -1,4 +1,3 @@
-import rootConfig from 'config'
 import 'common/dist/semantic.css' // eslint-disable-line
 import 'react-rangeslider/lib/index.css'
 import 'react-sortable-tree/style.css'
@@ -14,7 +13,6 @@ import ReactDOM from 'react-dom'
 import { Route, Switch } from 'react-router-dom'
 import { ConnectedRouter } from 'react-router-redux'
 import { Provider as ReduxProvider } from 'react-redux'
-import registerServiceWorker from 'registerServiceWorker'
 
 import { ErrorBoundary } from 'coreModules/error/components'
 import { moduleOrder } from './viewModules'
@@ -47,7 +45,3 @@ ReactDOM.render(
   </ReduxProvider>,
   document.getElementById('root')
 )
-
-if (rootConfig.enableServiceWorker) {
-  registerServiceWorker()
-}

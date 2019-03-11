@@ -1,5 +1,5 @@
 const execCmd = require('common/src/fs/execCmd')
-const ensureNodeEnv = require('../../../lib/config/env/ensureNodeEnv')
+const ensureNodeEnv = require('common/src/env/ensureNodeEnv')
 
 function resetElasticSpecimenIndex() {
   ensureNodeEnv(['development', 'test'])

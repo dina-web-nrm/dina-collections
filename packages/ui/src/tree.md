@@ -5,6 +5,7 @@
 │   ├── collectionsUi
 │   └── tree.md
 ├── config
+│   ├── envDefinitions.js
 │   └── index.js
 ├── coreModules
 │   ├── allModules.js
@@ -45,24 +46,14 @@
 │   └── dns
 ├── registerServiceWorker.js
 ├── scripts
-│   ├── app
 │   ├── buildFileStructureTrees.js
 │   ├── markdown
-│   ├── mockFs
-│   └── snippets
+│   └── mockFs
+├── setupProxy.js
 ├── setupTests.js
-├── snippets
-│   ├── enhance-default-export-with-compose.js
-│   ├── import-compose-from-redux.js
-│   ├── import-connect-from-react-redux.js
-│   ├── import-default-and-export-as-named.js
-│   ├── import-default-in-index-file.js
-│   ├── import-named-export.js
-│   ├── import-namespace.js
-│   ├── print-to-console.js
-│   └── test-setup-test-reducer.js
 ├── store
 │   └── index.js
+├── storybook
 ├── test
 │   └── testModules
 ├── tree.md

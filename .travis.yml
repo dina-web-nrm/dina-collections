@@ -16,6 +16,7 @@ matrix:
         - CI_LINK_MIGRATIONS=true
         - CI_LINK_SCRIPTS=true
         - CI_LINK_UI=true
+        - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E_DOCKER=true
         - CI_TEST_E2E_DOCKER=true
       script: ./packages/scripts/src/bash/ci-test.sh
@@ -59,7 +60,6 @@ matrix:
         - CI_TEST_BACKEND_LINT=true
         - CI_TEST_BACKEND_UNIT=true
         - CI_TEST_MIGRATIONS_LINT=true
-        - DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test

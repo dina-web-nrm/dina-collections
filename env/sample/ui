@@ -1,0 +1,6 @@
+NODE_PATH=src/
+VIRTUAL_HOST=local-ui.dina-web.net
+NGINX_AUTH_BASE_URL=http://keycloak:8080
+NGINX_API_BASE_URL=http://api
+NGINX_HOST=local-ui.dina-web.net
+NGINX_PORT=80

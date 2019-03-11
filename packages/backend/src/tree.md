@@ -58,7 +58,6 @@
 ├── tree.md
 └── utilities
     ├── log
-    ├── readInitialData
     └── test
 
 ```

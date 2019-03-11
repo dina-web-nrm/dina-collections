@@ -54,7 +54,7 @@ cd dina-collections
 ### Install and setup
 
 ```bash
-yarn setup
+yarn setup:dev
 ```
 
 More specifically, this command will:

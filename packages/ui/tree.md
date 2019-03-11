@@ -5,18 +5,19 @@
 ├── LICENCE
 ├── README.md
 ├── build
-│   ├── asset-manifest.json
 │   ├── favicon.ico
-│   ├── index.html
-│   ├── manifest.json
-│   ├── service-worker.js
-│   └── static
-├── config.scripts.js
+│   └── manifest.json
 ├── coverage
 │   ├── clover.xml
 │   ├── coverage-final.json
 │   ├── lcov-report
 │   └── lcov.info
+├── cypress
+│   ├── e2e
+│   ├── fixtures
+│   ├── plugins
+│   └── support
+├── cypress.json
 ├── nginx.conf
 ├── package.json
 ├── public
@@ -32,9 +33,10 @@
 │   ├── mock
 │   ├── registerServiceWorker.js
 │   ├── scripts
+│   ├── setupProxy.js
 │   ├── setupTests.js
-│   ├── snippets
 │   ├── store
+│   ├── storybook
 │   ├── test
 │   ├── tree.md
 │   └── utilities
