@@ -1,7 +1,7 @@
 const dotenv = require('dotenv')
 const ensureNodeEnv = require('common/src/config/ensureNodeEnv')
 const createEnvReader = require('common/src/config/createEnvReader')
-const getEnvFilePath = require('./getEnvFilePath')
+const getEnvFilePath = require('common/src/config/getEnvFilePath')
 const envDefinitions = require('./envDefinitions')
 
 const envFilePath = getEnvFilePath({
