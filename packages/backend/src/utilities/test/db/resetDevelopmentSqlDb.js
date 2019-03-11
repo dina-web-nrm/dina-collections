@@ -1,5 +1,5 @@
 const execCmd = require('common/src/fs/execCmd')
-const ensureNodeEnv = require('common/src/config/ensureNodeEnv')
+const ensureNodeEnv = require('common/src/env/ensureNodeEnv')
 
 function resetDevelopmentSqlDb() {
   ensureNodeEnv('development')
