@@ -9,8 +9,13 @@
 │   ├── resources
 │   │   ├── index.js
 │   │   └── normalizedAgent
-│   │       ├── data
-│   │       └── index.js
+│   │       ├── exampleRequests
+│   │       ├── filterSpecifications
+│   │       ├── index.js
+│   │       ├── migrations
+│   │       ├── postHooks
+│   │       ├── preHooks
+│   │       └── transformationSpecifications
 │   └── serviceInteractions
 │       └── index.js
 ├── authService
@@ -36,27 +41,49 @@
 │   │   └── index.js
 │   └── resources
 │       ├── causeOfDeathType
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── exampleRequests
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── postHooks
+│       │   └── transformationSpecifications
 │       ├── customTaxonNameType
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── exampleRequests
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── postHooks
+│       │   └── transformationSpecifications
 │       ├── establishmentMeansType
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── exampleRequests
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── postHooks
+│       │   └── transformationSpecifications
 │       ├── featureType
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── exampleRequests
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── postHooks
+│       │   └── transformationSpecifications
 │       ├── identifierType
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── exampleRequests
+│       │   ├── filterSpecifications
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── postHooks
+│       │   └── transformationSpecifications
 │       ├── index.js
 │       ├── preparationType
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── exampleRequests
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── postHooks
+│       │   └── transformationSpecifications
 │       └── typeSpecimenType
-│           ├── data
-│           └── index.js
+│           ├── exampleRequests
+│           ├── index.js
+│           ├── migrations
+│           ├── postHooks
+│           └── transformationSpecifications
 ├── exportService
 │   ├── index.js
 │   ├── info
@@ -64,8 +91,13 @@
 │   │   └── index.js
 │   └── resources
 │       ├── exportJob
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── controllers
+│       │   ├── filterSpecifications
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── operationFactories
+│       │   ├── postHooks
+│       │   └── preHooks
 │       └── index.js
 ├── historyService
 │   ├── index.js
@@ -75,8 +107,9 @@
 │   ├── resources
 │   │   ├── index.js
 │   │   └── resourceActivity
-│   │       ├── data
-│   │       └── index.js
+│   │       ├── filterSpecifications
+│   │       ├── index.js
+│   │       └── migrations
 │   └── serviceInteractions
 │       └── index.js
 ├── identifierService
@@ -86,8 +119,16 @@
 │   │   └── index.js
 │   └── resources
 │       ├── catalogNumber
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── constants
+│       │   ├── controllers
+│       │   ├── fieldsSpecification
+│       │   ├── filterSpecifications
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   ├── operationFactories
+│       │   ├── preHooks
+│       │   ├── transformationSpecifications
+│       │   └── utilities
 │       └── index.js
 ├── index.js
 ├── jobService
@@ -98,8 +139,9 @@
 │   └── resources
 │       ├── index.js
 │       └── job
-│           ├── data
-│           └── index.js
+│           ├── filterSpecifications
+│           ├── index.js
+│           └── migrations
 ├── migrationService
 │   ├── index.js
 │   ├── info
@@ -108,8 +150,8 @@
 │   │   └── index.js
 │   ├── resources
 │   │   ├── dataModelMigrationLog
-│   │   │   ├── data
-│   │   │   └── index.js
+│   │   │   ├── index.js
+│   │   │   └── migrations
 │   │   └── index.js
 │   └── serviceInteractions
 │       └── index.js
@@ -122,19 +164,36 @@
 │   └── resources
 │       ├── index.js
 │       └── place
-│           ├── data
-│           └── index.js
+│           ├── exampleRequests
+│           ├── filterSpecifications
+│           ├── index.js
+│           ├── migrations
+│           ├── postHooks
+│           ├── preHooks
+│           └── transformationSpecifications
 ├── searchService
 │   ├── cacheResourcesSpecifications.js
 │   ├── index.js
 │   ├── info
 │   │   └── index.js
+│   ├── integrationTests
+│   │   ├── __snapshots__
+│   │   │   └── sampleData.test.js.snap
+│   │   ├── sampleData.test.js
+│   │   ├── searchSpecimen
+│   │   │   └── query
+│   │   └── utilities.js
 │   ├── resources
 │   │   ├── cacheResources.js
 │   │   ├── index.js
 │   │   └── searchSpecimen
-│   │       ├── data
-│   │       └── index.js
+│   │       ├── aggregationSpecification
+│   │       ├── fieldsSpecification
+│   │       ├── filterSpecifications
+│   │       ├── index.js
+│   │       ├── mappingSpecification
+│   │       ├── postHooks
+│   │       └── transformationSpecifications
 │   └── serviceInteractions
 │       └── index.js
 ├── serviceOrder.js
@@ -146,8 +205,17 @@
 │   └── resources
 │       ├── index.js
 │       └── specimen
-│           ├── data
-│           └── index.js
+│           ├── controllers
+│           ├── e2e
+│           ├── exampleRequests
+│           ├── filterSpecifications
+│           ├── index.js
+│           ├── migrations
+│           ├── postHooks
+│           ├── preHooks
+│           ├── testData
+│           ├── transformationSpecifications
+│           └── utilities
 ├── statusService
 │   ├── controllers
 │   │   ├── getStatus.js
@@ -168,11 +236,19 @@
 │   └── resources
 │       ├── index.js
 │       ├── physicalObject
-│       │   ├── data
-│       │   └── index.js
+│       │   ├── exampleRequests
+│       │   ├── filterSpecifications
+│       │   ├── index.js
+│       │   ├── migrations
+│       │   └── postHooks
 │       └── storageLocation
-│           ├── data
-│           └── index.js
+│           ├── exampleRequests
+│           ├── filterSpecifications
+│           ├── index.js
+│           ├── migrations
+│           ├── postHooks
+│           ├── preHooks
+│           └── transformationSpecifications
 ├── taxonomyService
 │   ├── index.js
 │   ├── info
@@ -181,12 +257,21 @@
 │   ├── resources
 │   │   ├── index.js
 │   │   ├── taxon
-│   │   │   ├── data
-│   │   │   └── index.js
+│   │   │   ├── exampleRequests
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── migrations
+│   │   │   ├── postHooks
+│   │   │   ├── preHooks
+│   │   │   └── transformationSpecifications
 │   │   └── taxonName
-│   │       ├── data
+│   │       ├── filterSpecifications
 │   │       ├── index.js
-│   │       └── operations
+│   │       ├── migrations
+│   │       ├── operations
+│   │       ├── postHooks
+│   │       ├── preHooks
+│   │       └── transformationSpecifications
 │   └── serviceInteractions
 │       └── index.js
 └── tree.md

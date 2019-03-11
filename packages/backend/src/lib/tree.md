@@ -28,10 +28,8 @@
 │   ├── createBaseConfig.js
 │   ├── createPostgresDbConfig.js
 │   └── env
-│       ├── envVariables.js
-│       ├── index.js
-│       ├── parameterMap.js
-│       └── resolveEnvVariables.js
+│       ├── envDefinitions.js
+│       └── index.js
 ├── connectors
 │   ├── createConnector.js
 │   ├── extractCustomControllersFromServices.js

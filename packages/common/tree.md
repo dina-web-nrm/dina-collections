@@ -27,8 +27,10 @@
 │   ├── createLid
 │   ├── date
 │   ├── endpointFactory
+│   ├── env
 │   ├── error
 │   ├── formatObject
+│   ├── fs
 │   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── log
@@ -59,8 +61,10 @@
 │   ├── createLid
 │   ├── date
 │   ├── endpointFactory
+│   ├── env
 │   ├── error
 │   ├── formatObject
+│   ├── fs
 │   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── log
@@ -77,7 +81,6 @@
 │   ├── testUtilities
 │   └── tree.md
 ├── tree.md
-├── yarn-error.log
 └── yarn.lock
 
 ```
