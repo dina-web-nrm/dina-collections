@@ -65,7 +65,7 @@
     "start:test": "TEST_SYNC_MODELS=true NODE_ENV=test DEBUG='DINA*' nodemon src/apps/test/api/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
     "test:api": "TEST_API=true SAMPLE_DATA=true DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
-    "test:api:watch": "TEST_API=true SAMPLE_DATA=true DEBUG='TEST:DINA*' jest --env=node --watch --runInBand",
+    "test:api:watch": "TEST_API=true SAMPLE_DATA=true DEBUG='TEST:DINA*' jest --env=node --watch --runInBand --verbose=false",
     "test:db": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
     "test:db:watch": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand --watch",
     "test:depcheck": "depcheck . --ignores='pg,memwatch-next'",
