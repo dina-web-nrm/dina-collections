@@ -17,13 +17,22 @@ if [ "$CI_START_DATABASES" = true ]; then
   cd $START_DIRECTORY
 fi
 
+# do this early, to let it compile in the background
+if [ "$CI_START_UI" = true ]; then
+  : "${CI_START_API?CI_START_API Has to be true}"
+  echo "Starting UI"
+  cd ./packages/ui && yarn start &
+  echo "UI started"
+  cd $START_DIRECTORY
+fi
+
+
 if [ "$CI_START_KEYCLOAK" = true ]; then
   : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
   echo "Starting keycloak"
   yarn start:keycloak
   cd $START_DIRECTORY
 fi
-
 
 if [ "$CI_START_API" = true ]; then
   : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
@@ -34,15 +43,6 @@ if [ "$CI_START_API" = true ]; then
   echo "Starting api"
   cd ./packages/backend && yarn start:node &
   echo "Api started"
-  cd $START_DIRECTORY
-fi
-
-
-if [ "$CI_START_UI" = true ]; then
-  : "${CI_START_API?CI_START_API Has to be true}"
-  echo "Starting UI"
-  cd ./packages/ui && yarn start &
-  echo "UI started"
   cd $START_DIRECTORY
 fi
 

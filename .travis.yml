@@ -144,6 +144,7 @@ stages:
     if: tag IS present
 
 addons:
+  chrome: stable
   hosts:
     - local-api.dina-web.net
     - local-docs.dina-web.net

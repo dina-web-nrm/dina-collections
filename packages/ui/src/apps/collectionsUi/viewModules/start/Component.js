@@ -60,7 +60,10 @@ class Start extends Component {
               }}
             />
 
-            <NavLink to="/app/specimens/mammals/create/sections/0">
+            <NavLink
+              data-testid="start-register-mammal"
+              to="/app/specimens/mammals/create/sections/0"
+            >
               <Button primary size="huge" type="button">
                 <Icon name="plus" />
                 {moduleTranslate({
@@ -70,7 +73,10 @@ class Start extends Component {
                 })}
               </Button>
             </NavLink>
-            <NavLink to="/app/specimens/mammals">
+            <NavLink
+              data-testid="start-find-mammals"
+              to="/app/specimens/mammals"
+            >
               <Button basic primary size="huge" type="button">
                 <Icon name="search" />
                 {moduleTranslate({
@@ -91,7 +97,12 @@ class Start extends Component {
                 module: 'start',
                 textKey: 'needHelp',
               })}{' '}
-              <a href="mailto:support-dina@nrm.se">support-dina@nrm.se</a>
+              <a
+                data-testid="start-support-link"
+                href="mailto:support-dina@nrm.se"
+              >
+                support-dina@nrm.se
+              </a>
             </div>
           </Grid.Column>
           <Grid.Column width={7}>
@@ -113,6 +124,7 @@ class Start extends Component {
             })}
             {version}{' '}
             <a
+              data-testid="start-changelog-link"
               href="https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md"
               rel="noopener noreferrer"
               target="_blank"

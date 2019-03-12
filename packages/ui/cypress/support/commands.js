@@ -1,60 +1,94 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-
 import 'cypress-testing-library/add-commands'
+
+Cypress.Commands.add('dispatch', action => {
+  return cy.window({ log: false }).then(({ store }) => {
+    return cy.log(action.type).then(() => {
+      return store.dispatch(action)
+    })
+  })
+})
+
+Cypress.Commands.add('getState', () => {
+  return cy
+    .log(`getState`)
+    .window({ log: false })
+    .then(({ store }) => {
+      return store.getState()
+    })
+})
 
 Cypress.Commands.add(
   'login',
-  ({ username, password, failOnStatusCode = true } = {}) => {
+  ({
+    failOnStatusCode = true, // set to false to test response on fail
+    password = 'password',
+    username = 'test',
+  } = {}) => {
     if (username && password) {
-      cy.request({
-        body: {
-          client_id: 'dina-rest',
-          grant_type: 'password',
-          password,
-          username,
-        },
-        failOnStatusCode,
-        form: true,
-        method: 'POST',
-        url: '/auth/realms/dina/protocol/openid-connect/token',
-      })
-    } else {
-      cy.log('Did not receive username and password, assuming auth is disabled')
+      cy.visit('/', { log: false })
+      return cy
+        .request({
+          body: {
+            client_id: 'dina-rest',
+            grant_type: 'password',
+            password,
+            username,
+          },
+          failOnStatusCode,
+          form: true,
+          method: 'POST',
+          url: '/auth/realms/dina/protocol/openid-connect/token',
+        })
+        .then(keycloakResponse => {
+          const { body: loginPayload, status } = keycloakResponse
+
+          if (status === 200) {
+            const accessToken = loginPayload.access_token
+
+            if (!accessToken) {
+              throw new Error('did not get access token')
+            }
+
+            const mappedLoginPayload = {
+              ...loginPayload,
+              accessToken,
+            }
+            delete mappedLoginPayload.access_token
+
+            cy.dispatch({
+              payload: mappedLoginPayload,
+              type: 'USER_LOG_IN_SUCCESS',
+            })
+
+            return cy
+              .request({
+                failOnStatusCode,
+                headers: {
+                  Authorization: `bearer ${accessToken}`,
+                },
+                method: 'GET',
+                url: '/auth/realms/dina/protocol/openid-connect/userinfo',
+              })
+              .then(({ body: user }) => {
+                return cy
+                  .dispatch({
+                    payload: user,
+                    type: 'USER_GET_USER_SUCCESS',
+                  })
+                  .then(() => {
+                    return keycloakResponse
+                  })
+              })
+          }
+
+          return keycloakResponse
+        })
     }
+    return cy.log(
+      'Did not receive username and password, assuming auth is disabled'
+    )
   }
 )
-
-Cypress.Commands.add('loginWithForm', (username, password) => {
-  cy.visit('/login')
-    .get('[name=username]')
-    .type(username)
-    .get('[name=password]')
-    .type(`${password}{enter}`)
-})
 
 Cypress.Commands.add(
   'shouldHaveHref',
