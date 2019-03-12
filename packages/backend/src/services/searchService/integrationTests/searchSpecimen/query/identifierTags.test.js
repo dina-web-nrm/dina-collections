@@ -6,8 +6,10 @@ const waitForApiRestart = require('../../../../../utilities/test/waitForApiResta
 const resetElasticSpecimenIndex = require('../../../../../utilities/test/db/resetElasticSpecimenIndex')
 
 const {
+  chain,
   createRequestBuilder,
   runTestCases,
+  specimenCountEquals,
   tagTypeEquals,
 } = require('../../utilities')
 
@@ -114,20 +116,27 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           aggregate: true,
           expectedCount: 1,
           tagValue: '53018*',
-          testFn: tagTypeEquals('catalog-no'),
+          testFn: chain([
+            tagTypeEquals('catalog-no'),
+            specimenCountEquals([1]),
+          ]),
           title: 'returns 1 matching identifiers for 53018*',
         },
         {
           aggregate: true,
           expectedCount: 2,
           tagValue: '53*',
-          testFn: tagTypeEquals('catalog-no'),
+          testFn: chain([
+            tagTypeEquals('catalog-no'),
+            specimenCountEquals([1, 1]),
+          ]),
           title: 'returns 2 matching identifiers for 53*',
         },
         {
           aggregate: true,
           expectedCount: 9,
           tagValue: '5*',
+          testFn: specimenCountEquals([1, 1, 1, 1, 1, 1, 1, 1, 1]),
           title: 'returns 9 matching identifiers for 5*',
         },
         {
