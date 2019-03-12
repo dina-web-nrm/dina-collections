@@ -5,6 +5,7 @@ require('console.table')
 module.exports = function logTags(res) {
   const log = res.data.map(item => {
     return {
+      count: item.attributes.count,
       id: item.id,
       tagType: item.attributes.tagType,
       tagValue: item.attributes.tagValue,
