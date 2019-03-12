@@ -1,106 +1,147 @@
 describe('Login', () => {
-  context('with login form', () => {
-    beforeEach(() => {
-      cy.visit('/login')
+  describe('with login API', () => {
+    it('succeeds to login with valid username and password', () => {
+      cy.login({ password: 'password', username: 'test' }).then(
+        keycloakResponse => {
+          const { body } = keycloakResponse
+
+          /* eslint-disable camelcase */
+          const { access_token, token_type } = body
+          expect(typeof access_token).to.equal('string')
+          expect(access_token.length > 100).to.be.true
+          expect(token_type).to.equal('bearer')
+          /* eslint-enable camelcase */
+
+          expect(body).to.have.property('expires_in')
+          expect(body).to.have.property('not-before-policy')
+          expect(body).to.have.property('refresh_expires_in')
+          expect(body).to.have.property('refresh_token')
+          expect(body).to.have.property('scope')
+          expect(body).to.have.property('session_state')
+        }
+      )
     })
 
-    it('can login by pressing enter', () => {
-      cy.loginWithForm('test', 'password')
-        .url()
-        .should('include', '/app')
-    })
-
-    it('can login by clicking login button', () => {
-      cy.get('[name=username]')
-        .type('test')
-        .get('[name=password]')
-        .type('password')
-        .getByTestId('login-button')
-        .click()
-        .url()
-        .should('include', '/app')
-    })
-
-    it('disable login button if username and password are empty', () => {
-      cy.get('[name=btn-login]').should('be.disabled')
-    })
-
-    it('shows an validation error if username is empty', () => {
-      cy.get('[name=password]')
-        .type('test')
-        .getByTestId('login-button')
-        .click()
-        .getByText('Required')
-        .should('exist')
-        .url()
-        .should('not.include', '/app')
-    })
-
-    it('shows an validation error if password is empty', () => {
-      cy.get('[name=username]')
-        .type('test')
-        .getByTestId('login-button')
-        .click()
-        .getByText('Required')
-        .should('exist')
-        .url()
-        .should('not.include', '/app')
-    })
-
-    it('shows an validation error if usrname is removed', () => {
-      cy.get('[name=username]')
-        .type('test{selectall}{backspace}')
-        .blur()
-        .getByText('Required')
-        .should('exist')
-        .url()
-        .should('not.include', '/app')
-    })
-
-    it('shows an validation error if password is removed', () => {
-      cy.get('[name=username]')
-        .type('test')
-        .get('[name=password]')
-        .type('password{selectall}{backspace}')
-        .blur()
-        .getByText('Required')
-        .should('exist')
-        .url()
-        .should('not.include', '/app')
-    })
-
-    it('shows invalid user credentials message on a failed login', () => {
-      cy.get('[name=username]')
-        .type('tester')
-        .get('[name=password]')
-        .type('password{enter}')
-        .getByText('Invalid user credentials')
-        .should('exist')
-        .url()
-        .should('not.include', '/app')
+    it('fails to login with invalid username and password', () => {
+      cy.login({
+        failOnStatusCode: false,
+        password: 'invalid',
+        username: 'not existing',
+      }).then(keycloakResponse => {
+        expect(keycloakResponse.status).to.eq(401)
+        expect(keycloakResponse.body)
+          .to.have.property('error')
+          .to.eq('invalid_grant')
+        expect(keycloakResponse.body)
+          .to.have.property('error_description')
+          .to.eq('Invalid user credentials')
+      })
     })
   })
 
-  context('with login api', () => {
-    it('can login with valid username and password', () => {
-      cy.login({ password: 'password', username: 'test' }).then(res => {
-        expect(res.status).to.eq(200)
+  describe('with login form', () => {
+    describe('initial state', () => {
+      beforeEach(() => {
+        cy.visit('/login')
+      })
+
+      it('login button is disabled if username and password are empty', () => {
+        cy.get('[name=btn-login]').should('be.disabled')
       })
     })
 
-    it('failed login with invalid username and password', () => {
-      cy.login({
-        failOnStatusCode: false,
-        password: 'password',
-        username: 'tester',
-      }).then(res => {
-        expect(res.status).to.eq(401)
-        expect(res.body)
-          .to.have.property('error')
-          .to.eq('invalid_grant')
-        expect(res.body)
-          .to.have.property('error_description')
-          .to.eq('Invalid user credentials')
+    describe('successes', () => {
+      beforeEach(() => {
+        cy.visit('/login')
+        cy.get('[name=username]')
+          .type('test')
+          .get('[name=password]')
+          .type(`password`)
+      })
+
+      it('can login by pressing enter', () => {
+        cy.get('[name=password]')
+          .type(`{enter}`)
+          .url()
+          .should('include', '/app')
+      })
+
+      it('can login by clicking login button', () => {
+        cy.getByTestId('login-button')
+          .click()
+          .url()
+          .should('include', '/app')
+      })
+    })
+
+    describe('error handling', () => {
+      describe('without submit', () => {
+        beforeEach(() => {
+          cy.visit('/login')
+          cy.get('[name=username]')
+            .type('test')
+            .get('[name=password]')
+            .type(`password`)
+        })
+
+        it('shows a validation error if username is typed and removed', () => {
+          cy.get('[name=username]')
+            .clear()
+            .blur()
+            .getByText('Required')
+            .should('exist')
+            .url()
+            .should('not.include', '/app')
+        })
+
+        it('shows a validation error if password is typed and removed', () => {
+          cy.get('[name=password]')
+            .clear()
+            .blur()
+            .getByText('Required')
+            .should('exist')
+            .url()
+            .should('not.include', '/app')
+        })
+      })
+
+      describe('on submit', () => {
+        beforeEach(() => {
+          cy.visit('/login')
+        })
+
+        it('shows a validation error if password is empty on submit', () => {
+          cy.get('[name=username]')
+            .type('test')
+            .getByTestId('login-button')
+            .click()
+            .getByText('Required')
+            .should('exist')
+            .url()
+            .should('not.include', '/app')
+        })
+
+        it('shows a validation error if username is empty on submit', () => {
+          cy.get('[name=password]')
+            .type('password')
+            .getByTestId('login-button')
+            .click()
+            .getByText('Required')
+            .should('exist')
+            .url()
+            .should('not.include', '/app')
+        })
+
+        it('shows invalid user credentials message on a failed login', () => {
+          cy.get('[name=username]')
+            .type('invalidusername')
+            .get('[name=password]')
+            .type('notvalidpw{enter}')
+            .getByText('Invalid user credentials')
+            .should('exist')
+            .url()
+            .should('not.include', '/app')
+        })
       })
     })
   })
