@@ -1,0 +1,70 @@
+
+const buildRawQuery = testCase => {
+  return {
+    operationId: 'searchSpecimenQuery',
+    validateOutput: false,
+    body: {
+      data: {
+        attributes: {
+          raw: {
+            _source: false,
+            aggregations: {
+              aggregateIdentifierTagValues: {
+                aggs: {
+                  tagKeys: {
+                    aggs: {
+                      test: {
+                        terms: {
+                          field: 'attributes.tags.identifierTags.key.raw',
+                          include: '(.*?ddaadd1[^\\]|\\[]*.*)',
+                          size: 20,
+                        },
+                      },
+                    },
+                    filter: {
+                      term: {
+                        'attributes.tags.identifierTags.tagType.raw':
+                          'old-skeleton-no',
+                      },
+                    },
+                  },
+                },
+                nested: {
+                  path: 'attributes.tags.identifierTags',
+                },
+              },
+            },
+
+            query: {
+              bool: {
+                must: [
+                  {
+                    bool: {
+                      must: [],
+                    },
+                  },
+                  {
+                    nested: {
+                      path: 'attributes.tags.identifierTags',
+                      query: {
+                        bool: {
+                          must: [
+                            {
+                              wildcard: {
+                                'attributes.tags.identifierTags.tagValue': '1*',
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+}
