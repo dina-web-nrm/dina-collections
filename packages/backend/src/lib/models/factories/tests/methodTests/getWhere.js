@@ -187,7 +187,7 @@ module.exports = function testGetWhere({ config, setupModel }) {
           },
           filterSpecification,
         })
-      ).rejects.toThrow()
+      ).rejects.toBeTruthy()
     })
 
     it('returns correct doc by id', () => {

@@ -36,7 +36,7 @@ fi
 
 if [ "$CI_TEST_UI_LINT" = true ]; then
   echo "Running test suite CI_TEST_UI_LINT"
-  cd ./packages/ui && yarn lint:js
+  cd ./packages/ui && yarn lint:js && yarn test:depcheck
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -58,7 +58,7 @@ fi
 
 if [ "$CI_TEST_MODELS_LINT" = true ]; then
   echo "Running test suite CI_TEST_MODELS_LINT"
-  cd ./packages/models && yarn lint:js
+  cd ./packages/models && yarn lint:js && yarn test:depcheck
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -69,7 +69,7 @@ fi
 
 if [ "$CI_TEST_COMMON_LINT" = true ]; then
   echo "Running test suite CI_TEST_COMMON_LINT"
-  cd ./packages/common && yarn lint:js
+  cd ./packages/common && yarn lint:js && yarn test:depcheck
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -92,7 +92,7 @@ fi
 
 if [ "$CI_TEST_SCRIPTS_LINT" = true ]; then
   echo "Running test suite CI_TEST_SCRIPTS_LINT"
-  cd ./packages/scripts && yarn lint:js
+  cd ./packages/scripts && yarn lint:js && yarn test:depcheck
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -103,7 +103,7 @@ fi
 
 if [ "$CI_TEST_BACKEND_LINT" = true ]; then
   echo "Running test suite CI_TEST_BACKEND_LINT"
-  cd ./packages/backend && yarn lint:js
+  cd ./packages/backend && yarn lint:js && yarn test:depcheck
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -149,7 +149,7 @@ fi
 
 if [ "$CI_TEST_MIGRATIONS_LINT" = true ]; then
   echo "Running test suite CI_TEST_MIGRATIONS_LINT"
-  cd ./packages/migrations && yarn lint:js
+  cd ./packages/migrations && yarn lint:js && yarn test:depcheck
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -160,7 +160,7 @@ fi
 
 if [ "$CI_TEST_DOCS_LINT" = true ]; then
   echo "Running test suite CI_TEST_DOCS_LINT"
-  cd ./packages/docs && yarn lint
+  cd ./packages/docs && yarn lint && yarn test:depcheck
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1

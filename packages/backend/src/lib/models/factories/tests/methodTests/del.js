@@ -14,7 +14,7 @@ module.exports = function testDel({ config, setupModel }) {
     })
 
     it('throws when id not provided', () => {
-      return expect(model.getById()).rejects.toThrow()
+      return expect(model.getById()).rejects.toBeTruthy()
     })
 
     it('delete secondDoc', () => {

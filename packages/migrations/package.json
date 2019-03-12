@@ -41,6 +41,7 @@
     "setup:production": "yarn db:production:drop ; yarn db:production:create && yarn db:production:migrate:latest && yarn db:production:import:fromJson",
     "setup:test": "yarn db:test:drop ; yarn db:test:create && yarn db:test:migrate:latest && yarn db:test:import:fromJson",
     "test": "npm run test:lint && npm run test:unit",
+    "test:depcheck": "depcheck . --ignores='pg,sequelize'",
     "test:lint": "npm run lint:js",
     "test:unit": "NODE_ENV=test jest --env=node",
     "test:unit:watch": "NODE_ENV=test jest --env=node --watch"
@@ -50,19 +51,12 @@
     "common": "file:../common",
     "dotenv": "^4.0.0",
     "pg": "^7.4.3",
-    "scripts": "file:../scripts",
     "sequelize": "^4.38.0",
     "sequelize-cli": "^5.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
-    "babel-plugin-dynamic-import-node": "^1.2.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "depcheck": "^0.7.2",
     "eslint": "4.17.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "^2.6.0",
@@ -72,7 +66,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
-    "jest": "^22.1.4",
+    "jest": "23.6.0",
     "prettier": "1.16.4"
   },
   "engines": {
