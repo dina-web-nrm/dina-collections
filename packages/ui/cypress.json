@@ -3,9 +3,9 @@
   "env": {
     "NODE_ENV": "test"
   },
-  "projectId": "btwnu2",
   "integrationFolder": "cypress/e2e",
   "pluginsFile": false,
+  "projectId": "btwnu2",
   "viewportHeight": 800,
   "viewportWidth": 1200
 }
