@@ -9,12 +9,14 @@
     "publish-gh-pages": "docusaurus-publish",
     "rename-version": "docusaurus-rename-version",
     "start": "docusaurus-start",
+    "test:depcheck": "depcheck . --ignores='react,prop-types'",
     "test:unit": "yarn build && rm -rf ./build",
     "version": "docusaurus-version",
     "write-translations": "docusaurus-write-translations"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
+    "depcheck": "^0.7.2",
     "docusaurus": "^1.7.2",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "16.1.0",
