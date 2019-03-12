@@ -22,7 +22,7 @@ module.exports = function testGetById({ config, setupModel }) {
     })
 
     it('throws when id not provided', () => {
-      return expect(model.getById({ filterSpecification })).rejects.toThrow()
+      return expect(model.getById({ filterSpecification })).rejects.toBeTruthy()
     })
     it('returns firstDoc', () => {
       return model

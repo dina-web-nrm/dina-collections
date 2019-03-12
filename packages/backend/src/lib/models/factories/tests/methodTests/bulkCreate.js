@@ -59,17 +59,17 @@ module.exports = function testBulkCreate({ config, setupModel, modelType }) {
           const item = getTestData('itemPersonWithoutId')
           return expect(
             model.bulkCreate({ items: [item, item] })
-          ).rejects.toThrow()
+          ).rejects.toBeTruthy()
         })
       }
       it('Throw error if id not provided and requireId not set', () => {
         const item = getTestData('itemPersonWithoutId')
         return expect(
           model.bulkCreate({ items: [item, item] })
-        ).rejects.toThrow()
+        ).rejects.toBeTruthy()
       })
       it('Throw error if items not provided', () => {
-        return expect(model.bulkCreate({})).rejects.toThrow()
+        return expect(model.bulkCreate({})).rejects.toBeTruthy()
       })
     })
   })

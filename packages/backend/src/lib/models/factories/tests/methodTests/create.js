@@ -43,10 +43,12 @@ module.exports = function testCreate({ config, setupModel }) {
     describe('Fail cases', () => {
       it('Throw error if id provided and allowId: false', () => {
         const item = getTestData('itemPersonWithId')
-        return expect(model.create({ allowId: false, item })).rejects.toThrow()
+        return expect(
+          model.create({ allowId: false, item })
+        ).rejects.toBeTruthy()
       })
       it('Throw error if item not provided', () => {
-        return expect(model.create({})).rejects.toThrow()
+        return expect(model.create({})).rejects.toBeTruthy()
       })
     })
   })

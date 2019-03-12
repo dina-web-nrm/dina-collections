@@ -17,11 +17,11 @@ module.exports = function testUpdate({ config, modelType, setupModel }) {
       })
 
       it('Throw error when id not provided', () => {
-        return expect(model.update({})).rejects.toThrow()
+        return expect(model.update({})).rejects.toBeTruthy()
       })
 
       it('Throw error when id dont exist', () => {
-        return expect(model.update({ id: 444 })).rejects.toThrow()
+        return expect(model.update({ id: 444 })).rejects.toBeTruthy()
       })
 
       it('Updates item', () => {
