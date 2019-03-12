@@ -41,6 +41,7 @@
     "setup:production": "yarn db:production:drop ; yarn db:production:create && yarn db:production:migrate:latest && yarn db:production:import:fromJson",
     "setup:test": "yarn db:test:drop ; yarn db:test:create && yarn db:test:migrate:latest && yarn db:test:import:fromJson",
     "test": "npm run test:lint && npm run test:unit",
+    "test:depcheck": "depcheck . --ignores='pg,sequelize'",
     "test:lint": "npm run lint:js",
     "test:unit": "NODE_ENV=test jest --env=node",
     "test:unit:watch": "NODE_ENV=test jest --env=node --watch"
@@ -55,6 +56,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
+    "depcheck": "^0.7.2",
     "eslint": "4.17.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "^2.6.0",
