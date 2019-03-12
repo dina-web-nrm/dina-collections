@@ -50,6 +50,7 @@ module.exports = function getWhereFactory({
       limit = 10,
       offset = 0,
       query,
+      raw,
       scroll,
       scrollId,
       selectableFields,
@@ -116,12 +117,12 @@ module.exports = function getWhereFactory({
                 : undefined,
               _sourceInclude: fields.length ? fields : undefined,
             }
-
+          const body = raw || where
           methodName = 'search'
           options = {
             ...options,
             ...sourceOptions,
-            body: where,
+            body,
             from: offset,
             index: Model.index,
             size: limit,
@@ -131,6 +132,9 @@ module.exports = function getWhereFactory({
         }
 
         return elasticsearch[methodName](options).then(res => {
+          if (raw) {
+            return { items: [], meta: res }
+          }
           const meta = extractMetaFromResult({ idsInMeta, result: res })
           let items = []
           if (aggregations && aggregations.length) {
