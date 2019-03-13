@@ -39,4 +39,10 @@ describe('fs/findRootPath', function () {
       findRootPath({ startPath: path.join(findRootPath(), '../') });
     }).toThrow();
   });
+  it('Dont Throw error if root path not found but throwError set to false. Instead return empty string', function () {
+    expect(findRootPath({
+      startPath: path.join(findRootPath(), '../'),
+      throwError: false
+    })).toBe('');
+  });
 });
