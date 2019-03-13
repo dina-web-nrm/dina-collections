@@ -50,12 +50,15 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
     const buildRequest = createRequestBuilder({
       aggregationFunction: 'aggregateIdentifierTagValues',
       filterFunction: 'searchIdentifierTags',
+      resource: 'identifierTag',
+      tagPath: 'attributes.tags.identifierTags',
     })
     describe(`no filters`, () => {
       const testCases = [
         {
           aggregate: true,
           expectedCount: 35,
+          queryTypes: ['raw', 'dina'],
           snapshot: true,
           title:
             'returns all aggregated identifiers when no filters are present',
@@ -63,37 +66,51 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
       ]
       runTestCases({ buildRequest, testCases })
     })
-    describe(`tagType filters`, () => {
+    describe.only(`tagType filters`, () => {
       const testCases = [
         {
           aggregate: true,
           expectedCount: 16,
+          queryTypes: ['raw', 'dina'],
           tagTypes: ['catalog-no'],
           title: 'returns all aggregated catalog-no identifiers',
         },
         {
           aggregate: true,
           expectedCount: 9,
+          queryTypes: ['raw', 'dina'],
           tagTypes: ['old-skeleton-no'],
           title: 'returns all aggregated old-skeleton-no identifiers',
         },
         {
           aggregate: true,
           expectedCount: 7,
+          queryTypes: ['raw', 'dina'],
           tagTypes: ['old-skin-no'],
           title: 'returns all aggregated old-skin-no identifiers',
         },
         {
           aggregate: true,
           expectedCount: 2,
+          queryTypes: ['raw', 'dina'],
           tagTypes: ['sva-no'],
           title: 'returns all aggregated sva-no identifiers',
         },
         {
           aggregate: true,
           expectedCount: 1,
+          only: true,
+          compareQueryTypesResult: true,
+          queryTypes: ['raw', 'dina'],
           tagTypes: ['loan-no'],
           title: 'returns all aggregated loan-no identifiers',
+        },
+        {
+          aggregate: true,
+          expectedCount: 3,
+          queryTypes: ['raw', 'dina'],
+          tagTypes: ['loan-no', 'sva-no'],
+          title: 'returns all aggregated loan-no and sva-no identifiers',
         },
       ]
       runTestCases({ buildRequest, testCases })
@@ -103,18 +120,21 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         {
           aggregate: true,
           expectedCount: 0,
+          queryTypes: ['raw', 'dina'],
           tagValue: '11111',
           title: 'returns 0 matching identifiers for non existing tagValue',
         },
         {
           aggregate: true,
           expectedCount: 1,
+          queryTypes: ['raw', 'dina'],
           tagValue: '530183',
           title: 'returns 1 matching identifiers for exact matching tagValue',
         },
         {
           aggregate: true,
           expectedCount: 1,
+          queryTypes: ['raw', 'dina'],
           tagValue: '53018*',
           testFn: chain([
             tagTypeEquals('catalog-no'),
@@ -125,6 +145,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         {
           aggregate: true,
           expectedCount: 2,
+          queryTypes: ['raw', 'dina'],
           tagValue: '53*',
           testFn: chain([
             tagTypeEquals('catalog-no'),
@@ -135,6 +156,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         {
           aggregate: true,
           expectedCount: 9,
+          queryTypes: ['raw', 'dina'],
           tagValue: '5*',
           testFn: specimenCountEquals([1, 1, 1, 1, 1, 1, 1, 1, 1]),
           title: 'returns 9 matching identifiers for 5*',
@@ -142,6 +164,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         {
           aggregate: true,
           expectedCount: 25,
+          queryTypes: ['raw', 'dina'],
           tagValue: '*5*',
           title: 'returns 25 matching identifiers for *5*',
         },
@@ -155,6 +178,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 0,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['catalog-no'],
             tagValue: '11111',
             title: 'returns 0 matching identifiers for non existing tagValue',
@@ -162,6 +186,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 7,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['catalog-no'],
             tagValue: '5*',
             testFn: tagTypeEquals('catalog-no'),
@@ -170,6 +195,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 1,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['catalog-no'],
             tagValue: '500001',
             testFn: tagTypeEquals('catalog-no'),
@@ -185,6 +211,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 0,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skeleton-no'],
             tagValue: '11111',
             title: 'returns 0 matching identifiers for non existing tagValue',
@@ -192,6 +219,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 1,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skeleton-no'],
             tagValue: '5*',
             testFn: tagTypeEquals('old-skeleton-no'),
@@ -200,6 +228,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 1,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skeleton-no'],
             tagValue: '1,285',
             testFn: tagTypeEquals('old-skeleton-no'),
@@ -215,6 +244,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 0,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skin-no'],
             tagValue: '11111',
             title: 'returns 0 matching identifiers for non existing tagValue',
@@ -222,6 +252,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 2,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skin-no'],
             tagValue: '1*',
             testFn: tagTypeEquals('old-skin-no'),
@@ -230,6 +261,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 1,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skin-no'],
             tagValue: '1; 4406; 52',
             testFn: tagTypeEquals('old-skin-no'),
@@ -245,6 +277,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 0,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['sva-no'],
             tagValue: '11111',
             title: 'returns 0 matching identifiers for non existing tagValue',
@@ -252,6 +285,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 2,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['sva-no'],
             tagValue: 'v0*',
             testFn: tagTypeEquals('sva-no'),
@@ -260,6 +294,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 1,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['sva-no'],
             tagValue: 'v0253/98',
             testFn: tagTypeEquals('sva-no'),
@@ -274,6 +309,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 0,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['loan-no'],
             tagValue: '11111',
             title: 'returns 0 matching identifiers for non existing tagValue',
@@ -281,6 +317,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 1,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['loan-no'],
             tagValue: '20*',
             testFn: tagTypeEquals('loan-no'),
@@ -289,6 +326,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           {
             aggregate: true,
             expectedCount: 1,
+            queryTypes: ['raw', 'dina'],
             tagTypes: ['loan-no'],
             tagValue: '2012-21',
             testFn: tagTypeEquals('loan-no'),

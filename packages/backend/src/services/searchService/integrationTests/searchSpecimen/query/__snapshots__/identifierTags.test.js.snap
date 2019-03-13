@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`searchSpecimen - query - tags - identifier tag aggregations no filters returns all aggregated identifiers when no filters are present 1`] = `
+exports[`searchSpecimen - query - tags - identifier tag aggregations no filters returns all aggregated identifiers when no filters are present (dina) 1`] = `
 Array [
   Object {
     "attributes": Object {
@@ -386,6 +386,256 @@ Array [
     },
     "id": "sva-no-v0615/98",
     "type": "customObject",
+  },
+]
+`;
+
+exports[`searchSpecimen - query - tags - identifier tag aggregations no filters returns all aggregated identifiers when no filters are present (raw) 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd500001",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd530183",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd534406",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd583124",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd585522",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd587520",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd590325",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd620285",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd621445",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd628009",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd630096",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd805176",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd825005",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd956051",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd985093",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "catalog-noddaadd985729",
+      "tagType": "catalog-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "loan-noddaadd2012-21",
+      "tagType": "loan-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadd1,285",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadd1; 4406",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadd20",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadd5176",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadd6",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadd9",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadd925",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaadda825005",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skeleton-noddaaddbly 45, 1008, 3124",
+      "tagType": "old-skeleton-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skin-noddaadd1,285",
+      "tagType": "old-skin-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skin-noddaadd1; 4406; 52",
+      "tagType": "old-skin-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skin-noddaadd20",
+      "tagType": "old-skin-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skin-noddaadd321",
+      "tagType": "old-skin-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skin-noddaadd5176",
+      "tagType": "old-skin-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skin-noddaadd9",
+      "tagType": "old-skin-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "old-skin-noddaadd925",
+      "tagType": "old-skin-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "sva-noddaaddv0253/98",
+      "tagType": "sva-no",
+    },
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "sva-noddaaddv0615/98",
+      "tagType": "sva-no",
+    },
   },
 ]
 `;
