@@ -1,5 +1,5 @@
 const chain = require('./chain')
-const createRequestBuilder = require('./createRequestBuilder')
+const createRequestBuilder = require('./requestBuilder')
 const logTags = require('./logTags')
 const runTestCases = require('./runTestCases')
 const specimenCountEquals = require('./specimenCountEquals')
