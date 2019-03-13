@@ -21,13 +21,19 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
   })
 
   describe(`tag type aggregations`, () => {
-    const buildRequest = createRequestBuilder({
+    const requestBuilder = createRequestBuilder({
       aggregationFunction: 'aggregateIdentifierTagTypes',
+      aggregationType: 'tagTypes',
+      filterFunction: 'searchIdentifierTags',
+      resource: 'identifierTag',
+      tagPath: 'attributes.tags.identifierTags',
     })
     const testCases = [
       {
         aggregate: true,
+        compareQueryTypesResult: true,
         expectedCount: 5,
+        queryTypes: ['raw', 'dina'],
         testFn: res => {
           const ids = res.data.map(({ id }) => {
             return id
@@ -44,11 +50,12 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         title: 'returns all tag types',
       },
     ]
-    runTestCases({ buildRequest, testCases })
+    runTestCases({ requestBuilder, testCases })
   })
   describe(`tag aggregations`, () => {
-    const buildRequest = createRequestBuilder({
+    const requestBuilder = createRequestBuilder({
       aggregationFunction: 'aggregateIdentifierTagValues',
+      aggregationType: 'tagValues',
       filterFunction: 'searchIdentifierTags',
       resource: 'identifierTag',
       tagPath: 'attributes.tags.identifierTags',
@@ -57,6 +64,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
       const testCases = [
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 35,
           queryTypes: ['raw', 'dina'],
           snapshot: true,
@@ -64,12 +72,13 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
             'returns all aggregated identifiers when no filters are present',
         },
       ]
-      runTestCases({ buildRequest, testCases })
+      runTestCases({ requestBuilder, testCases })
     })
-    describe.only(`tagType filters`, () => {
+    describe(`tagType filters`, () => {
       const testCases = [
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 16,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['catalog-no'],
@@ -77,6 +86,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 9,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['old-skeleton-no'],
@@ -84,6 +94,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 7,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['old-skin-no'],
@@ -91,6 +102,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 2,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['sva-no'],
@@ -98,27 +110,28 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
-          expectedCount: 1,
-          only: true,
           compareQueryTypesResult: true,
+          expectedCount: 1,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['loan-no'],
           title: 'returns all aggregated loan-no identifiers',
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 3,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['loan-no', 'sva-no'],
           title: 'returns all aggregated loan-no and sva-no identifiers',
         },
       ]
-      runTestCases({ buildRequest, testCases })
+      runTestCases({ requestBuilder, testCases })
     })
     describe(`tagValue filters`, () => {
       const testCases = [
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 0,
           queryTypes: ['raw', 'dina'],
           tagValue: '11111',
@@ -126,6 +139,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 1,
           queryTypes: ['raw', 'dina'],
           tagValue: '530183',
@@ -133,6 +147,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 1,
           queryTypes: ['raw', 'dina'],
           tagValue: '53018*',
@@ -144,6 +159,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 2,
           queryTypes: ['raw', 'dina'],
           tagValue: '53*',
@@ -155,6 +171,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
         {
           aggregate: true,
+          compareQueryTypesResult: true,
           expectedCount: 9,
           queryTypes: ['raw', 'dina'],
           tagValue: '5*',
@@ -170,13 +187,14 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
         },
       ]
 
-      runTestCases({ buildRequest, testCases })
+      runTestCases({ requestBuilder, testCases })
     })
     describe('tagType and tagValue filters ', () => {
       describe(`tagType: catalog-no`, () => {
         const testCases = [
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 0,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['catalog-no'],
@@ -185,6 +203,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 7,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['catalog-no'],
@@ -194,6 +213,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 1,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['catalog-no'],
@@ -203,13 +223,14 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
         ]
 
-        runTestCases({ buildRequest, testCases })
+        runTestCases({ requestBuilder, testCases })
       })
 
       describe(`tagType: old-skeleton-no`, () => {
         const testCases = [
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 0,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skeleton-no'],
@@ -218,6 +239,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 1,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skeleton-no'],
@@ -227,6 +249,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 1,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skeleton-no'],
@@ -236,13 +259,14 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
         ]
 
-        runTestCases({ buildRequest, testCases })
+        runTestCases({ requestBuilder, testCases })
       })
 
       describe(`tagType: old-skin-no`, () => {
         const testCases = [
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 0,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skin-no'],
@@ -251,6 +275,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 2,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skin-no'],
@@ -260,6 +285,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 1,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['old-skin-no'],
@@ -269,13 +295,14 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
         ]
 
-        runTestCases({ buildRequest, testCases })
+        runTestCases({ requestBuilder, testCases })
       })
 
       describe(`tagType: sva-no`, () => {
         const testCases = [
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 0,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['sva-no'],
@@ -284,6 +311,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 2,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['sva-no'],
@@ -293,6 +321,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 1,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['sva-no'],
@@ -302,12 +331,13 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
         ]
 
-        runTestCases({ buildRequest, testCases })
+        runTestCases({ requestBuilder, testCases })
       })
       describe(`tagType: loan-no`, () => {
         const testCases = [
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 0,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['loan-no'],
@@ -316,6 +346,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 1,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['loan-no'],
@@ -325,6 +356,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
           {
             aggregate: true,
+            compareQueryTypesResult: true,
             expectedCount: 1,
             queryTypes: ['raw', 'dina'],
             tagTypes: ['loan-no'],
@@ -334,7 +366,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
           },
         ]
 
-        runTestCases({ buildRequest, testCases })
+        runTestCases({ requestBuilder, testCases })
       })
     })
   })
