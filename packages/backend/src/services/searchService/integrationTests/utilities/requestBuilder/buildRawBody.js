@@ -1,3 +1,5 @@
+const buildTagValueFilter = require('./buildTagValueFilter')
+
 const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
   const tagTypePath = `${tagPath}.tagType.raw`
   const { tagTypes = undefined, aggregate = false } = testCase
@@ -66,7 +68,7 @@ const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
   }
 }
 
-const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
+const buildRawTagValuesBody = ({ resource, tagPath, testCase, useRegexp }) => {
   const tagValuePath = `${tagPath}.tagValue.raw`
   const tagTypePath = `${tagPath}.tagType.raw`
   const tagKeyPath = `${tagPath}.key.raw`
@@ -113,11 +115,13 @@ const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
     }
 
     if (tagValue) {
-      bool.must.push({
-        wildcard: {
-          [tagValuePath]: tagValue,
-        },
-      })
+      bool.must.push(
+        buildTagValueFilter({
+          tagValue,
+          tagValuePath,
+          useRegexp,
+        })
+      )
     }
 
     aggregationFilter = {
@@ -162,12 +166,14 @@ module.exports = function buildRawBody({
   resource,
   tagPath,
   testCase,
+  useRegexp,
 }) {
   if (aggregationType === 'tagValues') {
     return buildRawTagValuesBody({
       resource,
       tagPath,
       testCase,
+      useRegexp,
     })
   }
 
