@@ -1,4 +1,4 @@
-describe('App', () => {
+describe('Start', () => {
   describe('without login', () => {
     it('redirect to login', () => {
       cy.visit('/app')
