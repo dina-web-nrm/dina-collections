@@ -1,10 +1,10 @@
 const path = require('path')
 const findRootPath = require('../fs/findRootPath')
 
-module.exports = function getEnvFilePath({ envFileName }) {
+module.exports = function getEnvFilePath({ envFileName, throwError }) {
   let rootPath
   try {
-    rootPath = findRootPath()
+    rootPath = findRootPath({ throwError })
   } catch (err) {
     /* eslint-disable no-console */
     console.warn('Could not find rootPath')
