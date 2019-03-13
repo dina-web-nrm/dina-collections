@@ -142,7 +142,7 @@ class CatalogNumberModal extends PureComponent {
                 <ModuleTranslate textKey="other.yesCreateNumber" />
               </Button>
               <Button onClick={this.handleGotoModalTwo}>
-                <ModuleTranslate textKey="other.enterManully" />
+                <ModuleTranslate textKey="other.enterManually" />
               </Button>
               <Button basic onClick={this.handleCancel}>
                 <ModuleTranslate textKey="other.cancel" />
