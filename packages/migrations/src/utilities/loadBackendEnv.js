@@ -4,9 +4,10 @@ const getEnvFilePath = require('common/src/env/getEnvFilePath')
 
 const backendEnvPath = getEnvFilePath({
   envFileName: '.backend',
+  throwError: false,
 })
 
-if (fs.existsSync(backendEnvPath)) {
+if (backendEnvPath && fs.existsSync(backendEnvPath)) {
   dotenv.config({ path: backendEnvPath })
 } else {
   dotenv.config()
