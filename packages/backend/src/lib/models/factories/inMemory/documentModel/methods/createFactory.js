@@ -7,7 +7,7 @@ module.exports = function createFactory({ Model }) {
     const id = providedId !== undefined ? providedId : uuidv1()
     const currentItems = Model.get()
     if (providedId && currentItems[providedId]) {
-      throw new Error(`Id: ${providedId} already exist`)
+      throw new Error(`Id: ${providedId} already exists`)
     }
     const newItems = {}
     const newItem = { attributes, id, internals }

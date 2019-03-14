@@ -125,7 +125,7 @@ module.exports = function indexVersionManagerFactory({
       if (nextVersion) {
         const err = backendError500({
           code: 'INTERNAL_SERVER_ERROR',
-          detail: `Tried to create new index version but next version already exist. while rebuilding ${
+          detail: `Tried to create new index version but next version already exists. while rebuilding ${
             Model.index
           }. This is either due to an ongoing or stopped index build`,
           throwError: throwOnRebuildError,
