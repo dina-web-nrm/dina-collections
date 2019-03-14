@@ -59,18 +59,18 @@
     "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
     "production:start:api": "NODE_ENV=production DEBUG='DINA*' node src/apps/production/api/index.js",
     "production:start:worker": "NODE_ENV=production DEBUG='DINA*' node src/apps/production/worker/index.js",
-    "start": "WORKER_ROLE=all NODE_ENV=development DEBUG='DINA*, -DINA:LOG_DEBUG:lib/jobs/worker' nodemon src/apps/development/api/index.js",
+    "start": "WORKER_ROLE=all NODE_ENV=development DEBUG='DINA*, -DINA:LOG_DEBUG:lib/jobs/worker' nodemon --config ./nodemon.json src/apps/development/api/index.js",
     "start:inspect": "WORKER_ROLE=all NODE_ENV=development DEBUG='DINA*' node --inspect src/apps/development/api/index.js",
     "start:node": "WORKER_ROLE=all NODE_ENV=development DEBUG='' node src/apps/development/api/index.js",
     "start:test": "TEST_SYNC_MODELS=true NODE_ENV=test DEBUG='DINA*' nodemon src/apps/test/api/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
     "test:api": "TEST_API=true SAMPLE_DATA=true DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
-    "test:api:watch": "TEST_API=true SAMPLE_DATA=true DEBUG='TEST:DINA*' jest --env=node --watch --runInBand",
+    "test:api:watch": "TEST_API=true SAMPLE_DATA=true DEBUG='TEST:DINA*' jest --env=node --watch --runInBand --verbose=false",
     "test:db": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand",
     "test:db:watch": "TEST_DB=true  DEBUG='TEST:DINA*' jest --env=node --forceExit --runInBand --watch",
     "test:depcheck": "depcheck . --ignores='pg,memwatch-next'",
     "test:unit": "TEST_UNIT=true jest --env=node --forceExit",
-    "test:unit:watch": "jest --env=node --watch"
+    "test:unit:watch": "TEST_UNIT=true jest --env=node --watch"
   },
   "engines": {
     "node": "10.15.1",

@@ -43,6 +43,9 @@ const inputSchema = {
     query: {
       type: 'object',
     },
+    raw: {
+      type: 'object',
+    },
     scroll: {
       type: 'boolean',
     },
