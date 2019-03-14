@@ -12,10 +12,10 @@ if [ "$CI_BUILD_BACKEND" = true ]; then
   echo "Building backend"
   if [ "$CI_TAG_LATEST" = true ]; then
     echo "Tagging latest"
-    docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_TAG -t dina/dina-collections-api:latest ./packages;
+    docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_TAG -t dina/dina-collections-api:latest .;
   else
     echo "Not tagging latest"
-    docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_TAG  ./packages;
+    docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_TAG  .;
   fi
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
@@ -27,10 +27,10 @@ if [ "$CI_BUILD_MIGRATIONS" = true ]; then
   echo "Building migrations"
   if [ "$CI_TAG_LATEST" = true ]; then
     echo "Tagging latest"
-    docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TRAVIS_TAG -t dina/dina-collections-migrations:latest ./packages;
+    docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TRAVIS_TAG -t dina/dina-collections-migrations:latest .;
   else
     echo "Not tagging latest"
-    docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TRAVIS_TAG ./packages;
+    docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TRAVIS_TAG .;
   fi
 
   if [ $? -ne 0 ]; then

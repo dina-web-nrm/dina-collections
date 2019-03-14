@@ -7,7 +7,7 @@ services:
       - '80'
     env_file:
       - ./env/.backend
-    command: pm2-runtime start /etc/api/src/apps/production/api/index.js
+    command: pm2-runtime start /etc/packages/api/src/apps/production/api/index.js
     depends_on:
       - postgres
       - elasticsearch
@@ -128,7 +128,7 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=simple
-    command: pm2-runtime start /etc/api/src/apps/production/worker/index.js
+    command: pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
     depends_on:
       - postgres
       - elasticsearch
@@ -143,7 +143,7 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=search-index
-    command: pm2-runtime start /etc/api/src/apps/production/worker/index.js
+    command: pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
     depends_on:
       - postgres
       - elasticsearch
