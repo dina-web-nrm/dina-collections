@@ -12,6 +12,8 @@ while getopts f: option
 
 echo "Exporting specimen search index to $FILE_PATH"
 
+rm $FILE_PATH
+
 ./packages/scripts/node_modules/.bin/elasticdump \
   --input=http://127.0.0.1:9200/searchspecimen \
   --output=$FILE_PATH \

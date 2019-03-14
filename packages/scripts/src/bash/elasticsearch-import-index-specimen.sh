@@ -12,6 +12,14 @@ while getopts f: option
 
 echo "Importing specimen search index to $TARGET"
 
+curl -X POST "http://127.0.0.1:9200/searchspecimen/_delete_by_query" -H 'Content-Type: application/json' -d'
+{
+ "query": {
+     "match_all": {}
+  }
+}
+'
+
 ./packages/scripts/node_modules/.bin/elasticdump \
   --input=$FILE_PATH \
   --output=http://127.0.0.1:9200/searchspecimen \
