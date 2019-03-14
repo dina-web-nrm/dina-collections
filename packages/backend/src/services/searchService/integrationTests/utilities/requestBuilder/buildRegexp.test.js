@@ -147,7 +147,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
     ]
     runTestCases({ storeTestLog, testCases })
   })
-  describe('asterisc', () => {
+  describe('asterisk', () => {
     const testCases = [
       {
         input: 'pu*',
@@ -172,7 +172,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
     ]
     runTestCases({ storeTestLog, testCases })
   })
-  describe('asterisc and space', () => {
+  describe('asterisk and space', () => {
     const testCases = [
       {
         input: '*lo* mus',
@@ -192,7 +192,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
     ]
     runTestCases({ storeTestLog, testCases })
   })
-  describe('asterisc and phrase', () => {
+  describe('asterisk and phrase', () => {
     const testCases = [
       {
         input: '"mus *lo*"',
