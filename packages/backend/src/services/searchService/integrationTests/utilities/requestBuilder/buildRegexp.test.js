@@ -1,6 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
 require('console.table')
-/* eslint-enable import/no-extraneous-dependencies */
 
 const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
 
