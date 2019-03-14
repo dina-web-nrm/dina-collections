@@ -1,2 +1,7 @@
 node_modules
+core
+docs
+i18n
+pages
+static
 *.log
