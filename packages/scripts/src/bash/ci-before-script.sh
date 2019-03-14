@@ -67,21 +67,12 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
     exit 1
   fi
 
-  echo "Removing ui node_modules"
-  # not needed in scope for migrations and backend images
-  rm -rf ./packages/ui/node_modules
-
   echo "Building migrations image"
   docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:ci .;
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-
-  echo "Removing migrations & scripts node_modules"
-  # not needed in scope for backend image
-  rm -rf ./packages/scripts/node_modules
-  rm -rf ./packages/migrations/node_modules
 
   echo "Building backend image"
   docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:ci .;
