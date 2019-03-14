@@ -6,15 +6,9 @@ matrix:
       name: 'Test e2e dockerized'
       if: tag IS present
       env:
-        - CI_INSTALL_BACKEND=true
         - CI_INSTALL_COMMON=true
-        - CI_INSTALL_MIGRATIONS=true
-        - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
-        - CI_LINK_BACKEND=true
         - CI_LINK_COMMON=true
-        - CI_LINK_MIGRATIONS=true
-        - CI_LINK_SCRIPTS=true
         - CI_LINK_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E_DOCKER=true

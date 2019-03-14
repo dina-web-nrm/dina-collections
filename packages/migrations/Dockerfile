@@ -7,14 +7,15 @@ RUN npm install pm2@3.2.2 -g
 EXPOSE 80 443 43554
 
 # Bundle APP files
-# Note that context need to be packages
-COPY migrations /etc/migrations/
-COPY scripts /etc/scripts/
-COPY backend /etc/backend/
-COPY common /etc/common/
+# Note that context need to be root
+COPY ./package.json /etc/package.json
+COPY ./packages/migrations /etc/packages/migrations/
+COPY ./packages/scripts /etc/packages/scripts/
+COPY ./packages/backend /etc/packages/backend/
+COPY ./packages/common /etc/packages/common/
 
 # Install app dependencies
 ENV NPM_CONFIG_LOGLEVEL warn
-RUN cd /etc/migrations && yarn install --production --ignore-engines
+RUN cd /etc/packages/migrations/ && yarn install --production --ignore-engines
 
-CMD [ "cd migrations  " "pm2-runtime", "start", "pm2.json" ]
+CMD [ "cd packages/migrations  " "pm2-runtime", "start", "pm2.json" ]

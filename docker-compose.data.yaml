@@ -5,49 +5,49 @@ services:
     container_name: dina-migrations-import
     env_file:
       - ./env/.backend
-    command: yarn --cwd=/etc/migrations setup:production
+    command: yarn --cwd=/etc/packages/migrations setup:production
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
   rebuildSearch:
     image: "dina/dina-collections-migrations:${TAG}"
     container_name: dina-migrations-rebuild-search
     env_file:
       - ./env/.backend
-    command: yarn --cwd=/etc/migrations elasticsearch:production:rebuild-index:specimen-search
+    command: yarn --cwd=/etc/packages/migrations elasticsearch:production:rebuild-index:specimen-search
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
 
   migrateOne:
     image: "dina/dina-collections-migrations:${TAG}"
     container_name: dina-migrations-migrate-one
     env_file:
       - ./env/.backend
-    command: yarn --cwd=/etc/migrations db:production:migrate:one
+    command: yarn --cwd=/etc/packages/migrations db:production:migrate:one
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
 
   migrateLatest:
     image: "dina/dina-collections-migrations:${TAG}"
     container_name: dina-migrations-migrate-latest
     env_file:
       - ./env/.backend
-    command: yarn --cwd=/etc/migrations db:production:migrate:latest
+    command: yarn --cwd=/etc/packages/migrations db:production:migrate:latest
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
 
   migrateUndoOne:
     image: "dina/dina-collections-migrations:${TAG}"
     container_name: dina-migrations-migrate-undo-one
     env_file:
       - ./env/.backend
-    command: yarn --cwd=/etc/migrations db:production:migrate:undo:one
+    command: yarn --cwd=/etc/packages/migrations db:production:migrate:undo:one
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
 
 networks:
   default:

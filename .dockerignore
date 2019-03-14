@@ -1,0 +1,11 @@
+node_modules
+data
+env
+userFiles
+packages/dina-style
+packages/docs
+packages/keycloak
+packages/models
+packages/proxy
+packages/ui
+**/node_modules

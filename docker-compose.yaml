@@ -7,13 +7,13 @@ services:
       - '80'
     env_file:
       - ./env/.backend
-    command: pm2-runtime start /etc/api/src/apps/production/api/index.js
+    command: pm2-runtime start /etc/packages/api/src/apps/production/api/index.js
     depends_on:
       - postgres
       - elasticsearch
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
@@ -128,13 +128,13 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=simple
-    command: pm2-runtime start /etc/api/src/apps/production/worker/index.js
+    command: pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
     depends_on:
       - postgres
       - elasticsearch
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
 
   searchIndexWorker:
     image: 'dina/dina-collections-api:${TAG}'
@@ -143,13 +143,13 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=search-index
-    command: pm2-runtime start /etc/api/src/apps/production/worker/index.js
+    command: pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
     depends_on:
       - postgres
       - elasticsearch
     volumes:
-      - ./data:/data
-      - ./userFiles:/userFiles
+      - ./data:/etc/data
+      - ./userFiles:/etc/userFiles
 
 volumes:
   postgres_data:

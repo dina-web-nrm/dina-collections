@@ -35,4 +35,12 @@ describe('fs/findRootPath', () => {
       findRootPath({ startPath: path.join(findRootPath(), '../') })
     }).toThrow()
   })
+  it('Dont Throw error if root path not found but throwError set to false. Instead return empty string', () => {
+    expect(
+      findRootPath({
+        startPath: path.join(findRootPath(), '../'),
+        throwError: false,
+      })
+    ).toBe('')
+  })
 })

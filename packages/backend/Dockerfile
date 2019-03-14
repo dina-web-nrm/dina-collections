@@ -9,12 +9,13 @@ EXPOSE 80 443 43554
 RUN apk update && apk add bash
 
 # Bundle APP files
-# Note that context need to be packages
-COPY backend /etc/api/
-COPY common /etc/common/
+# Note that context need to be root
+COPY ./package.json /etc/package.json
+COPY ./packages/backend /etc/packages/api/
+COPY ./packages/common /etc/packages/common/
 
 # Install app dependencies
 ENV NPM_CONFIG_LOGLEVEL warn
-RUN cd /etc/api && yarn install --production --ignore-engines
+RUN cd /etc/packages/api && yarn install --production --ignore-engines
 
-CMD [ "cd api" "pm2-runtime", "start", "pm2.json" ]
+CMD [ "cd packages/api" "pm2-runtime", "start", "pm2.json" ]
