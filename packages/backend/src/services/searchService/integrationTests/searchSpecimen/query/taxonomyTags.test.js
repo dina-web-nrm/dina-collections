@@ -33,7 +33,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
     const testCases = [
       {
         aggregate: true,
-        compareQueryTypesResult: true,
+        compareQueryResults: true,
         expectedCount: 4,
         queryTypes: ['raw', 'dina'],
         testFn: res => {
@@ -61,7 +61,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
       const testCases = [
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: expectedTotalNumberOfTags,
           queryTypes: ['raw', 'dina'],
           snapshot: true,
@@ -78,7 +78,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
       const testCases = [
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: expectedNumberOfFamilyTags,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['family'],
@@ -86,7 +86,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
         },
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: expectedNumberOfGenusTags,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['genus'],
@@ -94,7 +94,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
         },
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: expectedNumberOfOrderTags,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['order'],
@@ -102,7 +102,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
         },
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: expectedNumberOfSpeciesTags,
           queryTypes: ['raw', 'dina'],
           tagTypes: ['species'],
@@ -121,7 +121,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
       const testCases = [
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: 0,
           queryTypes: ['raw', 'dina'],
           tagValue: 'non-existing-taxon',
@@ -129,7 +129,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
         },
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: 1,
           queryTypes: ['raw', 'dina'],
           tagValue: 'pusa hispida',
@@ -137,7 +137,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
         },
         {
           aggregate: true,
-          compareQueryTypesResult: true,
+          compareQueryResults: true,
           expectedCount: 2,
           queryTypes: ['raw', 'dina'],
           tagValue: 'pus*',

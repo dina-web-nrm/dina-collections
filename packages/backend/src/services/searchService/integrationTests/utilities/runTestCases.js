@@ -3,10 +3,10 @@ const logTags = require('./logTags')
 
 /**
  * Run a number of test cases
- * @param {Object[]} requestBuilder - A request builder created with ./requestBuilder
+ * @param {Object} requestBuilder - A request builder created with ./requestBuilder
  * @param {Object[]} testCases - An array with test cases
  * @param {boolean} [testCases[].aggregate = false] - If the result should be aggregated or not
- * @param {boolean} [testCases[].compareQueryTypesResult = false] - Only relevant if 2 queryTypes provided. Will compare the result from the different queryTypes
+ * @param {boolean} [testCases[].compareQueryResults = false] - Only relevant if 2 queryTypes provided. Will compare the result from the different queryTypes
  * @param {number} [testCases[].expectedCount = false] - If provided will test that number of items return is expectedCount
  * @param {boolean} [testCases[].only = false] - If true only this test will be run (fit)
  * @param {boolean} [testCases[].skip = false] - If true this test will be skipped (xit)
@@ -22,7 +22,7 @@ const logTags = require('./logTags')
 module.exports = function runTestCases({ requestBuilder, testCases }) {
   testCases.forEach(testCase => {
     const {
-      compareQueryTypesResult = false,
+      compareQueryResults = false,
       only = false,
       queryTypes = ['dina'],
       skip = false,
@@ -99,7 +99,7 @@ module.exports = function runTestCases({ requestBuilder, testCases }) {
       })
     })
 
-    if (compareQueryTypesResult && queryTypes.length === 2) {
+    if (compareQueryResults && queryTypes.length === 2) {
       jestTest(`${testCase.title} (compare)`, () => {
         expect(queryResponses.dina).toEqual(queryResponses.raw)
       })
