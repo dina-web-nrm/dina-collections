@@ -1,12 +1,22 @@
+/* eslint-disable import/no-extraneous-dependencies */
+require('console.table')
+/* eslint-enable import/no-extraneous-dependencies */
+
 const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
 
 const buildRegexp = require('./buildRegexp')
 
-const runTestCases = testCases => {
+const runTestCases = ({ testCases, storeTestLog }) => {
   testCases.forEach(testCase => {
     const { input, matching = [], notMatching = [], errorMessage } = testCase
     describe(input, () => {
       if (errorMessage) {
+        storeTestLog({
+          errorMessage,
+          input,
+          matching: false,
+          regexp: '',
+        })
         it(`${input} should throw: ${errorMessage || ''}`, () => {
           expect(() => buildRegexp(input)).toThrow(errorMessage)
         })
@@ -14,13 +24,24 @@ const runTestCases = testCases => {
         const regexpString = buildRegexp(input)
         matching.forEach(string => {
           const regexp = new RegExp(regexpString)
-
+          storeTestLog({
+            input,
+            matching: true,
+            regexp: regexpString,
+            string,
+          })
           it(`${input} is matching: ${string} with regexp: ${regexpString}`, () => {
             expect(regexp.test(string)).toBe(true)
           })
         })
         notMatching.forEach(string => {
           const regexp = new RegExp(regexpString)
+          storeTestLog({
+            input,
+            matching: false,
+            regexp: regexpString,
+            string,
+          })
           it(`${input} is not matching: ${string} regexp: ${regexpString}`, () => {
             expect(regexp.test(string)).toBe(false)
           })
@@ -30,7 +51,23 @@ const runTestCases = testCases => {
   })
 }
 
+const print = false
 unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
+  const testLog = []
+  const storeTestLog = ({ errorMessage, input, matching, regexp, string }) => {
+    testLog.push([input, string, matching, regexp, errorMessage])
+  }
+
+  afterAll(() => {
+    if (print) {
+      /* eslint-disable no-console */
+      console.table(
+        ['input', 'target', 'matching', 'regexp', 'errorMessage'],
+        testLog
+      )
+      /* eslint-enable no-console */
+    }
+  })
   describe('No special operators in input', () => {
     const testCases = [
       {
@@ -49,7 +86,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         notMatching: ['ac'],
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
   describe('Space in input', () => {
     const testCases = [
@@ -69,7 +106,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         matching: ['mus musculoides', 'mustela erminea'],
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
   describe('= in input', () => {
     const testCases = [
@@ -88,7 +125,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         notMatching: ['pusan', 'c'],
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
   describe('phrases', () => {
     const testCases = [
@@ -110,7 +147,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         input: '"hispida pusa',
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
   describe('asterisc', () => {
     const testCases = [
@@ -135,7 +172,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         shouldThrow: true,
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
   describe('asterisc and space', () => {
     const testCases = [
@@ -155,7 +192,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         notMatching: ['mus', 'mus musculoides'],
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
   describe('asterisc and phrase', () => {
     const testCases = [
@@ -170,7 +207,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         notMatching: ['mus', 'mus musculoides'],
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
   describe('invalid input', () => {
     const testCases = [
@@ -191,6 +228,6 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         input: '/',
       },
     ]
-    runTestCases(testCases)
+    runTestCases({ storeTestLog, testCases })
   })
 })
