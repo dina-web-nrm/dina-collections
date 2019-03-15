@@ -3,7 +3,6 @@ const {
   hook,
 } = require('common/src/testUtilities/envBackendApiSampleData')
 const waitForApiRestart = require('../../../../../utilities/test/waitForApiRestart')
-const resetElasticSpecimenIndex = require('../../../../../utilities/test/db/resetElasticSpecimenIndex')
 
 const {
   chain,
@@ -17,9 +16,7 @@ const resource = 'taxonomyTag'
 
 apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
   hook(beforeAll, () => {
-    return waitForApiRestart().then(() => {
-      return resetElasticSpecimenIndex()
-    })
+    return waitForApiRestart()
   })
 
   describe(`tag type aggregations`, () => {
