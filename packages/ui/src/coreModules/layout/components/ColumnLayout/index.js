@@ -14,12 +14,14 @@ const propTypes = {
   ),
   renderColumn: PropTypes.func,
   wrapperClassNames: PropTypes.string,
+  wrapperId: PropTypes.string,
   wrapperStyle: PropTypes.object,
 }
 const defaultProps = {
   columns: undefined,
   renderColumn: undefined,
   wrapperClassNames: undefined,
+  wrapperId: undefined,
   wrapperStyle: undefined,
 }
 
@@ -29,6 +31,7 @@ class ColumnLayout extends Component {
       columns,
       renderColumn,
       wrapperClassNames,
+      wrapperId,
       wrapperStyle,
     } = this.props
 
@@ -39,6 +42,8 @@ class ColumnLayout extends Component {
     return (
       <div
         className={wrapperClassNames}
+        data-testid={wrapperId}
+        id={wrapperId}
         style={{
           display: 'flex',
           ...(wrapperStyle || {}),
@@ -53,6 +58,7 @@ class ColumnLayout extends Component {
           return (
             <div
               className={columnProps.classNames}
+              data-testid={columnProps.id}
               id={columnProps.id}
               key={columnProps.key || index}
               style={

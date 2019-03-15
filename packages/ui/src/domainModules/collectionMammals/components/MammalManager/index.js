@@ -631,6 +631,7 @@ class MammalManager extends Component {
           onTableTabClick={!isTableView && this.handleOpenTableView}
           onToggleFilters={!isNewRecordView && this.handleToggleFilters}
           totalNumberOfRecords={totalNumberOfRecords}
+          wrapperId="MammalManager"
         />
       </React.Fragment>
     )

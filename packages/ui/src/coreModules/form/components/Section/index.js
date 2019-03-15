@@ -45,7 +45,7 @@ class Section extends PureComponent {
     } = this.props
 
     return (
-      <Segment color="green">
+      <Segment color="green" data-testid={sectionSpec.name}>
         <Grid textAlign="left" verticalAlign="bottom">
           {sectionSpec.units.map(unit => {
             return (

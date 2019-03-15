@@ -67,6 +67,7 @@ export class FormSectionNavigation extends PureComponent {
           <Header
             as="h1"
             block
+            data-testid="formSectionNavigationHeader"
             style={{
               background: 'none',
               borderColor: '#fff',
@@ -75,7 +76,10 @@ export class FormSectionNavigation extends PureComponent {
             {loading && <Loader active inline size="tiny" />}
             {!loading && header}
             {!loading && subHeader && (
-              <Header.Subheader size="large">
+              <Header.Subheader
+                data-testid="formSectionNavigationSubheader"
+                size="large"
+              >
                 <em>{subHeader}</em>
               </Header.Subheader>
             )}
