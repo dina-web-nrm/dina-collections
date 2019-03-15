@@ -1,5 +1,5 @@
 const runTestCases = require('./runTestCases')
-const createRequestBuilder = require('../requestBuilder')
+const createRequestBuilder = require('./requestBuilder')
 const onlySetInTestSpecification = require('./onlySetInTestSpecification')
 
 module.exports = function runApiTagTests(testSpecification) {

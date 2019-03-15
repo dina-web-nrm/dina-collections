@@ -1,4 +1,4 @@
-const { factory: createRegexpBuilder } = require('../regexpBuilder')
+const { factory: createRegexpBuilder } = require('../../regexpBuilder')
 
 const buildRegexp = createRegexpBuilder({ env: 'elastic' })
 
