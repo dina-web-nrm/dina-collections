@@ -4,7 +4,7 @@ describe('Footer', () => {
   })
 
   it('has three columns', () => {
-    cy.getByTestId('footer-content')
+    cy.getByTestId('footerContent')
       .children()
       .should('exist')
       .and('have.length', 3)
@@ -16,9 +16,9 @@ describe('Footer', () => {
 
   it('has expected number of links', () => {
     const links = [
-      { expectedLength: 3, id: 'footer-site' },
-      { expectedLength: 2, id: 'footer-document' },
-      { expectedLength: 5, id: 'footer-developer' },
+      { expectedLength: 3, id: 'footerSite' },
+      { expectedLength: 2, id: 'footerDocument' },
+      { expectedLength: 5, id: 'footerDeveloper' },
     ]
 
     cy.wrap(links).each(({ id, expectedLength }) => {
@@ -30,27 +30,25 @@ describe('Footer', () => {
   })
 
   it('has expected links', () => {
-    cy.getByTestId('footer-start').shouldHaveHref('/')
-    cy.getByTestId('footer-login').shouldHaveHref('/login')
-    cy.getByTestId('footer-data-model').shouldHaveHref('/docs')
-    cy.getByTestId('footer-dina-wiki').shouldHaveHref(
+    cy.getByTestId('footerStart').shouldHaveHref('/')
+    cy.getByTestId('footerLogin').shouldHaveHref('/login')
+    cy.getByTestId('footerDataModel').shouldHaveHref('/docs')
+    cy.getByTestId('footerDinaWiki').shouldHaveHref(
       'https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!'
     )
-    cy.getByTestId('footer-document-data-model').shouldHaveHref('/docs')
-    cy.getByTestId('footer-dina-web-github').shouldHaveHref(
+    cy.getByTestId('footerDocumentDataModel').shouldHaveHref('/docs')
+    cy.getByTestId('footerDinaWebGithub').shouldHaveHref(
       'https://github.com/DINA-Web'
     )
-    cy.getByTestId('footer-dina-collections-github').shouldHaveHref(
+    cy.getByTestId('footerDinaCollectionsGithub').shouldHaveHref(
       'https://github.com/DINA-Web/dina-collections'
     )
-    cy.getByTestId('footer-dina-style').shouldHaveHref(
+    cy.getByTestId('footerDinaStyle').shouldHaveHref(
       'https://dina-style.nrm.se/'
     )
-    cy.getByTestId('footer-dina-api-docs').shouldHaveHref(
+    cy.getByTestId('footerDinaApiDocs').shouldHaveHref(
       'https://dina-api.nrm.se/docs'
     )
-    cy.getByTestId('footer-test-coverage').shouldHaveHref(
-      '/coverage/index.html'
-    )
+    cy.getByTestId('footerTestCoverage').shouldHaveHref('/coverage/index.html')
   })
 })
