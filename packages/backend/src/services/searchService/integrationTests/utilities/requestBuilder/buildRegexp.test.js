@@ -252,7 +252,7 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         },
         {
           errorMessage: 'input contains invalid characters',
-          input: '/',
+          input: '.',
         },
       ]
       runTestCases({ storeTestLog, testCases })
@@ -266,7 +266,13 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
           matching: ['1; 4406; 52', ' 52 1; 4406;'],
           notMatching: ['1; 4406;'],
         },
+        {
+          input: 'v0253/98',
+          matching: ['v0253/98'],
+          notMatching: ['v0253 98'],
+        },
       ]
+
       runTestCases({ storeTestLog, testCases })
     })
   })
