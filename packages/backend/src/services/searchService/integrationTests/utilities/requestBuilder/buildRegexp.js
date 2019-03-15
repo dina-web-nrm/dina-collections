@@ -1,120 +1,148 @@
-const sanitizeInput = input => {
-  const withoutDoubleBlanks = input.replace(/\s\s+/g, ' ')
-  return withoutDoubleBlanks
-}
+module.exports = function createRegexBuilder({ env = 'js' } = {}) {
+  const closeString = env === 'js'
 
-const extractFlags = input => {
-  let hasSpace = false
-  let hasEqual = false
-  let hasStar = false
-  let hasPhrase = false
-  if (input.includes(' ')) {
-    hasSpace = true
+  const sanitizeInput = input => {
+    const withoutDoubleBlanks = input.replace(/\s\s+/g, ' ')
+    return withoutDoubleBlanks
   }
 
-  if (input.includes('=')) {
-    hasEqual = true
-  }
+  const extractFlags = input => {
+    let hasSpace = false
+    let hasEqual = false
+    let hasStar = false
+    let hasPhrase = false
+    if (input.includes(' ')) {
+      hasSpace = true
+    }
 
-  if (input.includes('*')) {
-    hasStar = true
-  }
+    if (input.includes('=')) {
+      hasEqual = true
+    }
 
-  if (input.includes('"')) {
-    hasPhrase = true
-  }
+    if (input.includes('*')) {
+      hasStar = true
+    }
 
-  return {
-    hasEqual,
-    hasPhrase,
-    hasSpace,
-    hasStar,
-    noFlags: !(hasSpace || hasEqual || hasStar || hasPhrase),
-  }
-}
+    if (input.includes('"')) {
+      hasPhrase = true
+    }
 
-const validateSanitizedInput = input => {
-  if (!input.match(/^[a-zA-Z0-9\s*"=]*$/g)) {
-    throw new Error('input contains invalid characters')
-  }
-  const { hasEqual, hasStar, hasPhrase } = extractFlags(input)
-  if (hasEqual && hasStar) {
-    throw new Error('not allowed to combine = and *')
-  }
-  if (hasEqual && hasPhrase) {
-    throw new Error('not allowed to combine = and "')
-  }
-  if (hasPhrase) {
-    const numberOfQuotes = (input.match(/"/g) || []).length
-    if (numberOfQuotes !== 2) {
-      throw new Error(`expected 2 " but got ${numberOfQuotes}`)
+    return {
+      hasEqual,
+      hasPhrase,
+      hasSpace,
+      hasStar,
+      noFlags: !(hasSpace || hasEqual || hasStar || hasPhrase),
     }
   }
 
-  if (hasStar) {
-    if (input.includes('**')) {
+  const validateSanitizedInput = input => {
+    if (!input.match(/^[a-zA-Z0-9\s*"=,;/-]*$/g)) {
+      throw new Error('input contains invalid characters')
+    }
+    const { hasEqual, hasStar, hasPhrase } = extractFlags(input)
+    if (hasEqual && hasStar) {
+      throw new Error('not allowed to combine = and *')
+    }
+    if (hasEqual && hasPhrase) {
+      throw new Error('not allowed to combine = and "')
+    }
+    if (hasPhrase) {
       const numberOfQuotes = (input.match(/"/g) || []).length
       if (numberOfQuotes !== 2) {
-        throw new Error('** is not allowed')
+        throw new Error(`expected 2 " but got ${numberOfQuotes}`)
+      }
+    }
+
+    if (hasStar) {
+      if (input.includes('**')) {
+        const numberOfQuotes = (input.match(/"/g) || []).length
+        if (numberOfQuotes !== 2) {
+          throw new Error('** is not allowed')
+        }
       }
     }
   }
-}
 
-const interpretStar = str => {
-  return `\\b${str.replace(/\*+/g, '.*')}\\b`
-}
-
-const createPhraseMatch = phrase => {
-  const { hasStar } = extractFlags(phrase)
-  let str = phrase.replace(/"+/g, '')
-
-  if (hasStar) {
-    str = interpretStar(str)
-  }
-  return `^${str}$`
-}
-
-const createWordMatch = word => {
-  const { hasEqual, hasStar, hasPhrase } = extractFlags(word)
-  if (hasStar) {
-    return interpretStar(word)
+  const createStartWordOperator = () => {
+    return '( )' // prettier-ignore
   }
 
-  if (hasPhrase) {
-    return `^${word.replace(/"+/g, '')}$`
+  const createStopWordOperator = () => {
+    return '( )' // prettier-ignore
   }
-  if (hasEqual && word[0] === '=') {
-    if (word.length === 1) {
-      return '^$'
+
+  const interpretStar = str => {
+    let interpretedString = str
+    // if (interpretedString[0] === '*') {
+    interpretedString = `${createStartWordOperator()}${interpretedString}`
+    // }
+
+    // if (interpretedString[interpretedString.length - 1] === '*') {
+    interpretedString = `${interpretedString}${createStopWordOperator()}`
+    // }
+
+    return interpretedString.replace(/\*+/g, '.*')
+  }
+
+  const createPhraseMatch = phrase => {
+    const { hasStar } = extractFlags(phrase)
+    let str = phrase.replace(/"+/g, '')
+
+    if (hasStar) {
+      str = interpretStar(str)
+      return `^${str}$`
     }
-    return `\\b${word.substr(1)}\\b`
+    if (closeString) {
+      return `^ ${str} $`
+    }
+    return ` ${str} `
   }
 
-  return `\\b${word}`
-}
+  const createWordMatch = word => {
+    const { hasEqual, hasStar, hasPhrase } = extractFlags(word)
+    if (hasStar) {
+      return interpretStar(word)
+    }
 
-module.exports = function buildRegexp(input) {
-  const sanitizedInput = sanitizeInput(input)
-  validateSanitizedInput(sanitizedInput)
-  const { hasSpace, noFlags, hasPhrase } = extractFlags(sanitizedInput)
-  if (noFlags) {
-    return createWordMatch(sanitizedInput)
+    if (hasPhrase) {
+      return `^${word.replace(/"+/g, '')}$`
+    }
+    if (hasEqual && word[0] === '=') {
+      if (word.length === 1) {
+        return '  '
+      }
+
+      return `${createStartWordOperator()}${word.substr(
+        1
+      )}${createStopWordOperator()}`
+    }
+
+    return `${createStartWordOperator()}${word}.*${createStopWordOperator()}`
   }
 
-  if (hasPhrase) {
-    // assume everything in phrase
-    return createPhraseMatch(sanitizedInput)
-  }
+  return function buildRegexp(input) {
+    const sanitizedInput = sanitizeInput(input)
 
-  if (hasSpace) {
-    let str = ''
-    const segments = sanitizedInput.split(' ')
-    segments.forEach(word => {
-      str = `${str}(?=.*${createWordMatch(word)})`
-    })
-    return str
-  }
+    validateSanitizedInput(sanitizedInput)
+    const { hasSpace, noFlags, hasPhrase } = extractFlags(sanitizedInput)
 
-  return createWordMatch(sanitizedInput)
+    if (noFlags) {
+      return [createWordMatch(sanitizedInput)]
+    }
+
+    if (hasPhrase) {
+      // assume everything in phrase
+      return [createPhraseMatch(sanitizedInput)]
+    }
+
+    if (hasSpace) {
+      const segments = sanitizedInput.split(' ')
+      return segments.map(word => {
+        return `.*${createWordMatch(word)}`
+      })
+    }
+
+    return [createWordMatch(sanitizedInput)]
+  }
 }
