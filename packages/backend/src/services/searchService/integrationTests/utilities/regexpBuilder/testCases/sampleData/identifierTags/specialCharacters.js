@@ -1,7 +1,7 @@
 module.exports = [
   {
     input: '1; 4406; 52',
-    matching: ['1; 4406; 52', ' 52 1; 4406;'],
+    matching: ['1; 4406; 52'],
     notMatching: ['1; 4406;'],
   },
   {

@@ -6,12 +6,18 @@ module.exports = [
   },
   {
     input: 'pu',
-    matching: ['pusa', 'pusa hispida', 'rhabdomys pumilo'],
+    matching: ['pusa', 'pusa hispida'],
     notMatching: ['anpusa', 'test anpusi piu'],
   },
   {
     input: 'c',
-    matching: ['alouatta carya', 'capreaolus capreolus'],
+    matching: [
+      'carnivora',
+      'chiroptera',
+      'cervidae',
+      'capreolus',
+      'capreolus capreolus',
+    ],
     notMatching: ['ac'],
   },
 ]

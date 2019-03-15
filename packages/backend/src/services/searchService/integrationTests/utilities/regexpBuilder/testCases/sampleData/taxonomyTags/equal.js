@@ -10,7 +10,7 @@ module.exports = [
   },
   {
     input: '=',
-    matching: [''],
+    matching: [],
     notMatching: ['pusan', 'c'],
   },
 ]

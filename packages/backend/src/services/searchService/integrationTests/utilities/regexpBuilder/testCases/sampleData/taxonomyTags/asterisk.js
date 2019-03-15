@@ -6,12 +6,19 @@ module.exports = [
   },
   {
     input: '*pida',
-    matching: ['pusa hispida', 'hispida pusa'],
+    matching: ['pusa hispida'],
     notMatching: ['pusa'],
   },
   {
     input: '*lo*',
-    matching: ['gulo gulo', 'Mus musculoides', 'Gulo'],
+    matching: [
+      'gulo',
+      'gulo gulo',
+      'phyllostomidae',
+      'alouatta',
+      'alouatta caraya',
+      'mus musculoides',
+    ],
     notMatching: ['pusa hispida', 'pusa'],
   },
   {
