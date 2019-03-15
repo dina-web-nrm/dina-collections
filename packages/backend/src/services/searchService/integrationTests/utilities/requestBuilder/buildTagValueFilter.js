@@ -1,6 +1,6 @@
-const regexpBuilder = require('./buildRegexp')
+const { factory: createRegexpBuilder } = require('../regexpBuilder')
 
-const buildRegexp = regexpBuilder({ env: 'elastic' })
+const buildRegexp = createRegexpBuilder({ env: 'elastic' })
 
 module.exports = function buildTagValueFilter({
   tagValuePath,

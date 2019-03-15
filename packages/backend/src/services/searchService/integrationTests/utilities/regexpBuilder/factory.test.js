@@ -2,7 +2,7 @@ require('console.table')
 
 const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
 
-const createRegexBuilder = require('./buildRegexp')
+const createRegexBuilder = require('./factory')
 
 const buildRegexp = createRegexBuilder()
 
