@@ -91,12 +91,14 @@ module.exports = function createRegexBuilder({ env = 'js' } = {}) {
 
     if (hasStar) {
       str = interpretStar(str)
+    } else {
+      str = ` ${str} `
+    }
+
+    if (closeString) {
       return `^${str}$`
     }
-    if (closeString) {
-      return `^ ${str} $`
-    }
-    return ` ${str} `
+    return str
   }
 
   const createWordMatch = word => {
@@ -126,7 +128,6 @@ module.exports = function createRegexBuilder({ env = 'js' } = {}) {
 
     validateSanitizedInput(sanitizedInput)
     const { hasSpace, noFlags, hasPhrase } = extractFlags(sanitizedInput)
-
     if (noFlags) {
       return [createWordMatch(sanitizedInput)]
     }
