@@ -10,7 +10,7 @@ describe('Start', () => {
   describe('with login', () => {
     before(() => {
       cy.login()
-      cy.visit('/app')
+      cy.goToRoute('/app')
     })
 
     it('has header and links', () => {
@@ -34,7 +34,7 @@ describe('Start', () => {
         .shouldHaveHref(
           'https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md'
         )
-        .should('have.attr', 'target', '_blank')
+        .shouldHaveTargetBlank()
     })
   })
 })
