@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - identifierTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 16,
+      "key": "catalog-no",
+      "tagType": "catalog-no",
+      "type": "identifierTag",
+    },
+    "id": "catalog-no",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 9,
+      "key": "old-skeleton-no",
+      "tagType": "old-skeleton-no",
+      "type": "identifierTag",
+    },
+    "id": "old-skeleton-no",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 7,
+      "key": "old-skin-no",
+      "tagType": "old-skin-no",
+      "type": "identifierTag",
+    },
+    "id": "old-skin-no",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "sva-no",
+      "tagType": "sva-no",
+      "type": "identifierTag",
+    },
+    "id": "sva-no",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "loan-no",
+      "tagType": "loan-no",
+      "type": "identifierTag",
+    },
+    "id": "loan-no",
+    "type": "customObject",
+  },
+]
+`;

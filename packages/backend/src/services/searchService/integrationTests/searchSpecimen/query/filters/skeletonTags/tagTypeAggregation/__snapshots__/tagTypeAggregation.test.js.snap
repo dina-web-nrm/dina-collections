@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - skeletonTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 6,
+      "key": "skull (with or without mandible)",
+      "type": "skeletonTag",
+    },
+    "id": "skull (with or without mandible)",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 4,
+      "key": "no skeleton",
+      "type": "skeletonTag",
+    },
+    "id": "no skeleton",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "complete, disarticulated skeleton",
+      "type": "skeletonTag",
+    },
+    "id": "complete, disarticulated skeleton",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "partial skeleton with skull",
+      "type": "skeletonTag",
+    },
+    "id": "partial skeleton with skull",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "complete, mounted skeleton",
+      "type": "skeletonTag",
+    },
+    "id": "complete, mounted skeleton",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "some bones, < 30%",
+      "type": "skeletonTag",
+    },
+    "id": "some bones, < 30%",
+    "type": "customObject",
+  },
+]
+`;

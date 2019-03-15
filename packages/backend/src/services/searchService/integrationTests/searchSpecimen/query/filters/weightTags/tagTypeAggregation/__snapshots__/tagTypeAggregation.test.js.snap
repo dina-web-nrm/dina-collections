@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - weightTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 3,
+      "key": "complete-body-weight",
+      "tagType": "complete-body-weight",
+      "type": "weightTag",
+    },
+    "id": "complete-body-weight",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "unknown-weight-type",
+      "tagType": "unknown-weight-type",
+      "type": "weightTag",
+    },
+    "id": "unknown-weight-type",
+    "type": "customObject",
+  },
+]
+`;

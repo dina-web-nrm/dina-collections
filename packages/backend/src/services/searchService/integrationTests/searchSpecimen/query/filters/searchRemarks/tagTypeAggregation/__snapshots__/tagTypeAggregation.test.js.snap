@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - remarkTags - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 12,
+      "key": "specimenRemarks",
+      "type": "remarkTags",
+    },
+    "id": "specimenRemarks",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 6,
+      "key": "collectingDateRemarks",
+      "type": "remarkTags",
+    },
+    "id": "collectingDateRemarks",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 6,
+      "key": "physicalObjectsRemarks",
+      "type": "remarkTags",
+    },
+    "id": "physicalObjectsRemarks",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 5,
+      "key": "aSinglePhysicalObjectRemarks",
+      "type": "remarkTags",
+    },
+    "id": "aSinglePhysicalObjectRemarks",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 4,
+      "key": "deathRemarks",
+      "type": "remarkTags",
+    },
+    "id": "deathRemarks",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 3,
+      "key": "collectingInformationRemarks",
+      "type": "remarkTags",
+    },
+    "id": "collectingInformationRemarks",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "taxonomyRemarks",
+      "type": "remarkTags",
+    },
+    "id": "taxonomyRemarks",
+    "type": "customObject",
+  },
+]
+`;

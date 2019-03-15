@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - otherPreparationTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 12,
+      "key": "no other preparation",
+      "type": "otherPreparationTag",
+    },
+    "id": "no other preparation",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 4,
+      "key": "unspecified other preparation",
+      "type": "otherPreparationTag",
+    },
+    "id": "unspecified other preparation",
+    "type": "customObject",
+  },
+]
+`;
