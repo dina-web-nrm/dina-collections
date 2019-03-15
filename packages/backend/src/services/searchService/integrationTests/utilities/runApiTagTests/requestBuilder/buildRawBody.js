@@ -2,57 +2,54 @@ const buildTagValueFilter = require('./buildTagValueFilter')
 
 const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
   const tagTypePath = `${tagPath}.tagType.raw`
-  const { filters: { tagTypes = undefined } = {}, aggregate = true } = testCase
+  const { filters: { tagTypes = undefined } = {} } = testCase
 
-  let aggregations
   let query
 
   // Build aggregations
 
-  if (aggregate) {
-    const keyAggregation = {
-      tagType: {
-        terms: {
-          field: tagTypePath,
-          size: 100,
-        },
+  const keyAggregation = {
+    tagType: {
+      terms: {
+        field: tagTypePath,
+        size: 100,
       },
-    }
+    },
+  }
 
-    let aggregationFilter = {}
+  let aggregationFilter = {}
 
-    const bool = {
-      must: [],
-      should: [],
-    }
+  const bool = {
+    must: [],
+    should: [],
+  }
 
-    if (tagTypes) {
-      tagTypes.forEach(tagType => {
-        bool.should.push({
-          term: {
-            [tagTypePath]: tagType,
-          },
-        })
+  if (tagTypes) {
+    tagTypes.forEach(tagType => {
+      bool.should.push({
+        term: {
+          [tagTypePath]: tagType,
+        },
       })
-    }
+    })
+  }
 
-    aggregationFilter = {
-      bool,
-    }
+  aggregationFilter = {
+    bool,
+  }
 
-    aggregations = {
-      [resource]: {
-        aggs: {
-          filter: {
-            aggs: keyAggregation,
-            filter: aggregationFilter,
-          },
-        },
-        nested: {
-          path: tagPath,
+  const aggregations = {
+    [resource]: {
+      aggs: {
+        filter: {
+          aggs: keyAggregation,
+          filter: aggregationFilter,
         },
       },
-    }
+      nested: {
+        path: tagPath,
+      },
+    },
   }
 
   return {
@@ -68,86 +65,79 @@ const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
   }
 }
 
-const buildRawTagValuesBody = ({ resource, tagPath, testCase, useRegexp }) => {
+const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
   const tagValuePath = `${tagPath}.tagValue.raw`
   const tagTypePath = `${tagPath}.tagType.raw`
   const tagKeyPath = `${tagPath}.key.raw`
-  const {
-    filters: { tagTypes = undefined, tagValue } = {},
-    aggregate = true,
-  } = testCase
+  const { filters: { tagTypes = undefined, tagValue } = {} } = testCase
 
-  let aggregations
   let query
 
   // Build aggregations
 
-  if (aggregate) {
-    const keyAggregation = {
-      tagKeys: {
-        aggs: {
-          tagType: {
-            terms: {
-              field: tagTypePath,
-              size: 100,
-            },
+  const keyAggregation = {
+    tagKeys: {
+      aggs: {
+        tagType: {
+          terms: {
+            field: tagTypePath,
+            size: 100,
           },
-        },
-        terms: {
-          field: tagKeyPath,
-          size: 100,
         },
       },
-    }
+      terms: {
+        field: tagKeyPath,
+        size: 100,
+      },
+    },
+  }
 
-    let aggregationFilter = {}
+  let aggregationFilter = {}
 
-    const bool = {
-      must: [],
-      should: [],
-    }
+  const bool = {
+    must: [],
+    should: [],
+  }
 
-    if (tagTypes) {
-      tagTypes.forEach(tagType => {
-        bool.should.push({
-          term: {
-            [tagTypePath]: tagType,
-          },
-        })
+  if (tagTypes) {
+    tagTypes.forEach(tagType => {
+      bool.should.push({
+        term: {
+          [tagTypePath]: tagType,
+        },
       })
-    }
+    })
+  }
 
-    if (tagValue) {
-      const tagValueFilters = buildTagValueFilter({
-        tagValue,
-        tagValuePath,
-        useRegexp,
-      })
-      bool.must = [...bool.must, ...tagValueFilters]
-    }
+  if (tagValue) {
+    const tagValueFilters = buildTagValueFilter({
+      tagValue,
+      tagValuePath,
+    })
+    bool.must = [...bool.must, ...tagValueFilters]
+  }
 
+  aggregationFilter = {
+    bool,
+  }
+
+  if (!Object.keys(aggregationFilter).length) {
     aggregationFilter = {
-      bool,
+      match_all: {},
     }
-
-    if (!Object.keys(aggregationFilter).length) {
-      aggregationFilter = {
-        match_all: {},
-      }
-    }
-    aggregations = {
-      [resource]: {
-        aggs: {
-          filter: {
-            aggs: keyAggregation,
-            filter: aggregationFilter,
-          },
-        },
-        nested: {
-          path: tagPath,
+  }
+  const aggregations = {
+    [resource]: {
+      aggs: {
+        filter: {
+          aggs: keyAggregation,
+          filter: aggregationFilter,
         },
       },
-    }
+      nested: {
+        path: tagPath,
+      },
+    },
   }
 
   return {
@@ -168,14 +158,12 @@ module.exports = function buildRawBody({
   resource,
   tagPath,
   testCase,
-  useRegexp,
 }) {
   if (aggregationType === 'tagValues') {
     return buildRawTagValuesBody({
       resource,
       tagPath,
       testCase,
-      useRegexp,
     })
   }
 

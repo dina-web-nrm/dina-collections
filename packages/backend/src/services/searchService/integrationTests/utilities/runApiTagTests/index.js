@@ -21,7 +21,6 @@ module.exports = function runApiTagTests(testSpecification) {
       filterFunction,
       resource,
       tagPath,
-      useRegexp: true,
     })
 
     describe(title, () => {

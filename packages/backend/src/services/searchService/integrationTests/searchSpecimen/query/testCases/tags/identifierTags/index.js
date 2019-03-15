@@ -6,7 +6,6 @@ const tagValueAggregationTagTypeTagValueFilterTestCases = require('./tagValue/ta
 const filterFunction = 'searchIdentifierTags'
 const tagPath = 'attributes.tags.identifierTags'
 const resource = 'identifierTag'
-const useRegexp = true
 const typeAggregationFunction = 'aggregateIdentifierTagTypes'
 const valueAggregationFunction = 'aggregateIdentifierTagValues'
 
@@ -18,7 +17,6 @@ module.exports = {
     resource,
     tagPath,
     testCases: tagTypeAggregationTestCases,
-    useRegexp,
   },
   tagValueAggregationTagTypeFilter: {
     aggregationFunction: valueAggregationFunction,
@@ -27,7 +25,6 @@ module.exports = {
     resource,
     tagPath,
     testCases: tagValueAggregationTagTypeFilterTestCases,
-    useRegexp,
   },
   tagValueAggregationTagTypeTagValueFilter: {
     aggregationFunction: valueAggregationFunction,
@@ -36,7 +33,6 @@ module.exports = {
     resource,
     tagPath,
     testCases: tagValueAggregationTagTypeTagValueFilterTestCases,
-    useRegexp,
   },
   tagValueAggregationTagValueFilter: {
     aggregationFunction: valueAggregationFunction,
@@ -45,6 +41,5 @@ module.exports = {
     resource,
     tagPath,
     testCases: tagValueAggregationTagValueFilterTestCases,
-    useRegexp,
   },
 }

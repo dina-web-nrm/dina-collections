@@ -9,7 +9,6 @@ const buildBody = require('./buildBody')
  * @param {string} filterFunction - The name of the filterFunction used by backend, when queryType is dina, to filter result
  * @param {string} resource - The name of the aggregated resource returned in the response.
  * @param {string} tagPath - The path to the tag. Used when queryType is raw. Ex attributes.tags.identifierTags
- * @param {string} useRegexp - If regexp should be used to build the tagValueFilter when queryType is raw (otherwise wildcard is used)
 
  * @returns {Object} requestBuilder
  *
@@ -20,7 +19,6 @@ module.exports = function createRequestBuilder({
   filterFunction,
   resource,
   tagPath,
-  useRegexp = false,
 }) {
   const buildRequest = testCase => {
     return {
@@ -30,7 +28,6 @@ module.exports = function createRequestBuilder({
             resource,
             tagPath,
             testCase,
-            useRegexp,
           })
         : buildBody({
             aggregationFunction,
