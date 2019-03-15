@@ -28,9 +28,13 @@ const runTestCases = ({ testCases, storeTestLog }) => {
           expect(() => buildRegexp(input)).toThrow(errorMessage)
         })
       } else {
-        const regexpString = buildRegexp(input)
+        const regexpStringArray = buildRegexp(input)
+        const regexpString = regexpStringArray.join(' && ')
         matching.forEach(string => {
-          const regexp = new RegExp(regexpString)
+          const regexps = regexpStringArray.map(str => {
+            return new RegExp(str)
+          })
+
           storeTestLog({
             input,
             matching: true,
@@ -38,11 +42,17 @@ const runTestCases = ({ testCases, storeTestLog }) => {
             string: ` ${string} `,
           })
           it(`${input} is matching: " ${string} " with regexp: ${regexpString}`, () => {
-            expect(regexp.test(` ${string} `)).toBe(true)
+            expect(
+              regexps.every(regexp => {
+                return regexp.test(` ${string} `)
+              })
+            ).toBe(true)
           })
         })
         notMatching.forEach(string => {
-          const regexp = new RegExp(regexpString)
+          const regexps = regexpStringArray.map(str => {
+            return new RegExp(str)
+          })
           storeTestLog({
             input,
             matching: false,
@@ -50,7 +60,11 @@ const runTestCases = ({ testCases, storeTestLog }) => {
             string: ` ${string} `,
           })
           it(`${input} is not matching: " ${string} " regexp: ${regexpString}`, () => {
-            expect(regexp.test(` ${string} `)).toBe(false)
+            expect(
+              regexps.every(regexp => {
+                return regexp.test(` ${string} `)
+              })
+            ).toBe(false)
           })
         })
       }
