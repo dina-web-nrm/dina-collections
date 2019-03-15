@@ -115,13 +115,12 @@ const buildRawTagValuesBody = ({ resource, tagPath, testCase, useRegexp }) => {
     }
 
     if (tagValue) {
-      bool.must.push(
-        buildTagValueFilter({
-          tagValue,
-          tagValuePath,
-          useRegexp,
-        })
-      )
+      const tagValueFilters = buildTagValueFilter({
+        tagValue,
+        tagValuePath,
+        useRegexp,
+      })
+      bool.must = [...bool.must, ...tagValueFilters]
     }
 
     aggregationFilter = {
