@@ -1,26 +1,9 @@
+const createQueryTestCasedFromRegexpCases = require('../../../../../../utilities/createQueryTestCasedFromRegexpCases')
 const regexpBuilderSampleDataTaxonomyTestSpecification = require('../../../../../../utilities/regexpBuilder/testCases/sampleData/taxonomyTags')
 
-const regexpTestCases = []
-Object.keys(regexpBuilderSampleDataTaxonomyTestSpecification).forEach(key => {
-  const { testCases } = regexpBuilderSampleDataTaxonomyTestSpecification[key]
-  testCases.forEach(({ input, matching, only, printRequest }) => {
-    if (input && matching) {
-      regexpTestCases.push({
-        expect: {
-          items: matching.map(matchingTagValue => {
-            return {
-              tagValue: matchingTagValue,
-            }
-          }),
-        },
-        filters: { tagValue: input },
-        only,
-        printRequest,
-        title: `${key} - ${input}`,
-      })
-    }
-  })
-})
+const regexpTestCases = createQueryTestCasedFromRegexpCases(
+  regexpBuilderSampleDataTaxonomyTestSpecification
+)
 
 module.exports = [
   {
