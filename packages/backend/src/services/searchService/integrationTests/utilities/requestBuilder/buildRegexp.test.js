@@ -146,6 +146,11 @@ unitDescribe('searchSpecimen - utilities - buildRegexp', () => {
         notMatching: ['pusa hispida', 'pusa', 'hispida pusa'],
       },
       {
+        input: '"pusa"',
+        matching: ['pusa'],
+        notMatching: ['pusa hispida', 'hispida pusa'],
+      },
+      {
         input: '"hispida pusa"',
         notMatching: ['pusa hispida', 'pusa'],
       },
