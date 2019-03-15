@@ -2,7 +2,9 @@ require('console.table')
 
 const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
 
-const buildRegexp = require('./buildRegexp')
+const createRegexBuilder = require('./buildRegexp')
+
+const buildRegexp = createRegexBuilder()
 
 const runTestCases = ({ testCases, storeTestLog }) => {
   testCases.forEach(testCase => {
