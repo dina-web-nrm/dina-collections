@@ -6,8 +6,17 @@ const buildRegexp = require('./buildRegexp')
 
 const runTestCases = ({ testCases, storeTestLog }) => {
   testCases.forEach(testCase => {
-    const { input, matching = [], notMatching = [], errorMessage } = testCase
-    describe(input, () => {
+    const {
+      errorMessage,
+      input,
+      matching = [],
+      notMatching = [],
+      only,
+    } = testCase
+
+    const jestDescribe = only ? describe.only : describe
+
+    jestDescribe(input, () => {
       if (errorMessage) {
         storeTestLog({
           errorMessage,
@@ -26,10 +35,10 @@ const runTestCases = ({ testCases, storeTestLog }) => {
             input,
             matching: true,
             regexp: regexpString,
-            string,
+            string: ` ${string} `,
           })
-          it(`${input} is matching: ${string} with regexp: ${regexpString}`, () => {
-            expect(regexp.test(string)).toBe(true)
+          it(`${input} is matching: " ${string} " with regexp: ${regexpString}`, () => {
+            expect(regexp.test(` ${string} `)).toBe(true)
           })
         })
         notMatching.forEach(string => {
@@ -38,10 +47,10 @@ const runTestCases = ({ testCases, storeTestLog }) => {
             input,
             matching: false,
             regexp: regexpString,
-            string,
+            string: ` ${string} `,
           })
-          it(`${input} is not matching: ${string} regexp: ${regexpString}`, () => {
-            expect(regexp.test(string)).toBe(false)
+          it(`${input} is not matching: " ${string} " regexp: ${regexpString}`, () => {
+            expect(regexp.test(` ${string} `)).toBe(false)
           })
         })
       }
