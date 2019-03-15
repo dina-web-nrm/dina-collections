@@ -1,3 +1,10 @@
+const createQueryTestCasedFromRegexpCases = require('../../../../../../utilities/createQueryTestCasedFromRegexpCases')
+const regexpBuilderSampleDataTaxonomyTestSpecification = require('../../../../../../utilities/regexpBuilder/testCases/sampleData/identifierTags')
+
+const regexpTestCases = createQueryTestCasedFromRegexpCases(
+  regexpBuilderSampleDataTaxonomyTestSpecification
+)
+
 module.exports = [
   {
     expect: { count: 0 },
@@ -56,4 +63,5 @@ module.exports = [
     filters: { tagValue: '*5*' },
     title: 'returns 25 matching identifiers for *5*',
   },
+  ...regexpTestCases,
 ]
