@@ -40,7 +40,7 @@ const transformation = ({ migrator, src, target }) => {
         return {
           key: `${tagType}${delimiter}${tagValue}`,
           tagType,
-          tagValue,
+          tagValue: ` ${tagValue} `,
         }
       }
 

@@ -73,7 +73,7 @@ const addTags = ({
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
       tagType,
-      tagValue,
+      tagValue: ` ${tagValue} `,
     })
   }
 
@@ -85,7 +85,7 @@ const addTags = ({
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
       tagType,
-      tagValue,
+      tagValue: ` ${tagValue} `,
     })
   }
 }

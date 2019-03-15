@@ -37,7 +37,7 @@ const transformation = ({ migrator, target, locals }) => {
       return {
         key: `${tagType}${delimiter}${tagValue}`,
         tagType,
-        tagValue,
+        tagValue: ` ${tagValue} `,
       }
     })
     .filter(tag => {

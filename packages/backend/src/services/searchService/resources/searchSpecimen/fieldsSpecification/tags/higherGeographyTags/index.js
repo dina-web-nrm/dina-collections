@@ -58,7 +58,7 @@ const transformation = ({ migrator, target, locals }) => {
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
         tagType,
-        tagValue,
+        tagValue: ` ${tagValue} `,
       })
     })
   }
