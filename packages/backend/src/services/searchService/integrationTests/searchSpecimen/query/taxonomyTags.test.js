@@ -26,6 +26,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
       filterFunction: 'searchTaxonomyTags',
       resource: 'taxonomyTag',
       tagPath: 'attributes.tags.taxonomyTags',
+      useRegexp: true,
     })
     const testCases = [
       {
@@ -53,6 +54,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - ${resource}`, () => {
       filterFunction: 'searchTaxonomyTags',
       resource: 'taxonomyTag',
       tagPath: 'attributes.tags.taxonomyTags',
+      useRegexp: true,
     })
     describe(`no filters`, () => {
       const testCases = [

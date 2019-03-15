@@ -24,6 +24,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
       filterFunction: 'searchIdentifierTags',
       resource: 'identifierTag',
       tagPath: 'attributes.tags.identifierTags',
+      useRegexp: true,
     })
     const testCases = [
       {
@@ -56,6 +57,7 @@ apiSampleDescribe(`searchSpecimen - query - tags - identifier`, () => {
       filterFunction: 'searchIdentifierTags',
       resource: 'identifierTag',
       tagPath: 'attributes.tags.identifierTags',
+      useRegexp: true,
     })
     describe(`no filters`, () => {
       const testCases = [
