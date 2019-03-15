@@ -46,7 +46,8 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-// expose store when run in Cypress
+// expose some things when run in Cypress
 if (window.Cypress) {
+  window.routerHistory = config.routing
   window.store = store
 }
