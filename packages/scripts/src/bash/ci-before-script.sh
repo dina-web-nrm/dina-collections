@@ -53,7 +53,6 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
 
-
   echo "Building UI bundle and image"
   yarn build:ui
   if [ $? -ne 0 ]; then
@@ -81,10 +80,8 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
     exit 1
   fi
 
-  echo "Installing ui"
-  # needed for cypress
-  cd ./packages/ui && yarn install
-  cd $START_DIRECTORY
+  echo "Setup sample data"
+  yarn setup:sample-data
 
   echo "Starting databases and keycloak"
   docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch keycloak mysql postgres

@@ -7,6 +7,7 @@ matrix:
       if: tag IS present
       env:
         - CI_INSTALL_COMMON=true
+        - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_LINK_COMMON=true
         - CI_LINK_UI=true
