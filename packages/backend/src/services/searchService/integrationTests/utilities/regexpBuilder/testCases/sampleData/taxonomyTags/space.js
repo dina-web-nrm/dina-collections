@@ -10,6 +10,16 @@ module.exports = [
     notMatching: ['pus hispida', 'hispid pusa'],
   },
   {
+    input: 'hispida pusa',
+    matching: ['pusa hispida'],
+    notMatching: ['pus hispida', 'hispid pusa'],
+  },
+  {
+    input: 'hispida',
+    matching: ['pusa hispida'],
+    notMatching: ['hispid pusa'],
+  },
+  {
     input: 'mu mus',
     matching: [
       'mustelidae',
