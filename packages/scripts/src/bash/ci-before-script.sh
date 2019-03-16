@@ -4,10 +4,11 @@
 START_DIRECTORY=$PWD
 
 if [ "$CI_SETUP_ENV_DOCKER" = true ]; then
+  yarn setup:env:ci:docker
   yarn setup:env
+else
+  yarn setup:env:ci:local
 fi
-
-yarn setup:env:ci
 
 if [ "$CI_START_DATABASES" = true ]; then
   echo "Starting dbs"
