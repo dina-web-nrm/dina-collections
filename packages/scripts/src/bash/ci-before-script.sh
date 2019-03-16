@@ -91,7 +91,7 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
   sleep 10
 
   echo "Importing sample data"
-  TAG=ci docker-compose -f docker-compose.data.yaml up import
+  TAG=ci docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
 
   echo "Starting application and worker containers"
   TAG=ci docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
