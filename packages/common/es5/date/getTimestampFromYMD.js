@@ -130,14 +130,19 @@ module.exports = function getTimestampFromYMD(_ref4) {
     return undefined;
   }
 
-  var isCurrentDay = moment().isSame(YYYYMMDD, 'day');
+  var now = moment();
+  var isCurrentDay = now.isSame(YYYYMMDD, 'day');
+  var isCurrentMonth = now.isSame(YYYYMMDD, 'month');
+  var isCurrentYear = now.isSame(YYYYMMDD, 'year');
 
   var interpretedTimestamp = void 0;
 
-  if (isCurrentDay && isEndDate) {
-    interpretedTimestamp = moment();
-  } else if (isEndDate) {
-    interpretedTimestamp = moment(YYYYMMDD).endOf('date');
+  if (isEndDate) {
+    if (isCurrentDay || !day && isCurrentMonth || !month && isCurrentYear) {
+      interpretedTimestamp = now;
+    } else {
+      interpretedTimestamp = moment(YYYYMMDD).endOf('date');
+    }
   } else {
     interpretedTimestamp = moment(YYYYMMDD).startOf('date');
   }
