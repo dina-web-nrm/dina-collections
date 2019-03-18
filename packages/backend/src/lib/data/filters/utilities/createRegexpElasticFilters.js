@@ -4,12 +4,12 @@ const {
 
 const buildRegexp = createRegexpBuilder({ env: 'elastic' })
 
-module.exports = function buildTagValueFilter({ tagValuePath, tagValue }) {
-  const regexpStringArray = buildRegexp(tagValue)
+module.exports = function createRegexpElasticFilter({ path, value }) {
+  const regexpStringArray = buildRegexp(value)
   return regexpStringArray.map(regexpString => {
     return {
       regexp: {
-        [tagValuePath]: regexpString,
+        [path]: regexpString,
       },
     }
   })

@@ -1,5 +1,5 @@
 const objectPath = require('object-path')
-const buildTagValueFilter = require('./buildTagValueFilter')
+const createRegexpElasticFilters = require('../../filters/utilities/createRegexpElasticFilters')
 
 module.exports = function createTagValueAggregation({
   description,
@@ -63,9 +63,9 @@ module.exports = function createTagValueAggregation({
       }
 
       if (tagValue) {
-        const tagValueFilters = buildTagValueFilter({
-          tagValue,
-          tagValuePath,
+        const tagValueFilters = createRegexpElasticFilters({
+          path: tagValuePath,
+          value: tagValue,
         })
         bool.must = [...bool.must, ...tagValueFilters]
       }
