@@ -35,7 +35,7 @@ export default () =>
           .type('1234567')
           .blur()
         cy.getByTestId('useThisNumber').should('be.disabled')
-        cy.getByText('Catalog number must be 6 or 8 digits').should('exist')
+        cy.getByText('Catalog number must be 6 or 8 digits')
 
         cy.log('ensure error cleared when going back to 6 digits')
         cy.get('@catalogNumberInput').type('{backspace}')
@@ -50,7 +50,7 @@ export default () =>
           .type('1234567a')
           .blur()
         cy.getByTestId('useThisNumber').should('be.disabled')
-        cy.getByText('Catalog number must be 6 or 8 digits').should('exist')
+        cy.getByText('Catalog number must be 6 or 8 digits')
 
         cy.log('create with 8-digit number')
         cy.get('@catalogNumberInput')
@@ -72,7 +72,7 @@ export default () =>
         )
         cy.getByText('identifier: 12345678 already exists', {
           exact: false,
-        }).should('exist')
+        })
 
         cy.log(
           'ensure possible to cancel after trying to creating with same number'
@@ -91,7 +91,7 @@ export default () =>
       it('deletes record', () => {
         cy.getByTestId('deleteButton').click()
         cy.getByTestId('confirmDeleteButton').click()
-        cy.getByText('The specimen was deleted').should('exist')
+        cy.getByText('The specimen was deleted')
         cy.url()
           .should('include', 'search')
           .should('not.include', 'edit')
@@ -121,7 +121,7 @@ export default () =>
           cy.getInputByFieldLabel('Interpreted taxon name').type('Canis')
         })
 
-        cy.getByText('Unsaved changes').should('exist')
+        cy.getByText('Unsaved changes')
         cy.get('@undoChangesButton').should('not.be.disabled')
         cy.getState()
           .its('form.editSpecimen')

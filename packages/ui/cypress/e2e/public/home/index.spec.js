@@ -5,7 +5,6 @@ describe('Home', () => {
 
   it('has expected content', () => {
     cy.getByTestId('logo')
-      .should('exist')
       .should('have.attr', 'src')
       .should('match', /^\/static\/media\/logo\..+\.png$/)
 
@@ -15,8 +14,7 @@ describe('Home', () => {
 
     cy.getByTestId('home-descriptions')
       .children()
-      .should('exist')
-      .and('have.length', 2)
+      .should('have.length', 2)
 
     cy.getByTestId('home-readmore-button').shouldHaveHref('#footer')
 

@@ -6,12 +6,11 @@ describe('Footer', () => {
   it('has three columns', () => {
     cy.getByTestId('footerContent')
       .children()
-      .should('exist')
       .and('have.length', 3)
 
-    cy.getByText('Site').should('exist')
-    cy.getByText('Documentation').should('exist')
-    cy.getByText('Developer').should('exist')
+    cy.getByText('Site')
+    cy.getByText('Documentation')
+    cy.getByText('Developer')
   })
 
   it('has expected number of links', () => {
@@ -24,7 +23,6 @@ describe('Footer', () => {
     cy.wrap(links).each(({ id, expectedLength }) => {
       cy.getByTestId(id)
         .children()
-        .should('exist')
         .and('have.length', expectedLength)
     })
   })
