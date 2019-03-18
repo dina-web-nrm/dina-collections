@@ -69,6 +69,7 @@ const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
   const tagValuePath = `${tagPath}.tagValue.raw`
   const tagTypePath = `${tagPath}.tagType.raw`
   const tagKeyPath = `${tagPath}.key.raw`
+  const tagTextPath = `${tagPath}.tagText.raw`
   const { filters: { tagTypes = undefined, tagValue } = {} } = testCase
 
   let query
@@ -78,9 +79,21 @@ const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
   const keyAggregation = {
     tagKeys: {
       aggs: {
+        tagText: {
+          terms: {
+            field: tagTextPath,
+            size: 100,
+          },
+        },
         tagType: {
           terms: {
             field: tagTypePath,
+            size: 100,
+          },
+        },
+        tagValue: {
+          terms: {
+            field: tagValuePath,
             size: 100,
           },
         },

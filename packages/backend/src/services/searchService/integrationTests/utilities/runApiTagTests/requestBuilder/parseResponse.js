@@ -15,17 +15,25 @@ module.exports = function parseResponse({
     return {
       data:
         res.meta.aggregations[resource].filter.tagKeys.buckets.map(
-          ({ doc_count, key: rawKey, tagType: tagTypeSection }) => {
+          ({
+            doc_count,
+            key: rawKey,
+            tagType: tagTypeSection,
+            tagText: tagTextSection,
+            tagValue: tagValueSection,
+          }) => {
             const delimiter = 'ddaadd'
             const keySections = rawKey.split(delimiter)
-            const tagValue = keySections[1]
             const key = keySections.join('-')
 
             const tagType = tagTypeSection.buckets[0].key
+            const tagValue = tagValueSection.buckets[0].key.trim()
+            const tagText = tagTextSection.buckets[0].key
             return {
               attributes: {
                 count: doc_count,
                 key,
+                tagText,
                 tagType,
                 tagValue,
                 type: resource,

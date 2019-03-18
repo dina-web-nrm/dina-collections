@@ -49,14 +49,16 @@ const transformation = ({ migrator, target, locals }) => {
 
       const { name, group } = place.attributes
       const tagType = group
-      const tagValue = extractText({
+      const tagText = extractText({
         group,
         name,
         parent: { name: parentName },
       })
+      const tagValue = name
 
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
+        tagText,
         tagType,
         tagValue: ` ${tagValue} `,
       })

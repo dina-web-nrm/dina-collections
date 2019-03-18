@@ -36,6 +36,7 @@ const transformation = ({ migrator, target, locals }) => {
       const tagValue = name
       return {
         key: `${tagType}${delimiter}${tagValue}`,
+        tagText: tagValue,
         tagType,
         tagValue: ` ${tagValue} `,
       }
