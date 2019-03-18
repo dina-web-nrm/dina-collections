@@ -106,6 +106,7 @@ module.exports = function getWhereFactory({
             }) || []
 
           let sourceOptions = {}
+
           if (fields.length === 1 && fields[0] === 'id') {
             sourceOptions = {
               _source: false,
@@ -117,6 +118,11 @@ module.exports = function getWhereFactory({
                 : undefined,
               _sourceInclude: fields.length ? fields : undefined,
             }
+
+          if (aggregations && aggregations.length) {
+            sourceOptions._source = false // eslint-disable-line
+          }
+
           const body = raw || where
           methodName = 'search'
           options = {
