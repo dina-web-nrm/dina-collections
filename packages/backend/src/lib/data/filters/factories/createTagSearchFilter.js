@@ -1,3 +1,5 @@
+const createRegexpElasticFilters = require('../utilities/createRegexpElasticFilters')
+
 module.exports = function createTagSearchFilter({
   description,
   fieldPath,
@@ -5,6 +7,7 @@ module.exports = function createTagSearchFilter({
 }) {
   const typePath = `${fieldPath}.tagType.raw`
   const valuePath = `${fieldPath}.tagValue`
+  const valueRawPath = `${valuePath}.raw`
 
   return {
     description: description || `Search ${fieldPath}`,
@@ -28,31 +31,14 @@ module.exports = function createTagSearchFilter({
       }
 
       if (tagValue) {
-        const assumeExactValue = tagValue.indexOf('[') !== -1
-
-        if (assumeExactValue) {
-          baseQuery.nested.query.bool.must.push({
-            match_phrase_prefix: {
-              [valuePath]: {
-                query: tagValue.toLowerCase(),
-              },
-            },
-          })
-        } else {
-          const tagValueSegments = tagValue
-            .split(/[\s\\/-]+/)
-            .filter(segment => {
-              return !!segment
-            })
-
-          tagValueSegments.forEach(segment => {
-            baseQuery.nested.query.bool.must.push({
-              wildcard: {
-                [valuePath]: segment.toLowerCase(),
-              },
-            })
-          })
-        }
+        const regexpFilters = createRegexpElasticFilters({
+          path: valueRawPath,
+          value: tagValue,
+        })
+        baseQuery.nested.query.bool.must = [
+          ...baseQuery.nested.query.bool.must,
+          ...regexpFilters,
+        ]
       }
       return baseQuery
     },
