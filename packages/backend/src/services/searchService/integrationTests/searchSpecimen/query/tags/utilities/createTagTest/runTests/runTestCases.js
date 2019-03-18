@@ -1,7 +1,12 @@
 const makeRequest = require('./makeRequest')
 const createTestCaseTests = require('./createTestCaseTests')
 
-module.exports = function runTestCases({ requestBuilder, testCases, onlySet }) {
+module.exports = function runTestCases({
+  requestBuilder,
+  testCases,
+  onlySet,
+  storeTestLog,
+}) {
   testCases.forEach(testCase => {
     const {
       compareQueryResults = false,
@@ -36,6 +41,7 @@ module.exports = function runTestCases({ requestBuilder, testCases, onlySet }) {
             if (onlySet && !only) {
               return null
             }
+            storeTestLog(testCase)
             return makeRequest({
               raw: queryType === 'raw',
               requestBuilder,

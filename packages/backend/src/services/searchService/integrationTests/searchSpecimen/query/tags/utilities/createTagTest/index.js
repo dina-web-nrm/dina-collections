@@ -41,6 +41,6 @@ module.exports = function createTagTest({
     hook(beforeAll, () => {
       return waitForApiRestart()
     })
-    runTests(testSpecification)
+    runTests({ resource, testSpecification, filterType })
   })
 }
