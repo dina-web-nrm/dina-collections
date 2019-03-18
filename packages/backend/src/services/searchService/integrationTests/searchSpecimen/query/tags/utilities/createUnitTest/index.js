@@ -3,6 +3,6 @@ const runTests = require('./runTests')
 
 module.exports = function createUnitTest({ resource, testSpecification }) {
   unitDescribe(`searchSpecimen - ${resource} - unitTest`, () => {
-    runTests({ testSpecification, resource })
+    runTests({ resource, testSpecification })
   })
 }
