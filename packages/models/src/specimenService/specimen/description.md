@@ -5,12 +5,12 @@ The "things" registered under the same catalog number.
 
 ## Short description
 
-The "things" register under the same catalog number.
+The "things" registered under the same catalog number.
 
 
 ### Defintion
 
-The "things" register under the same catalog number.
+The "things" registered under the same catalog number.
 
 
 ### Examples
