@@ -19,7 +19,7 @@ An [individual](__DOCLINK__individual/) may have more than one [event](__DOCLINK
 
 ### Notes
 
-The purpose of this term is to keep information that has to do with the origin of [individuals](__DOCLINK__individual/). This could involve both the genetic and the physical origin. This term concerns the origin of individuals, not the provenance of specimens. The general description of the death event, like its time and location, should be recorded under [event](__DOCLINK__event/).
+The purpose of this term is to keep information that has to do with the origin of [individuals](__DOCLINK__individual/). This could involve both the genetic and the physical origin. This term concerns the origin of individuals, not the provenance of specimens. The general description of the origin event, like its time and location, should be recorded under [event](__DOCLINK__event/).
 
 
 ### See also

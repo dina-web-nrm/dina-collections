@@ -20,9 +20,9 @@ An event involving the collecting of some material.
 
 ### Notes
 
-If it is uncertain whether two specimens were collected at the same event (e.g., if there are different information sources), the information should be recorded as two separate events.
+If it is uncertain whether two specimens were collected at the same event (e.g., if they have different information sources), the information should be recorded as two separate events.
 
-An event may have both collecting- and death information.
+An event may have collecting- and death information.
 
 
 ### See also
