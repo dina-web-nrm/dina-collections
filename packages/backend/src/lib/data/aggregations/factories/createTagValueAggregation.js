@@ -6,10 +6,10 @@ module.exports = function createTagValueAggregation({
   fieldPath,
   resource,
 }) {
-  const tagValuePath = `${fieldPath}.tagValue.raw`
-  const tagTypePath = `${fieldPath}.tagType.raw`
-  const tagKeyPath = `${fieldPath}.key.raw`
-  const tagTextPath = `${fieldPath}.tagText.raw`
+  const tagValuePath = `${fieldPath}.tagValue`
+  const tagTypePath = `${fieldPath}.tagType`
+  const tagKeyPath = `${fieldPath}.key`
+  const tagTextPath = `${fieldPath}.tagText`
 
   return {
     description: description || `Aggregation for: ${fieldPath}`,

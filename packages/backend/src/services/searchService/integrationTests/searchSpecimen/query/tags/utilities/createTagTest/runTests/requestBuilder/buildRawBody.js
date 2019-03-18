@@ -1,7 +1,7 @@
 const buildTagValueFilter = require('./buildTagValueFilter')
 
 const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
-  const tagTypePath = `${tagPath}.tagType.raw`
+  const tagTypePath = `${tagPath}.tagType`
   const { filters: { tagTypes = undefined } = {} } = testCase
 
   let query
@@ -66,10 +66,10 @@ const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
 }
 
 const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
-  const tagValuePath = `${tagPath}.tagValue.raw`
-  const tagTypePath = `${tagPath}.tagType.raw`
-  const tagKeyPath = `${tagPath}.key.raw`
-  const tagTextPath = `${tagPath}.tagText.raw`
+  const tagValuePath = `${tagPath}.tagValue`
+  const tagTypePath = `${tagPath}.tagType`
+  const tagKeyPath = `${tagPath}.key`
+  const tagTextPath = `${tagPath}.tagText`
   const { filters: { tagTypes = undefined, tagValue } = {} } = testCase
 
   let query
