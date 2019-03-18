@@ -6,7 +6,7 @@ module.exports = function runTestCases({ requestBuilder, testCases, onlySet }) {
     const {
       compareQueryResults = false,
       only = false,
-      queryTypes = ['raw'],
+      queryTypes = ['dina', 'raw'],
       skip = false,
     } = testCase
     let jestDescribe = describe
