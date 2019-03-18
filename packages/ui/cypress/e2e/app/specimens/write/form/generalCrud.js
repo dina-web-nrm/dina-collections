@@ -1,5 +1,5 @@
 export default () =>
-  describe('form', () => {
+  describe('form crud', () => {
     describe('create', () => {
       beforeEach(() => {
         cy.goToRoute('/app/specimens/mammals')
@@ -135,15 +135,6 @@ export default () =>
           .then(formState => {
             expect(formState.initial).to.equal(formState.values)
           })
-      })
-
-      it('has record history', () => {
-        cy.getByText('Record history')
-        cy.getByText('Created by Admin', { exact: false })
-        cy.getByTestId('sourceDataLink').shouldHaveHref(
-          '/dataViewer/sourceData/',
-          { exact: false, targetBlank: true }
-        )
       })
     })
   })
