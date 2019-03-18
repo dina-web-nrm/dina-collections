@@ -37,7 +37,7 @@ module.exports = function createRegexBuilder({ env = 'js' } = {}) {
   }
 
   const validateSanitizedInput = input => {
-    if (!input.match(/^[a-zA-Z0-9\s*"=,;/-]*$/g)) {
+    if (!input.match(/^[a-zA-Z0-9\s*"=,;/\-ÅÄÖåäö]*$/g)) {
       throw new Error('input contains invalid characters')
     }
     const { hasEqual, hasStar, hasPhrase } = extractFlags(input)
@@ -120,7 +120,7 @@ module.exports = function createRegexBuilder({ env = 'js' } = {}) {
       )}${createStopWordOperator()}`
     }
 
-    return `${createStartWordOperator()}${word}.*${createStopWordOperator()}`
+    return `.*${createStartWordOperator()}${word}.*${createStopWordOperator()}`
   }
 
   return function buildRegexp(input) {
