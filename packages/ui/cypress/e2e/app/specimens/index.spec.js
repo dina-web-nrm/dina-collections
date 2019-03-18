@@ -1,6 +1,7 @@
 import form from './form'
 import sourceData from './sourceData'
 import table from './table'
+import tableSettings from './tableSettings'
 
 describe('Specimen', () => {
   before(() => {
@@ -15,6 +16,7 @@ describe('Specimen', () => {
   describe('read-only operations', () => {
     sourceData()
     table()
+    tableSettings()
   })
 
   describe('write operations', () => {

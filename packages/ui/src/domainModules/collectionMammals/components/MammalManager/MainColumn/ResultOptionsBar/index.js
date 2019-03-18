@@ -58,7 +58,11 @@ export class ResultOptionsBar extends Component {
         <Menu.Menu className="icon secondary  ui" position="right">
           {handleExportToCsv && <CsvExporter />}
           {handleSettingClick && (
-            <Menu.Item link onClick={event => handleSettingClick(event)}>
+            <Menu.Item
+              data-testid="settingsIcon"
+              link
+              onClick={event => handleSettingClick(event)}
+            >
               <Icon name="setting" />
             </Menu.Item>
           )}

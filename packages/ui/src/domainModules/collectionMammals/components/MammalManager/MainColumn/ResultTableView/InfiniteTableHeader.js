@@ -118,6 +118,7 @@ class InfiniteTableHeader extends PureComponent {
     return (
       <React.Fragment>
         <Grid
+          data-testid="InfiniteTableHeader"
           padded
           style={{
             height,
