@@ -15,7 +15,7 @@ Information about the taxon to which an [individual](__DOCLINK__individual/) is 
 
 ### Examples
 
-"Pusa hispida" is the accepted name for a taxon in the local classification, and “Phoca hispida” one of its synonyms. Consequently, "Pusa hispida" should be the locally accepted name (curatorial name) for a specimen that has been determined as "Phoca hispida".
+"Pusa hispida" is the accepted name for a taxon in the local classification, and "Phoca hispida" one of its synonyms. Consequently, "Pusa hispida" should be the locally accepted name (curatorial name) for a specimen that has been determined as "Phoca hispida".
 
 
 ### Notes

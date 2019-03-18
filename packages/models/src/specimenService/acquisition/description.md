@@ -5,9 +5,9 @@ The event of acquiring some material to the organization. Material can for examp
 
 ## Short description
 
-The event of acquiering some material to the organization.
+The event of acquiring some material to the organization.
 
 
 ### Defintion
 
-The event of acquiering some material to the organization.
+The event of acquiring some material to the organization.

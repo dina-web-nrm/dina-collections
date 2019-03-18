@@ -1,6 +1,6 @@
 # identifier
 
-A string or number that identifies something, for example a [physicaObject](__DOCLINK__physicalObject/), an [individual](__DOCLINK__individual/) or an [event](__DOCLINK__event/). The catalog number is an example of an identifier for a specimen.
+A string or number that identifies something, for example a [physical object](__DOCLINK__physicalObject/), an [individual](__DOCLINK__individual/) or an [event](__DOCLINK__event/). The catalog number is an example of an identifier for a specimen.
 
 
 ## Short description
@@ -16,7 +16,7 @@ A name that identifies (that is, labels the identity of) something.
 ### Examples
 
 * The catalog number "12345"
-* Taxon name id "9488-1" (http://www.ipni.org/ipni/idPlantNameSearch.do?id=9488-1)
+* The external taxon name id "9488-1" (http://www.ipni.org/ipni/idPlantNameSearch.do?id=9488-1)
 * Part of a [physicaObject](__DOCLINK__physicalObject/) (i.e. a [collectionItem](__DOCLINK__collectionItem/)) labeled "a"
 
 
