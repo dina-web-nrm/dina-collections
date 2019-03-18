@@ -57,6 +57,7 @@ class EventRow extends PureComponent {
         )}
         {handleEdit && (
           <Icon
+            data-testid="editRecordHistoryEventIcon"
             name="edit"
             onClick={handleEdit}
             size="large"
