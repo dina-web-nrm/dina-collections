@@ -114,16 +114,17 @@ class CatalogNumberModal extends PureComponent {
             </Modal.Content>
             <Modal.Actions style={{ textAlign: 'left' }}>
               <Button
+                data-testid="useThisNumber"
                 disabled={!valid}
                 loading={submitting}
                 onClick={this.handleSubmit}
               >
                 <ModuleTranslate textKey="other.useThisNumber" />
               </Button>
-              <Button onClick={this.handleBackToModalOne}>
+              <Button data-testid="back" onClick={this.handleBackToModalOne}>
                 <ModuleTranslate textKey="other.back" />
               </Button>
-              <Button basic onClick={this.handleCancel}>
+              <Button basic data-testid="cancel" onClick={this.handleCancel}>
                 <ModuleTranslate textKey="other.cancel" />
               </Button>
             </Modal.Actions>
@@ -138,11 +139,18 @@ class CatalogNumberModal extends PureComponent {
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions style={{ textAlign: 'left' }}>
-              <Button loading={submitting} onClick={this.handleSubmit}>
+              <Button
+                data-testid="createAutomaticNumber"
+                loading={submitting}
+                onClick={this.handleSubmit}
+              >
                 <ModuleTranslate textKey="other.yesCreateNumber" />
               </Button>
-              <Button onClick={this.handleGotoModalTwo}>
-                <ModuleTranslate textKey="other.enterManully" />
+              <Button
+                data-testid="enterManualNumber"
+                onClick={this.handleGotoModalTwo}
+              >
+                <ModuleTranslate textKey="other.enterManually" />
               </Button>
               <Button basic onClick={this.handleCancel}>
                 <ModuleTranslate textKey="other.cancel" />

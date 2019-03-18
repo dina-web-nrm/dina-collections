@@ -8,14 +8,14 @@ export default () => {
     <Segment id="footer" inverted style={{ padding: '5em' }} vertical>
       <Container>
         <Grid divided inverted stackable>
-          <Grid.Row data-testid="footer-content">
+          <Grid.Row data-testid="footerContent">
             <Grid.Column width={3}>
               <Header as="h4" content="Site" inverted />
-              <List data-testid="footer-site" inverted link size={size}>
+              <List data-testid="footerSite" inverted link size={size}>
                 <List.Item>
                   <List.Content>
                     <Icon name="home" />
-                    <NavLink data-testid="footer-start" to="/">
+                    <NavLink data-testid="footerStart" to="/">
                       Start
                     </NavLink>
                   </List.Content>
@@ -23,7 +23,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="user" />
-                    <NavLink data-testid="footer-login" to="/login">
+                    <NavLink data-testid="footerLogin" to="/login">
                       Login
                     </NavLink>
                   </List.Content>
@@ -31,7 +31,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="database" />
-                    <NavLink data-testid="footer-data-model" to="/docs">
+                    <NavLink data-testid="footerDataModel" to="/docs">
                       Data model
                     </NavLink>
                   </List.Content>
@@ -40,12 +40,12 @@ export default () => {
             </Grid.Column>
             <Grid.Column width={3}>
               <Header as="h4" content="Documentation" inverted />
-              <List data-testid="footer-document" inverted link size={size}>
+              <List data-testid="footerDocument" inverted link size={size}>
                 <List.Item>
                   <List.Content>
                     <Icon name="wikipedia" />
                     <a
-                      data-testid="footer-dina-wiki"
+                      data-testid="footerDinaWiki"
                       href="https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!"
                     >
                       DINA wiki
@@ -55,10 +55,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="database" />
-                    <NavLink
-                      data-testid="footer-document-data-model"
-                      to="/docs"
-                    >
+                    <NavLink data-testid="footerDocumentDataModel" to="/docs">
                       Data model
                     </NavLink>
                   </List.Content>
@@ -67,12 +64,12 @@ export default () => {
             </Grid.Column>
             <Grid.Column width={3}>
               <Header as="h4" content="Developer" inverted />
-              <List data-testid="footer-developer" inverted link size={size}>
+              <List data-testid="footerDeveloper" inverted link size={size}>
                 <List.Item>
                   <List.Content>
                     <Icon name="github" />
                     <a
-                      data-testid="footer-dina-web-github"
+                      data-testid="footerDinaWebGithub"
                       href="https://github.com/DINA-Web"
                     >
                       DINA-Web Github
@@ -82,7 +79,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <a
-                      data-testid="footer-dina-collections-github"
+                      data-testid="footerDinaCollectionsGithub"
                       href="https://github.com/DINA-Web/dina-collections"
                     >
                       <Icon name="github" />
@@ -94,7 +91,7 @@ export default () => {
                   <List.Content>
                     <Icon name="external" />
                     <a
-                      data-testid="footer-dina-style"
+                      data-testid="footerDinaStyle"
                       href="https://dina-style.nrm.se/"
                     >
                       Style guide
@@ -105,7 +102,7 @@ export default () => {
                   <List.Content>
                     <Icon name="external" />
                     <a
-                      data-testid="footer-dina-api-docs"
+                      data-testid="footerDinaApiDocs"
                       href="https://dina-api.nrm.se/docs"
                     >
                       Api documentation
@@ -116,7 +113,7 @@ export default () => {
                   <List.Content>
                     <Icon name="external" />
                     <a
-                      data-testid="footer-test-coverage"
+                      data-testid="footerTestCoverage"
                       href="/coverage/index.html"
                     >
                       Test coverage

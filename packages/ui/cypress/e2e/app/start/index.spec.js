@@ -1,4 +1,4 @@
-describe('App', () => {
+describe('Start', () => {
   describe('without login', () => {
     it('redirect to login', () => {
       cy.visit('/app')
@@ -10,7 +10,7 @@ describe('App', () => {
   describe('with login', () => {
     before(() => {
       cy.login()
-      cy.visit('/app')
+      cy.goToRoute('/app')
     })
 
     it('has header and links', () => {
@@ -34,7 +34,7 @@ describe('App', () => {
         .shouldHaveHref(
           'https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md'
         )
-        .should('have.attr', 'target', '_blank')
+        .shouldHaveTargetBlank()
     })
   })
 })

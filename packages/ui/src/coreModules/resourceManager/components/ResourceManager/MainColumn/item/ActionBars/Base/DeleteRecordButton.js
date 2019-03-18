@@ -60,6 +60,7 @@ class DeleteRecordButton extends PureComponent {
             !open && (
               <Button
                 basic
+                data-testid="deleteButton"
                 loading={loading}
                 onClick={this.handleOpen}
                 size="large"
@@ -81,10 +82,16 @@ class DeleteRecordButton extends PureComponent {
           <Modal.Actions
             style={{ pointerEvents: 'initial', textAlign: 'left' }}
           >
-            <Button onClick={this.handleDelete} primary>
+            <Button
+              data-testid="confirmDeleteButton"
+              onClick={this.handleDelete}
+              primary
+            >
               Yes, delete record
             </Button>
-            <Button onClick={this.handleClose}>No, keep it</Button>
+            <Button data-testid="cancelDeleteButton" onClick={this.handleClose}>
+              No, keep it
+            </Button>
           </Modal.Actions>
         </Modal>
       </React.Fragment>

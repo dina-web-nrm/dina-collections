@@ -39,7 +39,7 @@ const validate = ({ request, serviceInteractor }) => {
       if (items && items.length) {
         backendError400({
           code: 'REQUEST_ERROR',
-          detail: `identifier: ${identifier} already exist`,
+          detail: `identifier: ${identifier} already exists`,
           parameterErrors: [
             {
               errorCode: 'duplicate',

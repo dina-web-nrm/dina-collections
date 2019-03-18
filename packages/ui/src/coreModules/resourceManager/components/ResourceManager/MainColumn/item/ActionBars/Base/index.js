@@ -83,6 +83,7 @@ export class RecordActionBar extends PureComponent {
       <Grid padded style={{ pointerEvents: 'none' }} verticalAlign="middle">
         <Grid.Column>
           <Button
+            data-testid="saveButton"
             disabled={isRoot || hasSyncErrors || invalid || pristine}
             loading={submitting}
             onClick={handleSubmit}
@@ -96,6 +97,7 @@ export class RecordActionBar extends PureComponent {
           {handleCancelCreate && (
             <Button
               basic
+              data-testid="cancelCreateButton"
               disabled={!handleCancelCreate || submitting}
               onClick={handleCancelCreate}
               size="large"
@@ -108,6 +110,7 @@ export class RecordActionBar extends PureComponent {
           {!handleCancelCreate && (
             <Button
               basic
+              data-testid="undoChangesButton"
               disabled={!handleUndoChanges || pristine || submitting}
               onClick={handleUndoChanges}
               size="large"

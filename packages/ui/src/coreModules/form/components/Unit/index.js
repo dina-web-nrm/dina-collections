@@ -106,7 +106,7 @@ class Unit extends PureComponent {
     }
 
     return (
-      <Grid.Row className="relaxed">
+      <Grid.Row className="relaxed" data-testid={unitSpec.name}>
         {unitSpec.parts.map(
           (
             {

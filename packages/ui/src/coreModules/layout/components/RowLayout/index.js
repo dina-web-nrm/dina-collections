@@ -61,6 +61,7 @@ class RowLayout extends Component {
           return (
             <div
               className={rowProps.classNames}
+              data-testid={rowProps.id}
               id={rowProps.id}
               key={rowProps.key || index}
               style={

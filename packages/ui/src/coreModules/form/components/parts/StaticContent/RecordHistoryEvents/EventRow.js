@@ -36,7 +36,11 @@ class EventRow extends PureComponent {
       eventRow = (
         <span>
           {eventRow}{' '}
-          <a href={`/dataViewer/sourceData/${recordHistoryId}`} target="_blank">
+          <a
+            data-testid="sourceDataLink"
+            href={`/dataViewer/sourceData/${recordHistoryId}`}
+            target="_blank"
+          >
             Source data <Icon name="external alternate" />
           </a>
         </span>

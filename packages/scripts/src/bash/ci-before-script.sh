@@ -4,10 +4,11 @@
 START_DIRECTORY=$PWD
 
 if [ "$CI_SETUP_ENV_DOCKER" = true ]; then
+  yarn setup:env:ci:docker
   yarn setup:env
+else
+  yarn setup:env:ci:local
 fi
-
-yarn setup:env:ci
 
 if [ "$CI_START_DATABASES" = true ]; then
   echo "Starting dbs"
@@ -53,7 +54,6 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
 
-
   echo "Building UI bundle and image"
   yarn build:ui
   if [ $? -ne 0 ]; then
@@ -81,17 +81,15 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
     exit 1
   fi
 
-  echo "Installing ui"
-  # needed for cypress
-  cd ./packages/ui && yarn install
-  cd $START_DIRECTORY
+  echo "Setup sample data"
+  yarn setup:sample-data
 
   echo "Starting databases and keycloak"
   docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch keycloak mysql postgres
   sleep 10
 
   echo "Importing sample data"
-  TAG=ci docker-compose -f docker-compose.data.yaml up import
+  TAG=ci docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
 
   echo "Starting application and worker containers"
   TAG=ci docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
