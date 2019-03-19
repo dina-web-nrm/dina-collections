@@ -36,6 +36,7 @@ module.exports = function getInterpretedDateRangeFromOneDate({
         day: endDay,
         isEndDate: true,
         month: endMonth,
+        moveCurrentYearEndDateToNow: true,
         year: endYear,
       }),
       endMonth,
