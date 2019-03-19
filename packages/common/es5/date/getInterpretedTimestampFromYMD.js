@@ -111,12 +111,14 @@ var getDateSuggestion = function getDateSuggestion(_ref3) {
   });
 };
 
-module.exports = function getTimestampFromYMD(_ref4) {
+module.exports = function getInterpretedTimestampFromYMD(_ref4) {
   var day = _ref4.day,
       isEndDate = _ref4.isEndDate,
       isStartDate = _ref4.isStartDate,
       month = _ref4.month,
-      year = _ref4.year;
+      year = _ref4.year,
+      _ref4$moveCurrentYear = _ref4.moveCurrentYearEndDateToNow,
+      moveCurrentYearEndDateToNow = _ref4$moveCurrentYear === undefined ? false : _ref4$moveCurrentYear;
 
   var YYYYMMDD = getDateSuggestion({
     day: day,
@@ -138,7 +140,7 @@ module.exports = function getTimestampFromYMD(_ref4) {
   var interpretedTimestamp = void 0;
 
   if (isEndDate) {
-    if (isCurrentDay || !day && isCurrentMonth || !month && isCurrentYear) {
+    if (moveCurrentYearEndDateToNow && (isCurrentDay || !day && isCurrentMonth || !month && isCurrentYear)) {
       interpretedTimestamp = now;
     } else {
       interpretedTimestamp = moment(YYYYMMDD).endOf('date');

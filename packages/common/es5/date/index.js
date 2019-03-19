@@ -76,12 +76,12 @@ Object.defineProperty(exports, 'getInterpretedDateRangeFromTwoDates', {
   }
 });
 
-var _getTimestampFromYMD = require('./getTimestampFromYMD');
+var _getInterpretedTimestampFromYMD = require('./getInterpretedTimestampFromYMD');
 
-Object.defineProperty(exports, 'getTimestampFromYMD', {
+Object.defineProperty(exports, 'getInterpretedTimestampFromYMD', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_getTimestampFromYMD).default;
+    return _interopRequireDefault(_getInterpretedTimestampFromYMD).default;
   }
 });
 

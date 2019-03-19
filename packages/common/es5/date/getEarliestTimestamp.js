@@ -1,9 +1,9 @@
 'use strict';
 
-var getTimestampFromYMD = require('./getTimestampFromYMD');
+var getInterpretedTimestampFromYMD = require('./getInterpretedTimestampFromYMD');
 
 module.exports = function getEarliestTimestamp() {
-  return getTimestampFromYMD({
+  return getInterpretedTimestampFromYMD({
     day: 1,
     isStartDate: true,
     month: 1,

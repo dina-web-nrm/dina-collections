@@ -11,7 +11,7 @@ var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var buildDateRange = require('./buildDateRange');
-var getTimestampFromYMD = require('./getTimestampFromYMD');
+var getInterpretedTimestampFromYMD = require('./getInterpretedTimestampFromYMD');
 
 var _require = require('./constants'),
     OPEN_RANGE = _require.OPEN_RANGE,
@@ -44,17 +44,18 @@ module.exports = function getInterpretedDateRangeFromOneDate(_ref) {
       dateType: dateType,
 
       endDay: endDay,
-      endInterpretedTimestamp: getTimestampFromYMD({
+      endInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day: endDay,
         isEndDate: true,
         month: endMonth,
+        moveCurrentYearEndDateToNow: true,
         year: endYear
       }),
       endMonth: endMonth,
       endYear: endYear,
 
       startDay: startDay,
-      startInterpretedTimestamp: getTimestampFromYMD({
+      startInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day: startDay,
         isStartDate: true,
         month: startMonth,
