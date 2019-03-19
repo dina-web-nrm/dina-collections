@@ -5,7 +5,7 @@ module.exports = function createStringSearchFilter({
 }) {
   return {
     description: description || `Search ${fieldPath}`,
-    elasticsearch: ({ value }) => {
+    elasticsearch: ({ value = 'this-is-not-matching-anything' }) => {
       return {
         match_phrase_prefix: {
           [fieldPath]: {
