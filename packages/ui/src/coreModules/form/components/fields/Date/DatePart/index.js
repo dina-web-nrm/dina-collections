@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
 
-import { getTimestampFromYMD } from 'common/es5/date'
+import { getInterpretedTimestampFromYMD } from 'common/es5/date'
 import createDeleteProperties from 'common/es5/createDeleteProperties'
 import FieldTemplate from '../../../FieldTemplate'
 
@@ -104,7 +104,7 @@ class DatePart extends Component {
       [field]: event.target.value && Number(event.target.value),
     }
 
-    const interpretedTimestamp = getTimestampFromYMD({
+    const interpretedTimestamp = getInterpretedTimestampFromYMD({
       isEndDate,
       isStartDate,
       moveCurrentYearEndDateToNow: true,

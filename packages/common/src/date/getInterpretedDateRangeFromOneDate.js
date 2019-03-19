@@ -1,6 +1,6 @@
 const buildDateRange = require('./buildDateRange')
 const getEarliestTimestamp = require('./getEarliestTimestamp')
-const getTimestampFromYMD = require('./getTimestampFromYMD')
+const getInterpretedTimestampFromYMD = require('./getInterpretedTimestampFromYMD')
 const { LATEST, SINGLE } = require('./constants')
 
 module.exports = function getInterpretedDateRangeFromOneDate({
@@ -26,7 +26,7 @@ module.exports = function getInterpretedDateRangeFromOneDate({
       dateType,
 
       endDay: day,
-      endInterpretedTimestamp: getTimestampFromYMD({
+      endInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day,
         isEndDate: true,
         month,
@@ -46,7 +46,7 @@ module.exports = function getInterpretedDateRangeFromOneDate({
       dateType,
 
       endDay: day,
-      endInterpretedTimestamp: getTimestampFromYMD({
+      endInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day,
         isEndDate: true,
         month,
@@ -57,7 +57,7 @@ module.exports = function getInterpretedDateRangeFromOneDate({
       endYear: year,
 
       startDay: day,
-      startInterpretedTimestamp: getTimestampFromYMD({
+      startInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day,
         isStartDate: true,
         month,

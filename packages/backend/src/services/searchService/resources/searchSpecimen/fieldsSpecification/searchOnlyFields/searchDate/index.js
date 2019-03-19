@@ -1,4 +1,4 @@
-const getTimestampFromYMD = require('common/src/date/getTimestampFromYMD')
+const getInterpretedTimestampFromYMD = require('common/src/date/getInterpretedTimestampFromYMD')
 
 const {
   createNestedMapping,
@@ -24,7 +24,7 @@ const transformation = ({ migrator, src, target }) => {
     let startTimestamp
     if (collectingEventDateRange.startDate) {
       startTimestamp =
-        getTimestampFromYMD({
+        getInterpretedTimestampFromYMD({
           ...collectingEventDateRange.startDate,
           isStartDate: true,
         }) || collectingEventDateRange.startDate.interpretedTimestamp
@@ -33,7 +33,7 @@ const transformation = ({ migrator, src, target }) => {
     let endTimestamp
     if (collectingEventDateRange.endDate) {
       endTimestamp =
-        getTimestampFromYMD({
+        getInterpretedTimestampFromYMD({
           ...collectingEventDateRange.endDate,
           isEndDate: true,
           moveCurrentYearEndDateToNow: true,

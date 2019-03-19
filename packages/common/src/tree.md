@@ -84,7 +84,7 @@
 │   ├── getEarliestTimestamp.js
 │   ├── getInterpretedDateRangeFromOneDate.js
 │   ├── getInterpretedDateRangeFromTwoDates.js
-│   ├── getTimestampFromYMD.js
+│   ├── getInterpretedTimestampFromYMD.js
 │   ├── getYMDHMSFromTimestamp.js
 │   ├── getYYYYMMDDFromTimestamp.js
 │   └── index.js

@@ -95,7 +95,7 @@ const getDateSuggestion = ({ day, isEndDate, isStartDate, month, year }) => {
   })
 }
 
-module.exports = function getTimestampFromYMD({
+module.exports = function getInterpretedTimestampFromYMD({
   day,
   isEndDate,
   isStartDate,

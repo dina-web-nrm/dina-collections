@@ -1,7 +1,7 @@
-const getTimestampFromYMD = require('./getTimestampFromYMD')
+const getInterpretedTimestampFromYMD = require('./getInterpretedTimestampFromYMD')
 
 module.exports = function getEarliestTimestamp() {
-  return getTimestampFromYMD({
+  return getInterpretedTimestampFromYMD({
     day: 1,
     isStartDate: true,
     month: 1,

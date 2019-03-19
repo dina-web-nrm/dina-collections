@@ -1,4 +1,4 @@
-const getTimestampFromYMD = require('common/src/date/getTimestampFromYMD')
+const getInterpretedTimestampFromYMD = require('common/src/date/getInterpretedTimestampFromYMD')
 const getYYYYMMDDFromTimestamp = require('common/src/date/getYYYYMMDDFromTimestamp')
 
 const {
@@ -18,7 +18,7 @@ const transformation = ({ migrator, src, target }) => {
   }
 
   if (collectingEventDateRange.endDate) {
-    const timestamp = getTimestampFromYMD({
+    const timestamp = getInterpretedTimestampFromYMD({
       ...collectingEventDateRange.endDate,
       isEndDate: true,
       moveCurrentYearEndDateToNow: true,
