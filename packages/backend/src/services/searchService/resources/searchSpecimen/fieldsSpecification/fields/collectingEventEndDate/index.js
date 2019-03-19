@@ -20,6 +20,7 @@ const transformation = ({ migrator, src, target }) => {
   if (collectingEventDateRange.endDate) {
     const timestamp = getTimestampFromYMD({
       ...collectingEventDateRange.endDate,
+      isEndDate: true,
       moveCurrentYearEndDateToNow: true,
     })
     if (timestamp) {

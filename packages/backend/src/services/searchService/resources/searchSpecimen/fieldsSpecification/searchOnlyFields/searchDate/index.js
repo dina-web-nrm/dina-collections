@@ -26,6 +26,7 @@ const transformation = ({ migrator, src, target }) => {
       startTimestamp =
         getTimestampFromYMD({
           ...collectingEventDateRange.startDate,
+          isStartDate: true,
         }) || collectingEventDateRange.startDate.interpretedTimestamp
     }
 
@@ -34,6 +35,7 @@ const transformation = ({ migrator, src, target }) => {
       endTimestamp =
         getTimestampFromYMD({
           ...collectingEventDateRange.endDate,
+          isEndDate: true,
           moveCurrentYearEndDateToNow: true,
         }) || collectingEventDateRange.endDate.interpretedTimestamp
     }
