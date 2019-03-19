@@ -1,17 +1,20 @@
+const onlySetInTestSpecification = require('./onlySetInTestSpecification')
 const makeRequest = require('./makeRequest')
-const createTestCaseTests = require('./createTestCaseTests')
 
 module.exports = function runTestCases({
+  createTestCaseTests,
+  defaultQueryTypes = ['dina', 'raw'],
+  logResponse,
   requestBuilder,
-  testCases,
-  onlySet,
   storeTestLog,
+  testCases,
 }) {
+  const onlySet = onlySetInTestSpecification(testCases)
   testCases.forEach(testCase => {
     const {
       compareQueryResults = false,
       only = false,
-      queryTypes = ['dina', 'raw'],
+      queryTypes = defaultQueryTypes,
       skip = false,
     } = testCase
     let jestDescribe = describe
@@ -43,6 +46,7 @@ module.exports = function runTestCases({
             }
             storeTestLog(testCase)
             return makeRequest({
+              logResponse,
               raw: queryType === 'raw',
               requestBuilder,
               testCase,

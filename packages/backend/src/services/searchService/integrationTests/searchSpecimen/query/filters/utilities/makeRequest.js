@@ -1,10 +1,14 @@
 /* eslint-disable no-console */
-const logTags = require('./logTags')
 const {
   makeTestCall,
-} = require('../../../../../../../../../utilities/test/testApiClient')
+} = require('../../../../../../../utilities/test/testApiClient')
 
-module.exports = function makeRequest({ requestBuilder, raw, testCase }) {
+module.exports = function makeRequest({
+  requestBuilder,
+  raw,
+  testCase,
+  logResponse,
+}) {
   const { title, printResponse, printRequest } = testCase
   const request = requestBuilder.buildRequest({
     ...testCase,
@@ -25,8 +29,7 @@ module.exports = function makeRequest({ requestBuilder, raw, testCase }) {
         },
       })
       if (printResponse) {
-        console.log(`${title} - response`, JSON.stringify(parsedRes, null, 2))
-        logTags(parsedRes)
+        logResponse(parsedRes)
       }
       return {
         err: null,

@@ -1,19 +1,17 @@
 const writeTestLog = require('../../writeTestLog')
 const runTestCases = require('./runTestCases')
 
-const print = true
 module.exports = function runTests({ testSpecification, resource }) {
   const headers = ['input', 'string', 'matching', 'regexp', 'errorMessage']
   const testLogObject = {}
 
   afterAll(() => {
-    if (print) {
-      writeTestLog({
-        headers,
-        resource,
-        testLogObject,
-      })
-    }
+    writeTestLog({
+      group: resource,
+      headers,
+      name: 'unit',
+      testLogObject,
+    })
   })
   Object.keys(testSpecification).forEach(testGroupKey => {
     const { testCases, title = testGroupKey } = testSpecification[testGroupKey]
@@ -31,7 +29,7 @@ module.exports = function runTests({ testSpecification, resource }) {
           input,
           string,
           matching,
-          regexp,
+          regexp && `\`\`\` ${regexp} \`\`\``,
           errorMessage,
         ])
       }

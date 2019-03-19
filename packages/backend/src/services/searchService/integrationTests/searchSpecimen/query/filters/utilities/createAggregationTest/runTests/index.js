@@ -1,12 +1,10 @@
+const logResponse = require('./logResponse')
 const writeTestLog = require('../../writeTestLog')
-const runTestCases = require('./runTestCases')
+const runTestCases = require('../../runTestCases')
 const createRequestBuilder = require('./requestBuilder')
-const onlySetInTestSpecification = require('./onlySetInTestSpecification')
+const createTestCaseTests = require('./createTestCaseTests')
 
-const print = false
 module.exports = function runApiTagTests({ testSpecification, filterType }) {
-  const onlySet = onlySetInTestSpecification(testSpecification)
-
   const {
     aggregationFunction,
     aggregationType,
@@ -30,14 +28,14 @@ module.exports = function runApiTagTests({ testSpecification, filterType }) {
   }
 
   afterAll(() => {
-    if (print) {
-      writeTestLog({
-        headers,
-        resource,
-        testLogObject,
-        type: filterType,
-      })
-    }
+    writeTestLog({
+      group: resource,
+      headers,
+      name: filterType
+        ? `${aggregationType}/${filterType}Filter`
+        : aggregationType,
+      testLogObject,
+    })
   })
   const storeTestLog = testCase => {
     const { title, filters = {}, expect = {} } = testCase
@@ -60,7 +58,8 @@ module.exports = function runApiTagTests({ testSpecification, filterType }) {
   }
 
   runTestCases({
-    onlySet,
+    createTestCaseTests,
+    logResponse,
     requestBuilder,
     storeTestLog,
     testCases,

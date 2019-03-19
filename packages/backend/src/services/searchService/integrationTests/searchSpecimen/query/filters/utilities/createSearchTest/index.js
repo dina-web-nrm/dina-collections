@@ -5,25 +5,16 @@ const {
 const waitForApiRestart = require('../../../../../../../../utilities/test/waitForApiRestart')
 const runTests = require('./runTests')
 
-module.exports = function createAggregationTest({
-  aggregationType,
+module.exports = function createSearchTest({
   description: customDescription,
   filterFunction,
   filterType,
   resource,
+  searchType = 'search',
   tagPath,
   testCases,
-  typeAggregationFunction,
-  valueAggregationFunction,
 }) {
-  const aggregationFunction =
-    aggregationType === 'tagTypes'
-      ? typeAggregationFunction
-      : valueAggregationFunction
-
   const testSpecification = {
-    aggregationFunction,
-    aggregationType,
     filterFunction,
     resource,
     tagPath,
@@ -32,7 +23,7 @@ module.exports = function createAggregationTest({
 
   const description =
     customDescription ||
-    `searchSpecimen - ${[resource, aggregationType, filterType]
+    `searchSpecimen - ${[resource, searchType, filterType]
       .filter(str => {
         return !!str
       })
@@ -41,6 +32,6 @@ module.exports = function createAggregationTest({
     hook(beforeAll, () => {
       return waitForApiRestart()
     })
-    runTests({ filterType, resource, testSpecification })
+    runTests({ resource, searchType, testSpecification })
   })
 }

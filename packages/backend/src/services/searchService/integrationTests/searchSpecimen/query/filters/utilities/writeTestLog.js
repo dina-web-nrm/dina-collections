@@ -1,19 +1,41 @@
-const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
-
 const path = require('path')
 const fs = require('fs')
 const markdownTable = require('markdown-table')
 
+function ensureDirectoryExistence(filePath) {
+  const dirname = path.dirname(filePath)
+  if (fs.existsSync(dirname)) {
+    return true
+  }
+  ensureDirectoryExistence(dirname)
+  return fs.mkdirSync(dirname)
+}
+
 module.exports = function writeTestLog({
   headers,
-  resource,
+  name,
+  group,
   testLogObject,
-  type = 'unit',
 }) {
-  const testFileName = `${resource}${capitalizeFirstLetter(type)}.md`
-  const targetPath = path.join(__dirname, '../../../testOverview', testFileName)
+  if (!process.env.WRITE_TEST_RESULT) {
+    return
+  }
+  if (!name) {
+    throw new Error('Provide name')
+  }
 
-  let markdown = `# Unit tests for ${resource}`
+  if (!group) {
+    throw new Error('Provide group')
+  }
+
+  const filePath = `${group}/${name}.md`
+  const targetPath = path.join(
+    __dirname,
+    '../../../testDocumentation',
+    filePath
+  )
+  ensureDirectoryExistence(targetPath)
+  let markdown = `# Tests for ${group}`
 
   Object.keys(testLogObject).forEach(key => {
     const logItems = [headers, ...testLogObject[key]]

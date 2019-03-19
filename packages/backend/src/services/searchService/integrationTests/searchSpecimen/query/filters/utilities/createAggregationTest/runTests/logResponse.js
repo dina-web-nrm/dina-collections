@@ -1,6 +1,6 @@
 require('console.table')
 
-module.exports = function logTags(res) {
+module.exports = function logResponse(res) {
   const tags = res.data.map(item => {
     return {
       count: item.attributes.count,

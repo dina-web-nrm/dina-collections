@@ -27,6 +27,12 @@ module.exports = function createTestCaseTests({ getResponse, testCase }) {
             expect(item.count).toBe(response.data[index].attributes.count)
           })
         }
+        if (item.id) {
+          it(`item @ ${index} has expected id: ${item.id}`, () => {
+            const response = getResponse()
+            expect(item.id).toBe(response.data[index].id)
+          })
+        }
         if (item.tagType) {
           it(`item @ ${index} has expected tagType: ${item.tagType}`, () => {
             const response = getResponse()

@@ -1,7 +1,6 @@
-module.exports = function onlySetInTestSpecification(testSpecification) {
+module.exports = function onlySetInTestSpecification(testCases) {
   let onlySet = false
 
-  const { testCases } = testSpecification
   testCases.forEach(testCase => {
     if (testCase.only) {
       onlySet = true
