@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
-import { getTimestampFromYMD } from 'common/es5/date'
+import { getInterpretedTimestampFromYMD } from 'common/es5/date'
 import userSelectors from 'coreModules/user/globalSelectors'
 import BaseForm from './Base'
 
@@ -49,14 +49,15 @@ export class CreateCuratorialAssessment extends PureComponent {
             dateType: 'single',
             endDate: {
               ...dateInput,
-              interpretedTimestamp: getTimestampFromYMD({
+              interpretedTimestamp: getInterpretedTimestampFromYMD({
                 ...dateInput,
                 isEndDate: true,
+                moveCurrentYearEndDateToNow: true,
               }),
             },
             startDate: {
               ...dateInput,
-              interpretedTimestamp: getTimestampFromYMD({
+              interpretedTimestamp: getInterpretedTimestampFromYMD({
                 ...dateInput,
                 isStartDate: true,
               }),

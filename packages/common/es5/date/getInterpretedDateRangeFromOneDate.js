@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var buildDateRange = require('./buildDateRange');
 var getEarliestTimestamp = require('./getEarliestTimestamp');
-var getTimestampFromYMD = require('./getTimestampFromYMD');
+var getInterpretedTimestampFromYMD = require('./getInterpretedTimestampFromYMD');
 
 var _require = require('./constants'),
     LATEST = _require.LATEST,
@@ -38,10 +38,11 @@ module.exports = function getInterpretedDateRangeFromOneDate(_ref) {
       dateType: dateType,
 
       endDay: day,
-      endInterpretedTimestamp: getTimestampFromYMD({
+      endInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day: day,
         isEndDate: true,
         month: month,
+        moveCurrentYearEndDateToNow: true,
         year: year
       }),
       endMonth: month,
@@ -56,17 +57,18 @@ module.exports = function getInterpretedDateRangeFromOneDate(_ref) {
       dateType: dateType,
 
       endDay: day,
-      endInterpretedTimestamp: getTimestampFromYMD({
+      endInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day: day,
         isEndDate: true,
         month: month,
+        moveCurrentYearEndDateToNow: true,
         year: year
       }),
       endMonth: month,
       endYear: year,
 
       startDay: day,
-      startInterpretedTimestamp: getTimestampFromYMD({
+      startInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day: day,
         isStartDate: true,
         month: month,

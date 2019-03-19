@@ -1,4 +1,7 @@
-import { getEarliestTimestamp, getTimestampFromYMD } from 'common/es5/date'
+import {
+  getEarliestTimestamp,
+  getInterpretedTimestampFromYMD,
+} from 'common/es5/date'
 import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 
 export const isInt = value => {
@@ -34,9 +37,10 @@ export const getRangeValue = ({
         updatedDatePartValue && Object.keys(updatedDatePartValue).length
           ? {
               ...updatedDatePartValue,
-              interpretedTimestamp: getTimestampFromYMD({
+              interpretedTimestamp: getInterpretedTimestampFromYMD({
                 ...updatedDatePartValue,
                 isEndDate: true,
+                moveCurrentYearEndDateToNow: true,
               }),
             }
           : {},
@@ -95,9 +99,10 @@ export const getRangeValueAfterDateTypeChange = ({
     ) {
       updatedValue.endDate = {
         ...updatedValue.startDate,
-        interpretedTimestamp: getTimestampFromYMD({
+        interpretedTimestamp: getInterpretedTimestampFromYMD({
           ...updatedValue.startDate,
           isEndDate: true,
+          moveCurrentYearEndDateToNow: true,
         }),
       }
     } else {
@@ -111,9 +116,10 @@ export const getRangeValueAfterDateTypeChange = ({
     ) {
       updatedValue.endDate = {
         ...updatedValue.startDate,
-        interpretedTimestamp: getTimestampFromYMD({
+        interpretedTimestamp: getInterpretedTimestampFromYMD({
           ...updatedValue.startDate,
           isEndDate: true,
+          moveCurrentYearEndDateToNow: true,
         }),
       }
       updatedValue.startDate = {

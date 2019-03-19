@@ -95,12 +95,13 @@ const getDateSuggestion = ({ day, isEndDate, isStartDate, month, year }) => {
   })
 }
 
-module.exports = function getTimestampFromYMD({
+module.exports = function getInterpretedTimestampFromYMD({
   day,
   isEndDate,
   isStartDate,
   month,
   year,
+  moveCurrentYearEndDateToNow = false,
 }) {
   const YYYYMMDD = getDateSuggestion({
     day,
@@ -114,14 +115,22 @@ module.exports = function getTimestampFromYMD({
     return undefined
   }
 
-  const isCurrentDay = moment().isSame(YYYYMMDD, 'day')
+  const now = moment()
+  const isCurrentDay = now.isSame(YYYYMMDD, 'day')
+  const isCurrentMonth = now.isSame(YYYYMMDD, 'month')
+  const isCurrentYear = now.isSame(YYYYMMDD, 'year')
 
   let interpretedTimestamp
 
-  if (isCurrentDay && isEndDate) {
-    interpretedTimestamp = moment()
-  } else if (isEndDate) {
-    interpretedTimestamp = moment(YYYYMMDD).endOf('date')
+  if (isEndDate) {
+    if (
+      moveCurrentYearEndDateToNow &&
+      (isCurrentDay || (!day && isCurrentMonth) || (!month && isCurrentYear))
+    ) {
+      interpretedTimestamp = now
+    } else {
+      interpretedTimestamp = moment(YYYYMMDD).endOf('date')
+    }
   } else {
     interpretedTimestamp = moment(YYYYMMDD).startOf('date')
   }

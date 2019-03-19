@@ -8,7 +8,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import { updateUserPreference } from 'coreModules/user/actionCreators'
 import userSelectors from 'coreModules/user/globalSelectors'
 import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
-import { tableColumnNames } from '../tableColumnSpecifications'
+import { tableColumnNames as allTableColumnNames } from '../tableColumnSpecifications'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
@@ -31,11 +31,11 @@ const transformFormValuesToColumnNames = formValues => {
 
 const mapStateToProps = state => {
   const userPreferences = userSelectors.getUserPreferences(state)
+  const savedColumns =
+    userPreferences && userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS]
 
   return {
-    savedValue:
-      (userPreferences && userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS]) ||
-      undefined,
+    tableColumnNames: savedColumns || allTableColumnNames,
   }
 }
 const mapDispatchToProps = { updateUserPreference }
@@ -47,13 +47,12 @@ const propTypes = {
   initialize: PropTypes.func.isRequired,
   onTableTabClick: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  savedValue: PropTypes.arrayOf(PropTypes.string.isRequired),
   submitting: PropTypes.bool.isRequired,
+  tableColumnNames: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   updateUserPreference: PropTypes.func.isRequired,
 }
 const defaultProps = {
   error: undefined,
-  savedValue: undefined,
 }
 
 class ResultTableSettings extends Component {
@@ -65,20 +64,20 @@ class ResultTableSettings extends Component {
   }
 
   componentWillMount() {
-    if (Array.isArray(this.props.savedValue)) {
+    if (Array.isArray(this.props.tableColumnNames)) {
       this.props.initialize(
-        transformColumnNamesToFormValues(this.props.savedValue)
+        transformColumnNamesToFormValues(this.props.tableColumnNames)
       )
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (
-      this.props.savedValue !== nextProps.savedValue &&
-      Array.isArray(nextProps.savedValue)
+      this.props.tableColumnNames !== nextProps.tableColumnNames &&
+      Array.isArray(nextProps.tableColumnNames)
     ) {
       this.props.initialize(
-        transformColumnNamesToFormValues(nextProps.savedValue)
+        transformColumnNamesToFormValues(nextProps.tableColumnNames)
       )
     }
   }
@@ -88,7 +87,7 @@ class ResultTableSettings extends Component {
   }
 
   handleSetAll(value) {
-    tableColumnNames.forEach(name => {
+    allTableColumnNames.forEach(name => {
       this.props.change(name, value)
     })
   }
@@ -128,16 +127,24 @@ class ResultTableSettings extends Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={16}>
-              <Button onClick={() => this.handleSetAll(true)} size="small">
+              <Button
+                data-testid="selectAllButton"
+                onClick={() => this.handleSetAll(true)}
+                size="small"
+              >
                 Select all
               </Button>
-              <Button onClick={() => this.handleSetAll(false)} size="small">
+              <Button
+                data-testid="deselectAllButton"
+                onClick={() => this.handleSetAll(false)}
+                size="small"
+              >
                 Deselect all
               </Button>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            {tableColumnNames.map(name => {
+            {allTableColumnNames.map(name => {
               return (
                 <Grid.Column key={name} width={16}>
                   <Field
@@ -162,13 +169,19 @@ class ResultTableSettings extends Component {
           <Grid.Row>
             <Grid.Column width={16}>
               <Button
+                data-testid="saveButton"
                 disabled={pristine || submitting}
                 onClick={handleSubmit(this.handleSave)}
                 size="large"
               >
                 Save
               </Button>
-              <Button basic onClick={this.handleCancel} size="large">
+              <Button
+                basic
+                data-testid="cancelButton"
+                onClick={this.handleCancel}
+                size="large"
+              >
                 Cancel
               </Button>
             </Grid.Column>

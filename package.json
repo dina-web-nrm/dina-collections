@@ -30,7 +30,7 @@
     "export:data:sample:sql": "yarn import:data:sample && yarn export:data:sql -f ./data/sample.dump.sql",
     "export:data:sql": "./packages/scripts/src/bash/docker-dump-db-to-sql.sh -d dina_dev",
     "export:index-specimen:json": "yarn start:elasticsearch && ./packages/scripts/src/bash/elasticsearch-export-index-specimen.sh",
-    "export:index-specimen:sample": "yarn import:data:sample && ./packages/scripts/src/bash/elasticsearch-export-index-specimen.sh -f ./data/sample.searchSpecimen",
+    "export:index-specimen:sample": "yarn import:data:sample && sleep 5 && ./packages/scripts/src/bash/elasticsearch-export-index-specimen.sh -f ./data/sample.searchSpecimen",
     "import:data:json": "yarn start:dbs && cd ./packages/migrations && yarn setup:development",
     "import:data:sample": "yarn start:dbs && yarn exec:local rm-data.sh || true && yarn setup:sample-data && cd ./packages/migrations && yarn setup:development",
     "import:data:sql": "yarn remote:import:data:sql -s local && yarn build:index:specimen",

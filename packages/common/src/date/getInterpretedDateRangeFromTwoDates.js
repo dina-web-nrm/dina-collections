@@ -1,5 +1,5 @@
 const buildDateRange = require('./buildDateRange')
-const getTimestampFromYMD = require('./getTimestampFromYMD')
+const getInterpretedTimestampFromYMD = require('./getInterpretedTimestampFromYMD')
 const { OPEN_RANGE, RANGE } = require('./constants')
 
 module.exports = function getInterpretedDateRangeFromOneDate({
@@ -32,17 +32,18 @@ module.exports = function getInterpretedDateRangeFromOneDate({
       dateType,
 
       endDay,
-      endInterpretedTimestamp: getTimestampFromYMD({
+      endInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day: endDay,
         isEndDate: true,
         month: endMonth,
+        moveCurrentYearEndDateToNow: true,
         year: endYear,
       }),
       endMonth,
       endYear,
 
       startDay,
-      startInterpretedTimestamp: getTimestampFromYMD({
+      startInterpretedTimestamp: getInterpretedTimestampFromYMD({
         day: startDay,
         isStartDate: true,
         month: startMonth,

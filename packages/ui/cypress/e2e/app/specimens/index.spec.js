@@ -1,6 +1,10 @@
-import form from './form'
-import sourceData from './sourceData'
-import table from './table'
+import readForm from './read/form'
+import sourceData from './read/sourceData'
+import table from './read/table'
+import tableSettings from './read/tableSettings'
+
+import catalogCardDate from './write/form/catalogCardDate'
+import generalCrud from './write/form/generalCrud'
 
 describe('Specimen', () => {
   before(() => {
@@ -12,12 +16,15 @@ describe('Specimen', () => {
     cy.login()
   })
 
-  describe('read-only operations', () => {
+  describe('read', () => {
+    readForm()
     sourceData()
     table()
+    tableSettings()
   })
 
-  describe('write operations', () => {
-    form()
+  describe('write', () => {
+    generalCrud()
+    catalogCardDate()
   })
 })

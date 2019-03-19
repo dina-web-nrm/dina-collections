@@ -10,6 +10,8 @@ export {
 export {
   default as getInterpretedDateRangeFromTwoDates,
 } from './getInterpretedDateRangeFromTwoDates'
-export { default as getTimestampFromYMD } from './getTimestampFromYMD'
+export {
+  default as getInterpretedTimestampFromYMD,
+} from './getInterpretedTimestampFromYMD'
 export { default as getYMDHMSFromTimestamp } from './getYMDHMSFromTimestamp'
 export { default as getYYYYMMDDFromTimestamp } from './getYYYYMMDDFromTimestamp'
