@@ -14,7 +14,6 @@ module.exports = [
   },
   {
     expect: { count: 1 },
-    expectedCount: 1,
     filters: { tagValue: 'pusa hispida' },
     title: `returns 1 matching for 1 existing matching tagValue`,
   },
