@@ -3,7 +3,7 @@ const makeRequest = require('./makeRequest')
 
 module.exports = function runTestCases({
   createTestCaseTests,
-  defaultQueryTypes = ['dina', 'raw'],
+  defaultQueryTypes = ['dina'],
   logResponse,
   requestBuilder,
   storeTestLog,
