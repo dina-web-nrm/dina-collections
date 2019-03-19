@@ -101,7 +101,11 @@ export default () =>
     describe('edit', () => {
       beforeEach(() => {
         cy.goToRoute('/app/specimens/mammals/1/edit/sections/0')
-        cy.get('[data-testid="basicInformation"]', { log: false }) // wait until section rendered
+        // wait until section rendered
+        cy.get('[data-testid="basicInformation"]', {
+          log: false,
+          timeout: 10000,
+        })
       })
 
       it('changes section, adds determination, removes unsaved changes', () => {

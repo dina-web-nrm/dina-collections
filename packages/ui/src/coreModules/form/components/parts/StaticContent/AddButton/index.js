@@ -21,7 +21,7 @@ function AddButton({ id, onClick: handleClick, module, textKey }) {
       basic
       className="shadowless"
       color="blue"
-      data-testid={id}
+      data-testid="addButton"
       id={id}
       onClick={handleClick}
     >
