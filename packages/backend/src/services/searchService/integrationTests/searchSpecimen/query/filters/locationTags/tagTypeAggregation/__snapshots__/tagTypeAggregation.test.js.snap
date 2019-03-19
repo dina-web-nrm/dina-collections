@@ -34,38 +34,3 @@ Array [
   },
 ]
 `;
-
-exports[`searchSpecimen - locationTag - tagTypes raw returns all tag types matches snapshot 1`] = `
-Array [
-  Object {
-    "attributes": Object {
-      "count": 16,
-      "key": "collecting-interpreted",
-      "tagType": "collecting-interpreted",
-      "type": "locationTag",
-    },
-    "id": "collecting-interpreted",
-    "type": "customObject",
-  },
-  Object {
-    "attributes": Object {
-      "count": 14,
-      "key": "collecting-stated",
-      "tagType": "collecting-stated",
-      "type": "locationTag",
-    },
-    "id": "collecting-stated",
-    "type": "customObject",
-  },
-  Object {
-    "attributes": Object {
-      "count": 1,
-      "key": "origin",
-      "tagType": "origin",
-      "type": "locationTag",
-    },
-    "id": "origin",
-    "type": "customObject",
-  },
-]
-`;
