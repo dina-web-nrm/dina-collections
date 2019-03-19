@@ -1,4 +1,4 @@
-import generalCrud from './write/generalCrud'
+import create from './write/create'
 
 describe('Agents', () => {
   before(() => {
@@ -10,6 +10,6 @@ describe('Agents', () => {
   })
 
   describe('write', () => {
-    generalCrud()
+    create()
   })
 })
