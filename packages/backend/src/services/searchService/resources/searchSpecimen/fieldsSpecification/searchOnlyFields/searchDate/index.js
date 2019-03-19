@@ -61,10 +61,15 @@ const transformation = ({ migrator, src, target }) => {
 const searchFilter = {
   description: 'Search date',
   elasticsearch: ({ value = {} }) => {
-    const { start, end } = value
+    const { start, end, invalid } = value
 
     const must = []
-
+    const mustNot = []
+    if (invalid) {
+      mustNot.push({
+        match_all: {},
+      })
+    }
     if (start) {
       must.push({
         range: {
@@ -91,6 +96,7 @@ const searchFilter = {
         query: {
           bool: {
             must,
+            must_not: mustNot,
           },
         },
       },
