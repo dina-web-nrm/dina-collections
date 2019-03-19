@@ -107,6 +107,7 @@ class DatePart extends Component {
     const interpretedTimestamp = getTimestampFromYMD({
       isEndDate,
       isStartDate,
+      moveCurrentYearEndDateToNow: true,
       ...updatedDatePartValues,
     })
 

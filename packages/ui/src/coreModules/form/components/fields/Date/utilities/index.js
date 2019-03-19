@@ -37,6 +37,7 @@ export const getRangeValue = ({
               interpretedTimestamp: getTimestampFromYMD({
                 ...updatedDatePartValue,
                 isEndDate: true,
+                moveCurrentYearEndDateToNow: true,
               }),
             }
           : {},
@@ -98,6 +99,7 @@ export const getRangeValueAfterDateTypeChange = ({
         interpretedTimestamp: getTimestampFromYMD({
           ...updatedValue.startDate,
           isEndDate: true,
+          moveCurrentYearEndDateToNow: true,
         }),
       }
     } else {
@@ -114,6 +116,7 @@ export const getRangeValueAfterDateTypeChange = ({
         interpretedTimestamp: getTimestampFromYMD({
           ...updatedValue.startDate,
           isEndDate: true,
+          moveCurrentYearEndDateToNow: true,
         }),
       }
       updatedValue.startDate = {

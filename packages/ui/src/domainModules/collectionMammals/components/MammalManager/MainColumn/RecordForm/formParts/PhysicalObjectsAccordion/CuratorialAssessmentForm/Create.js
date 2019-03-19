@@ -52,6 +52,7 @@ export class CreateCuratorialAssessment extends PureComponent {
               interpretedTimestamp: getTimestampFromYMD({
                 ...dateInput,
                 isEndDate: true,
+                moveCurrentYearEndDateToNow: true,
               }),
             },
             startDate: {
