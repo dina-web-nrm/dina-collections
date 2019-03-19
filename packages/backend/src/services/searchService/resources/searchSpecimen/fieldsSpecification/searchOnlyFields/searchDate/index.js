@@ -24,15 +24,18 @@ const transformation = ({ migrator, src, target }) => {
     let startTimestamp
     if (collectingEventDateRange.startDate) {
       startTimestamp =
-        getTimestampFromYMD(collectingEventDateRange.startDate) ||
-        collectingEventDateRange.startDate.interpretedTimestamp
+        getTimestampFromYMD({
+          ...collectingEventDateRange.startDate,
+        }) || collectingEventDateRange.startDate.interpretedTimestamp
     }
 
     let endTimestamp
     if (collectingEventDateRange.endDate) {
       endTimestamp =
-        getTimestampFromYMD(collectingEventDateRange.endDate) ||
-        collectingEventDateRange.endDate.interpretedTimestamp
+        getTimestampFromYMD({
+          ...collectingEventDateRange.endDate,
+          moveCurrentYearEndDateToNow: true,
+        }) || collectingEventDateRange.endDate.interpretedTimestamp
     }
 
     if (startTimestamp || endTimestamp) {
