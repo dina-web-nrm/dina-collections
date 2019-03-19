@@ -4,7 +4,7 @@ module.exports = function createStringAggregation({
   fieldPath,
   resource,
 }) {
-  const rawPath = `${fieldPath}.raw`
+  const rawPath = `${fieldPath}`
   return {
     description: description || `Aggregation for: ${fieldPath}`,
     elasticsearch: ({ input = {} }) => {
