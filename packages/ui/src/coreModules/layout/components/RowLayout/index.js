@@ -43,6 +43,7 @@ class RowLayout extends Component {
     return (
       <div
         className={wrapperClassNames}
+        data-testid={wrapperId}
         id={wrapperId}
         style={{
           display: 'flex',
