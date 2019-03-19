@@ -196,7 +196,7 @@ export class InfiniteTable extends Component {
     }
 
     return (
-      <div data-testid="InfiniteTable" style={{ width }}>
+      <div data-testid="infiniteTable" style={{ width }}>
         <ReactList
           initialIndex={currentTableRowNumber - 1}
           itemRenderer={this.renderItem}

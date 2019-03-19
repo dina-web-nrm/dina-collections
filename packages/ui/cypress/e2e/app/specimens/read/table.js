@@ -8,7 +8,7 @@ export default () =>
       it('scrolls to load more specimens and sorts table', () => {
         cy.log('Check first specimen and that the last is not visible')
         cy.get(
-          '[data-testid="InfiniteTable"] [data-testid="InfiniteTableRow-1"]',
+          '[data-testid="infiniteTable"] [data-testid="infiniteTableRow1"]',
           {
             timeout: 20000,
           }
@@ -20,7 +20,7 @@ export default () =>
           .as('table')
           .scrollTo(0, 2000, { duration: 500 })
         cy.get(
-          '[data-testid="InfiniteTable"] [data-testid="InfiniteTableRow-16"]',
+          '[data-testid="infiniteTable"] [data-testid="infiniteTableRow16"]',
           {
             timeout: 20000,
           }
@@ -28,20 +28,20 @@ export default () =>
 
         cy.log('Sort and scroll to top and check 500001 is now on top')
         cy.get(
-          '[data-testid="InfiniteTableHeader-identifiersCatalogNumber"]'
+          '[data-testid="infiniteTableHeader-identifiersCatalogNumber"]'
         ).click()
         cy.get('@table').scrollTo('topLeft', { duration: 500 })
-        cy.get('[data-testid="InfiniteTable"] .row:first').should(
+        cy.get('[data-testid="infiniteTable"] .row:first').should(
           'contain',
           '50000'
         )
 
         cy.log('Sort again and check 500001 is now on bottom')
         cy.get(
-          '[data-testid="InfiniteTableHeader-identifiersCatalogNumber"]'
+          '[data-testid="infiniteTableHeader-identifiersCatalogNumber"]'
         ).click()
         cy.get('@table').scrollTo(0, 2000, { duration: 500 })
-        cy.get('[data-testid="InfiniteTable"] .row:last').should(
+        cy.get('[data-testid="infiniteTable"] .row:last').should(
           'contain',
           'Mustela erminea'
         )

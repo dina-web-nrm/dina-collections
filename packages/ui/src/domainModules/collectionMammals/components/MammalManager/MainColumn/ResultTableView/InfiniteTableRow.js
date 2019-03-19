@@ -44,7 +44,7 @@ const InfiniteTableRow = ({
   if (!item) {
     return (
       <Grid.Row
-        data-testid={`InfiniteTableRow-${rowNumber}-loading`}
+        data-testid={`infiniteTableRow${rowNumber}Loading`}
         style={{ height: emToPixels(3.5), width }}
       >
         <Grid.Column style={{ width: 60 }}>
@@ -58,7 +58,7 @@ const InfiniteTableRow = ({
 
   return (
     <Grid.Row
-      data-testid={`InfiniteTableRow-${rowNumber}`}
+      data-testid={`infiniteTableRow${rowNumber}`}
       onClick={event => {
         event.preventDefault()
         onClick(rowNumber, itemId)

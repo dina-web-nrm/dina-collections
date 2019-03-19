@@ -77,7 +77,7 @@ class InfiniteTableHeader extends PureComponent {
         return (
           <Grid.Column key={name} style={{ width: columnWidth }}>
             <Header
-              data-testid={`InfiniteTableHeader-${name}`}
+              data-testid={`infiniteTableHeader-${name}`}
               onClick={event => this.handleClickSorting(event, name, sortOrder)}
               size="small"
             >
@@ -94,7 +94,7 @@ class InfiniteTableHeader extends PureComponent {
     return (
       <Grid.Column key={name} style={{ width: columnWidth }}>
         <Header
-          data-testid={`InfiniteTableHeader-${name}`}
+          data-testid={`infiniteTableHeader-${name}`}
           onClick={event => this.handleClickSorting(event, name, 'asc')}
           size="small"
         >
@@ -118,7 +118,7 @@ class InfiniteTableHeader extends PureComponent {
     return (
       <React.Fragment>
         <Grid
-          data-testid="InfiniteTableHeader"
+          data-testid="infiniteTableHeader"
           padded
           style={{
             height,
