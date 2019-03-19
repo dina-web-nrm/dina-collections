@@ -1,13 +1,13 @@
+const fieldPath = 'attributes.tags.storageLocationTags'
 const filterFunction = 'searchStorageLocationTags'
-const tagPath = 'attributes.tags.storageLocationTags'
 const resource = 'storageLocationTag'
 const typeAggregationFunction = 'aggregateStorageLocationTagTypes'
 const valueAggregationFunction = 'aggregateStorageLocationTagValues'
 
 module.exports = {
+  fieldPath,
   filterFunction,
   resource,
-  tagPath,
   typeAggregationFunction,
   valueAggregationFunction,
 }

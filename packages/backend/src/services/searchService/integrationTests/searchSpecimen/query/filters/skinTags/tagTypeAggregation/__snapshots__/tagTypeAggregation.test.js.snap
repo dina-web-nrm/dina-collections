@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - skinTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 7,
+      "key": "complete study skin",
+      "type": "skinTag",
+    },
+    "id": "complete study skin",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 5,
+      "key": "no skin",
+      "type": "skinTag",
+    },
+    "id": "no skin",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "complete, mounted skin",
+      "type": "skinTag",
+    },
+    "id": "complete, mounted skin",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "unspecified skin",
+      "type": "skinTag",
+    },
+    "id": "unspecified skin",
+    "type": "customObject",
+  },
+]
+`;

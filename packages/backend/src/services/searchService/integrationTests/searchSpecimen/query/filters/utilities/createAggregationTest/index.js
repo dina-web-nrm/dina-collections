@@ -9,10 +9,10 @@ module.exports = function createAggregationTest({
   aggregationFunction: aggregationFunctionInput,
   aggregationType,
   description: customDescription,
+  fieldPath,
   filterFunction,
   filterType,
   resource,
-  tagPath,
   testCases,
   typeAggregationFunction,
   valueAggregationFunction,
@@ -27,9 +27,9 @@ module.exports = function createAggregationTest({
   const testSpecification = {
     aggregationFunction,
     aggregationType,
+    fieldPath,
     filterFunction,
     resource,
-    tagPath,
     testCases,
   }
 

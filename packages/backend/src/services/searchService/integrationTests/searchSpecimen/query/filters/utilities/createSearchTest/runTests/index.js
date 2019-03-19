@@ -5,12 +5,12 @@ const createRequestBuilder = require('./requestBuilder')
 const createTestCaseTests = require('./createTestCaseTests')
 
 module.exports = function runApiSearchTests({ testSpecification, searchType }) {
-  const { filterFunction, resource, tagPath, testCases } = testSpecification
+  const { fieldPath, filterFunction, resource, testCases } = testSpecification
 
   const requestBuilder = createRequestBuilder({
+    fieldPath,
     filterFunction,
     resource,
-    tagPath,
   })
 
   const headers = ['input', 'filter', 'expectedCount', 'matchingCatalogNumbers']

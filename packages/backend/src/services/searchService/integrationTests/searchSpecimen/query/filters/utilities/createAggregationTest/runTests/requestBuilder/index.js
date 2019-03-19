@@ -8,7 +8,7 @@ const buildBody = require('./buildBody')
  * @param {string} aggregationType - The type of aggregation used when queryType is raw. One of [tagTypes, tagValues]
  * @param {string} filterFunction - The name of the filterFunction used by backend, when queryType is dina, to filter result
  * @param {string} resource - The name of the aggregated resource returned in the response.
- * @param {string} tagPath - The path to the tag. Used when queryType is raw. Ex attributes.tags.identifierTags
+ * @param {string} fieldPath - The path to the tag. Used when queryType is raw. Ex attributes.tags.identifierTags
 
  * @returns {Object} requestBuilder
  *
@@ -16,17 +16,17 @@ const buildBody = require('./buildBody')
 module.exports = function createRequestBuilder({
   aggregationFunction,
   aggregationType,
+  fieldPath,
   filterFunction,
   resource,
-  tagPath,
 }) {
   const buildRequest = testCase => {
     return {
       body: testCase.raw
         ? buildRawBody({
             aggregationType,
+            fieldPath,
             resource,
-            tagPath,
             testCase,
           })
         : buildBody({

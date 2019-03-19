@@ -7,17 +7,17 @@ const runTests = require('./runTests')
 
 module.exports = function createSearchTest({
   description: customDescription,
+  fieldPath,
   filterFunction,
   filterType,
   resource,
   searchType = 'search',
-  tagPath,
   testCases,
 }) {
   const testSpecification = {
+    fieldPath,
     filterFunction,
     resource,
-    tagPath,
     testCases,
   }
 

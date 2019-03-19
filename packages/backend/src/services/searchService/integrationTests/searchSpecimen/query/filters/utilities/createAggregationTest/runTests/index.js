@@ -8,18 +8,18 @@ module.exports = function runApiTagTests({ testSpecification, filterType }) {
   const {
     aggregationFunction,
     aggregationType,
+    fieldPath,
     filterFunction,
     resource,
-    tagPath,
     testCases,
   } = testSpecification
 
   const requestBuilder = createRequestBuilder({
     aggregationFunction,
     aggregationType,
+    fieldPath,
     filterFunction,
     resource,
-    tagPath,
   })
 
   const headers = ['input', 'filter', 'expectedCount']

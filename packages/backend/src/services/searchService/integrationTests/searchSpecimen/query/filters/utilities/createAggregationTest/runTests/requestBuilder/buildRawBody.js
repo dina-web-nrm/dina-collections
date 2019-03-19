@@ -1,7 +1,7 @@
 const buildTagValueFilter = require('./buildTagValueFilter')
 
-const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
-  const tagTypePath = `${tagPath}.tagType`
+const buildRawTagTypesBody = ({ fieldPath, resource, testCase }) => {
+  const tagTypePath = `${fieldPath}.tagType`
   const { filters: { tagTypes = undefined } = {} } = testCase
 
   let query
@@ -47,7 +47,7 @@ const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
         },
       },
       nested: {
-        path: tagPath,
+        path: fieldPath,
       },
     },
   }
@@ -65,11 +65,11 @@ const buildRawTagTypesBody = ({ resource, tagPath, testCase }) => {
   }
 }
 
-const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
-  const tagValuePath = `${tagPath}.tagValue`
-  const tagTypePath = `${tagPath}.tagType`
-  const tagKeyPath = `${tagPath}.key`
-  const tagTextPath = `${tagPath}.tagText`
+const buildRawTagValuesBody = ({ resource, fieldPath, testCase }) => {
+  const tagValuePath = `${fieldPath}.tagValue`
+  const tagTypePath = `${fieldPath}.tagType`
+  const tagKeyPath = `${fieldPath}.key`
+  const tagTextPath = `${fieldPath}.tagText`
   const { filters: { tagTypes = undefined, tagValue } = {} } = testCase
 
   let query
@@ -148,7 +148,7 @@ const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
         },
       },
       nested: {
-        path: tagPath,
+        path: fieldPath,
       },
     },
   }
@@ -169,13 +169,13 @@ const buildRawTagValuesBody = ({ resource, tagPath, testCase }) => {
 module.exports = function buildRawBody({
   aggregationType,
   resource,
-  tagPath,
+  fieldPath,
   testCase,
 }) {
   if (aggregationType === 'tagValues') {
     return buildRawTagValuesBody({
       resource,
-      tagPath,
+      fieldPath,
       testCase,
     })
   }
@@ -183,7 +183,7 @@ module.exports = function buildRawBody({
   if (aggregationType === 'tagTypes') {
     return buildRawTagTypesBody({
       resource,
-      tagPath,
+      fieldPath,
       testCase,
     })
   }
