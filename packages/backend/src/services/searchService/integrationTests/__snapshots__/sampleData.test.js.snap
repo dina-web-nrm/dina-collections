@@ -6,7 +6,7 @@ Array [
     "attributes": Object {
       "collectingEventCollectors": Array [],
       "collectingEventCountry": "No information",
-      "collectingEventEndDate": "2010-01-01",
+      "collectingEventEndDate": "2010-12-31",
       "collectingEventInterpretedLocality": Array [
         "No information",
       ],
@@ -274,7 +274,7 @@ Utlånad, lån 2012-21 (Dnr 52-78/2012)",
         "Sparrman, Andreas",
       ],
       "collectingEventCountry": "South africa",
-      "collectingEventEndDate": "1784-01-01",
+      "collectingEventEndDate": "1784-12-31",
       "collectingEventInterpretedLocality": Array [
         "Humansdorp",
       ],
