@@ -29,13 +29,18 @@ const propTypes = {
     linkTo: PropTypes.string,
     size: PropTypes.string,
   }).isRequired,
+  htmlFor: PropTypes.string,
   isLarge: PropTypes.bool.isRequired,
+}
+const defaultProps = {
+  htmlFor: undefined,
 }
 
 export const FormFieldHelpIcon = ({
   applicationInModalLayer,
   createNotification,
   helpNotificationProps,
+  htmlFor,
   isLarge,
 }) => {
   let displayType = 'inline'
@@ -45,6 +50,8 @@ export const FormFieldHelpIcon = ({
   return (
     <Icon
       color="blue"
+      data-testid="formFieldHelpIcon"
+      htmlFor={htmlFor}
       link
       name="help circle outline"
       onClick={event => {
@@ -61,6 +68,7 @@ export const FormFieldHelpIcon = ({
 }
 
 FormFieldHelpIcon.propTypes = propTypes
+FormFieldHelpIcon.defaultProps = defaultProps
 
 export default connect(
   mapStateToProps,

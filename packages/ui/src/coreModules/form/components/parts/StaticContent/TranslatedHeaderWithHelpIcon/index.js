@@ -39,7 +39,10 @@ const TranslatedHeaderWithHelpIcon = ({
     <TranslatedHeader as={as} module={module} textKey={textKey}>
       <div style={helpIconWrapperStyle}>
         {helpNotificationProps && (
-          <FormFieldHelpIcon helpNotificationProps={helpNotificationProps} />
+          <FormFieldHelpIcon
+            helpNotificationProps={helpNotificationProps}
+            htmlFor={textKey}
+          />
         )}
       </div>
     </TranslatedHeader>
