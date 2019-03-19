@@ -39,6 +39,17 @@ class ColumnLayout extends Component {
       return null
     }
 
+    const { rest: thisPropsRest } = extractProps({
+      keys: [
+        'columns',
+        'renderColumn',
+        'wrapperClassNames',
+        'wrapperId',
+        'wrapperStyle',
+      ],
+      props: this.props,
+    })
+
     return (
       <div
         className={wrapperClassNames}
@@ -50,7 +61,10 @@ class ColumnLayout extends Component {
         }}
       >
         {columns.map((columnSpec, index) => {
-          const { extractedProps: columnProps, rest } = extractProps({
+          const {
+            extractedProps: columnProps,
+            rest: columnPropsRest,
+          } = extractProps({
             keys: ['classNames', 'id', 'key', 'renderColumn', 'style', 'width'],
             props: columnSpec,
           })
@@ -80,11 +94,14 @@ class ColumnLayout extends Component {
               {!columnProps.renderColumn &&
                 renderColumn &&
                 renderColumn(columnProps.key, {
-                  ...this.props,
-                  ...rest,
+                  ...thisPropsRest,
+                  ...columnPropsRest,
                 })}
               {columnProps.renderColumn &&
-                columnProps.renderColumn({ ...this.props, ...rest })}
+                columnProps.renderColumn({
+                  ...thisPropsRest,
+                  ...columnPropsRest,
+                })}
             </div>
           )
         })}

@@ -40,6 +40,17 @@ class RowLayout extends Component {
       return null
     }
 
+    const { rest: thisPropsRest } = extractProps({
+      keys: [
+        'renderRow',
+        'rows',
+        'wrapperClassNames',
+        'wrapperId',
+        'wrapperStyle',
+      ],
+      props: this.props,
+    })
+
     return (
       <div
         className={wrapperClassNames}
@@ -54,10 +65,12 @@ class RowLayout extends Component {
         }}
       >
         {rows.map((rowSpec, index) => {
-          const { extractedProps: rowProps, rest } = extractProps({
-            keys: ['classNames', 'id', 'height', 'key', 'renderRow', 'style'],
-            props: rowSpec,
-          })
+          const { extractedProps: rowProps, rest: rowPropsRest } = extractProps(
+            {
+              keys: ['classNames', 'id', 'height', 'key', 'renderRow', 'style'],
+              props: rowSpec,
+            }
+          )
 
           return (
             <div
@@ -83,9 +96,9 @@ class RowLayout extends Component {
             >
               {!rowProps.renderRow &&
                 renderRow &&
-                renderRow(rowProps.key, { ...this.props, ...rest })}
+                renderRow(rowProps.key, { ...thisPropsRest, ...rowPropsRest })}
               {rowProps.renderRow &&
-                rowProps.renderRow({ ...this.props, ...rest })}
+                rowProps.renderRow({ ...thisPropsRest, ...rowPropsRest })}
             </div>
           )
         })}
