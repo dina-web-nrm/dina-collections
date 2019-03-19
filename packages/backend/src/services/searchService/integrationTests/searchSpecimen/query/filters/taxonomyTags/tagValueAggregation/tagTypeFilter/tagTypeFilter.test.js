@@ -1,8 +1,8 @@
 const testCases = require('./testCases')
 const constants = require('../../constants')
-const createTagTest = require('../../../utilities/createTagTest')
+const createAggregationTest = require('../../../utilities/createAggregationTest')
 
-createTagTest({
+createAggregationTest({
   ...constants,
   aggregationType: 'tagValues',
   filterType: 'tagType',

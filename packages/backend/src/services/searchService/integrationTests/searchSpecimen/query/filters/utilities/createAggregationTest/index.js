@@ -5,7 +5,7 @@ const {
 const waitForApiRestart = require('../../../../../../../../utilities/test/waitForApiRestart')
 const runTests = require('./runTests')
 
-module.exports = function createTagTest({
+module.exports = function createAggregationTest({
   aggregationType,
   description: customDescription,
   filterFunction,
