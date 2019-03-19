@@ -14,16 +14,16 @@ export default function getUserPreferences() {
       type: USER_GET_USER_PREFERENCES_REQUEST,
     })
 
-    return new Promise((resolve, reject) => {
-      let userPreferences
-      try {
-        userPreferences = utils.getItem(USER_PREFERENCES_KEY)
-      } catch (err) {
-        return reject(err)
-      }
+    return Promise.resolve()
+      .then(() => {
+        const userPreferences = utils.getItem(USER_PREFERENCES_KEY)
 
-      return resolve(userPreferences)
-    })
+        if (!userPreferences || typeof userPreferences !== 'object') {
+          return {}
+        }
+
+        return userPreferences
+      })
       .then(userPreferences => {
         dispatch({
           payload: userPreferences,
