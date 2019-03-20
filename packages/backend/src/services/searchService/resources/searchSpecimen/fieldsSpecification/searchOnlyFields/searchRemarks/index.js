@@ -56,13 +56,8 @@ const createMapping = () => {
         properties: {
           ...elasticsearchFieldProperties,
           srcFields: {
-            fields: {
-              raw: {
-                ignore_above: 256,
-                type: 'keyword',
-              },
-            },
-            type: 'text',
+            ignore_above: 256,
+            type: 'keyword',
           },
         },
       }
