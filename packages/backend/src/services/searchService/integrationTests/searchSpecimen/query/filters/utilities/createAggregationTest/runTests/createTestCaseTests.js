@@ -1,6 +1,26 @@
 module.exports = function createTestCaseTests({ getResponse, testCase }) {
   const { expect: expectResult, snapshot = false } = testCase
 
+  it('fullfill tag format', () => {
+    const response = getResponse()
+    if (response.data && response.data.length) {
+      response.data.forEach(({ attributes }) => {
+        const allowedKeys = [
+          'count',
+          'key',
+          'type',
+          'tagText',
+          'tagType',
+          'tagValue',
+        ]
+
+        Object.keys(attributes).forEach(attributeKey => {
+          expect(allowedKeys).toContain(attributeKey)
+        })
+      })
+    }
+  })
+
   if (expectResult) {
     if (expectResult.count !== undefined) {
       it(`contains expected result count: ${expectResult.count}`, () => {
