@@ -289,7 +289,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     }
   }
   createOptions({ searchQuery, items }) {
-    const { tagTypeFilterValue } = this.state
     const { addTagTypeToText } = this.props
     const itemOptions = items
       .map(({ attributes }) => {
