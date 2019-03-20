@@ -120,7 +120,18 @@ module.exports = function getWhereFactory({
             }
 
           if (aggregations && aggregations.length) {
-            sourceOptions._source = false // eslint-disable-line
+            let includeSource = false
+
+            aggregations.forEach(({ aggregationFunction }) => {
+              const spec =
+                aggregationSpecification.aggregations[aggregationFunction]
+              if (spec && spec.includeSource) {
+                includeSource = true
+              }
+            })
+            if (includeSource === false) {
+              sourceOptions._source = false // eslint-disable-line
+            }
           }
 
           const body = raw || where
