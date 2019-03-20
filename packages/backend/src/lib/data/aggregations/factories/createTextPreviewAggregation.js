@@ -67,6 +67,7 @@ module.exports = function createTextPreviewAggregation({
 
       return items
     },
+    includeSource: true,
 
     inputSchema: {
       type: 'object',
