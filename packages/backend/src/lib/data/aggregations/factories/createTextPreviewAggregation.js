@@ -57,8 +57,8 @@ module.exports = function createTextPreviewAggregation({
               items.push({
                 count: 1,
                 key: id,
-                preview: previewString,
-                srcField: srcFieldKey,
+                tagType: srcFieldKey,
+                tagValue: previewString,
               })
             })
           })
