@@ -162,7 +162,6 @@ class MultipleChoiceCheckboxes extends Component {
           {allIds.map(id => {
             const drillDownOption = drillDownOptionsMap[id]
             const isChecked = checkedValues.includes(id)
-
             return (
               <Grid.Column
                 key={id}
@@ -170,7 +169,6 @@ class MultipleChoiceCheckboxes extends Component {
                 width={16}
               >
                 <Checkbox
-                  disabled={!drillDownOption && !isChecked}
                   input={{
                     name: `${input.name}.${id}`,
                     onChange: checked => {
@@ -181,7 +179,7 @@ class MultipleChoiceCheckboxes extends Component {
                   label={
                     displayCount && drillDownOption
                       ? `${id} (${drillDownOption.count})`
-                      : id
+                      : `${id} (0)`
                   }
                   meta={meta}
                 />
