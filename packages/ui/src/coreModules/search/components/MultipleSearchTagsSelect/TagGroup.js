@@ -15,6 +15,7 @@ const propTypes = {
   ).isRequired,
   searchQuery: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  translateTagType: PropTypes.func.isRequired,
 }
 const TagGroup = ({
   addTagTypeToText,
@@ -24,6 +25,7 @@ const TagGroup = ({
   results,
   searchQuery,
   title,
+  translateTagType,
 }) => {
   return (
     <Grid verticalAlign="middle">
@@ -44,9 +46,11 @@ const TagGroup = ({
       <Grid.Column width={16}>
         <Label.Group>
           {results.map(({ attributes, id, selected }) => {
+            const { tagType } = attributes
             const tagTypeText = addTagTypeToText
-              ? ` (${attributes.tagType}) `
+              ? ` [${translateTagType(tagType)}] `
               : ' '
+
             return (
               <Label
                 as="a"
