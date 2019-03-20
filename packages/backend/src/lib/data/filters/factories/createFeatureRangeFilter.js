@@ -1,7 +1,7 @@
 module.exports = function createFeatureRangeFilter({ description, fieldPath }) {
   const rangeValuePath = `${fieldPath}.rangeValue`
-  const rangeUnitPath = `${fieldPath}.rangeUnit.raw`
-  const tagTypePath = `${fieldPath}.tagType.raw`
+  const rangeUnitPath = `${fieldPath}.rangeUnit`
+  const tagTypePath = `${fieldPath}.tagType`
 
   return {
     description: description || `Match for ${fieldPath}`,
