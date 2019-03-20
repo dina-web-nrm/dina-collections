@@ -1,5 +1,35 @@
 const { LEVEL_INSTITUTION, LEVEL_ROOM } = require('../constants/storage')
 
+const groupTranslations = {
+  cabinet: {
+    en: 'cabinet',
+    sv: '',
+  },
+  institution: {
+    en: 'institution',
+    sv: '',
+  },
+  mountingwall: {
+    en: 'mounting wall',
+    sv: '',
+  },
+  room: {
+    en: 'room',
+    sv: '',
+  },
+  shelf: {
+    en: 'shelf',
+    sv: '',
+  },
+}
+
+const translateGroup = groupName => {
+  if (groupTranslations[groupName]) {
+    return groupTranslations[groupName].en
+  }
+  return groupName
+}
+
 const extractNameWithFirstLevelParent = (
   nestedStorageLocation,
   { skipParentSuffix = false } = {}
@@ -9,12 +39,12 @@ const extractNameWithFirstLevelParent = (
   }
   const { group, name } = nestedStorageLocation
   if (group === LEVEL_INSTITUTION || group === LEVEL_ROOM) {
-    return skipParentSuffix ? name : `${name} [${group}]`
+    return skipParentSuffix ? name : `${name} [${translateGroup(group)}]`
   }
   const parentName = extractNameWithFirstLevelParent(
     nestedStorageLocation.parent,
     { skipParentSuffix: true }
   )
-  return `${name} [${group} in ${parentName}]`
+  return `${name} [${translateGroup(group)} in ${parentName}]`
 }
 module.exports = extractNameWithFirstLevelParent
