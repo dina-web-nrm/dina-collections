@@ -95,8 +95,8 @@ class SearchPreview extends Component {
     const previews = drillDownSearchResult.map(({ attributes, id }) => {
       return {
         id,
-        preview: attributes.preview,
-        srcField: attributes.srcField,
+        preview: attributes.tagValue,
+        srcField: attributes.tagType,
       }
     })
 
