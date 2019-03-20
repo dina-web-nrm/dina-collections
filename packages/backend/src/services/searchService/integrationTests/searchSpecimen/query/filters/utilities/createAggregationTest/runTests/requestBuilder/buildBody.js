@@ -4,11 +4,11 @@ module.exports = function buildBody({
   testCase,
 }) {
   const {
-    filters: { tagTypes = undefined, tagValue } = {},
+    filters: { tagTypes = undefined, tagValue, input } = {},
     limit = 100,
   } = testCase
 
-  const filter = !!(tagTypes || tagValue)
+  const filter = !!(tagTypes || tagValue || input)
 
   let aggregations = []
   let query = {}
@@ -16,7 +16,7 @@ module.exports = function buildBody({
   aggregations = [
     {
       aggregationFunction,
-      input: {
+      input: input || {
         limit,
         tagTypes,
         tagValue,
@@ -30,7 +30,7 @@ module.exports = function buildBody({
         {
           filter: {
             filterFunction,
-            input: { tagTypes, tagValue },
+            input: input || { tagTypes, tagValue },
           },
         },
       ],

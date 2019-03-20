@@ -6,6 +6,7 @@ const waitForApiRestart = require('../../../../../../../../utilities/test/waitFo
 const runTests = require('./runTests')
 
 module.exports = function createAggregationTest({
+  aggregationFunction: aggregationFunctionInput,
   aggregationType,
   description: customDescription,
   filterFunction,
@@ -16,10 +17,12 @@ module.exports = function createAggregationTest({
   typeAggregationFunction,
   valueAggregationFunction,
 }) {
+  // console.log('aggregationFunction', aggregationFunction)
   const aggregationFunction =
-    aggregationType === 'tagTypes'
+    aggregationFunctionInput ||
+    (aggregationType === 'tagTypes'
       ? typeAggregationFunction
-      : valueAggregationFunction
+      : valueAggregationFunction)
 
   const testSpecification = {
     aggregationFunction,
