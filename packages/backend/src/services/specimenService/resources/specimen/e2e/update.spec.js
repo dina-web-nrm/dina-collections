@@ -15,7 +15,7 @@ const { getTestData } = require('../testData')
 
 apiDescribe('specimen', () => {
   describe.skip('deactivated', () => {
-    beforeAll(() => {
+    hook(beforeAll, () => {
       return waitForApiRestart()
     })
 
