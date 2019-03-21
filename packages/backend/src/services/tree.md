@@ -180,9 +180,9 @@
 │   │   ├── __snapshots__
 │   │   │   └── sampleData.test.js.snap
 │   │   ├── sampleData.test.js
-│   │   ├── searchSpecimen
-│   │   │   └── query
-│   │   └── utilities.js
+│   │   └── searchSpecimen
+│   │       ├── query
+│   │       └── testDocumentation
 │   ├── resources
 │   │   ├── cacheResources.js
 │   │   ├── index.js
