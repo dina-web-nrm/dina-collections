@@ -6,7 +6,7 @@ const {
 } = require('../../../../../../../lib/data/filters/factories')
 
 const {
-  createKeywordAndRawMapping,
+  createKeywordMapping,
 } = require('../../../../../../../lib/data/mappings/factories')
 
 const fieldPath = 'attributes.tags.wetPreparationTags'
@@ -63,8 +63,9 @@ module.exports = {
     }),
   },
   key,
-  mapping: createKeywordAndRawMapping({
+  mapping: createKeywordMapping({
     fieldPath,
+    lowercase: true,
   }),
   selectable: true,
   transformation,

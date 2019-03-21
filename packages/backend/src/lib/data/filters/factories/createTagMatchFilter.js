@@ -5,10 +5,8 @@ module.exports = function createTagMatchFilter({
   nested = true,
   tagTypePath = 'tagType',
 }) {
-  const typePath = nested
-    ? `${fieldPath}.${tagTypePath}.raw`
-    : `${fieldPath}.raw`
-  const valuePath = nested ? `${fieldPath}.tagValue.raw` : `${fieldPath}.raw`
+  const typePath = nested ? `${fieldPath}.${tagTypePath}` : `${fieldPath}`
+  const valuePath = nested ? `${fieldPath}.tagValue` : `${fieldPath}`
 
   return {
     description: description || `Search ${fieldPath}`,

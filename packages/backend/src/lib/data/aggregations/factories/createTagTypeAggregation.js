@@ -5,7 +5,7 @@ module.exports = function createTagTypeAggregation({
   fieldPath,
   resource,
 }) {
-  const tagTypePath = `${fieldPath}.tagType.raw`
+  const tagTypePath = `${fieldPath}.tagType`
 
   return {
     description: description || `Aggregation for: ${fieldPath}`,

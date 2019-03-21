@@ -5,9 +5,8 @@ module.exports = function createTagSearchFilter({
   fieldPath,
   key,
 }) {
-  const typePath = `${fieldPath}.tagType.raw`
+  const typePath = `${fieldPath}.tagType`
   const valuePath = `${fieldPath}.tagValue`
-  const valueRawPath = `${valuePath}.raw`
 
   return {
     description: description || `Search ${fieldPath}`,
@@ -32,7 +31,7 @@ module.exports = function createTagSearchFilter({
 
       if (tagValue) {
         const regexpFilters = createRegexpElasticFilters({
-          path: valueRawPath,
+          path: valuePath,
           value: tagValue,
         })
         baseQuery.nested.query.bool.must = [

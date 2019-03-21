@@ -4,44 +4,22 @@ module.exports = function createKeywordMapping({ fieldPath }) {
       return {
         properties: {
           key: {
-            fields: {
-              raw: {
-                ignore_above: 256,
-                normalizer: 'lowerCaseNormalizer',
-                type: 'keyword',
-              },
-            },
-            type: 'text',
+            ignore_above: 256,
+            normalizer: 'lowerCaseNormalizer',
+            type: 'keyword',
           },
           tagText: {
-            fields: {
-              raw: {
-                ignore_above: 256,
-                normalizer: 'lowerCaseNormalizer',
-                type: 'keyword',
-              },
-            },
-            type: 'text',
+            type: 'keyword',
           },
           tagType: {
-            fields: {
-              raw: {
-                ignore_above: 256,
-                normalizer: 'lowerCaseNormalizer',
-                type: 'keyword',
-              },
-            },
-            type: 'text',
+            ignore_above: 256,
+            normalizer: 'lowerCaseNormalizer',
+            type: 'keyword',
           },
           tagValue: {
-            fields: {
-              raw: {
-                ignore_above: 256,
-                normalizer: 'lowerCaseNormalizer',
-                type: 'keyword',
-              },
-            },
-            type: 'text',
+            ignore_above: 256,
+            normalizer: 'lowerCaseNormalizer',
+            type: 'keyword',
           },
         },
         type: 'nested',
