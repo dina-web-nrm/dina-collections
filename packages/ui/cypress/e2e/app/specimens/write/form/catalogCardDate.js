@@ -1,10 +1,10 @@
 export default () =>
   describe('catalog card date input', () => {
-    it('sets and validates catalog card date', () => {
+    it('sets and validates catalog card date in current year', () => {
       const momentNow = Cypress.moment()
 
       cy.goToRoute('/app/specimens/mammals/create/sections/0')
-      cy.getByTestId('createAutomaticNumber')
+      cy.getByTestId('createAutomaticNumber', { timeout: 60000 })
         .click()
         .url()
         .should('include', '/edit/')

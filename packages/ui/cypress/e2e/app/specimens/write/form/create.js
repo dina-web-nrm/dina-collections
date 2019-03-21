@@ -3,9 +3,13 @@ export default () =>
     describe('create', () => {
       beforeEach(() => {
         cy.goToRoute('/app/specimens/mammals')
+        cy.get('[data-testid="infiniteTableHeader"', {
+          log: false,
+          timeout: 60000,
+        })
       })
 
-      it('creates records and validates catalog number', () => {
+      it('creates records, validates catalog number and focuses new record in table', () => {
         cy.log('create with automatic number')
         cy.getByText('New record').click()
         cy.getByTestId('createAutomaticNumber').click()
@@ -61,6 +65,11 @@ export default () =>
         cy.getByTestId('formSectionNavigationHeader')
           .invoke('text')
           .should('equal', '12345678')
+
+        cy.log('ensure new record focused and scrolled to in table')
+        cy.getByTestId('tableTabMenuItem').click()
+        cy.get('[data-isfocused="yes"]').should('contain', '12345678')
+        cy.getByText('12345678').should('be.visible')
 
         cy.log('ensure error on creating with same number')
         cy.getByText('New record').click()

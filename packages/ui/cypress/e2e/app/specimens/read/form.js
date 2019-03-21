@@ -3,10 +3,10 @@ export default () =>
     beforeEach(() => {
       cy.goToRoute('/app/specimens/mammals/1/edit/sections/0')
       // wait until section rendered
-      cy.get('[data-testid="basicInformation"]', { log: false, timeout: 10000 })
+      cy.get('[data-testid="basicInformation"]', { log: false, timeout: 60000 })
     })
 
-    it('has record history', () => {
+    it('has record history and help texts', () => {
       cy.getByText('Record history')
       cy.getByText('Created by Admin', { exact: false })
       cy.getByTestId('sourceDataLink').shouldHaveHref(
@@ -40,5 +40,7 @@ export default () =>
         cy.getByTestId('formFieldHelpIcon').click()
       })
       cy.getByTestId('inlineNotification').should('contain', 'Identifiers')
+
+      cy.getByText('Undo changes').click() // to avoid preventing browser unload
     })
   })

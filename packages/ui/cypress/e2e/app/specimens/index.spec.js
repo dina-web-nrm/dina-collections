@@ -1,11 +1,12 @@
 import catalogCardDate from './write/form/catalogCardDate'
-import readForm from './read/form'
+import form from './read/form'
 import sourceData from './read/sourceData'
 import table from './read/table'
 import tableSettings from './read/tableSettings'
 
 import create from './write/form/create'
 import edit from './write/form/edit'
+import validation from './write/form/validation'
 import remove from './write/form/remove'
 
 describe('Specimens', () => {
@@ -19,16 +20,17 @@ describe('Specimens', () => {
   })
 
   describe('read', () => {
-    catalogCardDate()
-    readForm()
+    form()
     sourceData()
     table()
     tableSettings()
   })
 
   describe('write', () => {
+    catalogCardDate()
     create()
     edit()
     remove()
+    validation()
   })
 })
