@@ -48,8 +48,10 @@ class Remarks extends PureComponent {
               autoComplete="off"
               component={WrappedSearchPreviewField}
               enableHelpNotifications={false}
+              module="collectionMammals"
               name="remarks.search"
               resource="searchSpecimen"
+              translationScope="enums.remarks"
             />
           </Grid.Column>
         </Grid.Row>

@@ -445,12 +445,12 @@ select.ui.dropdown {
 }
 @media only screen and (min-width: 992px) {
   .ui.selection.dropdown .menu {
-    max-height: 16.35rem;
+    max-height: 29.975rem;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.selection.dropdown .menu {
-    max-height: 21.8rem;
+    max-height: 29.975rem;
   }
 }
 
@@ -631,12 +631,12 @@ select.ui.dropdown {
 }
 @media only screen and (min-width: 992px) {
   .ui.search.dropdown .menu {
-    max-height: 16.35rem;
+    max-height: 29.975rem;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.search.dropdown .menu {
-    max-height: 21.8rem;
+    max-height: 29.975rem;
   }
 }
 
@@ -1149,7 +1149,7 @@ select.ui.dropdown {
 @media only screen and (min-width: 1920px) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
-    max-height: 21rem;
+    max-height: 28.875rem;
   }
 }
 

@@ -76,7 +76,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     )
     this.handleToggleTagSelected = this.handleToggleTagSelected.bind(this)
     this.handleUpdateTagFilterValue = this.handleUpdateTagFilterValue.bind(this)
-
+    this.translateTagType = this.translateTagType.bind(this)
     this.state = {
       options: [],
       refineOpen: false,
@@ -289,20 +289,21 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     }
   }
   createOptions({ searchQuery, items }) {
-    const { tagTypeFilterValue } = this.state
     const { addTagTypeToText } = this.props
     const itemOptions = items
       .map(({ attributes }) => {
         if (attributes) {
-          const { key, tagType, tagValue } = attributes
-          const tagTypeText = addTagTypeToText ? ` [${tagType}] ` : ' '
+          const { key, tagType, tagValue, tagText } = attributes
+          const tagTypeText = addTagTypeToText
+            ? ` [${this.translateTagType(tagType)}] `
+            : ' '
 
           return this.createOption({
             key,
             optionType: 'tag',
             tagType,
             tagValue,
-            text: `${tagValue}${tagTypeText}`,
+            text: `${tagText}${tagTypeText}`,
             value: key,
           })
         }
@@ -311,16 +312,11 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       })
       .filter(item => !!item)
 
-    const freeTextSuffix =
-      tagTypeFilterValue === ANY
-        ? '(free text)'
-        : `(free text ${tagTypeFilterValue})`
     const freeTextOption = this.createOption({
       key: searchQuery,
       optionType: 'freeText',
-      tagType: tagTypeFilterValue,
       tagValue: searchQuery,
-      text: `${searchQuery} ${freeTextSuffix}`,
+      text: `${searchQuery}`,
       value: searchQuery,
     })
 
@@ -359,6 +355,21 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   handleUpdateTagFilterValue(value) {
     this.setState({
       tagTypeFilterValue: value,
+    })
+  }
+
+  translateTagType(tagType) {
+    const {
+      i18n: { moduleTranslate },
+      module,
+      translationScope,
+    } = this.props
+    return moduleTranslate({
+      capitalize: false,
+      fallback: tagType,
+      module,
+      scope: translationScope,
+      textKey: tagType,
     })
   }
 
@@ -449,6 +460,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
             onToggleTagSelected={this.handleToggleTagSelected}
             open
             reduxFormValues={{ ...(reduxFormValues || {}) }}
+            translateTagType={this.translateTagType}
           />
         )}
       </React.Fragment>

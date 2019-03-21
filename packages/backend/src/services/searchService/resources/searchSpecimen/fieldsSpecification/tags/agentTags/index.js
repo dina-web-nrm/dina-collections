@@ -72,8 +72,9 @@ const addTags = ({
     const tagValue = textI
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
+      tagText: tagValue,
       tagType,
-      tagValue,
+      tagValue: ` ${tagValue} `,
     })
   }
 
@@ -84,8 +85,9 @@ const addTags = ({
 
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
+      tagText: tagValue,
       tagType,
-      tagValue,
+      tagValue: ` ${tagValue} `,
     })
   }
 }

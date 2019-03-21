@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - appearanceTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 15,
+      "key": "unknown (origin)",
+      "type": "appearanceTag",
+    },
+    "id": "unknown (origin)",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 15,
+      "key": "wild and native (collecting)",
+      "type": "appearanceTag",
+    },
+    "id": "wild and native (collecting)",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "captive (collecting)",
+      "type": "appearanceTag",
+    },
+    "id": "captive (collecting)",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "wild and native (origin)",
+      "type": "appearanceTag",
+    },
+    "id": "wild and native (origin)",
+    "type": "customObject",
+  },
+]
+`;

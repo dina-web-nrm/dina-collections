@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - wetPreparationTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 15,
+      "key": "no wet preparation",
+      "type": "wetPreparationTag",
+    },
+    "id": "no wet preparation",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "entire specimen in alcohol",
+      "type": "wetPreparationTag",
+    },
+    "id": "entire specimen in alcohol",
+    "type": "customObject",
+  },
+]
+`;

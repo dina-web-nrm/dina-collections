@@ -39,8 +39,9 @@ const transformation = ({ migrator, src, target }) => {
       if (tagType && tagValue) {
         return {
           key: `${tagType}${delimiter}${tagValue}`,
+          tagText: tagValue,
           tagType,
-          tagValue,
+          tagValue: ` ${tagValue} `,
         }
       }
 

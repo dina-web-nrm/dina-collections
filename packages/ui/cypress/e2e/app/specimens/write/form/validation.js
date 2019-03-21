@@ -124,7 +124,7 @@ export default () =>
         cy.getByTestId('physicalObjectsSkeleton').within(() => {
           cy.getByTestId('accordionTitle').click()
           cy.getInputByFieldLabel('Normal storage location').type('Bens')
-          cy.getDropdownOptionByText('Bensalen', { exact: false }).click()
+          cy.getDropdownOptionByText('Bensalen [room]').click()
         })
       })
 

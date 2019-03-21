@@ -4,29 +4,51 @@ module.exports = function createTagTypeAggregation({
   description,
   fieldPath,
   resource,
-  tagTypePath = 'tagType',
 }) {
-  const tagTypesPath = `${tagTypePath}s`
-  const typeRawPath = `${fieldPath}.${tagTypePath}.raw`
+  const tagTypePath = `${fieldPath}.tagType`
 
   return {
     description: description || `Aggregation for: ${fieldPath}`,
     elasticsearch: ({ input = {} }) => {
-      const { tagType, limit = 10 } = input
+      const { tagType: tagTypeInput, limit = 10 } = input
 
-      const identifierTypeFilter = {
-        field: typeRawPath,
-        size: limit,
+      const tagTypes = tagTypeInput ? [tagTypeInput] : []
+
+      const keyAggregation = {
+        tagType: {
+          terms: {
+            field: tagTypePath,
+            size: limit,
+          },
+        },
       }
 
-      if (tagType) {
-        identifierTypeFilter.include = `.*${tagType.toLowerCase()}.*`
+      let aggregationFilter = {}
+
+      const bool = {
+        must: [],
+        should: [],
+      }
+
+      if (tagTypes && tagTypes.length) {
+        tagTypes.forEach(tagType => {
+          bool.should.push({
+            term: {
+              [tagTypePath]: tagType,
+            },
+          })
+        })
+      }
+
+      aggregationFilter = {
+        bool,
       }
 
       return {
         aggs: {
-          [tagTypesPath]: {
-            terms: identifierTypeFilter,
+          filter: {
+            aggs: keyAggregation,
+            filter: aggregationFilter,
           },
         },
         nested: {
@@ -37,7 +59,7 @@ module.exports = function createTagTypeAggregation({
     extractItems: ({ key, result }) => {
       const tagTypes = objectPath.get(
         result,
-        `aggregations.${key}.${tagTypesPath}.buckets`
+        `aggregations.${key}.filter.tagType.buckets`
       )
       if (!(tagTypes && tagTypes.length)) {
         return []

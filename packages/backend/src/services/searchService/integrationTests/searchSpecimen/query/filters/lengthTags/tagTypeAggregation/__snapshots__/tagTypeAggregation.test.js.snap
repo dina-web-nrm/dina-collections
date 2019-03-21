@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - lengthTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 5,
+      "key": "hind-foot-length",
+      "tagType": "hind-foot-length",
+      "type": "lengthTag",
+    },
+    "id": "hind-foot-length",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 4,
+      "key": "ear-length",
+      "tagType": "ear-length",
+      "type": "lengthTag",
+    },
+    "id": "ear-length",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 4,
+      "key": "tail-to-anus-length",
+      "tagType": "tail-to-anus-length",
+      "type": "lengthTag",
+    },
+    "id": "tail-to-anus-length",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 4,
+      "key": "total-length",
+      "tagType": "total-length",
+      "type": "lengthTag",
+    },
+    "id": "total-length",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "body-length",
+      "tagType": "body-length",
+      "type": "lengthTag",
+    },
+    "id": "body-length",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 1,
+      "key": "tail-to-pelvis-length",
+      "tagType": "tail-to-pelvis-length",
+      "type": "lengthTag",
+    },
+    "id": "tail-to-pelvis-length",
+    "type": "customObject",
+  },
+]
+`;

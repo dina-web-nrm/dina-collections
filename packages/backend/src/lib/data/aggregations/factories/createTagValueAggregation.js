@@ -1,91 +1,90 @@
-const computeItemSortWeight = ({ item, input }) => {
-  if (!item.tagValue) {
-    return 0
-  }
-
-  const matchBeginning = item.tagValue.indexOf(input.tagValue) === 0
-  if (matchBeginning) {
-    return 1
-  }
-  return -1
-}
-
-const buildRegex = ({
-  delimiter,
-  exact,
-  sanitizedTagTypes,
-  sanitizedTagValue,
-}) => {
-  if (exact) {
-    return `${sanitizedTagTypes.join('|')}${delimiter}${sanitizedTagValue}`
-  }
-
-  const tagValueRegex =
-    sanitizedTagValue && `${sanitizedTagValue.toLowerCase()}.*`
-  const tagTypesRegex =
-    sanitizedTagTypes && `.*(${sanitizedTagTypes.join('|')})`
-  const delimiterRegex = delimiter
-
-  if (tagValueRegex && tagTypesRegex) {
-    return `${tagTypesRegex}${delimiterRegex}${tagValueRegex}`
-  }
-
-  if (sanitizedTagValue) {
-    return `(.*?${delimiter}${tagValueRegex})`
-  }
-
-  if (sanitizedTagTypes) {
-    return `${tagTypesRegex}${delimiter}.*`
-  }
-
-  return ''
-}
-
-const sanitizeInput = input => {
-  if (!input) {
-    return input
-  }
-  return input
-    .replace(new RegExp('\\[', 'g'), '\\[')
-    .replace(new RegExp('\\]', 'g'), '\\]')
-    .replace(new RegExp('\\*', 'g'), '[^\\]|\\[]*')
-    .replace(new RegExp(' ', 'g'), '[^\\]|\\[]*')
-}
+const objectPath = require('object-path')
+const createRegexpElasticFilters = require('../../filters/utilities/createRegexpElasticFilters')
 
 module.exports = function createTagValueAggregation({
-  delimiter = 'dddd',
   description,
   fieldPath,
   resource,
 }) {
-  const keyRawPath = `${fieldPath}.key.raw`
+  const tagValuePath = `${fieldPath}.tagValue`
+  const tagTypePath = `${fieldPath}.tagType`
+  const tagKeyPath = `${fieldPath}.key`
+  const tagTextPath = `${fieldPath}.tagText`
 
   return {
     description: description || `Aggregation for: ${fieldPath}`,
     elasticsearch: ({ input = {} }) => {
-      const { exact, tagTypes, tagValue, limit = 10 } = input
-      const identifierKeyFilter = {
-        field: keyRawPath,
-        size: limit * 2,
+      const { tagTypes, tagValue, limit = 10 } = input
+
+      const keyAggregation = {
+        tagKeys: {
+          aggs: {
+            tagText: {
+              terms: {
+                field: tagTextPath,
+                size: 1,
+              },
+            },
+            tagType: {
+              terms: {
+                field: tagTypePath,
+                size: 1,
+              },
+            },
+            tagValue: {
+              terms: {
+                field: tagValuePath,
+                size: 1,
+              },
+            },
+          },
+          terms: {
+            field: tagKeyPath,
+            size: limit,
+          },
+        },
       }
-      const sanitizedTagValue = sanitizeInput(tagValue)
-      const sanitizedTagTypes = tagTypes && tagTypes.map(sanitizeInput)
 
-      const includeRegex = buildRegex({
-        delimiter,
-        exact,
-        sanitizedTagTypes,
-        sanitizedTagValue,
-      })
+      let aggregationFilter = {}
 
-      if (includeRegex) {
-        identifierKeyFilter.include = includeRegex
+      const bool = {
+        must: [],
+        should: [],
+      }
+
+      if (tagTypes) {
+        tagTypes.forEach(tagType => {
+          bool.should.push({
+            term: {
+              [tagTypePath]: tagType,
+            },
+          })
+        })
+      }
+
+      if (tagValue) {
+        const tagValueFilters = createRegexpElasticFilters({
+          path: tagValuePath,
+          value: tagValue,
+        })
+        bool.must = [...bool.must, ...tagValueFilters]
+      }
+
+      aggregationFilter = {
+        bool,
+      }
+
+      if (!Object.keys(aggregationFilter).length) {
+        aggregationFilter = {
+          match_all: {},
+        }
       }
 
       return {
         aggs: {
-          tagKeys: {
-            terms: identifierKeyFilter,
+          filter: {
+            aggs: keyAggregation,
+            filter: aggregationFilter,
           },
         },
         nested: {
@@ -93,44 +92,31 @@ module.exports = function createTagValueAggregation({
         },
       }
     },
-    extractItems: ({ key, result, input = {} }) => {
-      const { limit = 10 } = input
-      const rootAggregations = result.aggregations[key]
-      const tagKeys = rootAggregations.tagKeys.buckets
-      const items = []
-      tagKeys.forEach(tagKey => {
-        const sections = tagKey.key.split(delimiter)
-        if (sections.length !== 2) {
-          throw new Error(`Unexpected sections for: ${tagKey}`)
-        }
+    extractItems: ({ key, result }) => {
+      const rootBuckets =
+        objectPath.get(result, `aggregations.${key}.filter.tagKeys.buckets`) ||
+        []
 
-        const tagType = sections[0]
-        const tagValue = sections[1]
-        items.push({
-          count: tagKey.doc_count,
+      return rootBuckets.map(rootBucket => {
+        const {
+          doc_count, // eslint-disable-line
+          tagText: tagTextBuckets,
+          tagType: tagTypeBuckets,
+          tagValue: tagValueBuckets,
+        } = rootBucket
+        const tagText = tagTextBuckets.buckets[0].key
+        const tagType = tagTypeBuckets.buckets[0].key
+        const tagValue = tagValueBuckets.buckets[0].key.trim()
+
+        return {
+          count: doc_count,
           key: `${tagType}-${tagValue}`,
+          tagText,
           tagType,
           tagValue,
-        })
+          type: resource,
+        }
       })
-
-      let sortedResult = items
-      if (input.tagValue) {
-        sortedResult = items.sort((a, b) => {
-          return (
-            computeItemSortWeight({
-              input,
-              item: b,
-            }) -
-            computeItemSortWeight({
-              input,
-              item: a,
-            })
-          )
-        })
-      }
-
-      return sortedResult.slice(0, limit)
     },
     inputSchema: {
       type: 'object',

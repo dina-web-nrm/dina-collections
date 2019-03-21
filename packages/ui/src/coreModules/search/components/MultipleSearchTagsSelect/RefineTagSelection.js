@@ -21,6 +21,7 @@ const propTypes = {
       searchOption: PropTypes.object.isRequired,
     }).isRequired
   ),
+  translateTagType: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -37,6 +38,7 @@ const RefineTagSelection = ({
   onSelectAllForSearchQuery: handleSelectAllForSearchQuery,
   onToggleTagSelected: handleToggleTagSelected,
   reduxFormValues,
+  translateTagType,
 }) => {
   const freeTextQueries = selectors.getAllFreeTextQueries(reduxFormValues)
   if (inline) {
@@ -55,6 +57,7 @@ const RefineTagSelection = ({
               results={reduxFormValues[searchQuery].matchingTags}
               searchQuery={searchQuery}
               title={title}
+              translateTagType={translateTagType}
             />
           )
         })}
@@ -79,6 +82,7 @@ const RefineTagSelection = ({
                 results={reduxFormValues[searchQuery].matchingTags}
                 searchQuery={searchQuery}
                 title={title}
+                translateTagType={translateTagType}
               />
             )
           })}

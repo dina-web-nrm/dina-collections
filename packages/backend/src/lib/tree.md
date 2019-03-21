@@ -173,7 +173,8 @@
 │   │   │   └── updatedAfter.js
 │   │   └── utilities
 │   │       ├── createGetManyFilterSpecifications.js
-│   │       └── createGetOneFilterSpecifications.js
+│   │       ├── createGetOneFilterSpecifications.js
+│   │       └── createRegexpElasticFilters.js
 │   ├── hooks
 │   │   └── sharedHooks
 │   │       └── ensureNoCircularAncestorsPreHook.js
@@ -186,7 +187,6 @@
 │   │       ├── createDateMapping.js
 │   │       ├── createFeatureRangeMapping.js
 │   │       ├── createIntegerMapping.js
-│   │       ├── createKeywordAndRawMapping.js
 │   │       ├── createKeywordMapping.js
 │   │       ├── createNestedMapping.js
 │   │       ├── createNumberMapping.js

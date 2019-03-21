@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`searchSpecimen - higherGeographyTag - tagTypes dina returns all tag types matches snapshot 1`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "count": 16,
+      "key": "continent-ocean",
+      "tagType": "continent-ocean",
+      "type": "higherGeographyTag",
+    },
+    "id": "continent-ocean",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 16,
+      "key": "country",
+      "tagType": "country",
+      "type": "higherGeographyTag",
+    },
+    "id": "country",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 16,
+      "key": "planet",
+      "tagType": "planet",
+      "type": "higherGeographyTag",
+    },
+    "id": "planet",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 13,
+      "key": "province",
+      "tagType": "province",
+      "type": "higherGeographyTag",
+    },
+    "id": "province",
+    "type": "customObject",
+  },
+  Object {
+    "attributes": Object {
+      "count": 2,
+      "key": "district",
+      "tagType": "district",
+      "type": "higherGeographyTag",
+    },
+    "id": "district",
+    "type": "customObject",
+  },
+]
+`;

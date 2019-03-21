@@ -7,6 +7,7 @@
 ├── documentation
 │   └── terminology
 ├── index.js
+├── nodemon.json
 ├── package.json
 ├── src
 │   ├── apps

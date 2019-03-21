@@ -19,7 +19,9 @@ module.exports = {
         type: 'string',
       },
     },
-
+    includeSource: {
+      type: 'boolean',
+    },
     inputSchema: {
       type: 'object',
     },

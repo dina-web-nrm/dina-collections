@@ -31,12 +31,14 @@ const transformation = ({ migrator, target, locals }) => {
   storageLocations.forEach(storageLocation => {
     const { group } = storageLocation
     const tagType = group
-    const tagValue = extractNameWithFirstLevelParent(storageLocation)
+    const tagText = extractNameWithFirstLevelParent(storageLocation)
+    const tagValue = storageLocation.name
 
     tags.push({
-      key: `${tagType}${delimiter}${tagValue}`,
+      key: `${tagType}${delimiter}${tagText}`,
+      tagText,
       tagType,
-      tagValue,
+      tagValue: ` ${tagValue} `,
     })
   })
 
@@ -46,8 +48,9 @@ const transformation = ({ migrator, target, locals }) => {
 
     tags.push({
       key: `${tagType}${delimiter}${tagValue}`,
+      tagText: tagValue,
       tagType,
-      tagValue,
+      tagValue: ` ${tagValue} `,
     })
   })
 
