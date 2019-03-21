@@ -1,3 +1,30 @@
+Cypress.Commands.add('errorClassShouldNotExist', (options = {}) => {
+  cy.get('.error', { timeout: 2000, ...options }).should('not.exist')
+})
+
+Cypress.Commands.add(
+  'shouldFinishLoading',
+  {
+    prevSubject: true,
+  },
+  (subject, options = {}) => {
+    cy.wrap(subject).should('not.have.class', 'loading', {
+      timeout: 10000,
+      ...options,
+    })
+  }
+)
+
+Cypress.Commands.add(
+  'shouldHaveName',
+  {
+    prevSubject: true,
+  },
+  (subject, name) => {
+    cy.wrap(subject).should('have.attr', 'name', name)
+  }
+)
+
 Cypress.Commands.add(
   'shouldHaveTargetBlank',
   {
