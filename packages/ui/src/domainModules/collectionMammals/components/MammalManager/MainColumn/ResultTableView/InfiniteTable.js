@@ -161,6 +161,7 @@ export class InfiniteTable extends Component {
     return (
       <InfiniteTableRow
         background={background}
+        isFocused={isFocused}
         itemId={itemId}
         key={itemId}
         language={language}

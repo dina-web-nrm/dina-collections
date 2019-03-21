@@ -17,6 +17,7 @@ const mapStateToProps = (state, { itemId, resource }) => {
 
 const propTypes = {
   background: PropTypes.string.isRequired,
+  isFocused: PropTypes.bool.isRequired,
   item: PropTypes.object,
   itemId: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
   // language: PropTypes.string.isRequired,
@@ -33,6 +34,7 @@ const defaultProps = {
 
 const InfiniteTableRow = ({
   background,
+  isFocused,
   item,
   itemId,
   // language, // TODO implement translations
@@ -58,6 +60,7 @@ const InfiniteTableRow = ({
 
   return (
     <Grid.Row
+      data-isfocused={isFocused ? 'yes' : 'no'}
       data-testid={`infiniteTableRow${rowNumber}`}
       onClick={event => {
         event.preventDefault()
