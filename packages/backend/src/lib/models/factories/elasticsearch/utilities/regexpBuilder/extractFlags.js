@@ -3,11 +3,16 @@ module.exports = function extractFlags(input) {
   let hasEqual = false
   let hasStar = false
   let hasPhrase = false
+  let hasFieldEqual = false
   if (input.includes(' ')) {
     hasSpace = true
   }
 
-  if (input.includes('=')) {
+  if (input.indexOf('==') === 0) {
+    hasFieldEqual = true
+  }
+
+  if (!hasFieldEqual && input.indexOf('=') === 0) {
     hasEqual = true
   }
 
@@ -15,15 +20,18 @@ module.exports = function extractFlags(input) {
     hasStar = true
   }
 
-  if (input.includes('"')) {
-    hasPhrase = true
+  if (input.length > 2) {
+    if (input[0] === '"' && input[input.length - 1] === '"') {
+      hasPhrase = true
+    }
   }
 
   return {
     hasEqual,
+    hasFieldEqual,
     hasPhrase,
     hasSpace,
     hasStar,
-    noFlags: !(hasSpace || hasEqual || hasStar || hasPhrase),
+    noFlags: !(hasSpace || hasEqual || hasStar || hasPhrase || hasFieldEqual),
   }
 }
