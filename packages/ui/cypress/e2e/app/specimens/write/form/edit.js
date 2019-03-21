@@ -234,9 +234,7 @@ export default () =>
               .type('complete')
             cy.getDropdownOptionByText('Complete, mounted skin').click()
             cy.getInputByFieldLabel('Normal storage location').type('Skinnrum')
-            cy.getDropdownOptionByText('Skinnrum kylda', {
-              exact: false,
-            }).click()
+            cy.getDropdownOptionByText('Skinnrum kylda [room]').click()
             cy.getByText('New assessment').click()
           })
           cy.getByText('Add').click()
