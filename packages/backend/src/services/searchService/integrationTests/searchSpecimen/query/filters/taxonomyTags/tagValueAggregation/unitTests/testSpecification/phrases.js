@@ -10,15 +10,11 @@ module.exports = [
   },
   {
     input: '"pusa"',
-    matching: ['pusa'],
-    notMatching: ['pusa hispida', 'hispida pusa'],
+    matching: ['pusa', 'pusa hispida'],
+    notMatching: ['hispida'],
   },
   {
     input: '"hispida pusa"',
     notMatching: ['pusa hispida', 'pusa'],
-  },
-  {
-    errorMessage: 'expected 2 " but got 1',
-    input: '"hispida pusa',
   },
 ]
