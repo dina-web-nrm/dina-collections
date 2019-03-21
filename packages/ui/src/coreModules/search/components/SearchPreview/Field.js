@@ -160,9 +160,9 @@ class SearchPreview extends Component {
                   return (
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: `${item.tagValue} (${this.translateTagType(
+                        __html: `${item.tagValue} [${this.translateTagType(
                           item.tagType
-                        )})`,
+                        )}]`,
                       }}
                       key={`${item.id}-${item.tagType}-${item.tagValue}`}
                     />
