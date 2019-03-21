@@ -1,5 +1,10 @@
 export default () =>
   describe('delete', () => {
+    before(() => {
+      cy.resetDevelopmentSqlDb()
+      cy.resetElasticSpecimenIndex()
+    })
+
     beforeEach(() => {
       cy.goToRoute('/app/specimens/mammals/search')
       cy.get('[data-testid="infiniteTableHeader"]', {

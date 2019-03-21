@@ -1,5 +1,10 @@
 export default () =>
   describe('edit', () => {
+    before(() => {
+      cy.resetDevelopmentSqlDb()
+      cy.resetElasticSpecimenIndex()
+    })
+
     describe('general', () => {
       beforeEach(() => {
         cy.goToRoute(`/app/specimens/mammals/2/edit/sections/0`)

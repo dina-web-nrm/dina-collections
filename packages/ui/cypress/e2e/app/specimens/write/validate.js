@@ -3,6 +3,8 @@ export default () =>
     let newSpecimenId
 
     before(() => {
+      cy.resetDevelopmentSqlDb()
+      cy.resetElasticSpecimenIndex()
       cy.log('Create new specimen for tests')
       cy.login()
       cy.goToRoute('/app/specimens/mammals/create/sections/0')
@@ -211,5 +213,52 @@ export default () =>
       cy.getByText('A day must have month and year')
       cy.get('@endYearInput').type('1980')
       cy.get('@endMonthInput').type('1')
+    })
+
+    it('sets and validates catalog card date in current year', () => {
+      cy.goToRoute(`/app/specimens/mammals/${newSpecimenId}/edit/sections/0`)
+      cy.get('[data-testid="basicInformation"]', {
+        log: false,
+        timeout: 60000,
+      })
+      const momentNow = Cypress.moment()
+
+      cy.log('Check validation error for future year')
+      cy.getByText('Add catalog card creation').click()
+      cy.getInputByFieldLabel('Year').type(momentNow.year() + 1)
+      cy.getByText('Done').click()
+      cy.getByText('Only past dates allowed')
+
+      cy.log('Allows current year as date')
+      cy.getInputByFieldLabel('Year')
+        .clear()
+        .type(momentNow.year())
+      cy.getByText('Done').click()
+      cy.getByTestId('recordHistoryExternalEvents').should(
+        'contain',
+        `${momentNow.format('YYYY')}:`
+      )
+
+      cy.log('Allows current year and month as date')
+      cy.getByTestId('editRecordHistoryEventIcon').click()
+      cy.getInputByFieldLabel('Month')
+        .clear()
+        .type(momentNow.month() + 1) // month is zero-based index
+      cy.getByText('Done').click()
+      cy.getByTestId('recordHistoryExternalEvents').should(
+        'contain',
+        `${momentNow.format('YYYY-MM')}:`
+      )
+
+      cy.log('Allows current year, month and day as date')
+      cy.getByTestId('editRecordHistoryEventIcon').click()
+      cy.getInputByFieldLabel('Day')
+        .clear()
+        .type(momentNow.date())
+      cy.getByText('Done').click()
+      cy.getByTestId('recordHistoryExternalEvents').should(
+        'contain',
+        `${momentNow.format('YYYY-MM-DD')}:`
+      )
     })
   })
