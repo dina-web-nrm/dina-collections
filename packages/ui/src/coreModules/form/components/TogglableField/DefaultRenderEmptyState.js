@@ -52,6 +52,7 @@ const DefaultRenderEmptyState = props => {
     >
       <div style={{ position: 'relative' }}>
         <Button
+          data-testid="openTogglableFieldButton"
           onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
         >
           {hasCustomText &&

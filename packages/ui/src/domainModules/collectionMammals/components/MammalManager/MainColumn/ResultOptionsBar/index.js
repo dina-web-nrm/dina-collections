@@ -33,6 +33,7 @@ export class ResultOptionsBar extends Component {
       <Menu attached="top" icon tabular>
         <Menu.Item
           active={isTableViewOrSettings}
+          data-testid="tableTabMenuItem"
           link
           name="table"
           onClick={event => {
@@ -45,6 +46,7 @@ export class ResultOptionsBar extends Component {
         </Menu.Item>
         <Menu.Item
           active={isItemViewOrSettings}
+          data-testid="formTabMenuItem"
           link
           name="form"
           onClick={event => {
@@ -59,7 +61,7 @@ export class ResultOptionsBar extends Component {
           {handleExportToCsv && <CsvExporter />}
           {handleSettingClick && (
             <Menu.Item
-              data-testid="settingsIcon"
+              data-testid="settingsMenuItem"
               link
               onClick={event => handleSettingClick(event)}
             >

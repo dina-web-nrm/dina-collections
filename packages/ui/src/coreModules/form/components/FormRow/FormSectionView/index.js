@@ -158,6 +158,7 @@ class FormSectionView extends PureComponent {
           {showSectionsInNavigation && !showAllFormSections && (
             <Grid.Column textAlign="right" width={16}>
               <Button
+                data-testid="previousFormSectionButton"
                 disabled={activeFormSectionIndex === 0}
                 icon
                 labelPosition="left"
@@ -169,6 +170,7 @@ class FormSectionView extends PureComponent {
               </Button>
 
               <Button
+                data-testid="nextFormSectionButton"
                 disabled={activeFormSectionIndex === sectionSpecs.length - 1}
                 icon
                 labelPosition="right"

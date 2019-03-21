@@ -124,6 +124,7 @@ class CollectingLocality extends PureComponent {
         ) : (
           <Grid.Column width={5}>
             <Button
+              data-testid="addPositionButton"
               floated="left"
               onClick={this.handleOpen}
               style={buttonStyle}

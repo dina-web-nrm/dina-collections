@@ -223,7 +223,12 @@ class AccordionWrapper extends Component {
     } = this.props
 
     return (
-      <Accordion className={className} fluid={fluid} styled={styled}>
+      <Accordion
+        className={className}
+        data-testid="accordion"
+        fluid={fluid}
+        styled={styled}
+      >
         {items.map((item, index) => {
           if (getShouldRenderItem && !getShouldRenderItem(item)) {
             return null
@@ -235,6 +240,9 @@ class AccordionWrapper extends Component {
             <React.Fragment key={item.id || item.key || index}>
               <Accordion.Title
                 active={isActive}
+                data-testid={
+                  isActive ? 'activeAccordionTitle' : 'accordionTitle'
+                }
                 index={index}
                 onClick={event => {
                   event.preventDefault()
@@ -250,7 +258,12 @@ class AccordionWrapper extends Component {
                 })}
               </Accordion.Title>
               {this.shouldRenderContent(index) && renderContent && (
-                <Accordion.Content active={isActive}>
+                <Accordion.Content
+                  active={isActive}
+                  data-testid={
+                    isActive ? 'activeAccordionContent' : 'accordionContent'
+                  }
+                >
                   {renderContent({
                     active: isActive,
                     handleSetActive: this.handleSetActive,

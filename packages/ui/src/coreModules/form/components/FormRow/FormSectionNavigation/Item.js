@@ -61,6 +61,7 @@ class FormSectionNavigationItem extends Component {
       <Step
         active={index === activeFormSectionIndex}
         className={sectionIsInvalid ? 'error' : undefined}
+        data-testid={`formSectionNavigationItem-${sectionName}`}
         key={index}
         onClick={event => handleSetActiveFormSection(event, index)}
         style={{

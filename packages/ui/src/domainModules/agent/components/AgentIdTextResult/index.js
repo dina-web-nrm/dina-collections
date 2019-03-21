@@ -132,6 +132,7 @@ class AgentIdTextResult extends Component {
           <strong>{agentName}</strong>
           {` ${agentNameSuffix}`}
           <Button
+            data-testid="editAgentButton"
             icon
             onClick={this.handleClick}
             ref={element => {

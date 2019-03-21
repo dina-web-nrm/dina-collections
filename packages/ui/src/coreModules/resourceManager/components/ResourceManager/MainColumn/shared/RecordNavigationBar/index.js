@@ -114,6 +114,7 @@ export class RecordNavigationBar extends Component {
             <Grid.Column>
               <Input
                 className="center aligned bold"
+                data-testid="currentTableRowInput"
                 disabled={
                   disabled ||
                   !handleSetCurrentTableRowNumber ||

@@ -86,6 +86,7 @@ class ConfirmationPopup extends PureComponent {
         <Popup.Header>{header}</Popup.Header>
         <Popup.Content>
           <Button
+            data-testid="popupConfirmButton"
             onClick={event => {
               event.preventDefault()
               this.handleClosePopup()
@@ -95,7 +96,11 @@ class ConfirmationPopup extends PureComponent {
           >
             {confirmButtonText}
           </Button>
-          <Button basic onClick={this.handleClosePopup}>
+          <Button
+            basic
+            data-testid="popupCancelButton"
+            onClick={this.handleClosePopup}
+          >
             {cancelButtonText}
           </Button>
         </Popup.Content>
