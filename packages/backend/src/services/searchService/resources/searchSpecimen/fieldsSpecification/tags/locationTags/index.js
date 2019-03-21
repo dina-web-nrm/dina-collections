@@ -49,8 +49,9 @@ const transformation = ({ migrator, target, locals }) => {
       const tagValue = normalizedLocality
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
+        tagText: tagValue,
         tagType,
-        tagValue,
+        tagValue: ` ${tagValue} `,
       })
     })
   }
@@ -61,8 +62,9 @@ const transformation = ({ migrator, target, locals }) => {
       const tagValue = transcribedLocality
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
+        tagText: tagValue,
         tagType,
-        tagValue,
+        tagValue: ` ${tagValue} `,
       })
     })
   }
@@ -73,8 +75,9 @@ const transformation = ({ migrator, target, locals }) => {
       const tagValue = originLocality
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
+        tagText: tagValue,
         tagType,
-        tagValue,
+        tagValue: ` ${tagValue} `,
       })
     })
   }

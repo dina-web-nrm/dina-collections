@@ -13,6 +13,16 @@ module.exports = function createKeywordMapping({ fieldPath }) {
             },
             type: 'text',
           },
+          tagText: {
+            fields: {
+              raw: {
+                ignore_above: 256,
+                normalizer: 'lowerCaseNormalizer',
+                type: 'keyword',
+              },
+            },
+            type: 'text',
+          },
           tagType: {
             fields: {
               raw: {

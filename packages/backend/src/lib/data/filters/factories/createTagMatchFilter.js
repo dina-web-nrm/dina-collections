@@ -34,7 +34,7 @@ module.exports = function createTagMatchFilter({
       if (tagValue) {
         must.push({
           term: {
-            [valuePath]: tagValue.toLowerCase(),
+            [valuePath]: ` ${tagValue.toLowerCase()} `,
           },
         })
       }
