@@ -179,10 +179,10 @@
         "x-summary": ""
       }
     },
+    "description": "# normalizedAgent\n\nA person, named group of people or organization.\n\n\n### Definition\n\nA person, named group of people or organization.",
     "x-category": "agentService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "A person, named group of people or organization.",
     "id": "normalizedAgent"
   },
   "role": {
@@ -405,10 +405,10 @@
   "legacyData": {
     "additionalProperties": true,
     "properties": {},
+    "description": "# legacyData\n\nCustom data from a previous system that do not fit elsewhere in the data model.\n\n\n### Definition\n\nData from a previous system which do not have a proper destination elsewhere in the data model.\n\n\n### Examples\n\n* An invalid collecting date, for example 2019-02-30.\n* Mixed content that for some reason was not cleaned up prior to import into the system.\n\n\n### Notes\n\nLegacy data is treated as read-only data. It can be in any JSON format, but is normally added as an onordered list of name–value pairs.",
     "x-category": "core",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "Custom data that do not fit elsewhere in the data model.",
     "id": "legacyData"
   },
   "lid": {
@@ -1709,10 +1709,10 @@
         "x-summary": ""
       }
     },
+    "description": "# acquisition\n\nThe event of acquiring some material to the organization. Material can for example be transferred by government agencies, purchased, collected in the field by staff members, or recieved as exchanges or gifts.\n\n\n### Defintion\n\nThe event of acquiring some material to the organization.",
     "x-category": "specimenService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "The event of acquiring some material to the organization.",
     "id": "acquisition"
   },
   "collectingInformation": {
@@ -1750,7 +1750,7 @@
         "x-summary": ""
       }
     },
-    "description": "# collectingInformation\n\nInformation about the collecting activity, like for example the name of a collector or the collecting method.\n\n\n### Definition\n\nInformation pertaining to the activity of collecting of some material.\n\n\n### Examples\n\nThe collecting method (e.g., the kind of trap) used for collecting some material.\n\n\n### Notes\n\nThe purpose of this term is to keep information that is specific for the collecting activity, for example collectors, collecting method, field number etc. The general description of the death event, like its time and location, should be recorded under [event](/docs/0.2.2/models/event/).\n\n\n### See also\n\n[event](/docs/0.2.2/models/event/)",
+    "description": "# collectingInformation\n\nInformation about the collecting activity, like for example the name of a collector or the collecting method.\n\n\n### Definition\n\nInformation pertaining to the activity of collecting of some material.\n\n\n### Examples\n\nThe collecting method (e.g., the kind of trap) used for collecting some material.\n\n\n### Notes\n\nThe purpose of this term is to keep information that is specific for the collecting activity, for example collectors, collecting method, field number etc. The general description of the collecting event, like its time and location, should be recorded under [event](/docs/0.2.2/models/event/).\n\n\n### See also\n\n[event](/docs/0.2.2/models/event/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "Information about a collecting activity.",
@@ -1843,10 +1843,10 @@
         "x-summary": ""
       }
     },
-    "description": "### Definition\n\nAssessment whether specimen is in storage or not found.\n\n### Example(s)\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n",
+    "description": "# curatorialAssessment\n\nAssessment of an object in the collection, more specifically its condition and whether it is present at its storage location or not.\n\n\n### Definition\n\nAssessment of the physical condition of a [physical object](/docs/0.2.2/models/physicalObject/) and/or whether it is present at its normal storageLocation or not.\n\n\n### Examples\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n\n\n### See also\n\n[physicalObject](/docs/0.2.2/models/physicalObject/)",
     "x-category": "specimenService",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "Assessment of an object in the collection.",
     "id": "curatorialAssessment"
   },
   "customTaxonName": {
@@ -1929,7 +1929,7 @@
         "x-summary": ""
       }
     },
-    "description": "# determination\n\nA determination is a statement about an [individual's](/docs/0.2.2/models/individual/) taxon and/or type status, made by a person at a certain date. The outcome of a determination is usually a taxon name.\n\n\n### Definition\n\nThe act of making a statement about an [individual's](/docs/0.2.2/models/individual/) taxon and/or type status, which is not itself a type status designation.\n\n\n### Examples\n\n\"Phoca hispida, det. by NN, 1957\"\n\n\n### Notes\n\nA *type status designation* is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is a nomenclatural act made through a publication and strictly regulated by a nomenclatural code. The type status designation is the primary source of a specimen's type status and should not be recorded as a determination. This is sometimes called \"verified type status\".\n\nA *type status identification* on the other hand is a secondary source for the type status, and is typically written on a label that is attached to a specimen. For a type status identification (as opposed to type status designation) it is fine to record any type status, even ones that are not sanctioned by the nomenclatural codes (e.g. \"topotype\" or \"allotype\"). Because of the similarities between type status identifications and taxonomic identifications, both are here been treated as determinations. In fact, if a taxon name is included in the type status identification, it may also be considered as an implicit taxonomic identification.\n\nThe outcome of the determination is in most cases a *taxon name* (that may be either scientific or vernacular). What *taxon* (i.e. taxon concept) the person intended with the determination is often difficult or even impossible to know, and has little relevance for collection management. It is usually sufficient to match the taxon name from the latest determination to the taxon concepts in the local classification currently used for the collection.\n\n\n### See also\n\n[taxonInformation](/docs/0.2.2/models/taxonInformation/), [individual.typeStatus](/docs/0.2.2/models/individual/typeStatus)",
+    "description": "# determination\n\nA determination is a statement about an [individual's](/docs/0.2.2/models/individual/) taxon and/or type status, made by a person at a certain date. The outcome of a determination is usually a taxon name.\n\n\n### Definition\n\nThe act of making a statement about an [individual's](/docs/0.2.2/models/individual/) taxon and/or type status, which is not itself a type status designation.\n\n\n### Examples\n\n\"Phoca hispida, det. by NN, 1957\"\n\n\n### Notes\n\nA *type status designation* is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is a nomenclatural act made through a publication and strictly regulated by a nomenclatural code. The type status designation is the primary source of a specimen's type status and should not be recorded as a determination. This is sometimes called \"verified type status\".\n\nA *type status identification* on the other hand is a secondary source for the type status, and is typically written on a label that is attached to a specimen. For a type status identification (as opposed to type status designation) it is fine to record any type status, even ones that are not sanctioned by the nomenclatural codes (e.g. \"topotype\" or \"allotype\"). Because of the similarities between type status identifications and taxonomic identifications, both are here treated as determinations. In fact, if a taxon name is included in the type status identification, it may also be considered as an implicit taxonomic identification.\n\nThe outcome of the determination is in most cases a *taxon name* (that may be either scientific or vernacular). What *taxon* (i.e. taxon concept) the person intended with the determination is often difficult or even impossible to know, and has little relevance for collection management. It is usually sufficient to match the taxon name from the latest determination to the taxon concepts in the local classification currently used for the collection.\n\n\n### See also\n\n[taxonInformation](/docs/0.2.2/models/taxonInformation/), [individual.typeStatus](/docs/0.2.2/models/individual/typeStatus)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "A statement about an individual's taxon and/or type status.",
@@ -1956,7 +1956,7 @@
         "x-summary": ""
       }
     },
-    "description": "# Event\n\nAn activity or occurrence at a time and location, for example the collecting of some material.\n\n\n### Definition\n\nAn activity or occurrence at a particular time and location.\n\n\n### Examples\n\nAn event involving the collecting of some material.\n\n\n### Notes\n\nIf it is uncertain whether two specimens were collected at the same event (e.g., if there are different information sources), the information should be recorded as two separate events.\n\nAn event may have both collecting- and death information.\n\n\n### See also\n\n[collectingInformation](/docs/0.2.2/models/collectingInformation/), [deathInformation](/docs/0.2.2/models/deathInformation/), [originInformation](/docs/0.2.2/models/originInformation/)",
+    "description": "# Event\n\nAn activity or occurrence at a time and location, for example the collecting of some material.\n\n\n### Definition\n\nAn activity or occurrence at a particular time and location.\n\n\n### Examples\n\nAn event involving the collecting of some material.\n\n\n### Notes\n\nIf it is uncertain whether two specimens were collected at the same event (e.g., if they have different information sources), the information should be recorded as two separate events.\n\nAn event may have collecting- and death information.\n\n\n### See also\n\n[collectingInformation](/docs/0.2.2/models/collectingInformation/), [deathInformation](/docs/0.2.2/models/deathInformation/), [originInformation](/docs/0.2.2/models/originInformation/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "An activity or occurrence at a time and location.",
@@ -2002,7 +2002,7 @@
         "x-summary": ""
       }
     },
-    "description": "# featureObservation\n\nAn observation of some property, for example a measurement by a person or a machine at a particular time.\n\n\n### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine).\n\n\n### Examples\n\n* When a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n* A curator observes the color of a specimen.\n\n\n### Notes\n\nThis term is currently used for features for an [individual](/docs/0.2.2/models/individual/) other than [taxonomical determinations](/docs/0.2.2/models/determination/) and is not used for [curatorialAssessments](/docs/0.2.2/models/curatorialAssessment/) that apply to [collectionItems](/docs/0.2.2/models/collectionItem/).\n\n\n### See also\n\n[featureType](/docs/0.2.2/models/featureType/), [curatorialAssessment](/docs/0.2.2/models/curatorialAssessment/), [determination](/docs/0.2.2/models/determination/)\n\n\n### Relation to other standards\n\n* DarwinCore: not assessed\n* ABCD:  not assessed",
+    "description": "# featureObservation\n\nAn observation of some property, for example a measurement by a person or a machine at a particular time.\n\n\n### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine).\n\n\n### Examples\n\n* When a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n* A curator observes the color of a specimen.\n\n\n### Notes\n\nThis term is currently used for features for an [individual](/docs/0.2.2/models/individual/). [Taxonomic determinations](/docs/0.2.2/models/determination/) is currently not included, although it might be in the future. [CuratorialAssessments](/docs/0.2.2/models/curatorialAssessment/) apply to [collectionItems](/docs/0.2.2/models/collectionItem/) and are consequently treated as a separate concept.\n\n\n### See also\n\n[featureType](/docs/0.2.2/models/featureType/), [curatorialAssessment](/docs/0.2.2/models/curatorialAssessment/), [determination](/docs/0.2.2/models/determination/)\n\n\n### Relation to other standards\n\n* DarwinCore: not assessed\n* ABCD:  not assessed",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "The data measured or noticed for some property by an agent.",
@@ -2040,7 +2040,7 @@
         "x-summary": ""
       }
     },
-    "description": "# identifier\n\nA string or number that identifies something, for example a [physicaObject](/docs/0.2.2/models/physicalObject/), an [individual](/docs/0.2.2/models/individual/) or an [event](/docs/0.2.2/models/event/). The catalog number is an example of an identifier for a specimen.\n\n\n### Definition\n\nA name that identifies (that is, labels the identity of) something.\n\n\n### Examples\n\n* The catalog number \"12345\"\n* Taxon name id \"9488-1\" (http://www.ipni.org/ipni/idPlantNameSearch.do?id=9488-1)\n* Part of a [physicaObject](/docs/0.2.2/models/physicalObject/) (i.e. a [collectionItem](/docs/0.2.2/models/collectionItem/)) labeled \"a\"\n\n\n### Notes\n\nIdentifiers are used for different purposes, for example for connecting information with an [individual](/docs/0.2.2/models/individual/) or for identifying a specimen. This term is used both for keeping record of official identifiers (like catalog numbers) and unofficial ones (like those for example found on handwritten labels attached to a specimen, or sometimes even written directly on the object).\n\n\n### See also\n\n[identifierType](/docs/0.2.2/models/identifierType/)",
+    "description": "# identifier\n\nA string or number that identifies something, for example a [physical object](/docs/0.2.2/models/physicalObject/), an [individual](/docs/0.2.2/models/individual/) or an [event](/docs/0.2.2/models/event/). The catalog number is an example of an identifier for a specimen.\n\n\n### Definition\n\nA name that identifies (that is, labels the identity of) something.\n\n\n### Examples\n\n* The catalog number \"12345\"\n* The external taxon name id \"9488-1\" (http://www.ipni.org/ipni/idPlantNameSearch.do?id=9488-1)\n* Part of a [physicaObject](/docs/0.2.2/models/physicalObject/) (i.e. a [collectionItem](/docs/0.2.2/models/collectionItem/)) labeled \"a\"\n\n\n### Notes\n\nIdentifiers are used for different purposes, for example for connecting information with an [individual](/docs/0.2.2/models/individual/) or for identifying a specimen. This term is used both for keeping record of official identifiers (like catalog numbers) and unofficial ones (like those for example found on handwritten labels attached to a specimen, or sometimes even written directly on the object).\n\n\n### See also\n\n[identifierType](/docs/0.2.2/models/identifierType/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "A string or number that identifies something.",
@@ -2048,7 +2048,7 @@
   },
   "individual": {
     "additionalProperties": false,
-    "description": "# individual\n\nOne or more specimens sharing a common history and individual characteristics, for example an organism, a group of organisms or a piece of mineral.\n\n\n## Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n\n### Examples\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon. The group of fishes may be treated as the individual.\n* A cluster of ammonite fossils in the same piece of rock.\n* A piece of mineral.\n\n\n### Notes\n\nIndividual is understood in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis term has two purposes:\n\n1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).\n2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.\n\nYou should create new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should create two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you should probably create more individuals.\n\n\n### Relation to other standards\n\n* DarwinCore: [Organism](http://rs.tdwg.org/dwc/terms/Organism)\n* ABCD: not assessed\n",
+    "description": "# individual\n\nOne or more specimens sharing a common history and individual characteristics, for example an organism, a group of organisms or a piece of mineral.\n\n\n## Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n\n### Examples\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon. The group of fishes may be treated as the individual.\n* A cluster of ammonite fossils in the same piece of rock.\n* A piece of mineral.\n\n\n### Notes\n\nIndividual is understood in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis term has two purposes:\n\n1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).\n2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.\n\nYou should recognize new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should recognize two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you may have to recognize even more individuals.\n\n\n### Relation to other standards\n\n* DarwinCore: [Organism](http://rs.tdwg.org/dwc/terms/Organism)\n* ABCD: not assessed\n",
     "properties": {
       "remarks": {
         "type": "string",
@@ -2244,7 +2244,7 @@
         "x-summary": ""
       }
     },
-    "description": "# originInformation\n\nInformation about the physical or genetic origin of an [individual](/docs/0.2.2/models/individual/). This could for example be information on where an individual previously lived. The information may be associated with an [event](/docs/0.2.2/models/event/).\n\n\n### Defintion\nInformation pertaining to the origin of an [individual](/docs/0.2.2/models/individual/).\n\n\n### Example\n\nAn [individual](/docs/0.2.2/models/individual/) may have more than one [event](/docs/0.2.2/models/event/) connected with origin information. For example: a lion first lived in Africa (origin event 1), then was placed in a Zoo in Europe (origin event 2), and finally escaped into the wild (origin event 3) where it was later killed and collected (death and collecting event).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the origin of [individuals](/docs/0.2.2/models/individual/). This could involve both the genetic and the physical origin. This term concerns the origin of individuals, not the provenance of specimens. The general description of the death event, like its time and location, should be recorded under [event](/docs/0.2.2/models/event/).\n\n\n### See also\n\n[event](/docs/0.2.2/models/event/)",
+    "description": "# originInformation\n\nInformation about the physical or genetic origin of an [individual](/docs/0.2.2/models/individual/). This could for example be information on where an individual previously lived. The information may be associated with an [event](/docs/0.2.2/models/event/).\n\n\n### Defintion\nInformation pertaining to the origin of an [individual](/docs/0.2.2/models/individual/).\n\n\n### Example\n\nAn [individual](/docs/0.2.2/models/individual/) may have more than one [event](/docs/0.2.2/models/event/) connected with origin information. For example: a lion first lived in Africa (origin event 1), then was placed in a Zoo in Europe (origin event 2), and finally escaped into the wild (origin event 3) where it was later killed and collected (death and collecting event).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the origin of [individuals](/docs/0.2.2/models/individual/). This could involve both the genetic and the physical origin. This term concerns the origin of individuals, not the provenance of specimens. The general description of the origin event, like its time and location, should be recorded under [event](/docs/0.2.2/models/event/).\n\n\n### See also\n\n[event](/docs/0.2.2/models/event/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "Information about the origin of an individual.",
@@ -2274,15 +2274,15 @@
         "x-summary": ""
       }
     },
-    "description": "### Definition\n\nInformation about the history of the record.\n\n### Note(s)\n\nThis can for example involve creation of a catalog card, creation of a record in MAM2006 or edit of the record.\n",
+    "description": "# recordHistoryEvent\n\nAn event in the history of a specimen record. This can for example be the creation of a catalog card or the registration of a specimen in a previous system.\n\n\n### Defintion\n\nAn event in the history of a specimen record.\n\n\n### Examples\n\n* Last update of a specimen record in a previous system before it was migrated.",
     "x-category": "specimenService",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "An event in the history of a specimen record.",
     "id": "recordHistoryEvent"
   },
   "specimen": {
     "additionalProperties": false,
-    "description": "This is a description",
+    "description": "# specimen\n\nThe \"things\" registered under the same catalog number.\n\n\n### Defintion\n\nThe \"things\" registered under the same catalog number.\n\n\n### Examples\n\n* A skin and a skeleton from the same squirrel recognized as one specimen. Hence, the specimen corresponds to an individual.\n* A skin and a skeleton from the same squirrel recognized as two separate specimens. Hence, specimen corresponds to a physical object.",
     "x-format": true,
     "x-normalize": false,
     "properties": {
@@ -2601,7 +2601,7 @@
     },
     "x-category": "specimenService",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "The \"things\" registered under the same catalog number.",
     "id": "specimen"
   },
   "taxonInformation": {
@@ -2639,7 +2639,7 @@
         "x-summary": ""
       }
     },
-    "description": "# taxonInformation\n\nInformation about an [individual's](/docs/0.2.2/models/individual/) taxon, for example its accepted name according to the local classification. This term can also hold other taxon names which are not part of a [determination](/docs/0.2.2/models/determination/).\n\n\n### Definition\n\nInformation about the taxon to which an [individual](/docs/0.2.2/models/individual/) is currently assigned according to the local classification, or other names that has been associated with the individual that do not qualify as [determinations](/docs/0.2.2/models/determination/).\n\n\n### Examples\n\n\"Pusa hispida\" is the accepted name for a taxon in the local classification, and “Phoca hispida” one of its synonyms. Consequently, \"Pusa hispida\" should be the locally accepted name (curatorial name) for a specimen that has been determined as \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this concept is:\n\n1. to keep information of the currently accepted name for an individual, and\n2. to accommodate taxon-related legacy data that do not fit into taxon in the taxonomy API or into determination.\n\nThe data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.\n\nImagine for example that the text on a determination label reads \"not taxon x\", while the name \"taxon x\" has been recorded as the name for the specimen in the database (this could happen with legacy data for collections where taxonomy is tightly connected to storage and it is important to just record some name). Without other information, it would be impossible to know that \"taxon x\" was derived from the text \"not taxon x\". Since you cannot be sure of where the information comes from, there would be no way to correct the erroneous determination record.\n\nAnother case is when a name at a different rank, let say a family, has been recorded from a determination to a subfamily written on the label, without saying anything about how the transformation was done. There can also be undocumented taxonomic interpretations at the same level, like when an original determination to \"Phoca hispida\" is recorded as just \"Pusa hispida\".\n\n\n### See also\n\n[determination](/docs/0.2.2/models/determination/), [taxon](/docs/0.2.2/models/taxon/)",
+    "description": "# taxonInformation\n\nInformation about an [individual's](/docs/0.2.2/models/individual/) taxon, for example its accepted name according to the local classification. This term can also hold other taxon names which are not part of a [determination](/docs/0.2.2/models/determination/).\n\n\n### Definition\n\nInformation about the taxon to which an [individual](/docs/0.2.2/models/individual/) is currently assigned according to the local classification, or other names that has been associated with the individual that do not qualify as [determinations](/docs/0.2.2/models/determination/).\n\n\n### Examples\n\n\"Pusa hispida\" is the accepted name for a taxon in the local classification, and \"Phoca hispida\" one of its synonyms. Consequently, \"Pusa hispida\" should be the locally accepted name (curatorial name) for a specimen that has been determined as \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this concept is:\n\n1. to keep information of the currently accepted name for an individual, and\n2. to accommodate taxon-related legacy data that do not fit into taxon in the taxonomyService or into determination.\n\nThe data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.\n\nImagine for example that the text on a determination label reads \"not taxon x\", while the name \"taxon x\" has been recorded as the name for the specimen in an old system (this could happen in collections where taxonomy is tightly connected to storage and it is important to just record some name). Without other information, it would be impossible to know that \"taxon x\" was derived from the text \"not taxon x\". Since you cannot be sure of where the information comes from, there would be no way to correct the erroneous determination record.\n\nAnother case is when a name at a different rank, let say a family, has been recorded from a determination to a subfamily written on the label, without saying anything about how the transformation was done. There can also be undocumented taxonomic interpretations at the same level, like when an original determination to \"Phoca hispida\" is recorded as just \"Pusa hispida\".\n\n\n### See also\n\n[determination](/docs/0.2.2/models/determination/), [taxon](/docs/0.2.2/models/taxon/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "Information about the taxon to which an individual is assigned.",
@@ -3234,10 +3234,10 @@
         "x-summary": ""
       }
     },
+    "description": "# taxonName\n\nA name of a taxon (at any rank) that may be either a scientific name or a vernacular name.\n\n\n### Definition\n\nA scientific or vernacular name of a [taxon](/docs/0.2.2/models/taxon/) at any rank.\n\n\n### Examples\n\n* \"Phoca hispida\" (species)\n* \"Phocidae\" (family)\n\n\n### Notes\n\nScientific names do not have to be validly published according to a nomenclatural code. It is for example often desirable to use informal names for managing taxonomic groups that are poorly known. For the purpose of collection management, one often want to be pragmatic regarding the use of taxon names.\n\nA taxon name may or may not be associated with a [taxon](/docs/0.2.2/models/taxon/).\n\n\n### See also\n\n[taxon](/docs/0.2.2/models/taxon/), [taxonInformation](/docs/0.2.2/models/taxonInformation/)",
     "x-category": "taxonomyService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "A scientific or vernacular name of a taxon.",
     "id": "taxonName"
   },
   "normalizedAgentCreateResponse": {
@@ -8859,60 +8859,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/log/v01/resourceActivities/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "resourceActivityGetRelationshipSpecimenResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "specimen"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "specimen",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/log/v01/resourceActivities/{id}/relationships/specimen",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -15638,57 +15584,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/preparationTypes",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "specimenGetRelationshipResourceActivitiesResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "resourceActivity"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "type": {
-              "default": "resourceActivity",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/resourceActivities",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
