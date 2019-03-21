@@ -106,6 +106,7 @@ export class FormSectionNavigation extends PureComponent {
           {showSectionsInNavigation && handleShowAllFormSections && (
             <Header
               block
+              data-testid="formSectionNavigationItem-expandAllSections"
               onClick={handleShowAllFormSections}
               size="small"
               style={showAllFormSections ? activeStyle : inactiveStyle}

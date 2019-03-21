@@ -41,6 +41,7 @@ export const NotificationModal = ({
 }) => {
   return (
     <Modal
+      data-testid="modalNotification"
       onClose={() => removeNotification({ sequentialId })}
       open={open}
       size={size}

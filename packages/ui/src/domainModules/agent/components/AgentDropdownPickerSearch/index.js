@@ -78,7 +78,11 @@ export class AgentDropdownPickerSearch extends Component {
       )
     }
 
-    const picker = <Button onClick={onPickerButtonClick}>Pick</Button>
+    const picker = (
+      <Button data-testid="openAgentPickerButton" onClick={onPickerButtonClick}>
+        Pick
+      </Button>
+    )
 
     return (
       <AgentDropdownSearch

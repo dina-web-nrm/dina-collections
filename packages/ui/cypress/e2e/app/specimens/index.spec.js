@@ -1,12 +1,15 @@
-import readForm from './read/form'
+import catalogCardDate from './write/form/catalogCardDate'
+import form from './read/form'
 import sourceData from './read/sourceData'
 import table from './read/table'
 import tableSettings from './read/tableSettings'
 
-import catalogCardDate from './write/form/catalogCardDate'
-import generalCrud from './write/form/generalCrud'
+import create from './write/form/create'
+import edit from './write/form/edit'
+import validation from './write/form/validation'
+import remove from './write/form/remove'
 
-describe('Specimen', () => {
+describe('Specimens', () => {
   before(() => {
     cy.resetDevelopmentSqlDb()
     cy.resetElasticSpecimenIndex()
@@ -17,14 +20,17 @@ describe('Specimen', () => {
   })
 
   describe('read', () => {
-    readForm()
+    form()
     sourceData()
     table()
     tableSettings()
   })
 
   describe('write', () => {
-    generalCrud()
     catalogCardDate()
+    create()
+    edit()
+    remove()
+    validation()
   })
 })

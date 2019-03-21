@@ -77,6 +77,7 @@ class InlineWrapper extends Component {
         availableHeight={windowHeight - emToPixels(3.4375)}
         renderRow={this.renderRow}
         rows={rows}
+        wrapperId="inlineNotification"
       />
     )
   }

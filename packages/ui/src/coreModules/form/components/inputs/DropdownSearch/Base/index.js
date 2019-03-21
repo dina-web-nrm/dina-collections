@@ -180,6 +180,7 @@ class DropdownSearchInput extends Component {
         <div style={containerStyle}>
           {!disableClearValue && value && (
             <Icon
+              data-testid="clearDropdownIcon"
               link
               name="close"
               onClick={this.handleClear}

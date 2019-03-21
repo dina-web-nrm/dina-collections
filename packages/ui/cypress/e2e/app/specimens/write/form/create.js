@@ -3,9 +3,13 @@ export default () =>
     describe('create', () => {
       beforeEach(() => {
         cy.goToRoute('/app/specimens/mammals')
+        cy.get('[data-testid="infiniteTableHeader"', {
+          log: false,
+          timeout: 60000,
+        })
       })
 
-      it('creates records and validates catalog number', () => {
+      it('creates records, validates catalog number and focuses new record in table', () => {
         cy.log('create with automatic number')
         cy.getByText('New record').click()
         cy.getByTestId('createAutomaticNumber').click()
@@ -62,6 +66,11 @@ export default () =>
           .invoke('text')
           .should('equal', '12345678')
 
+        cy.log('ensure new record focused and scrolled to in table')
+        cy.getByTestId('tableTabMenuItem').click()
+        cy.get('[data-isfocused="yes"]').should('contain', '12345678')
+        cy.getByText('12345678').should('be.visible')
+
         cy.log('ensure error on creating with same number')
         cy.getByText('New record').click()
         cy.getByTestId('enterManualNumber').click()
@@ -80,61 +89,6 @@ export default () =>
         cy.url().should('include', '/create')
         cy.getByTestId('cancel').click()
         cy.url().should('not.include', '/create')
-      })
-    })
-
-    describe('delete', () => {
-      beforeEach(() => {
-        cy.goToRoute('/app/specimens/mammals/16/edit/sections/0')
-      })
-
-      it('deletes record', () => {
-        cy.getByTestId('deleteButton').click()
-        cy.getByTestId('confirmDeleteButton').click()
-        cy.getByText('The specimen was deleted')
-        cy.url()
-          .should('include', 'search')
-          .should('not.include', 'edit')
-      })
-    })
-
-    describe('edit', () => {
-      beforeEach(() => {
-        cy.goToRoute('/app/specimens/mammals/1/edit/sections/0')
-        cy.get('[data-testid="basicInformation"]', { log: false }) // wait until section rendered
-      })
-
-      it('changes section, adds determination, removes unsaved changes', () => {
-        cy.getState()
-          .its('form.editSpecimen')
-          .then(formState => {
-            expect(formState.initial).to.equal(formState.values)
-          })
-
-        cy.getByText('Undo changes')
-          .as('undoChangesButton')
-          .should('be.disabled')
-
-        cy.getByText('Next').click()
-        cy.getByTestId('add-determination').click()
-        cy.get('.accordion .content.active').within(() => {
-          cy.getInputByFieldLabel('Interpreted taxon name').type('Canis')
-        })
-
-        cy.getByText('Unsaved changes')
-        cy.get('@undoChangesButton').should('not.be.disabled')
-        cy.getState()
-          .its('form.editSpecimen')
-          .then(formState => {
-            expect(formState.initial).not.to.equal(formState.values)
-          })
-
-        cy.get('@undoChangesButton').click()
-        cy.getState()
-          .its('form.editSpecimen')
-          .then(formState => {
-            expect(formState.initial).to.equal(formState.values)
-          })
       })
     })
   })

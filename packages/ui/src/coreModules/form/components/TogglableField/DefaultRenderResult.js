@@ -38,6 +38,7 @@ const DefaultRenderResult = props => {
       <div style={{ position: 'relative' }}>
         <strong>{value} </strong>
         <Button
+          data-testid="editTogglableFieldButton"
           icon
           onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
           style={{ marginLeft: '5px' }}

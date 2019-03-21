@@ -71,7 +71,10 @@ const FieldLabel = ({
       {helpNotificationProps && (
         // this is outside of label to make required asterisk come before help icon
         <div style={helpIconWrapperStyle}>
-          <FormFieldHelpIcon helpNotificationProps={helpNotificationProps} />
+          <FormFieldHelpIcon
+            helpNotificationProps={helpNotificationProps}
+            htmlFor={htmlFor}
+          />
         </div>
       )}
     </React.Fragment>

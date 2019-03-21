@@ -70,6 +70,7 @@ export class Flash extends Component {
           (descriptionKey &&
             translate({ params: descriptionParams, textKey: descriptionKey }))
         }
+        data-testid="flashNotification"
         error={level === 'error'}
         header={
           header ||

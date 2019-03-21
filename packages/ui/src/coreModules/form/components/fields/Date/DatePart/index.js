@@ -140,6 +140,8 @@ class DatePart extends Component {
       enableHelpNotifications,
       hidden,
       input: { value },
+      isEndDate,
+      isStartDate,
       module,
       name,
       setYearInputRef,
@@ -157,7 +159,13 @@ class DatePart extends Component {
         name={name}
         style={{ display: hidden ? 'none' : undefined, width: 'initial' }}
       >
-        <div>
+        <div
+          data-testid={
+            (isEndDate && 'endDatePart') ||
+            (isStartDate && 'startDatePart') ||
+            'datePart'
+          }
+        >
           <div style={inputYearStyle}>
             <FieldTemplate
               displayLabel={displaySubLabel}

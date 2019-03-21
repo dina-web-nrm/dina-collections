@@ -28,6 +28,7 @@ const ColumnRowHeader = props => {
           )}
           {onClose && (
             <Icon
+              data-testid="closeIcon"
               name="close"
               onClick={onClose}
               style={{ cursor: 'pointer', float: 'right' }}

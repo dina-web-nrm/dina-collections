@@ -75,7 +75,7 @@
     "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui"
   },
   "devDependencies": {
-    "cypress": "^3.1.5",
+    "cypress": "^3.2.0",
     "deep-freeze": "^0.0.1",
     "depcheck": "^0.7.2",
     "eslint-config-airbnb": "16.1.0",

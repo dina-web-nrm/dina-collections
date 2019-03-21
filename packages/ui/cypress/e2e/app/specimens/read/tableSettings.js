@@ -2,14 +2,18 @@ export default () =>
   describe(`table settings`, () => {
     beforeEach(() => {
       cy.goToRoute('/app/specimens/mammals/search')
+      cy.get('[data-testid="infiniteTableHeader"', {
+        log: false,
+        timeout: 60000,
+      })
     })
 
-    it('has all selected by default, can deselect all and save some', () => {
+    it('has all columns selected by default, can deselect all and save selected', () => {
       cy.log('check all column headers exist')
-      cy.getByTestId('InfiniteTableHeader')
+      cy.getByTestId('infiniteTableHeader')
         .children()
         .should('have.length', 32)
-      cy.getByTestId('settingsIcon').click()
+      cy.getByTestId('settingsMenuItem').click()
 
       cy.log('check all columns selected')
       cy.get('input[type="checkbox"]')
@@ -19,12 +23,12 @@ export default () =>
       cy.log('deselect all and save')
       cy.getByTestId('deselectAllButton').click()
       cy.getByTestId('saveButton').click()
-      cy.getByTestId('InfiniteTableHeader')
+      cy.getByTestId('infiniteTableHeader')
         .children()
         .should('have.length', 0)
 
       cy.log('select columns and save')
-      cy.getByTestId('settingsIcon').click()
+      cy.getByTestId('settingsMenuItem').click()
       cy.get('input[name="identifiersCatalogNumber"]').check({ force: true })
       cy.get('input[name="taxonomyCuratorialName"]').check({ force: true })
       cy.get('input[name="collectingEventInterpretedLocality"]').check({
@@ -32,17 +36,17 @@ export default () =>
       })
       cy.get('input[name="recordEventLastModified"]').check({ force: true })
       cy.getByTestId('saveButton').click()
-      cy.getByTestId('InfiniteTableHeader')
+      cy.getByTestId('infiniteTableHeader')
         .children()
         .should('have.length', 4)
-      cy.getByTestId('InfiniteTableHeader-identifiersCatalogNumber')
-      cy.getByTestId('InfiniteTableHeader-taxonomyCuratorialName')
-      cy.getByTestId('InfiniteTableHeader-collectingEventInterpretedLocality')
-      cy.getByTestId('InfiniteTableHeader-recordEventLastModified')
+      cy.getByTestId('infiniteTableHeader-identifiersCatalogNumber')
+      cy.getByTestId('infiniteTableHeader-taxonomyCuratorialName')
+      cy.getByTestId('infiniteTableHeader-collectingEventInterpretedLocality')
+      cy.getByTestId('infiniteTableHeader-recordEventLastModified')
 
       cy.log('reload and check same columns still there')
       cy.reload()
-      cy.getByTestId('InfiniteTableHeader')
+      cy.getByTestId('infiniteTableHeader')
         .children()
         .should('have.length', 4)
     })

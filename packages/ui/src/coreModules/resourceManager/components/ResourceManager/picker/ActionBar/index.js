@@ -55,6 +55,7 @@ class ItemHeader extends Component {
           <Grid.Column>
             <Header>
               <Button
+                data-testid="pickerPickButton"
                 disabled={!nestedItem || (excludeRootNode && isRoot)}
                 onClick={() => this.handlePickItem(nestedItem.id, nestedItem)}
                 size="large"
