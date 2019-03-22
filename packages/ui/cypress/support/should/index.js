@@ -8,10 +8,10 @@ Cypress.Commands.add(
     prevSubject: true,
   },
   (subject, options = {}) => {
-    cy.wrap(subject).should('not.have.class', 'loading', {
-      timeout: 10000,
+    cy.wrap(subject, {
+      timeout: 20000,
       ...options,
-    })
+    }).should('not.have.class', 'loading')
   }
 )
 
