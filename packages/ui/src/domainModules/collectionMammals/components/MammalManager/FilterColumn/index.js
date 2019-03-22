@@ -54,6 +54,7 @@ class FilterColumn extends PureComponent {
         formValueSelector={formValueSelector}
         getFormInitialValues={getFormInitialValues}
         rows={rows}
+        wrapperId="filterColumn"
         {...this.props}
       />
     )
