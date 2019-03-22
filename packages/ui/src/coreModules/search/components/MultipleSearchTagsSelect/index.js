@@ -13,6 +13,15 @@ import RefineTagSelectionButton from './RefineTagSelectionButton'
 import * as selectors from './selectors'
 import { ANY } from '../../constants'
 
+import {
+  createMatchingTagsFromItems,
+  createOptions,
+  createReduxFormValues,
+  filterReduxFormValuesByExistingQueryStrings,
+  getLastSearchOption,
+  getOptionWasAdded,
+} from './utilities'
+
 const propTypes = {
   addTagTypeToText: PropTypes.bool,
   buildLocalAggregationQuery: PropTypes.func.isRequired,
@@ -63,17 +72,22 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.setSearchQueryResultsSelected = this.setSearchQueryResultsSelected.bind(
       this
     )
+
     this.handleGetSearchQuery = this.handleGetSearchQuery.bind(this)
     this.handleCloseRefine = this.handleCloseRefine.bind(this)
     this.handleOpenRefine = this.handleOpenRefine.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
-    this.handleSelectSearchQueries = this.handleSelectSearchQueries.bind(this)
+    this.handleSelectOption = this.handleSelectOption.bind(this)
     this.handleSelectAllForSearchQuery = this.handleSelectAllForSearchQuery.bind(
       this
     )
     this.handleDeselectAllForSearchQuery = this.handleDeselectAllForSearchQuery.bind(
       this
     )
+    this.getMatchingTagsFromSearchOption = this.getMatchingTagsFromSearchOption.bind(
+      this
+    )
+    this.fetchFreeTextTags = this.fetchFreeTextTags.bind(this)
     this.handleToggleTagSelected = this.handleToggleTagSelected.bind(this)
     this.handleUpdateTagFilterValue = this.handleUpdateTagFilterValue.bind(this)
     this.translateTagType = this.translateTagType.bind(this)
@@ -84,7 +98,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       tagTypeFilterValue: '',
     }
 
-    this.debouncedGetItemsForSearchQuery = debounce(
+    this.updateOptions = debounce(
       searchQuery => {
         const { tagTypeFilterValue } = this.state
         return this.getItemsForSearchQuery({
@@ -94,9 +108,12 @@ class RawMultipleSearchTagsSelect extends PureComponent {
               : undefined,
           tagValue: searchQuery,
         }).then(items => {
-          const options = this.createOptions({
+          const { addTagTypeToText } = props
+          const options = createOptions({
+            addTagTypeToText,
             items,
             searchQuery,
+            translateTagType: this.translateTagType,
           })
 
           this.setState({
@@ -112,7 +129,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.debouncedGetItemsForSearchQuery.cancel()
+    this.updateOptions.cancel()
   }
 
   getItemsForSearchQuery({
@@ -147,7 +164,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     if (reduxFormValue) {
       const { matchingTags, searchOption } = reduxFormValue
 
-      const updatedReduxFormValues = this.createReduxFormValues({
+      const updatedReduxFormValues = createReduxFormValues({
         matchingTags,
         prevReduxFormValues: reduxFormValues,
         searchOption,
@@ -163,6 +180,34 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       return this.props.input.value[key].searchOption
     })
     return selectedOptions
+  }
+
+  getMatchingTagsFromSearchOption(searchOption) {
+    const { key } = searchOption
+    const { tagValue, optionType } = searchOption.other
+    return Promise.resolve().then(() => {
+      if (optionType !== 'freeText') {
+        const matchingTags = createMatchingTagsFromItems([
+          {
+            attributes: searchOption.other,
+            id: key,
+          },
+        ])
+        return {
+          hasMatchingTags: true,
+          matchingTags,
+        }
+      }
+      return this.getItemsForSearchQuery({
+        limit: 1,
+        tagValue,
+      }).then(items => {
+        return {
+          hasMatchingTags: !!items.length,
+          matchingTags: [],
+        }
+      })
+    })
   }
 
   handleGetSearchQuery() {
@@ -194,62 +239,73 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       })
     }
 
-    return this.debouncedGetItemsForSearchQuery(searchQuery)
+    return this.updateOptions(searchQuery)
   }
 
-  handleSelectSearchQueries(queryStrings) {
-    if (!queryStrings.length) {
-      this.props.input.onChange({})
-    }
+  fetchFreeTextTags(searchOption) {
+    const limit = 100
+    const { tagValue } = searchOption.other
+    return this.getItemsForSearchQuery({
+      exact: false,
+      limit,
+      tagValue,
+    }).then(items => {
+      const { value: prevReduxFormValues } = this.props.input
+      const matchingTags = createMatchingTagsFromItems(items)
 
-    const { value: prevReduxFormValues } = this.props.input
-    if (queryStrings.length > Object.keys(prevReduxFormValues || {}).length) {
-      const queryString = queryStrings[queryStrings.length - 1]
-
-      const searchOption = this.state.options.find(option => {
-        return option.key === queryString
-      })
-      if (!searchOption) {
-        return null
-      }
-
-      const { key } = searchOption
-
-      const { count, tagType, tagValue, optionType } = searchOption.other
-      let matchingTags = []
-      if (optionType === 'freeText') {
-        matchingTags = []
-      } else {
-        matchingTags = [
-          {
-            attributes: {
-              count,
-              tagType,
-              tagValue,
-            },
-            id: key,
-          },
-        ]
-      }
-
-      const newReduxFormValues = this.createReduxFormValues({
+      const updatedReduxFormValues = createReduxFormValues({
+        hasMatchingTags: matchingTags.length,
         matchingTags,
+        matchingTagsReachedLimit: items.length === limit,
         prevReduxFormValues,
         searchOption,
         selected: true,
       })
 
-      return this.props.input.onChange(newReduxFormValues)
+      return this.props.input.onChange(updatedReduxFormValues)
+    })
+  }
+
+  handleSelectOption(queryStrings) {
+    if (!queryStrings.length) {
+      this.props.input.onChange({})
     }
 
-    const newTags =
-      prevReduxFormValues &&
-      queryStrings.reduce((obj, queryString) => {
-        obj[queryString] = prevReduxFormValues[queryString] // eslint-disable-line no-param-reassign
-        return obj
-      }, {})
+    const { value: prevReduxFormValues } = this.props.input
+    const newOptionWasAdded = getOptionWasAdded({
+      queryStrings,
+      reduxFormValues: prevReduxFormValues,
+    })
+    if (newOptionWasAdded) {
+      const searchOption = getLastSearchOption({
+        options: this.state.options,
+        queryStrings,
+      })
 
-    return this.props.input.onChange(newTags)
+      if (!searchOption) {
+        return null
+      }
+
+      return this.getMatchingTagsFromSearchOption(searchOption).then(
+        ({ hasMatchingTags, matchingTags }) => {
+          const updatedReduxFormValues = createReduxFormValues({
+            hasMatchingTags,
+            matchingTags,
+            prevReduxFormValues,
+            searchOption,
+            selected: true,
+          })
+
+          return this.props.input.onChange(updatedReduxFormValues)
+        }
+      )
+    }
+    const updatedReduxFormValues = filterReduxFormValuesByExistingQueryStrings({
+      queryStrings,
+      reduxFormValues: prevReduxFormValues,
+    })
+
+    return this.props.input.onChange(updatedReduxFormValues)
   }
 
   handleSelectAllForSearchQuery(searchQuery) {
@@ -266,7 +322,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     if (reduxFormValue) {
       const { matchingTags, searchOption } = reduxFormValue
 
-      const updatedReduxFormValues = this.createReduxFormValues({
+      const updatedReduxFormValues = createReduxFormValues({
         matchingTags: matchingTags.map(tag => {
           if (tag.id !== id) {
             return tag
@@ -282,83 +338,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       })
 
       this.props.input.onChange(updatedReduxFormValues)
-    }
-  }
-  createOption({ count, key, optionType, tagType, tagValue, text, value }) {
-    return {
-      key,
-      other: {
-        count,
-        optionType,
-        tagType,
-        tagValue,
-      },
-      text,
-      value,
-    }
-  }
-  createOptions({ searchQuery, items }) {
-    const { addTagTypeToText } = this.props
-    const itemOptions = items
-      .map(({ attributes }) => {
-        if (attributes) {
-          const { count, key, tagText, tagType, tagValue } = attributes
-          const tagTypeText = addTagTypeToText
-            ? ` [${this.translateTagType(tagType)}] `
-            : ' '
-
-          return this.createOption({
-            count,
-            key,
-            optionType: 'tag',
-            tagType,
-            tagValue,
-            text: `${tagText}${tagTypeText}`,
-            value: key,
-          })
-        }
-
-        return null
-      })
-      .filter(item => !!item)
-
-    const freeTextOption = this.createOption({
-      key: searchQuery,
-      optionType: 'freeText',
-      tagValue: searchQuery,
-      text: `${searchQuery}`,
-      value: searchQuery,
-    })
-
-    const options = [freeTextOption, ...itemOptions]
-    return options
-  }
-
-  createReduxFormValues({
-    matchingTags,
-    prevReduxFormValues = {},
-    searchOption,
-    selected,
-  }) {
-    const { key } = searchOption
-
-    const newFieldValue = {
-      key,
-      matchingTags: matchingTags.map(matchingTag => {
-        if (selected === undefined) {
-          return matchingTag
-        }
-        return {
-          ...matchingTag,
-          selected,
-        }
-      }),
-      searchOption,
-    }
-
-    return {
-      ...prevReduxFormValues,
-      [key]: newFieldValue,
     }
   }
 
@@ -406,7 +385,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
 
     const patchedInput = {
       ...input,
-      onBlur: this.handleSelectSearchQueries,
+      onBlur: this.handleSelectOption,
       value: Object.keys(reduxFormValues || {}),
     }
 
@@ -461,6 +440,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         {refineOpen && (
           <RefineTagSelection
             addTagTypeToText={addTagTypeToText}
+            fetchFreeTextTags={this.fetchFreeTextTags}
             inline={inlineRefine}
             numberOfSearchResults={numberOfSearchResults}
             numberOfSelectedResults={numberOfSelectedResults}

@@ -7,6 +7,7 @@ import * as selectors from './selectors'
 
 const propTypes = {
   addTagTypeToText: PropTypes.bool.isRequired,
+  fetchFreeTextTags: PropTypes.func.isRequired,
   inline: PropTypes.bool.isRequired,
   numberOfSearchResults: PropTypes.number.isRequired,
   numberOfSelectedResults: PropTypes.number.isRequired,
@@ -30,6 +31,7 @@ const defaultProps = {
 
 const RefineTagSelection = ({
   addTagTypeToText,
+  fetchFreeTextTags,
   inline,
   numberOfSearchResults,
   numberOfSelectedResults,
@@ -46,17 +48,22 @@ const RefineTagSelection = ({
       <React.Fragment>
         <Header size="medium">{`Refine filter (${numberOfSelectedResults}/${numberOfSearchResults})`}</Header>
         {freeTextQueries.map(searchQuery => {
-          const title = reduxFormValues[searchQuery].searchOption.text
+          const { matchingTagsReachedLimit, searchOption } = reduxFormValues[
+            searchQuery
+          ]
+
           return (
             <TagGroup
               addTagTypeToText={addTagTypeToText}
+              fetchFreeTextTags={fetchFreeTextTags}
               key={searchQuery}
               matchingTags={reduxFormValues[searchQuery].matchingTags}
+              matchingTagsReachedLimit={matchingTagsReachedLimit}
               onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
               onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
               onToggleTagSelected={handleToggleTagSelected}
+              searchOption={searchOption}
               searchQuery={searchQuery}
-              title={title}
               translateTagType={translateTagType}
             />
           )
@@ -71,17 +78,21 @@ const RefineTagSelection = ({
       <Modal.Content>
         <Modal.Description>
           {freeTextQueries.map(searchQuery => {
-            const title = reduxFormValues[searchQuery].searchOption.text
+            const { matchingTagsReachedLimit, searchOption } = reduxFormValues[
+              searchQuery
+            ]
             return (
               <TagGroup
                 addTagTypeToText={addTagTypeToText}
+                fetchFreeTextTags={fetchFreeTextTags}
                 key={searchQuery}
                 matchingTags={reduxFormValues[searchQuery].matchingTags}
+                matchingTagsReachedLimit={matchingTagsReachedLimit}
                 onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
                 onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
                 onToggleTagSelected={handleToggleTagSelected}
+                searchOption={searchOption}
                 searchQuery={searchQuery}
-                title={title}
                 translateTagType={translateTagType}
               />
             )

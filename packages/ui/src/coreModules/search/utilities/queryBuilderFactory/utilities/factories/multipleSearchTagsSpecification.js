@@ -60,7 +60,6 @@ export default function multipleSearchTagsSpecification({
     const tagFilters = []
     Object.keys(fieldValue).forEach(key => {
       const dropdownEntry = fieldValue[key]
-
       const isFreeText =
         objectPath.get(dropdownEntry, 'searchOption.other.optionType') ===
         'freeText'
@@ -85,8 +84,12 @@ export default function multipleSearchTagsSpecification({
           },
         })
       } else {
+        let anySelected = false
         fieldValue[key].matchingTags
           .filter(tag => {
+            if (tag.selected) {
+              anySelected = true
+            }
             return !!tag.selected
           })
           .forEach(tag => {
@@ -100,6 +103,16 @@ export default function multipleSearchTagsSpecification({
               },
             })
           })
+        if (!anySelected) {
+          tagFilters.push({
+            filter: {
+              filterFunction: matchFilterFunctionName,
+              input: {
+                tagValue: 'not-matching-any',
+              },
+            },
+          })
+        }
       }
     })
 

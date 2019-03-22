@@ -49,3 +49,23 @@ export const getNumberOfSelectedFreeTextResults = createSelector(
     }, 0)
   }
 )
+
+export const getHasFreeTextSearchResults = createSelector(
+  searchQueryResultsMap => searchQueryResultsMap,
+  searchQueryResultsMap => {
+    return Object.keys(searchQueryResultsMap || {}).reduce(
+      (hasResults, searchQuery) => {
+        if (hasResults) {
+          return true
+        }
+
+        const { searchOption, hasMatchingTags } = searchQueryResultsMap[
+          searchQuery
+        ]
+        const isFreeText = searchOption.other.optionType === 'freeText'
+        return isFreeText && hasMatchingTags
+      },
+      false
+    )
+  }
+)
