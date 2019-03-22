@@ -1,7 +1,18 @@
-### Definition
+# recordHistoryEvent
 
-Information about the history of the record.
+An event in the history of a specimen record. This can for example be the creation of a catalog card or the registration of a specimen in a previous system.
 
-### Note(s)
 
-This can for example involve creation of a catalog card, creation of a record in MAM2006 or edit of the record.
+## Short description
+
+An event in the history of a specimen record.
+
+
+### Defintion
+
+An event in the history of a specimen record.
+
+
+### Examples
+
+* Last update of a specimen record in a previous system before it was migrated.

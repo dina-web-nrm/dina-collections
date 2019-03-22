@@ -25,7 +25,7 @@ This term has two purposes:
 1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).
 2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.
 
-You should create new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should create two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you should probably create more individuals.
+You should recognize new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should recognize two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you may have to recognize even more individuals.
 
 
 ### Relation to other standards
