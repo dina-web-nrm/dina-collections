@@ -67,18 +67,20 @@ export default function multipleSearchTagsSpecification({
       const hasNoMatchingTag = !objectPath.get(dropdownEntry, 'matchingTags')
         .length
 
-      if (isFreeText && hasNoMatchingTag) {
+      if ((isFreeText && hasNoMatchingTag) || true) {
         tagFilters.push({
           filter: {
-            filterFunction: matchFilterFunctionName,
+            filterFunction: searchFilterFunctionName,
             input: {
               tagType: objectPath.get(
                 dropdownEntry,
                 'searchOption.other.tagType'
               ),
-              // using the verbose text to make it more clear for any developer
-              // inspecting the query
-              tagValue: objectPath.get(dropdownEntry, 'searchOption.text'),
+
+              tagValue: objectPath.get(
+                dropdownEntry,
+                'searchOption.other.tagValue'
+              ),
             },
           },
         })
