@@ -9,10 +9,13 @@ module.exports = function runTestCases({ testCases, storeTestLog }) {
     const {
       errorMessage,
       input,
-      matching = [],
+      matching: matchingInput = [],
+      matchingNotInSampleData = [],
       notMatching = [],
       only,
     } = testCase
+
+    const matching = [...matchingInput, ...matchingNotInSampleData]
 
     const jestDescribe = only ? describe.only : describe
 

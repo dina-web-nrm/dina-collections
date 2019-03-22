@@ -1,20 +1,20 @@
 module.exports = [
   {
-    input: '"pusa hispida"',
+    input: '==pusa hispida',
     matching: ['pusa hispida'],
     notMatching: ['pusa', 'hispida pusa'],
   },
   {
-    input: '"pusa hisp"',
+    input: '==pusa hisp',
     notMatching: ['pusa hispida', 'pusa', 'hispida pusa'],
   },
   {
-    input: '"pusa"',
-    matching: ['pusa', 'pusa hispida'],
+    input: '==pusa',
+    matching: ['pusa'],
     notMatching: ['hispida'],
   },
   {
-    input: '"hispida pusa"',
+    input: '==hispida pusa',
     notMatching: ['pusa hispida', 'pusa'],
   },
 ]

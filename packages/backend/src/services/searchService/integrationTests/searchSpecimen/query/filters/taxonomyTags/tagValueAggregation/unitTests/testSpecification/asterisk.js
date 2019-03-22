@@ -26,9 +26,4 @@ module.exports = [
     ],
     notMatching: ['pusa hispida', 'pusa'],
   },
-  {
-    errorMessage: '** is not allowed',
-    input: '**',
-    shouldThrow: true,
-  },
 ]

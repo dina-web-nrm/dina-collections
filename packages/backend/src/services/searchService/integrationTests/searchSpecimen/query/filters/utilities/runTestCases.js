@@ -1,3 +1,4 @@
+const { hook } = require('common/src/testUtilities/envBackendApiSampleData')
 const onlySetInTestSpecification = require('./onlySetInTestSpecification')
 const makeRequest = require('./makeRequest')
 
@@ -40,7 +41,7 @@ module.exports = function runTestCases({
           const getError = () => {
             return err
           }
-          beforeAll(() => {
+          hook(beforeAll, () => {
             if (onlySet && !only) {
               return null
             }
