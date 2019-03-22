@@ -20,7 +20,7 @@ while getopts d:f: option
 echo "Exporting db with name: $DB_NAME to $TARGET"
 
 rm -f $TARGET
-docker exec -e PGPASSWORD=$DB_PASSWORD -i postgres pg_dump --clean -c -U $DB_USERNAME -d $DB_NAME -h $DB_URL > $TARGET
+docker exec -e PGPASSWORD=$DB_PASSWORD -i postgres pg_dump --clean -c -U $DB_USERNAME -d $DB_NAME -h 127.0.0.1 -p 5432 > $TARGET
 chmod 777 $TARGET
 
 echo "Exported db success"
