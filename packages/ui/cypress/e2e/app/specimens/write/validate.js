@@ -33,12 +33,12 @@ export default () =>
       })
       cy.getByTestId('addPositionButton').click()
 
-      cy.getInputByFieldLabel('Latitude')
+      cy.getInputByLabelText('Latitude')
         .type('N123')
         .blur()
       cy.getByText('Latitude must be number between 0 and 90')
 
-      cy.getInputByFieldLabel('Latitude')
+      cy.getInputByLabelText('Latitude')
         .clear()
         .type('12.01')
         .blur()
@@ -46,18 +46,18 @@ export default () =>
         'not.exist'
       )
 
-      cy.getInputByFieldLabel('Latitude')
+      cy.getInputByLabelText('Latitude')
         .clear()
         .type('110')
         .blur()
       cy.getByText('Latitude must be number between 0 and 90')
 
-      cy.getInputByFieldLabel('Longitude')
+      cy.getInputByLabelText('Longitude')
         .type('45W')
         .blur()
       cy.getByText('Longitude must be number between 0 and 180')
 
-      cy.getInputByFieldLabel('Longitude')
+      cy.getInputByLabelText('Longitude')
         .clear()
         .type('123.23456')
         .blur()
@@ -65,14 +65,14 @@ export default () =>
         'not.exist'
       )
 
-      cy.getInputByFieldLabel('Longitude')
+      cy.getInputByLabelText('Longitude')
         .clear()
         .type('3040')
         .blur()
       cy.getByText('Longitude must be number between 0 and 180')
 
       cy.log('does not allow leading minus sign in input')
-      cy.getInputByFieldLabel('Latitude')
+      cy.getInputByLabelText('Latitude')
         .clear()
         .type('-11')
         .should('have.value', '11')
@@ -80,7 +80,7 @@ export default () =>
         'not.exist'
       )
 
-      cy.getInputByFieldLabel('Longitude')
+      cy.getInputByLabelText('Longitude')
         .clear()
         .type('-22.22')
         .should('have.value', '22.22')
@@ -100,10 +100,10 @@ export default () =>
       })
       cy.getByText('Add a skeleton').click()
       cy.getByTestId('physicalObjectsSkeleton').within(() => {
-        cy.getInputByFieldLabel('Preparation type')
+        cy.getInputByLabelText('Preparation type')
           .click({ force: true })
           .type('Antler{enter}')
-        cy.getInputByFieldLabel('Normal storage location')
+        cy.getInputByLabelText('Normal storage location')
           .type('Bensalen{selectall}{backspace}')
           .blur()
       })
@@ -124,7 +124,7 @@ export default () =>
 
       cy.getByTestId('physicalObjectsSkeleton').within(() => {
         cy.getByTestId('accordionTitle').click()
-        cy.getInputByFieldLabel('Normal storage location').type('Bens')
+        cy.getInputByLabelText('Normal storage location').type('Bens')
         cy.getDropdownOptionByText('Bensalen [room]').click()
       })
     })
@@ -136,9 +136,9 @@ export default () =>
         timeout: 60000,
       })
       cy.getByTestId('collectingDate').within(() => {
-        cy.getInputByFieldLabel('Year').as('yearInput')
-        cy.getInputByFieldLabel('Month').as('monthInput')
-        cy.getInputByFieldLabel('Day').as('dayInput')
+        cy.getInputByLabelText('Year').as('yearInput')
+        cy.getInputByLabelText('Month').as('monthInput')
+        cy.getInputByLabelText('Day').as('dayInput')
         cy.get('input[value=single]').as('singleRadio')
         cy.get('input[value=range]').as('rangeRadio')
         cy.get('input[value=latest]').as('latestRadio')
@@ -182,11 +182,11 @@ export default () =>
       cy.log('check range date validation')
       cy.get('@rangeRadio').check({ force: true })
       cy.getByTestId('endDatePart').within(() => {
-        cy.getInputByFieldLabel('Year').as('endYearInput')
-        cy.getInputByFieldLabel('Month').as('endMonthInput')
+        cy.getInputByLabelText('Year').as('endYearInput')
+        cy.getInputByLabelText('Month').as('endMonthInput')
       })
       cy.getByTestId('startDatePart').within(() => {
-        cy.getInputByFieldLabel('Year').as('startYearInput')
+        cy.getInputByLabelText('Year').as('startYearInput')
       })
 
       cy.get('@startYearInput')
@@ -207,7 +207,7 @@ export default () =>
       cy.log('check date validation also applies to latest date')
       cy.get('@latestRadio').check({ force: true })
       cy.getByTestId('endDatePart').within(() => {
-        cy.getInputByFieldLabel('Day').as('endDayInput')
+        cy.getInputByLabelText('Day').as('endDayInput')
       })
       cy.get('@endDayInput').type('24')
       cy.getByText('A day must have month and year')
@@ -225,12 +225,12 @@ export default () =>
 
       cy.log('Check validation error for future year')
       cy.getByText('Add catalog card creation').click()
-      cy.getInputByFieldLabel('Year').type(momentNow.year() + 1)
+      cy.getInputByLabelText('Year').type(momentNow.year() + 1)
       cy.getByText('Done').click()
       cy.getByText('Only past dates allowed')
 
       cy.log('Allows current year as date')
-      cy.getInputByFieldLabel('Year')
+      cy.getInputByLabelText('Year')
         .clear()
         .type(momentNow.year())
       cy.getByText('Done').click()
@@ -241,7 +241,7 @@ export default () =>
 
       cy.log('Allows current year and month as date')
       cy.getByTestId('editRecordHistoryEventIcon').click()
-      cy.getInputByFieldLabel('Month')
+      cy.getInputByLabelText('Month')
         .clear()
         .type(momentNow.month() + 1) // month is zero-based index
       cy.getByText('Done').click()
@@ -252,7 +252,7 @@ export default () =>
 
       cy.log('Allows current year, month and day as date')
       cy.getByTestId('editRecordHistoryEventIcon').click()
-      cy.getInputByFieldLabel('Day')
+      cy.getInputByLabelText('Day')
         .clear()
         .type(momentNow.date())
       cy.getByText('Done').click()

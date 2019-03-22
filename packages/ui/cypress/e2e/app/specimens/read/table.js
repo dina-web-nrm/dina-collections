@@ -93,7 +93,7 @@ export default () =>
       cy.getByText('590325')
       cy.getByText('Mus musculoides')
 
-      cy.getInputByTestId('currentTableRowInput')
+      cy.getInputByParentTestId('currentTableRowInput')
         .clear()
         .type('16')
       cy.getByText('500001')

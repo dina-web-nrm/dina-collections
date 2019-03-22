@@ -129,10 +129,10 @@ export default () =>
             .children()
             .should('have.length', 4)
           cy.getByTestId('activeAccordionContent').within(() => {
-            cy.getInputByFieldLabel('Determined as (stated)').type(
+            cy.getInputByLabelText('Determined as (stated)').type(
               'Rhabdomys pum.'
             )
-            cy.getInputByFieldLabel('Interpreted taxon name').type(
+            cy.getInputByLabelText('Interpreted taxon name').type(
               'Rhabdomys pumilio'
             )
           })
@@ -192,7 +192,7 @@ export default () =>
         it('edits collector with dropdown and picker', () => {
           cy.getByTestId('collectorExpedition').within(() => {
             cy.getByTestId('editAgentButton').click()
-            cy.getDropdownInputByName(
+            cy.getDropdownSearchByName(
               'individual.collectingInformation.0.collectedByAgent'
             ).type('john')
             cy.getDropdownOptionByText('John Doe').click()
@@ -234,11 +234,11 @@ export default () =>
 
           cy.getByText('Add a skin').click()
           cy.getByTestId('activeAccordionContent').within(() => {
-            cy.getInputByFieldLabel('Preparation type')
+            cy.getInputByLabelText('Preparation type')
               .click({ force: true })
               .type('complete')
             cy.getDropdownOptionByText('Complete, mounted skin').click()
-            cy.getInputByFieldLabel('Normal storage location').type('Skinnrum')
+            cy.getInputByLabelText('Normal storage location').type('Skinnrum')
             cy.getDropdownOptionByText('Skinnrum kylda [room]').click()
             cy.getByText('New assessment').click()
           })
@@ -267,7 +267,7 @@ export default () =>
           cy.getDropdownOptionByText('female?').click()
           cy.getByText('female?').should('be.visible')
 
-          cy.getInputByFieldLabel('Sex').click()
+          cy.getInputByLabelText('Sex').click()
           cy.getDropdownOptionByText('indeterminate').click()
           cy.quickQueryByText('female?').should('not.be.visible')
           cy.getByText('indeterminate')
