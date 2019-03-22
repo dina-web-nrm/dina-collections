@@ -216,47 +216,30 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       const { key } = searchOption
 
       const { count, tagType, tagValue, optionType } = searchOption.other
-      return this.getItemsForSearchQuery({
-        exact: !!(tagType && key && optionType !== 'freeText'),
-        limit: 1000,
-        tagType: tagType === ANY ? undefined : tagType,
-        tagValue,
-      }).then(items => {
-        let matchingTags = []
-        if (optionType === 'freeText') {
-          matchingTags = items.map(matchingTag => {
-            const { attributes = {}, id } = matchingTag
-            return {
-              attributes: {
-                count: attributes.count,
-                tagType: attributes.tagType,
-                tagValue: attributes.tagValue,
-              },
-              id,
-            }
-          })
-        } else {
-          matchingTags = [
-            {
-              attributes: {
-                count,
-                tagType,
-                tagValue,
-              },
-              id: key,
+      let matchingTags = []
+      if (optionType === 'freeText') {
+        matchingTags = []
+      } else {
+        matchingTags = [
+          {
+            attributes: {
+              count,
+              tagType,
+              tagValue,
             },
-          ]
-        }
+            id: key,
+          },
+        ]
+      }
 
-        const newReduxFormValues = this.createReduxFormValues({
-          matchingTags,
-          prevReduxFormValues,
-          searchOption,
-          selected: true,
-        })
-
-        return this.props.input.onChange(newReduxFormValues)
+      const newReduxFormValues = this.createReduxFormValues({
+        matchingTags,
+        prevReduxFormValues,
+        searchOption,
+        selected: true,
       })
+
+      return this.props.input.onChange(newReduxFormValues)
     }
 
     const newTags =

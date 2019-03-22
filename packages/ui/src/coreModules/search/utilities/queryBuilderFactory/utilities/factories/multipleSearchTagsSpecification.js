@@ -67,7 +67,7 @@ export default function multipleSearchTagsSpecification({
       const hasNoMatchingTag = !objectPath.get(dropdownEntry, 'matchingTags')
         .length
 
-      if ((isFreeText && hasNoMatchingTag) || true) {
+      if (isFreeText && hasNoMatchingTag) {
         tagFilters.push({
           filter: {
             filterFunction: searchFilterFunctionName,
