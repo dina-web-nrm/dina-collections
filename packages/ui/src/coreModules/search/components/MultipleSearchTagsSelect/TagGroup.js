@@ -4,15 +4,20 @@ import { Button, Grid, Header, Label } from 'semantic-ui-react'
 
 const propTypes = {
   addTagTypeToText: PropTypes.bool.isRequired,
+  matchingTags: PropTypes.arrayOf(
+    PropTypes.shape({
+      attributes: PropTypes.shape({
+        count: PropTypes.number.isRequired,
+        tagType: PropTypes.string.isRequired,
+        tagValue: PropTypes.string.isRequired,
+      }).isRequire,
+      id: PropTypes.string.isRequired,
+      selected: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
   onDeselectAllForSearchQuery: PropTypes.func.isRequired,
   onSelectAllForSearchQuery: PropTypes.func.isRequired,
   onToggleTagSelected: PropTypes.func.isRequired,
-  results: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      selected: PropTypes.bool.isRequire,
-    })
-  ).isRequired,
   searchQuery: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   translateTagType: PropTypes.func.isRequired,
@@ -22,7 +27,7 @@ const TagGroup = ({
   onDeselectAllForSearchQuery: handleDeselectAllForSearchQuery,
   onSelectAllForSearchQuery: handleSelectAllForSearchQuery,
   onToggleTagSelected: handleToggleTagSelected,
-  results,
+  matchingTags,
   searchQuery,
   title,
   translateTagType,
@@ -45,7 +50,7 @@ const TagGroup = ({
       </Grid.Column>
       <Grid.Column width={16}>
         <Label.Group>
-          {results.map(({ attributes, id, selected }) => {
+          {matchingTags.map(({ attributes, id, selected }) => {
             const { tagType } = attributes
             const tagTypeText = addTagTypeToText
               ? ` [${translateTagType(tagType)}] `

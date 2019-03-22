@@ -223,8 +223,20 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         tagType: tagType === ANY ? undefined : tagType,
         tagValue,
       }).then(items => {
+        const matchingTags = items.map(matchingTag => {
+          const { attributes = {}, id } = matchingTag
+          return {
+            attributes: {
+              count: attributes.count,
+              tagType: attributes.tagType,
+              tagValue: attributes.tagValue,
+            },
+            id,
+          }
+        })
+
         const newReduxFormValues = this.createReduxFormValues({
-          matchingTags: items,
+          matchingTags,
           prevReduxFormValues,
           searchOption,
           selected: true,
@@ -325,11 +337,27 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   }
 
   createReduxFormValues({
-    matchingTags,
+    matchingTags: matchingTagsInput,
     prevReduxFormValues = {},
     searchOption,
     selected,
   }) {
+    const matchingTags = matchingTagsInput.map(matchingTag => {
+      const {
+        attributes: { count, tagType, tagValue } = {},
+        id,
+        selected: tagSelected,
+      } = matchingTag
+      return {
+        attributes: {
+          count,
+          tagType,
+          tagValue,
+        },
+        id,
+        selected: tagSelected,
+      }
+    })
     const { key } = searchOption
 
     const newFieldValue = {

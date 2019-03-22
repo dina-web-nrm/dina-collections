@@ -51,10 +51,10 @@ const RefineTagSelection = ({
             <TagGroup
               addTagTypeToText={addTagTypeToText}
               key={searchQuery}
+              matchingTags={reduxFormValues[searchQuery].matchingTags}
               onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
               onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
               onToggleTagSelected={handleToggleTagSelected}
-              results={reduxFormValues[searchQuery].matchingTags}
               searchQuery={searchQuery}
               title={title}
               translateTagType={translateTagType}
@@ -76,10 +76,10 @@ const RefineTagSelection = ({
               <TagGroup
                 addTagTypeToText={addTagTypeToText}
                 key={searchQuery}
+                matchingTags={reduxFormValues[searchQuery].matchingTags}
                 onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
                 onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
                 onToggleTagSelected={handleToggleTagSelected}
-                results={reduxFormValues[searchQuery].matchingTags}
                 searchQuery={searchQuery}
                 title={title}
                 translateTagType={translateTagType}
