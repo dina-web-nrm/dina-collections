@@ -101,7 +101,7 @@ export default () =>
           )
 
           cy.getByText('Add identifier').click()
-          cy.getDropdownInputByPlaceholder('Select identifier type')
+          cy.getDropdownInputByText('Select identifier type')
             .type('SVA{enter}')
             .parent()
             .shouldHaveName('individual.identifiers.2.identifierType.id') // we removed one above so this is now index 2
@@ -263,7 +263,7 @@ export default () =>
         it('updates sex and adds length', () => {
           cy.getByText('Sex').click()
           cy.getByTestId('clearDropdownIcon').click()
-          cy.getDropdownInputByPlaceholder('Select sex').click()
+          cy.getDropdownInputByText('Select sex').click()
           cy.selectDropdownOptionByText('female?')
           cy.getByText('female?').should('be.visible')
 

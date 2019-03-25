@@ -12,16 +12,13 @@ Cypress.Commands.add('getByTestIds', (testIds, options) => {
   return cy.get(selector, options)
 })
 
-Cypress.Commands.add(
-  'getDropdownInputByPlaceholder',
-  (placeholder, options) => {
-    cy.log('getDropdownInputByPlaceholder')
-    return cy
-      .getByText(placeholder, options)
-      .click({ log: false })
-      .prev({ log: false })
-  }
-)
+Cypress.Commands.add('getDropdownInputByText', (text, options) => {
+  cy.log('getDropdownInputByText')
+  return cy
+    .getByText(text, options)
+    .click({ log: false })
+    .prev({ log: false })
+})
 
 Cypress.Commands.add('getDropdownOptionByText', (text, options) => {
   return cy.get('[role="listbox"].visible', options).within(() => {
