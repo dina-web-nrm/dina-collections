@@ -58,6 +58,15 @@ Cypress.Commands.add('getInputByParentTestId', (testId, options) => {
   return cy.get(`[data-testid="${testId}"] input`, options)
 })
 
+Cypress.Commands.add(
+  'queryMultipleSearchDropdownOptionByText',
+  (text, options) => {
+    return cy.get('[role="listbox"].visible', options).within(() => {
+      cy.queryByText(text, options)
+    })
+  }
+)
+
 Cypress.Commands.add('quickQueryByText', (text, options = {}) => {
   return cy.queryByText(text, { timeout: 4000, ...options })
 })
