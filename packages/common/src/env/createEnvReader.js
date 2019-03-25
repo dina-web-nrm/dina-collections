@@ -51,15 +51,22 @@ module.exports = function createEnvReader({
     ...testEnv,
   }
 
-  function readKey(key) {
+  function readKey(key, defaultValue = undefined) {
     if (!existingEnvVarialbes.includes(key)) {
       throw new Error(`Trying to access non existing env varable: ${key}`)
+    }
+    if (resolvedEnvVariables[key] === undefined) {
+      return defaultValue
     }
     return resolvedEnvVariables[key]
   }
 
-  function readBoolKey(key) {
-    return readKey(key) === true
+  function readBoolKey(key, defaultValue = false) {
+    const boolValue = readKey(key)
+    if (boolValue !== undefined) {
+      return boolValue
+    }
+    return defaultValue
   }
 
   return {
