@@ -15,6 +15,7 @@ import { MODULE_NAME } from './constants'
 const initState = {
   breakpoints: [],
   currentBreakpoint: null,
+  height: null,
   width: null,
 }
 
