@@ -181,7 +181,8 @@ export class RecordNavigationBar extends Component {
           <Grid.Column>
             {!disabled && (
               <div style={{ fontWeight: 700, width: '7.25em' }}>
-                {numberOfListItems} records
+                <span data-testid="numberOfListItems">{numberOfListItems}</span>{' '}
+                records
               </div>
             )}
           </Grid.Column>

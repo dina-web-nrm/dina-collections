@@ -31,8 +31,8 @@ export function createOptions({
       if (attributes) {
         const { count, key, tagText, tagType, tagValue } = attributes
         const tagTypeText = addTagTypeToText
-          ? ` [${translateTagType(tagType)}] `
-          : ' '
+          ? ` [${translateTagType(tagType)}]`
+          : ''
 
         return createOption({
           count,

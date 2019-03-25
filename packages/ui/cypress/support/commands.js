@@ -8,3 +8,4 @@ import './router'
 import './should'
 
 import './compositeCommands/auth'
+import './compositeCommands/select'

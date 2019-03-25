@@ -53,6 +53,7 @@ class BottomBar extends PureComponent {
         <Grid padded>
           <Grid.Column>
             <Button
+              data-testid="searchButton"
               disabled={invalid}
               loading={this.state.loading}
               onClick={this.handleSearch}
@@ -63,6 +64,7 @@ class BottomBar extends PureComponent {
             </Button>
             <Button
               basic
+              data-testid="clearAllFiltersButton"
               disabled={pristine}
               onClick={handleReset}
               size="large"

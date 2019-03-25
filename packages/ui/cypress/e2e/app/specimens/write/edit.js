@@ -1,5 +1,10 @@
 export default () =>
   describe('edit', () => {
+    before(() => {
+      cy.resetDevelopmentSqlDb()
+      cy.resetElasticSpecimenIndex()
+    })
+
     describe('general', () => {
       beforeEach(() => {
         cy.goToRoute(`/app/specimens/mammals/2/edit/sections/0`)
@@ -96,7 +101,7 @@ export default () =>
           )
 
           cy.getByText('Add identifier').click()
-          cy.getDropdownInputByPlaceholder('Select identifier type')
+          cy.getDropdownInputByText('Select identifier type')
             .type('SVA{enter}')
             .parent()
             .shouldHaveName('individual.identifiers.2.identifierType.id') // we removed one above so this is now index 2
@@ -124,10 +129,10 @@ export default () =>
             .children()
             .should('have.length', 4)
           cy.getByTestId('activeAccordionContent').within(() => {
-            cy.getInputByFieldLabel('Determined as (stated)').type(
+            cy.getInputByLabelText('Determined as (stated)').type(
               'Rhabdomys pum.'
             )
-            cy.getInputByFieldLabel('Interpreted taxon name').type(
+            cy.getInputByLabelText('Interpreted taxon name').type(
               'Rhabdomys pumilio'
             )
           })
@@ -187,10 +192,10 @@ export default () =>
         it('edits collector with dropdown and picker', () => {
           cy.getByTestId('collectorExpedition').within(() => {
             cy.getByTestId('editAgentButton').click()
-            cy.getDropdownInputByName(
+            cy.getDropdownSearchByName(
               'individual.collectingInformation.0.collectedByAgent'
             ).type('john')
-            cy.getDropdownOptionByText('John Doe').click()
+            cy.selectDropdownOptionByText('John Doe')
           })
           cy.getByTestId('collectorExpedition').contains('John Doe [agent]')
 
@@ -229,12 +234,12 @@ export default () =>
 
           cy.getByText('Add a skin').click()
           cy.getByTestId('activeAccordionContent').within(() => {
-            cy.getInputByFieldLabel('Preparation type')
+            cy.getInputByLabelText('Preparation type')
               .click({ force: true })
               .type('complete')
-            cy.getDropdownOptionByText('Complete, mounted skin').click()
-            cy.getInputByFieldLabel('Normal storage location').type('Skinnrum')
-            cy.getDropdownOptionByText('Skinnrum kylda [room]').click()
+            cy.selectDropdownOptionByText('Complete, mounted skin')
+            cy.getInputByLabelText('Normal storage location').type('Skinnrum')
+            cy.selectDropdownOptionByText('Skinnrum kylda [room]')
             cy.getByText('New assessment').click()
           })
           cy.getByText('Add').click()
@@ -258,12 +263,12 @@ export default () =>
         it('updates sex and adds length', () => {
           cy.getByText('Sex').click()
           cy.getByTestId('clearDropdownIcon').click()
-          cy.getDropdownInputByPlaceholder('Select sex').click()
-          cy.getDropdownOptionByText('female?').click()
+          cy.getDropdownInputByText('Select sex').click()
+          cy.selectDropdownOptionByText('female?')
           cy.getByText('female?').should('be.visible')
 
-          cy.getInputByFieldLabel('Sex').click()
-          cy.getDropdownOptionByText('indeterminate').click()
+          cy.getInputByLabelText('Sex').click()
+          cy.selectDropdownOptionByText('indeterminate')
           cy.quickQueryByText('female?').should('not.be.visible')
           cy.getByText('indeterminate')
 
@@ -274,7 +279,7 @@ export default () =>
             .within(() => {
               cy.get('[placeholder="Add length"]').type('4.5')
               cy.getByText('unspecified').click()
-              cy.getDropdownOptionByText('cm').click()
+              cy.selectDropdownOptionByText('cm')
             })
         })
       })

@@ -69,6 +69,7 @@ export class ResultOptionsBar extends Component {
             </Menu.Item>
           )}
           <Menu.Item
+            data-testid="searchMenuItem"
             link
             onClick={event => handleToggleFilters(event)}
             style={{ marginLeft: '3.125em' }}
