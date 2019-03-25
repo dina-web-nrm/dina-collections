@@ -19,7 +19,8 @@
 | asteriskAndWholeField - ==pusa hisp*                | tagValue: ==pusa hisp*       | 1             |
 | asteriskAndWholeField - ==mus *lo*                  | tagValue: ==mus *lo*         | 1             |
 | asteriskAndWholeField - ==*lo* mus                  | tagValue: ==*lo* mus         | 0             |
-| equal - =pusa                                       | tagValue: =pusa              | 1             |
+| equal - =pusa                                       | tagValue: =pusa              | 2             |
+| equal - =pusa hispida                               | tagValue: =pusa hispida      | 1             |
 | equal - =                                           | tagValue: =                  | 0             |
 | noSpecialOperators - pusa                           | tagValue: pusa               | 2             |
 | noSpecialOperators - pu                             | tagValue: pu                 | 3             |

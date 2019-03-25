@@ -2,7 +2,7 @@
 
 ## simple
 
-| input    | regexp                     | testString | matching | errorMessage |
-| -------- | -------------------------- | ---------- | -------- | ------------ |
-| bensalen | ``` .*( )bensalen.*( ) ``` |  bensalen  | true     |              |
-| bensalen | ``` .*( )bensalen.*( ) ``` |  nrm       | false    |              |
+| input            | regexp                     | testString | matching | errorMessage |
+| ---------------- | -------------------------- | ---------- | -------- | ------------ |
+| ``` bensalen ``` | ``` .*( )bensalen.*( ) ``` |  bensalen  | true     |              |
+| ``` bensalen ``` | ``` .*( )bensalen.*( ) ``` |  nrm       | false    |              |
