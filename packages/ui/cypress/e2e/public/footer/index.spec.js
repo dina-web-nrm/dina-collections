@@ -47,6 +47,5 @@ describe('Footer', () => {
     cy.getByTestId('footerDinaApiDocs').shouldHaveHref(
       'https://dina-api.nrm.se/docs'
     )
-    cy.getByTestId('footerTestCoverage').shouldHaveHref('/coverage/index.html')
   })
 })

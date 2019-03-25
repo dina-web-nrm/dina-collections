@@ -109,17 +109,6 @@ export default () => {
                     </a>
                   </List.Content>
                 </List.Item>
-                <List.Item>
-                  <List.Content>
-                    <Icon name="external" />
-                    <a
-                      data-testid="footerTestCoverage"
-                      href="/coverage/index.html"
-                    >
-                      Test coverage
-                    </a>
-                  </List.Content>
-                </List.Item>
               </List>
             </Grid.Column>
           </Grid.Row>
