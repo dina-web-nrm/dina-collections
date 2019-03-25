@@ -1,6 +1,9 @@
+import config from 'config'
 import React from 'react'
 import { Container, Grid, Header, Icon, List, Segment } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
+
+const { externalUrls } = config
 
 export default () => {
   const size = 'large'
@@ -44,10 +47,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="wikipedia" />
-                    <a
-                      data-testid="footerDinaWiki"
-                      href="https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!"
-                    >
+                    <a data-testid="footerDinaWiki" href={externalUrls.wiki}>
                       DINA wiki
                     </a>
                   </List.Content>
@@ -70,7 +70,7 @@ export default () => {
                     <Icon name="github" />
                     <a
                       data-testid="footerDinaWebGithub"
-                      href="https://github.com/DINA-Web"
+                      href={externalUrls.githubDina}
                     >
                       DINA-Web Github
                     </a>
@@ -78,9 +78,20 @@ export default () => {
                 </List.Item>
                 <List.Item>
                   <List.Content>
+                    <Icon name="external" />
+                    <a
+                      data-testid="footerDinaDeveloperDocs"
+                      href={externalUrls.docs}
+                    >
+                      DINA developer documentation
+                    </a>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
                     <a
                       data-testid="footerDinaCollectionsGithub"
-                      href="https://github.com/DINA-Web/dina-collections"
+                      href={externalUrls.githubRepo}
                     >
                       <Icon name="github" />
                       Collections on Github
@@ -90,10 +101,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="external" />
-                    <a
-                      data-testid="footerDinaStyle"
-                      href="https://dina-style.nrm.se/"
-                    >
+                    <a data-testid="footerDinaStyle" href={externalUrls.style}>
                       Style guide
                     </a>
                   </List.Content>
@@ -103,7 +111,7 @@ export default () => {
                     <Icon name="external" />
                     <a
                       data-testid="footerDinaApiDocs"
-                      href="https://dina-api.nrm.se/docs"
+                      href={`${externalUrls.api}/docs`}
                     >
                       Api documentation
                     </a>
