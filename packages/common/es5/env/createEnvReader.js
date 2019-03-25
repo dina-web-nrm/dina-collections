@@ -59,14 +59,25 @@ module.exports = function createEnvReader() {
   var resolvedEnvVariables = (0, _extends3.default)({}, devEnv, optionalEnv, requiredEnv, testEnv);
 
   function readKey(key) {
+    var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+
     if (!existingEnvVarialbes.includes(key)) {
       throw new Error('Trying to access non existing env varable: ' + key);
+    }
+    if (resolvedEnvVariables[key] === undefined) {
+      return defaultValue;
     }
     return resolvedEnvVariables[key];
   }
 
   function readBoolKey(key) {
-    return readKey(key) === true;
+    var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    var boolValue = readKey(key);
+    if (boolValue !== undefined) {
+      return boolValue;
+    }
+    return defaultValue;
   }
 
   return {
