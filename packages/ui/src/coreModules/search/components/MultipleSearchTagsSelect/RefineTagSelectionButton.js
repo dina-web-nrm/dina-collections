@@ -24,6 +24,10 @@ class RefineTagSelectionButton extends Component {
       onOpenRefine,
     } = this.props
 
+    const hasSearchResults = selectors.getHasFreeTextSearchResults(
+      reduxFormValues
+    )
+
     const numberOfSearchResults = selectors.getNumberOfFreeTextSearchResults(
       reduxFormValues
     )
@@ -33,7 +37,7 @@ class RefineTagSelectionButton extends Component {
 
     return (
       <Button
-        disabled={!numberOfSearchResults}
+        disabled={!hasSearchResults}
         onClick={refineOpen ? onCloseRefine : onOpenRefine}
         style={{
           paddingLeft: '0.5em',

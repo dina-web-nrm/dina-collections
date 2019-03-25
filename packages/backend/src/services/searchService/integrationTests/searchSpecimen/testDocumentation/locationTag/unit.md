@@ -2,7 +2,7 @@
 
 ## simple
 
-| input   | regexp                    | testString          | matching | errorMessage |
-| ------- | ------------------------- | ------------------- | -------- | ------------ |
-| rödskär | ``` .*( )rödskär.*( ) ``` |  bogesund, rödskär  | true     |              |
-| rödskär | ``` .*( )rödskär.*( ) ``` |  europe             | false    |              |
+| input           | regexp                    | testString          | matching | errorMessage |
+| --------------- | ------------------------- | ------------------- | -------- | ------------ |
+| ``` rödskär ``` | ``` .*( )rödskär.*( ) ``` |  bogesund, rödskär  | true     |              |
+| ``` rödskär ``` | ``` .*( )rödskär.*( ) ``` |  europe             | false    |              |

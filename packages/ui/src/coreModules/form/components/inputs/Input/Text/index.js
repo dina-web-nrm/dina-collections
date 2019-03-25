@@ -34,6 +34,12 @@ const defaultProps = {
   type: 'text',
 }
 
+function preventNonNumeric(event) {
+  if (event.key === 'e' || event.key === 'E') {
+    event.preventDefault()
+  }
+}
+
 class TextInput extends PureComponent {
   componentDidMount() {
     if (this.props.focusOnMount && !config.isTest) {
@@ -72,6 +78,7 @@ class TextInput extends PureComponent {
         }}
         type={type}
         {...input}
+        onKeyPress={this.props.type === 'number' && preventNonNumeric}
         size={size}
         style={style}
       />

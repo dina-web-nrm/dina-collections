@@ -1,3 +1,16 @@
+const isRangeNumberInvalid = number => {
+  if (number === undefined) {
+    return false
+  }
+  if (number && `${number}`.includes('e')) {
+    return true
+  }
+  if (Number.isNaN(Number(number)) || number === null) {
+    return true
+  }
+  return number < 0
+}
+
 module.exports = function createFeatureRangeFilter({ description, fieldPath }) {
   const rangeValuePath = `${fieldPath}.rangeValue`
   const rangeUnitPath = `${fieldPath}.rangeUnit`
@@ -7,16 +20,24 @@ module.exports = function createFeatureRangeFilter({ description, fieldPath }) {
     description: description || `Match for ${fieldPath}`,
     elasticsearch: ({ value = {} }) => {
       const { min, max, tagType, rangeUnit } = value
+      const mustNot = []
+
       const must = []
       if (min !== undefined || max !== undefined) {
-        must.push({
-          range: {
-            [`${rangeValuePath}`]: {
-              gte: min,
-              lte: max,
+        if (isRangeNumberInvalid(min) || isRangeNumberInvalid(max)) {
+          mustNot.push({
+            match_all: {},
+          })
+        } else {
+          must.push({
+            range: {
+              [`${rangeValuePath}`]: {
+                gte: min,
+                lte: max,
+              },
             },
-          },
-        })
+          })
+        }
       }
 
       if (tagType) {
@@ -37,6 +58,7 @@ module.exports = function createFeatureRangeFilter({ description, fieldPath }) {
           query: {
             bool: {
               must,
+              mustNot,
             },
           },
         },
