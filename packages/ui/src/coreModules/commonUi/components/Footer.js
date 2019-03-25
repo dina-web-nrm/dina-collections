@@ -12,7 +12,7 @@ export default () => {
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row data-testid="footerContent">
-            <Grid.Column width={3}>
+            <Grid.Column width={4}>
               <Header as="h4" content="Site" inverted />
               <List data-testid="footerSite" inverted link size={size}>
                 <List.Item>
@@ -41,7 +41,7 @@ export default () => {
                 </List.Item>
               </List>
             </Grid.Column>
-            <Grid.Column width={3}>
+            <Grid.Column width={4}>
               <Header as="h4" content="Documentation" inverted />
               <List data-testid="footerDocument" inverted link size={size}>
                 <List.Item>
@@ -62,7 +62,7 @@ export default () => {
                 </List.Item>
               </List>
             </Grid.Column>
-            <Grid.Column width={3}>
+            <Grid.Column width={6}>
               <Header as="h4" content="Developer" inverted />
               <List data-testid="footerDeveloper" inverted link size={size}>
                 <List.Item>
