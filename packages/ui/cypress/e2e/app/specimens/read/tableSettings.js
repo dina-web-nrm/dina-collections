@@ -2,7 +2,7 @@ export default () =>
   describe(`table settings`, () => {
     beforeEach(() => {
       cy.goToRoute('/app/specimens/mammals/search')
-      cy.get('[data-testid="infiniteTableHeader"', {
+      cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,
       })
@@ -10,7 +10,7 @@ export default () =>
 
     it('has all columns selected by default, can deselect all and save selected', () => {
       cy.log('check all column headers exist')
-      cy.getByTestId('infiniteTableHeader')
+      cy.getByTestId('infinityTableHeader')
         .children()
         .should('have.length', 32)
       cy.getByTestId('settingsMenuItem').click()
@@ -23,7 +23,7 @@ export default () =>
       cy.log('deselect all and save')
       cy.getByTestId('deselectAllButton').click()
       cy.getByTestId('saveButton').click()
-      cy.getByTestId('infiniteTableHeader')
+      cy.getByTestId('infinityTableHeader')
         .children()
         .should('have.length', 0)
 
@@ -36,17 +36,17 @@ export default () =>
       })
       cy.get('input[name="recordEventLastModified"]').check({ force: true })
       cy.getByTestId('saveButton').click()
-      cy.getByTestId('infiniteTableHeader')
+      cy.getByTestId('infinityTableHeader')
         .children()
         .should('have.length', 4)
-      cy.getByTestId('infiniteTableHeader-identifiersCatalogNumber')
-      cy.getByTestId('infiniteTableHeader-taxonomyCuratorialName')
-      cy.getByTestId('infiniteTableHeader-collectingEventInterpretedLocality')
-      cy.getByTestId('infiniteTableHeader-recordEventLastModified')
+      cy.getByTestId('infinityTableHeader-identifiersCatalogNumber')
+      cy.getByTestId('infinityTableHeader-taxonomyCuratorialName')
+      cy.getByTestId('infinityTableHeader-collectingEventInterpretedLocality')
+      cy.getByTestId('infinityTableHeader-recordEventLastModified')
 
       cy.log('reload and check same columns still there')
       cy.reload()
-      cy.getByTestId('infiniteTableHeader')
+      cy.getByTestId('infinityTableHeader')
         .children()
         .should('have.length', 4)
     })

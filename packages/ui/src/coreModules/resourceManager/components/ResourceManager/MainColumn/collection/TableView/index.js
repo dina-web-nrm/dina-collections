@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { NoResultsFound } from 'coreModules/search/components/'
-import InfiniteTableHeader from './InfiniteTableHeader'
-import InfiniteTable from './InfiniteTable'
+import InfinityTableHeader from './InfinityTableHeader'
+import InfinityTable from './InfinityTable'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
@@ -22,7 +22,7 @@ const defaultProps = {
 const rows = [
   {
     height: emToPixels(3.5),
-    key: 'infiniteTableHeader',
+    key: 'infinityTableHeader',
     style: { borderBottom: '1px solid #b5b5b5', position: 'relative' },
   },
   {
@@ -42,9 +42,9 @@ class ResultTableView extends PureComponent {
     const { tableColumnSpecifications, resource, width } = this.props
 
     switch (key) {
-      case 'infiniteTableHeader': {
+      case 'infinityTableHeader': {
         return (
-          <InfiniteTableHeader
+          <InfinityTableHeader
             height={emToPixels(3.5)}
             resource={resource}
             tableColumnSpecifications={tableColumnSpecifications}
@@ -57,7 +57,7 @@ class ResultTableView extends PureComponent {
         return listItems.length === 0 ? (
           <NoResultsFound />
         ) : (
-          <InfiniteTable {...this.props} {...tableBatchFetchOptions} />
+          <InfinityTable {...this.props} {...tableBatchFetchOptions} />
         )
       }
       default: {

@@ -32,7 +32,7 @@ const defaultProps = {
   itemId: undefined,
 }
 
-const InfiniteTableRow = ({
+const InfinityTableRow = ({
   background,
   isFocused,
   item,
@@ -46,7 +46,7 @@ const InfiniteTableRow = ({
   if (!item) {
     return (
       <Grid.Row
-        data-testid={`infiniteTableRow${rowNumber}Loading`}
+        data-testid={`infinityTableRow${rowNumber}Loading`}
         style={{ height: emToPixels(3.5), width }}
       >
         <Grid.Column style={{ width: 60 }}>
@@ -61,7 +61,7 @@ const InfiniteTableRow = ({
   return (
     <Grid.Row
       data-isfocused={isFocused ? 'yes' : 'no'}
-      data-testid={`infiniteTableRow${rowNumber}`}
+      data-testid={`infinityTableRow${rowNumber}`}
       onClick={event => {
         event.preventDefault()
         onClick(rowNumber, itemId)
@@ -97,7 +97,7 @@ const InfiniteTableRow = ({
   )
 }
 
-InfiniteTableRow.propTypes = propTypes
-InfiniteTableRow.defaultProps = defaultProps
+InfinityTableRow.propTypes = propTypes
+InfinityTableRow.defaultProps = defaultProps
 
-export default connect(mapStateToProps)(InfiniteTableRow)
+export default connect(mapStateToProps)(InfinityTableRow)

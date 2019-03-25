@@ -14,10 +14,10 @@ import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
 import { NoResultsFound } from 'coreModules/search/components/'
 import { actionCreators as keyObjectActionCreators } from '../../../../keyObjectModule'
-import InfiniteTableRow from './InfiniteTableRow'
+import InfinityTableRow from './InfinityTableRow'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTable'
+  'modules:collectionMammals:MammalManager:ResultTableView:InfinityTable'
 )
 
 const SEARCH_SPECIMEN = 'searchSpecimen'
@@ -73,7 +73,7 @@ const itemsRenderer = (items, ref) => {
   )
 }
 
-export class InfiniteTable extends Component {
+export class InfinityTable extends Component {
   constructor(props) {
     super(props)
     this.list = null
@@ -159,7 +159,7 @@ export class InfiniteTable extends Component {
       : '#fff'
 
     return (
-      <InfiniteTableRow
+      <InfinityTableRow
         background={background}
         isFocused={isFocused}
         itemId={itemId}
@@ -197,7 +197,7 @@ export class InfiniteTable extends Component {
     }
 
     return (
-      <div data-testid="infiniteTable" style={{ width }}>
+      <div data-testid="infinityTable" style={{ width }}>
         <ReactList
           initialIndex={currentTableRowNumber - 1}
           itemRenderer={this.renderItem}
@@ -211,8 +211,8 @@ export class InfiniteTable extends Component {
   }
 }
 
-InfiniteTable.propTypes = propTypes
-InfiniteTable.defaultProps = defaultProps
+InfinityTable.propTypes = propTypes
+InfinityTable.defaultProps = defaultProps
 
 export default compose(
   createInjectSearchResult({
@@ -226,4 +226,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   )
-)(InfiniteTable)
+)(InfinityTable)
