@@ -9,7 +9,7 @@ echo "Running version hook $npm_package_version"
 if [ $VERSION_TYPE = "release" ]; then
   yarn build:version-info && yarn build:changelog
 elif [ $VERSION_TYPE = "pre-release"  ]; then
-  if [[ $npm_package_version == *".rc"* ]]; then
+  if [[ $npm_package_version == *"-rc"* ]]; then
     yarn build:version-info && yarn build:changelog
   else
     echo "Not allowed to create pre-release not including 'rc'. Use ex 0.17.2-rc1"
