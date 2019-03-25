@@ -2,7 +2,47 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.17.3-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.17.3-rc1)
+
+- Improve search multiple tag select [`#489`](https://github.com/DINA-Web/dina-collections/pull/489)
+- Add more search operators [`#487`](https://github.com/DINA-Web/dina-collections/pull/487)
+- Update data model documentation [`#488`](https://github.com/DINA-Web/dina-collections/pull/488)
+- Implement regexp search [`#485`](https://github.com/DINA-Web/dina-collections/pull/485)
+- Add specimen form and table tests [`#486`](https://github.com/DINA-Web/dina-collections/pull/486)
+- Fix table settings and end date timestamp for current year, month, day [`#484`](https://github.com/DINA-Web/dina-collections/pull/484)
+- Fix e2e data setup & add initial specimen tests [`#481`](https://github.com/DINA-Web/dina-collections/pull/481)
+- Add raw elastic tests, simple taxonomy test and regexpBuilder [`#478`](https://github.com/DINA-Web/dina-collections/pull/478)
+- Fix migration bug related to find root path [`#479`](https://github.com/DINA-Web/dina-collections/pull/479)
+- Implement login for e2e tests [`#473`](https://github.com/DINA-Web/dina-collections/pull/473)
+- Update packages and removed not used  [`#475`](https://github.com/DINA-Web/dina-collections/pull/475)
+- Clean up env variables  [`#471`](https://github.com/DINA-Web/dina-collections/pull/471)
+- Add repository and Docker structure docs [`#470`](https://github.com/DINA-Web/dina-collections/pull/470)
+- Prepare search refactor [`#469`](https://github.com/DINA-Web/dina-collections/pull/469)
+- Add e2e tests for home, footer and login [`#463`](https://github.com/DINA-Web/dina-collections/pull/463)
+- Start keycloak when running e2e tests locally in Travis [`#468`](https://github.com/DINA-Web/dina-collections/pull/468)
+- Setup end-to-end tests in Travis CI [`#465`](https://github.com/DINA-Web/dina-collections/pull/465)
+- Fix broken publishing of Docker images from Travis [`#467`](https://github.com/DINA-Web/dina-collections/pull/467)
+- Add test user in keycloak import json file [`#466`](https://github.com/DINA-Web/dina-collections/pull/466)
+- Fix broken travis script reference [`#462`](https://github.com/DINA-Web/dina-collections/pull/462)
+- Add docs package with docusaurus  [`#460`](https://github.com/DINA-Web/dina-collections/pull/460)
+- Add cypress for end-to-end tests [`#461`](https://github.com/DINA-Web/dina-collections/pull/461)
+- Update setup documentation [`#459`](https://github.com/DINA-Web/dina-collections/pull/459)
+- Update CONTRIBUTING.md [`#457`](https://github.com/DINA-Web/dina-collections/pull/457)
+- Upgrade React to 16.8 [`#455`](https://github.com/DINA-Web/dina-collections/pull/455)
+- Configure formatting of markdown [`#458`](https://github.com/DINA-Web/dina-collections/pull/458)
+- Remove data scoping from backend services [`#456`](https://github.com/DINA-Web/dina-collections/pull/456)
+- Improve backend logging [`#454`](https://github.com/DINA-Web/dina-collections/pull/454)
+- Upgrade Node,js, create-react-app and React [`#453`](https://github.com/DINA-Web/dina-collections/pull/453)
+- Make backend db-tests and api-tests work in travis  [`#452`](https://github.com/DINA-Web/dina-collections/pull/452)
+- Remove storybook component documentation [`#451`](https://github.com/DINA-Web/dina-collections/pull/451)
+- Refactor updateRelationships in jsonApiClient [`#444`](https://github.com/DINA-Web/dina-collections/pull/444)
+- Parallelize test suites in Travis CI [`#446`](https://github.com/DINA-Web/dina-collections/pull/446)
+- Upgrade prettier [`#449`](https://github.com/DINA-Web/dina-collections/pull/449)
+- Exclude tags containing "test" in changelog [`#447`](https://github.com/DINA-Web/dina-collections/pull/447)
+
 #### [v0.17.2](https://github.com/DINA-Web/dina-collections/compare/v0.17.1...v0.17.2)
+
+> 21 February 2019
 
 - Tune search [`#445`](https://github.com/DINA-Web/dina-collections/pull/445)
 - Fix relationship bugs [`#443`](https://github.com/DINA-Web/dina-collections/pull/443)
