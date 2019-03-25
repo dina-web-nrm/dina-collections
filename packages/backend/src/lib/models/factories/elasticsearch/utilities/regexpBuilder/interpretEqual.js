@@ -1,13 +1,20 @@
 const createNotMatchingRegexp = require('./createNotMatchingRegexp')
-const { WORD_DELIMITER } = require('./constants')
+const { MATCH_ANY, WORD_DELIMITER } = require('./constants')
 
-module.exports = function interpretEqual(input) {
+module.exports = function interpretEqual({ input, stripEqual = true }) {
   if (input.length < 2) {
     return createNotMatchingRegexp()
   }
-
-  if (input[0] !== '=') {
-    throw new Error('Expect = to be first character')
+  let sanitizedInput = input
+  if (input[0] === '=' && stripEqual) {
+    sanitizedInput = input.substr(1)
   }
-  return [WORD_DELIMITER, input.substr(1), WORD_DELIMITER].join('')
+
+  return [
+    MATCH_ANY,
+    WORD_DELIMITER,
+    sanitizedInput,
+    WORD_DELIMITER,
+    MATCH_ANY,
+  ].join('')
 }

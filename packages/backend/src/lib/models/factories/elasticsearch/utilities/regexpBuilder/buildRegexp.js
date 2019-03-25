@@ -18,7 +18,7 @@ module.exports = function buildRegexp({ env, input, throwOnError }) {
     )
 
     if (noFlags) {
-      regexp = createWordRegexp(sanitizedInput)
+      regexp = createWordRegexp({ input: sanitizedInput })
     } else if (hasFieldEqual) {
       regexp = createWholeFieldRegexp({ env, input: sanitizedInput })
     } else if (hasPhrase) {
@@ -26,7 +26,7 @@ module.exports = function buildRegexp({ env, input, throwOnError }) {
     } else if (hasSpace) {
       regexp = createMultiWordRegexp(sanitizedInput)
     } else {
-      regexp = createWordRegexp(sanitizedInput)
+      regexp = createWordRegexp({ input: sanitizedInput })
     }
   } catch (err) {
     if (throwOnError) {
