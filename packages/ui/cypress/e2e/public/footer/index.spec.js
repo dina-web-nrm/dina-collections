@@ -30,11 +30,11 @@ describe('Footer', () => {
   it('has expected links', () => {
     cy.getByTestId('footerStart').shouldHaveHref('/')
     cy.getByTestId('footerLogin').shouldHaveHref('/login')
-    cy.getByTestId('footerDataModel').shouldHaveHref('/docs')
+    cy.getByTestId('footerDataModel').shouldHaveHref('/dataModelDocs')
     cy.getByTestId('footerDinaWiki').shouldHaveHref('wiki', {
       exact: false,
     })
-    cy.getByTestId('footerDocumentDataModel').shouldHaveHref('/docs')
+    cy.getByTestId('footerDocumentDataModel').shouldHaveHref('/dataModelDocs')
     cy.getByTestId('footerDinaWebGithub').shouldHaveHref('github', {
       exact: false,
     })

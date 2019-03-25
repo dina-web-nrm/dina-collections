@@ -34,7 +34,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="database" />
-                    <NavLink data-testid="footerDataModel" to="/docs">
+                    <NavLink data-testid="footerDataModel" to="/dataModelDocs">
                       Data model
                     </NavLink>
                   </List.Content>
@@ -55,7 +55,10 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="database" />
-                    <NavLink data-testid="footerDocumentDataModel" to="/docs">
+                    <NavLink
+                      data-testid="footerDocumentDataModel"
+                      to="/dataModelDocs"
+                    >
                       Data model
                     </NavLink>
                   </List.Content>

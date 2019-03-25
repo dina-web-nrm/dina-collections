@@ -34,7 +34,7 @@ ReactDOM.render(
             <Switch>
               <Route component={DataViewer} path="/dataViewer" />
               <Route component={App} path="/app" />
-              <Route component={Docs} path="/docs" />
+              <Route component={Docs} path="/dataModelDocs" />
               <Route component={Public} />
             </Switch>
             <NotificationDisplay displayType="fixed" />

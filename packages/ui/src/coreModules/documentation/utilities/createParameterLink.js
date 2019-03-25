@@ -3,5 +3,5 @@ export default function createParameterLink({
   modelName,
   parameterName,
 }) {
-  return `/docs/${version}/models/${modelName}/${parameterName}`
+  return `/dataModelDocs/${version}/models/${modelName}/${parameterName}`
 }
