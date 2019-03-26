@@ -55,32 +55,9 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
 
-  echo "Building UI bundle and image"
-  yarn build:ui
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-
-  docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:ci ./packages/ui;
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-
-  echo "Building migrations image"
-  docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:ci .;
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-
-  echo "Building backend image"
-  docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:ci .;
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
+  docker pull dina/dina-collections-ui:$TRAVIS_BUILD_NUMBER
+  docker pull dina/dina-collections-api:$TRAVIS_BUILD_NUMBER
+  docker pull dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER
 
   echo "Setup sample data"
   yarn setup:sample-data
@@ -90,10 +67,10 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
   sleep 10
 
   echo "Importing sample data"
-  TAG=ci docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
+  TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
 
   echo "Starting application and worker containers"
-  TAG=ci docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
+  TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
 
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
