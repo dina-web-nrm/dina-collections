@@ -78,7 +78,9 @@ class TextInput extends PureComponent {
         }}
         type={type}
         {...input}
-        onKeyPress={this.props.type === 'number' && preventNonNumeric}
+        onKeyPress={
+          this.props.type === 'number' ? preventNonNumeric : undefined
+        }
         size={size}
         style={style}
       />
