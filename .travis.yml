@@ -122,9 +122,30 @@ matrix:
         - CI_TEST_UI_LINT=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
+    - stage: publish
+      name: 'Publish backend and migrations'
+      env:
+        - CI_PUBLISH_API=true
+        - CI_PUBLISH_MIGRATIONS=true
+      script: ./packages/scripts/src/bash/ci-publish.sh
+
+    - stage: publish
+      name: 'Publish ui'
+      env:
+        - CI_PUBLISH_UI=true
+      script: ./packages/scripts/src/bash/ci-publish.sh
+
+    - stage: publish
+      name: 'Publish rest'
+      env:
+        - CI_PUBLISH_DOCS=true
+        - CI_PUBLISH_STYLE=true
+      script: ./packages/scripts/src/bash/ci-publish.sh
+
 stages:
   - name: build
   - name: test
+  - name: publish
     if: tag IS present
 
 addons:
