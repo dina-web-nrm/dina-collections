@@ -1,5 +1,6 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-before-script.sh
+set -v
 
 START_DIRECTORY=$PWD
 
