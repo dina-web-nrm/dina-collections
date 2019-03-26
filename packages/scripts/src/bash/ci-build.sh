@@ -1,22 +1,10 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-build.sh
-
-TRAVIS_TAG="${TRAVIS_TAG:-$TAG}"
-
-if [ -z "$TRAVIS_TAG" ]; then
-  echo "TRAVIS_TAG and TAG is empty, Abort" ;
-  exit 0
-fi
+set -v
 
 if [ "$CI_BUILD_BACKEND" = true ]; then
   echo "Building backend"
-  if [ "$CI_TAG_LATEST" = true ]; then
-    echo "Tagging latest"
-    docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_TAG -t dina/dina-collections-api:latest .;
-  else
-    echo "Not tagging latest"
-    docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_TAG  .;
-  fi
+  docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_BUILD_NUMBER  .;
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -25,13 +13,7 @@ fi
 
 if [ "$CI_BUILD_MIGRATIONS" = true ]; then
   echo "Building migrations"
-  if [ "$CI_TAG_LATEST" = true ]; then
-    echo "Tagging latest"
-    docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TRAVIS_TAG -t dina/dina-collections-migrations:latest .;
-  else
-    echo "Not tagging latest"
-    docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TRAVIS_TAG .;
-  fi
+  docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER .;
 
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
@@ -48,13 +30,7 @@ if [ "$CI_BUILD_UI" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
-    echo "Tagging latest"
-    docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:$TRAVIS_TAG -t dina/dina-collections-ui:latest ./packages/ui;
-  else
-    echo "Not tagging latest"
-    docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:$TRAVIS_TAG ./packages/ui;
-  fi
+  docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:$TRAVIS_BUILD_NUMBER ./packages/ui;
 
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
@@ -70,13 +46,7 @@ if [ "$CI_BUILD_STYLE" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
-    echo "Tagging latest"
-    docker build -f ./packages/dina-style/Dockerfile -t dina/dina-semantic-ui-docs:$TRAVIS_TAG -t dina/dina-semantic-ui-docs:latest ./packages/dina-style;
-  else
-    echo "Not tagging latest"
-    docker build -f ./packages/dina-style/Dockerfile -t dina/dina-semantic-ui-docs:$TRAVIS_TAG ./packages/dina-style;
-  fi
+  docker build -f ./packages/dina-style/Dockerfile -t dina/dina-semantic-ui-docs:$TRAVIS_BUILD_NUMBER ./packages/dina-style;
 
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
@@ -92,13 +62,7 @@ if [ "$CI_BUILD_DOCS" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
-    echo "Tagging latest"
-    docker build -f ./packages/docs/Dockerfile -t dina/dina-collections-docs:$TRAVIS_TAG -t dina/dina-collections-docs:latest ./packages/docs;
-  else
-    echo "Not tagging latest"
-    docker build -f ./packages/docs/Dockerfile -t dina/dina-collections-docs:$TRAVIS_TAG ./packages/docs;
-  fi
+  docker build -f ./packages/docs/Dockerfile -t dina/dina-collections-docs:$TRAVIS_BUILD_NUMBER ./packages/docs;
 
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
