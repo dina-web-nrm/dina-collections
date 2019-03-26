@@ -142,11 +142,16 @@ matrix:
         - CI_PUBLISH_STYLE=true
       script: ./packages/scripts/src/bash/ci-publish.sh
 
+    - stage: cleanup
+      name: 'Delete temporary docker images'
+      script: ./packages/scripts/src/bash/ci-delete-temporary-images.sh
+
 stages:
   - name: build
   - name: test
   - name: publish
     if: tag IS present
+  - name: cleanup
 
 addons:
   hosts:
@@ -175,3 +180,6 @@ install:
 
 before_script:
   - ./packages/scripts/src/bash/ci-before-script.sh
+
+after_failure:
+  - ./packages/scripts/src/bash/ci-delete-temporary-images.sh
