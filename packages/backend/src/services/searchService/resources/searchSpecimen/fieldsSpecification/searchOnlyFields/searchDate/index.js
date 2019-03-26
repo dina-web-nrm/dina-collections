@@ -61,7 +61,7 @@ const transformation = ({ migrator, src, target }) => {
 const searchFilter = {
   description: 'Search date',
   elasticsearch: ({ value = {} }) => {
-    const { start, end, invalid } = value
+    const { end, endDate = {}, invalid, start, startDate = {} } = value
 
     const must = []
     const mustNot = []
@@ -70,21 +70,35 @@ const searchFilter = {
         match_all: {},
       })
     }
+
     if (start) {
+      const startTimestamp =
+        getInterpretedTimestampFromYMD({
+          ...startDate,
+          isStartDate: true,
+        }) || start
+
       must.push({
         range: {
           [`${fieldPath}.startTimestamp`]: {
-            gte: start,
+            gte: startTimestamp,
           },
         },
       })
     }
 
     if (end) {
+      const endTimestamp =
+        getInterpretedTimestampFromYMD({
+          ...endDate,
+          isEndDate: true,
+          moveCurrentYearEndDateToNow: true,
+        }) || end
+
       must.push({
         range: {
           [`${fieldPath}.endTimestamp`]: {
-            lte: end,
+            lte: endTimestamp,
           },
         },
       })
