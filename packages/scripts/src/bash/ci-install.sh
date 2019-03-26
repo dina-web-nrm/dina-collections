@@ -1,6 +1,6 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-install.sh
-
+set -v
 
 if [ "$CI_INSTALL_UI" = true ]; then
   echo "Installing ui"
