@@ -11,6 +11,7 @@ module.exports = function runApiTagTests({ testSpecification, filterType }) {
     aggregationType,
     fieldPath,
     filterFunction,
+    preprocessItems,
     resource,
     testCases,
   } = testSpecification
@@ -61,6 +62,7 @@ module.exports = function runApiTagTests({ testSpecification, filterType }) {
   runTestCases({
     createTestCaseTests,
     logResponse,
+    preprocessItems,
     requestBuilder,
     storeTestLog,
     testCases,

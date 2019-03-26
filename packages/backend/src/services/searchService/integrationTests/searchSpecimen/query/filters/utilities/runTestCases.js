@@ -6,6 +6,7 @@ module.exports = function runTestCases({
   createTestCaseTests,
   defaultQueryTypes = ['dina'],
   logResponse,
+  preprocessItems,
   requestBuilder,
   storeTestLog,
   testCases,
@@ -54,7 +55,15 @@ module.exports = function runTestCases({
             }).then(output => {
               /* eslint-disable prefer-destructuring */
               err = output.err
-              res = output.res
+              if (preprocessItems && output.res && output.res.data) {
+                res = {
+                  ...output.res,
+                  data: preprocessItems(output.res.data),
+                }
+              } else {
+                res = output.res
+              }
+
               /* eslint-enable prefer-destructuring */
             })
           })
