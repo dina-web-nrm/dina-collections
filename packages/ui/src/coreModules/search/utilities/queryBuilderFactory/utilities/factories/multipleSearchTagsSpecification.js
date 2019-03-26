@@ -58,15 +58,22 @@ export default function multipleSearchTagsSpecification({
     }
 
     const tagFilters = []
+
     Object.keys(fieldValue).forEach(key => {
       const dropdownEntry = fieldValue[key]
       const isFreeText =
         objectPath.get(dropdownEntry, 'searchOption.other.optionType') ===
         'freeText'
-      const hasNoMatchingTag = !objectPath.get(dropdownEntry, 'matchingTags')
-        .length
+      const { matchingTags } = fieldValue[key]
+      const hasNoMatchingTags =
+        objectPath.get(dropdownEntry, 'matchingTags').length === 0
+      const noMatchingTagsSelected =
+        matchingTags &&
+        matchingTags.every(tag => {
+          return tag.selected === false
+        })
 
-      if (isFreeText && hasNoMatchingTag) {
+      if (isFreeText && (hasNoMatchingTags || noMatchingTagsSelected)) {
         tagFilters.push({
           filter: {
             filterFunction: searchFilterFunctionName,
@@ -84,12 +91,8 @@ export default function multipleSearchTagsSpecification({
           },
         })
       } else {
-        let anySelected = false
         fieldValue[key].matchingTags
           .filter(tag => {
-            if (tag.selected) {
-              anySelected = true
-            }
             return !!tag.selected
           })
           .forEach(tag => {
@@ -103,16 +106,6 @@ export default function multipleSearchTagsSpecification({
               },
             })
           })
-        if (!anySelected) {
-          tagFilters.push({
-            filter: {
-              filterFunction: matchFilterFunctionName,
-              input: {
-                tagValue: 'not-matching-any',
-              },
-            },
-          })
-        }
       }
     })
 

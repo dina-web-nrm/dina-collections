@@ -243,7 +243,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   }
 
   fetchFreeTextTags(searchOption) {
-    const limit = 100
+    const limit = 50
     const { tagValue } = searchOption.other
     return this.getItemsForSearchQuery({
       exact: false,
@@ -254,12 +254,12 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       const matchingTags = createMatchingTagsFromItems(items)
 
       const updatedReduxFormValues = createReduxFormValues({
-        hasMatchingTags: matchingTags.length,
+        hasMatchingTags: !!matchingTags.length,
         matchingTags,
         matchingTagsReachedLimit: items.length === limit,
         prevReduxFormValues,
         searchOption,
-        selected: true,
+        selected: false,
       })
 
       return this.props.input.onChange(updatedReduxFormValues)

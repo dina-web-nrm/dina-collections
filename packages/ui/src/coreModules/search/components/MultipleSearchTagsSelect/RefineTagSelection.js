@@ -9,8 +9,6 @@ const propTypes = {
   addTagTypeToText: PropTypes.bool.isRequired,
   fetchFreeTextTags: PropTypes.func.isRequired,
   inline: PropTypes.bool.isRequired,
-  numberOfSearchResults: PropTypes.number.isRequired,
-  numberOfSelectedResults: PropTypes.number.isRequired,
   onClose: PropTypes.func.isRequired,
   onDeselectAllForSearchQuery: PropTypes.func.isRequired,
   onSelectAllForSearchQuery: PropTypes.func.isRequired,
@@ -33,8 +31,6 @@ const RefineTagSelection = ({
   addTagTypeToText,
   fetchFreeTextTags,
   inline,
-  numberOfSearchResults,
-  numberOfSelectedResults,
   onClose: handleClose,
   onDeselectAllForSearchQuery: handleDeselectAllForSearchQuery,
   onSelectAllForSearchQuery: handleSelectAllForSearchQuery,
@@ -46,7 +42,8 @@ const RefineTagSelection = ({
   if (inline) {
     return (
       <React.Fragment>
-        <Header size="medium">{`Refine filter (${numberOfSelectedResults}/${numberOfSearchResults})`}</Header>
+        <Header size="medium">Refine free text queries</Header>
+        <p>Refine queries with up to 50 matching tags</p>
         {freeTextQueries.map(searchQuery => {
           const { matchingTagsReachedLimit, searchOption } = reduxFormValues[
             searchQuery
@@ -74,9 +71,13 @@ const RefineTagSelection = ({
 
   return (
     <FormModal closeIcon onClose={handleClose} open>
-      <Modal.Header>{`Refine filter (${numberOfSelectedResults}/${numberOfSearchResults})`}</Modal.Header>
+      <Modal.Header>Refine free text queries</Modal.Header>
+
       <Modal.Content>
         <Modal.Description>
+          <Header size="small">
+            Refine queries with up to 50 matching tags
+          </Header>
           {freeTextQueries.map(searchQuery => {
             const { matchingTagsReachedLimit, searchOption } = reduxFormValues[
               searchQuery

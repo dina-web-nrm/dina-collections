@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Grid, Header, Label } from 'semantic-ui-react'
+import { Grid, Icon, Header, Label } from 'semantic-ui-react'
+
+const computeNumberOfSelected = matchingTags => {
+  return matchingTags.reduce((numberOfMatches, tag) => {
+    if (tag.selected) {
+      return numberOfMatches + 1
+    }
+    return numberOfMatches
+  }, 0)
+}
 
 const propTypes = {
   addTagTypeToText: PropTypes.bool.isRequired,
@@ -42,24 +51,60 @@ class TagGroup extends Component {
       searchQuery,
       translateTagType,
     } = this.props
-    const title = searchOption.text
+    const numberOfTagsSelected = computeNumberOfSelected(matchingTags)
+    const hasTagsSelected = numberOfTagsSelected > 0
+    const noTagsSelected = numberOfTagsSelected === 0
+
+    let message = ''
+    if (matchingTagsReachedLimit) {
+      message = ' More than 50 matches (all will be used).'
+    } else if (noTagsSelected) {
+      message = ' No matches selected (all will be used).'
+    } else {
+      message = ''
+    }
+
+    const title = `Q: ${searchOption.text}`
     return (
       <Grid verticalAlign="middle">
         <Grid.Column width={16}>
           <Header size="medium">
             {title}
-            <Button
-              onClick={() => handleDeselectAllForSearchQuery(searchQuery)}
-              style={{ marginLeft: '1em' }}
-            >
-              Deselect all
-            </Button>
-            <Button onClick={() => handleSelectAllForSearchQuery(searchQuery)}>
-              Select all
-            </Button>
+            {message && (
+              <Label
+                basic
+                style={{
+                  border: 0,
+                  marginLeft: 0,
+                }}
+              >
+                {message}
+              </Label>
+            )}
+
+            {hasTagsSelected && (
+              <Label
+                as="a"
+                basic
+                color="green"
+                onClick={() => handleDeselectAllForSearchQuery(searchQuery)}
+                style={{ border: 0, marginLeft: 0 }}
+              >
+                {`${numberOfTagsSelected} selected`}{' '}
+                <Icon name="delete" style={{ opacity: 1 }} />
+              </Label>
+            )}
+            {!matchingTagsReachedLimit && (
+              <Label
+                as="a"
+                basic
+                onClick={() => handleSelectAllForSearchQuery(searchQuery)}
+              >
+                Select all matches
+              </Label>
+            )}
           </Header>
-        </Grid.Column>
-        <Grid.Column width={16}>
+
           <Label.Group>
             {!matchingTagsReachedLimit &&
               matchingTags.map(({ attributes, id, selected }) => {
