@@ -11,9 +11,9 @@ if [ "$CI_TEST_ALL" = true ]; then
   fi
 fi
 
-if [ "$CI_TEST_E2E_DOCKER" = true ]; then
+if [ "$CI_TEST_E2E_DOCKER_1" = true ]; then
   echo "Running test suite CI_TEST_E2E_DOCKER"
-  cd ./packages/ui && yarn test:e2e:ci:docker
+  cd ./packages/ui && yarn test:e2e:ci:docker:1
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -22,6 +22,16 @@ if [ "$CI_TEST_E2E_DOCKER" = true ]; then
   cd $START_DIRECTORY
 fi
 
+if [ "$CI_TEST_E2E_DOCKER_2" = true ]; then
+  echo "Running test suite CI_TEST_E2E_DOCKER"
+  cd ./packages/ui && yarn test:e2e:ci:docker:2
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
+  fi
+  echo "Test suite CI_TEST_E2E_DOCKER passed"
+  cd $START_DIRECTORY
+fi
 
 if [ "$CI_TEST_UI_LINT" = true ]; then
   echo "Running test suite CI_TEST_UI_LINT"
