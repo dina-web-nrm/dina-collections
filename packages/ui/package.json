@@ -66,6 +66,8 @@
     "test:depcheck": "depcheck . --skip-missing",
     "test:e2e": "yarn cypress run --record false",
     "test:e2e:ci:docker": "wait-on http://local-ui.dina-web.net && wait-on http://local-ui.dina-web.net/auth && yarn test:e2e:record --config baseUrl=http://local-ui.dina-web.net",
+    "test:e2e:ci:docker:1": "wait-on http://local-ui.dina-web.net && wait-on http://local-ui.dina-web.net/auth && yarn test:e2e:record --config baseUrl=http://local-ui.dina-web.net --spec '**/app/specimens/read/index.spec.js,**/app/agents/index.spec.js,**/app/start/index.spec.js'",
+    "test:e2e:ci:docker:2": "wait-on http://local-ui.dina-web.net && wait-on http://local-ui.dina-web.net/auth && yarn test:e2e:record --config baseUrl=http://local-ui.dina-web.net --spec '**/app/specimens/write/index.spec.js,**/public/**/*.js'",
     "test:e2e:ci:local": "wait-on http://127.0.0.1:3000 && wait-on http://127.0.0.1:3000/auth && yarn test:e2e:record",
     "test:e2e:record": "yarn cypress run --record --config defaultCommandTimeout=10000,pageLoadTimeout=120000",
     "test:e2e:watch": "yarn cypress open",
