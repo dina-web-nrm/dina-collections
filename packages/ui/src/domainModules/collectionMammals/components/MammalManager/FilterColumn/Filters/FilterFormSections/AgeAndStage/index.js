@@ -29,6 +29,7 @@ class AgeStageFilterForm extends PureComponent {
                   enableHelpNotifications={false}
                   fluid
                   label="from"
+                  min={0}
                   module="collectionMammals"
                   name="ageAndStage.age.min"
                   subLabel
@@ -42,6 +43,7 @@ class AgeStageFilterForm extends PureComponent {
                   enableHelpNotifications={false}
                   fluid
                   label="to"
+                  min={0}
                   module="collectionMammals"
                   name="ageAndStage.age.max"
                   subLabel
