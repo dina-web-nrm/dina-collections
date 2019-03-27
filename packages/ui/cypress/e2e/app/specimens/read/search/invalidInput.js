@@ -43,9 +43,7 @@ export default () =>
 
       rangeInputBaseNames.forEach(inputBaseName => {
         cy.getByElementName(`${inputBaseName}.max`).type('-1')
-        cy.getByTestId('searchButton').click()
-        cy.getByText('No results found')
-        cy.getByTestId('clearAllFiltersButton').click()
+        cy.getByElementName(`${inputBaseName}.max`).should('have.value', '')
 
         cy.getByElementName(`${inputBaseName}.max`).type('0')
         cy.getByTestId('searchButton').click()
