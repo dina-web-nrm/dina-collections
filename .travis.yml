@@ -95,7 +95,7 @@ matrix:
         - CI_TEST_UI_UNIT=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
-    - stage: publish
+    - stage: publish and cleanup
       name: 'Publish docker images and delete temporary docker images'
       script:
         ./packages/scripts/src/bash/ci-publish.sh &&
@@ -108,9 +108,10 @@ matrix:
 stages:
   - name: build
   - name: test
-  - name: publish
-    if: tag IS present
   - name: cleanup
+    if: tag IS blank
+  - name: publish and cleanup
+    if: tag IS present
 
 addons:
   hosts:
