@@ -2,6 +2,7 @@
 # OBS:login with docker-hub credentials, set in ~/.docker/config
 # TRAVIS_TAG=v4.5.2 ./packages/scripts/src/bash/ci-publish-docker.sh
 set -v
+echo "$(date +'%T') start ci-publish"
 if [ -z "$TRAVIS_TAG" ]; then
   echo "TRAVIS_TAG is empty, Abort" ;
   exit 0
@@ -122,6 +123,4 @@ if [ "$CI_PUBLISH_STYLE" = true ]; then
   fi
 fi
 
-
-
-
+echo "$(date +'%T') end ci-publish"

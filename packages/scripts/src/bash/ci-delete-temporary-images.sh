@@ -1,4 +1,5 @@
 set -v
+echo "$(date +'%T') start ci-delete-temporary-images"
 
 if [ -z "$CI" ]; then
   echo "CI is empty, Abort. Only allowed to publish from CI" ;
@@ -14,4 +15,5 @@ for imageName in "${imageNames[@]}"; do
   curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAVIS_BUILD_NUMBER/
 done
 
+echo "$(date +'%T') end ci-delete-temporary-images"
 exit 0

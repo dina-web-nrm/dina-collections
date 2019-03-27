@@ -1,6 +1,7 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-test.sh
-
+set -v
+echo "$(date +'%T') start ci-test"
 START_DIRECTORY=$PWD
 
 if [ "$CI_TEST_ALL" = true ]; then
@@ -179,7 +180,4 @@ if [ "$CI_TEST_DOCS_UNIT" = true ]; then
   cd $START_DIRECTORY
 fi
 
-
-
-
-
+echo "$(date +'%T') end ci-test"

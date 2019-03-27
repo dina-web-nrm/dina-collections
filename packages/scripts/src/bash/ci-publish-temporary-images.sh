@@ -2,7 +2,7 @@
 # OBS:login with docker-hub credentials, set in ~/.docker/config
 # TRAVIS_TAG=v4.5.2 ./packages/scripts/src/bash/ci-publish-docker.sh
 set -v
-
+echo "$(date +'%T') start ci-publish-temporary-images"
 if [ -z "$CI" ]; then
   echo "CI is empty, Abort. Only allowed to publish from CI" ;
   exit 0
@@ -58,6 +58,4 @@ if [ "$CI_PUBLISH_STYLE" = true ]; then
   fi
 fi
 
-
-
-
+echo "$(date +'%T') end ci-publish-temporary-images"
