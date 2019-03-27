@@ -1,6 +1,7 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-build.sh
 set -v
+echo "$(date +'%T') start ci-build"
 
 if [ "$CI_BUILD_BACKEND" = true ]; then
   echo "Building backend"
@@ -70,5 +71,4 @@ if [ "$CI_BUILD_DOCS" = true ]; then
   fi
 fi
 
-
-
+echo "$(date +'%T') end ci-build"
