@@ -76,16 +76,9 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
-      name: 'Test UI lint and unit'
+      name: 'Test common, docs, models, scripts and ui'
       env:
         - CI_INSTALL_UI=true
-        - CI_TEST_UI_LINT=true
-        - CI_TEST_UI_UNIT=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    - stage: test
-      name: 'Test models, common, scripts and docs'
-      env:
         - CI_INSTALL_COMMON=true
         - CI_INSTALL_DOCS=true
         - CI_INSTALL_MODELS=true
@@ -98,6 +91,8 @@ matrix:
         - CI_TEST_MODELS_LINT=true
         - CI_TEST_MODELS_LINT=true
         - CI_TEST_SCRIPTS_LINT=true
+        - CI_TEST_UI_LINT=true
+        - CI_TEST_UI_UNIT=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: publish
