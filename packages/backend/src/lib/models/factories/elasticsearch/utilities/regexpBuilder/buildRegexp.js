@@ -1,6 +1,6 @@
 const extractFlags = require('./extractFlags')
 const sanitizeInput = require('./sanitizeInput')
-const validateSanitizedInput = require('./validateSanitizedInput')
+const validateInput = require('./validateInput')
 const createPhraseRegexp = require('./createPhraseRegexp')
 const createWordRegexp = require('./createWordRegexp')
 const createNotMatchingRegexp = require('./createNotMatchingRegexp')
@@ -10,9 +10,9 @@ const createWholeFieldRegexp = require('./createWholeFieldRegexp')
 module.exports = function buildRegexp({ env, input, throwOnError }) {
   let regexp = ''
   try {
+    validateInput(input)
     const sanitizedInput = sanitizeInput(input)
 
-    validateSanitizedInput(sanitizedInput)
     const { hasFieldEqual, hasPhrase, hasSpace, noFlags } = extractFlags(
       sanitizedInput
     )

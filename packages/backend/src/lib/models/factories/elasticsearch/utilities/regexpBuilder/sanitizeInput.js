@@ -13,8 +13,28 @@ const removeFirstEqualIfIsPhrase = str => {
   return str
 }
 
+const escapeDanglingQuotes = str => {
+  let isPhrase = false
+  if (str.length > 1) {
+    isPhrase = str[0] === '"' && str[str.length - 1] === '"'
+  }
+  return str
+    .split('')
+    .map((char, index) => {
+      if (isPhrase && (index === 0 || index === str.length - 1)) {
+        return char
+      }
+      if (char === '"') {
+        return '\\"'
+      }
+      return char
+    })
+    .join('')
+}
+
 module.exports = function sanitizeInput(input) {
   let str = removeDoubleBlanks(input)
-  str = removeFirstEqualIfIsPhrase(input)
+  str = removeFirstEqualIfIsPhrase(str)
+  str = escapeDanglingQuotes(str)
   return str
 }
