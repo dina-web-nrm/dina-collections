@@ -96,14 +96,10 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: publish
-      name: 'Publish docs, style, ui'
-      env:
-        - CI_PUBLISH_API=true
-        - CI_PUBLISH_DOCS=true
-        - CI_PUBLISH_MIGRATIONS=true
-        - CI_PUBLISH_STYLE=true
-        - CI_PUBLISH_UI=true
-      script: ./packages/scripts/src/bash/ci-publish.sh
+      name: 'Publish docker images and delete temporary docker images'
+      script:
+        ./packages/scripts/src/bash/ci-publish.sh &&
+        ./packages/scripts/src/bash/ci-delete-temporary-images.sh
 
     - stage: cleanup
       name: 'Delete temporary docker images'
