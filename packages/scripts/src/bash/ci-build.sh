@@ -3,7 +3,7 @@
 set -v
 echo "$(date +'%T') start ci-build"
 
-if [ "$CI_BUILD_BACKEND" = true ]; then
+if [ "$CI_BUILD_API" = true ]; then
   echo "Building backend"
   docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:$TRAVIS_BUILD_NUMBER  .;
   if [ $? -ne 0 ]; then
