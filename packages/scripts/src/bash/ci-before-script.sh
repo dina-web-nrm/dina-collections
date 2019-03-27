@@ -1,7 +1,7 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-before-script.sh
 set -v
-
+echo "$(date +'%T') start ci-before-script"
 START_DIRECTORY=$PWD
 
 if [ "$CI_SETUP_ENV_DOCKER" = true ]; then
@@ -77,3 +77,5 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
     exit 1
   fi
 fi
+
+echo "$(date +'%T') end ci-before-script"
