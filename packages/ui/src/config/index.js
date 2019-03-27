@@ -19,15 +19,8 @@ const config = {
   externalUrls: {
     api: readKey('REACT_APP_EXTERNAL_URL_API', 'https://dina-api.nrm.se'),
     docs: readKey('REACT_APP_EXTERNAL_URL_DOCS', 'https://dina-docs.nrm.se'),
-    githubDina: readKey(
-      'REACT_APP_EXTERNAL_URL_GITHUB_DINA',
-      'https://github.com/DINA-Web'
-    ),
-    githubRepo: readKey(
-      'REACT_APP_EXTERNAL_URL_GITHUB_REPO',
-      'https://github.com/DINA-Web/dina-collections'
-    ),
-
+    githubDina: 'https://github.com/DINA-Web',
+    githubRepo: 'https://github.com/DINA-Web/dina-collections',
     style: readKey('REACT_APP_EXTERNAL_URL_STYLE', 'https://dina-style.nrm.se'),
     wiki: readKey(
       'REACT_APP_EXTERNAL_URL_DINA_WIKI',

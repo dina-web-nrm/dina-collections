@@ -35,12 +35,12 @@ describe('Footer', () => {
       exact: false,
     })
     cy.getByTestId('footerDocumentDataModel').shouldHaveHref('/dataModelDocs')
-    cy.getByTestId('footerDinaWebGithub').shouldHaveHref('github', {
-      exact: false,
-    })
-    cy.getByTestId('footerDinaCollectionsGithub').shouldHaveHref('github', {
-      exact: false,
-    })
+    cy.getByTestId('footerDinaWebGithub').shouldHaveHref(
+      'https://github.com/DINA-Web'
+    )
+    cy.getByTestId('footerDinaCollectionsGithub').shouldHaveHref(
+      'https://github.com/DINA-Web/dina-collections'
+    )
     cy.getByTestId('footerDinaDeveloperDocs').shouldHaveHref('docs', {
       exact: false,
     })
