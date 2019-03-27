@@ -18,7 +18,6 @@ docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 
 #push to docker hub
 
-if [ "$CI_PUBLISH_UI" = true ]; then
   echo "Pushing dina/dina-collections-ui:$TRAVIS_TAG"
   docker pull dina/dina-collections-ui:$TRAVIS_BUILD_NUMBER
   docker tag dina/dina-collections-ui:$TRAVIS_BUILD_NUMBER dina/dina-collections-ui:$TRAVIS_TAG
@@ -28,7 +27,6 @@ if [ "$CI_PUBLISH_UI" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
     echo "Pushing dina/dina-collections-ui:latest"
     docker tag dina/dina-collections-ui:$TRAVIS_BUILD_NUMBER dina/dina-collections-ui:latest
     docker push dina/dina-collections-ui:latest
@@ -36,8 +34,7 @@ if [ "$CI_PUBLISH_UI" = true ]; then
       echo "Aborting. exit is not 0"
       exit 1
     fi
-  fi
-fi
+
 
 if [ "$CI_PUBLISH_API" = true ]; then
   echo "Pushing dina/dina-collections-api:$TRAVIS_TAG"
@@ -49,7 +46,6 @@ if [ "$CI_PUBLISH_API" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
     echo "Publishing dina/dina-collections-api:latest"
     docker tag dina/dina-collections-api:$TRAVIS_BUILD_NUMBER dina/dina-collections-api:latest
     docker push dina/dina-collections-api:latest
@@ -57,8 +53,7 @@ if [ "$CI_PUBLISH_API" = true ]; then
       echo "Aborting. exit is not 0"
       exit 1
     fi
-  fi
-fi
+
 
 if [ "$CI_PUBLISH_MIGRATIONS" = true ]; then
   echo "Pushing dina/dina-collections-migrations:$TRAVIS_TAG"
@@ -70,7 +65,6 @@ if [ "$CI_PUBLISH_MIGRATIONS" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
     echo "Publishing dina/dina-collections-migrations:latest"
     docker tag dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER dina/dina-collections-migrations:latest
     docker push dina/dina-collections-migrations:latest
@@ -78,8 +72,7 @@ if [ "$CI_PUBLISH_MIGRATIONS" = true ]; then
       echo "Aborting. exit is not 0"
       exit 1
     fi
-  fi
-fi
+
 
 if [ "$CI_PUBLISH_DOCS" = true ]; then
   echo "Pushing dina/dina-collections-docs:$TRAVIS_TAG"
@@ -91,7 +84,6 @@ if [ "$CI_PUBLISH_DOCS" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
     echo "Publishing dina/dina-collections-docs:latest"
     docker tag dina/dina-collections-docs:$TRAVIS_BUILD_NUMBER dina/dina-collections-docs:latest
     docker push dina/dina-collections-docs:latest
@@ -99,8 +91,7 @@ if [ "$CI_PUBLISH_DOCS" = true ]; then
       echo "Aborting. exit is not 0"
       exit 1
     fi
-  fi
-fi
+
 
 if [ "$CI_PUBLISH_STYLE" = true ]; then
   echo "Pushing dina/dina-semantic-ui-docs:$TRAVIS_TAG"
@@ -112,7 +103,6 @@ if [ "$CI_PUBLISH_STYLE" = true ]; then
     exit 1
   fi
 
-  if [ "$CI_TAG_LATEST" = true ]; then
     echo "Publishing dina/dina-semantic-ui-docs:latest"
     docker tag dina/dina-semantic-ui-docs:$TRAVIS_BUILD_NUMBER dina/dina-semantic-ui-docs:latest
     docker push dina/dina-semantic-ui-docs:latest
@@ -120,7 +110,6 @@ if [ "$CI_PUBLISH_STYLE" = true ]; then
       echo "Aborting. exit is not 0"
       exit 1
     fi
-  fi
-fi
+
 
 echo "$(date +'%T') end ci-publish"
