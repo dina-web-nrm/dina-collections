@@ -7,7 +7,17 @@ branches:
 services:
   - docker
 
-cache: yarn
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - packages/backend/node_modules
+    - packages/common/node_modules
+    - packages/dina-style/node_modules
+    - packages/docs/node_modules
+    - packages/migrations/node_modules
+    - packages/scripts/node_modules
+    - packages/ui/node_modules
 
 addons:
   hosts:
