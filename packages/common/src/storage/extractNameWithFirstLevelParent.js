@@ -9,7 +9,7 @@ const groupTranslations = {
     en: 'institution',
     sv: '',
   },
-  mountingwall: {
+  mountingWall: {
     en: 'mounting wall',
     sv: '',
   },
