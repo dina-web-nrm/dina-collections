@@ -1,7 +1,14 @@
+const createPreviewTestCasesFromUnitTestCases = require('../../utilities/createPreviewTestCasesFromUnitTestCases')
+const unitTestTestSpecification = require('./unitTests/testSpecification')
+
+const unitQueryTestCases = createPreviewTestCasesFromUnitTestCases(
+  unitTestTestSpecification
+)
+
 module.exports = [
   {
     expect: {
-      count: 3,
+      count: 2,
     },
     filters: {
       input: {
@@ -9,6 +16,7 @@ module.exports = [
       },
     },
 
-    title: 'Return 3 aggregated testPreview for search string och',
+    title: 'Return 2 aggregated testPreview for search string och',
   },
+  ...unitQueryTestCases,
 ]
