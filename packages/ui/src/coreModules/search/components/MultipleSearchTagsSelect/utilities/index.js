@@ -94,10 +94,11 @@ export function createReduxFormValues({
 }
 
 export function createMatchingTagFromItem(item) {
-  const { attributes: { count, tagType, tagValue } = {}, id } = item
+  const { attributes: { count, tagText, tagType, tagValue } = {}, id } = item
   return {
     attributes: {
       count,
+      tagText,
       tagType,
       tagValue,
     },

@@ -119,7 +119,7 @@ class TagGroup extends Component {
                     color={selected ? 'green' : undefined}
                     key={id}
                     onClick={() => handleToggleTagSelected({ id, searchQuery })}
-                  >{`${attributes.tagValue}${tagTypeText}${
+                  >{`${attributes.tagText}${tagTypeText}${
                     attributes && attributes.count !== undefined
                       ? ` (${attributes.count})`
                       : ''

@@ -24,6 +24,7 @@ const propTypes = {
   module: PropTypes.string.isRequired,
   otherFieldFilters: PropTypes.object,
   search: PropTypes.func.isRequired,
+  sectionValues: PropTypes.object.isRequired,
   translationScope: PropTypes.string.isRequired,
 }
 const defaultProps = {
@@ -80,6 +81,13 @@ class SearchPreview extends Component {
     }
     if (
       this.props.input.value !== nextProps.input.value &&
+      nextProps.input.value
+    ) {
+      this.debounceSearch(nextProps.input.value)
+    }
+
+    if (
+      this.props.sectionValues.srcField !== nextProps.sectionValues.srcField &&
       nextProps.input.value
     ) {
       this.debounceSearch(nextProps.input.value)

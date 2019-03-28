@@ -3,6 +3,25 @@ const {
   getActiveSrcFieldPaths,
 } = require('./utilities')
 
+const prepareSearchString = searchString => {
+  if (!searchString) {
+    return searchString
+  }
+
+  let preparedString = searchString
+  const lastChar = searchString[searchString.length - 1]
+  if (!['"', '*', ' '].includes(lastChar)) {
+    if (lastChar === '.') {
+      preparedString = preparedString.slice(0, -1)
+    }
+
+    preparedString = `${preparedString}*`
+  }
+
+  // preparedString = preparedString.replace(/\.+/g, '\\.')
+  return preparedString
+}
+
 module.exports = function createTextSearch({
   description,
   key,
@@ -18,10 +37,19 @@ module.exports = function createTextSearch({
         srcFieldKeysInput,
         srcFieldSpecifications,
       })
+      const preparedSearchString = prepareSearchString(searchString)
       return {
-        simple_query_string: {
-          fields: srcFieldsPaths,
-          query: searchString,
+        bool: {
+          should: srcFieldsPaths.map(srcFieldsPath => {
+            return {
+              simple_query_string: {
+                default_operator: 'AND',
+                fields: [srcFieldsPath],
+                flags: 'AND|PREFIX|PHRASE|WHITESPACE',
+                query: preparedSearchString,
+              },
+            }
+          }),
         },
       }
     },

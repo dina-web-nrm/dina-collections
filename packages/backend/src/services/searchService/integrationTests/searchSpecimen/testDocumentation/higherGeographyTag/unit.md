@@ -2,7 +2,7 @@
 
 ## simple
 
-| input          | regexp                   | testString | matching | errorMessage |
-| -------------- | ------------------------ | ---------- | -------- | ------------ |
-| ``` sweden ``` | ``` .*( )sweden.*( ) ``` |  sweden    | true     |              |
-| ``` sweden ``` | ``` .*( )sweden.*( ) ``` |  europe    | false    |              |
+| input          | regexp                         | testString | matching | errorMessage |
+| -------------- | ------------------------------ | ---------- | -------- | ------------ |
+| ``` sweden ``` | ``` .*( |\.)sweden.*( |\.) ``` |  sweden    | true     |              |
+| ``` sweden ``` | ``` .*( |\.)sweden.*( |\.) ``` |  europe    | false    |              |

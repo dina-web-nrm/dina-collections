@@ -32,9 +32,14 @@ const escapeDanglingQuotes = str => {
     .join('')
 }
 
+const escapeDots = str => {
+  return str.replace(/\.+/g, '\\.')
+}
+
 module.exports = function sanitizeInput(input) {
   let str = removeDoubleBlanks(input)
   str = removeFirstEqualIfIsPhrase(str)
   str = escapeDanglingQuotes(str)
+  str = escapeDots(str)
   return str
 }

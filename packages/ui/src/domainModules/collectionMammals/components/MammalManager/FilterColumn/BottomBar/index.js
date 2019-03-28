@@ -25,22 +25,38 @@ class BottomBar extends PureComponent {
   constructor(props) {
     super(props)
     this.handleSearch = this.handleSearch.bind(this)
+    this.handlePressEnter = this.handlePressEnter.bind(this)
     this.state = { loading: false }
 
     this.shortcuts = [
       {
         command: 'enter',
         description: 'Execute search',
-        onPress: this.handleSearch,
+        onPress: this.handlePressEnter,
       },
     ]
+  }
+
+  handlePressEnter(event) {
+    if (event.target && event.target.tagName === 'BUTTON') {
+      return
+    }
+    this.handleSearch(event)
   }
 
   handleSearch(event) {
     event.preventDefault()
     this.setState({ loading: true })
-    return this.props.onSearchSpecimens().then(() => {
-      this.setState({ loading: false })
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        return this.props
+          .onSearchSpecimens()
+          .then(() => {
+            this.setState({ loading: false })
+          })
+          .then(resolve)
+          .catch(reject)
+      })
     })
   }
 
