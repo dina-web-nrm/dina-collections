@@ -39,8 +39,16 @@ class BottomBar extends PureComponent {
   handleSearch(event) {
     event.preventDefault()
     this.setState({ loading: true })
-    return this.props.onSearchSpecimens().then(() => {
-      this.setState({ loading: false })
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        return this.props
+          .onSearchSpecimens()
+          .then(() => {
+            this.setState({ loading: false })
+          })
+          .then(resolve)
+          .catch(reject)
+      })
     })
   }
 
