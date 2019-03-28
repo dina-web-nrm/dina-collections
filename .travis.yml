@@ -13,7 +13,7 @@ matrix:
         - CI_INSTALL_STYLE=true
       script:
         ./packages/scripts/src/bash/ci-build.sh &&
-        ./packages/scripts/src/bash/ci-publish-temporary-images.sh
+        ./packages/scripts/src/bash/ci-push-temporary-images.sh
 
     - stage: build
       name: 'Build ui'
@@ -22,7 +22,7 @@ matrix:
         - CI_INSTALL_UI=true
       script:
         ./packages/scripts/src/bash/ci-build.sh &&
-        ./packages/scripts/src/bash/ci-publish-temporary-images.sh
+        ./packages/scripts/src/bash/ci-push-temporary-images.sh
 
     - stage: test
       name: 'Test e2e part 1'
@@ -47,7 +47,7 @@ matrix:
         - CI_LINK_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E_DOCKER=true
-        - CI_TEST_E2E_1=true
+        - CI_TEST_E2E_2=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
