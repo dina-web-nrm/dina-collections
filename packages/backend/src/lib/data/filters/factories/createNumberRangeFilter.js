@@ -8,7 +8,7 @@ module.exports = function createNumberRangeFilter({ description, fieldPath }) {
       }
       const { min, max } = value
 
-      if (min && max) {
+      if (min !== undefined && max !== undefined) {
         return {
           range: {
             [rawPath]: {
