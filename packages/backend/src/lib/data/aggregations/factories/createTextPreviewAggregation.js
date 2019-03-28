@@ -6,6 +6,46 @@ const {
   getActiveSrcFieldPaths,
 } = require('../../filters/factories/createTextSearch/utilities')
 
+const {
+  factory: createRegexpBuilder,
+} = require('../../../models/factories/elasticsearch/utilities/regexpBuilder')
+
+const buildRegexp = createRegexpBuilder({ throwOnError: false })
+
+const stripStrong = previewString => {
+  return previewString
+    .replace(/<strong>+/g, '')
+    .replace(/<\/strong>+/g, '')
+    .replace(/\.+/g, '')
+    .toLowerCase()
+}
+
+const prepareSearchString = searchString => {
+  if (!searchString) {
+    return searchString
+  }
+
+  let preparedString = searchString
+  if (!['"', '*', ' '].includes(searchString[searchString.length - 1])) {
+    preparedString = `${searchString}*`
+  }
+
+  preparedString = preparedString.replace(/\.+/g, '')
+  return preparedString.toLowerCase()
+}
+
+function includeHighlight({ previewString, searchString }) {
+  const regexpArray = buildRegexp(prepareSearchString(searchString))
+
+  const regexps = regexpArray.map(str => {
+    return new RegExp(str)
+  })
+
+  return regexps.every(regexp => {
+    return regexp.test(` ${stripStrong(previewString)} `)
+  })
+}
+
 module.exports = function createTextPreviewAggregation({
   description,
   resource,
@@ -28,6 +68,7 @@ module.exports = function createTextPreviewAggregation({
 
       srcFieldsPaths.forEach(srcFieldPath => {
         fields[srcFieldPath] = {
+          number_of_fragments: 1,
           post_tags: ['</strong>'],
           pre_tags: ['<strong>'],
         }
@@ -40,7 +81,7 @@ module.exports = function createTextPreviewAggregation({
     elasticsearch: () => {
       return null
     },
-    extractItems: ({ result }) => {
+    extractItems: ({ input = {}, result }) => {
       const hits = objectPath.get(result, `hits.hits`)
       const items = []
       hits.forEach(hit => {
@@ -48,18 +89,26 @@ module.exports = function createTextPreviewAggregation({
           highlight = {},
           _source: { id },
         } = hit
+
         const highlightKeys = Object.keys(highlight)
         if (highlightKeys.length) {
           highlightKeys.forEach(highlightKey => {
             const highlightArray = highlight[highlightKey]
             highlightArray.forEach(previewString => {
               const srcFieldKey = srcFieldPathKeyMap[highlightKey]
-              items.push({
-                count: 1,
-                key: id,
-                tagType: srcFieldKey,
-                tagValue: previewString,
-              })
+              if (
+                includeHighlight({
+                  previewString,
+                  searchString: input.searchString,
+                })
+              ) {
+                items.push({
+                  count: 1,
+                  key: id,
+                  tagType: srcFieldKey,
+                  tagValue: previewString,
+                })
+              }
             })
           })
         }
