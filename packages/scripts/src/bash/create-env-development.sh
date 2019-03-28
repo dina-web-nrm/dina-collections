@@ -12,12 +12,10 @@ for f in *; do
     else
       echo "Not replacing existing file ./env/$TARGET_NAME"
     fi
-
   fi
 done
 
 cd $START_DIRECTORY
-
 $FULL_PATH/create-env.sh
 
 exit 0
