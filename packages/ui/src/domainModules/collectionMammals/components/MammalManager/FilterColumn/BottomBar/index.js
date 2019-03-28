@@ -25,15 +25,23 @@ class BottomBar extends PureComponent {
   constructor(props) {
     super(props)
     this.handleSearch = this.handleSearch.bind(this)
+    this.handlePressEnter = this.handlePressEnter.bind(this)
     this.state = { loading: false }
 
     this.shortcuts = [
       {
         command: 'enter',
         description: 'Execute search',
-        onPress: this.handleSearch,
+        onPress: this.handlePressEnter,
       },
     ]
+  }
+
+  handlePressEnter(event) {
+    if (event.target && event.target.tagName === 'BUTTON') {
+      return
+    }
+    this.handleSearch(event)
   }
 
   handleSearch(event) {
