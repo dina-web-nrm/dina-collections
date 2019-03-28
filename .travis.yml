@@ -27,26 +27,20 @@ matrix:
     - stage: test
       name: 'Test e2e part 1'
       env:
-        - CI_INSTALL_COMMON=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
-        - CI_LINK_COMMON=true
-        - CI_LINK_UI=true
         - CI_SETUP_ENV_DOCKER=true
-        - CI_START_E2E_DOCKER=true
+        - CI_START_E2E=true
         - CI_TEST_E2E_1=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
       name: 'Test e2e part 2'
       env:
-        - CI_INSTALL_COMMON=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
-        - CI_LINK_COMMON=true
-        - CI_LINK_UI=true
         - CI_SETUP_ENV_DOCKER=true
-        - CI_START_E2E_DOCKER=true
+        - CI_START_E2E=true
         - CI_TEST_E2E_2=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
@@ -62,7 +56,6 @@ matrix:
         - CI_LINK_MIGRATIONS=true
         - CI_LINK_SCRIPTS=true
         - CI_START_API=true
-        - CI_START_DATABASES=true
         - CI_TEST_BACKEND_API=true
         - CI_TEST_BACKEND_DB=true
         - CI_TEST_BACKEND_LINT=true

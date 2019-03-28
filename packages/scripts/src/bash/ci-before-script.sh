@@ -11,44 +11,25 @@ else
   yarn setup:env:ci:local
 fi
 
-if [ "$CI_START_DATABASES" = true ]; then
-  echo "Starting dbs"
+if [ "$CI_START_API" = true ]; then
+  : "${CI_LINK_MIGRATIONS?CI_LINK_MIGRATIONS Has to be true}"
+  echo "Starting databases"
   sudo /etc/init.d/postgresql stop
   yarn start:postgres && yarn start:elasticsearch
   cd ./packages/migrations && yarn db:test:create
   cd $START_DIRECTORY
-fi
 
-# do this early, to let it compile in the background
-if [ "$CI_START_UI" = true ]; then
-  : "${CI_START_API?CI_START_API Has to be true}"
-  echo "Starting UI"
-  cd ./packages/ui && yarn start &
-  echo "UI started"
-  cd $START_DIRECTORY
-fi
-
-
-if [ "$CI_START_KEYCLOAK" = true ]; then
-  : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
-  echo "Starting keycloak"
-  yarn start:keycloak
-  cd $START_DIRECTORY
-fi
-
-if [ "$CI_START_API" = true ]; then
-  : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
-  : "${CI_LINK_MIGRATIONS?CI_LINK_MIGRATIONS Has to be true}"
-  echo "Setting up backend api"
+  echo "Setting up sample data"
   yarn setup:sample-data && cd ./packages/migrations && yarn setup:development
   cd $START_DIRECTORY
-  echo "Starting api"
+
+  echo "Starting API"
   cd ./packages/backend && yarn start:node &
-  echo "Api started"
+  echo "API started"
   cd $START_DIRECTORY
 fi
 
-if [ "$CI_START_E2E_DOCKER" = true ]; then
+if [ "$CI_START_E2E" = true ]; then
   : "${CI_SETUP_ENV_DOCKER?CI_SETUP_ENV_DOCKER Has to be true}"
   docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 
@@ -59,7 +40,7 @@ if [ "$CI_START_E2E_DOCKER" = true ]; then
   docker pull dina/dina-collections-api:$TRAVIS_BUILD_NUMBER
   docker pull dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER
 
-  echo "Setup sample data"
+  echo "Setting up sample data"
   yarn setup:sample-data
 
   echo "Starting databases and keycloak"
