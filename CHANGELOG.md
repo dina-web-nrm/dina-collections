@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.18.0-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.18.0-rc1)
+#### [v0.18.0-rc2](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.18.0-rc2)
 
+- Improve search remarks and fix search bugs [`#493`](https://github.com/DINA-Web/dina-collections/pull/493)
 - Improve design RefineTags and various fixes [`#491`](https://github.com/DINA-Web/dina-collections/pull/491)
 - Add specimen search e2e tests [`#490`](https://github.com/DINA-Web/dina-collections/pull/490)
 - Improve search multiple tag select [`#489`](https://github.com/DINA-Web/dina-collections/pull/489)
