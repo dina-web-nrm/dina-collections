@@ -12,25 +12,25 @@ if [ "$CI_TEST_ALL" = true ]; then
   fi
 fi
 
-if [ "$CI_TEST_E2E_DOCKER_1" = true ]; then
-  echo "Running test suite CI_TEST_E2E_DOCKER"
+if [ "$CI_TEST_E2E_1" = true ]; then
+  echo "Running test suite CI_TEST_E2E_1"
   cd ./packages/ui && yarn test:e2e:ci:1
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  echo "Test suite CI_TEST_E2E_DOCKER passed"
+  echo "Test suite CI_TEST_E2E passed"
   cd $START_DIRECTORY
 fi
 
-if [ "$CI_TEST_E2E_DOCKER_2" = true ]; then
-  echo "Running test suite CI_TEST_E2E_DOCKER"
+if [ "$CI_TEST_E2E_2" = true ]; then
+  echo "Running test suite CI_TEST_E2E_2"
   cd ./packages/ui && yarn test:e2e:ci:2
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  echo "Test suite CI_TEST_E2E_DOCKER passed"
+  echo "Test suite CI_TEST_E2E passed"
   cd $START_DIRECTORY
 fi
 

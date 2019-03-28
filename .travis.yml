@@ -34,7 +34,7 @@ matrix:
         - CI_LINK_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E_DOCKER=true
-        - CI_TEST_E2E_DOCKER_1=true
+        - CI_TEST_E2E_1=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
@@ -47,7 +47,7 @@ matrix:
         - CI_LINK_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E_DOCKER=true
-        - CI_TEST_E2E_DOCKER_1=true
+        - CI_TEST_E2E_1=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
