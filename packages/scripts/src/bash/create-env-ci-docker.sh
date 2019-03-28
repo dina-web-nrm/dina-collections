@@ -14,12 +14,6 @@ for f in *; do
       echo "Not replacing existing file ./env/$TARGET_NAME"
     fi
   fi
-  if [ ! -f "../.${f}" ]; then
-  echo "Copying file ./env/ci/$f to ./env/.$f"
-  cp -n ${f} "../.${f}"
-  else
-    echo "Not replacing existing file ./env/.$f"
-  fi
 done
 
 cd $START_DIRECTORY
