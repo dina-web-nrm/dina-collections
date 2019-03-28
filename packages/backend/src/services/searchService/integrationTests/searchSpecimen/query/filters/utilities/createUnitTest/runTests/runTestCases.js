@@ -31,12 +31,14 @@ module.exports = function runTestCases({ testCases, storeTestLog }) {
           expect(() => buildRegexp(input)).toThrow(errorMessage)
         })
       } else {
-        const regexpStringArray = buildRegexp(input)
+        const regexpStringArray = buildRegexp(input.toLowerCase())
         const regexpString = regexpStringArray.join(' && ')
         matching.forEach(string => {
           const regexps = regexpStringArray.map(str => {
             return new RegExp(str)
           })
+
+          const stringLowercase = string.toLowerCase()
 
           storeTestLog({
             input,
@@ -44,10 +46,10 @@ module.exports = function runTestCases({ testCases, storeTestLog }) {
             regexp: regexpString,
             string: ` ${string} `,
           })
-          it(`${input} is matching: " ${string} " with regexp: ${regexpString}`, () => {
+          it(`${input} is matching: " ${stringLowercase} " with regexp: ${regexpString}`, () => {
             expect(
               regexps.every(regexp => {
-                return regexp.test(` ${string} `)
+                return regexp.test(` ${stringLowercase} `)
               })
             ).toBe(true)
           })
@@ -56,16 +58,18 @@ module.exports = function runTestCases({ testCases, storeTestLog }) {
           const regexps = regexpStringArray.map(str => {
             return new RegExp(str)
           })
+
+          const stringLowercase = string.toLowerCase()
           storeTestLog({
             input,
             matching: false,
             regexp: regexpString,
-            string: ` ${string} `,
+            string: ` ${string.toLowerCase()} `,
           })
-          it(`${input} is not matching: " ${string} " regexp: ${regexpString}`, () => {
+          it(`${input} is not matching: " ${stringLowercase} " regexp: ${regexpString}`, () => {
             expect(
               regexps.every(regexp => {
-                return regexp.test(` ${string} `)
+                return regexp.test(` ${stringLowercase} `)
               })
             ).toBe(false)
           })
