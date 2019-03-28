@@ -14,7 +14,7 @@ fi
 
 if [ "$CI_TEST_E2E_DOCKER_1" = true ]; then
   echo "Running test suite CI_TEST_E2E_DOCKER"
-  cd ./packages/ui && yarn test:e2e:ci:docker:1
+  cd ./packages/ui && yarn test:e2e:ci:1
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
@@ -25,7 +25,7 @@ fi
 
 if [ "$CI_TEST_E2E_DOCKER_2" = true ]; then
   echo "Running test suite CI_TEST_E2E_DOCKER"
-  cd ./packages/ui && yarn test:e2e:ci:docker:2
+  cd ./packages/ui && yarn test:e2e:ci:2
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
     exit 1
