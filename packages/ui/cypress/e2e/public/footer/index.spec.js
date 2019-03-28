@@ -30,23 +30,26 @@ describe('Footer', () => {
   it('has expected links', () => {
     cy.getByTestId('footerStart').shouldHaveHref('/')
     cy.getByTestId('footerLogin').shouldHaveHref('/login')
-    cy.getByTestId('footerDataModel').shouldHaveHref('/docs')
-    cy.getByTestId('footerDinaWiki').shouldHaveHref(
-      'https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!'
-    )
-    cy.getByTestId('footerDocumentDataModel').shouldHaveHref('/docs')
+    cy.getByTestId('footerDataModel').shouldHaveHref('/dataModelDocs')
+    cy.getByTestId('footerDinaWiki').shouldHaveHref('wiki', {
+      exact: false,
+    })
+    cy.getByTestId('footerDocumentDataModel').shouldHaveHref('/dataModelDocs')
     cy.getByTestId('footerDinaWebGithub').shouldHaveHref(
       'https://github.com/DINA-Web'
     )
     cy.getByTestId('footerDinaCollectionsGithub').shouldHaveHref(
       'https://github.com/DINA-Web/dina-collections'
     )
-    cy.getByTestId('footerDinaStyle').shouldHaveHref(
-      'https://dina-style.nrm.se/'
-    )
-    cy.getByTestId('footerDinaApiDocs').shouldHaveHref(
-      'https://dina-api.nrm.se/docs'
-    )
-    cy.getByTestId('footerTestCoverage').shouldHaveHref('/coverage/index.html')
+    cy.getByTestId('footerDinaDeveloperDocs').shouldHaveHref('docs', {
+      exact: false,
+    })
+
+    cy.getByTestId('footerDinaStyle').shouldHaveHref('style', {
+      exact: false,
+    })
+    cy.getByTestId('footerDinaApiDocs').shouldHaveHref('api', {
+      exact: false,
+    })
   })
 })

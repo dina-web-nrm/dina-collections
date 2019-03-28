@@ -56,7 +56,7 @@ class Nav extends Component {
       return {
         exact: true,
         name: markdownKey,
-        path: `/docs/${version}/${markdownKey}`,
+        path: `/dataModelDocs/${version}/${markdownKey}`,
         translate: false,
       }
     })
@@ -65,7 +65,7 @@ class Nav extends Component {
       return {
         exact: false,
         name: availableVersion,
-        path: `/docs/${availableVersion}`,
+        path: `/dataModelDocs/${availableVersion}`,
         translate: false,
       }
     })

@@ -6,7 +6,7 @@ import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
-import InfiniteTableRow from './InfiniteTableRow'
+import InfinityTableRow from './InfinityTableRow'
 
 const propTypes = {
   currentTableRowNumber: PropTypes.number.isRequired,
@@ -37,7 +37,7 @@ const itemsRenderer = (items, ref) => {
   )
 }
 
-export class InfiniteTable extends Component {
+export class InfinityTable extends Component {
   constructor(props) {
     super(props)
     this.list = null
@@ -113,7 +113,7 @@ export class InfiniteTable extends Component {
     const { resolveRelationships, relationships } = tableBatchFetchOptions
 
     return (
-      <InfiniteTableRow
+      <InfinityTableRow
         background={background}
         itemId={id}
         key={id}
@@ -160,11 +160,11 @@ export class InfiniteTable extends Component {
   }
 }
 
-InfiniteTable.propTypes = propTypes
-InfiniteTable.defaultProps = defaultProps
+InfinityTable.propTypes = propTypes
+InfinityTable.defaultProps = defaultProps
 
 export default compose(
   createBatchFetchItems({
     includeFields: ['id', 'attributes'],
   })
-)(InfiniteTable)
+)(InfinityTable)

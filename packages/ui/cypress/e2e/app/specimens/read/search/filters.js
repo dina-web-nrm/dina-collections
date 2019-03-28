@@ -228,9 +228,9 @@ export default () =>
               .find('.sliders.icon')
               .click()
             cy.get('.active.modal').within(() => {
-              cy.getByText(optionText)
+              cy.getByText(optionText, { exact: false })
                 .parentsUntil('.description')
-                .find('a.label')
+                .find('.ui.labels a.label')
                 .should('have.length', expectedTags)
               cy.get('.close.icon').click()
             })

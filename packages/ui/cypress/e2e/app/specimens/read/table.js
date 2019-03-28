@@ -2,7 +2,7 @@ export default () =>
   describe('table', () => {
     beforeEach(() => {
       cy.goToRoute('/app/specimens/mammals/search')
-      cy.get('[data-testid="infiniteTableHeader"', {
+      cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,
       })
@@ -11,7 +11,7 @@ export default () =>
     it('scrolls to load more specimens, sorts table and keeps focus between form and table', () => {
       cy.log('Check first specimen and that the last is not visible')
       cy.get(
-        '[data-testid="infiniteTable"] [data-testid="infiniteTableRow1"]'
+        '[data-testid="infinityTable"] [data-testid="infinityTableRow1"]'
       ).should('contain', '621445')
       cy.queryByText('500001').should('not.exist')
 
@@ -29,7 +29,7 @@ export default () =>
         .as('table')
         .scrollTo(0, 2000, { duration: 500 })
       cy.get(
-        '[data-testid="infiniteTable"] [data-testid="infiniteTableRow16"]',
+        '[data-testid="infinityTable"] [data-testid="infinityTableRow16"]',
         {
           timeout: 20000,
         }
@@ -47,35 +47,35 @@ export default () =>
 
       cy.log('Sort on catalog number and check 500001 is now on top')
       cy.get(
-        '[data-testid="infiniteTableHeader-identifiersCatalogNumber"]'
+        '[data-testid="infinityTableHeader-identifiersCatalogNumber"]'
       ).click()
       cy.get('@table').scrollTo('topLeft', { duration: 500 })
-      cy.get('[data-testid="infiniteTable"] .row:first').should(
+      cy.get('[data-testid="infinityTable"] .row:first').should(
         'contain',
         '50000'
       )
 
       cy.log('Sort again and check 500001 is now on bottom')
       cy.get(
-        '[data-testid="infiniteTableHeader-identifiersCatalogNumber"]'
+        '[data-testid="infinityTableHeader-identifiersCatalogNumber"]'
       ).click()
       cy.get('@table').scrollTo(0, 2000, { duration: 500 })
-      cy.get('[data-testid="infiniteTable"] .row:last').should(
+      cy.get('[data-testid="infinityTable"] .row:last').should(
         'contain',
         'Mustela erminea'
       )
 
       cy.log('Sort on taxon name')
       cy.get(
-        '[data-testid="infiniteTableHeader-taxonomyCuratorialName"]'
+        '[data-testid="infinityTableHeader-taxonomyCuratorialName"]'
       ).click()
       cy.get('@table').scrollTo('topLeft', { duration: 500 })
-      cy.get('[data-testid="infiniteTable"] .row:first').should(
+      cy.get('[data-testid="infinityTable"] .row:first').should(
         'contain',
         'Alouatta caraya'
       )
       cy.get('@table').scrollTo(0, 2000, { duration: 500 })
-      cy.get('[data-testid="infiniteTable"] .row:last').should(
+      cy.get('[data-testid="infinityTable"] .row:last').should(
         'contain',
         'Ursus arctos'
       )

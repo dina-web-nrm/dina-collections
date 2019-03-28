@@ -32,6 +32,9 @@ export default function performQuery({
       lastBatchOffset = lastBatchCallParams.body.data.attributes.offset
 
       return apiClient.call(operationId, lastBatchCallParams).then(response => {
+        if (response.error) {
+          throw response.error
+        }
         const { scrollId, nResponseItems = 0, nTotalItems = 0 } =
           (response && response.meta) || {}
         lastScrollId = scrollId

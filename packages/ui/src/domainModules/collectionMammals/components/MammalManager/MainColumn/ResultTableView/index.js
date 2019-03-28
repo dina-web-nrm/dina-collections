@@ -14,8 +14,8 @@ import {
   SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
 } from '../../../../constants'
 import { getTableWidth, tableColumnNames } from '../tableColumnSpecifications'
-import InfiniteTable from './InfiniteTable'
-import InfiniteTableHeader from './InfiniteTableHeader'
+import InfinityTable from './InfinityTable'
+import InfinityTableHeader from './InfinityTableHeader'
 
 const mapStateToProps = state => {
   const userPreferences = userSelectors.getUserPreferences(state)
@@ -33,18 +33,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = { updateUserPreference }
 
-const infiniteTable = {
+const infinityTable = {
   id: 'resultTableScrollContainer',
-  key: 'infiniteTable',
-  renderRow: props => <InfiniteTable {...props} />,
+  key: 'infinityTable',
+  renderRow: props => <InfinityTable {...props} />,
   style: { overflow: 'auto' },
 }
 
-const infiniteTableHeader = {
+const infinityTableHeader = {
   height: emToPixels(3.5),
-  key: 'infiniteTableHeader',
+  key: 'infinityTableHeader',
   renderRow: props => (
-    <InfiniteTableHeader
+    <InfinityTableHeader
       {...props}
       height={emToPixels(3.5)}
       topOffset={emToPixels(11.1875)}
@@ -53,7 +53,7 @@ const infiniteTableHeader = {
   style: { borderBottom: '1px solid #b5b5b5' },
 }
 
-const rows = [infiniteTableHeader, infiniteTable]
+const rows = [infinityTableHeader, infinityTable]
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,

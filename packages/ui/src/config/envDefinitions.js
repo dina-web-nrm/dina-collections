@@ -1,6 +1,13 @@
 const requiredEnvVariables = ['NODE_ENV']
 
-const optionalEnvVariables = []
+const optionalEnvVariables = [
+  'REACT_APP_EXTERNAL_URL_API',
+  'REACT_APP_EXTERNAL_URL_DINA_WIKI',
+  'REACT_APP_EXTERNAL_URL_DOCS',
+  'REACT_APP_EXTERNAL_URL_GITHUB_DINA',
+  'REACT_APP_EXTERNAL_URL_GITHUB_REPO',
+  'REACT_APP_EXTERNAL_URL_STYLE',
+]
 
 const devVariables = [
   'REACT_APP_ENABLE_REDUX_LOGGER',

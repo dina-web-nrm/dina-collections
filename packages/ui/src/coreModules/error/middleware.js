@@ -13,9 +13,18 @@ export default function errorMiddleware({ debug = true } = {}) {
       const error =
         (action.payload && action.payload.requestError) || action.payload || {} // _requestError is request error after handled by redux form
 
-      if (error && error.code) {
+      if (error && [502, 503, 504].includes(error.status)) {
+        dispatch(
+          createNotification({
+            componentProps: {
+              description: 'Could not connect to backend',
+              header: 'Connection error',
+            },
+            type: 'ERROR',
+          })
+        )
+      } else if (error && error.code) {
         console.log(`Error in action ${action.type}:`, action.payload) // eslint-disable-line no-console
-
         dispatch(
           createNotification({
             componentProps: {

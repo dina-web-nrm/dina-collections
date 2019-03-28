@@ -13,6 +13,7 @@ module.exports = function createAggregationTest({
   fieldPath,
   filterFunction,
   filterType,
+  preprocessItems,
   resource,
   testCases,
   typeAggregationFunction,
@@ -30,6 +31,7 @@ module.exports = function createAggregationTest({
     aggregationType,
     fieldPath,
     filterFunction,
+    preprocessItems,
     resource,
     testCases,
   }

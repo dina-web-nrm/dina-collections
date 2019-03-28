@@ -4,12 +4,12 @@ import { TaxonManager } from 'domainModules/taxon/components'
 
 const propTypes = {}
 
-class ManageTaxons extends Component {
+class ManageTaxonomy extends Component {
   render() {
     return <TaxonManager {...this.props} />
   }
 }
 
-ManageTaxons.propTypes = propTypes
+ManageTaxonomy.propTypes = propTypes
 
-export default ManageTaxons
+export default ManageTaxonomy

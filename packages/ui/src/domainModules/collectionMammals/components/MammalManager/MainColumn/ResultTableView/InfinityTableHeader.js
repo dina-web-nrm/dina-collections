@@ -8,7 +8,7 @@ import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
 import tableColumnSpecifications from '../tableColumnSpecifications'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTableHeader'
+  'modules:collectionMammals:MammalManager:ResultTableView:InfinityTableHeader'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -27,7 +27,7 @@ const defaultProps = {
   scrollLeft: 0,
 }
 
-class InfiniteTableHeader extends PureComponent {
+class InfinityTableHeader extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -77,7 +77,7 @@ class InfiniteTableHeader extends PureComponent {
         return (
           <Grid.Column key={name} style={{ width: columnWidth }}>
             <Header
-              data-testid={`infiniteTableHeader-${name}`}
+              data-testid={`infinityTableHeader-${name}`}
               onClick={event => this.handleClickSorting(event, name, sortOrder)}
               size="small"
             >
@@ -94,7 +94,7 @@ class InfiniteTableHeader extends PureComponent {
     return (
       <Grid.Column key={name} style={{ width: columnWidth }}>
         <Header
-          data-testid={`infiniteTableHeader-${name}`}
+          data-testid={`infinityTableHeader-${name}`}
           onClick={event => this.handleClickSorting(event, name, 'asc')}
           size="small"
         >
@@ -118,7 +118,7 @@ class InfiniteTableHeader extends PureComponent {
     return (
       <React.Fragment>
         <Grid
-          data-testid="infiniteTableHeader"
+          data-testid="infinityTableHeader"
           padded
           style={{
             height,
@@ -142,9 +142,9 @@ class InfiniteTableHeader extends PureComponent {
   }
 }
 
-InfiniteTableHeader.propTypes = propTypes
-InfiniteTableHeader.defaultProps = defaultProps
+InfinityTableHeader.propTypes = propTypes
+InfinityTableHeader.defaultProps = defaultProps
 
 export default createInjectScrollLeft('resultTableScrollContainer')(
-  InfiniteTableHeader
+  InfinityTableHeader
 )

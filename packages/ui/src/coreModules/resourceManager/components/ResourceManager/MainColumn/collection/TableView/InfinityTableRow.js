@@ -22,7 +22,7 @@ const defaultProps = {
   nestedItem: undefined,
 }
 
-const InfiniteTableRow = ({
+const InfinityTableRow = ({
   background,
   itemId,
   nestedItem,
@@ -85,12 +85,12 @@ const InfiniteTableRow = ({
   )
 }
 
-InfiniteTableRow.propTypes = propTypes
-InfiniteTableRow.defaultProps = defaultProps
+InfinityTableRow.propTypes = propTypes
+InfinityTableRow.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
     refresh: false,
     shouldFetch: false,
   })
-)(InfiniteTableRow)
+)(InfinityTableRow)

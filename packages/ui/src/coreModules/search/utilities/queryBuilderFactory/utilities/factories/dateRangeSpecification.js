@@ -34,7 +34,9 @@ export default function createDateRangeSpecification({
         input: {
           value: {
             end,
+            endDate,
             start,
+            startDate,
             // dateType,
           },
         },

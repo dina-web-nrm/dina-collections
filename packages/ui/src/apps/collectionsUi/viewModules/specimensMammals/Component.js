@@ -2,6 +2,6 @@ import React from 'react'
 
 import MammalManager from 'domainModules/collectionMammals/components/MammalManager'
 
-const RegisterMammal = () => <MammalManager />
+const SpecimensMammals = () => <MammalManager />
 
-export default RegisterMammal
+export default SpecimensMammals

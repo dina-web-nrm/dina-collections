@@ -14,7 +14,7 @@ const defaultProps = {
   scrollLeft: 0,
 }
 
-class InfiniteTableHeader extends PureComponent {
+class InfinityTableHeader extends PureComponent {
   render() {
     const { height, scrollLeft, width, tableColumnSpecifications } = this.props
 
@@ -48,9 +48,9 @@ class InfiniteTableHeader extends PureComponent {
   }
 }
 
-InfiniteTableHeader.propTypes = propTypes
-InfiniteTableHeader.defaultProps = defaultProps
+InfinityTableHeader.propTypes = propTypes
+InfinityTableHeader.defaultProps = defaultProps
 
 export default createInjectScrollLeft('tableScrollContainer')(
-  InfiniteTableHeader
+  InfinityTableHeader
 )

@@ -1,3 +1,3 @@
 export default function createModelLink({ version = 1, modelName }) {
-  return `/docs/${version}/models/${modelName}`
+  return `/dataModelDocs/${version}/models/${modelName}`
 }

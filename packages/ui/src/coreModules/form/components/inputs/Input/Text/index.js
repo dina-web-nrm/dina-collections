@@ -41,10 +41,39 @@ function preventNonNumeric(event) {
 }
 
 class TextInput extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.handleOnChange = this.handleOnChange.bind(this)
+  }
   componentDidMount() {
     if (this.props.focusOnMount && !config.isTest) {
       this.input.focus()
     }
+  }
+  handleOnChange(event) {
+    const { input, max, min, type } = this.props
+    if (type !== 'number') {
+      return input.onChange(event)
+    }
+
+    if (min === undefined && max === undefined) {
+      return input.onChange(event)
+    }
+    const { value } = event.target
+    const numberValue = value !== '' ? Number(value) : undefined
+
+    if (numberValue === undefined) {
+      return input.onChange(event)
+    }
+
+    if (min !== undefined && numberValue < min) {
+      return null
+    }
+
+    if (max !== undefined && numberValue > max) {
+      return null
+    }
+    return input.onChange(event)
   }
 
   render() {
@@ -78,7 +107,10 @@ class TextInput extends PureComponent {
         }}
         type={type}
         {...input}
-        onKeyPress={this.props.type === 'number' && preventNonNumeric}
+        onChange={this.handleOnChange}
+        onKeyPress={
+          this.props.type === 'number' ? preventNonNumeric : undefined
+        }
         size={size}
         style={style}
       />
