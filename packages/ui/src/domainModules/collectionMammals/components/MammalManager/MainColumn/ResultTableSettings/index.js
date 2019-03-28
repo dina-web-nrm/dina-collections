@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { reduxForm, SubmissionError } from 'redux-form'
+import { getFormValues, reduxForm, SubmissionError } from 'redux-form'
 import { Button, Form, Grid, Header, Icon, Message } from 'semantic-ui-react'
 import { Checkbox, Field } from 'coreModules/form/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
@@ -29,12 +30,15 @@ const transformFormValuesToColumnNames = formValues => {
   }, [])
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, { form }) => {
   const userPreferences = userSelectors.getUserPreferences(state)
   const savedColumns =
     userPreferences && userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS]
 
+  const columnsSelectedStatus = Object.values(getFormValues(form)(state) || {})
+
   return {
+    someColumnSelected: columnsSelectedStatus.some(Boolean),
     tableColumnNames: savedColumns || allTableColumnNames,
   }
 }
@@ -47,6 +51,7 @@ const propTypes = {
   initialize: PropTypes.func.isRequired,
   onTableTabClick: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
+  someColumnSelected: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   tableColumnNames: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   updateUserPreference: PropTypes.func.isRequired,
@@ -108,7 +113,14 @@ class ResultTableSettings extends Component {
   }
 
   render() {
-    const { error, handleSubmit, pristine, submitting } = this.props
+    const {
+      error,
+      handleSubmit,
+      pristine,
+      someColumnSelected,
+      submitting,
+    } = this.props
+
     return (
       <Form error={!!error}>
         <Grid textAlign="left" verticalAlign="middle">
@@ -170,7 +182,7 @@ class ResultTableSettings extends Component {
             <Grid.Column width={16}>
               <Button
                 data-testid="saveButton"
-                disabled={pristine || submitting}
+                disabled={!someColumnSelected || pristine || submitting}
                 onClick={handleSubmit(this.handleSave)}
                 size="large"
               >
@@ -196,11 +208,12 @@ class ResultTableSettings extends Component {
 ResultTableSettings.propTypes = propTypes
 ResultTableSettings.defaultProps = defaultProps
 
-const ResultTableSettingsForm = reduxForm({
-  form: 'resultTableSettingsForm',
-})(ResultTableSettings)
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ResultTableSettingsForm)
+export default compose(
+  reduxForm({
+    form: 'resultTableSettingsForm',
+  }),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(ResultTableSettings)

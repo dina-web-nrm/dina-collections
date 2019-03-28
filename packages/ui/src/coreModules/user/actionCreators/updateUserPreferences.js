@@ -1,4 +1,4 @@
-import { actionCreators } from 'redux-module-local-storage'
+import { actionCreators as localStorageActionCreators } from 'redux-module-local-storage'
 
 import { USER_PREFERENCES_KEY } from '../constants'
 
@@ -14,10 +14,13 @@ export default function updateUserPreferences(preferences) {
       type: USER_UPDATE_USER_PREFERENCES_REQUEST,
     })
 
-    return new Promise(resolve => {
-      dispatch(actionCreators.setItem(USER_PREFERENCES_KEY, preferences))
-      return resolve(preferences)
-    })
+    return Promise.resolve()
+      .then(() => {
+        dispatch(
+          localStorageActionCreators.setItem(USER_PREFERENCES_KEY, preferences)
+        )
+        return preferences
+      })
       .then(userPreferences => {
         dispatch({
           payload: userPreferences,

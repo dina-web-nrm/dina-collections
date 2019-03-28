@@ -8,7 +8,8 @@ export default () =>
       })
     })
 
-    it('has all columns selected by default, can deselect all and save selected', () => {
+    it(`has all columns selected by default, can deselect all, cannot save
+    if none selected, can save selected`, () => {
       cy.log('check all column headers exist')
       cy.getByTestId('infinityTableHeader')
         .children()
@@ -20,15 +21,11 @@ export default () =>
         .should('have.length', 32)
         .should('have.attr', 'checked')
 
-      cy.log('deselect all and save')
+      cy.log('deselect all and check save button disabled')
       cy.getByTestId('deselectAllButton').click()
-      cy.getByTestId('saveButton').click()
-      cy.getByTestId('infinityTableHeader')
-        .children()
-        .should('have.length', 0)
+      cy.getByTestId('saveButton').should('be.disabled')
 
       cy.log('select columns and save')
-      cy.getByTestId('settingsMenuItem').click()
       cy.get('input[name="identifiersCatalogNumber"]').check({ force: true })
       cy.get('input[name="taxonomyCuratorialName"]').check({ force: true })
       cy.get('input[name="collectingEventInterpretedLocality"]').check({
