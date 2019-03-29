@@ -7,7 +7,13 @@ module.exports = [
   },
   {
     input: '"pusa hisp"',
-    notMatching: ['pusa hispida', 'pusa', 'hispida pusa'],
+    matching: ['pusa hispida'],
+    notMatching: ['pusa', 'hispida pusa'],
+  },
+  {
+    input: '"sa his"',
+    matching: ['pusa hispida'],
+    notMatching: ['pusa', 'hispida pusa'],
   },
   {
     input: '"pusa"',
