@@ -23,8 +23,6 @@
 | ``` "A Cont. ```           | ``` .*( |\.)\"a.*( |\.) && .*( |\.)cont\..*( |\.) ```          |  skin to other institutiob.                                                                             | false    |              |
 | ``` "A Cont ```            | ``` .*( |\.)\"a.*( |\.) && .*( |\.)cont.*( |\.) ```            |  Ur Gyldenstolpe "A Cont. to the ornth. of Northern Bolivia": Orion är belägen ca 35 km söder om Reyes  | true     |              |
 | ``` "A Cont ```            | ``` .*( |\.)\"a.*( |\.) && .*( |\.)cont.*( |\.) ```            |  skin to other institutiob.                                                                             | false    |              |
-| ``` ""A Cont. to the" ```  | ``` .*( |\.)\"a cont\. to the( |\.).* ```                      |  Ur Gyldenstolpe "A Cont. to the ornth. of Northern Bolivia": Orion är belägen ca 35 km söder om Reyes  | true     |              |
-| ``` ""A Cont. to the" ```  | ``` .*( |\.)\"a cont\. to the( |\.).* ```                      |  skin to other institutiob.                                                                             | false    |              |
 | ``` coordinates. ```       | ``` .*( |\.)coordinates\..*( |\.) ```                          |  Type locality in Wilson and reeder doesn't agree with my coordinates.                                  | true     |              |
 | ``` coordinates. ```       | ``` .*( |\.)coordinates\..*( |\.) ```                          |  skin to other institutiob.                                                                             | false    |              |
 | ``` doesn't ```            | ``` .*( |\.)doesn't.*( |\.) ```                                |  Type locality in Wilson and reeder doesn't agree with my coordinates.                                  | true     |              |
@@ -34,14 +32,6 @@
 
 | input | regexp | testString | matching | errorMessage |
 | ----- | ------ | ---------- | -------- | ------------ |
-
-## phrase
-
-| input                       | regexp                                    | testString                   | matching | errorMessage |
-| --------------------------- | ----------------------------------------- | ---------------------------- | -------- | ------------ |
-| ``` "other institution" ``` | ``` .*( |\.)other institution( |\.).* ``` |  Skin to other institution.  | true     |              |
-| ``` "other institution" ``` | ``` .*( |\.)other institution( |\.).* ``` |  institution other           | false    |              |
-| ``` "other inst" ```        | ``` .*( |\.)other inst( |\.).* ```        |  skin to other institution.  | false    |              |
 
 ## simple
 

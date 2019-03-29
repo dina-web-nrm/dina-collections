@@ -26,6 +26,8 @@
 | noSpecialOperators - pu                             | tagValue: pu                 | 3             |
 | noSpecialOperators - c                              | tagValue: c                  | 6             |
 | phrases - "pusa hispida"                            | tagValue: "pusa hispida"     | 1             |
+| phrases - "pusa hisp"                               | tagValue: "pusa hisp"        | 1             |
+| phrases - "sa his"                                  | tagValue: "sa his"           | 1             |
 | phrases - "pusa"                                    | tagValue: "pusa"             | 2             |
 | space - pusa hispida                                | tagValue: pusa hispida       | 1             |
 | space - pusa  hispida                               | tagValue: pusa  hispida      | 1             |

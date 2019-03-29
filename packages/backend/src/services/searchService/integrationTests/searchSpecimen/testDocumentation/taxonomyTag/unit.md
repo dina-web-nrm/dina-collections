@@ -96,20 +96,23 @@
 
 ## phrases
 
-| input                  | regexp                               | testString          | matching | errorMessage |
-| ---------------------- | ------------------------------------ | ------------------- | -------- | ------------ |
-| ``` "pusa hispida" ``` | ``` .*( |\.)pusa hispida( |\.).* ``` |  pusa hispida       | true     |              |
-| ``` "pusa hispida" ``` | ``` .*( |\.)pusa hispida( |\.).* ``` |  pusa hispida test  | true     |              |
-| ``` "pusa hispida" ``` | ``` .*( |\.)pusa hispida( |\.).* ``` |  pusa               | false    |              |
-| ``` "pusa hispida" ``` | ``` .*( |\.)pusa hispida( |\.).* ``` |  hispida pusa       | false    |              |
-| ``` "pusa hisp" ```    | ``` .*( |\.)pusa hisp( |\.).* ```    |  pusa hispida       | false    |              |
-| ``` "pusa hisp" ```    | ``` .*( |\.)pusa hisp( |\.).* ```    |  pusa               | false    |              |
-| ``` "pusa hisp" ```    | ``` .*( |\.)pusa hisp( |\.).* ```    |  hispida pusa       | false    |              |
-| ``` "pusa" ```         | ``` .*( |\.)pusa( |\.).* ```         |  pusa               | true     |              |
-| ``` "pusa" ```         | ``` .*( |\.)pusa( |\.).* ```         |  pusa hispida       | true     |              |
-| ``` "pusa" ```         | ``` .*( |\.)pusa( |\.).* ```         |  hispida            | false    |              |
-| ``` "hispida pusa" ``` | ``` .*( |\.)hispida pusa( |\.).* ``` |  pusa hispida       | false    |              |
-| ``` "hispida pusa" ``` | ``` .*( |\.)hispida pusa( |\.).* ``` |  pusa               | false    |              |
+| input                  | regexp                   | testString          | matching | errorMessage |
+| ---------------------- | ------------------------ | ------------------- | -------- | ------------ |
+| ``` "pusa hispida" ``` | ``` .*pusa hispida.* ``` |  pusa hispida       | true     |              |
+| ``` "pusa hispida" ``` | ``` .*pusa hispida.* ``` |  pusa hispida test  | true     |              |
+| ``` "pusa hispida" ``` | ``` .*pusa hispida.* ``` |  pusa               | false    |              |
+| ``` "pusa hispida" ``` | ``` .*pusa hispida.* ``` |  hispida pusa       | false    |              |
+| ``` "pusa hisp" ```    | ``` .*pusa hisp.* ```    |  pusa hispida       | true     |              |
+| ``` "pusa hisp" ```    | ``` .*pusa hisp.* ```    |  pusa               | false    |              |
+| ``` "pusa hisp" ```    | ``` .*pusa hisp.* ```    |  hispida pusa       | false    |              |
+| ``` "sa his" ```       | ``` .*sa his.* ```       |  pusa hispida       | true     |              |
+| ``` "sa his" ```       | ``` .*sa his.* ```       |  pusa               | false    |              |
+| ``` "sa his" ```       | ``` .*sa his.* ```       |  hispida pusa       | false    |              |
+| ``` "pusa" ```         | ``` .*pusa.* ```         |  pusa               | true     |              |
+| ``` "pusa" ```         | ``` .*pusa.* ```         |  pusa hispida       | true     |              |
+| ``` "pusa" ```         | ``` .*pusa.* ```         |  hispida            | false    |              |
+| ``` "hispida pusa" ``` | ``` .*hispida pusa.* ``` |  pusa hispida       | false    |              |
+| ``` "hispida pusa" ``` | ``` .*hispida pusa.* ``` |  pusa               | false    |              |
 
 ## space
 
@@ -138,12 +141,12 @@
 | ------------------------------ | --------------------------------------------------------- | ---------------------- | -------- | ------------ |
 | ``` "pusa hispida ```          | ``` .*( |\.)\"pusa.*( |\.) && .*( |\.)hispida.*( |\.) ``` |  "pusa hispida         | true     |              |
 | ``` "pusa hispida ```          | ``` .*( |\.)\"pusa.*( |\.) && .*( |\.)hispida.*( |\.) ``` |  pusa hispida          | false    |              |
-| ``` ="pusa hispida" ```        | ``` .*( |\.)pusa hispida( |\.).* ```                      |  pusa hispida          | true     |              |
-| ``` ="pusa hispida" ```        | ``` .*( |\.)pusa hispida( |\.).* ```                      |  pus hispida           | false    |              |
-| ``` ="pusa hispida" ```        | ``` .*( |\.)pusa hispida( |\.).* ```                      |  hispid pusa           | false    |              |
-| ``` "pusa hispida" "phoca" ``` | ``` .*( |\.)pusa hispida\" \"phoca( |\.).* ```            |  pusa hispida" "phoca  | true     |              |
-| ``` "pusa hispida" "phoca" ``` | ``` .*( |\.)pusa hispida\" \"phoca( |\.).* ```            |  pusa hispida          | false    |              |
-| ``` "pusa hispida" "phoca" ``` | ``` .*( |\.)pusa hispida\" \"phoca( |\.).* ```            |  phoca                 | false    |              |
+| ``` ="pusa hispida" ```        | ``` .*pusa hispida.* ```                                  |  pusa hispida          | true     |              |
+| ``` ="pusa hispida" ```        | ``` .*pusa hispida.* ```                                  |  pus hispida           | false    |              |
+| ``` ="pusa hispida" ```        | ``` .*pusa hispida.* ```                                  |  hispid pusa           | false    |              |
+| ``` "pusa hispida" "phoca" ``` | ``` .*pusa hispida\" \"phoca.* ```                        |  pusa hispida" "phoca  | true     |              |
+| ``` "pusa hispida" "phoca" ``` | ``` .*pusa hispida\" \"phoca.* ```                        |  pusa hispida          | false    |              |
+| ``` "pusa hispida" "phoca" ``` | ``` .*pusa hispida\" \"phoca.* ```                        |  phoca                 | false    |              |
 | ``` * ```                      | ``` .*( |\.).*( |\.) ```                                  |                        | true     |              |
 | ``` * ```                      | ``` .*( |\.).*( |\.) ```                                  |  p                     | true     |              |
 | ``` * ```                      | ``` .*( |\.).*( |\.) ```                                  |  pusa hispida          | true     |              |
