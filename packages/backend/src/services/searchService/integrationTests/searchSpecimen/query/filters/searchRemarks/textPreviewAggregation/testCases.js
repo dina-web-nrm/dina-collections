@@ -18,5 +18,18 @@ module.exports = [
 
     title: 'Return 2 aggregated testPreview for search string och',
   },
+  {
+    expect: {
+      count: 0,
+    },
+    filters: {
+      input: {
+        searchString: '"och"',
+      },
+    },
+
+    title: 'Phrase returns 0 matches',
+  },
+
   ...unitQueryTestCases,
 ]

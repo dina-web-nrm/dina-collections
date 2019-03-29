@@ -20,18 +20,18 @@ const prepareSearchString = searchString => {
   if (!searchString) {
     return searchString
   }
+  let preparedString = searchString
   let isPhrase = false
   if (searchString.length > 2) {
     isPhrase =
       searchString[0] === '"' && searchString[searchString.length - 1] === '"'
   }
-
-  let preparedString = searchString
-
-  if (!isPhrase) {
-    const segments = preparedString.split(' ')
-    preparedString = segments.map(whildcardLastChar).join(' ')
+  if (isPhrase) {
+    return 'this-is-not-matching-anything'
   }
+
+  const segments = preparedString.split(' ')
+  preparedString = segments.map(whildcardLastChar).join(' ')
 
   // preparedString = preparedString.replace(/\.+/g, '\\.')
   return preparedString

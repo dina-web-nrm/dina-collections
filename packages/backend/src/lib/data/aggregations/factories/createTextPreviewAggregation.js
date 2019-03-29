@@ -20,17 +20,36 @@ const stripStrong = previewString => {
     .toLowerCase()
 }
 
+const whildcardLastChar = word => {
+  let preparedString = word
+  const lastChar = word[word.length - 1]
+  if (!['"', '*', ' '].includes(lastChar)) {
+    if (lastChar === '.') {
+      preparedString = preparedString.slice(0, -1)
+    }
+
+    preparedString = `${preparedString}*`
+  }
+  return preparedString
+}
+
 const prepareSearchString = searchString => {
   if (!searchString) {
     return searchString
   }
-
   let preparedString = searchString
-  if (!['"', '*', ' '].includes(searchString[searchString.length - 1])) {
-    preparedString = `${searchString}*`
+  let isPhrase = false
+  if (searchString.length > 2) {
+    isPhrase =
+      searchString[0] === '"' && searchString[searchString.length - 1] === '"'
+  }
+  if (isPhrase) {
+    return 'this-is-not-matching-anything'
   }
 
-  preparedString = preparedString.replace(/\.+/g, '')
+  const segments = preparedString.split(' ')
+  preparedString = segments.map(whildcardLastChar).join(' ')
+
   return preparedString.toLowerCase()
 }
 

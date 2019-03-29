@@ -28,11 +28,6 @@ module.exports = [
     notMatching: ['Skin to other institutiob.'],
   },
   {
-    input: `"${'"'}A Cont. to the"`,
-    matching: [complexMatch],
-    notMatching: ['Skin to other institutiob.'],
-  },
-  {
     input: 'coordinates.',
     matching: [
       `Type locality in Wilson and reeder doesn${"'"}t agree with my coordinates.`,
