@@ -13,6 +13,7 @@ module.exports = [
     input: '1;',
     matching: ['1; 4406', '1; 4406; 52'],
   },
+
   {
     input: '*-*',
     matching: ['2012-21'],
@@ -34,13 +35,55 @@ module.exports = [
     input: ' ',
     notMatching: ['a'],
   },
-
-  {
-    input: '*?*',
-    matchingNotInSampleData: ['a; ?a'],
-  },
   {
     input: '*.*',
-    matchingNotInSampleData: ['an.de '],
+    matchingNotInSampleData: [
+      'M.532',
+      '10. 10. 599',
+      '4.5',
+      'H.63',
+      '3.5',
+      '2.S',
+      '5.S.',
+    ],
+  },
+
+  {
+    input: '*(*',
+    matchingNotInSampleData: ['an(de)', 'a(', '('],
+  },
+  {
+    input: '*)*',
+    matchingNotInSampleData: ['an(de)', 'a)', ')'],
+  },
+  {
+    input: '*:*',
+    matchingNotInSampleData: [
+      'B:V2, H4',
+      'I:42,1902',
+      '2:3,3  695',
+      'Field no: NRM-204',
+      'Field no: NRM-206',
+    ],
+  },
+  {
+    input: '*;*',
+    matching: ['1; 4406', '1; 4406; 52'],
+  },
+  {
+    input: '*#*',
+    matchingNotInSampleData: ['1983-231 Lab # 1194'],
+  },
+  {
+    input: '*?*',
+    matchingNotInSampleData: ['6005?'],
+  },
+  {
+    input: '*>*',
+    matchingNotInSampleData: ['> 4934', '> 1107'],
+  },
+  {
+    input: '*<*',
+    matchingNotInSampleData: ['< 4934', '< 1107'],
   },
 ]
