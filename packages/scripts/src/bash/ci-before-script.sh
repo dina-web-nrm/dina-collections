@@ -4,11 +4,16 @@ set -v
 echo "$(date +'%T') start ci-before-script"
 START_DIRECTORY=$PWD
 
+if [ "$CI_SETUP_ENV_DOCKER" = true ]; then
+  echo "Setting up env for docker"
+  yarn setup:env:ci:docker
+  else
+  echo "Setting up env for localhost"
+  yarn setup:env:ci:local
+fi
+
 if [ "$CI_START_API" = true ]; then
   : "${CI_LINK_MIGRATIONS?CI_LINK_MIGRATIONS Has to be true}"
-  echo "Setting up env"
-  yarn setup:env:ci:local
-
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
 
@@ -29,9 +34,6 @@ if [ "$CI_START_API" = true ]; then
 fi
 
 if [ "$CI_START_E2E" = true ]; then
-  echo "Setting up env"
-  yarn setup:env:ci:docker
-
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
 
