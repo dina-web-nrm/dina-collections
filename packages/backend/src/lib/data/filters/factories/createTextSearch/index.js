@@ -3,19 +3,34 @@ const {
   getActiveSrcFieldPaths,
 } = require('./utilities')
 
-const prepareSearchString = searchString => {
-  if (!searchString) {
-    return searchString
-  }
-
-  let preparedString = searchString
-  const lastChar = searchString[searchString.length - 1]
+const whildcardLastChar = word => {
+  let preparedString = word
+  const lastChar = word[word.length - 1]
   if (!['"', '*', ' '].includes(lastChar)) {
     if (lastChar === '.') {
       preparedString = preparedString.slice(0, -1)
     }
 
     preparedString = `${preparedString}*`
+  }
+  return preparedString
+}
+
+const prepareSearchString = searchString => {
+  if (!searchString) {
+    return searchString
+  }
+  let isPhrase = false
+  if (searchString.length > 2) {
+    isPhrase =
+      searchString[0] === '"' && searchString[searchString.length - 1] === '"'
+  }
+
+  let preparedString = searchString
+
+  if (!isPhrase) {
+    const segments = preparedString.split(' ')
+    preparedString = segments.map(whildcardLastChar).join(' ')
   }
 
   // preparedString = preparedString.replace(/\.+/g, '\\.')
