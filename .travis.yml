@@ -176,6 +176,7 @@ matrix:
       cache:
         yarn: true
         directories:
+          - $HOME/.cache/Cypress
           - packages/scripts/node_modules
           - packages/ui/node_modules
       env:
@@ -191,6 +192,7 @@ matrix:
       cache:
         yarn: true
         directories:
+          - $HOME/.cache/Cypress
           - packages/scripts/node_modules
           - packages/ui/node_modules
       env:
