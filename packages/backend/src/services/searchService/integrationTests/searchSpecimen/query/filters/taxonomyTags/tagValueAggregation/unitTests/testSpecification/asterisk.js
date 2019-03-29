@@ -10,6 +10,10 @@ module.exports = [
     notMatching: ['pusa'],
   },
   {
+    input: '*pid',
+    notMatching: ['pusa hispida'],
+  },
+  {
     input: 'his*',
     matching: ['pusa hispida'],
     notMatching: ['pusa'],
