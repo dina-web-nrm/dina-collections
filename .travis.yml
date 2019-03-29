@@ -173,12 +173,6 @@ matrix:
 
     - stage: test
       name: 'Test e2e part 1'
-      cache:
-        yarn: true
-        directories:
-          - $HOME/.cache/Cypress
-          - packages/scripts/node_modules
-          - packages/ui/node_modules
       env:
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
@@ -189,12 +183,6 @@ matrix:
 
     - stage: test
       name: 'Test e2e part 2'
-      cache:
-        yarn: true
-        directories:
-          - $HOME/.cache/Cypress
-          - packages/scripts/node_modules
-          - packages/ui/node_modules
       env:
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
