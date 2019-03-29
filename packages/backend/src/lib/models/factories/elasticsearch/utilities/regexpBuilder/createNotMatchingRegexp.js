@@ -1,3 +1,5 @@
+const { NON_MATCHING } = require('./constants')
+
 module.exports = function createNotMatchingRegexp() {
-  return 'this-should-not-be-matching-anything'
+  return NON_MATCHING
 }
