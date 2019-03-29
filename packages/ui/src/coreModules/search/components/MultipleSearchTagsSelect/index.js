@@ -116,6 +116,10 @@ class RawMultipleSearchTagsSelect extends PureComponent {
             translateTagType: this.translateTagType,
           })
 
+          // for unknown reason this is needed, because otherwise the dropdown
+          // occasionally shows old options that matched a previous query on top
+          // in the options list, so that the new options show below
+          this.setState({ options: [] })
           this.setState({
             options,
           })
