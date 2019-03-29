@@ -118,6 +118,9 @@ matrix:
         - CI_INSTALL_DOCS=true
         - CI_INSTALL_MODELS=true
         - CI_INSTALL_SCRIPTS=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_SCRIPTS=true
+        - CI_LINK_UI=true
         - CI_TEST_COMMON_LINT=true
         - CI_TEST_COMMON_UNIT=true
         - CI_TEST_DOCS_LINT=true
