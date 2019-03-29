@@ -41,4 +41,12 @@ module.exports = [
     ],
     notMatching: ['Skin to other institutiob.'],
   },
+  {
+    input: 'c.b.sp',
+    matching: [`. / C.b.sp.// 1. / Sparrm.`],
+  },
+  {
+    input: 'Ipssis. Sparrm',
+    matching: ['Ipssis. / C.b.sp.// 1. / Sparrm.'],
+  },
 ]

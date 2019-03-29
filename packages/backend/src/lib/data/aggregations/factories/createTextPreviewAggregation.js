@@ -16,7 +16,6 @@ const stripStrong = previewString => {
   return previewString
     .replace(/<strong>+/g, '')
     .replace(/<\/strong>+/g, '')
-    .replace(/\.+/g, '')
     .toLowerCase()
 }
 
@@ -27,7 +26,6 @@ const whildcardLastChar = word => {
     if (lastChar === '.') {
       preparedString = preparedString.slice(0, -1)
     }
-
     preparedString = `${preparedString}*`
   }
   return preparedString
