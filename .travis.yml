@@ -78,6 +78,7 @@ matrix:
       env:
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
+        - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_1=true
       script: ./packages/scripts/src/bash/ci-test.sh
@@ -87,6 +88,7 @@ matrix:
       env:
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
+        - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_2=true
       script: ./packages/scripts/src/bash/ci-test.sh
