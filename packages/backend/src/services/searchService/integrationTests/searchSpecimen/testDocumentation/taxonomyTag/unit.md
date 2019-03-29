@@ -10,6 +10,7 @@
 | ``` pu* ```   | ``` .*( |\.)pu.*( |\.) ```   |  hispida            | false    |              |
 | ``` *pida ``` | ``` .*( |\.).*pida( |\.) ``` |  pusa hispida       | true     |              |
 | ``` *pida ``` | ``` .*( |\.).*pida( |\.) ``` |  pusa               | false    |              |
+| ``` *pid ```  | ``` .*( |\.).*pid( |\.) ```  |  pusa hispida       | false    |              |
 | ``` his* ```  | ``` .*( |\.)his.*( |\.) ```  |  pusa hispida       | true     |              |
 | ``` his* ```  | ``` .*( |\.)his.*( |\.) ```  |  pusa               | false    |              |
 | ``` *lo* ```  | ``` .*( |\.).*lo.*( |\.) ``` |  gulo               | true     |              |

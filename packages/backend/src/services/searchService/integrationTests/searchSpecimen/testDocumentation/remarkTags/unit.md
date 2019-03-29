@@ -27,6 +27,8 @@
 | ``` coordinates. ```       | ``` .*( |\.)coordinates\..*( |\.) ```                          |  skin to other institutiob.                                                                             | false    |              |
 | ``` doesn't ```            | ``` .*( |\.)doesn't.*( |\.) ```                                |  Type locality in Wilson and reeder doesn't agree with my coordinates.                                  | true     |              |
 | ``` doesn't ```            | ``` .*( |\.)doesn't.*( |\.) ```                                |  skin to other institutiob.                                                                             | false    |              |
+| ``` c.b.sp ```             | ``` .*( |\.)c\.b\.sp.*( |\.) ```                               |  . / C.b.sp.// 1. / Sparrm.                                                                             | true     |              |
+| ``` Ipssis. Sparrm ```     | ``` .*( |\.)ipssis\..*( |\.) && .*( |\.)sparrm.*( |\.) ```     |  Ipssis. / C.b.sp.// 1. / Sparrm.                                                                       | true     |              |
 
 ## notSupportedCases
 
