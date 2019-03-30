@@ -76,6 +76,7 @@ matrix:
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_1=true
+        - DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test tag
@@ -86,6 +87,7 @@ matrix:
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_2=true
+        - DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test tag
