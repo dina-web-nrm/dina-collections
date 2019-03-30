@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.18.0-rc5](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.18.0-rc5)
+#### [v0.18.0-rc6](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.18.0-rc6)
 
+- Improve identifier special cases [`#497`](https://github.com/DINA-Web/dina-collections/pull/497)
 - Fix phrase searches [`#496`](https://github.com/DINA-Web/dina-collections/pull/496)
 - Fix old options remaining in multiple search [`#495`](https://github.com/DINA-Web/dina-collections/pull/495)
 - Fix table column settings crash [`#494`](https://github.com/DINA-Web/dina-collections/pull/494)
