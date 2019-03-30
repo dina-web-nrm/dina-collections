@@ -6,10 +6,15 @@ const createWordRegexp = require('./createWordRegexp')
 const createNotMatchingRegexp = require('./createNotMatchingRegexp')
 const createMultiWordRegexp = require('./createMultiWordRegexp')
 const createWholeFieldRegexp = require('./createWholeFieldRegexp')
+const createSpecificRegexp = require('./createSpecificRegexp')
 
 module.exports = function buildRegexp({ env, input, throwOnError }) {
   let regexp = ''
   try {
+    const specificRegexp = createSpecificRegexp(input)
+    if (specificRegexp) {
+      return specificRegexp
+    }
     validateInput(input)
     const sanitizedInput = sanitizeInput(input)
 

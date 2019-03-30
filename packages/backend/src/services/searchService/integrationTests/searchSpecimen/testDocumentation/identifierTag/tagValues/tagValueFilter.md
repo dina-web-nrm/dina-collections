@@ -12,3 +12,9 @@
 | returns 25 matching identifiers for *5*                    | tagValue: *5*         | 25            |
 | specialCharacters - 1; 4406; 52                            | tagValue: 1; 4406; 52 | 1             |
 | specialCharacters - v0253/98                               | tagValue: v0253/98    | 1             |
+| specialCharacters - 1;                                     | tagValue: 1;          | 2             |
+| specialCharacters - *-*                                    | tagValue: *-*         | 1             |
+| specialCharacters - */*                                    | tagValue: */*         | 2             |
+| specialCharacters - *,*                                    | tagValue: *,*         | 3             |
+| specialCharacters - " "                                    | tagValue: " "         | 3             |
+| specialCharacters - *;*                                    | tagValue: *;*         | 2             |

@@ -15,4 +15,6 @@
 | complexCases - "A Cont                                | input: [object Object] | 1             |
 | complexCases - coordinates.                           | input: [object Object] | 1             |
 | complexCases - doesn't                                | input: [object Object] | 1             |
+| complexCases - c.b.sp                                 | input: [object Object] | 1             |
+| complexCases - Ipssis. Sparrm                         | input: [object Object] | 1             |
 | simple - och                                          | input: [object Object] | 2             |

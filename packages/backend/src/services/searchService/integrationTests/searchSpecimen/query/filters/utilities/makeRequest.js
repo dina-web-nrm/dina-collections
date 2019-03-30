@@ -31,10 +31,14 @@ module.exports = function makeRequest({
       if (printResponse) {
         logResponse(parsedRes)
       }
-      return {
-        err: null,
-        res: parsedRes,
-      }
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            err: null,
+            res: parsedRes,
+          })
+        }, 200)
+      })
     })
     .catch(err => {
       return {
