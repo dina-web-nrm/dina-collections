@@ -1,16 +1,16 @@
 describe('Start', () => {
-  describe('without login', () => {
-    it('redirect to login', () => {
-      cy.visit('/app')
-        .url()
-        .should('include', '/login')
-    })
-  })
+  // describe('without login', () => {
+  //   it('redirect to login', () => {
+  //     cy.visit('/app')
+  //       .url()
+  //       .should('include', '/login')
+  //   })
+  // })
 
   describe('with login', () => {
     before(() => {
-      cy.login()
-      cy.goToRoute('/app')
+      cy.visit('/app')
+      // cy.goToRoute('/app')
     })
 
     it('has header and links', () => {

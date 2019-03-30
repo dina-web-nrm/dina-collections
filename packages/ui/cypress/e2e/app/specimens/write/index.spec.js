@@ -6,7 +6,7 @@ import remove from './remove'
 describe('Specimens write operations', () => {
   beforeEach(() => {
     // resetting db and search is done in each file
-    cy.login()
+    cy.visit('/')
   })
 
   create()

@@ -11,7 +11,7 @@ describe('Specimens read operations', () => {
   })
 
   beforeEach(() => {
-    cy.login()
+    cy.visit('/')
   })
 
   form()

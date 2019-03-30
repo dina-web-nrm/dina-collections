@@ -7,7 +7,8 @@ services:
       - '80'
     env_file:
       - ./env/.backend
-    command: pm2-runtime start /etc/packages/api/src/apps/production/api/index.js
+    command:
+      pm2-runtime start /etc/packages/api/src/apps/production/api/index.js
     depends_on:
       - postgres
       - elasticsearch
@@ -102,11 +103,11 @@ services:
       - ./env/.ui
     command:
       /bin/bash -c "envsubst '$$NGINX_TAXONOMY_API_BASE_URL $$NGINX_API_BASE_URL
-      $$NGINX_HOST $$NGINX_PORT $$NGINX_AUTH_BASE_URL' <
+      $$NGINX_HOST $$NGINX_PORT $$NGINX_AUTH_BASE_URL $$WINDOW_DISABLE_AUTH' <
       /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf &&
       nginx -g 'daemon off;'"
     depends_on:
-      - api
+      #- api
       - keycloak
 
   docs:
@@ -128,7 +129,8 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=simple
-    command: pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
+    command:
+      pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
     depends_on:
       - postgres
       - elasticsearch
@@ -143,7 +145,8 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=search-index
-    command: pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
+    command:
+      pm2-runtime start /etc/packages/api/src/apps/production/worker/index.js
     depends_on:
       - postgres
       - elasticsearch
