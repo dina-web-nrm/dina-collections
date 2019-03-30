@@ -82,7 +82,6 @@ matrix:
     - stage: test tag
       name: 'Test e2e part 2'
       env:
-        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
@@ -187,7 +186,6 @@ matrix:
     - stage: test
       name: 'Test e2e part 2'
       env:
-        - CI_CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
