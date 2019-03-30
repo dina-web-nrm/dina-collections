@@ -1,6 +1,6 @@
 {
   "name": "dina-collections",
-  "version": "0.18.0-rc6",
+  "version": "0.18.0-test-disable-auth",
   "description": "",
   "main": "index.js",
   "scripts": {
