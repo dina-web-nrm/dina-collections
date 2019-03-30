@@ -46,6 +46,7 @@ if [ "$CI_START_E2E" = true ]; then
   docker pull dina/dina-collections-api:$TRAVIS_BUILD_NUMBER
   docker pull dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER
 
+  echo "DISABLE_AUTH: $DISABLE_AUTH"
   if [ "$DISABLE_AUTH" = true ]; then
     echo "Starting databases (auth disabled)"
     docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch postgres

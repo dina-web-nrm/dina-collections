@@ -5,45 +5,45 @@ echo "$(date +'%T') start ci-install"
 
 if [ "$CI_INSTALL_UI" = true ]; then
   echo "Installing ui"
-  yarn install:ui
+  yarn install:ui --frozen-lockfile
 fi
 
 if [ "$CI_INSTALL_MODELS" = true ]; then
   echo "Installing models"
-  yarn install:schema
+  yarn install:schema --frozen-lockfile
 fi
 
 if [ "$CI_INSTALL_BACKEND" = true ]; then
   echo "Installing backend"
-  yarn install:backend
+  yarn install:backend --frozen-lockfile
 fi
 
 if [ "$CI_INSTALL_COMMON" = true ]; then
   echo "Installing common"
-  yarn install:common
+  yarn install:common --frozen-lockfile
 fi
 
 
 if [ "$CI_INSTALL_SCRIPTS" = true ]; then
   echo "Installing scripts"
-  yarn install:scripts
+  yarn install:scripts --frozen-lockfile
 fi
 
 
 if [ "$CI_INSTALL_MIGRATIONS" = true ]; then
   echo "Installing migrations"
-  yarn install:migrations
+  yarn install:migrations --frozen-lockfile
 fi
 
 if [ "$CI_INSTALL_STYLE" = true ]; then
   echo "Installing style"
-  yarn install:semantic-ui
+  yarn install:semantic-ui --frozen-lockfile
 fi
 
 
 if [ "$CI_INSTALL_DOCS" = true ]; then
   echo "Installing docs"
-  yarn install:docs
+  yarn install:docs --frozen-lockfile
 fi
 
 
