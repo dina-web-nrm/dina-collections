@@ -192,7 +192,7 @@ matrix:
         - CI_START_E2E=true
         - CI_TEST_E2E_1=true
       script: ./packages/scripts/src/bash/ci-test.sh
-
+    #second
     - stage: test
       name: 'Test e2e part 2, without auth'
       env:
