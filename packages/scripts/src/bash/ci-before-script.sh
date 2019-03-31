@@ -46,20 +46,24 @@ if [ "$CI_START_E2E" = true ]; then
   docker pull dina/dina-collections-api:$TRAVIS_BUILD_NUMBER
   docker pull dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER
 
-  # if [ "$CI_DISABLE_AUTH" = true ]; then
-  #   echo "Starting databases (auth disabled)"
-  #   docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch postgres
-  # else
-  echo "Starting databases and keycloak"
-  docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch keycloak mysql postgres
-  # fi
+  echo "Starting databases"
+  docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch postgres
   sleep 10
 
   echo "Importing sample data"
   TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
 
+  echo "Starting keycloak"
+  # have to start keycloak even if auth disabled since ui/nginx.conf requires it
+  docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d keycloak mysql
+
   echo "Starting ui, api and workers"
   TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
+
+  if [ "$CI_DISABLE_AUTH" = true ]; then
+    echo "Stopping keycloak because auth is disabled"
+    docker stop keycloak
+  fi
 
   if [ $? -ne 0 ]; then
     echo "Aborting. exit is not 0"
