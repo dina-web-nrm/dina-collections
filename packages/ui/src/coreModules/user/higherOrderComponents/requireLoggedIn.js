@@ -32,13 +32,22 @@ export default function requireLoggedInUser(ComposedComponent) {
       this.checkAuth(nextProps.loggedIn, nextProps.userLoading)
     }
     checkAuth(loggedIn, userLoading) {
-      if (config.auth.active && !userLoading && !loggedIn) {
+      if (
+        config.auth.active &&
+        !userLoading &&
+        !loggedIn &&
+        window.DISABLE_AUTH !== true // used to disable auth in e2e tests
+      ) {
         this.props.push('/login')
       }
     }
 
     render() {
-      if (this.props.loggedIn || !config.auth.active) {
+      if (
+        this.props.loggedIn ||
+        !config.auth.active ||
+        window.DISABLE_AUTH === true
+      ) {
         return <ComposedComponent {...this.props} />
       }
       return null
