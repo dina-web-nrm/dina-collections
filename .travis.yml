@@ -186,6 +186,7 @@ matrix:
     - stage: test
       name: 'Test e2e part 1'
       env:
+        - CI_DISABLE_AUTH=false
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true

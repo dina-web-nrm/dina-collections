@@ -10,4 +10,4 @@ REACT_APP_EXTERNAL_URL_GITHUB_DINA=https://github.com/DINA-Web
 REACT_APP_EXTERNAL_URL_GITHUB_REPO=https://github.com/DINA-Web/dina-collections
 REACT_APP_EXTERNAL_URL_STYLE=https://dina-style.nrm.se
 VIRTUAL_HOST=local-ui.dina-web.net
-WINDOW_DISABLE_AUTH=false
+REACT_APP_WINDOW_DISABLE_AUTH=false
