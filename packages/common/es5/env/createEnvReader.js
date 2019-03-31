@@ -35,14 +35,14 @@ module.exports = function createEnvReader() {
   });
 
   var optionalEnv = resolveEnvVariables({
-    envVariables: devVariables,
-    nodeEnv: ['development', 'test'],
+    envVariables: optionalEnvVariables,
     processEnv: processEnv,
     required: false
   });
 
   var devEnv = resolveEnvVariables({
-    envVariables: optionalEnvVariables,
+    envVariables: devVariables,
+    nodeEnv: ['development', 'test'],
     processEnv: processEnv,
     required: false
   });
@@ -54,14 +54,14 @@ module.exports = function createEnvReader() {
     required: false
   });
 
-  var existingEnvVarialbes = [].concat((0, _toConsumableArray3.default)(requiredEnvVariables), (0, _toConsumableArray3.default)(devVariables), (0, _toConsumableArray3.default)(optionalEnvVariables), (0, _toConsumableArray3.default)(testVariables));
+  var existingEnvVariables = [].concat((0, _toConsumableArray3.default)(requiredEnvVariables), (0, _toConsumableArray3.default)(optionalEnvVariables), (0, _toConsumableArray3.default)(devVariables), (0, _toConsumableArray3.default)(testVariables));
 
   var resolvedEnvVariables = (0, _extends3.default)({}, devEnv, optionalEnv, requiredEnv, testEnv);
 
   function readKey(key) {
     var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
 
-    if (!existingEnvVarialbes.includes(key)) {
+    if (!existingEnvVariables.includes(key)) {
       throw new Error('Trying to access non existing env varable: ' + key);
     }
     if (resolvedEnvVariables[key] === undefined) {
