@@ -6,7 +6,7 @@ export default () =>
       cy.get('[data-testid="basicInformation"]', { log: false, timeout: 60000 })
     })
 
-    it.only('has record history and help texts', () => {
+    it('has record history and help texts', () => {
       cy.getByText('Record history')
       cy.getByText('Created by Admin', { exact: false })
       cy.getByTestId('sourceDataLink').shouldHaveHref(

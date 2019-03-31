@@ -228,7 +228,7 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
-      name: 'Test lint, unit and integration'
+      name: 'Test backend, common, docs, migrations, scripts'
       cache:
         yarn: true
         directories:
@@ -237,7 +237,6 @@ matrix:
           - packages/docs/node_modules
           - packages/migrations/node_modules
           - packages/scripts/node_modules
-          - packages/ui/node_modules
       env:
         - CI_INSTALL_BACKEND=true
         - CI_INSTALL_COMMON=true
@@ -245,12 +244,10 @@ matrix:
         - CI_INSTALL_MIGRATIONS=true
         - CI_INSTALL_MODELS=true
         - CI_INSTALL_SCRIPTS=true
-        - CI_INSTALL_UI=true
         - CI_LINK_BACKEND=true
         - CI_LINK_COMMON=true
         - CI_LINK_MIGRATIONS=true
         - CI_LINK_SCRIPTS=true
-        - CI_LINK_UI=true
         - CI_START_API=true
         - CI_TEST_BACKEND_API=true
         - CI_TEST_BACKEND_DB=true
@@ -263,6 +260,20 @@ matrix:
         - CI_TEST_MIGRATIONS_LINT=true
         - CI_TEST_MODELS_LINT=true
         - CI_TEST_SCRIPTS_LINT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test ui'
+      cache:
+        yarn: true
+        directories:
+          - packages/common/node_modules
+          - packages/ui/node_modules
+      env:
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_UI=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_UI=true
         - CI_TEST_UI_LINT=true
         - CI_TEST_UI_UNIT=true
       script: ./packages/scripts/src/bash/ci-test.sh
