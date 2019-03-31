@@ -29,6 +29,8 @@ before_script:
 after_failure:
   - ./packages/scripts/src/bash/ci-delete-temporary-images.sh
 
+# tag stages do not use cache, since they always only run once and it takes time
+# to upload the cache which is ~1 GB
 stages:
   - name: build tag
     if: tag IS present
@@ -36,7 +38,6 @@ stages:
     if: tag IS present
   - name: publish tag and cleanup
     if: tag IS present
-  # when there is no tag, jobs can benefit from using cache
   - name: build
     if: tag IS blank
   - name: test
@@ -46,6 +47,15 @@ stages:
 
 matrix:
   include:
+    - stage: build tag
+      name: 'Build ui'
+      env:
+        - CI_BUILD_UI=true
+        - CI_INSTALL_UI=true
+      script:
+        ./packages/scripts/src/bash/ci-build.sh &&
+        ./packages/scripts/src/bash/ci-push-temporary-images.sh
+
     - stage: build tag
       name: 'Build api, docs, migrations and style'
       env:
@@ -59,18 +69,10 @@ matrix:
         ./packages/scripts/src/bash/ci-build.sh &&
         ./packages/scripts/src/bash/ci-push-temporary-images.sh
 
-    - stage: build tag
-      name: 'Build ui'
-      env:
-        - CI_BUILD_UI=true
-        - CI_INSTALL_UI=true
-      script:
-        ./packages/scripts/src/bash/ci-build.sh &&
-        ./packages/scripts/src/bash/ci-push-temporary-images.sh
-
     - stage: test tag
-      name: 'Test e2e part 1'
+      name: 'Test e2e part 1, without auth'
       env:
+        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
@@ -79,8 +81,9 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test tag
-      name: 'Test e2e part 2'
+      name: 'Test e2e part 2, without auth'
       env:
+        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
@@ -89,7 +92,18 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test tag
-      name: 'Test backend and migrations'
+      name: 'Test e2e part 3, with auth'
+      env:
+        - CI_DISABLE_AUTH=false
+        - CI_INSTALL_SCRIPTS=true
+        - CI_INSTALL_UI=true
+        - CI_SETUP_ENV_DOCKER=true
+        - CI_START_E2E=true
+        - CI_TEST_E2E_3=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test tag
+      name: 'Test backend, common, docs, migrations, models and scripts'
       env:
         - CI_INSTALL_BACKEND=true
         - CI_INSTALL_COMMON=true
@@ -104,27 +118,24 @@ matrix:
         - CI_TEST_BACKEND_DB=true
         - CI_TEST_BACKEND_LINT=true
         - CI_TEST_BACKEND_UNIT=true
-        - CI_TEST_MIGRATIONS_LINT=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    - stage: test tag
-      name: 'Test common, docs, models, scripts and ui'
-      env:
-        - CI_INSTALL_UI=true
-        - CI_INSTALL_COMMON=true
-        - CI_INSTALL_DOCS=true
-        - CI_INSTALL_MODELS=true
-        - CI_INSTALL_SCRIPTS=true
-        - CI_LINK_COMMON=true
-        - CI_LINK_SCRIPTS=true
-        - CI_LINK_UI=true
         - CI_TEST_COMMON_LINT=true
         - CI_TEST_COMMON_UNIT=true
         - CI_TEST_DOCS_LINT=true
         - CI_TEST_DOCS_UNIT=true
+        - CI_TEST_MIGRATIONS_LINT=true
         - CI_TEST_MODELS_LINT=true
         - CI_TEST_SCRIPTS_LINT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test tag
+      name: 'Test ui'
+      env:
+        - CI_INSTALL_UI=true
+        - CI_INSTALL_COMMON=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_UI=true
         - CI_TEST_UI_LINT=true
+        - CI_TEST_UI_UNIT=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: publish tag and cleanup
@@ -132,6 +143,19 @@ matrix:
       script:
         ./packages/scripts/src/bash/ci-publish.sh &&
         ./packages/scripts/src/bash/ci-delete-temporary-images.sh
+
+    - stage: build
+      name: 'Build ui'
+      cache:
+        yarn: true
+        directories:
+          - packages/ui/node_modules
+      env:
+        - CI_BUILD_UI=true
+        - CI_INSTALL_UI=true
+      script:
+        ./packages/scripts/src/bash/ci-build.sh &&
+        ./packages/scripts/src/bash/ci-push-temporary-images.sh
 
     - stage: build
       name: 'Build api and migrations'
@@ -158,27 +182,10 @@ matrix:
         ./packages/scripts/src/bash/ci-build.sh &&
         ./packages/scripts/src/bash/ci-push-temporary-images.sh
 
-    - stage: build
-      name: 'Build ui'
-      cache:
-        yarn: true
-        directories:
-          - packages/ui/node_modules
-      env:
-        - CI_BUILD_UI=true
-        - CI_INSTALL_UI=true
-      script:
-        ./packages/scripts/src/bash/ci-build.sh &&
-        ./packages/scripts/src/bash/ci-push-temporary-images.sh
-
     - stage: test
-      name: 'Test e2e part 1'
-      cache:
-        yarn: true
-        directories:
-          - packages/scripts/node_modules
-          - packages/ui/node_modules
+      name: 'Test e2e part 1, without auth'
       env:
+        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
@@ -187,13 +194,9 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
-      name: 'Test e2e part 2'
-      cache:
-        yarn: true
-        directories:
-          - packages/scripts/node_modules
-          - packages/ui/node_modules
+      name: 'Test e2e part 2, without auth'
       env:
+        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
@@ -202,7 +205,18 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
-      name: 'Test lint, unit and integration'
+      name: 'Test e2e part 3, with auth'
+      env:
+        - CI_DISABLE_AUTH=false
+        - CI_INSTALL_SCRIPTS=true
+        - CI_INSTALL_UI=true
+        - CI_SETUP_ENV_DOCKER=true
+        - CI_START_E2E=true
+        - CI_TEST_E2E_3=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test backend, common, docs, migrations, scripts'
       cache:
         yarn: true
         directories:
@@ -211,7 +225,6 @@ matrix:
           - packages/docs/node_modules
           - packages/migrations/node_modules
           - packages/scripts/node_modules
-          - packages/ui/node_modules
       env:
         - CI_INSTALL_BACKEND=true
         - CI_INSTALL_COMMON=true
@@ -219,12 +232,10 @@ matrix:
         - CI_INSTALL_MIGRATIONS=true
         - CI_INSTALL_MODELS=true
         - CI_INSTALL_SCRIPTS=true
-        - CI_INSTALL_UI=true
         - CI_LINK_BACKEND=true
         - CI_LINK_COMMON=true
         - CI_LINK_MIGRATIONS=true
         - CI_LINK_SCRIPTS=true
-        - CI_LINK_UI=true
         - CI_START_API=true
         - CI_TEST_BACKEND_API=true
         - CI_TEST_BACKEND_DB=true
@@ -237,6 +248,20 @@ matrix:
         - CI_TEST_MIGRATIONS_LINT=true
         - CI_TEST_MODELS_LINT=true
         - CI_TEST_SCRIPTS_LINT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test ui'
+      cache:
+        yarn: true
+        directories:
+          - packages/common/node_modules
+          - packages/ui/node_modules
+      env:
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_UI=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_UI=true
         - CI_TEST_UI_LINT=true
         - CI_TEST_UI_UNIT=true
       script: ./packages/scripts/src/bash/ci-test.sh
