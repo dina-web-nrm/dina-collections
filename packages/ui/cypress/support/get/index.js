@@ -64,6 +64,10 @@ Cypress.Commands.add(
   }
 )
 
+Cypress.Commands.add('quickQueryByTestId', (testId, options = {}) => {
+  return cy.queryByTestId(testId, { timeout: 4000, ...options })
+})
+
 Cypress.Commands.add('quickQueryByText', (text, options = {}) => {
   return cy.queryByText(text, { timeout: 4000, ...options })
 })
