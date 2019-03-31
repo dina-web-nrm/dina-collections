@@ -1,4 +1,4 @@
-const requiredEnvVariables = ['NODE_ENV']
+const requiredEnvVariables = ['NODE_ENV', 'WINDOW_DISABLE_AUTH']
 
 const optionalEnvVariables = [
   'REACT_APP_EXTERNAL_URL_API',
