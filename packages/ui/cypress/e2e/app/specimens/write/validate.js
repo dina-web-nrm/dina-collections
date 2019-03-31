@@ -25,7 +25,7 @@ export default () =>
     })
 
     it('validates coordinates format', () => {
-      cy.goToRoute(`/app/specimens/mammals/${newSpecimenId}/edit/sections/2`)
+      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/2`)
       cy.get('[data-testid="localityOrigin"]', {
         log: false,
         timeout: 60000,
@@ -92,7 +92,7 @@ export default () =>
     })
 
     it('validates storage location required for physical object', () => {
-      cy.goToRoute(`/app/specimens/mammals/${newSpecimenId}/edit/sections/4`)
+      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/4`)
       cy.get('[data-testid="physicalObjects"]', {
         log: false,
         timeout: 60000,
@@ -129,7 +129,7 @@ export default () =>
     })
 
     it('validates collecting date input', () => {
-      cy.goToRoute(`/app/specimens/mammals/${newSpecimenId}/edit/sections/3`)
+      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/3`)
       cy.get('[data-testid="collectingDeath"]', {
         log: false,
         timeout: 60000,
@@ -215,7 +215,7 @@ export default () =>
     })
 
     it('sets and validates catalog card date in current year', () => {
-      cy.goToRoute(`/app/specimens/mammals/${newSpecimenId}/edit/sections/0`)
+      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/0`)
       cy.get('[data-testid="basicInformation"]', {
         log: false,
         timeout: 60000,

@@ -47,20 +47,20 @@ export default () =>
       })
 
       it('expands all sections', () => {
-        cy.queryByTestId('taxonomy').should('not.exist')
-        cy.queryByTestId('localityOrigin').should('not.exist')
-        cy.queryByTestId('collectingDeath').should('not.exist')
-        cy.queryByTestId('physicalObjects').should('not.exist')
-        cy.queryByTestId('features').should('not.exist')
+        cy.quickQueryByTestId('taxonomy').should('not.exist')
+        cy.quickQueryByTestId('localityOrigin').should('not.exist')
+        cy.quickQueryByTestId('collectingDeath').should('not.exist')
+        cy.quickQueryByTestId('physicalObjects').should('not.exist')
+        cy.quickQueryByTestId('features').should('not.exist')
 
         cy.getByTestId('formSectionNavigationItem-expandAllSections').click()
 
-        cy.queryByTestId('basicInformation').should('exist')
-        cy.queryByTestId('taxonomy').should('exist')
-        cy.queryByTestId('localityOrigin').should('exist')
-        cy.queryByTestId('collectingDeath').should('exist')
-        cy.queryByTestId('physicalObjects').should('exist')
-        cy.queryByTestId('features').should('exist')
+        cy.getByTestId('basicInformation')
+        cy.getByTestId('taxonomy')
+        cy.getByTestId('localityOrigin')
+        cy.getByTestId('collectingDeath')
+        cy.getByTestId('physicalObjects')
+        cy.getByTestId('features')
       })
     })
 

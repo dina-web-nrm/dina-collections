@@ -13,7 +13,7 @@ Cypress.Commands.add(
   'selectMultipleSearchDropdownOptionByText',
   (optionText, options) => {
     cy.log('selectMultipleSearchDropdownOptionByText')
-    cy.getDropdownOptionByText(optionText, options).click()
+    cy.getDropdownOptionByText(optionText, options).click({ force: true })
     // ensure option is no longer in list of options, i.e. has been selected
     cy.queryMultipleSearchDropdownOptionByText(optionText, {
       timeout: 4000,
