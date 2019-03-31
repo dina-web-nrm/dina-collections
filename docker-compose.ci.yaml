@@ -1,10 +1,16 @@
 version: '3.3'
 services:
+  api:
+    environment:
+      - __DANGEROUSLY_DISABLE_AUTH__=${CI_DISABLE_AUTH}
+
   keycloak:
     volumes:
       - ./packages/keycloak/themes/dina:/opt/jboss/keycloak/themes/dina
       - ./packages/keycloak/dina-realm-dev.json:/opt/jboss/keycloak/dev-export.json
 
   ui:
+    environment:
+      - REACT_APP_WINDOW_DISABLE_AUTH=${CI_DISABLE_AUTH}
     ports:
       - 80:80
