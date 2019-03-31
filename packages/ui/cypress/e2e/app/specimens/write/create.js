@@ -6,7 +6,7 @@ export default () =>
     })
 
     beforeEach(() => {
-      cy.goToRoute('/app/specimens/mammals')
+      cy.visit('/app/specimens/mammals')
       cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,

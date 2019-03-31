@@ -36,7 +36,7 @@ export default function requireLoggedInUser(ComposedComponent) {
         config.auth.active &&
         !userLoading &&
         !loggedIn &&
-        window.DISABLE_AUTH !== true // used to disable auth in e2e tests
+        !(window.DISABLE_AUTH === 'true' || window.DISABLE_AUTH === true) // used to disable auth in e2e tests
       ) {
         this.props.push('/login')
       }
@@ -46,7 +46,7 @@ export default function requireLoggedInUser(ComposedComponent) {
       if (
         this.props.loggedIn ||
         !config.auth.active ||
-        window.DISABLE_AUTH === true
+        (window.DISABLE_AUTH === 'true' || window.DISABLE_AUTH === true)
       ) {
         return <ComposedComponent {...this.props} />
       }

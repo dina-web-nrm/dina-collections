@@ -71,23 +71,35 @@ matrix:
     - stage: test tag
       name: 'Test e2e part 1'
       env:
-        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_1=true
-        - WINDOW_DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test tag
       name: 'Test e2e part 2'
       env:
+        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_2=true
+        - WINDOW_DISABLE_AUTH=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test tag
+      name: 'Test e2e part 3'
+      env:
+        - CI_DISABLE_AUTH=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_INSTALL_UI=true
+        - CI_SETUP_ENV_DOCKER=true
+        - CI_START_E2E=true
+        - CI_TEST_E2E_3=true
+        - WINDOW_DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test tag
@@ -176,23 +188,35 @@ matrix:
     - stage: test
       name: 'Test e2e part 1'
       env:
-        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_1=true
-        - WINDOW_DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
       name: 'Test e2e part 2'
       env:
+        - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
         - CI_TEST_E2E_2=true
+        - WINDOW_DISABLE_AUTH=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test e2e part 3'
+      env:
+        - CI_DISABLE_AUTH=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_INSTALL_UI=true
+        - CI_SETUP_ENV_DOCKER=true
+        - CI_START_E2E=true
+        - CI_TEST_E2E_3=true
+        - WINDOW_DISABLE_AUTH=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
