@@ -2,7 +2,7 @@ version: '3.3'
 services:
   api:
     environment:
-      - __DANGEROUSLY__DISABLE_AUTH__=${CI_DISABLE_AUTH}
+      - __DANGEROUSLY_DISABLE_AUTH__=${CI_DISABLE_AUTH}
 
   keycloak:
     volumes:
