@@ -31,7 +31,7 @@ const createAuthPostLogMiddleware = ({ authActive }) => {
 }
 
 module.exports = function createAuthenticateMiddleware({ auth, config } = {}) {
-  const authActive = false
+  const authActive = config.auth.active
   if (!authActive) {
     log.info('Auth disabled, creating inactive middleware')
     return [
