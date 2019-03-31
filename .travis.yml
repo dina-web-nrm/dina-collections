@@ -184,12 +184,6 @@ matrix:
 
     - stage: test
       name: 'Test e2e part 1, without auth'
-      cache:
-        yarn: true
-        directories:
-          - $HOME/.cache/Cypress
-          - packages/scripts/node_modules
-          - packages/ui/node_modules
       env:
         - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
@@ -201,12 +195,6 @@ matrix:
 
     - stage: test
       name: 'Test e2e part 2, without auth'
-      cache:
-        yarn: true
-        directories:
-          - $HOME/.cache/Cypress
-          - packages/scripts/node_modules
-          - packages/ui/node_modules
       env:
         - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
