@@ -7,7 +7,7 @@ export default () =>
 
     describe('general', () => {
       beforeEach(() => {
-        cy.goToRoute(`/app/specimens/mammals/2/edit/sections/0`)
+        cy.visit(`/app/specimens/mammals/2/edit/sections/0`)
         cy.get('[data-testid="basicInformation"]', {
           log: false,
           timeout: 20000,
@@ -74,7 +74,7 @@ export default () =>
 
       describe('basicInformation', () => {
         beforeEach(() => {
-          cy.goToRoute(`/app/specimens/mammals/2/edit/sections/0`)
+          cy.visit(`/app/specimens/mammals/2/edit/sections/0`)
           cy.get('[data-testid="basicInformation"]', {
             log: false,
             timeout: 20000,
@@ -111,7 +111,7 @@ export default () =>
 
       describe('taxonomy', () => {
         beforeEach(() => {
-          cy.goToRoute(`/app/specimens/mammals/2/edit/sections/1`)
+          cy.visit(`/app/specimens/mammals/2/edit/sections/1`)
           cy.get('[data-testid="taxonomy"]', {
             log: false,
             timeout: 20000,
@@ -159,7 +159,7 @@ export default () =>
 
       describe('localityOrigin', () => {
         beforeEach(() => {
-          cy.goToRoute(`/app/specimens/mammals/2/edit/sections/2`)
+          cy.visit(`/app/specimens/mammals/2/edit/sections/2`)
           cy.get('[data-testid="localityOrigin"]', {
             log: false,
             timeout: 20000,
@@ -182,7 +182,7 @@ export default () =>
 
       describe('collectingDeath', () => {
         beforeEach(() => {
-          cy.goToRoute(`/app/specimens/mammals/2/edit/sections/3`)
+          cy.visit(`/app/specimens/mammals/2/edit/sections/3`)
           cy.get('[data-testid="collectingDeath"]', {
             log: false,
             timeout: 20000,
@@ -216,7 +216,7 @@ export default () =>
 
       describe('physicalObjects', () => {
         beforeEach(() => {
-          cy.goToRoute(`/app/specimens/mammals/2/edit/sections/4`)
+          cy.visit(`/app/specimens/mammals/2/edit/sections/4`)
           cy.get('[data-testid="physicalObjects"]', {
             log: false,
             timeout: 60000,
@@ -253,7 +253,7 @@ export default () =>
 
       describe('features', () => {
         beforeEach(() => {
-          cy.goToRoute(`/app/specimens/mammals/2/edit/sections/5`)
+          cy.visit(`/app/specimens/mammals/2/edit/sections/5`)
           cy.get('[data-testid="features"]', {
             log: false,
             timeout: 20000,

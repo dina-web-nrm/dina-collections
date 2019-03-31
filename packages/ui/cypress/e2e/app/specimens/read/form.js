@@ -1,7 +1,7 @@
 export default () =>
   describe('form content', () => {
     beforeEach(() => {
-      cy.goToRoute('/app/specimens/mammals/1/edit/sections/0')
+      cy.visit('/app/specimens/mammals/1/edit/sections/0')
       // wait until section rendered
       cy.get('[data-testid="basicInformation"]', { log: false, timeout: 60000 })
     })

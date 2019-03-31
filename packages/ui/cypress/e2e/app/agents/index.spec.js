@@ -6,7 +6,7 @@ describe('Agents', () => {
   })
 
   beforeEach(() => {
-    cy.login()
+    cy.visit('/')
   })
 
   describe('write', () => {

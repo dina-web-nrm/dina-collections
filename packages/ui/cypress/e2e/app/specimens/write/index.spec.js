@@ -4,10 +4,7 @@ import validate from './validate'
 import remove from './remove'
 
 describe('Specimens write operations', () => {
-  beforeEach(() => {
-    // resetting db and search is done in each file
-    cy.login()
-  })
+  // resetting db and search is done in each file
 
   create()
   edit()
