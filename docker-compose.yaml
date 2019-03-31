@@ -108,6 +108,7 @@ services:
       nginx -g 'daemon off;'"
     depends_on:
       - api
+      - keycloak
 
   docs:
     image: 'dina/dina-collections-docs:${TAG}'

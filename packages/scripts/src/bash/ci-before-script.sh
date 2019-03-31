@@ -46,13 +46,13 @@ if [ "$CI_START_E2E" = true ]; then
   docker pull dina/dina-collections-api:$TRAVIS_BUILD_NUMBER
   docker pull dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER
 
-  if [ "$CI_DISABLE_AUTH" = true ]; then
-    echo "Starting databases (auth disabled)"
-    docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch postgres
-  else
-    echo "Starting databases and keycloak"
-    docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch keycloak mysql postgres
-  fi
+  # if [ "$CI_DISABLE_AUTH" = true ]; then
+  #   echo "Starting databases (auth disabled)"
+  #   docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch postgres
+  # else
+  echo "Starting databases and keycloak"
+  docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch keycloak mysql postgres
+  # fi
   sleep 10
 
   echo "Importing sample data"
