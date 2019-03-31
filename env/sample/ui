@@ -10,3 +10,4 @@ REACT_APP_EXTERNAL_URL_DOCS=https://dina-docs.nrm.se
 REACT_APP_EXTERNAL_URL_GITHUB_DINA=https://github.com/DINA-Web
 REACT_APP_EXTERNAL_URL_GITHUB_REPO=https://github.com/DINA-Web/dina-collections
 REACT_APP_EXTERNAL_URL_STYLE=https://dina-style.nrm.se
+REACT_APP_WINDOW_DISABLE_AUTH=false
