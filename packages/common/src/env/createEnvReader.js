@@ -18,14 +18,14 @@ module.exports = function createEnvReader({
   })
 
   const optionalEnv = resolveEnvVariables({
-    envVariables: devVariables,
-    nodeEnv: ['development', 'test'],
+    envVariables: optionalEnvVariables,
     processEnv,
     required: false,
   })
 
   const devEnv = resolveEnvVariables({
-    envVariables: optionalEnvVariables,
+    envVariables: devVariables,
+    nodeEnv: ['development', 'test'],
     processEnv,
     required: false,
   })
@@ -37,10 +37,10 @@ module.exports = function createEnvReader({
     required: false,
   })
 
-  const existingEnvVarialbes = [
+  const existingEnvVariables = [
     ...requiredEnvVariables,
-    ...devVariables,
     ...optionalEnvVariables,
+    ...devVariables,
     ...testVariables,
   ]
 
@@ -52,7 +52,7 @@ module.exports = function createEnvReader({
   }
 
   function readKey(key, defaultValue = undefined) {
-    if (!existingEnvVarialbes.includes(key)) {
+    if (!existingEnvVariables.includes(key)) {
       throw new Error(`Trying to access non existing env varable: ${key}`)
     }
     if (resolvedEnvVariables[key] === undefined) {
