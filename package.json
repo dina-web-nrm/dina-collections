@@ -33,7 +33,7 @@
     "export:index-specimen:sample": "yarn import:data:sample && sleep 5 && ./packages/scripts/src/bash/elasticsearch-export-index-specimen.sh -f ./data/sample.searchSpecimen",
     "import:data:json": "yarn start:dbs && cd ./packages/migrations && yarn setup:development",
     "import:data:sample": "yarn start:dbs && yarn exec:local rm-data.sh || true && yarn setup:sample-data && cd ./packages/migrations && yarn setup:development",
-    "import:data:sql": "yarn remote:import:data:sql -s local && yarn build:index:specimen",
+    "import:data:sql": "yarn remote:import:data:sql -s local",
     "import:data:zip": "yarn start:dbs && node ./packages/scripts/src/js/unpackDataFiles.js -s local && cd ./packages/migrations && yarn setup:development",
     "import:index-specimen:json": "yarn start:elasticsearch && ./packages/scripts/src/bash/elasticsearch-import-index-specimen.sh",
     "import:index-specimen:sample": "yarn start:elasticsearch && ./packages/scripts/src/bash/elasticsearch-import-index-specimen.sh -f ./data/sample.searchSpecimen",
