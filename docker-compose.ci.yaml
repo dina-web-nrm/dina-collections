@@ -11,6 +11,7 @@ services:
 
   ui:
     environment:
+      - NGINX_AUTH_BASE_URL=${NGINX_AUTH_BASE_URL} # enable overriding from CLI
       - REACT_APP_DISABLE_AUTH=${CI_DISABLE_AUTH}
     ports:
       - 80:80
