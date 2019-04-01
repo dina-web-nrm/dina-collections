@@ -22,6 +22,11 @@ for imageName in "${imageNames[@]}"; do
   docker tag $imageName:$TRAVIS_BUILD_NUMBER $imageName:$TRAVIS_TAG
   docker push $imageName:$TRAVIS_TAG
 
+  if [[ ${TRAVIS_TAG} != *"rc"* ]] && [[ ${TRAVIS_TAG} != *"test"* ]]; then
+    echo "Pushing $imageName:latest"
+    docker tag $imageName:$TRAVIS_BUILD_NUMBER $imageName:latest
+    docker push $imageName:latest
+  fi
 done
 
 echo "$(date +'%T') end ci-publish"
