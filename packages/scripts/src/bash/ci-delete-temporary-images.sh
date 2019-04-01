@@ -15,14 +15,19 @@ for imageName in "${imageNames[@]}"; do
   curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAVIS_BUILD_NUMBER/
 done
 
-# Delete if there are trailing builds left behind due to potential race
-# condition with some job finishing successfully after another job has failed
-# causing neither after_error nor cleanup stage to be run after the job success
-TRAILING_BUILD_NUMBER="$(($TRAVIS_BUILD_NUMBER - 20))"
+# Delete trailing builds sometimes left behind due to potential race condition
+# with some job finishing successfully after another job has failed causing
+# neither after_error nor cleanup stage to be run after the job success. The
+# interval 20-30 builds behind the current is chosen to certainly not affect any
+# running builds, while normally not leaving more than a few trailing builds at
+# any point in time.
 
-for imageName in "${imageNames[@]}"; do
-  echo -e "\n\n\nDeleting trailing docker image $imageName:$TRAILING_BUILD_NUMBER"
-  curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAILING_BUILD_NUMBER/
+for index in {20..30}; do
+  TRAILING_BUILD_NUMBER="$(($TRAVIS_BUILD_NUMBER - $index))"
+  for imageName in "${imageNames[@]}"; do
+    echo -e "\n\n\nDeleting trailing docker image $imageName:$TRAILING_BUILD_NUMBER"
+    curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAILING_BUILD_NUMBER/
+  done
 done
 
 echo "$(date +'%T') end ci-delete-temporary-images"
