@@ -1,3 +1,5 @@
+#!/bin/sh -
+
 set -ev
 echo "$(date +'%T') start ci-delete-temporary-images"
 
@@ -8,7 +10,7 @@ fi
 
 DOCKER_HUB_TOKEN=$(curl -s -H "Content-Type: application/json" -X POST -d '{"username": "'$DOCKER_USERNAME'", "password": "'$DOCKER_PASSWORD'"}' https://hub.docker.com/v2/users/login/ | jq -r .token)
 
-imageNames=("dina-collections-ui" "dina-collections-api" "dina-collections-migrations" "dina-collections-docs" "dina-semantic-ui")
+imageNames="dina-collections-ui dina-collections-api dina-collections-migrations dina-collections-docs dina-semantic-ui"
 
 for imageName in "${imageNames[@]}"; do
   echo -e "\n\n\nDeleting docker image $imageName:$TRAVIS_BUILD_NUMBER"

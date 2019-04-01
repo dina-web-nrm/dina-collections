@@ -14,7 +14,7 @@ fi
 
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 
-imageNames=("dina-collections-ui" "dina-collections-api" "dina-collections-migrations" "dina-collections-docs" "dina-semantic-ui")
+imageNames="dina-collections-ui dina-collections-api dina-collections-migrations dina-collections-docs dina-semantic-ui"
 
 for imageName in "${imageNames[@]}"; do
   echo "Pushing $imageName:$TRAVIS_TAG"
