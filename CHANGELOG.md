@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.18.0-rc6](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.18.0-rc6)
+#### [v0.18.0-rc7](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.18.0-rc7)
 
 - Improve identifier special cases [`#497`](https://github.com/DINA-Web/dina-collections/pull/497)
 - Fix phrase searches [`#496`](https://github.com/DINA-Web/dina-collections/pull/496)
