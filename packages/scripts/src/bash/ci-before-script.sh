@@ -36,7 +36,6 @@ fi
 if [ "$CI_START_E2E" = true ]; then
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
-
   echo "Setting up sample data"
   yarn setup:sample-data
 
@@ -53,16 +52,15 @@ if [ "$CI_START_E2E" = true ]; then
   echo "Importing sample data"
   TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
 
-  echo "Starting keycloak"
-  # have to start keycloak even if auth disabled since ui/nginx.conf requires it
-  docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d keycloak mysql
-
-  echo "Starting ui, api and workers"
-  TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
-
   if [ "$CI_DISABLE_AUTH" = true ]; then
-    echo "Stopping keycloak because auth is disabled"
-    docker stop keycloak
+    echo "Starting ui, api and workers"
+    TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci-disable-auth.yaml up -d api ui baseWorker searchIndexWorker
+  else
+    echo "Starting keycloak"
+    docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d keycloak mysql
+
+    echo "Starting ui, api and workers"
+    TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
   fi
 
   if [ $? -ne 0 ]; then
