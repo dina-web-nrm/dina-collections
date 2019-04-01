@@ -11,6 +11,6 @@ services:
 
   ui:
     environment:
-      - REACT_APP_WINDOW_DISABLE_AUTH=${CI_DISABLE_AUTH}
+      - REACT_APP_DISABLE_AUTH=${CI_DISABLE_AUTH}
     ports:
       - 80:80

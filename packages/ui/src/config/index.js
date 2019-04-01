@@ -11,9 +11,13 @@ const isDevelopment = env === 'development'
 const isProduction = env === 'production'
 const isTest = env === 'test'
 
+const disableAuth =
+  window.REACT_APP_DISABLE_AUTH === 'true' ||
+  readBoolKey('REACT_APP_DISABLE_AUTH')
+
 const config = {
   auth: {
-    active: !readBoolKey('REACT_APP_DISABLE_AUTH'),
+    active: !disableAuth,
   },
   env,
   externalUrls: {
