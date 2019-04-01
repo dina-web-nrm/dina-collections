@@ -1,4 +1,4 @@
-set -v
+set -ev
 echo "$(date +'%T') start ci-delete-temporary-images"
 
 if [ -z "$CI" ]; then

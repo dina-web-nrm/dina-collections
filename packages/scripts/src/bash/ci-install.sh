@@ -1,6 +1,6 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-install.sh
-set -v
+set -ev
 echo "$(date +'%T') start ci-install"
 
 if [ "$CI_INSTALL_UI" = true ]; then
@@ -23,12 +23,10 @@ if [ "$CI_INSTALL_COMMON" = true ]; then
   yarn install:common --frozen-lockfile
 fi
 
-
 if [ "$CI_INSTALL_SCRIPTS" = true ]; then
   echo "Installing scripts"
   yarn install:scripts --frozen-lockfile
 fi
-
 
 if [ "$CI_INSTALL_MIGRATIONS" = true ]; then
   echo "Installing migrations"
@@ -40,12 +38,10 @@ if [ "$CI_INSTALL_STYLE" = true ]; then
   yarn install:semantic-ui --frozen-lockfile
 fi
 
-
 if [ "$CI_INSTALL_DOCS" = true ]; then
   echo "Installing docs"
   yarn install:docs --frozen-lockfile
 fi
-
 
 if [ "$CI_LINK_COMMON" = true ]; then
   : "${CI_INSTALL_COMMON?CI_INSTALL_COMMON Has to be true}"
@@ -61,7 +57,6 @@ if [ "$CI_LINK_UI" = true ]; then
   echo "Linking ui"
   yarn setup:links:ui
 fi
-
 
 if [ "$CI_LINK_SCRIPTS" = true ]; then
   : "${CI_INSTALL_SCRIPTS?CI_INSTALL_SCRIPTS Has to be true}"
@@ -79,7 +74,6 @@ fi
 
 if [ "$CI_LINK_MIGRATIONS" = true ]; then
   : "${CI_INSTALL_MIGRATIONS?CI_INSTALL_MIGRATIONS Has to be true}"
-
   : "${CI_LINK_BACKEND?CI_LINK_BACKEND Has to be true}"
   : "${CI_LINK_SCRIPTS?CI_LINK_SCRIPTS Has to be true}"
   echo "Linking migrations"
