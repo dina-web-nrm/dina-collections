@@ -29,6 +29,7 @@ notifications:
   slack:
     rooms:
       - secure: NtJIeTSj3PexMmJQmplwKjo6YGVTzDUY661o5Ux3DwfH0DbRwRDzZxVRo1pKxUEEDGlnobRw3H+blvFQatGRoUgGQGzYh+TXPFGcjKrfZbmNoxm5n0SqVO3xmIPp8aLoHE5YNjnNudxViJHNW+5u9E2QUTw8h8teVmYUXU8H+7Y+OJN7tPrSoHTLNVrVcsOqLkn1fb6DCdMNKmff8ac2BmKqoE17zsFZ/PQgL4Cf7Py2Iqfqc0vw5+4SkW5gn4fkYi/MoZvoCrDFVstYDkilD+IV/6N9MPbOWAMd/ilyV+kGI5AD03DYnK5JjgBsCC+x0WggPsnyewBQFkjmRlMJ02NFJyQNA646wDgW0UasOJto32PIvv9JQMgMTvK/fHnGXObaeYUuS7ZD2r0wAaV/gjMdqV+p8ud0gciOs6kw8fgJ1XqkE0V2/2YBz2exYDva+V1+xPYcRQodg9xIlIUPjq4nX8633i1Q2+dx56Eze4yKmFdV1pxsdGMYNSM35i0d+NElm7Q+Ym8ntTLUU9Hv1VjPZXlzhzizf7N/JtUMVEEPu7QN6k1D1k32s74OwjH5m7EbttzmzwWFw793in/VAwdJCfLYper0gccPpGBEIWI2AAJdLpmUY7ljr9IVFO5OkizXtfvwU7J7/dWMFTDI5rHmVU0JKl5rf/T4LljU78I=
+    on_success: never
     on_failure: always
     template:
       - "`%{branch}`"
