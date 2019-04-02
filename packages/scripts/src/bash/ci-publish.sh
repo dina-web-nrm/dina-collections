@@ -19,7 +19,7 @@ declare -a imageNames=(
   "dina/dina-collections-api"
   "dina/dina-collections-migrations"
   "dina/dina-collections-docs"
-  "dina/dina-semantic-ui"
+  "dina/dina-semantic-ui-docs"
 )
 
 for imageName in "${imageNames[@]}"; do
