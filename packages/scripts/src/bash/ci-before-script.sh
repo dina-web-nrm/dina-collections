@@ -12,7 +12,7 @@ if [ "$CI_SETUP_ENV_DOCKER" = true ]; then
   yarn setup:env:ci:local
 fi
 
-if [ "$CI_START_API" = true ]; then
+if [ "$CI_START_DATABASES" = true ]; then
   : "${CI_LINK_MIGRATIONS?CI_LINK_MIGRATIONS Has to be true}"
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
@@ -21,6 +21,13 @@ if [ "$CI_START_API" = true ]; then
   yarn start:postgres && yarn start:elasticsearch
   cd ./packages/migrations && yarn db:test:create
 
+  echo "Databases started"
+  cd $START_DIRECTORY
+fi
+
+if [ "$CI_START_API" = true ]; then
+  : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
+  : "${CI_LINK_MIGRATIONS?CI_LINK_MIGRATIONS Has to be true}"
   echo "Setting up & importing sample data"
   cd $START_DIRECTORY
   yarn setup:sample-data && cd ./packages/migrations && yarn setup:development
