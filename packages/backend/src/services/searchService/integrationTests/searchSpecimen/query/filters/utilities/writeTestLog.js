@@ -36,6 +36,9 @@ module.exports = function writeTestLog({
   )
   ensureDirectoryExistence(targetPath)
   let markdown = `# Tests for ${group}`
+  if (name === 'unit') {
+    markdown = `${markdown}\n\n Note that | is escaped in regexp to be displayed correct in github markdown`
+  }
 
   Object.keys(testLogObject).forEach(key => {
     const logItems = [headers, ...testLogObject[key]]

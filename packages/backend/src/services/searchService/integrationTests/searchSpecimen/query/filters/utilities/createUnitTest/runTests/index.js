@@ -28,7 +28,7 @@ module.exports = function runTests({ testSpecification, resource }) {
       }) => {
         testLogObject[title].push([
           input && `\`\`\` ${input} \`\`\``,
-          regexp && `\`\`\` ${regexp} \`\`\``,
+          regexp && `\`\`\` ${regexp.replace(/\|+/g, '\\|')} \`\`\``,
           string,
           matching,
           errorMessage,
