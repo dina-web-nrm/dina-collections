@@ -1,3 +1,4 @@
+NGINX_UI_EXTERNAL_URL=https://dina-collections.dina-web.net
 NGINX_API_EXTERNAL_URL=https://dina-api.dina-web.net
 VIRTUAL_HOST=local-docs.dina-web.net
 NGINX_HOST=local-docs.dina-web.net
