@@ -3,15 +3,16 @@ args=()
 cd ./data
 
 for f in sample.*; do
-  if [ ! -f ${f/sample/} ]
-    then
-      echo ${f/sample/} 'dont exist'
-      exit 1
-    fi
+  if [[ $f == *".sql"* ]]; then
+    echo "Not copying file: $f. (dev specific)"
+  elif [[ $f == *".searchSpecimen"* ]]; then
+    echo "Not copying file: $f. (dev specific)"
+  elif [ ! -f ${f/sample/} ]; then
+    echo ${f/sample/} 'dont exist'
+    exit 1
+  else
     args+=(${f/sample/})
-
-
-
+  fi
 done
 
 rm -f data.zip
