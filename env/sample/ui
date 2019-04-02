@@ -1,12 +1,13 @@
-NODE_PATH=src/
-VIRTUAL_HOST=local-ui.dina-web.net
-NGINX_AUTH_BASE_URL=http://keycloak:8080
 NGINX_API_BASE_URL=http://api
+NGINX_AUTH_BASE_URL=http://keycloak:8080
 NGINX_HOST=local-ui.dina-web.net
 NGINX_PORT=80
+NODE_PATH=src/
+REACT_APP_DISABLE_AUTH=false
 REACT_APP_EXTERNAL_URL_API=https://dina-api.nrm.se
 REACT_APP_EXTERNAL_URL_DINA_WIKI=https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!
 REACT_APP_EXTERNAL_URL_DOCS=https://dina-docs.nrm.se
 REACT_APP_EXTERNAL_URL_GITHUB_DINA=https://github.com/DINA-Web
 REACT_APP_EXTERNAL_URL_GITHUB_REPO=https://github.com/DINA-Web/dina-collections
 REACT_APP_EXTERNAL_URL_STYLE=https://dina-style.nrm.se
+VIRTUAL_HOST=local-ui.dina-web.net

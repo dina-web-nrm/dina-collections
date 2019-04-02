@@ -1,7 +1,7 @@
 export default () =>
   describe('table', () => {
     beforeEach(() => {
-      cy.goToRoute('/app/specimens/mammals/search')
+      cy.visit('/app/specimens/mammals/search')
       cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,
@@ -13,7 +13,7 @@ export default () =>
       cy.get(
         '[data-testid="infinityTable"] [data-testid="infinityTableRow1"]'
       ).should('contain', '621445')
-      cy.queryByText('500001').should('not.exist')
+      cy.quickQueryByText('500001').should('not.exist')
 
       cy.log('check that switching between form and tab works')
       cy.getByTestId('formTabMenuItem').click()

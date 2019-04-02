@@ -1,6 +1,7 @@
 const requiredEnvVariables = ['NODE_ENV']
 
 const optionalEnvVariables = [
+  'REACT_APP_DISABLE_AUTH',
   'REACT_APP_EXTERNAL_URL_API',
   'REACT_APP_EXTERNAL_URL_DINA_WIKI',
   'REACT_APP_EXTERNAL_URL_DOCS',
@@ -12,7 +13,6 @@ const optionalEnvVariables = [
 const devVariables = [
   'REACT_APP_ENABLE_REDUX_LOGGER',
   'REACT_APP_ENABLE_REDUX_LOGGER_DIFF',
-  'REACT_APP_DISABLE_AUTH',
 ]
 
 const testVariables = ['REACT_APP_TEST_UI']

@@ -14,13 +14,14 @@ const requiredEnvVariables = [
 ]
 
 const optionalEnvVariables = [
-  'IMPORT_DATA_NUMBER_OF_SPECIMENS',
   'IMPORT_DATA',
+  'IMPORT_DATA_NUMBER_OF_SPECIMENS',
   'SERVER_ALIAS',
   'SLACK_ACTIVE',
   'SLACK_ERROR_WEBHOOK',
   'SLACK_WARNING_WEBHOOK',
   'WORKER_ROLE',
+  '__DANGEROUSLY_DISABLE_AUTH__',
 ]
 
 const devVariables = ['DISABLE_AUTH', 'RUN_MEMWATCH']

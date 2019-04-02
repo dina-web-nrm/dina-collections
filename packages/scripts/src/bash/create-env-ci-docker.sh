@@ -15,8 +15,8 @@ for f in *; do
     fi
   fi
   if [ ! -f "../.${f}" ]; then
-  echo "Copying file ./env/ci/$f to ./env/.$f"
-  cp -n ${f} "../.${f}"
+    echo "Copying file ./env/ci/$f to ./env/.$f"
+    cp -n ${f} "../.${f}"
   else
     echo "Not replacing existing file ./env/.$f"
   fi

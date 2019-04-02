@@ -6,7 +6,7 @@ export default () =>
     })
 
     beforeEach(() => {
-      cy.goToRoute('/app/specimens/mammals')
+      cy.visit('/app/specimens/mammals')
       cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,
@@ -47,7 +47,9 @@ export default () =>
 
       cy.log('ensure error cleared when going back to 6 digits')
       cy.get('@catalogNumberInput').type('{backspace}')
-      cy.queryByText('Catalog number must be 6 or 8 digits').should('not.exist')
+      cy.quickQueryByText('Catalog number must be 6 or 8 digits').should(
+        'not.exist'
+      )
       cy.getByTestId('useThisNumber').should('not.be.disabled')
 
       cy.log('ensure error on non-digit')

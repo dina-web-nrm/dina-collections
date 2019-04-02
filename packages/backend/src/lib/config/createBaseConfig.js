@@ -130,16 +130,18 @@ module.exports = function createBaseConfig({ env: nodeEnv }) {
   const db = createPostgresDbConfig({
     env: readKey('NODE_ENV'),
   })
-  if (nodeEnv === 'development' || nodeEnv === 'test') {
-    const disableAuth = nodeEnv === 'test' || readBoolKey('DISABLE_AUTH')
-    if (disableAuth) {
-      envConfig = {
-        ...envConfig,
-        auth: {
-          ...envConfig.auth,
-          active: !disableAuth,
-        },
-      }
+
+  if (
+    nodeEnv === 'test' ||
+    (nodeEnv === 'development' && readBoolKey('DISABLE_AUTH')) ||
+    (nodeEnv === 'production' && readBoolKey('__DANGEROUSLY_DISABLE_AUTH__'))
+  ) {
+    envConfig = {
+      ...envConfig,
+      auth: {
+        ...envConfig.auth,
+        active: false,
+      },
     }
   }
 

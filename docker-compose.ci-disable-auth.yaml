@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  api:
+    environment:
+      - __DANGEROUSLY_DISABLE_AUTH__=${CI_DISABLE_AUTH}
+
+  ui:
+    environment:
+      # avoid nginx in ui shutting down due to auth upstream not available
+      - NGINX_AUTH_BASE_URL=http://api
+      - REACT_APP_DISABLE_AUTH=${CI_DISABLE_AUTH}
+    ports:
+      - 80:80

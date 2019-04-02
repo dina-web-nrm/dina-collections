@@ -1,101 +1,76 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-before-script.sh
-
+set -ev
+echo "$(date +'%T') start ci-before-script"
 START_DIRECTORY=$PWD
 
 if [ "$CI_SETUP_ENV_DOCKER" = true ]; then
+  echo "Setting up env for docker"
   yarn setup:env:ci:docker
-  yarn setup:env
-else
+  else
+  echo "Setting up env for localhost"
   yarn setup:env:ci:local
 fi
 
 if [ "$CI_START_DATABASES" = true ]; then
-  echo "Starting dbs"
+  : "${CI_LINK_MIGRATIONS?CI_LINK_MIGRATIONS Has to be true}"
+  echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
+
+  echo "Starting databases"
   yarn start:postgres && yarn start:elasticsearch
   cd ./packages/migrations && yarn db:test:create
-  cd $START_DIRECTORY
-fi
 
-# do this early, to let it compile in the background
-if [ "$CI_START_UI" = true ]; then
-  : "${CI_START_API?CI_START_API Has to be true}"
-  echo "Starting UI"
-  cd ./packages/ui && yarn start &
-  echo "UI started"
-  cd $START_DIRECTORY
-fi
-
-
-if [ "$CI_START_KEYCLOAK" = true ]; then
-  : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
-  echo "Starting keycloak"
-  yarn start:keycloak
+  echo "Databases started"
   cd $START_DIRECTORY
 fi
 
 if [ "$CI_START_API" = true ]; then
   : "${CI_START_DATABASES?CI_START_DATABASES Has to be true}"
   : "${CI_LINK_MIGRATIONS?CI_LINK_MIGRATIONS Has to be true}"
-  echo "Setting up backend api"
-  yarn setup:sample-data && cd ./packages/migrations && yarn setup:development
+  echo "Setting up & importing sample data"
   cd $START_DIRECTORY
-  echo "Starting api"
+  yarn setup:sample-data && cd ./packages/migrations && yarn setup:development
+
+  echo "Starting API"
+  cd $START_DIRECTORY
   cd ./packages/backend && yarn start:node &
-  echo "Api started"
+
+  echo "API started"
   cd $START_DIRECTORY
 fi
 
-if [ "$CI_START_E2E_DOCKER" = true ]; then
-  : "${CI_SETUP_ENV_DOCKER?CI_SETUP_ENV_DOCKER Has to be true}"
-  docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-
+if [ "$CI_START_E2E" = true ]; then
   echo "Stopping Travis postgresql"
   sudo /etc/init.d/postgresql stop
-
-  echo "Building UI bundle and image"
-  yarn build:ui
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-
-  docker build -f ./packages/ui/Dockerfile -t dina/dina-collections-ui:ci ./packages/ui;
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-
-  echo "Building migrations image"
-  docker build -f ./packages/migrations/Dockerfile -t dina/dina-collections-migrations:ci .;
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-
-  echo "Building backend image"
-  docker build -f ./packages/backend/Dockerfile -t dina/dina-collections-api:ci .;
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-
-  echo "Setup sample data"
+  echo "Setting up sample data"
   yarn setup:sample-data
 
-  echo "Starting databases and keycloak"
-  docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch keycloak mysql postgres
+  echo "Pulling docker images"
+  docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+  docker pull dina/dina-collections-ui:$TRAVIS_BUILD_NUMBER
+  docker pull dina/dina-collections-api:$TRAVIS_BUILD_NUMBER
+  docker pull dina/dina-collections-migrations:$TRAVIS_BUILD_NUMBER
+
+  echo "Starting databases"
+  docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch postgres
   sleep 10
 
   echo "Importing sample data"
-  TAG=ci docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
+  TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.data.yaml -f docker-compose.data.ci.yaml up import
 
-  echo "Starting application and worker containers"
-  TAG=ci docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
+  if [ "$CI_DISABLE_AUTH" = true ]; then
+    echo "Starting ui, api and workers"
+    TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci-disable-auth.yaml up -d api ui baseWorker searchIndexWorker
+  else
+    echo "Starting keycloak"
+    docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d keycloak mysql
 
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
+    echo "Starting ui, api and workers"
+    TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
   fi
+
+  cd $START_DIRECTORY
 fi
+
+echo "$(date +'%T') end ci-before-script"
