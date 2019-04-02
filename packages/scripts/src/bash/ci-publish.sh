@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 # OBS:login with docker-hub credentials, set in ~/.docker/config
 set -ev
 echo "$(date +'%T') start ci-publish"
@@ -14,7 +14,13 @@ fi
 
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 
-imageNames="dina-collections-ui dina-collections-api dina-collections-migrations dina-collections-docs dina-semantic-ui"
+declare -a imageNames=(
+  "dina-collections-ui"
+  "dina-collections-api"
+  "dina-collections-migrations"
+  "dina-collections-docs"
+  "dina-semantic-ui"
+)
 
 for imageName in "${imageNames[@]}"; do
   echo "Pushing $imageName:$TRAVIS_TAG"

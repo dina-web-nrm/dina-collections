@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 #./packages/scripts/src/bash/ci-build.sh
 set -ev
 echo "$(date +'%T') start ci-build"

@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 # OBS:login with docker-hub credentials, set in ~/.docker/config
 
 set -ev

@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 
 set -ev
 echo "$(date +'%T') start ci-test"
