@@ -45,6 +45,7 @@ const InfinityTableRow = ({
 
   return (
     <Grid.Row
+      data-testid={`infinityTableRow${rowNumber}`}
       onClick={event => {
         event.preventDefault()
         onClickRow(rowNumber, itemId)
