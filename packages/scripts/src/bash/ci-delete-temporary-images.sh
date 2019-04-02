@@ -11,16 +11,16 @@ fi
 DOCKER_HUB_TOKEN=$(curl -s -H "Content-Type: application/json" -X POST -d '{"username": "'$DOCKER_USERNAME'", "password": "'$DOCKER_PASSWORD'"}' https://hub.docker.com/v2/users/login/ | jq -r .token)
 
 declare -a imageNames=(
-  "dina-collections-ui"
-  "dina-collections-api"
-  "dina-collections-migrations"
-  "dina-collections-docs"
-  "dina-semantic-ui"
+  "dina/dina-collections-ui"
+  "dina/dina-collections-api"
+  "dina/dina-collections-migrations"
+  "dina/dina-collections-docs"
+  "dina/dina-semantic-ui-docs"
 )
 
 for imageName in "${imageNames[@]}"; do
-  echo -e "\n\n\nDeleting docker image dina/$imageName:$TRAVIS_BUILD_NUMBER"
-  curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAVIS_BUILD_NUMBER/
+  echo -e "\n\n\nDeleting docker image $imageName:$TRAVIS_BUILD_NUMBER"
+  curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/$imageName/tags/$TRAVIS_BUILD_NUMBER/
 done
 
 # Delete trailing builds sometimes left behind due to potential race condition
@@ -33,8 +33,8 @@ done
 for index in {20..30}; do
   TRAILING_BUILD_NUMBER="$(($TRAVIS_BUILD_NUMBER - $index))"
   for imageName in "${imageNames[@]}"; do
-    echo -e "\n\n\nDeleting trailing docker image dina/$imageName:$TRAILING_BUILD_NUMBER"
-    curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAILING_BUILD_NUMBER/
+    echo -e "\n\n\nDeleting trailing docker image $imageName:$TRAILING_BUILD_NUMBER"
+    curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/$imageName/tags/$TRAILING_BUILD_NUMBER/
   done
 done
 
