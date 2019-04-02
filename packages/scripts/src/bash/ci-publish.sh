@@ -15,11 +15,11 @@ fi
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 
 declare -a imageNames=(
-  "dina-collections-ui"
-  "dina-collections-api"
-  "dina-collections-migrations"
-  "dina-collections-docs"
-  "dina-semantic-ui"
+  "dina/dina-collections-ui"
+  "dina/dina-collections-api"
+  "dina/dina-collections-migrations"
+  "dina/dina-collections-docs"
+  "dina/dina-semantic-ui"
 )
 
 for imageName in "${imageNames[@]}"; do

@@ -19,7 +19,7 @@ declare -a imageNames=(
 )
 
 for imageName in "${imageNames[@]}"; do
-  echo -e "\n\n\nDeleting docker image $imageName:$TRAVIS_BUILD_NUMBER"
+  echo -e "\n\n\nDeleting docker image dina/$imageName:$TRAVIS_BUILD_NUMBER"
   curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAVIS_BUILD_NUMBER/
 done
 
@@ -33,7 +33,7 @@ done
 for index in {20..30}; do
   TRAILING_BUILD_NUMBER="$(($TRAVIS_BUILD_NUMBER - $index))"
   for imageName in "${imageNames[@]}"; do
-    echo -e "\n\n\nDeleting trailing docker image $imageName:$TRAILING_BUILD_NUMBER"
+    echo -e "\n\n\nDeleting trailing docker image dina/$imageName:$TRAILING_BUILD_NUMBER"
     curl -X DELETE -s -i -H "Authorization: JWT ${DOCKER_HUB_TOKEN}" https://hub.docker.com/v2/repositories/dina/$imageName/tags/$TRAILING_BUILD_NUMBER/
   done
 done
