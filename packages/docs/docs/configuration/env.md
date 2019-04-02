@@ -1,7 +1,7 @@
 ---
 id: env
-title: Environmental variables
-sidebar_label: Env variables
+title: Environment variables
+sidebar_label: Environment variables
 ---
 
 # Env files
