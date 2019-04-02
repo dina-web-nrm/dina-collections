@@ -26,12 +26,9 @@ after_failure:
   - ./packages/scripts/src/bash/ci-delete-temporary-images.sh
 
 stages:
-  - name: test excluding e2e
-    if: NOT branch = master AND tag IS blank
   - name: build
     if: branch = master OR tag IS present
-  - name: test including e2e
-    if: branch = master OR tag IS present
+  - name: test
   - name: cleanup
     if: branch = master AND tag IS blank
   - name: publish tag and cleanup
@@ -39,97 +36,6 @@ stages:
 
 matrix:
   include:
-    # stage for feature branches
-    - stage: test excluding e2e
-      name: 'Test backend api integration'
-      cache:
-        yarn: true
-        directories:
-          - packages/backend/node_modules
-          - packages/common/node_modules
-          - packages/migrations/node_modules
-          - packages/scripts/node_modules
-      env:
-        - CI_INSTALL_BACKEND=true
-        - CI_INSTALL_COMMON=true
-        - CI_INSTALL_MIGRATIONS=true
-        - CI_INSTALL_SCRIPTS=true
-        - CI_LINK_BACKEND=true
-        - CI_LINK_COMMON=true
-        - CI_LINK_MIGRATIONS=true
-        - CI_LINK_SCRIPTS=true
-        - CI_START_API=true
-        - CI_TEST_BACKEND_API=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    - stage: test excluding e2e
-      name: 'Test backend db integration, lint, unit and migrations'
-      cache:
-        yarn: true
-        directories:
-          - packages/backend/node_modules
-          - packages/common/node_modules
-          - packages/migrations/node_modules
-          - packages/scripts/node_modules
-      env:
-        - CI_INSTALL_BACKEND=true
-        - CI_INSTALL_COMMON=true
-        - CI_INSTALL_MIGRATIONS=true
-        - CI_INSTALL_SCRIPTS=true
-        - CI_LINK_BACKEND=true
-        - CI_LINK_COMMON=true
-        - CI_LINK_MIGRATIONS=true
-        - CI_LINK_SCRIPTS=true
-        - CI_START_API=true
-        - CI_TEST_BACKEND_DB=true
-        - CI_TEST_BACKEND_LINT=true
-        - CI_TEST_BACKEND_UNIT=true
-        - CI_TEST_MIGRATIONS_LINT=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    - stage: test excluding e2e
-      name: 'Test ui'
-      cache:
-        yarn: true
-        directories:
-          - packages/common/node_modules
-          - packages/ui/node_modules
-      env:
-        - CI_INSTALL_COMMON=true
-        - CI_INSTALL_UI=true
-        - CI_LINK_COMMON=true
-        - CI_LINK_UI=true
-        - CI_TEST_UI_LINT=true
-        - CI_TEST_UI_UNIT=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    - stage: test excluding e2e
-      name: 'Test common, docs, models, and scripts'
-      cache:
-        yarn: true
-        directories:
-          - packages/common/node_modules
-          - packages/docs/node_modules
-          - packages/models/node_modules
-          - packages/scripts/node_modules
-      env:
-        - CI_INSTALL_COMMON=true
-        - CI_INSTALL_DOCS=true
-        - CI_INSTALL_MODELS=true
-        - CI_INSTALL_SCRIPTS=true
-        - CI_LINK_COMMON=true
-        - CI_LINK_SCRIPTS=true
-        - CI_TEST_COMMON_LINT=true
-        - CI_TEST_COMMON_UNIT=true
-        - CI_TEST_DOCS_LINT=true
-        - CI_TEST_DOCS_UNIT=true
-        - CI_TEST_MODELS_LINT=true
-        - CI_TEST_SCRIPTS_LINT=true
-      script: ./packages/scripts/src/bash/ci-test.sh
-
-    #
-    # stages for master and tags
-    #
     - stage: build
       name: 'Build ui'
       cache:
@@ -168,8 +74,9 @@ matrix:
         ./packages/scripts/src/bash/ci-build.sh &&
         ./packages/scripts/src/bash/ci-push-temporary-images.sh
 
-    - stage: test including e2e
+    - stage: test
       name: 'Test e2e part 1, without auth'
+      if: branch = master OR tag IS present
       env:
         - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
@@ -179,8 +86,9 @@ matrix:
         - CI_TEST_E2E_1=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
-    - stage: test including e2e
+    - stage: test
       name: 'Test e2e part 2, without auth'
+      if: branch = master OR tag IS present
       env:
         - CI_DISABLE_AUTH=true
         - CI_INSTALL_SCRIPTS=true
@@ -190,8 +98,9 @@ matrix:
         - CI_TEST_E2E_2=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
-    - stage: test including e2e
+    - stage: test
       name: 'Test e2e part 3, with auth'
+      if: branch = master OR tag IS present
       env:
         - CI_DISABLE_AUTH=false
         - CI_INSTALL_SCRIPTS=true
@@ -201,12 +110,11 @@ matrix:
         - CI_TEST_E2E_3=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
-    - stage: test including e2e
-      name: 'Test backend, common, docs, migrations, models and scripts'
+    - stage: test
+      name: 'Test backend api integration'
       env:
         - CI_INSTALL_BACKEND=true
         - CI_INSTALL_COMMON=true
-        - CI_INSTALL_DOCS=true
         - CI_INSTALL_MIGRATIONS=true
         - CI_INSTALL_SCRIPTS=true
         - CI_LINK_BACKEND=true
@@ -215,32 +123,64 @@ matrix:
         - CI_LINK_SCRIPTS=true
         - CI_START_API=true
         - CI_TEST_BACKEND_API=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test backend db integration, lint, unit and migrations'
+      env:
+        - CI_INSTALL_BACKEND=true
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_MIGRATIONS=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_LINK_BACKEND=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_MIGRATIONS=true
+        - CI_LINK_SCRIPTS=true
+        - CI_START_API=true
         - CI_TEST_BACKEND_DB=true
         - CI_TEST_BACKEND_LINT=true
         - CI_TEST_BACKEND_UNIT=true
-        - CI_TEST_COMMON_LINT=true
-        - CI_TEST_COMMON_UNIT=true
-        - CI_TEST_DOCS_LINT=true
-        - CI_TEST_DOCS_UNIT=true
         - CI_TEST_MIGRATIONS_LINT=true
-        - CI_TEST_MODELS_LINT=true
-        - CI_TEST_SCRIPTS_LINT=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
-    - stage: test including e2e
+    - stage: test
       name: 'Test ui'
       cache:
-      yarn: true
-      directories:
-        - packages/common/node_modules
-        - packages/ui/node_modules
+        yarn: true
+        directories:
+          - packages/common/node_modules
+          - packages/ui/node_modules
       env:
-        - CI_INSTALL_UI=true
         - CI_INSTALL_COMMON=true
+        - CI_INSTALL_UI=true
         - CI_LINK_COMMON=true
         - CI_LINK_UI=true
         - CI_TEST_UI_LINT=true
         - CI_TEST_UI_UNIT=true
+      script: ./packages/scripts/src/bash/ci-test.sh
+
+    - stage: test
+      name: 'Test common, docs, models, and scripts'
+      cache:
+        yarn: true
+        directories:
+          - packages/common/node_modules
+          - packages/docs/node_modules
+          - packages/models/node_modules
+          - packages/scripts/node_modules
+      env:
+        - CI_INSTALL_COMMON=true
+        - CI_INSTALL_DOCS=true
+        - CI_INSTALL_MODELS=true
+        - CI_INSTALL_SCRIPTS=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_SCRIPTS=true
+        - CI_TEST_COMMON_LINT=true
+        - CI_TEST_COMMON_UNIT=true
+        - CI_TEST_DOCS_LINT=true
+        - CI_TEST_DOCS_UNIT=true
+        - CI_TEST_MODELS_LINT=true
+        - CI_TEST_SCRIPTS_LINT=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: cleanup
