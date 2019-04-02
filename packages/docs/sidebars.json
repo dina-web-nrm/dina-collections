@@ -21,6 +21,14 @@
         "ids": ["configuration/env"]
       }
     ],
+    "Packages": [
+      "packages/index",
+      {
+        "type": "subcategory",
+        "label": "Backend",
+        "ids": ["packages/backend/index"]
+      }
+    ],
     "Developer guide": [
       "developer-guide/index",
       {

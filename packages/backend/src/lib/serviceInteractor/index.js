@@ -10,7 +10,6 @@ const log = createLog('lib/serviceInteractor')
 
 module.exports = function createServiceInteractor() {
   const operationTypes = [
-    'batchCreate',
     'create',
     'del',
     'emptyView',
