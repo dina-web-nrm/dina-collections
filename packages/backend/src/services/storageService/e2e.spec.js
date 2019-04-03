@@ -5,6 +5,7 @@ const {
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 const expectSingleResourceResponse = require('../../utilities/test/expectSingleResourceResponse')
+const expectError400 = require('../../utilities/test/expectError400')
 
 const physicalObjectExample = {
   data: {
@@ -65,6 +66,16 @@ apiDescribe('storage', () => {
         expect(res.data.type).toBe('storageLocation')
         expect(res.data.attributes).toBeTruthy()
       })
+    })
+    it('Fail with invalid input', () => {
+      return expectError400(
+        makeTestCall({
+          authToken,
+          body: { specimen: 'tiger' },
+          operationId: 'storageLocationCreate',
+          validateOutput: true,
+        })
+      )
     })
   })
   describe('Tmp', () => {
