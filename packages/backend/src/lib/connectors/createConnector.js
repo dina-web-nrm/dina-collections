@@ -1,12 +1,9 @@
-const createRequestHandler = require('common/src/apiClient/createRequestHandler')
-const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
 const controllerFactories = require('../../lib/controllers')
 const createLog = require('../../utilities/log')
 
 const log = createLog('lib/connectors', 1)
 
 module.exports = function createConnector({
-  apiConfig,
   config,
   customControllerFactories,
   fileInteractor,
@@ -48,27 +45,17 @@ module.exports = function createConnector({
       operation,
       serviceInteractor,
     })
-  const endpointConfig = commonCreateEndpointConfig({
-    operationId,
-  })
-
-  // TODO rename function
-  const requestHandler = createRequestHandler({
-    apiConfig,
-    endpointConfig,
-    handler: controller,
-    methodConfigInput: {
-      method,
-      requestContentType: 'application/vnd.api+json',
-      responseContentType: 'application/vnd.api+json',
-    },
-  })
-
   return {
     controller,
     method,
     path,
-    requestHandler,
+    requestHandler: ({ user, userInput, requestId }) => {
+      return controller({
+        request: userInput,
+        requestId,
+        user,
+      })
+    },
     serviceName,
   }
 }

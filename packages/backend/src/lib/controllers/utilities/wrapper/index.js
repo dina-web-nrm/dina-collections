@@ -6,6 +6,19 @@ const createLog = require('../../../../utilities/log')
 const createObjectResponse = require('../transformations/createObjectResponse')
 const createPreHooks = require('../createPreHooks')
 const extractRelationships = require('../relationships/extractRelationships')
+const parseRequest = require('common/src/apiClient/createRequest/mapInput')
+const validateRequest = require('common/src/apiClient/createRequest/validateInput')
+const validateOutput = require('common/src/apiClient/createResponse/validateOutput')
+const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
+const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
+
+const systemValidate = (obj, schema) => {
+  return createSystemBackendValidator({
+    schema,
+    throwError: false,
+    type: 'config',
+  })(obj)
+}
 
 // TODO make sure all controllers are using controllerWrapper
 module.exports = function createControllerWrapper({
@@ -26,6 +39,7 @@ module.exports = function createControllerWrapper({
     filterSpecification,
     includeRelations,
     interceptors: interceptorsInput,
+    method,
     operationId,
     postHooks: postHooksInput,
     preHooks: preHooksInput,
@@ -49,9 +63,9 @@ module.exports = function createControllerWrapper({
     throw new Error('Service interactor is required')
   }
 
-  requiredModelMethods.forEach(method => {
-    if (!model[method]) {
-      throw new Error(`Missing required model method: ${method}`)
+  requiredModelMethods.forEach(modelMethod => {
+    if (!model[modelMethod]) {
+      throw new Error(`Missing required model method: ${modelMethod}`)
     }
   })
 
@@ -90,157 +104,194 @@ module.exports = function createControllerWrapper({
 
   const log = createLog(`controller/${operationId}`)
 
+  const endpointConfig = commonCreateEndpointConfig({
+    operationId,
+  })
+
+  const apiConfig = { ...config.api, log: config.log, systemValidate }
+  const methodConfig = {
+    method,
+    requestContentType: 'application/vnd.api+json',
+    responseContentType: 'application/vnd.api+json',
+  }
   return function wrapper(controllerHandler) {
     return function requestHandler({
-      request: originalRequest,
+      request: rawRequest,
       user,
       requestId,
       ...rest
     }) {
-      if (!disableWrapperLog) {
-        log.debug(`Called with request id: ${requestId}`)
-      }
-
-      return applyHooks({
-        config,
-        fileInteractor,
-        hooks: preHooks,
-        log,
-        request: originalRequest,
-        requestId,
-        resource,
-        serviceInteractor,
-        user,
-      })
-        .then(() => {
-          return applyInterceptors({
-            interceptors,
-            log,
-            model,
-            models,
-            operation,
-            request: originalRequest,
-            serviceInteractor,
-          }).then(
-            ({
-              item: itemFromInterceptors,
-              items: itemsFromInterceptors,
-              meta: metaFromInterceptors,
-              request,
-            }) => {
-              if (responseIsArray && itemsFromInterceptors) {
-                return Promise.resolve({
-                  items: itemsFromInterceptors,
-                  meta: metaFromInterceptors,
-                  request,
-                })
-              }
-              if (responseIsObject && itemFromInterceptors) {
-                return Promise.resolve({
-                  item: itemFromInterceptors,
-                  meta: metaFromInterceptors,
-                  request,
-                })
-              }
-              return Promise.resolve()
-                .then(() => {
-                  return controllerHandler({
-                    log,
-                    model,
-                    models,
-                    request,
-                    requestId,
-                    serviceInteractor,
-                    user,
-                    ...rest,
-                  })
-                })
-                .then(controllerResponse => {
-                  return {
-                    ...controllerResponse,
-                    request,
-                  }
-                })
-            }
-          )
+      return parseRequest({
+        apiConfig,
+        endpointConfig,
+        methodConfig,
+        userInput: rawRequest,
+      }).then(originalRequest => {
+        return validateRequest({
+          apiConfig,
+          endpointConfig,
+          methodConfig,
+          request: originalRequest,
         })
-        .then(
-          ({
-            item,
-            itemExternalRelationships,
-            items,
-            itemsExternalRelationships,
-            meta,
-            request,
-          }) => {
+          .then(() => {
+            if (!disableWrapperLog) {
+              log.debug(`Called with request id: ${requestId}`)
+            }
+
             return applyHooks({
               config,
               fileInteractor,
-              hooks: postHooks,
-              item,
-              items,
+              hooks: preHooks,
               log,
-              request,
+              request: originalRequest,
               requestId,
               resource,
               serviceInteractor,
               user,
-            }).then(() => {
-              const {
-                queryParams: {
-                  relationships: queryParamRelationships = '',
-                } = {},
-              } = request
-
-              if (responseIsObject) {
-                const relationships =
-                  includeRelations &&
-                  extractRelationships({
-                    externalRelationships: itemExternalRelationships,
-                    item,
-                    queryParamRelationships,
-                    relations,
-                  })
-
-                return createObjectResponse({
-                  data: item,
-                  id: item.id,
-                  meta,
-                  relationships,
-                  status: responseSuccessStatus,
-                  type: responseType,
-                })
-              }
-
-              return createArrayResponse({
-                items: items.map((arrayItem, index) => {
-                  const relationships =
-                    includeRelations &&
-                    extractRelationships({
-                      externalRelationships: itemsExternalRelationships[index],
-                      item: arrayItem,
-                      queryParamRelationships,
-                      relations,
-                    })
-                  if (!relationships) {
-                    return arrayItem
-                  }
-
-                  return {
-                    ...arrayItem,
-                    relationships,
-                  }
-                }),
-                meta,
-                type: responseType,
-              })
             })
-          }
-        )
-        .catch(err => {
-          log.err('Received Error', err)
-          throw err
-        })
+              .then(() => {
+                return applyInterceptors({
+                  interceptors,
+                  log,
+                  model,
+                  models,
+                  operation,
+                  request: originalRequest,
+                  serviceInteractor,
+                }).then(
+                  ({
+                    item: itemFromInterceptors,
+                    items: itemsFromInterceptors,
+                    meta: metaFromInterceptors,
+                    request,
+                  }) => {
+                    if (responseIsArray && itemsFromInterceptors) {
+                      return Promise.resolve({
+                        items: itemsFromInterceptors,
+                        meta: metaFromInterceptors,
+                        request,
+                      })
+                    }
+                    if (responseIsObject && itemFromInterceptors) {
+                      return Promise.resolve({
+                        item: itemFromInterceptors,
+                        meta: metaFromInterceptors,
+                        request,
+                      })
+                    }
+                    return Promise.resolve()
+                      .then(() => {
+                        return controllerHandler({
+                          log,
+                          model,
+                          models,
+                          request,
+                          requestId,
+                          serviceInteractor,
+                          user,
+                          ...rest,
+                        })
+                      })
+                      .then(controllerResponse => {
+                        return {
+                          ...controllerResponse,
+                          request,
+                        }
+                      })
+                  }
+                )
+              })
+              .then(
+                ({
+                  item,
+                  itemExternalRelationships,
+                  items,
+                  itemsExternalRelationships,
+                  meta,
+                  request,
+                }) => {
+                  return applyHooks({
+                    config,
+                    fileInteractor,
+                    hooks: postHooks,
+                    item,
+                    items,
+                    log,
+                    request,
+                    requestId,
+                    resource,
+                    serviceInteractor,
+                    user,
+                  }).then(() => {
+                    const {
+                      queryParams: {
+                        relationships: queryParamRelationships = '',
+                      } = {},
+                    } = request
+
+                    if (responseIsObject) {
+                      const relationships =
+                        includeRelations &&
+                        extractRelationships({
+                          externalRelationships: itemExternalRelationships,
+                          item,
+                          queryParamRelationships,
+                          relations,
+                        })
+
+                      return createObjectResponse({
+                        data: item,
+                        id: item.id,
+                        meta,
+                        relationships,
+                        status: responseSuccessStatus,
+                        type: responseType,
+                      })
+                    }
+
+                    return createArrayResponse({
+                      items: items.map((arrayItem, index) => {
+                        const relationships =
+                          includeRelations &&
+                          extractRelationships({
+                            externalRelationships:
+                              itemsExternalRelationships[index],
+                            item: arrayItem,
+                            queryParamRelationships,
+                            relations,
+                          })
+                        if (!relationships) {
+                          return arrayItem
+                        }
+
+                        return {
+                          ...arrayItem,
+                          relationships,
+                        }
+                      }),
+                      meta,
+                      type: responseType,
+                    })
+                  })
+                }
+              )
+          })
+
+          .then(responseData => {
+            return validateOutput({
+              apiConfig,
+              endpointConfig,
+              methodConfig,
+              responseData,
+            }).then(() => {
+              return responseData
+            })
+          })
+          .catch(err => {
+            log.err('Received Error', err)
+            throw err
+          })
+      })
     }
   }
 }
