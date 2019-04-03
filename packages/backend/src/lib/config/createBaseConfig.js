@@ -97,7 +97,7 @@ const env = {
 const jobs = {
   schedulerActive: false,
   schedulerIndexElastic: false,
-  workerActive: false,
+  workerActive: readBoolKey('WORKER_ACTIVE'),
   workerRole: readKey('WORKER_ROLE'),
 }
 
@@ -124,9 +124,21 @@ const baseConfig = {
   test,
 }
 
-module.exports = function createBaseConfig({ env: nodeEnv }) {
+module.exports = function createBaseConfig({ workerActive, env: ensureEnv }) {
+  if (ensureEnv !== undefined) {
+    ensureNodeEnv(ensureEnv)
+  }
+  const nodeEnv = readKey('NODE_ENV')
   let envConfig = baseConfig
-  ensureNodeEnv(nodeEnv)
+  if (workerActive !== undefined) {
+    envConfig = {
+      ...envConfig,
+      jobs: {
+        ...envConfig.jobs,
+        workerActive,
+      },
+    }
+  }
   const db = createPostgresDbConfig({
     env: readKey('NODE_ENV'),
   })
