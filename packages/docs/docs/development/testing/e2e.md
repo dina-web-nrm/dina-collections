@@ -1,7 +1,7 @@
 ---
-id: index
-title: End-to-end (e2e) tests
-sidebar_label: e2e
+id: e2e
+title: End-to-end (e2e) testing
+sidebar_label: End-to-end testing
 ---
 
 We use [Cypress](https://cypress.io/) for e2e tests. You can see our existing

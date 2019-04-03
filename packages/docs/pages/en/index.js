@@ -87,6 +87,11 @@ const indexDefaultProps = {
 class Index extends React.Component {
   render() {
     const { config: siteConfig, language = '' } = this.props
+
+    /*
+     * Note that this page is not currently used and instead we have
+     * static/index.html that redirects directly to the docs
+     */
     return (
       <div>
         <HomeSplash language={language} siteConfig={siteConfig} />

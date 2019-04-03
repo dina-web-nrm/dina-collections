@@ -25,7 +25,7 @@ const siteConfig = {
     demoLogin: 'https://demo-cm.dina-web.net/login',
     style: 'https://demo-style.dina-web.net/',
   },
-  docsSideNavCollapsible: true,
+  docsSideNavCollapsible: false,
   enableUpdateTime: true,
   favicon: 'img/favicon/favicon.ico',
 
@@ -33,7 +33,9 @@ const siteConfig = {
     base: ['Lato', 'Helvetica Neue', 'Arial', 'Helvetica', 'sans-serif'],
   },
 
-  headerLinks: [{ doc: 'index', label: 'Docs' }],
+  headerLinks: [
+    // { doc: 'index', label: 'Docs' }
+  ],
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
     theme: 'default',
@@ -44,8 +46,8 @@ const siteConfig = {
   repoUrl: 'https://github.com/DINA-Web/dina-collections',
   // Add custom scripts here that would be placed in <script> tags.
   scripts: ['https://buttons.github.io/buttons.js'],
-  tagline: 'DINA documentation page',
-  title: 'DINA docs',
+  tagline: 'DINA-Collections Documentation',
+  title: 'DINA-Collections Documentation',
 
   url: 'https://dina-collections.nrm.se/',
 }
