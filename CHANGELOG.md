@@ -2,7 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.18.1-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1-rc1)
+
+- Do not send notifications on Travis success [`#501`](https://github.com/DINA-Web/dina-collections/pull/501)
+- Add Slack notification for failed CI builds [`#500`](https://github.com/DINA-Web/dina-collections/pull/500)
+- Fix docker image name typo [`#499`](https://github.com/DINA-Web/dina-collections/pull/499)
+- Refactor Travis setup to shorten runtime in CI [`#492`](https://github.com/DINA-Web/dina-collections/pull/492)
+
 #### [v0.18.0](https://github.com/DINA-Web/dina-collections/compare/v0.17.2...v0.18.0)
+
+> 1 April 2019
 
 - Improve identifier special cases [`#497`](https://github.com/DINA-Web/dina-collections/pull/497)
 - Fix phrase searches [`#496`](https://github.com/DINA-Web/dina-collections/pull/496)
