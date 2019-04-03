@@ -18,9 +18,9 @@ scripts in package.json.
 ### Run backend
 
 For instructions about how to start the different backend apps see
-[setup](../../setup/index.md).
+[setup](../../setup/index.md). For instructions about configuration see [configuration](../../configuration/index.md).
 
-### File structure
+### File structure overview
 
 ```bash
 ├── Dockerfile
@@ -45,19 +45,22 @@ For instructions about how to start the different backend apps see
 └── yarn.lock
 
 ```
+The entrypoints for the backend is located in `./src/apps`. For the api entrypoint platform functionality functionallity from `./src/lib` is used together with service specification and service specific functionallity from `./src/services` to run an api.
 
-### Architecture idea
 
-The backend consists of a number of layers that roughly can be divided into
-routes -> controllers -> models -> data stores.
+### Layer overview
+
+When running the api consists of a number of layers that can be divided into
+web app -> routes -> controllers -> models -> data stores.
+
+##### Web app
+The web app is an [express](https://expressjs.com/en/4x/api.html#express) app. It listens to a port and hosts the application [routes](#routes). For details see [App](#app) in the lib section.
 
 ##### Routes
-
-> TODO - Write
+The application routes mapps the incoming requests, based on verb and url. Each route is connected to a corresponding controller. This is done with [express routes](https://expressjs.com/en/4x/api.html#router).
 
 ##### Controllers
-
-> TODO - Write
+The controllers performs validation of input and output, business logic and calls the models. 
 
 ##### Models
 
@@ -67,17 +70,26 @@ routes -> controllers -> models -> data stores.
 
 > TODO - Write
 
-<id="worker" />
 
 > TODO - Expand
 
 ### Core dependencies
+The dependencies for the backend package is located in `./package.json`. Here follow a short description of the most important dependencies.
 
-> TODO - write description about express, sequelize, elasticsearch, keycloak?
+| dependency | description | usage |
+| -------- | ---------------- | ---------------- |
+| [express](https://expressjs.com/) | Express is a minimal and flexible Node.js web application framework | Express is used as a webserver and for routing | 
+| [sequelize](http://docs.sequelizejs.com/) | Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. | For communicating with postgres database |
+| [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html) | The official Node.js client for Elasticsearch. | For communicating with elasticsearch |
+| [keycloak-connect](https://www.npmjs.com/package/keycloak-connect) | Node middleware to communicate with keycloak | For communicating with keycloak for authentication |
+| [common](./common) | A dina package used for functionallity that is shared between UI and backend | Various shared functionallity |
+
+> TODO - fix link to common
+> TODO - fix links from files to github
 
 ## Apps
 
-The different available apps are specified in ./src/apps. From here the apps
+The different available apps are specified in `./src/apps`. From here the apps
 will be bootstraped calling different bootstrap functions. A first step for
 these bootstrap function is to create a configuration, based on env variables,
 that will be used throughout the app. The config is created by the config module
@@ -161,6 +173,8 @@ is ongoing processes.
 
 ## Lib
 
+### App
+
 ### Auth
 
 ### Bootstrap
@@ -190,7 +204,6 @@ is ongoing processes.
 (potentiall move these to utilities) errorLogger, fileInteractor, importer,
 statistics
 
-<id="service-interator" />
 
 ### Service Interactor
 
