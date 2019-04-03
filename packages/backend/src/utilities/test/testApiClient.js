@@ -15,7 +15,7 @@ const serviceOrder = require('../../services/serviceOrder')
 const initializeDataStores = require('../../lib/dataStores')
 const setupModels = require('../../lib/models')
 
-const config = require('../../apps/test/config')
+const config = require('../../lib/config/testConfig')
 
 const { testApiUrl, testAuthUrl, testUsername, testPassword } = config.test
 
