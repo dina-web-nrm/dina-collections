@@ -1,7 +1,7 @@
 const {
   describe: dbDescribe,
 } = require('common/src/testUtilities/envBackendDb')
-const config = require('../../../../apps/test/config')
+const config = require('../../../../lib/config/testConfig')
 const setupTestModels = require('./setupTestModels')
 const createModelTests = require('./createModelTests')
 const methodTests = require('./methodTests')
