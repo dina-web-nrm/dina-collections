@@ -6,16 +6,19 @@ sidebar_label: Backend
 
 ## Package overview
 
-The backend package primarily contains the code necessary for running the [api app](#api) but it also contains code for [worker](#worker)  and [data import](#data). The code is run on the server and interacts with databases. It can be run directly through
-node or it can be run through docker. The docker image contains all the backend
-code and all apps. Which app is run is are determined by which entry point is
-used when starting the docker container. Similar when running in dev mode
-different apps are started by running different scripts in package.json.
+The backend package primarily contains the code necessary for running the
+[api](#api) app but it also contains code for [worker](#worker) and
+[data import](#data). The code is run on the server and interacts with
+databases. It can be run directly through node or it can be run through docker.
+The docker image contains all the backend code and all apps. Which app is run is
+are determined by which entry point is used when starting the docker container.
+Similar when running in dev mode different apps are started by running different
+scripts in package.json.
 
-For instructions about how to start the api see setup 
-> TODO Add link to setup
+### Run backend
 
-Below follow an overview of the folderstructure:
+For instructions about how to start the different backend apps see
+[setup](../../setup/index.md).
 
 ### File structure
 
@@ -78,9 +81,11 @@ The different available apps are specified in ./src/apps. From here the apps
 will be bootstraped calling different bootstrap functions. A first step for
 these bootstrap function is to create a configuration, based on env variables,
 that will be used throughout the app. The config is created by the config module
-located in ./src/lib/config. Used env variables are explained in TODO - add link
-TODO - fix the structure to not be scoped under env. Even if they are described
-as separate apps they use the same codebase.
+located in `./src/lib/config`.
+
+Used env variables are explained in
+[env documentation](../configuration/env.md). Even if they are described as
+separate apps they use the same codebase.
 
 ### Api
 
@@ -101,7 +106,6 @@ with a function call but when they run in different processes use a rest call.
 
 In dev mode its possible (and default) to configure the API to also run a
 [worker](#worker) (convinient to not have to run too many processes)
-
 
 ### Worker
 
@@ -130,14 +134,30 @@ is ongoing processes.
 > TODO - likely this naming is not good. Should be called apis or something else
 > TODO - Add table
 
-### Agent service
+| service | resource 
+| -------- | ---------------- |
+| [agent](api/docs#/agentService) | [normalizedAgent](/ui/dataModelDocs/current/models/normalizedAgent) |
+| [auth](api/docs#/authService) | - |
+| [curatedList](api/docs#/curatedListService) | [causeOfDeathType](/ui/dataModelDocs/current/models/causeOfDeathType) |
+| [curatedList](api/docs#/curatedListService) | [customTaxonNameType](/ui/dataModelDocs/current/models/customTaxonNameType) |
+| [curatedList](api/docs#/curatedListService) | [establishmentMeansType](/ui/dataModelDocs/current/models/establishmentMeansType) |
+| [curatedList](api/docs#/curatedListService) | [featureType](/ui/dataModelDocs/current/models/featureType) |
+| [curatedList](api/docs#/curatedListService) | [identifierType](/ui/dataModelDocs/current/models/identifierType) |
+| [curatedList](api/docs#/curatedListService) | [preparationType](/ui/dataModelDocs/current/models/preparationType) |
+| [export](api/docs#/exportService) | [exportJob](/ui/dataModelDocs/current/models/exportJob) |
+| [history](api/docs#/historyService) | [resourceActivity](/ui/dataModelDocs/current/models/resourceActivity) |
+| [identifier](api/docs#/identifierService) | [catalogNumber](/ui/dataModelDocs/current/models/catalogNumber) |
+| [job](api/docs#/jobService) | [job](/ui/dataModelDocs/current/models/job) |
+| [migration](api/docs#/migrationService) | [dataModelMigrationLog](/ui/dataModelDocs/current/models/dataModelMigrationLog) |
+| [place](api/docs#/placeService) | [place](/ui/dataModelDocs/current/models/place) |
+| [search](api/docs#/searchService) | [searchSpecimen](/ui/dataModelDocs/current/models/searchSpecimen) |
+| [specimen](api/docs#/searchService) | [specimen](/ui/dataModelDocs/current/models/specimen) |
+| [status](api/docs#/statusService) | - |
+| [storage](api/docs#/storageService) | [physicalObject](/ui/dataModelDocs/current/models/physicalObject) |
+| [storage](api/docs#/storageService) | [storageLocation](/ui/dataModelDocs/current/models/storageLocation) |
+| [taxonomy](api/docs#/taxonomyService) | [taxon](/ui/dataModelDocs/current/models/taxon) |
+| [taxonomy](api/docs#/taxonomyService) | [taxonName](/ui/dataModelDocs/current/models/taxonName) |
 
-The agent service is responsible for managing
-[normalizedAgents](/ui/dataModelDocs/current/models/normalizedAgent). It exposes
-a number of endpoints under /api/agent. Inspect the
-[Agent api documentation](api/docs#/agentService) for details.
-
-### ...The rest of the services
 
 ## Lib
 
