@@ -11,7 +11,7 @@
       "system-overview/repository",
       "system-overview/services"
     ],
-    "Development": ["testing/e2e"],
-    "DevOps": ["configuration/env", "dev-ops/pipeline"]
+    "Development": ["development/testing/e2e"],
+    "DevOps": ["dev-ops/configuration/env", "dev-ops/pipeline"]
   }
 }
