@@ -11,10 +11,9 @@ observation records, and molecular data. DINA Collections is primarily intended
 for large installations servicing the collection management needs of a country,
 a region, or a large institution.
 
-## Docs
+Read more:
 
-- [Setup](packages/docs/docs/setup/index.md)
-- [Testing](packages/docs/docs/testing/index.md)
+- [Docs](/packages/docs/docs)
 - [Changelog](CHANGELOG.md)
 - [Contributing guidelines](CONTRIBUTING.md)
 
