@@ -25,5 +25,6 @@ module.exports = function bootstrapWorker({
     main,
     serviceDefinitions,
     serviceOrder,
+    workerActive,
   })
 }

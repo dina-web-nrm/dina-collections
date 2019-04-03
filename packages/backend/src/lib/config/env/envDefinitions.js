@@ -20,6 +20,7 @@ const optionalEnvVariables = [
   'SLACK_ACTIVE',
   'SLACK_ERROR_WEBHOOK',
   'SLACK_WARNING_WEBHOOK',
+  'WORKER_ACTIVE',
   'WORKER_ROLE',
   '__DANGEROUSLY_DISABLE_AUTH__',
 ]

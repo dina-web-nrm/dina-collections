@@ -12,7 +12,6 @@ module.exports = function bootstrapApi({
   schedulerActive = false,
   serviceDefinitions,
   serviceOrder,
-  workerActive = false,
 }) {
   const main = ({ config, connectors, log, serviceInteractor }) => {
     const auth = createAuth({ config })
@@ -22,7 +21,6 @@ module.exports = function bootstrapApi({
       log,
       schedulerActive,
       serviceInteractor,
-      workerActive,
     })
 
     log.info('Starting api')

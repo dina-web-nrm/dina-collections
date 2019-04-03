@@ -24,8 +24,9 @@ module.exports = function bootstrapBase({
   main,
   serviceDefinitions,
   serviceOrder,
+  workerActive,
 }) {
-  const config = createBaseConfig({ env })
+  const config = createBaseConfig({ env, workerActive })
 
   const bootstrapStartTime = now()
 

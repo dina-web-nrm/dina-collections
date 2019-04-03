@@ -6,9 +6,8 @@ module.exports = function setupJobs({
   log,
   schedulerActive,
   serviceInteractor,
-  workerActive,
 }) {
-  if (workerActive) {
+  if (config.jobs.workerActive) {
     log.info(`Starting worker with role: ${config.jobs.workerRole}`)
     createWorker({
       config,
