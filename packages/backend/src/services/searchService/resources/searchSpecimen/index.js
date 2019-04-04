@@ -94,9 +94,6 @@ module.exports = {
       type: 'rebuildView',
     },
     {
-      type: 'requestRebuildView',
-    },
-    {
       type: 'requestUpdateView',
     },
     {
