@@ -19,14 +19,7 @@ exports.rebuildView = {
 
   required: [...base.required],
 }
-exports.requestRebuildView = {
-  additionalProperties: false,
-  properties: {
-    ...base.properties,
-    transformationSpecification,
-  },
-  required: [...base.required],
-}
+
 exports.emptyView = base
 exports.requestUpdateView = {
   additionalProperties: false,
