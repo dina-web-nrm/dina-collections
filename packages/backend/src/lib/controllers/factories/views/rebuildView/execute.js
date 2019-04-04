@@ -1,6 +1,6 @@
 const {
   bulkCreateResourceActivities,
-} = require('../../../../services/historyService/serviceInteractions')
+} = require('../../../../../services/historyService/serviceInteractions')
 
 module.exports = function execute({
   collidingIdPrefix,

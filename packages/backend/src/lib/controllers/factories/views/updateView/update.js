@@ -1,4 +1,4 @@
-const createLog = require('../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 const { map: batchMap } = require('common/src/batch')
 const getRequiredAction = require('./getRequiredAction')
 const createItem = require('./createItem')

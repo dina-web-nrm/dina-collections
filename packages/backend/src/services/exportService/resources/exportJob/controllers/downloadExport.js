@@ -1,4 +1,4 @@
-const getOne = require('../../../../../lib/controllers/crud/getOne')
+const { getOne } = require('../../../../../lib/controllers/factories')
 
 module.exports = function initializeExport(options) {
   const getRequestHandler = getOne(options)

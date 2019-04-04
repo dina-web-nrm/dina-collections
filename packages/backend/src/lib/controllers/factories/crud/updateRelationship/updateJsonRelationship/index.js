@@ -1,10 +1,10 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
-const transformOutputObject = require('../../../utilities/transformations/outputObject')
-const transformOutputArray = require('../../../utilities/transformations/outputArray')
-const extractRelationship = require('../../../utilities/relationships/extractRelationships/extractRelationship')
-const getFormatOutput = require('../../../utilities/relationships/getFormatOutput')
-const applyHooks = require('../../../utilities/applyHooks')
-const createLog = require('../../../../../utilities/log')
+const transformOutputObject = require('../../../../utilities/transformations/outputObject')
+const transformOutputArray = require('../../../../utilities/transformations/outputArray')
+const extractRelationship = require('../../../../utilities/relationships/extractRelationships/extractRelationship')
+const getFormatOutput = require('../../../../utilities/relationships/getFormatOutput')
+const applyHooks = require('../../../../utilities/applyHooks')
+const createLog = require('../../../../../../utilities/log')
 
 const log = createLog('lib/controllers/updateJsonRelationship')
 

@@ -1,10 +1,10 @@
-const transformOutputObject = require('../../../utilities/transformations/outputObject')
-const transformOutputArray = require('../../../utilities/transformations/outputArray')
-const getFormatOutput = require('../../../utilities/relationships/getFormatOutput')
+const transformOutputObject = require('../../../../utilities/transformations/outputObject')
+const transformOutputArray = require('../../../../utilities/transformations/outputArray')
+const getFormatOutput = require('../../../../utilities/relationships/getFormatOutput')
 const getUpdateValues = require('./getUpdateValues')
-const getForeignKeyName = require('../../../../models/factories/sequelize/utilities/getForeignKeyName')
-const createLog = require('../../../../../utilities/log')
-const applyHooks = require('../../../utilities/applyHooks')
+const getForeignKeyName = require('../../../../../models/factories/sequelize/utilities/getForeignKeyName')
+const createLog = require('../../../../../../utilities/log')
+const applyHooks = require('../../../../utilities/applyHooks')
 
 const log = createLog('lib/controllers/updateSqlRelationship')
 

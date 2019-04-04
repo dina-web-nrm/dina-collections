@@ -1,11 +1,8 @@
-const backendError404 = require('common/src/error/errorFactories/backendError404')
-const createControllerWrapper = require('../utilities/wrapper')
-const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
-const fetchExternalRelationships = require('../utilities/relationships/fetchExternalRelationships')
+const createControllerWrapper = require('../../utilities/wrapper')
+const buildIncludeArray = require('../../utilities/relationships/buildIncludeArray')
+const fetchExternalRelationships = require('../../utilities/relationships/fetchExternalRelationships')
 
-// const buildQueryIncludeArray = require('../utilities/relationships/buildQueryIncludeArray')
-
-module.exports = function getOne(options) {
+module.exports = function getMany(options) {
   const {
     models,
     operation: {
@@ -15,32 +12,35 @@ module.exports = function getOne(options) {
       relations,
       resource,
       selectableFields,
+      sortableFields,
     },
     serviceInteractor,
   } = options
 
   return createControllerWrapper({
     ...options,
-    enableInterceptors: false,
+    enableInterceptors: true,
     enablePostHooks: false,
     enablePreHooks: false,
-    requiredModelMethods: ['buildWhereFilter', 'getById'],
-    responseFormat: 'object',
+    requiredModelMethods: ['buildWhereFilter', 'getById', 'getWhere'],
+    responseFormat: 'array',
     responseSuccessStatus: 200,
-  })(({ model, request }) => {
+  })(({ count, model, request }) => {
     const {
-      pathParams: { id },
       queryParams: {
         excludeFields: excludeFieldsInput,
         filter: filterInput,
         includeDeactivated,
         includeFields: includeFieldsInput,
+        limit = 10,
+        offset = 0,
         relationships: queryParamRelationships = '',
+        sort: sortInput,
       } = {},
     } = request
 
     let include
-    if (relations && includeRelations && queryParamRelationships) {
+    if (relations && includeRelations) {
       include = buildIncludeArray({
         models,
         queryParamRelationships,
@@ -48,38 +48,36 @@ module.exports = function getOne(options) {
       })
     }
     return model
-      .getById({
+      .getWhere({
+        count,
         excludeFieldsInput,
         filterInput,
         filterSpecification,
-        id,
         include,
         includeDeactivated,
         includeFieldsInput:
           includeFieldsInput && includeFieldsInput.length
             ? includeFieldsInput
             : defaultFields,
+        limit,
+        offset,
         selectableFields,
+        serviceInteractor,
+        sortableFields,
+        sortInput,
       })
-      .then(({ item, meta } = {}) => {
-        if (!item) {
-          backendError404({
-            code: 'RESOURCE_NOT_FOUND_ERROR',
-            detail: `${resource} with id: ${id} not found`,
-          })
-        }
-
+      .then(({ items, meta } = {}) => {
         return fetchExternalRelationships({
           filterSpecification,
-          item,
+          items,
           queryParamRelationships,
           relations,
           resource,
           serviceInteractor,
-        }).then(itemExternalRelationships => {
+        }).then(itemsExternalRelationships => {
           return {
-            item,
-            itemExternalRelationships,
+            items,
+            itemsExternalRelationships,
             meta,
             request,
           }

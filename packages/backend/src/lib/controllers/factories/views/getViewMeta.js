@@ -1,4 +1,4 @@
-const createControllerWrapper = require('../utilities/wrapper')
+const createControllerWrapper = require('../../utilities/wrapper')
 
 module.exports = function getViewMeta(options) {
   return createControllerWrapper({
