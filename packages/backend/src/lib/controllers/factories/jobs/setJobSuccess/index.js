@@ -1,5 +1,5 @@
 const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
-const update = require('../crud/update')
+const update = require('../../crud/update')
 
 module.exports = function setJobSuccess(options) {
   const updateRequestHandler = update(options)
