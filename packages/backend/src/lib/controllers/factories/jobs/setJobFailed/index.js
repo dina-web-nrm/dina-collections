@@ -1,6 +1,7 @@
 const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
-const update = require('../crud/update')
+const update = require('../../crud/update')
 
+// Not wrapped in controller wrapper because updateRequestHandler called.
 module.exports = function setJobFailed(options) {
   const updateRequestHandler = update(options)
 
