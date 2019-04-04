@@ -1,5 +1,5 @@
-const createControllerWrapper = require('../../utilities/wrapper')
-const transformInput = require('../../utilities/transformations/inputObject')
+const createControllerWrapper = require('../../../utilities/wrapper')
+const transformInput = require('../../../utilities/transformations/inputObject')
 
 module.exports = function update(options) {
   const {

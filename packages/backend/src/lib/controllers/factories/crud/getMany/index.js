@@ -1,6 +1,6 @@
-const createControllerWrapper = require('../../utilities/wrapper')
-const buildIncludeArray = require('../../utilities/relationships/buildIncludeArray')
-const fetchExternalRelationships = require('../../utilities/relationships/fetchExternalRelationships')
+const createControllerWrapper = require('../../../utilities/wrapper')
+const buildIncludeArray = require('../../../utilities/relationships/buildIncludeArray')
+const fetchExternalRelationships = require('../../../utilities/relationships/fetchExternalRelationships')
 
 module.exports = function getMany(options) {
   const {

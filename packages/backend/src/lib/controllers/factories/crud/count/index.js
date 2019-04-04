@@ -1,4 +1,4 @@
-const getManyFactory = require('./getMany')
+const getManyFactory = require('../getMany')
 
 module.exports = function count({ operation, models, ...rest }) {
   const { resource } = operation
