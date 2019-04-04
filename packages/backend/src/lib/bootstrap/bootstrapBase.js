@@ -12,7 +12,7 @@ const createBaseConfig = require('../config/createBaseConfig')
 const createServiceInteractor = require('../serviceInteractor')
 const createFileInteractor = require('../fileInteractor')
 const createServices = require('../services')
-const setupConnectors = require('./setupConnectors')
+const setupControllers = require('./setupControllers')
 
 const log = createLog('server')
 log.info(`Dependencies required after: ${now() - startTime} milliseconds`)
@@ -39,20 +39,21 @@ module.exports = function bootstrapBase({
   const serviceInteractor = createServiceInteractor({ config })
   const fileInteractor = createFileInteractor({ config })
 
-  return setupConnectors({
+  return setupControllers({
     config,
     fileInteractor,
     serviceInteractor,
     serviceOrder,
     services,
-  }).then(({ connectors }) => {
+  }).then(controllers => {
     return Promise.resolve()
       .then(() => {
         return main({
           config,
-          connectors,
+          controllers,
           log,
           serviceInteractor,
+          services,
         })
       })
       .then(({ message }) => {

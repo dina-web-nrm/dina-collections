@@ -11,7 +11,7 @@ const createBaseConfig = require('../config/createBaseConfig')
 const createServiceInteractor = require('../serviceInteractor')
 const createFileInteractor = require('../fileInteractor')
 const createServices = require('../services')
-const setupConnectors = require('./setupConnectors')
+const setupControllers = require('./setupControllers')
 
 module.exports = function setupServiceInteractor({
   apiVersion,
@@ -41,7 +41,7 @@ module.exports = function setupServiceInteractor({
   const serviceInteractor = createServiceInteractor({ config })
   const fileInteractor = createFileInteractor({ config })
 
-  return setupConnectors({
+  return setupControllers({
     config,
     fileInteractor,
     serviceInteractor,

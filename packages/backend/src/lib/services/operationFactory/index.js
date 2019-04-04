@@ -4,13 +4,15 @@ const operationFactories = require('../../operations')
 module.exports = function createOperationObject({
   operationSpecification: operationSpecificationInput,
   resourceSpecification,
+  serviceName,
 }) {
   if (operationSpecificationInput.raw) {
-    return operationSpecificationInput
+    return { serviceName, ...operationSpecificationInput }
   }
   const operationSpecification = createOperationSpecification({
     operationSpecificationInput,
     resourceSpecification,
+    serviceName,
   })
 
   const { type, factory } = operationSpecification

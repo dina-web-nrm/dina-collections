@@ -19,6 +19,7 @@ module.exports = function createServices({
       const service = createService({
         resourceRelationshipParamsMap,
         serviceDefinition: serviceDefinitions[serviceName],
+        serviceName,
       })
 
       createdServiceNames.push(serviceName)

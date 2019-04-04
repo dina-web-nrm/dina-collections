@@ -7,10 +7,16 @@ const requestHandlerMiddlewareFactory = require('./middlewares/requestHandler')
 const ensureMediaTypeMiddlewareFactory = require('./middlewares/ensureMediaType')
 const expressifyPath = require('./utilities/expressifyPath')
 const shouldMountOperation = require('./utilities/shouldMountOperation')
+const createOperationMapFromServices = require('../services/utilities/createOperationMapFromServices')
 
 const log = createLog('lib/serviceRouter')
 
-module.exports = function serviceRouterFactory({ auth, config, connectors }) {
+module.exports = function serviceRouterFactory({
+  auth,
+  config,
+  controllers,
+  services,
+}) {
   const errorMiddleware = errorMiddlewareFactory({ config })
   const authorizeMiddleware = authorizeMiddlewareFactory({ auth, config })
   const decorateLocalsUserInputMiddleware = decorateLocalsUserInputMiddlewareFactory(
@@ -26,21 +32,23 @@ module.exports = function serviceRouterFactory({ auth, config, connectors }) {
   serviceRouter.use(ensureMediaTypeMiddleware)
   serviceRouter.use(authorizeMiddleware)
   log.info('Registering service routes')
+  const operationMap = createOperationMapFromServices(services)
+
   const scopedLog = log.scope()
-  Object.keys(connectors).forEach(operationId => {
-    const { serviceName } = connectors[operationId]
+  Object.keys(operationMap).forEach(operationId => {
+    const { serviceName } = operationMap[operationId]
     const mountOperation = shouldMountOperation({
       config,
       operationId,
       serviceName,
     })
     if (mountOperation) {
-      const { method, path, requestHandler } = connectors[operationId]
-
+      const { method, path } = operationMap[operationId]
+      const controller = controllers[operationId]
       const requestHandlerMiddleware = requestHandlerMiddlewareFactory({
         config,
+        controller,
         operationId,
-        requestHandler,
       })
 
       const expressifiedPath = expressifyPath(path)

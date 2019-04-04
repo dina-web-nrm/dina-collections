@@ -24,10 +24,10 @@ module.exports = function createServiceInteractor() {
     'validate',
   ]
 
-  let connectors = null
-  const addConnectors = connectorsInput => {
-    log.info(`Adding connectors`)
-    connectors = connectorsInput
+  let controllers = null
+  const addControllers = controllersInput => {
+    log.info(`Adding controllers`)
+    controllers = controllersInput
   }
 
   const call = ({
@@ -46,7 +46,7 @@ module.exports = function createServiceInteractor() {
       })
     return Promise.resolve().then(() => {
       return callController({
-        connectors,
+        controllers,
         log,
         operationId,
         request,
@@ -73,7 +73,7 @@ module.exports = function createServiceInteractor() {
 
     return Promise.resolve().then(() => {
       return callController({
-        connectors,
+        controllers,
         log,
         operationId: 'jobCreate',
         request: {
@@ -108,7 +108,7 @@ module.exports = function createServiceInteractor() {
         [operationType]: ({ request = {}, requestId, resource, user }) => {
           return Promise.resolve().then(() => {
             return callController({
-              connectors,
+              controllers,
               log,
               operationType,
               request,
@@ -123,5 +123,5 @@ module.exports = function createServiceInteractor() {
     { call, detachedCall }
   )
 
-  return { ...serviceInteractions, ...virtualOperations, addConnectors }
+  return { ...serviceInteractions, ...virtualOperations, addControllers }
 }

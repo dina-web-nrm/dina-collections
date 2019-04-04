@@ -1,6 +1,7 @@
 module.exports = function createOperationObjectSpecification({
   operationSpecificationInput,
   resourceSpecification,
+  serviceName,
 }) {
   const {
     connect = true,
@@ -17,5 +18,6 @@ module.exports = function createOperationObjectSpecification({
     availableExamples,
     connect,
     queryParams,
+    serviceName,
   }
 }

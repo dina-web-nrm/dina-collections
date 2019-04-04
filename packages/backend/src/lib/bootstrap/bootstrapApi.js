@@ -13,7 +13,7 @@ module.exports = function bootstrapApi({
   serviceDefinitions,
   serviceOrder,
 }) {
-  const main = ({ config, connectors, log, serviceInteractor }) => {
+  const main = ({ config, controllers, log, serviceInteractor, services }) => {
     const auth = createAuth({ config })
 
     setupJobs({
@@ -27,8 +27,9 @@ module.exports = function bootstrapApi({
     const serviceRouter = createServiceRouter({
       auth,
       config,
-      connectors,
+      controllers,
       serviceInteractor,
+      services,
     })
     const app = createApp({
       auth,

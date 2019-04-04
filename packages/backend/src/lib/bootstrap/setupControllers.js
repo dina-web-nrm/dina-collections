@@ -1,10 +1,9 @@
 const initializeDataStores = require('../dataStores')
 const setupModels = require('../models')
-const createConnectors = require('../connectors')
-
+const initializeControllers = require('../controllers/initializeControllers')
 const setupIntegrations = require('../integrations')
 
-module.exports = function setupConnectors({
+module.exports = function setupControllers({
   config,
   fileInteractor,
   serviceInteractor,
@@ -22,21 +21,19 @@ module.exports = function setupConnectors({
       serviceOrder,
       services,
     }).then(({ models }) => {
-      return setupIntegrations({ config })
-        .then(integrations => {
-          return createConnectors({
-            config,
-            fileInteractor,
-            integrations,
-            models,
-            serviceInteractor,
-            services,
-          })
+      return setupIntegrations({ config }).then(integrations => {
+        return initializeControllers({
+          config,
+          fileInteractor,
+          integrations,
+          models,
+          serviceInteractor,
+          services,
+        }).then(controllers => {
+          serviceInteractor.addControllers(controllers)
+          return controllers
         })
-        .then(({ connectors }) => {
-          serviceInteractor.addConnectors(connectors)
-          return { connectors }
-        })
+      })
     })
   })
 }
