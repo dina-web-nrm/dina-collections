@@ -1,5 +1,4 @@
 exports.emptyView = require('./emptyView')
 exports.getViewMeta = require('./getViewMeta')
 exports.rebuildView = require('./rebuildView')
-exports.requestUpdateView = require('./requestUpdateView')
 exports.updateView = require('./updateView')
