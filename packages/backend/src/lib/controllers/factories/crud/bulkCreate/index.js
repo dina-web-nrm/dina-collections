@@ -1,5 +1,5 @@
-const createControllerWrapper = require('../../utilities/wrapper')
-const transformInput = require('../../utilities/transformations/inputArray')
+const createControllerWrapper = require('../../../utilities/wrapper')
+const transformInput = require('../../../utilities/transformations/inputArray')
 
 module.exports = function bulkCreate(options) {
   const {

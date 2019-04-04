@@ -1,7 +1,7 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
-const createControllerWrapper = require('../../utilities/wrapper')
-const buildIncludeArray = require('../../utilities/relationships/buildIncludeArray')
-const fetchExternalRelationships = require('../../utilities/relationships/fetchExternalRelationships')
+const createControllerWrapper = require('../../../utilities/wrapper')
+const buildIncludeArray = require('../../../utilities/relationships/buildIncludeArray')
+const fetchExternalRelationships = require('../../../utilities/relationships/fetchExternalRelationships')
 
 // const buildQueryIncludeArray = require('../../utilities/relationships/buildQueryIncludeArray')
 
