@@ -5,6 +5,7 @@ module.exports = function createService({
   log,
   resourceRelationshipParamsMap,
   serviceDefinition: serviceSpecificationInput,
+  serviceName,
 }) {
   if (log) {
     log.info(`Create service ${serviceSpecificationInput.name}`)
@@ -29,6 +30,7 @@ module.exports = function createService({
       ...obj,
       [resourceName]: createResource({
         resourceInput,
+        serviceName,
       }),
     }
   }, {})
