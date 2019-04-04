@@ -1,18 +1,18 @@
-module.exports = function emptyView({ operation, models }) {
-  const { resource } = operation
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
+const createControllerWrapper = require('../../../utilities/wrapper')
 
-  if (!model.empty) {
-    throw new Error(`Not allowed to empty resource: ${resource}`)
-  }
-  return () => {
+module.exports = function emptyView(options) {
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: false,
+    enablePostHooks: false,
+    enablePreHooks: false,
+    requiredModelMethods: ['empty'],
+    responseFormat: 'object',
+    responseSuccessStatus: 200,
+    type: 'object',
+  })(({ model }) => {
     return model.empty().then(() => {
-      return Promise.resolve({
-        data: {},
-      })
+      return { item: {} }
     })
-  }
+  })
 }
