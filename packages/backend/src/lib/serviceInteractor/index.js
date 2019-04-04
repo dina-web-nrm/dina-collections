@@ -18,7 +18,6 @@ module.exports = function createServiceInteractor() {
     'importDataFromFile',
     'query',
     'rebuildView',
-    'requestUpdateView',
     'update',
     'updateView',
     'validate',
