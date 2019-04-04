@@ -60,7 +60,7 @@
     "pretty": "prettier --write 'src/**/*.{js,jsx,json}'",
     "production:start:api": "NODE_ENV=production DEBUG='DINA*' node src/apps/api/index.js",
     "production:start:worker": "NODE_ENV=production DEBUG='DINA*' node src/apps/worker/index.js",
-    "start": "WORKER_ROLE=all WORKER_ACTIVE=true NODE_ENV=development DEBUG='DINA*, -DINA:LOG_DEBUG:lib/jobs/worker' nodemon --config ./nodemon.json src/apps/api/index.js",
+    "start": "WORKER_ROLE=all WORKER_ACTIVE=false NODE_ENV=development DEBUG='DINA*, -DINA:LOG_DEBUG:lib/jobs/worker' nodemon --config ./nodemon.json src/apps/api/index.js",
     "start:inspect": "WORKER_ROLE=all WORKER_ACTIVE=true  NODE_ENV=development DEBUG='DINA*' node --inspect src/apps/api/index.js",
     "start:node": "WORKER_ROLE=all WORKER_ACTIVE=true NODE_ENV=development DEBUG='' node src/apps/api/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
