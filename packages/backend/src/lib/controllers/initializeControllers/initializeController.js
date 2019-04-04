@@ -1,4 +1,4 @@
-const controllerFactories = require('../index.js')
+const controllerFactories = require('../factories')
 const createLog = require('../../../utilities/log')
 
 const log = createLog('lib/controllers/initializeController')
@@ -21,7 +21,7 @@ module.exports = function initializeController({
       controllerFactories[operationType])
 
   if (!controllerFactory) {
-    log.warn(`Missing controller factory for operationId: ${operationId}`)
+    log.warning(`Missing controller factory for operationId: ${operationId}`)
     return null
   }
 

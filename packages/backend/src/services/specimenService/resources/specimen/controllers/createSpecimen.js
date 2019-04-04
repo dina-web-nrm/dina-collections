@@ -7,7 +7,9 @@ const fetchCatalogNumberIdentifierTypeId = require('../utilities/fetchCatalogNum
 const generateCatalogNumberIdentifier = require('../utilities/generateCatalogNumberIdentifier')
 const createCatalogNumberError = require('../utilities/createCatalogNumberError')
 
-const createControllerFactory = require('../../../../../lib/controllers/crud/create')
+const {
+  create: createControllerFactory,
+} = require('../../../../../lib/controllers/factories')
 
 module.exports = function createSpecimen(options) {
   const { config, serviceInteractor } = options

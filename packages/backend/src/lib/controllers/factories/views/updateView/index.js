@@ -1,9 +1,9 @@
 const createReporter = require('common/src/reporter')
-const createControllerWrapper = require('../../utilities/wrapper')
-const applyTransformations = require('../../../data/transformations/utilities/applyTransformations')
+const createControllerWrapper = require('../../../utilities/wrapper')
+const applyTransformations = require('../../../../data/transformations/utilities/applyTransformations')
 const update = require('./update')
-const defaultPreTransformationFunction = require('../../../data/transformations/utilities/preTransformationCoreToNested')
-const defaultPostTransformationFunction = require('../../../data/transformations/utilities/postTransformationNoop')
+const defaultPreTransformationFunction = require('../../../../data/transformations/utilities/preTransformationCoreToNested')
+const defaultPostTransformationFunction = require('../../../../data/transformations/utilities/postTransformationNoop')
 
 module.exports = function updateView(options) {
   const { operation, serviceInteractor } = options
