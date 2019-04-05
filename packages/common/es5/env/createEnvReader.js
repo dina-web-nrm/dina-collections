@@ -58,30 +58,60 @@ module.exports = function createEnvReader() {
 
   var resolvedEnvVariables = (0, _extends3.default)({}, devEnv, optionalEnv, requiredEnv, testEnv);
 
-  function readKey(key) {
-    var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-
+  function readKey(key, defaultValue) {
     if (!existingEnvVariables.includes(key)) {
       throw new Error('Trying to access non existing env varable: ' + key);
     }
+
     if (resolvedEnvVariables[key] === undefined) {
       return defaultValue;
     }
+
     return resolvedEnvVariables[key];
+  }
+
+  function readWindowKey(key, defaultValue) {
+    var windowValue = window && window[key];
+
+    if (windowValue !== undefined && windowValue !== key) {
+      return windowValue;
+    }
+
+    return defaultValue;
   }
 
   function readBoolKey(key) {
     var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     var boolValue = readKey(key);
+
     if (boolValue !== undefined) {
       return boolValue;
     }
+
+    return defaultValue;
+  }
+
+  function readWindowBoolKey(key) {
+    var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    var windowBoolValue = window && window[key];
+
+    if (windowBoolValue === 'true' || windowBoolValue === true) {
+      return true;
+    }
+
+    if (windowBoolValue === 'false' || windowBoolValue === false) {
+      return false;
+    }
+
     return defaultValue;
   }
 
   return {
     readBoolKey: readBoolKey,
-    readKey: readKey
+    readKey: readKey,
+    readWindowBoolKey: readWindowBoolKey,
+    readWindowKey: readWindowKey
   };
 };
