@@ -46,13 +46,11 @@ const config = {
     ),
     githubDina: 'https://github.com/DINA-Web',
     githubRepo: 'https://github.com/DINA-Web/dina-collections',
-    wiki: readKey(
-      'REACT_APP_EXTERNAL_URL_DINA_WIKI',
-      'https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!'
     style: readWindowKey(
       'REACT_APP_EXTERNAL_URL_STYLE',
       readKey('REACT_APP_EXTERNAL_URL_STYLE', 'https://dina-style.nrm.se')
     ),
+    wiki: 'https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!',
   },
   isDevelopment,
   isProduction,
