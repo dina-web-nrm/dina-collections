@@ -1,3 +1,5 @@
+import createHistory from 'history/createBrowserHistory'
+
 import createEnvReader from 'common/es5/env/createEnvReader'
 import envDefinitions from './envDefinitions'
 
@@ -15,10 +17,17 @@ const disableAuth =
   window.REACT_APP_DISABLE_AUTH === 'true' ||
   readBoolKey('REACT_APP_DISABLE_AUTH')
 
+const history = createHistory()
+
 const config = {
+  api: {
+    validateInput: false,
+    validateOutput: false,
+  },
   auth: {
     active: !disableAuth,
   },
+  devToolsExtension: isDevelopment && typeof devToolsExtension === 'function',
   env,
   externalUrls: {
     api: readKey('REACT_APP_EXTERNAL_URL_API', 'https://dina-api.nrm.se'),
@@ -38,6 +47,7 @@ const config = {
     enabled: isDevelopment && readBoolKey('REACT_APP_ENABLE_REDUX_LOGGER'),
     showDiff: readBoolKey('REACT_APP_ENABLE_REDUX_LOGGER_DIFF'),
   },
+  routing: history,
   testUi: readBoolKey('REACT_APP_TEST_UI'),
 }
 

@@ -14,12 +14,12 @@ import { Route, Switch } from 'react-router-dom'
 import { ConnectedRouter } from 'react-router-redux'
 import { Provider as ReduxProvider } from 'react-redux'
 
+import config from 'config'
 import { ErrorBoundary } from 'coreModules/error/components'
 import { moduleOrder } from './viewModules'
 import App from './viewModules/app/Async'
 import DataViewer from './viewModules/dataViewer/Async'
 import Docs from './viewModules/docs/Async'
-import config from './config'
 import modules from './initialModules'
 import Public from './viewModules/public/Async'
 
