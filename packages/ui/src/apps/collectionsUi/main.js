@@ -32,9 +32,9 @@ ReactDOM.render(
         <ErrorBoundary>
           <React.Fragment>
             <Switch>
-              <Route component={DataViewer} path="/dataViewer" />
               <Route component={App} path="/app" />
               <Route component={Docs} path="/dataModelDocs" />
+              <Route component={DataViewer} path="/dataViewer" />
               <Route component={Public} />
             </Switch>
             <NotificationDisplay displayType="fixed" />
