@@ -147,7 +147,7 @@ export class InfinityTable extends Component {
     }
 
     return (
-      <div style={{ width }}>
+      <div data-testid="infinityTable" style={{ width }}>
         <ReactList
           itemRenderer={this.renderItem}
           itemsRenderer={itemsRenderer}

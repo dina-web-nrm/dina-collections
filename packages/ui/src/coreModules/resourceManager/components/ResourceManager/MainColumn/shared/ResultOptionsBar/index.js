@@ -38,6 +38,7 @@ export class ResultOptionsBar extends Component {
       <Menu attached="top" icon style={{ position: 'relative' }} tabular>
         <Menu.Item
           active={tableActive}
+          data-testid="tableTabMenuItem"
           link
           name="table"
           onClick={event => handleListTabClick(event)}
@@ -59,6 +60,7 @@ export class ResultOptionsBar extends Component {
         {itemEnabled && (
           <Menu.Item
             active={createItemActive || editItemActive}
+            data-testid="formTabMenuItem"
             link
             name="form"
             onClick={event => handleFormTabClick(event)}
@@ -70,6 +72,7 @@ export class ResultOptionsBar extends Component {
         {!(createItemActive || treeActive) && (
           <Menu.Menu className="icon secondary  ui" position="right">
             <Menu.Item
+              data-testid="searchMenuItem"
               link
               onClick={event => handleToggleFilters(event)}
               style={{ marginLeft: '3.125em' }}

@@ -55,6 +55,7 @@ class BottomBar extends PureComponent {
       <Grid padded>
         <Grid.Column>
           <Button
+            data-testid="searchButton"
             disabled={invalid}
             loading={this.state.loading}
             onClick={this.handleSubmit}
@@ -65,6 +66,7 @@ class BottomBar extends PureComponent {
           </Button>
           <Button
             basic
+            data-testid="clearAllFiltersButton"
             disabled={pristine && !isPicker}
             onClick={this.handleReset}
             size={isPicker ? 'small' : 'large'}
