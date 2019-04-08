@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Input } from 'semantic-ui-react'
+import objectPath from 'object-path'
 
 import { getInterpretedTimestampFromYMD } from 'common/es5/date'
 import createDeleteProperties from 'common/es5/createDeleteProperties'
+import Input from '../../../inputs/Input/Text'
 import FieldTemplate from '../../../FieldTemplate'
 
 const deleteEmptyStringProperties = createDeleteProperties('')
@@ -72,9 +73,19 @@ const defaultProps = {
 class DatePart extends Component {
   constructor(props) {
     super(props)
+    this.getInput = this.getInput.bind(this)
     this.handleOnChange = this.handleOnChange.bind(this)
     this.handleOnBlur = this.handleOnBlur.bind(this)
     this.handleOnFocus = this.handleOnFocus.bind(this)
+  }
+
+  getInput(fieldName) {
+    return {
+      onBlur: event => this.handleOnBlur({ event, fieldName }),
+      onChange: event => this.handleOnChange({ event, fieldName }),
+      onFocus: event => this.handleOnFocus({ event, fieldName }),
+      value: objectPath.get(this.props, `input.value.${fieldName}`) || '',
+    }
   }
 
   handleOnBlur() {
@@ -87,7 +98,7 @@ class DatePart extends Component {
     return onBlur(this.props.input.value)
   }
 
-  handleOnChange({ event, field }) {
+  handleOnChange({ event, fieldName }) {
     const {
       input: { onChange, value },
       isEndDate,
@@ -101,7 +112,7 @@ class DatePart extends Component {
     const updatedDatePartValues = {
       ...(value || {}),
       // overwrite one of day, month, year with the new value
-      [field]: event.target.value && Number(event.target.value),
+      [fieldName]: event.target.value && Number(event.target.value),
     }
 
     const interpretedTimestamp = getInterpretedTimestampFromYMD({
@@ -139,14 +150,12 @@ class DatePart extends Component {
       label,
       enableHelpNotifications,
       hidden,
-      input: { value },
       isEndDate,
       isStartDate,
       module,
       name,
       setYearInputRef,
     } = this.props
-    const { day, month, year } = value || {}
 
     return (
       <FieldTemplate
@@ -180,18 +189,9 @@ class DatePart extends Component {
                 className="arrowless right aligned"
                 disabled={disabled}
                 fluid
-                onBlur={event => {
-                  this.handleOnBlur({ event, field: 'year' })
-                }}
-                onChange={event => {
-                  this.handleOnChange({ event, field: 'year' })
-                }}
-                onFocus={event => {
-                  this.handleOnFocus({ event, field: 'year' })
-                }}
+                input={this.getInput('year')}
                 ref={setYearInputRef}
                 type="number"
-                value={year || ''}
               />
             </FieldTemplate>
           </div>
@@ -209,19 +209,10 @@ class DatePart extends Component {
                 className="arrowless right aligned"
                 disabled={disabled}
                 fluid
+                input={this.getInput('month')}
                 max={12}
                 min={1}
-                onBlur={event => {
-                  this.handleOnBlur({ event, field: 'month' })
-                }}
-                onChange={event => {
-                  this.handleOnChange({ event, field: 'month' })
-                }}
-                onFocus={event => {
-                  this.handleOnFocus({ event, field: 'month' })
-                }}
                 type="number"
-                value={month || ''}
               />
             </FieldTemplate>
           </div>
@@ -239,19 +230,10 @@ class DatePart extends Component {
                 className="arrowless right aligned"
                 disabled={disabled}
                 fluid
+                input={this.getInput('day')}
                 max={31}
                 min={1}
-                onBlur={event => {
-                  this.handleOnBlur({ event, field: 'day' })
-                }}
-                onChange={event => {
-                  this.handleOnChange({ event, field: 'day' })
-                }}
-                onFocus={event => {
-                  this.handleOnFocus({ event, field: 'day' })
-                }}
                 type="number"
-                value={day || ''}
               />
             </FieldTemplate>
           </div>

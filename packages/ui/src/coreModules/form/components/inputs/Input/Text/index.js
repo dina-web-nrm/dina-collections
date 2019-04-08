@@ -8,6 +8,7 @@ const numberRegex = /^-?\d*\.?\d*$/
 
 const propTypes = {
   autoComplete: PropTypes.string,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   focusOnMount: PropTypes.bool,
@@ -23,6 +24,7 @@ const propTypes = {
 }
 const defaultProps = {
   autoComplete: undefined,
+  className: undefined,
   disabled: false,
   fluid: false,
   focusOnMount: false,
@@ -94,6 +96,7 @@ class TextInput extends PureComponent {
   render() {
     const {
       autoComplete,
+      className,
       disabled,
       fluid,
       icon,
@@ -110,6 +113,7 @@ class TextInput extends PureComponent {
     return (
       <Input
         autoComplete={autoComplete}
+        className={className}
         disabled={disabled}
         fluid={fluid}
         icon={icon}
