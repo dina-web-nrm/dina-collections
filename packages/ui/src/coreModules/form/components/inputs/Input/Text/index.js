@@ -4,6 +4,8 @@ import { Input } from 'semantic-ui-react'
 
 import config from 'config'
 
+const numberRegex = /^-?\d*\.?\d*$/
+
 const propTypes = {
   autoComplete: PropTypes.string,
   disabled: PropTypes.bool,
@@ -34,37 +36,37 @@ const defaultProps = {
   type: 'text',
 }
 
-function preventNonNumeric(event) {
-  if (event.key === 'e' || event.key === 'E') {
-    event.preventDefault()
-  }
-}
-
 class TextInput extends PureComponent {
   constructor(props) {
     super(props)
     this.handleOnChange = this.handleOnChange.bind(this)
+    this.preventNonNumeric = this.preventNonNumeric.bind(this)
   }
+
   componentDidMount() {
     if (this.props.focusOnMount && !config.isTest) {
       this.input.focus()
     }
   }
+
   handleOnChange(event) {
     const { input, max, min, type } = this.props
+
     if (type !== 'number') {
       return input.onChange(event)
     }
 
-    if (min === undefined && max === undefined) {
-      return input.onChange(event)
-    }
     const { value } = event.target
-    const numberValue = value !== '' ? Number(value) : undefined
 
-    if (numberValue === undefined) {
+    if (value === '') {
       return input.onChange(event)
     }
+
+    if (!value.match(numberRegex)) {
+      return null
+    }
+
+    const numberValue = value && Number(value)
 
     if (min !== undefined && numberValue < min) {
       return null
@@ -73,7 +75,20 @@ class TextInput extends PureComponent {
     if (max !== undefined && numberValue > max) {
       return null
     }
+
     return input.onChange(event)
+  }
+
+  preventNonNumeric(event) {
+    const stringValue = String(this.props.input.value) || ''
+
+    if (
+      !String(event.key).match(numberRegex) ||
+      (event.key === '-' && stringValue.includes('-')) ||
+      (event.key === '.' && stringValue.includes('.'))
+    ) {
+      event.preventDefault()
+    }
   }
 
   render() {
@@ -109,7 +124,7 @@ class TextInput extends PureComponent {
         {...input}
         onChange={this.handleOnChange}
         onKeyPress={
-          this.props.type === 'number' ? preventNonNumeric : undefined
+          this.props.type === 'number' ? this.preventNonNumeric : undefined
         }
         size={size}
         style={style}
