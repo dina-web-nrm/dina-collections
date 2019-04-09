@@ -11,7 +11,7 @@
       "system-overview/repository",
       "system-overview/services"
     ],
-    "Development": ["development/contributing", "development/testing/e2e"],
+    "Development": ["development/contributing", "development/testing"],
     "DevOps": ["dev-ops/configuration/env", "dev-ops/pipeline"]
   }
 }
