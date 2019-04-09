@@ -11,6 +11,7 @@
       "system-overview/repository",
       "system-overview/services"
     ],
+    "Packages": ["packages/ui/index"],
     "Development": ["development/contributing", "development/testing"],
     "DevOps": ["dev-ops/configuration/env", "dev-ops/pipeline"]
   }
