@@ -50,18 +50,20 @@ export default function reducer(state = initialState, action) {
     }
 
     case BOOTSTRAP_UNREGISTER_MODULES: {
-      const res = unregisterModuleProperty({
+      let nextState = unregisterModuleProperty({
         action,
         property: TRANSLATIONS,
         scopeUnderModules: true,
         state,
       })
-      return unregisterModuleProperty({
+      nextState = unregisterModuleProperty({
         action,
         property: MARKDOWN,
         scopeUnderModules: true,
-        state: res,
+        state: nextState,
       })
+
+      return nextState
     }
 
     case I18N_SET_LANGUAGE: {
