@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
-import { Footer, PageTemplate } from 'coreModules/commonUi/components'
+import { PageTemplate } from 'coreModules/commonUi/components'
 import { ViewWrap } from 'coreModules/layout/components'
 import GeneralDocs from 'coreModules/documentation/components/GeneralDocs'
 import DataModel from 'coreModules/documentation/components/DataModel'
 import Nav from 'coreModules/documentation/components/Nav'
 import VersionOverview from 'coreModules/documentation/components/VersionOverview'
 import getCurrentSchemaVersion from 'coreModules/documentation/utilities/getCurrentSchemaVersion'
+import Footer from '../../components/Footer'
 
 const propTypes = {
   match: PropTypes.shape({
