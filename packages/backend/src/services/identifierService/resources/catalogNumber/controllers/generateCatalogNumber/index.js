@@ -1,6 +1,6 @@
 const getCurrentYear = require('common/src/date/getCurrentYear')
 const generateCatalogNumber = require('../../utilities/generateCatalogNumber')
-const createControllerWrapper = require('../../../../../../lib/controllers/utilities/wrapper')
+const createControllerWrapper = require('../../../../../../lib/operationFactories/utilities/wrapper')
 
 module.exports = function generateCatalogNumberController(options) {
   return createControllerWrapper({

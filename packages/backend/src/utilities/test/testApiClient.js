@@ -8,12 +8,11 @@ const createSystemBackendValidator = require('common/src/error/validators/create
 const createEndpoint = require('common/src/endpointFactory/server')
 const { createApiClient } = require('common/src/apiClient')
 
-const createServices = require('../../lib/services')
-const serviceDefinitions = require('../../services')
+const createServicesInterface = require('../../lib/serviceInterface')
+const serviceConfigurations = require('../../services')
 const serviceOrder = require('../../services/serviceOrder')
 
-const initializeDataStores = require('../../lib/dataStores')
-const setupModels = require('../../lib/models')
+const initializeDataStores = require('../../lib/dataStoreFactories/create')
 
 const config = require('../../lib/config/testConfig')
 
@@ -102,10 +101,11 @@ const createLastCallPromise = () => {
   })
 }
 const resourceRelationshipParamsMap = getResourceRelationshipParamsMap()
-const services = createServices({
+const serviceInterface = createServicesInterface({
   config,
   resourceRelationshipParamsMap,
-  serviceDefinitions,
+  serviceConfigurations,
+  serviceOrder,
 })
 
 let models
@@ -116,17 +116,18 @@ const initializeModels = () => {
   return initializeDataStores({
     config,
   }).then(({ elasticsearch, inMemoryDb, sequelize }) => {
-    return setupModels({
-      config,
-      elasticsearch,
-      inMemoryDb,
-      sequelize,
-      serviceOrder,
-      services,
-    }).then(({ models: initializedModels }) => {
-      models = initializedModels
-      return initializedModels
-    })
+    return serviceInterface
+      .createModels({
+        config,
+        elasticsearch,
+        inMemoryDb,
+        sequelize,
+        serviceOrder,
+      })
+      .then(({ models: initializedModels }) => {
+        models = initializedModels
+        return initializedModels
+      })
   })
 }
 

@@ -24,9 +24,14 @@ module.exports = function createServiceInteractor() {
   ]
 
   let controllers = null
-  const addControllers = controllersInput => {
-    log.info(`Adding controllers`)
-    controllers = controllersInput
+  const addOperations = operationsInput => {
+    controllers = Object.keys(operationsInput).reduce((obj, operationId) => {
+      const { controller } = operationsInput[operationId]
+      return {
+        ...obj,
+        [operationId]: controller,
+      }
+    }, {})
   }
 
   const call = ({
@@ -122,5 +127,5 @@ module.exports = function createServiceInteractor() {
     { call, detachedCall }
   )
 
-  return { ...serviceInteractions, ...virtualOperations, addControllers }
+  return { ...serviceInteractions, ...virtualOperations, addOperations }
 }

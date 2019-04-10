@@ -1,6 +1,6 @@
 const {
   factory: createRegexpBuilder,
-} = require('../../../../../../../../../lib/models/factories/elasticsearch/utilities/regexpBuilder')
+} = require('../../../../../../../../../lib/modelFactories/elasticsearch/utilities/regexpBuilder')
 
 const buildRegexp = createRegexpBuilder()
 

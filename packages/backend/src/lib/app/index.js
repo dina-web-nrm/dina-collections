@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
+const createLog = require('../../utilities/log')
 const createAuthenticateMiddleware = require('../auth/middleware')
 const createDocsMiddleware = require('./middlewares/docs')
 const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
@@ -9,26 +10,25 @@ const createLogIncomingMiddleware = require('./middlewares/logIncoming')
 const createPingRouteMiddleware = require('./middlewares/pingRoute')
 const createResponseTimeMiddleware = require('./middlewares/responseTime')
 
+const log = createLog('lib/app')
+
 module.exports = function createApp({
   auth,
   config,
   openApiSpec,
   routers,
 } = {}) {
+  log.info('creating app')
   const app = express()
+  const scopedLog = log.scope()
 
-  const authenticateMiddleware = createAuthenticateMiddleware({ auth, config })
-  const docsMiddleware = createDocsMiddleware({ openApiSpec })
-  const errorHandlerMiddleware = createErrorHandlerMiddleware()
-  const logFrontendErrorEndpointMiddleware = createLogFrontendErrorEndpointMiddleware(
-    { config }
-  )
-  const logIncomingMiddleware = createLogIncomingMiddleware()
-  const pingRouteMiddleware = createPingRouteMiddleware()
-  const responseTimeMiddleware = createResponseTimeMiddleware()
-  app.use(responseTimeMiddleware)
-  app.use(logIncomingMiddleware)
-  app.use('/docs', docsMiddleware)
+  scopedLog.info('adding middleware: responseTime')
+  app.use(createResponseTimeMiddleware())
+  scopedLog.info('adding middleware: logIncoming')
+  app.use(createLogIncomingMiddleware())
+  scopedLog.info('adding middleware: docs')
+  app.use('/docs', createDocsMiddleware({ openApiSpec }))
+  scopedLog.info('adding middleware: body parser')
   app.use(
     bodyParser.urlencoded({
       extended: true,
@@ -41,14 +41,19 @@ module.exports = function createApp({
       type: ['application/vnd.api+json', 'application/json'],
     })
   )
-  app.use(authenticateMiddleware)
-  app.use(logFrontendErrorEndpointMiddleware)
-  app.use(pingRouteMiddleware)
+  scopedLog.info('adding middleware: authenticate')
+  app.use(createAuthenticateMiddleware({ auth, config, log: scopedLog }))
+  scopedLog.info('adding middleware: log frontend error')
+  app.use(createLogFrontendErrorEndpointMiddleware({ config }))
+  scopedLog.info('adding middleware: ping route')
+  app.use(createPingRouteMiddleware())
 
   if (routers) {
+    scopedLog.info('adding service router')
     app.use(routers)
   }
-  app.use(errorHandlerMiddleware)
+  scopedLog.info('adding middleware: error handler')
+  app.use(createErrorHandlerMiddleware())
 
   return app
 }

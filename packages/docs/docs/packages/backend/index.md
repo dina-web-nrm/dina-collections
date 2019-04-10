@@ -179,6 +179,25 @@ is ongoing processes.
 
 ### Bootstrap
 
+The bootstrap lib is responsible for starting the different apps. Most of bootstrapping is shared between apps but for example its only the api app that starts listening to a port. The bootstrapping is done in separate steps explained below. For details see the src in `./src/lib/bootstrap`.
+
+#### 1. Create config
+The first step is to create a system-wide config using the [config library](#config). It creates an object based on provided env-variables. This object is later injected to different parts of the application.
+
+#### 2. Create service configuration interface
+It creates a service configuration interface with the services the api is intended to run (right now all services). 
+
+#### 3. Connects to datastores and initialzes data models
+
+
+#### 4. Initializes serviceOperations
+
+
+#### 5. Perform application specific bootstrapping
+The the case of the api it setup one route for each operation
+
+
+
 ### Config
 
 ### Connectors
@@ -276,4 +295,4 @@ Later (if active) a worker will carry out the requested request.
 
 ### Service router
 
-### Services
+### Service configuration interface

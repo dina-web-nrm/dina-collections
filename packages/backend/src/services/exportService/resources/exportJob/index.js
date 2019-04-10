@@ -85,7 +85,7 @@ module.exports = {
       type: 'setJobSuccess',
     },
     {
-      factory: downloadExportOperationfactory,
+      operationSpecificationFactory: downloadExportOperationfactory,
     },
   ],
   resource: 'exportJob',

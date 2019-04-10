@@ -1,7 +1,7 @@
 const { describe: unitDescribe } = require('common/src/testUtilities/envUnit')
-const testResourceSpecification = require('../../lib/services/utilities/testResourceSpecification')
-const testServiceSpecification = require('../../lib/services/utilities/testServiceSpecification')
-const testOperationSpecification = require('../../lib/services/utilities/testOperationSpecification')
+const testResourceSpecification = require('../../lib/serviceInterface/utilities/createServiceSpecifications/utilities/testResourceSpecification')
+const testServiceSpecification = require('../../lib/serviceInterface/utilities/createServiceSpecifications/utilities/testServiceSpecification')
+const testOperationSpecification = require('../../lib/serviceInterface/utilities/createServiceSpecifications/utilities/testOperationSpecification')
 const serviceSpecifications = require('../../services')
 
 unitDescribe('lib/tests/testStructure', () => {

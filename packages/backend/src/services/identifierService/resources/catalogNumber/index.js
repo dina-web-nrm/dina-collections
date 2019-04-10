@@ -44,7 +44,7 @@ module.exports = {
   },
   operations: [
     {
-      factory: generateCatalogNumberOperationFactory,
+      operationSpecificationFactory: generateCatalogNumberOperationFactory,
     },
     {
       exampleRequests: {

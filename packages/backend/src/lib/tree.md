@@ -1,5 +1,7 @@
 # Tree for lib
+
 ## Tree
+
 ```bash
 ├── app
 │   ├── index.js
@@ -217,7 +219,7 @@
 │           ├── postTransformationNoop.js
 │           ├── postTransformationRemoveNull.js
 │           └── preTransformationCoreToNested.js
-├── dataStores
+├── dataStoreFactories
 │   ├── elasticsearch
 │   │   ├── db
 │   │   │   └── index.js
@@ -415,7 +417,6 @@
 ```
 
 ## Links
-[root](../../tree.md)
-[src](../tree.md)
-[apps](../apps/tree.md)
+
+[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
 [services](../services/tree.md)
