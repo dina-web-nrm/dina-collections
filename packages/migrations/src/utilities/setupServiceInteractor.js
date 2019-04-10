@@ -1,6 +1,5 @@
-const backendSetupServiceInteractor = require('backend/src/lib/bootstrap/setupServiceInteractor')
-const serviceDefinitions = require('backend/src/services')
-const serviceOrder = require('backend/src/services/serviceOrder')
+const backendSetupServiceInteractor = require('backend/src/lib/bootstrap/bootstrapServiceInteractor')
+const serviceConfigurations = require('backend/src/serviceConfigurations')
 
 module.exports = function setupServiceInteractor({
   apiVersion,
@@ -12,7 +11,6 @@ module.exports = function setupServiceInteractor({
     apiVersion,
     dataModelVersion,
     env,
-    serviceDefinitions,
-    serviceOrder,
+    serviceConfigurations,
   })
 }
