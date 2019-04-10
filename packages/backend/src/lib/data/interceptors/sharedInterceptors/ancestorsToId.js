@@ -1,8 +1,13 @@
-const extractRelationships = require('../../../controllers/utilities/relationships/extractRelationships')
-const buildIncludeArray = require('../../../controllers/utilities/relationships/buildIncludeArray')
+const extractRelationships = require('../../../operations/utilities/relationships/extractRelationships')
+const buildIncludeArray = require('../../../operations/utilities/relationships/buildIncludeArray')
 
-module.exports = function ancestorsToId({ model, models, operation, request }) {
-  const { includeRelations, relations } = operation
+module.exports = function ancestorsToId({
+  model,
+  models,
+  operationSpecification,
+  request,
+}) {
+  const { includeRelations, relations } = operationSpecification
   const id =
     request &&
     request.queryParams &&

@@ -1,11 +1,9 @@
 const createLog = require('../../utilities/log')
 const integrationFactories = require('./factories')
 
-const log = createLog('integrations')
+const defaultLog = createLog('integrations')
 
-module.exports = function setupIntegrations({ config } = {}) {
-  log.info('Setup integrations')
-
+module.exports = function setupIntegrations({ config, log = defaultLog } = {}) {
   if (!config.integrations) {
     log.scope().warning('No integrations configured')
     return null
@@ -16,7 +14,7 @@ module.exports = function setupIntegrations({ config } = {}) {
       const integrationConfig = config.integrations[integrationName]
 
       if (integrationConfig.active && integrationFactories[integrationName]) {
-        log.scope().info(`Initializing ${integrationName}`)
+        log.info(`initializing ${integrationName}`)
         return integrationFactories[integrationName](integrationConfig).then(
           integration => {
             return {
@@ -27,7 +25,7 @@ module.exports = function setupIntegrations({ config } = {}) {
         )
       }
 
-      log.scope().info(`Skipping ${integrationName}`)
+      log.info(`skipping ${integrationName}`)
       return integrations
     }, {})
   )

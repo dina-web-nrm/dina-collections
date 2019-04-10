@@ -2,7 +2,7 @@ const createUser = require('./createUser')
 const objectPath = require('object-path')
 const createLog = require('../../utilities/log')
 
-const log = createLog('authenticateMiddleware')
+const defaultLog = createLog('authenticateMiddleware')
 
 const createInactiveMiddleware = () => {
   return function inactiveMiddleware(req, res, next) {
@@ -11,7 +11,7 @@ const createInactiveMiddleware = () => {
 }
 const createAuthPreLogMiddleware = ({ authActive }) => {
   return function authPreLogMiddleware(req, res, next) {
-    log.info('Authenticate start: authActive: ', authActive)
+    defaultLog.info('Authenticate start: authActive: ', authActive)
     next()
   }
 }
@@ -25,15 +25,19 @@ const createAuthPostLogMiddleware = ({ authActive }) => {
       token,
     })
 
-    log.info('Authenticate done')
+    defaultLog.info('Authenticate done')
     next()
   }
 }
 
-module.exports = function createAuthenticateMiddleware({ auth, config } = {}) {
+module.exports = function createAuthenticateMiddleware({
+  auth,
+  config,
+  log = defaultLog,
+} = {}) {
   const authActive = config.auth.active
   if (!authActive) {
-    log.info('Auth disabled, creating inactive middleware')
+    log.info('auth disabled, creating inactive middleware')
     return [
       createAuthPreLogMiddleware({ authActive }),
       createInactiveMiddleware(),

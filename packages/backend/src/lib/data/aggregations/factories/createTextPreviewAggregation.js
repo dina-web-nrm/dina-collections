@@ -8,7 +8,7 @@ const {
 
 const {
   factory: createRegexpBuilder,
-} = require('../../../models/factories/elasticsearch/utilities/regexpBuilder')
+} = require('../../../models/elasticsearch/utilities/regexpBuilder')
 
 const buildRegexp = createRegexpBuilder({ throwOnError: false })
 

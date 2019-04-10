@@ -1,16 +1,23 @@
-const bootstrapBase = require('./bootstrapBase')
-const createFileInteractor = require('../fileInteractor')
+const createCore = require('./utilities/createCore')
 const importer = require('../importer')
+const createLog = require('../../utilities/log')
+
+const log = createLog('bootstrap/data')
 
 module.exports = function bootstrapData({
   env,
+  serviceConfigurations,
   importData = true,
   rebuildElastic = true,
-  serviceDefinitions,
-  serviceOrder,
 }) {
-  const main = ({ config, serviceInteractor }) => {
-    const fileInteractor = createFileInteractor({ config })
+  log.info('bootstraping data')
+  return createCore({
+    env,
+    log,
+    serviceConfigurations,
+  }).then(({ config, fileInteractor, serviceInteractor }) => {
+    log.info(`Bootstrap core done`)
+
     return importer({
       config,
       fileInteractor,
@@ -18,14 +25,8 @@ module.exports = function bootstrapData({
       rebuildElastic,
       serviceInteractor,
     }).then(() => {
+      log.info('bootstraping data done')
       return null
     })
-  }
-
-  return bootstrapBase({
-    env,
-    main,
-    serviceDefinitions,
-    serviceOrder,
   })
 }

@@ -7,44 +7,40 @@ const requestHandlerMiddlewareFactory = require('./middlewares/requestHandler')
 const ensureMediaTypeMiddlewareFactory = require('./middlewares/ensureMediaType')
 const expressifyPath = require('./utilities/expressifyPath')
 const shouldMountOperation = require('./utilities/shouldMountOperation')
-const createOperationMapFromServices = require('../services/utilities/createOperationMapFromServices')
 
 const log = createLog('lib/serviceRouter')
 
-module.exports = function serviceRouterFactory({
-  auth,
-  config,
-  controllers,
-  services,
-}) {
-  const errorMiddleware = errorMiddlewareFactory({ config })
-  const authorizeMiddleware = authorizeMiddlewareFactory({ auth, config })
+module.exports = function serviceRouterFactory({ auth, config, operations }) {
+  log.info('creating service router')
+
+  const scopedLog = log.scope()
+
   const decorateLocalsUserInputMiddleware = decorateLocalsUserInputMiddlewareFactory(
     {
       config,
     }
   )
-
-  const ensureMediaTypeMiddleware = ensureMediaTypeMiddlewareFactory()
+  // scopedLog.info('adding decorate locals middleware')
 
   const serviceRouter = express.Router({ mergeParams: true })
 
-  serviceRouter.use(ensureMediaTypeMiddleware)
-  serviceRouter.use(authorizeMiddleware)
-  log.info('Registering service routes')
-  const operationMap = createOperationMapFromServices(services)
+  scopedLog.info('adding middleware: ensure media type')
+  serviceRouter.use(ensureMediaTypeMiddlewareFactory())
 
-  const scopedLog = log.scope()
-  Object.keys(operationMap).forEach(operationId => {
-    const { serviceName } = operationMap[operationId]
+  scopedLog.info('adding middleware: authorize')
+  serviceRouter.use(
+    authorizeMiddlewareFactory({ auth, config, log: scopedLog.scope() })
+  )
+  scopedLog.info('adding routes for all operations')
+  Object.keys(operations).forEach(operationId => {
+    const { controller, operationSpecification } = operations[operationId]
+    const { serviceName, method, path } = operationSpecification
     const mountOperation = shouldMountOperation({
       config,
       operationId,
       serviceName,
     })
     if (mountOperation) {
-      const { method, path } = operationMap[operationId]
-      const controller = controllers[operationId]
       const requestHandlerMiddleware = requestHandlerMiddlewareFactory({
         config,
         controller,
@@ -53,17 +49,14 @@ module.exports = function serviceRouterFactory({
 
       const expressifiedPath = expressifyPath(path)
       serviceRouter[method](expressifiedPath, decorateLocalsUserInputMiddleware)
-      scopedLog.debug(
-        `${method.toUpperCase()} - ${expressifiedPath} as ${operationId}`
-      )
       serviceRouter[method](expressifiedPath, requestHandlerMiddleware)
     } else {
       scopedLog.info(`Not mounting operation: ${operationId}`)
     }
   })
-  log.info('Mounting service done')
 
-  serviceRouter.use(errorMiddleware)
+  scopedLog.info('adding middleware: error ')
+  serviceRouter.use(errorMiddlewareFactory({ config }))
 
   return serviceRouter
 }

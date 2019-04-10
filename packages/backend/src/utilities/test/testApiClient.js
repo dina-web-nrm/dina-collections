@@ -8,12 +8,15 @@ const createSystemBackendValidator = require('common/src/error/validators/create
 const createEndpoint = require('common/src/endpointFactory/server')
 const { createApiClient } = require('common/src/apiClient')
 
-const createServices = require('../../lib/services')
-const serviceDefinitions = require('../../services')
-const serviceOrder = require('../../services/serviceOrder')
+const { createModels } = require('../../lib/models')
+const {
+  createServiceSpecifications,
+  getModelSpecifications,
+} = require('../../lib/serviceConfigurationManager')
 
-const initializeDataStores = require('../../lib/dataStores')
-const setupModels = require('../../lib/models')
+const serviceConfigurations = require('../../serviceConfigurations')
+
+const { createDataStores } = require('../../lib/dataStores')
 
 const config = require('../../lib/config/testConfig')
 
@@ -102,10 +105,10 @@ const createLastCallPromise = () => {
   })
 }
 const resourceRelationshipParamsMap = getResourceRelationshipParamsMap()
-const services = createServices({
+const serviceSpecifications = createServiceSpecifications({
   config,
   resourceRelationshipParamsMap,
-  serviceDefinitions,
+  serviceConfigurations,
 })
 
 let models
@@ -113,16 +116,15 @@ const initializeModels = () => {
   if (models) {
     return Promise.resolve(models)
   }
-  return initializeDataStores({
+  return createDataStores({
     config,
-  }).then(({ elasticsearch, inMemoryDb, sequelize }) => {
-    return setupModels({
+  }).then(dataStores => {
+    return createModels({
       config,
-      elasticsearch,
-      inMemoryDb,
-      sequelize,
-      serviceOrder,
-      services,
+      modelSpecifications: getModelSpecifications({
+        serviceSpecifications,
+      }),
+      ...dataStores,
     }).then(({ models: initializedModels }) => {
       models = initializedModels
       return initializedModels

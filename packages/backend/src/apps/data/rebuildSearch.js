@@ -1,9 +1,7 @@
 const bootstrapData = require('../../lib/bootstrap/bootstrapData')
-const serviceDefinitions = require('../../services')
-const serviceOrder = require('../../services/serviceOrder')
+const serviceConfigurations = require('../../serviceConfigurations')
 
 bootstrapData({
   importData: false,
-  serviceDefinitions,
-  serviceOrder,
+  serviceConfigurations,
 })

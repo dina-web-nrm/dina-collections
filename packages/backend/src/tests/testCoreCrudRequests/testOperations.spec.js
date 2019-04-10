@@ -5,11 +5,11 @@ const {
 } = require('common/src/testUtilities/envBackendApi')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
-const serviceDefinitions = require('../../services')
-const createServices = require('../../lib/services')
+// const serviceDefinitions = require('../../services')
+// const createServices = require('../../lib/services')
 // const createOperationTypeResourceOperationIdMap = require('./createOperationTypeResourceOperationIdMap')
 
-const services = createServices({ serviceDefinitions })
+// const services = createServices({ serviceDefinitions })
 
 const testCrudFlow = ({
   createOperationId,
@@ -257,6 +257,7 @@ apiDescribe('lib/tests/testCoreCrudRequests', () => {
     expect(1).toBe(1)
   })
   describe.skip('deacticated', () => {
+    const services = {}
     Object.keys(services).forEach(serviceName => {
       const service = services[serviceName]
       testApi({ service, serviceName })

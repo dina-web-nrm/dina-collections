@@ -3,17 +3,17 @@ const session = require('express-session')
 
 const createLog = require('../../utilities/log')
 
-const log = createLog('keycloakMiddleware')
+const log = createLog('lib/auth')
 
-module.exports = function setupAuth({ config } = {}) {
+module.exports = function createAuth({ config } = {}) {
   const memoryStore = new session.MemoryStore()
-  log.info('Setup auth')
+  log.info('create auth')
   if (!config.auth.active) {
-    log.scope().warning('Auth disabled, not initializing keycloak')
+    log.scope().warning('auth disabled, not connecting to keycloak')
     return null
   }
 
-  log.scope().info('Auth active, initializing keycloak')
+  log.scope().info('Auth active, connecting to keycloak')
   const keycloak = new Keycloak({ memoryStore }, config.auth)
   log.scope().info('Keycloak initialized')
   keycloak.accessDenied = (req, res) => {

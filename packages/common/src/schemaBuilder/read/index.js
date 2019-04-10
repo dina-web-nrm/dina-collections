@@ -14,8 +14,7 @@ module.exports = function read({ modelBasePath, apiBasePath }) {
   const buildServicesPath = path.join(
     apiBasePath,
     'lib',
-    'serviceInterface',
-    'utilities',
+    'serviceConfigurationManager',
     'createServiceSpecifications'
   )
 
@@ -30,7 +29,7 @@ module.exports = function read({ modelBasePath, apiBasePath }) {
 
   const serviceDefinitions = require(servicesPath)
   const buildServices = require(buildServicesPath)
-  const services = buildServices({
+  const { services } = buildServices({
     resourceRelationshipParamsMap,
     serviceDefinitions,
   })

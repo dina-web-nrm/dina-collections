@@ -1,30 +1,20 @@
-const bootstrapBase = require('./bootstrapBase')
-const setupJobs = require('./setupJobs')
+const createCore = require('./utilities/createCore')
+const createWorker = require('../worker')
+const createLog = require('../../utilities/log')
 
-module.exports = function bootstrapWorker({
-  env,
-  schedulerActive = true,
-  serviceDefinitions,
-  serviceOrder,
-  workerActive = true,
-}) {
-  const main = ({ config, log, serviceInteractor }) => {
-    setupJobs({
-      config,
-      log,
-      schedulerActive,
-      serviceInteractor,
-      workerActive,
-    })
+const log = createLog('bootstrap/worker')
 
-    return { message: 'Worker started' }
-  }
-
-  return bootstrapBase({
+module.exports = function bootstrapWorker({ env, serviceConfigurations }) {
+  log.info('bootstraping worker')
+  return createCore({
     env,
-    main,
-    serviceDefinitions,
-    serviceOrder,
-    workerActive,
+    log,
+    serviceConfigurations,
+  }).then(({ config, serviceInteractor }) => {
+    createWorker({
+      config,
+      serviceInteractor,
+    })
+    log.info('bootstraping worker done')
   })
 }

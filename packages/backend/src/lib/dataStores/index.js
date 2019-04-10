@@ -1,17 +1,7 @@
-const initializeElasticsearch = require('./elasticsearch')
-const initializeSequelize = require('./sequelize')
-const initializeInMemory = require('./inMemory')
+const createDataStores = require('./utilities/createDataStores')
+const factories = require('./factories')
 
-module.exports = function initialize({ config }) {
-  return Promise.all([
-    initializeSequelize({ config }),
-    initializeInMemory({ config }),
-    initializeElasticsearch({ config }),
-  ]).then(([sequelize, inMemoryDb, elasticsearch]) => {
-    return {
-      elasticsearch,
-      inMemoryDb,
-      sequelize,
-    }
-  })
+module.exports = {
+  ...factories,
+  createDataStores,
 }

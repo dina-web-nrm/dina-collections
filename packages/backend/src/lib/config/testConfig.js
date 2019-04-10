@@ -1,8 +1,8 @@
 const { readKey, readBoolKey } = require('./env')
 
-const createBaseConfig = require('./createBaseConfig')
+const createConfig = require('./createConfig')
 
-const baseConfig = createBaseConfig({
+const baseConfig = createConfig({
   env: 'test',
 })
 

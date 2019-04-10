@@ -1,12 +1,8 @@
-const createLog = require('../../../utilities/log')
-
-const log = createLog('authorizeMiddleware')
-
-module.exports = function createAuthorizeMiddleware({ auth, config }) {
+module.exports = function createAuthorizeMiddleware({ auth, config, log }) {
   if (!config.auth.active) {
-    log.info('Auth disabled, creating inactive middleware')
+    log.info('auth disabled, creating inactive middleware')
     return (req, res, next) => {
-      log.info(`${res.locals.id}: Specific auth not implemented`)
+      log.info(`${res.locals.id}: specific auth not implemented`)
       next()
     }
   }

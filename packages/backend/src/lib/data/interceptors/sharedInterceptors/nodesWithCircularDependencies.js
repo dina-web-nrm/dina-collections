@@ -29,13 +29,11 @@ const findCircularDependencies = ({ itemsObject, visitedIds = {}, id }) => {
 }
 
 module.exports = function nodesWithCircularDependencies({
-  // model,
-  // models,
-  operation,
+  operationSpecification,
   request,
   serviceInteractor,
 }) {
-  const { resource } = operation
+  const { resource } = operationSpecification
   const active =
     request &&
     request.queryParams &&

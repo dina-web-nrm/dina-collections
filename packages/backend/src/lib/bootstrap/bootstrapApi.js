@@ -1,36 +1,32 @@
-const bootstrapBase = require('./bootstrapBase')
-const schemaInterface = require('common/src/schemaInterface')
+const createCore = require('./utilities/createCore')
 const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')
-const setupJobs = require('./setupJobs')
 const createAuth = require('../auth')
+const createLog = require('../../utilities/log')
+const createWorker = require('../worker')
 
-const openApiSpec = schemaInterface.getOpenApiSpec()
+const log = createLog('bootstrap/api')
 
-module.exports = function bootstrapApi({
-  env,
-  schedulerActive = false,
-  serviceDefinitions,
-  serviceOrder,
-}) {
-  const main = ({ config, controllers, log, serviceInteractor, services }) => {
+module.exports = function bootstrapApi({ env, serviceConfigurations }) {
+  log.info('bootstraping api')
+  return createCore({
+    env,
+    log,
+    serviceConfigurations,
+  }).then(({ config, openApiSpec, operations, serviceInteractor }) => {
     const auth = createAuth({ config })
 
-    setupJobs({
+    createWorker({
       config,
-      log,
-      schedulerActive,
       serviceInteractor,
     })
 
-    log.info('Starting api')
     const serviceRouter = createServiceRouter({
       auth,
       config,
-      controllers,
-      serviceInteractor,
-      services,
+      operations,
     })
+
     const app = createApp({
       auth,
       config,
@@ -38,21 +34,12 @@ module.exports = function bootstrapApi({
       routers: [serviceRouter],
     })
 
-    return new Promise((resolve, reject) => {
-      app.listen(config.api.port, err => {
-        if (err) {
-          return reject(err)
-        }
-
-        return resolve({ message: `Api listening to port: ${config.api.port}` })
-      })
+    app.listen(config.api.port, err => {
+      if (err) {
+        throw err
+      }
+      log.info('bootstraping api done')
+      log.info(`api listening to port: ${config.api.port}`)
     })
-  }
-
-  return bootstrapBase({
-    env,
-    main,
-    serviceDefinitions,
-    serviceOrder,
   })
 }
