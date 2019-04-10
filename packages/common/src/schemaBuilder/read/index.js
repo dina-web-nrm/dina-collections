@@ -10,8 +10,14 @@ const readSecurity = require('./readSecurity')
 const createSchemaInterface = require('../../schemaInterface/createSchemaInterface')
 
 module.exports = function read({ modelBasePath, apiBasePath }) {
-  const servicesPath = path.join(apiBasePath, 'services')
-  const buildServicesPath = path.join(apiBasePath, 'lib', 'services')
+  const servicesPath = path.join(apiBasePath, 'serviceConfigurations')
+  const buildServicesPath = path.join(
+    apiBasePath,
+    'lib',
+    'serviceInterface',
+    'utilities',
+    'createServiceSpecifications'
+  )
 
   const infoPath = apiBasePath
 
