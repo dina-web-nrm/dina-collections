@@ -6,7 +6,7 @@ import {
   hasFilterParams,
 } from './buildQuery'
 
-describe('domainModules/collectionMammals/components/MammalManager/FilterColumn/utilities/buildQuery', () => {
+describe('domainModules/specimen/components/MammalManager/FilterColumn/utilities/buildQuery', () => {
   describe('hasFilterParams', () => {
     test('returns false', () => {
       const testValue = hasFilterParams('nofilter')

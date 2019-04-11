@@ -6,7 +6,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { CustomData, Field, Input } from 'coreModules/form/components'
-import { CATALOG_CARD } from 'domainModules/collectionMammals/constants'
+import { CATALOG_CARD } from 'domainModules/specimen/constants'
 import RecordHistoryEvents from './RecordHistoryEvents'
 
 const log = createLog('modules:specimen:MammalForm:SegmentOther')

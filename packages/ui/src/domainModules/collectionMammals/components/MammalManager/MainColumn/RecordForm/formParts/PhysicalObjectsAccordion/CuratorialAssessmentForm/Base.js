@@ -11,7 +11,7 @@ import {
   parseBooleanRadio,
 } from 'coreModules/form/utilities'
 import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
-import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
+import { mammalFormModels } from 'domainModules/specimen/schemas'
 import FormActions from './FormActions'
 
 const log = createLog(
