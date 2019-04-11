@@ -219,7 +219,7 @@ class RecordForm extends Component {
           changeFieldValue={this.changeFieldValue}
           formName={form}
           module="specimen" // to be deprecated in favor of moduleName
-          moduleName="collectionMammals"
+          moduleName="specimen"
           removeArrayFieldByIndex={this.removeArrayFieldByIndex}
           renderRow={this.renderRow}
           rows={rows}
