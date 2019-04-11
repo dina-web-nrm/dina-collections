@@ -32,8 +32,8 @@ notifications:
     on_success: never
     on_failure: always
     template:
-      - "`%{branch}`"
-      - "*%{result}* build <%{build_url}|#%{build_number}>"
+      - '`%{branch}`'
+      - '*%{result}* build <%{build_url}|#%{build_number}>'
 
 stages:
   - name: build
