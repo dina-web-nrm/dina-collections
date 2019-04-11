@@ -3,7 +3,7 @@ export default function createAgentInputs({
   buttonTextKey = 'other.interpretThisName',
   initiallyHidden,
   model,
-  module = 'collectionMammals',
+  module = 'specimen',
 } = {}) {
   return [
     {
