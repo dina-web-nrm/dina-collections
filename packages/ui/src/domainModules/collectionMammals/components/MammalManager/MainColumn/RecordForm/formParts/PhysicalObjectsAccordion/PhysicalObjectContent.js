@@ -26,7 +26,7 @@ const log = createLog(
   'modules:specimen:formParts:PhysicalObjectContent'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const mapStateToProps = (state, { category, preparationType }) => {
   // TODO use selector for preparationType options

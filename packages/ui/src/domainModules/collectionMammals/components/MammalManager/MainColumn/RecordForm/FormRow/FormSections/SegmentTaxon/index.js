@@ -21,7 +21,7 @@ const log = createLog(
   'modules:specimen:MammalForm:SegmentDeterminations'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const mapStateToProps = (state, { formValueSelector, specimenId }) => {
   return {

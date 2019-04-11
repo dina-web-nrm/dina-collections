@@ -26,7 +26,7 @@ const GROUPS_AND_HEADLINES = [
   { groups: ['condition'], headlineKey: 'condition' },
 ]
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   allItemsFetched: PropTypes.bool.isRequired,

@@ -11,7 +11,7 @@ import { ConfirmationPopup } from 'coreModules/form/components'
 const log = createLog(
   'modules:specimen:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:FormActions'
 )
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   displayBackButton: PropTypes.bool,

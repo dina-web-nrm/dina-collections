@@ -9,7 +9,7 @@ import FieldLabel from 'coreModules/form/components/FieldTemplate/FieldLabel'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   autoComplete: PropTypes.string,

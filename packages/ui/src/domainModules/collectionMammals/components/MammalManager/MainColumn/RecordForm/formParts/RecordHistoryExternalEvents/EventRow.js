@@ -8,7 +8,7 @@ import { buildYYYYMMDD, getYYYYMMDDFromTimestamp } from 'common/es5/date'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { AgentIdTextResult } from 'domainModules/agent/components'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   agent: PropTypes.object,

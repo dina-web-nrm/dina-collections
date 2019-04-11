@@ -25,7 +25,7 @@ const mustBe6Or8Digits = value => {
   return undefined
 }
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const mapStateToProps = (state, { formName }) => {
   return {

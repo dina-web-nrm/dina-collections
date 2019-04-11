@@ -12,7 +12,7 @@ import CuratorialAssessmentItem from './CuratorialAssessmentItem'
 import CreateCuratorialAssessment from './CuratorialAssessmentForm/Create'
 import FieldsForTest from './CuratorialAssessmentForm/Test'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,

@@ -11,7 +11,7 @@ const log = createLog(
   'modules:specimen:MammalManager:ResultTableView:InfinityTableHeader'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   height: PropTypes.number.isRequired,
