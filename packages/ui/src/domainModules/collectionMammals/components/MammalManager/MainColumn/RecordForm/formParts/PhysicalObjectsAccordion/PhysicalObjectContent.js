@@ -23,7 +23,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
 
 const log = createLog(
-  'modules:collectionMammals:formParts:PhysicalObjectContent'
+  'modules:specimen:formParts:PhysicalObjectContent'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

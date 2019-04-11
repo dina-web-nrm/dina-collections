@@ -11,7 +11,7 @@ import createLog from 'utilities/log'
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:PhysicalObjectTitle'
+  'modules:specimen:MammalForm:PhysicalObjectTitle'
 )
 
 const propTypes = {

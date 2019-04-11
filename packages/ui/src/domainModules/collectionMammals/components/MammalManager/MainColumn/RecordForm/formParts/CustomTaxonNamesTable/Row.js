@@ -14,7 +14,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/formParts/CustomTaxonNamesTable/Row'
+  'modules:specimen:MammalManager/MainColumn/RecordForm/formParts/CustomTaxonNamesTable/Row'
 )
 
 const propTypes = {

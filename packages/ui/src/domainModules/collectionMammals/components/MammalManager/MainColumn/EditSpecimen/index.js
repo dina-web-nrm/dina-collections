@@ -22,7 +22,7 @@ import transformInput, {
 import RecordForm from '../RecordForm'
 
 const log = createLog(
-  'modules:collectionMammals:components:MammalManager:EditSpecimen'
+  'modules:specimen:components:MammalManager:EditSpecimen'
 )
 
 const FORM_NAME = 'editSpecimen'

@@ -18,7 +18,7 @@ import DeterminationContent from './DeterminationContent'
 import DeterminationTitle from './DeterminationTitle'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentDeterminations'
+  'modules:specimen:MammalForm:SegmentDeterminations'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

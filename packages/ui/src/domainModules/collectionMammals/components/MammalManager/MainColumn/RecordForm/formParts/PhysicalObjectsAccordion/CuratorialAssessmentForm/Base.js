@@ -15,7 +15,7 @@ import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import FormActions from './FormActions'
 
 const log = createLog(
-  'modules:collectionMammals:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:Base'
+  'modules:specimen:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:Base'
 )
 
 const propTypes = {

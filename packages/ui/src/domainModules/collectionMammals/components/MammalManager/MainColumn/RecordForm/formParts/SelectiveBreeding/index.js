@@ -9,7 +9,7 @@ import { Radio } from 'coreModules/form/components'
 import { wrapInColumn } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:OriginInformation:SelectiveBreeding'
+  'modules:specimen:MammalForm:OriginInformation:SelectiveBreeding'
 )
 
 const propTypes = {

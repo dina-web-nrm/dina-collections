@@ -12,7 +12,7 @@ import createLog from 'utilities/log'
 import CollectingPosition from './CollectingPosition'
 import PositionModal from './PositionModal'
 
-const log = createLog('modules:collectionMammals:MammalForm:CollectingLocality')
+const log = createLog('modules:specimen:MammalForm:CollectingLocality')
 
 const buttonStyle = {
   float: 'left',

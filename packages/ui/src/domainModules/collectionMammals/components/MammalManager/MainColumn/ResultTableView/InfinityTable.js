@@ -17,7 +17,7 @@ import { actionCreators as keyObjectActionCreators } from '../../../../keyObject
 import InfinityTableRow from './InfinityTableRow'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager:ResultTableView:InfinityTable'
+  'modules:specimen:MammalManager:ResultTableView:InfinityTable'
 )
 
 const SEARCH_SPECIMEN = 'searchSpecimen'

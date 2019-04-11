@@ -7,7 +7,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import IdentifiersTableRow from './IdentifiersTableRow'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentIdentifiers:IdentifiersTable'
+  'modules:specimen:MammalForm:SegmentIdentifiers:IdentifiersTable'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

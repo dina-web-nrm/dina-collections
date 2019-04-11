@@ -11,7 +11,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/formParts/DeterminationsAccordion/DeterminationTitle'
+  'modules:specimen:MammalManager/MainColumn/RecordForm/formParts/DeterminationsAccordion/DeterminationTitle'
 )
 
 const mapStateToProps = (state, { formName, getPath }) => {

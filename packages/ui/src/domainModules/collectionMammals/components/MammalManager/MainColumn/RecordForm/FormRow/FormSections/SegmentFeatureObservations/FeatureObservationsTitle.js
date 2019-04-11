@@ -6,7 +6,7 @@ import createLog from 'utilities/log'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTitle'
+  'modules:specimen:MammalForm:SegmentFeatureObservations:FeatureObservationsTitle'
 )
 
 const propTypes = {

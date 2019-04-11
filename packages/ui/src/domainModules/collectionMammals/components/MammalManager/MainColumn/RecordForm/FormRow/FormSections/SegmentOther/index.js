@@ -9,7 +9,7 @@ import { CustomData, Field, Input } from 'coreModules/form/components'
 import { CATALOG_CARD } from 'domainModules/collectionMammals/constants'
 import RecordHistoryEvents from './RecordHistoryEvents'
 
-const log = createLog('modules:collectionMammals:MammalForm:SegmentOther')
+const log = createLog('modules:specimen:MammalForm:SegmentOther')
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {

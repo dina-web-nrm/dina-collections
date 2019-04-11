@@ -11,7 +11,7 @@ import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/comp
 import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'
+  'modules:specimen:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'
 )
 
 const propTypes = {

@@ -13,7 +13,7 @@ import FeatureObservationsTable from './FeatureObservationsTable'
 import FeatureObservationsTitle from './FeatureObservationsTitle'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:FeatureObservations'
+  'modules:specimen:MammalForm:FeatureObservations'
 )
 
 const GROUPS_AND_HEADLINES = [
