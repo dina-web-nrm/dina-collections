@@ -7,7 +7,7 @@ import createLog from 'utilities/log'
 import { Checkbox, Field, Input, Remarks } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
-const log = createLog('modules:collectionMammals:MammalForm:OriginInformation')
+const log = createLog('modules:specimen:MammalForm:OriginInformation')
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,

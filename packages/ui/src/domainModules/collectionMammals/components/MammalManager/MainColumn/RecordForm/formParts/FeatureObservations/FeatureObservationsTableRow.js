@@ -11,7 +11,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:FeatureObservations:FeatureObservationsTableRow'
+  'modules:specimen:MammalForm:FeatureObservations:FeatureObservationsTableRow'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

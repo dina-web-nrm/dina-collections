@@ -9,7 +9,7 @@ import CollectingInformation from './CollectingInformation'
 import DeathInformation from './DeathInformation'
 import OriginInformation from './OriginInformation'
 
-const log = createLog('modules:collectionMammals:MammalForm:SegmentEvents')
+const log = createLog('modules:specimen:MammalForm:SegmentEvents')
 
 const propTypes = {
   allItemsFetched: PropTypes.bool.isRequired,

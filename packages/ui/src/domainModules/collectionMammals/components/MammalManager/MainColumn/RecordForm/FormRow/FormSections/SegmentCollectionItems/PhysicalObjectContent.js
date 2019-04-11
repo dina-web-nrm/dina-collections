@@ -14,7 +14,7 @@ import createLog from 'utilities/log'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:PhysicalObjectContent'
+  'modules:specimen:MammalForm:PhysicalObjectContent'
 )
 
 const mapStateToProps = (state, { preparationType, category }) => {

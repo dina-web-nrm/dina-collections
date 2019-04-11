@@ -10,7 +10,7 @@ import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 
-const log = createLog('modules:collectionMammals:MammalForm:DeathInformation')
+const log = createLog('modules:specimen:MammalForm:DeathInformation')
 
 const mapStateToProps = state => {
   const currentLanguage = i18nSelectors.getLanguage(state)

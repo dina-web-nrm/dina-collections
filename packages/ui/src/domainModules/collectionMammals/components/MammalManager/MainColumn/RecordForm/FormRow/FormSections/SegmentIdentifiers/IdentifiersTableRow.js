@@ -9,7 +9,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentIdentifiers:IdentifiersTableRow'
+  'modules:specimen:MammalForm:SegmentIdentifiers:IdentifiersTableRow'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

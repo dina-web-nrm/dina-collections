@@ -20,7 +20,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentDeterminations:DeterminationContent'
+  'modules:specimen:MammalForm:SegmentDeterminations:DeterminationContent'
 )
 
 const propTypes = {

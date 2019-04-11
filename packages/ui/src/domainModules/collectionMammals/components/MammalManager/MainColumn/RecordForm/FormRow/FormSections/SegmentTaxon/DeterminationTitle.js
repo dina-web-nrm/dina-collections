@@ -9,7 +9,7 @@ import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentDeterminations:DeterminationTitle'
+  'modules:specimen:MammalForm:SegmentDeterminations:DeterminationTitle'
 )
 
 const mapStateToProps = (state, { taxon }) => {

@@ -28,7 +28,7 @@ import PhysicalObjectTitle from './PhysicalObjectTitle'
 const { AddButton } = formParts
 
 const log = createLog(
-  'modules:collectionMammals:formParts:PhysicalObjectsAccordion'
+  'modules:specimen:formParts:PhysicalObjectsAccordion'
 )
 
 const categoryUnspecifiedTypeIdMap = {

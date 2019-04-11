@@ -21,7 +21,7 @@ import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/componen
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentCollectingInformation'
+  'modules:specimen:MammalForm:SegmentCollectingInformation'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

@@ -20,7 +20,7 @@ import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/componen
 import CatalogNumberInput from './CatalogNumberInput'
 import IdentifiersTable from './IdentifiersTable'
 
-const log = createLog('modules:collectionMammals:MammalForm:SegmentIdentifiers')
+const log = createLog('modules:specimen:MammalForm:SegmentIdentifiers')
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 

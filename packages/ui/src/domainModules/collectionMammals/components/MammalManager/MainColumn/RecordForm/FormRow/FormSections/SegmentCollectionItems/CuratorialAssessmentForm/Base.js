@@ -14,7 +14,7 @@ import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/componen
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import FormActions from './FormActions'
 
-const log = createLog('modules:collectionMammals:CuratorialAssessmentForm:Base')
+const log = createLog('modules:specimen:CuratorialAssessmentForm:Base')
 
 const propTypes = {
   displayBackButton: PropTypes.bool,

@@ -9,7 +9,7 @@ import { makeGetFeatureTypesInGroups } from 'domainModules/curatedList/globalSel
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:FeatureObservations:FeatureObservationsTable'
+  'modules:specimen:MammalForm:FeatureObservations:FeatureObservationsTable'
 )
 
 const makeMapStateToProps = () => {

@@ -8,7 +8,7 @@ import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
 import tableColumnSpecifications from '../tableColumnSpecifications'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager:ResultTableView:InfinityTableHeader'
+  'modules:specimen:MammalManager:ResultTableView:InfinityTableHeader'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

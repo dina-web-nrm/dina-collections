@@ -21,7 +21,7 @@ import PhysicalObjectContent from './PhysicalObjectContent'
 import PhysicalObjectTitle from './PhysicalObjectTitle'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentCollectionItems'
+  'modules:specimen:MammalForm:SegmentCollectionItems'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')

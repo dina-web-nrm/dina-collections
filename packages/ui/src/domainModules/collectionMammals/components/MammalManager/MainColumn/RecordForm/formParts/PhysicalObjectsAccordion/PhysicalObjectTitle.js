@@ -15,7 +15,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import createLog from 'utilities/log'
 
-const log = createLog('modules:collectionMammals:formParts:PhysicalObjectTitle')
+const log = createLog('modules:specimen:formParts:PhysicalObjectTitle')
 
 const mapStateToProps = (state, { formName, getPath }) => {
   return {

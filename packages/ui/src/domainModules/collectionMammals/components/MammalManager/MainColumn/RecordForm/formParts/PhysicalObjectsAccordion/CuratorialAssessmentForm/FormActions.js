@@ -9,7 +9,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import { ConfirmationPopup } from 'coreModules/form/components'
 
 const log = createLog(
-  'modules:collectionMammals:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:FormActions'
+  'modules:specimen:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:FormActions'
 )
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
