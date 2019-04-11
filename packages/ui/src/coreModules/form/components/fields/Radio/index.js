@@ -27,7 +27,7 @@ const defaultProps = {
   enableHelpNotifications: undefined,
   label: undefined,
   labelKey: undefined,
-  module: 'collectionMammals',
+  module: 'specimen',
 }
 
 class RadioField extends Component {

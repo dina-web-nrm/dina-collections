@@ -129,6 +129,6 @@ class IdentifiersTableRow extends PureComponent {
 IdentifiersTableRow.propTypes = propTypes
 
 export default compose(
-  withI18n({ module: 'collectionMammals' }),
+  withI18n({ module: 'specimen' }),
   pathBuilder()
 )(IdentifiersTableRow)

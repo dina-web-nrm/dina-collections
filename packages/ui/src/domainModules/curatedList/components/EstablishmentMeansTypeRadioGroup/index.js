@@ -31,7 +31,7 @@ const propTypes = {
 const defaultProps = {
   establishmentMeansTypeOptions: [],
   label: undefined,
-  module: 'collectionMammals',
+  module: 'specimen',
 }
 
 class EstablishmentMeansTypeRadioGroup extends Component {

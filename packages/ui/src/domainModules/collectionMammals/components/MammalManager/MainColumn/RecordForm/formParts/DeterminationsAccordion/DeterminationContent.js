@@ -171,6 +171,6 @@ class DeterminationContent extends Component {
 DeterminationContent.propTypes = propTypes
 
 export default compose(
-  withI18n({ module: 'collectionMammals' }),
+  withI18n({ module: 'specimen' }),
   pathBuilder()
 )(DeterminationContent)

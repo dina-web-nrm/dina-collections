@@ -37,7 +37,7 @@ class SelectiveBreeding extends Component {
         key: 'no',
         text: moduleTranslate({
           capitalize: true,
-          module: 'collectionMammals',
+          module: 'specimen',
           textKey: 'other.wildAnimal',
         }),
         value: 'no',
@@ -46,7 +46,7 @@ class SelectiveBreeding extends Component {
         key: 'yes',
         text: moduleTranslate({
           capitalize: true,
-          module: 'collectionMammals',
+          module: 'specimen',
           textKey: 'other.zooAnimal',
         }),
         value: 'yes',
@@ -55,7 +55,7 @@ class SelectiveBreeding extends Component {
         key: 'unknown',
         text: moduleTranslate({
           capitalize: true,
-          module: 'collectionMammals',
+          module: 'specimen',
           textKey: 'other.unknown',
         }),
         value: 'unknown',
