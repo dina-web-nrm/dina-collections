@@ -23,7 +23,7 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
             autoComplete="off"
             component={LocalityDropdownPickerSearch}
             initialText={moduleTranslate({ textKey: 'other.choose' })}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('0.id')}
             parameterKey="places.higherGeography"
           />
@@ -35,7 +35,7 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
             autoComplete="off"
             component={LocalityDropdownPickerSearch}
             initialText={moduleTranslate({ textKey: 'other.choose' })}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('1.id')}
             parameterKey="places.swedishMap"
           />

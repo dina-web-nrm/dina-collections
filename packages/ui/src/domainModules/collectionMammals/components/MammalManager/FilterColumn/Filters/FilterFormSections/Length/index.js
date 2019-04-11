@@ -37,7 +37,7 @@ class WeightFilterForm extends PureComponent {
       <WrappedFeatureTypeRange
         capitalize
         disableClearUnitValue
-        module="collectionMammals"
+        module="specimen"
         name="length"
         resource="searchSpecimen"
         tagTypeDropdownPlaceholder="Choose length type"

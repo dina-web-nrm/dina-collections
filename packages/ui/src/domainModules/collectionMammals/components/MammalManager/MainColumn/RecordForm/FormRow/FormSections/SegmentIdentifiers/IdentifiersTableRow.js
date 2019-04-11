@@ -59,7 +59,7 @@ class IdentifiersTableRow extends PureComponent {
             className="transparent"
             component={DropdownSearch}
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('identifierType.id')}
             options={identifierTypeOptions}
             type="dropdown-search-local"
@@ -71,7 +71,7 @@ class IdentifiersTableRow extends PureComponent {
             className="transparent"
             component={Input}
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('value')}
             type="text"
           />
@@ -82,7 +82,7 @@ class IdentifiersTableRow extends PureComponent {
             className="transparent"
             component={Input}
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('remarks')}
             type="text"
           />

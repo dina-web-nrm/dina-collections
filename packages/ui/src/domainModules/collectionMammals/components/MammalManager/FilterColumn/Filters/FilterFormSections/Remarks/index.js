@@ -35,7 +35,7 @@ class Remarks extends PureComponent {
               component={WrappedTagTypeDropdownField}
               enableHelpNotifications={false}
               inline
-              module="collectionMammals"
+              module="specimen"
               name="remarks.srcField"
               resource="searchSpecimen"
               tagTypeInitialOptionValue={ANY}
@@ -48,7 +48,7 @@ class Remarks extends PureComponent {
               autoComplete="off"
               component={WrappedSearchPreviewField}
               enableHelpNotifications={false}
-              module="collectionMammals"
+              module="specimen"
               name="remarks.search"
               resource="searchSpecimen"
               translationScope="enums.remarks"

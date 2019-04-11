@@ -57,7 +57,7 @@ class SegmentOther extends PureComponent {
                 autoComplete="off"
                 component={Input}
                 label="Specimen remarks"
-                module="collectionMammals"
+                module="specimen"
                 name="individual.remarks"
                 type="text"
               />
@@ -69,7 +69,7 @@ class SegmentOther extends PureComponent {
                 input={{ name: 'readOnly', value: readOnly }}
                 meta={{}}
                 model="specimen"
-                module="collectionMammals"
+                module="specimen"
                 name="readOnly"
                 type="read-only"
               />

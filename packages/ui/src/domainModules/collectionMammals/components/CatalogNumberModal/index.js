@@ -103,7 +103,7 @@ class CatalogNumberModal extends PureComponent {
                         <ModuleTranslate textKey="other.sixOrEightDigits" />
                       }
                       label={<ModuleTranslate textKey="other.catalogNumber" />}
-                      module="collectionMammals"
+                      module="specimen"
                       name="individual.identifiers.0.value"
                       type="text"
                       validate={[mustBe6Or8Digits]}

@@ -41,7 +41,7 @@ const FilterTitle = ({ hasChanged, hasValues, name }) => {
         {hasValues && hasChanged && <Icon name="check circle" />}
         <ModuleTranslate
           fallback={capitalizeFirstLetter(name)}
-          module="collectionMammals"
+          module="specimen"
           textKey={`filterTitles.${name}`}
         />
       </Grid.Column>

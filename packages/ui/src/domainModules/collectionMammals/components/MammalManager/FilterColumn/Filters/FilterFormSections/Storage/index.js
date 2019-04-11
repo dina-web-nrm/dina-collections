@@ -30,7 +30,7 @@ class StorageFilterForm extends PureComponent {
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}
             label="Normal storage location"
-            module="collectionMammals"
+            module="specimen"
             name="storage.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled
@@ -47,7 +47,7 @@ class StorageFilterForm extends PureComponent {
             component={WrappedTagTypeDropdownField}
             enableHelpNotifications={false}
             label="Limit to specimens with storage level"
-            module="collectionMammals"
+            module="specimen"
             name="storage.tagType"
             resource="searchSpecimen"
             tagTypeInitialOptionValue={ANY}

@@ -69,7 +69,7 @@ class DeterminationContent extends Component {
               autoComplete="off"
               component={Input}
               fluid
-              module="collectionMammals"
+              module="specimen"
               name={getPath('taxonNameV')}
               type="text"
             />
@@ -79,7 +79,7 @@ class DeterminationContent extends Component {
               autoComplete="off"
               component={Input}
               fluid
-              module="collectionMammals"
+              module="specimen"
               name={getPath('taxonNameI')}
               type="text"
             />
@@ -90,7 +90,7 @@ class DeterminationContent extends Component {
               component={Input}
               fluid
               model="determinations"
-              module="collectionMammals"
+              module="specimen"
               name={getPath('determinedByAgent.textV')}
               type="text"
             />
@@ -102,7 +102,7 @@ class DeterminationContent extends Component {
               component={TogglableAgentDropdownPickerSearch}
               displayEmptyStateLabel={false}
               displayResultLabel={false}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('determinedByAgent')}
             />
           </Grid.Column>
@@ -110,7 +110,7 @@ class DeterminationContent extends Component {
             <Field
               autoComplete="off"
               component={SingleDate}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('date')}
               parameterKey="determinations.date"
             />
@@ -121,7 +121,7 @@ class DeterminationContent extends Component {
               component={Remarks}
               emptyStateTextKey="remarks.emptyState.determination"
               model="determination"
-              module="collectionMammals"
+              module="specimen"
               name={getPath('remarks')}
             />
           </Grid.Column>

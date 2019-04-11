@@ -63,7 +63,7 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={TogglableAgentDropdownPickerSearch}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('collectedByAgent')}
             />
           </Grid.Column>
@@ -71,7 +71,7 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={Input}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('collectorsText')}
               type="text"
             />
@@ -81,7 +81,7 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={Input}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('event.expeditionText')}
               type="text"
             />
@@ -91,7 +91,7 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={DropdownSearch}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('establishmentMeansType.id')}
               options={establishmentMeansTypeOptions}
               type="dropdown-search-local"
@@ -108,7 +108,7 @@ class SegmentCollectingInformation extends PureComponent {
               <DateRange
                 autoComplete="off"
                 formName="mammalForm"
-                module="collectionMammals"
+                module="specimen"
                 name={getPath('event.dateRange')}
                 past
                 requireYYYYMMDD
@@ -122,7 +122,7 @@ class SegmentCollectingInformation extends PureComponent {
                 autoComplete="off"
                 component={Checkbox}
                 inline
-                module="collectionMammals"
+                module="specimen"
                 name={getPath('isDeathDate')}
                 type="checkbox"
               />

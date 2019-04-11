@@ -21,7 +21,7 @@ function VerticalPosition({ getPath }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  module="collectionMammals"
+                  module="specimen"
                   name={getPath('minimumElevationInMeters')}
                   type="number"
                 />
@@ -30,7 +30,7 @@ function VerticalPosition({ getPath }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  module="collectionMammals"
+                  module="specimen"
                   name={getPath('maximumElevationInMeters')}
                   type="number"
                 />
@@ -45,7 +45,7 @@ function VerticalPosition({ getPath }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  module="collectionMammals"
+                  module="specimen"
                   name={getPath('minimumDepthInMeters')}
                   type="number"
                 />
@@ -54,7 +54,7 @@ function VerticalPosition({ getPath }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  module="collectionMammals"
+                  module="specimen"
                   name={getPath('maximumDepthInMeters')}
                   type="number"
                 />

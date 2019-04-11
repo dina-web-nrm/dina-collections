@@ -17,7 +17,7 @@ class DatePeriodFilterForm extends PureComponent {
             enableHelpNotifications={false}
             endDateLabel="Latest date"
             initialDateType="range"
-            module="collectionMammals"
+            module="specimen"
             name="datePeriod.date"
             stack
             startDateLabel="Earliest date"

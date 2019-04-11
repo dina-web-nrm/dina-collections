@@ -39,7 +39,7 @@ class DeathInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={DropdownSearch}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('causeOfDeathType.id')}
               options={causeOfDeathTypeOptions}
               type="dropdown-search-local"
@@ -49,7 +49,7 @@ class DeathInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={Remarks}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('remarks')}
             />
           </Grid.Column>

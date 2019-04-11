@@ -83,7 +83,7 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={TaxonNameDropdownSearch}
-              module="collectionMammals"
+              module="specimen"
               name="individual.taxonInformation.curatorialTaxonName.id"
               type="text"
             />
@@ -94,7 +94,7 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={Input}
-              module="collectionMammals"
+              module="specimen"
               name={getPath(
                 'individual.taxonInformation.curatorialTaxonNameText'
               )}
@@ -107,7 +107,7 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={Remarks}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('individual.taxonInformation.taxonRemarks')}
             />
           </Grid.Column>
@@ -167,7 +167,7 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={CustomData}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('individual.taxonInformation.readOnly')}
               type="read-only"
             />

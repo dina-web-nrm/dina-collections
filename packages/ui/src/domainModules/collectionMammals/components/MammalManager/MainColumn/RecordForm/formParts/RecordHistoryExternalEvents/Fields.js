@@ -16,7 +16,7 @@ const Fields = ({ baseName }) => {
         <Field
           autoComplete="off"
           component={AgentDropdownPickerSearch}
-          module="collectionMammals"
+          module="specimen"
           name={`${baseName}.agent`}
           resultSuffix="(agent)"
           type="input-text"
@@ -26,7 +26,7 @@ const Fields = ({ baseName }) => {
         <Field
           autoComplete="off"
           component={SingleDate}
-          module="collectionMammals"
+          module="specimen"
           name={`${baseName}.date`}
         />
       </Grid.Column>

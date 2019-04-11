@@ -38,7 +38,7 @@ class RecordHistoryEventsRow extends PureComponent {
             component={Input}
             disabled
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('system')}
             type="text"
           />
@@ -48,7 +48,7 @@ class RecordHistoryEventsRow extends PureComponent {
             autoComplete="off"
             component={TogglableAgentDropdownPickerSearch}
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('agent')}
           />
         </Table.Cell>
@@ -60,7 +60,7 @@ class RecordHistoryEventsRow extends PureComponent {
             displayLabel={false}
             displaySubLabels={false}
             displayText={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('date')}
             stack={false}
           />
@@ -70,7 +70,7 @@ class RecordHistoryEventsRow extends PureComponent {
             component={Input}
             disabled
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('description')}
             type="text"
           />

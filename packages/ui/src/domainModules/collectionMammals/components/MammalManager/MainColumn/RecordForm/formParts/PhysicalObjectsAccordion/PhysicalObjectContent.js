@@ -102,7 +102,7 @@ class PhysicalObjectContent extends Component {
               autoComplete="off"
               component={DropdownSearch}
               disableClearValue
-              module="collectionMammals"
+              module="specimen"
               name={getPath('preparationType.id')}
               options={preparationTypeOptions}
               type="dropdown-search-local"
@@ -113,7 +113,7 @@ class PhysicalObjectContent extends Component {
               autoComplete="off"
               component={StorageLocationDropdownPickerSearch}
               group={ALL}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('physicalObject.storageLocation.id')}
               showParentName
             />
@@ -131,7 +131,7 @@ class PhysicalObjectContent extends Component {
               component={Remarks}
               emptyStateTextKey={`remarks.emptyState.physicalObject.${category}`}
               model="specimen"
-              module="collectionMammals"
+              module="specimen"
               name={getPath('physicalObject.remarks')}
               showParentName
             />
