@@ -19,7 +19,7 @@ function FeatureObservationsTitle({ headlineKey }) {
     <React.Fragment>
       <Icon name="dropdown" />
       <ModuleTranslate
-        module="collectionMammals"
+        module="specimen"
         scope="enums.featureObservations"
         textKey={headlineKey}
       />

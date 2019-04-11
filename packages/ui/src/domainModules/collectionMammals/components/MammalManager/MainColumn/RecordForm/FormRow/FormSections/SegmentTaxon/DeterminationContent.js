@@ -72,7 +72,7 @@ class DeterminationContent extends Component {
             <Field
               autoComplete="off"
               component={TaxonNameDropdownSearch}
-              module="collectionMammals"
+              module="specimen"
               name={taxonIdFieldKey}
               type="text"
             />
@@ -100,7 +100,7 @@ class DeterminationContent extends Component {
             <Field
               autoComplete="off"
               component={Input}
-              module="collectionMammals"
+              module="specimen"
               name={getPath('determinationVerbatim')}
               type="input-text"
             />
@@ -115,7 +115,7 @@ class DeterminationContent extends Component {
             displaySubLabels={false}
             displayText={false}
             displayTodayButton
-            module="collectionMammals"
+            module="specimen"
             name={getPath('date')}
             parameterKey="determinations.date"
             past
@@ -127,7 +127,7 @@ class DeterminationContent extends Component {
           <Field
             autoComplete="off"
             component={TogglableAgentDropdownPickerSearch}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('determinedByAgent')}
           />
         </Grid.Column>
@@ -136,7 +136,7 @@ class DeterminationContent extends Component {
             autoComplete="off"
             component={Remarks}
             label="Origin remarks"
-            module="collectionMammals"
+            module="specimen"
             name={getPath('remarks')}
           />
         </Grid.Column>

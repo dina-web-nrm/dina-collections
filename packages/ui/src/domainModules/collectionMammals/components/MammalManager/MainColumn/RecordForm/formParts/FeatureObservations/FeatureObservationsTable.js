@@ -42,7 +42,7 @@ function FeatureObservationTable({ changeFieldValue, featureTypes }) {
               featureType={featureType}
               index={featureType.id}
               key={featureType.attributes.key}
-              module="collectionMammals"
+              module="specimen"
             />
           )
         })}

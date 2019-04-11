@@ -74,7 +74,7 @@ class IdentifiersTableRow extends PureComponent {
             className="transparent"
             component={DropdownSearch}
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('identifierType.id')}
             options={identifierTypeOptions}
             placeholder={moduleTranslate({
@@ -91,7 +91,7 @@ class IdentifiersTableRow extends PureComponent {
             component={Input}
             displayLabel={false}
             fluid
-            module="collectionMammals"
+            module="specimen"
             name={getPath('value')}
             placeholder={moduleTranslate({
               capitalize: true,

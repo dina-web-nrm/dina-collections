@@ -64,7 +64,7 @@ class CuratorialAssessmentsList extends Component {
         <TranslatedHeaderWithHelpIcon
           as="h4"
           helpNotificationProps={helpNotificationProps}
-          module="collectionMammals"
+          module="specimen"
           textKey="headers.curatorialAssessments"
         />
         {curatorialAssessments.length > 0 && (

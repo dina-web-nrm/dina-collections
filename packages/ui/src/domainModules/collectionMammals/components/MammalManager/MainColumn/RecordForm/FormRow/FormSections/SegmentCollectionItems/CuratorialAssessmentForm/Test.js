@@ -24,7 +24,7 @@ const FieldsForTest = ({ getPath, index }) => {
         autoComplete="off"
         component={Input}
         label="Remarks"
-        module="collectionMammals"
+        module="specimen"
         name={getPath(`${index}.inventoryStatusRemarks`)}
         type="input-text"
       />
@@ -32,7 +32,7 @@ const FieldsForTest = ({ getPath, index }) => {
         autoComplete="off"
         component={Input}
         label="Condition"
-        module="collectionMammals"
+        module="specimen"
         name={getPath(`${index}.condition`)}
         type="input-text"
       />
@@ -40,7 +40,7 @@ const FieldsForTest = ({ getPath, index }) => {
         autoComplete="off"
         component={Input}
         label="Condition remarks"
-        module="collectionMammals"
+        module="specimen"
         name={getPath(`${index}.conditionRemarks`)}
         type="input-text"
       />
@@ -48,7 +48,7 @@ const FieldsForTest = ({ getPath, index }) => {
         autoComplete="off"
         component={Input}
         label="Date"
-        module="collectionMammals"
+        module="specimen"
         name={getPath(`${index}.date.dateText`)}
         type="input-text"
       />
@@ -56,7 +56,7 @@ const FieldsForTest = ({ getPath, index }) => {
         autoComplete="off"
         component={Input}
         label="Agent"
-        module="collectionMammals"
+        module="specimen"
         name={getPath(`${index}.agent`)}
         type="input-text"
       />

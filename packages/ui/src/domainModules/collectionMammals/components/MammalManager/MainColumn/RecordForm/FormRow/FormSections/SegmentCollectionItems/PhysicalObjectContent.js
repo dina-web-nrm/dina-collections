@@ -54,7 +54,7 @@ function PhysicalObjectContent({
           <Field
             autoComplete="off"
             component={DropdownSearch}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('preparationType.id')}
             options={preparationTypeOptions}
             type="dropdown-search-local"
@@ -66,7 +66,7 @@ function PhysicalObjectContent({
           <Field
             autoComplete="off"
             component={Input}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('description')}
             type="input-text"
           />
@@ -76,7 +76,7 @@ function PhysicalObjectContent({
             autoComplete="off"
             component={StorageLocationDropdownSearch}
             group={ALL}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('physicalObject.storageLocation.id')}
             showParentName
           />
@@ -85,7 +85,7 @@ function PhysicalObjectContent({
           <Field
             autoComplete="off"
             component={Input}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('physicalObject.storageLocationText')}
             type="input-text"
           />

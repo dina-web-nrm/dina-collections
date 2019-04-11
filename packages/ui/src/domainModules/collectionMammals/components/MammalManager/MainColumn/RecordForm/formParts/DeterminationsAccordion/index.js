@@ -83,7 +83,7 @@ const DeterminationsAccordion = ({
       <Grid.Column width={16}>
         <AddButton
           id="add-determination"
-          module="collectionMammals"
+          module="specimen"
           onClick={event => {
             event.preventDefault()
             const index = (determinations && determinations.length) || 0

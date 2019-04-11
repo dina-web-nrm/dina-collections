@@ -23,7 +23,7 @@ function LocationInformationFields({ getPath }) {
           <FieldWrapper
             autoComplete="off"
             component={Input}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('localityV')}
             type="text"
           />
@@ -34,7 +34,7 @@ function LocationInformationFields({ getPath }) {
           <Field
             autoComplete="off"
             component={Input}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('localityI')}
             type="text"
           />
@@ -47,7 +47,7 @@ function LocationInformationFields({ getPath }) {
         <Field
           autoComplete="off"
           component={Remarks}
-          module="collectionMammals"
+          module="specimen"
           name={getPath('remarks')}
         />
       </Grid.Column>
@@ -57,7 +57,7 @@ function LocationInformationFields({ getPath }) {
           <Field
             autoComplete="off"
             component={CustomData}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('readOnly')}
             type="read-only"
           />

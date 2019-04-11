@@ -45,7 +45,7 @@ class LocalityFilterForm extends PureComponent {
             enableHelpNotifications={false}
             fluid
             label="Locality (collecting or origin)"
-            module="collectionMammals"
+            module="specimen"
             name="locality.localities.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled

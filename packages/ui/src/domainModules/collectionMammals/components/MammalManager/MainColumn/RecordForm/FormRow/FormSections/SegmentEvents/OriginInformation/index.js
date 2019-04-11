@@ -27,7 +27,7 @@ class OriginInformation extends PureComponent {
                 autoComplete="off"
                 component={Input}
                 label="Origin locality"
-                module="collectionMammals"
+                module="specimen"
                 name={getPath('originLocality')}
                 type="text"
               />
@@ -40,7 +40,7 @@ class OriginInformation extends PureComponent {
                 component={Checkbox}
                 inline
                 label="Result of selective breeding"
-                module="collectionMammals"
+                module="specimen"
                 name={getPath('isResultOfSelectiveBreeding')}
                 type="checkbox"
               />
@@ -53,7 +53,7 @@ class OriginInformation extends PureComponent {
                 component={Checkbox}
                 inline
                 label="Affected by management"
-                module="collectionMammals"
+                module="specimen"
                 name={getPath('isAffectedByManagement')}
                 type="checkbox"
               />
@@ -65,7 +65,7 @@ class OriginInformation extends PureComponent {
                 autoComplete="off"
                 component={Remarks}
                 label="Origin remarks"
-                module="collectionMammals"
+                module="specimen"
                 name={getPath('remarks')}
               />
             </Grid.Column>

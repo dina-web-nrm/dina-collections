@@ -184,7 +184,7 @@ class PhysicalObjectsAccordion extends PureComponent {
         )}
         <Grid.Column width={16}>
           <AddButton
-            module="collectionMammals"
+            module="specimen"
             onClick={event => {
               event.preventDefault()
               changeFieldValue(

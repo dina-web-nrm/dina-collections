@@ -30,7 +30,7 @@ class AgeStageFilterForm extends PureComponent {
                   fluid
                   label="from"
                   min={0}
-                  module="collectionMammals"
+                  module="specimen"
                   name="ageAndStage.age.min"
                   subLabel
                   type="number"
@@ -44,7 +44,7 @@ class AgeStageFilterForm extends PureComponent {
                   fluid
                   label="to"
                   min={0}
-                  module="collectionMammals"
+                  module="specimen"
                   name="ageAndStage.age.max"
                   subLabel
                   type="number"

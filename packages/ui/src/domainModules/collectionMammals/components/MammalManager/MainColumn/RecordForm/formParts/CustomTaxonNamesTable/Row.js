@@ -74,7 +74,7 @@ class CustomTaxonNamesTableRow extends PureComponent {
             className="transparent"
             component={DropdownSearch}
             displayLabel={false}
-            module="collectionMammals"
+            module="specimen"
             name={getPath('customTaxonNameType.id')}
             options={customTaxonNameTypeOptions}
             placeholder={moduleTranslate({
@@ -91,7 +91,7 @@ class CustomTaxonNamesTableRow extends PureComponent {
             component={Input}
             displayLabel={false}
             fluid
-            module="collectionMammals"
+            module="specimen"
             name={getPath('value')}
             placeholder={moduleTranslate({
               capitalize: true,

@@ -78,7 +78,7 @@ class SegmentIdentifiers extends PureComponent {
                 helpText={<ModuleTranslate textKey="other.sixOrEightDigits" />}
                 labelKey="modules.collectionMammals.other.catalogNumber"
                 loading={loading}
-                module="collectionMammals"
+                module="specimen"
                 name={getPath('0.value')}
                 type="text"
               />
@@ -88,7 +88,7 @@ class SegmentIdentifiers extends PureComponent {
                 autoComplete="off"
                 component={Checkbox}
                 model="specimen"
-                module="collectionMammals"
+                module="specimen"
                 name="publishRecord"
                 type="checkbox"
               />
@@ -98,7 +98,7 @@ class SegmentIdentifiers extends PureComponent {
                 autoComplete="off"
                 className="transparent"
                 component={DropdownSearch}
-                module="collectionMammals"
+                module="specimen"
                 name="individual.typeStatus.id"
                 options={typeSpecimenTypeOptions}
                 type="dropdown-search-local"
@@ -110,7 +110,7 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                module="collectionMammals"
+                module="specimen"
                 name="individual.collectionItemText"
                 type="text"
               />
@@ -121,7 +121,7 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                module="collectionMammals"
+                module="specimen"
                 name="individual.acquisition.acquisitionTypeText"
                 type="input-text"
               />
@@ -136,7 +136,7 @@ class SegmentIdentifiers extends PureComponent {
                 displayText={false}
                 displayTodayButton
                 formName="mammalForm"
-                module="collectionMammals"
+                module="specimen"
                 name="individual.acquisition.date"
                 parameterKey="acquisition.date"
                 past
@@ -149,7 +149,7 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={TogglableAgentDropdownPickerSearch}
-                module="collectionMammals"
+                module="specimen"
                 name="individual.acquisition.handedInByAgent"
               />
             </Grid.Column>

@@ -17,7 +17,7 @@ function Position({ getPath }) {
         <Field
           autoComplete="off"
           component={Input}
-          module="collectionMammals"
+          module="specimen"
           name={getPath('latitude')}
           type="text"
         />
@@ -26,7 +26,7 @@ function Position({ getPath }) {
         <Field
           autoComplete="off"
           component={Input}
-          module="collectionMammals"
+          module="specimen"
           name={getPath('longitude')}
           type="text"
         />
@@ -35,7 +35,7 @@ function Position({ getPath }) {
         <Field
           autoComplete="off"
           component={Input}
-          module="collectionMammals"
+          module="specimen"
           name={getPath('referenceSystem')}
           type="text"
         />

@@ -57,7 +57,7 @@ function FeatureObservationTable({ changeFieldValue, featureTypes }) {
             return (
               <Table.HeaderCell key={textKey}>
                 <ModuleTranslate
-                  module="collectionMammals"
+                  module="specimen"
                   scope="other"
                   textKey={textKey}
                 />

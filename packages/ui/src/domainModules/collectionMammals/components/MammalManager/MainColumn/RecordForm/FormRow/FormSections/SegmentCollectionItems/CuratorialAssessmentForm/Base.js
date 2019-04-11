@@ -100,7 +100,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Remarks}
-                module="collectionMammals"
+                module="specimen"
                 name="inventoryStatusRemarks"
                 parameterKey="curatorialAssessment.inventoryStatusRemarks"
                 type="input-text"
@@ -112,7 +112,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                module="collectionMammals"
+                module="specimen"
                 name="condition"
                 parameterKey="curatorialAssessment.condition"
                 type="input-text"
@@ -122,7 +122,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Remarks}
-                module="collectionMammals"
+                module="specimen"
                 name="conditionRemarks"
                 parameterKey="curatorialAssessment.conditionRemarks"
                 type="input-text"
@@ -138,7 +138,7 @@ export class BaseForm extends PureComponent {
                 displaySubLabels={false}
                 displayText={false}
                 displayTodayButton
-                module="collectionMammals"
+                module="specimen"
                 name="date"
                 parameterKey="curatorialAssessment.date"
                 past
@@ -149,7 +149,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={TogglableAgentDropdownPickerSearch}
-                module="collectionMammals"
+                module="specimen"
                 name="agent"
                 parameterKey="curatorialAssessment.agent"
               />

@@ -20,7 +20,7 @@ class IdentifierFilterForm extends PureComponent {
             component={WrappedMultipleSearchTagsSelectField}
             enableHelpNotifications={false}
             label="Identifier value"
-            module="collectionMammals"
+            module="specimen"
             name="identifier.tagValues"
             resource="searchSpecimen"
             tagTypeFilterEnabled

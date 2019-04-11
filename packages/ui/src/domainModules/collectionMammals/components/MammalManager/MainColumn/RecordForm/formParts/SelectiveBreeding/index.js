@@ -70,7 +70,7 @@ class SelectiveBreeding extends Component {
     return (
       <Radio
         input={input}
-        label={<ModuleTranslate module="collectionMammals" textKey={label} />}
+        label={<ModuleTranslate module="specimen" textKey={label} />}
         radioOptions={this.radioOptions}
       />
     )

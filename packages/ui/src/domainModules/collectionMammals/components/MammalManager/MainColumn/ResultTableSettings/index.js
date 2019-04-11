@@ -170,7 +170,7 @@ class ResultTableSettings extends Component {
                         textKey={`tableColumns.${name}`}
                       />
                     }
-                    module="collectionMammals"
+                    module="specimen"
                     name={name}
                     type="checkbox"
                   />
