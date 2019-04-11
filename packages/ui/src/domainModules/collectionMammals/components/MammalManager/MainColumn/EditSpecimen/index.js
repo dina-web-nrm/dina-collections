@@ -15,7 +15,7 @@ import {
   createGetNestedItemById,
   createGetResourceCount,
 } from 'coreModules/crud/higherOrderComponents'
-import collectionMammalsSelectors from 'domainModules/specimen/globalSelectors'
+import specimenSelectors from 'domainModules/specimen/globalSelectors'
 import transformInput, {
   getBaseValues,
 } from '../RecordForm/transformations/input'
@@ -31,7 +31,7 @@ const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
 const mapStateToProps = state => {
   return {
-    catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(FORM_NAME)(
+    catalogNumber: specimenSelectors.createGetCatalogNumber(FORM_NAME)(
       state
     ),
     establishmentMeansTypes: crudGlobalSelectors.establishmentMeansType.getAll(
