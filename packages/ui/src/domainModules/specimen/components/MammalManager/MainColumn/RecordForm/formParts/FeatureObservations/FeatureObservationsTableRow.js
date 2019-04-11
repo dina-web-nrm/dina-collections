@@ -8,7 +8,7 @@ import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { Field, FieldTemplate, Input } from 'coreModules/form/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
+import { FeatureObservationDropdownSearch } from 'serviceModules/curatedList/components'
 
 const log = createLog(
   'modules:specimen:MammalForm:FeatureObservations:FeatureObservationsTableRow'

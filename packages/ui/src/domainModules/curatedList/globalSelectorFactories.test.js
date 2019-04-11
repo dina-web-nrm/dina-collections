@@ -1,6 +1,6 @@
 import { makeGetFeatureTypesInGroups } from './globalSelectorFactories'
 
-describe('domainModules/curatedList/globalSelectorFactories', () => {
+describe('serviceModules/curatedList/globalSelectorFactories', () => {
   let state
 
   beforeEach(() => {

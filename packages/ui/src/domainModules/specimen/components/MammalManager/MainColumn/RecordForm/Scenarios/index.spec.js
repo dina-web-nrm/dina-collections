@@ -73,7 +73,7 @@ import uiDescribe from 'utilities/test/uiDescribe'
 // }
 
 uiDescribe(
-  'domainModules/specimen/components/MammalManager/MainColumn/RecordForm/Scenarios',
+  'serviceModules/specimen/components/MammalManager/MainColumn/RecordForm/Scenarios',
   () => {
     it('needs tests', () => {
       expect(true).toEqual(true)

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Table } from 'semantic-ui-react'
 
-import TaxonDropdownSearch from 'domainModules/taxon/components/TaxonDropdownSearch'
+import TaxonDropdownSearch from 'serviceModules/taxon/components/TaxonDropdownSearch'
 
 const propTypes = {
   addName: PropTypes.func.isRequired,

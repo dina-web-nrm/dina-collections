@@ -28,7 +28,7 @@ import transformOutput from '../../../transformations/output'
 // }
 
 uiDescribe(
-  'domainModules/specimen/components/MammalManager/MainColumn/RecordForm/Scenarios',
+  'serviceModules/specimen/components/MammalManager/MainColumn/RecordForm/Scenarios',
   () => {
     let handleFormSubmit
     beforeEach(() => {

@@ -1,6 +1,6 @@
 import { mapTaxonNameToOption } from './utilities'
 
-describe('domainModules/taxonService/utilities', () => {
+describe('serviceModules/taxonService/utilities', () => {
   it('returns option', () => {
     const taxonName = {
       attributes: {

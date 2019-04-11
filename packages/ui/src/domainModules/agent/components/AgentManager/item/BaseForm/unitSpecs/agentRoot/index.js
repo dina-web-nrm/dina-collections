@@ -1,4 +1,4 @@
-import { AGENT_TYPE_OPTIONS } from 'domainModules/agent/constants'
+import { AGENT_TYPE_OPTIONS } from 'serviceModules/agent/constants'
 
 const parts = [
   {

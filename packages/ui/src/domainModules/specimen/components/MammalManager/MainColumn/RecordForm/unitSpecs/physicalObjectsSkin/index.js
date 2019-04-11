@@ -1,4 +1,4 @@
-import { SKIN } from 'domainModules/curatedList/constants'
+import { SKIN } from 'serviceModules/curatedList/constants'
 
 import { createPhysicalObjectsByCategory } from '../../formParts/factories'
 

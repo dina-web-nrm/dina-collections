@@ -10,8 +10,8 @@ import {
   formatBooleanRadio,
   parseBooleanRadio,
 } from 'coreModules/form/utilities'
-import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
-import { mammalFormModels } from 'domainModules/specimen/schemas'
+import { TogglableAgentDropdownPickerSearch } from 'serviceModules/agent/components'
+import { mammalFormModels } from 'serviceModules/specimen/schemas'
 import FormActions from './FormActions'
 
 const log = createLog('modules:specimen:CuratorialAssessmentForm:Base')

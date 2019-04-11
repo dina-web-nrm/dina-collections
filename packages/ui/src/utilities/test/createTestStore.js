@@ -1,5 +1,5 @@
 import allCoreModules from 'coreModules/allModules'
-import allDomainModules from 'domainModules/allModules'
+import allDomainModules from 'serviceModules/allModules'
 import createStore from 'store'
 import createDefaultTestConfig from './defaultTestConfig'
 

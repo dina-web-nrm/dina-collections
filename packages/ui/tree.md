@@ -1,5 +1,7 @@
 # Tree for root
+
 ## Tree
+
 ```bash
 ├── Dockerfile
 ├── LICENCE
@@ -28,7 +30,7 @@
 │   ├── apps
 │   ├── config
 │   ├── coreModules
-│   ├── domainModules
+│   ├── serviceModules
 │   ├── index.js
 │   ├── mock
 │   ├── registerServiceWorker.js
@@ -49,8 +51,8 @@
 ```
 
 ## Links
-[src](src/tree.md)
-[apps](src/apps/tree.md)
+
+[src](src/tree.md) [apps](src/apps/tree.md)
 [coreModules](src/coreModules/tree.md)
-[domainModules](src/domainModules/tree.md)
+[serviceModules](src/serviceModules/tree.md)
 [collectionsUi viewModules](src/apps/collectionsUi/viewModules/tree.md)

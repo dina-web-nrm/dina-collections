@@ -1,4 +1,4 @@
-import { SKELETON } from 'domainModules/curatedList/constants'
+import { SKELETON } from 'serviceModules/curatedList/constants'
 
 import { createPhysicalObjectsByCategory } from '../../formParts/factories'
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LocalityManager } from 'domainModules/locality/components'
+import { LocalityManager } from 'serviceModules/locality/components'
 
 const defaultProps = {}
 

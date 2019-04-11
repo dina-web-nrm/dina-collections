@@ -1,6 +1,6 @@
 import mapParentError from './mapParentError'
 
-describe('domainModules/storage/components/LocalityManager/item/BaseForm/transformations/syncErrors/mapParentError', () => {
+describe('serviceModules/storage/components/LocalityManager/item/BaseForm/transformations/syncErrors/mapParentError', () => {
   test('maps error if error on parent', () => {
     const syncErrors = {
       parent: {

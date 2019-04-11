@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Table } from 'semantic-ui-react'
 
-import PreparationTypeDropdownSearch from 'domainModules/curatedList/components/PreparationTypeDropdownSearch'
+import PreparationTypeDropdownSearch from 'serviceModules/curatedList/components/PreparationTypeDropdownSearch'
 
 const propTypes = {
   addPreparationType: PropTypes.func.isRequired,

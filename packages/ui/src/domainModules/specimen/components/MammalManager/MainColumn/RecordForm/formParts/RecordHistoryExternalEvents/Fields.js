@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
 import { Field, SingleDate } from 'coreModules/form/components'
-import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
+import { AgentDropdownPickerSearch } from 'serviceModules/agent/components'
 
 const propTypes = {
   baseName: PropTypes.string.isRequired,

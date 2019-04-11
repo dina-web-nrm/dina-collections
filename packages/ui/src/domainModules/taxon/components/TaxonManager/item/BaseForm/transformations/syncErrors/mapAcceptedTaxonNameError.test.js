@@ -1,6 +1,6 @@
 import mapAcceptedTaxonNameError from './mapAcceptedTaxonNameError'
 
-describe('domainModules/storage/components/TaxonManager/item/BaseForm/transformations/syncErrors/mapAcceptedTaxonNameError', () => {
+describe('serviceModules/storage/components/TaxonManager/item/BaseForm/transformations/syncErrors/mapAcceptedTaxonNameError', () => {
   test('mapAcceptedTaxonNameError', () => {
     const taxonError = {
       acceptedTaxonName: {

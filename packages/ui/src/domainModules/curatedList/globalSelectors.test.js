@@ -6,7 +6,7 @@ const {
   getNumberOfFeatureTypesInGroups,
 } = globalSelectors
 
-describe('domainModules/curatedList/globalSelectors', () => {
+describe('serviceModules/curatedList/globalSelectors', () => {
   describe('export', () => {
     it('returns object', () => {
       return expect(typeof globalSelectors).toEqual('object')

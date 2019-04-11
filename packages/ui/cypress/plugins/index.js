@@ -40,7 +40,7 @@ module.exports = on => {
       apps: path.resolve(__dirname, '../../src/apps'),
       config: path.resolve(__dirname, '../../src/config'),
       coreModules: path.resolve(__dirname, '../../src/coreModules'),
-      domainModules: path.resolve(__dirname, '../../src/domainModules'),
+      serviceModules: path.resolve(__dirname, '../../src/serviceModules'),
       scripts: path.resolve(__dirname, '../../src/scripts'),
       store: path.resolve(__dirname, '../../src/store'),
       utilities: path.resolve(__dirname, '../../src/utilities'),

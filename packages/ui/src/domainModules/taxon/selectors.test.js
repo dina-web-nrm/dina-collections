@@ -9,7 +9,7 @@ import {
   getLookupSearchQueries,
 } from './selectors'
 
-describe('domainModules/taxon/selectors', () => {
+describe('serviceModules/taxon/selectors', () => {
   let state
 
   beforeEach(() => {

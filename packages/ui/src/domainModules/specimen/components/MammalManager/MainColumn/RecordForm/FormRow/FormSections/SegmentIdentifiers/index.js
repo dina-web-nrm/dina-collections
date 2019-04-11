@@ -16,7 +16,7 @@ import {
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
-import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
+import { TogglableAgentDropdownPickerSearch } from 'serviceModules/agent/components'
 import CatalogNumberInput from './CatalogNumberInput'
 import IdentifiersTable from './IdentifiersTable'
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { AgentManager } from 'domainModules/agent/components'
+import { AgentManager } from 'serviceModules/agent/components'
 
 const defaultProps = {}
 

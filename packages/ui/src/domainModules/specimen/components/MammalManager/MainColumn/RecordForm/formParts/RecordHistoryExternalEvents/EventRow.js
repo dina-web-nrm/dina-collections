@@ -6,7 +6,7 @@ import { isEmpty } from 'lodash'
 
 import { buildYYYYMMDD, getYYYYMMDDFromTimestamp } from 'common/es5/date'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { AgentIdTextResult } from 'domainModules/agent/components'
+import { AgentIdTextResult } from 'serviceModules/agent/components'
 
 const ModuleTranslate = createModuleTranslate('specimen')
 

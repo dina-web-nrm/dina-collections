@@ -5,7 +5,7 @@ import { compose } from 'redux'
 import { Field } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { LocalityDropdownPickerSearch } from 'domainModules/locality/components'
+import { LocalityDropdownPickerSearch } from 'serviceModules/locality/components'
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,

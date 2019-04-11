@@ -1,7 +1,7 @@
-import agentParts from 'domainModules/agent/components/formParts'
-import curatedListParts from 'domainModules/curatedList/components/formParts'
-import localityParts from 'domainModules/locality/components/formParts'
-import taxonParts from 'domainModules/taxon/components/formParts'
+import agentParts from 'serviceModules/agent/components/formParts'
+import curatedListParts from 'serviceModules/curatedList/components/formParts'
+import localityParts from 'serviceModules/locality/components/formParts'
+import taxonParts from 'serviceModules/taxon/components/formParts'
 
 import CollectingLocality from './CollectingLocality'
 import CustomTaxonNamesTable from './CustomTaxonNamesTable'

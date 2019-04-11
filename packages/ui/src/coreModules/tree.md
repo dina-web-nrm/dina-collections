@@ -1,5 +1,7 @@
 # Tree for coreModules
+
 ## Tree
+
 ```bash
 ├── allModules.js
 ├── api
@@ -546,8 +548,7 @@
 ```
 
 ## Links
-[root](../../tree.md)
-[src](../tree.md)
-[apps](../apps/tree.md)
-[domainModules](../domainModules/tree.md)
+
+[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
+[serviceModules](../serviceModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

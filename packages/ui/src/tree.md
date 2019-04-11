@@ -33,7 +33,7 @@
 │   ├── size
 │   ├── tree.md
 │   └── user
-├── domainModules
+├── serviceModules
 │   ├── agent
 │   ├── allModules.js
 │   ├── specimen
@@ -79,5 +79,5 @@
 ## Links
 
 [root](../tree.md) [apps](apps/tree.md) [coreModules](coreModules/tree.md)
-[domainModules](domainModules/tree.md)
+[serviceModules](serviceModules/tree.md)
 [collectionsUi viewModules](apps/collectionsUi/viewModules/tree.md)

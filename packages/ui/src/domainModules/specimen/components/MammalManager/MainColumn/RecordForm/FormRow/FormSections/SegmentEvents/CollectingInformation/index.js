@@ -17,7 +17,7 @@ import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
-import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
+import { TogglableAgentDropdownPickerSearch } from 'serviceModules/agent/components'
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
