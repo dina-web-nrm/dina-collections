@@ -49,7 +49,7 @@ LocationInformationFields.propTypes = propTypes
 
 export default compose(
   withI18n({
-    module: 'collectionMammals',
+    module: 'specimen',
   }),
   pathBuilder({ name: 'places' })
 )(LocationInformationFields)

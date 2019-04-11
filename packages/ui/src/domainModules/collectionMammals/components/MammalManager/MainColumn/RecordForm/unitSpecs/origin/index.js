@@ -30,7 +30,7 @@ const parts = [
     componentName: 'EstablishmentMeansTypeRadioGroup',
     initiallyHidden: true,
     label: 'other.appearanceAtOrigin',
-    module: 'collectionMammals',
+    module: 'specimen',
     name: 'individual.originInformation.0.establishmentMeansType.id',
     wrapInField: true,
   },

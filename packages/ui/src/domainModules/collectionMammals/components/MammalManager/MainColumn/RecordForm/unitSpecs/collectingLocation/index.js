@@ -46,7 +46,7 @@ const parts = [
   {
     componentName: 'EstablishmentMeansTypeRadioGroup',
     label: 'other.appearanceAtCollecting',
-    module: 'collectionMammals',
+    module: 'specimen',
     name: 'individual.collectingInformation.0.establishmentMeansType.id',
     wrapInField: true,
   },

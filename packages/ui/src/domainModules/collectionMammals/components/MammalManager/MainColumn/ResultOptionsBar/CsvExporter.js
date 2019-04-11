@@ -281,5 +281,5 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withI18n({ module: 'collectionMammals' })
+  withI18n({ module: 'specimen' })
 )(CsvExporter)
