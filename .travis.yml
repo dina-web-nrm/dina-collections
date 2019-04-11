@@ -51,10 +51,14 @@ matrix:
       cache:
         yarn: true
         directories:
+          - packages/common/node_modules
           - packages/ui/node_modules
       env:
         - CI_BUILD_UI=true
+        - CI_INSTALL_COMMON=true
         - CI_INSTALL_UI=true
+        - CI_LINK_COMMON=true
+        - CI_LINK_UI=true
       script:
         ./packages/scripts/src/bash/ci-build.sh &&
         ./packages/scripts/src/bash/ci-push-temporary-images.sh
