@@ -1,5 +1,7 @@
 # Tree for domainModules
+
 ## Tree
+
 ```bash
 ├── agent
 │   ├── components
@@ -31,7 +33,7 @@
 │   ├── schemas.js
 │   └── translations.json
 ├── allModules.js
-├── collectionMammals
+├── specimen
 │   ├── __markdown__
 │   │   ├── helpTexts
 │   │   │   └── individual
@@ -213,8 +215,7 @@
 ```
 
 ## Links
-[root](../../tree.md)
-[src](../tree.md)
-[apps](../apps/tree.md)
+
+[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
 [coreModules](../coreModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

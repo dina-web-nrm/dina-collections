@@ -1,5 +1,5 @@
 import * as agent from './agent'
-import * as collectionMammals from './collectionMammals'
+import * as specimen from './specimen'
 import * as curatedList from './curatedList'
 import * as locality from './locality'
 import * as storage from './storage'
@@ -7,7 +7,7 @@ import * as taxon from './taxon'
 
 const modules = [
   agent,
-  collectionMammals,
+  specimen,
   curatedList,
   locality,
   storage,

@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 export default {
-  collectionMammals: {
+  specimen: {
     activeFormSectionIndex: 0,
     showAllFormSections: true,
   },

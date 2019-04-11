@@ -7,7 +7,7 @@ import uiDescribe from 'utilities/test/uiDescribe'
 import transformOutput from '../../../transformations/output'
 
 // const initialState = {
-//   collectionMammals: {
+//   specimen: {
 //     activeFormSectionIndex: 0,
 //     showAllFormSections: true,
 //   },
