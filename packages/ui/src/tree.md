@@ -1,5 +1,7 @@
 # Tree for src
+
 ## Tree
+
 ```bash
 ├── apps
 │   ├── collectionsUi
@@ -34,7 +36,7 @@
 ├── domainModules
 │   ├── agent
 │   ├── allModules.js
-│   ├── collectionMammals
+│   ├── specimen
 │   ├── curatedList
 │   ├── index.js
 │   ├── locality
@@ -75,8 +77,7 @@
 ```
 
 ## Links
-[root](../tree.md)
-[apps](apps/tree.md)
-[coreModules](coreModules/tree.md)
+
+[root](../tree.md) [apps](apps/tree.md) [coreModules](coreModules/tree.md)
 [domainModules](domainModules/tree.md)
 [collectionsUi viewModules](apps/collectionsUi/viewModules/tree.md)
