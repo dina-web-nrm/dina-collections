@@ -15,7 +15,7 @@ import {
   createGetNestedItemById,
   createGetResourceCount,
 } from 'coreModules/crud/higherOrderComponents'
-import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
+import collectionMammalsSelectors from 'domainModules/specimen/globalSelectors'
 import transformInput, {
   getBaseValues,
 } from '../RecordForm/transformations/input'

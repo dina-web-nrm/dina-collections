@@ -8,7 +8,7 @@ export default createAsyncView({
       import('coreModules/formSupport'),
       import('coreModules/search'),
       import('domainModules/agent'),
-      import('domainModules/collectionMammals'),
+      import('domainModules/specimen'),
       import('domainModules/locality'),
       import('domainModules/storage'),
       import('domainModules/taxon'),
