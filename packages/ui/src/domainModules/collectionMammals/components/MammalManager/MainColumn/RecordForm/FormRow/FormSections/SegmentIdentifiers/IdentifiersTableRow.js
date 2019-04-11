@@ -12,7 +12,7 @@ const log = createLog(
   'modules:specimen:MammalForm:SegmentIdentifiers:IdentifiersTableRow'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,

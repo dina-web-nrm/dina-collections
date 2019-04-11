@@ -11,7 +11,7 @@ import { FormModal } from 'coreModules/form/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import EditCuratorialAssessment from './CuratorialAssessmentForm/Edit'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   agent: PropTypes.shape({

@@ -22,7 +22,7 @@ import { mapCollectionItemsErrors } from './transformations/syncErrors'
 import sectionSpecs from './sectionSpecs'
 import customParts from './formParts'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const EnhancedRecordActionBar = compose(createHandleDelete())(RecordActionBar)
 

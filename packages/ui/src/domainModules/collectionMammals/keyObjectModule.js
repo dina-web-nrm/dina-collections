@@ -23,7 +23,7 @@ const {
     'showAllFormSections',
     'totalNumberOfRecords',
   ],
-  name: 'collectionMammals',
+  name: 'specimen',
 })
 
 export { actionCreators, actionTypes, constants, globalSelectors, reducer }

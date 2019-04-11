@@ -10,7 +10,7 @@ import { DateString } from 'coreModules/commonUi/components'
 import { FormModal } from 'coreModules/form/components'
 import EditCuratorialAssessment from './CuratorialAssessmentForm/Edit'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {
   agent: PropTypes.shape({

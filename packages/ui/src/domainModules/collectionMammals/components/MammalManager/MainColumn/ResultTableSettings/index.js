@@ -11,7 +11,7 @@ import userSelectors from 'coreModules/user/globalSelectors'
 import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
 import { tableColumnNames as allTableColumnNames } from '../tableColumnSpecifications'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const transformColumnNamesToFormValues = columnNames => {
   return columnNames.reduce((obj, columnName) => {

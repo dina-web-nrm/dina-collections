@@ -15,7 +15,7 @@ import {
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import VerticalPosition from './VerticalPosition'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const getFieldNames = memoize(getPath => {
   return [

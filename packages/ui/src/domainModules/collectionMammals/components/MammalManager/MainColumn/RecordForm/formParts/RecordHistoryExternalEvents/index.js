@@ -18,7 +18,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import Fields from './Fields'
 import EventRow from './EventRow'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const { AddButton } = formParts
 

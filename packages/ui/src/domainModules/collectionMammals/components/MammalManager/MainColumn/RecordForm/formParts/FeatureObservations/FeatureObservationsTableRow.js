@@ -14,7 +14,7 @@ const log = createLog(
   'modules:specimen:MammalForm:FeatureObservations:FeatureObservationsTableRow'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const getPlaceholder = (group, key) => {
   let placeholderKey

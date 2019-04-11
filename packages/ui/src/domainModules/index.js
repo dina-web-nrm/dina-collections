@@ -1,6 +1,6 @@
 export const moduleOrder = [
   'agent',
-  'collectionMammals',
+  'specimen',
   'curatedList',
   'locality',
   'storage',

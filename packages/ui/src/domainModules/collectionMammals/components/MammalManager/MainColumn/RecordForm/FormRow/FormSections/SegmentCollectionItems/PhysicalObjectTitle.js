@@ -8,7 +8,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import createLog from 'utilities/log'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const log = createLog(
   'modules:specimen:MammalForm:PhysicalObjectTitle'

@@ -24,7 +24,7 @@ const log = createLog(
   'modules:specimen:MammalForm:SegmentCollectingInformation'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('specimen')
 
 const mapStateToProps = state => {
   const currentLanguage = i18nSelectors.getLanguage(state)
