@@ -76,7 +76,7 @@ class SegmentIdentifiers extends PureComponent {
                 editMode={editMode}
                 formValueSelector={formValueSelector}
                 helpText={<ModuleTranslate textKey="other.sixOrEightDigits" />}
-                labelKey="modules.collectionMammals.other.catalogNumber"
+                labelKey="modules.specimen.other.catalogNumber"
                 loading={loading}
                 module="specimen"
                 name={getPath('0.value')}

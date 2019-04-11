@@ -9,9 +9,9 @@ const parts = [
       as: 'h3',
       helpNotificationProps: {
         descriptionHeaderKey:
-          'modules.collectionMammals.headers.collectingDate',
+          'modules.specimen.headers.collectingDate',
         descriptionKey:
-          'modules.collectionMammals.helpTexts.collectingInformation.collectingDate',
+          'modules.specimen.helpTexts.collectingInformation.collectingDate',
       },
       textKey: 'headers.collectingDate',
     },

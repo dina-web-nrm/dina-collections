@@ -4,8 +4,8 @@ const parts = [
     componentProps: {
       as: 'h3',
       helpNotificationProps: {
-        descriptionHeaderKey: 'modules.collectionMammals.headers.identifiers',
-        descriptionKey: 'modules.collectionMammals.helpTexts.identifiers',
+        descriptionHeaderKey: 'modules.specimen.headers.identifiers',
+        descriptionKey: 'modules.specimen.helpTexts.identifiers',
       },
       textKey: 'headers.identifiers',
     },
