@@ -16,7 +16,7 @@ import {
   UNSPECIFIED_SKELETON_PREPARATION_TYPE_ID,
   UNSPECIFIED_SKIN_PREPARATION_TYPE_ID,
   UNSPECIFIED_WET_PREPARATION_PREPARATION_TYPE_ID,
-} from 'domainModules/curatedList/constants'
+} from 'serviceModules/curatedList/constants'
 import formParts from 'coreModules/form/components/parts'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudSelectors from 'coreModules/crud/globalSelectors'

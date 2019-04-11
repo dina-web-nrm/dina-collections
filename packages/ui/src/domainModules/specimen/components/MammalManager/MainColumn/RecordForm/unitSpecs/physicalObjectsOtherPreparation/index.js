@@ -1,4 +1,4 @@
-import { OTHER_PREPARATION } from 'domainModules/curatedList/constants'
+import { OTHER_PREPARATION } from 'serviceModules/curatedList/constants'
 
 import { createPhysicalObjectsByCategory } from '../../formParts/factories'
 

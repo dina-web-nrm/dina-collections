@@ -16,7 +16,7 @@ import {
   SKELETON,
   SKIN,
   WET_PREPARATION,
-} from 'domainModules/curatedList/constants'
+} from 'serviceModules/curatedList/constants'
 import PhysicalObjectContent from './PhysicalObjectContent'
 import PhysicalObjectTitle from './PhysicalObjectTitle'
 

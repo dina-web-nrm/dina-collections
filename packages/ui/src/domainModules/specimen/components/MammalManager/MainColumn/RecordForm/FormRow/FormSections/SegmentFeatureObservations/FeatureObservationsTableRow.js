@@ -7,8 +7,8 @@ import createLog from 'utilities/log'
 import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
-import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
+import { FeatureObservationDropdownSearch } from 'serviceModules/curatedList/components'
+import { TogglableAgentDropdownPickerSearch } from 'serviceModules/agent/components'
 
 const log = createLog(
   'modules:specimen:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'

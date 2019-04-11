@@ -14,10 +14,10 @@ import {
   Remarks,
 } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { StorageLocationDropdownPickerSearch } from 'domainModules/storage/components'
+import { StorageLocationDropdownPickerSearch } from 'serviceModules/storage/components'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
-import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
-import { ALL } from 'domainModules/storage/constants'
+import curatedListSelectors from 'serviceModules/curatedList/globalSelectors'
+import { ALL } from 'serviceModules/storage/constants'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'

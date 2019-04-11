@@ -21,7 +21,7 @@ const tryImport = () => {
   return import('./index')
 }
 
-describe('domainModules/taxon/reducer/lookup', () => {
+describe('serviceModules/taxon/reducer/lookup', () => {
   describe('getInitialState', () => {
     it('returns initialState', () => {
       const testValue = getInitialState()

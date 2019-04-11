@@ -1,6 +1,6 @@
 import globalSelectors from './globalSelectors'
 
-describe('domainModules/taxon/globalSelectors', () => {
+describe('serviceModules/taxon/globalSelectors', () => {
   it('returns object', () => {
     return expect(typeof globalSelectors).toEqual('object')
   })

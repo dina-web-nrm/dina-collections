@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import { makeGetFeatureTypesInGroups } from 'domainModules/curatedList/globalSelectorFactories'
+import { makeGetFeatureTypesInGroups } from 'serviceModules/curatedList/globalSelectorFactories'
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
 const log = createLog(

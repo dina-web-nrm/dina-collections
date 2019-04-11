@@ -5,8 +5,8 @@ import { Table } from 'semantic-ui-react'
 
 import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
-import { CATALOG_CARD } from 'domainModules/specimen/constants'
+import { TogglableAgentDropdownPickerSearch } from 'serviceModules/agent/components'
+import { CATALOG_CARD } from 'serviceModules/specimen/constants'
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,

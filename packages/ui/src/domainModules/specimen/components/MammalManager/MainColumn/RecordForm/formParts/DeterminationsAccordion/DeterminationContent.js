@@ -14,7 +14,7 @@ import {
 } from 'coreModules/form/components'
 
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
+import { TogglableAgentDropdownPickerSearch } from 'serviceModules/agent/components'
 
 const log = createLog(
   'modules:specimen:MammalManager/MainColumn/RecordForm/formParts/DeterminationsAccordion/DeterminationContent'

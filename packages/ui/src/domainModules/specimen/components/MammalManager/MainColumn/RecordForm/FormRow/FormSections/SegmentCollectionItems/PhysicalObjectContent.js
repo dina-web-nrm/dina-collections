@@ -6,10 +6,10 @@ import { Grid } from 'semantic-ui-react'
 
 import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { StorageLocationDropdownSearch } from 'domainModules/storage/components'
+import { StorageLocationDropdownSearch } from 'serviceModules/storage/components'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
-import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
-import { ALL } from 'domainModules/storage/constants'
+import curatedListSelectors from 'serviceModules/curatedList/globalSelectors'
+import { ALL } from 'serviceModules/storage/constants'
 import createLog from 'utilities/log'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
 

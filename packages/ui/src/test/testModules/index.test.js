@@ -10,7 +10,7 @@ import moduleSchema from './moduleSchema.json'
 
 const moduleFolderNamePath = {
   coreModules: path.join(__dirname, '../../coreModules'),
-  domainModules: path.join(__dirname, '../../domainModules'),
+  serviceModules: path.join(__dirname, '../../serviceModules'),
   viewModules: path.join(__dirname, '../../apps/collectionsUi/viewModules'),
 }
 

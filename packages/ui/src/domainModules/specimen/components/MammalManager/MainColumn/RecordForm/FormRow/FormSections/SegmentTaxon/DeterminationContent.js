@@ -14,10 +14,10 @@ import {
   SingleDate,
 } from 'coreModules/form/components'
 
-import { TaxonNameDropdownSearch } from 'domainModules/taxon/components'
+import { TaxonNameDropdownSearch } from 'serviceModules/taxon/components'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
+import { TogglableAgentDropdownPickerSearch } from 'serviceModules/agent/components'
 
 const log = createLog(
   'modules:specimen:MammalForm:SegmentDeterminations:DeterminationContent'

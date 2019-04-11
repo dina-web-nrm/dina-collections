@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StorageLocationManager } from 'domainModules/storage/components'
+import { StorageLocationManager } from 'serviceModules/storage/components'
 
 const defaultProps = {}
 

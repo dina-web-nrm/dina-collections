@@ -1,4 +1,4 @@
-import { WET_PREPARATION } from 'domainModules/curatedList/constants'
+import { WET_PREPARATION } from 'serviceModules/curatedList/constants'
 
 import { createPhysicalObjectsByCategory } from '../../formParts/factories'
 
