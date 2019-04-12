@@ -190,7 +190,7 @@ class DatePart extends Component {
                 disabled={disabled}
                 fluid
                 input={this.getInput('year')}
-                ref={setYearInputRef}
+                setRef={setYearInputRef}
                 type="number"
               />
             </FieldTemplate>

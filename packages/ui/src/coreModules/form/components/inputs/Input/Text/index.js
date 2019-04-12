@@ -18,6 +18,7 @@ const propTypes = {
   max: PropTypes.number,
   min: PropTypes.number,
   placeholder: PropTypes.string,
+  setRef: PropTypes.func,
   size: PropTypes.string,
   style: PropTypes.object,
   type: PropTypes.string,
@@ -33,6 +34,7 @@ const defaultProps = {
   max: undefined,
   min: undefined,
   placeholder: undefined,
+  setRef: undefined,
   size: undefined,
   style: undefined,
   type: 'text',
@@ -105,6 +107,7 @@ class TextInput extends PureComponent {
       max,
       min,
       placeholder,
+      setRef,
       size,
       style,
       type,
@@ -121,7 +124,11 @@ class TextInput extends PureComponent {
         max={max}
         min={min}
         placeholder={placeholder}
-        ref={element => {
+        setRef={element => {
+          if (setRef) {
+            setRef(element)
+          }
+
           this.input = element
         }}
         type={type}
