@@ -1,7 +1,5 @@
 # Tree for coreModules
-
 ## Tree
-
 ```bash
 ├── allModules.js
 ├── api
@@ -72,7 +70,6 @@
 │   │   │   └── index.js
 │   │   ├── DateString
 │   │   │   └── index.js
-│   │   ├── Footer.js
 │   │   ├── LayerModal
 │   │   │   ├── ModalContentWrapper.js
 │   │   │   └── index.js
@@ -473,7 +470,8 @@
 │   │   │   ├── RefineTagSelectionButton.js
 │   │   │   ├── TagGroup.js
 │   │   │   ├── index.js
-│   │   │   └── selectors.js
+│   │   │   ├── selectors.js
+│   │   │   └── utilities
 │   │   ├── NoResultsFound
 │   │   │   └── index.js
 │   │   ├── SearchPreview
@@ -548,7 +546,8 @@
 ```
 
 ## Links
-
-[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
+[root](../../tree.md)
+[src](../tree.md)
+[apps](../apps/tree.md)
 [serviceModules](../serviceModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

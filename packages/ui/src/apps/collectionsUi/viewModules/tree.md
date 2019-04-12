@@ -1,7 +1,5 @@
 # Tree for collectionsUi viewModules
-
 ## Tree
-
 ```bash
 ├── allModules.js
 ├── app
@@ -119,7 +117,8 @@
 ```
 
 ## Links
-
-[root](../../../../tree.md) [src](../../../tree.md) [apps](../../tree.md)
+[root](../../../../tree.md)
+[src](../../../tree.md)
+[apps](../../tree.md)
 [coreModules](../../../coreModules/tree.md)
 [serviceModules](../../../serviceModules/tree.md)

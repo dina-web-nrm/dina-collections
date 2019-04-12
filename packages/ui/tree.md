@@ -1,14 +1,17 @@
 # Tree for root
-
 ## Tree
-
 ```bash
 ├── Dockerfile
 ├── LICENCE
 ├── README.md
 ├── build
+│   ├── asset-manifest.json
 │   ├── favicon.ico
-│   └── manifest.json
+│   ├── index.html
+│   ├── manifest.json
+│   ├── precache-manifest.887c683d3108d9552a5c2d9f7033837b.js
+│   ├── service-worker.js
+│   └── static
 ├── coverage
 │   ├── clover.xml
 │   ├── coverage-final.json
@@ -17,8 +20,11 @@
 ├── cypress
 │   ├── e2e
 │   ├── fixtures
+│   ├── integration
 │   ├── plugins
-│   └── support
+│   ├── screenshots
+│   ├── support
+│   └── videos
 ├── cypress.json
 ├── nginx.conf
 ├── package.json
@@ -30,15 +36,14 @@
 │   ├── apps
 │   ├── config
 │   ├── coreModules
-│   ├── serviceModules
 │   ├── index.js
 │   ├── mock
 │   ├── registerServiceWorker.js
 │   ├── scripts
+│   ├── serviceModules
 │   ├── setupProxy.js
 │   ├── setupTests.js
 │   ├── store
-│   ├── storybook
 │   ├── test
 │   ├── tree.md
 │   └── utilities
@@ -51,8 +56,8 @@
 ```
 
 ## Links
-
-[src](src/tree.md) [apps](src/apps/tree.md)
+[src](src/tree.md)
+[apps](src/apps/tree.md)
 [coreModules](src/coreModules/tree.md)
 [serviceModules](src/serviceModules/tree.md)
 [collectionsUi viewModules](src/apps/collectionsUi/viewModules/tree.md)
