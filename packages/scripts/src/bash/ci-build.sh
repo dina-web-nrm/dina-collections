@@ -22,7 +22,7 @@ fi
 if [ "$CI_BUILD_STYLE" = true ]; then
   echo "Building style"
   yarn build:semantic-ui;
-  docker build -f ./packages/dina-style/Dockerfile -t dina/dina-semantic-ui-docs:$TRAVIS_BUILD_NUMBER ./packages/dina-style;
+  docker build -f ./packages/style/Dockerfile -t dina/dina-semantic-ui-docs:$TRAVIS_BUILD_NUMBER ./packages/style;
 fi
 
 if [ "$CI_BUILD_DOCS" = true ]; then

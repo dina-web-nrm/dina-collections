@@ -68,7 +68,7 @@ matrix:
       cache:
         yarn: true
         directories:
-          - packages/dina-style/node_modules
+          - packages/style/node_modules
           - packages/docs/node_modules
       env:
         - CI_BUILD_DOCS=true

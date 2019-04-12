@@ -2,7 +2,7 @@ node_modules
 data
 env
 userFiles
-packages/dina-style
+packages/style
 packages/docs
 packages/keycloak
 packages/models
