@@ -1,5 +1,3 @@
-# Tree for serviceModules
-## Tree
 ```bash
 ├── agent
 │   ├── components
@@ -211,10 +209,3 @@
 └── tree.md
 
 ```
-
-## Links
-[root](../../tree.md)
-[src](../tree.md)
-[apps](../apps/tree.md)
-[coreModules](../coreModules/tree.md)
-[collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

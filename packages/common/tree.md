@@ -1,5 +1,3 @@
-# Tree for root
-## Tree
 ```bash
 ├── README.md
 ├── dist
@@ -48,10 +46,6 @@
 │   ├── testUtilities
 │   └── tree.md
 ├── tree.md
-├── yarn-error.log
 └── yarn.lock
 
 ```
-
-## Links
-[src](src/tree.md)

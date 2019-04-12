@@ -1,7 +1,3 @@
-# Tree for services
-
-## Tree
-
 ```bash
 ├── agentService
 │   ├── index.js
@@ -97,7 +93,7 @@
 │       │   ├── filterSpecifications
 │       │   ├── index.js
 │       │   ├── migrations
-│       │   ├── operations
+│       │   ├── operationFactories
 │       │   ├── postHooks
 │       │   └── preHooks
 │       └── index.js
@@ -127,7 +123,7 @@
 │       │   ├── filterSpecifications
 │       │   ├── index.js
 │       │   ├── migrations
-│       │   ├── operations
+│       │   ├── operationFactories
 │       │   ├── preHooks
 │       │   ├── transformationSpecifications
 │       │   └── utilities
@@ -198,7 +194,6 @@
 │   │       └── transformationSpecifications
 │   └── serviceInteractions
 │       └── index.js
-├── serviceOrder.js
 ├── specimenService
 │   ├── index.js
 │   ├── info
@@ -276,11 +271,8 @@
 │   │       └── transformationSpecifications
 │   └── serviceInteractions
 │       └── index.js
+├── tests
+│   └── testServiceConfigurations.test.js
 └── tree.md
 
 ```
-
-## Links
-
-[root](../../tree.md) [src](../tree.md) [lib](../lib/tree.md)
-[apps](../apps/tree.md)
