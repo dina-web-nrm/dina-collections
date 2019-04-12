@@ -18,7 +18,13 @@
       {
         "type": "subcategory",
         "label": "Backend",
-        "ids": ["packages/backend/index"]
+        "ids": [
+          "packages/backend/index",
+          "packages/backend/apps",
+          "packages/backend/serviceConfigurations",
+          "packages/backend/lib",
+          "packages/backend/terminology"
+        ]
       }
     ]
   }
