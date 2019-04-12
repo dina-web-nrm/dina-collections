@@ -14,8 +14,8 @@ different packages and versions: At any given time the repo's packages have to
 be compatible with each other.
 
 Another core principle is that it should never be necessary to use Node, npm or
-yarn on the server. In a server environment we should only
-[use Docker](./docker.md) and bash scripts.
+yarn on the server. In a server environment we should only use Docker and bash
+scripts.
 
 ## The root
 
