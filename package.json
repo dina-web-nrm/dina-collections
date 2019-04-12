@@ -6,7 +6,6 @@
   "scripts": {
     "build": "yarn build:ui && yarn build:semantic-ui",
     "build:changelog": "auto-changelog -p --tag-pattern '^((?!rc|test).)*$' --template changelog-template.hbs && git add CHANGELOG.md",
-    "build:common:js": "cd ./packages/common && yarn build:js",
     "build:common:schema:api": "cd ./packages/common && yarn build:schema:api",
     "build:common:schema:models": "cd ./packages/common && yarn build:schema:models",
     "build:data:zip": "node ./packages/scripts/src/js/packageJsonDataFiles.js -s local",

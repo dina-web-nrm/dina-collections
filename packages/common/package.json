@@ -8,7 +8,6 @@
     "Ida Li <ida.li@nrm.se>"
   ],
   "scripts": {
-    "build:js": "rm -rf es5 && babel ./src -d es5 --copy-files && yarn test:unit",
     "build:schema:api": "node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
     "build:schema:models": "node ./src/schemaBuilder/buildModels.js && yarn test:unit",
     "build:trees": "node ./src/scripts/buildFileStructureTrees.js",
