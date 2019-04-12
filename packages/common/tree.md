@@ -13,39 +13,6 @@
 │   ├── semantic.min.js
 │   ├── themes
 │   └── versions
-├── es5
-│   ├── Dependor
-│   ├── apiClient
-│   ├── asyncReduce
-│   ├── batch
-│   ├── buildFileTrees
-│   ├── buildOperationId
-│   ├── chainPromises
-│   ├── constants
-│   ├── coordinates
-│   ├── createDeleteProperties
-│   ├── createLid
-│   ├── date
-│   ├── endpointFactory
-│   ├── env
-│   ├── error
-│   ├── formatObject
-│   ├── fs
-│   ├── jsonApiClient
-│   ├── jsonSchema
-│   ├── log
-│   ├── migrator
-│   ├── openApiClient
-│   ├── reporter
-│   ├── schemaBuilder
-│   ├── schemaInterface
-│   ├── scripts
-│   ├── search
-│   ├── sortMethods
-│   ├── storage
-│   ├── stringFormatters
-│   ├── testUtilities
-│   └── tree.md
 ├── package.json
 ├── src
 │   ├── Dependor
@@ -81,6 +48,7 @@
 │   ├── testUtilities
 │   └── tree.md
 ├── tree.md
+├── yarn-error.log
 └── yarn.lock
 
 ```

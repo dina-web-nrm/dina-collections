@@ -1,7 +1,5 @@
 # Tree for src
-
 ## Tree
-
 ```bash
 ├── apps
 │   ├── collectionsUi
@@ -33,16 +31,6 @@
 │   ├── size
 │   ├── tree.md
 │   └── user
-├── serviceModules
-│   ├── agent
-│   ├── allModules.js
-│   ├── specimen
-│   ├── curatedList
-│   ├── index.js
-│   ├── locality
-│   ├── storage
-│   ├── taxon
-│   └── tree.md
 ├── index.js
 ├── mock
 │   └── dns
@@ -51,11 +39,20 @@
 │   ├── buildFileStructureTrees.js
 │   ├── markdown
 │   └── mockFs
+├── serviceModules
+│   ├── agent
+│   ├── allModules.js
+│   ├── curatedList
+│   ├── index.js
+│   ├── locality
+│   ├── specimen
+│   ├── storage
+│   ├── taxon
+│   └── tree.md
 ├── setupProxy.js
 ├── setupTests.js
 ├── store
 │   └── index.js
-├── storybook
 ├── test
 │   └── testModules
 ├── tree.md
@@ -77,7 +74,8 @@
 ```
 
 ## Links
-
-[root](../tree.md) [apps](apps/tree.md) [coreModules](coreModules/tree.md)
+[root](../tree.md)
+[apps](apps/tree.md)
+[coreModules](coreModules/tree.md)
 [serviceModules](serviceModules/tree.md)
 [collectionsUi viewModules](apps/collectionsUi/viewModules/tree.md)

@@ -1,9 +1,11 @@
 # Tree for apps
-
 ## Tree
-
 ```bash
 ├── collectionsUi
+│   ├── components
+│   │   ├── Footer
+│   │   │   └── index.js
+│   │   └── index.js
 │   ├── config
 │   │   └── index.js
 │   ├── index.js
@@ -113,7 +115,8 @@
 ```
 
 ## Links
-
-[root](../../tree.md) [src](../tree.md) [coreModules](../coreModules/tree.md)
+[root](../../tree.md)
+[src](../tree.md)
+[coreModules](../coreModules/tree.md)
 [serviceModules](../serviceModules/tree.md)
 [collectionsUi viewModules](collectionsUi/viewModules/tree.md)

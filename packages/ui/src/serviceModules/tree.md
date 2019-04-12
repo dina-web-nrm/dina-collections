@@ -1,7 +1,5 @@
 # Tree for serviceModules
-
 ## Tree
-
 ```bash
 ├── agent
 │   ├── components
@@ -33,42 +31,6 @@
 │   ├── schemas.js
 │   └── translations.json
 ├── allModules.js
-├── specimen
-│   ├── __markdown__
-│   │   ├── helpTexts
-│   │   │   └── individual
-│   │   ├── index.json
-│   │   ├── occurrences
-│   │   │   └── locationInformation
-│   │   └── other
-│   │       ├── addCatalogNumberModal.en.md
-│   │       └── addCatalogNumberModal.sv.md
-│   ├── actionCreators
-│   │   ├── clearSearchParameters.js
-│   │   ├── index.js
-│   │   ├── lookupMammals.js
-│   │   └── updateSearchParameter.js
-│   ├── actionTypes.js
-│   ├── components
-│   │   ├── CatalogNumberModal
-│   │   │   └── index.js
-│   │   ├── MammalManager
-│   │   │   ├── FilterColumn
-│   │   │   ├── MainColumn
-│   │   │   └── index.js
-│   │   └── index.js
-│   ├── constants.js
-│   ├── endpoints.js
-│   ├── globalSelectors.js
-│   ├── index.js
-│   ├── keyObjectModule.js
-│   ├── old-translations.json
-│   ├── schemas.js
-│   ├── translations.json
-│   └── utilities
-│       ├── buildQuery.js
-│       ├── buildQuery.test.js
-│       └── index.js
 ├── curatedList
 │   ├── components
 │   │   ├── CauseOfDeathDropdownSearch
@@ -114,6 +76,42 @@
 │   ├── index.js
 │   ├── schemas.js
 │   └── translations.json
+├── specimen
+│   ├── __markdown__
+│   │   ├── helpTexts
+│   │   │   └── individual
+│   │   ├── index.json
+│   │   ├── occurrences
+│   │   │   └── locationInformation
+│   │   └── other
+│   │       ├── addCatalogNumberModal.en.md
+│   │       └── addCatalogNumberModal.sv.md
+│   ├── actionCreators
+│   │   ├── clearSearchParameters.js
+│   │   ├── index.js
+│   │   ├── lookupMammals.js
+│   │   └── updateSearchParameter.js
+│   ├── actionTypes.js
+│   ├── components
+│   │   ├── CatalogNumberModal
+│   │   │   └── index.js
+│   │   ├── MammalManager
+│   │   │   ├── FilterColumn
+│   │   │   ├── MainColumn
+│   │   │   └── index.js
+│   │   └── index.js
+│   ├── constants.js
+│   ├── endpoints.js
+│   ├── globalSelectors.js
+│   ├── index.js
+│   ├── keyObjectModule.js
+│   ├── old-translations.json
+│   ├── schemas.js
+│   ├── translations.json
+│   └── utilities
+│       ├── buildQuery.js
+│       ├── buildQuery.test.js
+│       └── index.js
 ├── storage
 │   ├── __markdown__
 │   │   ├── helpTexts
@@ -215,7 +213,8 @@
 ```
 
 ## Links
-
-[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
+[root](../../tree.md)
+[src](../tree.md)
+[apps](../apps/tree.md)
 [coreModules](../coreModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)
