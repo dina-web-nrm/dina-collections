@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'

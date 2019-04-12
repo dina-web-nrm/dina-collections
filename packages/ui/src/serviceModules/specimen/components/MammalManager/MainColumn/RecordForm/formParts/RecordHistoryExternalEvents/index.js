@@ -8,7 +8,7 @@ import { isEmpty } from 'lodash'
 import {
   CATALOG_CARD,
   CATALOG_CARD_CREATION_DESCRIPTION,
-} from 'common/es5/constants/recordHistoryEvents'
+} from 'common/src/constants/recordHistoryEvents'
 import config from 'config'
 import { FormModal } from 'coreModules/form/components'
 import formParts from 'coreModules/form/components/parts'

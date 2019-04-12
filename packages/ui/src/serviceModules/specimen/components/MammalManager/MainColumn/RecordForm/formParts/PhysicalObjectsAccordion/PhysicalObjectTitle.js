@@ -4,8 +4,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Icon, Label } from 'semantic-ui-react'
 
-import extractNameWithFirstLevelParent from 'common/es5/storage/extractNameWithFirstLevelParent'
-import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
+import extractNameWithFirstLevelParent from 'common/src/storage/extractNameWithFirstLevelParent'
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import {
   createGetItemById,

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown, Icon } from 'semantic-ui-react'
 
-import createDeleteProperties from 'common/es5/createDeleteProperties'
+import createDeleteProperties from 'common/src/createDeleteProperties'
 import config from 'config'
 
 const deleteUndefinedProperties = createDeleteProperties(undefined)

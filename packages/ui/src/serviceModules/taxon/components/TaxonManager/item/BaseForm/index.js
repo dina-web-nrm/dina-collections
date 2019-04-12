@@ -8,7 +8,7 @@ import {
   reset,
 } from 'redux-form'
 
-import customFormValidator from 'common/es5/error/validators/customFormValidator'
+import customFormValidator from 'common/src/error/validators/customFormValidator'
 import { Form, FormRow } from 'coreModules/form/components'
 import { mapParentError } from 'coreModules/form/utilities/errorTransformations'
 import { emToPixels } from 'coreModules/layout/utilities'

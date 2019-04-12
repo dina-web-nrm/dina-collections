@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
 import { SKELETON, SKIN, OTHER_PREPARATION, WET_PREPARATION } from './constants'

@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 
 export const MODULE_NAME = 'agent'
 export const ALL = 'all'

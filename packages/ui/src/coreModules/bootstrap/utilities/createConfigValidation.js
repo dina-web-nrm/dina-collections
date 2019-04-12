@@ -1,4 +1,4 @@
-import createSystemFrontendValidator from 'common/es5/error/validators/createSystemFrontendValidator'
+import createSystemFrontendValidator from 'common/src/error/validators/createSystemFrontendValidator'
 
 export const addModuleToValidations = (validations, module) => {
   const moduleSchemas = module.schemas

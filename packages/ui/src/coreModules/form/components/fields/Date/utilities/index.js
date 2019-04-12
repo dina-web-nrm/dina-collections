@@ -1,7 +1,7 @@
 import {
   getEarliestTimestamp,
   getInterpretedTimestampFromYMD,
-} from 'common/es5/date'
+} from 'common/src/date'
 import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 
 export const isInt = value => {

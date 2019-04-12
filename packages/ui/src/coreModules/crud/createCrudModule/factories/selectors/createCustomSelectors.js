@@ -1,6 +1,6 @@
 import objectPath from 'object-path'
 import { createSelector } from 'reselect'
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import {

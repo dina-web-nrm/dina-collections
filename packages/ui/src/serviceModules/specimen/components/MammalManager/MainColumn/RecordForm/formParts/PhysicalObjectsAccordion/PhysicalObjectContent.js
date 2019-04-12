@@ -6,7 +6,7 @@ import { touch } from 'redux-form'
 import { Grid } from 'semantic-ui-react'
 import { camelCase } from 'lodash'
 
-import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import {
   ConfirmationPopup,
   DropdownSearch,

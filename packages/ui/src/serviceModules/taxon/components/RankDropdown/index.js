@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import { DropdownSearch } from 'coreModules/form/components'
 import {
   CLASS,

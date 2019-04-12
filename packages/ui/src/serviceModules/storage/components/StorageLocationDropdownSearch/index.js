@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import extractNameWithFirstLevelParent from 'common/es5/storage/extractNameWithFirstLevelParent'
+import extractNameWithFirstLevelParent from 'common/src/storage/extractNameWithFirstLevelParent'
 import { DropdownSearch } from 'coreModules/form/components'
 
 const include = ['parent.parent.parent.parent.parent']

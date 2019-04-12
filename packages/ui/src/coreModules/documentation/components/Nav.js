@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import schemaInterface from 'common/es5/schemaInterface'
+import schemaInterface from 'common/src/schemaInterface'
 
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { NavigationSidebar } from 'coreModules/layout/components'

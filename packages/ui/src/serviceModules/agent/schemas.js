@@ -1,5 +1,5 @@
 import immutable from 'object-path-immutable'
-import schemaInterface from 'common/es5/schemaInterface'
+import schemaInterface from 'common/src/schemaInterface'
 
 const models = schemaInterface.getModels()
 

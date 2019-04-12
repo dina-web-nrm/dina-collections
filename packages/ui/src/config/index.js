@@ -1,6 +1,6 @@
 import createHistory from 'history/createBrowserHistory'
 
-import createEnvReader from 'common/es5/env/createEnvReader'
+import createEnvReader from 'common/src/env/createEnvReader'
 import envDefinitions from './envDefinitions'
 
 const {

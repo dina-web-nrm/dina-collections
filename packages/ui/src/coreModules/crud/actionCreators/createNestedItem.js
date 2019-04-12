@@ -1,4 +1,4 @@
-import coreToNestedSync from 'common/es5/formatObject/coreToNestedSync'
+import coreToNestedSync from 'common/src/formatObject/coreToNestedSync'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { getItemWithSpecificedRelationships } from 'coreModules/crud/utilities'
 import { actionCreators as keyObjectActionCreators } from '../keyObjectModule'

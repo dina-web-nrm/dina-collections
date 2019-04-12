@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Icon } from 'semantic-ui-react'
 
-import { getYMDHMSFromTimestamp } from 'common/es5/date'
+import { getYMDHMSFromTimestamp } from 'common/src/date'
 
 const propTypes = {
   eventType: PropTypes.string.isRequired,

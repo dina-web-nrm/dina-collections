@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { URL } from 'common/es5/constants/frontendErrorLogging'
+import { URL } from 'common/src/constants/frontendErrorLogging'
 import FullPageError from './FullPageError'
 
 const propTypes = {

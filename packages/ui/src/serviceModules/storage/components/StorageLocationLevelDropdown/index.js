@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import {
   LEVEL_CABINET,
   LEVEL_INSTITUTION,
   LEVEL_MOUNTING_WALL,
   LEVEL_ROOM,
   LEVEL_SHELF,
-} from 'common/es5/constants/storage'
+} from 'common/src/constants/storage'
 import { DropdownSearch } from 'coreModules/form/components'
 
 const levels = [

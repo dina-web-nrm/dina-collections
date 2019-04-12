@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Grid, Icon } from 'semantic-ui-react'
 
-import { buildYYYYMMDD } from 'common/es5/date'
+import { buildYYYYMMDD } from 'common/src/date'
 import createLog from 'utilities/log'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import formSupportSelectors from 'coreModules/formSupport/globalSelectors'

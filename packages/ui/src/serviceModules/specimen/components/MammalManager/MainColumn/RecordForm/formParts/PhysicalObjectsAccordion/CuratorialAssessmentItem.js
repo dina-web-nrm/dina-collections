@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { Grid, Modal, List } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
-import { buildYYYYMMDD } from 'common/es5/date'
+import { buildYYYYMMDD } from 'common/src/date'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { FormModal } from 'coreModules/form/components'

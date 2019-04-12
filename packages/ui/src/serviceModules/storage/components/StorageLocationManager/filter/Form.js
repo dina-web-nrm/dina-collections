@@ -9,7 +9,7 @@ import {
   LEVEL_MOUNTING_WALL,
   LEVEL_ROOM,
   LEVEL_SHELF,
-} from 'common/es5/constants/storage'
+} from 'common/src/constants/storage'
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { DropdownSearch, Input } from 'coreModules/form/components'
