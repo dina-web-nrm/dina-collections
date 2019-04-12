@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import schemaInterface from 'common/es5/schemaInterface'
+import schemaInterface from 'common/src/schemaInterface'
 
 import extractModelFromSpecification from '../../utilities/extractModelFromSpecification'
 import Model from './Model'

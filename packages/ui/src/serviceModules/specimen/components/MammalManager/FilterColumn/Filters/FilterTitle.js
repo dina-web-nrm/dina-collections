@@ -5,7 +5,7 @@ import { Grid, Icon } from 'semantic-ui-react'
 import { isEqual } from 'lodash'
 
 import { ModuleTranslate } from 'coreModules/i18n/components'
-import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 
 const mapStateToProps = (
   state,

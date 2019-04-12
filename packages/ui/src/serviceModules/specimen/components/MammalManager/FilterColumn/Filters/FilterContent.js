@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import { components as FilterFormSections } from './FilterFormSections'
 
 const propTypes = {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
 import createLog from 'utilities/log'
-import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
+import nestedToCoreSync from 'common/src/formatObject/nestedToCoreSync'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import {

@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Grid, Icon } from 'semantic-ui-react'
 
-import { buildYYYYMMDD } from 'common/es5/date'
+import { buildYYYYMMDD } from 'common/src/date'
 import createLog from 'utilities/log'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'

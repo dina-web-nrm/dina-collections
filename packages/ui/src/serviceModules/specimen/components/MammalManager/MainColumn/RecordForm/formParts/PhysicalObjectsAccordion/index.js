@@ -6,7 +6,7 @@ import { Grid } from 'semantic-ui-react'
 import objectPath from 'object-path'
 import { camelCase } from 'lodash'
 
-import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'
 import { ALL_COLLAPSED } from 'coreModules/commonUi/constants'

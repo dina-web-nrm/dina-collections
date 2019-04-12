@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
 
-import createDeleteProperties from 'common/es5/createDeleteProperties'
+import createDeleteProperties from 'common/src/createDeleteProperties'
 import { DropdownSearch } from 'coreModules/form/components'
 
 import { ALL, PERSON, ORGANIZATION, OTHER, UNKNOWN } from '../../constants'

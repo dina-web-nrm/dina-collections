@@ -1,4 +1,4 @@
-import expectNoValidationError from 'common/es5/testUtilities/expectNoValidationError'
+import expectNoValidationError from 'common/src/testUtilities/expectNoValidationError'
 import validateConfig from './validateConfig'
 
 describe('coreModules/crud/CrudManager/utilities/validateConfig', () => {

@@ -1,4 +1,4 @@
-import getCurrentUTCTimestamp from 'common/es5/date/getCurrentUTCTimestamp'
+import getCurrentUTCTimestamp from 'common/src/date/getCurrentUTCTimestamp'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 

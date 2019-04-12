@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Table } from 'semantic-ui-react'
 
-import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { ConfirmationPopup } from 'coreModules/form/components'
 import { ModuleTranslate } from 'coreModules/i18n/components'

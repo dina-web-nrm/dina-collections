@@ -1,4 +1,4 @@
-import { LEVEL_INSTITUTION } from 'common/es5/constants/storage'
+import { LEVEL_INSTITUTION } from 'common/src/constants/storage'
 
 const parts = [
   {

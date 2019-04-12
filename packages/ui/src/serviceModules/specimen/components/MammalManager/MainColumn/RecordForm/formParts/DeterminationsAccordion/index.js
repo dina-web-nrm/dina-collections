@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
-import createLid from 'common/es5/createLid'
+import createLid from 'common/src/createLid'
 import config from 'config'
 import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'

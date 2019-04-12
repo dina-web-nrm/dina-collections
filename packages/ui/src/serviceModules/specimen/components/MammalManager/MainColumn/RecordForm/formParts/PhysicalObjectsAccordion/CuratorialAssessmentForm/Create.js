@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
-import { getInterpretedTimestampFromYMD } from 'common/es5/date'
+import { getInterpretedTimestampFromYMD } from 'common/src/date'
 import userSelectors from 'coreModules/user/globalSelectors'
 import BaseForm from './Base'
 

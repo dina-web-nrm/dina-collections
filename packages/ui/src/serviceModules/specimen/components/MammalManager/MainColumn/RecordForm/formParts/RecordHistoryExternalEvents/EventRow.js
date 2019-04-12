@@ -4,7 +4,7 @@ import { Grid, Icon } from 'semantic-ui-react'
 import objectPath from 'object-path'
 import { isEmpty } from 'lodash'
 
-import { buildYYYYMMDD, getYYYYMMDDFromTimestamp } from 'common/es5/date'
+import { buildYYYYMMDD, getYYYYMMDDFromTimestamp } from 'common/src/date'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { AgentIdTextResult } from 'serviceModules/agent/components'
 

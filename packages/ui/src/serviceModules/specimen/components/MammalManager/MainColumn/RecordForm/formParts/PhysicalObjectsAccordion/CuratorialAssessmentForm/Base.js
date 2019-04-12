@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import { Form, Grid } from 'semantic-ui-react'
 import { reduxForm } from 'redux-form'
 
-import customFormValidator from 'common/es5/error/validators/customFormValidator'
+import customFormValidator from 'common/src/error/validators/customFormValidator'
 import createLog from 'utilities/log'
 import { Field, Input, Remarks, SingleDate } from 'coreModules/form/components'
 import {

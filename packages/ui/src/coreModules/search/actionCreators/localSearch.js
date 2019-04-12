@@ -1,6 +1,6 @@
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
-import asyncFilter from 'common/es5/search/filter/async'
-import specimenFilterFunctions from 'common/es5/search/resources/specimen/filterFunctions'
+import asyncFilter from 'common/src/search/filter/async'
+import specimenFilterFunctions from 'common/src/search/resources/specimen/filterFunctions'
 import { actionCreators } from '../keyObjectModule'
 
 let busy = false

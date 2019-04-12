@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import { actionCreators as crudActionCreators } from 'coreModules/crud'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import CreateForm from './item/CreateForm'
