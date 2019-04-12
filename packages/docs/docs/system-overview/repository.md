@@ -58,7 +58,7 @@ Dockerfile.
 | ---------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | backend    | api          | Contains code for the api and worker services                                                                                                                |
 | common     | -            | Contains shared JavaScript code, that can be used by backend, migrations and ui, as well as the the compiled version of the data model and API specification |
-| dina-style | style        | Builds the CSS used in the UI and the documentation of the styling                                                                                           |
+| style      | style        | Builds the CSS used in the UI and the documentation of the styling                                                                                           |
 | docs       | docs         | Builds the [docusaurus](https://docusaurus.io/) documentation site (on which this page exists)                                                               |
 | keycloak   | keycloak     | Contains configuration for keycloak                                                                                                                          |
 | migrations | migrations   | Manages the SQL schema migrations (up and down) and is used for data import                                                                                  |
@@ -80,7 +80,7 @@ workers.
 
 [File tree](https://github.com/DINA-Web/dina-collections/blob/master/packages/common/tree.md)
 
-### [DINA-style](https://github.com/DINA-Web/dina-collections/tree/master/packages/dina-style)
+### [Style](https://github.com/DINA-Web/dina-collections/tree/master/packages/style)
 
 ### [Docs](https://github.com/DINA-Web/dina-collections/tree/master/packages/docs)
 
