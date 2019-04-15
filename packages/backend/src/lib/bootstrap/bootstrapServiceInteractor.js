@@ -1,7 +1,7 @@
-const createCore = require('./utilities/createCore')
 const createLog = require('../../utilities/log')
 const loadVersionSet = require('common/src/schemaInterface/loadVersionSet')
 const singletons = require('common/src/schemaInterface/singletons')
+const { createCore } = require('./core')
 
 const log = createLog('bootstrap/serviceInteractor')
 

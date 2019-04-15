@@ -18,15 +18,11 @@ const resourceRelationshipParamsMap = schemaInterface.getResourceRelationshipPar
 
 const log = createLog('bootstrap/core')
 
-module.exports = function createCore({
-  env,
-  serviceConfigurations,
-  workerActive,
-}) {
+module.exports = function createCore({ serviceConfigurations }) {
   log.info('bootstrap core')
   const createCoreLog = log.scope()
 
-  const config = createConfig({ env, workerActive })
+  const config = createConfig()
   createCoreLog.info(`created config for env: ${config.env.env}`)
 
   const serviceSpecifications = createServiceSpecifications({

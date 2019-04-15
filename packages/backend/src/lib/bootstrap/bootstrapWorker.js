@@ -1,6 +1,6 @@
-const createCore = require('./utilities/createCore')
 const createWorker = require('../worker')
 const createLog = require('../../utilities/log')
+const { createCore } = require('./core')
 
 const log = createLog('bootstrap/worker')
 

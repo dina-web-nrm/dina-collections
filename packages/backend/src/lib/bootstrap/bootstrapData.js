@@ -1,6 +1,6 @@
-const createCore = require('./utilities/createCore')
 const { runImport } = require('../importer')
 const createLog = require('../../utilities/log')
+const { createCore } = require('./core')
 
 const log = createLog('bootstrap/data')
 
