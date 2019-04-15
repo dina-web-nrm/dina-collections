@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const createLog = require('../../utilities/log')
-const createAuthenticateMiddleware = require('../auth/middleware')
+const { middleware: createAuthenticateMiddleware } = require('../auth')
 const createDocsMiddleware = require('./middlewares/docs')
 const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
 const createLogFrontendErrorEndpointMiddleware = require('./middlewares/logFrontendErrorEndpoint')
