@@ -47,7 +47,7 @@ const buildTreeDocumentation = ({
     relativePath,
   }).then(treeContentArray => {
     // const treeLinks = buildLinkContentArray({ name, rootRelativePath, trees })
-    const fileContent = [treeContentArray].join('\n')
+    const fileContent = treeContentArray.join('\n')
 
     const filePath = path.join(relativePath, 'tree.md')
     fs.writeFileSync(filePath, fileContent, 'utf8')
