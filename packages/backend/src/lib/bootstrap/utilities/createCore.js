@@ -1,5 +1,5 @@
 const schemaInterface = require('common/src/schemaInterface')
-const createConfig = require('../../config/createConfig')
+const { createConfig } = require('../../config')
 const createServiceInteractor = require('../../serviceInteractor')
 const createFileInteractor = require('../../fileInteractor')
 const createIntegrations = require('../../integrations')
