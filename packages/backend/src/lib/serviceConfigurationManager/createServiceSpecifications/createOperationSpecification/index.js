@@ -1,5 +1,5 @@
 const createOperationObjectConfiguration = require('./createOperationObjectConfiguration')
-const operations = require('../../../operations')
+const { factories: operationFactories } = require('../../../operations')
 
 module.exports = function createOperationSpecification({
   operationConfiguration: operationConfigurationInput,
@@ -18,7 +18,7 @@ module.exports = function createOperationSpecification({
   const { type, operationSpecificationFactory } = operationConfiguration
   const typeFactory =
     operationSpecificationFactory ||
-    (operations[type] && operations[type].specificationFactory)
+    (operationFactories[type] && operationFactories[type].specificationFactory)
 
   if (!typeFactory) {
     throw new Error(`Type: ${type} unknown for...`)
