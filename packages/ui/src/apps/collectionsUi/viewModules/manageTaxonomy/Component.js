@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { TaxonManager } from 'domainModules/taxon/components'
+import { TaxonManager } from 'serviceModules/taxon/components'
 
 const propTypes = {}
 

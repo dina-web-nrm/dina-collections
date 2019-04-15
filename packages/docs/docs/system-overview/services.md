@@ -26,7 +26,7 @@ backend and UI in Node, outside of Docker.
 | baseWorker        |   backend            | Do jobs                                |
 | searchIndexWorker |   backend            | Do search index jobs                   |
 | docs              |   docs               | Serve this documentation               |
-| style             |  dina-style          | Serve style documentation              |
+| style             | style                | Serve style documentation              |
 | ui                |   ui                 | Serve the UI                           |
 | import            |   migrations         | Import from data files                 |
 | migrateLatest     |  migrations          | Migrate SQL schema to latest           |

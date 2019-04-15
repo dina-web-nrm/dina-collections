@@ -70,7 +70,6 @@
 │   │   │   └── index.js
 │   │   ├── DateString
 │   │   │   └── index.js
-│   │   ├── Footer.js
 │   │   ├── LayerModal
 │   │   │   ├── ModalContentWrapper.js
 │   │   │   └── index.js
@@ -471,7 +470,8 @@
 │   │   │   ├── RefineTagSelectionButton.js
 │   │   │   ├── TagGroup.js
 │   │   │   ├── index.js
-│   │   │   └── selectors.js
+│   │   │   ├── selectors.js
+│   │   │   └── utilities
 │   │   ├── NoResultsFound
 │   │   │   └── index.js
 │   │   ├── SearchPreview
@@ -549,5 +549,5 @@
 [root](../../tree.md)
 [src](../tree.md)
 [apps](../apps/tree.md)
-[domainModules](../domainModules/tree.md)
+[serviceModules](../serviceModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

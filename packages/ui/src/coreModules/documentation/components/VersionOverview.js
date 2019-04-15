@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MarkdownToHtmlAsync from 'coreModules/i18n/components/MarkdownToHtmlAsync'
 import { Segment } from 'semantic-ui-react'
-import schemaInterface from 'common/es5/schemaInterface'
+import schemaInterface from 'common/src/schemaInterface'
 
 const specification = schemaInterface.getOpenApiSpec()
 

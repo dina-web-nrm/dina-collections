@@ -1,4 +1,4 @@
-import { execute as batchExecute } from 'common/es5/batch'
+import { execute as batchExecute } from 'common/src/batch'
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
 import getActionActionTypes from './utilities/getActionActionTypes'

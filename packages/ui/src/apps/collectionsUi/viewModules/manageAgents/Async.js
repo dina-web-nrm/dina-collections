@@ -5,7 +5,7 @@ export default createAsyncView({
   modules: () => {
     return [
       import('coreModules/search'),
-      import('domainModules/agent'),
+      import('serviceModules/agent'),
       import('coreModules/form'),
       import('coreModules/formSupport'),
     ]

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import objectPath from 'object-path'
 import immutable from 'object-path-immutable'
 
-import createDeleteProperties from 'common/es5/createDeleteProperties'
+import createDeleteProperties from 'common/src/createDeleteProperties'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import createNestedItem from 'coreModules/crud/actionCreators/createNestedItem'

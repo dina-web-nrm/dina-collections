@@ -1,5 +1,5 @@
 const path = require('path')
-const buildFileTrees = require('common/es5/buildFileTrees')
+const buildFileTrees = require('common/src/buildFileTrees')
 
 const trees = [
   {
@@ -24,8 +24,8 @@ const trees = [
   },
   {
     levels: 4,
-    name: 'domainModules',
-    rootRelativePath: './src/domainModules',
+    name: 'serviceModules',
+    rootRelativePath: './src/serviceModules',
   },
   {
     levels: 4,

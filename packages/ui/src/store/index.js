@@ -3,7 +3,7 @@ import hotswapStoreEnhancer from 'coreModules/bootstrap/enhancer'
 import createLog from 'utilities/log'
 import { enhancer as devToolsExtensionEnhancer } from 'coreModules/devToolsExtension'
 import { moduleOrder as coreModuleOrder } from 'coreModules'
-import { moduleOrder as domainModuleOrder } from 'domainModules'
+import { moduleOrder as domainModuleOrder } from 'serviceModules'
 
 const log = createLog('store')
 

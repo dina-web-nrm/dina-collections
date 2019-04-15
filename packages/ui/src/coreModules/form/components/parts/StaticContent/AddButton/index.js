@@ -12,7 +12,7 @@ const propTypes = {
 }
 const defaultProps = {
   id: undefined,
-  module: 'collectionMammals',
+  module: 'specimen',
 }
 
 function AddButton({ id, onClick: handleClick, module, textKey }) {

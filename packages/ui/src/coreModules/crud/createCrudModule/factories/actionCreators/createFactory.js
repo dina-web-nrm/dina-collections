@@ -1,6 +1,6 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
-import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
+import nestedToCoreSync from 'common/src/formatObject/nestedToCoreSync'
 import getActionActionTypes from './utilities/getActionActionTypes'
 
 export const dep = new Dependor({

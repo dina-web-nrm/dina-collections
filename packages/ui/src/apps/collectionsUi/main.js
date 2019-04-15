@@ -1,4 +1,4 @@
-import 'common/dist/semantic.css' // eslint-disable-line
+import 'common/dist/semantic.css'
 import 'react-rangeslider/lib/index.css'
 import 'react-sortable-tree/style.css'
 import 'react-json-inspector/json-inspector.css'

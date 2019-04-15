@@ -1,5 +1,5 @@
-const createFrontendApiClientValidator = require('common/es5/error/validators/createFrontendApiClientValidator')
-const createEndpointFactory = require('common/es5/endpointFactory/createEndpointFactory')
+const createFrontendApiClientValidator = require('common/src/error/validators/createFrontendApiClientValidator')
+const createEndpointFactory = require('common/src/endpointFactory/createEndpointFactory')
 
 const importFaker = () => import('json-schema-faker')
 

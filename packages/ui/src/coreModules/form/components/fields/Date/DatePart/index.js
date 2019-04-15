@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
 
-import { getInterpretedTimestampFromYMD } from 'common/es5/date'
-import createDeleteProperties from 'common/es5/createDeleteProperties'
+import { getInterpretedTimestampFromYMD } from 'common/src/date'
+import createDeleteProperties from 'common/src/createDeleteProperties'
 import Input from '../../../inputs/Input/Text'
 import FieldTemplate from '../../../FieldTemplate'
 
