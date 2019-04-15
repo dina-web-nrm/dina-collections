@@ -68,7 +68,6 @@
 │   │   │   └── index.js
 │   │   ├── DateString
 │   │   │   └── index.js
-│   │   ├── Footer.js
 │   │   ├── LayerModal
 │   │   │   ├── ModalContentWrapper.js
 │   │   │   └── index.js

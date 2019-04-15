@@ -29,11 +29,6 @@
 │   ├── size
 │   ├── tree.md
 │   └── user
-├── domainModules
-│   ├── collectionMammals
-│   ├── locality
-│   ├── storage
-│   └── taxon
 ├── index.js
 ├── mock
 │   └── dns
