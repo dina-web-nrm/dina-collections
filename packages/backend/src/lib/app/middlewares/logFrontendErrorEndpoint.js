@@ -1,6 +1,6 @@
 const express = require('express')
 const { URL } = require('common/src/constants/frontendErrorLogging')
-const createErrorLogger = require('../../errorLogger')
+const { createErrorLogger } = require('../../errorLogger')
 const createLog = require('../../../utilities/log')
 const bodyParser = require('body-parser')
 
