@@ -1,5 +1,5 @@
 const createCore = require('./utilities/createCore')
-const importer = require('../importer')
+const { runImport } = require('../importer')
 const createLog = require('../../utilities/log')
 
 const log = createLog('bootstrap/data')
@@ -18,7 +18,7 @@ module.exports = function bootstrapData({
   }).then(({ config, fileInteractor, serviceInteractor }) => {
     log.info(`Bootstrap core done`)
 
-    return importer({
+    return runImport({
       config,
       fileInteractor,
       importData,
