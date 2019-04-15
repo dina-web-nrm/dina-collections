@@ -1,6 +1,6 @@
 const createCore = require('./utilities/createCore')
 const createServiceRouter = require('../serviceRouter')
-const createApp = require('../app')
+const { createApp } = require('../app')
 const createAuth = require('../auth')
 const createLog = require('../../utilities/log')
 const createWorker = require('../worker')
