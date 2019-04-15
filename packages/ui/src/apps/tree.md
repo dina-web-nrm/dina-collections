@@ -6,8 +6,6 @@
 │   │   ├── Footer
 │   │   │   └── index.js
 │   │   └── index.js
-│   ├── config
-│   │   └── index.js
 │   ├── index.js
 │   ├── initialModules.js
 │   ├── main.js
