@@ -13,7 +13,20 @@ import {
 import { MODULE_NAME } from './constants'
 
 const initState = {
-  breakpoints: [],
+  // maxWidths from https://semantic-ui.com/elements/container.html
+  breakpoints: [
+    {
+      maxWidth: 768,
+      size: 'small',
+    },
+    {
+      maxWidth: 1200,
+      size: 'medium',
+    },
+    {
+      size: 'large',
+    },
+  ],
   currentBreakpoint: null,
   height: null,
   width: null,

@@ -4,8 +4,11 @@ import { Input } from 'semantic-ui-react'
 
 import config from 'config'
 
+const numberRegex = /^-?\d*\.?\d*$/
+
 const propTypes = {
   autoComplete: PropTypes.string,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   focusOnMount: PropTypes.bool,
@@ -15,12 +18,14 @@ const propTypes = {
   max: PropTypes.number,
   min: PropTypes.number,
   placeholder: PropTypes.string,
+  setRef: PropTypes.func,
   size: PropTypes.string,
   style: PropTypes.object,
   type: PropTypes.string,
 }
 const defaultProps = {
   autoComplete: undefined,
+  className: undefined,
   disabled: false,
   fluid: false,
   focusOnMount: false,
@@ -29,42 +34,43 @@ const defaultProps = {
   max: undefined,
   min: undefined,
   placeholder: undefined,
+  setRef: undefined,
   size: undefined,
   style: undefined,
   type: 'text',
-}
-
-function preventNonNumeric(event) {
-  if (event.key === 'e' || event.key === 'E') {
-    event.preventDefault()
-  }
 }
 
 class TextInput extends PureComponent {
   constructor(props) {
     super(props)
     this.handleOnChange = this.handleOnChange.bind(this)
+    this.preventNonNumeric = this.preventNonNumeric.bind(this)
   }
+
   componentDidMount() {
     if (this.props.focusOnMount && !config.isTest) {
       this.input.focus()
     }
   }
+
   handleOnChange(event) {
     const { input, max, min, type } = this.props
+
     if (type !== 'number') {
       return input.onChange(event)
     }
 
-    if (min === undefined && max === undefined) {
-      return input.onChange(event)
-    }
     const { value } = event.target
-    const numberValue = value !== '' ? Number(value) : undefined
 
-    if (numberValue === undefined) {
+    if (value === '') {
       return input.onChange(event)
     }
+
+    if (!value.match(numberRegex)) {
+      return null
+    }
+
+    const numberValue = value && Number(value)
 
     if (min !== undefined && numberValue < min) {
       return null
@@ -73,12 +79,26 @@ class TextInput extends PureComponent {
     if (max !== undefined && numberValue > max) {
       return null
     }
+
     return input.onChange(event)
+  }
+
+  preventNonNumeric(event) {
+    const stringValue = String(this.props.input.value) || ''
+
+    if (
+      !String(event.key).match(numberRegex) ||
+      (event.key === '-' && stringValue.includes('-')) ||
+      (event.key === '.' && stringValue.includes('.'))
+    ) {
+      event.preventDefault()
+    }
   }
 
   render() {
     const {
       autoComplete,
+      className,
       disabled,
       fluid,
       icon,
@@ -87,6 +107,7 @@ class TextInput extends PureComponent {
       max,
       min,
       placeholder,
+      setRef,
       size,
       style,
       type,
@@ -95,6 +116,7 @@ class TextInput extends PureComponent {
     return (
       <Input
         autoComplete={autoComplete}
+        className={className}
         disabled={disabled}
         fluid={fluid}
         icon={icon}
@@ -102,14 +124,18 @@ class TextInput extends PureComponent {
         max={max}
         min={min}
         placeholder={placeholder}
-        ref={element => {
+        setRef={element => {
+          if (setRef) {
+            setRef(element)
+          }
+
           this.input = element
         }}
         type={type}
         {...input}
         onChange={this.handleOnChange}
         onKeyPress={
-          this.props.type === 'number' ? preventNonNumeric : undefined
+          this.props.type === 'number' ? this.preventNonNumeric : undefined
         }
         size={size}
         style={style}

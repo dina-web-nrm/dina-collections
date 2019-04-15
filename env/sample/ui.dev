@@ -1,11 +1,8 @@
 
 NODE_PATH=src/
-REACT_APP_DISABLE_AUTH=false
+REACT_APP_DISABLE_AUTH=true
 REACT_APP_ENABLE_REDUX_LOGGER=true
 REACT_APP_ENABLE_REDUX_LOGGER_DIFF=false
 REACT_APP_EXTERNAL_URL_API=https://dina-api.nrm.se
-REACT_APP_EXTERNAL_URL_DINA_WIKI=https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!
 REACT_APP_EXTERNAL_URL_DOCS=https://dina-docs.nrm.se
-REACT_APP_EXTERNAL_URL_GITHUB_DINA=https://github.com/DINA-Web
-REACT_APP_EXTERNAL_URL_GITHUB_REPO=https://github.com/DINA-Web/dina-collections
 REACT_APP_EXTERNAL_URL_STYLE=https://dina-style.nrm.se

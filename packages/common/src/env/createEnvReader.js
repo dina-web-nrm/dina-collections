@@ -51,26 +51,56 @@ module.exports = function createEnvReader({
     ...testEnv,
   }
 
-  function readKey(key, defaultValue = undefined) {
+  function readKey(key, defaultValue) {
     if (!existingEnvVariables.includes(key)) {
       throw new Error(`Trying to access non existing env varable: ${key}`)
     }
+
     if (resolvedEnvVariables[key] === undefined) {
       return defaultValue
     }
+
     return resolvedEnvVariables[key]
+  }
+
+  function readWindowKey(key, defaultValue) {
+    const windowValue = window && window[key]
+
+    if (windowValue !== undefined && windowValue !== key) {
+      return windowValue
+    }
+
+    return defaultValue
   }
 
   function readBoolKey(key, defaultValue = false) {
     const boolValue = readKey(key)
+
     if (boolValue !== undefined) {
       return boolValue
     }
+
+    return defaultValue
+  }
+
+  function readWindowBoolKey(key, defaultValue = false) {
+    const windowBoolValue = window && window[key]
+
+    if (windowBoolValue === 'true' || windowBoolValue === true) {
+      return true
+    }
+
+    if (windowBoolValue === 'false' || windowBoolValue === false) {
+      return false
+    }
+
     return defaultValue
   }
 
   return {
     readBoolKey,
     readKey,
+    readWindowBoolKey,
+    readWindowKey,
   }
 }
