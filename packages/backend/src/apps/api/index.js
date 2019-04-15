@@ -1,4 +1,4 @@
-const bootstrapApi = require('../../lib/bootstrap/bootstrapApi')
+const { bootstrapApi } = require('../../lib/bootstrap')
 const serviceConfigurations = require('../../serviceConfigurations')
 
 bootstrapApi({

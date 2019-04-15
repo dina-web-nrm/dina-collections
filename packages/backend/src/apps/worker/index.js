@@ -1,4 +1,4 @@
-const bootstrapWorker = require('../../lib/bootstrap/bootstrapWorker')
+const { bootstrapWorker } = require('../../lib/bootstrap')
 const serviceConfigurations = require('../../serviceConfigurations')
 
 bootstrapWorker({
