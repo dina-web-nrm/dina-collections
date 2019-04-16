@@ -124,7 +124,7 @@ class TextInput extends PureComponent {
         max={max}
         min={min}
         placeholder={placeholder}
-        setRef={element => {
+        ref={element => {
           if (setRef) {
             setRef(element)
           }
