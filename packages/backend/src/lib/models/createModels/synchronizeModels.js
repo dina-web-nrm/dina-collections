@@ -1,4 +1,4 @@
-const createLog = require('../../../../utilities/log')
+const createLog = require('../../../utilities/log')
 const chainPromises = require('common/src/chainPromises')
 
 const log = createLog('lib/models', 0)

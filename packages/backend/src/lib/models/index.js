@@ -1,5 +1,5 @@
 const factories = require('./factories')
-const createModels = require('./utilities/createModels')
+const createModels = require('./createModels')
 
 module.exports = {
   createModels,

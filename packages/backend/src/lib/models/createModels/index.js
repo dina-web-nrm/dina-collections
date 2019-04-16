@@ -1,4 +1,4 @@
-const createLog = require('../../../../utilities/log')
+const createLog = require('../../../utilities/log')
 const internalCreateModels = require('./createModels')
 const createRelations = require('./createRelations')
 const synchronizeModels = require('./synchronizeModels')

@@ -1,4 +1,4 @@
-const modelFactories = require('../../factories')
+const modelFactories = require('../factories')
 
 module.exports = function createModels({
   config,
