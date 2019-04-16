@@ -53,7 +53,6 @@ class FeatureObservationTableRow extends PureComponent {
           <Table.Cell key={getPath('featureObservationText')}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={FeatureObservationDropdownSearch}
               displayLabel={false}
               module="specimen"
@@ -66,7 +65,6 @@ class FeatureObservationTableRow extends PureComponent {
           <Table.Cell key={getPath('featureObservationText')}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={Input}
               displayLabel={false}
               module="specimen"
@@ -80,7 +78,6 @@ class FeatureObservationTableRow extends PureComponent {
           <Table.Cell key={getPath('featureObservationUnit')}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={FeatureObservationDropdownSearch}
               displayLabel={false}
               module="specimen"
@@ -94,7 +91,6 @@ class FeatureObservationTableRow extends PureComponent {
           <Table.Cell key={getPath('methodText')}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={FeatureObservationDropdownSearch}
               displayLabel={false}
               module="specimen"
@@ -135,7 +131,6 @@ class FeatureObservationTableRow extends PureComponent {
         <Table.Cell key={getPath('remarks')}>
           <Field
             autoComplete="off"
-            className="transparent"
             component={Input}
             displayLabel={false}
             module="specimen"

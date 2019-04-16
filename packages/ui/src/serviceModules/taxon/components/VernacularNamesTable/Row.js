@@ -62,7 +62,6 @@ class VernacularNamesTableRow extends PureComponent {
         <Grid.Column width={5}>
           <Field
             autoComplete="off"
-            className="transparent"
             component={DropdownSearch}
             displayLabel={false}
             module="taxon"
@@ -78,7 +77,6 @@ class VernacularNamesTableRow extends PureComponent {
         <Grid.Column width={9}>
           <Field
             autoComplete="off"
-            className="transparent"
             component={Input}
             displayLabel={false}
             fluid

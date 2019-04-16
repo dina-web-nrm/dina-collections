@@ -150,7 +150,6 @@ class FeatureObservationTableRow extends PureComponent {
           >
             <Field
               autoComplete="off"
-              className="transparent"
               component={FeatureObservationDropdownSearch}
               displayLabel={false}
               module={module}
@@ -174,7 +173,6 @@ class FeatureObservationTableRow extends PureComponent {
           >
             <Field
               autoComplete="off"
-              className="transparent"
               component={Input}
               displayLabel={false}
               fluid
@@ -197,7 +195,6 @@ class FeatureObservationTableRow extends PureComponent {
           <Table.Cell key={getPath('featureObservationUnit')} width={5}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={FeatureObservationDropdownSearch}
               defaultOptionValue={isLengthOrWeight ? 'unspecified' : undefined}
               disableClearValue={isLengthOrWeight}
@@ -218,7 +215,6 @@ class FeatureObservationTableRow extends PureComponent {
           <Table.Cell key={getPath('methodText')} width={6}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={FeatureObservationDropdownSearch}
               displayLabel={false}
               module={module}
