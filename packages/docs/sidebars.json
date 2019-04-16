@@ -26,6 +26,7 @@
           "packages/backend/terminology"
         ]
       },
+      "packages/common/index",
       "packages/ui/index"
     ]
   }
