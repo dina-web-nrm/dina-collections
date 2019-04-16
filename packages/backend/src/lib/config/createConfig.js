@@ -1,6 +1,6 @@
 const schemaInterface = require('common/src/schemaInterface')
 const findRootPath = require('common/src/fs/findRootPath')
-const { ensureNodeEnv, readKey, readBoolKey } = require('../../lib/config/env')
+const { readKey, readBoolKey } = require('../../lib/config/env')
 const createPostgresDbConfig = require('./createPostgresDbConfig')
 
 const dataModelVersion = schemaInterface.getDataModelVersion()
@@ -124,21 +124,9 @@ const baseConfig = {
   test,
 }
 
-module.exports = function createConfig({ workerActive, env: ensureEnv }) {
-  if (ensureEnv !== undefined) {
-    ensureNodeEnv(ensureEnv)
-  }
+module.exports = function createConfig() {
   const nodeEnv = readKey('NODE_ENV')
   let envConfig = baseConfig
-  if (workerActive !== undefined) {
-    envConfig = {
-      ...envConfig,
-      jobs: {
-        ...envConfig.jobs,
-        workerActive,
-      },
-    }
-  }
   const db = createPostgresDbConfig({
     env: readKey('NODE_ENV'),
   })
