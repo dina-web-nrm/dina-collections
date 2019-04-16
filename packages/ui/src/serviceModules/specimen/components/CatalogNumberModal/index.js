@@ -96,7 +96,6 @@ class CatalogNumberModal extends PureComponent {
                   <Grid.Column width={8}>
                     <Field
                       autoComplete="off"
-                      className="transparent"
                       component={Input}
                       enableHelpNotifications={false}
                       helpText={

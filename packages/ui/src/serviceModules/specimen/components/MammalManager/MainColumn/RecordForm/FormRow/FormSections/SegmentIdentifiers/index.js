@@ -96,7 +96,6 @@ class SegmentIdentifiers extends PureComponent {
             <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
-                className="transparent"
                 component={DropdownSearch}
                 module="specimen"
                 name="individual.typeStatus.id"
