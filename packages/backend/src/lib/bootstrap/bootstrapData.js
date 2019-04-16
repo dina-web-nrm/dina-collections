@@ -5,14 +5,12 @@ const { createCore } = require('./core')
 const log = createLog('bootstrap/data')
 
 module.exports = function bootstrapData({
-  env,
   serviceConfigurations,
   importData = true,
   rebuildElastic = true,
 }) {
   log.info('bootstraping data')
   return createCore({
-    env,
     log,
     serviceConfigurations,
   }).then(({ config, fileInteractor, serviceInteractor }) => {

@@ -7,10 +7,9 @@ const { createAuth } = require('../auth')
 
 const log = createLog('bootstrap/api')
 
-module.exports = function bootstrapApi({ env, serviceConfigurations }) {
+module.exports = function bootstrapApi({ serviceConfigurations }) {
   log.info('bootstraping api')
   return createCore({
-    env,
     log,
     serviceConfigurations,
   }).then(({ config, openApiSpec, operations, serviceInteractor }) => {

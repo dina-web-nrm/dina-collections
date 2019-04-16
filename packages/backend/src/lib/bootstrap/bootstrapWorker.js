@@ -4,10 +4,9 @@ const { createCore } = require('./core')
 
 const log = createLog('bootstrap/worker')
 
-module.exports = function bootstrapWorker({ env, serviceConfigurations }) {
+module.exports = function bootstrapWorker({ serviceConfigurations }) {
   log.info('bootstraping worker')
   return createCore({
-    env,
     log,
     serviceConfigurations,
   }).then(({ config, serviceInteractor }) => {

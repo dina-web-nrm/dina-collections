@@ -8,7 +8,6 @@ const log = createLog('bootstrap/serviceInteractor')
 module.exports = function bootstrapServiceInteractor({
   apiVersion,
   dataModelVersion,
-  env,
   serviceConfigurations,
 }) {
   log.info('bootstraping service interactor')
@@ -22,7 +21,6 @@ module.exports = function bootstrapServiceInteractor({
   }
 
   return createCore({
-    env,
     log,
     serviceConfigurations,
   }).then(({ serviceInteractor }) => {
