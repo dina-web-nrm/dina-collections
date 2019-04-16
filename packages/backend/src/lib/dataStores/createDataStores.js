@@ -1,7 +1,7 @@
-const createLog = require('../../../utilities/log')
-const createElasticsearch = require('../elasticsearch')
-const createSequelize = require('../sequelize')
-const createInMemory = require('../inMemory')
+const createLog = require('../../utilities/log')
+const createElasticsearch = require('./elasticsearch')
+const createSequelize = require('./sequelize')
+const createInMemory = require('./inMemory')
 
 const defaultLog = createLog('lib/dataStores')
 

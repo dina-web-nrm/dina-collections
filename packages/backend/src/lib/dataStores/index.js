@@ -1,4 +1,4 @@
-const createDataStores = require('./utilities/createDataStores')
+const createDataStores = require('./createDataStores')
 const factories = require('./factories')
 
 module.exports = {
