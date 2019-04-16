@@ -1,268 +1,272 @@
 const coreToNestedSync = require('./coreToNestedSync')
-// const apiFormatPhysicalObject = require('./utilities/testData/apiFormatPhysicalObject')
-// const apiFormatSpecimen = require('./utilities/testData/apiFormatSpecimen')
-// const nestedPhysicalObjectWithRelationships = require('./utilities/testData/nestedPhysicalObjectWithRelationships')
+const apiFormatPhysicalObject = require('./utilities/testData/apiFormatPhysicalObject')
+const apiFormatSpecimen = require('./utilities/testData/apiFormatSpecimen')
+const nestedPhysicalObjectWithRelationships = require('./utilities/testData/nestedPhysicalObjectWithRelationships')
 
-/* eslint-disable sort-keys */
+/* eslint-disable prefer-destructuring, sort-keys */
 describe('formatObject/coreToNestedSync', () => {
+  let getItemByTypeId
+
+  beforeEach(() => {
+    getItemByTypeId = (type, id) => {
+      return {
+        id,
+        resolved: true,
+        type,
+      }
+    }
+  })
+
   it('is a function', () => {
     expect(typeof coreToNestedSync).toBe('function')
   })
-  it('returns falsy item', () => {
-    const item = null
+
+  fit('returns item when item is falsy', () => {
     expect(
       coreToNestedSync({
         denormalize: true,
         extractRelationships: true,
-        item,
+        item: undefined,
+        type: 'specimen',
+      })
+    ).toEqual(undefined)
+
+    expect(
+      coreToNestedSync({
+        denormalize: true,
+        extractRelationships: true,
+        item: null,
         type: 'specimen',
       })
     ).toEqual(null)
   })
 
-  // it('returns denormalized item with nested item keys', () => {
-  //   const getItemByTypeId = (type, id) => {
-  //     return {
-  //       id,
-  //       resolved: true,
-  //     }
-  //   }
+  it('returns denormalized item with nested item keys', () => {
+    const nestedItem = coreToNestedSync({
+      denormalize: true,
+      extractRelationships: true,
+      getItemByTypeId,
+      item: apiFormatSpecimen,
+      type: 'specimen',
+    })
+    const nestedItemKeys = Object.keys(nestedItem).sort()
+    expect(nestedItemKeys).toEqual(['id', 'individual', 'normalized'])
+  })
 
-  //   const nestedItem = coreToNestedSync({
-  //     denormalize: true,
-  //     extractRelationships: true,
-  //     getItemByTypeId,
-  //     item: apiFormatSpecimen,
-  //     type: 'specimen',
-  //   })
-  //   const nestedItemKeys = Object.keys(nestedItem).sort()
-  //   expect(nestedItemKeys).toEqual(['id', 'individual'])
-  // })
+  it('returns non-denormalized item with expected content', () => {
+    const testValue = coreToNestedSync({
+      denormalize: false,
+      extractRelationships: true,
+      getItemByTypeId,
+      item: apiFormatPhysicalObject,
+      type: 'physicalObject',
+    })
 
-  // it('returns non-denormalized item with expected content', () => {
-  //   const getItemByTypeId = (type, id) => {
-  //     return {
-  //       id,
-  //       resolved: true,
-  //     }
-  //   }
+    const expectedResult = nestedPhysicalObjectWithRelationships
 
-  //   const testValue = coreToNestedSync({
-  //     denormalize: false,
-  //     extractRelationships: true,
-  //     getItemByTypeId,
-  //     item: apiFormatPhysicalObject,
-  //     type: 'physicalObject',
-  //   })
+    expect(testValue).toEqual(expectedResult)
+  })
 
-  //   const expectedResult = nestedPhysicalObjectWithRelationships
+  describe('deeper check of denormalized nested item format', () => {
+    let nestedItem
+    let individual
+    let normalizedAttributes
 
-  //   expect(testValue).toEqual(expectedResult)
-  // })
+    beforeEach(() => {
+      nestedItem = coreToNestedSync({
+        denormalize: true,
+        extractRelationships: true,
+        getItemByTypeId,
+        item: apiFormatSpecimen,
+        type: 'specimen',
+      })
 
-  // describe('deeper check of denormalized nested item format', () => {
-  //   let nestedItem
-  //   let individual
-  //   beforeEach(() => {
-  //     const getItemByTypeId = (type, id) => {
-  //       return {
-  //         id,
-  //         resolved: true,
-  //         type,
-  //       }
-  //     }
+      individual = nestedItem.individual
+      normalizedAttributes = nestedItem.normalized
+    })
 
-  //     nestedItem = coreToNestedSync({
-  //       denormalize: true,
-  //       extractRelationships: true,
-  //       getItemByTypeId,
-  //       item: apiFormatSpecimen,
-  //       type: 'specimen',
-  //     })
-  //     individual = nestedItem.individual // eslint-disable-line prefer-destructuring
-  //   })
+    it('has expected attribute keys', () => {
+      const attributeKeys = Object.keys(normalizedAttributes).sort()
+      expect(attributeKeys).toEqual([
+        'collectingInformation',
+        'collectionItems',
+        'determinations',
+        'events',
+        'featureObservations',
+        'identifiers',
+        'individuals',
+        'recordHistoryEvents',
+        'taxonInformation',
+      ])
+    })
 
-  //   it('has expected individual keys', () => {
-  //     const individualKeys = Object.keys(individual).sort()
-  //     expect(individualKeys).toEqual([
-  //       'collectingInformation',
-  //       'collectionItems',
-  //       'determinations',
-  //       'featureObservations',
-  //       'identifiers',
-  //       'lid',
-  //       'recordHistoryEvents',
-  //       'taxonInformation',
-  //     ])
-  //   })
-  //   it('has collectingInformation', () => {
-  //     const attribute = individual.collectingInformation
-  //     const expectedFormat = [
-  //       {
-  //         collectedByAgent: { textI: 'collectorsText' },
-  //         event: {
-  //           endDate: 'endDate',
-  //           expeditionText: 'expeditionText',
-  //           locationInformation: {
-  //             coordinatesVerbatim: 'coordinatesVerbatim',
-  //             places: [
-  //               {
-  //                 id: '1',
-  //               },
-  //               {
-  //                 id: '2',
-  //               },
-  //               {
-  //                 id: '3',
-  //               },
-  //               {
-  //                 id: '4',
-  //               },
-  //               {
-  //                 id: '5',
-  //               },
-  //             ],
-  //             georeferenceSourcesText: 'georeferenceSourcesText',
-  //             localityVerbatim: 'localityVerbatim',
-  //             position: {
-  //               geodeticDatum: 'geodeticDatum text',
-  //               latitude: 'latitude-string',
-  //               longitude: 'longitude-string',
-  //               uncertaintyInMeters: 10,
-  //             },
-  //             remarks: 'remarks',
-  //             verticalPosition: {
-  //               maximumDepthInMeters: 100,
-  //               maximumElevationInMeters: 100,
-  //               minimumDepthInMeters: 20,
-  //               minimumElevationInMeters: 20,
-  //             },
-  //           },
-  //           lid: 'd61ec620-e5df-4141-8691-a0fe42ec0c5b',
-  //         },
-  //         lid: '06c5b25b-13dd-4c27-8bc2-18723fb1beb3',
-  //       },
-  //     ]
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  //   it('has collectionItems', () => {
-  //     const getItemByTypeId = (type, id) => {
-  //       if (type === 'physicalObject') {
-  //         return {
-  //           attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
-  //           id,
-  //           resolved: true,
-  //           type,
-  //         }
-  //       }
+    it('has collectingInformation', () => {
+      const { collectingInformation, events } = normalizedAttributes
+      const eventLid = 'd61ec620-e5df-4141-8691-a0fe42ec0c5b'
 
-  //       return {
-  //         id,
-  //         resolved: true,
-  //         type,
-  //       }
-  //     }
+      const expectedCollectingInformation = [
+        {
+          collectedByAgent: { textI: 'collectorsText' },
+          event: eventLid,
+          lid: '06c5b25b-13dd-4c27-8bc2-18723fb1beb3',
+        },
+      ]
 
-  //     const nestedSpecimen = coreToNestedSync({
-  //       denormalize: true,
-  //       extractRelationships: true,
-  //       getItemByTypeId,
-  //       item: apiFormatSpecimen,
-  //       type: 'specimen',
-  //     })
+      const expectedEvent = {
+        endDate: 'endDate',
+        expeditionText: 'expeditionText',
+        lid: eventLid,
+        locationInformation: {
+          coordinatesVerbatim: 'coordinatesVerbatim',
+          places: [
+            {
+              id: '1',
+            },
+            {
+              id: '2',
+            },
+            {
+              id: '3',
+            },
+            {
+              id: '4',
+            },
+            {
+              id: '5',
+            },
+          ],
+          georeferenceSourcesText: 'georeferenceSourcesText',
+          localityVerbatim: 'localityVerbatim',
+          position: {
+            geodeticDatum: 'geodeticDatum text',
+            latitude: 'latitude-string',
+            longitude: 'longitude-string',
+            uncertaintyInMeters: 10,
+          },
+          remarks: 'remarks',
+          verticalPosition: {
+            maximumDepthInMeters: 100,
+            maximumElevationInMeters: 100,
+            minimumDepthInMeters: 20,
+            minimumElevationInMeters: 20,
+          },
+        },
+      }
 
-  //     const attribute = nestedSpecimen.individual.collectionItems
+      expect(collectingInformation).toEqual(expectedCollectingInformation)
+      expect(events).toContainEqual(expectedEvent)
+    })
 
-  //     const expectedFormat = [
-  //       {
-  //         alternateIdentifiersText: 'alternateIdentifiersText',
-  //         physicalObject: {
-  //           id: '2234',
-  //           lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
-  //         },
-  //         physicalObjectText: 'physicalObjectText',
-  //         lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd',
-  //       },
-  //     ]
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  //   it('has determinations', () => {
-  //     const attribute = individual.determinations
-  //     const expectedFormat = [
-  //       {
-  //         determinationVerbatim: 'determinationVerbatim',
-  //         determinedByAgent: { textI: 'determinedByAgentText' },
-  //         remarks: 'remarks',
-  //         taxon: {
-  //           id: '2367',
-  //           type: 'taxon',
-  //         },
-  //         lid: '3a823494-b06f-4202-80c3-a8bf58d2dd40',
-  //       },
-  //     ]
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  //   it('has featureObservations', () => {
-  //     const attribute = individual.featureObservations
-  //     const expectedFormat = [
-  //       {
-  //         featureObservationAgentText: 'featureObservationAgentText',
-  //         featureObservationText: '21',
-  //         featureType: {
-  //           id: '1',
-  //         },
-  //         methodText: 'methodText',
-  //         lid: 'b7973764-992a-4c42-816a-566e2c4ada7e',
-  //       },
-  //     ]
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  //   it('has identifiers', () => {
-  //     const attribute = individual.identifiers
-  //     const expectedFormat = [
-  //       {
-  //         identifierType: {
-  //           id: 1,
-  //         },
-  //         namespace: '',
-  //         value: '123456',
-  //         publishRecord: true,
-  //         remarks: '',
-  //         lid: '34674e21-924c-4c1a-8c91-c15758cce3af',
-  //       },
-  //     ]
+    it('has collectionItems', () => {
+      getItemByTypeId = (type, id) => {
+        if (type === 'physicalObject') {
+          return {
+            attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
+            id,
+            resolved: true,
+            type,
+          }
+        }
 
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  //   it('has lid', () => {
-  //     const attribute = individual.lid
-  //     const expectedFormat = '6958cbc2-4c47-4bb8-bb56-c60f7c37b79f'
+        return {
+          id,
+          resolved: true,
+          type,
+        }
+      }
 
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  //   it('has recordHistoryEvents', () => {
-  //     const attribute = individual.recordHistoryEvents
-  //     const expectedFormat = [
-  //       {
-  //         agent: {
-  //           normalizedAgent: {
-  //             id: '1',
-  //           },
-  //         },
-  //         date: {
-  //           dateText: '2018',
-  //         },
-  //         lid: '35677dc2-73ed-4478-889c-d7fe5f7565c1',
-  //       },
-  //     ]
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  //   it('has taxonInformation', () => {
-  //     const attribute = individual.taxonInformation
-  //     const expectedFormat = {
-  //       lid: '9b6bd5ea-5605-463a-9262-1e83fd618b14',
-  //     }
-  //     expect(attribute).toEqual(expectedFormat)
-  //   })
-  // })
+      const nestedSpecimen = coreToNestedSync({
+        denormalize: true,
+        extractRelationships: true,
+        getItemByTypeId,
+        item: apiFormatSpecimen,
+        type: 'specimen',
+      })
+
+      expect(nestedSpecimen.normalized.collectionItems).toEqual([
+        {
+          alternateIdentifiersText: 'alternateIdentifiersText',
+          physicalObject: {
+            lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
+          },
+          physicalObjectText: 'physicalObjectText',
+          lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd',
+        },
+      ])
+    })
+
+    it('has determinations', () => {
+      expect(normalizedAttributes.determinations).toEqual([
+        {
+          determinationVerbatim: 'determinationVerbatim',
+          determinedByAgent: { textI: 'determinedByAgentText' },
+          remarks: 'remarks',
+          taxon: {
+            id: '2367',
+            type: 'taxon',
+          },
+          lid: '3a823494-b06f-4202-80c3-a8bf58d2dd40',
+        },
+      ])
+    })
+
+    it('has featureObservations', () => {
+      expect(normalizedAttributes.featureObservations).toEqual([
+        {
+          featureObservationAgentText: 'featureObservationAgentText',
+          featureObservationText: '21',
+          featureType: {
+            id: '1',
+          },
+          methodText: 'methodText',
+          lid: 'b7973764-992a-4c42-816a-566e2c4ada7e',
+        },
+      ])
+    })
+
+    it('has identifiers', () => {
+      expect(normalizedAttributes.identifiers).toEqual([
+        {
+          identifierType: {
+            id: 1,
+          },
+          namespace: '',
+          value: '123456',
+          publishRecord: true,
+          remarks: '',
+          lid: '34674e21-924c-4c1a-8c91-c15758cce3af',
+        },
+      ])
+    })
+
+    it('has lid', () => {
+      expect(individual).toEqual('6958cbc2-4c47-4bb8-bb56-c60f7c37b79f')
+    })
+
+    it('has recordHistoryEvents', () => {
+      const attribute = normalizedAttributes.recordHistoryEvents
+      const expectedFormat = [
+        {
+          agent: {
+            normalizedAgent: {
+              id: '1',
+            },
+          },
+          date: {
+            dateText: '2018',
+          },
+          lid: '35677dc2-73ed-4478-889c-d7fe5f7565c1',
+        },
+      ]
+      expect(attribute).toEqual(expectedFormat)
+    })
+
+    it('has taxonInformation', () => {
+      expect(normalizedAttributes.taxonInformation).toEqual([
+        {
+          lid: '9b6bd5ea-5605-463a-9262-1e83fd618b14',
+        },
+      ])
+    })
+  })
 })
