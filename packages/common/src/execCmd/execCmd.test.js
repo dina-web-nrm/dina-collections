@@ -1,8 +1,8 @@
 const execCmd = require('./index')
 
-describe('fs/execCmd', () => {
+describe('execCmd', () => {
   it('runs cmd ls in current directory from root', () => {
-    const cmd = 'cd ./packages/common/src/fs/execCmd && ls'
+    const cmd = 'cd ./packages/common/src/execCmd && ls'
     return execCmd({
       cmd,
     }).then(res => {

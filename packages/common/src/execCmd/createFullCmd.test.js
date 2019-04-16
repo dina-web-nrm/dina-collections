@@ -1,6 +1,6 @@
 const createFullCmd = require('./createFullCmd')
 
-describe('fs/execCmd/createFullCmd', () => {
+describe('execCmd/createFullCmd', () => {
   it('throws when cmd not provided', () => {
     expect(() => {
       createFullCmd()
