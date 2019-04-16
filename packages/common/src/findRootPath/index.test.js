@@ -1,5 +1,5 @@
 const path = require('path')
-const findRootPath = require('./findRootPath')
+const findRootPath = require('./index')
 const { REPO_ROOT_NAME } = require('../constants/repo')
 
 const getIsRootPath = rootPath => {
@@ -10,7 +10,7 @@ const getIsRootPath = rootPath => {
   return REPO_ROOT_NAME === packageJson.name
 }
 
-describe('fs/findRootPath', () => {
+describe('findRootPath', () => {
   it('Finds root path when no args provided', () => {
     const rootPath = findRootPath()
 

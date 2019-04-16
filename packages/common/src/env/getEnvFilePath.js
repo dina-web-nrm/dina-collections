@@ -1,5 +1,5 @@
 const path = require('path')
-const findRootPath = require('../fs/findRootPath')
+const findRootPath = require('../findRootPath')
 
 module.exports = function getEnvFilePath({ envFileName, throwError }) {
   let rootPath
