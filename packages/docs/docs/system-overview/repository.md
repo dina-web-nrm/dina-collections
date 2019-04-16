@@ -7,7 +7,7 @@ sidebar_label: Repository structure
 > TODO: Add more info about the packages
 
 Here we describe the structure of the
-[DINA-Collections](https://github.com/DINA-Web/dina-collections) repository.
+[DINA Collections](https://github.com/DINA-Web/dina-collections) repository.
 
 The repo is a monorepo, because it makes it easy to manage dependencies between
 different packages and versions: At any given time the repo's packages have to
