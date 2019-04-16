@@ -21,7 +21,7 @@ describe('formatObject/coreToNestedSync', () => {
     expect(typeof coreToNestedSync).toBe('function')
   })
 
-  fit('returns item when item is falsy', () => {
+  it('returns item when item is falsy', () => {
     expect(
       coreToNestedSync({
         denormalize: true,
