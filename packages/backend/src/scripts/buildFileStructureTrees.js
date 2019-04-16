@@ -14,7 +14,7 @@ const trees = [
     rootRelativePath: './src',
   },
   {
-    levels: 4,
+    levels: 2,
     name: 'lib',
     rootRelativePath: './src/lib',
   },
