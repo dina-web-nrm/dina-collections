@@ -1,13 +1,5 @@
 import { ACCEPTED, SYNONYM, VERNACULAR } from './constants'
 
-export const mapTaxonNameToOption = ({ id, attributes }) => {
-  return {
-    key: id,
-    text: attributes.name,
-    value: id,
-  }
-}
-
 const createListItem = ({ taxonName, nameType, stateIndex, stateType }) => {
   if (!(taxonName && taxonName.id)) {
     return null
