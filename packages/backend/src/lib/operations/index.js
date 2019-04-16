@@ -1,5 +1,5 @@
 const factories = require('./factories')
-const createOperations = require('./utilities/createOperations')
+const createOperations = require('./createOperations')
 
 module.exports = {
   createOperations,

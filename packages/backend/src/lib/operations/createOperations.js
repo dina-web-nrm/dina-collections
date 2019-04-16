@@ -1,5 +1,5 @@
-const createLog = require('../../../../utilities/log')
-const operationFactories = require('../../factories')
+const createLog = require('../../utilities/log')
+const operationFactories = require('./factories')
 
 const defaultLog = createLog('lib/operations')
 
