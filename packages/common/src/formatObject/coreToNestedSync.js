@@ -5,9 +5,11 @@ const {
 } = require('./specifications')
 
 const denormalizeItem = require('./normalize/denormalizeItem')
+const resolveItemRelationships = require('./relationships/resolveItemRelationships')
 const resolveItemRelationshipsSync = require('./relationships/resolveItemRelationshipsSync')
 
 module.exports = function coreToNestedSync({
+  asyncCoreToNested,
   denormalize = true,
   getItemByTypeId,
   item: rawItem,
@@ -34,13 +36,21 @@ module.exports = function coreToNestedSync({
   const relationshipSpecification = getRelationshipSpecification(type)
 
   if (resolveRelationships && relationshipSpecification) {
-    item = resolveItemRelationshipsSync({
-      coreToNestedSync,
-      getItemByTypeId,
-      item,
-      relationships,
-      relationshipSpecification,
-    })
+    item = asyncCoreToNested
+      ? resolveItemRelationships({
+          coreToNested: asyncCoreToNested,
+          getItemByTypeId,
+          item,
+          relationships,
+          relationshipSpecification,
+        })
+      : resolveItemRelationshipsSync({
+          coreToNestedSync,
+          getItemByTypeId,
+          item,
+          relationships,
+          relationshipSpecification,
+        })
   }
 
   return item
