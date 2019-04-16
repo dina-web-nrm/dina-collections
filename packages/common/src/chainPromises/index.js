@@ -11,10 +11,9 @@ const getPromisifiedInitialValue = initialValue => {
 }
 
 module.exports = function chainPromises(functions, initialValue) {
-  // filter out undefined functions (e.g. some parts of a chain might be optional)
   return Promise.resolve(
     functions
-      .filter(func => !!func)
+      .filter(Boolean) // some parts of a chain might be optional
       .reduce(
         chainPromiseWithPromisifiedFunction,
         getPromisifiedInitialValue(initialValue)
