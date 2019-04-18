@@ -36,13 +36,13 @@
 │   ├── transformations
 │   └── tree.md
 ├── dataStores
+│   ├── createDataStores.js
 │   ├── elasticsearch
 │   ├── factories.js
 │   ├── inMemory
 │   ├── index.js
 │   ├── sequelize
-│   ├── tree.md
-│   └── utilities
+│   └── tree.md
 ├── errorLogger
 │   ├── createErrorLogger.js
 │   ├── index.js
@@ -63,6 +63,7 @@
 │   ├── index.js
 │   └── tree.md
 ├── models
+│   ├── createModels
 │   ├── elasticsearch
 │   ├── factories.js
 │   ├── inMemory
@@ -72,6 +73,7 @@
 │   ├── tree.md
 │   └── utilities
 ├── operations
+│   ├── createOperations.js
 │   ├── crud
 │   ├── factories.js
 │   ├── import
@@ -95,7 +97,7 @@
 │   ├── tree.md
 │   └── virtualOperations
 ├── serviceRouter
-│   ├── createRerviceRouter.js
+│   ├── createServiceRouter.js
 │   ├── index.js
 │   ├── middlewares
 │   ├── tree.md

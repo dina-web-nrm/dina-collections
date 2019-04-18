@@ -2,7 +2,6 @@
 ├── Dockerfile
 ├── LICENCE
 ├── README.md
-├── index.js
 ├── nodemon.json
 ├── package.json
 ├── src
@@ -15,7 +14,6 @@
 │   ├── tree.md
 │   └── utilities
 ├── tree.md
-├── yarn-error.log
 └── yarn.lock
 
 ```

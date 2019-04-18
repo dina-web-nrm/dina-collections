@@ -1,4 +1,9 @@
 ```bash
+├── createModels
+│   ├── createModels.js
+│   ├── createRelations.js
+│   ├── index.js
+│   └── synchronizeModels.js
 ├── elasticsearch
 │   ├── documentModel
 │   └── utilities
@@ -23,7 +28,6 @@
 │   └── testModels.test.js
 ├── tree.md
 └── utilities
-    ├── createModels
     ├── mergeRelationships.js
     ├── parseFilterValue.js
     └── wrappers

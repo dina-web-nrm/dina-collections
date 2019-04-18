@@ -1,4 +1,5 @@
 ```bash
+├── createOperations.js
 ├── crud
 │   ├── bulkCreate
 │   ├── count
@@ -31,7 +32,6 @@
 │   ├── applyHooks
 │   ├── applyInterceptors
 │   ├── createInterceptors
-│   ├── createOperations
 │   ├── createPreHooks
 │   ├── relationships
 │   ├── transformations

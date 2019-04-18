@@ -1,5 +1,5 @@
 ```bash
-├── createRerviceRouter.js
+├── createServiceRouter.js
 ├── index.js
 ├── middlewares
 │   ├── authorize.js

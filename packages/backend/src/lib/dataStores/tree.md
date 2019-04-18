@@ -1,4 +1,5 @@
 ```bash
+├── createDataStores.js
 ├── elasticsearch
 │   ├── db
 │   └── index.js
@@ -10,8 +11,6 @@
 ├── sequelize
 │   ├── db
 │   └── index.js
-├── tree.md
-└── utilities
-    └── createDataStores.js
+└── tree.md
 
 ```
