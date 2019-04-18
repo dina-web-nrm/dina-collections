@@ -7,10 +7,7 @@ module.exports = {
         determinationVerbatim: 'determinationVerbatim',
         determinedByAgent: { textI: 'determinedByAgentText' },
         remarks: 'remarks',
-        taxon: {
-          id: '2367',
-          type: 'taxon',
-        },
+        taxonNameI: 'Sorex minutus',
       },
     ],
     recordHistoryEvents: [
@@ -21,14 +18,17 @@ module.exports = {
         },
       },
     ],
-    taxonInformation: {},
+    taxonInformation: {
+      curatorialTaxon: {
+        id: '500',
+      },
+    },
     featureObservations: [
       {
         featureObservationAgentText: 'featureObservationAgentText',
         featureObservationText: '21',
         featureType: {
           id: '1',
-          type: 'featureType',
         },
         methodText: 'methodText',
       },
@@ -38,15 +38,13 @@ module.exports = {
         alternateIdentifiersText: 'alternateIdentifiersText',
         physicalObject: {
           id: '2234',
-          lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
-          type: 'physicalObject',
         },
         physicalObjectText: 'physicalObjectText',
       },
     ],
     identifiers: [
       {
-        identifierType: { id: 1 },
+        identifierType: { id: '1' },
         namespace: '',
         value: '123456',
         publishRecord: true,
@@ -64,23 +62,18 @@ module.exports = {
             places: [
               {
                 id: '1',
-                type: 'place',
               },
               {
                 id: '2',
-                type: 'place',
               },
               {
                 id: '3',
-                type: 'place',
               },
               {
                 id: '4',
-                type: 'place',
               },
               {
                 id: '5',
-                type: 'place',
               },
             ],
             georeferenceSourcesText: 'georeferenceSourcesText',
@@ -103,4 +96,5 @@ module.exports = {
       },
     ],
   },
+  resourceActivities: [],
 }
