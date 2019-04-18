@@ -14,6 +14,7 @@
     "build:docker:style": "CI_BUILD_STYLE=true ./packages/scripts/src/bash/ci-build.sh",
     "build:docker:ui": "CI_BUILD_UI=true ./packages/scripts/src/bash/ci-build.sh",
     "build:docs": "cd ./packages/docs && yarn build",
+    "build:markdown": "yarn build:trees && cd ./packages/docs && yarn interpolateFiles",
     "build:index-specimen:json": "yarn start:dbs && cd ./packages/migrations && yarn elasticsearch:development:rebuild-index:specimen-search",
     "build:semantic-ui": "cd ./packages/style && yarn build:docs",
     "build:trees": "yarn build:trees:ui && yarn build:trees:common && yarn build:trees:backend",
