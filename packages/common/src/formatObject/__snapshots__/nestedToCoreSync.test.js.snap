@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatObject/nestedToCoreSync deeper check of core item format relationships has expected items 1`] = `
+Object {
+  "causeOfDeathTypes": Object {
+    "data": Array [],
+  },
+  "establishmentMeansTypes": Object {
+    "data": Array [],
+  },
+  "featureTypes": Object {
+    "data": Array [
+      Object {
+        "attributes": Object {
+          "type": "featureType",
+        },
+        "id": "1",
+        "type": "featureType",
+      },
+    ],
+  },
+  "identifierTypes": Object {
+    "data": Array [
+      Object {
+        "id": 1,
+        "type": "identifierType",
+      },
+    ],
+  },
+  "normalizedAgents": Object {
+    "data": Array [
+      Object {
+        "id": "1",
+        "relationships": Object {
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "specimens": Object {
+            "data": Array [],
+          },
+        },
+        "type": "normalizedAgent",
+      },
+    ],
+  },
+  "physicalObjects": Object {
+    "data": Array [
+      Object {
+        "attributes": Object {
+          "lid": "24bf4bb4-f865-4182-a010-34aa898d845d",
+          "type": "physicalObject",
+        },
+        "id": "2234",
+        "relationships": Object {
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "specimens": Object {
+            "data": Array [],
+          },
+        },
+        "type": "physicalObject",
+      },
+    ],
+  },
+  "places": Object {
+    "data": Array [
+      Object {
+        "attributes": Object {
+          "type": "place",
+        },
+        "id": "1",
+        "relationships": Object {
+          "children": Object {
+            "data": Array [],
+          },
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "specimens": Object {
+            "data": Array [],
+          },
+        },
+        "type": "place",
+      },
+      Object {
+        "attributes": Object {
+          "type": "place",
+        },
+        "id": "2",
+        "relationships": Object {
+          "children": Object {
+            "data": Array [],
+          },
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "specimens": Object {
+            "data": Array [],
+          },
+        },
+        "type": "place",
+      },
+      Object {
+        "attributes": Object {
+          "type": "place",
+        },
+        "id": "3",
+        "relationships": Object {
+          "children": Object {
+            "data": Array [],
+          },
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "specimens": Object {
+            "data": Array [],
+          },
+        },
+        "type": "place",
+      },
+      Object {
+        "attributes": Object {
+          "type": "place",
+        },
+        "id": "4",
+        "relationships": Object {
+          "children": Object {
+            "data": Array [],
+          },
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "specimens": Object {
+            "data": Array [],
+          },
+        },
+        "type": "place",
+      },
+      Object {
+        "attributes": Object {
+          "type": "place",
+        },
+        "id": "5",
+        "relationships": Object {
+          "children": Object {
+            "data": Array [],
+          },
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "specimens": Object {
+            "data": Array [],
+          },
+        },
+        "type": "place",
+      },
+    ],
+  },
+  "preparationTypes": Object {
+    "data": Array [],
+  },
+  "resourceActivities": Object {
+    "data": Array [],
+  },
+  "taxa": Object {
+    "data": Array [],
+  },
+  "taxonNames": Object {
+    "data": Array [],
+  },
+}
+`;

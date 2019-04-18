@@ -1,6 +1,6 @@
 const coreToNestedSync = require('./coreToNestedSync')
-const apiFormatPhysicalObject = require('./utilities/testData/apiFormatPhysicalObject')
-const apiFormatSpecimen = require('./utilities/testData/apiFormatSpecimen')
+const corePhysicalObject = require('./utilities/testData/corePhysicalObject')
+const coreSpecimen = require('./utilities/testData/coreSpecimen')
 const nestedPhysicalObjectWithRelationships = require('./utilities/testData/nestedPhysicalObjectWithRelationships')
 
 /* eslint-disable prefer-destructuring, sort-keys */
@@ -46,7 +46,7 @@ describe('formatObject/coreToNestedSync', () => {
       denormalize: true,
       extractRelationships: true,
       getItemByTypeId,
-      item: apiFormatSpecimen,
+      item: coreSpecimen,
       type: 'specimen',
     })
     const nestedItemKeys = Object.keys(nestedItem).sort()
@@ -58,7 +58,7 @@ describe('formatObject/coreToNestedSync', () => {
       denormalize: false,
       extractRelationships: true,
       getItemByTypeId,
-      item: apiFormatPhysicalObject,
+      item: corePhysicalObject,
       type: 'physicalObject',
     })
 
@@ -77,7 +77,7 @@ describe('formatObject/coreToNestedSync', () => {
         denormalize: true,
         extractRelationships: true,
         getItemByTypeId,
-        item: apiFormatSpecimen,
+        item: coreSpecimen,
         type: 'specimen',
       })
 
@@ -179,7 +179,7 @@ describe('formatObject/coreToNestedSync', () => {
         denormalize: true,
         extractRelationships: true,
         getItemByTypeId,
-        item: apiFormatSpecimen,
+        item: coreSpecimen,
         type: 'specimen',
       })
 
