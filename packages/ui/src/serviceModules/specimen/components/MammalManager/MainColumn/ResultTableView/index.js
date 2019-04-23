@@ -59,12 +59,16 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onSearchSpecimens: PropTypes.func.isRequired,
+  onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onToggleFilters: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
   tableColumnsToSort: PropTypes.arrayOf(PropTypes.object.isRequired),
   updateUserPreference: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  onSelectNextRecord: false,
+  onSelectPreviousRecord: false,
   tableColumnsToShow: tableColumnNames,
   tableColumnsToSort: [],
 }
@@ -76,8 +80,20 @@ class ResultTableView extends PureComponent {
     this.handleSaveTableColumnsToSort = this.handleSaveTableColumnsToSort.bind(
       this
     )
+    this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
+    this.handleSelectPreviousRecord = this.handleSelectPreviousRecord.bind(this)
 
     this.shortcuts = [
+      {
+        command: 'down',
+        description: 'Move focus to next record',
+        onPress: this.handleSelectNextRecord,
+      },
+      {
+        command: 'up',
+        description: 'Move focus to previous record',
+        onPress: this.handleSelectPreviousRecord,
+      },
       {
         command: 'space',
         description: 'Open focused record',
@@ -89,6 +105,18 @@ class ResultTableView extends PureComponent {
         onPress: props.onToggleFilters,
       },
     ]
+  }
+
+  handleSelectNextRecord() {
+    if (this.props.onSelectNextRecord) {
+      this.props.onSelectNextRecord()
+    }
+  }
+
+  handleSelectPreviousRecord() {
+    if (this.props.onSelectPreviousRecord) {
+      this.props.onSelectPreviousRecord()
+    }
   }
 
   handleSaveTableColumnsToSort(columnsToSort) {
