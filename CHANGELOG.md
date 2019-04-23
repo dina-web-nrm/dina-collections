@@ -2,8 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.18.1-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1-rc1)
+#### [v0.18.1-rc2](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1-rc2)
 
+- Remove es5 and rename dina-style to style [`#507`](https://github.com/DINA-Web/dina-collections/pull/507)
+- Clean up UI config, env vars, number input and more [`#505`](https://github.com/DINA-Web/dina-collections/pull/505)
+- Add e2e test for agent [`#498`](https://github.com/DINA-Web/dina-collections/pull/498)
+- Document CI and deployment pipeline and remove docs landing page [`#503`](https://github.com/DINA-Web/dina-collections/pull/503)
 - Do not send notifications on Travis success [`#501`](https://github.com/DINA-Web/dina-collections/pull/501)
 - Add Slack notification for failed CI builds [`#500`](https://github.com/DINA-Web/dina-collections/pull/500)
 - Fix docker image name typo [`#499`](https://github.com/DINA-Web/dina-collections/pull/499)
