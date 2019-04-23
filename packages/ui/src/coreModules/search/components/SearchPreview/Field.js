@@ -34,11 +34,9 @@ const defaultProps = {
 
 class SearchPreview extends Component {
   constructor(props) {
-    const startValue = props.input && props.input.value
     super(props)
     this.state = {
       previews: [],
-      searchString: startValue || '',
     }
 
     this.handleOnChange = this.handleOnChange.bind(this)
@@ -73,23 +71,31 @@ class SearchPreview extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    let searchAndReset = false
+
     if (
       this.props.otherFieldFilters !== nextProps.otherFieldFilters &&
       nextProps.input.value
     ) {
-      this.debounceSearch(nextProps.input.value)
+      searchAndReset = true
     }
     if (
       this.props.input.value !== nextProps.input.value &&
       nextProps.input.value
     ) {
-      this.debounceSearch(nextProps.input.value)
+      searchAndReset = true
     }
 
     if (
       this.props.sectionValues.srcField !== nextProps.sectionValues.srcField &&
       nextProps.input.value
     ) {
+      searchAndReset = true
+    }
+    if (searchAndReset) {
+      this.setState({
+        previews: [],
+      })
       this.debounceSearch(nextProps.input.value)
     }
   }
@@ -99,9 +105,7 @@ class SearchPreview extends Component {
   }
 
   handleOnChange(event) {
-    this.setState({
-      searchString: event.target.value,
-    })
+    this.props.input.onChange(event.target.value)
     this.debouncedUpdateFormValue(event.target.value)
   }
 
@@ -134,16 +138,14 @@ class SearchPreview extends Component {
   }
 
   render() {
-    const { previews, searchString } = this.state
+    const { previews } = this.state
     const { input, translationScope, module, ...rest } = this.props
     const { value } = input
 
     const displayPreview = previews.length && value
-
     const patchedInput = {
       ...input,
       onChange: this.handleOnChange,
-      value: searchString,
     }
 
     return (
