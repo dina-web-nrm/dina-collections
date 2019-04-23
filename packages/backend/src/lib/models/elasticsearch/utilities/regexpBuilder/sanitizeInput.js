@@ -40,11 +40,16 @@ const escapeParantheses = str => {
   return str.replace(/\(+/g, '\\(').replace(/\)+/g, '\\)')
 }
 
+const escapeQuestionmark = str => {
+  return str.replace(/\?+/g, '\\?')
+}
+
 module.exports = function sanitizeInput(input) {
   let str = removeDoubleBlanks(input)
   str = removeFirstEqualIfIsPhrase(str)
   str = escapeDanglingQuotes(str)
   str = escapeDots(str)
   str = escapeParantheses(str)
+  str = escapeQuestionmark(str)
   return str
 }
