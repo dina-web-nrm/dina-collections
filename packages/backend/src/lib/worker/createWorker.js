@@ -20,6 +20,10 @@ module.exports = function createWorker({
   pollDelay = 1000,
   serviceInteractor,
 }) {
+  if (!config.jobs.workerActive) {
+    log.info('not creating worker worker not active')
+    return {}
+  }
   log.info('create worker')
   let excludeGroups = []
   let includeGroups = []
@@ -96,12 +100,8 @@ module.exports = function createWorker({
     log.info('Worker stopping')
     active = false
   }
-  if (config.jobs.workerActive) {
-    log.scope().info('Start worker')
-    start()
-  } else {
-    log.scope().info('Not starting worker')
-  }
+  log.scope().info('Start worker')
+  start()
 
   return {
     start,
