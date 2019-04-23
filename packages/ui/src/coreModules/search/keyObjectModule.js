@@ -13,6 +13,7 @@ const {
     ':resource.filterState',
     ':resource.lastUpdatedAt',
     ':resource.searchState',
+    ':resource.searchInProgress',
   ],
   name,
 })

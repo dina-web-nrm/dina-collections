@@ -14,6 +14,7 @@ export default function search({
   storeSearchResult = false,
   useScroll,
 } = {}) {
+  const setSearchInProgress = actionCreators.set[':resource.searchInProgress']
   const updateSearchResult = actionCreators.set[':resource.searchState']
   const queryAc = crudActionCreators[resource].query
 
@@ -28,6 +29,7 @@ export default function search({
   }
 
   return dispatch => {
+    dispatch(setSearchInProgress(true, { resource }))
     return dispatch(
       queryAc({
         aggregations,
@@ -41,19 +43,25 @@ export default function search({
         throwError: true,
         useScroll,
       })
-    ).then(items => {
-      if (storeSearchResult) {
-        dispatch(
-          updateSearchResult(
-            {
-              items,
-            },
-            { resource }
+    )
+      .then(items => {
+        dispatch(setSearchInProgress(false, { resource }))
+        if (storeSearchResult) {
+          dispatch(
+            updateSearchResult(
+              {
+                items,
+              },
+              { resource }
+            )
           )
-        )
-      }
+        }
 
-      return items
-    })
+        return items
+      })
+      .catch(err => {
+        dispatch(setSearchInProgress(false, { resource }))
+        throw err
+      })
   }
 }
