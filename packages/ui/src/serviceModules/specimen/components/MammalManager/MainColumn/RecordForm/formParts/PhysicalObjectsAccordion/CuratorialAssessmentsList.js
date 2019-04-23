@@ -25,8 +25,7 @@ const defaultProps = {
 }
 
 const helpNotificationProps = {
-  descriptionHeaderKey:
-    'modules.specimen.headers.curatorialAssessments',
+  descriptionHeaderKey: 'modules.specimen.headers.curatorialAssessments',
   descriptionKey:
     'modules.specimen.helpTexts.physicalObject.curatorialAssessments',
 }

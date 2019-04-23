@@ -12,9 +12,7 @@ import { globalSelectors as crudKeyObjectSelectors } from 'coreModules/crud/keyO
 import FeatureObservationsTable from './FeatureObservationsTable'
 import FeatureObservationsTitle from './FeatureObservationsTitle'
 
-const log = createLog(
-  'modules:specimen:MammalForm:FeatureObservations'
-)
+const log = createLog('modules:specimen:MammalForm:FeatureObservations')
 
 const GROUPS_AND_HEADLINES = [
   {

@@ -17,9 +17,7 @@ import { CustomData, Field, Input, Remarks } from 'coreModules/form/components'
 import DeterminationContent from './DeterminationContent'
 import DeterminationTitle from './DeterminationTitle'
 
-const log = createLog(
-  'modules:specimen:MammalForm:SegmentDeterminations'
-)
+const log = createLog('modules:specimen:MammalForm:SegmentDeterminations')
 
 const ModuleTranslate = createModuleTranslate('specimen')
 

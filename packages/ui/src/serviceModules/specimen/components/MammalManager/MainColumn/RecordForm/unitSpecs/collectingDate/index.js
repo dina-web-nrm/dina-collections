@@ -8,8 +8,7 @@ const parts = [
     componentProps: {
       as: 'h3',
       helpNotificationProps: {
-        descriptionHeaderKey:
-          'modules.specimen.headers.collectingDate',
+        descriptionHeaderKey: 'modules.specimen.headers.collectingDate',
         descriptionKey:
           'modules.specimen.helpTexts.collectingInformation.collectingDate',
       },

@@ -27,9 +27,7 @@ import PhysicalObjectTitle from './PhysicalObjectTitle'
 
 const { AddButton } = formParts
 
-const log = createLog(
-  'modules:specimen:formParts:PhysicalObjectsAccordion'
-)
+const log = createLog('modules:specimen:formParts:PhysicalObjectsAccordion')
 
 const categoryUnspecifiedTypeIdMap = {
   'other-preparation': UNSPECIFIED_OTHER_PREPARATION_PREPARATION_TYPE_ID,
