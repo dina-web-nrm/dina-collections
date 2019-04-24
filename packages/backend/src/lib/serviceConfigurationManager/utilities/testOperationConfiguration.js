@@ -1,15 +1,4 @@
-const crudOperationSchemas = require('../../operations/crud/schemas')
-const importOperations = require('../../operations/import/schemas')
-const jobOperationSchemas = require('../../operations/job/schemas')
-const viewOperationSchemas = require('../../operations/view/schemas')
-
-const operationSchemas = {
-  ...crudOperationSchemas,
-  ...importOperations,
-  ...jobOperationSchemas,
-  ...viewOperationSchemas,
-}
-
+const operationConfigurationSchemas = require('../../operations/schemas/operationConfigurations')
 const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
 const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
 
@@ -28,12 +17,12 @@ module.exports = function testOperationSpecification(operationSpecification) {
   }
 
   it('Passes schema validation', () => {
-    if (!operationSchemas[type]) {
+    if (!operationConfigurationSchemas[type]) {
       throw new Error(`Unknow operation type ${type}`)
     }
 
     return expectNoValidationError(
-      validate(operationSchemas[type], operationSpecification)
+      validate(operationConfigurationSchemas[type], operationSpecification)
     )
   })
 }
