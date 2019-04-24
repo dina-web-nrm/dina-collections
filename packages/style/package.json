@@ -14,8 +14,8 @@
     "url": "https://github.com/Semantic-Org/Semantic-UI/issues"
   },
   "scripts": {
-    "build:docs": "yarn global add gulp@3.9.1 && yarn global add docpad@6.79.4 && docpad generate --env static && gulp build-docs"
     "build": "gulp build && rm -rf ../common/dist/themes/basic && rm -rf ../common/dist/themes/github && rm -rf ../common/dist/themes/material",
+    "build:docs": "yarn global add gulp@3.9.1 && yarn build && yarn global add docpad@6.79.4 && docpad install eco && docpad generate --env static && gulp build-docs"
   },
   "peerDependencies": {
     "better-console": "*",
