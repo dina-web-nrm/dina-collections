@@ -30,7 +30,7 @@ make setup
 This will setup default env variables. Env variables are located in ./env/.\*
 based on sample env files. This should be fine for you to start with. If you
 want to learn more about the env-variables and adjust them read about them in
-[env documentation](../dev-ops/configuration/env.md)
+[env documentation](../development/configuration/env.md)
 
 ### Edit your /etc/hosts file
 
