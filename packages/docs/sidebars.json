@@ -11,10 +11,7 @@
       "system-overview/repository",
       "system-overview/services"
     ],
-    "Development": ["development/contributing", "development/testing/e2e"],
-    "DevOps": ["dev-ops/configuration/env", "dev-ops/pipeline"],
     "Packages": [
-      "packages/index",
       {
         "type": "subcategory",
         "label": "Backend",
@@ -25,7 +22,15 @@
           "packages/backend/lib",
           "packages/backend/terminology"
         ]
-      }
+      },
+      "packages/common/index",
+      "packages/ui/index"
+    ],
+    "Development": [
+      "development/contributing",
+      "development/configuration/env",
+      "development/testing",
+      "development/pipeline"
     ]
   }
 }

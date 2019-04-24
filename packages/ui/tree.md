@@ -3,8 +3,13 @@
 ├── LICENCE
 ├── README.md
 ├── build
+│   ├── asset-manifest.json
 │   ├── favicon.ico
-│   └── manifest.json
+│   ├── index.html
+│   ├── manifest.json
+│   ├── precache-manifest.887c683d3108d9552a5c2d9f7033837b.js
+│   ├── service-worker.js
+│   └── static
 ├── coverage
 │   ├── clover.xml
 │   ├── coverage-final.json
@@ -13,6 +18,7 @@
 ├── cypress
 │   ├── e2e
 │   ├── fixtures
+│   ├── integration
 │   ├── plugins
 │   ├── screenshots
 │   ├── support
@@ -28,7 +34,6 @@
 │   ├── apps
 │   ├── config
 │   ├── coreModules
-│   ├── domainModules
 │   ├── index.js
 │   ├── mock
 │   ├── registerServiceWorker.js

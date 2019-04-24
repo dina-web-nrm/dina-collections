@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatObject/coreToNestedSync returns nested specimen 1`] = `
+Object {
+  "id": "1234",
+  "individual": Object {
+    "collectingInformation": Array [
+      Object {
+        "collectedByAgent": Object {
+          "textI": "collectorsText",
+        },
+        "event": Object {
+          "endDate": "endDate",
+          "expeditionText": "expeditionText",
+          "locationInformation": Object {
+            "coordinatesVerbatim": "coordinatesVerbatim",
+            "georeferenceSourcesText": "georeferenceSourcesText",
+            "localityVerbatim": "localityVerbatim",
+            "places": Array [
+              Object {
+                "id": "1",
+              },
+              Object {
+                "id": "2",
+              },
+              Object {
+                "id": "3",
+              },
+              Object {
+                "id": "4",
+              },
+              Object {
+                "id": "5",
+              },
+            ],
+            "position": Object {
+              "geodeticDatum": "geodeticDatum text",
+              "latitude": "latitude-string",
+              "longitude": "longitude-string",
+              "uncertaintyInMeters": 10,
+            },
+            "remarks": "remarks",
+            "verticalPosition": Object {
+              "maximumDepthInMeters": 100,
+              "maximumElevationInMeters": 100,
+              "minimumDepthInMeters": 20,
+              "minimumElevationInMeters": 20,
+            },
+          },
+        },
+      },
+    ],
+    "collectionItems": Array [
+      Object {
+        "alternateIdentifiersText": "alternateIdentifiersText",
+        "physicalObject": Object {
+          "id": "2234",
+        },
+        "physicalObjectText": "physicalObjectText",
+      },
+    ],
+    "determinations": Array [
+      Object {
+        "determinationVerbatim": "determinationVerbatim",
+        "determinedByAgent": Object {
+          "textI": "determinedByAgentText",
+        },
+        "remarks": "remarks",
+        "taxonNameI": "Sorex minutus",
+      },
+    ],
+    "featureObservations": Array [
+      Object {
+        "featureObservationAgentText": "featureObservationAgentText",
+        "featureObservationText": "21",
+        "featureType": Object {
+          "id": "1",
+        },
+        "methodText": "methodText",
+      },
+    ],
+    "identifiers": Array [
+      Object {
+        "identifierType": Object {
+          "id": "1",
+        },
+        "namespace": "",
+        "publishRecord": true,
+        "remarks": "",
+        "value": "123456",
+      },
+    ],
+    "recordHistoryEvents": Array [
+      Object {
+        "agent": Object {
+          "normalized": Object {
+            "id": "1",
+          },
+        },
+        "date": Object {
+          "dateText": "2018",
+        },
+      },
+    ],
+    "taxonInformation": Object {
+      "curatorialTaxon": Object {
+        "id": "500",
+      },
+    },
+  },
+  "resourceActivities": Array [],
+}
+`;

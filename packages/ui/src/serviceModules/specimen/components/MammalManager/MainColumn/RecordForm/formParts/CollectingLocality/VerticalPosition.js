@@ -29,7 +29,6 @@ class VerticalPosition extends PureComponent {
           <div style={inputStyle}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={Input}
               displayLabel={false}
               displaySubLabels={false}
@@ -53,7 +52,6 @@ class VerticalPosition extends PureComponent {
           <div style={inputStyle}>
             <Field
               autoComplete="off"
-              className="transparent"
               component={Input}
               displayLabel={false}
               displaySubLabels={false}

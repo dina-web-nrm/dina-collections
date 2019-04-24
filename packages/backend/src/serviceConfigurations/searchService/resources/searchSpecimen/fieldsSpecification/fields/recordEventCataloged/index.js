@@ -41,7 +41,7 @@ const transformation = ({ migrator, src, target }) => {
     resourceActivities &&
     resourceActivities.length &&
     // use resourceActivity only if no history events, i.e. record created in
-    // DINA-Collections and has no catalog card event
+    // DINA Collections and has no catalog card event
     !hasRecordHistoryEvents
   ) {
     const { srcCreatedAt } = resourceActivities[0]

@@ -1,6 +1,6 @@
 const resolveItemRelationshipSync = require('./resolveItemRelationshipSync')
 
-module.exports = function resolveItemRelationshipSyncs({
+module.exports = function resolveItemRelationshipsSync({
   coreToNestedSync,
   getItemByTypeId,
   item,

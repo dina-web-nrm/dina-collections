@@ -25,16 +25,10 @@ then
   git fetch origin 'refs/tags/*:refs/tags/*'
   echo "fetch done. Checking out tag $TAG"
   git checkout $TAG
-  echo "pull master done"
+  echo "pull tag done"
 else
-  echo "tree is dirty, stashing changes"
-  git stash
-  echo "stash done. fetching tags"
-  git fetch origin 'refs/tags/*:refs/tags/*'
-  echo "fetch done. checking out tag $TAG"
-  git checkout $TAG
-  git stash pop
-  echo "stash pop done"
+  echo "tree is dirty, exit"
+  exit 1
 fi
 
 

@@ -1,0 +1,328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatObject/nestedToCoreSync returns core physical object 1`] = `
+Object {
+  "attributes": Object {
+    "lid": "dda3594e-3bf6-4cb7-bd63-cd4d649ff6b2",
+  },
+  "id": "1",
+  "relationships": Object {
+    "resourceActivities": Object {
+      "data": Array [],
+    },
+    "specimens": Object {
+      "data": Array [],
+    },
+    "storageLocation": Object {
+      "data": Object {
+        "id": "2",
+        "relationships": Object {
+          "children": Object {
+            "data": Array [],
+          },
+          "physicalObjects": Object {
+            "data": Array [],
+          },
+          "preparationTypes": Object {
+            "data": Array [],
+          },
+          "resourceActivities": Object {
+            "data": Array [],
+          },
+          "taxa": Object {
+            "data": Array [],
+          },
+        },
+        "type": "storageLocation",
+      },
+    },
+  },
+  "type": "physicalObject",
+}
+`;
+
+exports[`formatObject/nestedToCoreSync returns core specimen 1`] = `
+Object {
+  "attributes": Object {
+    "individual": Object {
+      "collectingInformation": Array [
+        Object {
+          "collectedByAgent": Object {
+            "textI": "collectorsText",
+          },
+          "event": Object {
+            "endDate": "endDate",
+            "expeditionText": "expeditionText",
+            "locationInformation": Object {
+              "coordinatesVerbatim": "coordinatesVerbatim",
+              "georeferenceSourcesText": "georeferenceSourcesText",
+              "localityVerbatim": "localityVerbatim",
+              "places": Array [
+                Object {
+                  "id": "1",
+                },
+                Object {
+                  "id": "2",
+                },
+                Object {
+                  "id": "3",
+                },
+                Object {
+                  "id": "4",
+                },
+                Object {
+                  "id": "5",
+                },
+              ],
+              "position": Object {
+                "geodeticDatum": "geodeticDatum text",
+                "latitude": "latitude-string",
+                "longitude": "longitude-string",
+                "uncertaintyInMeters": 10,
+              },
+              "remarks": "remarks",
+              "verticalPosition": Object {
+                "maximumDepthInMeters": 100,
+                "maximumElevationInMeters": 100,
+                "minimumDepthInMeters": 20,
+                "minimumElevationInMeters": 20,
+              },
+            },
+          },
+        },
+      ],
+      "collectionItems": Array [
+        Object {
+          "alternateIdentifiersText": "alternateIdentifiersText",
+          "physicalObject": Object {
+            "id": "2234",
+          },
+          "physicalObjectText": "physicalObjectText",
+        },
+      ],
+      "determinations": Array [
+        Object {
+          "determinationVerbatim": "determinationVerbatim",
+          "determinedByAgent": Object {
+            "textI": "determinedByAgentText",
+          },
+          "remarks": "remarks",
+          "taxonNameI": "Sorex minutus",
+        },
+      ],
+      "featureObservations": Array [
+        Object {
+          "featureObservationAgentText": "featureObservationAgentText",
+          "featureObservationText": "21",
+          "featureType": Object {
+            "id": "1",
+          },
+          "methodText": "methodText",
+        },
+      ],
+      "identifiers": Array [
+        Object {
+          "identifierType": Object {
+            "id": "1",
+          },
+          "namespace": "",
+          "publishRecord": true,
+          "remarks": "",
+          "value": "123456",
+        },
+      ],
+      "recordHistoryEvents": Array [
+        Object {
+          "agent": Object {
+            "normalized": Object {
+              "id": "1",
+            },
+          },
+          "date": Object {
+            "dateText": "2018",
+          },
+        },
+      ],
+      "taxonInformation": Object {
+        "curatorialTaxon": Object {
+          "id": "500",
+        },
+      },
+    },
+  },
+  "id": "1234",
+  "relationships": Object {
+    "causeOfDeathTypes": Object {
+      "data": Array [],
+    },
+    "establishmentMeansTypes": Object {
+      "data": Array [],
+    },
+    "featureTypes": Object {
+      "data": Array [
+        Object {
+          "id": "1",
+          "type": "featureType",
+        },
+      ],
+    },
+    "identifierTypes": Object {
+      "data": Array [
+        Object {
+          "id": "1",
+          "type": "identifierType",
+        },
+      ],
+    },
+    "normalizedAgents": Object {
+      "data": Array [
+        Object {
+          "id": "1",
+          "relationships": Object {
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+          },
+          "type": "normalizedAgent",
+        },
+      ],
+    },
+    "physicalObjects": Object {
+      "data": Array [
+        Object {
+          "id": "2234",
+          "relationships": Object {
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+          },
+          "type": "physicalObject",
+        },
+      ],
+    },
+    "places": Object {
+      "data": Array [
+        Object {
+          "id": "1",
+          "relationships": Object {
+            "children": Object {
+              "data": Array [],
+            },
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+          },
+          "type": "place",
+        },
+        Object {
+          "id": "2",
+          "relationships": Object {
+            "children": Object {
+              "data": Array [],
+            },
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+          },
+          "type": "place",
+        },
+        Object {
+          "id": "3",
+          "relationships": Object {
+            "children": Object {
+              "data": Array [],
+            },
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+          },
+          "type": "place",
+        },
+        Object {
+          "id": "4",
+          "relationships": Object {
+            "children": Object {
+              "data": Array [],
+            },
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+          },
+          "type": "place",
+        },
+        Object {
+          "id": "5",
+          "relationships": Object {
+            "children": Object {
+              "data": Array [],
+            },
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+          },
+          "type": "place",
+        },
+      ],
+    },
+    "preparationTypes": Object {
+      "data": Array [],
+    },
+    "resourceActivities": Object {
+      "data": Array [],
+    },
+    "taxa": Object {
+      "data": Array [
+        Object {
+          "id": "500",
+          "relationships": Object {
+            "children": Object {
+              "data": Array [],
+            },
+            "resourceActivities": Object {
+              "data": Array [],
+            },
+            "specimens": Object {
+              "data": Array [],
+            },
+            "storageLocations": Object {
+              "data": Array [],
+            },
+            "synonyms": Object {
+              "data": Array [],
+            },
+            "vernacularNames": Object {
+              "data": Array [],
+            },
+          },
+          "type": "taxon",
+        },
+      ],
+    },
+    "taxonNames": Object {
+      "data": Array [],
+    },
+  },
+  "type": "specimen",
+}
+`;

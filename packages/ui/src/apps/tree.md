@@ -1,5 +1,9 @@
 ```bash
 ├── collectionsUi
+│   ├── components
+│   │   ├── Footer
+│   │   │   └── index.js
+│   │   └── index.js
 │   ├── index.js
 │   ├── initialModules.js
 │   ├── main.js

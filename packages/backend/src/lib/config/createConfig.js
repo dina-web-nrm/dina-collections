@@ -1,5 +1,5 @@
 const schemaInterface = require('common/src/schemaInterface')
-const findRootPath = require('common/src/fs/findRootPath')
+const findRootPath = require('common/src/findRootPath')
 const { readKey, readBoolKey } = require('../../lib/config/env')
 const createPostgresDbConfig = require('./createPostgresDbConfig')
 

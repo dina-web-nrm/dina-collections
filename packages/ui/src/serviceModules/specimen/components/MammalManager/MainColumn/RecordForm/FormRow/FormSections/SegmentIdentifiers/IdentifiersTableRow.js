@@ -56,7 +56,6 @@ class IdentifiersTableRow extends PureComponent {
         <Table.Cell width={3}>
           <Field
             autoComplete="off"
-            className="transparent"
             component={DropdownSearch}
             displayLabel={false}
             module="specimen"
@@ -68,7 +67,6 @@ class IdentifiersTableRow extends PureComponent {
         <Table.Cell width={5}>
           <Field
             autoComplete="off"
-            className="transparent"
             component={Input}
             displayLabel={false}
             module="specimen"
@@ -79,7 +77,6 @@ class IdentifiersTableRow extends PureComponent {
         <Table.Cell width={7}>
           <Field
             autoComplete="off"
-            className="transparent"
             component={Input}
             displayLabel={false}
             module="specimen"
