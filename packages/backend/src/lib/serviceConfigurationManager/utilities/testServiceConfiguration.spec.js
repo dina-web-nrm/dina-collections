@@ -5,6 +5,7 @@ unitDescribe('lib/services/utilities/testServiceConfiguration', () => {
   const sampleSpecification = {
     info: {},
     name: 'testService',
+    resources: {},
   }
   testServiceSpecification(sampleSpecification)
 })
