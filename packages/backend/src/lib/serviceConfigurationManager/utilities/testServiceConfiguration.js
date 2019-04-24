@@ -9,9 +9,7 @@ const validate = createSystemBackendValidator({
 })
 
 module.exports = function testServiceSpecification(serviceSpecification) {
-  describe(serviceSpecification.type, () => {
-    it('Passes schema validation', () => {
-      expectNoValidationError(validate(serviceSpecification))
-    })
+  it('Passes schema validation', () => {
+    expectNoValidationError(validate(serviceSpecification))
   })
 }

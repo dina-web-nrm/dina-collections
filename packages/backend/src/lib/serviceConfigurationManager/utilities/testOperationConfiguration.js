@@ -26,15 +26,14 @@ module.exports = function testOperationSpecification(operationSpecification) {
   if (operationSpecificationFactory) {
     return
   }
-  describe(operationSpecification.type, () => {
-    it('Passes schema validation', () => {
-      if (!operationSchemas[type]) {
-        throw new Error(`Unknow operation type ${type}`)
-      }
 
-      return expectNoValidationError(
-        validate(operationSchemas[type], operationSpecification)
-      )
-    })
+  it('Passes schema validation', () => {
+    if (!operationSchemas[type]) {
+      throw new Error(`Unknow operation type ${type}`)
+    }
+
+    return expectNoValidationError(
+      validate(operationSchemas[type], operationSpecification)
+    )
   })
 }

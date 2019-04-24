@@ -9,9 +9,7 @@ const validate = createSystemBackendValidator({
 })
 
 module.exports = function testResourceSpecification(resourceSpecification) {
-  describe(resourceSpecification.type, () => {
-    it('Passes schema validation', () => {
-      expectNoValidationError(validate(resourceSpecification))
-    })
+  it('Passes schema validation', () => {
+    expectNoValidationError(validate(resourceSpecification))
   })
 }
