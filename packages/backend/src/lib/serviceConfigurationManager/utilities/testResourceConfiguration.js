@@ -1,15 +1,15 @@
 const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
 const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
-const resourceSpecificationSchema = require('../schemas/resourceSpecification')
+const resourceConfigurationSchema = require('../schemas/resourceConfiguration')
 
 const validate = createSystemBackendValidator({
-  schema: resourceSpecificationSchema,
+  schema: resourceConfigurationSchema,
   throwError: false,
   type: 'config',
 })
 
-module.exports = function testResourceSpecification(resourceSpecification) {
+module.exports = function testResourceSpecification(resourceConfiguration) {
   it('Passes schema validation', () => {
-    expectNoValidationError(validate(resourceSpecification))
+    expectNoValidationError(validate(resourceConfiguration))
   })
 }

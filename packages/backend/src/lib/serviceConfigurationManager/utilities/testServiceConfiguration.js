@@ -1,15 +1,15 @@
 const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
 const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
-const serviceSpecificationSchema = require('../schemas/serviceSpecification')
+const serviceConfigurationSchema = require('../schemas/serviceConfiguration')
 
 const validate = createSystemBackendValidator({
-  schema: serviceSpecificationSchema,
+  schema: serviceConfigurationSchema,
   throwError: false,
   type: 'config',
 })
 
-module.exports = function testServiceSpecification(serviceSpecification) {
+module.exports = function testServiceSpecification(serviceConfiguration) {
   it('Passes schema validation', () => {
-    expectNoValidationError(validate(serviceSpecification))
+    expectNoValidationError(validate(serviceConfiguration))
   })
 }
