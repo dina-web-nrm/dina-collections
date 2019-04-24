@@ -7,10 +7,10 @@ module.exports = function getModelSpecifications({ serviceSpecifications }) {
     })
 
     .forEach(serviceName => {
-      const { resources, resourceOrder } = services[serviceName]
+      const { resources } = services[serviceName]
 
       if (resources) {
-        const keys = resourceOrder || Object.keys(resources)
+        const keys = Object.keys(resources)
         keys.forEach(resourceKey => {
           const resource = resources[resourceKey]
           if (resource && resource.model) {

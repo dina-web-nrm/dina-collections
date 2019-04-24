@@ -6,6 +6,7 @@ module.exports = {
       type: 'object',
     },
     info: {
+      description: 'Object containing service information',
       properties: {
         description: {
           type: 'string',
@@ -15,10 +16,8 @@ module.exports = {
       type: 'object',
     },
     name: {
+      description: 'Name of the service',
       type: 'string',
-    },
-    resourceOrder: {
-      type: 'array',
     },
     resources: {
       description:
