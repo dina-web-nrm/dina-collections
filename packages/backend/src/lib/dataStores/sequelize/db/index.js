@@ -1,9 +1,10 @@
 const createLog = require('../../../../utilities/log')
 const Sequelize = require('sequelize')
 
-const log = createLog('lib/sequelize')
+const defaultLog = createLog('lib/sequelize')
 
-module.exports = function connectDb({ config }) {
+module.exports = function connectDb({ config, log = defaultLog }) {
+  log.info('connecting to postgres')
   return Promise.resolve().then(() => {
     const { database, password, url, username } = config.db
     const connectionString = `postgres://${username}:${password}@${url}/${database}`
@@ -19,11 +20,11 @@ module.exports = function connectDb({ config }) {
     return sequelize
       .authenticate()
       .then(() => {
-        log.info('Connection has been established successfully.')
+        log.info('connection to postgres has been established successfully.')
         return sequelize
       })
       .catch(err => {
-        log.alert('Unable to connect to the database:', err)
+        log.alert('unable to connect to the database:', err)
         return sequelize
       })
   })

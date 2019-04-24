@@ -1,11 +1,9 @@
-# Tree for src
-## Tree
 ```bash
 ├── apps
-│   ├── development
-│   ├── production
-│   ├── test
-│   └── tree.md
+│   ├── api
+│   ├── data
+│   ├── tree.md
+│   └── worker
 ├── info
 │   ├── description.md
 │   ├── index.json
@@ -16,25 +14,22 @@
 │   ├── auth
 │   ├── bootstrap
 │   ├── config
-│   ├── connectors
-│   ├── controllers
 │   ├── data
 │   ├── dataStores
 │   ├── errorLogger
 │   ├── fileInteractor
 │   ├── importer
 │   ├── integrations
-│   ├── jobs
 │   ├── models
 │   ├── operations
+│   ├── serviceConfigurationManager
 │   ├── serviceInteractor
 │   ├── serviceRouter
-│   ├── services
-│   ├── statistics
-│   └── tree.md
+│   ├── tree.md
+│   └── worker
 ├── scripts
 │   └── buildFileStructureTrees.js
-├── services
+├── serviceConfigurations
 │   ├── agentService
 │   ├── authService
 │   ├── curatedListService
@@ -46,11 +41,11 @@
 │   ├── migrationService
 │   ├── placeService
 │   ├── searchService
-│   ├── serviceOrder.js
 │   ├── specimenService
 │   ├── statusService
 │   ├── storageService
 │   ├── taxonomyService
+│   ├── tests
 │   └── tree.md
 ├── tests
 │   ├── testCoreCrudRequests
@@ -61,9 +56,3 @@
     └── test
 
 ```
-
-## Links
-[root](../tree.md)
-[lib](lib/tree.md)
-[apps](apps/tree.md)
-[services](services/tree.md)

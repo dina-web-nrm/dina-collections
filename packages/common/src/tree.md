@@ -1,5 +1,3 @@
-# Tree for src
-## Tree
 ```bash
 ├── Dependor
 │   └── index.js
@@ -430,6 +428,3 @@
 └── tree.md
 
 ```
-
-## Links
-[root](../tree.md)

@@ -2,16 +2,16 @@ const path = require('path')
 const fs = require('fs')
 const { exec } = require('child_process')
 
-const buildLinkContentArray = ({ name, rootRelativePath, trees }) => {
-  return trees
-    .filter(({ name: treeName }) => {
-      return treeName !== name
-    })
-    .map(tree => {
-      const relative = path.relative(rootRelativePath, tree.rootRelativePath)
-      return `[${tree.name}](${relative}/tree.md)`
-    })
-}
+// const buildLinkContentArray = ({ name, rootRelativePath, trees }) => {
+//   return trees
+//     .filter(({ name: treeName }) => {
+//       return treeName !== name
+//     })
+//     .map(tree => {
+//       const relative = path.relative(rootRelativePath, tree.rootRelativePath)
+//       return `[${tree.name}](${relative}/tree.md)`
+//     })
+// }
 
 const createCmd = ({ relativePath, levels }) => {
   return `tree ${relativePath} -L ${levels} -I node_modules`
@@ -37,25 +37,17 @@ const buildTreeContentArray = ({ levels, relativePath }) => {
 const buildTreeDocumentation = ({
   rootPath,
   levels,
-  name,
+  // name,
   rootRelativePath,
-  trees,
+  // trees,
 }) => {
   const relativePath = path.join(rootPath, rootRelativePath)
   return buildTreeContentArray({
     levels,
     relativePath,
   }).then(treeContentArray => {
-    const treeLinks = buildLinkContentArray({ name, rootRelativePath, trees })
-
-    const fileContent = [
-      `# Tree for ${name}`,
-      '## Tree',
-      ...treeContentArray,
-      '',
-      '## Links',
-      ...treeLinks,
-    ].join('\n')
+    // const treeLinks = buildLinkContentArray({ name, rootRelativePath, trees })
+    const fileContent = treeContentArray.join('\n')
 
     const filePath = path.join(relativePath, 'tree.md')
     fs.writeFileSync(filePath, fileContent, 'utf8')

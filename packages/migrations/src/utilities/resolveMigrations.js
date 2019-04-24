@@ -1,4 +1,4 @@
-const services = require('backend/src/services')
+const services = require('backend/src/serviceConfigurations')
 
 module.exports = function resolveMigrations({ migrations }) {
   return migrations.map(({ migrationName, resourceName, serviceName }) => {

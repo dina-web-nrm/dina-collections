@@ -1,5 +1,3 @@
-# Tree for src
-## Tree
 ```bash
 ├── apps
 │   ├── collectionsUi
@@ -31,6 +29,11 @@
 │   ├── size
 │   ├── tree.md
 │   └── user
+├── domainModules
+│   ├── collectionMammals
+│   ├── locality
+│   ├── storage
+│   └── taxon
 ├── index.js
 ├── mock
 │   └── dns
@@ -72,10 +75,3 @@
     └── wrapSelectors
 
 ```
-
-## Links
-[root](../tree.md)
-[apps](apps/tree.md)
-[coreModules](coreModules/tree.md)
-[serviceModules](serviceModules/tree.md)
-[collectionsUi viewModules](apps/collectionsUi/viewModules/tree.md)

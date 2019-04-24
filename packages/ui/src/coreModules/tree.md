@@ -1,5 +1,3 @@
-# Tree for coreModules
-## Tree
 ```bash
 ├── allModules.js
 ├── api
@@ -70,6 +68,7 @@
 │   │   │   └── index.js
 │   │   ├── DateString
 │   │   │   └── index.js
+│   │   ├── Footer.js
 │   │   ├── LayerModal
 │   │   │   ├── ModalContentWrapper.js
 │   │   │   └── index.js
@@ -544,10 +543,3 @@
     └── translations.json
 
 ```
-
-## Links
-[root](../../tree.md)
-[src](../tree.md)
-[apps](../apps/tree.md)
-[serviceModules](../serviceModules/tree.md)
-[collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

@@ -1,9 +1,10 @@
 const elasticsearch = require('elasticsearch')
 const createLog = require('../../../../utilities/log')
 
-const log = createLog('lib/elasticsearch')
+const defaultLog = createLog('lib/elasticsearch')
 
-module.exports = function connectDb({ config }) {
+module.exports = function connectDb({ config, log = defaultLog }) {
+  log.info('connecting to elasticsearch')
   const { url } = config.elasticsearch
 
   let client
@@ -20,13 +21,15 @@ module.exports = function connectDb({ config }) {
           requestTimeout: 30000,
         })
         .then(() => {
-          log.info('Connection has been established successfully.')
+          log.info(
+            'connection to elasticsearch has been established successfully.'
+          )
           resolve(client)
         })
         .catch(err => {
           count += 1
           if (count > 10) {
-            log.alert('Unable to connect to the database:', err)
+            log.alert('unable to connect to the database:', err)
             resolve(client)
           } else {
             setTimeout(() => {

@@ -2,6 +2,8 @@
   "scripts": {
     "build": "docusaurus-build",
     "examples": "docusaurus-examples",
+    "interpolateFiles": "node ../scripts/src/js/interpolateFiles -p packages/docs/docs/packages/**/*.md",
+    "interpolateFiles:remove": "node ../scripts/src/js/interpolateFiles -p packages/docs/docs/packages/**/*.md -r true",
     "lint": "yarn lint:js && yarn lint:md",
     "lint:js": "eslint '**/*.js'",
     "lint:js:fix": "eslint '**/*.js' --fix",

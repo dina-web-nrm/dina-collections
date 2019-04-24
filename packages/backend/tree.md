@@ -1,12 +1,7 @@
-# Tree for root
-## Tree
 ```bash
 ├── Dockerfile
 ├── LICENCE
 ├── README.md
-├── documentation
-│   └── terminology
-├── index.js
 ├── nodemon.json
 ├── package.json
 ├── src
@@ -14,7 +9,7 @@
 │   ├── info
 │   ├── lib
 │   ├── scripts
-│   ├── services
+│   ├── serviceConfigurations
 │   ├── tests
 │   ├── tree.md
 │   └── utilities
@@ -22,9 +17,3 @@
 └── yarn.lock
 
 ```
-
-## Links
-[src](src/tree.md)
-[lib](src/lib/tree.md)
-[apps](src/apps/tree.md)
-[services](src/services/tree.md)

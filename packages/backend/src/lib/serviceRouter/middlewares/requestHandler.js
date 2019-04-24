@@ -5,11 +5,11 @@ const log = createLog('requestHandlerMiddleware')
 module.exports = function createRequestHandlerMiddleware({
   config,
   operationId,
-  requestHandler,
+  controller,
 }) {
-  if (!requestHandler) {
+  if (!controller) {
     return (req, res, next) => {
-      log.info(`${res.locals.id}: No routehandler or mock. skipping request`)
+      log.info(`${res.locals.id}: No controller. skipping request`)
       return next()
     }
   }
@@ -19,10 +19,10 @@ module.exports = function createRequestHandlerMiddleware({
       locals: { userInput, user },
     } = res
     log.info(`${res.locals.id}: Call route function for ${operationId}`)
-    return requestHandler({
+    return controller({
+      request: userInput,
       requestId: res.locals.id,
       user,
-      userInput,
     })
       .then(result => {
         log.info(`${res.locals.id}: Sending route function result`)

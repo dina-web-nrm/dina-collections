@@ -1,11 +1,7 @@
-const crudOperations = require('./crudOperations')
-const importOperations = require('./importOperations')
-const jobOperations = require('./jobOperations')
-const viewOperations = require('./viewOperations')
+const factories = require('./factories')
+const createOperations = require('./createOperations')
 
 module.exports = {
-  ...crudOperations,
-  ...importOperations,
-  ...jobOperations,
-  ...viewOperations,
+  createOperations,
+  factories,
 }

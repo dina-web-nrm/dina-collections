@@ -1,6 +1,6 @@
 const sanitizeBackendError = require('common/src/error/errorFactories/sanitizeBackendError')
 const createLog = require('../../../utilities/log')
-const createErrorLogger = require('../../errorLogger')
+const { createErrorLogger } = require('../../errorLogger')
 
 const log = createLog('errorMiddleware')
 
