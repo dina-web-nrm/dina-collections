@@ -2,18 +2,17 @@ module.exports = {
   additionalProperties: false,
   properties: {
     controllers: {
+      description: 'Custom controllers used by operations in the service',
       type: 'object',
     },
     info: {
-      type: 'object',
-    },
-    models: {
-      oneOf: [
-        {
-          type: 'object',
+      properties: {
+        description: {
+          type: 'string',
         },
-        { type: 'array' },
-      ],
+      },
+      required: [],
+      type: 'object',
     },
     name: {
       type: 'string',
@@ -22,8 +21,10 @@ module.exports = {
       type: 'array',
     },
     resources: {
+      description:
+        'An object with the service resources (see resourceConfiguration schema)',
       type: 'object',
     },
   },
-  required: ['name', 'info'],
+  required: ['name', 'info', 'resources'],
 }
