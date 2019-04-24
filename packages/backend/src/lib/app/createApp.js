@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const createLog = require('../../utilities/log')
 const { middleware: createAuthenticateMiddleware } = require('../auth')
 const createDocsMiddleware = require('./middlewares/docs')
+const createRedocMiddleware = require('./middlewares/redoc')
 const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
 const createLogFrontendErrorEndpointMiddleware = require('./middlewares/logFrontendErrorEndpoint')
 const createLogIncomingMiddleware = require('./middlewares/logIncoming')
@@ -28,6 +29,8 @@ module.exports = function createApp({
   app.use(createLogIncomingMiddleware())
   scopedLog.info('adding middleware: docs')
   app.use('/docs', createDocsMiddleware({ openApiSpec }))
+  app.use('/redoc', createRedocMiddleware({ openApiSpec }))
+
   scopedLog.info('adding middleware: body parser')
   app.use(
     bodyParser.urlencoded({
