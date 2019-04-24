@@ -20,7 +20,6 @@ const services = {
   jobService: true,
   migrationService: true,
   placeService: true,
-  searchService: true,
   specimenService: true,
   statusService: true,
   storageService: true,

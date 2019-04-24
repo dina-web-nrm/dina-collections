@@ -1,6 +1,6 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('services/searchService/serviceInteractions')
+const log = createLog('services/specimenService/serviceInteractions')
 
 exports.rebuildInProgress = ({ serviceInteractor }) => {
   return serviceInteractor

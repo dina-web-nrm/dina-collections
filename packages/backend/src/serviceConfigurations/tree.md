@@ -169,7 +169,7 @@
 │           ├── postHooks
 │           ├── preHooks
 │           └── transformationSpecifications
-├── searchService
+├── specimenService
 │   ├── cacheResourcesSpecifications.js
 │   ├── index.js
 │   ├── info

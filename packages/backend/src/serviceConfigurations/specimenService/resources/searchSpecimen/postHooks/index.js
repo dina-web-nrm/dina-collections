@@ -4,7 +4,7 @@ const { createIndexJob } = require('../../../serviceInteractions')
 
 const createLog = require('../../../../../utilities/log')
 
-const log = createLog('services/searchService/searchSpecimen/postHooks')
+const log = createLog('services/specimenService/searchSpecimen/postHooks')
 
 const deactivateJobs = ({ jobs, serviceInteractor, replacingJob }) => {
   const jobIds = jobs.map(({ id }) => {
