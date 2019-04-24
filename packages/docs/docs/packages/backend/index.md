@@ -52,8 +52,7 @@ Edits between this comment and import-file-end will be replaced when interpolate
 
 For instructions about how to start the different backend apps see
 [setup for development](../../setup/setup-locally-for-development.md) and
-[setup with docker](../../setup/setup-locally-with-docker.md). For instructions
-about configuration see [configuration](../../configuration/index.md).
+[setup with docker](../../setup/setup-locally-with-docker.md).
 
 ## Core dependencies
 
