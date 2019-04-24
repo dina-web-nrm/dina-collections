@@ -8,3 +8,6 @@ yarn-error.log*
 # Editor settings
 .vscode/
 
+# Compiled styles for style docs that do not need to be checked in
+dist/components
+
