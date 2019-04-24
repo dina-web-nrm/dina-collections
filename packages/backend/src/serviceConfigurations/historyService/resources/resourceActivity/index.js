@@ -37,7 +37,6 @@ const defaultFields = [
 ]
 
 module.exports = {
-  basePath: '/api/log/v01',
   migrations,
   model: {
     columns: {

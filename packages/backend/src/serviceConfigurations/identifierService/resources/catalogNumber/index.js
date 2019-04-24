@@ -26,7 +26,6 @@ const sortableFields = extractSortableFields({ fieldsSpecification })
 const selectableFields = extractSelectableFields({ fieldsSpecification })
 
 module.exports = {
-  basePath: '/api/identifiers/v01',
   migrations,
   model: {
     columns: {

@@ -2,7 +2,6 @@ const migrations = require('./migrations')
 const Sequelize = require('sequelize')
 
 module.exports = {
-  basePath: '/api/migrationService/v01',
   migrations,
   model: {
     columns: {

@@ -5,7 +5,6 @@ const {
 } = require('./filterSpecifications')
 
 module.exports = {
-  basePath: '/api/jobs/v01',
   migrations,
   model: {
     columns: {

@@ -26,7 +26,6 @@ const sortableFields = extractSortableFields({ fieldsSpecification })
 const selectableFields = extractSelectableFields({ fieldsSpecification })
 
 module.exports = {
-  basePath: '/api/search/v01',
   model: {
     mappingSpecification,
     name: 'searchSpecimen',

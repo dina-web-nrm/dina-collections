@@ -19,7 +19,6 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/specimen/v01',
   migrations,
   model: {
     name: 'specimen',

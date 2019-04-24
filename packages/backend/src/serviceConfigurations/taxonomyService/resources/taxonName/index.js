@@ -22,7 +22,6 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/taxonomy/v01',
   migrations,
   model: {
     name: 'taxonName',

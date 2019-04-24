@@ -1,6 +1,11 @@
 module.exports = {
   additionalProperties: false,
   properties: {
+    basePath: {
+      descrition:
+        'The base path for the service. Resources will be mounted under this path',
+      type: 'string',
+    },
     controllers: {
       description: 'Custom controllers used by operations in the service',
       type: 'object',
@@ -25,5 +30,5 @@ module.exports = {
       type: 'object',
     },
   },
-  required: ['name', 'info', 'resources'],
+  required: ['basePath', 'name', 'info', 'resources'],
 }

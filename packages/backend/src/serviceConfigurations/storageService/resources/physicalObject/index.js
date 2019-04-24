@@ -10,7 +10,6 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/storage/v01',
   migrations,
   model: {
     name: 'physicalObject',

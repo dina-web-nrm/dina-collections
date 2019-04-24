@@ -23,7 +23,6 @@ const {
 } = require('./preHooks')
 
 module.exports = {
-  basePath: '/api/locality/v01',
   migrations,
   model: {
     name: 'place',

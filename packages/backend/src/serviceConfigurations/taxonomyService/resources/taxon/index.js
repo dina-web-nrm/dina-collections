@@ -24,7 +24,6 @@ const {
 } = require('./preHooks')
 
 module.exports = {
-  basePath: '/api/taxonomy/v01',
   migrations,
   model: {
     name: 'taxon',

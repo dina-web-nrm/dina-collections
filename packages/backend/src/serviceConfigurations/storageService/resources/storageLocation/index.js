@@ -23,7 +23,6 @@ const {
 } = require('./preHooks')
 
 module.exports = {
-  basePath: '/api/storage/v01',
   migrations,
   model: {
     name: 'storageLocation',

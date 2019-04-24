@@ -16,7 +16,6 @@ const {
 const { create: createPreHooks } = require('./preHooks')
 
 module.exports = {
-  basePath: '/api/export/v01',
   migrations,
   model: {
     columns: {

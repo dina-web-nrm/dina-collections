@@ -20,7 +20,6 @@ const {
 const { create: createPreHooks, update: updatePreHooks } = require('./preHooks')
 
 module.exports = {
-  basePath: '/api/agent/v01',
   migrations,
   model: {
     name: 'normalizedAgent',

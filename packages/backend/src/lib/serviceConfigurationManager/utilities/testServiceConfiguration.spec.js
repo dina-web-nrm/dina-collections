@@ -3,6 +3,7 @@ const testServiceSpecification = require('./testServiceConfiguration')
 
 unitDescribe('lib/services/utilities/testServiceConfiguration', () => {
   const sampleSpecification = {
+    basePath: '/test',
     info: {},
     name: 'testService',
     resources: {},

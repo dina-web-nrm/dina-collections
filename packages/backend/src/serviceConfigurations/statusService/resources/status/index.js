@@ -1,6 +1,5 @@
 /* eslint-disable sort-keys */
 module.exports = {
-  basePath: '/api/status/v01',
   operations: [
     {
       controller: 'getStatus',

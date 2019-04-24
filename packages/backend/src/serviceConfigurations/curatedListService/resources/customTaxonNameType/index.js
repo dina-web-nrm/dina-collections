@@ -12,7 +12,6 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/curatedList/v01',
   migrations,
   model: {
     name: 'customTaxonNameType',
