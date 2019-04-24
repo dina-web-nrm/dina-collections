@@ -8,5 +8,4 @@ const description = fs.readFileSync(
 
 module.exports = {
   description,
-  name: 'Identifier service ',
 }

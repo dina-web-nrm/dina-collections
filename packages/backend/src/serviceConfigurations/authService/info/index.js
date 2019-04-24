@@ -8,6 +8,4 @@ const description = fs.readFileSync(
 
 module.exports = {
   description,
-  name: 'Auth server',
-  url: 'https://alpha-keycloak.dina-web.net',
 }

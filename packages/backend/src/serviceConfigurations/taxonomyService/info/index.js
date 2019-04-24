@@ -8,6 +8,4 @@ const description = fs.readFileSync(
 
 module.exports = {
   description,
-  name: 'Slim taxonomy',
-  url: 'https://alpha-slimtaxonomy.dina-web.net',
 }
