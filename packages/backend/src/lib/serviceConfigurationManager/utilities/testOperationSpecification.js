@@ -1,7 +1,7 @@
-const crudOperationSchemas = require('../../../operations/crud/schemas')
-const importOperations = require('../../../operations/import/schemas')
-const jobOperationSchemas = require('../../../operations/job/schemas')
-const viewOperationSchemas = require('../../../operations/view/schemas')
+const crudOperationSchemas = require('../../operations/crud/schemas')
+const importOperations = require('../../operations/import/schemas')
+const jobOperationSchemas = require('../../operations/job/schemas')
+const viewOperationSchemas = require('../../operations/view/schemas')
 
 const operationSchemas = {
   ...crudOperationSchemas,
@@ -10,7 +10,7 @@ const operationSchemas = {
   ...viewOperationSchemas,
 }
 
-const expectNoValidationError = require('../../../../utilities/test/expectNoValidationError')
+const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
 const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
 
 const validate = (schema, obj) => {

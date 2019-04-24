@@ -1,4 +1,4 @@
-const expectNoValidationError = require('../../../../utilities/test/expectNoValidationError')
+const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
 const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
 const serviceSpecificationSchema = require('../schemas/serviceSpecification')
 

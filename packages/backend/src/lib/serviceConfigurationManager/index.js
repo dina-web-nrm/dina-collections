@@ -1,7 +1,7 @@
 const createServiceSpecifications = require('./createServiceSpecifications')
-const getCustomControllerFactories = require('./getCustomControllerFactories')
-const getModelSpecifications = require('./getModelSpecifications')
-const getOperationSpecifications = require('./getOperationSpecifications')
+const getCustomControllerFactories = require('./getters/getCustomControllerFactories')
+const getModelSpecifications = require('./getters/getModelSpecifications')
+const getOperationSpecifications = require('./getters/getOperationSpecifications')
 
 module.exports = {
   createServiceSpecifications,
