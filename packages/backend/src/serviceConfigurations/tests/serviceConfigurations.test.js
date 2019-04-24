@@ -3,6 +3,7 @@ const serviceConfigurations = require('../index')
 const testResourceConfiguration = require('../../lib/serviceConfigurationManager/utilities/testResourceConfiguration')
 const testServiceConfiguration = require('../../lib/serviceConfigurationManager/utilities/testServiceConfiguration')
 const testOperationConfiguration = require('../../lib/serviceConfigurationManager/utilities/testOperationConfiguration')
+const testModelConfiguration = require('../../lib/serviceConfigurationManager/utilities/testModelConfiguration')
 
 unitDescribe('services/serviceConfiguration', () => {
   describe('serviceExport', () => {
@@ -26,6 +27,12 @@ unitDescribe('services/serviceConfiguration', () => {
             describe(resourceKey, () => {
               const resourceConfiguration = resources[resourceKey]
               testResourceConfiguration(resourceConfiguration)
+              describe('model', () => {
+                const { model: modelConfiguration } = resourceConfiguration
+                if (modelConfiguration) {
+                  testModelConfiguration(modelConfiguration)
+                }
+              })
               describe('operations:', () => {
                 const { operations } = resourceConfiguration
                 operations.forEach(operationConfiguration => {
