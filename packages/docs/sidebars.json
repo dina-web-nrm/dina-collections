@@ -24,6 +24,7 @@
         ]
       },
       "packages/common/index",
+      "packages/style/index",
       "packages/ui/index"
     ],
     "Development": [
