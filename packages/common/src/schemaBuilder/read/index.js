@@ -27,11 +27,11 @@ module.exports = function read({ modelBasePath, apiBasePath }) {
   const schemaInterface = createSchemaInterface({ getModels: () => models })
   const resourceRelationshipParamsMap = schemaInterface.getResourceRelationshipParamsMap()
 
-  const serviceDefinitions = require(servicesPath)
+  const serviceConfigurations = require(servicesPath)
   const buildServices = require(buildServicesPath)
   const { services } = buildServices({
     resourceRelationshipParamsMap,
-    serviceDefinitions,
+    serviceConfigurations,
   })
 
   const endpoints = readEndpoints(services)
