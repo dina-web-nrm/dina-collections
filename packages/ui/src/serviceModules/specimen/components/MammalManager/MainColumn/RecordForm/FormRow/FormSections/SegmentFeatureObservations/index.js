@@ -13,9 +13,7 @@ import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderCompone
 import FeatureObservationsTable from './FeatureObservationsTable'
 import FeatureObservationsTitle from './FeatureObservationsTitle'
 
-const log = createLog(
-  'modules:specimen:MammalForm:SegmentFeatureObservations'
-)
+const log = createLog('modules:specimen:MammalForm:SegmentFeatureObservations')
 
 const GROUPS_AND_HEADLINES = [
   { groups: ['age-stage', 'age-and-stage'], headlineKey: 'stage-and-age' },

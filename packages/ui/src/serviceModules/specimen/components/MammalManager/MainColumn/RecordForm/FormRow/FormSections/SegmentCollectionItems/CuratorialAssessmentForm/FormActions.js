@@ -8,9 +8,7 @@ import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { ConfirmationPopup } from 'coreModules/form/components'
 
-const log = createLog(
-  'modules:specimen:CuratorialAssessmentForm:FormActions'
-)
+const log = createLog('modules:specimen:CuratorialAssessmentForm:FormActions')
 const ModuleTranslate = createModuleTranslate('specimen')
 
 const propTypes = {

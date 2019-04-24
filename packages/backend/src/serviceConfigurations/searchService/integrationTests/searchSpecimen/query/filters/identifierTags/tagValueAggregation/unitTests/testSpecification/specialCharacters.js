@@ -86,4 +86,9 @@ module.exports = [
     input: '*<*',
     matchingNotInSampleData: ['< 4934', '< 1107'],
   },
+  {
+    input: '?',
+    matchingNotInSampleData: ['?', '?test'],
+    notMatching: ['a'],
+  },
 ]

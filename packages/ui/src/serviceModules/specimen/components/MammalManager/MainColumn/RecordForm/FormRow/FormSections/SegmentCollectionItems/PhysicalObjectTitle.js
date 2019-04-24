@@ -10,9 +10,7 @@ import createLog from 'utilities/log'
 
 const ModuleTranslate = createModuleTranslate('specimen')
 
-const log = createLog(
-  'modules:specimen:MammalForm:PhysicalObjectTitle'
-)
+const log = createLog('modules:specimen:MammalForm:PhysicalObjectTitle')
 
 const propTypes = {
   active: PropTypes.bool.isRequired,

@@ -13,9 +13,7 @@ import { ALL } from 'serviceModules/storage/constants'
 import createLog from 'utilities/log'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
 
-const log = createLog(
-  'modules:specimen:MammalForm:PhysicalObjectContent'
-)
+const log = createLog('modules:specimen:MammalForm:PhysicalObjectContent')
 
 const mapStateToProps = (state, { preparationType, category }) => {
   // TODO use selector for preparationType options

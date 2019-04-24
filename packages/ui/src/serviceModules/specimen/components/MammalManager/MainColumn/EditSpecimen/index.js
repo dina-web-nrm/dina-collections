@@ -21,9 +21,7 @@ import transformInput, {
 } from '../RecordForm/transformations/input'
 import RecordForm from '../RecordForm'
 
-const log = createLog(
-  'modules:specimen:components:MammalManager:EditSpecimen'
-)
+const log = createLog('modules:specimen:components:MammalManager:EditSpecimen')
 
 const FORM_NAME = 'editSpecimen'
 
@@ -31,9 +29,7 @@ const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
 const mapStateToProps = state => {
   return {
-    catalogNumber: specimenSelectors.createGetCatalogNumber(FORM_NAME)(
-      state
-    ),
+    catalogNumber: specimenSelectors.createGetCatalogNumber(FORM_NAME)(state),
     establishmentMeansTypes: crudGlobalSelectors.establishmentMeansType.getAll(
       state
     ),

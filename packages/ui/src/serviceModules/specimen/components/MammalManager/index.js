@@ -164,6 +164,11 @@ const mapStateToProps = (
     filterFormIsDirty &&
     numberOfListItems !== totalNumberOfRecords
 
+  const searchInProgress = searchSelectors.get[':resource.searchInProgress'](
+    state,
+    { resource }
+  )
+
   return {
     currentTableRowNumber,
     enableShowAllRecordsButton,
@@ -179,6 +184,7 @@ const mapStateToProps = (
     mainColumnActiveTab,
     numberOfListItems,
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
+    searchInProgress,
     showSelectNextRecordButton,
     showSelectPreviousRecordButton,
     specimenId: objectPath.get(params, 'specimenId'),
@@ -225,6 +231,7 @@ const propTypes = {
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   search: PropTypes.func.isRequired,
+  searchInProgress: PropTypes.bool,
   searchResult: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
   setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
@@ -243,6 +250,7 @@ const defaultProps = {
   numberOfListItems: undefined,
   prefetchLimit: 50,
   rightSidebarWidth: emToPixels(25),
+  searchInProgress: false,
   searchResult: undefined,
   specimenId: undefined,
   tableColumnsToSort: undefined,
@@ -266,22 +274,15 @@ class MammalManager extends Component {
     this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
       this
     )
+    this.waitForOtherSearchesToFinish = this.waitForOtherSearchesToFinish.bind(
+      this
+    )
     this.handleSettingClick = this.handleSettingClick.bind(this)
     this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
     this.handleSpecimenIdUpdate = this.handleSpecimenIdUpdate.bind(this)
     this.handleToggleFilters = this.handleToggleFilters.bind(this)
 
     this.shortcuts = [
-      {
-        command: 'down',
-        description: 'Move focus to next record',
-        onPress: this.handleSelectNextRecord,
-      },
-      {
-        command: 'up',
-        description: 'Move focus to previous record',
-        onPress: this.handleSelectPreviousRecord,
-      },
       {
         command: 'n n',
         description: 'Open new record form',
@@ -478,6 +479,30 @@ class MammalManager extends Component {
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
+  waitForOtherSearchesToFinish() {
+    let count = 0
+    const wait = () => {
+      count += 1
+      if (count > 5) {
+        return Promise.resolve()
+      }
+      return new Promise(resolve => {
+        const { searchInProgress } = this.props
+        if (!searchInProgress) {
+          return resolve(true)
+        }
+
+        return setTimeout(() => {
+          return wait().then(() => {
+            resolve(true)
+          })
+        }, 1000)
+      })
+    }
+
+    return wait()
+  }
+
   handleSearchSpecimens(
     props = this.props,
     { openTableView = true, skipFilter = false, usePrefetchLimit = true } = {}
@@ -499,40 +524,41 @@ class MammalManager extends Component {
       tableColumnsToSort.map(({ name, sort: order }) => {
         return `attributes.${name}:${order}`
       })
-
-    const { query } = buildQuery()
-    return this.props
-      .search({
-        limit: usePrefetchLimit ? prefetchLimit : 50000,
-        query: skipFilter ? {} : query,
-        sort,
-      })
-      .then(items => {
-        if (items && items.length) {
-          if (
-            (!currentTableRowNumber && !focusedSpecimenId) ||
-            !items.find(({ id }) => id === focusedSpecimenId)
-          ) {
-            this.props.setCurrentTableRowNumber(1)
-            this.props.setFocusedSpecimenId(items[0].id)
-          } else if (items.length < currentTableRowNumber) {
-            this.props.setCurrentTableRowNumber(items.length)
-            this.props.setFocusedSpecimenId(items[items.length - 1].id)
+    return this.waitForOtherSearchesToFinish().then(() => {
+      const { query } = buildQuery()
+      return this.props
+        .search({
+          limit: usePrefetchLimit ? prefetchLimit : 50000,
+          query: skipFilter ? {} : query,
+          sort,
+        })
+        .then(items => {
+          if (items && items.length) {
+            if (
+              (!currentTableRowNumber && !focusedSpecimenId) ||
+              !items.find(({ id }) => id === focusedSpecimenId)
+            ) {
+              this.props.setCurrentTableRowNumber(1)
+              this.props.setFocusedSpecimenId(items[0].id)
+            } else if (items.length < currentTableRowNumber) {
+              this.props.setCurrentTableRowNumber(items.length)
+              this.props.setFocusedSpecimenId(items[items.length - 1].id)
+            }
+          } else {
+            this.props.delCurrentTableRowNumber()
+            this.props.delFocusedSpecimenId()
           }
-        } else {
-          this.props.delCurrentTableRowNumber()
-          this.props.delFocusedSpecimenId()
-        }
 
-        const limitReached = items && items.length === prefetchLimit
-        if (limitReached) {
-          return this.props.search({
-            query,
-            sort,
-          })
-        }
-        return null
-      })
+          const limitReached = items && items.length === prefetchLimit
+          if (limitReached) {
+            return this.props.search({
+              query,
+              sort,
+            })
+          }
+          return null
+        })
+    })
   }
 
   handleShowAllRecords(event) {
