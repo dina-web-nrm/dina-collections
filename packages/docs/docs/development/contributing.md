@@ -68,7 +68,9 @@ to be, in the branch, then maybe it is better to split up the work.
 When creating a pull request, edit the name of the pull request to be suitable
 for the changelog, because that is where it will end up. There is no specific
 maximum length requirement, but use the imperative mood (as with commits). Look
-at the [CHANGELOG](CHANGELOG.md) for examples.
+at the
+[CHANGELOG](https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md)
+for examples.
 
 If a pull request is not ready for review, or needs a significant retake after
 having been reviewed, then prefix the name with "WIP:" to indicate that.
