@@ -18,6 +18,7 @@ const services = {
   historyService: true,
   identifierService: true,
   jobService: true,
+  loanService: true,
   migrationService: true,
   placeService: true,
   searchService: true,
