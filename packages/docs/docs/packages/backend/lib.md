@@ -86,6 +86,7 @@ After these steps `createCore` returns the following object:
 {
   config,
   fileInteractor,
+  integrations,
   openApiSpec,
   operations,
   schemaInterface,
