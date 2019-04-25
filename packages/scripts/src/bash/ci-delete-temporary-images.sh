@@ -1,6 +1,6 @@
 #!/bin/bash -
 
-set -ev
+set -v
 echo "$(date +'%T') start ci-delete-temporary-images"
 
 if [ -z "$CI" ]; then

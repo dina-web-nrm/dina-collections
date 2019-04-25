@@ -91,7 +91,7 @@ setting a new upstream remote. You just need to fetch latest `master` and rebase
 on master. Using the interactive rebase and the autosquash option is probably
 helpful, like this:
 
-```
+```bash
 git rebase -i master --autosquash
 ```
 

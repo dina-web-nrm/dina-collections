@@ -19,7 +19,7 @@ export default () => {
                   <List.Content>
                     <Icon name="home" />
                     <NavLink data-testid="footerStart" to="/">
-                      Start
+                      Home
                     </NavLink>
                   </List.Content>
                 </List.Item>
@@ -31,14 +31,6 @@ export default () => {
                     </NavLink>
                   </List.Content>
                 </List.Item>
-                <List.Item>
-                  <List.Content>
-                    <Icon name="database" />
-                    <NavLink data-testid="footerDataModel" to="/dataModelDocs">
-                      Data model
-                    </NavLink>
-                  </List.Content>
-                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={4}>
@@ -46,66 +38,41 @@ export default () => {
               <List data-testid="footerDocument" inverted link size={size}>
                 <List.Item>
                   <List.Content>
-                    <Icon name="wikipedia" />
-                    <a data-testid="footerDinaWiki" href={externalUrls.wiki}>
-                      DINA wiki
-                    </a>
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Content>
                     <Icon name="database" />
                     <NavLink
                       data-testid="footerDocumentDataModel"
                       to="/dataModelDocs"
                     >
-                      Data model
+                      Data model documentation
                     </NavLink>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
+                    <Icon name="wikipedia" />
+                    <a
+                      data-testid="footerDinaWiki"
+                      href={externalUrls.wiki}
+                      target="_blank"
+                    >
+                      DINA wiki
+                    </a>
                   </List.Content>
                 </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={6}>
-              <Header as="h4" content="Developer" inverted />
+              <Header as="h4" content="Development" inverted />
               <List data-testid="footerDeveloper" inverted link size={size}>
-                <List.Item>
-                  <List.Content>
-                    <Icon name="github" />
-                    <a
-                      data-testid="footerDinaWebGithub"
-                      href={externalUrls.githubDina}
-                    >
-                      DINA-Web Github
-                    </a>
-                  </List.Content>
-                </List.Item>
                 <List.Item>
                   <List.Content>
                     <Icon name="external" />
                     <a
                       data-testid="footerDinaDeveloperDocs"
                       href={externalUrls.docs}
+                      target="_blank"
                     >
-                      DINA developer documentation
-                    </a>
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Content>
-                    <a
-                      data-testid="footerDinaCollectionsGithub"
-                      href={externalUrls.githubRepo}
-                    >
-                      <Icon name="github" />
-                      Collections on Github
-                    </a>
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Content>
-                    <Icon name="external" />
-                    <a data-testid="footerDinaStyle" href={externalUrls.style}>
-                      Style guide
+                      Development documentation
                     </a>
                   </List.Content>
                 </List.Item>
@@ -115,8 +82,45 @@ export default () => {
                     <a
                       data-testid="footerDinaApiDocs"
                       href={`${externalUrls.api}/docs`}
+                      target="_blank"
                     >
-                      Api documentation
+                      API documentation
+                    </a>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
+                    <Icon name="external" />
+                    <a
+                      data-testid="footerDinaStyle"
+                      href={externalUrls.style}
+                      target="_blank"
+                    >
+                      Style guide
+                    </a>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
+                    <a
+                      data-testid="footerDinaCollectionsGithub"
+                      href={externalUrls.githubRepo}
+                      target="_blank"
+                    >
+                      <Icon name="github" />
+                      DINA Collections repository
+                    </a>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
+                    <Icon name="github" />
+                    <a
+                      data-testid="footerDinaWebGithub"
+                      href={externalUrls.githubDina}
+                      target="_blank"
+                    >
+                      DINA-Web repository
                     </a>
                   </List.Content>
                 </List.Item>

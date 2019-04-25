@@ -116,5 +116,5 @@ yarn remote:deploy -s stage -t v0.18.0
 ```
 
 > TODO: Change to run checkout-tag as part of deploy script
-
+>
 > TODO: Add information about data migration
