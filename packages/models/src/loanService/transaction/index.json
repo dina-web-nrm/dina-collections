@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "loanId": {
+      "type": "string"
+    },
+    "physicalObjectId": {
+      "type": "string"
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "loan": {
+          "type": "object",
+          "x-key-allow-null": false,
+          "x-key-stored-in-model": "transaction",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__loan",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "physicalObject": {
+          "type": "object",
+          "x-key-stored-in-model": "transaction",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "$ref": "__ROOT__physicalObject",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "resourceActivities": {
+          "type": "object",
+          "x-inverse-relationship-key": "transaction",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__resourceActivity",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        }
+      }
+    },
+    "loan": {
+      "$ref": "__ROOT__loan",
+      "x-reference-type": "external"
+    },
+    "physicalObject": {
+      "$ref": "__ROOT__physicalObject",
+      "x-reference-type": "external"
+    }
+  }
+}

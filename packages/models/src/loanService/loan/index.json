@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "deactivatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "recipient": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "resourceActivities": {
+          "type": "object",
+          "x-inverse-relationship-key": "loan",
+          "x-key-stored-in-model": "resourceActivity",
+          "x-key-type": "polymorphic",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__resourceActivity",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "transactions": {
+          "type": "object",
+          "x-key-stored-in-model": "transaction",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__transaction",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        }
+      }
+    },
+    "resourceActivities": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__resourceActivity",
+        "x-reference-type": "external"
+      }
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__transaction",
+        "x-reference-type": "external"
+      }
+    }
+  }
+}
