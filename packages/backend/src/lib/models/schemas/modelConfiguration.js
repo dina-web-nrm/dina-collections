@@ -36,7 +36,6 @@ module.exports = {
       enum: [
         'sequelizeSimpleSqlModel',
         'sequelizeDocumentModel',
-        'sequelizeNormalizedDocumentModel',
         'sequelizeViewDocumentModel',
         'elasticsearchDocumentModel',
         'inMemoryDocumentModel',
