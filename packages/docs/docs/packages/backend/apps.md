@@ -7,8 +7,8 @@ sidebar_label: Apps
 The different available apps are specified in `./src/apps`. From here the apps
 will be bootstrapped by calling different bootstrap functions from the
 [bootstrap lib](#bootstrap). They are all configured with env variables
-explained in [env documentation](../configuration/env.md). Even though they are
-described as separate apps, they use the same codebase.
+explained in [env documentation](../development/configuration/env.md). Even
+though they are described as separate apps, they use the same codebase.
 
 ## API
 
