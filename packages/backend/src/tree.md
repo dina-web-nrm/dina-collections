@@ -38,6 +38,7 @@
 │   ├── identifierService
 │   ├── index.js
 │   ├── jobService
+│   ├── loanService
 │   ├── migrationService
 │   ├── placeService
 │   ├── searchService

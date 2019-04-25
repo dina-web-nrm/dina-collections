@@ -140,6 +140,19 @@
 │           ├── filterSpecifications
 │           ├── index.js
 │           └── migrations
+├── loanService
+│   ├── index.js
+│   ├── info
+│   │   ├── description.md
+│   │   └── index.js
+│   └── resources
+│       ├── index.js
+│       ├── loan
+│       │   ├── index.js
+│       │   └── migrations
+│       └── transaction
+│           ├── index.js
+│           └── migrations
 ├── migrationService
 │   ├── index.js
 │   ├── info
