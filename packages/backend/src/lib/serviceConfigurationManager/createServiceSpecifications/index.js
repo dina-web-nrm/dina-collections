@@ -39,5 +39,5 @@ module.exports = function createServiceSpecifications({
     {}
   )
 
-  return { services: createdServices }
+  return createdServices
 }

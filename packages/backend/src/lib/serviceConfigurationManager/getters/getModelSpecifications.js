@@ -1,13 +1,12 @@
 module.exports = function getModelSpecifications({ serviceSpecifications }) {
-  const { services } = serviceSpecifications
-  let modelSpecifications = []
-  Object.keys(services)
+  const modelSpecifications = []
+  Object.keys(serviceSpecifications)
     .filter(serviceName => {
-      return !!services[serviceName]
+      return !!serviceSpecifications[serviceName]
     })
 
     .forEach(serviceName => {
-      const { resources } = services[serviceName]
+      const { resources } = serviceSpecifications[serviceName]
 
       if (resources) {
         const keys = Object.keys(resources)
@@ -17,12 +16,6 @@ module.exports = function getModelSpecifications({ serviceSpecifications }) {
             modelSpecifications.push(resource.model)
           }
         })
-      }
-      // TODO can this be removed?
-      const { models: serviceModels } = services[serviceName]
-
-      if (serviceModels) {
-        modelSpecifications = [...modelSpecifications, ...serviceModels]
       }
     })
   return modelSpecifications

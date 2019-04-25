@@ -1,10 +1,9 @@
 module.exports = function getOperationSpecifications({
   serviceSpecifications = {},
 }) {
-  const { services } = serviceSpecifications
   const operationSpecifications = []
-  Object.keys(services).forEach(service => {
-    const resources = services[service].resources || {}
+  Object.keys(serviceSpecifications).forEach(service => {
+    const resources = serviceSpecifications[service].resources || {}
     Object.keys(resources).forEach(resourceName => {
       const resourceOperations = resources[resourceName].operations
       Object.keys(resourceOperations).forEach(operationId => {
