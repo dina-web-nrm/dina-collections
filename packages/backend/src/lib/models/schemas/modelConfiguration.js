@@ -15,6 +15,10 @@ module.exports = {
         'Elasticsearch mappings used for models with elasticsearch as datastore',
       type: 'object',
     },
+    migrations: {
+      description: 'Migrations for postgres models',
+      type: 'object',
+    },
     name: {
       description: 'Name of the model used in the datastore',
       type: 'string',

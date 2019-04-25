@@ -5,9 +5,6 @@ module.exports = {
       description: 'Optional override for serviceConfiguration basePath',
       type: 'string',
     },
-    migrations: {
-      type: 'object',
-    },
     model: {
       description: 'Model configuration (see modelConfiguration schema)',
       type: 'object',

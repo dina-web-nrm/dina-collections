@@ -23,8 +23,8 @@ const {
 } = require('./preHooks')
 
 module.exports = {
-  migrations,
   model: {
+    migrations,
     name: 'place',
     relations: ['place'],
     type: 'sequelizeDocumentModel',

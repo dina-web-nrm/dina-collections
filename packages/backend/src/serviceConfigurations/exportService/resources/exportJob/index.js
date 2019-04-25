@@ -16,7 +16,6 @@ const {
 const { create: createPreHooks } = require('./preHooks')
 
 module.exports = {
-  migrations,
   model: {
     columns: {
       error: { type: Sequelize.TEXT },
@@ -35,6 +34,7 @@ module.exports = {
         fields: ['userId', 'succeededAt'],
       },
     ],
+    migrations,
     name: 'exportJob',
     type: 'sequelizeSimpleSqlModel',
   },

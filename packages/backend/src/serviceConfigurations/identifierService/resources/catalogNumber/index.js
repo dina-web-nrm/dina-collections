@@ -26,7 +26,6 @@ const sortableFields = extractSortableFields({ fieldsSpecification })
 const selectableFields = extractSelectableFields({ fieldsSpecification })
 
 module.exports = {
-  migrations,
   model: {
     columns: {
       identifier: { type: Sequelize.STRING, unique: true },
@@ -38,6 +37,7 @@ module.exports = {
         fields: ['identifier', 'year', 'number'],
       },
     ],
+    migrations,
     name: 'catalogNumber',
     type: 'sequelizeSimpleSqlModel',
   },

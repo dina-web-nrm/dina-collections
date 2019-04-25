@@ -11,8 +11,8 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  migrations,
   model: {
+    migrations,
     name: 'preparationType',
     type: 'sequelizeDocumentModel',
   },

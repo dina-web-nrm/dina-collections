@@ -16,8 +16,8 @@ const {
 } = require('./filterSpecifications')
 
 module.exports = {
-  migrations,
   model: {
+    migrations,
     name: 'identifierType',
     type: 'sequelizeDocumentModel',
   },

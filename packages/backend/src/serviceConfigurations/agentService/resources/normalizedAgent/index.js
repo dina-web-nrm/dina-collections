@@ -20,8 +20,8 @@ const {
 const { create: createPreHooks, update: updatePreHooks } = require('./preHooks')
 
 module.exports = {
-  migrations,
   model: {
+    migrations,
     name: 'normalizedAgent',
     relations: ['normalizedAgent'],
     type: 'sequelizeDocumentModel',

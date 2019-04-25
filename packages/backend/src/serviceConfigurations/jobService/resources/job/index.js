@@ -5,7 +5,6 @@ const {
 } = require('./filterSpecifications')
 
 module.exports = {
-  migrations,
   model: {
     columns: {
       error: { type: Sequelize.TEXT },
@@ -17,6 +16,7 @@ module.exports = {
       startedAt: { type: Sequelize.DATE },
       succeededAt: { type: Sequelize.DATE },
     },
+    migrations,
     name: 'job',
     type: 'sequelizeSimpleSqlModel',
   },

@@ -37,7 +37,6 @@ const defaultFields = [
 ]
 
 module.exports = {
-  migrations,
   model: {
     columns: {
       action: { type: Sequelize.STRING },
@@ -67,6 +66,7 @@ module.exports = {
         fields: ['resourceId'],
       },
     ],
+    migrations,
     name: 'resourceActivity',
     type: 'sequelizeSimpleSqlModel',
   },
