@@ -2,8 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.18.1-rc2](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1-rc2)
+#### [v0.18.1-rc3](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1-rc3)
 
+- Document and clean up style [`#511`](https://github.com/DINA-Web/dina-collections/pull/511)
+- Fix smaller bugs [`#509`](https://github.com/DINA-Web/dina-collections/pull/509)
+- Document and clean up common and ui [`#508`](https://github.com/DINA-Web/dina-collections/pull/508)
+- Refactor and document backend [`#502`](https://github.com/DINA-Web/dina-collections/pull/502)
 - Remove es5 and rename dina-style to style [`#507`](https://github.com/DINA-Web/dina-collections/pull/507)
 - Clean up UI config, env vars, number input and more [`#505`](https://github.com/DINA-Web/dina-collections/pull/505)
 - Add e2e test for agent [`#498`](https://github.com/DINA-Web/dina-collections/pull/498)
