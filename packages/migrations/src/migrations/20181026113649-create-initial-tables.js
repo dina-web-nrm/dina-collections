@@ -97,5 +97,15 @@ module.exports = createPgMigrations({
       resourceName: 'dataModelMigrationLog',
       serviceName: 'migrationService',
     },
+    {
+      migrationName: 'initial',
+      resourceName: 'loan',
+      serviceName: 'loanService',
+    },
+    {
+      migrationName: 'initial',
+      resourceName: 'transaction',
+      serviceName: 'loanService',
+    },
   ],
 })
