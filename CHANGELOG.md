@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.18.1-rc3](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1-rc3)
+#### [v0.18.1](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1)
 
 - Document and clean up style [`#511`](https://github.com/DINA-Web/dina-collections/pull/511)
 - Fix smaller bugs [`#509`](https://github.com/DINA-Web/dina-collections/pull/509)
