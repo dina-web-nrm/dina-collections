@@ -83,7 +83,7 @@ services:
       /etc/nginx/conf.d/dina.conf && forego start -r"
 
   style:
-    image: 'dina/dina-semantic-ui-docs:latest'
+    image: 'dina/dina-semantic-ui-docs:${TAG}'
     container_name: dina-semantic-ui-docs
     expose:
       - '80'
