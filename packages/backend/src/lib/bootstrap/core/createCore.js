@@ -7,7 +7,6 @@ const { createIntegrations } = require('../../integrations')
 const {
   createServiceSpecifications,
   getModelSpecifications,
-  getCustomControllerFactories,
   getOperationSpecifications,
 } = require('../../serviceConfigurationManager')
 const { createModels } = require('../../models')
@@ -54,9 +53,6 @@ module.exports = function createCore({ serviceConfigurations }) {
         integrations => {
           return createOperations({
             config,
-            customControllerFactories: getCustomControllerFactories({
-              serviceSpecifications,
-            }),
             fileInteractor,
             integrations,
             log: createCoreLog,

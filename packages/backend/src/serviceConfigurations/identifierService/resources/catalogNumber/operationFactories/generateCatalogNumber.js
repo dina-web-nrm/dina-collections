@@ -1,3 +1,4 @@
+const controllerFactory = require('../controllers/generateCatalogNumber')
 const buildOperationId = require('common/src/buildOperationId')
 
 module.exports = function generateCatalogNumber({
@@ -22,7 +23,7 @@ module.exports = function generateCatalogNumber({
 
   return {
     ...rest,
-    controller: 'generateCatalogNumber',
+    controllerFactory,
     errors,
     method: 'post',
     operationId: operationId || buildOperationId({ operationType, resource }),

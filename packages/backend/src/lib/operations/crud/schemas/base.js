@@ -4,8 +4,10 @@ module.exports = {
     connect: {
       type: 'boolean',
     },
-    controller: {
-      type: 'string',
+    controllerFactory: {
+      not: {
+        type: 'string',
+      },
     },
     errors: {
       type: 'object',

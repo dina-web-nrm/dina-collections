@@ -5,7 +5,6 @@ const defaultLog = createLog('lib/operations')
 
 const initializeController = ({
   config,
-  customControllerFactories,
   fileInteractor,
   integrations,
   models,
@@ -15,13 +14,19 @@ const initializeController = ({
   const {
     connect,
     controller: customControllerKey,
+    controllerFactory: customControllerFactory,
     operationType,
   } = operationSpecification
-  const controllerFactory =
-    (connect || customControllerKey) &&
-    (customControllerFactories[customControllerKey] ||
-      (operationFactories[operationType] &&
-        operationFactories[operationType].controllerFactory))
+
+  let controllerFactory
+
+  if (customControllerFactory) {
+    controllerFactory = customControllerFactory
+  } else if (connect || customControllerKey) {
+    controllerFactory =
+      operationFactories[operationType] &&
+      operationFactories[operationType].controllerFactory
+  }
 
   if (!controllerFactory) {
     // log.warning(`Missing controller factory for operationId: ${operationId}`)
@@ -43,7 +48,6 @@ const initializeController = ({
 
 module.exports = function createOperations({
   config,
-  customControllerFactories,
   fileInteractor,
   integrations,
   log = defaultLog,
@@ -53,14 +57,12 @@ module.exports = function createOperations({
 }) {
   log.info('creating operations from operationSpecifications')
   log.scope().info('creating controllers')
-
   return Promise.resolve().then(() => {
     const operations = {}
     operationSpecifications.forEach(operationSpecification => {
       const { operationId } = operationSpecification
       const controller = initializeController({
         config,
-        customControllerFactories,
         fileInteractor,
         integrations,
         models,

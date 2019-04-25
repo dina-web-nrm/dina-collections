@@ -1,14 +1,17 @@
+const getUserByIdController = require('./operations/getOne/controller')
+const getUsersController = require('./operations/getOne/controller')
+
 const resource = 'user'
 
 module.exports = {
   basePath: '/api/auth/v01',
   operations: [
     {
-      controller: 'getUserById',
+      controllerFactory: getUserByIdController,
       type: 'getOne',
     },
     {
-      controller: 'getUsers',
+      controllerFactory: getUsersController,
       type: 'getMany',
     },
   ],

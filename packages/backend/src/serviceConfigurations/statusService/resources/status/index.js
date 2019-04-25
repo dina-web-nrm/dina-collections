@@ -1,8 +1,10 @@
+const { getStatus: getStatusControllerFactory } = require('../../controllers')
+
 /* eslint-disable sort-keys */
 module.exports = {
   operations: [
     {
-      controller: 'getStatus',
+      controllerFactory: getStatusControllerFactory,
       method: 'get',
       path: '/status',
       operationId: 'getStatus',

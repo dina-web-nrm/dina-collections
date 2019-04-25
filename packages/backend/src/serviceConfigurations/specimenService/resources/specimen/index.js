@@ -1,3 +1,6 @@
+const {
+  createSpecimen: createSpecimenControllerFactory,
+} = require('./controllers')
 const migrations = require('./migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
@@ -26,7 +29,7 @@ module.exports = {
   },
   operations: [
     {
-      controller: 'createSpecimen',
+      controllerFactory: createSpecimenControllerFactory,
       errors: {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
