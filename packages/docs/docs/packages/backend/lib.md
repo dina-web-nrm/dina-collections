@@ -168,15 +168,13 @@ create models for all resources.
 
 ### Model types
 
-| type                             | dataStore     | description                                        |
-| -------------------------------- | ------------- | -------------------------------------------------- |
-| sequelizeSimpleSqlModel          | postgres      | Storing data in columns in postgres table          |
-| sequelizeDocumentModel           | postgres      | Storing data in postgres using single jsonb column |
-| sequelizeNormalizedDocumentModel | postgres      | to be removed                                      |
-| sequelizeViewDocumentModel       | postgres      | to be removed                                      |
-| elasticsearchDocumentModel       | elasticsearch | Storing data in elasticsearch index                |
-| inMemoryDocumentModel            | inMemory      | Storing data in memory                             |
-| inMemoryViewDocumentModel        | inMemory      | potentially to be removed                          |
+| type                       | dataStore     | description                                        |
+| -------------------------- | ------------- | -------------------------------------------------- |
+| sequelizeSimpleSqlModel    | postgres      | Storing data in columns in postgres table          |
+| sequelizeDocumentModel     | postgres      | Storing data in postgres using single jsonb column |
+| elasticsearchDocumentModel | elasticsearch | Storing data in elasticsearch index                |
+| inMemoryDocumentModel      | inMemory      | Storing data in memory                             |
+| inMemoryViewDocumentModel  | inMemory      | potentially to be removed                          |
 
 ### Model methods
 
