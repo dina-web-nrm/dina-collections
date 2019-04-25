@@ -1,4 +1,4 @@
-const base = require('./base')
+const base = require('./baseSchema')
 
 module.exports = {
   additionalProperties: false,

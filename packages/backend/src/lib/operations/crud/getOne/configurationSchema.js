@@ -1,20 +1,21 @@
-const base = require('./base')
-const aggregationSpecification = require('../../../data/aggregations/schemas/aggregationSpecification')
+const base = require('../../schemas/operationConfigurations/baseSchema')
+
 const filterSpecification = require('../../../data/filters/schemas/filterSpecification')
 const selectableFields = require('../../../data/fields/schemas/selectableFields')
-const sortableFields = require('../../../data/sort/schemas/sortableFields')
 
 module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    aggregationSpecification,
-    exampleRequests: {
+    defaultFields: selectableFields,
+    filterSpecification,
+    includeRelations: {
+      type: 'boolean',
+    },
+    queryParams: {
       type: 'object',
     },
-    filterSpecification,
     selectableFields,
-    sortableFields,
   },
   required: [...base.required],
 }

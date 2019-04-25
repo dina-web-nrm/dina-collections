@@ -1,4 +1,4 @@
-const base = require('./base')
+const base = require('../../schemas/operationConfigurations/baseSchema')
 
 module.exports = {
   additionalProperties: false,

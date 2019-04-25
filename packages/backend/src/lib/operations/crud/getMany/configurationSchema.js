@@ -1,4 +1,5 @@
-const base = require('./base')
+const base = require('../../schemas/operationConfigurations/baseSchema')
+
 const filterSpecification = require('../../../data/filters/schemas/filterSpecification')
 const selectableFields = require('../../../data/fields/schemas/selectableFields')
 const sortableFields = require('../../../data/sort/schemas/sortableFields')

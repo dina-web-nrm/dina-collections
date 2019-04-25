@@ -1,5 +1,5 @@
+const base = require('../../schemas/operationConfigurations/baseSchema')
 const transformationSpecification = require('../../../data/transformations/schemas/transformationSpecification')
-const base = require('./base')
 
 exports.importDataFromFile = {
   additionalProperties: false,

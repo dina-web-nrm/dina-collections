@@ -1,4 +1,4 @@
-const base = require('./base')
+const base = require('../../schemas/operationConfigurations/basePostSchema')
 
 module.exports = {
   additionalProperties: false,
@@ -6,12 +6,6 @@ module.exports = {
     ...base.properties,
     inverseOperationId: {
       type: 'string',
-    },
-    postHooks: {
-      type: 'array',
-    },
-    preHooks: {
-      type: 'array',
     },
     relationKey: {
       type: 'string',
