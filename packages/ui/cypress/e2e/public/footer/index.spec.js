@@ -10,12 +10,12 @@ describe('Footer', () => {
 
     cy.getByText('Site')
     cy.getByText('Documentation')
-    cy.getByText('Developer')
+    cy.getByText('Development')
   })
 
   it('has expected number of links', () => {
     const links = [
-      { expectedLength: 3, id: 'footerSite' },
+      { expectedLength: 2, id: 'footerSite' },
       { expectedLength: 2, id: 'footerDocument' },
       { expectedLength: 5, id: 'footerDeveloper' },
     ]
@@ -30,7 +30,6 @@ describe('Footer', () => {
   it('has expected links', () => {
     cy.getByTestId('footerStart').shouldHaveHref('/')
     cy.getByTestId('footerLogin').shouldHaveHref('/login')
-    cy.getByTestId('footerDataModel').shouldHaveHref('/dataModelDocs')
     cy.getByTestId('footerDinaWiki').shouldHaveHref('wiki', {
       exact: false,
     })
