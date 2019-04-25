@@ -14,12 +14,12 @@ simplify deployment of an up-to-date styleguide.
 
 ## Build and serve the style documentation locally
 
-```
+```bash
 yarn build:docs
 docpad run
 ```
 
-Then go to http://127.0.0.1:9778.
+Then go to [http://127.0.0.1:9778](http://127.0.0.1:9778).
 
 Note that `docpad` has a fixed version below 6.80 due to a compatibility issue
 with a [babel-plugin](https://github.com/docpad/docpad-plugin-babel/issues/9).
@@ -29,7 +29,7 @@ to downgrade, as we have.
 
 ## Install and compile styles (CSS)
 
-```
+```bash
 yarn
 yarn build
 ```
@@ -48,7 +48,7 @@ import 'common/dist/semantic.css'
 To watch for changes in the style source files and automatically compile them,
 run:
 
-```
+```bash
 yarn start
 ```
 

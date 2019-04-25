@@ -162,7 +162,7 @@ A viewModule can have the following
 
 The current viewModules in collectionsUi are:
 
-```
+```txt
 ├── app (route: /app)
 │   ├── manageAgents
 │   ├── manageLocalities
