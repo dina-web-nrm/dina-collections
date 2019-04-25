@@ -1,6 +1,6 @@
 #!/bin/bash -
 #./packages/scripts/src/bash/ci-install.sh
-set -ev
+set -v
 echo "$(date +'%T') start ci-install"
 
 if [ "$CI_INSTALL_UI" = true ]; then
@@ -76,6 +76,7 @@ if [ "$CI_LINK_MIGRATIONS" = true ]; then
   : "${CI_INSTALL_MIGRATIONS?CI_INSTALL_MIGRATIONS Has to be true}"
   : "${CI_LINK_BACKEND?CI_LINK_BACKEND Has to be true}"
   : "${CI_LINK_SCRIPTS?CI_LINK_SCRIPTS Has to be true}"
+  
   echo "Linking migrations"
   yarn setup:links:migrations
 fi

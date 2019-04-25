@@ -1,6 +1,6 @@
 #!/bin/sh -
 #./packages/scripts/src/bash/ci-before-script.sh
-set -ev
+set -v
 echo "$(date +'%T') start ci-before-script"
 START_DIRECTORY=$PWD
 
@@ -68,6 +68,11 @@ if [ "$CI_START_E2E" = true ]; then
 
     echo "Starting ui, api and workers"
     TAG=$TRAVIS_BUILD_NUMBER docker-compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d api ui baseWorker searchIndexWorker
+  fi
+
+  if [ $? -ne 0 ]; then
+    echo "Aborting. exit is not 0"
+    exit 1
   fi
 
   cd $START_DIRECTORY
