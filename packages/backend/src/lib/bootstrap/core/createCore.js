@@ -67,6 +67,7 @@ module.exports = function createCore({ serviceConfigurations }) {
             return {
               config,
               fileInteractor,
+              integrations,
               openApiSpec: schemaInterface.getOpenApiSpec(),
               operations,
               schemaInterface,

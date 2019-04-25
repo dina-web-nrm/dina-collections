@@ -16,6 +16,7 @@ const log = createLog('lib/app')
 module.exports = function createApp({
   auth,
   config,
+  integrations,
   openApiSpec,
   routers,
 } = {}) {
@@ -47,7 +48,7 @@ module.exports = function createApp({
   scopedLog.info('adding middleware: authenticate')
   app.use(createAuthenticateMiddleware({ auth, config, log: scopedLog }))
   scopedLog.info('adding middleware: log frontend error')
-  app.use(createLogFrontendErrorEndpointMiddleware({ config }))
+  app.use(createLogFrontendErrorEndpointMiddleware({ config, integrations }))
   scopedLog.info('adding middleware: ping route')
   app.use(createPingRouteMiddleware())
 

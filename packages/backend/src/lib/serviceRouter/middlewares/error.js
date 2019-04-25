@@ -4,10 +4,11 @@ const { createErrorLogger } = require('../../errorLogger')
 
 const log = createLog('errorMiddleware')
 
-module.exports = function createErrorMiddleware({ config }) {
+module.exports = function createErrorMiddleware({ config, integrations }) {
   /* eslint-disable no-unused-vars */
   const errorLogger = createErrorLogger({
     config,
+    integrations,
     log,
     origin: 'backend',
   })

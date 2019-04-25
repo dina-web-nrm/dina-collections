@@ -10,7 +10,12 @@ const shouldMountOperation = require('./utilities/shouldMountOperation')
 
 const log = createLog('lib/serviceRouter')
 
-module.exports = function createServiceRouter({ auth, config, operations }) {
+module.exports = function createServiceRouter({
+  auth,
+  config,
+  integrations,
+  operations,
+}) {
   log.info('creating service router')
 
   const scopedLog = log.scope()
@@ -56,7 +61,7 @@ module.exports = function createServiceRouter({ auth, config, operations }) {
   })
 
   scopedLog.info('adding middleware: error ')
-  serviceRouter.use(errorMiddlewareFactory({ config }))
+  serviceRouter.use(errorMiddlewareFactory({ config, integrations }))
 
   return serviceRouter
 }
