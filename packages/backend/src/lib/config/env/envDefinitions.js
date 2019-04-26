@@ -14,6 +14,7 @@ const requiredEnvVariables = [
 ]
 
 const optionalEnvVariables = [
+  '__DANGEROUSLY_FORCE_VERBOSE_API_ERRORS__',
   'IMPORT_DATA',
   'IMPORT_DATA_NUMBER_OF_SPECIMENS',
   'SERVER_ALIAS',

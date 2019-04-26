@@ -21,9 +21,8 @@ module.exports = function createErrorMiddleware({ config, integrations }) {
     })
     const sanitizedError = sanitizeBackendError({
       error: incomingError,
-      isDevelopment: false,
-      // isDevelopment: config.env.isDevelopment,
       log,
+      verbose: config.api.verboseApiErrors,
     })
 
     res.setHeader('Content-Type', 'application/vnd.api+json')
