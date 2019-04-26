@@ -3,8 +3,8 @@ const isDinaError = require('../utilities/isDinaError')
 
 module.exports = function sanitizeBackendError({
   error: errorInput,
-  isDevelopment,
   log,
+  verbose = false,
 }) {
   let error = errorInput
   if (!isDinaError(error)) {
@@ -12,7 +12,7 @@ module.exports = function sanitizeBackendError({
       log.err('Unknown error', error)
     }
     error = backendError500({
-      detail: isDevelopment ? error.message : 'Not mapped',
+      detail: verbose ? error.message : 'Not mapped',
       source: 'sanitizeBackendError',
       throwError: false,
     })
