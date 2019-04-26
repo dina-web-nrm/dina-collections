@@ -89,7 +89,7 @@ matrix:
         ./packages/scripts/src/bash/ci-push-temporary-images.sh
 
     - stage: test
-      name: 'Test e2e part 1, without auth'
+      name: 'Test e2e group: 2x-without-auth'
       if: branch = master OR tag IS present
       env:
         - CI_DISABLE_AUTH=true
@@ -101,7 +101,7 @@ matrix:
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
-      name: 'Test e2e part 2, without auth'
+      name: 'Test e2e group: 2x-without-auth'
       if: branch = master OR tag IS present
       env:
         - CI_DISABLE_AUTH=true
@@ -109,11 +109,11 @@ matrix:
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
-        - CI_TEST_E2E_2=true
+        - CI_TEST_E2E_1=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
-      name: 'Test e2e part 3, with auth'
+      name: 'Test e2e group: 1x-with-auth'
       if: branch = master OR tag IS present
       env:
         - CI_DISABLE_AUTH=false
@@ -121,7 +121,7 @@ matrix:
         - CI_INSTALL_UI=true
         - CI_SETUP_ENV_DOCKER=true
         - CI_START_E2E=true
-        - CI_TEST_E2E_3=true
+        - CI_TEST_E2E_2=true
       script: ./packages/scripts/src/bash/ci-test.sh
 
     - stage: test
