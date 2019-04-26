@@ -19,7 +19,7 @@ if [ "$CI_TEST_E2E_1" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  echo "Test suite CI_TEST_E2E passed"
+  echo "Test suite CI_TEST_E2E_1 passed"
   cd $START_DIRECTORY
 fi
 
@@ -30,18 +30,7 @@ if [ "$CI_TEST_E2E_2" = true ]; then
     echo "Aborting. exit is not 0"
     exit 1
   fi
-  echo "Test suite CI_TEST_E2E passed"
-  cd $START_DIRECTORY
-fi
-
-if [ "$CI_TEST_E2E_3" = true ]; then
-  echo "Running test suite CI_TEST_E2E_3"
-  cd ./packages/ui && yarn test:e2e:ci:3
-  if [ $? -ne 0 ]; then
-    echo "Aborting. exit is not 0"
-    exit 1
-  fi
-  echo "Test suite CI_TEST_E2E passed"
+  echo "Test suite CI_TEST_E2E_2 passed"
   cd $START_DIRECTORY
 fi
 
