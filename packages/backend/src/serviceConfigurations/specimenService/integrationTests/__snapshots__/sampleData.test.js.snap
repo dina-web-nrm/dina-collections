@@ -4584,7 +4584,9 @@ Biocidprov tagna.",
       ],
       "featureBodyLength": Array [],
       "featureCompleteBodyWeight": Array [],
-      "featureCondition": Array [],
+      "featureCondition": Array [
+        "fresh",
+      ],
       "featureSex": Array [
         "male",
       ],
