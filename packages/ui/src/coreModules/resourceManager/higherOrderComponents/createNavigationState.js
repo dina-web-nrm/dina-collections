@@ -166,7 +166,7 @@ const createResourceUrlState = () => ComposedComponent => {
         filterColumn,
         itemId,
       } = state
-
+      console.log('mainColumn', mainColumn)
       return (
         <ComposedComponent
           {...this.props}

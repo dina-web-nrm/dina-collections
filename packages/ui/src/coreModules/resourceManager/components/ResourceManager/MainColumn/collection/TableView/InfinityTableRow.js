@@ -14,12 +14,14 @@ const propTypes = {
   onClickRow: PropTypes.func.isRequired,
   rowNumber: PropTypes.number.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
   width: PropTypes.number.isRequired,
 }
 
 const defaultProps = {
   itemId: undefined,
   nestedItem: undefined,
+  tableColumnsToShow: undefined,
 }
 
 const InfinityTableRow = ({
@@ -29,6 +31,7 @@ const InfinityTableRow = ({
   onClickRow,
   rowNumber,
   tableColumnSpecifications,
+  tableColumnsToShow,
   width,
 }) => {
   if (!nestedItem) {
@@ -54,32 +57,36 @@ const InfinityTableRow = ({
     >
       {tableColumnSpecifications.map(
         ({ buildText, fieldPath, label, width: columnWidth }) => {
-          let value = objectPath.get(nestedItem, fieldPath)
+          if (tableColumnsToShow.includes(fieldPath)) {
+            let value = objectPath.get(nestedItem, fieldPath)
 
-          const runBuildText =
-            value && buildText && (Array.isArray(value) ? value.length : true)
+            const runBuildText =
+              value && buildText && (Array.isArray(value) ? value.length : true)
 
-          if (runBuildText) {
-            value = buildText({ nestedItem, objectPath, value })
+            if (runBuildText) {
+              value = buildText({ nestedItem, objectPath, value })
+            }
+
+            if (Array.isArray(value)) {
+              value = value.join('; ')
+            }
+
+            return (
+              <Grid.Column
+                key={fieldPath || label}
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  width: columnWidth,
+                }}
+              >
+                {value}
+              </Grid.Column>
+            )
           }
 
-          if (Array.isArray(value)) {
-            value = value.join('; ')
-          }
-
-          return (
-            <Grid.Column
-              key={fieldPath || label}
-              style={{
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                width: columnWidth,
-              }}
-            >
-              {value}
-            </Grid.Column>
-          )
+          return null
         }
       )}
     </Grid.Row>

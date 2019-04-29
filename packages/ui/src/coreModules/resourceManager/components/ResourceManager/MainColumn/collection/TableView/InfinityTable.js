@@ -19,6 +19,7 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   tableBatchFetchOptions: PropTypes.object,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   width: PropTypes.number.isRequired,
 }
 
@@ -97,6 +98,7 @@ export class InfinityTable extends Component {
       resource,
       tableBatchFetchOptions,
       tableColumnSpecifications,
+      tableColumnsToShow,
       width,
     } = this.props
     const { id } = listItems[index] || {}
@@ -110,7 +112,11 @@ export class InfinityTable extends Component {
       fetchItemById(id)
     }
 
-    const { resolveRelationships, relationships } = tableBatchFetchOptions
+    const {
+      resolveRelationships,
+      relationships,
+      resource: tableResource,
+    } = tableBatchFetchOptions
 
     return (
       <InfinityTableRow
@@ -121,9 +127,10 @@ export class InfinityTable extends Component {
         onClickRow={this.props.onClickRow}
         relationships={relationships}
         resolveRelationships={resolveRelationships}
-        resource={resource}
+        resource={tableResource || resource}
         rowNumber={index + 1}
         tableColumnSpecifications={tableColumnSpecifications}
+        tableColumnsToShow={tableColumnsToShow}
         width={width}
       />
     )
