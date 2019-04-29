@@ -6,6 +6,7 @@ import * as home from './home'
 import * as login from './login'
 import * as manageAgents from './manageAgents'
 import * as manageLocalities from './manageLocalities'
+import * as manageSpecimens from './manageSpecimens'
 import * as manageStorageLocations from './manageStorageLocations'
 import * as manageTaxonomy from './manageTaxonomy'
 import * as manageTaxonNames from './manageTaxonNames'
@@ -26,6 +27,7 @@ const modules = [
   manageAgents,
   manageLocalities,
   manageStorageLocations,
+  manageSpecimens,
   manageTaxonomy,
   manageTaxonNames,
   sourceData,

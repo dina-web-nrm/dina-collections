@@ -4,6 +4,7 @@ export const moduleOrder = [
   'app',
   'dataViewer',
   'specimensMammals',
+  'manageSpecimens',
   'home',
   'manageAgents',
   'manageLocalities',
