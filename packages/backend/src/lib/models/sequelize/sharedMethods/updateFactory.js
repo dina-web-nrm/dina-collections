@@ -30,7 +30,6 @@ module.exports = function updateFactory({ Model, validate }) {
         diff: null,
         id: storedData.id,
         isCurrentVersion: true,
-        schemaCompliant: storedData.schemaCompliant,
         version: storedData.version,
         versionId: storedData.versionId,
       }
@@ -51,7 +50,13 @@ module.exports = function updateFactory({ Model, validate }) {
       newModel = {
         diff: (storedData.diff || []).concat(diff(oldItem, newItem)),
         relationships: updatedRelationships,
-        schemaCompliant: !validate(newItem),
+      }
+
+      if (validate) {
+        const error = validate(newItem)
+        if (error) {
+          log.err('schema validation failed')
+        }
       }
 
       if (newItem.attributes !== undefined) {

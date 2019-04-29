@@ -33,7 +33,6 @@ module.exports = function bulkCreateFactory({
           document: attributes,
           id,
           relationships,
-          schemaCompliant: true,
           ...internals,
         }
       }),

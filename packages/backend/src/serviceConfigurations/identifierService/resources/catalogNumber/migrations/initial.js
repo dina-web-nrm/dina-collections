@@ -22,9 +22,6 @@ module.exports = {
           primaryKey: true,
           type: Sequelize.INTEGER,
         },
-        schemaCompliant: {
-          type: Sequelize.BOOLEAN,
-        },
         updatedAt: {
           allowNull: false,
           type: Sequelize.DATE,

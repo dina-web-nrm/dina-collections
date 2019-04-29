@@ -33,9 +33,6 @@ module.exports = function createModel({
       relationships: {
         type: Sequelize.JSONB,
       },
-      schemaCompliant: {
-        type: Sequelize.BOOLEAN,
-      },
     },
     {
       deletedAt: 'deactivatedAt',
