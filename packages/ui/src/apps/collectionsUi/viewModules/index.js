@@ -7,6 +7,7 @@ export const moduleOrder = [
   'home',
   'manageAgents',
   'manageLocalities',
+  'manageSpecimens',
   'manageStorageLocations',
   'manageTaxonomy',
   'manageTaxonNames',

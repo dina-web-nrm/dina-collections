@@ -16,6 +16,7 @@ import PageNotFound from '../pageNotFound/Async'
 import Settings from '../settings/Async'
 import ManageAgents from '../manageAgents/Async'
 import ManageLocalities from '../manageLocalities/Async'
+import ManageSpecimens from '../manageSpecimens/Async'
 import ManageStorageLocations from '../manageStorageLocations/Async'
 import ManageTaxonomy from '../manageTaxonomy/Async'
 import ManageTaxonNames from '../manageTaxonNames/Async'
@@ -54,6 +55,11 @@ class App extends Component {
         <ViewWrap leftSidebarEnabled leftSidebarTogglable topMenuEnabled>
           <Switch>
             <Route component={Start} exact path={match.url} />
+            <Route
+              component={ManageSpecimens}
+              exact
+              path={`${match.url}/specimens/individuals`}
+            />
             <Route
               component={SpecimensMammals}
               exact
