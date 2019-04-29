@@ -11,9 +11,6 @@ module.exports = {
       deactivatedAt: {
         type: Sequelize.DATE,
       },
-      diff: {
-        type: Sequelize.JSONB,
-      },
       document: {
         type: Sequelize.JSONB,
       },

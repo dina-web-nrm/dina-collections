@@ -1,6 +1,6 @@
 module.exports = function formatModelItemResponse({
   includeInternals = true,
-  includeDiff = false,
+  diff = null,
   input,
 }) {
   if (!input) {
@@ -37,8 +37,8 @@ module.exports = function formatModelItemResponse({
     item.relationships = relationships
   }
 
-  if (includeDiff) {
-    item.diff = (input.dataValues && input.dataValues.diff) || []
+  if (diff) {
+    item.diff = diff
   }
 
   if (includeInternals) {

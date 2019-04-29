@@ -27,7 +27,6 @@ module.exports = function updateFactory({ Model, validate }) {
       const storedData = existingModel.get()
 
       let newModel = {
-        diff: null,
         id: storedData.id,
         isCurrentVersion: true,
         version: storedData.version,
@@ -47,8 +46,8 @@ module.exports = function updateFactory({ Model, validate }) {
         relationships: updatedRelationships,
       }
 
+      const itemDiff = diff(oldItem, newItem)
       newModel = {
-        diff: (storedData.diff || []).concat(diff(oldItem, newItem)),
         relationships: updatedRelationships,
       }
 
@@ -78,7 +77,7 @@ module.exports = function updateFactory({ Model, validate }) {
             res.dataValues.id
           }`
         )
-        return formatModelItemResponse({ includeDiff: true, input: res })
+        return formatModelItemResponse({ diff: itemDiff, input: res })
       })
     })
   })
