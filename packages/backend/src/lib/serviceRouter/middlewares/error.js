@@ -4,10 +4,11 @@ const { createErrorLogger } = require('../../errorLogger')
 
 const log = createLog('errorMiddleware')
 
-module.exports = function createErrorMiddleware({ config }) {
+module.exports = function createErrorMiddleware({ config, integrations }) {
   /* eslint-disable no-unused-vars */
   const errorLogger = createErrorLogger({
     config,
+    integrations,
     log,
     origin: 'backend',
   })
@@ -20,9 +21,8 @@ module.exports = function createErrorMiddleware({ config }) {
     })
     const sanitizedError = sanitizeBackendError({
       error: incomingError,
-      isDevelopment: false,
-      // isDevelopment: config.env.isDevelopment,
       log,
+      verbose: config.api.verboseApiErrors,
     })
 
     res.setHeader('Content-Type', 'application/vnd.api+json')

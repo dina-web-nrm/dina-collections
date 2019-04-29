@@ -24,9 +24,8 @@ const {
 } = require('./preHooks')
 
 module.exports = {
-  basePath: '/api/taxonomy/v01',
-  migrations,
   model: {
+    migrations,
     name: 'taxon',
     relations: ['taxonName'],
     type: 'sequelizeDocumentModel',

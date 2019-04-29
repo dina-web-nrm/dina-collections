@@ -11,9 +11,8 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/curatedList/v01',
-  migrations,
   model: {
+    migrations,
     name: 'typeSpecimenType',
     type: 'sequelizeDocumentModel',
   },

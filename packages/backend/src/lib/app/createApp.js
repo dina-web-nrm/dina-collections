@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const createLog = require('../../utilities/log')
 const { middleware: createAuthenticateMiddleware } = require('../auth')
 const createDocsMiddleware = require('./middlewares/docs')
+const createRedocMiddleware = require('./middlewares/redoc')
 const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
 const createLogFrontendErrorEndpointMiddleware = require('./middlewares/logFrontendErrorEndpoint')
 const createLogIncomingMiddleware = require('./middlewares/logIncoming')
@@ -15,6 +16,7 @@ const log = createLog('lib/app')
 module.exports = function createApp({
   auth,
   config,
+  integrations,
   openApiSpec,
   routers,
 } = {}) {
@@ -28,6 +30,8 @@ module.exports = function createApp({
   app.use(createLogIncomingMiddleware())
   scopedLog.info('adding middleware: docs')
   app.use('/docs', createDocsMiddleware({ openApiSpec }))
+  app.use('/redoc', createRedocMiddleware({ openApiSpec }))
+
   scopedLog.info('adding middleware: body parser')
   app.use(
     bodyParser.urlencoded({
@@ -44,7 +48,7 @@ module.exports = function createApp({
   scopedLog.info('adding middleware: authenticate')
   app.use(createAuthenticateMiddleware({ auth, config, log: scopedLog }))
   scopedLog.info('adding middleware: log frontend error')
-  app.use(createLogFrontendErrorEndpointMiddleware({ config }))
+  app.use(createLogFrontendErrorEndpointMiddleware({ config, integrations }))
   scopedLog.info('adding middleware: ping route')
   app.use(createPingRouteMiddleware())
 

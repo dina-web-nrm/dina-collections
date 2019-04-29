@@ -16,9 +16,8 @@ const {
 } = require('./filterSpecifications')
 
 module.exports = {
-  basePath: '/api/curatedList/v01',
-  migrations,
   model: {
+    migrations,
     name: 'identifierType',
     type: 'sequelizeDocumentModel',
   },

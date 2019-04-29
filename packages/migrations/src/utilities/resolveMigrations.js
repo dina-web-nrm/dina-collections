@@ -6,7 +6,10 @@ module.exports = function resolveMigrations({ migrations }) {
     const resource =
       service && service.resources && service.resources[resourceName]
     const resolvedMigration =
-      resource && resource.migrations && resource.migrations[migrationName]
+      resource &&
+      resource.model &&
+      resource.model.migrations &&
+      resource.model.migrations[migrationName]
     if (!resolvedMigration) {
       throw new Error(
         `Cant find migration. serviceName: ${serviceName}, resourceName: ${resourceName}, migrationName: ${migrationName}`

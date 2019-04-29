@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 
 const log = createLog('logFrontendError')
 
-module.exports = function createLogFrontendError({ config }) {
+module.exports = function createLogFrontendError({ config, integrations }) {
   const router = express.Router()
   router.use(bodyParser.text())
 
@@ -15,6 +15,7 @@ module.exports = function createLogFrontendError({ config }) {
     errorLogger = createErrorLogger({
       config,
       defaultErrorCode: 'FRONTEND_ERROR',
+      integrations,
       log,
       origin: 'frontend',
     })

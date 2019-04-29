@@ -23,9 +23,8 @@ const {
 } = require('./preHooks')
 
 module.exports = {
-  basePath: '/api/storage/v01',
-  migrations,
   model: {
+    migrations,
     name: 'storageLocation',
     relations: ['physicalObject'],
     type: 'sequelizeDocumentModel',

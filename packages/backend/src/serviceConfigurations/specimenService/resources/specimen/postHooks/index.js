@@ -5,7 +5,7 @@ const {
 const {
   createIndexJob,
   rebuildInProgress,
-} = require('../../../../searchService/serviceInteractions')
+} = require('../../../../specimenService/serviceInteractions')
 
 const indexHook = ({ item, serviceInteractor }) => {
   return Promise.resolve().then(() => {

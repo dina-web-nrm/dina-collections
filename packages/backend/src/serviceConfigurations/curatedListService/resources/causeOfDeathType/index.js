@@ -12,9 +12,8 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/curatedList/v01',
-  migrations,
   model: {
+    migrations,
     name: 'causeOfDeathType',
     type: 'sequelizeDocumentModel',
   },

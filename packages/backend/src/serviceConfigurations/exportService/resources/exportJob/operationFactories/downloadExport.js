@@ -1,3 +1,4 @@
+const controllerFactory = require('../controllers/downloadExport')
 const buildOperationId = require('common/src/buildOperationId')
 
 module.exports = function startJob({
@@ -20,7 +21,7 @@ module.exports = function startJob({
 
   return {
     ...rest,
-    controller: 'downloadExport',
+    controllerFactory,
     errors,
     method: 'get',
     operationId: operationId || buildOperationId({ operationType, resource }),

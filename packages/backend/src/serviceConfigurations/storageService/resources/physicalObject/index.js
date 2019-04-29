@@ -10,9 +10,8 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/storage/v01',
-  migrations,
   model: {
+    migrations,
     name: 'physicalObject',
     relations: ['storageLocation'],
     type: 'sequelizeDocumentModel',

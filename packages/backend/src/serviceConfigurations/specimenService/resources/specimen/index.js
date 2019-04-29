@@ -1,3 +1,6 @@
+const {
+  createSpecimen: createSpecimenControllerFactory,
+} = require('./controllers')
 const migrations = require('./migrations')
 const {
   importDataFromFile: importDataFromFileTransformationSpecification,
@@ -19,15 +22,14 @@ const {
 } = require('./postHooks')
 
 module.exports = {
-  basePath: '/api/specimen/v01',
-  migrations,
   model: {
+    migrations,
     name: 'specimen',
     type: 'sequelizeDocumentModel',
   },
   operations: [
     {
-      controller: 'createSpecimen',
+      controllerFactory: createSpecimenControllerFactory,
       errors: {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },

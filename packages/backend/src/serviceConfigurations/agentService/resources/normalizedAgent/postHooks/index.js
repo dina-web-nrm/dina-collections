@@ -1,6 +1,6 @@
 const {
   createUpdateRelatedSearchSpecimensPostHook,
-} = require('../../../../searchService/serviceInteractions')
+} = require('../../../../specimenService/serviceInteractions')
 
 const {
   createRegisterResourceActivityHook,

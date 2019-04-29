@@ -6,7 +6,10 @@ module.exports = function createService({
   serviceConfiguration,
   serviceName,
 }) {
-  const { resources: resourceConfigurations = {} } = serviceConfiguration
+  const {
+    basePath,
+    resources: resourceConfigurations = {},
+  } = serviceConfiguration
 
   if (log) {
     log.info('Create resources')
@@ -22,6 +25,7 @@ module.exports = function createService({
       return {
         ...obj,
         [resourceName]: createResourceSpecification({
+          basePath,
           resourceConfiguration,
           serviceName,
         }),
@@ -32,6 +36,7 @@ module.exports = function createService({
 
   return {
     ...serviceConfiguration,
+    basePath,
     resources,
   }
 }

@@ -1,5 +1,5 @@
+exports.basePath = '/api/identifiers/v01'
 exports.info = require('./info')
-exports.controllers = require('./resources/catalogNumber/controllers')
 exports.resources = require('./resources')
 
 exports.name = 'identifierService'

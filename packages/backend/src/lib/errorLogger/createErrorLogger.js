@@ -1,4 +1,3 @@
-const Slack = require('slack-node')
 const backendError500 = require('common/src/error/errorFactories/backendError500')
 const backendError400 = require('common/src/error/errorFactories/backendError400')
 const isDinaError = require('common/src/error/utilities/isDinaError')
@@ -7,6 +6,7 @@ const createLog = require('../../utilities/log')
 module.exports = function createErrorLogger({
   config,
   defaultErrorCode,
+  integrations,
   log: logInput,
   origin,
 }) {
@@ -16,24 +16,11 @@ module.exports = function createErrorLogger({
     )
   }
 
+  const { sendWarning, sendError } = integrations.slack || {}
+
   const errorFactory = origin === 'backend' ? backendError500 : backendError400
 
   const log = logInput || createLog(`errorLogger:${origin}`)
-
-  const { active, errorWebhook, warningWebhook } =
-    config.integrations.slack || {}
-
-  let slackError
-  let slackWarning
-
-  if (active && errorWebhook) {
-    slackError = new Slack()
-    slackError.setWebhook(errorWebhook)
-  }
-  if (active && warningWebhook) {
-    slackWarning = new Slack()
-    slackWarning.setWebhook(warningWebhook)
-  }
 
   const sendErrorToSlack = error => {
     const stringErrorStatus = error && error.status && String(error.status)
@@ -68,12 +55,12 @@ module.exports = function createErrorLogger({
       username: 'webhookbot',
     }
 
-    if (errorIsWarning && slackWarning) {
-      slackWarning.webhook(payload, callback)
+    if (errorIsWarning && sendError) {
+      sendError(payload, callback)
     }
 
-    if (!errorIsWarning && slackError) {
-      slackError.webhook(payload, callback)
+    if (!errorIsWarning && sendWarning) {
+      sendWarning(payload, callback)
     }
   }
 

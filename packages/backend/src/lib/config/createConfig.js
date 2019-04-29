@@ -20,7 +20,6 @@ const services = {
   jobService: true,
   migrationService: true,
   placeService: true,
-  searchService: true,
   specimenService: true,
   statusService: true,
   storageService: true,
@@ -42,6 +41,14 @@ const integrations = {
   },
 }
 
+const env = {
+  env: readKey('NODE_ENV'),
+  isDevelopment: readKey('NODE_ENV') === 'development',
+  isProduction: readKey('NODE_ENV') === 'production',
+  isTest: readKey('NODE_ENV') === 'test',
+  serverAlias: readKey('SERVER_ALIAS'),
+}
+
 const api = {
   active: false,
   mock: {
@@ -52,6 +59,10 @@ const api = {
   port: readKey('API_PORT'),
   validateInput: true,
   validateOutput: true,
+  verboseApiErrors: readBoolKey(
+    '__DANGEROUSLY_FORCE_VERBOSE_API_ERRORS__',
+    env.isDevelopment
+  ),
 }
 
 const initialData = {
@@ -84,14 +95,6 @@ const test = {
   testAuthUrl: '',
   testPassword: '',
   testUsername: '',
-}
-
-const env = {
-  env: readKey('NODE_ENV'),
-  isDevelopment: readKey('NODE_ENV') === 'development',
-  isProduction: readKey('NODE_ENV') === 'production',
-  isTest: readKey('NODE_ENV') === 'test',
-  serverAlias: readKey('SERVER_ALIAS'),
 }
 
 const jobs = {

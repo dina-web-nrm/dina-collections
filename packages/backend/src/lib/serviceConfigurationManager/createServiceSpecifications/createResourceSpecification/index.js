@@ -4,12 +4,14 @@ const createOperationMap = require('./createOperationMap')
 const createModelSpecification = require('../createModelSpecification')
 
 module.exports = function createResourceSpecification({
+  basePath: serviceBasePath,
   resourceConfiguration,
   serviceName,
 }) {
-  const resourceSpecification = internalCreateResourceSpecification(
-    resourceConfiguration
-  )
+  const resourceSpecification = internalCreateResourceSpecification({
+    resourceConfiguration,
+    serviceBasePath,
+  })
   const {
     basePath,
     controllers,

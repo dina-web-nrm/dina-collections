@@ -19,17 +19,10 @@ echo "pulling TAG=$TAG and deploying locally using 'docker-compose up -d'"
 
 
 umask 002
-if [[ -z $(git status -s) ]]
-then
-  echo "tree is clean. fetching tags"
-  git fetch origin 'refs/tags/*:refs/tags/*'
-  echo "fetch done. Checking out tag $TAG"
-  git checkout $TAG
-  echo "pull tag done"
-else
-  echo "tree is dirty, exit"
-  exit 1
-fi
 
+git fetch origin 'refs/tags/*:refs/tags/*'
+echo "fetch done. Checking out tag $TAG"
+git checkout $TAG
+echo "pull tag done"
 
 

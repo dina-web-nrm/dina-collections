@@ -12,33 +12,37 @@ module.exports = function bootstrapApi({ serviceConfigurations }) {
   return createCore({
     log,
     serviceConfigurations,
-  }).then(({ config, openApiSpec, operations, serviceInteractor }) => {
-    const auth = createAuth({ config })
+  }).then(
+    ({ config, openApiSpec, operations, serviceInteractor, integrations }) => {
+      const auth = createAuth({ config })
 
-    createWorker({
-      config,
-      serviceInteractor,
-    })
+      createWorker({
+        config,
+        serviceInteractor,
+      })
 
-    const serviceRouter = createServiceRouter({
-      auth,
-      config,
-      operations,
-    })
+      const serviceRouter = createServiceRouter({
+        auth,
+        config,
+        integrations,
+        operations,
+      })
 
-    const app = createApp({
-      auth,
-      config,
-      openApiSpec,
-      routers: [serviceRouter],
-    })
+      const app = createApp({
+        auth,
+        config,
+        integrations,
+        openApiSpec,
+        routers: [serviceRouter],
+      })
 
-    app.listen(config.api.port, err => {
-      if (err) {
-        throw err
-      }
-      log.info('bootstraping api done')
-      log.info(`api listening to port: ${config.api.port}`)
-    })
-  })
+      app.listen(config.api.port, err => {
+        if (err) {
+          throw err
+        }
+        log.info('bootstraping api done')
+        log.info(`api listening to port: ${config.api.port}`)
+      })
+    }
+  )
 }

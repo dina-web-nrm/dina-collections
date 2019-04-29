@@ -37,8 +37,6 @@ const defaultFields = [
 ]
 
 module.exports = {
-  basePath: '/api/log/v01',
-  migrations,
   model: {
     columns: {
       action: { type: Sequelize.STRING },
@@ -68,6 +66,7 @@ module.exports = {
         fields: ['resourceId'],
       },
     ],
+    migrations,
     name: 'resourceActivity',
     type: 'sequelizeSimpleSqlModel',
   },

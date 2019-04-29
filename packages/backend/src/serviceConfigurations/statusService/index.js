@@ -1,4 +1,4 @@
-exports.controllers = require('./controllers')
+exports.basePath = '/api/status/v01'
 exports.info = require('./info')
 exports.resources = require('./resources')
 

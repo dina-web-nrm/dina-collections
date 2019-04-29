@@ -5,9 +5,7 @@ const {
   inMemoryDocumentModel: createInMemoryDocumentModel,
   inMemoryViewDocumentModel: createInMemoryViewDocumentModel,
   sequelizeDocumentModel: createSequelizeDocumentModel,
-  sequelizeNormalizedDocumentModel: createSequelizeNormalizedDocumentModel,
   // sequelizeSimpleSqlModel: createSequelizeSimpleSqlModel,
-  sequelizeViewDocumentModel: createSequelizeViewDocumentModel,
 } = require('../../factories')
 
 const setupElasticsearchDocumentModel = ({ config }) => {
@@ -71,36 +69,6 @@ const setupSequelizeDocumentModel = ({ config }) => {
   })
 }
 
-const setupSequelizeNormalizedDocumentModel = ({ config }) => {
-  return setupTestDatastores({ config }).then(({ sequelize }) => {
-    const model = createSequelizeNormalizedDocumentModel({
-      config,
-      name: 'testSequelizeNormalizedDocumentModel',
-      schemaModelName: null,
-      sequelize,
-      validate: false,
-    })
-    return model.synchronize({ force: true }).then(() => {
-      return model
-    })
-  })
-}
-
-const setupSequelizeViewDocumentModel = ({ config }) => {
-  return setupTestDatastores({ config }).then(({ sequelize }) => {
-    const model = createSequelizeViewDocumentModel({
-      config,
-      name: 'testSequelizeViewDocumentModel',
-      schemaModelName: null,
-      sequelize,
-      validate: false,
-    })
-    return model.synchronize({ force: true }).then(() => {
-      return model
-    })
-  })
-}
-
 // const setupSequelizeSimpleSqlModel = ({ config } = {}) => {
 //   return createSequalizeDb({ config }).then(sequelize => {
 //     const model = createSequelizeSimpleSqlModel({
@@ -120,7 +88,5 @@ module.exports = {
   inMemoryDocumentModel: setupInMemoryDocumentModel,
   inMemoryViewDocumentModel: setupInMemoryViewDocumentModel,
   sequelizeDocumentModel: setupSequelizeDocumentModel,
-  sequelizeNormalizedDocumentModel: setupSequelizeNormalizedDocumentModel,
   // sequelizeSimpleSqlModel: setupSequelizeSimpleSqlModel,
-  sequelizeViewDocumentModel: setupSequelizeViewDocumentModel,
 }
