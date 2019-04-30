@@ -2,16 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import { actionCreators as crudActionCreators } from 'coreModules/crud'
-import {
-  createInjectSearch,
-  createInjectSearchResult,
-} from 'coreModules/search/higherOrderComponents'
+import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { ResourceManager } from 'coreModules/resourceManager/components'
-// import CreateForm from './item/CreateForm'
-// import EditForm from './item/EditForm'
+import CreateSpecimen from './item/CreateSpecimen'
+import EditSpecimen from './item/EditSpecimen'
 // import FilterForm from './filter/Form'
 import { higherOrderComponents } from './filter/queryBuilder'
 // import transformOutput from './item/BaseForm/transformations/output'
@@ -89,8 +87,8 @@ class SpecimenManager extends Component {
     super(props)
     this.buildFilterQuery = this.buildFilterQuery.bind(this)
     this.handleInteraction = this.handleInteraction.bind(this)
-    // this.renderCreateForm = this.renderCreateForm.bind(this)
-    // this.renderEditForm = this.renderEditForm.bind(this)
+    this.renderCreateForm = this.renderCreateForm.bind(this)
+    this.renderEditForm = this.renderEditForm.bind(this)
     // this.renderFilterForm = this.renderFilterForm.bind(this)
   }
 
@@ -98,31 +96,31 @@ class SpecimenManager extends Component {
     this.props.onNavigation(type, data)
   }
 
-  // renderEditForm(props = {}) {
-  //   const { itemId } = this.props
-  //   return (
-  //     <EditForm
-  //       {...props}
-  //       itemId={itemId}
-  //       onInteraction={this.handleInteraction}
-  //     />
-  //   )
-  // }
-  // renderCreateForm(props = {}) {
-  //   return <CreateForm {...props} onInteraction={this.handleInteraction} />
-  // }
+  buildFilterQuery() {
+    return this.props.buildQuery().query
+  }
+
+  renderEditForm(props = {}) {
+    const { itemId } = this.props
+    return (
+      <EditSpecimen
+        {...props}
+        itemId={itemId}
+        onInteraction={this.handleInteraction}
+      />
+    )
+  }
+  renderCreateForm(props = {}) {
+    return <CreateSpecimen {...props} onInteraction={this.handleInteraction} />
+  }
 
   // renderFilterForm(props = {}) {
   //   return <FilterForm {...props} onInteraction={this.handleInteraction} />
   // }
 
-  buildFilterQuery() {
-    return this.props.buildQuery().query
-  }
-
   render() {
     const { search } = this.props
-
+    console.log('this.props base', this.props)
     return (
       <ResourceManager
         {...this.props}
@@ -133,8 +131,8 @@ class SpecimenManager extends Component {
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
-        // renderCreateForm={this.renderCreateForm}
-        // renderEditForm={this.renderEditForm}
+        renderCreateForm={this.renderCreateForm}
+        renderEditForm={this.renderEditForm}
         // renderFilterForm={this.renderFilterForm}
         resource={resource}
         // sortOrder={sortOrder}
@@ -160,5 +158,6 @@ export default compose(
   connect(
     undefined,
     mapDispatchToProps
-  )
+  ),
+  withRouter
 )(SpecimenManager)

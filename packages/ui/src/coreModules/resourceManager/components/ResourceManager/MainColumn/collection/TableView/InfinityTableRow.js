@@ -9,7 +9,8 @@ import { emToPixels } from 'coreModules/layout/utilities'
 
 const propTypes = {
   background: PropTypes.string.isRequired,
-  itemId: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
+  isFocused: PropTypes.bool.isRequired,
+  itemId: PropTypes.string,
   nestedItem: PropTypes.object,
   onClickRow: PropTypes.func.isRequired,
   rowNumber: PropTypes.number.isRequired,
@@ -26,6 +27,7 @@ const defaultProps = {
 
 const InfinityTableRow = ({
   background,
+  isFocused,
   itemId,
   nestedItem,
   onClickRow,
@@ -48,6 +50,7 @@ const InfinityTableRow = ({
 
   return (
     <Grid.Row
+      data-isfocused={isFocused ? 'yes' : 'no'}
       data-testid={`infinityTableRow${rowNumber}`}
       onClick={event => {
         event.preventDefault()

@@ -188,6 +188,9 @@ class MainColumn extends Component {
             'listItems',
             'managerScope',
             'onClickRow',
+            'onFormTabClick',
+            'onSelectNextRecord',
+            'onSelectPreviousRecord',
             'resource',
             'tableBatchFetchOptions',
             'tableColumnSpecifications',
@@ -276,6 +279,7 @@ class MainColumn extends Component {
             'createItemActive',
             'editItemActive',
             'itemEnabled',
+            'onFormTabClick',
             'onToggleFilters',
             'tableActive',
             'treeActive',
@@ -287,7 +291,6 @@ class MainColumn extends Component {
         return (
           <ResultOptionsBar
             {...extractedProps}
-            onFormTabClick={this.props.onFormTabClick}
             onListTabClick={() => {
               this.props.onInteraction(NAVIGATE_LIST)
             }}

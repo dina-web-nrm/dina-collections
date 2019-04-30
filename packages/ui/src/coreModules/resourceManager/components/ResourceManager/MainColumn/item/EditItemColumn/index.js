@@ -65,11 +65,12 @@ class EditItemColumn extends Component {
       case 'itemEditForm': {
         const { renderEditForm } = this.props
 
-        const { extractedProps } = extractProps({
+        const { extractedProps, rest } = extractProps({
           keys: ['availableHeight', 'nestedItem'],
           props: this.props,
         })
         return renderEditForm({
+          ...rest,
           ...extractedProps,
           itemHeader,
           itemSubHeader,

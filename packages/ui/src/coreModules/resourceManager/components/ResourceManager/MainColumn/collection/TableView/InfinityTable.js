@@ -121,6 +121,7 @@ export class InfinityTable extends Component {
     return (
       <InfinityTableRow
         background={background}
+        isFocused={isFocused}
         itemId={id}
         key={id}
         namespace={managerScope}
