@@ -11943,7 +11943,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/{id}",
+            "example": "https://domain/api/specimen/v01/searchSpecimens/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -11994,7 +11994,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/actions/query",
+            "example": "https://domain/api/specimen/v01/searchSpecimens/actions/query",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -12048,7 +12048,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/{id}",
+            "example": "https://domain/api/specimen/v01/searchSpecimens/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -12099,7 +12099,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens",
+            "example": "https://domain/api/specimen/v01/searchSpecimens",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -12153,7 +12153,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/actions/emptyView",
+            "example": "https://domain/api/specimen/v01/searchSpecimens/actions/emptyView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -12206,7 +12206,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/actions/updateView",
+            "example": "https://domain/api/specimen/v01/searchSpecimens/actions/updateView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -12259,7 +12259,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/actions/rebuildView",
+            "example": "https://domain/api/specimen/v01/searchSpecimens/actions/rebuildView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -12312,7 +12312,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/meta/viewMeta",
+            "example": "https://domain/api/specimen/v01/searchSpecimens/meta/viewMeta",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
