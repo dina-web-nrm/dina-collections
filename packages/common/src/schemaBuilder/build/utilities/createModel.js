@@ -1,20 +1,18 @@
 /* eslint-disable sort-keys */
 const interpolate = require('../utilities/interpolate')
-const normalizeModel = require('../utilities/normalizeModel')
 const splitDescription = require('./splitDescription')
 
 module.exports = function createModel({
   examples,
   model,
   modelKey,
-  normalize,
   referencePath = '#/components/schemas/',
   removeRelationships = false,
   version,
 }) {
   const documentLink = `/docs/${version}/models/`
 
-  const normalizedModel = normalizeModel({ model, normalize })
+  const normalizedModel = model
 
   let cleanedModel = JSON.parse(JSON.stringify(normalizedModel))
 
