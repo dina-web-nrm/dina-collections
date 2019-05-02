@@ -49,12 +49,12 @@ const propTypes = {
   featureTypesFetched: PropTypes.bool.isRequired,
   fetchOneItemById: PropTypes.func.isRequired,
   identifierTypes: PropTypes.array.isRequired,
-  nestedSpecimen: PropTypes.object,
+  nestedItem: PropTypes.object,
   updateSpecimen: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  nestedSpecimen: null,
+  nestedItem: null,
 }
 
 class EditSpecimen extends PureComponent {
@@ -66,19 +66,19 @@ class EditSpecimen extends PureComponent {
       establishmentMeansTypes,
       fetchOneItemById,
       identifierTypes,
-      nestedSpecimen,
+      nestedItem,
       updateSpecimen,
       featureTypes,
       featureTypesFetched,
       ...rest
     } = this.props
 
-    if (!nestedSpecimen || !featureTypesFetched) {
+    if (!nestedItem || !featureTypesFetched) {
       return null
     }
 
     const curatorialTaxon = objectPath.get(
-      nestedSpecimen,
+      nestedItem,
       'individual.taxonInformation.curatorialTaxon'
     )
 
@@ -92,7 +92,7 @@ class EditSpecimen extends PureComponent {
       establishmentMeansTypes,
       featureTypes,
       identifierTypes,
-      specimen: nestedSpecimen || {},
+      specimen: nestedItem || {},
     })
     console.log('rest', rest)
     log.debug('initialValues', initialValues)
@@ -119,8 +119,8 @@ class EditSpecimen extends PureComponent {
           })
         }}
         initialValues={initialValues}
-        itemId={nestedSpecimen.id}
-        loading={!nestedSpecimen}
+        itemId={nestedItem.id}
+        loading={!nestedItem}
         mode="edit"
         resourceActivities={resourceActivities}
       />
@@ -134,27 +134,6 @@ EditSpecimen.defaultProps = defaultProps
 export default compose(
   withRouter,
   createGetResourceCount({ resource: 'specimen' }),
-  createGetNestedItemById({
-    include: [
-      'featureTypes',
-      'normalizedAgents',
-      'physicalObjects.storageLocation',
-      'places',
-      'resourceActivities',
-      'taxa.acceptedTaxonName',
-      'taxonNames',
-    ],
-    nestedItemKey: 'nestedSpecimen',
-    relationships: ['all'],
-    resolveRelationships: [
-      'physicalObject',
-      'storageLocation',
-      'resourceActivity',
-      'taxon',
-      'taxonName',
-    ],
-    resource: 'specimen',
-  }),
   createEnsureAllItemsFetched({
     allItemsFetchedKey: 'featureTypesFetched',
     resource: 'featureType',

@@ -10,6 +10,7 @@ import {
   ITEM_SELECT,
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
+  NAVIGATE_FORM_SECTION,
   NAVIGATE_LIST,
   NAVIGATE_ROOT,
   NAVIGATE_TREE,
@@ -37,6 +38,7 @@ const createResourceUrlState = () => ComposedComponent => {
       super(props)
       this.navigateCreate = this.navigateCreate.bind(this)
       this.navigateEdit = this.navigateEdit.bind(this)
+      this.navigateFormSection = this.navigateFormSection.bind(this)
       this.navigateList = this.navigateList.bind(this)
       this.navigateRoot = this.navigateRoot.bind(this)
       this.navigateTree = this.navigateTree.bind(this)
@@ -77,6 +79,12 @@ const createResourceUrlState = () => ComposedComponent => {
 
         case NAVIGATE_FILTER: {
           this.navigateFilter()
+          break
+        }
+
+        case NAVIGATE_FORM_SECTION: {
+          const { sectionId } = data
+          this.navigateFormSection(sectionId)
           break
         }
 
@@ -121,6 +129,7 @@ const createResourceUrlState = () => ComposedComponent => {
         filterColumn: '',
         itemId,
         mainColumn: 'edit',
+        sectionId: '0',
       })
     }
 
@@ -131,10 +140,17 @@ const createResourceUrlState = () => ComposedComponent => {
       })
     }
 
+    navigateFormSection(sectionId) {
+      this.props.updateState({
+        sectionId,
+      })
+    }
+
     navigateCreate() {
       this.props.updateState({
         filterColumn: '',
         mainColumn: 'create',
+        sectionId: '0',
       })
     }
 
@@ -165,8 +181,9 @@ const createResourceUrlState = () => ComposedComponent => {
         mainColumn = treeEnabled ? 'tree' : 'table',
         filterColumn,
         itemId,
+        sectionId,
       } = state
-      console.log('mainColumn', mainColumn)
+      console.log('nav state', JSON.stringify(state, null, 2))
       return (
         <ComposedComponent
           {...this.props}
@@ -179,6 +196,7 @@ const createResourceUrlState = () => ComposedComponent => {
           navigateEdit={this.navigateEdit}
           navigateRoot={this.navigateRoot}
           onNavigation={this.handleNavigation}
+          sectionId={Number(sectionId)}
           tableActive={mainColumn === 'table'}
           treeActive={mainColumn === 'tree'}
           treeEnabled={treeEnabled}

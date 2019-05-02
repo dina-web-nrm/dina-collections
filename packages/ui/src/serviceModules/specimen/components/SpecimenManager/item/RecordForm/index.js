@@ -155,13 +155,19 @@ class RecordForm extends Component {
   renderRow(key, props) {
     switch (key) {
       case 'formRow': {
-        const { availableHeight, catalogNumber, curatorialTaxon } = this.props
-
+        const {
+          availableHeight,
+          catalogNumber,
+          curatorialTaxon,
+          itemHeader,
+          itemSubHeader,
+        } = this.props
+        console.log('this.props', this.props)
+        console.log('itemHeader, itemSubHeader', itemHeader, itemSubHeader)
         const curatorialTaxonAcceptedName = objectPath.get(
           curatorialTaxon,
           'acceptedTaxonName.name'
         )
-
         return (
           <FormRow
             {...this.props}
@@ -172,7 +178,6 @@ class RecordForm extends Component {
               catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
             }
             itemSubHeader={curatorialTaxonAcceptedName}
-            resourceIdPathParamKey="specimenId"
             showSectionsInNavigation
           />
         )

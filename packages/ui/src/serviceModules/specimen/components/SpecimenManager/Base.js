@@ -26,22 +26,24 @@ const include = [
   'physicalObjects.storageLocation',
   'places',
   'preparationTypes',
-  'taxa',
+  'resourceActivities',
+  'taxa.acceptedTaxonName',
   'taxonNames',
 ]
 const createGetNestedItemHocInput = {
   include,
   refresh: true,
-  relationships: include,
+  relationships: ['all'],
   resolveRelationships: [
     'causeOfDeathType',
     'establishmentMeansType',
     'featureType',
     'identifierType',
     'normalizedAgent',
-    'physicalObjects',
+    'physicalObject',
     'place',
     'preparationType',
+    'resourceActivity',
     'storageLocation',
     'taxon',
     'taxonName',
@@ -56,6 +58,7 @@ const tableBatchFetchOptions = {
 // const sortOrder = ['attributes.name:asc']
 
 const buildEditItemHeaders = nestedItem => {
+  console.log('buildEditItemHeaders nestedItem', nestedItem)
   if (!nestedItem) {
     return {}
   }

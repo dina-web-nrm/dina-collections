@@ -180,6 +180,7 @@ class ResourceManager extends Component {
             'renderCreateForm',
             'renderEditForm',
             'resource',
+            'sectionId',
             'setListItems',
             'showAll',
             'tableActive',
