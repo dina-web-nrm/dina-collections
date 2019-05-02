@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.18.2-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.18.1...v0.18.2-rc1)
+
+- Anton/work backend backlog [`#510`](https://github.com/DINA-Web/dina-collections/pull/510)
+- Upgrade Create React App to v3 [`#516`](https://github.com/DINA-Web/dina-collections/pull/516)
+- Activate Cypress parallelization for end-to-end tests [`#515`](https://github.com/DINA-Web/dina-collections/pull/515)
+- Fix docs start page and footer tests [`#514`](https://github.com/DINA-Web/dina-collections/pull/514)
+- Fix CI jobs not failing on non-zero exit code [`#512`](https://github.com/DINA-Web/dina-collections/pull/512)
+
 #### [v0.18.1](https://github.com/DINA-Web/dina-collections/compare/v0.18.0...v0.18.1)
+
+> 25 April 2019
 
 - Document and clean up style [`#511`](https://github.com/DINA-Web/dina-collections/pull/511)
 - Fix smaller bugs [`#509`](https://github.com/DINA-Web/dina-collections/pull/509)
