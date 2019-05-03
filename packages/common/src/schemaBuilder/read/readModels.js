@@ -3,14 +3,14 @@ const path = require('path')
 
 const readJsonFromDirectory = require('./utilities/readJsonFromDirectory')
 
-module.exports = function readModels(modelsBasePath) {
+module.exports = function readModels({ modelBasePath }) {
   return fs
-    .readdirSync(modelsBasePath)
+    .readdirSync(modelBasePath)
     .filter(category => {
       return category[0] !== '.'
     })
     .reduce((obj, category) => {
-      const categoryBasePath = path.join(modelsBasePath, category)
+      const categoryBasePath = path.join(modelBasePath, category)
       const categoryModels = readJsonFromDirectory({
         directory: categoryBasePath,
         includeProperties: true,

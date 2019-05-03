@@ -28,6 +28,7 @@ function buildOpenApi({
   } = read({
     apiBasePath,
     modelBasePath,
+    modelVersion,
   })
 
   const endpoints = buildEndpoints(endpointsInput)
