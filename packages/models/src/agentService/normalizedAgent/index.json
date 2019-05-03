@@ -78,63 +78,27 @@
     "readOnly": {
       "$ref": "__ROOT__readOnly"
     },
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "resourceActivities": {
-          "type": "object",
-          "x-inverse-relationship-key": "normalizedAgent",
-          "x-key-stored-in-model": "resourceActivity",
-          "x-key-type": "polymorphic",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__resourceActivity",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "specimens": {
-          "type": "object",
-          "x-inverse-relationship-key": "normalizedAgents",
-          "x-key-stored-in-model": "specimen",
-          "x-key-type": "json",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__specimen",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "user": {
-          "type": "object",
-          "x-key-stored-in-model": "normalizedAgent",
-          "x-key-type": "json",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__user",
-              "x-reference-type": "external"
-            }
-          }
-        }
+    "x-relationships": {
+      "resourceActivities": {
+        "type": "array",
+        "x-inverse-relationship-key": "normalizedAgent",
+        "x-key-stored-in-model": "resourceActivity",
+        "x-key-type": "polymorphic",
+        "resource": "resourceActivity"
+      },
+      "specimens": {
+        "type": "array",
+        "x-inverse-relationship-key": "normalizedAgents",
+        "x-key-stored-in-model": "specimen",
+        "x-key-type": "json",
+        "resource": "specimen"
+      },
+      "user": {
+        "type": "object",
+        "x-key-stored-in-model": "normalizedAgent",
+        "x-key-type": "json",
+        "resource": "user"
       }
-    },
-    "resourceActivities": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__resourceActivity",
-        "x-reference-type": "external"
-      }
-    },
-    "user": {
-      "$ref": "__ROOT__user",
-      "x-reference-type": "external"
     }
   }
 }
