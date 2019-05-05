@@ -197,7 +197,7 @@ const createResourceUrlState = () => ComposedComponent => {
           navigateEdit={this.navigateEdit}
           navigateRoot={this.navigateRoot}
           onNavigation={this.handleNavigation}
-          sectionId={Number(sectionId)}
+          sectionId={sectionId}
           tableActive={mainColumn === 'table'}
           treeActive={mainColumn === 'tree'}
           treeEnabled={treeEnabled}

@@ -20,7 +20,7 @@ export default () =>
       cy.getByTestId('confirmDeleteButton').click()
       cy.getByText('The specimen was deleted')
       cy.url()
-        .should('include', 'search')
+        .should('include', 'mainColumn=table')
         .should('not.include', 'edit')
       cy.quickQueryByText('985729').should('not.exist')
     })
