@@ -101,7 +101,7 @@ class FormRow extends PureComponent {
   handleSectionIdUpdate(props = this.props) {
     const { formName, sectionId } = props
     const sectionIndex = Number(sectionId)
-
+    console.log('sectionIndex', sectionIndex)
     if (Number.isInteger(sectionIndex)) {
       this.props.setShowAllFormSections(false, { formName })
     } else if (sectionId === 'all') {
@@ -190,6 +190,7 @@ class FormRow extends PureComponent {
       showSectionsInNavigation,
       ...rest
     } = this.props
+
     if (
       sectionId === undefined &&
       showSectionsInNavigation &&

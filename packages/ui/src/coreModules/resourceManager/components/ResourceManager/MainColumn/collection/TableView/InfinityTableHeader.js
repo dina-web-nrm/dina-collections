@@ -6,6 +6,7 @@ import { Translate } from 'coreModules/i18n/components'
 import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
 
 const propTypes = {
+  enableTableColumnSorting: PropTypes.bool.isRequired,
   height: PropTypes.number.isRequired,
   onSaveTableColumnsToSort: PropTypes.func.isRequired,
   scrollLeft: PropTypes.number,
@@ -27,49 +28,36 @@ class InfinityTableHeader extends PureComponent {
     this.handleClickSorting = this.handleClickSorting.bind(this)
   }
 
-  handleClickSorting(event, fieldPath, sortOrder) {
+  handleClickSorting(event, fieldPath, newSortOrder) {
     if (event) {
       event.preventDefault()
     }
 
-    const { tableColumnsToSort } = this.props
-    if (tableColumnsToSort) {
-      const columnsToSort = [...tableColumnsToSort]
-      const index = columnsToSort.findIndex(
-        column => column.fieldPath === fieldPath
-      )
-
-      if (index > -1) {
-        const sort = sortOrder === 'asc' ? 'desc' : 'asc'
-        columnsToSort[index] = { fieldPath, sort }
-        return this.props.onSaveTableColumnsToSort(columnsToSort)
-      }
-
-      return this.props.onSaveTableColumnsToSort([
-        // ...tableColumnsToSort,
-        { fieldPath, sort: sortOrder },
-      ])
-    }
-    return this.props.onSaveTableColumnsToSort([{ fieldPath, sort: sortOrder }])
+    // currently only supporting sorting on one column at the time
+    return this.props.onSaveTableColumnsToSort([
+      { fieldPath, sort: newSortOrder },
+    ])
   }
 
   renderColumnHeader({ fieldPath, label, width }) {
-    const { tableColumnsToSort } = this.props
+    const { enableTableColumnSorting, tableColumnsToSort } = this.props
 
-    if (tableColumnsToSort) {
+    if (enableTableColumnSorting && tableColumnsToSort) {
       const sortedColumn = tableColumnsToSort.find(
         column => column.fieldPath === fieldPath
       )
 
       if (sortedColumn) {
-        const sortOrder = sortedColumn.sort
-        const iconName = sortOrder === 'asc' ? 'caret down' : 'caret up'
+        const currentSortOrder = sortedColumn.sort
+        const newSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc'
+        const iconName = currentSortOrder === 'asc' ? 'caret down' : 'caret up'
+
         return (
           <Grid.Column key={fieldPath} style={{ width }}>
             <Header
               data-testid={`infinityTableHeader-${fieldPath}`}
               onClick={event =>
-                this.handleClickSorting(event, fieldPath, sortOrder)
+                this.handleClickSorting(event, fieldPath, newSortOrder)
               }
               size="small"
             >
@@ -87,7 +75,11 @@ class InfinityTableHeader extends PureComponent {
       <Grid.Column key={fieldPath} style={{ width }}>
         <Header
           data-testid={`infinityTableHeader-${fieldPath}`}
-          onClick={event => this.handleClickSorting(event, fieldPath, 'asc')}
+          onClick={
+            enableTableColumnSorting
+              ? event => this.handleClickSorting(event, fieldPath, 'asc')
+              : undefined
+          }
           size="small"
         >
           <Header.Content>
@@ -137,6 +129,6 @@ class InfinityTableHeader extends PureComponent {
 InfinityTableHeader.propTypes = propTypes
 InfinityTableHeader.defaultProps = defaultProps
 
-export default createInjectScrollLeft('resultTableScrollContainer')(
+export default createInjectScrollLeft('tableScrollContainer')(
   InfinityTableHeader
 )

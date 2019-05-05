@@ -79,6 +79,7 @@ export class RecordActionBar extends PureComponent {
     } = this.props
     const { isRoot } = nestedItem || {}
     const displayChangedMessage = !handleCancelCreate
+
     return (
       <Grid padded style={{ pointerEvents: 'none' }} verticalAlign="middle">
         <Grid.Column>

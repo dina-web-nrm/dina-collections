@@ -6,7 +6,7 @@ export default () =>
     })
 
     beforeEach(() => {
-      cy.visit('/app/specimens/mammals')
+      cy.visit('/app/specimens/individuals')
       cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,

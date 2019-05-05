@@ -28,7 +28,7 @@ import {
   ITEM_SELECT,
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
-  NAVIGATE_LIST,
+  NAVIGATE_TABLE,
   PICKER_CLOSE,
   PICKER_PICK_ITEM,
 } from 'coreModules/resourceManager/constants'
@@ -120,6 +120,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     editItemActive: PropTypes.bool.isRequired,
+    enableTableColumnSorting: PropTypes.bool,
     excludeRootNode: PropTypes.bool,
     expandedIds: PropTypes.object,
     filterActive: PropTypes.bool.isRequired,
@@ -165,6 +166,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   const defaultProps = {
     baseItems: [],
     baseTreeFilter: {},
+    enableTableColumnSorting: false,
     excludeRootNode: false,
     expandedIds: {},
     filterValues: undefined,
@@ -223,12 +225,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.transitionToTreeView = this.transitionToTreeView.bind(this)
       this.transitionFromTreeView = this.transitionFromTreeView.bind(this)
 
-      this.mountEditItemView = this.mountEditItemView.bind(this)
-      this.updateEditItemView = this.updateEditItemView.bind(this)
-      this.transitionToEditItemView = this.transitionToEditItemView.bind(this)
-      this.transitionFromEditItemView = this.transitionFromEditItemView.bind(
-        this
-      )
+      this.mountItemView = this.mountItemView.bind(this)
+      this.updateItemView = this.updateItemView.bind(this)
+      this.transitionToItemView = this.transitionToItemView.bind(this)
+      this.transitionFromItemView = this.transitionFromItemView.bind(this)
 
       this.shortcuts = [
         {
@@ -260,7 +260,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
           description: 'Open table view',
           onPress: event => {
             event.preventDefault()
-            this.props.onInteraction(NAVIGATE_LIST)
+            this.props.onInteraction(NAVIGATE_TABLE)
           },
         },
       ]
@@ -289,6 +289,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.props.open()
       const {
         initialFilterValues,
+        isPicker,
         managerScope,
         treeActive,
         tableActive,
@@ -296,7 +297,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
       if (initialFilterValues) {
         this.props.setFilterValues(initialFilterValues, { managerScope })
-        this.handleInteraction(NAVIGATE_FILTER)
+
+        if (isPicker) {
+          this.handleInteraction(NAVIGATE_FILTER)
+        }
       }
 
       if (tableActive) {
@@ -304,7 +308,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       } else if (treeActive) {
         this.mountTreeView()
       } else {
-        this.mountEditItemView()
+        this.mountItemView()
         this.tableSearch(initialFilterValues)
       }
 
@@ -333,7 +337,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             break
           }
           case 'edit-item': {
-            this.updateEditItemView(prevProps)
+            this.updateItemView(prevProps)
             break
           }
 
@@ -366,11 +370,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             break
           }
           case 'to-edit-item': {
-            this.transitionToEditItemView(prevProps)
+            this.transitionToItemView(prevProps)
             break
           }
           case 'from-edit-item': {
-            this.transitionFromEditItemView(prevProps)
+            this.transitionFromItemView(prevProps)
             break
           }
           default: {
@@ -440,10 +444,17 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return transitions
     }
     resetFilters() {
-      const { managerScope, resource } = this.props
+      const {
+        initialFilterValues,
+        isPicker,
+        managerScope,
+        resource,
+      } = this.props
       const formName = `${resource}Filter`
       this.props.resetForm(formName, { resource })
-      this.props.setFilterValues({}, { managerScope })
+      this.props.setFilterValues((!isPicker && initialFilterValues) || {}, {
+        managerScope,
+      })
     }
 
     expandAncestorsForItemId(itemId) {
@@ -560,7 +571,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     handleUpdateFilterValues(filterValues = {}) {
       const { managerScope, tableActive } = this.props
       if (!tableActive) {
-        this.props.onInteraction(NAVIGATE_LIST)
+        this.props.onInteraction(NAVIGATE_TABLE)
       }
       this.props.setFilterValues(filterValues, { managerScope })
       this.tableSearch(filterValues)
@@ -601,7 +612,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         })
       }
     }
-    handleShowAllRecords({ isPicker }) {
+    handleShowAllRecords({ isPicker, skipTableSearch }) {
       const { managerScope, showAll, treeActive } = this.props
 
       if (treeActive) {
@@ -610,7 +621,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         if (!isPicker) {
           this.resetFilters()
         }
-        this.tableSearch()
+
+        if (!skipTableSearch) {
+          setTimeout(this.tableSearch)
+        }
       }
     }
 
@@ -667,6 +681,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     handleInteraction(type, data) {
+      console.log('type', type, data)
       log.debug(`Got interaction: ${type}`, data)
       switch (type) {
         case CREATE_SUCCESS: {
@@ -699,6 +714,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     tableSearch(filterValues) {
       const {
+        enableTableColumnSorting,
         excludeRootNode,
         managerScope,
         search,
@@ -715,7 +731,8 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return (tableSearch || search)({
         query,
         sort:
-          (tableColumnsToSort &&
+          (enableTableColumnSorting &&
+            tableColumnsToSort &&
             tableColumnsToSort.map(({ fieldPath, sort: order }) => {
               return `attributes.${fieldPath}:${order}`
             })) ||
@@ -848,13 +865,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.props.setExpandedIds({}, { managerScope })
     }
 
-    mountEditItemView() {
+    mountItemView() {
       log.debug('initial mount view: EditItem')
       this.tableSearch()
-      this.transitionToEditItemView()
+      this.transitionToItemView()
     }
 
-    updateEditItemView(prevProps) {
+    updateItemView(prevProps) {
       const { editItemActive, focusedIndex, listItems, itemId } = this.props
 
       if (!editItemActive) {
@@ -873,10 +890,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         this.selectCurrentRow(focusedIndex)
       }
     }
-    transitionToEditItemView() {
+    transitionToItemView() {
       log.debug('transition to view: EditItem')
     }
-    transitionFromEditItemView() {
+    transitionFromItemView() {
       log.debug('transition from view: EditItem')
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),

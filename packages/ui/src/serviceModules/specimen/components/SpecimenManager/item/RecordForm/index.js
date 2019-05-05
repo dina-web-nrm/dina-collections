@@ -5,41 +5,25 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
-import objectPath from 'object-path'
 
 import { Form, FormRow } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
-import { RecordActionBar } from 'coreModules/resourceManager/components'
-import { createHandleDelete } from 'coreModules/resourceManager/components/ResourceManager/MainColumn/item/ActionBars/higherOrderComponents'
 import customFormValidator from 'common/src/error/validators/customFormValidator'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { mammalFormModels } from 'serviceModules/specimen/schemas'
 import CatalogNumberModal from 'serviceModules/specimen/components/CatalogNumberModal'
-import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
-import filterOutput from './transformations/output'
 import { mapCollectionItemsErrors } from './transformations/syncErrors'
 import sectionSpecs from './sectionSpecs'
 import customParts from './formParts'
 
 const ModuleTranslate = createModuleTranslate('specimen')
 
-const EnhancedRecordActionBar = compose(createHandleDelete())(RecordActionBar)
-
 const recordActionBarHeight = emToPixels(4.625)
 
-const rows = [
-  { key: 'formRow' },
-  {
-    height: `${recordActionBarHeight}px`,
-    key: 'recordActionBar',
-    style: { borderTop: '1px solid #D4D4D5' },
-  },
-]
-
 const getAllowTransition = location =>
-  location.pathname.includes('app/specimens/mammals') &&
-  location.pathname.includes('edit/sections')
+  location.pathname.includes('app/specimens/individuals') &&
+  location.pathname.includes('mainColumn=edit')
 
 const mapDispatchToProps = {
   changeFormValue: change,
@@ -51,26 +35,15 @@ const mapDispatchToProps = {
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
-  catalogNumber: PropTypes.string,
   changeFormValue: PropTypes.func.isRequired,
-  curatorialTaxon: PropTypes.shape({
-    acceptedTaxonName: PropTypes.shape({
-      name: PropTypes.string,
-    }),
-  }),
   error: PropTypes.string,
   establishmentMeansTypes: PropTypes.array,
   form: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  itemHeader: PropTypes.string,
   loading: PropTypes.bool,
-  mainColumnActiveTab: PropTypes.string.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      specimenId: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
   mode: PropTypes.oneOf(['edit', 'register']),
   push: PropTypes.func.isRequired,
   redirectOnSuccess: PropTypes.bool,
@@ -79,12 +52,12 @@ const propTypes = {
   submit: PropTypes.func.isRequired,
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
+  transformOutput: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  catalogNumber: undefined,
-  curatorialTaxon: undefined,
   error: '',
   establishmentMeansTypes: undefined,
+  itemHeader: undefined,
   loading: false,
   mode: 'register',
   redirectOnSuccess: false,
@@ -98,7 +71,6 @@ class RecordForm extends Component {
     this.handleSubmitFromModal = this.handleSubmitFromModal.bind(this)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
-    this.renderRow = this.renderRow.bind(this)
     this.setFormRef = this.setFormRef.bind(this)
   }
 
@@ -115,29 +87,11 @@ class RecordForm extends Component {
   }
 
   handleFormSubmit(formData) {
-    const {
-      establishmentMeansTypes,
-      handleFormSubmit,
-      match,
-      push: pushRoute,
-      redirectOnSuccess,
-    } = this.props
+    const { handleFormSubmit, transformOutput } = this.props
 
-    const specimen = {
-      id: match && match.params && match.params.specimenId,
-      ...formData,
-    }
-
-    return handleFormSubmit(filterOutput({ establishmentMeansTypes, specimen }))
-      .then(({ id: specimenId }) => {
-        if (!match.params.specimenId && specimenId && redirectOnSuccess) {
-          pushRoute(
-            `/app/specimens/mammals/${specimenId}/edit/sections/${match.params
-              .sectionId || '0'}`
-          )
-        }
-      })
-      .catch(handleReduxFormSubmitError)
+    return handleFormSubmit(transformOutput(formData)).catch(
+      handleReduxFormSubmitError
+    )
   }
 
   changeFieldValue(fieldName, value) {
@@ -152,60 +106,12 @@ class RecordForm extends Component {
     this.props.reset(this.props.form)
   }
 
-  renderRow(key, props) {
-    switch (key) {
-      case 'formRow': {
-        const {
-          availableHeight,
-          catalogNumber,
-          curatorialTaxon,
-          itemHeader,
-          itemSubHeader,
-        } = this.props
-        console.log('this.props', this.props)
-        console.log('itemHeader, itemSubHeader', itemHeader, itemSubHeader)
-        const curatorialTaxonAcceptedName = objectPath.get(
-          curatorialTaxon,
-          'acceptedTaxonName.name'
-        )
-        return (
-          <FormRow
-            {...this.props}
-            {...props}
-            availableHeight={availableHeight - recordActionBarHeight}
-            customParts={customParts}
-            itemHeader={
-              catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
-            }
-            itemSubHeader={curatorialTaxonAcceptedName}
-            showSectionsInNavigation
-          />
-        )
-      }
-
-      case 'recordActionBar': {
-        return (
-          <EnhancedRecordActionBar
-            {...this.props}
-            {...props}
-            onUndoChanges={this.handleUndoChanges}
-            resource="specimen"
-          />
-        )
-      }
-
-      default: {
-        throw new Error(`Unknown row: ${key}`)
-      }
-    }
-  }
-
   render() {
     const {
       availableHeight,
-      catalogNumber,
       form,
       handleSubmit,
+      itemHeader,
       mode,
       ...rest
     } = this.props
@@ -218,17 +124,21 @@ class RecordForm extends Component {
         sectionSpecs={sectionSpecs}
         setFormRef={this.setFormRef}
       >
-        <RowLayout
-          {...rest}
-          availableHeight={availableHeight}
+        <FormRow
+          {...this.props}
+          availableHeight={availableHeight - recordActionBarHeight}
           changeFieldValue={this.changeFieldValue}
+          customParts={customParts}
           formName={form}
+          itemHeader={
+            itemHeader || <ModuleTranslate textKey="headers.newSpecimen" />
+          }
           module="specimen" // to be deprecated in favor of moduleName
           moduleName="specimen"
           removeArrayFieldByIndex={this.removeArrayFieldByIndex}
           renderRow={this.renderRow}
-          rows={rows}
           sectionSpecs={sectionSpecs}
+          showSectionsInNavigation
         />
         {mode === 'register' && (
           <CatalogNumberModal

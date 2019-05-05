@@ -35,7 +35,7 @@ const rows = [
   {
     height: emToPixels(3.5),
     key: 'infinityTableHeader',
-    style: { borderBottom: '1px solid #b5b5b5', position: 'relative' },
+    style: { borderBottom: '1px solid #b5b5b5' },
   },
   {
     id: 'tableScrollContainer',
@@ -46,6 +46,7 @@ const rows = [
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  enableTableColumnSorting: PropTypes.bool.isRequired,
   listItems: PropTypes.array.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -56,6 +57,7 @@ const propTypes = {
   tableColumnSpecifications: PropTypes.array.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   tableColumnsToSort: PropTypes.arrayOf(PropTypes.object.isRequired),
+  tableSearch: PropTypes.func,
   updateUserPreference: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 }
@@ -64,6 +66,7 @@ const defaultProps = {
   onSelectPreviousRecord: false,
   tableBatchFetchOptions: {},
   tableColumnsToSort: [],
+  tableSearch: undefined,
 }
 
 class ResultTableView extends PureComponent {
@@ -113,14 +116,19 @@ class ResultTableView extends PureComponent {
   }
 
   handleSaveTableColumnsToSort(columnsToSort) {
-    return this.props.updateUserPreference(
-      `${this.props.resource}TableColumnsSorting`,
-      columnsToSort
-    )
+    return this.props
+      .updateUserPreference(
+        `${this.props.resource}TableColumnsSorting`,
+        columnsToSort
+      )
+      .then(() => {
+        return this.props.tableSearch()
+      })
   }
 
   renderRow(key) {
     const {
+      enableTableColumnSorting,
       tableColumnSpecifications,
       tableColumnsToShow,
       tableColumnsToSort,
@@ -132,12 +140,14 @@ class ResultTableView extends PureComponent {
       case 'infinityTableHeader': {
         return (
           <InfinityTableHeader
+            enableTableColumnSorting={enableTableColumnSorting}
             height={emToPixels(3.5)}
             onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
             resource={resource}
             tableColumnSpecifications={tableColumnSpecifications}
             tableColumnsToShow={tableColumnsToShow}
             tableColumnsToSort={tableColumnsToSort}
+            topOffset={emToPixels(11.1875)}
             width={width}
           />
         )

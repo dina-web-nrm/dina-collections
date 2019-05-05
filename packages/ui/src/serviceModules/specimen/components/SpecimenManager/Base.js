@@ -3,16 +3,21 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import objectPath from 'object-path'
 
-import { capitalizeFirstLetter } from 'common/src/stringFormatters'
-import { actionCreators as crudActionCreators } from 'coreModules/crud'
+import {
+  actionCreators as crudActionCreators,
+  globalSelectors as crudGlobalSelectors,
+} from 'coreModules/crud'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import { ANY } from 'coreModules/search/constants'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import CreateSpecimen from './item/CreateSpecimen'
 import EditSpecimen from './item/EditSpecimen'
-// import FilterForm from './filter/Form'
+import FilterForm from './filter/FilterForm'
 import { higherOrderComponents } from './filter/queryBuilder'
-// import transformOutput from './item/BaseForm/transformations/output'
+import transformOutput from './item/RecordForm/transformations/output'
 import tableColumnSpecifications from './tableColumnSpecifications'
 import ItemTitle from './ItemTitle'
 
@@ -55,26 +60,55 @@ const tableBatchFetchOptions = {
   resource: 'searchSpecimen',
 }
 
-// const sortOrder = ['attributes.name:asc']
+const initialFilterValues = {
+  length: { rangeType: 'total-length', rangeUnit: 'unspecified' },
+  remarks: { srcField: ANY },
+  storage: { tagType: ANY },
+  taxonomy: { tagType: ANY },
+  weight: { rangeType: 'complete-body-weight', rangeUnit: 'unspecified' },
+}
 
 const buildEditItemHeaders = nestedItem => {
-  console.log('buildEditItemHeaders nestedItem', nestedItem)
   if (!nestedItem) {
     return {}
   }
 
+  const identifiers = objectPath.get(nestedItem, 'individual.identifiers')
+  const catalogNumberIdentifier = (identifiers || []).find(identifier => {
+    return (
+      (identifier &&
+        identifier.identifierType &&
+        identifier.identifierType.id) === '1'
+    )
+  })
+
+  const itemHeader = catalogNumberIdentifier && catalogNumberIdentifier.value
+
+  const itemSubHeader = objectPath.get(
+    nestedItem,
+    'individual.taxonInformation.curatorialTaxon.acceptedTaxonName.name'
+  )
+
   return {
-    itemHeader: nestedItem.fullName,
-    itemSubHeader: capitalizeFirstLetter(nestedItem.agentType),
+    itemHeader,
+    itemSubHeader,
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    establishmentMeansTypes: crudGlobalSelectors.establishmentMeansType.getAll(
+      state
+    ),
+  }
+}
 const mapDispatchToProps = {
   getAgent: crudActionCreators.normalizedAgent.getOne,
 }
 
 const propTypes = {
   buildQuery: PropTypes.func.isRequired,
+  establishmentMeansTypes: PropTypes.array.isRequired,
   getAgent: PropTypes.func.isRequired,
   itemId: PropTypes.string,
   onNavigation: PropTypes.func.isRequired,
@@ -92,7 +126,8 @@ class SpecimenManager extends Component {
     this.handleInteraction = this.handleInteraction.bind(this)
     this.renderCreateForm = this.renderCreateForm.bind(this)
     this.renderEditForm = this.renderEditForm.bind(this)
-    // this.renderFilterForm = this.renderFilterForm.bind(this)
+    this.renderFilterForm = this.renderFilterForm.bind(this)
+    this.transformOutput = this.transformOutput.bind(this)
   }
 
   handleInteraction(type, data = {}) {
@@ -103,46 +138,53 @@ class SpecimenManager extends Component {
     return this.props.buildQuery().query
   }
 
-  renderEditForm(props = {}) {
-    const { itemId } = this.props
-    return (
-      <EditSpecimen
-        {...props}
-        itemId={itemId}
-        onInteraction={this.handleInteraction}
-      />
-    )
-  }
-  renderCreateForm(props = {}) {
-    return <CreateSpecimen {...props} onInteraction={this.handleInteraction} />
+  transformOutput(formData) {
+    const { itemId: id, establishmentMeansTypes } = this.props
+
+    return transformOutput({
+      establishmentMeansTypes,
+      specimen: {
+        id,
+        ...formData,
+      },
+    })
   }
 
-  // renderFilterForm(props = {}) {
-  //   return <FilterForm {...props} onInteraction={this.handleInteraction} />
-  // }
+  renderEditForm(props = {}) {
+    const { itemId } = this.props
+    return <EditSpecimen {...props} itemId={itemId} />
+  }
+  renderCreateForm(props = {}) {
+    return <CreateSpecimen {...props} />
+  }
+
+  renderFilterForm(props = {}) {
+    return <FilterForm {...props} />
+  }
 
   render() {
     const { search } = this.props
-    console.log('this.props base', this.props)
+
     return (
       <ResourceManager
         {...this.props}
         buildEditItemHeaders={buildEditItemHeaders}
         buildFilterQuery={this.buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
-        filterHeader="Find agents"
+        enableTableColumnSorting
+        filterHeader="Find specimens"
+        initialFilterValues={initialFilterValues}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
-        // renderFilterForm={this.renderFilterForm}
+        renderFilterForm={this.renderFilterForm}
         resource={resource}
-        // sortOrder={sortOrder}
         tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         tableSearch={search}
-        // transformOutput={transformOutput}
+        transformOutput={this.transformOutput}
         treeEnabled={false}
       />
     )
@@ -158,8 +200,14 @@ export default compose(
     resource: 'searchSpecimen',
   }),
   higherOrderComponents.createFormHoc(),
+  createEnsureAllItemsFetched({
+    resource: 'establishmentMeansType',
+  }),
+  createEnsureAllItemsFetched({
+    resource: 'identifierType',
+  }),
   connect(
-    undefined,
+    mapStateToProps,
     mapDispatchToProps
   ),
   withRouter

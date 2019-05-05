@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import { formValueSelector as formValueSelectorFactory } from 'redux-form'
-import objectPath from 'object-path'
 
 import nestedToCoreSync from 'common/src/formatObject/nestedToCoreSync'
 import createLog from 'utilities/log'
@@ -12,10 +11,8 @@ import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import {
   createEnsureAllItemsFetched,
-  createGetNestedItemById,
   createGetResourceCount,
 } from 'coreModules/crud/higherOrderComponents'
-import specimenSelectors from 'serviceModules/specimen/globalSelectors'
 import transformInput, {
   getBaseValues,
 } from '../RecordForm/transformations/input'
@@ -23,13 +20,12 @@ import RecordForm from '../RecordForm'
 
 const log = createLog('modules:specimen:components:MammalManager:EditSpecimen')
 
-const FORM_NAME = 'editSpecimen'
+const FORM_NAME = 'specimenEdit'
 
 const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
 const mapStateToProps = state => {
   return {
-    catalogNumber: specimenSelectors.createGetCatalogNumber(FORM_NAME)(state),
     establishmentMeansTypes: crudGlobalSelectors.establishmentMeansType.getAll(
       state
     ),
@@ -43,7 +39,6 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  clearNestedCacheNamespace: PropTypes.func.isRequired,
   establishmentMeansTypes: PropTypes.array.isRequired,
   featureTypes: PropTypes.array.isRequired,
   featureTypesFetched: PropTypes.bool.isRequired,
@@ -62,7 +57,6 @@ class EditSpecimen extends PureComponent {
     log.render()
 
     const {
-      clearNestedCacheNamespace,
       establishmentMeansTypes,
       fetchOneItemById,
       identifierTypes,
@@ -77,11 +71,6 @@ class EditSpecimen extends PureComponent {
       return null
     }
 
-    const curatorialTaxon = objectPath.get(
-      nestedItem,
-      'individual.taxonInformation.curatorialTaxon'
-    )
-
     const baseValues = getBaseValues({
       establishmentMeansTypes,
       featureTypes,
@@ -94,13 +83,12 @@ class EditSpecimen extends PureComponent {
       identifierTypes,
       specimen: nestedItem || {},
     })
-    console.log('rest', rest)
+
     log.debug('initialValues', initialValues)
     return (
       <RecordForm
         {...rest}
         baseValues={baseValues}
-        curatorialTaxon={curatorialTaxon}
         establishmentMeansTypes={establishmentMeansTypes}
         form={FORM_NAME}
         formName={FORM_NAME}
@@ -138,11 +126,7 @@ export default compose(
     allItemsFetchedKey: 'featureTypesFetched',
     resource: 'featureType',
   }),
-  createEnsureAllItemsFetched({
-    resource: 'establishmentMeansType',
-  }),
   createEnsureAllItemsFetched({ resource: 'customTaxonNameType' }),
-  createEnsureAllItemsFetched({ resource: 'identifierType' }),
   createEnsureAllItemsFetched({
     resource: 'preparationType',
   }),

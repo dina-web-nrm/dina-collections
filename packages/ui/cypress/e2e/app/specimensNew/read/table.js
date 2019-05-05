@@ -8,7 +8,7 @@ export default () =>
       })
     })
 
-    it.only('scrolls to load more specimens, sorts table and keeps focus between form and table', () => {
+    it('scrolls to load more specimens, sorts table and keeps focus between form and table', () => {
       cy.log('Check first specimen and that the last is not visible')
       cy.get(
         '[data-testid="infinityTable"] [data-testid="infinityTableRow1"]'
@@ -35,15 +35,15 @@ export default () =>
         }
       ).should('contain', '500001')
 
-      // cy.log('check again that switching between form and tab works')
-      // cy.getByText('500001').click()
-      // cy.getByTestId('formTabMenuItem').click()
-      // cy.getByTestId('formSectionNavigationHeader').should('contain', '500001')
-      // cy.getByTestId('formSectionNavigationSubheader').should(
-      //   'contain',
-      //   'Mustela erminea'
-      // )
-      // cy.getByTestId('tableTabMenuItem').click()
+      cy.log('check again that switching between form and tab works')
+      cy.getByText('500001').click()
+      cy.getByTestId('formTabMenuItem').click()
+      cy.getByTestId('formSectionNavigationHeader').should('contain', '500001')
+      cy.getByTestId('formSectionNavigationSubheader').should(
+        'contain',
+        'Mustela erminea'
+      )
+      cy.getByTestId('tableTabMenuItem').click()
 
       cy.log('Sort on catalog number and check 500001 is now on top')
       cy.get(
@@ -79,6 +79,11 @@ export default () =>
         'contain',
         'Ursus arctos'
       )
+
+      cy.log('Table header scrolls horizontally')
+      cy.getByText('Catalog no.')
+      cy.get('@table').scrollTo(500, 2000, { duration: 500 })
+      cy.getByText('Catalog no.').should('not.be.visible')
     })
 
     it('uses keyboard shortcuts and record number input to walk in table and open/view specimen', () => {
@@ -89,7 +94,7 @@ export default () =>
       cy.get('[data-isfocused="yes"]').should('contain', '590325')
 
       cy.get('body').type(' ')
-      cy.url().should('include', '/edit/')
+      cy.url().should('include', 'mainColumn=edit')
       cy.getByText('590325')
       cy.getByText('Mus musculoides')
 

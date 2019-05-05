@@ -2,14 +2,24 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { getFormValues, reduxForm } from 'redux-form'
+import {
+  formValueSelector as formValueSelectorFactory,
+  getFormInitialValues as getFormInitialValuesFactory,
+  getFormValues,
+  reduxForm,
+} from 'redux-form'
 
 import { Accordion } from 'coreModules/commonUi/components'
 import { MULTI } from 'coreModules/commonUi/constants'
-import { ANY } from 'coreModules/search/constants'
+import { SPECIMEN_FILTERS_FORM_NAME } from '../../../../constants'
 import buildQuery from '../../../../utilities/buildQuery'
 import FilterContent from './FilterContent'
 import FilterTitle from './FilterTitle'
+
+const formValueSelector = formValueSelectorFactory(SPECIMEN_FILTERS_FORM_NAME)
+const getFormInitialValues = getFormInitialValuesFactory(
+  SPECIMEN_FILTERS_FORM_NAME
+)
 
 const items = [
   { name: 'identifier' },
@@ -58,13 +68,22 @@ export class RawFilters extends PureComponent {
       <FilterContent
         {...this.props}
         {...props}
+        formValueSelector={formValueSelector}
         getDrilldownQuery={this.getDrilldownQuery}
+        getFormInitialValues={getFormInitialValues}
       />
     )
   }
 
   renderTitle(props) {
-    return <FilterTitle {...this.props} {...props} />
+    return (
+      <FilterTitle
+        {...this.props}
+        {...props}
+        formValueSelector={formValueSelector}
+        getFormInitialValues={getFormInitialValues}
+      />
+    )
   }
 
   render() {
@@ -89,13 +108,7 @@ const EnhancedFilters = compose(connect(mapStateToProps))(RawFilters)
 export default reduxForm({
   destroyOnUnmount: false,
   enableReinitialize: true,
-  initialValues: {
-    length: { rangeType: 'total-length', rangeUnit: 'unspecified' },
-    remarks: { srcField: ANY },
-    storage: { tagType: ANY },
-    taxonomy: { tagType: ANY },
-    weight: { rangeType: 'complete-body-weight', rangeUnit: 'unspecified' },
-  },
+  form: SPECIMEN_FILTERS_FORM_NAME,
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
 })(EnhancedFilters)

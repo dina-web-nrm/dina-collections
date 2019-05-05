@@ -193,7 +193,7 @@ export default () =>
       }
     }
 
-    it(`opens all filters, asserts expected inputs exist and makes one
+    it.only(`opens all filters, asserts expected inputs exist and makes one
     search per filter type`, () => {
       cy.getAllByTestId('accordionTitle').click({
         multiple: true,

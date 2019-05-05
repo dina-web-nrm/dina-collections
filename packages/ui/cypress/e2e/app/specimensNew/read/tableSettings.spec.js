@@ -1,7 +1,7 @@
 describe(`Specimens table settings`, () => {
   beforeEach(() => {
     cy.login()
-    cy.goToRoute('/app/specimens/mammals/search')
+    cy.goToRoute('/app/specimens/individuals?mainColumn=table')
     cy.get('[data-testid="infinityTableHeader"', {
       log: false,
       timeout: 60000,

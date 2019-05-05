@@ -5,13 +5,9 @@ import { connect } from 'react-redux'
 import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
 import createLog from 'utilities/log'
-import nestedToCoreSync from 'common/src/formatObject/nestedToCoreSync'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
-import {
-  createEnsureAllItemsFetched,
-  createGetResourceCount,
-} from 'coreModules/crud/higherOrderComponents'
+import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
 import transformInput, {
   getBaseValues,
@@ -22,7 +18,7 @@ const log = createLog(
   'modules:specimen:components:MammalManager:CreateSpecimen'
 )
 
-const FORM_NAME = 'createSpecimen'
+const FORM_NAME = 'specimenCreate'
 
 const formValueSelector = formValueSelectorFactory(FORM_NAME)
 
@@ -55,15 +51,18 @@ class CreateSpecimen extends PureComponent {
     const {
       createSpecimen,
       establishmentMeansTypes,
-      establishmentMeansTypesFetched,
       fetchResourceCount,
       identifierTypes,
-      identifierTypesFetched,
       onInteraction,
       ...rest
     } = this.props
 
-    if (!establishmentMeansTypesFetched || !identifierTypesFetched) {
+    if (
+      !establishmentMeansTypes ||
+      !establishmentMeansTypes.length ||
+      !identifierTypes ||
+      !identifierTypes.length
+    ) {
       return null
     }
 
@@ -81,17 +80,18 @@ class CreateSpecimen extends PureComponent {
     log.debug('initialValues', initialValues)
     return (
       <RecordForm
+        {...rest}
         baseValues={baseValues}
         establishmentMeansTypes={establishmentMeansTypes}
         form={FORM_NAME}
         formName={FORM_NAME}
         formValueSelector={formValueSelector}
-        handleFormSubmit={formOutput => {
-          const item = nestedToCoreSync({
-            item: formOutput,
-            type: 'specimen',
-          })
-          return createSpecimen({ item }).then(res => {
+        handleFormSubmit={item => {
+          console.log('item', item)
+          return createSpecimen({ item, nested: true }).then(res => {
+            console.log('res', res)
+            console.log('onInteraction', onInteraction)
+            console.log(CREATE_SUCCESS)
             fetchResourceCount()
             onInteraction(CREATE_SUCCESS, { itemId: res.id })
             return new Promise(resolve => {
@@ -104,7 +104,6 @@ class CreateSpecimen extends PureComponent {
         initialValues={initialValues}
         mode="register"
         redirectOnSuccess
-        {...rest}
       />
     )
   }
@@ -114,14 +113,6 @@ CreateSpecimen.propTypes = propTypes
 
 export default compose(
   createGetResourceCount({ resource: 'specimen' }),
-  createEnsureAllItemsFetched({
-    allItemsFetchedKey: 'establishmentMeansTypesFetched',
-    resource: 'establishmentMeansType',
-  }),
-  createEnsureAllItemsFetched({
-    allItemsFetchedKey: 'identifierTypesFetched',
-    resource: 'identifierType',
-  }),
   connect(
     mapStateToProps,
     mapDispatchToProps

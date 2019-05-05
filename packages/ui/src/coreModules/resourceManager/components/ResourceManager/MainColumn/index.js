@@ -9,7 +9,7 @@ import extractProps from 'utilities/extractProps'
 import { getTableWidth } from 'coreModules/resourceManager/utilities'
 
 import {
-  NAVIGATE_LIST,
+  NAVIGATE_TABLE,
   NAVIGATE_TREE,
 } from 'coreModules/resourceManager/constants'
 
@@ -183,6 +183,7 @@ class MainColumn extends Component {
         const { extractedProps } = extractProps({
           keys: [
             'currentTableRowNumber',
+            'enableTableColumnSorting',
             'focusedIndex',
             'focusedItemId',
             'listItems',
@@ -294,7 +295,7 @@ class MainColumn extends Component {
           <ResultOptionsBar
             {...extractedProps}
             onListTabClick={() => {
-              this.props.onInteraction(NAVIGATE_LIST)
+              this.props.onInteraction(NAVIGATE_TABLE)
             }}
             onTreeTabClick={() => {
               this.props.onInteraction(NAVIGATE_TREE)

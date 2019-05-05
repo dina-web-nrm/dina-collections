@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { CLOSE_ITEM_VIEW } from 'coreModules/resourceManager/constants'
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import extractProps from 'utilities/extractProps'
@@ -29,6 +30,7 @@ const rows = [
   },
   {
     key: 'filterForm',
+    style: { overflow: 'auto' },
   },
   {
     height: emToPixels(4.625),
@@ -66,9 +68,10 @@ class FilterColumn extends Component {
             'buildFilterQuery',
             'isPicker',
             'onInteraction',
-            'onUpdateFilterValues',
             'onShowAllRecords',
+            'onUpdateFilterValues',
             'resource',
+            'tableSearch',
           ],
           props: this.props,
         })
@@ -89,6 +92,7 @@ class FilterColumn extends Component {
         availableHeight={availableHeight}
         renderRow={this.renderRow}
         rows={rows}
+        wrapperId="filterColumn"
       />
     )
   }
@@ -97,4 +101,4 @@ class FilterColumn extends Component {
 FilterColumn.defaultProps = defaultProps
 FilterColumn.propTypes = propTypes
 
-export default FilterColumn
+export default injectWindowHeight(FilterColumn)

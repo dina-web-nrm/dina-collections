@@ -149,6 +149,7 @@ class ResourceManager extends Component {
             'createItemActive',
             'currentTableRowNumber',
             'editItemActive',
+            'enableTableColumnSorting',
             'expandedIds',
             'fetchRelationshipsBeforeDelete',
             'fetchTreeBase',
@@ -216,6 +217,7 @@ class ResourceManager extends Component {
             'onUpdateFilterValues',
             'renderFilterForm',
             'resource',
+            'tableSearch',
           ],
           props: this.props,
         })
