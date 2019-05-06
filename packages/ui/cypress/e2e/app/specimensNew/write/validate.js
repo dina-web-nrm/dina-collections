@@ -9,11 +9,10 @@ export default () =>
       cy.visit('/app/specimens/individuals?mainColumn=create&sectionId=0')
       cy.getByTestId('createAutomaticNumber').click()
       cy.url()
-        .should('include', '/edit/')
+        .should('include', 'mainColumn=edit')
         .then(url => {
-          const urlParts = url.split('/')
-          const specimenIdIndex = urlParts.findIndex(str => str === 'edit')
-          newSpecimenId = urlParts[specimenIdIndex - 1]
+          const itemIdPart = url.split('itemId=')[1]
+          newSpecimenId = itemIdPart.split('&')[0] // eslint-disable-line prefer-destructuring
         })
     })
 
