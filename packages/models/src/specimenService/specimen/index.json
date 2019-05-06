@@ -41,15 +41,11 @@
     "x-relationships": {
       "causeOfDeathTypes": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": "individual.deathInformation.*.causeOfDeathType",
         "resource": "causeOfDeathType"
       },
       "establishmentMeansTypes": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": [
           "individual.collectingInformation.*.establishmentMeansType",
           "individual.originInformation.*.establishmentMeansType"
@@ -58,22 +54,16 @@
       },
       "featureTypes": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": "individual.featureObservations.*.featureType",
         "resource": "featureType"
       },
       "identifierTypes": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": "individual.identifiers.*.identifierType",
         "resource": "identifierType"
       },
       "normalizedAgents": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": [
           "individual.acquisition.handedInByAgent.normalized",
           "individual.collectingInformation.*.collectedByAgent.normalized",
@@ -86,50 +76,35 @@
       },
       "physicalObjects": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": "individual.collectionItems.*.physicalObject",
         "resource": "physicalObject"
       },
       "places": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": "individual.collectingInformation.*.event.locationInformation.places.*.",
         "resource": "place"
       },
       "preparationTypes": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": "individual.collectionItems.*.preparationType",
         "resource": "preparationType"
       },
       "resourceActivities": {
         "type": "array",
-        "x-inverse-relationship-key": "specimen",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
         "resource": "resourceActivity"
       },
       "taxa": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": ["individual.taxonInformation.curatorialTaxon"],
         "resource": "taxon"
       },
       "taxonNames": {
         "type": "array",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": ["individual.determinations.*.taxonName"],
         "resource": "taxonName"
       },
       "typeSpecimenType": {
         "type": "object",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "x-path": "individual.typeStatus",
         "resource": "typeSpecimenType"
       }
