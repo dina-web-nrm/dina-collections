@@ -21,13 +21,13 @@
       "type": "string"
     },
     "id": {
-      "$ref": "__ROOT__id"
+      "$ref": "id"
     },
     "isRoot": {
       "type": "boolean"
     },
     "type": {
-      "$ref": "__ROOT__type"
+      "$ref": "type"
     },
     "x-relationships": {
       "children": {

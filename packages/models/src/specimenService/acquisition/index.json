@@ -2,16 +2,16 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "handedInByAgent": {
-      "$ref": "__ROOT__agent"
+      "$ref": "agent"
     },
     "acquisitionTypeText": {
       "type": "string"
     },
     "date": {
-      "$ref": "__ROOT__dateRange"
+      "$ref": "dateRange"
     },
     "remarks": {
       "type": "string"

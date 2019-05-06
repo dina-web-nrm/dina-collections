@@ -2,13 +2,13 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "agent": {
-      "$ref": "__ROOT__agent"
+      "$ref": "agent"
     },
     "date": {
-      "$ref": "__ROOT__dateRange"
+      "$ref": "dateRange"
     },
     "description": {
       "type": "string"

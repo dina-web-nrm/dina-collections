@@ -2,7 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "normalized": {
-      "$ref": "__ROOT__normalizedAgent",
+      "$ref": "normalizedAgent",
       "x-reference-type": "external"
     },
     "textI": {

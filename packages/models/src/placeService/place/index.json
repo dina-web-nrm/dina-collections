@@ -51,26 +51,26 @@
     "centralPosition": {
       "type": "object",
       "description": "A position describing the center",
-      "$ref": "__ROOT__position"
+      "$ref": "position"
     },
     "polygon": {
       "type": "object",
       "description": "A polygon describing the edges",
-      "$ref": "__ROOT__polygon"
+      "$ref": "polygon"
     },
     "verticalPosition": {
       "description": "A vertical position",
       "type": "object",
-      "$ref": "__ROOT__verticalPosition"
+      "$ref": "verticalPosition"
     },
     "isRoot": {
       "type": "boolean"
     },
     "id": {
-      "$ref": "__ROOT__id"
+      "$ref": "id"
     },
     "type": {
-      "$ref": "__ROOT__type"
+      "$ref": "type"
     },
     "x-relationships": {
       "parent": {

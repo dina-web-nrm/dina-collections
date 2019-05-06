@@ -2,13 +2,13 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "originLocality": {
       "type": "string"
     },
     "establishmentMeansType": {
-      "$ref": "__ROOT__establishmentMeansType",
+      "$ref": "establishmentMeansType",
       "x-reference-type": "external"
     },
     "remarks": {
@@ -22,7 +22,7 @@
       "enum": ["yes", "no", "unknown"]
     },
     "event": {
-      "$ref": "__ROOT__event"
+      "$ref": "event"
     }
   }
 }

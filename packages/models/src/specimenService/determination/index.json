@@ -2,7 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "remarks": {
       "type": "string",
@@ -17,10 +17,10 @@
       "description": "Interpreted taxon name"
     },
     "determinedByAgent": {
-      "$ref": "__ROOT__agent"
+      "$ref": "agent"
     },
     "date": {
-      "$ref": "__ROOT__dateRange"
+      "$ref": "dateRange"
     }
   }
 }

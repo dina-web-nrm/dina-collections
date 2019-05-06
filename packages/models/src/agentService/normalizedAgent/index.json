@@ -45,7 +45,7 @@
       "type": "string"
     },
     "legacyData": {
-      "$ref": "__ROOT__legacyData"
+      "$ref": "legacyData"
     },
     "streetAddress": {
       "type": "string"
@@ -60,7 +60,7 @@
       "type": "string"
     },
     "lifespan": {
-      "$ref": "__ROOT__dateRange"
+      "$ref": "dateRange"
     },
     "agentType": {
       "type": "string",
@@ -69,14 +69,14 @@
     "roles": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__role"
+        "$ref": "role"
       }
     },
     "title": {
       "type": "string"
     },
     "readOnly": {
-      "$ref": "__ROOT__readOnly"
+      "$ref": "readOnly"
     },
     "x-relationships": {
       "resourceActivities": {

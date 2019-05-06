@@ -2,14 +2,14 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "establishmentMeansType": {
-      "$ref": "__ROOT__establishmentMeansType",
+      "$ref": "establishmentMeansType",
       "x-reference-type": "external"
     },
     "collectedByAgent": {
-      "$ref": "__ROOT__agent"
+      "$ref": "agent"
     },
     "collectorsText": {
       "type": "string",
@@ -24,7 +24,7 @@
       "type": "string"
     },
     "event": {
-      "$ref": "__ROOT__event"
+      "$ref": "event"
     }
   }
 }

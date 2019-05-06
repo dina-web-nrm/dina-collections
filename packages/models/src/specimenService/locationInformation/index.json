@@ -2,24 +2,24 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "places": {
       "description": "An array with curated localities",
       "type": "array",
-      "items": { "$ref": "__ROOT__place", "x-reference-type": "external" }
+      "items": { "$ref": "place", "x-reference-type": "external" }
     },
     "position": {
       "type": "object",
-      "$ref": "__ROOT__position"
+      "$ref": "position"
     },
     "polygon": {
       "type": "object",
-      "$ref": "__ROOT__polygon"
+      "$ref": "polygon"
     },
     "verticalPosition": {
       "type": "object",
-      "$ref": "__ROOT__verticalPosition"
+      "$ref": "verticalPosition"
     },
     "coordinatesVerbatim": {
       "type": "string",
@@ -46,7 +46,7 @@
       "description": "Notes on the locality"
     },
     "readOnly": {
-      "$ref": "__ROOT__readOnly"
+      "$ref": "readOnly"
     }
   }
 }

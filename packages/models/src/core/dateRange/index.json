@@ -15,10 +15,10 @@
       "example": "Some remarks"
     },
     "startDate": {
-      "$ref": "__ROOT__datePart"
+      "$ref": "datePart"
     },
     "endDate": {
-      "$ref": "__ROOT__datePart"
+      "$ref": "datePart"
     }
   }
 }

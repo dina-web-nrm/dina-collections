@@ -6,13 +6,13 @@
       "type": "string"
     },
     "id": {
-      "$ref": "__ROOT__id"
+      "$ref": "id"
     },
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "type": {
-      "$ref": "__ROOT__type"
+      "$ref": "type"
     },
     "remarks": {
       "type": "string"
@@ -20,7 +20,7 @@
     "collectionItems": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__collectionItem"
+        "$ref": "collectionItem"
       }
     },
     "storageLocationText": {

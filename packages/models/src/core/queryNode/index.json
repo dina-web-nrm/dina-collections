@@ -3,13 +3,13 @@
   "x-internal": true,
   "properties": {
     "and": {
-      "$ref": "__ROOT__queryAnd"
+      "$ref": "queryAnd"
     },
     "or": {
-      "$ref": "__ROOT__queryOr"
+      "$ref": "queryOr"
     },
     "filter": {
-      "$ref": "__ROOT__queryFilter"
+      "$ref": "queryFilter"
     }
   }
 }

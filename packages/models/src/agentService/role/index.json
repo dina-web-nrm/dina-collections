@@ -5,10 +5,10 @@
       "type": "string"
     },
     "dateRange": {
-      "$ref": "__ROOT__dateRange"
+      "$ref": "dateRange"
     },
     "affiliation": {
-      "$ref": "__ROOT__affiliation"
+      "$ref": "affiliation"
     }
   }
 }
