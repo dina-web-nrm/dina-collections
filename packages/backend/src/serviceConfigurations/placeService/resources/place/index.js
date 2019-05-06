@@ -27,6 +27,29 @@ module.exports = {
     migrations,
     name: 'place',
     relations: ['place'],
+    relationships: {
+      children: {
+        keyAllowNull: true,
+        keyStoredInModel: 'place',
+        keyType: 'sql',
+      },
+      parent: {
+        keyAllowNull: true,
+        keyStoredInModel: 'place',
+        keyType: 'sql',
+      },
+      resourceActivities: {
+        inverseRelationshipKey: 'place',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      specimens: {
+        inverseRelationshipKey: 'places',
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+    },
+
     type: 'sequelizeDocumentModel',
   },
   operations: [
