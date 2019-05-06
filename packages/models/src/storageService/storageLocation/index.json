@@ -32,41 +32,26 @@
     "x-relationships": {
       "children": {
         "type": "array",
-        "x-key-allow-null": true,
-        "x-key-stored-in-model": "storageLocation",
-        "x-key-type": "sql",
         "resource": "storageLocation"
       },
       "parent": {
         "type": "object",
-        "x-key-allow-null": true,
-        "x-key-stored-in-model": "storageLocation",
-        "x-key-type": "sql",
         "resource": "storageLocation"
       },
       "physicalObjects": {
         "type": "array",
-        "x-key-stored-in-model": "physicalObject",
-        "x-key-type": "sql",
         "resource": "physicalObject"
       },
       "preparationTypes": {
         "type": "array",
-        "x-key-stored-in-model": "storageLocation",
-        "x-key-type": "json",
         "resource": "preparationType"
       },
       "resourceActivities": {
         "type": "array",
-        "x-inverse-relationship-key": "storageLocation",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
         "resource": "resourceActivity"
       },
       "taxa": {
         "type": "array",
-        "x-key-stored-in-model": "storageLocation",
-        "x-key-type": "json",
         "resource": "taxon"
       }
     }
