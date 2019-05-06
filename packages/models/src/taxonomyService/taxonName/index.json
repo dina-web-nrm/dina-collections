@@ -34,34 +34,18 @@
     "x-relationships": {
       "acceptedToTaxon": {
         "type": "object",
-        "x-key-allow-null": true,
-        "x-key-name": "acceptedToTaxonId",
-        "x-key-stored-in-model": "taxonName",
-        "x-key-unique": true,
-        "x-key-type": "sql",
         "resource": "taxon"
       },
       "resourceActivities": {
         "type": "array",
-        "x-inverse-relationship-key": "taxonName",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
         "resource": "resourceActivity"
       },
       "synonymToTaxon": {
         "type": "object",
-        "x-key-allow-null": true,
-        "x-key-name": "synonymToTaxonId",
-        "x-key-stored-in-model": "taxonName",
-        "x-key-type": "sql",
         "resource": "taxon"
       },
       "vernacularToTaxon": {
         "type": "object",
-        "x-key-allow-null": true,
-        "x-key-name": "vernacularToTaxonId",
-        "x-key-stored-in-model": "taxonName",
-        "x-key-type": "sql",
         "resource": "taxon"
       }
     }
