@@ -17,61 +17,34 @@
     "x-relationships": {
       "acceptedTaxonName": {
         "type": "object",
-        "x-key-allow-null": true,
-        "x-key-name": "acceptedToTaxonId",
-        "x-key-stored-in-model": "taxonName",
-        "x-key-type": "sql",
         "resource": "taxonName"
       },
       "children": {
         "type": "array",
-        "x-key-allow-null": true,
-        "x-key-stored-in-model": "taxon",
-        "x-key-type": "sql",
         "resource": "taxon"
       },
       "parent": {
         "type": "object",
-        "x-key-allow-null": true,
-        "x-key-stored-in-model": "taxon",
-        "x-key-type": "sql",
         "resource": "taxon"
       },
       "resourceActivities": {
         "type": "array",
-        "x-inverse-relationship-key": "taxon",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
         "resource": "resourceActivity"
       },
       "specimens": {
         "type": "array",
-        "x-inverse-relationship-key": "taxa",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "resource": "specimen"
       },
       "storageLocations": {
         "type": "array",
-        "x-inverse-relationship-key": "taxa",
-        "x-key-stored-in-model": "storageLocation",
-        "x-key-type": "json",
         "resource": "storageLocation"
       },
       "synonyms": {
         "type": "array",
-        "x-key-allow-null": true,
-        "x-key-name": "synonymToTaxonId",
-        "x-key-stored-in-model": "taxonName",
-        "x-key-type": "sql",
         "resource": "taxonName"
       },
       "vernacularNames": {
         "type": "array",
-        "x-key-allow-null": true,
-        "x-key-name": "vernacularToTaxonId",
-        "x-key-stored-in-model": "taxonName",
-        "x-key-type": "sql",
         "resource": "taxonName"
       }
     }
