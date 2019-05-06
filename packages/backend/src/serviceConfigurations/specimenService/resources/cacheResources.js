@@ -6,11 +6,15 @@ const filterSpecification = createGetManyFilterSpecifications({
 })
 
 module.exports = cacheResourcesSpecifications.reduce(
-  (obj, { defaultLimit, name, srcResource, srcRelationships }) => {
+  (
+    obj,
+    { defaultLimit, name, srcResource, srcRelationships, modelRelationships }
+  ) => {
     const spec = {
       basePath: '/api/search/v01',
       model: {
         name,
+        relationships: modelRelationships,
         type: 'inMemoryViewDocumentModel',
       },
       operations: [

@@ -5,8 +5,6 @@
     "x-relationships": {
       "storageLocation": {
         "type": "object",
-        "x-key-stored-in-model": "cachePhysicalObject",
-        "x-key-type": "json",
         "resource": "storageLocation"
       }
     }
