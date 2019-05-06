@@ -12,7 +12,7 @@ module.exports = function getModelSpecifications({ serviceSpecifications }) {
         const keys = Object.keys(resources)
         keys.forEach(resourceKey => {
           const resource = resources[resourceKey]
-          if (resource && resource.model) {
+          if (resource && resource.model && resource.model.type) {
             modelSpecifications.push(resource.model)
           }
         })
