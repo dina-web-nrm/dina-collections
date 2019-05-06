@@ -48,12 +48,12 @@ export default () =>
           })
       })
 
-      it('expands all sections', () => {
-        cy.quickQueryByTestId('taxonomy').should('not.exist')
-        cy.quickQueryByTestId('localityOrigin').should('not.exist')
-        cy.quickQueryByTestId('collectingDeath').should('not.exist')
-        cy.quickQueryByTestId('physicalObjects').should('not.exist')
-        cy.quickQueryByTestId('features').should('not.exist')
+      it.only('expands all sections', () => {
+        // cy.quickQueryByTestId('taxonomy').should('not.exist')
+        // cy.quickQueryByTestId('localityOrigin').should('not.exist')
+        // cy.quickQueryByTestId('collectingDeath').should('not.exist')
+        // cy.quickQueryByTestId('physicalObjects').should('not.exist')
+        // cy.quickQueryByTestId('features').should('not.exist')
 
         cy.getByTestId('formSectionNavigationItem-expandAllSections').click()
 

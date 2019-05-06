@@ -101,7 +101,12 @@ class FormRow extends PureComponent {
   handleSectionIdUpdate(props = this.props) {
     const { formName, sectionId } = props
     const sectionIndex = Number(sectionId)
-    console.log('sectionIndex', sectionIndex, Number.isInteger(sectionIndex))
+    console.log(
+      'sectionIndex',
+      sectionIndex,
+      'Number.isInteger(sectionIndex)',
+      Number.isInteger(sectionIndex)
+    )
     console.log('sectionId', sectionId)
     if (Number.isInteger(sectionIndex)) {
       this.props.setShowAllFormSections(false, { formName })
@@ -207,7 +212,9 @@ class FormRow extends PureComponent {
       <React.Fragment>
         <ColumnLayout
           {...rest}
-          activeFormSectionIndex={Number(sectionId)}
+          activeFormSectionIndex={
+            Number.isInteger(Number(sectionId)) ? sectionId : undefined
+          }
           columns={columns}
           customParts={customParts}
           moduleName={moduleName}
