@@ -101,6 +101,7 @@ class AgentDropdownSearch extends Component {
         filterFunctionName="fullNameSearch"
         includeFields={includeFields}
         mapItemToOption={mapItemToOption}
+        relationships={[]}
         resource="normalizedAgent"
         searchWithQuery
         type="dropdown-search-id-text"

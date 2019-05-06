@@ -14,7 +14,7 @@ import ListItem from './ListItem'
 
 const mapStateToProps = (state, { resource }) => {
   const itemsObject = crudSelectors[resource].getItemsObject(state)
-  console.log('itemsObject', itemsObject)
+
   return {
     itemsObject,
   }

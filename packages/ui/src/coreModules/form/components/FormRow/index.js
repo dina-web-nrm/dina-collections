@@ -8,10 +8,6 @@ import { push } from 'react-router-redux'
 import createLog from 'utilities/log'
 import extractProps from 'utilities/extractProps'
 import { validateSections } from 'coreModules/formSupport/actionCreators'
-import {
-  actionCreators as formSupportKeyObjectActionCreators,
-  globalSelectors as formSupportKeyObjectSelectors,
-} from 'coreModules/formSupport/keyObjectModule'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { NAVIGATE_FORM_SECTION } from 'coreModules/resourceManager/constants'
@@ -29,21 +25,8 @@ const columns = [
   { key: 'formSectionView', style: { overflow: 'auto' } },
 ]
 
-const mapStateToProps = (state, { formName }) => {
-  return {
-    showAllFormSections: formSupportKeyObjectSelectors.get[
-      'sectionNavigation.:formName.showAllFormSections'
-    ](state, {
-      formName,
-    }),
-  }
-}
 const mapDispatchToProps = {
   push,
-  setShowAllFormSections:
-    formSupportKeyObjectActionCreators.set[
-      'sectionNavigation.:formName.showAllFormSections'
-    ],
   validateSections,
 }
 
@@ -63,8 +46,6 @@ const propTypes = {
       units: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     }).isRequired
   ).isRequired,
-  setShowAllFormSections: PropTypes.func.isRequired,
-  showAllFormSections: PropTypes.bool,
   showSectionsInNavigation: PropTypes.bool,
   validateSections: PropTypes.func.isRequired,
 }
@@ -73,14 +54,12 @@ const defaultProps = {
   itemSubHeader: undefined,
   passthroughProps: ['resourceActivities'],
   sectionId: undefined,
-  showAllFormSections: undefined,
   showSectionsInNavigation: false,
 }
 
 class FormRow extends PureComponent {
   constructor(props) {
     super(props)
-    this.handleSectionIdUpdate = this.handleSectionIdUpdate.bind(this)
     this.handleSetActiveFormSection = this.handleSetActiveFormSection.bind(this)
     this.handleGoToNextSection = this.handleGoToNextSection.bind(this)
     this.handleGoToPreviousSection = this.handleGoToPreviousSection.bind(this)
@@ -88,33 +67,16 @@ class FormRow extends PureComponent {
     this.renderColumn = this.renderColumn.bind(this)
   }
 
-  componentWillMount() {
-    this.handleSectionIdUpdate()
+  componentDidMount() {
+    const { formName } = this.props
+    this.props.validateSections({ formName })
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.sectionId !== nextProps.sectionId) {
-      this.handleSectionIdUpdate(nextProps)
+      const { formName } = this.props
+      this.props.validateSections({ formName })
     }
-  }
-
-  handleSectionIdUpdate(props = this.props) {
-    const { formName, sectionId } = props
-    const sectionIndex = Number(sectionId)
-    console.log(
-      'sectionIndex',
-      sectionIndex,
-      'Number.isInteger(sectionIndex)',
-      Number.isInteger(sectionIndex)
-    )
-    console.log('sectionId', sectionId)
-    if (Number.isInteger(sectionIndex)) {
-      this.props.setShowAllFormSections(false, { formName })
-    } else if (sectionId === 'all') {
-      this.props.setShowAllFormSections(true, { formName })
-    }
-
-    setTimeout(() => this.props.validateSections({ formName: props.formName }))
   }
 
   handleSetActiveFormSection(event, newSectionId) {
@@ -125,17 +87,22 @@ class FormRow extends PureComponent {
 
   handleGoToNextSection(event) {
     const { sectionId, sectionSpecs } = this.props
+    const numericSectionId = Number(sectionId)
 
-    if (sectionId < sectionSpecs.length - 1) {
-      this.handleSetActiveFormSection(event, sectionId + 1)
+    if (
+      Number.isInteger(numericSectionId) &&
+      numericSectionId < sectionSpecs.length - 1
+    ) {
+      this.handleSetActiveFormSection(event, numericSectionId + 1)
     }
   }
 
   handleGoToPreviousSection(event) {
     const { sectionId } = this.props
+    const numericSectionId = Number(sectionId)
 
-    if (sectionId > 0) {
-      this.handleSetActiveFormSection(event, sectionId - 1)
+    if (Number.isInteger(numericSectionId) && numericSectionId > 0) {
+      this.handleSetActiveFormSection(event, numericSectionId - 1)
     }
   }
 
@@ -192,19 +159,11 @@ class FormRow extends PureComponent {
       moduleName,
       sectionId,
       sectionSpecs,
-      showAllFormSections,
       showSectionsInNavigation,
       ...rest
     } = this.props
-    console.log(
-      'showAllFormSections',
-      showAllFormSections,
-      showSectionsInNavigation
-    )
-    if (
-      sectionId === undefined ||
-      (showSectionsInNavigation && showAllFormSections === undefined)
-    ) {
+
+    if (sectionId === undefined) {
       return null
     }
 
@@ -212,9 +171,7 @@ class FormRow extends PureComponent {
       <React.Fragment>
         <ColumnLayout
           {...rest}
-          activeFormSectionIndex={
-            Number.isInteger(Number(sectionId)) ? sectionId : undefined
-          }
+          activeFormSectionIndex={Number(sectionId)}
           columns={columns}
           customParts={customParts}
           moduleName={moduleName}
@@ -225,7 +182,7 @@ class FormRow extends PureComponent {
           onShowAllFormSections={this.handleShowAllFormSections}
           renderColumn={this.renderColumn}
           sectionSpecs={sectionSpecs}
-          showAllFormSections={showAllFormSections}
+          showAllFormSections={sectionId === 'all'}
           showSectionsInNavigation={showSectionsInNavigation}
         />
       </React.Fragment>
@@ -239,7 +196,7 @@ FormRow.defaultProps = defaultProps
 export default compose(
   withRouter,
   connect(
-    mapStateToProps,
+    undefined,
     mapDispatchToProps
   )
 )(FormRow)

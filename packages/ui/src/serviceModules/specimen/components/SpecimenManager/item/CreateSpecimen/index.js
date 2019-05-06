@@ -87,11 +87,7 @@ class CreateSpecimen extends PureComponent {
         formName={FORM_NAME}
         formValueSelector={formValueSelector}
         handleFormSubmit={item => {
-          console.log('item', item)
           return createSpecimen({ item, nested: true }).then(res => {
-            console.log('res', res)
-            console.log('onInteraction', onInteraction)
-            console.log(CREATE_SUCCESS)
             fetchResourceCount()
             onInteraction(CREATE_SUCCESS, { itemId: res.id })
             return new Promise(resolve => {

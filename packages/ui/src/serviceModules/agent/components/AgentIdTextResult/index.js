@@ -61,6 +61,12 @@ class AgentIdTextResult extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(
+      'componentDidUpdate AgentIdTextResult',
+      this.props.forceRenderResult &&
+        prevProps.isLatestActiveField !== this.props.isLatestActiveField &&
+        !this.props.isLatestActiveField
+    )
     if (
       this.props.forceRenderResult &&
       prevProps.isLatestActiveField !== this.props.isLatestActiveField &&
@@ -156,6 +162,7 @@ export default compose(
   createGetItemById({
     idPath: 'input.value.normalized.id',
     itemKey: 'normalizedAgent',
+    relationships: [],
     resource: 'normalizedAgent',
   })
 )(AgentIdTextResult)

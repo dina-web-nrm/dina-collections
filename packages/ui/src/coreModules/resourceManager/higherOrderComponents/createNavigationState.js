@@ -129,7 +129,7 @@ const createResourceUrlState = () => ComposedComponent => {
         filterColumn: undefined,
         itemId,
         mainColumn: 'edit',
-        sectionId: '0',
+        sectionId: this.props.state.sectionId || '0',
       })
     }
 
@@ -151,7 +151,7 @@ const createResourceUrlState = () => ComposedComponent => {
         filterColumn: undefined,
         itemId: undefined,
         mainColumn: 'create',
-        sectionId: '0',
+        sectionId: this.props.state.sectionId || '0',
       })
     }
 
@@ -163,6 +163,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.props.updateState(
         {
           mainColumn: 'table',
+          sectionId: undefined,
         },
         state
       )
@@ -172,6 +173,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.props.updateState({
         filterColumn: undefined,
         mainColumn: 'tree',
+        sectionId: undefined,
       })
     }
 
@@ -184,7 +186,7 @@ const createResourceUrlState = () => ComposedComponent => {
         itemId,
         sectionId,
       } = state
-      console.log('nav state', JSON.stringify(state, null, 2))
+
       return (
         <ComposedComponent
           {...this.props}

@@ -49,7 +49,16 @@ class TogglableField extends PureComponent {
       renderResult,
       renderEmptyState,
     } = this.props
-
+    console.log(
+      'forceRenderInput , ,isLatestActiveField,forceRenderResult',
+      forceRenderInput,
+      isLatestActiveField,
+      forceRenderResult
+    )
+    console.log(
+      'forceRenderInput || (isLatestActiveField && !forceRenderResult)',
+      forceRenderInput || (isLatestActiveField && !forceRenderResult)
+    )
     if (forceRenderInput || (isLatestActiveField && !forceRenderResult)) {
       return renderInput(this.props)
     }
