@@ -24,6 +24,22 @@ module.exports = {
     migrations,
     name: 'normalizedAgent',
     relations: ['normalizedAgent'],
+    relationships: {
+      resourceActivities: {
+        inverseRelationshipKey: 'normalizedAgent',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      specimens: {
+        inverseRelationshipKey: 'normalizedAgents',
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      user: {
+        keyStoredInModel: 'normalizedAgent',
+        keyType: 'json',
+      },
+    },
     type: 'sequelizeDocumentModel',
   },
   operations: [

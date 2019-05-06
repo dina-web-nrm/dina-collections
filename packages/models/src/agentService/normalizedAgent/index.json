@@ -81,22 +81,14 @@
     "x-relationships": {
       "resourceActivities": {
         "type": "array",
-        "x-inverse-relationship-key": "normalizedAgent",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
         "resource": "resourceActivity"
       },
       "specimens": {
         "type": "array",
-        "x-inverse-relationship-key": "normalizedAgents",
-        "x-key-stored-in-model": "specimen",
-        "x-key-type": "json",
         "resource": "specimen"
       },
       "user": {
         "type": "object",
-        "x-key-stored-in-model": "normalizedAgent",
-        "x-key-type": "json",
         "resource": "user"
       }
     }
