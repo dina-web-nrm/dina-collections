@@ -4,8 +4,6 @@
     "x-relationships": {
       "normalizedAgent": {
         "type": "array",
-        "x-key-stored-in-model": "normalizedAgent",
-        "x-key-type": "json",
         "resource": "normalizedAgent"
       }
     },
