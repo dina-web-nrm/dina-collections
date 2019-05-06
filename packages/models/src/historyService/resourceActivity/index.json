@@ -74,51 +74,30 @@
     "x-relationships": {
       "normalizedAgent": {
         "type": "object",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
-        "x-key-name": "resourceId",
         "resource": "normalizedAgent"
       },
       "physicalObject": {
         "type": "object",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
-        "x-key-name": "resourceId",
         "resource": "physicalObject"
       },
       "place": {
         "type": "object",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
-        "x-key-name": "resourceId",
         "resource": "place"
       },
       "specimen": {
         "type": "object",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
-        "x-key-name": "resourceId",
         "resource": "specimen"
       },
       "storageLocation": {
         "type": "object",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
-        "x-key-name": "resourceId",
         "resource": "storageLocation"
       },
       "taxon": {
         "type": "object",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
-        "x-key-name": "resourceId",
         "resource": "taxon"
       },
       "taxonName": {
         "type": "object",
-        "x-key-stored-in-model": "resourceActivity",
-        "x-key-type": "polymorphic",
-        "x-key-name": "resourceId",
         "resource": "taxonName"
       }
     }

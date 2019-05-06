@@ -68,6 +68,43 @@ module.exports = {
     ],
     migrations,
     name: 'resourceActivity',
+    relationships: {
+      normalizedAgent: {
+        keyName: 'resourceId',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      physicalObject: {
+        keyName: 'resourceId',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      place: {
+        keyName: 'resourceId',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      specimen: {
+        keyName: 'resourceId',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      storageLocation: {
+        keyName: 'resourceId',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      taxon: {
+        keyName: 'resourceId',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      taxonName: {
+        keyName: 'resourceId',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+    },
     type: 'sequelizeSimpleSqlModel',
   },
   operations: [
