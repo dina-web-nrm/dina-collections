@@ -23,7 +23,7 @@ import RecordForm from '../RecordForm'
 
 const log = createLog('modules:specimen:components:MammalManager:EditSpecimen')
 
-const FORM_NAME = 'specimenEdit'
+const FORM_NAME = 'editSpecimen'
 
 const formValueSelector = formValueSelectorFactory(FORM_NAME)
 

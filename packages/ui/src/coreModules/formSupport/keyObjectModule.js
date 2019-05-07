@@ -12,6 +12,7 @@ const {
   keys: [
     ':formName',
     'sectionNavigation.:formName.sectionInvalidStatus',
+    'sectionNavigation.:formName.activeFormSectionIndex',
     'sectionNavigation.:formName.showAllFormSections',
   ],
   name,
