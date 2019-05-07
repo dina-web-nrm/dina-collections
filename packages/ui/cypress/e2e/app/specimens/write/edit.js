@@ -7,7 +7,7 @@ export default () =>
 
     describe('general', () => {
       beforeEach(() => {
-        cy.visit(`/app/specimens/mammals/2/edit/sections/0`)
+        cy.visit(`/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=0`)
         cy.get('[data-testid="basicInformation"]', {
           log: false,
           timeout: 20000,
@@ -16,7 +16,7 @@ export default () =>
 
       it('removes unsaved changes', () => {
         cy.getState()
-          .its('form.editSpecimen')
+          .its('form.specimenEdit')
           .then(formState => {
             expect(formState.initial).to.equal(formState.values)
           })
@@ -33,27 +33,23 @@ export default () =>
         cy.getByText('Unsaved changes')
         cy.get('@undoChangesButton').should('not.be.disabled')
         cy.getState()
-          .its('form.editSpecimen')
+          .its('form.specimenEdit')
           .then(formState => {
             expect(formState.initial).not.to.equal(formState.values)
           })
 
         cy.get('@undoChangesButton').click()
         cy.getState()
-          .its('form.editSpecimen')
+          .its('form.specimenEdit')
           .then(formState => {
             expect(formState.initial).to.equal(formState.values)
           })
       })
 
       it('expands all sections', () => {
-        cy.quickQueryByTestId('taxonomy').should('not.exist')
-        cy.quickQueryByTestId('localityOrigin').should('not.exist')
-        cy.quickQueryByTestId('collectingDeath').should('not.exist')
-        cy.quickQueryByTestId('physicalObjects').should('not.exist')
-        cy.quickQueryByTestId('features').should('not.exist')
-
+        cy.get('.ui.green.segment').should('have.length', 1)
         cy.getByTestId('formSectionNavigationItem-expandAllSections').click()
+        cy.get('.ui.green.segment').should('have.length', 6)
 
         cy.getByTestId('basicInformation')
         cy.getByTestId('taxonomy')
@@ -74,7 +70,9 @@ export default () =>
 
       describe('basicInformation', () => {
         beforeEach(() => {
-          cy.visit(`/app/specimens/mammals/2/edit/sections/0`)
+          cy.visit(
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=0`
+          )
           cy.get('[data-testid="basicInformation"]', {
             log: false,
             timeout: 20000,
@@ -111,7 +109,9 @@ export default () =>
 
       describe('taxonomy', () => {
         beforeEach(() => {
-          cy.visit(`/app/specimens/mammals/2/edit/sections/1`)
+          cy.visit(
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=1`
+          )
           cy.get('[data-testid="taxonomy"]', {
             log: false,
             timeout: 20000,
@@ -159,7 +159,9 @@ export default () =>
 
       describe('localityOrigin', () => {
         beforeEach(() => {
-          cy.visit(`/app/specimens/mammals/2/edit/sections/2`)
+          cy.visit(
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=2`
+          )
           cy.get('[data-testid="localityOrigin"]', {
             log: false,
             timeout: 20000,
@@ -182,7 +184,9 @@ export default () =>
 
       describe('collectingDeath', () => {
         beforeEach(() => {
-          cy.visit(`/app/specimens/mammals/2/edit/sections/3`)
+          cy.visit(
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=3`
+          )
           cy.get('[data-testid="collectingDeath"]', {
             log: false,
             timeout: 20000,
@@ -216,7 +220,9 @@ export default () =>
 
       describe('physicalObjects', () => {
         beforeEach(() => {
-          cy.visit(`/app/specimens/mammals/2/edit/sections/4`)
+          cy.visit(
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=4`
+          )
           cy.get('[data-testid="physicalObjects"]', {
             log: false,
             timeout: 60000,
@@ -253,7 +259,9 @@ export default () =>
 
       describe('features', () => {
         beforeEach(() => {
-          cy.visit(`/app/specimens/mammals/2/edit/sections/5`)
+          cy.visit(
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=5`
+          )
           cy.get('[data-testid="features"]', {
             log: false,
             timeout: 20000,
