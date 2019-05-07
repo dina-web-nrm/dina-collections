@@ -7,6 +7,11 @@ export const NAVIGATION_ITEMS = [
   {
     exact: true,
     name: 'specimens',
+    path: '/app/specimens/individuals',
+  },
+  {
+    exact: true,
+    name: 'mammals',
     path: '/app/specimens/mammals',
   },
   {
