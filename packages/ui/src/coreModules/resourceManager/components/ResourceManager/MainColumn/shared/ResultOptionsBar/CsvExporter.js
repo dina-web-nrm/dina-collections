@@ -14,12 +14,12 @@ const mapStateToProps = (state, { resource }) => {
   const userPreferences = userSelectors.getUserPreferences(state)
 
   return {
-    columns:
-      (userPreferences && userPreferences[`${resource}TableColumns`]) ||
-      undefined,
     searchResult: searchSelectors.get[':resource.searchState'](state, {
       resource,
     }),
+    selectedTableColumnFieldPaths:
+      (userPreferences && userPreferences[`${resource}TableColumns`]) ||
+      undefined,
   }
 }
 
@@ -30,7 +30,6 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  columns: PropTypes.array,
   createExportInfo: PropTypes.func.isRequired,
   downloadFile: PropTypes.func.isRequired,
   getOneExportInfo: PropTypes.func.isRequired,
@@ -39,6 +38,7 @@ const propTypes = {
   pollLimit: PropTypes.number,
   resource: PropTypes.string.isRequired,
   searchResult: PropTypes.object,
+  selectedTableColumnFieldPaths: PropTypes.array,
   tableColumnSpecifications: PropTypes.arrayOf(
     PropTypes.shape({
       fieldPath: PropTypes.string.isRequired,
@@ -48,10 +48,10 @@ const propTypes = {
 }
 
 const defaultProps = {
-  columns: undefined,
   pollInterval: 500,
   pollLimit: 100,
   searchResult: undefined,
+  selectedTableColumnFieldPaths: undefined,
 }
 
 export class CsvExporter extends Component {
@@ -121,16 +121,21 @@ export class CsvExporter extends Component {
 
   exportToCsv() {
     const {
-      columns,
+      selectedTableColumnFieldPaths,
       resource,
       searchResult = {},
       tableColumnSpecifications,
       i18n,
     } = this.props
 
-    const exportFields = (columns || tableColumnSpecifications)
+    const exportFields = tableColumnSpecifications
       .map(({ fieldPath, label }) => {
-        if (fieldPath) {
+        if (
+          fieldPath &&
+          (selectedTableColumnFieldPaths
+            ? selectedTableColumnFieldPaths.includes(fieldPath)
+            : true)
+        ) {
           return {
             default: 'NULL',
             fieldPath: `attributes.${fieldPath}`,

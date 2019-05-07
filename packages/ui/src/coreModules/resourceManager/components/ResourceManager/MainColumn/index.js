@@ -8,17 +8,80 @@ import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
 import { getTableWidth } from 'coreModules/resourceManager/utilities'
 
-import {
-  NAVIGATE_TABLE,
-  NAVIGATE_TREE,
-} from 'coreModules/resourceManager/constants'
-
 import RecordNavigationBar from './shared/RecordNavigationBar'
 import ResultOptionsBar from './shared/ResultOptionsBar'
+import TableSettings from './collection/TableSettings'
 import TableView from './collection/TableView'
 import TreeView from './collection/TreeView'
 import CreateItemColumn from './item/CreateItemColumn'
 import EditItemColumn from './item/EditItemColumn'
+
+const getRows = memoize(
+  (
+    tableActive,
+    tableSettingsActive,
+    treeActive,
+    treeEnabled,
+    createItemActive,
+    editItemActive,
+    recordNavigationHeight,
+    recordOptionsHeight,
+    isPicker
+  ) => {
+    const rows = []
+
+    if (!isPicker) {
+      rows.push({
+        height: `${recordNavigationHeight}px`,
+        key: 'recordNavigationBar',
+      })
+    }
+
+    rows.push({
+      height: `${recordOptionsHeight}px`,
+      key: 'resultOptionBar',
+      style: {
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+      },
+    })
+
+    if (tableActive) {
+      rows.push({
+        key: 'tableView',
+        style: { overflow: 'auto' },
+      })
+    }
+
+    if (tableSettingsActive) {
+      rows.push({
+        key: 'tableSettingsView',
+        style: { overflow: 'auto' },
+      })
+    }
+
+    if (treeActive) {
+      rows.push({
+        key: 'treeView',
+        style: { overflow: 'auto' },
+      })
+    }
+
+    if (createItemActive) {
+      rows.push({
+        key: 'createItem',
+        style: { overflow: 'auto' },
+      })
+    }
+    if (editItemActive) {
+      rows.push({
+        key: 'editItem',
+        style: { overflow: 'auto' },
+      })
+    }
+    return rows
+  }
+)
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
@@ -34,6 +97,8 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   tableActive: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
+  tableSettingsActive: PropTypes.bool.isRequired,
   transformOutput: PropTypes.func,
   treeActive: PropTypes.bool.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
@@ -44,6 +109,7 @@ const defaultProps = {
   fetchRelationshipsBeforeDelete: undefined,
   recordNavigationHeight: emToPixels(4.25),
   recordOptionsHeight: emToPixels(3.5625),
+  tableColumnsToShow: undefined,
   transformOutput: undefined,
 }
 
@@ -53,65 +119,6 @@ class MainColumn extends Component {
 
     this.renderRow = this.renderRow.bind(this)
   }
-
-  getRows = memoize(
-    (
-      tableActive,
-      treeActive,
-      treeEnabled,
-      createItemActive,
-      editItemActive,
-      recordNavigationHeight,
-      recordOptionsHeight,
-      isPicker
-    ) => {
-      const rows = []
-
-      if (!isPicker) {
-        rows.push({
-          height: `${recordNavigationHeight}px`,
-          key: 'recordNavigationBar',
-        })
-      }
-
-      rows.push({
-        height: `${recordOptionsHeight}px`,
-        key: 'resultOptionBar',
-        style: {
-          paddingLeft: '1rem',
-          paddingRight: '1rem',
-        },
-      })
-
-      if (tableActive) {
-        rows.push({
-          key: 'tableView',
-          style: { overflow: 'auto' },
-        })
-      }
-
-      if (treeActive) {
-        rows.push({
-          key: 'treeView',
-          style: { overflow: 'auto' },
-        })
-      }
-
-      if (createItemActive) {
-        rows.push({
-          key: 'createItem',
-          style: { overflow: 'auto' },
-        })
-      }
-      if (editItemActive) {
-        rows.push({
-          key: 'editItem',
-          style: { overflow: 'auto' },
-        })
-      }
-      return rows
-    }
-  )
 
   renderRow(key) {
     switch (key) {
@@ -174,12 +181,18 @@ class MainColumn extends Component {
 
       case 'tableView': {
         const {
+          availableHeight,
           recordNavigationHeight,
           recordOptionsHeight,
           tableColumnSpecifications,
-          availableHeight,
+          tableColumnsToShow,
         } = this.props
-        const width = getTableWidth({ tableColumnSpecifications })
+
+        const width = getTableWidth({
+          includeColumns: tableColumnsToShow,
+          tableColumnSpecifications,
+        })
+
         const { extractedProps } = extractProps({
           keys: [
             'currentTableRowNumber',
@@ -199,6 +212,7 @@ class MainColumn extends Component {
           ],
           props: this.props,
         })
+
         return (
           <TableView
             {...extractedProps}
@@ -208,6 +222,14 @@ class MainColumn extends Component {
             width={width}
           />
         )
+      }
+
+      case 'tableSettingsView': {
+        const { extractedProps } = extractProps({
+          keys: ['onTableTabClick', 'resource', 'tableColumnSpecifications'],
+          props: this.props,
+        })
+        return <TableSettings {...extractedProps} />
       }
 
       case 'editItem': {
@@ -285,7 +307,9 @@ class MainColumn extends Component {
             'itemEnabled',
             'onExportCsv',
             'onFormTabClick',
-            'onSettingClick',
+            'onTableTabClick',
+            'onTableSettingsClick',
+            'onTreeTabClick',
             'onToggleFilters',
             'resource',
             'tableActive',
@@ -296,17 +320,7 @@ class MainColumn extends Component {
           props: this.props,
         })
 
-        return (
-          <ResultOptionsBar
-            {...extractedProps}
-            onListTabClick={() => {
-              this.props.onInteraction(NAVIGATE_TABLE)
-            }}
-            onTreeTabClick={() => {
-              this.props.onInteraction(NAVIGATE_TREE)
-            }}
-          />
-        )
+        return <ResultOptionsBar {...extractedProps} />
       }
 
       default: {
@@ -324,11 +338,13 @@ class MainColumn extends Component {
       recordNavigationHeight,
       recordOptionsHeight,
       tableActive,
+      tableSettingsActive,
       treeActive,
       treeEnabled,
     } = this.props
-    const rows = this.getRows(
+    const rows = getRows(
       tableActive,
+      tableSettingsActive,
       treeActive,
       treeEnabled,
       createItemActive,
@@ -348,6 +364,7 @@ class MainColumn extends Component {
         'listItems',
         'showAll',
         'tableActive',
+        'tableSettingsActive',
         'totalNumberOfRecords',
         'treeActive',
       ],

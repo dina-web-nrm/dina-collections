@@ -11,9 +11,9 @@ const propTypes = {
   itemEnabled: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onListTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  onTableSettingsClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onSettingClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  onTableTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
@@ -34,8 +34,8 @@ export class ResultOptionsBar extends Component {
       editItemActive,
       itemEnabled,
       onFormTabClick: handleFormTabClick,
-      onListTabClick: handleListTabClick,
-      onSettingClick: handleSettingClick,
+      onTableTabClick: handleTableTabClick,
+      onTableSettingsClick: handleTableSettingsClick,
       onToggleFilters: handleToggleFilters,
       onTreeTabClick: handleTreeTabClick,
       resource,
@@ -48,7 +48,7 @@ export class ResultOptionsBar extends Component {
     const hasSecondaryMenu =
       !(createItemActive || treeActive) ||
       csvExportEnabled ||
-      handleSettingClick
+      handleTableSettingsClick
 
     return (
       <Menu attached="top" icon style={{ position: 'relative' }} tabular>
@@ -57,7 +57,7 @@ export class ResultOptionsBar extends Component {
           data-testid="tableTabMenuItem"
           link
           name="table"
-          onClick={event => handleListTabClick(event)}
+          onClick={event => handleTableTabClick(event)}
         >
           <Icon name="table" />
         </Menu.Item>
@@ -93,11 +93,11 @@ export class ResultOptionsBar extends Component {
                 tableColumnSpecifications={tableColumnSpecifications}
               />
             )}
-            {handleSettingClick && (
+            {handleTableSettingsClick && (
               <Menu.Item
                 data-testid="settingsMenuItem"
                 link
-                onClick={event => handleSettingClick(event)}
+                onClick={event => handleTableSettingsClick(event)}
               >
                 <Icon name="setting" />
               </Menu.Item>

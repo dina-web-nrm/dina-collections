@@ -4,12 +4,16 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { getFormValues, reduxForm, SubmissionError } from 'redux-form'
 import { Button, Form, Grid, Header, Icon, Message } from 'semantic-ui-react'
+import memoize from 'memoize-one'
+
 import { Checkbox, Field } from 'coreModules/form/components'
-import { createModuleTranslate } from 'coreModules/i18n/components'
+import { Translate } from 'coreModules/i18n/components'
 import { updateUserPreference } from 'coreModules/user/actionCreators'
 import userSelectors from 'coreModules/user/globalSelectors'
 
-const ModuleTranslate = createModuleTranslate('specimen')
+const getAllColumnNames = memoize(tableColumnSpecifications =>
+  tableColumnSpecifications.map(({ fieldPath }) => fieldPath)
+)
 
 const transformColumnNamesToFormValues = columnNames => {
   return columnNames.reduce((obj, columnName) => {
@@ -33,24 +37,21 @@ const mapStateToProps = (
   { form, resource, tableColumnSpecifications }
 ) => {
   const userPreferences = userSelectors.getUserPreferences(state)
+  const allColumnNames = getAllColumnNames(tableColumnSpecifications)
   const savedColumns =
-    userPreferences && userPreferences[`${resource}TableColumns`]
-  const allTableColumnNames = tableColumnSpecifications.map(
-    ({ fieldPath }) => fieldPath
-  )
+    (userPreferences && userPreferences[`${resource}TableColumns`]) || undefined
   const columnsSelectedStatus = Object.values(getFormValues(form)(state) || {})
 
   return {
-    allTableColumnNames,
+    allColumnNames,
     someColumnSelected: columnsSelectedStatus.some(Boolean),
-    tableColumnNames: savedColumns || allTableColumnNames,
+    tableColumnNames: savedColumns || allColumnNames,
   }
 }
 const mapDispatchToProps = { updateUserPreference }
 
 const propTypes = {
-  allTableColumnNames: PropTypes.arrayOf(PropTypes.string.isRequired)
-    .isRequired,
+  allColumnNames: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   change: PropTypes.func.isRequired,
   error: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
@@ -104,7 +105,7 @@ class ResultTableSettings extends Component {
   }
 
   handleSetAll(value) {
-    this.props.allTableColumnNames.forEach(name => {
+    this.props.allColumnNames.forEach(name => {
       this.props.change(name, value)
     })
   }
@@ -135,80 +136,81 @@ class ResultTableSettings extends Component {
     } = this.props
 
     return (
-      <Form error={!!error}>
-        <Grid textAlign="left" verticalAlign="middle">
-          <Grid.Row>
-            <Grid.Column width={15}>
-              <Header>Set visible table columns</Header>
-            </Grid.Column>
-            <Grid.Column textAlign="right" width={1}>
-              <Icon
-                name="close"
-                onClick={this.handleCancel}
-                size="large"
-                style={{ cursor: 'pointer' }}
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={16}>
-              <Button
-                data-testid="selectAllButton"
-                onClick={() => this.handleSetAll(true)}
-                size="small"
-              >
-                Select all
-              </Button>
-              <Button
-                data-testid="deselectAllButton"
-                onClick={() => this.handleSetAll(false)}
-                size="small"
-              >
-                Deselect all
-              </Button>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            {tableColumnSpecifications.map(({ fieldPath, label }) => {
-              return (
-                <Grid.Column key={fieldPath} width={16}>
-                  <Field
-                    autoComplete="off"
-                    component={Checkbox}
-                    enableHelpNotifications={false}
-                    inline
-                    label={<ModuleTranslate capitalize textKey={label} />}
-                    module="specimen"
-                    name={fieldPath}
-                    type="checkbox"
-                  />
-                </Grid.Column>
-              )
-            })}
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={16}>
-              <Button
-                data-testid="saveButton"
-                disabled={!someColumnSelected || pristine || submitting}
-                onClick={handleSubmit(this.handleSave)}
-                size="large"
-              >
-                Save
-              </Button>
-              <Button
-                basic
-                data-testid="cancelButton"
-                onClick={this.handleCancel}
-                size="large"
-              >
-                Cancel
-              </Button>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        {error && <Message error>{error}</Message>}
-      </Form>
+      <div className="ui fluid dina background" style={{ padding: '20px' }}>
+        <Form error={!!error}>
+          <Grid textAlign="left" verticalAlign="middle">
+            <Grid.Row>
+              <Grid.Column width={15}>
+                <Header>Set visible table columns</Header>
+              </Grid.Column>
+              <Grid.Column textAlign="right" width={1}>
+                <Icon
+                  name="close"
+                  onClick={this.handleCancel}
+                  size="large"
+                  style={{ cursor: 'pointer' }}
+                />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={16}>
+                <Button
+                  data-testid="selectAllButton"
+                  onClick={() => this.handleSetAll(true)}
+                  size="small"
+                >
+                  Select all
+                </Button>
+                <Button
+                  data-testid="deselectAllButton"
+                  onClick={() => this.handleSetAll(false)}
+                  size="small"
+                >
+                  Deselect all
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              {tableColumnSpecifications.map(({ fieldPath, label }) => {
+                return (
+                  <Grid.Column key={fieldPath} width={16}>
+                    <Field
+                      autoComplete="off"
+                      component={Checkbox}
+                      enableHelpNotifications={false}
+                      inline
+                      label={<Translate capitalize textKey={label} />}
+                      name={fieldPath}
+                      type="checkbox"
+                    />
+                  </Grid.Column>
+                )
+              })}
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={16}>
+                <Button
+                  data-testid="saveButton"
+                  disabled={!someColumnSelected || pristine || submitting}
+                  onClick={handleSubmit(this.handleSave)}
+                  size="large"
+                >
+                  Save
+                </Button>
+                <Button
+                  basic
+                  data-testid="cancelButton"
+                  onClick={this.handleCancel}
+                  size="large"
+                >
+                  Cancel
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          {error && <Message error>{error}</Message>}
+        </Form>
+      </div>
     )
   }
 }
