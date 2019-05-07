@@ -7,7 +7,7 @@ import { push } from 'react-router-redux'
 import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
 import objectPath from 'object-path'
 
-import { Form } from 'coreModules/form/components'
+import Form from 'coreModules/form/components/FormOld'
 import FormRow from 'coreModules/form/components/FormRowOld'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import { RecordActionBar } from 'coreModules/resourceManager/components'
