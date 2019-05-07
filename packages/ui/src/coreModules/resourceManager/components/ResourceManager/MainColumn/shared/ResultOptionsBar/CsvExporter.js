@@ -9,20 +9,16 @@ import downloadFileActionCreator from 'coreModules/api/actionCreators/downloadFi
 import userSelectors from 'coreModules/user/globalSelectors'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { FormModal } from 'coreModules/form/components'
-import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
-import tableColumnSpecifications from '../tableColumnSpecifications'
 
-const SEARCH_SPECIMEN = 'searchSpecimen'
-
-const mapStateToProps = state => {
+const mapStateToProps = (state, { resource }) => {
   const userPreferences = userSelectors.getUserPreferences(state)
 
   return {
     columns:
-      (userPreferences && userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS]) ||
+      (userPreferences && userPreferences[`${resource}TableColumns`]) ||
       undefined,
     searchResult: searchSelectors.get[':resource.searchState'](state, {
-      resource: SEARCH_SPECIMEN,
+      resource,
     }),
   }
 }
@@ -41,13 +37,18 @@ const propTypes = {
   i18n: PropTypes.object.isRequired,
   pollInterval: PropTypes.number,
   pollLimit: PropTypes.number,
+  resource: PropTypes.string.isRequired,
   searchResult: PropTypes.object,
+  tableColumnSpecifications: PropTypes.arrayOf(
+    PropTypes.shape({
+      fieldPath: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 }
 
 const defaultProps = {
-  columns: tableColumnSpecifications.map(({ name }) => {
-    return name
-  }),
+  columns: undefined,
   pollInterval: 500,
   pollLimit: 100,
   searchResult: undefined,
@@ -106,6 +107,7 @@ export class CsvExporter extends Component {
           if (count >= pollLimit) {
             return this.updateStatus('failed')
           }
+
           return setTimeout(() => {
             poll()
           }, pollInterval)
@@ -118,18 +120,31 @@ export class CsvExporter extends Component {
   }
 
   exportToCsv() {
-    const { columns, searchResult = {}, i18n } = this.props
+    const {
+      columns,
+      resource,
+      searchResult = {},
+      tableColumnSpecifications,
+      i18n,
+    } = this.props
 
-    const exportFields = columns.map(column => {
-      return {
-        default: 'NULL',
-        fieldPath: `attributes.${column}`,
-        label: i18n.moduleTranslate({
-          capitalize: true,
-          textKey: `tableColumns.${column}`,
-        }),
-      }
-    })
+    const exportFields = (columns || tableColumnSpecifications)
+      .map(({ fieldPath, label }) => {
+        if (fieldPath) {
+          return {
+            default: 'NULL',
+            fieldPath: `attributes.${fieldPath}`,
+            label: i18n.translate({
+              capitalize: true,
+              textKey: label,
+            }),
+          }
+        }
+
+        return null
+      })
+      .filter(Boolean)
+
     exportFields.push({
       fieldPath: 'id',
       label: 'Id',
@@ -144,7 +159,7 @@ export class CsvExporter extends Component {
           attributes: {
             exportFields,
             exportIds,
-            resource: SEARCH_SPECIMEN,
+            resource,
           },
         },
       })
@@ -281,5 +296,5 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  withI18n({ module: 'specimen' })
+  withI18n()
 )(CsvExporter)

@@ -280,11 +280,16 @@ class MainColumn extends Component {
         const { extractedProps } = extractProps({
           keys: [
             'createItemActive',
+            'csvExportEnabled',
             'editItemActive',
             'itemEnabled',
+            'onExportCsv',
             'onFormTabClick',
+            'onSettingClick',
             'onToggleFilters',
+            'resource',
             'tableActive',
+            'tableColumnSpecifications',
             'treeActive',
             'treeEnabled',
           ],

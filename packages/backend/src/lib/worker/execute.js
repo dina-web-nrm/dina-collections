@@ -26,6 +26,7 @@ module.exports = function execute({ job, serviceInteractor }) {
       })
       .then(() => {
         const request = operationRequest || {}
+        console.log('request', JSON.stringify(request, null, 2))
         if (!operationId) {
           throw new Error('Operation id is missing')
         }

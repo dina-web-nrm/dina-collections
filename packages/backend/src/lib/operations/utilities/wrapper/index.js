@@ -121,6 +121,7 @@ module.exports = function createControllerWrapper({
       requestId,
       ...rest
     }) {
+      console.log('rawRequest', JSON.stringify(rawRequest, null, 2))
       return parseRequest({
         apiConfig,
         endpointConfig,

@@ -171,6 +171,7 @@ class SpecimenManager extends Component {
         buildEditItemHeaders={buildEditItemHeaders}
         buildFilterQuery={this.buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        csvExportEnabled
         enableTableColumnSorting
         filterHeader="Find specimens"
         initialFilterValues={initialFilterValues}

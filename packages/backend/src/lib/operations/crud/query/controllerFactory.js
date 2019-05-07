@@ -41,6 +41,7 @@ module.exports = function queryController(options) {
         },
       },
     } = request
+    console.log('includeFieldsInput', includeFieldsInput)
 
     return model.getWhere({
       aggregations,
