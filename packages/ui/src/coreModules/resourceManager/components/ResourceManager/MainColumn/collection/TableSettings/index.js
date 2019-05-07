@@ -218,7 +218,7 @@ ResultTableSettings.defaultProps = defaultProps
 
 export default compose(
   reduxForm({
-    form: 'resultTableSettingsForm',
+    form: 'tableSettingsForm',
   }),
   connect(
     mapStateToProps,
