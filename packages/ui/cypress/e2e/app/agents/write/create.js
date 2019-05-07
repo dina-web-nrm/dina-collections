@@ -6,7 +6,7 @@ export default () =>
       cy.get('[data-testid="agentRoot"]', { log: false, timeout: 20000 })
     })
 
-    it.only('fills in and save agent form', () => {
+    it('fills in and save agent form', () => {
       cy.log(
         'adds agent type, full name, disambiguating description and remarks'
       )
