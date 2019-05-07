@@ -6,7 +6,7 @@ export default () =>
     })
 
     beforeEach(() => {
-      cy.visit('/app/specimens/mammals/search')
+      cy.visit('/app/specimens/individuals?mainColumn=table')
       cy.get('[data-testid="infinityTableHeader"]', {
         log: false,
         timeout: 60000,
@@ -20,7 +20,7 @@ export default () =>
       cy.getByTestId('confirmDeleteButton').click()
       cy.getByText('The specimen was deleted')
       cy.url()
-        .should('include', 'search')
+        .should('include', 'mainColumn=table')
         .should('not.include', 'edit')
       // there's a setTimeout before the table reloads so we have to wait
       cy.wait(3000) // eslint-disable-line cypress/no-unnecessary-waiting

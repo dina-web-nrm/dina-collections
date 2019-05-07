@@ -1,7 +1,7 @@
 export default () =>
   describe('table', () => {
     beforeEach(() => {
-      cy.visit('/app/specimens/mammals/search')
+      cy.visit('/app/specimens/individuals')
       cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,
@@ -25,7 +25,7 @@ export default () =>
       cy.getByTestId('tableTabMenuItem').click()
 
       cy.log('Scroll to bottom of table and check last is visible')
-      cy.get('[data-testid="resultTableScrollContainer"]')
+      cy.get('[data-testid="tableScrollContainer"]')
         .as('table')
         .scrollTo(0, 2000, { duration: 500 })
       cy.get(
@@ -79,6 +79,11 @@ export default () =>
         'contain',
         'Ursus arctos'
       )
+
+      cy.log('Table header scrolls horizontally')
+      cy.getByText('Catalog no.')
+      cy.get('@table').scrollTo(500, 2000, { duration: 500 })
+      cy.getByText('Catalog no.').should('not.be.visible')
     })
 
     it('uses keyboard shortcuts and record number input to walk in table and open/view specimen', () => {
@@ -89,7 +94,7 @@ export default () =>
       cy.get('[data-isfocused="yes"]').should('contain', '590325')
 
       cy.get('body').type(' ')
-      cy.url().should('include', '/edit/')
+      cy.url().should('include', 'mainColumn=edit')
       cy.getByText('590325')
       cy.getByText('Mus musculoides')
 
