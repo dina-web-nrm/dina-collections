@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { getFormValues, isInvalid, isPristine } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
+
 const mapStateToProps = (state, { resource }) => {
   const formName = `${resource}Filter`
   return {
@@ -33,9 +35,25 @@ const defaultProps = {
 class BottomBar extends PureComponent {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handlePressEnter = this.handlePressEnter.bind(this)
     this.handleReset = this.handleReset.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
     this.state = { loading: false }
+    this.shortcuts = [
+      {
+        command: 'enter',
+        description: 'Execute search',
+        onPress: this.handlePressEnter,
+      },
+    ]
+  }
+
+  handlePressEnter(event) {
+    if (event.target && event.target.tagName === 'BUTTON') {
+      return
+    }
+    this.handleSubmit(event)
   }
 
   handleReset(event) {
@@ -70,30 +88,34 @@ class BottomBar extends PureComponent {
     const { invalid, isPicker, pristine } = this.props
 
     return (
-      <Grid padded>
-        <Grid.Column>
-          <Button
-            data-testid="searchButton"
-            disabled={invalid}
-            loading={this.state.loading}
-            onClick={this.handleSubmit}
-            size={isPicker ? 'small' : 'large'}
-            style={{ float: 'left' }}
-          >
-            Search
-          </Button>
-          <Button
-            basic
-            data-testid="clearAllFiltersButton"
-            disabled={pristine && !isPicker}
-            onClick={this.handleReset}
-            size={isPicker ? 'small' : 'large'}
-            style={{ float: 'right' }}
-          >
-            {isPicker ? 'Show all' : 'Clear all filters'}
-          </Button>
-        </Grid.Column>
-      </Grid>
+      <React.Fragment>
+        <KeyboardShortcuts shortcuts={this.shortcuts} />
+
+        <Grid padded>
+          <Grid.Column>
+            <Button
+              data-testid="searchButton"
+              disabled={invalid}
+              loading={this.state.loading}
+              onClick={this.handleSubmit}
+              size={isPicker ? 'small' : 'large'}
+              style={{ float: 'left' }}
+            >
+              Search
+            </Button>
+            <Button
+              basic
+              data-testid="clearAllFiltersButton"
+              disabled={pristine && !isPicker}
+              onClick={this.handleReset}
+              size={isPicker ? 'small' : 'large'}
+              style={{ float: 'right' }}
+            >
+              {isPicker ? 'Show all' : 'Clear all filters'}
+            </Button>
+          </Grid.Column>
+        </Grid>
+      </React.Fragment>
     )
   }
 }

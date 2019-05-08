@@ -76,7 +76,45 @@ class ResultTableView extends PureComponent {
     this.handleSaveTableColumnsToSort = this.handleSaveTableColumnsToSort.bind(
       this
     )
+    this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
+    this.handleSelectPreviousRecord = this.handleSelectPreviousRecord.bind(this)
+
+    this.shortcuts = [
+      {
+        command: 'down',
+        description: 'Move focus to next record',
+        onPress: this.handleSelectNextRecord,
+      },
+      {
+        command: 'up',
+        description: 'Move focus to previous record',
+        onPress: this.handleSelectPreviousRecord,
+      },
+      {
+        command: 'space',
+        description: 'Open focused record',
+        onPress: props.onFormTabClick,
+      },
+      {
+        command: 'f',
+        description: 'Show/hide filters',
+        onPress: props.onToggleFilters,
+      },
+    ]
   }
+
+  handleSelectNextRecord() {
+    if (this.props.onSelectNextRecord) {
+      this.props.onSelectNextRecord()
+    }
+  }
+
+  handleSelectPreviousRecord() {
+    if (this.props.onSelectPreviousRecord) {
+      this.props.onSelectPreviousRecord()
+    }
+  }
+
   handleSaveTableColumnsToSort(columnsToSort) {
     return this.props
       .updateUserPreference(
