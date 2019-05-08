@@ -86,7 +86,12 @@ export class FormSectionNavigation extends PureComponent {
           </Header>
 
           {showSectionsInNavigation && (
-            <Step.Group size="small" style={{ marginTop: '-10px' }} vertical>
+            <Step.Group
+              data-testid="formSectionNavigationItems"
+              size="small"
+              style={{ marginTop: '-10px' }}
+              vertical
+            >
               {sectionSpecs.map(({ name }, index) => {
                 return (
                   <FormSectionNavigationItem
