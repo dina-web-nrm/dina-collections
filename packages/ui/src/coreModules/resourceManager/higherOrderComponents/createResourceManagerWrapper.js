@@ -231,12 +231,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.transitionToTreeView = this.transitionToTreeView.bind(this)
       this.transitionFromTreeView = this.transitionFromTreeView.bind(this)
 
-      this.mountEditItemView = this.mountEditItemView.bind(this)
-      this.updateEditItemView = this.updateEditItemView.bind(this)
-      this.transitionToEditItemView = this.transitionToEditItemView.bind(this)
-      this.transitionFromEditItemView = this.transitionFromEditItemView.bind(
-        this
-      )
+      this.mountItemView = this.mountItemView.bind(this)
+      this.updateItemView = this.updateItemView.bind(this)
+      this.transitionToItemView = this.transitionToItemView.bind(this)
+      this.transitionFromItemView = this.transitionFromItemView.bind(this)
 
       this.shortcuts = [
         {
@@ -316,7 +314,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       } else if (treeActive) {
         this.mountTreeView()
       } else {
-        this.mountEditItemView()
+        this.mountItemView()
         this.tableSearch(initialFilterValues)
       }
 
@@ -345,7 +343,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             break
           }
           case 'edit-item': {
-            this.updateEditItemView(prevProps)
+            this.updateItemView(prevProps)
             break
           }
 
@@ -378,11 +376,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             break
           }
           case 'to-edit-item': {
-            this.transitionToEditItemView(prevProps)
+            this.transitionToItemView(prevProps)
             break
           }
           case 'from-edit-item': {
-            this.transitionFromEditItemView(prevProps)
+            this.transitionFromItemView(prevProps)
             break
           }
           default: {
@@ -783,7 +781,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     updateTableView(prevProps) {
       const { focusIdWhenLoaded, itemId, listItems, managerScope } = this.props
-
       const { listItems: prevListItems } = prevProps
       if (itemId && listItems !== prevListItems) {
         this.focusRowWithId(itemId)
@@ -881,13 +878,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.props.setExpandedIds({}, { managerScope })
     }
 
-    mountEditItemView() {
+    mountItemView() {
       log.debug('initial mount view: EditItem')
       this.tableSearch()
-      this.transitionToEditItemView()
+      this.transitionToItemView()
     }
 
-    updateEditItemView(prevProps) {
+    updateItemView(prevProps) {
       const { editItemActive, focusedIndex, listItems, itemId } = this.props
 
       if (!editItemActive) {
@@ -906,10 +903,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         this.selectCurrentRow(focusedIndex)
       }
     }
-    transitionToEditItemView() {
+    transitionToItemView() {
       log.debug('transition to view: EditItem')
     }
-    transitionFromEditItemView() {
+    transitionFromItemView() {
       log.debug('transition from view: EditItem')
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),
