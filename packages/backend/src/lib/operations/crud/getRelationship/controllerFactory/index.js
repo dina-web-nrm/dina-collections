@@ -1,6 +1,6 @@
-const getJsonRelationship = require('../../utilities/relationships/getJsonRelationship')
-const getPolymorphicRelationship = require('../../utilities/relationships/getPolymorphicRelationship')
-const getSqlRelationship = require('../../utilities/relationships/getSqlRelationship')
+const getJsonRelationship = require('./getJsonRelationship')
+const getPolymorphicRelationship = require('./getPolymorphicRelationship')
+const getSqlRelationship = require('./getSqlRelationship')
 
 module.exports = function getRelationship({ models, operationSpecification }) {
   const {
