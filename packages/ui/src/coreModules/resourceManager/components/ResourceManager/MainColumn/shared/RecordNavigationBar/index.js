@@ -173,7 +173,7 @@ export class RecordNavigationBar extends Component {
                   }}
                   step={1}
                   tooltip={false}
-                  value={sliderValue}
+                  value={sliderValue || 0}
                 />
               </div>
             </Grid.Column>
