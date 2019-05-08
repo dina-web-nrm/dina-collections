@@ -65,14 +65,8 @@ class EditItemColumn extends Component {
 
     switch (key) {
       case 'itemEditForm': {
-        const { renderEditForm } = this.props
-
-        const { extractedProps } = extractProps({
-          keys: ['availableHeight', 'nestedItem'],
-          props: this.props,
-        })
-        return renderEditForm({
-          ...extractedProps,
+        return this.props.renderEditForm({
+          ...this.props,
           itemHeader,
           itemSubHeader,
         })
