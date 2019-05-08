@@ -59,6 +59,7 @@ const createHandleEditSubmit = () => ComposedComponent => {
         fetchOneItemById,
         formName,
         itemId,
+        onInteraction,
         resource,
         startSubmit,
         stopSubmit,
@@ -82,8 +83,7 @@ const createHandleEditSubmit = () => ComposedComponent => {
       )
         .then(() => {
           fetchOneItemById(itemId)
-
-          this.props.onInteraction(EDIT_SUCCESS)
+          onInteraction(EDIT_SUCCESS)
           stopSubmit(formName)
         })
         .catch(handleReduxFormSubmitError)
