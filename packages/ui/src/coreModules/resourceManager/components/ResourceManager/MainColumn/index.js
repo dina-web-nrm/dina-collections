@@ -226,6 +226,7 @@ class MainColumn extends Component {
             'renderEditForm',
             'resource',
             'itemFetchOptions',
+            'sectionId',
             'transformOutput',
           ],
           props: this.props,
@@ -255,6 +256,7 @@ class MainColumn extends Component {
             'filterResourceCount',
             'resource',
             'renderCreateForm',
+            'sectionId',
           ],
           props: this.props,
         })
