@@ -8,6 +8,8 @@ const propTypes = {
   itemEnabled: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
+  onTableSettingsClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+    .isRequired,
   onTableTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
@@ -27,6 +29,7 @@ export class ResultOptionsBar extends Component {
       itemEnabled,
       onFormTabClick: handleFormTabClick,
       onTableTabClick: handleTableTabClick,
+      onTableSettingsClick: handleTableSettingsClick,
       onToggleFilters: handleToggleFilters,
       onTreeTabClick: handleTreeTabClick,
       tableActive,
@@ -79,6 +82,15 @@ export class ResultOptionsBar extends Component {
             >
               <Icon disabled={!handleToggleFilters} name="search" />
             </Menu.Item>
+            {handleTableSettingsClick && (
+              <Menu.Item
+                data-testid="settingsMenuItem"
+                link
+                onClick={event => handleTableSettingsClick(event)}
+              >
+                <Icon name="setting" />
+              </Menu.Item>
+            )}
           </Menu.Menu>
         )}
       </Menu>

@@ -10,6 +10,7 @@ import { getTableWidth } from 'coreModules/resourceManager/utilities'
 
 import RecordNavigationBar from './shared/RecordNavigationBar'
 import ResultOptionsBar from './shared/ResultOptionsBar'
+import TableSettings from './collection/TableSettings'
 import TableView from './collection/TableView'
 import TreeView from './collection/TreeView'
 import CreateItemColumn from './item/CreateItemColumn'
@@ -29,6 +30,8 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   tableActive: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
+  tableSettingsActive: PropTypes.bool.isRequired,
   transformOutput: PropTypes.func,
   treeActive: PropTypes.bool.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
@@ -39,6 +42,7 @@ const defaultProps = {
   fetchRelationshipsBeforeDelete: undefined,
   recordNavigationHeight: emToPixels(4.25),
   recordOptionsHeight: emToPixels(3.5625),
+  tableColumnsToShow: undefined,
   transformOutput: undefined,
 }
 
@@ -169,12 +173,18 @@ class MainColumn extends Component {
 
       case 'tableView': {
         const {
+          availableHeight,
           recordNavigationHeight,
           recordOptionsHeight,
           tableColumnSpecifications,
-          availableHeight,
+          tableColumnsToShow,
         } = this.props
-        const width = getTableWidth({ tableColumnSpecifications })
+
+        const width = getTableWidth({
+          includeColumns: tableColumnsToShow,
+          tableColumnSpecifications,
+        })
+
         const { extractedProps } = extractProps({
           keys: [
             'currentTableRowNumber',
@@ -183,6 +193,7 @@ class MainColumn extends Component {
             'listItems',
             'managerScope',
             'onClickRow',
+            'onFormTabClick',
             'resource',
             'tableBatchFetchOptions',
             'tableColumnSpecifications',
@@ -190,6 +201,7 @@ class MainColumn extends Component {
           ],
           props: this.props,
         })
+
         return (
           <TableView
             {...extractedProps}
@@ -199,6 +211,14 @@ class MainColumn extends Component {
             width={width}
           />
         )
+      }
+
+      case 'tableSettingsView': {
+        const { extractedProps } = extractProps({
+          keys: ['onTableTabClick', 'resource', 'tableColumnSpecifications'],
+          props: this.props,
+        })
+        return <TableSettings {...extractedProps} />
       }
 
       case 'editItem': {
@@ -275,6 +295,7 @@ class MainColumn extends Component {
             'itemEnabled',
             'onFormTabClick',
             'onTableTabClick',
+            'onTableSettingsClick',
             'onTreeTabClick',
             'onToggleFilters',
             'tableActive',
@@ -302,11 +323,13 @@ class MainColumn extends Component {
       recordNavigationHeight,
       recordOptionsHeight,
       tableActive,
+      tableSettingsActive,
       treeActive,
       treeEnabled,
     } = this.props
     const rows = this.getRows(
       tableActive,
+      tableSettingsActive,
       treeActive,
       treeEnabled,
       createItemActive,
@@ -326,6 +349,7 @@ class MainColumn extends Component {
         'listItems',
         'showAll',
         'tableActive',
+        'tableSettingsActive',
         'totalNumberOfRecords',
         'treeActive',
       ],
