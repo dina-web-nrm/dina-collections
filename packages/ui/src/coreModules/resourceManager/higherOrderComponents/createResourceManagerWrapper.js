@@ -117,6 +117,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     clearNestedCache: PropTypes.func.isRequired,
     clearResourceState: PropTypes.func.isRequired,
     close: PropTypes.func.isRequired,
+    csvExportEnabled: PropTypes.bool,
     currentTableRowNumber: PropTypes.number.isRequired,
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -167,6 +168,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   const defaultProps = {
     baseItems: [],
     baseTreeFilter: {},
+    csvExportEnabled: false,
     enableTableColumnSorting: false,
     excludeRootNode: false,
     expandedIds: {},
