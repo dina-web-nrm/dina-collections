@@ -17,8 +17,7 @@
       "type": "string"
     },
     "typeStatus": {
-      "$ref": "typeSpecimenType",
-      "x-reference-type": "external"
+      "$ref": "typeSpecimenType"
     },
     "typifiedName": {
       "type": "string"

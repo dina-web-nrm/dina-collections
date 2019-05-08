@@ -5,8 +5,7 @@
       "$ref": "lid"
     },
     "causeOfDeathType": {
-      "$ref": "causeOfDeathType",
-      "x-reference-type": "external"
+      "$ref": "causeOfDeathType"
     },
     "remarks": {
       "type": "string"

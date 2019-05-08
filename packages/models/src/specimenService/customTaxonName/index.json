@@ -2,8 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "customTaxonNameType": {
-      "$ref": "customTaxonNameType",
-      "x-reference-type": "external"
+      "$ref": "customTaxonNameType"
     },
     "language": {
       "type": "string",

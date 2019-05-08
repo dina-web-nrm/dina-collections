@@ -2,8 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "normalized": {
-      "$ref": "normalizedAgent",
-      "x-reference-type": "external"
+      "$ref": "normalizedAgent"
     },
     "textI": {
       "description": "Interpreted text",

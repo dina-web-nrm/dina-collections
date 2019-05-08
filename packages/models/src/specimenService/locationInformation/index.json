@@ -7,7 +7,7 @@
     "places": {
       "description": "An array with curated localities",
       "type": "array",
-      "items": { "$ref": "place", "x-reference-type": "external" }
+      "items": { "$ref": "place" }
     },
     "position": {
       "type": "object",

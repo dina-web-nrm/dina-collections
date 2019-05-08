@@ -5,8 +5,7 @@
       "$ref": "lid"
     },
     "establishmentMeansType": {
-      "$ref": "establishmentMeansType",
-      "x-reference-type": "external"
+      "$ref": "establishmentMeansType"
     },
     "collectedByAgent": {
       "$ref": "agent"

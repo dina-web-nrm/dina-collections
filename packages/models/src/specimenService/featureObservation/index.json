@@ -19,8 +19,7 @@
       "example": "kg"
     },
     "featureType": {
-      "$ref": "featureType",
-      "x-reference-type": "external"
+      "$ref": "featureType"
     },
     "methodText": {
       "type": "string",

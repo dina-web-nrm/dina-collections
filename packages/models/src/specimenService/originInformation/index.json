@@ -8,8 +8,7 @@
       "type": "string"
     },
     "establishmentMeansType": {
-      "$ref": "establishmentMeansType",
-      "x-reference-type": "external"
+      "$ref": "establishmentMeansType"
     },
     "remarks": {
       "type": "string"

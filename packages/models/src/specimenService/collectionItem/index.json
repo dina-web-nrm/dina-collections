@@ -30,16 +30,14 @@
       "type": "string"
     },
     "preparationType": {
-      "$ref": "preparationType",
-      "x-reference-type": "external"
+      "$ref": "preparationType"
     },
     "physicalObjectText": {
       "type": "string",
       "example": "Skin complete, prepared"
     },
     "physicalObject": {
-      "$ref": "physicalObject",
-      "x-reference-type": "external"
+      "$ref": "physicalObject"
     }
   }
 }
