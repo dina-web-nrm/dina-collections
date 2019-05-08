@@ -10,8 +10,8 @@ import {
   ITEM_SELECT,
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
-  NAVIGATE_LIST,
   NAVIGATE_FORM_SECTION,
+  NAVIGATE_TABLE,
   NAVIGATE_ROOT,
   NAVIGATE_TREE,
 } from '../constants'
@@ -38,8 +38,8 @@ const createResourceUrlState = () => ComposedComponent => {
       super(props)
       this.navigateCreate = this.navigateCreate.bind(this)
       this.navigateEdit = this.navigateEdit.bind(this)
-      this.navigateList = this.navigateList.bind(this)
       this.navigateFormSection = this.navigateFormSection.bind(this)
+      this.navigateTable = this.navigateTable.bind(this)
       this.navigateRoot = this.navigateRoot.bind(this)
       this.navigateTree = this.navigateTree.bind(this)
       this.handleNavigation = this.handleNavigation.bind(this)
@@ -67,8 +67,8 @@ const createResourceUrlState = () => ComposedComponent => {
           break
         }
 
-        case NAVIGATE_LIST: {
-          this.navigateList()
+        case NAVIGATE_TABLE: {
+          this.navigateTable()
           break
         }
 
@@ -98,7 +98,7 @@ const createResourceUrlState = () => ComposedComponent => {
           if (this.props.goBack) {
             this.props.goBack()
           } else {
-            this.navigateList({
+            this.navigateTable({
               disablePrompt: true,
             })
           }
@@ -107,7 +107,7 @@ const createResourceUrlState = () => ComposedComponent => {
         }
 
         case DEL_SUCCESS: {
-          this.navigateList()
+          this.navigateTable()
           break
         }
 
@@ -158,7 +158,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.props.clearState()
     }
 
-    navigateList(state) {
+    navigateTable(state) {
       this.props.updateState(
         {
           mainColumn: 'table',

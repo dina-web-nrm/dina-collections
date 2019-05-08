@@ -27,7 +27,8 @@ import {
   ITEM_SELECT,
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
-  NAVIGATE_LIST,
+  NAVIGATE_TABLE,
+  NAVIGATE_TREE,
   PICKER_CLOSE,
   PICKER_PICK_ITEM,
 } from 'coreModules/resourceManager/constants'
@@ -196,9 +197,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.handleSelectPrev = this.handleSelectPrev.bind(this)
       this.handleSetCurrentTableRow = this.handleSetCurrentTableRow.bind(this)
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
+      this.handleTableTabClick = this.handleTableTabClick.bind(this)
       this.handleToggleCurrentRow = this.handleToggleCurrentRow.bind(this)
       this.handleToggleFilters = this.handleToggleFilters.bind(this)
       this.handleToggleRow = this.handleToggleRow.bind(this)
+      this.handleTreeTabClick = this.handleTreeTabClick.bind(this)
       this.handleUpdateFilterValues = this.handleUpdateFilterValues.bind(this)
       this.selectCurrentRow = this.selectCurrentRow.bind(this)
       this.tableSearch = this.tableSearch.bind(this)
@@ -251,7 +254,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
           description: 'Open table view',
           onPress: event => {
             event.preventDefault()
-            this.props.onInteraction(NAVIGATE_LIST)
+            this.props.onInteraction(NAVIGATE_TABLE)
           },
         },
       ]
@@ -551,7 +554,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     handleUpdateFilterValues(filterValues = {}) {
       const { managerScope, tableActive } = this.props
       if (!tableActive) {
-        this.props.onInteraction(NAVIGATE_LIST)
+        this.props.onInteraction(NAVIGATE_TABLE)
       }
       this.props.setFilterValues(filterValues, { managerScope })
       this.tableSearch(filterValues)
@@ -641,6 +644,12 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     handleFormTabClick() {
       this.selectCurrentRow()
+    }
+    handleTableTabClick() {
+      this.props.onInteraction(NAVIGATE_TABLE)
+    }
+    handleTreeTabClick() {
+      this.props.onInteraction(NAVIGATE_TREE)
     }
 
     handleSetCurrentTableRow(event, number) {
@@ -890,9 +899,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
             onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
             onShowAllRecords={this.handleShowAllRecords}
+            onTableTabClick={this.handleTableTabClick}
             onToggleCurrentRow={this.handleToggleCurrentRow}
             onToggleFilters={this.handleToggleFilters}
             onToggleRow={this.handleToggleRow}
+            onTreeTabClick={this.handleTreeTabClick}
             onUpdateFilterValues={this.handleUpdateFilterValues}
             tableSearch={this.tableSearch}
           />
