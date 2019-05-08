@@ -16,6 +16,20 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add(
+  'shouldBeLoadingAndFinishLoading',
+  {
+    prevSubject: true,
+  },
+  (subject, options = {}) => {
+    cy.wrap(subject, options).should('have.class', 'loading')
+    cy.wrap(subject, {
+      timeout: 20000,
+      ...options,
+    }).should('not.have.class', 'loading')
+  }
+)
+
+Cypress.Commands.add(
   'shouldHaveName',
   {
     prevSubject: true,
