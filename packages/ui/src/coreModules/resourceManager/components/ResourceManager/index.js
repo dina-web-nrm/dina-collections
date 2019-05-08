@@ -157,6 +157,7 @@ class ResourceManager extends Component {
             'createItemActive',
             'currentTableRowNumber',
             'editItemActive',
+            'enableTableColumnSorting',
             'expandedIds',
             'fetchRelationshipsBeforeDelete',
             'fetchTreeBase',
