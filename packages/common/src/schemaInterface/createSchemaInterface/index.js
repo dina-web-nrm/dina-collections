@@ -32,15 +32,15 @@ module.exports = ({
       return getNormalizedModels()
     },
     getNormalizeSpecifications: () =>
-      createNormalizeSpecifications({ models: getModels() }),
+      createNormalizeSpecifications({ models: getNormalizedModels() }),
     getOpenApiSpec: () => {
       return getOpenApiSpec()
     },
     getRelationshipParamsForModelNames: modelNames =>
-      getRelationshipParamsForModelNames(getModels(), modelNames),
+      getRelationshipParamsForModelNames(getNormalizedModels(), modelNames),
     getResourceRelationshipKeysToIncludeInBodyMap: () =>
-      getResourceRelationshipKeysToIncludeInBodyMap(getModels()),
+      getResourceRelationshipKeysToIncludeInBodyMap(getNormalizedModels()),
     getResourceRelationshipParamsMap: () =>
-      getResourceRelationshipParamsMap(getModels()),
+      getResourceRelationshipParamsMap(getNormalizedModels()),
   }
 }

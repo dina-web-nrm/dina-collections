@@ -2,13 +2,13 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "featureObservationAgent": {
-      "$ref": "__ROOT__agent"
+      "$ref": "agent"
     },
     "date": {
-      "$ref": "__ROOT__dateRange"
+      "$ref": "dateRange"
     },
     "featureObservationText": {
       "type": "string",
@@ -19,8 +19,7 @@
       "example": "kg"
     },
     "featureType": {
-      "$ref": "__ROOT__featureType",
-      "x-reference-type": "external"
+      "$ref": "featureType"
     },
     "methodText": {
       "type": "string",

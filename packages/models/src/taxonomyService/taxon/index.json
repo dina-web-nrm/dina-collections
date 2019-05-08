@@ -6,186 +6,46 @@
       "type": "string"
     },
     "id": {
-      "$ref": "__ROOT__id"
+      "$ref": "id"
     },
     "isRoot": {
       "type": "boolean"
     },
     "type": {
-      "$ref": "__ROOT__type"
+      "$ref": "type"
     },
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "acceptedTaxonName": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-name": "acceptedToTaxonId",
-          "x-key-stored-in-model": "taxonName",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__taxonName",
-              "x-reference-type": "external"
-            }
-          }
-        },
-        "children": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-stored-in-model": "taxon",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__taxon",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "parent": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-stored-in-model": "taxon",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__taxon",
-              "x-reference-type": "external"
-            }
-          }
-        },
-        "resourceActivities": {
-          "type": "object",
-          "x-inverse-relationship-key": "taxon",
-          "x-key-stored-in-model": "resourceActivity",
-          "x-key-type": "polymorphic",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__resourceActivity",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "specimens": {
-          "type": "object",
-          "x-inverse-relationship-key": "taxa",
-          "x-key-stored-in-model": "specimen",
-          "x-key-type": "json",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__specimen",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "storageLocations": {
-          "type": "object",
-          "x-inverse-relationship-key": "taxa",
-          "x-key-stored-in-model": "storageLocation",
-          "x-key-type": "json",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__storageLocation",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "synonyms": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-name": "synonymToTaxonId",
-          "x-key-stored-in-model": "taxonName",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__taxonName",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "vernacularNames": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-name": "vernacularToTaxonId",
-          "x-key-stored-in-model": "taxonName",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__taxonName",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        }
-      }
-    },
-    "acceptedTaxonName": {
-      "$ref": "__ROOT__taxonName",
-      "x-reference-type": "external"
-    },
-    "children": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__taxon",
-        "x-reference-type": "external"
-      }
-    },
-    "parent": {
-      "$ref": "__ROOT__taxon",
-      "x-reference-type": "external"
-    },
-    "resourceActivities": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__resourceActivity",
-        "x-reference-type": "external"
-      }
-    },
-    "specimens": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__specimen",
-        "x-reference-type": "external"
-      }
-    },
-    "storageLocations": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__storageLocation",
-        "x-reference-type": "external"
-      }
-    },
-    "synonyms": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__taxonName",
-        "x-reference-type": "external"
-      }
-    },
-    "vernacularNames": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__taxonName",
-        "x-reference-type": "external"
+    "x-relationships": {
+      "acceptedTaxonName": {
+        "type": "object",
+        "resource": "taxonName"
+      },
+      "children": {
+        "type": "array",
+        "resource": "taxon"
+      },
+      "parent": {
+        "type": "object",
+        "resource": "taxon"
+      },
+      "resourceActivities": {
+        "type": "array",
+        "resource": "resourceActivity"
+      },
+      "specimens": {
+        "type": "array",
+        "resource": "specimen"
+      },
+      "storageLocations": {
+        "type": "array",
+        "resource": "storageLocation"
+      },
+      "synonyms": {
+        "type": "array",
+        "resource": "taxonName"
+      },
+      "vernacularNames": {
+        "type": "array",
+        "resource": "taxonName"
       }
     }
   }

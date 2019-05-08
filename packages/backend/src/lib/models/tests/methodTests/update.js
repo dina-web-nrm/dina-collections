@@ -125,11 +125,9 @@ module.exports = function testUpdate({ config, modelType, setupModel }) {
       describe('diff', () => {
         let itemFirstVersion
         let itemSecondVersion
-        let itemThirdVersion
         hook(beforeAll, () => {
           itemFirstVersion = getTestData('itemPersonWithIdVersions', 0)
           itemSecondVersion = getTestData('itemPersonWithIdVersions', 1)
-          itemThirdVersion = getTestData('itemPersonWithIdVersions', 2)
           return setupModel({ config }).then(createdModel => {
             model = createdModel
             return model.create({ allowId: true, item: itemFirstVersion })
@@ -156,37 +154,6 @@ module.exports = function testUpdate({ config, modelType, setupModel }) {
                   path: ['attributes', 'changedLastnameTimes'],
                   rhs: 1,
                 },
-              ])
-            })
-        })
-        it('Keeps previous diffs and appends new diff when updating again', () => {
-          return model
-            .update({ id: itemFirstVersion.id, item: itemThirdVersion })
-            .then(({ item: res }) => {
-              expect(res.diff).toEqual([
-                {
-                  kind: 'E',
-                  lhs: 'Turing',
-                  path: ['attributes', 'lastName'],
-                  rhs: 'Lovelace',
-                },
-                {
-                  kind: 'N',
-                  path: ['attributes', 'changedLastnameTimes'],
-                  rhs: 1,
-                },
-                {
-                  kind: 'E',
-                  lhs: 'Lovelace',
-                  path: ['attributes', 'lastName'],
-                  rhs: 'Musk',
-                },
-                {
-                  kind: 'D',
-                  lhs: 1,
-                  path: ['attributes', 'changedLastnameTimes'],
-                },
-                { kind: 'N', path: ['attributes', 'changedLastname'], rhs: 2 },
               ])
             })
         })

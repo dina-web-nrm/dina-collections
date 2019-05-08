@@ -1,7 +1,8 @@
 /* eslint-disable sort-keys */
+const setupRefs = require('./setupRefs')
 const interpolate = require('../utilities/interpolate')
-const normalizeModel = require('../utilities/normalizeModel')
 const splitDescription = require('./splitDescription')
+const setupRelationships = require('./setupRelationships')
 
 module.exports = function createModel({
   examples,
@@ -14,9 +15,10 @@ module.exports = function createModel({
 }) {
   const documentLink = `/docs/${version}/models/`
 
-  const normalizedModel = normalizeModel({ model, normalize })
-
-  let cleanedModel = JSON.parse(JSON.stringify(normalizedModel))
+  let cleanedModel = setupRelationships({
+    model,
+    format: normalize ? 'jsonApi' : 'nested',
+  })
 
   if (
     removeRelationships &&
@@ -54,13 +56,11 @@ module.exports = function createModel({
   cleanedModel.description = description
   cleanedModel['x-summary'] = summary
   cleanedModel = interpolate(cleanedModel, '__DOCLINK__', documentLink)
-  return interpolate(
-    {
-      ...cleanedModel,
-      description: cleanedModel.description || '',
-      id: modelKey,
-    },
-    '__ROOT__',
-    referencePath
-  )
+
+  return setupRefs({
+    model: cleanedModel,
+    modelKey,
+    normalize,
+    referencePath,
+  })
 }

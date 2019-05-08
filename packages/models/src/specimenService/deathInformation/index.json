@@ -2,17 +2,16 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "causeOfDeathType": {
-      "$ref": "__ROOT__causeOfDeathType",
-      "x-reference-type": "external"
+      "$ref": "causeOfDeathType"
     },
     "remarks": {
       "type": "string"
     },
     "event": {
-      "$ref": "__ROOT__event"
+      "$ref": "event"
     }
   }
 }

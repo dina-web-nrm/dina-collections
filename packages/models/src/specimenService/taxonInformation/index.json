@@ -2,29 +2,28 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "curatorialTaxon": {
-      "$ref": "__ROOT__taxon"
+      "$ref": "taxon"
     },
     "customTaxonNames": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__customTaxonName"
+        "$ref": "customTaxonName"
       }
     },
     "taxonRemarks": {
       "type": "string"
     },
     "typeStatus": {
-      "$ref": "__ROOT__typeSpecimenType",
-      "x-reference-type": "external"
+      "$ref": "typeSpecimenType"
     },
     "typifiedName": {
       "type": "string"
     },
     "readOnly": {
-      "$ref": "__ROOT__readOnly"
+      "$ref": "readOnly"
     }
   }
 }

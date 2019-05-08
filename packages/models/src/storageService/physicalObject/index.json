@@ -6,13 +6,13 @@
       "type": "string"
     },
     "id": {
-      "$ref": "__ROOT__id"
+      "$ref": "id"
     },
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "type": {
-      "$ref": "__ROOT__type"
+      "$ref": "type"
     },
     "remarks": {
       "type": "string"
@@ -20,70 +20,25 @@
     "collectionItems": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__collectionItem"
+        "$ref": "collectionItem"
       }
     },
     "storageLocationText": {
       "type": "string"
     },
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "resourceActivities": {
-          "type": "object",
-          "x-inverse-relationship-key": "physicalObject",
-          "x-key-stored-in-model": "resourceActivity",
-          "x-key-type": "polymorphic",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__resourceActivity",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "specimens": {
-          "type": "object",
-          "x-inverse-relationship-key": "physicalObjects",
-          "x-key-stored-in-model": "specimen",
-          "x-key-type": "json",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__specimen",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "storageLocation": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-stored-in-model": "physicalObject",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__storageLocation",
-              "x-reference-type": "external"
-            }
-          }
-        }
+    "x-relationships": {
+      "resourceActivities": {
+        "type": "array",
+        "resource": "resourceActivity"
+      },
+      "specimens": {
+        "type": "array",
+        "resource": "specimen"
+      },
+      "storageLocation": {
+        "type": "object",
+        "resource": "storageLocation"
       }
-    },
-    "specimens": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__specimen",
-        "x-reference-type": "external"
-      }
-    },
-    "storageLocation": {
-      "$ref": "__ROOT__storageLocation",
-      "x-reference-type": "external"
     }
   }
 }

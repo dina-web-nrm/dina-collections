@@ -26,6 +26,32 @@ module.exports = {
     migrations,
     name: 'taxonName',
     relations: ['taxon'],
+    relationships: {
+      acceptedToTaxon: {
+        keyAllowNull: true,
+        keyName: 'acceptedToTaxonId',
+        keyStoredInModel: 'taxonName',
+        keyType: 'sql',
+        keyUnique: true,
+      },
+      resourceActivities: {
+        inverseRelationshipKey: 'taxonName',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      synonymToTaxon: {
+        keyAllowNull: true,
+        keyName: 'synonymToTaxonId',
+        keyStoredInModel: 'taxonName',
+        keyType: 'sql',
+      },
+      vernacularToTaxon: {
+        keyAllowNull: true,
+        keyName: 'vernacularToTaxonId',
+        keyStoredInModel: 'taxonName',
+        keyType: 'sql',
+      },
+    },
     type: 'sequelizeDocumentModel',
   },
   operations: [

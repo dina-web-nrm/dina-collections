@@ -37,17 +37,6 @@ const normalizeProperty = ({ normalize, property, injectedNormalizeModel }) => {
     }
   }
 
-  if (
-    normalize &&
-    property.$ref &&
-    property['x-reference-type'] &&
-    property['x-reference-type'] === 'internal'
-  ) {
-    normalizedProperty = {
-      $ref: '__ROOT__lid',
-    }
-  }
-
   if (normalizedProperty['x-reference-type']) {
     delete normalizedProperty['x-reference-type']
   }

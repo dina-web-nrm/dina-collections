@@ -6,64 +6,64 @@
       "type": "string"
     },
     "lid": {
-      "$ref": "__ROOT__lid"
+      "$ref": "lid"
     },
     "acquisition": {
-      "$ref": "__ROOT__acquisition"
+      "$ref": "acquisition"
     },
     "determinations": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__determination"
+        "$ref": "determination"
       }
     },
     "taxonInformation": {
-      "$ref": "__ROOT__taxonInformation"
+      "$ref": "taxonInformation"
     },
     "deathInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__deathInformation"
+        "$ref": "deathInformation"
       }
     },
     "originInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__originInformation"
+        "$ref": "originInformation"
       }
     },
     "collectingInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__collectingInformation"
+        "$ref": "collectingInformation"
       }
     },
     "featureObservations": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__featureObservation"
+        "$ref": "featureObservation"
       }
     },
     "identifiers": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__identifier"
+        "$ref": "identifier"
       }
     },
     "collectionItems": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__collectionItem"
+        "$ref": "collectionItem"
       }
     },
     "recordHistoryEvents": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__recordHistoryEvent"
+        "$ref": "recordHistoryEvent"
       }
     },
     "readOnly": {
-      "$ref": "__ROOT__readOnly"
+      "$ref": "readOnly"
     },
     "version": {
       "type": "integer"

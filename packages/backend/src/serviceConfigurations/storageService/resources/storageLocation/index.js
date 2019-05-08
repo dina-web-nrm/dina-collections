@@ -27,6 +27,36 @@ module.exports = {
     migrations,
     name: 'storageLocation',
     relations: ['physicalObject'],
+    relationships: {
+      children: {
+        keyAllowNull: true,
+        keyStoredInModel: 'storageLocation',
+        keyType: 'sql',
+      },
+      parent: {
+        keyAllowNull: true,
+        keyStoredInModel: 'storageLocation',
+        keyType: 'sql',
+      },
+      physicalObjects: {
+        keyStoredInModel: 'physicalObject',
+        keyType: 'sql',
+      },
+      preparationTypes: {
+        keyStoredInModel: 'storageLocation',
+        keyType: 'json',
+      },
+      resourceActivities: {
+        inverseRelationshipKey: 'storageLocation',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      taxa: {
+        keyStoredInModel: 'storageLocation',
+        keyType: 'json',
+      },
+    },
+
     type: 'sequelizeDocumentModel',
   },
   operations: [

@@ -13,17 +13,11 @@ module.exports = {
         deactivatedAt: {
           type: Sequelize.DATE,
         },
-        diff: {
-          type: Sequelize.JSONB,
-        },
         id: {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
           type: Sequelize.INTEGER,
-        },
-        schemaCompliant: {
-          type: Sequelize.BOOLEAN,
         },
         updatedAt: {
           allowNull: false,

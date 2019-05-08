@@ -25,6 +25,57 @@ module.exports = {
   model: {
     migrations,
     name: 'specimen',
+    relationships: {
+      causeOfDeathTypes: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      establishmentMeansTypes: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      featureTypes: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      identifierTypes: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      normalizedAgents: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      physicalObjects: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      places: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      preparationTypes: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      resourceActivities: {
+        inverseRelationshipKey: 'specimen',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      taxa: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      taxonNames: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      typeSpecimenType: {
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+    },
     type: 'sequelizeDocumentModel',
   },
   operations: [

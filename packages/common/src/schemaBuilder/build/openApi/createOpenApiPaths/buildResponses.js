@@ -19,12 +19,11 @@ module.exports = function buildResponses({ errors, operationId, response }) {
   }
   if (errors) {
     Object.keys(errors).forEach(errorStatus => {
-      const key = `${operationId}-${errorStatus}`
       responses[errorStatus] = {
         content: {
           'application/vnd.api+json': {
             schema: {
-              $ref: `__ROOT__${key}`,
+              $ref: `__ROOT__${errorStatus}`,
             },
           },
         },

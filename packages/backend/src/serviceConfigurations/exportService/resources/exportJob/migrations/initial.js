@@ -11,9 +11,6 @@ module.exports = {
       deactivatedAt: {
         type: Sequelize.DATE,
       },
-      diff: {
-        type: Sequelize.JSONB,
-      },
       document: {
         type: Sequelize.JSONB,
       },
@@ -25,9 +22,6 @@ module.exports = {
       },
       relationships: {
         type: Sequelize.JSONB,
-      },
-      schemaCompliant: {
-        type: Sequelize.BOOLEAN,
       },
       updatedAt: {
         allowNull: false,

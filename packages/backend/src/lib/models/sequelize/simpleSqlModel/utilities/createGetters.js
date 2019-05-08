@@ -8,9 +8,6 @@ module.exports = function createGetters() {
         if (key === 'diff') {
           return obj
         }
-        if (key === 'schemaCompliant') {
-          return obj
-        }
 
         const value = dataValues[key]
 

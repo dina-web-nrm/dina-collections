@@ -77,10 +77,23 @@ const extractModelsFromModels = ({ models, normalize, version }) => {
 
 module.exports = function createModels({
   endpoints,
+  includeEndpointModels = true,
   models,
   normalize,
   version,
 }) {
+  const extractedModels = extractModelsFromModels({
+    models,
+    normalize,
+    version,
+  })
+
+  if (!includeEndpointModels) {
+    return {
+      ...extractedModels,
+    }
+  }
+
   const requestModels = extractRequestModelsFromEndpoints({
     endpoints,
     normalize,
@@ -88,11 +101,6 @@ module.exports = function createModels({
   })
   const responseModels = extractResponseModelsFromEndpoints({
     endpoints,
-    normalize,
-    version,
-  })
-  const extractedModels = extractModelsFromModels({
-    models,
     normalize,
     version,
   })

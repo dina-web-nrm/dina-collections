@@ -7,9 +7,11 @@ const readServers = require('./readServers')
 const readModels = require('./readModels')
 const readApis = require('./readApis')
 const readSecurity = require('./readSecurity')
+const mergeModelsAndModelConfigurations = require('./utilities/mergeModelsAndModelConfigurations')
 const createSchemaInterface = require('../../schemaInterface/createSchemaInterface')
+const createModels = require('../build/models')
 
-module.exports = function read({ modelBasePath, apiBasePath }) {
+module.exports = function read({ modelBasePath, apiBasePath, modelVersion }) {
   const servicesPath = path.join(apiBasePath, 'serviceConfigurations')
   const buildServicesPath = path.join(
     apiBasePath,
@@ -17,17 +19,45 @@ module.exports = function read({ modelBasePath, apiBasePath }) {
     'serviceConfigurationManager',
     'createServiceSpecifications'
   )
+  const getModelConfigurationsMapPath = path.join(
+    apiBasePath,
+    'lib',
+    'serviceConfigurationManager',
+    'getters',
+    'getModelConfigurationsMap'
+  )
+
+  const getModelConfigurationsMap = require(getModelConfigurationsMapPath)
+
+  const serviceConfigurations = require(servicesPath)
+  const modelConfigurationsMap = getModelConfigurationsMap({
+    serviceConfigurations,
+  })
 
   const infoPath = apiBasePath
 
   const errors = readErrors()
   const info = readInfo(infoPath)
-  const models = readModels(modelBasePath)
 
-  const schemaInterface = createSchemaInterface({ getModels: () => models })
+  let models = readModels({ modelBasePath })
+
+  models = mergeModelsAndModelConfigurations({
+    modelConfigurationsMap,
+    models,
+  })
+
+  const resourceModels = createModels({
+    includeEndpointModels: false,
+    models,
+    normalize: true,
+    version: modelVersion,
+  })
+
+  const schemaInterface = createSchemaInterface({
+    getNormalizedModels: () => resourceModels,
+  })
   const resourceRelationshipParamsMap = schemaInterface.getResourceRelationshipParamsMap()
 
-  const serviceConfigurations = require(servicesPath)
   const buildServices = require(buildServicesPath)
   const services = buildServices({
     resourceRelationshipParamsMap,

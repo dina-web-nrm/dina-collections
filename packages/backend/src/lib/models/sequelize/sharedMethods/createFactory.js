@@ -17,10 +17,16 @@ module.exports = function createFactory({ Model, validate } = {}) {
       id,
       relationships,
     }
+    if (validate) {
+      const error = validate(newItem)
+      if (error) {
+        log.err('schema validation failed')
+      }
+    }
+
     let data = {
       document: attributes,
       relationships,
-      schemaCompliant: validate ? !validate(newItem) : undefined,
     }
 
     if (internals) {

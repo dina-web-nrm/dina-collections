@@ -24,10 +24,10 @@
       "type": "string"
     },
     "id": {
-      "$ref": "__ROOT__id"
+      "$ref": "id"
     },
     "type": {
-      "$ref": "__ROOT__type"
+      "$ref": "type"
     }
   }
 }

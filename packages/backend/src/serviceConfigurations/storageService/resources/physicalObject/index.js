@@ -14,6 +14,23 @@ module.exports = {
     migrations,
     name: 'physicalObject',
     relations: ['storageLocation'],
+    relationships: {
+      resourceActivities: {
+        inverseRelationshipKey: 'physicalObject',
+        keyStoredInModel: 'resourceActivity',
+        keyType: 'polymorphic',
+      },
+      specimens: {
+        inverseRelationshipKey: 'physicalObjects',
+        keyStoredInModel: 'specimen',
+        keyType: 'json',
+      },
+      storageLocation: {
+        keyAllowNull: true,
+        keyStoredInModel: 'physicalObject',
+        keyType: 'sql',
+      },
+    },
     type: 'sequelizeDocumentModel',
   },
   operations: [
