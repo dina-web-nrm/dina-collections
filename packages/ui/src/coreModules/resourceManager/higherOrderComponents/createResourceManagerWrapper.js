@@ -28,6 +28,7 @@ import {
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
   NAVIGATE_TABLE,
+  NAVIGATE_TABLE_SETTINGS,
   NAVIGATE_TREE,
   PICKER_CLOSE,
   PICKER_PICK_ITEM,
@@ -198,6 +199,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.handleSetCurrentTableRow = this.handleSetCurrentTableRow.bind(this)
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
       this.handleTableTabClick = this.handleTableTabClick.bind(this)
+      this.handleTableSettingsClick = this.handleTableSettingsClick.bind(this)
       this.handleToggleCurrentRow = this.handleToggleCurrentRow.bind(this)
       this.handleToggleFilters = this.handleToggleFilters.bind(this)
       this.handleToggleRow = this.handleToggleRow.bind(this)
@@ -648,6 +650,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     handleTableTabClick() {
       this.props.onInteraction(NAVIGATE_TABLE)
     }
+    handleTableSettingsClick() {
+      this.props.onInteraction(NAVIGATE_TABLE_SETTINGS)
+    }
     handleTreeTabClick() {
       this.props.onInteraction(NAVIGATE_TREE)
     }
@@ -899,6 +904,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
             onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
             onShowAllRecords={this.handleShowAllRecords}
+            onTableSettingsClick={this.handleTableSettingsClick}
             onTableTabClick={this.handleTableTabClick}
             onToggleCurrentRow={this.handleToggleCurrentRow}
             onToggleFilters={this.handleToggleFilters}
