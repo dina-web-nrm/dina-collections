@@ -22,6 +22,8 @@ export default () =>
       cy.url()
         .should('include', 'mainColumn=table')
         .should('not.include', 'edit')
+      // there's a setTimeout before the table reloads so we have to wait
+      cy.wait(3000) // eslint-disable-line cypress/no-unnecessary-waiting
       cy.quickQueryByText('985729').should('not.exist')
     })
   })
