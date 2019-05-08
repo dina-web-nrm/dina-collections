@@ -67,5 +67,24 @@ export default function transformOutput({
     }
   }
 
+  if (
+    objectPath.get(
+      transformedSpecimen,
+      'individual.taxonInformation.curatorialTaxon.id'
+    ) === ''
+  ) {
+    delete transformedSpecimen.individual.taxonInformation.curatorialTaxon
+  }
+
+  if (
+    objectPath.get(
+      transformedSpecimen,
+      'individual.collectingInformation.0.event.locationInformation.places.0.id'
+    ) === ''
+  ) {
+    delete transformedSpecimen.individual.collectingInformation[0].event
+      .locationInformation.places
+  }
+
   return transformedSpecimen
 }
