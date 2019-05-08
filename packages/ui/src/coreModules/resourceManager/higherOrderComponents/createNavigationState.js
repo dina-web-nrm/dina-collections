@@ -12,6 +12,7 @@ import {
   NAVIGATE_FILTER,
   NAVIGATE_FORM_SECTION,
   NAVIGATE_TABLE,
+  NAVIGATE_TABLE_SETTINGS,
   NAVIGATE_ROOT,
   NAVIGATE_TREE,
 } from '../constants'
@@ -40,6 +41,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.navigateEdit = this.navigateEdit.bind(this)
       this.navigateFormSection = this.navigateFormSection.bind(this)
       this.navigateTable = this.navigateTable.bind(this)
+      this.navigateTableSettings = this.navigateTableSettings.bind(this)
       this.navigateRoot = this.navigateRoot.bind(this)
       this.navigateTree = this.navigateTree.bind(this)
       this.handleNavigation = this.handleNavigation.bind(this)
@@ -69,6 +71,11 @@ const createResourceUrlState = () => ComposedComponent => {
 
         case NAVIGATE_TABLE: {
           this.navigateTable()
+          break
+        }
+
+        case NAVIGATE_TABLE_SETTINGS: {
+          this.navigateTableSettings()
           break
         }
 
@@ -168,6 +175,16 @@ const createResourceUrlState = () => ComposedComponent => {
       )
     }
 
+    navigateTableSettings(state) {
+      this.props.updateState(
+        {
+          mainColumn: 'tableSettings',
+          sectionId: undefined,
+        },
+        state
+      )
+    }
+
     navigateTree() {
       this.props.updateState({
         filterColumn: '',
@@ -200,6 +217,7 @@ const createResourceUrlState = () => ComposedComponent => {
           onNavigation={this.handleNavigation}
           sectionId={sectionId}
           tableActive={mainColumn === 'table'}
+          tableSettingsActive={mainColumn === 'tableSettings'}
           treeActive={mainColumn === 'tree'}
           treeEnabled={treeEnabled}
         />
