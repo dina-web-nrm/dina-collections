@@ -23,6 +23,9 @@ const mapStateToProps = (state, { resource, tableColumnSpecifications }) => {
     tableColumnsToShow:
       (userPreferences && userPreferences[`${resource}TableColumns`]) ||
       allTableColumns,
+    tableColumnsToSort:
+      (userPreferences && userPreferences[`${resource}TableColumnsSorting`]) ||
+      undefined,
   }
 }
 
@@ -43,6 +46,7 @@ const rows = [
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  enableTableColumnSorting: PropTypes.bool.isRequired,
   listItems: PropTypes.array.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -52,6 +56,7 @@ const propTypes = {
   tableBatchFetchOptions: PropTypes.object,
   tableColumnSpecifications: PropTypes.array.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  tableColumnsToSort: PropTypes.arrayOf(PropTypes.object.isRequired),
   tableSearch: PropTypes.func,
   updateUserPreference: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
@@ -60,6 +65,7 @@ const defaultProps = {
   onSelectNextRecord: false,
   onSelectPreviousRecord: false,
   tableBatchFetchOptions: {},
+  tableColumnsToSort: [],
   tableSearch: undefined,
 }
 
@@ -67,12 +73,27 @@ class ResultTableView extends PureComponent {
   constructor(props) {
     super(props)
     this.renderRow = this.renderRow.bind(this)
+    this.handleSaveTableColumnsToSort = this.handleSaveTableColumnsToSort.bind(
+      this
+    )
+  }
+  handleSaveTableColumnsToSort(columnsToSort) {
+    return this.props
+      .updateUserPreference(
+        `${this.props.resource}TableColumnsSorting`,
+        columnsToSort
+      )
+      .then(() => {
+        return this.props.tableSearch()
+      })
   }
 
   renderRow(key) {
     const {
+      enableTableColumnSorting,
       tableColumnSpecifications,
       tableColumnsToShow,
+      tableColumnsToSort,
       resource,
       width,
     } = this.props
@@ -81,10 +102,13 @@ class ResultTableView extends PureComponent {
       case 'infinityTableHeader': {
         return (
           <InfinityTableHeader
+            enableTableColumnSorting={enableTableColumnSorting}
             height={emToPixels(3.5)}
+            onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
             resource={resource}
             tableColumnSpecifications={tableColumnSpecifications}
             tableColumnsToShow={tableColumnsToShow}
+            tableColumnsToSort={tableColumnsToSort}
             width={width}
           />
         )
