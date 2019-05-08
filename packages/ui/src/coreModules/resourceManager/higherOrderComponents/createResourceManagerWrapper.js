@@ -620,7 +620,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         })
       }
     }
-    handleShowAllRecords({ isPicker }) {
+    handleShowAllRecords({ isPicker, skipTableSearch }) {
       const { managerScope, showAll, treeActive } = this.props
 
       if (treeActive) {
@@ -629,7 +629,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         if (!isPicker) {
           this.resetFilters()
         }
-        this.tableSearch()
+
+        if (!skipTableSearch) {
+          setTimeout(this.tableSearch)
+        }
       }
     }
 
