@@ -46,13 +46,12 @@ export default () =>
     })
 
     describe('affiliations', () => {
-      it('adds, removes, edits affiliations', () => {
+      it('adds and removes affiliation', () => {
         cy.quickQueryByTestId('accordion').should('not.exist')
 
         cy.getByText('Add affiliation').click()
-        cy.getByTestId('accordion')
-          .children()
-          .should('have.length', 2)
+        cy.get('[data-testid=accordion] .title').should('have.length', 1)
+        cy.get('[data-testid=accordion] .content').should('have.length', 1)
 
         cy.getByTestId('activeAccordionContent').within(() => {
           cy.getInputByLabelText('Affiliation/position').type('Staff')
@@ -62,34 +61,27 @@ export default () =>
             cy.getInputByLabelText('Month').type('2')
             cy.getInputByLabelText('Day').type('1')
           })
-          cy.getByTestId('endDatePart').within(() => {
-            cy.getInputByLabelText('Year').type('2008')
-            cy.getInputByLabelText('Month').type('12')
-            cy.getInputByLabelText('Day').type('30')
-          })
         })
 
         cy.getByTestId('saveButton')
           .click()
-          .shouldFinishLoading()
+          .shouldBeLoadingAndFinishLoading()
         cy.reload()
-        cy.getByTestId('accordion')
-          .children()
-          .should('have.length', 2)
+        cy.getByTestId('recordHistoryEvents').within(() => {
+          cy.getByText('Last modified by Test User', { exact: false })
+        })
+        cy.get('[data-testid=accordion] .title').should('have.length', 1)
+        cy.get('[data-testid=accordion] .content').should('have.length', 1)
 
-        cy.getAllByTestId('accordionTitle')
-          .last()
-          .click()
+        cy.log('remove affiliation')
+        cy.get('[data-testid=accordion] .title').click()
         cy.getByTestId('activeAccordionContent').within(() => {
           cy.getByText('Delete affiliation').click()
         })
         cy.getByTestId('popupConfirmButton').click()
-
-        cy.quickQueryByTestId('accordion').should('not.exist')
-
-        cy.getByTestId('recordHistoryEvents').within(() => {
-          cy.getByText('Last modified by Test User', { exact: false })
-        })
+        cy.getByTestId('saveButton')
+          .click()
+          .shouldBeLoadingAndFinishLoading()
       })
     })
   })
