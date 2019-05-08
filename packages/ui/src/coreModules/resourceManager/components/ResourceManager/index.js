@@ -12,6 +12,7 @@ import {
 import { createResourceManagerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
 import { emToPixels } from 'coreModules/layout/utilities'
+import userSelectors from 'coreModules/user/globalSelectors'
 import extractProps from 'utilities/extractProps'
 
 import MainColumn from './MainColumn'
@@ -24,7 +25,7 @@ const PICKER_MODAL_PADDING = emToPixels(10)
 const PICKER_HEADER_HEIGHT = emToPixels(3.5)
 const PICKER_ACTION_BAR_HEIGHT = emToPixels(5)
 
-const mapStateToProps = (state, { isPicker, windowHeight }) => {
+const mapStateToProps = (state, { isPicker, resource, windowHeight }) => {
   const availableHeight = isPicker
     ? windowHeight - PICKER_MODAL_PADDING
     : windowHeight - TOP_NAVBAR_HEIGHT
@@ -33,11 +34,16 @@ const mapStateToProps = (state, { isPicker, windowHeight }) => {
     ? availableHeight - PICKER_HEADER_HEIGHT - PICKER_ACTION_BAR_HEIGHT
     : availableHeight
 
+  const userPreferences = userSelectors.getUserPreferences(state)
+
   return {
     availableHeight,
     columnHeight,
     filterColumnWidth: isPicker ? emToPixels(16) : emToPixels(25),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
+    tableColumnsToShow:
+      (userPreferences && userPreferences[`${resource}TableColumns`]) ||
+      undefined,
   }
 }
 
@@ -63,6 +69,7 @@ const propTypes = {
   rightSidebarWidth: PropTypes.number,
   tableActive: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
   transformOutput: PropTypes.func,
   treeActive: PropTypes.bool.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
@@ -75,6 +82,7 @@ const defaultProps = {
   itemId: undefined,
   relationshipsToCheckBeforeDelete: undefined,
   rightSidebarWidth: emToPixels(25),
+  tableColumnsToShow: undefined,
   transformOutput: undefined,
 }
 
@@ -173,6 +181,7 @@ class ResourceManager extends Component {
             'onSetCurrentTableRowNumber',
             'onShowAllRecords',
             'onTableTabClick',
+            'onTableSettingsClick',
             'onToggleCurrentRow',
             'onToggleFilters',
             'onToggleRow',
@@ -188,7 +197,9 @@ class ResourceManager extends Component {
             'tableActive',
             'tableBatchFetchOptions',
             'tableColumnSpecifications',
+            'tableColumnsToShow',
             'tableSearch',
+            'tableSettingsActive',
             'totalNumberOfRecords',
             'treeActive',
             'treeEnabled',
