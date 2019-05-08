@@ -29,6 +29,7 @@ const rows = [
   },
   {
     key: 'filterForm',
+    style: { overflow: 'auto' },
   },
   {
     height: emToPixels(4.625),
@@ -90,6 +91,7 @@ class FilterColumn extends Component {
         availableHeight={availableHeight}
         renderRow={this.renderRow}
         rows={rows}
+        wrapperId="filterColumn"
       />
     )
   }
