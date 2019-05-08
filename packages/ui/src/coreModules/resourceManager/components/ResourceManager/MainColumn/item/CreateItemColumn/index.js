@@ -40,8 +40,9 @@ class CreateItemColumn extends Component {
 
     switch (key) {
       case 'itemCreateForm': {
-        const { availableHeight, renderCreateForm } = this.props
-        return renderCreateForm({ availableHeight })
+        return this.props.renderCreateForm({
+          ...this.props,
+        })
       }
       case 'bottomBar': {
         const { formName } = this.props
