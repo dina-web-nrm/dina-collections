@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { push } from 'react-router-redux'
+
 import config from 'config'
+import getUserPreferences from 'coreModules/user/actionCreators/getUserPreferences'
 import globalSelectors from '../globalSelectors'
 
 export default function requireLoggedInUser(ComposedComponent) {
@@ -14,10 +16,12 @@ export default function requireLoggedInUser(ComposedComponent) {
   })
 
   const mapDispathToProps = {
+    getUserPreferences,
     push,
   }
 
   const propTypes = {
+    getUserPreferences: PropTypes.func.isRequired,
     loggedIn: PropTypes.bool.isRequired,
     push: PropTypes.func.isRequired,
     userLoading: PropTypes.bool.isRequired,
@@ -28,9 +32,16 @@ export default function requireLoggedInUser(ComposedComponent) {
       this.checkAuth(this.props.loggedIn, this.props.userLoading)
     }
 
+    componentDidMount() {
+      if (!config.auth.active || window.DISABLE_AUTH === true) {
+        this.props.getUserPreferences()
+      }
+    }
+
     componentWillReceiveProps(nextProps) {
       this.checkAuth(nextProps.loggedIn, nextProps.userLoading)
     }
+
     checkAuth(loggedIn, userLoading) {
       if (
         config.auth.active &&
