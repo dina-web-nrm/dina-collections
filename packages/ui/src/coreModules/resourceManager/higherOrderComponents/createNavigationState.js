@@ -11,6 +11,7 @@ import {
   NAVIGATE_CREATE,
   NAVIGATE_FILTER,
   NAVIGATE_LIST,
+  NAVIGATE_FORM_SECTION,
   NAVIGATE_ROOT,
   NAVIGATE_TREE,
 } from '../constants'
@@ -38,6 +39,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.navigateCreate = this.navigateCreate.bind(this)
       this.navigateEdit = this.navigateEdit.bind(this)
       this.navigateList = this.navigateList.bind(this)
+      this.navigateFormSection = this.navigateFormSection.bind(this)
       this.navigateRoot = this.navigateRoot.bind(this)
       this.navigateTree = this.navigateTree.bind(this)
       this.handleNavigation = this.handleNavigation.bind(this)
@@ -77,6 +79,12 @@ const createResourceUrlState = () => ComposedComponent => {
 
         case NAVIGATE_FILTER: {
           this.navigateFilter()
+          break
+        }
+
+        case NAVIGATE_FORM_SECTION: {
+          const { sectionId } = data
+          this.navigateFormSection(sectionId)
           break
         }
 
@@ -121,6 +129,7 @@ const createResourceUrlState = () => ComposedComponent => {
         filterColumn: '',
         itemId,
         mainColumn: 'edit',
+        sectionId: this.props.state.sectionId || '0',
       })
     }
 
@@ -131,10 +140,17 @@ const createResourceUrlState = () => ComposedComponent => {
       })
     }
 
+    navigateFormSection(sectionId) {
+      this.props.updateState({
+        sectionId,
+      })
+    }
+
     navigateCreate() {
       this.props.updateState({
         filterColumn: '',
         mainColumn: 'create',
+        sectionId: this.props.state.sectionId || '0',
       })
     }
 
@@ -146,6 +162,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.props.updateState(
         {
           mainColumn: 'table',
+          sectionId: undefined,
         },
         state
       )
@@ -155,6 +172,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.props.updateState({
         filterColumn: '',
         mainColumn: 'tree',
+        sectionId: undefined,
       })
     }
 
@@ -165,6 +183,7 @@ const createResourceUrlState = () => ComposedComponent => {
         mainColumn = treeEnabled ? 'tree' : 'table',
         filterColumn,
         itemId,
+        sectionId,
       } = state
 
       return (
@@ -179,6 +198,7 @@ const createResourceUrlState = () => ComposedComponent => {
           navigateEdit={this.navigateEdit}
           navigateRoot={this.navigateRoot}
           onNavigation={this.handleNavigation}
+          sectionId={sectionId}
           tableActive={mainColumn === 'table'}
           treeActive={mainColumn === 'tree'}
           treeEnabled={treeEnabled}
