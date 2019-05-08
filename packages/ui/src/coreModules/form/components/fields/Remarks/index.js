@@ -134,7 +134,7 @@ class RemarksInput extends PureComponent {
         if (segments.length) {
           return [
             ...segments,
-            <br />,
+            <br key={`br${index}`} />, // eslint-disable-line react/no-array-index-key
             <span key={segment + index}>{segment}</span>, // eslint-disable-line react/no-array-index-key
           ]
         }
