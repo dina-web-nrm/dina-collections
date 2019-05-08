@@ -128,6 +128,7 @@ class TaxonResult extends Component {
           <strong>{acceptedTaxonName}</strong>
           {suffix && ` (${suffix})`}
           <Button
+            data-testid="taxonEditButton"
             icon
             onClick={this.handleClick}
             ref={element => {
