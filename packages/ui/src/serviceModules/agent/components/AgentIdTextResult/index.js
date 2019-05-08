@@ -156,6 +156,7 @@ export default compose(
   createGetItemById({
     idPath: 'input.value.normalized.id',
     itemKey: 'normalizedAgent',
+    relationships: [],
     resource: 'normalizedAgent',
   })
 )(AgentIdTextResult)
