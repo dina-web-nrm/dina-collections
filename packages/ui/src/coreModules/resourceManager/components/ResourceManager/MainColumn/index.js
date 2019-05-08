@@ -8,11 +8,6 @@ import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
 import { getTableWidth } from 'coreModules/resourceManager/utilities'
 
-import {
-  NAVIGATE_LIST,
-  NAVIGATE_TREE,
-} from 'coreModules/resourceManager/constants'
-
 import RecordNavigationBar from './shared/RecordNavigationBar'
 import ResultOptionsBar from './shared/ResultOptionsBar'
 import TableView from './collection/TableView'
@@ -278,6 +273,9 @@ class MainColumn extends Component {
             'createItemActive',
             'editItemActive',
             'itemEnabled',
+            'onFormTabClick',
+            'onTableTabClick',
+            'onTreeTabClick',
             'onToggleFilters',
             'tableActive',
             'treeActive',
@@ -286,18 +284,7 @@ class MainColumn extends Component {
           props: this.props,
         })
 
-        return (
-          <ResultOptionsBar
-            {...extractedProps}
-            onFormTabClick={this.props.onFormTabClick}
-            onListTabClick={() => {
-              this.props.onInteraction(NAVIGATE_LIST)
-            }}
-            onTreeTabClick={() => {
-              this.props.onInteraction(NAVIGATE_TREE)
-            }}
-          />
-        )
+        return <ResultOptionsBar {...extractedProps} />
       }
 
       default: {
