@@ -52,7 +52,6 @@ export default function injectIsLatestActiveField(ComposedComponent) {
     componentWillReceiveProps(nextProps) {
       if (
         this.props.isActiveNow !== nextProps.isActiveNow ||
-        this.props.isSubmitting !== nextProps.isSubmitting ||
         this.props.currentActiveFormField !== nextProps.currentActiveFormField
       ) {
         this.setState({
