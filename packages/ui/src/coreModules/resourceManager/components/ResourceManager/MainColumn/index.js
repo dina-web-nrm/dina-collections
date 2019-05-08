@@ -188,12 +188,15 @@ class MainColumn extends Component {
         const { extractedProps } = extractProps({
           keys: [
             'currentTableRowNumber',
+            'enableTableColumnSorting',
             'focusedIndex',
             'focusedItemId',
             'listItems',
             'managerScope',
             'onClickRow',
             'onFormTabClick',
+            'onSelectNextRecord',
+            'onSelectPreviousRecord',
             'resource',
             'tableBatchFetchOptions',
             'tableColumnSpecifications',
