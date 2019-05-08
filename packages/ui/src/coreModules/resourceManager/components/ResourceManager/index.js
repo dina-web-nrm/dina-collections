@@ -155,6 +155,7 @@ class ResourceManager extends Component {
             'buildEditItemHeaders',
             'createGetNestedItemHocInput',
             'createItemActive',
+            'csvExportEnabled',
             'currentTableRowNumber',
             'editItemActive',
             'enableTableColumnSorting',
