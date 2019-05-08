@@ -149,6 +149,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     sortOrder: PropTypes.array,
     tableActive: PropTypes.bool.isRequired,
     tableColumnSpecifications: PropTypes.array.isRequired,
+    tableSearch: PropTypes.func,
     totalNumberOfRecords: PropTypes.number,
     treeActive: PropTypes.bool.isRequired,
   }
@@ -172,6 +173,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     recordOptionsHeight: emToPixels(3.5625),
     showAll: false,
     sortOrder: [],
+    tableSearch: undefined,
     totalNumberOfRecords: 0,
   }
 
@@ -687,14 +689,20 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     tableSearch(filterValues) {
-      const { excludeRootNode, managerScope, search, sortOrder } = this.props
+      const {
+        excludeRootNode,
+        managerScope,
+        search,
+        sortOrder,
+        tableSearch,
+      } = this.props
 
       const query = this.props.buildFilterQuery({
         excludeRootNode,
         values: filterValues || {},
       })
 
-      return search({
+      return (tableSearch || search)({
         query,
         sort: sortOrder,
         useScroll: false,

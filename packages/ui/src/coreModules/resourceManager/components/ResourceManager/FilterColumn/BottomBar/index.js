@@ -21,6 +21,8 @@ const propTypes = {
   onShowAllRecords: PropTypes.func.isRequired,
   onUpdateFilterValues: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
+  resource: PropTypes.string.isRequired,
+  tableSearch: PropTypes.func.isRequired,
   values: PropTypes.object,
 }
 const defaultProps = {
@@ -44,8 +46,24 @@ class BottomBar extends PureComponent {
 
   handleSubmit(event) {
     event.preventDefault()
-    const { values } = this.props
-    this.props.onUpdateFilterValues(values)
+    const { resource, values } = this.props
+
+    if (resource === 'specimen') {
+      this.setState({ loading: true })
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          return this.props
+            .tableSearch()
+            .then(() => {
+              this.setState({ loading: false })
+            })
+            .then(resolve)
+            .catch(reject)
+        })
+      })
+    }
+
+    return this.props.onUpdateFilterValues(values)
   }
 
   render() {

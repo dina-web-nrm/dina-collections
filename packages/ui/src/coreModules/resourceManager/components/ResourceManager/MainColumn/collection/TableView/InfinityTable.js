@@ -110,7 +110,11 @@ export class InfinityTable extends Component {
       fetchItemById(id)
     }
 
-    const { resolveRelationships, relationships } = tableBatchFetchOptions
+    const {
+      resolveRelationships,
+      relationships,
+      resource: tableResource,
+    } = tableBatchFetchOptions
 
     return (
       <InfinityTableRow
@@ -121,7 +125,7 @@ export class InfinityTable extends Component {
         onClickRow={this.props.onClickRow}
         relationships={relationships}
         resolveRelationships={resolveRelationships}
-        resource={resource}
+        resource={tableResource || resource}
         rowNumber={index + 1}
         tableColumnSpecifications={tableColumnSpecifications}
         width={width}
