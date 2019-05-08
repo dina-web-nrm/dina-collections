@@ -118,7 +118,7 @@ export default () =>
           })
         })
 
-        it('adds, removes, edits determination', () => {
+        it('adds, removes, edits determination & can be saved without curatorial taxon', () => {
           cy.getAllByTestId('accordionTitle').should('have.length', 1)
           cy.getByTestId('accordion')
             .children()
@@ -154,6 +154,12 @@ export default () =>
           cy.getByTestId('accordion')
             .children()
             .should('have.length', 2)
+
+          cy.log('can be saved without curatorial taxon')
+          cy.getByTestId('taxonEditButton').click()
+          cy.getByTestId('taxonPreferredName').within(() => {
+            cy.getByTestId('clearDropdownIcon').click()
+          })
         })
       })
 
