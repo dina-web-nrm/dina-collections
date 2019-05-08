@@ -16,6 +16,73 @@ import TreeView from './collection/TreeView'
 import CreateItemColumn from './item/CreateItemColumn'
 import EditItemColumn from './item/EditItemColumn'
 
+const getRows = memoize(
+  (
+    tableActive,
+    tableSettingsActive,
+    treeActive,
+    treeEnabled,
+    createItemActive,
+    editItemActive,
+    recordNavigationHeight,
+    recordOptionsHeight,
+    isPicker
+  ) => {
+    const rows = []
+
+    if (!isPicker) {
+      rows.push({
+        height: `${recordNavigationHeight}px`,
+        key: 'recordNavigationBar',
+      })
+    }
+
+    rows.push({
+      height: `${recordOptionsHeight}px`,
+      key: 'resultOptionBar',
+      style: {
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+      },
+    })
+
+    if (tableActive) {
+      rows.push({
+        key: 'tableView',
+        style: { overflow: 'auto' },
+      })
+    }
+
+    if (tableSettingsActive) {
+      rows.push({
+        key: 'tableSettingsView',
+        style: { overflow: 'auto' },
+      })
+    }
+
+    if (treeActive) {
+      rows.push({
+        key: 'treeView',
+        style: { overflow: 'auto' },
+      })
+    }
+
+    if (createItemActive) {
+      rows.push({
+        key: 'createItem',
+        style: { overflow: 'auto' },
+      })
+    }
+    if (editItemActive) {
+      rows.push({
+        key: 'editItem',
+        style: { overflow: 'auto' },
+      })
+    }
+    return rows
+  }
+)
+
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   createGetNestedItemHocInput: PropTypes.object,
@@ -52,65 +119,6 @@ class MainColumn extends Component {
 
     this.renderRow = this.renderRow.bind(this)
   }
-
-  getRows = memoize(
-    (
-      tableActive,
-      treeActive,
-      treeEnabled,
-      createItemActive,
-      editItemActive,
-      recordNavigationHeight,
-      recordOptionsHeight,
-      isPicker
-    ) => {
-      const rows = []
-
-      if (!isPicker) {
-        rows.push({
-          height: `${recordNavigationHeight}px`,
-          key: 'recordNavigationBar',
-        })
-      }
-
-      rows.push({
-        height: `${recordOptionsHeight}px`,
-        key: 'resultOptionBar',
-        style: {
-          paddingLeft: '1rem',
-          paddingRight: '1rem',
-        },
-      })
-
-      if (tableActive) {
-        rows.push({
-          key: 'tableView',
-          style: { overflow: 'auto' },
-        })
-      }
-
-      if (treeActive) {
-        rows.push({
-          key: 'treeView',
-          style: { overflow: 'auto' },
-        })
-      }
-
-      if (createItemActive) {
-        rows.push({
-          key: 'createItem',
-          style: { overflow: 'auto' },
-        })
-      }
-      if (editItemActive) {
-        rows.push({
-          key: 'editItem',
-          style: { overflow: 'auto' },
-        })
-      }
-      return rows
-    }
-  )
 
   renderRow(key) {
     switch (key) {
@@ -333,7 +341,7 @@ class MainColumn extends Component {
       treeActive,
       treeEnabled,
     } = this.props
-    const rows = this.getRows(
+    const rows = getRows(
       tableActive,
       tableSettingsActive,
       treeActive,
