@@ -25,6 +25,56 @@ const PICKER_MODAL_PADDING = emToPixels(10)
 const PICKER_HEADER_HEIGHT = emToPixels(3.5)
 const PICKER_ACTION_BAR_HEIGHT = emToPixels(5)
 
+const getColumns = memoize(
+  (
+    createItemActive,
+    editItemActive,
+    filterColumnWidth,
+    filterActive,
+    rightSidebarIsOpen,
+    rightSidebarWidth
+  ) => {
+    const columns = [
+      {
+        key: 'mainColumn',
+      },
+    ]
+
+    const filterColumnStyle = {
+      background: 'white',
+      borderLeft: '1px solid #D4D4D5',
+      zIndex: 100,
+    }
+
+    if (filterActive) {
+      columns.push({
+        key: 'filterColumn',
+        style: filterColumnStyle,
+        width: `${filterColumnWidth}px`,
+      })
+    }
+
+    if (rightSidebarIsOpen) {
+      columns.push({
+        key: 'rightSidebar',
+        style: filterColumnStyle,
+        width: `${rightSidebarWidth}px`,
+      })
+    }
+    return columns
+  }
+)
+
+const getRows = memoize(isPicker => {
+  return isPicker
+    ? [
+        { height: `${PICKER_HEADER_HEIGHT}px`, key: 'pickerHeader' },
+        { key: 'main' },
+        { height: `${PICKER_ACTION_BAR_HEIGHT}px`, key: 'pickerActionBar' },
+      ]
+    : [{ key: 'main' }]
+})
+
 const mapStateToProps = (state, { isPicker, resource, windowHeight }) => {
   const availableHeight = isPicker
     ? windowHeight - PICKER_MODAL_PADDING
@@ -90,60 +140,9 @@ class ResourceManager extends Component {
   constructor(props) {
     super(props)
 
-    this.getColumns = this.getColumns.bind(this)
     this.renderColumn = this.renderColumn.bind(this)
     this.renderRow = this.renderRow.bind(this)
   }
-
-  getColumns = memoize(
-    (
-      createItemActive,
-      editItemActive,
-      filterColumnWidth,
-      filterActive,
-      rightSidebarIsOpen,
-      rightSidebarWidth
-    ) => {
-      const columns = [
-        {
-          key: 'mainColumn',
-        },
-      ]
-
-      const filterColumnStyle = {
-        background: 'white',
-        borderLeft: '1px solid #D4D4D5',
-        zIndex: 100,
-      }
-
-      if (filterActive) {
-        columns.push({
-          key: 'filterColumn',
-          style: filterColumnStyle,
-          width: `${filterColumnWidth}px`,
-        })
-      }
-
-      if (rightSidebarIsOpen) {
-        columns.push({
-          key: 'rightSidebar',
-          style: filterColumnStyle,
-          width: `${rightSidebarWidth}px`,
-        })
-      }
-      return columns
-    }
-  )
-
-  getRows = memoize(isPicker => {
-    return isPicker
-      ? [
-          { height: `${PICKER_HEADER_HEIGHT}px`, key: 'pickerHeader' },
-          { key: 'main' },
-          { height: `${PICKER_ACTION_BAR_HEIGHT}px`, key: 'pickerActionBar' },
-        ]
-      : [{ key: 'main' }]
-  })
 
   renderColumn(key) {
     switch (key) {
@@ -262,7 +261,7 @@ class ResourceManager extends Component {
           rightSidebarIsOpen,
           rightSidebarWidth,
         } = this.props
-        const columns = this.getColumns(
+        const columns = getColumns(
           createItemActive,
           editItemActive,
           filterColumnWidth,
@@ -320,7 +319,7 @@ class ResourceManager extends Component {
 
   render() {
     const { isPicker } = this.props
-    const rows = this.getRows(isPicker)
+    const rows = getRows(isPicker)
 
     return <RowLayout {...this.props} renderRow={this.renderRow} rows={rows} />
   }
