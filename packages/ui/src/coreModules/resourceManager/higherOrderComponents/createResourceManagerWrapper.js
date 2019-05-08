@@ -10,6 +10,7 @@ import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+import userSelectors from 'coreModules/user/globalSelectors'
 
 import {
   globalSelectors as keyObjectGlobalSelectors,
@@ -64,6 +65,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     const focusIdWhenLoaded = get[':managerScope.focusIdWhenLoaded'](state, {
       managerScope,
     })
+    const userPreferences = userSelectors.getUserPreferences(state)
+    const tableColumnsToSort =
+      (userPreferences && userPreferences[`${resource}TableColumnsSorting`]) ||
+      undefined
 
     return {
       baseItems,
@@ -80,6 +85,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       numberOfListItems,
       prevRowAvailable,
       showAll,
+      tableColumnsToSort,
       totalNumberOfRecords,
     }
   }
@@ -115,6 +121,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     editItemActive: PropTypes.bool.isRequired,
+    enableTableColumnSorting: PropTypes.bool,
     excludeRootNode: PropTypes.bool,
     expandedIds: PropTypes.object,
     filterActive: PropTypes.bool.isRequired,
@@ -151,6 +158,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     sortOrder: PropTypes.array,
     tableActive: PropTypes.bool.isRequired,
     tableColumnSpecifications: PropTypes.array.isRequired,
+    tableColumnsToSort: PropTypes.array,
     tableSearch: PropTypes.func,
     totalNumberOfRecords: PropTypes.number,
     treeActive: PropTypes.bool.isRequired,
@@ -159,6 +167,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   const defaultProps = {
     baseItems: [],
     baseTreeFilter: {},
+    enableTableColumnSorting: false,
     excludeRootNode: false,
     expandedIds: {},
     filterValues: undefined,
@@ -175,6 +184,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     recordOptionsHeight: emToPixels(3.5625),
     showAll: false,
     sortOrder: [],
+    tableColumnsToSort: undefined,
     tableSearch: undefined,
     totalNumberOfRecords: 0,
   }
@@ -704,10 +714,12 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     tableSearch(filterValues) {
       const {
+        enableTableColumnSorting,
         excludeRootNode,
         managerScope,
         search,
         sortOrder,
+        tableColumnsToSort,
         tableSearch,
       } = this.props
 
@@ -718,7 +730,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
       return (tableSearch || search)({
         query,
-        sort: sortOrder,
+        sort:
+          (enableTableColumnSorting &&
+            tableColumnsToSort &&
+            tableColumnsToSort.map(({ fieldPath, sort: order }) => {
+              return `attributes.${fieldPath}:${order}`
+            })) ||
+          sortOrder,
         useScroll: false,
       }).then(items => {
         this.props.setListItems(items, { managerScope })
