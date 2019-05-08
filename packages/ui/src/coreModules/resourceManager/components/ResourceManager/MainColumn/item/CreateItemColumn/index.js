@@ -8,9 +8,13 @@ import { CreateItemActionBar } from '../ActionBars'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  formName: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
   renderCreateForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
+}
+const defaultProps = {
+  formName: undefined,
 }
 
 const rows = [
@@ -40,9 +44,11 @@ class CreateItemColumn extends Component {
         return renderCreateForm({ availableHeight })
       }
       case 'bottomBar': {
+        const { formName } = this.props
         const { extractedProps } = extractProps({
           keys: [
             'filterResourceCount',
+            'formName',
             'onInteraction',
             'resource',
             'transformOutput',
@@ -53,7 +59,7 @@ class CreateItemColumn extends Component {
         return (
           <CreateItemActionBar
             {...extractedProps}
-            formName={`${resource}Create`}
+            formName={formName || `${resource}Create`}
           />
         )
       }
@@ -77,5 +83,6 @@ class CreateItemColumn extends Component {
 }
 
 CreateItemColumn.propTypes = propTypes
+CreateItemColumn.defaultProps = defaultProps
 
 export default CreateItemColumn

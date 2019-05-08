@@ -23,6 +23,7 @@ const defaultBuildItemHeaders = nestedItem => {
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   buildEditItemHeaders: PropTypes.func,
+  formName: PropTypes.string,
   itemId: PropTypes.string.isRequired,
   loadingDelete: PropTypes.bool,
   nestedItem: PropTypes.object,
@@ -33,6 +34,7 @@ const propTypes = {
 }
 const defaultProps = {
   buildEditItemHeaders: defaultBuildItemHeaders,
+  formName: undefined,
   loadingDelete: false,
   nestedItem: undefined,
   relationshipsToCheckBeforeDelete: [],
@@ -76,6 +78,7 @@ class EditItemColumn extends Component {
         })
       }
       case 'bottomBar': {
+        const { formName } = this.props
         const { extractedProps } = extractProps({
           keys: [
             'fetchOneItemById',
@@ -95,7 +98,7 @@ class EditItemColumn extends Component {
         return (
           <EditItemActionBar
             {...extractedProps}
-            formName={`${resource}Edit`}
+            formName={formName || `${resource}Edit`}
             itemHeader={itemHeader}
             itemSubHeader={itemSubHeader}
           />
