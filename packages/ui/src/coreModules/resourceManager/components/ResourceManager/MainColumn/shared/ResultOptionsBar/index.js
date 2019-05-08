@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Menu } from 'semantic-ui-react'
 
+import CsvExporter from './CsvExporter'
+
 const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
+  csvExportEnabled: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
   itemEnabled: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
@@ -16,7 +19,9 @@ const propTypes = {
     .isRequired,
   onTreeTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
+  resource: PropTypes.string.isRequired,
   tableActive: PropTypes.bool.isRequired,
+  tableColumnSpecifications: PropTypes.array.isRequired,
   treeActive: PropTypes.bool.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
 }
@@ -25,6 +30,7 @@ export class ResultOptionsBar extends Component {
   render() {
     const {
       createItemActive,
+      csvExportEnabled,
       editItemActive,
       itemEnabled,
       onFormTabClick: handleFormTabClick,
@@ -32,10 +38,17 @@ export class ResultOptionsBar extends Component {
       onTableSettingsClick: handleTableSettingsClick,
       onToggleFilters: handleToggleFilters,
       onTreeTabClick: handleTreeTabClick,
+      resource,
       tableActive,
+      tableColumnSpecifications,
       treeActive,
       treeEnabled,
     } = this.props
+
+    const hasSecondaryMenu =
+      !(createItemActive || treeActive) ||
+      csvExportEnabled ||
+      handleTableSettingsClick
 
     return (
       <Menu attached="top" icon style={{ position: 'relative' }} tabular>
@@ -72,16 +85,14 @@ export class ResultOptionsBar extends Component {
           </Menu.Item>
         )}
 
-        {!(createItemActive || treeActive) && (
+        {hasSecondaryMenu && (
           <Menu.Menu className="icon secondary  ui" position="right">
-            <Menu.Item
-              data-testid="searchMenuItem"
-              link
-              onClick={event => handleToggleFilters(event)}
-              style={{ marginLeft: '3.125em' }}
-            >
-              <Icon disabled={!handleToggleFilters} name="search" />
-            </Menu.Item>
+            {csvExportEnabled && (
+              <CsvExporter
+                resource={resource}
+                tableColumnSpecifications={tableColumnSpecifications}
+              />
+            )}
             {handleTableSettingsClick && (
               <Menu.Item
                 data-testid="settingsMenuItem"
@@ -89,6 +100,16 @@ export class ResultOptionsBar extends Component {
                 onClick={event => handleTableSettingsClick(event)}
               >
                 <Icon name="setting" />
+              </Menu.Item>
+            )}
+            {!(createItemActive || treeActive) && (
+              <Menu.Item
+                data-testid="searchMenuItem"
+                link
+                onClick={event => handleToggleFilters(event)}
+                style={{ marginLeft: '3.125em' }}
+              >
+                <Icon disabled={!handleToggleFilters} name="search" />
               </Menu.Item>
             )}
           </Menu.Menu>
