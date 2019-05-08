@@ -297,6 +297,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.props.open()
       const {
         initialFilterValues,
+        isPicker,
         managerScope,
         treeActive,
         tableActive,
@@ -304,7 +305,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
       if (initialFilterValues) {
         this.props.setFilterValues(initialFilterValues, { managerScope })
-        this.handleInteraction(NAVIGATE_FILTER)
+
+        if (isPicker) {
+          this.handleInteraction(NAVIGATE_FILTER)
+        }
       }
 
       if (tableActive) {
@@ -448,10 +452,17 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return transitions
     }
     resetFilters() {
-      const { managerScope, resource } = this.props
+      const {
+        initialFilterValues,
+        isPicker,
+        managerScope,
+        resource,
+      } = this.props
       const formName = `${resource}Filter`
       this.props.resetForm(formName, { resource })
-      this.props.setFilterValues({}, { managerScope })
+      this.props.setFilterValues((!isPicker && initialFilterValues) || {}, {
+        managerScope,
+      })
     }
 
     expandAncestorsForItemId(itemId) {
