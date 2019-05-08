@@ -11,9 +11,7 @@ const mapDispatchToProps = { setFormSpec: actionCreators.set[':formName'] }
 
 const propTypes = {
   children: PropTypes.node.isRequired,
-  dirty: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   formName: PropTypes.string.isRequired,
-  getAllowTransition: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   onSubmit: PropTypes.func.isRequired,
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
@@ -23,12 +21,9 @@ const propTypes = {
   ).isRequired,
   setFormRef: PropTypes.func,
   setFormSpec: PropTypes.func.isRequired,
-  unsavedChangesMessage: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
 }
 const defaultProps = {
-  getAllowTransition: undefined,
   setFormRef: undefined,
-  unsavedChangesMessage: undefined,
 }
 
 class Form extends PureComponent {
