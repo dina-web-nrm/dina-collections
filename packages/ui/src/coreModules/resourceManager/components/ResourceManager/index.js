@@ -215,6 +215,7 @@ class ResourceManager extends Component {
             'onUpdateFilterValues',
             'renderFilterForm',
             'resource',
+            'tableSearch',
           ],
           props: this.props,
         })
