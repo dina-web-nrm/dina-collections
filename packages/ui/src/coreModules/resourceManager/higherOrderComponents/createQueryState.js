@@ -104,11 +104,11 @@ const createQueryNavigationState = () => ComposedComponent => {
   QueryNavigationState.defaultProps = defaultProps
 
   return compose(
+    withRouter,
     connect(
       null,
       mapDispatchToProps
-    ),
-    withRouter
+    )
   )(QueryNavigationState)
 }
 
