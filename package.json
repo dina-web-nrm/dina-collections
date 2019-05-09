@@ -46,6 +46,7 @@
     "install:scripts": "cd ./packages/scripts && yarn install",
     "install:semantic-ui": "cd ./packages/style && yarn install",
     "install:ui": "cd ./packages/ui && yarn install",
+    "lock-schema": "cd ./packages/common && yarn lock-schema && yarn test:schema-locked",
     "migrate:latest": "cd ./packages/migrations && yarn db:development:migrate:latest",
     "migrate:one": "cd ./packages/migrations && yarn db:development:migrate:one",
     "migrate:undo:one": "cd ./packages/migrations && yarn db:development:migrate:undo:one",
