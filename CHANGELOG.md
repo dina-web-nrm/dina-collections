@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.18.3-rc1](https://github.com/DINA-Web/dina-collections/compare/v0.18.2...v0.18.3-rc1)
+
+- Backend cleanup [`#517`](https://github.com/DINA-Web/dina-collections/pull/517)
+- Remove mammal form object value if id is empty string [`#519`](https://github.com/DINA-Web/dina-collections/pull/519)
+
 #### [v0.18.2](https://github.com/DINA-Web/dina-collections/compare/v0.18.1...v0.18.2)
+
+> 6 May 2019
 
 - Anton/work backend backlog [`#510`](https://github.com/DINA-Web/dina-collections/pull/510)
 - Upgrade Create React App to v3 [`#516`](https://github.com/DINA-Web/dina-collections/pull/516)
