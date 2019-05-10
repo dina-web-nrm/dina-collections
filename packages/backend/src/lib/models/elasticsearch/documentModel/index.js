@@ -24,6 +24,10 @@ module.exports = function createModel({
           filter: ['lowercase'],
           type: 'custom',
         },
+        trimNormalizer: {
+          filter: ['trim'],
+          type: 'custom',
+        },
       },
     },
   }

@@ -26,7 +26,7 @@ module.exports = function execute({
   if (reporter) {
     reporter.rebuildViewIncrementTarget({ items: filteredItems })
   }
-
+  console.log('filteredItems', filteredItems)
   return model
     .bulkCreate({ collidingIdPrefix, items: filteredItems })
     .then(({ items: createdItems }) => {

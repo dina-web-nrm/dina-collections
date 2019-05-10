@@ -135,6 +135,7 @@ module.exports = function getWhereFactory({
           }
 
           const body = raw || where
+          console.log(JSON.stringify(body, null, 2))
           methodName = 'search'
           options = {
             ...options,
