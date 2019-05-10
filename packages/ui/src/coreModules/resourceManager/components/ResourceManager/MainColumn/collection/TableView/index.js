@@ -72,7 +72,6 @@ const defaultProps = {
 class ResultTableView extends PureComponent {
   constructor(props) {
     super(props)
-    this.renderRow = this.renderRow.bind(this)
     this.handleSaveTableColumnsToSort = this.handleSaveTableColumnsToSort.bind(
       this
     )
@@ -126,46 +125,56 @@ class ResultTableView extends PureComponent {
       })
   }
 
-  renderRow(key) {
+  render() {
     const {
+      availableHeight,
+      currentTableRowNumber,
       enableTableColumnSorting,
+      fetchItemById,
+      focusedIndex,
+      focusedItemId,
+      listItems,
+      managerScope,
+      onClickRow,
+      resource,
+      tableBatchFetchOptions,
       tableColumnSpecifications,
       tableColumnsToShow,
       tableColumnsToSort,
-      resource,
       width,
     } = this.props
 
-    switch (key) {
-      case 'infinityTableHeader': {
-        return (
-          <InfinityTableHeader
-            enableTableColumnSorting={enableTableColumnSorting}
-            height={emToPixels(3.5)}
-            onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
-            resource={resource}
+    return (
+      <RowLayout availableHeight={availableHeight} rows={rows}>
+        <InfinityTableHeader
+          enableTableColumnSorting={enableTableColumnSorting}
+          height={emToPixels(3.5)}
+          onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
+          tableColumnSpecifications={tableColumnSpecifications}
+          tableColumnsToShow={tableColumnsToShow}
+          tableColumnsToSort={tableColumnsToSort}
+          width={width}
+        />
+        {listItems.length > 0 ? (
+          <InfinityTable
+            currentTableRowNumber={currentTableRowNumber}
+            fetchItemById={fetchItemById}
+            focusedIndex={focusedIndex}
+            focusedItemId={focusedItemId}
+            listItems={listItems}
+            managerScope={managerScope}
+            onClickRow={onClickRow}
+            resource={tableBatchFetchOptions.resource || resource}
+            tableBatchFetchOptions={tableBatchFetchOptions}
             tableColumnSpecifications={tableColumnSpecifications}
             tableColumnsToShow={tableColumnsToShow}
-            tableColumnsToSort={tableColumnsToSort}
             width={width}
           />
-        )
-      }
-      case 'tableScrollContainer': {
-        const { listItems, tableBatchFetchOptions } = this.props
-        return listItems.length === 0 ? (
-          <NoResultsFound />
         ) : (
-          <InfinityTable {...this.props} {...tableBatchFetchOptions} />
-        )
-      }
-      default: {
-        throw new Error(`Unknown row key: ${key}`)
-      }
-    }
-  }
-  render() {
-    return <RowLayout {...this.props} renderRow={this.renderRow} rows={rows} />
+          <NoResultsFound />
+        )}
+      </RowLayout>
+    )
   }
 }
 
