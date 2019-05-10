@@ -5,6 +5,7 @@ import extractProps from 'utilities/extractProps'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  children: PropTypes.node,
   renderRow: PropTypes.func,
   rows: PropTypes.arrayOf(
     PropTypes.shape({
@@ -18,6 +19,7 @@ const propTypes = {
   wrapperStyle: PropTypes.object,
 }
 const defaultProps = {
+  children: undefined,
   renderRow: undefined,
   rows: undefined,
   wrapperClassNames: undefined,
@@ -29,6 +31,7 @@ class RowLayout extends Component {
   render() {
     const {
       availableHeight,
+      children,
       renderRow,
       rows,
       wrapperClassNames,
@@ -39,6 +42,9 @@ class RowLayout extends Component {
     if (!rows || !rows.length) {
       return null
     }
+
+    const childrenArray = React.Children.toArray(children)
+    const hasChildren = childrenArray.length > 0
 
     const { rest: thisPropsRest } = extractProps({
       keys: [
@@ -72,6 +78,12 @@ class RowLayout extends Component {
             }
           )
 
+          if (!hasChildren && !renderRow && !rowProps.renderRow) {
+            throw new Error(
+              'must provide children or renderRow (either to RowLayout or in each row spec)'
+            )
+          }
+
           return (
             <div
               className={rowProps.classNames}
@@ -99,6 +111,11 @@ class RowLayout extends Component {
                 renderRow(rowProps.key, { ...thisPropsRest, ...rowPropsRest })}
               {rowProps.renderRow &&
                 rowProps.renderRow({ ...thisPropsRest, ...rowPropsRest })}
+              {childrenArray[index] &&
+                React.cloneElement(childrenArray[index], {
+                  ...thisPropsRest,
+                  ...rowPropsRest,
+                })}
             </div>
           )
         })}
