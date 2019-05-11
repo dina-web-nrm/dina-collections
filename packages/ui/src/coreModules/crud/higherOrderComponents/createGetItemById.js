@@ -96,41 +96,22 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
     }
 
     componentDidMount() {
-      if (shouldFetch) {
-        const { dispatch, item, itemId } = this.props
-        const {
-          extractedProps: { include = [], relationships = ['all'], resource },
-        } = extractProps({
-          defaults: hocInput,
-          keys: ['include', 'relationships', 'resource'],
-          props: this.props,
-        })
+      const { item, itemId } = this.props
 
-        if (itemId && !config.isTest) {
-          if (refresh || !item) {
-            const getOneActionCreator =
-              actionCreators[resource] && actionCreators[resource].getOne
-            if (getOneActionCreator) {
-              dispatch(
-                getOneActionCreator({ id: itemId, include, relationships })
-              )
-            }
-          }
-        }
+      if (shouldFetch && itemId && !config.isTest && (refresh || !item)) {
+        this.fetchOneItemById(itemId)
       }
     }
 
     componentWillReceiveProps(nextProps) {
-      if (shouldFetch) {
-        if (
-          nextProps.itemId &&
-          nextProps.itemId !== this.props.itemId &&
-          !config.isTest
-        ) {
-          if (refresh || !nextProps.item) {
-            this.fetchOneItemById(nextProps.itemId)
-          }
-        }
+      if (
+        shouldFetch &&
+        nextProps.itemId &&
+        nextProps.itemId !== this.props.itemId &&
+        !config.isTest &&
+        (refresh || !nextProps.item)
+      ) {
+        this.fetchOneItemById(nextProps.itemId)
       }
     }
 
