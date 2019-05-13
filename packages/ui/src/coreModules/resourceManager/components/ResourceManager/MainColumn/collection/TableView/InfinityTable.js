@@ -1,34 +1,13 @@
-import React, { Component } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { compose } from 'redux'
 import PropTypes from 'prop-types'
 import ReactList from 'react-list'
-import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
-import { emToPixels } from 'coreModules/layout/utilities'
+import { useHandlers } from 'coreModules/resourceManager/contexts/resourceManagerHandlers'
+import { useTableState } from 'coreModules/resourceManager/contexts/resourceManagerTableState'
+
 import InfinityTableRow from './InfinityTableRow'
-
-const propTypes = {
-  currentTableRowNumber: PropTypes.number.isRequired,
-  fetchItemById: PropTypes.func.isRequired,
-  focusedIndex: PropTypes.number.isRequired,
-  focusedItemId: PropTypes.string,
-  listItems: PropTypes.array,
-  managerScope: PropTypes.string.isRequired,
-  onClickRow: PropTypes.func.isRequired,
-  resource: PropTypes.string.isRequired,
-  tableBatchFetchOptions: PropTypes.object,
-  tableColumnSpecifications: PropTypes.array.isRequired,
-  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  width: PropTypes.number.isRequired,
-}
-
-const defaultProps = {
-  focusedIndex: 0,
-  focusedItemId: undefined,
-  listItems: [],
-  tableBatchFetchOptions: {},
-}
 
 const itemsRenderer = (items, ref) => {
   return (
@@ -38,98 +17,132 @@ const itemsRenderer = (items, ref) => {
   )
 }
 
-export class InfinityTable extends Component {
-  constructor(props) {
-    super(props)
-    this.list = null
-    this.setListRef = element => {
-      this.list = element
-      this.scroll()
+const propTypes = {
+  fetchItemById: PropTypes.func.isRequired,
+  managerScope: PropTypes.string.isRequired,
+  resource: PropTypes.string.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  width: PropTypes.number.isRequired,
+}
+
+const InfinityTable = ({
+  fetchItemById,
+  managerScope,
+  resource,
+  tableColumnsToShow,
+  width,
+}) => {
+  const latestListItems = useRef(null)
+  const list = useRef(null)
+
+  const {
+    clearNestedCache,
+    delFocusIdWhenLoaded,
+    focusRowWithId,
+    getNestedCacheNamespaces,
+    onClickRow,
+    setFocusIdWhenLoaded,
+  } = useHandlers()
+
+  // this context would be better to use in the parent and should include
+  // tableColumnsToShow and sort, but this was faster to prototype
+  const {
+    currentTableRowNumber,
+    focusedIndex,
+    focusedItemId,
+    focusIdWhenLoaded,
+    initialItemId,
+    itemId,
+    listItems,
+    tableBatchFetchOptions,
+    tableColumnSpecifications,
+  } = useTableState()
+
+  const {
+    resolveRelationships,
+    relationships,
+    resource: tableResource,
+  } = tableBatchFetchOptions
+
+  useEffect(() => {
+    if (listItems !== latestListItems.current) {
+      if (itemId) {
+        focusRowWithId(itemId)
+      } else if (
+        itemId === undefined &&
+        initialItemId !== undefined &&
+        initialItemId !== ''
+      ) {
+        setFocusIdWhenLoaded(initialItemId, { managerScope })
+      } else if (focusedItemId && !focusIdWhenLoaded) {
+        setFocusIdWhenLoaded(focusedItemId, { managerScope })
+      } else if (focusIdWhenLoaded && listItems.length) {
+        const rowFocused = focusRowWithId(focusIdWhenLoaded)
+        if (rowFocused) {
+          delFocusIdWhenLoaded({ managerScope })
+        }
+      }
     }
 
-    this.renderItem = this.renderItem.bind(this)
-    this.scroll = this.scroll.bind(this)
-  }
+    latestListItems.current = listItems
+  }, [
+    delFocusIdWhenLoaded,
+    focusedItemId,
+    focusIdWhenLoaded,
+    focusRowWithId,
+    initialItemId,
+    itemId,
+    listItems,
+    managerScope,
+    setFocusIdWhenLoaded,
+  ])
 
-  componentDidMount() {
-    this.scroll()
-  }
-
-  componentDidUpdate(prevProps) {
-    this.scroll(prevProps)
-  }
-
-  scroll(prevProps = {}) {
-    const { currentTableRowNumber, focusedItemId } = this.props
-
-    const {
-      currentTableRowNumber: prevCurrentTableRowNumber,
-      focusedItemId: prevFocusedItemId,
-    } = prevProps
-
-    if (
-      this.list &&
-      (currentTableRowNumber !== prevCurrentTableRowNumber ||
-        (focusedItemId && focusedItemId !== prevFocusedItemId))
-    ) {
-      const [firstVisibleRow] = this.list.getVisibleRange()
-
-      if (firstVisibleRow === undefined) {
-        setTimeout(() => this.scroll())
-      }
+  useEffect(() => {
+    const scroll = () => {
+      const [firstVisibleRow, lastVisibleRow] = list.current.getVisibleRange()
 
       // this special case is to avoid that the focused row is hidden behind the
       // table header, which is fixed positioned and therefore seen by
       // react-list as the first row in terms of scroll position
       if (currentTableRowNumber <= firstVisibleRow + 1) {
-        this.list.scrollTo(currentTableRowNumber - 1)
-      } else {
-        this.list.scrollAround(currentTableRowNumber)
+        list.current.scrollTo(currentTableRowNumber - 1)
+      } else if (currentTableRowNumber > lastVisibleRow) {
+        list.current.scrollAround(currentTableRowNumber)
       }
     }
-  }
 
-  renderItem(index) {
-    const {
-      fetchItemById,
-      focusedIndex,
-      listItems,
-      managerScope,
-      resource,
-      tableBatchFetchOptions,
-      tableColumnSpecifications,
-      tableColumnsToShow,
-      width,
-    } = this.props
-    const { id } = listItems[index] || {}
-    const isFocused = focusedIndex === index
-    const background = isFocused // eslint-disable-line no-nested-ternary
-      ? '#b5b5b5'
-      : index % 2 === 0
-      ? '#e5e7e9'
-      : '#fff'
-    if (id !== undefined) {
-      fetchItemById(id)
+    if (list.current && currentTableRowNumber) {
+      const [firstVisibleRow] = list.current.getVisibleRange()
+
+      if (firstVisibleRow === undefined) {
+        setTimeout(() => scroll())
+      } else {
+        scroll()
+      }
     }
+  }, [currentTableRowNumber])
 
-    const {
-      resolveRelationships,
-      relationships,
-      resource: tableResource,
-    } = tableBatchFetchOptions
+  // is this really necessary?
+  useEffect(() => {
+    return () =>
+      clearNestedCache({
+        namespaces: getNestedCacheNamespaces(),
+      })
+  }, [clearNestedCache, getNestedCacheNamespaces])
 
+  const itemRenderer = (index, key) => {
     return (
       <InfinityTableRow
-        background={background}
-        isFocused={isFocused}
-        itemId={id}
-        key={id}
-        namespace={managerScope}
-        onClickRow={this.props.onClickRow}
+        fetchItemById={fetchItemById}
+        focusedIndex={focusedIndex}
+        index={index}
+        itemId={listItems[index].id}
+        key={key}
+        namespace={tableResource || managerScope}
+        onClickRow={onClickRow}
         relationships={relationships}
         resolveRelationships={resolveRelationships}
         resource={tableResource || resource}
-        rowNumber={index + 1}
         tableColumnSpecifications={tableColumnSpecifications}
         tableColumnsToShow={tableColumnsToShow}
         width={width}
@@ -137,42 +150,23 @@ export class InfinityTable extends Component {
     )
   }
 
-  render() {
-    const { listItems, width } = this.props
-
-    if (!(listItems && listItems)) {
-      return (
-        <Grid padded>
-          <Grid.Row style={{ height: emToPixels(3.5), width }}>
-            <Grid.Column style={{ paddingTop: 60, width: 150 }}>
-              <Dimmer active inverted>
-                <Loader content="Loading" inverted />
-              </Dimmer>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      )
-    }
-
-    return (
-      <div data-testid="infinityTable" style={{ width }}>
-        <ReactList
-          itemRenderer={this.renderItem}
-          itemsRenderer={itemsRenderer}
-          length={listItems.length}
-          ref={this.setListRef}
-          type="uniform"
-        />
-      </div>
-    )
-  }
+  return (
+    <div data-testid="infinityTable" style={{ width }}>
+      <ReactList
+        itemRenderer={itemRenderer}
+        itemsRenderer={itemsRenderer}
+        length={listItems.length}
+        ref={list}
+        type="uniform"
+      />
+    </div>
+  )
 }
 
 InfinityTable.propTypes = propTypes
-InfinityTable.defaultProps = defaultProps
 
 export default compose(
   createBatchFetchItems({
-    includeFields: ['id', 'attributes'],
+    refetch: true,
   })
 )(InfinityTable)

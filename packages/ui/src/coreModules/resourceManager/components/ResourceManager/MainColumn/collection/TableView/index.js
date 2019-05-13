@@ -48,6 +48,7 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   enableTableColumnSorting: PropTypes.bool.isRequired,
   listItems: PropTypes.array.isRequired,
+  managerScope: PropTypes.string.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -128,14 +129,9 @@ class ResultTableView extends PureComponent {
   render() {
     const {
       availableHeight,
-      currentTableRowNumber,
       enableTableColumnSorting,
-      fetchItemById,
-      focusedIndex,
-      focusedItemId,
       listItems,
       managerScope,
-      onClickRow,
       resource,
       tableBatchFetchOptions,
       tableColumnSpecifications,
@@ -157,16 +153,9 @@ class ResultTableView extends PureComponent {
         />
         {listItems.length > 0 ? (
           <InfinityTable
-            currentTableRowNumber={currentTableRowNumber}
-            fetchItemById={fetchItemById}
-            focusedIndex={focusedIndex}
-            focusedItemId={focusedItemId}
-            listItems={listItems}
+            {...tableBatchFetchOptions}
             managerScope={managerScope}
-            onClickRow={onClickRow}
             resource={tableBatchFetchOptions.resource || resource}
-            tableBatchFetchOptions={tableBatchFetchOptions}
-            tableColumnSpecifications={tableColumnSpecifications}
             tableColumnsToShow={tableColumnsToShow}
             width={width}
           />
