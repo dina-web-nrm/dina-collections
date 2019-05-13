@@ -238,6 +238,23 @@ module.exports = {
     relations: {
       type: 'array',
     },
+
+    relationships: {
+      patternProperties: {
+        '^.*$': {
+          additionalProperties: false,
+          properties: {
+            inverseRelationshipKey: { type: 'string' },
+            keyAllowNull: { type: 'boolean' },
+            keyName: { type: 'string' },
+            keyStoredInModel: { type: 'string' },
+            keyType: { enum: ['sql', 'json', 'polymorphic'], type: 'string' },
+            keyUnique: { type: 'boolean' },
+          },
+        },
+      },
+      type: 'object',
+    },
     type: {
       description: 'Model type',
       enum: [
