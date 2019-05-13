@@ -2,92 +2,19 @@ const createLog = require('../../../utilities/log')
 
 const log = createLog('services/specimenService/serviceInteractions')
 
-exports.rebuildInProgress = ({ serviceInteractor }) => {
-  return serviceInteractor
-    .call({
-      operationId: 'searchSpecimenGetViewMeta',
-    })
-    .then(({ data }) => {
-      return !!data.attributes.nextVersion
-    })
-}
+const {
+  createRebuildInProgress,
+  createCreateIndexJob,
+} = require('../../../lib/data/serviceInteractions')
 
-exports.createIndexJob = ({
-  priority = 0,
-  consolidateJobs = true,
-  limit,
-  rebuild: forceRebuild = false,
-  searchSpecimenIds = [],
-  serviceInteractor,
-}) => {
-  const limitReached = searchSpecimenIds.length >= limit
-  if (limitReached) {
-    log.debug(
-      `createIndexJob: Limit reached (${
-        searchSpecimenIds.length
-      } ids). will rebuild view`
-    )
-  }
-  const rebuild = forceRebuild || limitReached
+exports.rebuildInProgress = createRebuildInProgress({
+  operationId: 'searchSpecimenGetViewMeta',
+})
 
-  if (rebuild) {
-    log.debug('createIndexJob: searchSpecimenRebuildView')
-    return serviceInteractor.call({
-      operationId: 'jobCreate',
-      request: {
-        body: {
-          data: {
-            attributes: {
-              group: 'search-index',
-              operationId: 'searchSpecimenRebuildView',
-              operationRequest: {
-                queryParams: {
-                  consolidateJobs,
-                  force: true,
-                  limit: 100000,
-                },
-              },
-              priority,
-            },
-          },
-        },
-      },
-      resource: 'job',
-    })
-  }
-  log.debug(
-    `createIndexJob: searchSpecimenUpdateView. with ids:
-      [${searchSpecimenIds.join(', ')}]
-    `
-  )
-  return serviceInteractor.call({
-    operationId: 'jobCreate',
-    request: {
-      body: {
-        data: {
-          attributes: {
-            group: 'search-index',
-            operationId: 'searchSpecimenUpdateView',
-            operationRequest: {
-              body: {
-                data: {
-                  attributes: {
-                    ids: searchSpecimenIds,
-                  },
-                },
-              },
-              queryParams: {
-                consolidateJobs,
-              },
-            },
-            priority,
-          },
-        },
-      },
-    },
-    resource: 'job',
-  })
-}
+exports.createIndexJob = createCreateIndexJob({
+  rebuildViewOperationId: 'searchSpecimenRebuildView',
+  updateViewOperationId: 'searchSpecimenUpdateView',
+})
 
 exports.createUpdateRelatedSearchSpecimensPostHook = ({
   resource,

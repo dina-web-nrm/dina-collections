@@ -31,8 +31,8 @@ const indexHook = ({ item, serviceInteractor }) => {
           }
           return createIndexJob({
             consolidateJobs: false,
+            ids: [id],
             priority: 1,
-            searchSpecimenIds: [id],
             serviceInteractor,
           })
         })

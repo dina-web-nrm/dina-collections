@@ -123,7 +123,7 @@ const consolidateJobsPostHook = ({ serviceInteractor, request }) => {
             } jobs `
           )
           return createIndexJob({
-            searchSpecimenIds: extractIdsFromJobs({ jobs: jobsToConsolidate }),
+            ids: extractIdsFromJobs({ jobs: jobsToConsolidate }),
             serviceInteractor,
           })
         })
