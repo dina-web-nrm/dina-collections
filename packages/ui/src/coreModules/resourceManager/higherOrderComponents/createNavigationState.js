@@ -169,6 +169,7 @@ const createResourceUrlState = () => ComposedComponent => {
     navigateTable(state) {
       this.props.updateState(
         {
+          itemId: undefined,
           mainColumn: 'table',
           sectionId: undefined,
         },
@@ -179,6 +180,7 @@ const createResourceUrlState = () => ComposedComponent => {
     navigateTableSettings(state) {
       this.props.updateState(
         {
+          itemId: undefined,
           mainColumn: 'tableSettings',
           sectionId: undefined,
         },
@@ -189,6 +191,7 @@ const createResourceUrlState = () => ComposedComponent => {
     navigateTree() {
       this.props.updateState({
         filterColumn: undefined,
+        itemId: undefined,
         mainColumn: 'tree',
         sectionId: undefined,
       })
