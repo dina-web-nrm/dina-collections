@@ -1,3 +1,5 @@
-const ensureNoCircularAncestorsPreHook = require('../../../../../lib/data/hooks/sharedHooks/ensureNoCircularAncestorsPreHook')
+const {
+  ensureNoCircularAncestorsPreHook,
+} = require('../../../../../lib/data/hooks')
 
 exports.updateRelationshipParent = [ensureNoCircularAncestorsPreHook]
