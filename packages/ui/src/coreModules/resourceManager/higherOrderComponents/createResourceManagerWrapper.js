@@ -35,6 +35,9 @@ import {
   PICKER_PICK_ITEM,
 } from 'coreModules/resourceManager/constants'
 
+import { ResourceManagerHandlersProvider } from 'coreModules/resourceManager/contexts/resourceManagerHandlers'
+import { ResourceManagerTableStateProvider } from 'coreModules/resourceManager/contexts/resourceManagerTableState'
+
 const log = createLog('resourceManager:resourceManagerWrapper')
 
 const createResourceManagerWrapper = () => ComposedComponent => {
@@ -158,6 +161,12 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     showAll: PropTypes.bool,
     sortOrder: PropTypes.array,
     tableActive: PropTypes.bool.isRequired,
+    tableBatchFetchOptions: PropTypes.shape({
+      include: PropTypes.array,
+      relationships: PropTypes.array,
+      resolveRelationships: PropTypes.array,
+      resource: PropTypes.string,
+    }),
     tableColumnSpecifications: PropTypes.array.isRequired,
     tableColumnsToSort: PropTypes.array,
     tableSearch: PropTypes.func,
@@ -186,6 +195,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     recordOptionsHeight: emToPixels(3.5625),
     showAll: false,
     sortOrder: [],
+    tableBatchFetchOptions: {},
     tableColumnsToSort: undefined,
     tableSearch: undefined,
     totalNumberOfRecords: 0,
@@ -914,37 +924,98 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     render() {
-      const { managerScope, nextRowAvailable, prevRowAvailable } = this.props
+      const {
+        clearNestedCache,
+        currentTableRowNumber,
+        delFocusIdWhenLoaded,
+        focusedIndex,
+        focusedItemId,
+        focusIdWhenLoaded,
+        initialItemId,
+        itemId,
+        listItems,
+        managerScope,
+        nextRowAvailable,
+        prevRowAvailable,
+        setFocusIdWhenLoaded,
+        tableBatchFetchOptions,
+        tableColumnSpecifications,
+        tableColumnsToSort,
+      } = this.props
+
       return (
-        <React.Fragment>
-          <KeyboardShortcuts
-            activeInLayer={managerScope}
-            shortcuts={this.shortcuts}
-          />
-          <ComposedComponent
-            {...this.props}
-            fetchTreeBase={this.fetchTreeBase}
-            managerScope={managerScope}
-            onClickRow={this.handleClickRow}
-            onClosePicker={this.handleClosePicker}
-            onFormTabClick={this.handleFormTabClick}
-            onInteraction={this.handleInteraction}
-            onOpenNewRecordForm={this.handleOpenNewRecordForm}
-            onPickItem={this.handlePickItem}
-            onSelectNextRecord={nextRowAvailable && this.handleSelectNextRecord}
-            onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
-            onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
-            onShowAllRecords={this.handleShowAllRecords}
-            onTableSettingsClick={this.handleTableSettingsClick}
-            onTableTabClick={this.handleTableTabClick}
-            onToggleCurrentRow={this.handleToggleCurrentRow}
-            onToggleFilters={this.handleToggleFilters}
-            onToggleRow={this.handleToggleRow}
-            onTreeTabClick={this.handleTreeTabClick}
-            onUpdateFilterValues={this.handleUpdateFilterValues}
-            tableSearch={this.tableSearch}
-          />
-        </React.Fragment>
+        <ResourceManagerHandlersProvider
+          clearNestedCache={clearNestedCache}
+          delFocusIdWhenLoaded={delFocusIdWhenLoaded}
+          fetchTreeBase={this.fetchTreeBase}
+          focusRowWithId={this.focusRowWithId}
+          getNestedCacheNamespaces={this.getNestedCacheNamespaces}
+          onClickRow={this.handleClickRow}
+          onClosePicker={this.handleClosePicker}
+          onFormTabClick={this.handleFormTabClick}
+          onInteraction={this.handleInteraction}
+          onOpenNewRecordForm={this.handleOpenNewRecordForm}
+          onPickItem={this.handlePickItem}
+          onSelectNextRecord={this.handleSelectNextRecord}
+          onSelectPreviousRecord={this.handleSelectPrev}
+          onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
+          onShowAllRecords={this.handleShowAllRecords}
+          onTableSettingsClick={this.handleTableSettingsClick}
+          onTableTabClick={this.handleTableTabClick}
+          onToggleCurrentRow={this.handleToggleCurrentRow}
+          onToggleFilters={this.handleToggleFilters}
+          onToggleRow={this.handleToggleRow}
+          onTreeTabClick={this.handleTreeTabClick}
+          onUpdateFilterValues={this.handleUpdateFilterValues}
+          selectCurrentRow={this.selectCurrentRow}
+          setFocusIdWhenLoaded={setFocusIdWhenLoaded}
+          tableSearch={this.tableSearch}
+        >
+          <ResourceManagerTableStateProvider
+            currentTableRowNumber={currentTableRowNumber}
+            focusedIndex={focusedIndex}
+            focusedItemId={focusedItemId}
+            focusIdWhenLoaded={focusIdWhenLoaded}
+            initialItemId={initialItemId}
+            itemId={itemId}
+            listItems={listItems}
+            nextRowAvailable={nextRowAvailable}
+            prevRowAvailable={prevRowAvailable}
+            tableBatchFetchOptions={tableBatchFetchOptions}
+            tableColumnSpecifications={tableColumnSpecifications}
+            tableColumnsToSort={tableColumnsToSort}
+          >
+            <KeyboardShortcuts
+              activeInLayer={managerScope}
+              shortcuts={this.shortcuts}
+            />
+            <ComposedComponent
+              {...this.props}
+              fetchTreeBase={this.fetchTreeBase}
+              managerScope={managerScope}
+              onClickRow={this.handleClickRow}
+              onClosePicker={this.handleClosePicker}
+              onFormTabClick={this.handleFormTabClick}
+              onInteraction={this.handleInteraction}
+              onOpenNewRecordForm={this.handleOpenNewRecordForm}
+              onPickItem={this.handlePickItem}
+              onSelectNextRecord={
+                nextRowAvailable && this.handleSelectNextRecord
+              }
+              onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
+              onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
+              onShowAllRecords={this.handleShowAllRecords}
+              onTableSettingsClick={this.handleTableSettingsClick}
+              onTableTabClick={this.handleTableTabClick}
+              onToggleCurrentRow={this.handleToggleCurrentRow}
+              onToggleFilters={this.handleToggleFilters}
+              onToggleRow={this.handleToggleRow}
+              onTreeTabClick={this.handleTreeTabClick}
+              onUpdateFilterValues={this.handleUpdateFilterValues}
+              tableSearch={this.tableSearch}
+            />
+          </ResourceManagerTableStateProvider>
+        </ResourceManagerHandlersProvider>
       )
     }
   }
