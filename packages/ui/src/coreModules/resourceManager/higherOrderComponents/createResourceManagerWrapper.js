@@ -6,9 +6,11 @@ import { compose } from 'redux'
 import { reset as resetActionCreator } from 'redux-form'
 import createLog from 'utilities/log'
 
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
+import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import userSelectors from 'coreModules/user/globalSelectors'
 
@@ -72,7 +74,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     const tableColumnsToSort =
       (userPreferences && userPreferences[`${resource}TableColumnsSorting`]) ||
       undefined
-
+    const searchInProgress = searchSelectors.get[':resource.searchInProgress'](
+      state,
+      { resource }
+    )
     return {
       baseItems,
       currentTableRowNumber,
@@ -87,6 +92,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       nextRowAvailable,
       numberOfListItems,
       prevRowAvailable,
+      searchInProgress,
       showAll,
       tableColumnsToSort,
       totalNumberOfRecords,
@@ -151,6 +157,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     resetForm: PropTypes.func.isRequired,
     resource: PropTypes.string.isRequired,
     search: PropTypes.func.isRequired,
+    searchInProgress: PropTypes.bool,
     setBaseItems: PropTypes.func.isRequired,
     setCurrentTableRowNumber: PropTypes.func.isRequired,
     setExpandedIds: PropTypes.func.isRequired,
@@ -193,6 +200,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     nestedCacheNamespaces: undefined,
     recordNavigationHeight: emToPixels(4.25),
     recordOptionsHeight: emToPixels(3.5625),
+    searchInProgress: false,
     showAll: false,
     sortOrder: [],
     tableBatchFetchOptions: {},
@@ -230,12 +238,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.selectCurrentRow = this.selectCurrentRow.bind(this)
       this.tableSearch = this.tableSearch.bind(this)
       this.resetFilters = this.resetFilters.bind(this)
-
-      this.mountTableView = this.mountTableView.bind(this)
-      this.updateTableView = this.updateTableView.bind(this)
-      this.transitionToTableView = this.transitionToTableView.bind(this)
-      this.transitionFromTableView = this.transitionFromTableView.bind(this)
-
+      this.waitForOtherSearchesToFinish = this.waitForOtherSearchesToFinish.bind(
+        this
+      )
       this.mountTreeView = this.mountTreeView.bind(this)
       this.updateTreeView = this.updateTreeView.bind(this)
       this.transitionToTreeView = this.transitionToTreeView.bind(this)
@@ -320,7 +325,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       }
 
       if (tableActive) {
-        this.mountTableView()
+        this.tableSearch(initialFilterValues)
       } else if (treeActive) {
         this.mountTreeView()
       } else {
@@ -345,7 +350,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       activeViews.forEach(activeView => {
         switch (activeView) {
           case 'table': {
-            this.updateTableView(prevProps)
             break
           }
           case 'tree': {
@@ -368,11 +372,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       transitions.forEach(transition => {
         switch (transition) {
           case 'to-table': {
-            this.transitionToTableView(prevProps)
             break
           }
           case 'from-table': {
-            this.transitionFromTableView(prevProps)
             break
           }
           case 'to-tree': {
@@ -417,8 +419,12 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     getNestedCacheNamespaces() {
-      const { managerScope } = this.props
-      return [managerScope, `${managerScope}Title`]
+      const { managerScope, resource } = this.props
+      return [
+        managerScope,
+        `${managerScope}Title`,
+        `search${capitalizeFirstLetter(resource)}`,
+      ]
     }
 
     getActiveViews() {
@@ -736,6 +742,30 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return null
     }
 
+    waitForOtherSearchesToFinish() {
+      let count = 0
+      const wait = () => {
+        count += 1
+        if (count > 5) {
+          return Promise.resolve()
+        }
+        return new Promise(resolve => {
+          const { searchInProgress } = this.props
+          if (!searchInProgress) {
+            return resolve(true)
+          }
+
+          return setTimeout(() => {
+            return wait().then(() => {
+              resolve(true)
+            })
+          }, 1000)
+        })
+      }
+
+      return wait()
+    }
+
     tableSearch(filterValues) {
       const {
         enableTableColumnSorting,
@@ -747,80 +777,26 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         tableSearch,
       } = this.props
 
-      const query = this.props.buildFilterQuery({
-        excludeRootNode,
-        values: filterValues || {},
-      })
+      return this.waitForOtherSearchesToFinish().then(() => {
+        const query = this.props.buildFilterQuery({
+          excludeRootNode,
+          values: filterValues || {},
+        })
+        return (tableSearch || search)({
+          query,
+          sort:
+            (enableTableColumnSorting &&
+              tableColumnsToSort &&
+              tableColumnsToSort.map(({ fieldPath, sort: order }) => {
+                return `attributes.${fieldPath}:${order}`
+              })) ||
+            sortOrder,
+          useScroll: false,
+        }).then(items => {
+          this.props.setListItems(items, { managerScope })
 
-      return (tableSearch || search)({
-        query,
-        sort:
-          (enableTableColumnSorting &&
-            tableColumnsToSort &&
-            tableColumnsToSort.map(({ fieldPath, sort: order }) => {
-              return `attributes.${fieldPath}:${order}`
-            })) ||
-          sortOrder,
-        useScroll: false,
-      }).then(items => {
-        this.props.setListItems(items, { managerScope })
-
-        return null
-      })
-    }
-
-    mountTableView() {
-      log.debug('initial mount view: Table')
-      const {
-        initialFilterValues,
-        initialItemId,
-        itemId,
-        managerScope,
-      } = this.props
-
-      if (
-        itemId === undefined &&
-        initialItemId !== undefined &&
-        initialItemId !== ''
-      ) {
-        this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
-      }
-
-      this.tableSearch(initialFilterValues)
-    }
-
-    updateTableView(prevProps) {
-      const { focusIdWhenLoaded, itemId, listItems, managerScope } = this.props
-      const { listItems: prevListItems } = prevProps
-      if (itemId && listItems !== prevListItems) {
-        this.focusRowWithId(itemId)
-      }
-      if (
-        focusIdWhenLoaded &&
-        prevListItems !== listItems &&
-        listItems.length
-      ) {
-        const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
-        if (rowFocused) {
-          this.props.delFocusIdWhenLoaded({ managerScope })
-        }
-      }
-    }
-
-    transitionToTableView() {
-      log.debug('transition to view: Table')
-
-      const { focusedItemId, managerScope } = this.props
-      if (focusedItemId) {
-        this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
-      }
-    }
-
-    transitionFromTableView() {
-      log.debug('transition from view: Table')
-
-      this.props.clearNestedCache({
-        namespaces: this.getNestedCacheNamespaces(),
+          return null
+        })
       })
     }
 
