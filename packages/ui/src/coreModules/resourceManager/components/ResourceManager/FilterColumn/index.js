@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { pick } from 'lodash'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { CLOSE_ITEM_VIEW } from 'coreModules/resourceManager/constants'
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
-import extractProps from 'utilities/extractProps'
 import BottomBar from './BottomBar'
 
 const propTypes = {
@@ -22,26 +22,11 @@ const defaultProps = {
   filterHeader: 'Filter',
   filterValues: undefined,
 }
-const rows = [
-  {
-    height: emToPixels(4.25),
-    key: 'header',
-  },
-  {
-    key: 'filterForm',
-    style: { overflow: 'auto' },
-  },
-  {
-    height: emToPixels(4.625),
-    key: 'bottomBar',
-  },
-]
 
 class FilterColumn extends Component {
   constructor(props) {
     super(props)
 
-    this.renderRow = this.renderRow.bind(this)
     this.handleClose = this.handleClose.bind(this)
   }
 
@@ -50,49 +35,35 @@ class FilterColumn extends Component {
     this.props.onInteraction(CLOSE_ITEM_VIEW)
   }
 
-  renderRow(key) {
-    switch (key) {
-      case 'header': {
-        const { filterHeader } = this.props
-
-        return <ColumnRowHeader text={filterHeader} />
-      }
-      case 'filterForm': {
-        const { filterValues: initialValues = {} } = this.props
-        return this.props.renderFilterForm({ initialValues })
-      }
-      case 'bottomBar': {
-        const { extractedProps } = extractProps({
-          keys: [
-            'buildFilterQuery',
-            'isPicker',
-            'onInteraction',
-            'onShowAllRecords',
-            'onUpdateFilterValues',
-            'resource',
-            'tableSearch',
-          ],
-          props: this.props,
-        })
-
-        return <BottomBar {...extractedProps} />
-      }
-      default: {
-        throw new Error(`Unknown row: ${key}`)
-      }
-    }
-  }
-
   render() {
-    const { availableHeight } = this.props
+    const {
+      availableHeight,
+      filterHeader,
+      filterValues: initialValues = {},
+    } = this.props
 
     return (
-      <RowLayout
-        availableHeight={availableHeight}
-        renderRow={this.renderRow}
-        rows={rows}
-        wrapperId="filterColumn"
-      />
+      <RowLayout availableHeight={availableHeight} dataTestId="filterColumn">
+        <RowLayout.Row height={emToPixels(4.25)}>
+          <ColumnRowHeader text={filterHeader} />
+        </RowLayout.Row>
+        <RowLayout.Row>
+          {this.props.renderFilterForm({ initialValues })}
+        </RowLayout.Row>
+        <RowLayout.Row height={emToPixels(4.625)}>
+          <BottomBar
+            {...pick(this.props, [
+              'buildFilterQuery',
+              'isPicker',
+              'onInteraction',
+              'onShowAllRecords',
+              'onUpdateFilterValues',
+              'resource',
+              'tableSearch',
+            ])}
+          />
+        </RowLayout.Row>
+      </RowLayout>
     )
   }
 }
