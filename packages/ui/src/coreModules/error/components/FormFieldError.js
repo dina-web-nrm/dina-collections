@@ -40,10 +40,10 @@ const FormFieldError = ({ scope, error, module, style, textKeys, warning }) => {
     )
   }
 
-  const classNames = warning ? 'ui orange tiny label' : 'ui red tiny label'
+  const className = warning ? 'ui orange tiny label' : 'ui red tiny label'
 
   return (
-    <span className={classNames} style={style}>
+    <span className={className} style={style}>
       {module ? (
         <ModuleTranslate
           capitalize
