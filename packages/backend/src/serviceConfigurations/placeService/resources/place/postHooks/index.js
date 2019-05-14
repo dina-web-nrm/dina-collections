@@ -6,7 +6,21 @@ const {
   createRegisterResourceActivityHook,
 } = require('../../../../historyService/serviceInteractions')
 
+const {
+  createIndexJob,
+  rebuildInProgress,
+} = require('../../../../specimenService/serviceInteractions')
+
+const { createIndexHook } = require('../../../../../lib/data/hooks')
+
+const indexHook = createIndexHook({
+  createIndexJob,
+  rebuildInProgress,
+  resource: 'searchPlace',
+})
+
 exports.create = [
+  indexHook,
   createRegisterResourceActivityHook({
     action: 'create',
     service: 'placeService',
@@ -14,6 +28,7 @@ exports.create = [
 ]
 
 exports.update = [
+  indexHook,
   createRegisterResourceActivityHook({
     action: 'update',
     service: 'placeService',
