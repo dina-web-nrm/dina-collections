@@ -78,7 +78,7 @@ function PhysicalObjectTitle({
           </span>
         )
       }
-      classNames={invalidStorageLocation ? 'error' : undefined}
+      className={invalidStorageLocation ? 'error' : undefined}
       left={
         preparationType || category ? (
           <React.Fragment>
