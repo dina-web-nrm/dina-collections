@@ -4,9 +4,9 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
+import { pick } from 'lodash'
 
 import createLog from 'utilities/log'
-import extractProps from 'utilities/extractProps'
 import { validateSections } from 'coreModules/formSupport/actionCreators'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
@@ -20,10 +20,7 @@ import FormSectionView, {
 
 const log = createLog('coreModules/form/components/FormRow')
 
-const columns = [
-  { key: 'formSectionNavigation', width: emToPixels(25) },
-  { key: 'formSectionView', style: { overflow: 'auto' } },
-]
+const overflowAuto = { overflow: 'auto' }
 
 const mapDispatchToProps = {
   push,
@@ -65,7 +62,6 @@ class FormRow extends PureComponent {
     this.handleGoToNextSection = this.handleGoToNextSection.bind(this)
     this.handleGoToPreviousSection = this.handleGoToPreviousSection.bind(this)
     this.handleShowAllFormSections = this.handleShowAllFormSections.bind(this)
-    this.renderColumn = this.renderColumn.bind(this)
   }
 
   componentDidMount() {
@@ -111,82 +107,46 @@ class FormRow extends PureComponent {
     this.handleSetActiveFormSection(event, 'all')
   }
 
-  renderColumn(key, props) {
-    switch (key) {
-      case 'formSectionNavigation': {
-        const { extractedProps } = extractProps({
-          keys: [
-            ...Object.keys(formSectionNavigationPropTypes),
-            ...this.props.passthroughProps,
-          ],
-          props,
-        })
-
-        const { itemHeader, itemSubHeader } = this.props
-
-        return (
-          <FormSectionNavigation
-            {...extractedProps}
-            header={itemHeader}
-            subHeader={itemSubHeader}
-          />
-        )
-      }
-
-      case 'formSectionView': {
-        const { extractedProps } = extractProps({
-          keys: [
-            'itemHeader',
-            'itemSubHeader',
-            ...Object.keys(formSectionViewPropTypes),
-            ...this.props.passthroughProps,
-          ],
-          props,
-        })
-
-        return <FormSectionView {...extractedProps} />
-      }
-
-      default: {
-        throw new Error(`Unknown column: ${key}`)
-      }
-    }
-  }
-
   render() {
     log.render()
-    const {
-      customParts,
-      moduleName,
-      sectionId,
-      sectionSpecs,
-      showSectionsInNavigation,
-      ...rest
-    } = this.props
+    const { sectionId, showSectionsInNavigation } = this.props
 
     if (showSectionsInNavigation && sectionId === undefined) {
       return null
     }
 
+    const activeFormSectionIndex = Number(sectionId)
+
     return (
-      <React.Fragment>
-        <ColumnLayout
-          {...rest}
-          activeFormSectionIndex={Number(sectionId)}
-          columns={columns}
-          customParts={customParts}
-          moduleName={moduleName}
-          onGoToNextSection={this.handleGoToNextSection}
-          onGoToPreviousSection={this.handleGoToPreviousSection}
-          onRemoteSubmit={this.handleRemoteSubmit}
-          onSetActiveFormSection={this.handleSetActiveFormSection}
-          onShowAllFormSections={this.handleShowAllFormSections}
-          renderColumn={this.renderColumn}
-          sectionSpecs={sectionSpecs}
-          showAllFormSections={sectionId === 'all'}
-          showSectionsInNavigation={showSectionsInNavigation}
-        />
-      </React.Fragment>
+      <ColumnLayout>
+        <ColumnLayout.Column width={emToPixels(25)}>
+          <FormSectionNavigation
+            {...pick(this.props, [
+              'itemHeader',
+              'itemSubHeader',
+              ...Object.keys(formSectionNavigationPropTypes),
+              ...this.props.passthroughProps,
+            ])}
+            activeFormSectionIndex={activeFormSectionIndex}
+            onSetActiveFormSection={this.handleSetActiveFormSection}
+            onShowAllFormSections={this.handleShowAllFormSections}
+          />
+        </ColumnLayout.Column>
+        <ColumnLayout.Column style={overflowAuto}>
+          <FormSectionView
+            {...pick(this.props, [
+              'itemHeader',
+              'itemSubHeader',
+              ...Object.keys(formSectionViewPropTypes),
+              ...this.props.passthroughProps,
+            ])}
+            activeFormSectionIndex={activeFormSectionIndex}
+            onGoToNextSection={this.handleGoToNextSection}
+            onGoToPreviousSection={this.handleGoToPreviousSection}
+            showAllFormSections={sectionId === 'all'}
+          />
+        </ColumnLayout.Column>
+      </ColumnLayout>
     )
   }
 }
