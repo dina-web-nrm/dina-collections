@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
+import { pick } from 'lodash'
 import memoize from 'memoize-one'
+
 import {
   ColumnLayout,
   InformationSidebar,
@@ -64,16 +66,6 @@ const getColumns = memoize(
     return columns
   }
 )
-
-const getRows = memoize(isPicker => {
-  return isPicker
-    ? [
-        { height: `${PICKER_HEADER_HEIGHT}px`, key: 'pickerHeader' },
-        { key: 'main' },
-        { height: `${PICKER_ACTION_BAR_HEIGHT}px`, key: 'pickerActionBar' },
-      ]
-    : [{ key: 'main' }]
-})
 
 const mapStateToProps = (state, { isPicker, resource, windowHeight }) => {
   const availableHeight = isPicker
@@ -141,7 +133,6 @@ class ResourceManager extends Component {
     super(props)
 
     this.renderColumn = this.renderColumn.bind(this)
-    this.renderRow = this.renderRow.bind(this)
   }
 
   renderColumn(key) {
@@ -250,78 +241,64 @@ class ResourceManager extends Component {
     }
   }
 
-  renderRow(key) {
-    switch (key) {
-      case 'main': {
-        const {
-          createItemActive,
-          editItemActive,
-          filterColumnWidth,
-          filterActive,
-          rightSidebarIsOpen,
-          rightSidebarWidth,
-        } = this.props
-        const columns = getColumns(
-          createItemActive,
-          editItemActive,
-          filterColumnWidth,
-          filterActive,
-          rightSidebarIsOpen,
-          rightSidebarWidth
-        )
-        return (
+  render() {
+    const {
+      availableHeight,
+      createItemActive,
+      editItemActive,
+      focusedItemId,
+      filterActive,
+      filterColumnWidth,
+      isPicker,
+      itemFetchOptions,
+      managerScope,
+      rightSidebarIsOpen,
+      rightSidebarWidth,
+    } = this.props
+
+    const columns = getColumns(
+      createItemActive,
+      editItemActive,
+      filterColumnWidth,
+      filterActive,
+      rightSidebarIsOpen,
+      rightSidebarWidth
+    )
+
+    return (
+      <RowLayout availableHeight={availableHeight}>
+        {isPicker && (
+          <RowLayout.Row height={`${PICKER_HEADER_HEIGHT}px`}>
+            <PickerHeader
+              {...pick(this.props, ['onClosePicker', 'pickerTitle'])}
+            />
+          </RowLayout.Row>
+        )}
+        <RowLayout.Row>
           <ColumnLayout
             {...this.props}
             columns={columns}
             renderColumn={this.renderColumn}
           />
-        )
-      }
-
-      case 'pickerHeader': {
-        const { extractedProps } = extractProps({
-          keys: ['onClosePicker', 'pickerTitle'],
-          props: this.props,
-        })
-
-        return <PickerHeader {...extractedProps} />
-      }
-
-      case 'pickerActionBar': {
-        const { extractedProps } = extractProps({
-          keys: [
-            'excludeRootNode',
-            'ItemTitle',
-            'managerScope',
-            'onPickItem',
-            'resource',
-          ],
-          props: this.props,
-        })
-
-        const { managerScope, itemFetchOptions } = this.props
-
-        return (
-          <PickerActionBar
-            {...extractedProps}
-            {...itemFetchOptions}
-            itemId={this.props.focusedItemId}
-            namespace={`${managerScope}Title`}
-          />
-        )
-      }
-
-      default: {
-        throw new Error(`Unknown row: ${key}`)
-      }
-    }
-  }
-
-  render() {
-    const { isPicker } = this.props
-    const rows = getRows(isPicker)
-
-    return <RowLayout {...this.props} renderRow={this.renderRow} rows={rows} />
+        </RowLayout.Row>
+        {isPicker && (
+          <RowLayout.Row height={`${PICKER_ACTION_BAR_HEIGHT}px`}>
+            <PickerActionBar
+              {...pick(this.props, [
+                'excludeRootNode',
+                'ItemTitle',
+                'managerScope',
+                'onPickItem',
+                'resource',
+              ])}
+              {...itemFetchOptions}
+              itemId={focusedItemId}
+              namespace={`${managerScope}Title`}
+            />
+          </RowLayout.Row>
+        )}
+      </RowLayout>
+    )
   }
 }
 

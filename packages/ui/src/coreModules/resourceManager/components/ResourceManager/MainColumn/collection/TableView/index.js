@@ -13,6 +13,12 @@ import { updateUserPreference } from 'coreModules/user/actionCreators'
 import InfinityTableHeader from './InfinityTableHeader'
 import InfinityTable from './InfinityTable'
 
+const tableHeaderStyle = {
+  borderBottom: '1px solid #b5b5b5',
+  position: 'relative',
+}
+const tableBodyStyle = { overflow: 'auto' }
+
 const mapStateToProps = (state, { resource, tableColumnSpecifications }) => {
   const userPreferences = userSelectors.getUserPreferences(state)
   const allTableColumns = tableColumnSpecifications.map(
@@ -31,23 +37,11 @@ const mapStateToProps = (state, { resource, tableColumnSpecifications }) => {
 
 const mapDispatchToProps = { updateUserPreference }
 
-const rows = [
-  {
-    height: emToPixels(3.5),
-    key: 'infinityTableHeader',
-    style: { borderBottom: '1px solid #b5b5b5', position: 'relative' },
-  },
-  {
-    id: 'tableScrollContainer',
-    key: 'tableScrollContainer',
-    style: { overflow: 'auto' },
-  },
-]
-
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   enableTableColumnSorting: PropTypes.bool.isRequired,
   listItems: PropTypes.array.isRequired,
+  managerScope: PropTypes.string.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
@@ -72,7 +66,6 @@ const defaultProps = {
 class ResultTableView extends PureComponent {
   constructor(props) {
     super(props)
-    this.renderRow = this.renderRow.bind(this)
     this.handleSaveTableColumnsToSort = this.handleSaveTableColumnsToSort.bind(
       this
     )
@@ -126,46 +119,50 @@ class ResultTableView extends PureComponent {
       })
   }
 
-  renderRow(key) {
+  render() {
     const {
+      availableHeight,
       enableTableColumnSorting,
+      listItems,
+      managerScope,
+      resource,
+      tableBatchFetchOptions,
       tableColumnSpecifications,
       tableColumnsToShow,
       tableColumnsToSort,
-      resource,
       width,
     } = this.props
 
-    switch (key) {
-      case 'infinityTableHeader': {
-        return (
+    return (
+      <RowLayout availableHeight={availableHeight}>
+        <RowLayout.Row height={emToPixels(3.5)} style={tableHeaderStyle}>
           <InfinityTableHeader
             enableTableColumnSorting={enableTableColumnSorting}
             height={emToPixels(3.5)}
             onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
-            resource={resource}
             tableColumnSpecifications={tableColumnSpecifications}
             tableColumnsToShow={tableColumnsToShow}
             tableColumnsToSort={tableColumnsToSort}
             width={width}
           />
-        )
-      }
-      case 'tableScrollContainer': {
-        const { listItems, tableBatchFetchOptions } = this.props
-        return listItems.length === 0 ? (
-          <NoResultsFound />
-        ) : (
-          <InfinityTable {...this.props} {...tableBatchFetchOptions} />
-        )
-      }
-      default: {
-        throw new Error(`Unknown row key: ${key}`)
-      }
-    }
-  }
-  render() {
-    return <RowLayout {...this.props} renderRow={this.renderRow} rows={rows} />
+        </RowLayout.Row>
+        <RowLayout.Row style={tableBodyStyle}>
+          {listItems.length > 0 ? (
+            <InfinityTable
+              listItems={listItems}
+              managerScope={managerScope}
+              resource={tableBatchFetchOptions.resource || resource}
+              tableBatchFetchOptions={tableBatchFetchOptions}
+              tableColumnSpecifications={tableColumnSpecifications}
+              tableColumnsToShow={tableColumnsToShow}
+              width={width}
+            />
+          ) : (
+            <NoResultsFound />
+          )}
+        </RowLayout.Row>
+      </RowLayout>
+    )
   }
 }
 

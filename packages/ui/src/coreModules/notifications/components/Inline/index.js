@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
+import extractProps from 'utilities/extractProps'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
-import extractProps from 'utilities/extractProps'
 import Body from './Body'
 
 const propTypes = {
@@ -19,21 +19,10 @@ const defaultProps = {
   descriptionHeaderKey: undefined,
 }
 
-const rows = [
-  {
-    height: '50px',
-    key: 'header',
-  },
-  {
-    key: 'body',
-  },
-]
-
 class InlineWrapper extends Component {
   constructor(props) {
     super(props)
 
-    this.renderRow = this.renderRow.bind(this)
     this.handleClose = this.handleClose.bind(this)
   }
 
@@ -45,46 +34,35 @@ class InlineWrapper extends Component {
     removeNotification({ sequentialId })
   }
 
-  renderRow(key) {
-    switch (key) {
-      case 'header': {
-        return (
-          <ColumnRowHeader
-            onClose={this.handleClose}
-            textKey={this.props.descriptionHeaderKey}
-          />
-        )
-      }
-      case 'body': {
-        const { extractedProps } = extractProps({
-          keys: [
-            'description',
-            'descriptionKey',
-            'displayLinkToUserManual',
-            'linkTextKey',
-            'linkTo',
-          ],
-          props: this.props,
-        })
-
-        return <Body {...extractedProps} />
-      }
-      default: {
-        throw new Error(`Unknown row: ${key}`)
-      }
-    }
-  }
-
   render() {
-    const { windowHeight } = this.props
+    const { descriptionHeaderKey, windowHeight } = this.props
+
+    const { extractedProps } = extractProps({
+      keys: [
+        'description',
+        'descriptionKey',
+        'displayLinkToUserManual',
+        'linkTextKey',
+        'linkTo',
+      ],
+      props: this.props,
+    })
 
     return (
       <RowLayout
         availableHeight={windowHeight - emToPixels(3.4375)}
-        renderRow={this.renderRow}
-        rows={rows}
-        wrapperId="inlineNotification"
-      />
+        dataTestId="inlineNotification"
+      >
+        <RowLayout.Row height="50px">
+          <ColumnRowHeader
+            onClose={this.handleClose}
+            textKey={descriptionHeaderKey}
+          />
+        </RowLayout.Row>
+        <RowLayout.Row>
+          <Body {...extractedProps} />
+        </RowLayout.Row>
+      </RowLayout>
     )
   }
 }
