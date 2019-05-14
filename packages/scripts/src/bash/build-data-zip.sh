@@ -5,7 +5,7 @@ cd ./data
 for f in sample.*; do
   if [[ $f == *".sql"* ]]; then
     echo "Not copying file: $f. (dev specific)"
-  elif [[ $f == *".searchSpecimen"* ]]; then
+  elif [[ $f == *".index"* ]]; then
     echo "Not copying file: $f. (dev specific)"
   elif [ ! -f ${f/sample/} ]; then
     echo ${f/sample/} 'dont exist'
