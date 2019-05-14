@@ -195,6 +195,7 @@ export default compose(
   createInjectSearch({
     includeFields: ['id'],
     resource: 'searchSpecimen',
+    storeSearchResult: false,
   }),
   higherOrderComponents.createFormHoc(),
   createEnsureAllItemsFetched({
