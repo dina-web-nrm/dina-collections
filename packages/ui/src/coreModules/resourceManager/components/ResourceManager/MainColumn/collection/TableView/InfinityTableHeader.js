@@ -38,7 +38,7 @@ class InfinityTableHeader extends PureComponent {
     ])
   }
 
-  renderColumnHeader({ fieldPath, label, width }) {
+  renderColumnHeader({ fieldPath, index, label, width }) {
     const { enableTableColumnSorting, tableColumnsToSort } = this.props
 
     if (enableTableColumnSorting && tableColumnsToSort) {
@@ -52,9 +52,9 @@ class InfinityTableHeader extends PureComponent {
         const iconName = currentSortOrder === 'asc' ? 'caret down' : 'caret up'
 
         return (
-          <Grid.Column key={fieldPath} style={{ width }}>
+          <Grid.Column key={fieldPath || index} style={{ width }}>
             <Header
-              data-testid={`infinityTableHeader-${fieldPath}`}
+              data-testid={`infinityTableHeader-${fieldPath || index}`}
               onClick={event =>
                 this.handleClickSorting(event, fieldPath, newSortOrder)
               }
@@ -71,9 +71,9 @@ class InfinityTableHeader extends PureComponent {
     }
 
     return (
-      <Grid.Column key={fieldPath} style={{ width }}>
+      <Grid.Column key={fieldPath || index} style={{ width }}>
         <Header
-          data-testid={`infinityTableHeader-${fieldPath}`}
+          data-testid={`infinityTableHeader-${fieldPath || index}`}
           onClick={
             enableTableColumnSorting
               ? event => this.handleClickSorting(event, fieldPath, 'asc')
@@ -111,12 +111,19 @@ class InfinityTableHeader extends PureComponent {
           textAlign="left"
           verticalAlign="middle"
         >
-          {tableColumnSpecifications.map(({ fieldPath, label, width }) => {
-            if (tableColumnsToShow.includes(fieldPath)) {
-              return this.renderColumnHeader({ fieldPath, label, width })
+          {tableColumnSpecifications.map(
+            ({ fieldPath, label, width }, index) => {
+              if (tableColumnsToShow.includes(fieldPath)) {
+                return this.renderColumnHeader({
+                  fieldPath,
+                  index,
+                  label,
+                  width,
+                })
+              }
+              return null
             }
-            return null
-          })}
+          )}
         </Grid>
       </React.Fragment>
     )
