@@ -9699,6 +9699,749 @@
         "x-inverseOperationId": "placeUpdateRelationshipPlaces"
       }
     },
+    "/api/locality/v01/searchPlaces/{id}": {
+      "get": {
+        "operationId": "searchPlaceGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchPlace id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.level",
+                  "attributes.name",
+                  "attributes.continent",
+                  "attributes.country",
+                  "attributes.district",
+                  "attributes.province"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.level",
+                  "attributes.name",
+                  "attributes.continent",
+                  "attributes.country",
+                  "attributes.district",
+                  "attributes.province"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchPlace by id",
+        "tags": [
+          "placeService"
+        ]
+      },
+      "delete": {
+        "operationId": "searchPlaceDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchPlace id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceDelResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes searchPlace",
+        "tags": [
+          "placeService"
+        ]
+      }
+    },
+    "/api/locality/v01/searchPlaces/actions/query": {
+      "post": {
+        "operationId": "searchPlaceQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchPlaceQueryRequest"
+              }
+            }
+          },
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchLevel*** <br/> Search attributes.level <br/> <br/>  ***searchName*** <br/> Search attributes.name <br/> <br/>  ***searchContinent*** <br/> Search attributes.continent <br/> <br/>  ***searchCountry*** <br/> Search attributes.country <br/> <br/>  ***searchDistrict*** <br/> Search attributes.district <br/> <br/>  ***searchProvince*** <br/> Search attributes.province <br/>\n\n  \n  <br/>\n\n  "
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceQueryResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchPlace",
+        "tags": [
+          "placeService"
+        ]
+      }
+    },
+    "/api/locality/v01/searchPlaces": {
+      "get": {
+        "operationId": "searchPlaceGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchLevel]",
+            "description": "Search attributes.level",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchName]",
+            "description": "Search attributes.name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchContinent]",
+            "description": "Search attributes.continent",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchCountry]",
+            "description": "Search attributes.country",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchDistrict]",
+            "description": "Search attributes.district",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchProvince]",
+            "description": "Search attributes.province",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.level",
+                  "attributes.name",
+                  "attributes.continent",
+                  "attributes.country",
+                  "attributes.district",
+                  "attributes.province"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.level",
+                  "attributes.name",
+                  "attributes.continent",
+                  "attributes.country",
+                  "attributes.district",
+                  "attributes.province"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance",
+                  "id:asc",
+                  "id:desc",
+                  "attributes.level:asc",
+                  "attributes.level:desc",
+                  "attributes.name:asc",
+                  "attributes.name:desc",
+                  "attributes.continent:asc",
+                  "attributes.continent:desc",
+                  "attributes.country:asc",
+                  "attributes.country:desc",
+                  "attributes.district:asc",
+                  "attributes.district:desc",
+                  "attributes.province:asc",
+                  "attributes.province:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceGetManyResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchPlaces",
+        "tags": [
+          "placeService"
+        ]
+      }
+    },
+    "/api/locality/v01/searchPlaces/actions/emptyView": {
+      "post": {
+        "operationId": "searchPlaceEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceEmptyViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource searchPlace",
+        "tags": [
+          "placeService"
+        ]
+      }
+    },
+    "/api/locality/v01/searchPlaces/actions/updateView": {
+      "post": {
+        "operationId": "searchPlaceUpdateView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchPlaceUpdateViewRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceUpdateViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchPlace",
+        "tags": [
+          "placeService"
+        ]
+      }
+    },
+    "/api/locality/v01/searchPlaces/actions/rebuildView": {
+      "post": {
+        "operationId": "searchPlaceRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "force",
+            "description": "Will rebuild view even if last rebuild ended with error",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceRebuildViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchPlace",
+        "tags": [
+          "placeService"
+        ]
+      }
+    },
+    "/api/locality/v01/searchPlaces/meta/viewMeta": {
+      "get": {
+        "operationId": "searchPlaceGetViewMeta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchPlaceGetViewMetaResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get view meta for resource searchPlace",
+        "tags": [
+          "placeService"
+        ]
+      }
+    },
     "/api/search/v01/cachePhysicalObjects": {
       "post": {
         "operationId": "cachePhysicalObjectCreate",
@@ -20638,6 +21381,14 @@
         "x-modelType": "model",
         "x-summary": "A defined location with known, fixed extension in space."
       },
+      "searchPlace": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "placeService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
       "acquisition": {
         "additionalProperties": false,
         "properties": {
@@ -24753,6 +25504,168 @@
                 }
               }
             },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "queryBody",
+                "enum": [
+                  "queryBody"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "properties": {
+                  "aggregations": {
+                    "items": {
+                      "$ref": "#/components/schemas/queryAggregation"
+                    },
+                    "type": "array"
+                  },
+                  "excludeFields": {
+                    "description": "When provided specified fields will be excluded (applied after include)",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.level",
+                        "attributes.name",
+                        "attributes.continent",
+                        "attributes.country",
+                        "attributes.district",
+                        "attributes.province"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeFields": {
+                    "description": "When provided only specified fields will be returned in response",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.level",
+                        "attributes.name",
+                        "attributes.continent",
+                        "attributes.country",
+                        "attributes.district",
+                        "attributes.province"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeDeactivated": {
+                    "description": "Will include deactivated items",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "limit": {
+                    "description": "Limit the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "description": "Offset the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "query": {
+                    "$ref": "#/components/schemas/queryRoot"
+                  },
+                  "scroll": {
+                    "default": false,
+                    "example": false,
+                    "description": "If true elastic search scroll will be used",
+                    "type": "boolean"
+                  },
+                  "scrollId": {
+                    "description": "Elastic search scroll id",
+                    "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance",
+                        "id:asc",
+                        "id:desc",
+                        "attributes.level:asc",
+                        "attributes.level:desc",
+                        "attributes.name:asc",
+                        "attributes.name:desc",
+                        "attributes.continent:asc",
+                        "attributes.continent:desc",
+                        "attributes.country:asc",
+                        "attributes.country:desc",
+                        "attributes.district:asc",
+                        "attributes.district:desc",
+                        "attributes.province:asc",
+                        "attributes.province:desc"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceUpdateViewRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
             "x-summary": ""
           }
         },
@@ -37134,6 +38047,428 @@
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchPlace"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchPlace",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces/actions/query",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchPlace"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchPlace",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/searchPlace"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "searchPlace",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceUpdateViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces/actions/updateView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchPlaceGetViewMetaResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/searchPlaces/meta/viewMeta",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
         "x-summary": "",
         "description": ""
       },

@@ -2,6 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
 const asyncReduce = require('common/src/asyncReduce')
+const promiseForEach = require('common/src/promiseForEach')
 const createLog = require('../../utilities/log')
 
 const log = createLog('lib/importer')
@@ -108,21 +109,30 @@ module.exports = function runImport({
         log.info('Not rebuilding elastic')
         process.exit(0)
       }
-      return serviceInteractor
-        .call({
-          operationId: 'searchSpecimenRebuildView',
-          request: { queryParams: { consolidateJobs: true, limit: 100000 } },
-        })
-        .then(rebuildSearchSpecimenReport => {
-          /* eslint-disable no-console */
 
-          console.log(
-            'rebuildSearchSpecimenReport',
-            JSON.stringify(rebuildSearchSpecimenReport, null, 2)
-          )
-          /* eslint-enable no-console */
-          log.info('Rebuilding searchSpecimen done')
-          process.exit(0)
-        })
+      const indexOperations = [
+        'searchSpecimenRebuildView',
+        'searchPlaceRebuildView',
+      ]
+
+      return promiseForEach(indexOperations, operationId => {
+        return serviceInteractor
+          .call({
+            operationId,
+            request: { queryParams: { consolidateJobs: true, limit: 100000 } },
+          })
+          .then(indexRebuildReport => {
+            /* eslint-disable no-console */
+
+            console.log(
+              `Rebuild ${operationId}`,
+              JSON.stringify(indexRebuildReport, null, 2)
+            )
+            /* eslint-enable no-console */
+            log.info('Rebuilding searchSpecimen done')
+          })
+      }).then(() => {
+        process.exit(0)
+      })
     })
 }

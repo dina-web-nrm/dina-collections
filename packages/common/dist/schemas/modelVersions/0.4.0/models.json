@@ -1437,6 +1437,15 @@
     "x-summary": "A defined location with known, fixed extension in space.",
     "id": "place"
   },
+  "searchPlace": {
+    "additionalProperties": true,
+    "properties": {},
+    "x-category": "placeService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "searchPlace"
+  },
   "acquisition": {
     "additionalProperties": false,
     "properties": {
@@ -10581,6 +10590,428 @@
     },
     "type": "object",
     "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "searchPlace"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "searchPlace",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceQueryResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "customObject"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "customObject",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces/actions/query",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "searchPlace"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "searchPlace",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "searchPlace"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "searchPlace",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceUpdateViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces/actions/updateView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceGetViewMetaResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/searchPlaces/meta/viewMeta",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
     "x-summary": "",
     "description": ""
   },
@@ -24836,6 +25267,144 @@
             }
           }
         },
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceQueryRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "properties": {
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
+                },
+                "type": "array"
+              },
+              "excludeFields": {
+                "description": "When provided specified fields will be excluded (applied after include)",
+                "items": {
+                  "enum": [
+                    "id"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "includeFields": {
+                "description": "When provided only specified fields will be returned in response",
+                "items": {
+                  "enum": [
+                    "id"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "string"
+              },
+              "sort": {
+                "description": "When provided response will be sorted",
+                "items": {
+                  "enum": [
+                    "relevance",
+                    "id:asc",
+                    "id:desc"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "searchPlaceUpdateViewRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
         "x-summary": ""
       }
     },

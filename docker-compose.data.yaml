@@ -14,7 +14,7 @@ services:
     container_name: dina-migrations-rebuild-search
     env_file:
       - ./env/.backend
-    command: yarn --cwd=/etc/packages/migrations elasticsearch:production:rebuild-index:specimen-search
+    command: yarn --cwd=/etc/packages/migrations elasticsearch:production:rebuild-indices
     volumes:
       - ./data:/etc/data
       - ./userFiles:/etc/userFiles

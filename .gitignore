@@ -10,7 +10,7 @@ yarn-error.log*
 
 env/.*
 data/.*.json
-data/.searchSpecimen
+data/.index*
 data/data.zip
 userFiles/*
 
