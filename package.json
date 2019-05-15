@@ -60,7 +60,7 @@
     "pretty:ui": "cd ./packages/ui && yarn pretty",
     "preversion": "./packages/scripts/src/bash/release-pre-version.sh",
     "remote:build:data:zip": "node ./packages/scripts/src/js/packageJsonDataFiles.js",
-    "remote:build:indices": "node ./packages/scripts/src/js/exec.js docker-rebuild-search.sh",
+    "remote:build:elastic-indices": "node ./packages/scripts/src/js/exec.js docker-rebuild-search.sh",
     "remote:deploy": "node ./packages/scripts/src/js/exec.js docker-deploy.sh",
     "remote:download:data:sql": "node ./packages/scripts/src/js/downloadSqlDump.js",
     "remote:download:data:zip": "node ./packages/scripts/src/js/downloadZippedFiles.js",
