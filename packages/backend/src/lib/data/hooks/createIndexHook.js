@@ -6,6 +6,9 @@ module.exports = function createIndexHook({
   return function indexHook({ item, serviceInteractor }) {
     return Promise.resolve().then(() => {
       const id = item && item.id
+      if (id === undefined) {
+        return null
+      }
       const request = {
         body: {
           data: {

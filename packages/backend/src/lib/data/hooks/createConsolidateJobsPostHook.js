@@ -114,7 +114,7 @@ module.exports = function createConsolidateJobsPostHook({
           .then(() => {
             if (containsRebuildJob) {
               log.debug(
-                `Contains rebuild job will replace all with rebuild job`
+                'Jobs to consolidate contain rebuild job. Will replace all jobs with rebuild job.'
               )
               return createIndexJob({
                 rebuild: true,
@@ -122,9 +122,9 @@ module.exports = function createConsolidateJobsPostHook({
               })
             }
             log.debug(
-              `Dont contain rebuild job will replace ${
+              `Jobs to consolidate does not contain rebuild job. Will replace ${
                 jobsToConsolidate.length
-              } jobs `
+              } jobs.`
             )
             return createIndexJob({
               ids: extractIdsFromJobs({ jobs: jobsToConsolidate }),

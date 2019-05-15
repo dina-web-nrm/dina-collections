@@ -10,16 +10,12 @@ module.exports = function createStringRegexpSearchFilter({
     elasticsearch: ({ value = 'this-is-not-matching-anything' }) => {
       const baseQuery = {
         bool: {
-          must: [],
+          must: createRegexpElasticFilters({
+            path: fieldPath,
+            value,
+          }),
         },
       }
-
-      const regexpFilters = createRegexpElasticFilters({
-        path: fieldPath,
-        value,
-      })
-
-      baseQuery.bool.must = [...baseQuery.bool.must, ...regexpFilters]
 
       return baseQuery
     },

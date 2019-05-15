@@ -8,12 +8,11 @@ module.exports = function createMappingsFromSpecification({
 
       const keyMappings = {}
 
-      let keyMappingSpecificationsArray = []
-      if (Array.isArray(keyMappingSpecifications)) {
-        keyMappingSpecificationsArray = keyMappingSpecifications
-      } else {
-        keyMappingSpecificationsArray = [keyMappingSpecifications]
-      }
+      const keyMappingSpecificationsArray = Array.isArray(
+        keyMappingSpecifications
+      )
+        ? keyMappingSpecifications
+        : [keyMappingSpecifications]
 
       keyMappingSpecificationsArray.forEach(
         ({ elasticsearch: elasticsearchFunction, fieldPath }) => {

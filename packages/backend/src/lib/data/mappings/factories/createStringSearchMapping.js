@@ -1,4 +1,7 @@
-module.exports = function createKeywordMapping({ fieldPath, searchFieldPath }) {
+module.exports = function createStringSearchMapping({
+  fieldPath,
+  searchFieldPath,
+}) {
   return [
     {
       elasticsearch: () => {
