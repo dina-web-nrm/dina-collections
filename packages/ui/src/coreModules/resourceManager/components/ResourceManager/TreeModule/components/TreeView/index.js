@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import ReactList from 'react-list'
@@ -11,7 +11,7 @@ import ListItem from './ListItem'
 import createTreeModuleWrapper from '../../higherOrderComponents/createTreeModuleWrapper'
 
 const propTypes = {
-  focusedItemId: PropTypes.string,
+  currentRowNumber: PropTypes.number.isRequired,
   itemFetchOptions: PropTypes.object.isRequired,
   ItemTitle: PropTypes.func,
   managerScope: PropTypes.string.isRequired,
@@ -29,7 +29,6 @@ const propTypes = {
 }
 
 const defaultProps = {
-  focusedItemId: undefined,
   ItemTitle: undefined,
   treeListItems: [],
 }
@@ -43,7 +42,7 @@ const itemsRenderer = (items, ref) => {
 }
 
 const TreeView = ({
-  focusedItemId,
+  currentRowNumber,
   itemFetchOptions,
   ItemTitle,
   treeExpandedIds,
@@ -54,18 +53,6 @@ const TreeView = ({
   resource,
 }) => {
   const list = useRef(null)
-
-  const focusedIndex = useMemo(() => {
-    if (!focusedItemId) {
-      return -1
-    }
-
-    return (treeListItems || []).findIndex(({ id }) => {
-      return id !== undefined && id === focusedItemId
-    })
-  }, [focusedItemId, treeListItems])
-
-  const currentRowNumber = focusedIndex === -1 ? 1 : focusedIndex + 1
 
   useEffectScroll({ currentRowNumber, list })
 
@@ -84,6 +71,7 @@ const TreeView = ({
       )
     }
 
+    const focusedIndex = currentRowNumber - 1
     const { isExpandable, id: itemId, level } = treeListItems[index] || {}
     const isExpanded = itemId && !!treeExpandedIds[itemId]
     const isFocused = index === focusedIndex

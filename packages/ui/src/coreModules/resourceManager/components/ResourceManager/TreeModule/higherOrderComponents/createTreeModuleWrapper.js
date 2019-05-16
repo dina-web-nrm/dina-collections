@@ -8,6 +8,7 @@ import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
+import resourceManagerSelectors from 'coreModules/resourceManager/globalSelectors'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
@@ -18,26 +19,23 @@ import { buildList } from 'coreModules/resourceManager/utilities'
 const { get } = keyObjectGlobalSelectors
 
 const mapStateToProps = (state, { managerScope, resource }) => {
-  const itemsObject = crudSelectors[resource].getItemsObject(state)
-  const focusedItemId = get[':managerScope.focusedItemId'](state, {
-    managerScope,
-  })
-  const treeBaseItems = get[':managerScope.treeBaseItems'](state, {
-    managerScope,
-  })
-  const treeExpandedIds = get[':managerScope.treeExpandedIds'](state, {
-    managerScope,
-  })
-  const treeListItems = get[':managerScope.treeListItems'](state, {
-    managerScope,
-  })
-
   return {
-    focusedItemId,
-    itemsObject,
-    treeBaseItems,
-    treeExpandedIds,
-    treeListItems,
+    currentRowNumber: resourceManagerSelectors.getCurrentTreeRowNumber(state, {
+      managerScope,
+    }),
+    focusedItemId: get[':managerScope.focusedItemId'](state, {
+      managerScope,
+    }),
+    itemsObject: crudSelectors[resource].getItemsObject(state),
+    treeBaseItems: get[':managerScope.treeBaseItems'](state, {
+      managerScope,
+    }),
+    treeExpandedIds: get[':managerScope.treeExpandedIds'](state, {
+      managerScope,
+    }),
+    treeListItems: get[':managerScope.treeListItems'](state, {
+      managerScope,
+    }),
   }
 }
 
@@ -295,7 +293,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
 
     render() {
       const {
-        focusedItemId,
+        currentRowNumber,
         itemFetchOptions,
         ItemTitle,
         managerScope,
@@ -311,7 +309,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
             shortcuts={this.shortcuts}
           />
           <ComposedComponent
-            focusedItemId={focusedItemId}
+            currentRowNumber={currentRowNumber}
             itemFetchOptions={itemFetchOptions}
             ItemTitle={ItemTitle}
             managerScope={managerScope}
