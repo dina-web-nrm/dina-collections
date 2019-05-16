@@ -1,10 +1,10 @@
 ---
 id: index
-title: UI
-sidebar_label: UI
+title: Overview
+sidebar_label: Overview
 ---
 
-The ui package contains the code necessary for running UI. As described in the
+The ui package contains the code necessary for running the UI. As described in the
 [Setup](../../setup/setup-locally-for-development) section, it can be run
 directly through Node or through Docker. When running the development server
 `yarn start`, it automatically recompiles the code and reloads the browser on
