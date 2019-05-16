@@ -17,8 +17,8 @@ const propTypes = {
   fieldSearchQuery: PropTypes.string,
   fieldValue: PropTypes.string,
   onClose: PropTypes.func.isRequired,
-  onInteraction: PropTypes.func.isRequired,
   onPickerButtonClick: PropTypes.func.isRequired,
+  onPickItem: PropTypes.func.isRequired,
   pickerActive: PropTypes.bool.isRequired,
 }
 
@@ -35,7 +35,7 @@ export class LocalityDropdownPickerSearch extends Component {
       fieldSearchQuery,
       fieldValue,
       onClose,
-      onInteraction,
+      onPickItem,
       onPickerButtonClick,
       pickerActive,
       ...rest
@@ -56,7 +56,8 @@ export class LocalityDropdownPickerSearch extends Component {
               initialFilterValues={initialFilterValues}
               initialItemId={fieldValue}
               isPicker
-              onInteraction={onInteraction}
+              onClose={onClose}
+              onPickItem={onPickItem}
               pickerTitle="Pick geography"
               treeEnabled
             />

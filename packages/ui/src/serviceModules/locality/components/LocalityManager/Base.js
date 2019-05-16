@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ResourceManager } from 'coreModules/resourceManager/components'
 
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
+import { ResourceManager } from 'coreModules/resourceManager/components'
 import CreateForm from './item/CreateForm'
 import EditForm from './item/EditForm'
 import FilterForm from './filter/Form'
@@ -21,13 +22,15 @@ const createGetNestedItemHocInput = {
 
 const relationshipsToCheckBeforeDelete = ['children', 'specimens']
 
-const propTypes = {
-  itemId: PropTypes.string,
-  onNavigation: PropTypes.func.isRequired,
-}
+const buildEditItemHeaders = nestedItem => {
+  if (!nestedItem) {
+    return {}
+  }
 
-const defaultProps = {
-  itemId: undefined,
+  return {
+    itemHeader: nestedItem.name,
+    itemSubHeader: capitalizeFirstLetter(nestedItem.group),
+  }
 }
 
 const baseTreeFilter = {
@@ -48,10 +51,19 @@ const tableBatchFetchOptions = {
   resolveRelationships: ['place'],
 }
 
-const itemFetchOptions = {
+const treeItemFetchOptions = {
   include: ['parent'],
   relationships: ['parent', 'children'],
   resolveRelationships: ['place'],
+}
+
+const propTypes = {
+  itemId: PropTypes.string,
+  onNavigation: PropTypes.func.isRequired,
+}
+
+const defaultProps = {
+  itemId: undefined,
 }
 
 class LocalityManager extends Component {
@@ -69,6 +81,7 @@ class LocalityManager extends Component {
 
   renderEditForm(props = {}) {
     const { itemId } = this.props
+
     return (
       <EditForm
         {...props}
@@ -90,10 +103,10 @@ class LocalityManager extends Component {
       <ResourceManager
         {...this.props}
         baseTreeFilter={baseTreeFilter}
+        buildEditItemHeaders={buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
-        filterHeader="Find geography"
-        itemFetchOptions={itemFetchOptions}
+        excludeRootNode
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
@@ -105,6 +118,7 @@ class LocalityManager extends Component {
         tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled
+        treeItemFetchOptions={treeItemFetchOptions}
       />
     )
   }

@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { pick } from 'lodash'
 
+import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import {
   ColumnLayout,
   InformationSidebar,
@@ -15,10 +15,10 @@ import layoutSelectors from 'coreModules/layout/globalSelectors'
 import { emToPixels } from 'coreModules/layout/utilities'
 import userSelectors from 'coreModules/user/globalSelectors'
 
-import MainColumn from './MainColumn'
-import FilterColumn from './FilterColumn'
-import PickerHeader from './picker/Header'
-import PickerActionBar from './picker/ActionBar'
+import MainColumn from './layout/MainColumn'
+import FilterColumn from './layout/FilterColumn'
+import PickerHeader from './picker/PickerHeader'
+import PickerActionBar from './picker/PickerActionBar'
 
 const TOP_NAVBAR_HEIGHT = emToPixels(3.4375)
 const PICKER_MODAL_PADDING = emToPixels(10)
@@ -48,7 +48,7 @@ const mapStateToProps = (state, { isPicker, resource, windowHeight }) => {
     filterColumnWidth: isPicker ? emToPixels(16) : emToPixels(25),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     tableColumnsToShow:
-      (userPreferences && userPreferences[`${resource}TableColumns`]) ||
+      (userPreferences && userPreferences[`${resource}TableColumnsToShow`]) ||
       undefined,
   }
 }
@@ -60,10 +60,10 @@ const propTypes = {
   filterColumnWidth: PropTypes.number.isRequired,
   focusedItemId: PropTypes.string,
   isPicker: PropTypes.bool,
-  itemFetchOptions: PropTypes.object.isRequired,
   managerScope: PropTypes.string.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired,
   rightSidebarWidth: PropTypes.number,
+  treeItemFetchOptions: PropTypes.object.isRequired,
 }
 const defaultProps = {
   focusedItemId: undefined,
@@ -79,7 +79,7 @@ const ResourceManager = props => {
     filterActive,
     filterColumnWidth,
     isPicker,
-    itemFetchOptions,
+    treeItemFetchOptions,
     managerScope,
     rightSidebarIsOpen,
     rightSidebarWidth,
@@ -89,72 +89,16 @@ const ResourceManager = props => {
     <RowLayout availableHeight={availableHeight}>
       {isPicker && (
         <RowLayout.Row height={`${PICKER_HEADER_HEIGHT}px`}>
-          <PickerHeader {...pick(props, ['onClosePicker', 'pickerTitle'])} />
+          <PickerHeader {...pick(props, ['onClose', 'pickerTitle'])} />
         </RowLayout.Row>
       )}
       <RowLayout.Row>
         <ColumnLayout>
           <ColumnLayout.Column>
             <MainColumn
-              {...pick(props, [
-                'availableHeight',
-                'baseItems',
-                'buildEditItemHeaders',
-                'createGetNestedItemHocInput',
-                'createItemActive',
-                'csvExportEnabled',
-                'currentTableRowNumber',
-                'editItemActive',
-                'enableTableColumnSorting',
-                'expandedIds',
-                'fetchRelationshipsBeforeDelete',
-                'fetchTreeBase',
-                'filterActive',
-                'filterResourceCount',
-                'focusedIndex',
-                'isPicker',
-                'itemEnabled',
-                'itemFetchOptions',
-                'itemId',
-                'ItemTitle',
-                'listItems',
-                'managerScope',
-                'nextRowAvailable',
-                'numberOfListItems',
-                'onClickRow',
-                'onFormTabClick',
-                'onInteraction',
-                'onOpenNewRecordForm',
-                'onSelectNextRecord',
-                'onSelectPreviousRecord',
-                'onSetCurrentTableRowNumber',
-                'onShowAllRecords',
-                'onTableTabClick',
-                'onTableSettingsClick',
-                'onToggleCurrentRow',
-                'onToggleFilters',
-                'onToggleRow',
-                'onTreeTabClick',
-                'prevRowAvailable',
-                'relationshipsToCheckBeforeDelete',
-                'renderCreateForm',
-                'renderEditForm',
-                'resource',
-                'sectionId',
-                'setListItems',
-                'showAll',
-                'tableActive',
-                'tableBatchFetchOptions',
-                'tableColumnSpecifications',
-                'tableColumnsToShow',
-                'tableSearch',
-                'tableSettingsActive',
-                'totalNumberOfRecords',
-                'transformOutput',
-                'treeActive',
-                'treeEnabled',
-              ])}
+              {...props}
               availableHeight={columnHeight}
+              itemEnabled={!isPicker}
             />
           </ColumnLayout.Column>
           {filterActive && (
@@ -164,8 +108,6 @@ const ResourceManager = props => {
             >
               <FilterColumn
                 {...pick(props, [
-                  'buildFilterQuery',
-                  'filterHeader',
                   'filterValues',
                   'isPicker',
                   'onInteraction',
@@ -199,7 +141,7 @@ const ResourceManager = props => {
               'onPickItem',
               'resource',
             ])}
-            {...itemFetchOptions}
+            {...treeItemFetchOptions}
             itemId={focusedItemId}
             namespace={`${managerScope}Title`}
           />

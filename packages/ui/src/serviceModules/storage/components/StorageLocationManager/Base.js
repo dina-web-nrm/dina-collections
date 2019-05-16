@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import CreateForm from './item/CreateForm'
@@ -28,7 +29,18 @@ const createGetNestedItemHocInput = {
   resource,
 }
 
-const itemFetchOptions = {
+const buildEditItemHeaders = nestedItem => {
+  if (!nestedItem) {
+    return {}
+  }
+
+  return {
+    itemHeader: nestedItem.name,
+    itemSubHeader: capitalizeFirstLetter(nestedItem.group),
+  }
+}
+
+const treeItemFetchOptions = {
   include: ['parent'],
   relationships: ['parent', 'children'],
   resolveRelationships: ['storageLocation'],
@@ -155,11 +167,10 @@ class StorageLocationManager extends Component {
       <ResourceManager
         {...this.props}
         baseTreeFilter={baseTreeFilter}
+        buildEditItemHeaders={buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         fetchRelationshipsBeforeDelete={this.fetchRelationshipsBeforeDelete}
-        filterHeader="Find storage locations"
-        itemFetchOptions={itemFetchOptions}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         renderCreateForm={this.renderCreateForm}
@@ -170,6 +181,7 @@ class StorageLocationManager extends Component {
         tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled
+        treeItemFetchOptions={treeItemFetchOptions}
       />
     )
   }

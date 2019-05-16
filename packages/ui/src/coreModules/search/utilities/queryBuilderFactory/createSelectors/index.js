@@ -1,11 +1,16 @@
 import objectPath from 'object-path'
-import { getFormValues } from 'redux-form'
+import { getFormInitialValues, getFormValues } from 'redux-form'
 import { createSelector } from 'reselect'
 
 export default function createSelectors({ formName, querySpecifications }) {
   const getFormSelector = state => {
     const values = getFormValues(formName)(state)
     return values
+  }
+
+  const getFormInitialValuesSelector = state => {
+    const initialValues = getFormInitialValues(formName)(state)
+    return initialValues
   }
 
   const sectionNames = querySpecifications.reduce((arr, { sectionName }) => {
@@ -133,6 +138,7 @@ export default function createSelectors({ formName, querySpecifications }) {
   return {
     fieldMatchFilterSelectors,
     fieldValueSelectors,
+    getFormInitialValuesSelector,
     getFormSelector,
     getSubQueries,
     otherFieldFiltersSelectors,
