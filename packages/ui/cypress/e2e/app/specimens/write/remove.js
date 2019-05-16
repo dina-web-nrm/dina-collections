@@ -6,7 +6,7 @@ export default () =>
     })
 
     beforeEach(() => {
-      cy.visit('/app/specimens/individuals?mainColumn=table')
+      cy.visit('/app/specimens/mammals?mainColumn=table')
       cy.get('[data-testid="infinityTableHeader"]', {
         log: false,
         timeout: 60000,
@@ -18,7 +18,7 @@ export default () =>
       cy.getByTestId('formTabMenuItem').click()
       cy.getByTestId('deleteButton').click()
       cy.getByTestId('confirmDeleteButton').click()
-      cy.getByText('The specimen was deleted')
+      cy.getByText('The record was deleted')
       cy.url()
         .should('include', 'mainColumn=table')
         .should('not.include', 'edit')
