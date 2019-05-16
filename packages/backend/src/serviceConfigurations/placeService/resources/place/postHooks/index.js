@@ -9,7 +9,7 @@ const {
 const {
   createIndexJob,
   rebuildInProgress,
-} = require('../../../../specimenService/serviceInteractions')
+} = require('../../../serviceInteractions')
 
 const { createIndexHook } = require('../../../../../lib/data/hooks')
 
@@ -34,7 +34,7 @@ exports.update = [
     service: 'placeService',
   }),
   createUpdateRelatedSearchSpecimensPostHook({
-    resource: 'place',
+    srcResource: 'place',
   }),
 ]
 
