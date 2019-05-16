@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import DefaultItemTitle from './DefaultItemTitle'
 
 const propTypes = {
+  item: PropTypes.object,
   ItemTitle: PropTypes.func,
   nestedItem: PropTypes.object,
 }
 
 const defaultProps = {
+  item: undefined,
   ItemTitle: DefaultItemTitle,
   nestedItem: undefined,
 }
@@ -15,13 +17,13 @@ const defaultProps = {
 const createInjectItemTitle = () => ComposedComponent => {
   class InjectItemTitle extends Component {
     render() {
-      const { nestedItem, ItemTitle } = this.props
+      const { item, nestedItem, ItemTitle } = this.props
 
-      if (!nestedItem) {
+      if (!item && !nestedItem) {
         return <ComposedComponent {...this.props} />
       }
 
-      const title = <ItemTitle nestedItem={nestedItem} />
+      const title = <ItemTitle item={item} nestedItem={nestedItem} />
 
       return <ComposedComponent {...this.props} itemTitle={title} />
     }

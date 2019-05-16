@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { isSubmitting } from 'redux-form'
+import { isSubmitting, reset } from 'redux-form'
 import { Button, Grid, Modal } from 'semantic-ui-react'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
@@ -32,17 +32,19 @@ const mapStateToProps = (state, { formName }) => {
     submitting: isSubmitting(formName)(state),
   }
 }
+const mapDispatchToProps = {
+  resetForm: reset,
+}
 
 const propTypes = {
   formName: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func,
   history: PropTypes.object,
-  reset: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   valid: PropTypes.bool,
 }
 const defaultProps = {
-  handleSubmit: undefined,
   history: undefined,
   valid: false,
 }
@@ -54,7 +56,6 @@ class CatalogNumberModal extends PureComponent {
     this.handleBackToModalOne = this.handleBackToModalOne.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
     this.handleGotoModalTwo = this.handleGotoModalTwo.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
 
     this.state = {
       createManually: false,
@@ -66,8 +67,8 @@ class CatalogNumberModal extends PureComponent {
   }
 
   handleBackToModalOne() {
-    const { formName, reset } = this.props
-    reset(formName)
+    const { formName, resetForm } = this.props
+    resetForm(formName)
     this.setState({ createManually: false })
   }
 
@@ -75,12 +76,8 @@ class CatalogNumberModal extends PureComponent {
     this.setState({ createManually: true })
   }
 
-  handleSubmit(formData) {
-    this.props.handleSubmit(formData)
-  }
-
   render() {
-    const { submitting, valid } = this.props
+    const { onSubmit: handleSubmit, submitting, valid } = this.props
     const { createManually } = this.state
 
     return (
@@ -116,7 +113,7 @@ class CatalogNumberModal extends PureComponent {
                 data-testid="useThisNumber"
                 disabled={!valid}
                 loading={submitting}
-                onClick={this.handleSubmit}
+                onClick={handleSubmit}
               >
                 <ModuleTranslate textKey="other.useThisNumber" />
               </Button>
@@ -141,7 +138,7 @@ class CatalogNumberModal extends PureComponent {
               <Button
                 data-testid="createAutomaticNumber"
                 loading={submitting}
-                onClick={this.handleSubmit}
+                onClick={handleSubmit}
               >
                 <ModuleTranslate textKey="other.yesCreateNumber" />
               </Button>
@@ -166,6 +163,9 @@ CatalogNumberModal.propTypes = propTypes
 CatalogNumberModal.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withRouter
 )(CatalogNumberModal)

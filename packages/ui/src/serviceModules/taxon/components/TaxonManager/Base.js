@@ -61,7 +61,7 @@ const tableBatchFetchOptions = {
   resolveRelationships: ['taxonName', 'taxon'],
 }
 
-const itemFetchOptions = {
+const treeItemFetchOptions = {
   include: ['acceptedTaxonName'],
   relationships: ['acceptedTaxonName', 'children'],
   resolveRelationships: ['taxonName'],
@@ -135,8 +135,7 @@ class TaxonManager extends Component {
         buildEditItemHeaders={this.buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
-        filterHeader="Find taxa"
-        itemFetchOptions={itemFetchOptions}
+        treeItemFetchOptions={treeItemFetchOptions}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}

@@ -7,7 +7,6 @@ import { push } from 'react-router-redux'
 import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
 
 import { Form, FormRow } from 'coreModules/form/components'
-import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/src/error/validators/customFormValidator'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { mammalFormModels } from 'serviceModules/specimen/schemas'
@@ -40,11 +39,11 @@ const propTypes = {
   establishmentMeansTypes: PropTypes.array,
   form: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
-  handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   itemHeader: PropTypes.string,
   loading: PropTypes.bool,
   mode: PropTypes.oneOf(['edit', 'register']),
+  onSubmit: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
   redirectOnSuccess: PropTypes.bool,
   removeArrayField: PropTypes.func.isRequired,
@@ -67,31 +66,8 @@ class RecordForm extends Component {
   constructor(props) {
     super(props)
     this.changeFieldValue = this.changeFieldValue.bind(this)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleSubmitFromModal = this.handleSubmitFromModal.bind(this)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
-    this.setFormRef = this.setFormRef.bind(this)
-  }
-
-  setFormRef(element) {
-    this.form = element
-  }
-
-  handleSubmitFromModal() {
-    if (this.form) {
-      const event = document.createEvent('Event')
-      event.initEvent('submit', true, true)
-      this.form.dispatchEvent(event)
-    }
-  }
-
-  handleFormSubmit(formData) {
-    const { handleFormSubmit, transformOutput } = this.props
-
-    return handleFormSubmit(transformOutput(formData)).catch(
-      handleReduxFormSubmitError
-    )
   }
 
   changeFieldValue(fieldName, value) {
@@ -110,19 +86,20 @@ class RecordForm extends Component {
     const {
       availableHeight,
       form,
-      handleSubmit,
+      handleSubmit: handleSubmitRequiredByReduxForm,
       itemHeader,
       mode,
-      ...rest
+      onSubmit,
     } = this.props
 
     return (
       <Form
         formName={form}
         getAllowTransition={getAllowTransition}
-        onSubmit={handleSubmit(this.handleFormSubmit)}
+        onSubmit={handleSubmitRequiredByReduxForm(() => {
+          /* submit handled in resource manager */
+        })}
         sectionSpecs={sectionSpecs}
-        setFormRef={this.setFormRef}
       >
         <FormRow
           {...this.props}
@@ -141,11 +118,7 @@ class RecordForm extends Component {
           showSectionsInNavigation
         />
         {mode === 'register' && (
-          <CatalogNumberModal
-            formName={form}
-            handleSubmit={this.handleSubmitFromModal}
-            {...rest}
-          />
+          <CatalogNumberModal formName={form} onSubmit={onSubmit} />
         )}
       </Form>
     )

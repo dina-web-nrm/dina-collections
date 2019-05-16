@@ -22,7 +22,8 @@ export const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   formName: PropTypes.string.isRequired,
-  header: PropTypes.node.isRequired,
+  itemHeader: PropTypes.node.isRequired,
+  itemSubHeader: PropTypes.node,
   loading: PropTypes.bool,
   module: PropTypes.string.isRequired,
   onSetActiveFormSection: PropTypes.func.isRequired,
@@ -34,14 +35,13 @@ export const propTypes = {
   ).isRequired,
   showAllFormSections: PropTypes.bool,
   showSectionsInNavigation: PropTypes.bool,
-  subHeader: PropTypes.node,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
+  itemSubHeader: undefined,
   loading: false,
   showAllFormSections: false,
   showSectionsInNavigation: false,
-  subHeader: undefined,
 }
 
 export class FormSectionNavigation extends PureComponent {
@@ -50,7 +50,8 @@ export class FormSectionNavigation extends PureComponent {
       activeFormSectionIndex,
       availableHeight: height,
       formName,
-      header,
+      itemHeader,
+      itemSubHeader,
       loading,
       module,
       onSetActiveFormSection,
@@ -58,7 +59,6 @@ export class FormSectionNavigation extends PureComponent {
       sectionSpecs,
       showAllFormSections,
       showSectionsInNavigation,
-      subHeader,
     } = this.props
 
     return (
@@ -74,13 +74,13 @@ export class FormSectionNavigation extends PureComponent {
             }}
           >
             {loading && <Loader active inline size="tiny" />}
-            {!loading && header}
-            {!loading && subHeader && (
+            {!loading && itemHeader}
+            {!loading && itemSubHeader && (
               <Header.Subheader
                 data-testid="formSectionNavigationSubheader"
                 size="large"
               >
-                <em>{subHeader}</em>
+                <em>{itemSubHeader}</em>
               </Header.Subheader>
             )}
           </Header>

@@ -10,6 +10,6 @@ export default function getTableWidth({
 
       return totalWidth
     },
-    80
+    0
   )
 }
