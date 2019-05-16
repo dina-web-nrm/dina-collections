@@ -78,6 +78,7 @@
     "remote:print:server-status": "node ./packages/scripts/src/js/checkAllServers.js",
     "remote:unpack:zip": "node ./packages/scripts/src/js/unpackDataFiles.js",
     "remote:upload:data:zip": "node ./packages/scripts/src/js/uploadDataZip.js",
+    "remote:delete-test-tags": "./packages/scripts/src/bash/delete-test-tags",
     "setup": "yarn setup:env && yarn setup:sample-data && yarn install && yarn setup:links && yarn test",
     "setup:dev": "yarn setup:env:dev && yarn setup:sample-data && yarn install && yarn setup:links && yarn test",
     "setup:env": "./packages/scripts/src/bash/create-env.sh",
