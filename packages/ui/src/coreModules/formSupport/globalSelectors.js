@@ -7,7 +7,8 @@ import {
   isDirty,
 } from 'redux-form'
 import objectPath from 'object-path'
-import { isEmpty, isEqual } from 'lodash'
+import { isEmpty } from 'lodash'
+import isEqual from 'fast-deep-equal'
 
 import wrapSelectors from 'utilities/wrapSelectors'
 

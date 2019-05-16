@@ -1,21 +1,3 @@
-import React from 'react'
-
-const findParentWithSpecificGroup = (item, group) => {
-  if (!item) {
-    return null
-  }
-
-  if (item.group === group) {
-    return item
-  }
-
-  if (!(item && item.parent)) {
-    return null
-  }
-
-  return findParentWithSpecificGroup(item.parent, group)
-}
-
 const tableColumnSpecifications = [
   {
     fieldPath: 'name',
@@ -23,82 +5,27 @@ const tableColumnSpecifications = [
     width: 250,
   },
   {
-    fieldPath: 'group',
+    fieldPath: 'level',
     label: 'modules.locality.fieldLabels.place.group',
     width: 180,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(
-        value.parent,
-        'continent-ocean'
-      )
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'continent',
     label: 'modules.locality.fieldLabels.continent',
     width: 250,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'country')
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'country',
     label: 'modules.locality.fieldLabels.country',
     width: 250,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'province')
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'province',
     label: 'modules.locality.fieldLabels.province',
     width: 250,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value.parent, 'district')
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'district',
     label: 'modules.locality.fieldLabels.district',
     width: 250,
   },
