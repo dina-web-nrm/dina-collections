@@ -14,7 +14,7 @@ import {
   PROVINCE,
 } from '../../../constants'
 
-export const FORM_NAME = 'placeFilter'
+export const FORM_NAME = 'searchPlaceFilter'
 
 const log = createLog('modules:locality:BaseForm')
 
@@ -89,5 +89,7 @@ BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
   destroyOnUnmount: false,
+  enableReinitialize: true,
   form: FORM_NAME,
+  keepDirtyOnReinitialize: true,
 })(BaseForm)
