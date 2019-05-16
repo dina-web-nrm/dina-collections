@@ -29,13 +29,14 @@ const propTypes = {
     resource: PropTypes.string,
   }).isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
-  tableColumnsToSort: PropTypes.array.isRequired,
+  tableColumnsToSort: PropTypes.array,
 }
 const defaultProps = {
   focusedItemId: undefined,
   focusIdWhenLoaded: undefined,
   initialItemId: undefined,
   itemId: undefined,
+  tableColumnsToSort: undefined,
 }
 
 const ResourceManagerTableStateProvider = ({

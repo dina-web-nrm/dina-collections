@@ -37,6 +37,7 @@ import {
   PICKER_PICK_ITEM,
 } from 'coreModules/resourceManager/constants'
 
+import { ResourceManagerConfigProvider } from 'coreModules/resourceManager/contexts/resourceManagerConfig'
 import { ResourceManagerHandlersProvider } from 'coreModules/resourceManager/contexts/resourceManagerHandlers'
 import { ResourceManagerTableStateProvider } from 'coreModules/resourceManager/contexts/resourceManagerTableState'
 
@@ -48,12 +49,17 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     const managerScope = isPicker ? `${resource}Picker` : resource
     const { get } = keyObjectGlobalSelectors
-    const baseItems = get[':managerScope.baseItems'](state, { managerScope })
+    const treeBaseItems = get[':managerScope.treeBaseItems'](state, {
+      managerScope,
+    })
     const listItems = get[':managerScope.listItems'](state, { managerScope })
+    const treeListItems = get[':managerScope.treeListItems'](state, {
+      managerScope,
+    })
     const numberOfListItems = (listItems || []).length
 
     const showAll = get[':managerScope.showAll'](state, { managerScope })
-    const expandedIds = get[':managerScope.expandedIds'](state, {
+    const expandedIds = get[':managerScope.treeExpandedIds'](state, {
       managerScope,
     })
 
@@ -65,8 +71,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     const filterValues = get[':managerScope.listFilterValues'](state, {
       managerScope,
     })
-    const focusedItemId =
-      listItems && listItems[focusedIndex] && listItems[focusedIndex].id
+    const focusedItemId = get[':managerScope.focusedItemId'](state, {
+      managerScope,
+    })
     const focusIdWhenLoaded = get[':managerScope.focusIdWhenLoaded'](state, {
       managerScope,
     })
@@ -79,7 +86,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       { resource }
     )
     return {
-      baseItems,
       currentTableRowNumber,
       expandedIds,
       filterValues,
@@ -96,6 +102,8 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       showAll,
       tableColumnsToSort,
       totalNumberOfRecords,
+      treeBaseItems,
+      treeListItems,
     }
   }
 
@@ -107,20 +115,24 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       keyObjectActionCreators.del[':managerScope.focusIdWhenLoaded'],
     open: actionCreators.open,
     resetForm: resetActionCreator,
-    setBaseItems: keyObjectActionCreators.set[':managerScope.baseItems'],
+    setBaseItems: keyObjectActionCreators.set[':managerScope.treeBaseItems'],
     setCurrentTableRowNumber:
       keyObjectActionCreators.set[':managerScope.currentTableRowNumber'],
-    setExpandedIds: keyObjectActionCreators.set[':managerScope.expandedIds'],
+    setExpandedIds:
+      keyObjectActionCreators.set[':managerScope.treeExpandedIds'],
     setFilterValues:
       keyObjectActionCreators.set[':managerScope.listFilterValues'],
+    setFocusedItemId:
+      keyObjectActionCreators.set[':managerScope.focusedItemId'],
     setFocusIdWhenLoaded:
       keyObjectActionCreators.set[':managerScope.focusIdWhenLoaded'],
     setListItems: keyObjectActionCreators.set[':managerScope.listItems'],
     setShowAll: keyObjectActionCreators.set[':managerScope.showAll'],
+    setTreeListItems:
+      keyObjectActionCreators.set[':managerScope.treeListItems'],
   }
 
   const propTypes = {
-    baseItems: PropTypes.array,
     baseTreeFilter: PropTypes.object,
     buildFilterQuery: PropTypes.func.isRequired,
     clearNestedCache: PropTypes.func.isRequired,
@@ -148,7 +160,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     managerScope: PropTypes.string.isRequired,
     nestedCacheNamespaces: PropTypes.arrayOf(PropTypes.string),
     nextRowAvailable: PropTypes.bool.isRequired,
-    numberOfListItems: PropTypes.number.isRequired,
+    numberOTreefListItems: PropTypes.number.isRequired,
     onInteraction: PropTypes.func.isRequired,
     open: PropTypes.func.isRequired,
     prevRowAvailable: PropTypes.bool.isRequired,
@@ -179,10 +191,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     tableSearch: PropTypes.func,
     totalNumberOfRecords: PropTypes.number,
     treeActive: PropTypes.bool.isRequired,
+    treeBaseItems: PropTypes.array,
   }
 
   const defaultProps = {
-    baseItems: [],
     baseTreeFilter: {},
     csvExportEnabled: false,
     enableTableColumnSorting: false,
@@ -207,14 +219,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     tableColumnsToSort: undefined,
     tableSearch: undefined,
     totalNumberOfRecords: 0,
+    treeBaseItems: [],
   }
 
   class ResourceManagerWrapper extends Component {
     constructor(props) {
       super(props)
 
-      this.expandAncestorsForItemId = this.expandAncestorsForItemId.bind(this)
-      this.fetchTreeBase = this.fetchTreeBase.bind(this)
       this.findRowNumberById = this.findRowNumberById.bind(this)
       this.focusRowWithId = this.focusRowWithId.bind(this)
       this.getNestedCacheNamespaces = this.getNestedCacheNamespaces.bind(this)
@@ -230,9 +241,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
       this.handleTableTabClick = this.handleTableTabClick.bind(this)
       this.handleTableSettingsClick = this.handleTableSettingsClick.bind(this)
-      this.handleToggleCurrentRow = this.handleToggleCurrentRow.bind(this)
       this.handleToggleFilters = this.handleToggleFilters.bind(this)
-      this.handleToggleRow = this.handleToggleRow.bind(this)
       this.handleTreeTabClick = this.handleTreeTabClick.bind(this)
       this.handleUpdateFilterValues = this.handleUpdateFilterValues.bind(this)
       this.selectCurrentRow = this.selectCurrentRow.bind(this)
@@ -261,20 +270,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
           command: 'up',
           description: 'Move focus to previous record',
           onPress: this.handleSelectPrev,
-        },
-        {
-          command: 'left',
-          description: 'Collapse tree node',
-          onPress: () => {
-            this.handleToggleCurrentRow('collapse')
-          },
-        },
-        {
-          command: 'right',
-          description: 'Expand tree node',
-          onPress: () => {
-            this.handleToggleCurrentRow('expand')
-          },
         },
         {
           command: 'n t',
@@ -479,91 +474,8 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       })
     }
 
-    expandAncestorsForItemId(itemId) {
-      const {
-        dispatch,
-        itemFetchOptions,
-        managerScope,
-        resource,
-        sortOrder,
-      } = this.props
-      const getManyActionCreator =
-        crudActionCreators[resource] && crudActionCreators[resource].getMany
-
-      return dispatch(
-        getManyActionCreator({
-          queryParams: {
-            filter: {
-              ancestorsToId: itemId,
-            },
-            sort: sortOrder,
-          },
-          storeInState: false,
-        })
-      ).then((items = []) => {
-        if (!items.length) {
-          return null
-        }
-
-        const ids = items.map(item => {
-          return item.id
-        })
-
-        return dispatch(
-          getManyActionCreator({
-            queryParams: {
-              filter: {
-                ids,
-              },
-              include: itemFetchOptions.include,
-              relationships: itemFetchOptions.relationships,
-              sort: sortOrder,
-            },
-          })
-        ).then(() => {
-          const { expandedIds } = this.props
-          const updatedExpandedIds = items.reduce((obj, item) => {
-            return {
-              ...obj,
-              [item.id]: true,
-            }
-          }, expandedIds)
-
-          this.props.setExpandedIds(updatedExpandedIds, { managerScope })
-        })
-      })
-    }
-
-    fetchTreeBase() {
-      const {
-        baseTreeFilter,
-        dispatch,
-        itemFetchOptions,
-        managerScope,
-        resource,
-        sortOrder,
-      } = this.props
-      const getManyActionCreator =
-        crudActionCreators[resource] && crudActionCreators[resource].getMany
-
-      this.props.setBaseItems([], { managerScope })
-      return dispatch(
-        getManyActionCreator({
-          queryParams: {
-            filter: baseTreeFilter,
-            include: itemFetchOptions.include,
-            relationships: itemFetchOptions.relationships,
-            sort: sortOrder,
-          },
-        })
-      ).then(items => {
-        this.props.setBaseItems(items, { managerScope })
-      })
-    }
-
     findRowNumberById(itemId) {
       const { focusedItemId, listItems } = this.props
-
       if (focusedItemId === itemId) {
         return null
       }
@@ -583,10 +495,12 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     focusRowWithId(itemId) {
       const { managerScope } = this.props
       const rowNumber = this.findRowNumberById(itemId)
+
       if (rowNumber) {
         this.props.setCurrentTableRowNumber(rowNumber, { managerScope })
         return rowNumber
       }
+
       return null
     }
 
@@ -650,37 +564,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       }
     }
 
-    handleToggleRow(itemId) {
-      const { expandedIds, managerScope } = this.props
-      const updatedExpandedIds = {
-        ...expandedIds,
-        [itemId]: !expandedIds[itemId],
-      }
-      this.props.setExpandedIds(updatedExpandedIds, { managerScope })
-    }
-
-    handleToggleCurrentRow(mode) {
-      const {
-        focusedIndex,
-        expandedIds,
-        listItems,
-        managerScope,
-        treeActive,
-      } = this.props
-
-      if (treeActive) {
-        const listItem = listItems[focusedIndex]
-        const id = listItem && listItem.id
-
-        const updatedExpandedIds = {
-          ...expandedIds,
-          [id]: mode === 'expand',
-        }
-        this.props.setExpandedIds(updatedExpandedIds, { managerScope })
-      }
-    }
-
     handleClickRow(_, itemId) {
+      const { focusedItemId, managerScope, setFocusedItemId } = this.props
+
+      if (itemId !== focusedItemId) {
+        setFocusedItemId(itemId, { managerScope })
+      }
+
       this.focusRowWithId(itemId)
     }
 
@@ -802,66 +692,64 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     mountTreeView() {
       log.debug('initial mount view: Tree')
-      const { initialItemId, itemId, managerScope } = this.props
+      // const { initialItemId, itemId, managerScope } = this.props
 
-      if (
-        itemId === undefined &&
-        initialItemId !== undefined &&
-        initialItemId !== ''
-      ) {
-        this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
-        this.expandAncestorsForItemId(initialItemId)
-      }
+      // if (
+      //   itemId === undefined &&
+      //   initialItemId !== undefined &&
+      //   initialItemId !== ''
+      // ) {
+      //   this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
+      //   this.expandAncestorsForItemId(initialItemId)
+      // }
 
-      this.transitionToTreeView()
+      // this.transitionToTreeView()
     }
 
     updateTreeView(prevProps) {
-      const {
-        focusIdWhenLoaded,
-        listItems,
-        managerScope,
-        treeActive,
-      } = this.props
-
-      if (!treeActive) {
-        return
-      }
-
-      const { listItems: prevListItems } = prevProps
-      if (
-        focusIdWhenLoaded &&
-        prevListItems !== listItems &&
-        listItems.length
-      ) {
-        const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
-        if (rowFocused) {
-          this.props.delFocusIdWhenLoaded({ managerScope })
-        }
-      }
+      // const {
+      //   focusIdWhenLoaded,
+      //   listItems,
+      //   managerScope,
+      //   treeActive,
+      // } = this.props
+      // if (!treeActive) {
+      //   return
+      // }
+      // const { listItems: prevListItems } = prevProps
+      // if (
+      //   focusIdWhenLoaded &&
+      //   prevListItems !== listItems &&
+      //   listItems.length
+      // ) {
+      //   const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
+      //   if (rowFocused) {
+      //     this.props.delFocusIdWhenLoaded({ managerScope })
+      //   }
+      // }
     }
 
     transitionToTreeView() {
       log.debug('transition to view: Tree')
-      const { focusedItemId, managerScope } = this.props
+      // const { focusedItemId, managerScope } = this.props
 
-      if (focusedItemId) {
-        this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
-        this.expandAncestorsForItemId(focusedItemId)
-      }
+      // if (focusedItemId) {
+      //   this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
+      //   this.expandAncestorsForItemId(focusedItemId)
+      // }
 
-      this.fetchTreeBase()
+      // this.fetchTreeBase()
     }
 
     transitionFromTreeView(_, { skipTableSearch }) {
       log.debug('transition from view: Tree')
-      const { managerScope } = this.props
+      // const { managerScope } = this.props
 
-      if (!skipTableSearch) {
-        this.tableSearch()
-      }
+      // if (!skipTableSearch) {
+      //   this.tableSearch()
+      // }
 
-      this.props.setExpandedIds({}, { managerScope })
+      // this.props.setExpandedIds({}, { managerScope })
     }
 
     mountItemView() {
@@ -901,6 +789,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     render() {
       const {
+        baseTreeFilter,
         clearNestedCache,
         currentTableRowNumber,
         delFocusIdWhenLoaded,
@@ -908,90 +797,100 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         focusedItemId,
         focusIdWhenLoaded,
         initialItemId,
+        itemFetchOptions,
         itemId,
         listItems,
         managerScope,
         nextRowAvailable,
         prevRowAvailable,
+        resource,
         setFocusIdWhenLoaded,
+        sortOrder,
         tableBatchFetchOptions,
         tableColumnSpecifications,
         tableColumnsToSort,
       } = this.props
 
       return (
-        <ResourceManagerHandlersProvider
-          clearNestedCache={clearNestedCache}
-          delFocusIdWhenLoaded={delFocusIdWhenLoaded}
-          fetchTreeBase={this.fetchTreeBase}
-          focusRowWithId={this.focusRowWithId}
-          getNestedCacheNamespaces={this.getNestedCacheNamespaces}
-          onClickRow={this.handleClickRow}
-          onClosePicker={this.handleClosePicker}
-          onFormTabClick={this.handleFormTabClick}
-          onInteraction={this.handleInteraction}
-          onOpenNewRecordForm={this.handleOpenNewRecordForm}
-          onPickItem={this.handlePickItem}
-          onSelectNextRecord={this.handleSelectNextRecord}
-          onSelectPreviousRecord={this.handleSelectPrev}
-          onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
-          onShowAllRecords={this.handleShowAllRecords}
-          onTableSettingsClick={this.handleTableSettingsClick}
-          onTableTabClick={this.handleTableTabClick}
-          onToggleCurrentRow={this.handleToggleCurrentRow}
-          onToggleFilters={this.handleToggleFilters}
-          onToggleRow={this.handleToggleRow}
-          onTreeTabClick={this.handleTreeTabClick}
-          onUpdateFilterValues={this.handleUpdateFilterValues}
-          selectCurrentRow={this.selectCurrentRow}
-          setFocusIdWhenLoaded={setFocusIdWhenLoaded}
-          tableSearch={this.tableSearch}
+        <ResourceManagerConfigProvider
+          baseTreeFilter={baseTreeFilter}
+          initialItemId={initialItemId}
+          itemFetchOptions={itemFetchOptions}
+          managerScope={managerScope}
+          resource={resource}
+          searchResource={`search${capitalizeFirstLetter(resource)}`}
+          sortOrder={sortOrder}
         >
-          <ResourceManagerTableStateProvider
-            currentTableRowNumber={currentTableRowNumber}
-            focusedIndex={focusedIndex}
-            focusedItemId={focusedItemId}
-            focusIdWhenLoaded={focusIdWhenLoaded}
-            initialItemId={initialItemId}
-            itemId={itemId}
-            listItems={listItems}
-            nextRowAvailable={nextRowAvailable}
-            prevRowAvailable={prevRowAvailable}
-            tableBatchFetchOptions={tableBatchFetchOptions}
-            tableColumnSpecifications={tableColumnSpecifications}
-            tableColumnsToSort={tableColumnsToSort}
+          <ResourceManagerHandlersProvider
+            clearNestedCache={clearNestedCache}
+            delFocusIdWhenLoaded={delFocusIdWhenLoaded}
+            focusRowWithId={this.focusRowWithId}
+            getNestedCacheNamespaces={this.getNestedCacheNamespaces}
+            onClickRow={this.handleClickRow}
+            onClosePicker={this.handleClosePicker}
+            onFormTabClick={this.handleFormTabClick}
+            onInteraction={this.handleInteraction}
+            onOpenNewRecordForm={this.handleOpenNewRecordForm}
+            onPickItem={this.handlePickItem}
+            onSelectNextRecord={this.handleSelectNextRecord}
+            onSelectPreviousRecord={this.handleSelectPrev}
+            onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
+            onShowAllRecords={this.handleShowAllRecords}
+            onTableSettingsClick={this.handleTableSettingsClick}
+            onTableTabClick={this.handleTableTabClick}
+            onToggleFilters={this.handleToggleFilters}
+            onTreeTabClick={this.handleTreeTabClick}
+            onUpdateFilterValues={this.handleUpdateFilterValues}
+            selectCurrentRow={this.selectCurrentRow}
+            setFocusIdWhenLoaded={setFocusIdWhenLoaded}
+            tableSearch={this.tableSearch}
           >
-            <KeyboardShortcuts
-              activeInLayer={managerScope}
-              shortcuts={this.shortcuts}
-            />
-            <ComposedComponent
-              {...this.props}
-              fetchTreeBase={this.fetchTreeBase}
-              managerScope={managerScope}
-              onClickRow={this.handleClickRow}
-              onClosePicker={this.handleClosePicker}
-              onFormTabClick={this.handleFormTabClick}
-              onInteraction={this.handleInteraction}
-              onOpenNewRecordForm={this.handleOpenNewRecordForm}
-              onPickItem={this.handlePickItem}
-              onSelectNextRecord={
-                nextRowAvailable && this.handleSelectNextRecord
-              }
-              onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
-              onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
-              onShowAllRecords={this.handleShowAllRecords}
-              onTableSettingsClick={this.handleTableSettingsClick}
-              onTableTabClick={this.handleTableTabClick}
-              onToggleCurrentRow={this.handleToggleCurrentRow}
-              onToggleFilters={this.handleToggleFilters}
-              onToggleRow={this.handleToggleRow}
-              onTreeTabClick={this.handleTreeTabClick}
-              onUpdateFilterValues={this.handleUpdateFilterValues}
-              tableSearch={this.tableSearch}
-            />
-          </ResourceManagerTableStateProvider>
-        </ResourceManagerHandlersProvider>
+            <ResourceManagerTableStateProvider
+              currentTableRowNumber={currentTableRowNumber}
+              focusedIndex={focusedIndex}
+              focusedItemId={focusedItemId}
+              focusIdWhenLoaded={focusIdWhenLoaded}
+              initialItemId={initialItemId}
+              itemId={itemId}
+              listItems={listItems}
+              nextRowAvailable={nextRowAvailable}
+              prevRowAvailable={prevRowAvailable}
+              tableBatchFetchOptions={tableBatchFetchOptions}
+              tableColumnSpecifications={tableColumnSpecifications}
+              tableColumnsToSort={tableColumnsToSort}
+            >
+              <KeyboardShortcuts
+                activeInLayer={managerScope}
+                shortcuts={this.shortcuts}
+              />
+              <ComposedComponent
+                {...this.props}
+                managerScope={managerScope}
+                onClickRow={this.handleClickRow}
+                onClosePicker={this.handleClosePicker}
+                onFormTabClick={this.handleFormTabClick}
+                onInteraction={this.handleInteraction}
+                onOpenNewRecordForm={this.handleOpenNewRecordForm}
+                onPickItem={this.handlePickItem}
+                onSelectNextRecord={
+                  nextRowAvailable && this.handleSelectNextRecord
+                }
+                onSelectPreviousRecord={
+                  prevRowAvailable && this.handleSelectPrev
+                }
+                onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
+                onShowAllRecords={this.handleShowAllRecords}
+                onTableSettingsClick={this.handleTableSettingsClick}
+                onTableTabClick={this.handleTableTabClick}
+                onToggleFilters={this.handleToggleFilters}
+                onTreeTabClick={this.handleTreeTabClick}
+                onUpdateFilterValues={this.handleUpdateFilterValues}
+                setFocusIdWhenLoaded={setFocusIdWhenLoaded}
+                tableSearch={this.tableSearch}
+              />
+            </ResourceManagerTableStateProvider>
+          </ResourceManagerHandlersProvider>
+        </ResourceManagerConfigProvider>
       )
     }
   }

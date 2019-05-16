@@ -3,19 +3,19 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Dimmer, Grid, Icon, Loader } from 'semantic-ui-react'
 
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createInjectItemTitle } from 'coreModules/resourceManager/higherOrderComponents'
 
 const propTypes = {
   indentation: PropTypes.number,
   isExpandable: PropTypes.bool,
-  isExpanded: PropTypes.bool.isRequired,
+  isExpanded: PropTypes.bool,
   isFocused: PropTypes.bool.isRequired,
+  item: PropTypes.object,
   itemId: PropTypes.string,
   itemTitle: PropTypes.node,
   level: PropTypes.number,
-  nestedItem: PropTypes.object,
   onClickRow: PropTypes.func.isRequired,
   onToggleRow: PropTypes.func.isRequired,
 }
@@ -23,10 +23,11 @@ const propTypes = {
 const defaultProps = {
   indentation: 50,
   isExpandable: false,
+  isExpanded: false,
+  item: undefined,
   itemId: '',
   itemTitle: undefined,
   level: 0,
-  nestedItem: undefined,
 }
 
 class ListItem extends Component {
@@ -39,11 +40,11 @@ class ListItem extends Component {
       itemId,
       itemTitle,
       level,
-      nestedItem,
+      item,
       onClickRow,
       onToggleRow,
     } = this.props
-    const itemLoaded = !!nestedItem
+    const itemLoaded = !!item
 
     const triangleIcon = isExpanded ? 'down triangle' : 'right triangle'
 
@@ -115,7 +116,7 @@ ListItem.propTypes = propTypes
 ListItem.defaultProps = defaultProps
 
 export default compose(
-  createGetNestedItemById({
+  createGetItemById({
     refresh: false,
     shouldFetch: false,
   }),

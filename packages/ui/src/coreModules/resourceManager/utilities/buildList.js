@@ -1,8 +1,10 @@
+import objectPath from 'object-path'
+
 export default function buildList({
+  allItemsObject,
   baseItems,
   expandedIds = {},
   fetchItemById,
-  itemsObject,
   showAll = false,
 }) {
   const list = []
@@ -10,11 +12,9 @@ export default function buildList({
   const walk = ({ level = 0, items = [] }) => {
     items.forEach(item => {
       const { id } = item
-      const children =
-        item.relationships &&
-        item.relationships.children &&
-        item.relationships.children.data
+      const children = objectPath.get(item, 'relationships.children.data')
       const isExpandable = !!(children && children.length)
+
       list.push({
         id,
         isExpandable,
@@ -24,7 +24,7 @@ export default function buildList({
       if (showAll || expandedIds[id]) {
         if (children) {
           const mappedChildren = children.map(({ id: childId }) => {
-            const child = itemsObject[childId]
+            const child = allItemsObject[childId]
 
             if (child && child.relationships && child.relationships.children) {
               return child
@@ -36,6 +36,7 @@ export default function buildList({
               loading: true,
             }
           })
+
           walk({ items: mappedChildren, level: level + 1 })
         }
       }
@@ -43,5 +44,6 @@ export default function buildList({
   }
 
   walk({ items: baseItems })
+
   return list
 }

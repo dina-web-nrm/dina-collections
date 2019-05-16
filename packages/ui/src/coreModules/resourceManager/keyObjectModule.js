@@ -10,13 +10,15 @@ const {
   actionPrefix: 'RESOURCE_MANAGER',
   keys: [
     ':managerScope',
-    ':managerScope.baseItems',
     ':managerScope.currentTableRowNumber',
-    ':managerScope.expandedIds',
     ':managerScope.focusIdWhenLoaded',
+    ':managerScope.focusedItemId',
     ':managerScope.listFilterValues',
     ':managerScope.listItems',
     ':managerScope.showAll',
+    ':managerScope.treeBaseItems',
+    ':managerScope.treeExpandedIds',
+    ':managerScope.treeListItems',
   ],
   name: 'resourceManager',
 })

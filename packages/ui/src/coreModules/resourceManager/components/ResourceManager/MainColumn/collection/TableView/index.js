@@ -96,6 +96,10 @@ class ResultTableView extends PureComponent {
     ]
   }
 
+  componentDidMount() {
+    this.props.tableSearch()
+  }
+
   handleSelectNextRecord() {
     if (this.props.onSelectNextRecord) {
       this.props.onSelectNextRecord()

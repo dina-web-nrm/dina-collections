@@ -4,16 +4,16 @@ import { compose } from 'redux'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 
 const propTypes = {
   fetchItemById: PropTypes.func.isRequired,
   focusedIndex: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
+  item: PropTypes.object,
   itemId: PropTypes.string.isRequired,
   listItems: PropTypes.array.isRequired,
-  nestedItem: PropTypes.object,
   onClickRow: PropTypes.func.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -21,7 +21,7 @@ const propTypes = {
 }
 
 const defaultProps = {
-  nestedItem: undefined,
+  item: undefined,
   tableColumnsToShow: undefined,
 }
 
@@ -31,23 +31,29 @@ const InfinityTableRow = ({
   index,
   itemId,
   listItems,
-  nestedItem,
+  item,
   onClickRow,
   tableColumnSpecifications,
   tableColumnsToShow,
   width,
 }) => {
   const latestListItems = useRef(null)
+  if (itemId !== undefined) {
+    fetchItemById(itemId)
+  }
+  console.log('render row')
 
-  useEffect(() => {
-    if (listItems !== latestListItems.current) {
-      if (itemId !== undefined) {
-        fetchItemById(itemId)
-      }
-    }
+  // useEffect(() => {
+  //   console.log('itemId', itemId)
+  //   console.log(
+  //     'listItems !== latestListItems.current',
+  //     listItems !== latestListItems.current
+  //   )
+  //   if (listItems !== latestListItems.current) {
+  //   }
 
-    latestListItems.current = listItems
-  }, [fetchItemById, itemId, listItems])
+  //   latestListItems.current = listItems
+  // }, [fetchItemById, itemId, listItems])
 
   const rowNumber = index + 1
   const isFocused = focusedIndex === index
@@ -57,7 +63,7 @@ const InfinityTableRow = ({
     ? '#e5e7e9'
     : '#fff'
 
-  if (!nestedItem) {
+  if (!item) {
     return (
       <Grid.Row style={{ height: emToPixels(3.5), width }}>
         <Grid.Column style={{ width: 60 }}>
@@ -82,13 +88,13 @@ const InfinityTableRow = ({
       {tableColumnSpecifications.map(
         ({ buildText, fieldPath, label, width: columnWidth }) => {
           if (tableColumnsToShow.includes(fieldPath)) {
-            let value = objectPath.get(nestedItem, fieldPath)
+            let value = objectPath.get(item, `attributes.${fieldPath}`)
 
             const runBuildText =
               value && buildText && (Array.isArray(value) ? value.length : true)
 
             if (runBuildText) {
-              value = buildText({ nestedItem, objectPath, value })
+              value = buildText({ item, objectPath, value })
             }
 
             if (Array.isArray(value)) {
@@ -120,6 +126,6 @@ const InfinityTableRow = ({
 InfinityTableRow.propTypes = propTypes
 InfinityTableRow.defaultProps = defaultProps
 
-export default compose(createGetNestedItemById({ shouldFetch: false }))(
+export default compose(createGetItemById({ shouldFetch: false }))(
   InfinityTableRow
 )

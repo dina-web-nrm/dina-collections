@@ -46,9 +46,7 @@ export class ResultOptionsBar extends Component {
     } = this.props
 
     const hasSecondaryMenu =
-      !(createItemActive || treeActive) ||
-      csvExportEnabled ||
-      handleTableSettingsClick
+      csvExportEnabled || tableActive || !(createItemActive || treeActive)
 
     return (
       <Menu attached="top" icon style={{ position: 'relative' }} tabular>
@@ -93,7 +91,7 @@ export class ResultOptionsBar extends Component {
                 tableColumnSpecifications={tableColumnSpecifications}
               />
             )}
-            {handleTableSettingsClick && (
+            {tableActive && (
               <Menu.Item
                 data-testid="settingsMenuItem"
                 link

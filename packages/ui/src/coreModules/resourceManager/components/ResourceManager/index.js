@@ -95,67 +95,7 @@ const ResourceManager = props => {
       <RowLayout.Row>
         <ColumnLayout>
           <ColumnLayout.Column>
-            <MainColumn
-              {...pick(props, [
-                'availableHeight',
-                'baseItems',
-                'buildEditItemHeaders',
-                'createGetNestedItemHocInput',
-                'createItemActive',
-                'csvExportEnabled',
-                'currentTableRowNumber',
-                'editItemActive',
-                'enableTableColumnSorting',
-                'expandedIds',
-                'fetchRelationshipsBeforeDelete',
-                'fetchTreeBase',
-                'filterActive',
-                'filterResourceCount',
-                'focusedIndex',
-                'isPicker',
-                'itemEnabled',
-                'itemFetchOptions',
-                'itemId',
-                'ItemTitle',
-                'listItems',
-                'managerScope',
-                'nextRowAvailable',
-                'numberOfListItems',
-                'onClickRow',
-                'onFormTabClick',
-                'onInteraction',
-                'onOpenNewRecordForm',
-                'onSelectNextRecord',
-                'onSelectPreviousRecord',
-                'onSetCurrentTableRowNumber',
-                'onShowAllRecords',
-                'onTableTabClick',
-                'onTableSettingsClick',
-                'onToggleCurrentRow',
-                'onToggleFilters',
-                'onToggleRow',
-                'onTreeTabClick',
-                'prevRowAvailable',
-                'relationshipsToCheckBeforeDelete',
-                'renderCreateForm',
-                'renderEditForm',
-                'resource',
-                'sectionId',
-                'setListItems',
-                'showAll',
-                'tableActive',
-                'tableBatchFetchOptions',
-                'tableColumnSpecifications',
-                'tableColumnsToShow',
-                'tableSearch',
-                'tableSettingsActive',
-                'totalNumberOfRecords',
-                'transformOutput',
-                'treeActive',
-                'treeEnabled',
-              ])}
-              availableHeight={columnHeight}
-            />
+            <MainColumn {...props} availableHeight={columnHeight} />
           </ColumnLayout.Column>
           {filterActive && (
             <ColumnLayout.Column

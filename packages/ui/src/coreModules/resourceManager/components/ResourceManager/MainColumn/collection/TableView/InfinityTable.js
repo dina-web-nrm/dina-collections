@@ -6,6 +6,7 @@ import ReactList from 'react-list'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { useHandlers } from 'coreModules/resourceManager/contexts/resourceManagerHandlers'
 import { useTableState } from 'coreModules/resourceManager/contexts/resourceManagerTableState'
+import { useEffectScroll } from 'coreModules/resourceManager/hooks'
 
 import InfinityTableRow from './InfinityTableRow'
 
@@ -97,30 +98,7 @@ const InfinityTable = ({
     setFocusIdWhenLoaded,
   ])
 
-  useEffect(() => {
-    const scroll = () => {
-      const [firstVisibleRow, lastVisibleRow] = list.current.getVisibleRange()
-
-      // this special case is to avoid that the focused row is hidden behind the
-      // table header, which is fixed positioned and therefore seen by
-      // react-list as the first row in terms of scroll position
-      if (currentTableRowNumber <= firstVisibleRow + 1) {
-        list.current.scrollTo(currentTableRowNumber - 1)
-      } else if (currentTableRowNumber > lastVisibleRow) {
-        list.current.scrollAround(currentTableRowNumber)
-      }
-    }
-
-    if (list.current && currentTableRowNumber) {
-      const [firstVisibleRow] = list.current.getVisibleRange()
-
-      if (firstVisibleRow === undefined) {
-        setTimeout(() => scroll())
-      } else {
-        scroll()
-      }
-    }
-  }, [currentTableRowNumber])
+  useEffectScroll({ currentRowNumber: currentTableRowNumber, list })
 
   // is this really necessary?
   useEffect(() => {
@@ -130,14 +108,15 @@ const InfinityTable = ({
       })
   }, [clearNestedCache, getNestedCacheNamespaces])
 
-  const itemRenderer = (index, key) => {
+  const itemRenderer = index => {
     return (
       <InfinityTableRow
         fetchItemById={fetchItemById}
         focusedIndex={focusedIndex}
         index={index}
         itemId={listItems[index].id}
-        key={key}
+        key={listItems[index].id}
+        listItems={listItems}
         namespace={tableResource || managerScope}
         onClickRow={onClickRow}
         relationships={relationships}
@@ -167,6 +146,6 @@ InfinityTable.propTypes = propTypes
 
 export default compose(
   createBatchFetchItems({
-    refetch: true,
+    // refetch: true,
   })
 )(InfinityTable)

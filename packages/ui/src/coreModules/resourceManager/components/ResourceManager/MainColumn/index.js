@@ -7,12 +7,12 @@ import { pick } from 'lodash'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { getTableWidth } from 'coreModules/resourceManager/utilities'
+import TreeView from '../TreeModule/components/TreeView'
 
 import RecordNavigationBar from './shared/RecordNavigationBar'
 import ResultOptionsBar from './shared/ResultOptionsBar'
 import TableSettings from './collection/TableSettings'
 import TableView from './collection/TableView'
-import TreeView from './collection/TreeView'
 import CreateItemColumn from './item/CreateItemColumn'
 import EditItemColumn from './item/EditItemColumn'
 
@@ -108,6 +108,7 @@ const MainColumn = props => {
             'tableActive',
             'tableColumnSpecifications',
             'treeActive',
+            'treeEnabled',
           ])}
         />
       </RowLayout.Row>
@@ -125,6 +126,7 @@ const MainColumn = props => {
               'onFormTabClick',
               'onSelectNextRecord',
               'onSelectPreviousRecord',
+              'onToggleFilters',
               'resource',
               'tableBatchFetchOptions',
               'tableColumnSpecifications',
@@ -153,27 +155,7 @@ const MainColumn = props => {
       )}
       {treeActive && (
         <RowLayout.Row style={overflowAuto}>
-          <TreeView
-            {...pick(props, [
-              'baseItems',
-              'currentTableRowNumber',
-              'expandedIds',
-              'fetchTreeBase',
-              'focusedIndex',
-              'itemFetchOptions',
-              'ItemTitle',
-              'listItems',
-              'managerScope',
-              'onClickRow',
-              'onToggleRow',
-              'resource',
-              'setBaseItems',
-              'setFocusedIndex',
-              'setListItems',
-              'showAll',
-            ])}
-            {...itemFetchOptions}
-          />
+          <TreeView {...props} {...itemFetchOptions} />
         </RowLayout.Row>
       )}
       {createItemActive && (
