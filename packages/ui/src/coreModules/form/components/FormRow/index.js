@@ -10,7 +10,6 @@ import createLog from 'utilities/log'
 import { validateSections } from 'coreModules/formSupport/actionCreators'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
-import { NAVIGATE_FORM_SECTION } from 'coreModules/resourceManager/constants'
 import FormSectionNavigation, {
   propTypes as formSectionNavigationPropTypes,
 } from './FormSectionNavigation'
@@ -33,6 +32,7 @@ const propTypes = {
   itemHeader: PropTypes.node.isRequired,
   itemSubHeader: PropTypes.node,
   moduleName: PropTypes.string.isRequired,
+  navigateFormSection: PropTypes.func.isRequired,
   onInteraction: PropTypes.func,
   passthroughProps: PropTypes.arrayOf(PropTypes.string.isRequired),
   push: PropTypes.func.isRequired,
@@ -79,7 +79,7 @@ class FormRow extends PureComponent {
   handleSetActiveFormSection(event, newSectionId) {
     if (event) event.preventDefault()
 
-    this.props.onInteraction(NAVIGATE_FORM_SECTION, { sectionId: newSectionId })
+    this.props.navigateFormSection(newSectionId)
   }
 
   handleGoToNextSection(event) {
@@ -135,8 +135,6 @@ class FormRow extends PureComponent {
         <ColumnLayout.Column style={overflowAuto}>
           <FormSectionView
             {...pick(this.props, [
-              'itemHeader',
-              'itemSubHeader',
               ...Object.keys(formSectionViewPropTypes),
               ...this.props.passthroughProps,
             ])}
