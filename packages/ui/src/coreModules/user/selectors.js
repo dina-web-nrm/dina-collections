@@ -54,3 +54,13 @@ export const getUserPreferencesLanguage = state => {
   const preferences = getUserPreferences(state)
   return preferences && preferences.language
 }
+
+export const getUserPreferencesTableColumnsToShow = (state, { resource }) => {
+  const preferences = getUserPreferences(state)
+  return preferences && preferences[`${resource}TableColumnsToShow`]
+}
+
+export const getUserPreferencesTableColumnsToSort = (state, { resource }) => {
+  const preferences = getUserPreferences(state)
+  return preferences && preferences[`${resource}TableColumnsToSort`]
+}
