@@ -1,34 +1,23 @@
-export default function buildFilterQuery({ excludeRootNode, values }) {
+export default function buildFilterQuery({ formValues = {} } = {}) {
   const and = []
 
-  if (excludeRootNode) {
-    and.push({
-      filter: {
-        filterFunction: 'excludeRootNode',
-        input: {
-          value: true,
-        },
-      },
-    })
-  }
-
-  if (values.name) {
+  if (formValues.name) {
     and.push({
       filter: {
         filterFunction: 'nameSearch',
         input: {
-          value: values.name,
+          value: formValues.name,
         },
       },
     })
   }
 
-  if (values.group) {
+  if (formValues.group) {
     and.push({
       filter: {
         filterFunction: 'group',
         input: {
-          value: values.group,
+          value: formValues.group,
         },
       },
     })

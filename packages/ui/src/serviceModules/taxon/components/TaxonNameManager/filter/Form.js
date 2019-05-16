@@ -8,7 +8,7 @@ import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { DropdownSearch, Input } from 'coreModules/form/components'
 import { DROPDOWN_FILTER_OPTIONS } from '../../../constants'
 
-export const FORM_NAME = 'taxonNameFilter'
+export const FORM_NAME = 'searchTaxonNameFilter'
 
 const log = createLog('modules:locality:BaseForm')
 
