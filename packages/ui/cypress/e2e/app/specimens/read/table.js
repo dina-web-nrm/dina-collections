@@ -1,7 +1,7 @@
 export default () =>
   describe('table', () => {
     beforeEach(() => {
-      cy.visit('/app/specimens/individuals')
+      cy.visit('/app/specimens/mammals')
       cy.get('[data-testid="infinityTableHeader"', {
         log: false,
         timeout: 60000,
@@ -86,7 +86,7 @@ export default () =>
       cy.getByText('Catalog no.').should('not.be.visible')
     })
 
-    it('uses keyboard shortcuts and record number input to walk in table and open/view specimen', () => {
+    it.only('uses keyboard shortcuts and record number input to walk in table and open/view specimen', () => {
       cy.get('[data-isfocused="yes"]').should('contain', '621445')
       cy.get('body').type('{downarrow}{downarrow}{downarrow}')
       cy.get('[data-isfocused="yes"]').should('contain', '587520')
@@ -101,7 +101,12 @@ export default () =>
       cy.getInputByParentTestId('currentTableRowInput')
         .should('have.value', '3')
         .clear()
-        .type('16')
+        .type('1')
+        // need to use type command twice as using type('16') causes an
+        // expected redirect after typing '1', but that makes cypress stop 
+        // typing so the 6 would be missing.
+        .type('6')
+
       cy.getByText('500001')
       cy.getByText('Mustela erminea')
 
