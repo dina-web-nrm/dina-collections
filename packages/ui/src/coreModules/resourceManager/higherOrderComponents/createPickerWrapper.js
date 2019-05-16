@@ -5,12 +5,6 @@ import { blur, change } from 'redux-form'
 import { Prompt } from 'react-router-dom'
 import immutable from 'object-path-immutable'
 
-import {
-  ITEM_SELECT,
-  PICKER_CLOSE,
-  PICKER_PICK_ITEM,
-} from 'coreModules/resourceManager/constants'
-
 const defaultExtractPickedId = data => {
   return data && data.itemId
 }
@@ -43,12 +37,11 @@ const createPickerWrapper = ({
     constructor(props) {
       super(props)
 
-      this.handleInteraction = this.handleInteraction.bind(this)
       this.handleOnClose = this.handleOnClose.bind(this)
+      this.handlePickItem = this.handlePickItem.bind(this)
       this.handlePickerButtonClick = this.handlePickerButtonClick.bind(this)
       this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this)
       this.setPickerActive = this.setPickerActive.bind(this)
-      this.pickItem = this.pickItem.bind(this)
 
       this.state = {
         pickerActive: false,
@@ -61,20 +54,7 @@ const createPickerWrapper = ({
       })
     }
 
-    handleInteraction(type, data) {
-      if (type === PICKER_CLOSE) {
-        this.handleOnClose()
-      }
-
-      if (type === PICKER_PICK_ITEM) {
-        this.pickItem(data)
-      }
-      if (type === ITEM_SELECT) {
-        this.pickItem(data)
-      }
-    }
-
-    pickItem(data) {
+    handlePickItem(data) {
       const {
         input,
         meta,
@@ -139,15 +119,6 @@ const createPickerWrapper = ({
 
     render() {
       const {
-        handleInteraction,
-        handleOnClose,
-        handlePickerButtonClick,
-        handleSearchQueryChange,
-        searchQuery,
-        setPickerActive,
-      } = this
-
-      const {
         input,
         meta,
         pathToIdInValue: pathToIdInValueOverride,
@@ -170,17 +141,17 @@ const createPickerWrapper = ({
           />
           <ComposedComponent
             {...this.props}
-            fieldSearchQuery={searchQuery}
+            fieldSearchQuery={this.searchQuery}
             fieldValue={value}
             formName={formName}
-            onClose={handleOnClose}
-            onInteraction={handleInteraction}
-            onPickerButtonClick={handlePickerButtonClick}
-            onSearchQueryChange={handleSearchQueryChange}
+            onClose={this.handleOnClose}
+            onPickerButtonClick={this.handlePickerButtonClick}
+            onPickItem={this.handlePickItem}
+            onSearchQueryChange={this.handleSearchQueryChange}
             pathToIdInValue={pathToIdInValueOverride || pathToIdInValue}
             pathToTextInValue={pathToTextInValueOverride || pathToTextInValue}
             pickerActive={pickerActive}
-            setPickerActive={setPickerActive}
+            setPickerActive={this.setPickerActive}
           />
         </React.Fragment>
       )
