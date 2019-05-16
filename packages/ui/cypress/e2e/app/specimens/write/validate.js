@@ -6,7 +6,7 @@ export default () =>
       cy.resetDevelopmentSqlDb()
       cy.resetElasticSpecimenIndex()
       cy.log('Create new specimen for tests')
-      cy.visit('/app/specimens/individuals?mainColumn=create&sectionId=0')
+      cy.visit('/app/specimens/mammals?mainColumn=create&sectionId=0')
       cy.getByTestId('createAutomaticNumber').click()
       cy.url()
         .should('include', 'mainColumn=edit')
@@ -25,7 +25,7 @@ export default () =>
 
     it('validates coordinates format', () => {
       cy.visit(
-        `/app/specimens/individuals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=2`
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=2`
       )
       cy.get('[data-testid="localityOrigin"]', {
         log: false,
@@ -94,7 +94,7 @@ export default () =>
 
     it('validates storage location required for physical object', () => {
       cy.visit(
-        `/app/specimens/individuals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=4`
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=4`
       )
       cy.get('[data-testid="physicalObjects"]', {
         log: false,
@@ -133,7 +133,7 @@ export default () =>
 
     it('validates collecting date input', () => {
       cy.visit(
-        `/app/specimens/individuals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=3`
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=3`
       )
       cy.get('[data-testid="collectingDeath"]', {
         log: false,
@@ -221,7 +221,7 @@ export default () =>
 
     it('sets and validates catalog card date in current year', () => {
       cy.visit(
-        `/app/specimens/individuals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=0`
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=0`
       )
       cy.get('[data-testid="basicInformation"]', {
         log: false,

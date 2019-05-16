@@ -206,7 +206,6 @@ const config = {
         },
       ],
     },
-
     preparationType: {
       customSelectors: [
         {
@@ -237,6 +236,22 @@ const config = {
         {
           operationId: 'resourceActivityGetMany',
           type: 'getMany',
+        },
+      ],
+    },
+    searchPlace: {
+      operations: [
+        {
+          operationId: 'searchPlaceGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'searchPlaceGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'searchPlaceQuery',
+          type: 'query',
         },
       ],
     },
