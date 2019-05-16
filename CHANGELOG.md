@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.19.0-rc](https://github.com/dina-web-nrm/dina-collections/compare/v0.18.3...v0.19.0-rc)
+
+- Fix search place issues [`#522`](https://github.com/dina-web-nrm/dina-collections/pull/522)
+- Add search place to backend [`#521`](https://github.com/dina-web-nrm/dina-collections/pull/521)
+
 #### [v0.18.3](https://github.com/dina-web-nrm/dina-collections/compare/v0.18.2...v0.18.3)
+
+> 10 May 2019
 
 - Backend cleanup [`#517`](https://github.com/dina-web-nrm/dina-collections/pull/517)
 - Remove mammal form object value if id is empty string [`#519`](https://github.com/dina-web-nrm/dina-collections/pull/519)
