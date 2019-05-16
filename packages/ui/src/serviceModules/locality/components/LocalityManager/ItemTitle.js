@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const propTypes = {
-  nestedItem: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
 }
 
-const ItemTitle = ({ nestedItem = {} }) => {
+const ItemTitle = ({ item = {} }) => {
   const {
-    group,
-    name,
-    parent: { name: parentName, isRoot: parentIsRoot } = {},
-  } = nestedItem
+    attributes: { group, name },
+    relationships: { parent: { name: parentName, isRoot: parentIsRoot } = {} },
+  } = item
+
   if (!name) {
     return ''
   }

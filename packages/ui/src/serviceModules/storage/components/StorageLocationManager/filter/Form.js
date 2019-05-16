@@ -14,7 +14,7 @@ import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { DropdownSearch, Input } from 'coreModules/form/components'
 
-export const FORM_NAME = 'storageLocationFilter'
+export const FORM_NAME = 'searchStorageLocationFilter'
 
 const log = createLog('modules:locality:BaseForm')
 

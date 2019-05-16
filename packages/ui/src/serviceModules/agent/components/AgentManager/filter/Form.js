@@ -8,7 +8,7 @@ import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
 import { AGENT_TYPE_OPTIONS } from '../../../constants'
 
-export const FORM_NAME = 'normalizedAgentFilter'
+export const FORM_NAME = 'searchNormalizedAgentFilter'
 
 const log = createLog('modules:agent:BaseForm')
 
