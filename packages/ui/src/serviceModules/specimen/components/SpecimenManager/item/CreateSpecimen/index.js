@@ -8,7 +8,6 @@ import createLog from 'utilities/log'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
-import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
 import transformInput, {
   getBaseValues,
 } from '../RecordForm/transformations/input'
@@ -36,12 +35,14 @@ const mapDispatchToProps = {
 
 const propTypes = {
   createSpecimen: PropTypes.func.isRequired,
-  establishmentMeansTypes: PropTypes.array.isRequired,
-  establishmentMeansTypesFetched: PropTypes.bool.isRequired,
+  establishmentMeansTypes: PropTypes.array,
   fetchResourceCount: PropTypes.func.isRequired,
-  identifierTypes: PropTypes.array.isRequired,
-  identifierTypesFetched: PropTypes.bool.isRequired,
-  onInteraction: PropTypes.func.isRequired,
+  identifierTypes: PropTypes.array,
+  navigateEdit: PropTypes.func.isRequired,
+}
+const defaultProps = {
+  establishmentMeansTypes: [],
+  identifierTypes: [],
 }
 
 class CreateSpecimen extends PureComponent {
@@ -53,16 +54,11 @@ class CreateSpecimen extends PureComponent {
       establishmentMeansTypes,
       fetchResourceCount,
       identifierTypes,
-      onInteraction,
+      navigateEdit,
       ...rest
     } = this.props
 
-    if (
-      !establishmentMeansTypes ||
-      !establishmentMeansTypes.length ||
-      !identifierTypes ||
-      !identifierTypes.length
-    ) {
+    if (!establishmentMeansTypes.length || !identifierTypes.length) {
       return null
     }
 
@@ -86,17 +82,6 @@ class CreateSpecimen extends PureComponent {
         form={FORM_NAME}
         formName={FORM_NAME}
         formValueSelector={formValueSelector}
-        handleFormSubmit={item => {
-          return createSpecimen({ item, nested: true }).then(res => {
-            fetchResourceCount()
-            onInteraction(CREATE_SUCCESS, { itemId: res.id })
-            return new Promise(resolve => {
-              setTimeout(() => {
-                return resolve(res)
-              }, 3000)
-            })
-          })
-        }}
         initialValues={initialValues}
         mode="register"
         redirectOnSuccess
@@ -106,6 +91,7 @@ class CreateSpecimen extends PureComponent {
 }
 
 CreateSpecimen.propTypes = propTypes
+CreateSpecimen.defaultProps = defaultProps
 
 export default compose(
   createGetResourceCount({ resource: 'specimen' }),
