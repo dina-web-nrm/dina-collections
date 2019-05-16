@@ -1,6 +1,8 @@
 {
   "docs": {
-    "Introduction": ["index"],
+    "Introduction": [
+      "index"
+    ],
     "Setup": [
       "setup/setup-locally-for-development",
       "setup/setup-locally-with-docker",
@@ -25,7 +27,14 @@
       },
       "packages/common/index",
       "packages/style/index",
-      "packages/ui/index"
+      {
+        "type": "subcategory",
+        "label": "UI",
+        "ids": [
+          "packages/ui/index",
+          "packages/ui/resourceManager"
+        ]
+      }
     ],
     "Development": [
       "development/cli",
