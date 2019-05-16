@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Grid, Icon } from 'semantic-ui-react'
-import { isEqual } from 'lodash'
+import isEqual from 'fast-deep-equal'
 
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
