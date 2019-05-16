@@ -57,7 +57,7 @@ class App extends Component {
             <Route
               component={ManageSpecimens}
               exact
-              path={`${match.url}/specimens/individuals`}
+              path={`${match.url}/specimens/mammals`}
             />
             <Route
               component={ManageAgents}

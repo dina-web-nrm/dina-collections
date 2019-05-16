@@ -80,11 +80,11 @@ export function buildLocalAggregationQuery({
   })
 }
 
-export function buildQuery({ formName, getSubQueries, formState }) {
+export function buildQuery({ formName, getSubQueries, formValues }) {
   const patchedGlobalState = {
     form: {
       [formName]: {
-        values: formState,
+        values: formValues,
       },
     },
   }

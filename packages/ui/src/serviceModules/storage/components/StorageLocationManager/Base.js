@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
+import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import CreateForm from './item/CreateForm'
@@ -28,7 +29,18 @@ const createGetNestedItemHocInput = {
   resource,
 }
 
-const itemFetchOptions = {
+const buildEditItemHeaders = nestedItem => {
+  if (!nestedItem) {
+    return {}
+  }
+
+  return {
+    itemHeader: nestedItem.name,
+    itemSubHeader: capitalizeFirstLetter(nestedItem.group),
+  }
+}
+
+const treeItemFetchOptions = {
   include: ['parent'],
   relationships: ['parent', 'children'],
   resolveRelationships: ['storageLocation'],
@@ -75,7 +87,6 @@ class StorageLocationManager extends Component {
     super(props)
     this.getChildren = this.getChildren.bind(this)
     this.getSpecimens = this.getSpecimens.bind(this)
-    this.handleInteraction = this.handleInteraction.bind(this)
     this.fetchRelationshipsBeforeDelete = this.fetchRelationshipsBeforeDelete.bind(
       this
     )
@@ -117,10 +128,6 @@ class StorageLocationManager extends Component {
     })
   }
 
-  handleInteraction(type, data = {}) {
-    this.props.onNavigation(type, data)
-  }
-
   fetchRelationshipsBeforeDelete() {
     return Promise.all([this.getChildren(), this.getSpecimens()]).then(
       ([children, specimens]) => {
@@ -134,13 +141,7 @@ class StorageLocationManager extends Component {
 
   renderEditForm(props = {}) {
     const { itemId } = this.props
-    return (
-      <EditForm
-        {...props}
-        itemId={itemId}
-        onInteraction={this.handleInteraction}
-      />
-    )
+    return <EditForm {...props} itemId={itemId} />
   }
   renderCreateForm(props = {}) {
     return <CreateForm {...props} onInteraction={this.handleInteraction} />
@@ -155,13 +156,11 @@ class StorageLocationManager extends Component {
       <ResourceManager
         {...this.props}
         baseTreeFilter={baseTreeFilter}
+        buildEditItemHeaders={buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         fetchRelationshipsBeforeDelete={this.fetchRelationshipsBeforeDelete}
-        filterHeader="Find storage locations"
-        itemFetchOptions={itemFetchOptions}
         ItemTitle={ItemTitle}
-        onInteraction={this.handleInteraction}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
@@ -170,6 +169,7 @@ class StorageLocationManager extends Component {
         tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled
+        treeItemFetchOptions={treeItemFetchOptions}
       />
     )
   }
