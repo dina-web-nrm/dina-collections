@@ -134,6 +134,9 @@ const processors = {
       return null
     })
   },
+  'wrap-in-bash-code-block': ({ content }) => {
+    return ['```bash', content, '```'].join('\n')
+  },
   'wrap-in-js-code-block': ({ content }) => {
     return ['```js', content, '```'].join('\n')
   },

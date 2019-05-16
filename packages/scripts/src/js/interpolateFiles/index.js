@@ -22,7 +22,7 @@ patterns.forEach(pattern => {
   const paths = glob.sync(pattern, {
     cwd: rootPath,
   })
-  if (paths.length > 10) {
+  if (paths.length > 30) {
     throw new Error(
       `Pattern: ${pattern} matched more then 10 paths, provide more specific pattern`
     )
