@@ -19,7 +19,7 @@ exports.update = [
     service: 'storageService',
   }),
   createUpdateRelatedSearchSpecimensPostHook({
-    resource: 'storageLocation',
+    srcResource: 'storageLocation',
   }),
 ]
 

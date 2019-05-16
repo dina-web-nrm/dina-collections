@@ -21,7 +21,7 @@ exports.update = [
     service: 'taxonomyService',
   }),
   createUpdateRelatedSearchSpecimensPostHook({
-    resource: 'taxon',
+    srcResource: 'taxon',
   }),
 ]
 

@@ -34,7 +34,7 @@ exports.update = [
     service: 'placeService',
   }),
   createUpdateRelatedSearchSpecimensPostHook({
-    resource: 'place',
+    srcResource: 'place',
   }),
 ]
 
