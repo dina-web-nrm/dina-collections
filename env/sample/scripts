@@ -1,3 +1,24 @@
+# These configurations makes it possible to use the remote scripts
+# in root package.json
+#
+# They follow the same format for the different environments
+# * PRODUCTION
+# * STAGE
+# * TEST
+# * DEMO
+
+# SERVER_HOST
+# Ip the server
+
+# SERVER_USER
+# The user used when logging in with ssh
+
+# SERVER_KEY_FILE
+# The key file used when logging in with ssh
+
+# SERVER_REPO_ROOT
+# Full path to the root of the repository in the server
+
 PRODUCTION_SERVER_HOST=82.196.9.188
 PRODUCTION_SERVER_USER=anton
 PRODUCTION_SERVER_KEY_FILE=/.ssh/id_rsa
@@ -18,4 +39,7 @@ DEMO_SERVER_USER=anton
 DEMO_SERVER_KEY_FILE=/.ssh/id_rsa
 DEMO_SERVER_REPO_ROOT=/home/dina/repos/dina-collections
 
+
+# The local server host
+# Should be set to 127.0.0.1 
 LOCAL_SERVER_HOST=127.0.0.1

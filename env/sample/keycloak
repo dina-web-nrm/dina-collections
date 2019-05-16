@@ -1,11 +1,44 @@
+# For details of parameters consult keycloak documentation
+# https://hub.docker.com/r/jboss/keycloak/
+
+# Name of the mysql database.
+# Its recommended to set it to keycloak
+# Should be the same as the MYSQL_DATABASE in ./mysql
 DB_DATABASE=keycloak
+
+# Db mysql password.
+# Should be changed in production
+# Should be the same as the MYSQL_PASSWORD in ./mysql
 DB_PASSWORD=password
+
+# The db user for keycloak.
+# Its recommended to set it to keycloak
+# Should be the same as the MYSQL_USER in ./mysql
 DB_USER=keycloak
+
+# Path to initial import.
 KEYCLOAK_IMPORT=/opt/jboss/keycloak/dev-export.json
+
+# Keycloak log level
 KEYCLOAK_LOGLEVEL=DEBUG
+
+# Keycloak admin interface password.
+# Should be changed in production.
 KEYCLOAK_PASSWORD=admin
+
+# Keycloak admin interface user.
 KEYCLOAK_USER=admin
+
+# Port used inside the docker container.
+# Should be 8080
 NGINX_PORT=8080
+
+# Should be true. Inspect keycloak docs for more information
 PROXY_ADDRESS_FORWARDING=true
+
+# Should be set to relevant timezone. Inspect keycloak docs for more information
 TZ=Europe/Stockholm
-VIRTUAL_HOST=local-keycloak.dina-web.net
+
+# Virtual host used by the proxy
+# See: https://github.com/jwilder/nginx-proxy
+VIRTUAL_HOST=local-docs.dina-web.net

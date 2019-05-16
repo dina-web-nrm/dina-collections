@@ -1,5 +1,12 @@
-NGINX_UI_EXTERNAL_URL=https://dina-collections.dina-web.net
+# Url pointing to corresponding api for link purpose
 NGINX_API_EXTERNAL_URL=https://dina-api.dina-web.net
-VIRTUAL_HOST=local-docs.dina-web.net
-NGINX_HOST=local-docs.dina-web.net
+
+# Should be 80 when running in docker and otherwise eny valid port
 NGINX_PORT=80
+
+# Url pointing to corresponding ui for link purpose
+NGINX_UI_EXTERNAL_URL=https://dina-collections.dina-web.net
+
+# Virtual host used by the proxy
+# See: https://github.com/jwilder/nginx-proxy
+VIRTUAL_HOST=local-docs.dina-web.net

@@ -1,18 +1,64 @@
+# The port the api will be exposed at.
+# Should be 80 when running in docker and 4444 in development
 API_PORT=80
+
+# The name of the postgres database
 DB_DATABASE=dina_production
+
+# The password to postgres database
+# This should be replaced with a secret password
+# Should be the same as POSTGRES_PASSWORD in .postgres env file
 DB_PASSWORD=mysecretpassword
+
+# Postgres url
+# Should be postgres in docker otherwise ex 127.0.0.1:5432
 DB_URL=postgres
+
+# Username to postgres
+# This can be replaced with an other username
 DB_USERNAME=postgres
+
+# Pattern to control debug for logging
+# see https://www.npmjs.com/package/debug
 DEBUG=DINA*
+
+# Url to elasticsearch.
+# Should be elasticsearch:9200 in docker otherwise ex 127.0.0.1:9200
 ELASTICSEARCH_URL=elasticsearch:9200
+
+# Determine if keycloak admin integration should be active
 KEYCLOAK_ADMIN_ACTIVE=false
+
+# Password to keyckloak admin
 KEYCLOAK_ADMIN_PASSWORD=admin
+
+# Username to keyckloak admin
 KEYCLOAK_ADMIN_USERNAME=admin
+
+# Base url to keycloak
+# Should be http://keycloak:8080 in docker otherwise exhttp://127.0.0.1:3000
 KEYCLOAK_AUTH_BASE_URL=http://keycloak:8080
+
+# Keycloak realm
 KEYCLOAK_REALM_NAME=dina
+
+# The NODE_ENV to be used.
+# Should be production when running in docker otherwise development
 NODE_ENV=production
+
+# ?
 SERVER_ALIAS=local
+
+# Set true to enable slack integration
+# When set to true SLACK_ERROR_WEBHOOK and SLACK_WARNING_WEBHOOK should be set
 SLACK_ACTIVE=false
+
+# When slack is active this webook will be used to send error messages to slack
 SLACK_ERROR_WEBHOOK=url
+
+# When slack is active this webook will be used to send warning messages to slack
 SLACK_WARNING_WEBHOOK=url
+
+# Virtual host used by the proxy
+# See: https://github.com/jwilder/nginx-proxy
 VIRTUAL_HOST=local-api.dina-web.net

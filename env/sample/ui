@@ -1,10 +1,39 @@
+# Url to the api.
+# Should be http://api in docker
+# When not running in docker this is not used
+# but hardcoded to 127.0.0.1:4444
 NGINX_API_BASE_URL=http://api
+
+# Url to keycloak.
+# Should be http://keycloak:8080 in docker
+# When not running in docker this is not used
+# but hardcoded to 127.0.0.1:4444
 NGINX_AUTH_BASE_URL=http://keycloak:8080
-NGINX_HOST=local-ui.dina-web.net
+
+# Should be 80 when running in docker
+# When not running in docker this is not used
+# but hardcoded to 3000
 NGINX_PORT=80
+
+# Needed for the frontend to be able to resolve
+# modules based on non relative imports
+# should not be changed
 NODE_PATH=src/
+
+# When set to true ui will not authenticate the user
+# Should only be set to true in development
 REACT_APP_DISABLE_AUTH=false
+
+# Url pointing to corresponding api for link purpose
 REACT_APP_EXTERNAL_URL_API=https://dina-api.nrm.se
+
+# Url pointing to corresponding docs for link purpose
 REACT_APP_EXTERNAL_URL_DOCS=https://dina-docs.nrm.se
+
+# Url pointing to corresponding style documentation for link purpose
 REACT_APP_EXTERNAL_URL_STYLE=https://dina-style.nrm.se
+
+# Virtual host used by the proxy
+# See: https://github.com/jwilder/nginx-proxy
 VIRTUAL_HOST=local-ui.dina-web.net
+
