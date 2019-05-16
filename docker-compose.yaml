@@ -90,7 +90,7 @@ services:
     env_file:
       - ./env/.style
     command:
-      /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' <
+      /bin/bash -c "envsubst '$$VIRTUAL_HOST $$NGINX_PORT' <
       /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf &&
       nginx -g 'daemon off;'"
 
@@ -102,7 +102,7 @@ services:
     env_file:
       - ./env/.ui
     command:
-      /bin/bash -c "envsubst '$$NGINX_API_BASE_URL $$NGINX_HOST $$NGINX_PORT
+      /bin/bash -c "envsubst '$$NGINX_API_BASE_URL $$VIRTUAL_HOST $$NGINX_PORT
       $$NGINX_AUTH_BASE_URL $$REACT_APP_DISABLE_AUTH
       $$REACT_APP_EXTERNAL_URL_API $$REACT_APP_EXTERNAL_URL_DOCS
       $$REACT_APP_EXTERNAL_URL_STYLE' < /etc/nginx/conf.d/default.template >
@@ -118,7 +118,7 @@ services:
     env_file:
       - ./env/.docs
     command:
-      /bin/bash -c "envsubst '$$NGINX_API_EXTERNAL_URL $$NGINX_UI_EXTERNAL_URL $$NGINX_HOST $$NGINX_PORT' <
+      /bin/bash -c "envsubst '$$NGINX_API_EXTERNAL_URL $$NGINX_UI_EXTERNAL_URL $$VIRTUAL_HOST $$NGINX_PORT' <
       /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf &&
       nginx -g 'daemon off;'"
 
