@@ -7,16 +7,16 @@ import { buildQuery } from '../utilities'
 export default function createFormHocFactory({ formName, selectors }) {
   const createFormHoc = () => ComposedComponent => {
     const propTypes = {
-      formState: PropTypes.object,
+      formValues: PropTypes.object,
     }
 
     const defaultProps = {
-      formState: undefined,
+      formValues: {},
     }
 
     const mapStateToProps = state => {
       return {
-        formState: selectors.getFormSelector(state),
+        formValues: selectors.getFormSelector(state),
       }
     }
 
@@ -26,11 +26,10 @@ export default function createFormHocFactory({ formName, selectors }) {
         this.buildQuery = this.buildQuery.bind(this)
       }
 
-      buildQuery() {
-        const { formState } = this.props
+      buildQuery({ formValues = this.props.formValues } = {}) {
         return buildQuery({
           formName,
-          formState,
+          formValues,
           getSubQueries: selectors.getSubQueries,
         })
       }
