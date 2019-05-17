@@ -8,10 +8,9 @@ import { Button, Form, Grid, Header, Icon, Message } from 'semantic-ui-react'
 import createLog from 'utilities/log'
 import { Checkbox, Field } from 'coreModules/form/components'
 import { Translate } from 'coreModules/i18n/components'
+import { useHandlers } from 'coreModules/resourceManager/contexts/resourceManagerHandlers'
 import { updateUserPreference as updateUserPreferenceAC } from 'coreModules/user/actionCreators'
 import userSelectors from 'coreModules/user/globalSelectors'
-
-import { useHandlers } from '../../../../../contexts/resourceManagerHandlers'
 
 const log = createLog('resourceManager:TableSettings')
 
@@ -35,7 +34,8 @@ const transformFormValuesToColumnNames = formValues => {
 const mapStateToProps = (state, { form, resource }) => {
   const userPreferences = userSelectors.getUserPreferences(state)
   const savedTableColumnNames =
-    (userPreferences && userPreferences[`${resource}TableColumns`]) || undefined
+    (userPreferences && userPreferences[`${resource}TableColumnsToShow`]) ||
+    undefined
   const columnsSelectedStatus = Object.values(getFormValues(form)(state) || {})
 
   return {
@@ -101,7 +101,7 @@ const ResultTableSettings = ({
 
   const handleSave = (formValues = {}) => {
     return updateUserPreference(
-      `${resource}TableColumns`,
+      `${resource}TableColumnsToShow`,
       transformFormValuesToColumnNames(formValues)
     )
       .then(() => {

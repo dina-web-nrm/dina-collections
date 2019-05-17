@@ -56,9 +56,6 @@ const createGetNestedItemHocInput = {
   resource,
 }
 const relationshipsToCheckBeforeDelete = []
-const tableBatchFetchOptions = {
-  resource: 'searchSpecimen',
-}
 
 const initialFilterValues = {
   length: { rangeType: 'total-length', rangeUnit: 'unspecified' },
@@ -178,7 +175,6 @@ class SpecimenManager extends Component {
         renderEditForm={renderEditForm}
         renderFilterForm={renderFilterForm}
         resource={resource}
-        tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         tableSearch={search}
         transformOutput={this.transformOutput}

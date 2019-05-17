@@ -33,6 +33,7 @@ export default function buildList({
             fetchItemById(childId)
 
             return {
+              id: childId,
               loading: true,
             }
           })

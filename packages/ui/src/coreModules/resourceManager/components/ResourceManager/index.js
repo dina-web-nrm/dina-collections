@@ -48,7 +48,7 @@ const mapStateToProps = (state, { isPicker, resource, windowHeight }) => {
     filterColumnWidth: isPicker ? emToPixels(16) : emToPixels(25),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     tableColumnsToShow:
-      (userPreferences && userPreferences[`${resource}TableColumns`]) ||
+      (userPreferences && userPreferences[`${resource}TableColumnsToShow`]) ||
       undefined,
   }
 }

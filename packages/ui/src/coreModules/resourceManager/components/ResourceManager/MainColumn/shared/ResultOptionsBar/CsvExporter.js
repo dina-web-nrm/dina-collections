@@ -18,7 +18,7 @@ const mapStateToProps = (state, { resource }) => {
       resource,
     }),
     selectedTableColumnFieldPaths:
-      (userPreferences && userPreferences[`${resource}TableColumns`]) ||
+      (userPreferences && userPreferences[`${resource}TableColumnsToShow`]) ||
       undefined,
   }
 }

@@ -13,7 +13,10 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/resourceManager/keyObjectModule'
-import injectResourceManagerConfig from 'coreModules/resourceManager/higherOrderComponents/injectResourceManagerConfig'
+import {
+  createFocusRow,
+  injectResourceManagerConfig,
+} from 'coreModules/resourceManager/higherOrderComponents'
 import { buildList } from 'coreModules/resourceManager/utilities'
 
 const { get } = keyObjectGlobalSelectors
@@ -61,6 +64,7 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
 
 const propTypes = {
   baseTreeFilter: PropTypes.object,
+  currentRowNumber: PropTypes.number.isRequired,
   fetchItemById: PropTypes.func.isRequired,
   focusedItemId: PropTypes.string,
   getMany: PropTypes.func.isRequired,
@@ -69,6 +73,7 @@ const propTypes = {
   itemsObject: PropTypes.object.isRequired,
   ItemTitle: PropTypes.func,
   managerScope: PropTypes.string.isRequired,
+  onClickRow: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   setFocusedItemId: PropTypes.func.isRequired,
   setTreeBaseItems: PropTypes.func.isRequired,
@@ -108,24 +113,21 @@ const createTreeModuleWrapper = () => ComposedComponent => {
       super(props)
       this.fetchTreeBase = this.fetchTreeBase.bind(this)
       this.expandAncestorsForItemId = this.expandAncestorsForItemId.bind(this)
-      this.handleClickRow = this.handleClickRow.bind(this)
-      this.handleToggleCurrentRow = this.handleToggleCurrentRow.bind(this)
       this.handleToggleRow = this.handleToggleRow.bind(this)
+      this.handleCollapseCurrentRow = this.handleCollapseCurrentRow.bind(this)
+      this.handleExpandCurrentRow = this.handleExpandCurrentRow.bind(this)
+      this.setCurrentRowIsExpanded = this.setCurrentRowIsExpanded.bind(this)
 
       this.shortcuts = [
         {
           command: 'left',
           description: 'Collapse tree node',
-          onPress: () => {
-            this.handleToggleCurrentRow('collapse')
-          },
+          onPress: this.handleCollapseCurrentRow,
         },
         {
           command: 'right',
           description: 'Expand tree node',
-          onPress: () => {
-            this.handleToggleCurrentRow('expand')
-          },
+          onPress: this.handleExpandCurrentRow,
         },
       ]
     }
@@ -146,7 +148,9 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         setFocusedItemId(initialItemId, { managerScope })
       }
 
-      this.fetchTreeBase()
+      this.fetchTreeBase({
+        shouldFocusBaseItem: !focusedItemId && !initialItemId,
+      })
     }
 
     componentDidUpdate(prevProps) {
@@ -178,6 +182,22 @@ const createTreeModuleWrapper = () => ComposedComponent => {
 
         setTreeListItems(newTreeListItems, { managerScope })
       }
+    }
+
+    setCurrentRowIsExpanded(isExpanded) {
+      const {
+        focusedItemId,
+        treeExpandedIds,
+        managerScope,
+        setTreeExpandedIds,
+      } = this.props
+
+      const updatedExpandedIds = {
+        ...treeExpandedIds,
+        [focusedItemId]: isExpanded,
+      }
+
+      setTreeExpandedIds(updatedExpandedIds, { managerScope })
     }
 
     expandAncestorsForItemId(itemId) {
@@ -229,7 +249,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
       })
     }
 
-    fetchTreeBase() {
+    fetchTreeBase({ shouldFocusBaseItem = false } = {}) {
       const {
         baseTreeFilter,
         getMany,
@@ -237,6 +257,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         managerScope,
         sortOrder,
         treeBaseItems,
+        setFocusedItemId,
         setTreeBaseItems,
       } = this.props
 
@@ -252,15 +273,11 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         if (!isEqual(items, treeBaseItems)) {
           setTreeBaseItems(items, { managerScope })
         }
+
+        if (shouldFocusBaseItem && items && items.length) {
+          setFocusedItemId(items[0].id, { managerScope })
+        }
       })
-    }
-
-    handleClickRow(_, itemId) {
-      const { focusedItemId, managerScope, setFocusedItemId } = this.props
-
-      if (itemId !== focusedItemId) {
-        setFocusedItemId(itemId, { managerScope })
-      }
     }
 
     handleToggleRow(itemId) {
@@ -274,21 +291,12 @@ const createTreeModuleWrapper = () => ComposedComponent => {
       setTreeExpandedIds(updatedExpandedIds, { managerScope })
     }
 
-    // TODO: separate into collapse and expand instead of toggle
-    handleToggleCurrentRow(mode) {
-      const {
-        focusedItemId,
-        treeExpandedIds,
-        managerScope,
-        setTreeExpandedIds,
-      } = this.props
+    handleCollapseCurrentRow() {
+      this.setCurrentRowIsExpanded(false)
+    }
 
-      const updatedExpandedIds = {
-        ...treeExpandedIds,
-        [focusedItemId]: mode === 'expand',
-      }
-
-      setTreeExpandedIds(updatedExpandedIds, { managerScope })
+    handleExpandCurrentRow() {
+      this.setCurrentRowIsExpanded(true)
     }
 
     render() {
@@ -297,6 +305,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         itemFetchOptions,
         ItemTitle,
         managerScope,
+        onClickRow,
         resource,
         treeExpandedIds,
         treeListItems,
@@ -313,7 +322,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
             itemFetchOptions={itemFetchOptions}
             ItemTitle={ItemTitle}
             managerScope={managerScope}
-            onClickRow={this.handleClickRow}
+            onClickRow={onClickRow}
             onToggleRow={this.handleToggleRow}
             resource={resource}
             treeExpandedIds={treeExpandedIds}
@@ -333,6 +342,10 @@ const createTreeModuleWrapper = () => ComposedComponent => {
       mapStateToProps,
       mapDispatchToProps
     ),
+    createFocusRow({
+      itemsSelector: get[':managerScope.treeListItems'],
+      rowSelector: resourceManagerSelectors.getCurrentTreeRowNumber,
+    }),
     createBatchFetchItems({
       relationships: ['parent', 'children'],
     })

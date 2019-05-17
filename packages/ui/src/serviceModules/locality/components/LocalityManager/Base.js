@@ -92,6 +92,7 @@ class LocalityManager extends Component {
         baseTreeFilter={baseTreeFilter}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
+        excludeRootNode
         filterHeader="Find geography"
         itemFetchOptions={itemFetchOptions}
         ItemTitle={ItemTitle}

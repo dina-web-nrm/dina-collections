@@ -11,7 +11,6 @@ import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
-import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import userSelectors from 'coreModules/user/globalSelectors'
 
 import {
@@ -52,7 +51,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     const treeBaseItems = get[':managerScope.treeBaseItems'](state, {
       managerScope,
     })
-    const listItems = get[':managerScope.listItems'](state, { managerScope })
+    const listItems = get[':managerScope.tableListItems'](state, {
+      managerScope,
+    })
     const treeListItems = get[':managerScope.treeListItems'](state, {
       managerScope,
     })
@@ -79,7 +80,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     })
     const userPreferences = userSelectors.getUserPreferences(state)
     const tableColumnsToSort =
-      (userPreferences && userPreferences[`${resource}TableColumnsSorting`]) ||
+      (userPreferences && userPreferences[`${resource}TableColumnsToSort`]) ||
       undefined
     const searchInProgress = searchSelectors.get[':resource.searchInProgress'](
       state,
@@ -229,14 +230,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.findRowNumberById = this.findRowNumberById.bind(this)
       this.focusRowWithId = this.focusRowWithId.bind(this)
       this.getNestedCacheNamespaces = this.getNestedCacheNamespaces.bind(this)
-      this.handleClickRow = this.handleClickRow.bind(this)
       this.handleClosePicker = this.handleClosePicker.bind(this)
       this.handleFormTabClick = this.handleFormTabClick.bind(this)
       this.handleInteraction = this.handleInteraction.bind(this)
       this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
       this.handlePickItem = this.handlePickItem.bind(this)
-      this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
-      this.handleSelectPrev = this.handleSelectPrev.bind(this)
       this.handleSetCurrentTableRow = this.handleSetCurrentTableRow.bind(this)
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
       this.handleTableTabClick = this.handleTableTabClick.bind(this)
@@ -247,13 +245,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.selectCurrentRow = this.selectCurrentRow.bind(this)
       this.tableSearch = this.tableSearch.bind(this)
       this.resetFilters = this.resetFilters.bind(this)
-      this.waitForOtherSearchesToFinish = this.waitForOtherSearchesToFinish.bind(
-        this
-      )
-      this.mountTreeView = this.mountTreeView.bind(this)
-      this.updateTreeView = this.updateTreeView.bind(this)
-      this.transitionToTreeView = this.transitionToTreeView.bind(this)
-      this.transitionFromTreeView = this.transitionFromTreeView.bind(this)
 
       this.mountItemView = this.mountItemView.bind(this)
       this.updateItemView = this.updateItemView.bind(this)
@@ -261,16 +252,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.transitionFromItemView = this.transitionFromItemView.bind(this)
 
       this.shortcuts = [
-        {
-          command: 'down',
-          description: 'Move focus to next record',
-          onPress: this.handleSelectNextRecord,
-        },
-        {
-          command: 'up',
-          description: 'Move focus to previous record',
-          onPress: this.handleSelectPrev,
-        },
         {
           command: 'n t',
           description: 'Open table view',
@@ -319,11 +300,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         }
       }
 
-      if (tableActive) {
-        this.tableSearch(initialFilterValues)
-      } else if (treeActive) {
-        this.mountTreeView()
-      } else {
+      if (!treeActive && !tableActive) {
         this.mountItemView()
         this.tableSearch(initialFilterValues)
       }
@@ -344,20 +321,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
       activeViews.forEach(activeView => {
         switch (activeView) {
-          case 'table': {
-            break
-          }
-          case 'tree': {
-            this.updateTreeView(prevProps)
-            break
-          }
           case 'edit-item': {
             this.updateItemView(prevProps)
             break
           }
 
           default: {
-            throw new Error(`Unknown active view: ${activeView}`)
+            break
           }
         }
       })
@@ -366,22 +336,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
       transitions.forEach(transition => {
         switch (transition) {
-          case 'to-table': {
-            break
-          }
-          case 'from-table': {
-            break
-          }
-          case 'to-tree': {
-            this.transitionToTreeView(prevProps)
-            break
-          }
-          case 'from-tree': {
-            this.transitionFromTreeView(prevProps, {
-              skipTableSearch: transitions.length === 1, // if going to new record
-            })
-            break
-          }
           case 'to-edit-item': {
             this.transitionToItemView(prevProps)
             break
@@ -391,7 +345,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
             break
           }
           default: {
-            throw new Error(`Unknown transition: ${transition}`)
+            break
           }
         }
       })
@@ -524,30 +478,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     handleOpenNewRecordForm() {
       this.handleInteraction(NAVIGATE_CREATE)
     }
-    handleSelectNextRecord() {
-      const {
-        currentTableRowNumber,
-        managerScope,
-        nextRowAvailable,
-      } = this.props
-      if (nextRowAvailable) {
-        this.props.setCurrentTableRowNumber(currentTableRowNumber + 1, {
-          managerScope,
-        })
-      }
-    }
-    handleSelectPrev() {
-      const {
-        currentTableRowNumber,
-        managerScope,
-        prevRowAvailable,
-      } = this.props
-      if (prevRowAvailable) {
-        this.props.setCurrentTableRowNumber(currentTableRowNumber - 1, {
-          managerScope,
-        })
-      }
-    }
+
     handleShowAllRecords({ isPicker, skipTableSearch }) {
       const { managerScope, showAll, treeActive } = this.props
 
@@ -562,16 +493,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
           setTimeout(this.tableSearch)
         }
       }
-    }
-
-    handleClickRow(_, itemId) {
-      const { focusedItemId, managerScope, setFocusedItemId } = this.props
-
-      if (itemId !== focusedItemId) {
-        setFocusedItemId(itemId, { managerScope })
-      }
-
-      this.focusRowWithId(itemId)
     }
 
     handleFormTabClick() {
@@ -632,124 +553,8 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return null
     }
 
-    waitForOtherSearchesToFinish() {
-      let count = 0
-      const wait = () => {
-        count += 1
-        if (count > 5) {
-          return Promise.resolve()
-        }
-        return new Promise(resolve => {
-          const { searchInProgress } = this.props
-          if (!searchInProgress) {
-            return resolve(true)
-          }
-
-          return setTimeout(() => {
-            return wait().then(() => {
-              resolve(true)
-            })
-          }, 1000)
-        })
-      }
-
-      return wait()
-    }
-
     tableSearch(filterValues) {
-      const {
-        enableTableColumnSorting,
-        excludeRootNode,
-        managerScope,
-        search,
-        sortOrder,
-        tableColumnsToSort,
-        tableSearch,
-      } = this.props
-
-      return this.waitForOtherSearchesToFinish().then(() => {
-        const query = this.props.buildFilterQuery({
-          excludeRootNode,
-          values: filterValues || {},
-        })
-        return (tableSearch || search)({
-          query,
-          sort:
-            (enableTableColumnSorting &&
-              tableColumnsToSort &&
-              tableColumnsToSort.map(({ fieldPath, sort: order }) => {
-                return `attributes.${fieldPath}:${order}`
-              })) ||
-            sortOrder,
-          useScroll: false,
-        }).then(items => {
-          this.props.setListItems(items, { managerScope })
-
-          return null
-        })
-      })
-    }
-
-    mountTreeView() {
-      log.debug('initial mount view: Tree')
-      // const { initialItemId, itemId, managerScope } = this.props
-
-      // if (
-      //   itemId === undefined &&
-      //   initialItemId !== undefined &&
-      //   initialItemId !== ''
-      // ) {
-      //   this.props.setFocusIdWhenLoaded(initialItemId, { managerScope })
-      //   this.expandAncestorsForItemId(initialItemId)
-      // }
-
-      // this.transitionToTreeView()
-    }
-
-    updateTreeView(prevProps) {
-      // const {
-      //   focusIdWhenLoaded,
-      //   listItems,
-      //   managerScope,
-      //   treeActive,
-      // } = this.props
-      // if (!treeActive) {
-      //   return
-      // }
-      // const { listItems: prevListItems } = prevProps
-      // if (
-      //   focusIdWhenLoaded &&
-      //   prevListItems !== listItems &&
-      //   listItems.length
-      // ) {
-      //   const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
-      //   if (rowFocused) {
-      //     this.props.delFocusIdWhenLoaded({ managerScope })
-      //   }
-      // }
-    }
-
-    transitionToTreeView() {
-      log.debug('transition to view: Tree')
-      // const { focusedItemId, managerScope } = this.props
-
-      // if (focusedItemId) {
-      //   this.props.setFocusIdWhenLoaded(focusedItemId, { managerScope })
-      //   this.expandAncestorsForItemId(focusedItemId)
-      // }
-
-      // this.fetchTreeBase()
-    }
-
-    transitionFromTreeView(_, { skipTableSearch }) {
-      log.debug('transition from view: Tree')
-      // const { managerScope } = this.props
-
-      // if (!skipTableSearch) {
-      //   this.tableSearch()
-      // }
-
-      // this.props.setExpandedIds({}, { managerScope })
+      log.debug('tableSearch')
     }
 
     mountItemView() {
@@ -790,9 +595,12 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     render() {
       const {
         baseTreeFilter,
+        buildFilterQuery,
         clearNestedCache,
         currentTableRowNumber,
         delFocusIdWhenLoaded,
+        enableTableColumnSorting,
+        excludeRootNode,
         focusedIndex,
         focusedItemId,
         focusIdWhenLoaded,
@@ -814,19 +622,22 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return (
         <ResourceManagerConfigProvider
           baseTreeFilter={baseTreeFilter}
+          buildFilterQuery={buildFilterQuery}
+          enableTableColumnSorting={enableTableColumnSorting}
+          excludeRootNode={excludeRootNode}
           initialItemId={initialItemId}
           itemFetchOptions={itemFetchOptions}
           managerScope={managerScope}
           resource={resource}
           searchResource={`search${capitalizeFirstLetter(resource)}`}
           sortOrder={sortOrder}
+          tableColumnSpecifications={tableColumnSpecifications}
         >
           <ResourceManagerHandlersProvider
             clearNestedCache={clearNestedCache}
             delFocusIdWhenLoaded={delFocusIdWhenLoaded}
             focusRowWithId={this.focusRowWithId}
             getNestedCacheNamespaces={this.getNestedCacheNamespaces}
-            onClickRow={this.handleClickRow}
             onClosePicker={this.handleClosePicker}
             onFormTabClick={this.handleFormTabClick}
             onInteraction={this.handleInteraction}
@@ -866,7 +677,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
               <ComposedComponent
                 {...this.props}
                 managerScope={managerScope}
-                onClickRow={this.handleClickRow}
                 onClosePicker={this.handleClosePicker}
                 onFormTabClick={this.handleFormTabClick}
                 onInteraction={this.handleInteraction}
@@ -899,10 +709,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   ResourceManagerWrapper.defaultProps = defaultProps
 
   return compose(
-    createInjectSearch({
-      includeFields: ['id'],
-      storeSearchResult: false,
-    }),
     createGetResourceCount(),
     connect(
       mapStateToProps,

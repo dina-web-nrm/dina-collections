@@ -48,7 +48,12 @@ const createBatchFetchItems = (hocInput = {}) => ComposedComponent => {
       const { dispatch } = this.props
 
       const {
-        extractedProps: { include, relationships, resource },
+        extractedProps: {
+          include,
+          relationships,
+          resolveRelationships,
+          resource,
+        },
       } = extractProps({
         defaults: hocInput,
         keys: ['include', 'relationships', 'resource'],
@@ -75,9 +80,13 @@ const createBatchFetchItems = (hocInput = {}) => ComposedComponent => {
           const promises = batchesToFetch.map(batch => {
             return dispatch(
               getManyActionCreator({
-                ids: batch,
-                include,
-                relationships,
+                queryParams: {
+                  filter: { ids: batch },
+                  include,
+                  relationships,
+                  resolveRelationships,
+                  sort: ['attributes.name:asc'],
+                },
               })
             )
           })

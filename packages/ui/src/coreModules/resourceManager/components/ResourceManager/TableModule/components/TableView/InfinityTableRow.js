@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
@@ -13,7 +13,6 @@ const propTypes = {
   index: PropTypes.number.isRequired,
   item: PropTypes.object,
   itemId: PropTypes.string.isRequired,
-  listItems: PropTypes.array.isRequired,
   onClickRow: PropTypes.func.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -30,30 +29,15 @@ const InfinityTableRow = ({
   focusedIndex,
   index,
   itemId,
-  listItems,
   item,
   onClickRow,
   tableColumnSpecifications,
   tableColumnsToShow,
   width,
 }) => {
-  const latestListItems = useRef(null)
   if (itemId !== undefined) {
     fetchItemById(itemId)
   }
-  console.log('render row')
-
-  // useEffect(() => {
-  //   console.log('itemId', itemId)
-  //   console.log(
-  //     'listItems !== latestListItems.current',
-  //     listItems !== latestListItems.current
-  //   )
-  //   if (listItems !== latestListItems.current) {
-  //   }
-
-  //   latestListItems.current = listItems
-  // }, [fetchItemById, itemId, listItems])
 
   const rowNumber = index + 1
   const isFocused = focusedIndex === index
@@ -81,7 +65,7 @@ const InfinityTableRow = ({
       data-testid={`infinityTableRow${rowNumber}`}
       onClick={event => {
         event.preventDefault()
-        onClickRow(rowNumber, itemId)
+        onClickRow(itemId)
       }}
       style={{ background, height: emToPixels(3.5), width }}
     >
