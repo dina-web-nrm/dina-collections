@@ -50,15 +50,14 @@ class ListItem extends Component {
 
     const background = isFocused ? '#b5b5b5' : '#fff'
 
-    const rowStyle = {
-      background,
-      height: emToPixels(2.5),
-      padding: emToPixels(0.75),
-    }
-
     if (!itemLoaded) {
       return (
-        <Grid.Row style={rowStyle}>
+        <Grid.Row
+          style={{
+            height: emToPixels(2.5),
+            padding: emToPixels(0.75),
+          }}
+        >
           <Grid.Column
             key="rowNumber"
             style={{
@@ -82,7 +81,11 @@ class ListItem extends Component {
           event.preventDefault()
           onClickRow(itemId)
         }}
-        style={rowStyle}
+        style={{
+          background,
+          height: emToPixels(2.5),
+          padding: emToPixels(0.75),
+        }}
         verticalAlign="middle"
       >
         <Grid.Column

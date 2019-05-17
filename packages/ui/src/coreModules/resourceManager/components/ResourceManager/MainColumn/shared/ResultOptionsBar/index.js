@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { Icon, Menu } from 'semantic-ui-react'
 
+import { injectResourceManagerNavigation } from 'coreModules/resourceManager/higherOrderComponents'
 import CsvExporter from './CsvExporter'
 
 const propTypes = {
@@ -9,15 +12,15 @@ const propTypes = {
   csvExportEnabled: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
   itemEnabled: PropTypes.bool.isRequired,
-  onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  navigateEdit: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onTableSettingsClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  navigateTableSettings: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onTableTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  navigateTable: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  toggleFilter: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onTreeTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  navigateTree: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   resource: PropTypes.string.isRequired,
   tableActive: PropTypes.bool.isRequired,
@@ -33,11 +36,11 @@ export class ResultOptionsBar extends Component {
       csvExportEnabled,
       editItemActive,
       itemEnabled,
-      onFormTabClick: handleFormTabClick,
-      onTableTabClick: handleTableTabClick,
-      onTableSettingsClick: handleTableSettingsClick,
-      onToggleFilters: handleToggleFilters,
-      onTreeTabClick: handleTreeTabClick,
+      navigateEdit: handleFormTabClick,
+      navigateTable: handleTableTabClick,
+      navigateTableSettings: handleTableSettingsClick,
+      toggleFilter: handleToggleFilters,
+      navigateTree: handleTreeTabClick,
       resource,
       tableActive,
       tableColumnSpecifications,
@@ -119,4 +122,4 @@ export class ResultOptionsBar extends Component {
 
 ResultOptionsBar.propTypes = propTypes
 
-export default ResultOptionsBar
+export default compose(injectResourceManagerNavigation)(ResultOptionsBar)

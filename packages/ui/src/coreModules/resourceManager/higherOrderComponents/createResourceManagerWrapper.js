@@ -37,7 +37,7 @@ import {
 } from 'coreModules/resourceManager/constants'
 
 import { ResourceManagerConfigProvider } from 'coreModules/resourceManager/contexts/resourceManagerConfig'
-import { ResourceManagerHandlersProvider } from 'coreModules/resourceManager/contexts/resourceManagerHandlers'
+import { ResourceManagerNavigationProvider } from 'coreModules/resourceManager/contexts/resourceManagerNavigation'
 import { ResourceManagerTableStateProvider } from 'coreModules/resourceManager/contexts/resourceManagerTableState'
 
 const log = createLog('resourceManager:resourceManagerWrapper')
@@ -633,73 +633,47 @@ const createResourceManagerWrapper = () => ComposedComponent => {
           sortOrder={sortOrder}
           tableColumnSpecifications={tableColumnSpecifications}
         >
-          <ResourceManagerHandlersProvider
-            clearNestedCache={clearNestedCache}
-            delFocusIdWhenLoaded={delFocusIdWhenLoaded}
-            focusRowWithId={this.focusRowWithId}
-            getNestedCacheNamespaces={this.getNestedCacheNamespaces}
-            onClosePicker={this.handleClosePicker}
-            onFormTabClick={this.handleFormTabClick}
-            onInteraction={this.handleInteraction}
-            onOpenNewRecordForm={this.handleOpenNewRecordForm}
-            onPickItem={this.handlePickItem}
-            onSelectNextRecord={this.handleSelectNextRecord}
-            onSelectPreviousRecord={this.handleSelectPrev}
-            onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
-            onShowAllRecords={this.handleShowAllRecords}
-            onTableSettingsClick={this.handleTableSettingsClick}
-            onTableTabClick={this.handleTableTabClick}
-            onToggleFilters={this.handleToggleFilters}
-            onTreeTabClick={this.handleTreeTabClick}
-            onUpdateFilterValues={this.handleUpdateFilterValues}
-            selectCurrentRow={this.selectCurrentRow}
-            setFocusIdWhenLoaded={setFocusIdWhenLoaded}
-            tableSearch={this.tableSearch}
+          <ResourceManagerTableStateProvider
+            currentTableRowNumber={currentTableRowNumber}
+            focusedIndex={focusedIndex}
+            focusedItemId={focusedItemId}
+            focusIdWhenLoaded={focusIdWhenLoaded}
+            initialItemId={initialItemId}
+            itemId={itemId}
+            listItems={listItems}
+            nextRowAvailable={nextRowAvailable}
+            prevRowAvailable={prevRowAvailable}
+            tableBatchFetchOptions={tableBatchFetchOptions}
+            tableColumnSpecifications={tableColumnSpecifications}
+            tableColumnsToSort={tableColumnsToSort}
           >
-            <ResourceManagerTableStateProvider
-              currentTableRowNumber={currentTableRowNumber}
-              focusedIndex={focusedIndex}
-              focusedItemId={focusedItemId}
-              focusIdWhenLoaded={focusIdWhenLoaded}
-              initialItemId={initialItemId}
-              itemId={itemId}
-              listItems={listItems}
-              nextRowAvailable={nextRowAvailable}
-              prevRowAvailable={prevRowAvailable}
-              tableBatchFetchOptions={tableBatchFetchOptions}
-              tableColumnSpecifications={tableColumnSpecifications}
-              tableColumnsToSort={tableColumnsToSort}
-            >
-              <KeyboardShortcuts
-                activeInLayer={managerScope}
-                shortcuts={this.shortcuts}
-              />
-              <ComposedComponent
-                {...this.props}
-                managerScope={managerScope}
-                onClosePicker={this.handleClosePicker}
-                onFormTabClick={this.handleFormTabClick}
-                onInteraction={this.handleInteraction}
-                onOpenNewRecordForm={this.handleOpenNewRecordForm}
-                onPickItem={this.handlePickItem}
-                onSelectNextRecord={
-                  nextRowAvailable && this.handleSelectNextRecord
-                }
-                onSelectPreviousRecord={
-                  prevRowAvailable && this.handleSelectPrev
-                }
-                onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
-                onShowAllRecords={this.handleShowAllRecords}
-                onTableSettingsClick={this.handleTableSettingsClick}
-                onTableTabClick={this.handleTableTabClick}
-                onToggleFilters={this.handleToggleFilters}
-                onTreeTabClick={this.handleTreeTabClick}
-                onUpdateFilterValues={this.handleUpdateFilterValues}
-                setFocusIdWhenLoaded={setFocusIdWhenLoaded}
-                tableSearch={this.tableSearch}
-              />
-            </ResourceManagerTableStateProvider>
-          </ResourceManagerHandlersProvider>
+            <KeyboardShortcuts
+              activeInLayer={managerScope}
+              shortcuts={this.shortcuts}
+            />
+            <ComposedComponent
+              {...this.props}
+              managerScope={managerScope}
+              onClosePicker={this.handleClosePicker}
+              onFormTabClick={this.handleFormTabClick}
+              onInteraction={this.handleInteraction}
+              onOpenNewRecordForm={this.handleOpenNewRecordForm}
+              onPickItem={this.handlePickItem}
+              onSelectNextRecord={
+                nextRowAvailable && this.handleSelectNextRecord
+              }
+              onSelectPreviousRecord={prevRowAvailable && this.handleSelectPrev}
+              onSetCurrentTableRowNumber={this.handleSetCurrentTableRow}
+              onShowAllRecords={this.handleShowAllRecords}
+              onTableSettingsClick={this.handleTableSettingsClick}
+              onTableTabClick={this.handleTableTabClick}
+              onToggleFilters={this.handleToggleFilters}
+              onTreeTabClick={this.handleTreeTabClick}
+              onUpdateFilterValues={this.handleUpdateFilterValues}
+              setFocusIdWhenLoaded={setFocusIdWhenLoaded}
+              tableSearch={this.tableSearch}
+            />
+          </ResourceManagerTableStateProvider>
         </ResourceManagerConfigProvider>
       )
     }

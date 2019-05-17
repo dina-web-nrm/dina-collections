@@ -6,6 +6,7 @@ import createPickerWrapper from './createPickerWrapper'
 import createQueryState from './createQueryState'
 import createResourceManagerWrapper from './createResourceManagerWrapper'
 import injectResourceManagerConfig from './injectResourceManagerConfig'
+import injectResourceManagerNavigation from './injectResourceManagerNavigation'
 
 export {
   createFocusRow,
@@ -16,4 +17,5 @@ export {
   createQueryState,
   createResourceManagerWrapper,
   injectResourceManagerConfig,
+  injectResourceManagerNavigation,
 }

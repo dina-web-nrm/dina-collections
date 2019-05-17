@@ -4,9 +4,9 @@ import { useConfig } from 'coreModules/resourceManager/contexts/resourceManagerC
 
 const injectResourceManagerConfig = ComposedComponent => {
   const ResourceManagerConfigInjector = props => {
-    const config = useConfig()
+    const configContext = useConfig()
 
-    return <ComposedComponent {...props} {...config} />
+    return <ComposedComponent {...props} {...configContext} />
   }
 
   return ResourceManagerConfigInjector

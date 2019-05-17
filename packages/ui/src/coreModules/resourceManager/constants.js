@@ -1,3 +1,4 @@
+export const CLOSE_FILTER = 'CLOSE_FILTER'
 export const CLOSE_ITEM_VIEW = 'CLOSE_ITEM_VIEW'
 export const ITEM_SELECT = 'ITEM_SELECT'
 export const MODULE_NAME = 'resourceManager'

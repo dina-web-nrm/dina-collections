@@ -41,7 +41,7 @@ const ResultTableView = props => {
           height={emToPixels(3.5)}
         />
       </RowLayout.Row>
-      <RowLayout.Row style={tableBodyStyle}>
+      <RowLayout.Row id="tableScrollContainer" style={tableBodyStyle}>
         {tableListItems.length > 0 ? (
           <InfinityTableBody
             {...pick(props, [

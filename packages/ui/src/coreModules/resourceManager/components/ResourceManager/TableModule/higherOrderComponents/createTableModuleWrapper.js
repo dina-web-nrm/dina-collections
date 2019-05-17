@@ -15,6 +15,7 @@ import resourceManagerSelectors from 'coreModules/resourceManager/globalSelector
 import {
   createFocusRow,
   injectResourceManagerConfig,
+  injectResourceManagerNavigation,
 } from 'coreModules/resourceManager/higherOrderComponents'
 import {
   globalSelectors as keyObjectGlobalSelectors,
@@ -26,9 +27,9 @@ const { get } = keyObjectGlobalSelectors
 
 const mapStateToProps = (
   state,
-  { allTableColumnFieldPaths, managerScope, resource, searchResource }
+  { allTableColumnFieldPaths, managerScope, searchResource }
 ) => {
-  // TODO: const resource = searchResource
+  const resource = searchResource
 
   return {
     focusedItemId: get[':managerScope.focusedItemId'](state, {
@@ -61,15 +62,19 @@ const mapDispatchToProps = {
 const propTypes = {
   // baseTreeFilter: PropTypes.object,
   buildFilterQuery: PropTypes.func.isRequired,
+  closeFilter: PropTypes.func.isRequired,
   enableTableColumnSorting: PropTypes.bool.isRequired,
   excludeRootNode: PropTypes.bool.isRequired,
   // fetchItemById: PropTypes.func.isRequired,
+  filterActive: PropTypes.bool.isRequired,
   focusedItemId: PropTypes.string,
   // initialItemId: PropTypes.string,
   // itemFetchOptions: PropTypes.object,
   // itemsObject: PropTypes.object.isRequired,
   // ItemTitle: PropTypes.func,
   managerScope: PropTypes.string.isRequired,
+  navigateEdit: PropTypes.func.isRequired,
+  navigateFilter: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   searchInProgress: PropTypes.bool,
@@ -87,6 +92,7 @@ const propTypes = {
       level: PropTypes.number.isRequired,
     }).isRequired
   ),
+  toggleFilter: PropTypes.func.isRequired,
   updateUserPreference: PropTypes.func.isRequired,
 }
 const defaultProps = {
@@ -107,6 +113,7 @@ const createTableModuleWrapper = () => ComposedComponent => {
       super(props)
       this.fetchTableItems = this.fetchTableItems.bind(this)
       this.getSearchInProgress = this.getSearchInProgress.bind(this)
+      this.handleOpenFocusedItem = this.handleOpenFocusedItem.bind(this)
       this.handleSaveTableColumnsToSort = this.handleSaveTableColumnsToSort.bind(
         this
       )
@@ -115,12 +122,12 @@ const createTableModuleWrapper = () => ComposedComponent => {
         {
           command: 'space',
           description: 'Open focused record',
-          onPress: props.onFormTabClick,
+          onPress: this.handleOpenFocusedItem,
         },
         {
           command: 'f',
           description: 'Show/hide filters',
-          onPress: props.onToggleFilters,
+          onPress: props.toggleFilter
         },
       ]
     }
@@ -133,6 +140,14 @@ const createTableModuleWrapper = () => ComposedComponent => {
 
     getSearchInProgress() {
       return this.props.searchInProgress
+    }
+
+    handleOpenFocusedItem() {
+      const { focusedItemId, navigateEdit } = this.props
+
+      if (focusedItemId) {
+        navigateEdit(focusedItemId)
+      }
     }
 
     handleSaveTableColumnsToSort(columnsToSort) {
@@ -160,14 +175,13 @@ const createTableModuleWrapper = () => ComposedComponent => {
 
       return waitForOtherSearchesToFinish(this.getSearchInProgress).then(() => {
         const query = buildFilterQuery({
-          excludeRootNode,
           values: filterValues || {},
         })
         return search({
           query,
           sort:
             (enableTableColumnSorting &&
-              tableColumnsToSort &&
+              tableColumnsToSort.length > 0 &&
               tableColumnsToSort.map(({ fieldPath, sort: order }) => {
                 return `attributes.${fieldPath}:${order}`
               })) ||
@@ -191,7 +205,9 @@ const createTableModuleWrapper = () => ComposedComponent => {
         resource,
         treeExpandedIds,
         tableListItems,
+        tableColumnsToShow,
       } = this.props
+
       return (
         <React.Fragment>
           <KeyboardShortcuts
@@ -208,6 +224,7 @@ const createTableModuleWrapper = () => ComposedComponent => {
             onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
             onToggleRow={this.handleToggleRow}
             resource={resource}
+            tableColumnsToShow={tableColumnsToShow}
             tableListItems={tableListItems}
             treeExpandedIds={treeExpandedIds}
           />
@@ -221,6 +238,7 @@ const createTableModuleWrapper = () => ComposedComponent => {
 
   return compose(
     injectResourceManagerConfig,
+    injectResourceManagerNavigation,
     connect(
       mapStateToProps,
       mapDispatchToProps

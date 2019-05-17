@@ -85,7 +85,6 @@ const createBatchFetchItems = (hocInput = {}) => ComposedComponent => {
                   include,
                   relationships,
                   resolveRelationships,
-                  sort: ['attributes.name:asc'],
                 },
               })
             )

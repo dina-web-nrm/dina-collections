@@ -95,7 +95,11 @@ const ResourceManager = props => {
       <RowLayout.Row>
         <ColumnLayout>
           <ColumnLayout.Column>
-            <MainColumn {...props} availableHeight={columnHeight} />
+            <MainColumn
+              {...props}
+              availableHeight={columnHeight}
+              itemEnabled={!isPicker}
+            />
           </ColumnLayout.Column>
           {filterActive && (
             <ColumnLayout.Column

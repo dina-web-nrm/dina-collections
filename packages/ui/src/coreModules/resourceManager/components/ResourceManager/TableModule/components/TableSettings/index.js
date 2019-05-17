@@ -8,7 +8,8 @@ import { Button, Form, Grid, Header, Icon, Message } from 'semantic-ui-react'
 import createLog from 'utilities/log'
 import { Checkbox, Field } from 'coreModules/form/components'
 import { Translate } from 'coreModules/i18n/components'
-import { useHandlers } from 'coreModules/resourceManager/contexts/resourceManagerHandlers'
+import { useNavigation } from 'coreModules/resourceManager/contexts/resourceManagerNavigation'
+import { injectResourceManagerConfig } from 'coreModules/resourceManager/higherOrderComponents'
 import { updateUserPreference as updateUserPreferenceAC } from 'coreModules/user/actionCreators'
 import userSelectors from 'coreModules/user/globalSelectors'
 
@@ -31,10 +32,12 @@ const transformFormValuesToColumnNames = formValues => {
   }, [])
 }
 
-const mapStateToProps = (state, { form, resource }) => {
+const mapStateToProps = (state, { form, searchResource }) => {
+  console.log('searchResource', searchResource)
   const userPreferences = userSelectors.getUserPreferences(state)
   const savedTableColumnNames =
-    (userPreferences && userPreferences[`${resource}TableColumnsToShow`]) ||
+    (userPreferences &&
+      userPreferences[`${searchResource}TableColumnsToShow`]) ||
     undefined
   const columnsSelectedStatus = Object.values(getFormValues(form)(state) || {})
 
@@ -51,8 +54,8 @@ const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   initialize: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  resource: PropTypes.string.isRequired,
   savedTableColumnNames: PropTypes.arrayOf(PropTypes.string.isRequired),
+  searchResource: PropTypes.string.isRequired,
   someColumnSelected: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.arrayOf(
@@ -73,15 +76,16 @@ const ResultTableSettings = ({
   handleSubmit,
   initialize,
   pristine,
-  resource,
   savedTableColumnNames,
+  searchResource,
   someColumnSelected,
   submitting,
   tableColumnSpecifications,
   updateUserPreference,
 }) => {
   log.render()
-  const { onTableTabClick } = useHandlers()
+
+  const { navigateTable } = useNavigation()
 
   const allColumnNames = useMemo(
     () => tableColumnSpecifications.map(({ fieldPath }) => fieldPath),
@@ -96,16 +100,16 @@ const ResultTableSettings = ({
   }, [initialize, columnNames])
 
   const handleCancel = () => {
-    onTableTabClick()
+    navigateTable()
   }
 
   const handleSave = (formValues = {}) => {
     return updateUserPreference(
-      `${resource}TableColumnsToShow`,
+      `${searchResource}TableColumnsToShow`,
       transformFormValuesToColumnNames(formValues)
     )
       .then(() => {
-        return onTableTabClick()
+        return navigateTable()
       })
       .catch(err => {
         throw new SubmissionError({
@@ -203,11 +207,12 @@ ResultTableSettings.propTypes = propTypes
 ResultTableSettings.defaultProps = defaultProps
 
 export default compose(
-  reduxForm({
-    form: 'tableSettingsForm',
-  }),
+  injectResourceManagerConfig,
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )
+  ),
+  reduxForm({
+    form: 'tableSettingsForm',
+  })
 )(ResultTableSettings)

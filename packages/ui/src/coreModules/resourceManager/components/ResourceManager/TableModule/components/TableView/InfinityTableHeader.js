@@ -97,6 +97,7 @@ class InfinityTableHeader extends PureComponent {
       tableColumnsToShow,
       width: gridWidth,
     } = this.props
+
     return (
       <React.Fragment>
         <Grid
