@@ -1,4 +1,8 @@
 const objectPath = require('object-path')
+const {
+  createRebuildInProgress,
+  createCreateIndexJob,
+} = require('../../../lib/data/serviceInteractions')
 
 exports.findMatchingAgents = function findMatchingAgents({
   item,
@@ -26,3 +30,11 @@ exports.findMatchingAgents = function findMatchingAgents({
       return agents
     })
 }
+
+exports.rebuildInProgress = createRebuildInProgress({
+  operationId: 'searchAgentGetViewMeta',
+})
+exports.createIndexJob = createCreateIndexJob({
+  rebuildViewOperationId: 'searchAgentRebuildView',
+  updateViewOperationId: 'searchAgentUpdateView',
+})
