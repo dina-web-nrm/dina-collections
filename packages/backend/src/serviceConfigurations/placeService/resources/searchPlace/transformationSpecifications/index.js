@@ -13,6 +13,7 @@ exports.updateView = {
   resolveRelations: {
     place: ['parent'],
   },
+  srcRelationships: ['parent'],
   srcResource: 'place',
   transformationFunctions,
 }
@@ -20,10 +21,11 @@ exports.updateView = {
 exports.rebuildView = {
   cacheRequestsToResources: ['place'],
   description: 'Transforming data from place',
-  numberOfEntriesEachBatch: 100,
+  numberOfEntriesEachBatch: 500,
   resolveRelations: {
     place: ['parent'],
   },
+  srcRelationships: ['parent'],
   srcResource: 'place',
   transformationFunctions,
 }
