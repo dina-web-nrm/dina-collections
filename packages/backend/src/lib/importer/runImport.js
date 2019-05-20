@@ -114,6 +114,7 @@ module.exports = function runImport({
         'searchSpecimenRebuildView',
         'searchPlaceRebuildView',
         'searchAgentRebuildView',
+        'searchStorageLocationRebuildView',
       ]
 
       return promiseForEach(indexOperations, operationId => {
