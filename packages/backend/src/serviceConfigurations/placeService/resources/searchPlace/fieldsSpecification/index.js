@@ -1,3 +1,4 @@
+const ancestorIds = require('./fields/ancestorIds')
 const continent = require('./fields/continent')
 const country = require('./fields/country')
 const district = require('./fields/district')
@@ -9,5 +10,14 @@ const province = require('./fields/province')
 
 module.exports = {
   decorators: [parents],
-  fields: [id, geographicLevel, name, continent, country, district, province],
+  fields: [
+    id,
+    ancestorIds,
+    geographicLevel,
+    name,
+    continent,
+    country,
+    district,
+    province,
+  ],
 }
