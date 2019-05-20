@@ -12,4 +12,4 @@ while getopts f: option
 $FULL_PATH/elasticsearch-export-index.sh -f $FILE_PATH -n searchspecimen
 $FULL_PATH/elasticsearch-export-index.sh -f $FILE_PATH -n searchplace
 $FULL_PATH/elasticsearch-export-index.sh -f $FILE_PATH -n searchagent
-$FULL_PATH/elasticsearch-export-index.sh -f $FILE_PATH -n searchstorage
+$FULL_PATH/elasticsearch-export-index.sh -f $FILE_PATH -n searchstoragelocation
