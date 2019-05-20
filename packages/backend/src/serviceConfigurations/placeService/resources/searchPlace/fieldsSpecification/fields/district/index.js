@@ -13,8 +13,8 @@ const searchFieldPath = 'attributes.searchOnly.searchDistrict'
 
 const transformation = ({ migrator, locals, target }) => {
   const district =
-    locals.parents &&
-    locals.parents.find(({ group }) => {
+    locals.parentsIncludingCurrent &&
+    locals.parentsIncludingCurrent.find(({ group }) => {
       return group === 'district'
     })
 
