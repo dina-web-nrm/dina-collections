@@ -11,7 +11,10 @@ const {
   rebuildInProgress,
 } = require('../../../serviceInteractions')
 
-const { createIndexHook } = require('../../../../../lib/data/hooks')
+const {
+  createIndexHook,
+  createUpdateDescendantsPostHook,
+} = require('../../../../../lib/data/hooks')
 
 const indexHook = createIndexHook({
   createIndexJob,
@@ -29,6 +32,12 @@ exports.create = [
 
 exports.update = [
   indexHook,
+  createUpdateDescendantsPostHook({
+    createIndexJob,
+    limit: 50,
+    srcResource: 'place',
+    targetSearchResource: 'searchPlace',
+  }),
   createRegisterResourceActivityHook({
     action: 'update',
     service: 'placeService',
@@ -39,6 +48,13 @@ exports.update = [
 ]
 
 exports.updateInternalRelationship = [
+  indexHook,
+  createUpdateDescendantsPostHook({
+    createIndexJob,
+    limit: 50,
+    srcResource: 'place',
+    targetSearchResource: 'searchPlace',
+  }),
   createRegisterResourceActivityHook({
     action: 'update',
     getIdFromPath: true,
