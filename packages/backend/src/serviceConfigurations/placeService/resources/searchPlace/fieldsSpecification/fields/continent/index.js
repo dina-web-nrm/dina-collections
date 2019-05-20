@@ -13,8 +13,8 @@ const searchFieldPath = 'attributes.searchOnly.searchContinent'
 
 const transformation = ({ migrator, locals, target }) => {
   const continent =
-    locals.parents &&
-    locals.parents.find(({ group }) => {
+    locals.parentsIncludingCurrent &&
+    locals.parentsIncludingCurrent.find(({ group }) => {
       return group === 'continent-ocean'
     })
 

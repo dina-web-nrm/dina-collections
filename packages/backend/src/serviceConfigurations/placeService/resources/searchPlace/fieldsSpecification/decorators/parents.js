@@ -3,7 +3,7 @@ const extractFetchParents = require('../../../../../../lib/data/transformations/
 
 const transformation = ({ locals, migrator, src }) => {
   const parents = extractFetchParents({
-    item: { parent: src },
+    item: src,
     order: 'desc',
   })
 
@@ -11,6 +11,12 @@ const transformation = ({ locals, migrator, src }) => {
     obj: locals,
     path: 'parents',
     value: parents,
+  })
+
+  migrator.setValue({
+    obj: locals,
+    path: 'parentsIncludingCurrent',
+    value: [src, ...parents],
   })
 
   return null
