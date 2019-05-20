@@ -17634,6 +17634,764 @@
         ]
       }
     },
+    "/api/storage/v01/searchStorageLocations/{id}": {
+      "get": {
+        "operationId": "searchStorageLocationGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchStorageLocation id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchStorageLocation by id",
+        "tags": [
+          "storageService"
+        ]
+      },
+      "delete": {
+        "operationId": "searchStorageLocationDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchStorageLocation id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationDelResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/query": {
+      "post": {
+        "operationId": "searchStorageLocationQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchStorageLocationQueryRequest"
+              }
+            }
+          },
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchCabinet*** <br/> Search attributes.searchOnly.searchCabinet <br/> <br/>  ***searchInstitution*** <br/> Search attributes.searchOnly.searchInstitution <br/> <br/>  ***searchMountingWall*** <br/> Search attributes.searchOnly.searchMountingWall <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchRoom*** <br/> Search attributes.searchOnly.searchRoom <br/> <br/>  ***searchShelf*** <br/> Search attributes.searchOnly.searchShelf <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/>\n\n  \n  <br/>\n\n  "
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationQueryResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations": {
+      "get": {
+        "operationId": "searchStorageLocationGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchCabinet]",
+            "description": "Search attributes.searchOnly.searchCabinet",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchInstitution]",
+            "description": "Search attributes.searchOnly.searchInstitution",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchMountingWall]",
+            "description": "Search attributes.searchOnly.searchMountingWall",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchName]",
+            "description": "Search attributes.searchOnly.searchName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchRoom]",
+            "description": "Search attributes.searchOnly.searchRoom",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchShelf]",
+            "description": "Search attributes.searchOnly.searchShelf",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchLevel]",
+            "description": "Search attributes.searchOnly.searchLevel",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance",
+                  "id:asc",
+                  "id:desc",
+                  "attributes.cabinet:asc",
+                  "attributes.cabinet:desc",
+                  "attributes.institution:asc",
+                  "attributes.institution:desc",
+                  "attributes.mountingWall:asc",
+                  "attributes.mountingWall:desc",
+                  "attributes.name:asc",
+                  "attributes.name:desc",
+                  "attributes.room:asc",
+                  "attributes.room:desc",
+                  "attributes.shelf:asc",
+                  "attributes.shelf:desc",
+                  "attributes.level:asc",
+                  "attributes.level:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationGetManyResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchStorageLocations",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/emptyView": {
+      "post": {
+        "operationId": "searchStorageLocationEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationEmptyViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/updateView": {
+      "post": {
+        "operationId": "searchStorageLocationUpdateView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchStorageLocationUpdateViewRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationUpdateViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/rebuildView": {
+      "post": {
+        "operationId": "searchStorageLocationRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "force",
+            "description": "Will rebuild view even if last rebuild ended with error",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationRebuildViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/meta/viewMeta": {
+      "get": {
+        "operationId": "searchStorageLocationGetViewMeta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationGetViewMetaResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get view meta for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
     "/api/taxonomy/v01/taxa": {
       "post": {
         "operationId": "taxonCreate",
@@ -22822,6 +23580,14 @@
         "x-category": "storageService",
         "x-modelType": "model",
         "x-summary": "The smallest recognized physical \"thing\" in the collection."
+      },
+      "searchStorageLocation": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "storageService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
       },
       "storageLocation": {
         "additionalProperties": false,
@@ -29373,6 +30139,172 @@
                 }
               }
             },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "queryBody",
+                "enum": [
+                  "queryBody"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "properties": {
+                  "aggregations": {
+                    "items": {
+                      "$ref": "#/components/schemas/queryAggregation"
+                    },
+                    "type": "array"
+                  },
+                  "excludeFields": {
+                    "description": "When provided specified fields will be excluded (applied after include)",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.cabinet",
+                        "attributes.institution",
+                        "attributes.mountingWall",
+                        "attributes.name",
+                        "attributes.room",
+                        "attributes.shelf",
+                        "attributes.level"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeFields": {
+                    "description": "When provided only specified fields will be returned in response",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.cabinet",
+                        "attributes.institution",
+                        "attributes.mountingWall",
+                        "attributes.name",
+                        "attributes.room",
+                        "attributes.shelf",
+                        "attributes.level"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeDeactivated": {
+                    "description": "Will include deactivated items",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "limit": {
+                    "description": "Limit the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "description": "Offset the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "query": {
+                    "$ref": "#/components/schemas/queryRoot"
+                  },
+                  "scroll": {
+                    "default": false,
+                    "example": false,
+                    "description": "If true elastic search scroll will be used",
+                    "type": "boolean"
+                  },
+                  "scrollId": {
+                    "description": "Elastic search scroll id",
+                    "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance",
+                        "id:asc",
+                        "id:desc",
+                        "attributes.cabinet:asc",
+                        "attributes.cabinet:desc",
+                        "attributes.institution:asc",
+                        "attributes.institution:desc",
+                        "attributes.mountingWall:asc",
+                        "attributes.mountingWall:desc",
+                        "attributes.name:asc",
+                        "attributes.name:desc",
+                        "attributes.room:asc",
+                        "attributes.room:desc",
+                        "attributes.shelf:asc",
+                        "attributes.shelf:desc",
+                        "attributes.level:asc",
+                        "attributes.level:desc"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationUpdateViewRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
             "x-summary": ""
           }
         },
@@ -46888,6 +47820,428 @@
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchStorageLocation"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchStorageLocation",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/query",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchStorageLocation"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchStorageLocation",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/searchStorageLocation"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "searchStorageLocation",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationUpdateViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/updateView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationGetViewMetaResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/meta/viewMeta",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
         "x-summary": "",
         "description": ""
       },
