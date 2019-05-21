@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import objectPath from 'object-path'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
@@ -45,9 +46,13 @@ const createFocusRow = ({
   class FocusRow extends Component {
     constructor(props) {
       super(props)
+      this.getHasNextRow = this.getHasNextRow.bind(this)
+      this.getHasPreviousRow = this.getHasPreviousRow.bind(this)
+      this.getItemIdFromRowNumber = this.getItemIdFromRowNumber.bind(this)
       this.handleClickRow = this.handleClickRow.bind(this)
       this.handleFocusNextRow = this.handleFocusNextRow.bind(this)
       this.handleFocusPreviousRow = this.handleFocusPreviousRow.bind(this)
+      this.handleSetCurrentRowNumber = this.handleSetCurrentRowNumber.bind(this)
 
       this.shortcuts = [
         {
@@ -61,6 +66,24 @@ const createFocusRow = ({
           onPress: this.handleFocusPreviousRow,
         },
       ]
+    }
+
+    getHasNextRow() {
+      const { currentRowNumber, items } = this.props
+
+      return currentRowNumber < items.length
+    }
+
+    getHasPreviousRow() {
+      const { currentRowNumber } = this.props
+
+      return currentRowNumber > 1
+    }
+
+    getItemIdFromRowNumber(rowNumber) {
+      const { items } = this.props
+
+      return objectPath.get(items, `${rowNumber - 1}.id`)
     }
 
     handleClickRow(itemId) {
@@ -107,6 +130,16 @@ const createFocusRow = ({
       }
     }
 
+    handleSetCurrentRowNumber(rowNumber) {
+      const { managerScope, setFocusedItemId } = this.props
+
+      const itemId = this.getItemIdFromRowNumber(rowNumber)
+
+      if (itemId) {
+        setFocusedItemId(itemId, { managerScope })
+      }
+    }
+
     render() {
       const { currentRowNumber, managerScope } = this.props
 
@@ -119,9 +152,13 @@ const createFocusRow = ({
           <ComposedComponent
             {...this.props}
             currentRowNumber={currentRowNumber}
+            getHasNextRow={this.getHasNextRow}
+            getHasPreviousRow={this.getHasPreviousRow}
+            getItemIdFromRowNumber={this.getItemIdFromRowNumber}
             onClickRow={this.handleClickRow}
             onFocusNextRow={this.handleFocusNextRow}
             onFocusPreviousRow={this.handleFocusPreviousRow}
+            onSetCurrentRowNumber={this.handleSetCurrentRowNumber}
           />
         </React.Fragment>
       )

@@ -224,6 +224,7 @@ const createResourceUrlState = () => ComposedComponent => {
         navigateCreate: this.navigateCreate,
         navigateEdit: this.navigateEdit,
         navigateFilter: this.navigateFilter,
+        navigateFormSection: this.navigateFormSection,
         navigateRoot: this.navigateRoot,
         navigateTable: this.navigateTable,
         navigateTableSettings: this.navigateTableSettings,

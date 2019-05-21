@@ -30,7 +30,6 @@ const propTypes = {
   tableSettingsActive: PropTypes.bool.isRequired,
   toggleFilter: PropTypes.func.isRequired,
   treeActive: PropTypes.bool.isRequired,
-  treeEnabled: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   itemId: undefined,
@@ -55,7 +54,6 @@ const ResourceManagerNavigationProvider = ({
   tableSettingsActive,
   toggleFilter,
   treeActive,
-  treeEnabled,
   ...rest
 }) => {
   const contextValue = useMemo(() => {
@@ -77,7 +75,6 @@ const ResourceManagerNavigationProvider = ({
       tableSettingsActive,
       toggleFilter,
       treeActive,
-      treeEnabled,
     }
   }, [
     createItemActive,
@@ -97,7 +94,6 @@ const ResourceManagerNavigationProvider = ({
     tableSettingsActive,
     toggleFilter,
     treeActive,
-    treeEnabled,
   ])
 
   return (

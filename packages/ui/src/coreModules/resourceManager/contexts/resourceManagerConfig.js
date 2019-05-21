@@ -23,13 +23,16 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   searchResource: PropTypes.string.isRequired,
   sortOrder: PropTypes.array,
+  tableBatchFetchOptions: PropTypes.object,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  treeEnabled: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   baseTreeFilter: undefined,
   initialItemId: undefined,
   itemFetchOptions: undefined,
   sortOrder: undefined,
+  tableBatchFetchOptions: undefined,
 }
 
 const ResourceManagerConfigProvider = ({
@@ -43,7 +46,9 @@ const ResourceManagerConfigProvider = ({
   resource,
   searchResource,
   sortOrder,
+  tableBatchFetchOptions,
   tableColumnSpecifications,
+  treeEnabled,
   ...rest
 }) => {
   const allTableColumnFieldPaths = useMemo(() => {
@@ -63,7 +68,9 @@ const ResourceManagerConfigProvider = ({
       resource,
       searchResource,
       sortOrder,
+      tableBatchFetchOptions,
       tableColumnSpecifications,
+      treeEnabled,
     }
   }, [
     allTableColumnFieldPaths,
@@ -77,7 +84,9 @@ const ResourceManagerConfigProvider = ({
     resource,
     searchResource,
     sortOrder,
+    tableBatchFetchOptions,
     tableColumnSpecifications,
+    treeEnabled,
   ])
 
   return (

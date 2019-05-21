@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { pick } from 'lodash'
 
+import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import {
   ColumnLayout,
   InformationSidebar,
@@ -15,8 +15,8 @@ import layoutSelectors from 'coreModules/layout/globalSelectors'
 import { emToPixels } from 'coreModules/layout/utilities'
 import userSelectors from 'coreModules/user/globalSelectors'
 
-import MainColumn from './MainColumn'
-import FilterColumn from './FilterColumn'
+import MainColumn from './layout/MainColumn'
+import FilterColumn from './layout/FilterColumn'
 import PickerHeader from './picker/Header'
 import PickerActionBar from './picker/ActionBar'
 

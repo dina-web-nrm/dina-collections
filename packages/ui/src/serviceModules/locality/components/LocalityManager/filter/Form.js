@@ -14,7 +14,7 @@ import {
   PROVINCE,
 } from '../../../constants'
 
-export const FORM_NAME = 'placeFilter'
+export const FORM_NAME = 'searchPlaceFilter'
 
 const log = createLog('modules:locality:BaseForm')
 
