@@ -6,12 +6,13 @@ const createItem = require('./createItem')
 const defaultLog = createLog('lib/controllers/views/updateView/update')
 
 module.exports = function update({
+  ids,
   log = defaultLog,
   mapFunction,
   model,
   serviceInteractor,
+  srcRelationships,
   srcResource,
-  ids,
 }) {
   log.info(`update view start for src: ${srcResource} with ids: `, ids)
 
@@ -39,6 +40,7 @@ module.exports = function update({
         id,
         mapFunction,
         serviceInteractor,
+        srcRelationships,
         srcResource,
       }).then(newItem => {
         if (action === 'create') {
