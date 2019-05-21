@@ -1,4 +1,12 @@
+# Root password
+# Should be changed to something secret in production
 MYSQL_ROOT_PASSWORD=root
+
+# Name of the mysql database.
 MYSQL_DATABASE=keycloak
+
+# The user that keycloak will use
 MYSQL_USER=keycloak
+
+# The password to the keycloak user
 MYSQL_PASSWORD=password

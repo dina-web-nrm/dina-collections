@@ -1,3 +1,5 @@
+# See backend ./env/sample/backend for documentation
+
 API_PORT=4444
 DB_DATABASE=dina_dev
 DB_PASSWORD=mysecretpassword

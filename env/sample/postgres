@@ -1,4 +1,14 @@
+# Default database name
+# The backend will creates its own databases so this can be kept as postgres
 DB_NAME=postgres
+
+# Db password
 DB_PASS=mysecretpassword
+
+# Same as DB_PASS
+# Later only DB_PASS should be used but for now this also needs to be set
 POSTGRES_PASSWORD=mysecretpassword
+
+# Same as DB_NAME
+# Later only DB_NAME should be used but for now this also needs to be set
 POSTGRES_DB=postgres
