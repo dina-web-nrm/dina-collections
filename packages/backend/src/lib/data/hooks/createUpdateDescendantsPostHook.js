@@ -1,22 +1,17 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog(
-  'lib/data/serviceInteractions/createUpdateRelatedSearchResourcePostHook'
-)
+const log = createLog('lib/data/hooks/createUpdateDescendantsPostHook')
 
-exports.createUpdateRelatedSearchResourcePostHook = ({
-  srcResource,
-  targetSearchResource,
+module.exports = function createUpdateDescendantsPostHook({
   createIndexJob,
-  limit = 50,
-}) => {
-  return function updateRelatedSearchResourcePostHook({
-    item,
-    serviceInteractor,
-  }) {
+  targetSearchResource,
+  srcResource,
+  limit,
+}) {
+  return function updateDescendantsPostHook({ item, serviceInteractor }) {
     const { id: updatedSrcId } = item
     log.debug(
-      `updateRelatedSearchResource for src: ${srcResource} -> ${updatedSrcId} and target ${targetSearchResource}`
+      `updateDescendantsPostHook for src: ${srcResource} -> ${updatedSrcId} and target ${targetSearchResource}`
     )
     return serviceInteractor
       .call({
@@ -31,11 +26,8 @@ exports.createUpdateRelatedSearchResourcePostHook = ({
                   and: [
                     {
                       filter: {
-                        filterFunction: 'relatedResources',
-                        input: {
-                          id: updatedSrcId,
-                          type: srcResource,
-                        },
+                        filterFunction: 'ancestorIds',
+                        input: { value: updatedSrcId },
                       },
                     },
                   ],
