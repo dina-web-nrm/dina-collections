@@ -13,6 +13,7 @@ exports.updateView = {
   resolveRelations: {
     storageLocation: ['parent'],
   },
+  srcRelationships: ['parent'],
   srcResource: 'storageLocation',
   transformationFunctions,
 }
@@ -24,6 +25,7 @@ exports.rebuildView = {
   resolveRelations: {
     storageLocation: ['parent'],
   },
+  srcRelationships: ['parent'],
   srcResource: 'storageLocation',
   transformationFunctions,
 }
