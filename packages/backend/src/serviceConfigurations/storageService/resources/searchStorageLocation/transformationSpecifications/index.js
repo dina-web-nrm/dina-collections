@@ -21,7 +21,7 @@ exports.updateView = {
 exports.rebuildView = {
   cacheRequestsToResources: ['storageLocation'],
   description: 'Transforming data from storageLocation',
-  numberOfEntriesEachBatch: 100,
+  numberOfEntriesEachBatch: 500,
   resolveRelations: {
     storageLocation: ['parent'],
   },
