@@ -6,7 +6,6 @@ const {
 const fieldPath = 'id'
 
 const transformation = ({ migrator, src, target }) => {
-  console.log('searchStorage', src)
   const id = migrator.getValue({
     obj: src,
     path: 'id',
