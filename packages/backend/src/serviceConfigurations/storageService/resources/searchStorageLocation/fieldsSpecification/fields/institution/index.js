@@ -13,8 +13,8 @@ const searchFieldPath = 'attributes.searchOnly.searchInstitution'
 
 const transformation = ({ migrator, locals, target }) => {
   const institution =
-    locals.parents &&
-    locals.parents.find(({ group }) => {
+    locals.parentsIncludingCurrent &&
+    locals.parentsIncludingCurrent.find(({ group }) => {
       return group === 'institution'
     })
 

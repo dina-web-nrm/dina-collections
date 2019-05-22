@@ -13,8 +13,8 @@ const searchFieldPath = 'attributes.searchOnly.searchMountingWall'
 
 const transformation = ({ migrator, locals, target }) => {
   const mountingWall =
-    locals.parents &&
-    locals.parents.find(({ group }) => {
+    locals.parentsIncludingCurrent &&
+    locals.parentsIncludingCurrent.find(({ group }) => {
       return group === 'mountingWall'
     })
 

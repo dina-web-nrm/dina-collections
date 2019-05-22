@@ -13,8 +13,8 @@ const searchFieldPath = 'attributes.searchOnly.searchRoom'
 
 const transformation = ({ migrator, locals, target }) => {
   const room =
-    locals.parents &&
-    locals.parents.find(({ group }) => {
+    locals.parentsIncludingCurrent &&
+    locals.parentsIncludingCurrent.find(({ group }) => {
       return group === 'room'
     })
 

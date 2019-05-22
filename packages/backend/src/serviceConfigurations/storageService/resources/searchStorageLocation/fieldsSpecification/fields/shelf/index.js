@@ -13,8 +13,8 @@ const searchFieldPath = 'attributes.searchOnly.searchShelf'
 
 const transformation = ({ migrator, locals, target }) => {
   const shelf =
-    locals.parents &&
-    locals.parents.find(({ group }) => {
+    locals.parentsIncludingCurrent &&
+    locals.parentsIncludingCurrent.find(({ group }) => {
       return group === 'shelf'
     })
 

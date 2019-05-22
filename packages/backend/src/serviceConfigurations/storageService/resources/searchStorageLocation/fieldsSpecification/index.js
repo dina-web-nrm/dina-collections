@@ -5,7 +5,6 @@ const institution = require('./fields/institution')
 const mountingWall = require('./fields/mountingWall')
 const name = require('./fields/name')
 const parents = require('./decorators/parents')
-const physicalObject = require('./fields/physicalObject')
 const room = require('./fields/room')
 const shelf = require('./fields/shelf')
 const storageLevel = require('./fields/storageLevel')
@@ -19,7 +18,6 @@ module.exports = {
     institution,
     mountingWall,
     name,
-    physicalObject,
     room,
     shelf,
     storageLevel,
