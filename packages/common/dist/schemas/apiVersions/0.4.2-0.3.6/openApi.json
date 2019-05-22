@@ -17689,7 +17689,6 @@
                   "attributes.institution",
                   "attributes.mountingWall",
                   "attributes.name",
-                  "attributes.physicalObjects",
                   "attributes.room",
                   "attributes.shelf",
                   "attributes.level"
@@ -17712,7 +17711,6 @@
                   "attributes.institution",
                   "attributes.mountingWall",
                   "attributes.name",
-                  "attributes.physicalObjects",
                   "attributes.room",
                   "attributes.shelf",
                   "attributes.level"
@@ -17881,7 +17879,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchCabinet*** <br/> Search attributes.searchOnly.searchCabinet <br/> <br/>  ***searchInstitution*** <br/> Search attributes.searchOnly.searchInstitution <br/> <br/>  ***searchMountingWall*** <br/> Search attributes.searchOnly.searchMountingWall <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchPhysicalObjects*** <br/> Search attributes.searchOnly.searchPhysicalObjects <br/> <br/>  ***searchRoom*** <br/> Search attributes.searchOnly.searchRoom <br/> <br/>  ***searchShelf*** <br/> Search attributes.searchOnly.searchShelf <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/>\n\n  \n  <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***ancestorIds*** <br/> Match for attributes.searchOnly.ancestorIds <br/> <br/>  ***searchCabinet*** <br/> Search attributes.searchOnly.searchCabinet <br/> <br/>  ***searchInstitution*** <br/> Search attributes.searchOnly.searchInstitution <br/> <br/>  ***searchMountingWall*** <br/> Search attributes.searchOnly.searchMountingWall <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchRoom*** <br/> Search attributes.searchOnly.searchRoom <br/> <br/>  ***searchShelf*** <br/> Search attributes.searchOnly.searchShelf <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/>\n\n  \n  <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -17962,6 +17960,15 @@
           },
           {
             "in": "query",
+            "name": "filter[ancestorIds]",
+            "description": "Match for attributes.searchOnly.ancestorIds",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[searchCabinet]",
             "description": "Search attributes.searchOnly.searchCabinet",
             "required": false,
@@ -17991,15 +17998,6 @@
             "in": "query",
             "name": "filter[searchName]",
             "description": "Search attributes.searchOnly.searchName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchPhysicalObjects]",
-            "description": "Search attributes.searchOnly.searchPhysicalObjects",
             "required": false,
             "schema": {
               "type": "string"
@@ -18063,7 +18061,6 @@
                   "attributes.institution",
                   "attributes.mountingWall",
                   "attributes.name",
-                  "attributes.physicalObjects",
                   "attributes.room",
                   "attributes.shelf",
                   "attributes.level"
@@ -18086,7 +18083,6 @@
                   "attributes.institution",
                   "attributes.mountingWall",
                   "attributes.name",
-                  "attributes.physicalObjects",
                   "attributes.room",
                   "attributes.shelf",
                   "attributes.level"
@@ -18115,8 +18111,6 @@
                   "attributes.mountingWall:desc",
                   "attributes.name:asc",
                   "attributes.name:desc",
-                  "attributes.physicalObjects:asc",
-                  "attributes.physicalObjects:desc",
                   "attributes.room:asc",
                   "attributes.room:desc",
                   "attributes.shelf:asc",
@@ -30208,7 +30202,6 @@
                         "attributes.institution",
                         "attributes.mountingWall",
                         "attributes.name",
-                        "attributes.physicalObjects",
                         "attributes.room",
                         "attributes.shelf",
                         "attributes.level"
@@ -30226,7 +30219,6 @@
                         "attributes.institution",
                         "attributes.mountingWall",
                         "attributes.name",
-                        "attributes.physicalObjects",
                         "attributes.room",
                         "attributes.shelf",
                         "attributes.level"
@@ -30278,8 +30270,6 @@
                         "attributes.mountingWall:desc",
                         "attributes.name:asc",
                         "attributes.name:desc",
-                        "attributes.physicalObjects:asc",
-                        "attributes.physicalObjects:desc",
                         "attributes.room:asc",
                         "attributes.room:desc",
                         "attributes.shelf:asc",
