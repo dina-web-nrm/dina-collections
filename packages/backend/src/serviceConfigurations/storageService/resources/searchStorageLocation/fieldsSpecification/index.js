@@ -1,3 +1,4 @@
+const ancestorIds = require('./fields/ancestorIds')
 const cabinet = require('./fields/cabinet')
 const id = require('./fields/id')
 const institution = require('./fields/institution')
@@ -12,6 +13,7 @@ const storageLevel = require('./fields/storageLevel')
 module.exports = {
   decorators: [parents],
   fields: [
+    ancestorIds,
     id,
     cabinet,
     institution,
