@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.20.0-rc](https://github.com/dina-web-nrm/dina-collections/compare/v0.19.0...v0.20.0-rc)
+#### [v0.20.0-rc2](https://github.com/dina-web-nrm/dina-collections/compare/v0.19.0...v0.20.0-rc2)
 
 - Add data model images [`#526`](https://github.com/dina-web-nrm/dina-collections/pull/526)
 - Add tree functionallity to elastic [`#525`](https://github.com/dina-web-nrm/dina-collections/pull/525)
