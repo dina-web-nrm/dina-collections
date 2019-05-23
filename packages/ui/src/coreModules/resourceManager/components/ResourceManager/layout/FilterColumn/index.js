@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import { pick } from 'lodash'
 
 import { RowLayout } from 'coreModules/layout/components'
@@ -7,11 +8,14 @@ import { emToPixels } from 'coreModules/layout/utilities'
 import { CLOSE_ITEM_VIEW } from 'coreModules/resourceManager/constants'
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import BottomBar from '../../table/components/FilterActionBar'
+import createTableModuleWrapper from '../../table/higherOrderComponents/createTableModuleWrapper'
+
+const overflowAuto = { overflow: 'auto' }
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   filterHeader: PropTypes.string,
-  filterValues: PropTypes.object,
+  initialFilterValues: PropTypes.object,
   isPicker: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
   renderFilterForm: PropTypes.func.isRequired,
@@ -20,7 +24,7 @@ const propTypes = {
 
 const defaultProps = {
   filterHeader: 'Filter',
-  filterValues: undefined,
+  initialFilterValues: {},
 }
 
 class FilterColumn extends Component {
@@ -39,27 +43,29 @@ class FilterColumn extends Component {
     const {
       availableHeight,
       filterHeader,
-      filterValues: initialValues = {},
+      initialFilterValues: initialValues,
     } = this.props
+    console.log('initialValues', initialValues)
 
     return (
       <RowLayout availableHeight={availableHeight} dataTestId="filterColumn">
         <RowLayout.Row height={emToPixels(4.25)}>
           <ColumnRowHeader text={filterHeader} />
         </RowLayout.Row>
-        <RowLayout.Row>
+        <RowLayout.Row style={overflowAuto}>
           {this.props.renderFilterForm({ initialValues })}
         </RowLayout.Row>
         <RowLayout.Row height={emToPixels(4.625)}>
           <BottomBar
             {...pick(this.props, [
-              'buildFilterQuery',
+              'fetchTableItems',
+              'hasAppliedFilter',
+              'initialFilterValues',
               'isPicker',
-              'onInteraction',
+              'managerScope',
               'onShowAllRecords',
-              'onUpdateFilterValues',
-              'resource',
-              'tableSearch',
+              'setHasAppliedFilter',
+              'searchResource',
             ])}
           />
         </RowLayout.Row>
@@ -71,4 +77,4 @@ class FilterColumn extends Component {
 FilterColumn.defaultProps = defaultProps
 FilterColumn.propTypes = propTypes
 
-export default FilterColumn
+export default compose(createTableModuleWrapper())(FilterColumn)

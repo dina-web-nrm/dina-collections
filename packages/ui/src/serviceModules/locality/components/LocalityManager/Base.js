@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import { ResourceManager } from 'coreModules/resourceManager/components'
 
 import CreateForm from './item/CreateForm'
@@ -69,6 +70,7 @@ class LocalityManager extends Component {
 
   renderEditForm(props = {}) {
     const { itemId } = this.props
+    console.log('props', props)
     return (
       <EditForm
         {...props}

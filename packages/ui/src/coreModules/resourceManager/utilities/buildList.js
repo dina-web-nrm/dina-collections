@@ -5,7 +5,6 @@ export default function buildList({
   baseItems,
   expandedIds = {},
   fetchItemById,
-  showAll = false,
 }) {
   const list = []
 
@@ -21,7 +20,7 @@ export default function buildList({
         level,
       })
 
-      if (showAll || expandedIds[id]) {
+      if (expandedIds[id]) {
         if (children) {
           const mappedChildren = children.map(({ id: childId }) => {
             const child = allItemsObject[childId]

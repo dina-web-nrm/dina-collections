@@ -89,7 +89,6 @@ const MainColumn = props => {
         <ResultOptionsBar
           {...pick(props, [
             'createItemActive',
-            'csvExportEnabled',
             'editItemActive',
             'itemEnabled',
             'onFormTabClick',

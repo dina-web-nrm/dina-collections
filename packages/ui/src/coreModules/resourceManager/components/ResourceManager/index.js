@@ -108,7 +108,6 @@ const ResourceManager = props => {
             >
               <FilterColumn
                 {...pick(props, [
-                  'buildFilterQuery',
                   'filterHeader',
                   'filterValues',
                   'isPicker',

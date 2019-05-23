@@ -1,4 +1,4 @@
-export default function buildFilterQuery({ excludeRootNode, values }) {
+export default function buildFilterQuery({ excludeRootNode, values = {} }={}) {
   const and = []
 
   if (excludeRootNode) {

@@ -13,6 +13,7 @@ const {
     ':managerScope.currentTableRowNumber',
     ':managerScope.focusIdWhenLoaded',
     ':managerScope.focusedItemId',
+    ':managerScope.hasAppliedFilter',
     ':managerScope.listFilterValues',
     ':managerScope.showAll',
     ':managerScope.tableListItems',

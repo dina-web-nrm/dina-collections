@@ -28,8 +28,8 @@ const defaultProps = {
   focusedItemId: undefined,
 }
 
-const createFormModuleWrappers = () => ComposedComponent => {
-  class FormModuleWrappers extends Component {
+const createFormModuleWrapper = () => ComposedComponent => {
+  class FormModuleWrapper extends Component {
     render() {
       const { focusedItemId } = this.props
 
@@ -37,8 +37,8 @@ const createFormModuleWrappers = () => ComposedComponent => {
     }
   }
 
-  FormModuleWrappers.propTypes = propTypes
-  FormModuleWrappers.defaultProps = defaultProps
+  FormModuleWrapper.propTypes = propTypes
+  FormModuleWrapper.defaultProps = defaultProps
 
   return compose(
     injectResourceManagerConfig,
@@ -48,7 +48,7 @@ const createFormModuleWrappers = () => ComposedComponent => {
       itemsSelector: get[':managerScope.tableListItems'],
       rowSelector: resourceManagerSelectors.getCurrentTableRowNumber,
     })
-  )(FormModuleWrappers)
+  )(FormModuleWrapper)
 }
 
-export default createFormModuleWrappers
+export default createFormModuleWrapper

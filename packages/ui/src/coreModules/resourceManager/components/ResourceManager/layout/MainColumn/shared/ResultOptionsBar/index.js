@@ -24,32 +24,33 @@ const mapStateToProps = (state, { managerScope }) => {
 
 const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
-  csvExportEnabled: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
   focusedItemId: PropTypes.string,
   itemEnabled: PropTypes.bool.isRequired,
   navigateEdit: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  navigateTableSettings: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
-    .isRequired,
   navigateTable: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  toggleFilter: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  navigateTableSettings: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   navigateTree: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  resource: PropTypes.string.isRequired,
+  searchResource: PropTypes.string.isRequired,
   tableActive: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  toggleFilter: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+    .isRequired,
   treeActive: PropTypes.bool.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
+}
+const defaultProps = {
+  focusedItemId: undefined,
 }
 
 export class ResultOptionsBar extends Component {
   render() {
     const {
       createItemActive,
-      csvExportEnabled,
       editItemActive,
       focusedItemId,
       itemEnabled,
@@ -58,15 +59,14 @@ export class ResultOptionsBar extends Component {
       navigateTableSettings: handleTableSettingsClick,
       toggleFilter: handleToggleFilters,
       navigateTree: handleTreeTabClick,
-      resource,
+      searchResource,
       tableActive,
       tableColumnSpecifications,
       treeActive,
       treeEnabled,
     } = this.props
 
-    const hasSecondaryMenu =
-      csvExportEnabled || tableActive || !(createItemActive || treeActive)
+    const hasSecondaryMenu = !createItemActive
 
     return (
       <Menu attached="top" icon style={{ position: 'relative' }} tabular>
@@ -109,9 +109,9 @@ export class ResultOptionsBar extends Component {
 
         {hasSecondaryMenu && (
           <Menu.Menu className="icon secondary  ui" position="right">
-            {csvExportEnabled && (
+            {tableActive && (
               <CsvExporter
-                resource={resource}
+                resource={searchResource}
                 tableColumnSpecifications={tableColumnSpecifications}
               />
             )}
@@ -124,7 +124,7 @@ export class ResultOptionsBar extends Component {
                 <Icon name="setting" />
               </Menu.Item>
             )}
-            {!(createItemActive || treeActive) && (
+            {!createItemActive && (
               <Menu.Item
                 data-testid="searchMenuItem"
                 link
@@ -142,6 +142,7 @@ export class ResultOptionsBar extends Component {
 }
 
 ResultOptionsBar.propTypes = propTypes
+ResultOptionsBar.defaultProps = defaultProps
 
 export default compose(
   injectResourceManagerConfig,

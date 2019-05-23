@@ -11,7 +11,12 @@ const useEffectScroll = ({ currentRowNumber, list }) => {
       if (currentRowNumber <= firstVisibleRow + 1) {
         list.current.scrollTo(currentRowNumber - 1)
       } else if (currentRowNumber > lastVisibleRow) {
-        list.current.scrollAround(currentRowNumber)
+        // if it's beyond the last visible row, scroll it to be the last visible
+        // row, but not higher up, to avoid a jumping list when clicking on the
+        // last clickable row (which might not be fully visible)
+        list.current.scrollTo(
+          currentRowNumber + firstVisibleRow - lastVisibleRow
+        )
       }
     }
 

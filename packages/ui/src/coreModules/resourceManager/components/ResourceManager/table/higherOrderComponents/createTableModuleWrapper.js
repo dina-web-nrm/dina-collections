@@ -41,6 +41,9 @@ const mapStateToProps = (
     focusedItemId: get[':managerScope.focusedItemId'](state, {
       managerScope,
     }),
+    hasAppliedFilter: get[':managerScope.hasAppliedFilter'](state, {
+      managerScope,
+    }),
     resource,
     searchInProgress: searchSelectors.get[':resource.searchInProgress'](state, {
       resource,
@@ -60,6 +63,8 @@ const mapStateToProps = (
 
 const mapDispatchToProps = {
   setFocusedItemId: keyObjectActionCreators.set[':managerScope.focusedItemId'],
+  setHasAppliedFilter:
+    keyObjectActionCreators.set[':managerScope.hasAppliedFilter'],
   setTableListItems:
     keyObjectActionCreators.set[':managerScope.tableListItems'],
   updateUserPreference: userActionCreators.updateUserPreference,
@@ -71,12 +76,14 @@ const propTypes = {
   excludeRootNode: PropTypes.bool.isRequired,
   filterValues: PropTypes.object,
   focusedItemId: PropTypes.string,
+  hasAppliedFilter: PropTypes.bool,
   managerScope: PropTypes.string.isRequired,
   navigateEdit: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   searchInProgress: PropTypes.bool,
   setFocusedItemId: PropTypes.func.isRequired,
+  setHasAppliedFilter: PropTypes.func.isRequired,
   setTableListItems: PropTypes.func.isRequired,
   sortOrder: PropTypes.array,
   tableBatchFetchOptions: PropTypes.object,
@@ -88,6 +95,7 @@ const propTypes = {
 const defaultProps = {
   filterValues: {},
   focusedItemId: undefined,
+  hasAppliedFilter: true,
   searchInProgress: false,
   sortOrder: [],
   tableBatchFetchOptions: {},
@@ -145,15 +153,20 @@ const createTableModuleWrapper = () => ComposedComponent => {
     }
 
     handleShowAllRecords() {
-      this.fetchTableItems({ ignoreFilters: true })
+      const { hasAppliedFilter, managerScope, setHasAppliedFilter } = this.props
+
+      if (hasAppliedFilter) {
+        setHasAppliedFilter(false, { managerScope })
+      }
+
+      return this.fetchTableItems({ ignoreFilters: true })
     }
 
-    fetchTableItems({ ignoreFilters = false } = {}) {
+    fetchTableItems({ ignoreFilters, useInitialFilters } = {}) {
       const {
         buildFilterQuery,
         enableTableColumnSorting,
         excludeRootNode,
-        filterValues,
         focusedItemId,
         managerScope,
         search,
@@ -162,12 +175,14 @@ const createTableModuleWrapper = () => ComposedComponent => {
         sortOrder,
         tableColumnsToSort,
       } = this.props
-      console.log('filterValues', filterValues)
+
       return waitForOtherSearchesToFinish(this.getSearchInProgress).then(() => {
-        const query = buildFilterQuery({
+        const { query } = buildFilterQuery({
           // excludeRootNode, // TODO: add excludeRootNode
-          values: ignoreFilters ? {} : filterValues,
+          ignoreFilters,
+          useInitialFilters,
         })
+
         return search({
           query,
           sort:
@@ -187,7 +202,7 @@ const createTableModuleWrapper = () => ComposedComponent => {
             setFocusedItemId(firstItemId, { managerScope })
           }
 
-          return null
+          return items
         })
       })
     }

@@ -14,6 +14,7 @@ const useConfig = () => {
 
 const propTypes = {
   baseTreeFilter: PropTypes.object,
+  buildEditItemHeaders: PropTypes.func,
   buildFilterQuery: PropTypes.func.isRequired,
   enableTableColumnSorting: PropTypes.bool.isRequired,
   excludeRootNode: PropTypes.bool.isRequired,
@@ -29,6 +30,7 @@ const propTypes = {
 }
 const defaultProps = {
   baseTreeFilter: undefined,
+  buildEditItemHeaders: undefined,
   initialItemId: undefined,
   itemFetchOptions: undefined,
   sortOrder: undefined,
@@ -37,9 +39,11 @@ const defaultProps = {
 
 const ResourceManagerConfigProvider = ({
   baseTreeFilter,
+  buildEditItemHeaders,
   buildFilterQuery,
   enableTableColumnSorting,
   excludeRootNode,
+  initialFilterValues,
   initialItemId,
   itemFetchOptions,
   managerScope,
@@ -59,9 +63,11 @@ const ResourceManagerConfigProvider = ({
     return {
       allTableColumnFieldPaths,
       baseTreeFilter,
+      buildEditItemHeaders,
       buildFilterQuery,
       enableTableColumnSorting,
       excludeRootNode,
+      initialFilterValues,
       initialItemId,
       itemFetchOptions,
       managerScope,
@@ -75,9 +81,11 @@ const ResourceManagerConfigProvider = ({
   }, [
     allTableColumnFieldPaths,
     baseTreeFilter,
+    buildEditItemHeaders,
     buildFilterQuery,
     enableTableColumnSorting,
     excludeRootNode,
+    initialFilterValues,
     initialItemId,
     itemFetchOptions,
     managerScope,

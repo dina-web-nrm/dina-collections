@@ -16,7 +16,7 @@ import { ResourceManager } from 'coreModules/resourceManager/components'
 import CreateSpecimen from './item/CreateSpecimen'
 import EditSpecimen from './item/EditSpecimen'
 import FilterForm from './filter/FilterForm'
-import { higherOrderComponents } from './filter/queryBuilder'
+import { higherOrderComponents as filterHOCs } from './filter/queryBuilder'
 import transformOutput from './item/RecordForm/transformations/output'
 import tableColumnSpecifications from './tableColumnSpecifications'
 import ItemTitle from './ItemTitle'
@@ -130,17 +130,12 @@ const defaultProps = {
 class SpecimenManager extends Component {
   constructor(props) {
     super(props)
-    this.buildFilterQuery = this.buildFilterQuery.bind(this)
     this.handleInteraction = this.handleInteraction.bind(this)
     this.transformOutput = this.transformOutput.bind(this)
   }
 
   handleInteraction(type, data = {}) {
     this.props.onNavigation(type, data)
-  }
-
-  buildFilterQuery() {
-    return this.props.buildQuery().query
   }
 
   transformOutput(formData) {
@@ -156,13 +151,13 @@ class SpecimenManager extends Component {
   }
 
   render() {
-    const { search } = this.props
+    const { buildQuery, search } = this.props
 
     return (
       <ResourceManager
         {...this.props}
         buildEditItemHeaders={buildEditItemHeaders}
-        buildFilterQuery={this.buildFilterQuery}
+        buildFilterQuery={buildQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         csvExportEnabled
         enableTableColumnSorting
@@ -193,7 +188,7 @@ export default compose(
     resource: 'searchSpecimen',
     storeSearchResult: false,
   }),
-  higherOrderComponents.createFormHoc(),
+  filterHOCs.createFormHoc(),
   createEnsureAllItemsFetched({
     resource: 'establishmentMeansType',
   }),

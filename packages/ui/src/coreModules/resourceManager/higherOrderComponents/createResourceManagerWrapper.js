@@ -57,7 +57,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     })
     const numberOfListItems = (listItems || []).length
 
-    const showAll = get[':managerScope.showAll'](state, { managerScope })
     const expandedIds = get[':managerScope.treeExpandedIds'](state, {
       managerScope,
     })
@@ -98,7 +97,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       numberOfListItems,
       prevRowAvailable,
       searchInProgress,
-      showAll,
       tableColumnsToSort,
       totalNumberOfRecords,
       treeBaseItems,
@@ -126,13 +124,13 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     setFocusIdWhenLoaded:
       keyObjectActionCreators.set[':managerScope.focusIdWhenLoaded'],
     setListItems: keyObjectActionCreators.set[':managerScope.listItems'],
-    setShowAll: keyObjectActionCreators.set[':managerScope.showAll'],
     setTreeListItems:
       keyObjectActionCreators.set[':managerScope.treeListItems'],
   }
 
   const propTypes = {
     baseTreeFilter: PropTypes.object,
+    buildEditItemHeaders: PropTypes.func,
     buildFilterQuery: PropTypes.func.isRequired,
     clearNestedCache: PropTypes.func.isRequired,
     clearResourceState: PropTypes.func.isRequired,
@@ -177,7 +175,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     setFocusIdWhenLoaded: PropTypes.func.isRequired,
     setListItems: PropTypes.func.isRequired,
     setShowAll: PropTypes.func.isRequired,
-    showAll: PropTypes.bool,
     sortOrder: PropTypes.array,
     tableActive: PropTypes.bool.isRequired,
     tableBatchFetchOptions: PropTypes.shape({
@@ -197,7 +194,8 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
   const defaultProps = {
     baseTreeFilter: {},
-    csvExportEnabled: false,
+    buildEditItemHeaders: undefined,
+    csvExportEnabled: true,
     enableTableColumnSorting: false,
     excludeRootNode: false,
     expandedIds: {},
@@ -214,7 +212,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     recordNavigationHeight: emToPixels(4.25),
     recordOptionsHeight: emToPixels(3.5625),
     searchInProgress: false,
-    showAll: false,
     sortOrder: [],
     tableBatchFetchOptions: {},
     tableColumnsToSort: undefined,
@@ -237,7 +234,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
       this.handlePickItem = this.handlePickItem.bind(this)
       this.handleSetCurrentTableRow = this.handleSetCurrentTableRow.bind(this)
-      this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
       this.handleTableTabClick = this.handleTableTabClick.bind(this)
       this.handleTableSettingsClick = this.handleTableSettingsClick.bind(this)
       this.handleToggleFilters = this.handleToggleFilters.bind(this)
@@ -298,7 +294,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       } = this.props
 
       if (!focusedItemId && initialItemId) {
-        setFocusedItemId(initialItemId)
+        setFocusedItemId(initialItemId, { managerScope })
       }
 
       if (initialFilterValues) {
@@ -479,22 +475,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.handleInteraction(NAVIGATE_CREATE)
     }
 
-    handleShowAllRecords({ isPicker, skipTableSearch }) {
-      const { managerScope, showAll, treeActive } = this.props
-
-      if (treeActive) {
-        this.props.setShowAll(!showAll, { managerScope })
-      } else {
-        if (!isPicker) {
-          this.resetFilters()
-        }
-
-        if (!skipTableSearch) {
-          setTimeout(this.tableSearch)
-        }
-      }
-    }
-
     handleFormTabClick() {
       this.selectCurrentRow()
     }
@@ -595,9 +575,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     render() {
       const {
         baseTreeFilter,
+        buildEditItemHeaders,
         buildFilterQuery,
         enableTableColumnSorting,
         excludeRootNode,
+        initialFilterValues,
         initialItemId,
         itemFetchOptions,
         managerScope,
@@ -614,9 +596,11 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       return (
         <ResourceManagerConfigProvider
           baseTreeFilter={baseTreeFilter}
+          buildEditItemHeaders={buildEditItemHeaders}
           buildFilterQuery={buildFilterQuery}
           enableTableColumnSorting={enableTableColumnSorting}
           excludeRootNode={excludeRootNode}
+          initialFilterValues={initialFilterValues}
           initialItemId={initialItemId}
           itemFetchOptions={itemFetchOptions}
           managerScope={managerScope}
@@ -633,6 +617,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
           />
           <ComposedComponent
             {...this.props}
+            initialFilterValues={initialFilterValues}
             managerScope={managerScope}
             onClosePicker={this.handleClosePicker}
             onFormTabClick={this.handleFormTabClick}

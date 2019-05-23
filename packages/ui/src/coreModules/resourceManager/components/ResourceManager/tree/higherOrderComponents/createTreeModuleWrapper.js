@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { isEqual } from 'lodash'
+import isEqual from 'fast-deep-equal'
 import objectPath from 'object-path'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
@@ -79,7 +79,6 @@ const propTypes = {
   setTreeBaseItems: PropTypes.func.isRequired,
   setTreeExpandedIds: PropTypes.func.isRequired,
   setTreeListItems: PropTypes.func.isRequired,
-  showAll: PropTypes.bool.isRequired,
   sortOrder: PropTypes.array,
   treeBaseItems: PropTypes.arrayOf(
     PropTypes.shape({
@@ -265,7 +264,6 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         treeListItems,
         itemsObject,
         setTreeListItems,
-        showAll,
         treeBaseItems,
       } = this.props
 
@@ -287,10 +285,10 @@ const createTreeModuleWrapper = () => ComposedComponent => {
             ItemTitle={ItemTitle}
             managerScope={managerScope}
             onClickRow={onClickRow}
+            onShowAllRecords={this.handleShowAllRecords}
             onToggleRow={this.handleToggleRow}
             resource={resource}
             setTreeListItems={setTreeListItems}
-            showAll={showAll}
             treeBaseItems={treeBaseItems}
             treeExpandedIds={treeExpandedIds}
             treeListItems={treeListItems}

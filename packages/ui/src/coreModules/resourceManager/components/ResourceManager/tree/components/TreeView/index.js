@@ -25,7 +25,6 @@ const propTypes = {
   onToggleRow: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   setTreeListItems: PropTypes.func.isRequired,
-  showAll: PropTypes.bool.isRequired,
   treeBaseItems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -70,7 +69,6 @@ const TreeView = ({
   onToggleRow,
   resource,
   setTreeListItems,
-  showAll,
   treeBaseItems,
   treeExpandedIds,
   treeListItems,
@@ -78,7 +76,6 @@ const TreeView = ({
   const list = useRef(null)
 
   const itemsObjectRef = useRef(null)
-  const showAllRef = useRef(null)
   const treeBaseItemsRef = useRef(null)
   const treeExpandedIdsRef = useRef(null)
 
@@ -99,7 +96,6 @@ const TreeView = ({
       treeBaseItems &&
       treeBaseItems.length &&
       (itemsObjectRef.current !== itemsObject ||
-        showAllRef.current !== showAll ||
         treeBaseItemsRef.current !== treeBaseItems ||
         treeExpandedIdsRef.current !== treeExpandedIds)
     ) {
@@ -108,14 +104,12 @@ const TreeView = ({
         baseItems: treeBaseItems,
         expandedIds: treeExpandedIds,
         fetchItemById,
-        showAll,
       })
 
       setTreeListItems(newTreeListItems, { managerScope })
     }
 
     itemsObjectRef.current = itemsObject
-    showAllRef.current = showAll
     treeBaseItemsRef.current = treeBaseItems
     treeExpandedIdsRef.current = treeExpandedIds
   }, [
@@ -124,7 +118,6 @@ const TreeView = ({
     itemsObject,
     managerScope,
     setTreeListItems,
-    showAll,
     treeBaseItems,
     treeExpandedIds,
   ])

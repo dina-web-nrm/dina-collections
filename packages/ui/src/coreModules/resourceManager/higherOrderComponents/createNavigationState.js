@@ -21,7 +21,7 @@ import {
 const createResourceUrlState = () => ComposedComponent => {
   const propTypes = {
     clearState: PropTypes.func.isRequired,
-    goBack: PropTypes.func.isRequired,
+    goBack: PropTypes.func,
     isPicker: PropTypes.bool,
     onInteraction: PropTypes.func,
     state: PropTypes.object.isRequired,
@@ -30,6 +30,7 @@ const createResourceUrlState = () => ComposedComponent => {
   }
 
   const defaultProps = {
+    goBack: undefined,
     isPicker: false,
     onInteraction: undefined,
     treeEnabled: false,
@@ -88,6 +89,11 @@ const createResourceUrlState = () => ComposedComponent => {
           this.navigateCreate()
           break
         }
+        case NAVIGATE_FORM_SECTION: {
+          const { sectionId } = data
+          this.navigateFormSection(sectionId)
+          break
+        }
         case NAVIGATE_TABLE: {
           this.navigateTable()
           break
@@ -102,11 +108,6 @@ const createResourceUrlState = () => ComposedComponent => {
         }
         case NAVIGATE_TREE: {
           this.navigateTree()
-          break
-        }
-        case NAVIGATE_FORM_SECTION: {
-          const { sectionId } = data
-          this.navigateFormSection(sectionId)
           break
         }
         default: {
@@ -141,7 +142,9 @@ const createResourceUrlState = () => ComposedComponent => {
     navigateFilter() {
       this.props.updateState({
         filterColumn: 'filter',
+        itemId: undefined,
         mainColumn: 'table',
+        sectionId: undefined,
       })
     }
 
@@ -156,7 +159,7 @@ const createResourceUrlState = () => ComposedComponent => {
         filterColumn: undefined,
         itemId: undefined,
         mainColumn: 'create',
-        sectionId: this.props.state.sectionId || '0',
+        sectionId: '0',
       })
     }
 
@@ -223,9 +226,7 @@ const createResourceUrlState = () => ComposedComponent => {
         itemId,
         navigateCreate: this.navigateCreate,
         navigateEdit: this.navigateEdit,
-        navigateFilter: this.navigateFilter,
         navigateFormSection: this.navigateFormSection,
-        navigateRoot: this.navigateRoot,
         navigateTable: this.navigateTable,
         navigateTableSettings: this.navigateTableSettings,
         navigateTree: this.navigateTree,
