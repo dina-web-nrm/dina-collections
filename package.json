@@ -74,6 +74,7 @@
     "remote:import:data:sample": "node ./packages/scripts/src/js/exec.js docker-import-data-from-sample.sh",
     "remote:import:data:sql": "node ./packages/scripts/src/js/importFromSqlDump.js",
     "remote:import:data:zip": "node ./packages/scripts/src/js/importFromZip.js",
+    "remote:log": "node ./packages/scripts/src/js/remoteLog.js",
     "remote:migrate:latest": "node ./packages/scripts/src/js/exec.js docker-migrate-latest.sh",
     "remote:migrate:one": "node ./packages/scripts/src/js/exec.js docker-migrate-one.sh",
     "remote:migrate:undo:one": "node ./packages/scripts/src/js/exec.js docker-migrate-undo-one.sh",
