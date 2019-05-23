@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.20.0-rc](https://github.com/dina-web-nrm/dina-collections/compare/v0.19.0...v0.20.0-rc)
+
+- Add data model images [`#526`](https://github.com/dina-web-nrm/dina-collections/pull/526)
+- Add tree functionallity to elastic [`#525`](https://github.com/dina-web-nrm/dina-collections/pull/525)
+- Fix data model documentation and add env files docs [`#523`](https://github.com/dina-web-nrm/dina-collections/pull/523)
+
 #### [v0.19.0](https://github.com/dina-web-nrm/dina-collections/compare/v0.18.3...v0.19.0)
+
+> 20 May 2019
 
 - Fix search place issues [`#522`](https://github.com/dina-web-nrm/dina-collections/pull/522)
 - Add search place to backend [`#521`](https://github.com/dina-web-nrm/dina-collections/pull/521)
