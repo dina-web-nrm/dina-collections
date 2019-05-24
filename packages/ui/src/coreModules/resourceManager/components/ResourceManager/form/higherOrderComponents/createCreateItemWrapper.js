@@ -12,26 +12,31 @@ import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
-import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
 
-const mapStateToProps = (state, { formName }) => {
+const mapStateToProps = (state, { resource }) => {
+  const formName = `${resource}Create`
+
   return {
+    formName,
     values: getFormValues(formName)(state),
   }
 }
 
-const mapDispatchToProps = {
-  reset: resetActionCreator,
-  startSubmit: startSubmitActionCreator,
-  stopSubmit: stopSubmitActionCreator,
-}
+const mapDispatchToProps = (dispatch, { resource }) => ({
+  create: (...args) => dispatch(crudActionCreators[resource].create(...args)),
+  reset: (...args) => dispatch(resetActionCreator(...args)),
+  startSubmit: (...args) => dispatch(startSubmitActionCreator(...args)),
+  stopSubmit: (...args) => dispatch(stopSubmitActionCreator(...args)),
+})
 
 const propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  cancelCreate: PropTypes.func.isRequired,
+  create: PropTypes.func.isRequired,
   fetchResourceCount: PropTypes.func.isRequired,
   formName: PropTypes.string.isRequired,
-  onInteraction: PropTypes.func.isRequired,
+  navigateEdit: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
+  setFocusedItemId: PropTypes.func.isRequired,
   startSubmit: PropTypes.func.isRequired,
   stopSubmit: PropTypes.func.isRequired,
   transformOutput: PropTypes.func,
@@ -42,8 +47,8 @@ const defaultProps = {
   values: undefined,
 }
 
-const createHandleCreateSubmit = () => ComposedComponent => {
-  class CreateSubmitHandler extends Component {
+const createCreateItemWrapper = () => ComposedComponent => {
+  class CreateItemWrapper extends Component {
     constructor(props) {
       super(props)
 
@@ -54,32 +59,32 @@ const createHandleCreateSubmit = () => ComposedComponent => {
       event.preventDefault()
 
       const {
-        dispatch,
+        create,
         fetchResourceCount,
         formName,
-        onInteraction,
-        resource,
+        navigateEdit,
+        setFocusedItemId,
         startSubmit,
         stopSubmit,
         transformOutput,
         values,
       } = this.props
 
-      const create =
-        crudActionCreators[resource] && crudActionCreators[resource].create
-
       startSubmit(formName) // needed for withUnsubmittedFormConfirmation
 
-      return dispatch(
-        create({
-          item: transformOutput ? transformOutput(values) : values,
-          nested: true,
-        })
-      )
-        .then(({ id }) => {
+      return create({
+        item: transformOutput ? transformOutput(values) : values,
+        nested: true,
+      })
+        .then(res => {
+          const { id } = res
+
+          setFocusedItemId(id)
+          navigateEdit(id)
           fetchResourceCount()
-          onInteraction(CREATE_SUCCESS, { itemId: id })
           stopSubmit(formName)
+
+          return res
         })
         .catch(handleReduxFormSubmitError)
         .catch(err => {
@@ -88,21 +93,29 @@ const createHandleCreateSubmit = () => ComposedComponent => {
     }
 
     render() {
-      return <ComposedComponent {...this.props} onSubmit={this.handleSubmit} />
+      const { cancelCreate, formName } = this.props
+
+      return (
+        <ComposedComponent
+          {...this.props}
+          formName={formName}
+          onCancel={cancelCreate}
+          onSubmit={this.handleSubmit}
+        />
+      )
     }
   }
 
-  CreateSubmitHandler.propTypes = propTypes
-  CreateSubmitHandler.defaultProps = defaultProps
+  CreateItemWrapper.propTypes = propTypes
+  CreateItemWrapper.defaultProps = defaultProps
 
   return compose(
     createGetResourceCount(),
     connect(
       mapStateToProps,
       mapDispatchToProps
-    ),
-    connect(null) // needed to get dispatch
-  )(CreateSubmitHandler)
+    )
+  )(CreateItemWrapper)
 }
 
-export default createHandleCreateSubmit
+export default createCreateItemWrapper

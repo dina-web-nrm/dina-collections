@@ -16,6 +16,7 @@ import {
 import resourceManagerSelectors from 'coreModules/resourceManager/globalSelectors'
 import {
   createFocusRow,
+  injectFocusedItemId,
   injectResourceManagerConfig,
   injectResourceManagerNavigation,
 } from 'coreModules/resourceManager/higherOrderComponents'
@@ -38,9 +39,6 @@ const mapStateToProps = (
 
   return {
     filterValues: getFormValues(`${searchResource}Filter`)(state),
-    focusedItemId: get[':managerScope.focusedItemId'](state, {
-      managerScope,
-    }),
     hasAppliedFilter: get[':managerScope.hasAppliedFilter'](state, {
       managerScope,
     }),
@@ -62,7 +60,6 @@ const mapStateToProps = (
 }
 
 const mapDispatchToProps = {
-  setFocusedItemId: keyObjectActionCreators.set[':managerScope.focusedItemId'],
   setHasAppliedFilter:
     keyObjectActionCreators.set[':managerScope.hasAppliedFilter'],
   setTableListItems:
@@ -76,6 +73,7 @@ const propTypes = {
   excludeRootNode: PropTypes.bool.isRequired,
   filterValues: PropTypes.object,
   focusedItemId: PropTypes.string,
+  focusItemIdWhenLoaded: PropTypes.string,
   hasAppliedFilter: PropTypes.bool,
   managerScope: PropTypes.string.isRequired,
   navigateEdit: PropTypes.func.isRequired,
@@ -83,6 +81,7 @@ const propTypes = {
   search: PropTypes.func.isRequired,
   searchInProgress: PropTypes.bool,
   setFocusedItemId: PropTypes.func.isRequired,
+  setFocusItemIdWhenLoaded: PropTypes.func.isRequired,
   setHasAppliedFilter: PropTypes.func.isRequired,
   setTableListItems: PropTypes.func.isRequired,
   sortOrder: PropTypes.array,
@@ -95,6 +94,7 @@ const propTypes = {
 const defaultProps = {
   filterValues: {},
   focusedItemId: undefined,
+  focusItemIdWhenLoaded: undefined,
   hasAppliedFilter: true,
   searchInProgress: false,
   sortOrder: [],
@@ -166,40 +166,44 @@ const createTableModuleWrapper = () => ComposedComponent => {
       const {
         buildFilterQuery,
         enableTableColumnSorting,
-        excludeRootNode,
         focusedItemId,
+        focusItemIdWhenLoaded,
         managerScope,
         search,
         setTableListItems,
         setFocusedItemId,
-        sortOrder,
+        setFocusItemIdWhenLoaded,
+        sortOrder: defaultSortOrder,
         tableColumnsToSort,
       } = this.props
 
       return waitForOtherSearchesToFinish(this.getSearchInProgress).then(() => {
         const { query } = buildFilterQuery({
-          // excludeRootNode, // TODO: add excludeRootNode
           ignoreFilters,
           useInitialFilters,
         })
 
+        const userSortOrder =
+          enableTableColumnSorting &&
+          tableColumnsToSort.length > 0 &&
+          tableColumnsToSort.map(({ fieldPath, sort: order }) => {
+            return `attributes.${fieldPath}:${order}`
+          })
+
         return search({
           query,
-          sort:
-            (enableTableColumnSorting &&
-              tableColumnsToSort.length > 0 &&
-              tableColumnsToSort.map(({ fieldPath, sort: order }) => {
-                return `attributes.${fieldPath}:${order}`
-              })) ||
-            sortOrder,
+          sort: userSortOrder || defaultSortOrder,
           useScroll: false,
         }).then(items => {
           setTableListItems(items, { managerScope })
 
           const firstItemId = objectPath.get(items, '0.id')
 
-          if (!focusedItemId && firstItemId) {
-            setFocusedItemId(firstItemId, { managerScope })
+          if (focusItemIdWhenLoaded) {
+            setFocusedItemId(focusItemIdWhenLoaded)
+            setFocusItemIdWhenLoaded(null)
+          } else if (!focusedItemId && firstItemId) {
+            setFocusedItemId(firstItemId)
           }
 
           return items
@@ -235,6 +239,7 @@ const createTableModuleWrapper = () => ComposedComponent => {
   return compose(
     injectResourceManagerConfig,
     injectResourceManagerNavigation,
+    injectFocusedItemId,
     connect(
       mapStateToProps,
       mapDispatchToProps

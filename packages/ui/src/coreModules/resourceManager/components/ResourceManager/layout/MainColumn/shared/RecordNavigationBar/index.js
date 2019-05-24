@@ -6,7 +6,6 @@ import { Button, Icon, Grid, Input } from 'semantic-ui-react'
 import ReactRangeSlider from 'react-rangeslider'
 
 import sizeSelectors from 'coreModules/size/globalSelectors'
-import { injectResourceManagerNavigation } from 'coreModules/resourceManager/higherOrderComponents'
 import createTableModuleWrapper from '../../../../table/higherOrderComponents/createTableModuleWrapper'
 
 /*
@@ -39,7 +38,7 @@ const propTypes = {
   numberOfListItems: PropTypes.number,
   onFocusNextRow: PropTypes.func.isRequired,
   onFocusPreviousRow: PropTypes.func.isRequired,
-  onSetCurrentRowNumber: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  onFocusRow: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onShowAllRecords: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   showRecordInput: PropTypes.bool,
   showSlider: PropTypes.bool,
@@ -49,7 +48,7 @@ const defaultProps = {
   currentRowNumber: undefined,
   disabled: false,
   numberOfListItems: undefined,
-  onSetCurrentRowNumber: false,
+  onFocusRow: false,
   onShowAllRecords: false,
   showRecordInput: true,
   showSlider: true,
@@ -69,7 +68,7 @@ const RecordNavigationBar = ({
   numberOfListItems,
   onFocusNextRow: handleSelectNextRecord,
   onFocusPreviousRow: handleSelectPreviousRecord,
-  onSetCurrentRowNumber: handleSetCurrentRowNumber,
+  onFocusRow: handleFocusRow,
   onShowAllRecords: handleShowAllRecords,
   showRecordInput,
   showSlider,
@@ -118,7 +117,7 @@ const RecordNavigationBar = ({
               max={numberOfListItems}
               min={numberOfListItems && 1}
               onChange={event => {
-                handleSetCurrentRowNumber(event.target.value)
+                handleFocusRow(event.target.value)
               }}
               size="small"
               style={{ width: '6.5em' }}
@@ -155,7 +154,7 @@ const RecordNavigationBar = ({
                   if (disabled) {
                     return
                   }
-                  handleSetCurrentRowNumber(sliderRowNumber)
+                  handleFocusRow(sliderRowNumber)
                   setSliderRowNumber(null)
                 }}
                 step={1}
@@ -221,6 +220,5 @@ RecordNavigationBar.defaultProps = defaultProps
 
 export default compose(
   createTableModuleWrapper(),
-  injectResourceManagerNavigation,
   connect(mapStateToProps)
 )(RecordNavigationBar)

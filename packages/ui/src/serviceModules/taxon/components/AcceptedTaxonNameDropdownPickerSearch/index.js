@@ -14,8 +14,8 @@ export function setLocalManager(InjectedTaxonManager) {
 
 const propTypes = {
   onClose: PropTypes.func.isRequired,
-  onInteraction: PropTypes.func.isRequired,
   onPickerButtonClick: PropTypes.func.isRequired,
+  onPickItem: PropTypes.func.isRequired,
   pickerActive: PropTypes.bool.isRequired,
 }
 
@@ -32,7 +32,7 @@ export class AcceptedTaxonNameDropdownPickerSearch extends Component {
   render() {
     const {
       onClose,
-      onInteraction,
+      onPickItem,
       onPickerButtonClick,
       pickerActive,
       ...rest
@@ -41,7 +41,12 @@ export class AcceptedTaxonNameDropdownPickerSearch extends Component {
       return (
         <LayerModal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
-            <TaxonManager isPicker onInteraction={onInteraction} treeEnabled />
+            <TaxonManager
+              isPicker
+              onClose={onClose}
+              onPickItem={onPickItem}
+              treeEnabled
+            />
           </Modal.Content>
         </LayerModal>
       )

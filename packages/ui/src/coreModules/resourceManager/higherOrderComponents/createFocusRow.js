@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import objectPath from 'object-path'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
-import { actionCreators as keyObjectActionCreators } from 'coreModules/resourceManager/keyObjectModule'
+import injectFocusedItemId from './injectFocusedItemId'
 
 const createFocusRow = ({
   rowSelector,
@@ -24,11 +25,6 @@ const createFocusRow = ({
       currentRowNumber: rowSelector(state, { managerScope }),
       items: itemsSelector(state, { managerScope }),
     }
-  }
-
-  const mapDispatchToProps = {
-    setFocusedItemId:
-      keyObjectActionCreators.set[':managerScope.focusedItemId'],
   }
 
   const propTypes = {
@@ -50,9 +46,10 @@ const createFocusRow = ({
       this.getHasPreviousRow = this.getHasPreviousRow.bind(this)
       this.getItemIdFromRowNumber = this.getItemIdFromRowNumber.bind(this)
       this.handleClickRow = this.handleClickRow.bind(this)
+      this.handleFocusCurrentRow = this.handleFocusCurrentRow.bind(this)
       this.handleFocusNextRow = this.handleFocusNextRow.bind(this)
       this.handleFocusPreviousRow = this.handleFocusPreviousRow.bind(this)
-      this.handleSetCurrentRowNumber = this.handleSetCurrentRowNumber.bind(this)
+      this.handleFocusRow = this.handleFocusRow.bind(this)
 
       this.shortcuts = [
         {
@@ -87,57 +84,56 @@ const createFocusRow = ({
     }
 
     handleClickRow(itemId) {
-      const { focusedItemId, managerScope, setFocusedItemId } = this.props
+      const { focusedItemId, setFocusedItemId } = this.props
 
       if (itemId !== focusedItemId) {
-        setFocusedItemId(itemId, { managerScope })
+        setFocusedItemId(itemId)
+
+        return itemId
       }
+
+      return null
     }
 
     handleFocusNextRow() {
-      const {
-        currentRowNumber,
-        managerScope,
-        setFocusedItemId,
-        items,
-      } = this.props
+      const { currentRowNumber, items } = this.props
 
       if (currentRowNumber < items.length) {
-        const currentRowItemIndex = currentRowNumber - 1
-        const nextRowItem = items[currentRowItemIndex + 1]
-
-        setFocusedItemId(nextRowItem.id, {
-          managerScope,
-        })
+        return this.handleFocusRow(currentRowNumber + 1)
       }
+
+      return null
     }
 
     handleFocusPreviousRow() {
-      const {
-        currentRowNumber,
-        managerScope,
-        setFocusedItemId,
-        items,
-      } = this.props
+      const { currentRowNumber } = this.props
 
       if (currentRowNumber > 1) {
-        const currentRowItemIndex = currentRowNumber - 1
-        const previousRowItem = items[currentRowItemIndex - 1]
-
-        setFocusedItemId(previousRowItem.id, {
-          managerScope,
-        })
+        return this.handleFocusRow(currentRowNumber - 1)
       }
+
+      return null
     }
 
-    handleSetCurrentRowNumber(rowNumber) {
-      const { managerScope, setFocusedItemId } = this.props
+    handleFocusCurrentRow() {
+      const { currentRowNumber } = this.props
 
+      return this.handleFocusRow(currentRowNumber)
+    }
+
+    handleFocusRow(rowNumber) {
+      const { focusedItemId, setFocusedItemId } = this.props
       const itemId = this.getItemIdFromRowNumber(rowNumber)
 
       if (itemId) {
-        setFocusedItemId(itemId, { managerScope })
+        if (itemId !== focusedItemId) {
+          setFocusedItemId(itemId)
+        }
+
+        return itemId
       }
+
+      return null
     }
 
     render() {
@@ -156,9 +152,10 @@ const createFocusRow = ({
             getHasPreviousRow={this.getHasPreviousRow}
             getItemIdFromRowNumber={this.getItemIdFromRowNumber}
             onClickRow={this.handleClickRow}
+            onFocusCurrentRow={this.handleFocusCurrentRow}
             onFocusNextRow={this.handleFocusNextRow}
             onFocusPreviousRow={this.handleFocusPreviousRow}
-            onSetCurrentRowNumber={this.handleSetCurrentRowNumber}
+            onFocusRow={this.handleFocusRow}
           />
         </React.Fragment>
       )
@@ -168,9 +165,9 @@ const createFocusRow = ({
   FocusRow.propTypes = propTypes
   FocusRow.defaultProps = defaultProps
 
-  return connect(
-    mapStateToProps,
-    mapDispatchToProps
+  return compose(
+    injectFocusedItemId,
+    connect(mapStateToProps)
   )(FocusRow)
 }
 

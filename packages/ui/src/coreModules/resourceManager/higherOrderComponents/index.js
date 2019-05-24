@@ -5,6 +5,7 @@ import createNavigationState from './createNavigationState'
 import createPickerWrapper from './createPickerWrapper'
 import createQueryState from './createQueryState'
 import createResourceManagerWrapper from './createResourceManagerWrapper'
+import injectFocusedItemId from './injectFocusedItemId'
 import injectResourceManagerConfig from './injectResourceManagerConfig'
 import injectResourceManagerNavigation from './injectResourceManagerNavigation'
 
@@ -16,6 +17,7 @@ export {
   createPickerWrapper,
   createQueryState,
   createResourceManagerWrapper,
+  injectFocusedItemId,
   injectResourceManagerConfig,
   injectResourceManagerNavigation,
 }

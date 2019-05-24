@@ -111,13 +111,12 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = {
-  getAgent: crudActionCreators.normalizedAgent.getOne,
+  createSpecimen: crudActionCreators.specimen.create,
 }
 
 const propTypes = {
   buildQuery: PropTypes.func.isRequired,
   establishmentMeansTypes: PropTypes.array.isRequired,
-  getAgent: PropTypes.func.isRequired,
   itemId: PropTypes.string,
   onNavigation: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
@@ -161,10 +160,10 @@ class SpecimenManager extends Component {
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         csvExportEnabled
         enableTableColumnSorting
-        filterHeader="Find specimens"
         initialFilterValues={initialFilterValues}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
+        onSubmitCreateForm={this.handleSubmitCreateForm}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={renderCreateForm}
         renderEditForm={renderEditForm}

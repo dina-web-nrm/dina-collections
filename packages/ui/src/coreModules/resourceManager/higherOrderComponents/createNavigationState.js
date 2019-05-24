@@ -39,6 +39,7 @@ const createResourceUrlState = () => ComposedComponent => {
   class NavigationState extends Component {
     constructor(props) {
       super(props)
+      this.cancelCreate = this.cancelCreate.bind(this)
       this.closeFilter = this.closeFilter.bind(this)
       this.closeItemView = this.closeItemView.bind(this)
       this.handleNavigation = this.handleNavigation.bind(this)
@@ -63,17 +64,12 @@ const createResourceUrlState = () => ComposedComponent => {
         }
         case CREATE_SUCCESS: {
           const { itemId } = data
+          console.log('create succ', itemId)
           this.navigateEdit(itemId)
           break
         }
         case CREATE_CANCEL: {
-          if (this.props.goBack) {
-            this.props.goBack()
-          } else {
-            this.navigateTable({
-              disablePrompt: true,
-            })
-          }
+          this.cancelCreate()
           break
         }
         case DEL_SUCCESS: {
@@ -117,6 +113,16 @@ const createResourceUrlState = () => ComposedComponent => {
 
       if (this.props.onInteraction) {
         this.props.onInteraction(type, data)
+      }
+    }
+
+    cancelCreate() {
+      if (this.props.goBack) {
+        this.props.goBack()
+      } else {
+        this.navigateTable({
+          disablePrompt: true,
+        })
       }
     }
 
@@ -219,6 +225,7 @@ const createResourceUrlState = () => ComposedComponent => {
       } = state
 
       const navigationProps = {
+        cancelCreate: this.cancelCreate,
         closeFilter: this.closeFilter,
         createItemActive: !isPicker && mainColumn === 'create',
         editItemActive: !isPicker && mainColumn === 'edit',
@@ -226,6 +233,7 @@ const createResourceUrlState = () => ComposedComponent => {
         itemId,
         navigateCreate: this.navigateCreate,
         navigateEdit: this.navigateEdit,
+        navigateFilter: this.navigateFilter,
         navigateFormSection: this.navigateFormSection,
         navigateTable: this.navigateTable,
         navigateTableSettings: this.navigateTableSettings,

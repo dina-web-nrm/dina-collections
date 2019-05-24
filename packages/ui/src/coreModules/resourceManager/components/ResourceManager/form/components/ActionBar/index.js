@@ -41,12 +41,12 @@ const mapStateToProps = (state, { formName }) => {
 }
 
 const propTypes = {
+  cancelCreate: PropTypes.func,
   formName: PropTypes.string.isRequired,
   hasSyncErrors: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
   loadingDelete: PropTypes.bool,
   nestedItem: PropTypes.object,
-  onCancelCreate: PropTypes.func,
   onDelete: PropTypes.func,
   onSubmit: PropTypes.func,
   onUndoChanges: PropTypes.func,
@@ -54,9 +54,9 @@ const propTypes = {
   submitting: PropTypes.bool.isRequired,
 }
 const defaultProps = {
+  cancelCreate: undefined,
   loadingDelete: undefined,
   nestedItem: undefined,
-  onCancelCreate: undefined,
   onDelete: undefined,
   onSubmit: undefined,
   onUndoChanges: undefined,
@@ -70,7 +70,7 @@ export class RecordActionBar extends PureComponent {
       invalid,
       loadingDelete,
       nestedItem,
-      onCancelCreate: handleCancelCreate,
+      cancelCreate: handleCancelCreate,
       onDelete: handleDelete,
       onSubmit: handleSubmit,
       onUndoChanges: handleUndoChanges,

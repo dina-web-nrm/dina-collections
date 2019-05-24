@@ -5,26 +5,34 @@ import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
-import { DEL_SUCCESS } from 'coreModules/resourceManager/constants'
 import { createNotification as createNotificationActionCreator } from 'coreModules/notifications/actionCreators'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import InspectRelationsModal from './InspectRelationsModal'
 
-const mapDispatchToProps = {
-  createNotification: createNotificationActionCreator,
-}
+const mapDispatchToProps = (dispatch, { resource }) => ({
+  createNotification: (...args) =>
+    dispatch(createNotificationActionCreator(...args)),
+  del: (...args) => dispatch(crudActionCreators[resource].del(...args)),
+  getOne: (...args) => dispatch(crudActionCreators[resource].getOne(...args)),
+})
 
 const propTypes = {
   createNotification: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  currentRowNumber: PropTypes.number.isRequired,
+  del: PropTypes.func.isRequired,
   fetchRelationshipsBeforeDelete: PropTypes.func,
   fetchResourceCount: PropTypes.func.isRequired,
+  getItemIdFromRowNumber: PropTypes.func.isRequired,
+  getOne: PropTypes.func.isRequired,
   itemHeader: PropTypes.string,
   itemId: PropTypes.string,
   itemSubHeader: PropTypes.string,
+  navigateTable: PropTypes.func.isRequired,
   onInteraction: PropTypes.func,
   relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
   resource: PropTypes.string.isRequired,
+  setFocusedItemId: PropTypes.func.isRequired,
+  setFocusItemIdWhenLoaded: PropTypes.func.isRequired,
 }
 const defaultProps = {
   fetchRelationshipsBeforeDelete: undefined,
@@ -56,14 +64,11 @@ const createHandleDelete = () => ComposedComponent => {
 
     handleDelete() {
       const {
-        dispatch,
+        getOne,
         fetchRelationshipsBeforeDelete,
         itemId,
         relationshipsToCheckBeforeDelete,
-        resource,
       } = this.props
-
-      const { getOne } = crudActionCreators[resource]
 
       this.setState({ loadingDelete: true })
       if (fetchRelationshipsBeforeDelete) {
@@ -73,13 +78,11 @@ const createHandleDelete = () => ComposedComponent => {
         })
       }
 
-      return dispatch(
-        getOne({
-          id: itemId,
-          includeDeactivated: false,
-          relationships: relationshipsToCheckBeforeDelete,
-        })
-      ).then(res => {
+      return getOne({
+        id: itemId,
+        includeDeactivated: false,
+        relationships: relationshipsToCheckBeforeDelete,
+      }).then(res => {
         const { relationships } = res || {}
         return this.deleteItemOrShowRelationships(relationships)
       })
@@ -88,11 +91,13 @@ const createHandleDelete = () => ComposedComponent => {
     deleteItemOrShowRelationships(relationships = {}) {
       const {
         createNotification,
-        dispatch,
+        currentRowNumber,
+        del,
         fetchResourceCount,
+        getItemIdFromRowNumber,
         itemId,
-        onInteraction,
-        resource,
+        navigateTable,
+        setFocusItemIdWhenLoaded,
       } = this.props
 
       const relationshipKeys = Object.keys(relationships)
@@ -128,36 +133,26 @@ const createHandleDelete = () => ComposedComponent => {
         }
       }
 
-      // if there are no relationships, delete resource
-      const { del } = crudActionCreators[resource]
-
-      return dispatch(del({ id: itemId })).then(() => {
-        const notification =
-          resource === 'specimen'
-            ? {
-                componentProps: {
-                  description: 'Please wait while the table is updated...',
-                  header: 'The specimen was deleted',
-                },
-                ttl: 3000,
-                type: 'SUCCESS',
-              }
-            : {
-                componentProps: {
-                  header: 'The record was deleted',
-                },
-                type: 'SUCCESS',
-              }
+      return del({ id: itemId }).then(() => {
+        const notification = {
+          componentProps: {
+            description: 'Please wait while the table is updated...',
+            header: 'The record was deleted',
+          },
+          ttl: 3000,
+          type: 'SUCCESS',
+        }
 
         createNotification(notification)
+
+        const nextRowItemId = getItemIdFromRowNumber(currentRowNumber + 1)
+        const previousRowItemId = getItemIdFromRowNumber(currentRowNumber - 1)
+        setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
+
         fetchResourceCount()
         setTimeout(() => {
-          this.setState({ loadingDelete: false })
+          navigateTable()
         }, 2000)
-
-        if (onInteraction) {
-          onInteraction(DEL_SUCCESS)
-        }
       })
     }
 
@@ -202,8 +197,7 @@ const createHandleDelete = () => ComposedComponent => {
     connect(
       undefined,
       mapDispatchToProps
-    ),
-    connect(null) // needed to get dispatch
+    )
   )(DeleteHandler)
 }
 

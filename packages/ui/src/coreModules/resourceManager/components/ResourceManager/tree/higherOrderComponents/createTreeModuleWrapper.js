@@ -16,18 +16,20 @@ import {
 } from 'coreModules/resourceManager/keyObjectModule'
 import {
   createFocusRow,
+  injectFocusedItemId,
   injectResourceManagerConfig,
 } from 'coreModules/resourceManager/higherOrderComponents'
-import { buildList } from 'coreModules/resourceManager/utilities'
+import {
+  buildList,
+  getBottomUpLineage,
+  getHighestCollapsedAncestorId,
+} from 'coreModules/resourceManager/utilities'
 
 const { get } = keyObjectGlobalSelectors
 
 const mapStateToProps = (state, { managerScope, resource }) => {
   return {
     currentRowNumber: resourceManagerSelectors.getCurrentTreeRowNumber(state, {
-      managerScope,
-    }),
-    focusedItemId: get[':managerScope.focusedItemId'](state, {
       managerScope,
     }),
     itemsObject: crudSelectors[resource].getItemsObject(state),
@@ -45,10 +47,6 @@ const mapStateToProps = (state, { managerScope, resource }) => {
 
 const mapDispatchToProps = (dispatch, { resource }) => ({
   getMany: (...args) => dispatch(crudActionCreators[resource].getMany(...args)),
-  setFocusedItemId: (...args) =>
-    dispatch(
-      keyObjectActionCreators.set[':managerScope.focusedItemId'](...args)
-    ),
   setTreeBaseItems: (...args) =>
     dispatch(
       keyObjectActionCreators.set[':managerScope.treeBaseItems'](...args)
@@ -69,7 +67,6 @@ const propTypes = {
   fetchItemById: PropTypes.func.isRequired,
   focusedItemId: PropTypes.string,
   getMany: PropTypes.func.isRequired,
-  itemFetchOptions: PropTypes.object,
   itemsObject: PropTypes.object.isRequired,
   ItemTitle: PropTypes.func,
   managerScope: PropTypes.string.isRequired,
@@ -86,6 +83,7 @@ const propTypes = {
     }).isRequired
   ),
   treeExpandedIds: PropTypes.objectOf(PropTypes.bool.isRequired),
+  treeItemFetchOptions: PropTypes.object,
   treeListItems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -97,12 +95,11 @@ const propTypes = {
 const defaultProps = {
   baseTreeFilter: {},
   focusedItemId: undefined,
-  initialItemId: undefined,
-  itemFetchOptions: { include: [], relationships: ['children', 'parent'] },
   ItemTitle: undefined,
   sortOrder: [],
   treeBaseItems: [],
   treeExpandedIds: {},
+  treeItemFetchOptions: { include: [], relationships: ['children', 'parent'] },
   treeListItems: [],
 }
 
@@ -110,6 +107,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
   class TreeModuleWrapper extends Component {
     constructor(props) {
       super(props)
+      this.fetchAncestorIds = this.fetchAncestorIds.bind(this)
       this.fetchTreeBase = this.fetchTreeBase.bind(this)
       this.expandAncestorsForItemId = this.expandAncestorsForItemId.bind(this)
       this.handleToggleRow = this.handleToggleRow.bind(this)
@@ -150,12 +148,52 @@ const createTreeModuleWrapper = () => ComposedComponent => {
     expandAncestorsForItemId(itemId) {
       const {
         getMany,
-        itemFetchOptions,
         managerScope,
         setTreeExpandedIds,
         sortOrder,
-        treeExpandedIds,
+        treeItemFetchOptions,
       } = this.props
+
+      return this.fetchAncestorIds(itemId).then(ancestorIds => {
+        const anyNewToExpand = ancestorIds.reduce((newToExpand, id) => {
+          if (newToExpand) {
+            return newToExpand
+          }
+
+          return this.props.treeExpandedIds[id] !== true
+        }, false)
+
+        if (anyNewToExpand) {
+          return getMany({
+            queryParams: {
+              filter: {
+                ids: ancestorIds,
+              },
+              include: treeItemFetchOptions.include,
+              relationships: treeItemFetchOptions.relationships,
+              sort: sortOrder,
+            },
+          }).then(() => {
+            const updatedExpandedIds = ancestorIds.reduce(
+              (obj, id) => {
+                return {
+                  ...obj,
+                  [id]: true,
+                }
+              },
+              { ...this.props.treeExpandedIds }
+            )
+
+            setTreeExpandedIds(updatedExpandedIds, { managerScope })
+          })
+        }
+
+        return null
+      })
+    }
+
+    fetchAncestorIds(itemId) {
+      const { getMany, sortOrder } = this.props
 
       return getMany({
         queryParams: {
@@ -166,33 +204,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         },
         storeInState: false,
       }).then((items = []) => {
-        if (!items.length) {
-          return null
-        }
-
-        const ids = items.map(item => {
-          return item.id
-        })
-
-        return getMany({
-          queryParams: {
-            filter: {
-              ids,
-            },
-            include: itemFetchOptions.include,
-            relationships: itemFetchOptions.relationships,
-            sort: sortOrder,
-          },
-        }).then(() => {
-          const updatedExpandedIds = items.reduce((obj, item) => {
-            return {
-              ...obj,
-              [item.id]: true,
-            }
-          }, treeExpandedIds)
-
-          setTreeExpandedIds(updatedExpandedIds, { managerScope })
-        })
+        return items.map(({ id }) => id)
       })
     }
 
@@ -201,19 +213,19 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         baseTreeFilter,
         focusedItemId,
         getMany,
-        itemFetchOptions,
+        treeItemFetchOptions,
         managerScope,
-        sortOrder,
-        treeBaseItems,
         setFocusedItemId,
         setTreeBaseItems,
+        sortOrder,
+        treeBaseItems,
       } = this.props
 
       return getMany({
         queryParams: {
           filter: baseTreeFilter,
-          include: itemFetchOptions.include,
-          relationships: itemFetchOptions.relationships,
+          include: treeItemFetchOptions.include,
+          relationships: treeItemFetchOptions.relationships,
           sort: sortOrder,
         },
       }).then(items => {
@@ -226,20 +238,45 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         const firstItemId = objectPath.get(cleanedItems, '0.id')
 
         if (!focusedItemId && firstItemId) {
-          setFocusedItemId(firstItemId, { managerScope })
+          setFocusedItemId(firstItemId)
         }
       })
     }
 
     handleToggleRow(itemId) {
-      const { treeExpandedIds, managerScope, setTreeExpandedIds } = this.props
+      const {
+        focusedItemId,
+        itemsObject,
+        managerScope,
+        setFocusedItemId,
+        setTreeExpandedIds,
+        treeExpandedIds,
+      } = this.props
 
       const updatedExpandedIds = {
         ...treeExpandedIds,
         [itemId]: !treeExpandedIds[itemId],
       }
 
+      const focusedItemLineage = getBottomUpLineage({
+        id: focusedItemId,
+        itemsObject,
+        lineage: [focusedItemId],
+      }).reverse()
+
+      const highestCollapsedAncestorId = getHighestCollapsedAncestorId({
+        expandedIds: updatedExpandedIds,
+        lineage: focusedItemLineage,
+      })
+
       setTreeExpandedIds(updatedExpandedIds, { managerScope })
+
+      if (
+        highestCollapsedAncestorId &&
+        highestCollapsedAncestorId !== focusedItemId
+      ) {
+        setFocusedItemId(highestCollapsedAncestorId)
+      }
     }
 
     handleCollapseCurrentRow() {
@@ -255,7 +292,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
         currentRowNumber,
         fetchItemById,
         focusedItemId,
-        itemFetchOptions,
+        treeItemFetchOptions,
         ItemTitle,
         managerScope,
         onClickRow,
@@ -280,7 +317,6 @@ const createTreeModuleWrapper = () => ComposedComponent => {
             fetchItemById={fetchItemById}
             fetchTreeBase={this.fetchTreeBase}
             focusedItemId={focusedItemId}
-            itemFetchOptions={itemFetchOptions}
             itemsObject={itemsObject}
             ItemTitle={ItemTitle}
             managerScope={managerScope}
@@ -291,6 +327,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
             setTreeListItems={setTreeListItems}
             treeBaseItems={treeBaseItems}
             treeExpandedIds={treeExpandedIds}
+            treeItemFetchOptions={treeItemFetchOptions}
             treeListItems={treeListItems}
           />
         </React.Fragment>
@@ -303,6 +340,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
 
   return compose(
     injectResourceManagerConfig,
+    injectFocusedItemId,
     connect(
       mapStateToProps,
       mapDispatchToProps

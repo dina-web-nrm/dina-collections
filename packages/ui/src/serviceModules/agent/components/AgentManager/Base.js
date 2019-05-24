@@ -91,7 +91,6 @@ class AgentManager extends Component {
         buildEditItemHeaders={buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
-        filterHeader="Find agents"
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}

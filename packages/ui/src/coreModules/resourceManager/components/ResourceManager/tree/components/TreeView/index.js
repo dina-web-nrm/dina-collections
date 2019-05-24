@@ -6,7 +6,6 @@ import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 
 import { useEffectScroll } from 'coreModules/resourceManager/hooks'
 import { emToPixels } from 'coreModules/layout/utilities'
-
 import ListItem from './ListItem'
 import createTreeModuleWrapper from '../../higherOrderComponents/createTreeModuleWrapper'
 
@@ -17,7 +16,6 @@ const propTypes = {
   fetchItemById: PropTypes.func.isRequired,
   fetchTreeBase: PropTypes.func.isRequired,
   focusedItemId: PropTypes.string,
-  itemFetchOptions: PropTypes.object.isRequired,
   itemsObject: PropTypes.object.isRequired,
   ItemTitle: PropTypes.func,
   managerScope: PropTypes.string.isRequired,
@@ -31,6 +29,7 @@ const propTypes = {
     }).isRequired
   ).isRequired,
   treeExpandedIds: PropTypes.objectOf(PropTypes.bool.isRequired).isRequired,
+  treeItemFetchOptions: PropTypes.object.isRequired,
   treeListItems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -61,7 +60,7 @@ const TreeView = ({
   fetchItemById,
   fetchTreeBase,
   focusedItemId,
-  itemFetchOptions,
+  treeItemFetchOptions,
   itemsObject,
   ItemTitle,
   managerScope,
@@ -155,7 +154,7 @@ const TreeView = ({
         onClickRow={onClickRow}
         onToggleRow={onToggleRow}
         resource={resource}
-        {...itemFetchOptions}
+        {...treeItemFetchOptions}
       />
     )
   }

@@ -1,31 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { pick } from 'lodash'
 
-import { capitalizeFirstLetter } from 'common/src/stringFormatters'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import createFormModuleWrapper from '../../higherOrderComponents/createFormModuleWrapper'
-import { EditItemActionBar } from '../ActionBars'
+import createEditItemWrapper from '../../higherOrderComponents/createEditItemWrapper'
+import ActionBar from '../ActionBar'
 
 const overflowAuto = { overflow: 'auto' }
 
-const defaultBuildItemHeaders = nestedItem => {
-  if (!nestedItem) {
-    return {}
-  }
-
-  return {
-    itemHeader: nestedItem.name,
-    itemSubHeader: capitalizeFirstLetter(nestedItem.group),
-  }
-}
-
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
-  buildEditItemHeaders: PropTypes.func,
+  buildEditItemHeaders: PropTypes.func.isRequired,
   focusedItemId: PropTypes.string,
   formName: PropTypes.string,
   itemId: PropTypes.string.isRequired,
@@ -33,9 +22,9 @@ const propTypes = {
   nestedItem: PropTypes.object,
   renderEditForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
+  setFocusedItemId: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  buildEditItemHeaders: defaultBuildItemHeaders,
   focusedItemId: undefined,
   formName: undefined,
   nestedItem: undefined,
@@ -46,20 +35,30 @@ const EditItemColumn = props => {
     availableHeight,
     buildEditItemHeaders,
     focusedItemId,
-    formName,
     itemId,
     navigateEdit,
     nestedItem,
     renderEditForm,
-    resource,
+    setFocusedItemId,
   } = props
 
   const { itemHeader, itemSubHeader } = buildEditItemHeaders(nestedItem)
 
+  const itemIdRef = useRef(null)
+
   useEffect(() => {
-    if (focusedItemId && focusedItemId !== itemId) {
-      navigateEdit(focusedItemId)
+    // reconcile differences in itemId from query and focusedItemId from state
+    // if this is the first render then use itemId (e.g. when using browser back
+    // after deleting resource).
+    if (focusedItemId !== itemId) {
+      if (!itemIdRef.current) {
+        setFocusedItemId(itemId)
+      } else if (focusedItemId) {
+        navigateEdit(focusedItemId)
+      }
     }
+
+    itemIdRef.current = itemId
   }, [focusedItemId, itemId, navigateEdit])
 
   return (
@@ -72,20 +71,24 @@ const EditItemColumn = props => {
         })}
       </RowLayout.Row>
       <RowLayout.Row height={emToPixels(4.625)}>
-        <EditItemActionBar
+        <ActionBar
           {...pick(props, [
             'fetchOneItemById',
             'fetchRelationshipsBeforeDelete',
             'filterResourceCount',
+            'form',
+            'formName',
             'itemId',
             'loadingDelete',
             'nestedItem',
+            'onDelete',
             'onInteraction',
+            'onSubmit',
+            'onUndoChanges',
             'relationshipsToCheckBeforeDelete',
             'resource',
             'transformOutput',
           ])}
-          formName={formName || `${resource}Edit`}
           itemHeader={itemHeader}
           itemSubHeader={itemSubHeader}
         />
@@ -99,5 +102,6 @@ EditItemColumn.propTypes = propTypes
 
 export default compose(
   createFormModuleWrapper(),
-  createGetNestedItemById()
+  createGetNestedItemById(),
+  createEditItemWrapper()
 )(EditItemColumn)

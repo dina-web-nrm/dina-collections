@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
-const ResourceManagerNavigationContext = createContext()
+const ResourceManagerPickerContext = createContext()
 
-const useNavigation = () => {
-  const context = useContext(ResourceManagerNavigationContext)
+const usePicker = () => {
+  const context = useContext(ResourceManagerPickerContext)
   if (!context) {
-    throw new Error('must be used within a ResourceManagerNavigationProvider')
+    throw new Error('must be used within a ResourceManagerPickerProvider')
   }
 
   return context
@@ -36,7 +36,7 @@ const defaultProps = {
   sectionId: undefined,
 }
 
-const ResourceManagerNavigationProvider = ({
+const ResourceManagerPickerProvider = ({
   cancelCreate,
   createItemActive,
   editItemActive,
@@ -97,11 +97,11 @@ const ResourceManagerNavigationProvider = ({
   ])
 
   return (
-    <ResourceManagerNavigationContext.Provider value={contextValue} {...rest} />
+    <ResourceManagerPickerContext.Provider value={contextValue} {...rest} />
   )
 }
 
-ResourceManagerNavigationProvider.propTypes = propTypes
-ResourceManagerNavigationProvider.defaultProps = defaultProps
+ResourceManagerPickerProvider.propTypes = propTypes
+ResourceManagerPickerProvider.defaultProps = defaultProps
 
-export { ResourceManagerNavigationProvider, useNavigation }
+export { ResourceManagerPickerProvider, usePicker }

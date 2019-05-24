@@ -11,7 +11,7 @@ const {
   keys: [
     ':managerScope',
     ':managerScope.currentTableRowNumber',
-    ':managerScope.focusIdWhenLoaded',
+    ':managerScope.focusItemIdWhenLoaded',
     ':managerScope.focusedItemId',
     ':managerScope.hasAppliedFilter',
     ':managerScope.listFilterValues',

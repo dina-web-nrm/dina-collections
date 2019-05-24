@@ -18,23 +18,27 @@ const propTypes = {
   buildFilterQuery: PropTypes.func.isRequired,
   enableTableColumnSorting: PropTypes.bool.isRequired,
   excludeRootNode: PropTypes.bool.isRequired,
+  initialFilterValues: PropTypes.object,
   initialItemId: PropTypes.string,
-  itemFetchOptions: PropTypes.object,
   managerScope: PropTypes.string.isRequired,
+  onSubmitCreateForm: PropTypes.func,
   resource: PropTypes.string.isRequired,
   searchResource: PropTypes.string.isRequired,
   sortOrder: PropTypes.array,
   tableBatchFetchOptions: PropTypes.object,
   tableColumnSpecifications: PropTypes.array.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
+  treeItemFetchOptions: PropTypes.object,
 }
 const defaultProps = {
   baseTreeFilter: undefined,
   buildEditItemHeaders: undefined,
+  initialFilterValues: undefined,
   initialItemId: undefined,
-  itemFetchOptions: undefined,
+  onSubmitCreateForm: undefined,
   sortOrder: undefined,
   tableBatchFetchOptions: undefined,
+  treeItemFetchOptions: undefined,
 }
 
 const ResourceManagerConfigProvider = ({
@@ -45,14 +49,15 @@ const ResourceManagerConfigProvider = ({
   excludeRootNode,
   initialFilterValues,
   initialItemId,
-  itemFetchOptions,
   managerScope,
+  onSubmitCreateForm,
   resource,
   searchResource,
   sortOrder,
   tableBatchFetchOptions,
   tableColumnSpecifications,
   treeEnabled,
+  treeItemFetchOptions,
   ...rest
 }) => {
   const allTableColumnFieldPaths = useMemo(() => {
@@ -69,14 +74,15 @@ const ResourceManagerConfigProvider = ({
       excludeRootNode,
       initialFilterValues,
       initialItemId,
-      itemFetchOptions,
       managerScope,
+      onSubmitCreateForm,
       resource,
       searchResource,
       sortOrder,
       tableBatchFetchOptions,
       tableColumnSpecifications,
       treeEnabled,
+      treeItemFetchOptions,
     }
   }, [
     allTableColumnFieldPaths,
@@ -87,14 +93,15 @@ const ResourceManagerConfigProvider = ({
     excludeRootNode,
     initialFilterValues,
     initialItemId,
-    itemFetchOptions,
     managerScope,
+    onSubmitCreateForm,
     resource,
     searchResource,
     sortOrder,
     tableBatchFetchOptions,
     tableColumnSpecifications,
     treeEnabled,
+    treeItemFetchOptions,
   ])
 
   return (

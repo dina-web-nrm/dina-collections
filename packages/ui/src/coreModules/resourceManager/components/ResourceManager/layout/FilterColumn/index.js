@@ -14,7 +14,6 @@ const overflowAuto = { overflow: 'auto' }
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
-  filterHeader: PropTypes.string,
   initialFilterValues: PropTypes.object,
   isPicker: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
@@ -23,7 +22,6 @@ const propTypes = {
 }
 
 const defaultProps = {
-  filterHeader: 'Filter',
   initialFilterValues: {},
 }
 
@@ -40,17 +38,13 @@ class FilterColumn extends Component {
   }
 
   render() {
-    const {
-      availableHeight,
-      filterHeader,
-      initialFilterValues: initialValues,
-    } = this.props
+    const { availableHeight, initialFilterValues: initialValues } = this.props
     console.log('initialValues', initialValues)
 
     return (
       <RowLayout availableHeight={availableHeight} dataTestId="filterColumn">
         <RowLayout.Row height={emToPixels(4.25)}>
-          <ColumnRowHeader text={filterHeader} />
+          <ColumnRowHeader text="Filter" />
         </RowLayout.Row>
         <RowLayout.Row style={overflowAuto}>
           {this.props.renderFilterForm({ initialValues })}

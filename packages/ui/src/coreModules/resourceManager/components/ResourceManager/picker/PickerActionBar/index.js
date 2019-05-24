@@ -19,7 +19,7 @@ const defaultProps = {
   nestedItem: undefined,
 }
 
-class ItemHeader extends Component {
+class PickerActionBar extends Component {
   constructor(props) {
     super(props)
     this.handlePickItem = this.handlePickItem.bind(this)
@@ -33,11 +33,9 @@ class ItemHeader extends Component {
   }
 
   handlePickItem() {
-    const { excludeRootNode, nestedItem } = this.props
-    const { isRoot } = nestedItem || {}
-    if (!(isRoot && excludeRootNode)) {
-      this.props.onPickItem(nestedItem.id, nestedItem)
-    }
+    const { nestedItem, onPickItem } = this.props
+
+    onPickItem({ itemId: nestedItem.id, nestedItem })
   }
 
   render() {
@@ -57,7 +55,7 @@ class ItemHeader extends Component {
               <Button
                 data-testid="pickerPickButton"
                 disabled={!nestedItem || (excludeRootNode && isRoot)}
-                onClick={() => this.handlePickItem(nestedItem.id, nestedItem)}
+                onClick={this.handlePickItem}
                 size="large"
                 type="button"
               >
@@ -71,12 +69,12 @@ class ItemHeader extends Component {
   }
 }
 
-ItemHeader.propTypes = propTypes
-ItemHeader.defaultProps = defaultProps
+PickerActionBar.propTypes = propTypes
+PickerActionBar.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
     refresh: false,
   }),
   createInjectItemTitle()
-)(ItemHeader)
+)(PickerActionBar)

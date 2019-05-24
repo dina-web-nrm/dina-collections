@@ -1,26 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
 import { Icon, Menu } from 'semantic-ui-react'
 
-import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/resourceManager/keyObjectModule'
 import {
+  injectFocusedItemId,
   injectResourceManagerConfig,
   injectResourceManagerNavigation,
 } from 'coreModules/resourceManager/higherOrderComponents'
 import CsvExporter from './CsvExporter'
-
-const mapStateToProps = (state, { managerScope }) => {
-  return {
-    focusedItemId: keyObjectGlobalSelectors.get[':managerScope.focusedItemId'](
-      state,
-      {
-        managerScope,
-      }
-    ),
-  }
-}
 
 const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
@@ -57,7 +45,7 @@ export class ResultOptionsBar extends Component {
       navigateEdit: handleFormTabClick,
       navigateTable: handleTableTabClick,
       navigateTableSettings: handleTableSettingsClick,
-      toggleFilter: handleToggleFilters,
+      toggleFilter: handleToggleFilter,
       navigateTree: handleTreeTabClick,
       searchResource,
       tableActive,
@@ -128,10 +116,10 @@ export class ResultOptionsBar extends Component {
               <Menu.Item
                 data-testid="searchMenuItem"
                 link
-                onClick={() => handleToggleFilters()}
+                onClick={() => handleToggleFilter()}
                 style={{ marginLeft: '3.125em' }}
               >
-                <Icon disabled={!handleToggleFilters} name="search" />
+                <Icon disabled={!handleToggleFilter} name="search" />
               </Menu.Item>
             )}
           </Menu.Menu>
@@ -146,6 +134,6 @@ ResultOptionsBar.defaultProps = defaultProps
 
 export default compose(
   injectResourceManagerConfig,
-  injectResourceManagerNavigation,
-  connect(mapStateToProps)
+  injectFocusedItemId,
+  injectResourceManagerNavigation
 )(ResultOptionsBar)

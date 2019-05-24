@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Grid, Header, Icon } from 'semantic-ui-react'
 
 const propTypes = {
-  onClosePicker: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   pickerTitle: PropTypes.string,
 }
 
@@ -11,8 +11,8 @@ const defaultProps = {
   pickerTitle: 'Picker',
 }
 
-const ItemHeader = props => {
-  const { onClosePicker, pickerTitle } = props
+const PickerHeader = props => {
+  const { onClose, pickerTitle } = props
   return (
     <Grid padded>
       <Grid.Column>
@@ -20,7 +20,7 @@ const ItemHeader = props => {
           {pickerTitle}
           <Icon
             name="close"
-            onClick={onClosePicker}
+            onClick={onClose}
             size="small"
             style={{ float: 'right' }}
           />
@@ -30,7 +30,7 @@ const ItemHeader = props => {
   )
 }
 
-ItemHeader.propTypes = propTypes
-ItemHeader.defaultProps = defaultProps
+PickerHeader.propTypes = propTypes
+PickerHeader.defaultProps = defaultProps
 
-export default ItemHeader
+export default PickerHeader

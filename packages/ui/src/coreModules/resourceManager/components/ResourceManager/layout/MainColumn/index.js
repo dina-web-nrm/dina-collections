@@ -27,7 +27,7 @@ const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
   isPicker: PropTypes.bool.isRequired,
-  itemFetchOptions: PropTypes.object.isRequired,
+  treeItemFetchOptions: PropTypes.object.isRequired,
   onInteraction: PropTypes.func.isRequired,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   recordNavigationHeight: PropTypes.number,
@@ -51,7 +51,7 @@ const MainColumn = props => {
     createItemActive,
     editItemActive,
     isPicker,
-    itemFetchOptions,
+    treeItemFetchOptions,
     onOpenNewRecordForm,
     recordNavigationHeight,
     recordOptionsHeight,
@@ -126,7 +126,7 @@ const MainColumn = props => {
       )}
       {treeActive && (
         <RowLayout.Row style={overflowAuto}>
-          <TreeView {...props} {...itemFetchOptions} />
+          <TreeView {...props} {...treeItemFetchOptions} />
         </RowLayout.Row>
       )}
       {createItemActive && (
@@ -160,7 +160,7 @@ const MainColumn = props => {
               'relationshipsToCheckBeforeDelete',
               'renderEditForm',
               'resource',
-              'itemFetchOptions',
+              'treeItemFetchOptions',
               'sectionId',
               'transformOutput',
             ])}

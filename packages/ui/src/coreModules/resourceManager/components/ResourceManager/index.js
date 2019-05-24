@@ -17,8 +17,8 @@ import userSelectors from 'coreModules/user/globalSelectors'
 
 import MainColumn from './layout/MainColumn'
 import FilterColumn from './layout/FilterColumn'
-import PickerHeader from './picker/Header'
-import PickerActionBar from './picker/ActionBar'
+import PickerHeader from './picker/PickerHeader'
+import PickerActionBar from './picker/PickerActionBar'
 
 const TOP_NAVBAR_HEIGHT = emToPixels(3.4375)
 const PICKER_MODAL_PADDING = emToPixels(10)
@@ -60,10 +60,10 @@ const propTypes = {
   filterColumnWidth: PropTypes.number.isRequired,
   focusedItemId: PropTypes.string,
   isPicker: PropTypes.bool,
-  itemFetchOptions: PropTypes.object.isRequired,
   managerScope: PropTypes.string.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired,
   rightSidebarWidth: PropTypes.number,
+  treeItemFetchOptions: PropTypes.object.isRequired,
 }
 const defaultProps = {
   focusedItemId: undefined,
@@ -79,7 +79,7 @@ const ResourceManager = props => {
     filterActive,
     filterColumnWidth,
     isPicker,
-    itemFetchOptions,
+    treeItemFetchOptions,
     managerScope,
     rightSidebarIsOpen,
     rightSidebarWidth,
@@ -89,7 +89,7 @@ const ResourceManager = props => {
     <RowLayout availableHeight={availableHeight}>
       {isPicker && (
         <RowLayout.Row height={`${PICKER_HEADER_HEIGHT}px`}>
-          <PickerHeader {...pick(props, ['onClosePicker', 'pickerTitle'])} />
+          <PickerHeader {...pick(props, ['onClose', 'pickerTitle'])} />
         </RowLayout.Row>
       )}
       <RowLayout.Row>
@@ -108,7 +108,6 @@ const ResourceManager = props => {
             >
               <FilterColumn
                 {...pick(props, [
-                  'filterHeader',
                   'filterValues',
                   'isPicker',
                   'onInteraction',
@@ -142,7 +141,7 @@ const ResourceManager = props => {
               'onPickItem',
               'resource',
             ])}
-            {...itemFetchOptions}
+            {...treeItemFetchOptions}
             itemId={focusedItemId}
             namespace={`${managerScope}Title`}
           />
