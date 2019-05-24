@@ -3,7 +3,6 @@ export const moduleOrder = [
   'start',
   'app',
   'dataViewer',
-  'specimensMammals',
   'home',
   'manageAgents',
   'manageLocalities',
