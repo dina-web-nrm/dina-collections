@@ -11,7 +11,6 @@ import {
 } from 'coreModules/keyboardShortcuts/components'
 
 import Start from '../start/Async'
-import SpecimensMammals from '../specimensMammals/Async'
 import PageNotFound from '../pageNotFound/Async'
 import Settings from '../settings/Async'
 import ManageAgents from '../manageAgents/Async'
@@ -59,33 +58,6 @@ class App extends Component {
               component={ManageSpecimens}
               exact
               path={`${match.url}/specimens/individuals`}
-            />
-            <Route
-              component={SpecimensMammals}
-              exact
-              path={`${match.url}/specimens/mammals`}
-            />
-            <Route
-              component={SpecimensMammals}
-              exact
-              path={`${match.url}/specimens/mammals/create/sections/:sectionId`}
-            />
-            <Route
-              component={SpecimensMammals}
-              exact
-              path={`${
-                match.url
-              }/specimens/mammals/:specimenId/edit/sections/:sectionId`}
-            />
-            <Route
-              component={SpecimensMammals}
-              exact
-              path={`${match.url}/specimens/mammals/search`}
-            />
-            <Route
-              component={SpecimensMammals}
-              exact
-              path={`${match.url}/specimens/mammals/search/settings`}
             />
             <Route
               component={ManageAgents}

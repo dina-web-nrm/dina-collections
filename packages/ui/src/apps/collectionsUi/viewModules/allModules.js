@@ -1,7 +1,6 @@
 import * as app from './app'
 import * as dataViewer from './dataViewer'
 import * as docs from './docs'
-import * as specimensMammals from './specimensMammals'
 import * as home from './home'
 import * as login from './login'
 import * as manageAgents from './manageAgents'
@@ -22,7 +21,6 @@ const modules = [
   start,
   app,
   dataViewer,
-  specimensMammals,
   home,
   manageAgents,
   manageLocalities,
