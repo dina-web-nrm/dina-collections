@@ -59,7 +59,7 @@ const MainColumn = props => {
     tableSettingsActive,
     treeActive,
   } = props
-  console.log('maincolumn')
+
   return (
     <RowLayout availableHeight={availableHeight}>
       {!isPicker && (

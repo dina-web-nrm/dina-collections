@@ -64,7 +64,6 @@ const createResourceUrlState = () => ComposedComponent => {
         }
         case CREATE_SUCCESS: {
           const { itemId } = data
-          console.log('create succ', itemId)
           this.navigateEdit(itemId)
           break
         }

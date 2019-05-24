@@ -39,7 +39,6 @@ class FilterColumn extends Component {
 
   render() {
     const { availableHeight, initialFilterValues: initialValues } = this.props
-    console.log('initialValues', initialValues)
 
     return (
       <RowLayout availableHeight={availableHeight} dataTestId="filterColumn">

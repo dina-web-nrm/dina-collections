@@ -21,7 +21,7 @@ export class Edit extends PureComponent {
     }
 
     const { resourceActivities } = nestedItem
-    console.log('rest', rest)
+
     return (
       <React.Fragment>
         <BaseForm

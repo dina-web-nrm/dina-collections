@@ -81,7 +81,7 @@ class LocalityManager extends Component {
 
   renderEditForm(props = {}) {
     const { itemId } = this.props
-    console.log('props', props)
+
     return (
       <EditForm
         {...props}
