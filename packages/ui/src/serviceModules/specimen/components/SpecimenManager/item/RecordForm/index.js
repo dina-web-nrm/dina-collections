@@ -7,7 +7,6 @@ import { push } from 'react-router-redux'
 import { arrayRemove, change, reduxForm, reset, submit } from 'redux-form'
 
 import { Form, FormRow } from 'coreModules/form/components'
-import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/src/error/validators/customFormValidator'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { mammalFormModels } from 'serviceModules/specimen/schemas'

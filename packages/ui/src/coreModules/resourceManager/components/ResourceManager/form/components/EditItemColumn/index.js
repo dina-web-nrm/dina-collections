@@ -59,7 +59,7 @@ const EditItemColumn = props => {
     }
 
     itemIdRef.current = itemId
-  }, [focusedItemId, itemId, navigateEdit])
+  }, [focusedItemId, itemId, navigateEdit, setFocusedItemId])
 
   return (
     <RowLayout availableHeight={availableHeight}>

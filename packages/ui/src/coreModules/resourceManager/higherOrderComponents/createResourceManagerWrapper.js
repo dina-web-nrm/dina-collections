@@ -307,6 +307,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     render() {
+      log.render()
       const { managerScope } = this.props
 
       return (
