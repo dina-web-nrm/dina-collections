@@ -8,10 +8,8 @@ import objectPath from 'object-path'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
-import {
-  actionCreators as userActionCreators,
-  globalSelectors as userSelectors,
-} from 'coreModules/user'
+import userSelectors from 'coreModules/user/globalSelectors'
+import updateUserPreferenceAC from 'coreModules/user/actionCreators/updateUserPreference'
 
 import resourceManagerSelectors from 'coreModules/resourceManager/globalSelectors'
 import {
@@ -64,7 +62,7 @@ const mapDispatchToProps = {
     keyObjectActionCreators.set[':managerScope.hasAppliedFilter'],
   setTableListItems:
     keyObjectActionCreators.set[':managerScope.tableListItems'],
-  updateUserPreference: userActionCreators.updateUserPreference,
+  updateUserPreference: updateUserPreferenceAC,
 }
 
 const propTypes = {
