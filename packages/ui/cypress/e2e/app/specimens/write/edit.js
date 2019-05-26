@@ -8,7 +8,7 @@ export default () =>
     describe('general', () => {
       beforeEach(() => {
         cy.visit(
-          `/app/specimens/individuals?mainColumn=edit&itemId=2&sectionId=0`
+          `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=0`
         )
         cy.get('[data-testid="basicInformation"]', {
           log: false,
@@ -73,7 +73,7 @@ export default () =>
       describe('basicInformation', () => {
         beforeEach(() => {
           cy.visit(
-            `/app/specimens/individuals?mainColumn=edit&itemId=2&sectionId=0`
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=0`
           )
           cy.get('[data-testid="basicInformation"]', {
             log: false,
@@ -112,7 +112,7 @@ export default () =>
       describe('taxonomy', () => {
         beforeEach(() => {
           cy.visit(
-            `/app/specimens/individuals?mainColumn=edit&itemId=2&sectionId=1`
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=1`
           )
           cy.get('[data-testid="taxonomy"]', {
             log: false,
@@ -168,7 +168,7 @@ export default () =>
       describe('localityOrigin', () => {
         beforeEach(() => {
           cy.visit(
-            `/app/specimens/individuals?mainColumn=edit&itemId=2&sectionId=2`
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=2`
           )
           cy.get('[data-testid="localityOrigin"]', {
             log: false,
@@ -193,7 +193,7 @@ export default () =>
       describe('collectingDeath', () => {
         beforeEach(() => {
           cy.visit(
-            `/app/specimens/individuals?mainColumn=edit&itemId=2&sectionId=3`
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=3`
           )
           cy.get('[data-testid="collectingDeath"]', {
             log: false,
@@ -229,7 +229,7 @@ export default () =>
       describe('physicalObjects', () => {
         beforeEach(() => {
           cy.visit(
-            `/app/specimens/individuals?mainColumn=edit&itemId=2&sectionId=4`
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=4`
           )
           cy.get('[data-testid="physicalObjects"]', {
             log: false,
@@ -268,7 +268,7 @@ export default () =>
       describe('features', () => {
         beforeEach(() => {
           cy.visit(
-            `/app/specimens/individuals?mainColumn=edit&itemId=2&sectionId=5`
+            `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=5`
           )
           cy.get('[data-testid="features"]', {
             log: false,
