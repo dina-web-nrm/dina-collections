@@ -13,7 +13,7 @@ module.exports = function createModel({
   removeRelationships = false,
   version,
 }) {
-  const documentLink = `/docs/${version}/models/`
+  const documentLink = `/dataModelDocs/${version}/models/`
 
   let cleanedModel = setupRelationships({
     model,
