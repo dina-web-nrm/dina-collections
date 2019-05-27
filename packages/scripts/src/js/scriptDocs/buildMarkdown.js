@@ -62,6 +62,7 @@ function buildMarkdownContent({ packageJson, scriptDocs }) {
           const {
             args,
             description,
+            env,
             examples,
             scriptKey,
             scriptLink,
@@ -97,6 +98,21 @@ function buildMarkdownContent({ packageJson, scriptDocs }) {
                   { key: 'description', text: 'Description' },
                 ],
                 title: 'Args',
+              }),
+            env &&
+              Object.keys(env).length &&
+              createMarkdownTable({
+                array: Object.keys(env).map(envKey => {
+                  return {
+                    description: env[envKey],
+                    envKey,
+                  }
+                }),
+                headers: [
+                  { key: 'envKey', text: 'Env variable' },
+                  { key: 'description', text: 'Description' },
+                ],
+                title: 'ENV',
               }),
             examples &&
               Object.keys(examples).length &&
