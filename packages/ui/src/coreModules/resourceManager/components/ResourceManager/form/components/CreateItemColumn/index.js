@@ -27,7 +27,7 @@ const CreateItemColumn = props => {
         })}
       </RowLayout.Row>
       <RowLayout.Row height={emToPixels(4.625)}>
-        <ActionBar {...pick(props, ['cancelCreate', 'formName', 'onSubmit'])} />
+        <ActionBar {...pick(props, ['formName', 'onCancel', 'onSubmit'])} />
       </RowLayout.Row>
     </RowLayout>
   )

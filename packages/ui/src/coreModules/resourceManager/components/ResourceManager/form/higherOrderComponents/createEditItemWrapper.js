@@ -35,7 +35,6 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
 })
 
 const propTypes = {
-  cancelCreate: PropTypes.func.isRequired,
   createGetNestedItemHocInput: PropTypes.shape({
     include: PropTypes.array.isRequired,
     refresh: PropTypes.bool,

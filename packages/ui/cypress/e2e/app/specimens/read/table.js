@@ -86,7 +86,7 @@ export default () =>
       cy.getByText('Catalog no.').should('not.be.visible')
     })
 
-    it.only('uses keyboard shortcuts and record number input to walk in table and open/view specimen', () => {
+    it('uses keyboard shortcuts and record number input to walk in table and open/view specimen', () => {
       cy.get('[data-isfocused="yes"]').should('contain', '621445')
       cy.get('body').type('{downarrow}{downarrow}{downarrow}')
       cy.get('[data-isfocused="yes"]').should('contain', '587520')

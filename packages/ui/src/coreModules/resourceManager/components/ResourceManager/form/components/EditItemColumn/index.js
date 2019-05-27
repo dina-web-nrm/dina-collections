@@ -72,7 +72,6 @@ const EditItemColumn = props => {
       <RowLayout.Row height={emToPixels(4.625)}>
         <ActionBar
           {...pick(props, [
-            'cancelCreate',
             'formName',
             'loadingDelete',
             'nestedItem',

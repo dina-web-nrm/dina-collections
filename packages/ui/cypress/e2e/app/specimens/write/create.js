@@ -70,10 +70,10 @@ export default () =>
         .invoke('text')
         .should('equal', '12345678')
 
-      // cy.log('ensure new record focused and scrolled to in table')
-      // cy.getByTestId('tableTabMenuItem').click()
-      // cy.get('[data-isfocused="yes"]').should('contain', '12345678')
-      // cy.getByText('12345678').should('be.visible')
+      cy.log('ensure new record focused and scrolled to in table')
+      cy.getByTestId('tableTabMenuItem').click()
+      cy.get('[data-isfocused="yes"]').should('contain', '12345678')
+      cy.getByText('12345678').should('be.visible')
 
       cy.log('ensure error on creating with same number')
       cy.getByText('New record').click()

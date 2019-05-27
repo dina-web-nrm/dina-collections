@@ -7,9 +7,7 @@ export default () =>
 
     describe('general', () => {
       beforeEach(() => {
-        cy.visit(
-          `/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=0`
-        )
+        cy.visit(`/app/specimens/mammals?mainColumn=edit&itemId=2&sectionId=0`)
         cy.get('[data-testid="basicInformation"]', {
           log: false,
           timeout: 20000,

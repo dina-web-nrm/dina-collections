@@ -45,6 +45,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.handleNavigation = this.handleNavigation.bind(this)
       this.navigateCreate = this.navigateCreate.bind(this)
       this.navigateEdit = this.navigateEdit.bind(this)
+      this.navigateFilter = this.navigateFilter.bind(this)
       this.navigateFormSection = this.navigateFormSection.bind(this)
       this.navigateTable = this.navigateTable.bind(this)
       this.navigateTableSettings = this.navigateTableSettings.bind(this)
