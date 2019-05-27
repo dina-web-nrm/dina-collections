@@ -20,7 +20,7 @@ title: Command Line Interfce
 sidebar_label: CLI
 ---
 <!--- Note! This is generated from cli.js so edits directly in the cli.md will be overwritten. -->
-This is a documentation of the scripts avaialble from the root level. All these scripts are defined in root package.json and in general the scripts defined in package.json either call a script provided by a dependency or one or more scripts from the script package. This script definition is available in the documentation for each script and to get more detailed information about how a script works inspect the src
+This is a documentation of the scripts available from the root level. All these scripts are defined in root package.json and in general the scripts defined in package.json either call a script provided by a dependency or one or more scripts from the scripts package. This script definition is available in the documentation for each script and to get more detailed information about how a script works inspect the src.
 
     `,
     outputPath: 'packages/docs/docs/development/cli.md',
@@ -42,13 +42,13 @@ This is a documentation of the scripts avaialble from the root level. All these 
     test: 'Scripts for test',
     'local-services': 'Scripts managing local services',
     'remote-services': `
-These scripts are used to interact with remote servers. The ips and connection details of these servers are specified in [script env file](../configuration/env#scripts).
-Right now its supported with 4 different server roles: production, stage, test and demo',
-utilities: 'Different utility scripts`,
+These scripts are used to interact with remote servers. The IPs and connection details of these servers are specified in [script env file](../configuration/env#scripts).
+Right now it is supported with 4 different server roles: production, stage, test and demo.`,
+    utilities: 'Different utility scripts',
   },
   scripts: {
     build: {
-      description: 'Internally call build:ui and build:semantic-ui',
+      description: 'Internally calls build:ui and build:semantic-ui',
       group: 'build',
       short: 'Build ui and semantic ui',
     },
@@ -60,7 +60,7 @@ utilities: 'Different utility scripts`,
     },
     'build:common:schema:api': {
       description:
-        'Will build the api schema for the current backend and model version. Read more about schema generation in the common package',
+        'Will build the api schema for the current backend and models version. Read more about schema generation in the common package',
       group: 'build',
       short: 'Build schema api',
     },
@@ -141,7 +141,7 @@ utilities: 'Different utility scripts`,
     },
     'build:ui': {
       description:
-        'This will transpile es6 to es5 and create a production ready dist of the ui. Not needed in dev mode',
+        'This will transpile the source code to ES5 and create a production-ready dist of the ui. Not needed in dev mode',
       group: 'build',
       short: 'Build ui package',
     },
@@ -218,7 +218,7 @@ utilities: 'Different utility scripts`,
 
     'export:data:sample:sql': {
       description:
-        'Will export sample data to to ./data/sample.dump.sql. To be able to do this it will first import sample from ./data.sample.*.json. Note that this will first drop the current database. These operations are done on the dev database. This sample data will later be used for testing. Note that this should be run after updating sample data or updating the data model',
+        'Will export sample data to to ./data/sample.dump.sql. To be able to do this it will first import sample from ./data.sample.[name].json. Note that this will first drop the current database. These operations are done on the dev database. This sample data will later be used for testing. Note that this should be run after updating sample data or updating the data model',
       group: 'data',
       short: 'Export data from sql',
     },
@@ -230,31 +230,31 @@ utilities: 'Different utility scripts`,
       short: 'Export data from sql',
     },
     'export:elastic-indices:json': {
-      description: 'Will export the elastic-indices to .index.*',
+      description: 'Will export the elastic-indices to .index.[name]',
       group: 'data',
       short: 'Export data from elasticsearch indices',
     },
     'export:elastic-indices:sample': {
       description:
-        'Will export sample elastic-indices to sample.index.*. First it will create elastic-sample data by dropping the postgres db, importing sample data into postgres and creating the elastic indices. Note that this will drop the current dev database.',
+        'Will export sample elastic-indices to sample.index.[name]. First it will create elastic-sample data by dropping the postgres db, importing sample data into postgres and creating the elastic indices. Note that this will drop the current dev database.',
       group: 'data',
       short: 'Export data from elasticsearch indices to sample files',
     },
     'import:data:json': {
       description:
-        'Will import data from json files (./data/*.json) to postgres and rebuild elastic indices',
+        'Will import data from json files (./data/[name].json) to postgres and rebuild elastic indices',
       group: 'data',
       short: 'Import json files',
     },
     'import:data:sample': {
       description:
-        'Will import data from sample json files (./data/sample.*.json) to postgres and rebuild elastic indices. When doing this the current json files (not the sample files) in ./data will be removed',
+        'Will import data from sample json files (./data/sample.[name].json) to postgres and rebuild elastic indices. When doing this the current json files (not the sample files) in ./data will be removed',
       group: 'data',
       short: 'Import sample json files',
     },
     'import:data:sql': {
       description:
-        'Will import data from sample json files (./data/sample.*.json) to postgres and rebuild elastic indices. When doing this the current json files (not the sample files) in ./data will be removed',
+        'Will import data from sample json files (./data/sample.[name].json) to postgres and rebuild elastic indices. When doing this the current json files (not the sample files) in ./data will be removed',
       group: 'data',
       short: 'Import data from sql',
     },
@@ -278,7 +278,7 @@ utilities: 'Different utility scripts`,
     'install:backend': {
       description: 'See [install](#install)',
       group: 'setup',
-      short: 'Installbackend package',
+      short: 'Install backend package',
     },
     'install:common': {
       description: 'See [install](#install)',
@@ -317,12 +317,12 @@ utilities: 'Different utility scripts`,
     },
     install: {
       description:
-        'Will call all package specific install scripts. These scripts will enter their package and run [yarn install](https://yarnpkg.com/lang/en/docs/cli/install/) ',
+        'Will call all package-specific install scripts. These scripts will enter their package and run [yarn install](https://yarnpkg.com/lang/en/docs/cli/install/) ',
       group: 'setup',
       short: 'Install all packages',
     },
     'lock-schema': {
-      description: 'See TODO fix link to something',
+      description: '> TODO: Add docs or link',
       group: 'utilities',
       short: 'Lock the current model and api schema',
     },
@@ -334,7 +334,7 @@ utilities: 'Different utility scripts`,
     },
     'migrate:one': {
       description:
-        'Same as [migrate:latest](#migrate-latest) expect that only one migration is performed',
+        'Same as [migrate:latest](#migrate-latest) except that only one migration is performed',
       group: 'data',
       short: 'Will run one postgres schema migration',
     },
@@ -355,27 +355,27 @@ utilities: 'Different utility scripts`,
     },
     'pretty:backend': {
       group: 'utilities',
-      short: 'Run all pretty scripts in backend package',
+      short: 'Run pretty in backend package',
     },
     'pretty:common': {
       group: 'utilities',
-      short: 'Run all pretty scripts in common package',
+      short: 'Run pretty in common package',
     },
     'pretty:migrations': {
       group: 'utilities',
-      short: 'Run all pretty scripts in migrations package',
+      short: 'Run pretty in migrations package',
     },
     'pretty:schema': {
       group: 'utilities',
-      short: 'Run all pretty scripts in schema package',
+      short: 'Run pretty in schema package',
     },
     'pretty:scripts': {
       group: 'utilities',
-      short: 'Run all pretty scripts in scripts package',
+      short: 'Run pretty in scripts package',
     },
     'pretty:ui': {
       group: 'utilities',
-      short: 'Run all pretty scripts in ui package',
+      short: 'Run pretty in ui package',
     },
 
     preversion: {
@@ -388,7 +388,7 @@ utilities: 'Different utility scripts`,
         ...serverArg,
       },
       description:
-        'Will rebuild elasticsearch indices on a remote server using a docker container with the specified tag. Its recommended to use the currently deployed tag. Using docker-compose.data.yaml -> rebuildSearch. Inspects its logs with `yarn remote:log -s <SERVER> --service=rebuildSearch`',
+        'Will rebuild elasticsearch indices on a remote server using a docker container with the specified tag. It is recommended to use the currently deployed tag. Using docker-compose.data.yaml -> rebuildSearch. Inspects its logs with `yarn remote:log -s <SERVER> --service=rebuildSearch`',
       usage: 'yarn remote:build:elastic-indices -s <SERVER> -t <TAG>',
       group: 'remote-services',
       short: 'Rebuild elastic indices remote server',
@@ -399,7 +399,7 @@ utilities: 'Different utility scripts`,
         ...serverArg,
       },
       description:
-        'Deploy a release with specified tag to specified server. Note that if the data model have changed (a new minor version) you should either run the migrations with [remote:migrate:latest](#remote-migrate-latest) and rebuild the search indices [remote:build:elastic-indices](#remote-build-elastic-indices) or re import data with ex [remote:import:data:json](#remote-import-data–json). Note that the last option will through away current data. Using docker-compose up -d. Inspects for example deploy api logs with `yarn remote:log -s <SERVER> --service=api`',
+        'Deploy a release with specified tag to specified server. Note that if the data model have changed (a new minor version) you should either run the migrations with [remote:migrate:latest](#remote-migrate-latest) and rebuild the search indices [remote:build:elastic-indices](#remote-build-elastic-indices) or reimport data with e.g. [remote:import:data:json](#remote-import-data–json). Note that the last option will throw away current data. Using docker-compose up -d. Inspect deploy logs of e.g. api with `yarn remote:log -s <SERVER> --service=api`',
       group: 'remote-services',
       short: 'Deploy a release to a remote server',
       usage: 'yarn remote:deploy -s <SERVER> -t <TAG>',
@@ -581,7 +581,7 @@ utilities: 'Different utility scripts`,
     },
     'setup:dev': {
       description:
-        'Will run scripts multiple scripts to setup environment variables, sample data, install node modules, link packages and run tests. Similar to [setup](#setup) but setups the application to run ui and api outside docker. Recommended setup for development',
+        'Will run scripts multiple scripts to setup environment variables, sample data, install node modules, link packages and run tests. Similar to [setup](#setup) but sets up the application to run ui and api outside docker. Recommended setup for development',
       group: 'setup',
       short: 'Run to get started for development ',
     },
@@ -594,14 +594,14 @@ utilities: 'Different utility scripts`,
 
     'setup:env:ci:docker': {
       description:
-        'Setup env files ./env from ./env/ci. Used by the ci when running tests that depends on docker',
+        'Setup env files ./env from ./env/ci. Used by the ci when running tests that depend on docker',
       group: 'setup',
       short: 'Setup env files for ci when using docker',
     },
 
     'setup:env:ci:local': {
       description:
-        'Setup env files ./env from ./env/ci. Used by the ci when running tests that runs outside docker',
+        'Setup env files ./env from ./env/ci. Used by the ci when running tests that run outside docker',
       group: 'setup',
       short: 'Setup env files for ci when not using docker',
     },
@@ -639,7 +639,7 @@ utilities: 'Different utility scripts`,
     },
     'setup:sample-data': {
       description:
-        'Will copy sample data files ./data/sample.*.json to ./data/.*.json',
+        'Will copy sample data files ./data/sample.[name].json to ./data/.[name].json',
       group: 'setup',
       short: 'Will copy sample data files to json files',
     },
@@ -719,7 +719,7 @@ utilities: 'Different utility scripts`,
 
     uninstall: {
       group: 'setup',
-      short: 'Uninstall all node modules from all package',
+      short: 'Uninstall all node_modules from all packages',
     },
     'uninstall:backend': {
       group: 'setup',
@@ -774,21 +774,21 @@ utilities: 'Different utility scripts`,
 
     'version:rc': {
       description:
-        'This command will create a release candidate. When run it will prompt the user for the name of the release candidate. Should be named after the coming release suffixed with -rc',
+        'This command will create a release candidate. When run it will prompt the user for the name of the release candidate. Should be named after the coming release suffixed with -rc-[index], e.g. 0.20.0-rc-1',
       group: 'release',
       short: 'Release a release candidate',
     },
 
     'version:release': {
       description:
-        'This command will create a release. When run it will prompt the user for the name of the release [TODO] add reference to release. This script will then create a new git tag and push to github. This will trigger travis to run all tests and if they succeed build docker images and push to docker hub. Later this version can be deployed using [remote:deploy](#remote:deploy)',
+        '> TODO: Add reference to future release docs \n\nThis command will create a release. When run it will prompt the user for the name of the release. This script will then create a new git tag and push to github. This will trigger Travis to run all tests and if they succeed build docker images and push to docker hub. Later this version can be deployed using [remote:deploy](#remote:deploy)',
       group: 'release',
       short: 'Create a release',
     },
 
     'version:test': {
       description:
-        'This command will create a test release. When run it will prompt the user for the name of the test version. Should be current version followed by -test-[name]-[index] ex 0.19.1-test-anton-1 for the first test version. This script will then create a new git tag and push to github. This will trigger travis to run all tests and if they succeed build docker images and push to docker hub',
+        'This command will create a test release. When run it will prompt the user for the name of the test version. Should be current version followed by -test-[name]-[index] e.g. 0.19.1-test-anton-1 for the first test version. This script will then create a new git tag and push to github. This will trigger Travis to run all tests and if they succeed build docker images and push to docker hub',
       group: 'release',
       short: 'Create a test release',
     },
