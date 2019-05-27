@@ -8,16 +8,20 @@ import {
   startSubmit as startSubmitActionCreator,
   stopSubmit as stopSubmitActionCreator,
 } from 'redux-form'
-import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 
+import {
+  createGetNestedItemById,
+  createGetResourceCount,
+} from 'coreModules/crud/higherOrderComponents'
+import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import crudActionCreators from 'coreModules/crud/actionCreators'
-import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import createHandleDelete from './createHandleDelete'
 
-const mapStateToProps = (state, { resource }) => {
+const mapStateToProps = (state, { createGetNestedItemHocInput, resource }) => {
   const formName = `${resource}Edit`
 
   return {
+    ...createGetNestedItemHocInput, // passed into createGetNestedItemById
     formName,
     values: getFormValues(formName)(state),
   }
@@ -32,6 +36,13 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
 
 const propTypes = {
   cancelCreate: PropTypes.func.isRequired,
+  createGetNestedItemHocInput: PropTypes.shape({
+    include: PropTypes.array.isRequired,
+    refresh: PropTypes.bool,
+    relationships: PropTypes.array.isRequired,
+    resolveRelationships: PropTypes.array.isRequired,
+    resource: PropTypes.string.isRequired,
+  }).isRequired,
   fetchOneItemById: PropTypes.func.isRequired,
   formName: PropTypes.string.isRequired,
   itemId: PropTypes.string.isRequired,
@@ -122,6 +133,7 @@ const createItemWrapper = () => ComposedComponent => {
       mapStateToProps,
       mapDispatchToProps
     ),
+    createGetNestedItemById(),
     createHandleDelete()
   )(ItemWrapper)
 }

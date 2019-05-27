@@ -1,24 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import objectPath from 'object-path'
 
 const propTypes = {
-  nestedItem: PropTypes.object.isRequired,
+  item: PropTypes.object,
+  nestedItem: PropTypes.object,
+}
+const defaultProps = {
+  item: undefined,
+  nestedItem: undefined,
 }
 
-class DefaultItemTitle extends Component {
-  render() {
-    const { nestedItem } = this.props
-    return (
-      <span>
-        <span style={{ fontWeight: 'bold', marginRight: '0.5em' }}>
-          {nestedItem.name}
-        </span>
-        {nestedItem.group && <span>({nestedItem.group})</span>}
-      </span>
-    )
-  }
+const DefaultItemTitle = ({ item, nestedItem }) => {
+  const name =
+    objectPath.get(item, 'attributes.name') ||
+    objectPath.get(nestedItem, 'name')
+  const group =
+    objectPath.get(item, 'attributes.group') ||
+    objectPath.get(nestedItem, 'group')
+
+  return (
+    <span>
+      <span style={{ fontWeight: 'bold', marginRight: '0.5em' }}>{name}</span>
+      {group && <span>({group})</span>}
+    </span>
+  )
 }
 
 DefaultItemTitle.propTypes = propTypes
+DefaultItemTitle.defaultProps = defaultProps
 
 export default DefaultItemTitle

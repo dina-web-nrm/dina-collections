@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -6,7 +6,6 @@ import { Button, Icon, Grid, Input } from 'semantic-ui-react'
 import ReactRangeSlider from 'react-rangeslider'
 
 import sizeSelectors from 'coreModules/size/globalSelectors'
-import createTableModuleWrapper from '../../../../table/higherOrderComponents/createTableModuleWrapper'
 
 /*
  * Override handleKeyDown to avoid conflict with other arrow KeyboardShortcuts
@@ -26,38 +25,43 @@ const mapStateToProps = state => {
 }
 
 const propTypes = {
-  createItemActive: PropTypes.bool.isRequired,
   currentRowNumber: PropTypes.number,
-  editItemActive: PropTypes.bool.isRequired,
-  fetchTableItems: PropTypes.func.isRequired,
-  getHasNextRow: PropTypes.func.isRequired,
-  getHasPreviousRow: PropTypes.func.isRequired,
+  disableCreate: PropTypes.bool,
+  disableRecordNavigation: PropTypes.bool,
+  getHasNextRow: PropTypes.func,
+  getHasPreviousRow: PropTypes.func,
   isLargeScreen: PropTypes.bool.isRequired,
-  navigateCreate: PropTypes.func.isRequired,
-  onFocusNextRow: PropTypes.func.isRequired,
-  onFocusPreviousRow: PropTypes.func.isRequired,
-  onFocusRow: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-  onShowAllRecords: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  navigateCreate: PropTypes.func,
+  numberOfListItems: PropTypes.number,
+  onFocusNextRow: PropTypes.func,
+  onFocusPreviousRow: PropTypes.func,
+  onFocusRow: PropTypes.func,
+  onShowAllRecords: PropTypes.func,
   showRecordInput: PropTypes.bool,
   showSlider: PropTypes.bool,
-  tableListItems: PropTypes.array.isRequired,
   totalNumberOfRecords: PropTypes.number,
-  treeActive: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   currentRowNumber: undefined,
-  onFocusRow: false,
-  onShowAllRecords: false,
+  disableCreate: false,
+  disableRecordNavigation: false,
+  getHasNextRow: undefined,
+  getHasPreviousRow: undefined,
+  navigateCreate: undefined,
+  numberOfListItems: undefined,
+  onFocusNextRow: undefined,
+  onFocusPreviousRow: undefined,
+  onFocusRow: undefined,
+  onShowAllRecords: undefined,
   showRecordInput: true,
   showSlider: true,
   totalNumberOfRecords: undefined,
 }
 
 const RecordNavigationBar = ({
-  createItemActive,
   currentRowNumber,
-  editItemActive,
-  fetchTableItems,
+  disableCreate,
+  disableRecordNavigation,
   getHasNextRow,
   getHasPreviousRow,
   isLargeScreen,
@@ -66,25 +70,17 @@ const RecordNavigationBar = ({
   onFocusPreviousRow: handleSelectPreviousRecord,
   onFocusRow: handleFocusRow,
   onShowAllRecords: handleShowAllRecords,
+  numberOfListItems,
   showRecordInput,
   showSlider,
-  tableListItems,
   totalNumberOfRecords,
-  treeActive,
 }) => {
   const [sliderRowNumber, setSliderRowNumber] = useState(null)
 
-  const disabled = treeActive || createItemActive
-  const numberOfListItems = tableListItems.length
   const isShowingAll = numberOfListItems === totalNumberOfRecords
-  const sliderValue = disabled ? '' : sliderRowNumber || currentRowNumber || ''
-
-  // TODO: move this to hoc?
-  useEffect(() => {
-    if (createItemActive || editItemActive) {
-      fetchTableItems()
-    }
-  }, [createItemActive, editItemActive, fetchTableItems])
+  const sliderValue = disableRecordNavigation
+    ? ''
+    : sliderRowNumber || currentRowNumber || ''
 
   return (
     <Grid padded textAlign="left" verticalAlign="middle">
@@ -92,14 +88,14 @@ const RecordNavigationBar = ({
         <Grid.Column>
           <Button.Group>
             <Button
-              disabled={disabled || !getHasPreviousRow()}
+              disabled={disableRecordNavigation || !getHasPreviousRow()}
               icon
               onClick={handleSelectPreviousRecord}
             >
               <Icon name="chevron left" />
             </Button>
             <Button
-              disabled={disabled || !getHasNextRow()}
+              disabled={disableRecordNavigation || !getHasNextRow()}
               icon
               onClick={handleSelectNextRecord}
             >
@@ -112,7 +108,7 @@ const RecordNavigationBar = ({
             <Input
               className="center aligned bold"
               data-testid="currentTableRowInput"
-              disabled={disabled || numberOfListItems === 0}
+              disabled={disableRecordNavigation || numberOfListItems === 0}
               fluid
               max={numberOfListItems}
               min={numberOfListItems && 1}
@@ -137,7 +133,7 @@ const RecordNavigationBar = ({
                 max={numberOfListItems}
                 min={numberOfListItems && 1}
                 onChange={newTableRowNumber => {
-                  if (disabled) {
+                  if (disableRecordNavigation) {
                     return
                   }
                   // those ifs are a needed hack to avoid double increment when
@@ -151,7 +147,7 @@ const RecordNavigationBar = ({
                   }
                 }}
                 onChangeComplete={() => {
-                  if (disabled) {
+                  if (disableRecordNavigation) {
                     return
                   }
                   handleFocusRow(sliderRowNumber)
@@ -165,7 +161,7 @@ const RecordNavigationBar = ({
           </Grid.Column>
         )}
         <Grid.Column>
-          {!disabled && (
+          {!disableRecordNavigation && (
             <div style={{ fontWeight: 700, width: '7.25em' }}>
               <span data-testid="numberOfListItems">{numberOfListItems}</span>{' '}
               records
@@ -173,7 +169,7 @@ const RecordNavigationBar = ({
           )}
         </Grid.Column>
         <Grid.Column>
-          {!disabled && (
+          {!disableRecordNavigation && (
             <div
               style={{
                 color: 'rgba(0,0,0,.6)',
@@ -188,7 +184,7 @@ const RecordNavigationBar = ({
         <Grid.Column>
           <Button
             basic
-            disabled={disabled || isShowingAll}
+            disabled={disableRecordNavigation || isShowingAll}
             icon
             onClick={event => handleShowAllRecords(event)}
           >
@@ -199,7 +195,7 @@ const RecordNavigationBar = ({
         </Grid.Column>
         <Grid.Column>
           <Button
-            disabled={createItemActive}
+            disabled={disableCreate}
             icon
             onClick={navigateCreate}
             primary
@@ -218,7 +214,4 @@ const RecordNavigationBar = ({
 RecordNavigationBar.propTypes = propTypes
 RecordNavigationBar.defaultProps = defaultProps
 
-export default compose(
-  createTableModuleWrapper(),
-  connect(mapStateToProps)
-)(RecordNavigationBar)
+export default compose(connect(mapStateToProps))(RecordNavigationBar)

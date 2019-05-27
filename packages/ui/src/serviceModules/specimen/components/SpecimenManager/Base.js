@@ -163,7 +163,6 @@ class SpecimenManager extends Component {
         initialFilterValues={initialFilterValues}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
-        onSubmitCreateForm={this.handleSubmitCreateForm}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={renderCreateForm}
         renderEditForm={renderEditForm}

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { pick } from 'lodash'
 
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import createFormModuleWrapper from '../../higherOrderComponents/createFormModuleWrapper'
@@ -73,24 +72,14 @@ const EditItemColumn = props => {
       <RowLayout.Row height={emToPixels(4.625)}>
         <ActionBar
           {...pick(props, [
-            'fetchOneItemById',
-            'fetchRelationshipsBeforeDelete',
-            'filterResourceCount',
-            'form',
+            'cancelCreate',
             'formName',
-            'itemId',
             'loadingDelete',
             'nestedItem',
             'onDelete',
-            'onInteraction',
             'onSubmit',
             'onUndoChanges',
-            'relationshipsToCheckBeforeDelete',
-            'resource',
-            'transformOutput',
           ])}
-          itemHeader={itemHeader}
-          itemSubHeader={itemSubHeader}
         />
       </RowLayout.Row>
     </RowLayout>
@@ -102,6 +91,5 @@ EditItemColumn.propTypes = propTypes
 
 export default compose(
   createFormModuleWrapper(),
-  createGetNestedItemById(),
   createEditItemWrapper()
 )(EditItemColumn)

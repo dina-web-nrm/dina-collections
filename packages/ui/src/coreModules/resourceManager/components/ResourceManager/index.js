@@ -15,8 +15,8 @@ import layoutSelectors from 'coreModules/layout/globalSelectors'
 import { emToPixels } from 'coreModules/layout/utilities'
 import userSelectors from 'coreModules/user/globalSelectors'
 
-import MainColumn from './layout/MainColumn'
-import FilterColumn from './layout/FilterColumn'
+import MainColumn from './columns/MainColumn'
+import FilterColumn from './columns/FilterColumn'
 import PickerHeader from './picker/PickerHeader'
 import PickerActionBar from './picker/PickerActionBar'
 

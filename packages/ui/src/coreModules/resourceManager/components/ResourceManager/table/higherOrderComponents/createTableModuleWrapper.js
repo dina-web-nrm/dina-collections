@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { getFormValues } from 'redux-form'
 import objectPath from 'object-path'
 
+import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
-import userSelectors from 'coreModules/user/globalSelectors'
 import updateUserPreferenceAC from 'coreModules/user/actionCreators/updateUserPreference'
+import userSelectors from 'coreModules/user/globalSelectors'
 
 import resourceManagerSelectors from 'coreModules/resourceManager/globalSelectors'
 import {
@@ -33,8 +35,11 @@ const mapStateToProps = (
   { allTableColumnFieldPaths, managerScope, searchResource }
 ) => {
   const resource = searchResource
+  const filterFormName = `${searchResource}Filter`
 
   return {
+    filterFormName,
+    filterFormValues: getFormValues(filterFormName)(state),
     hasAppliedFilter: get[':managerScope.hasAppliedFilter'](state, {
       managerScope,
     }),
@@ -65,16 +70,15 @@ const mapDispatchToProps = {
 
 const propTypes = {
   buildFilterQuery: PropTypes.func.isRequired,
-  currentRowNumber: PropTypes.number.isRequired,
   enableTableColumnSorting: PropTypes.bool.isRequired,
+  filterFormName: PropTypes.string.isRequired,
+  filterFormValues: PropTypes.object,
   focusedItemId: PropTypes.string,
   focusItemIdWhenLoaded: PropTypes.string,
-  getHasNextRow: PropTypes.func.isRequired,
-  getHasPreviousRow: PropTypes.func.isRequired,
   hasAppliedFilter: PropTypes.bool,
+  initialFilterValues: PropTypes.object.isRequired,
   managerScope: PropTypes.string.isRequired,
   navigateEdit: PropTypes.func.isRequired,
-  onClickRow: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   searchInProgress: PropTypes.bool,
@@ -84,14 +88,13 @@ const propTypes = {
   setTableListItems: PropTypes.func.isRequired,
   sortOrder: PropTypes.array,
   tableBatchFetchOptions: PropTypes.object,
-  tableColumnSpecifications: PropTypes.array.isRequired,
-  tableColumnsToShow: PropTypes.array.isRequired,
   tableColumnsToSort: PropTypes.array,
   tableListItems: PropTypes.array,
   toggleFilter: PropTypes.func.isRequired,
   updateUserPreference: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  filterFormValues: {},
   focusedItemId: undefined,
   focusItemIdWhenLoaded: undefined,
   hasAppliedFilter: true,
@@ -165,8 +168,10 @@ const createTableModuleWrapper = () => ComposedComponent => {
       const {
         buildFilterQuery,
         enableTableColumnSorting,
+        filterFormValues,
         focusedItemId,
         focusItemIdWhenLoaded,
+        initialFilterValues,
         managerScope,
         search,
         setTableListItems,
@@ -177,9 +182,15 @@ const createTableModuleWrapper = () => ComposedComponent => {
       } = this.props
 
       return waitForOtherSearchesToFinish(this.getSearchInProgress).then(() => {
+        let filterValues = filterFormValues
+        if (ignoreFilters) {
+          filterValues = {}
+        } else if (useInitialFilters) {
+          filterValues = initialFilterValues
+        }
+
         const { query } = buildFilterQuery({
-          ignoreFilters,
-          useInitialFilters,
+          formValues: filterValues,
         })
 
         const userSortOrder =
@@ -211,21 +222,7 @@ const createTableModuleWrapper = () => ComposedComponent => {
     }
 
     render() {
-      const {
-        currentRowNumber,
-        enableTableColumnSorting,
-        focusedItemId,
-        getHasNextRow,
-        getHasPreviousRow,
-        managerScope,
-        onClickRow,
-        resource,
-        tableBatchFetchOptions,
-        tableColumnSpecifications,
-        tableColumnsToShow,
-        tableColumnsToSort,
-        tableListItems,
-      } = this.props
+      const { managerScope } = this.props
 
       return (
         <React.Fragment>
@@ -234,24 +231,12 @@ const createTableModuleWrapper = () => ComposedComponent => {
             shortcuts={this.shortcuts}
           />
           <ComposedComponent
-            currentRowNumber={currentRowNumber}
-            enableTableColumnSorting={enableTableColumnSorting}
+            {...this.props}
             fetchTableItems={this.fetchTableItems}
-            focusedItemId={focusedItemId}
-            getHasNextRow={getHasNextRow}
-            getHasPreviousRow={getHasPreviousRow}
             getTableWidth={getTableWidth}
-            managerScope={managerScope}
-            onClickRow={onClickRow}
             onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
             onShowAllRecords={this.handleShowAllRecords}
             onToggleRow={this.handleToggleRow}
-            resource={resource}
-            tableBatchFetchOptions={tableBatchFetchOptions}
-            tableColumnSpecifications={tableColumnSpecifications}
-            tableColumnsToShow={tableColumnsToShow}
-            tableColumnsToSort={tableColumnsToSort}
-            tableListItems={tableListItems}
           />
         </React.Fragment>
       )
@@ -265,6 +250,7 @@ const createTableModuleWrapper = () => ComposedComponent => {
     injectResourceManagerConfig,
     injectResourceManagerNavigation,
     injectFocusedItemId,
+    createGetResourceCount(),
     connect(
       mapStateToProps,
       mapDispatchToProps
