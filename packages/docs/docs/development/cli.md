@@ -6,12 +6,12 @@ sidebar_label: CLI
 
 <!--- Note! This is generated from cli.js so edits directly in the cli.md will be overwritten. -->
 
-This is a documentation of the scripts avaialble from the root level. All these
+This is a documentation of the scripts available from the root level. All these
 scripts are defined in root package.json and in general the scripts defined in
 package.json either call a script provided by a dependency or one or more
-scripts from the script package. This script definition is available in the
+scripts from the scripts package. This script definition is available in the
 documentation for each script and to get more detailed information about how a
-script works inspect the src
+script works inspect the src.
 
 ## TOC
 
@@ -171,7 +171,7 @@ and setting up env variables <a name="install-backend" />
 
 ### install:backend
 
-Installbackend package
+Install backend package
 
 `yarn install:backend`
 
@@ -321,7 +321,7 @@ Install all packages
 
 #### Description
 
-Will call all package specific install scripts. These scripts will enter their
+Will call all package-specific install scripts. These scripts will enter their
 package and run [yarn install](https://yarnpkg.com/lang/en/docs/cli/install/)
 
 #### src
@@ -365,7 +365,7 @@ Run to get started for development
 
 Will run scripts multiple scripts to setup environment variables, sample data,
 install node modules, link packages and run tests. Similar to [setup](#setup)
-but setups the application to run ui and api outside docker. Recommended setup
+but sets up the application to run ui and api outside docker. Recommended setup
 for development
 
 #### src
@@ -404,7 +404,7 @@ Setup env files for ci when using docker
 #### Description
 
 Setup env files ./env from ./env/ci. Used by the ci when running tests that
-depends on docker
+depend on docker
 
 #### src
 
@@ -422,7 +422,7 @@ Setup env files for ci when not using docker
 
 #### Description
 
-Setup env files ./env from ./env/ci. Used by the ci when running tests that runs
+Setup env files ./env from ./env/ci. Used by the ci when running tests that run
 outside docker
 
 #### src
@@ -544,7 +544,7 @@ Will copy sample data files to json files
 
 #### Description
 
-Will copy sample data files ./data/sample._.json to ./data/._.json
+Will copy sample data files ./data/sample.[name].json to ./data/.[name].json
 
 #### src
 
@@ -556,7 +556,7 @@ yarn exec:local create-sample-data.sh
 
 ### uninstall
 
-Uninstall all node modules from all package
+Uninstall all node_modules from all packages
 
 `yarn uninstall`
 
@@ -712,10 +712,10 @@ Export data from sql
 #### Description
 
 Will export sample data to to ./data/sample.dump.sql. To be able to do this it
-will first import sample from ./data.sample.\*.json. Note that this will first
-drop the current database. These operations are done on the dev database. This
-sample data will later be used for testing. Note that this should be run after
-updating sample data or updating the data model
+will first import sample from ./data.sample.[name].json. Note that this will
+first drop the current database. These operations are done on the dev database.
+This sample data will later be used for testing. Note that this should be run
+after updating sample data or updating the data model
 
 #### src
 
@@ -752,7 +752,7 @@ Export data from elasticsearch indices
 
 #### Description
 
-Will export the elastic-indices to .index.\*
+Will export the elastic-indices to .index.[name]
 
 #### src
 
@@ -770,7 +770,7 @@ Export data from elasticsearch indices to sample files
 
 #### Description
 
-Will export sample elastic-indices to sample.index.\*. First it will create
+Will export sample elastic-indices to sample.index.[name]. First it will create
 elastic-sample data by dropping the postgres db, importing sample data into
 postgres and creating the elastic indices. Note that this will drop the current
 dev database.
@@ -791,7 +791,7 @@ Import json files
 
 #### Description
 
-Will import data from json files (./data/\*.json) to postgres and rebuild
+Will import data from json files (./data/[name].json) to postgres and rebuild
 elastic indices
 
 #### src
@@ -810,9 +810,9 @@ Import sample json files
 
 #### Description
 
-Will import data from sample json files (./data/sample.\*.json) to postgres and
-rebuild elastic indices. When doing this the current json files (not the sample
-files) in ./data will be removed
+Will import data from sample json files (./data/sample.[name].json) to postgres
+and rebuild elastic indices. When doing this the current json files (not the
+sample files) in ./data will be removed
 
 #### src
 
@@ -830,9 +830,9 @@ Import data from sql
 
 #### Description
 
-Will import data from sample json files (./data/sample.\*.json) to postgres and
-rebuild elastic indices. When doing this the current json files (not the sample
-files) in ./data will be removed
+Will import data from sample json files (./data/sample.[name].json) to postgres
+and rebuild elastic indices. When doing this the current json files (not the
+sample files) in ./data will be removed
 
 #### src
 
@@ -926,7 +926,7 @@ Will run one postgres schema migration
 
 #### Description
 
-Same as [migrate:latest](#migrate-latest) expect that only one migration is
+Same as [migrate:latest](#migrate-latest) except that only one migration is
 performed
 
 #### src
@@ -1226,7 +1226,7 @@ Build ui and semantic ui
 
 #### Description
 
-Internally call build:ui and build:semantic-ui
+Internally calls build:ui and build:semantic-ui
 
 #### src
 
@@ -1264,7 +1264,7 @@ Build schema api
 
 #### Description
 
-Will build the api schema for the current backend and model version. Read more
+Will build the api schema for the current backend and models version. Read more
 about schema generation in the common package
 
 #### src
@@ -1521,8 +1521,8 @@ Build ui package
 
 #### Description
 
-This will transpile es6 to es5 and create a production ready dist of the ui. Not
-needed in dev mode
+This will transpile the source code to ES5 and create a production-ready dist of
+the ui. Not needed in dev mode
 
 #### src
 
@@ -1627,7 +1627,7 @@ Release a release candidate
 
 This command will create a release candidate. When run it will prompt the user
 for the name of the release candidate. Should be named after the coming release
-suffixed with -rc
+suffixed with -rc-[index], e.g. 0.20.0-rc-1
 
 #### src
 
@@ -1645,11 +1645,13 @@ Create a release
 
 #### Description
 
+> TODO: Add reference to future release docs
+
 This command will create a release. When run it will prompt the user for the
-name of the release [TODO] add reference to release. This script will then
-create a new git tag and push to github. This will trigger travis to run all
-tests and if they succeed build docker images and push to docker hub. Later this
-version can be deployed using [remote:deploy](#remote:deploy)
+name of the release. This script will then create a new git tag and push to
+github. This will trigger Travis to run all tests and if they succeed build
+docker images and push to docker hub. Later this version can be deployed using
+[remote:deploy](#remote:deploy)
 
 #### src
 
@@ -1669,9 +1671,9 @@ Create a test release
 
 This command will create a test release. When run it will prompt the user for
 the name of the test version. Should be current version followed by
--test-[name]-[index] ex 0.19.1-test-anton-1 for the first test version. This
+-test-[name]-[index] e.g. 0.19.1-test-anton-1 for the first test version. This
 script will then create a new git tag and push to github. This will trigger
-travis to run all tests and if they succeed build docker images and push to
+Travis to run all tests and if they succeed build docker images and push to
 docker hub
 
 #### src
@@ -1682,11 +1684,11 @@ VERSION_TYPE=test-release yarn version
 
 ## remote-services scripts
 
-These scripts are used to interact with remote servers. The ips and connection
+These scripts are used to interact with remote servers. The IPs and connection
 details of these servers are specified in [script env
-file](../configuration/env#scripts). Right now its supported with 4 different
-server roles: production, stage, test and demo', utilities: 'Different utility
-scripts <a name="remote-build-elastic-indices" />
+file](../configuration/env#scripts). Right now it is supported with 4 different
+server roles: production, stage, test and demo.
+<a name="remote-build-elastic-indices" />
 
 ### remote:build:elastic-indices
 
@@ -1697,8 +1699,8 @@ Rebuild elastic indices remote server
 #### Description
 
 Will rebuild elasticsearch indices on a remote server using a docker container
-with the specified tag. Its recommended to use the currently deployed tag. Using
-docker-compose.data.yaml -> rebuildSearch. Inspects its logs with
+with the specified tag. It is recommended to use the currently deployed tag.
+Using docker-compose.data.yaml -> rebuildSearch. Inspects its logs with
 `yarn remote:log -s <SERVER> --service=rebuildSearch`
 
 #### Args
@@ -1727,10 +1729,10 @@ Deploy a release to a remote server
 Deploy a release with specified tag to specified server. Note that if the data
 model have changed (a new minor version) you should either run the migrations
 with [remote:migrate:latest](#remote-migrate-latest) and rebuild the search
-indices [remote:build:elastic-indices](#remote-build-elastic-indices) or re
-import data with ex [remote:import:data:json](#remote-import-data–json). Note
-that the last option will through away current data. Using docker-compose up -d.
-Inspects for example deploy api logs with
+indices [remote:build:elastic-indices](#remote-build-elastic-indices) or
+reimport data with e.g. [remote:import:data:json](#remote-import-data–json).
+Note that the last option will throw away current data. Using docker-compose up
+-d. Inspect deploy logs of e.g. api with
 `yarn remote:log -s <SERVER> --service=api`
 
 #### Args
@@ -2150,7 +2152,7 @@ node ./packages/scripts/src/js/uploadDataZip.js
 
 ## utilities scripts
 
-<a name="build-version-info" />
+Different utility scripts <a name="build-version-info" />
 
 ### build:version-info
 
@@ -2335,7 +2337,7 @@ Lock the current model and api schema
 
 #### Description
 
-See TODO fix link to something
+> TODO: Add docs or link
 
 #### src
 
@@ -2361,7 +2363,7 @@ yarn pretty:schema && yarn pretty:ui && yarn pretty:backend && yarn pretty:commo
 
 ### pretty:backend
 
-Run all pretty scripts in backend package
+Run pretty in backend package
 
 `yarn pretty:backend`
 
@@ -2375,7 +2377,7 @@ cd ./packages/backend && yarn pretty
 
 ### pretty:common
 
-Run all pretty scripts in common package
+Run pretty in common package
 
 `yarn pretty:common`
 
@@ -2389,7 +2391,7 @@ cd ./packages/common && yarn pretty
 
 ### pretty:migrations
 
-Run all pretty scripts in migrations package
+Run pretty in migrations package
 
 `yarn pretty:migrations`
 
@@ -2403,7 +2405,7 @@ cd ./packages/migrations && yarn pretty
 
 ### pretty:schema
 
-Run all pretty scripts in schema package
+Run pretty in schema package
 
 `yarn pretty:schema`
 
@@ -2417,7 +2419,7 @@ cd ./packages/models && yarn pretty
 
 ### pretty:scripts
 
-Run all pretty scripts in scripts package
+Run pretty in scripts package
 
 `yarn pretty:scripts`
 
@@ -2431,7 +2433,7 @@ cd ./packages/scripts && yarn pretty
 
 ### pretty:ui
 
-Run all pretty scripts in ui package
+Run pretty in ui package
 
 `yarn pretty:ui`
 
