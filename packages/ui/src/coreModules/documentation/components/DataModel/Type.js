@@ -50,10 +50,10 @@ const Type = ({ property, version }) => {
   const type = property.type || ''
 
   if (!property.enum) {
-    return type
+    return type.toUpperCase()
   }
 
-  return `${type}, enum: [${property.enum.join(', ')}]`
+  return `${type.toUpperCase()}, enum: [${property.enum.join(', ')}]`
 }
 
 Type.propTypes = propTypes
