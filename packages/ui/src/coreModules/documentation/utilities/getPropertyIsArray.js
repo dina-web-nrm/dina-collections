@@ -1,4 +1,4 @@
 export default function getPropertyIsArray(property) {
-  const { type } = property
-  return type === 'array'
+  const { type, items } = property
+  return type === 'array' && (items && items.type !== 'string')
 }
