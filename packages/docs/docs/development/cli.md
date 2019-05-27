@@ -103,7 +103,7 @@ script works inspect the src.
 - [build:docs](#build-docs)
 - [build:index-specimen:json](#build-index-specimen-json)
 - [build:markdown](#build-markdown)
-- [build:markdown:cli](#build-markdown-cli)
+- [build:markdown:cli-docs](#build-markdown-cli-docs)
 - [build:semantic-ui](#build-semantic-ui)
 - [build:trees](#build-trees)
 - [build:trees:backend](#build-trees-backend)
@@ -1298,11 +1298,17 @@ cd ./packages/common && yarn build:schema:models
 
 Build backend docker
 
-`yarn build:docker:backend`
+`TRAVIS_BUILD_NUMBER=123 yarn build:docker:backend`
 
 #### Description
 
 Used by ci to build a docker image for the backend package
+
+#### ENV
+
+| Env variable        | Description                       |
+| ------------------- | --------------------------------- |
+| TRAVIS_BUILD_NUMBER | A build number provided by travis |
 
 #### src
 
@@ -1316,11 +1322,17 @@ CI_BUILD_API=true ./packages/scripts/src/bash/ci-build.sh
 
 Build migrations docker
 
-`yarn build:docker:migrations`
+`TRAVIS_BUILD_NUMBER=123 yarn build:docker:migrations`
 
 #### Description
 
 Used by ci to build a docker image for the migrations package
+
+#### ENV
+
+| Env variable        | Description                       |
+| ------------------- | --------------------------------- |
+| TRAVIS_BUILD_NUMBER | A build number provided by travis |
 
 #### src
 
@@ -1334,11 +1346,17 @@ CI_BUILD_MIGRATIONS=true ./packages/scripts/src/bash/ci-build.sh
 
 Build style docker
 
-`yarn build:docker:style`
+`TRAVIS_BUILD_NUMBER=123 yarn build:docker:style`
 
 #### Description
 
 Used by ci to build a docker image for the style package
+
+#### ENV
+
+| Env variable        | Description                       |
+| ------------------- | --------------------------------- |
+| TRAVIS_BUILD_NUMBER | A build number provided by travis |
 
 #### src
 
@@ -1352,11 +1370,17 @@ CI_BUILD_STYLE=true ./packages/scripts/src/bash/ci-build.sh
 
 Build ui docker
 
-`yarn build:docker:ui`
+`TRAVIS_BUILD_NUMBER=123 yarn build:docker:ui`
 
 #### Description
 
 Used by ci to build a docker image for the ui package
+
+#### ENV
+
+| Env variable        | Description                       |
+| ------------------- | --------------------------------- |
+| TRAVIS_BUILD_NUMBER | A build number provided by travis |
 
 #### src
 
@@ -1416,16 +1440,16 @@ files.
 #### src
 
 ```bash
-yarn build:trees && cd ./packages/docs && yarn interpolateFiles
+yarn build:trees && cd ./packages/docs && yarn interpolateFiles && yarn build:markdown:cli-docs
 ```
 
-<a name="build-markdown-cli" />
+<a name="build-markdown-cli-docs" />
 
-### build:markdown:cli
+### build:markdown:cli-docs
 
 Create cli documentation
 
-`yarn build:markdown:cli`
+`yarn build:markdown:cli-docs`
 
 #### Description
 
