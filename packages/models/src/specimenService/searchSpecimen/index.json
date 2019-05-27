@@ -1,4 +1,44 @@
 {
   "additionalProperties": true,
-  "properties": {}
+  "properties": {
+    "collectingEventCollectors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "collectingEventCountry": { "type": "string" },
+    "collectingEventDistrict": { "type": "string" },
+    "collectingEventEndDate": { "type": "string" },
+    "collectingEventInterpretedLocality": { "type": "array" },
+    "collectingEventLocality": { "type": "array" },
+    "collectingEventProvince": { "type": "string" },
+    "collectingEventStartDate": { "type": "string" },
+    "deathInformationDeath": { "type": "string" },
+    "featureAge": { "type": "array" },
+    "featureAgeStage": { "type": "array" },
+    "featureBodyLength": { "type": "array" },
+    "featureCompleteBodyWeight": { "type": "array" },
+    "featureCondition": { "type": "array" },
+    "featureSex": { "type": "array" },
+    "featureTotalLength": { "type": "array" },
+    "identifiersCatalogNumber": { "type": "string" },
+    "identifiersOtherIdentifiers": { "type": "array" },
+    "idNumeric": { "type": "number" },
+    "originInformationLocality": { "type": "string" },
+    "physicalObjectStorageLocationGroups": { "type": "array" },
+    "physicalUnitOtherPreparation": { "type": "array" },
+    "physicalUnitSkeleton": { "type": "array" },
+    "physicalUnitSkin": { "type": "array" },
+    "physicalUnitWetPreparation": { "type": "array" },
+    "recordEventCataloged": { "type": "array" },
+    "recordEventLastModified": { "type": "array" },
+    "recordEventRegistered": { "type": "array" },
+    "searchOnlyFields": { "type": "object" },
+    "tags": { "type": "object" },
+    "taxonomyCuratorialName": { "type": "string" },
+    "taxonomyFamily": { "type": "string" },
+    "taxonomyGenus": { "type": "string" },
+    "taxonomyRank": { "type": "string" },
+    "taxonomySpecies": { "type": "string" },
+    "taxonomySubspecies": { "type": "string" }
+  }
 }
