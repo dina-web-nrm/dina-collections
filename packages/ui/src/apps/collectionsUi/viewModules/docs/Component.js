@@ -7,7 +7,6 @@ import { ViewWrap } from 'coreModules/layout/components'
 import GeneralDocs from 'coreModules/documentation/components/GeneralDocs'
 import DataModel from 'coreModules/documentation/components/DataModel'
 import Nav from 'coreModules/documentation/components/Nav'
-import VersionOverview from 'coreModules/documentation/components/VersionOverview'
 import getCurrentSchemaVersion from 'coreModules/documentation/utilities/getCurrentSchemaVersion'
 import Footer from '../../components/Footer'
 
@@ -32,11 +31,6 @@ class Docs extends Component {
                 to={`${match.url}/${currentVersion}/general`}
               />
 
-              <Route
-                component={VersionOverview}
-                exact
-                path={`${match.url}/:schemaVersion`}
-              />
               <Route component={GeneralDocs} exact path={`${match.url}`} />
               <Route
                 component={GeneralDocs}
