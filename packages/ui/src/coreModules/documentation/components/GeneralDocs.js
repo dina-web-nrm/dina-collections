@@ -12,7 +12,7 @@ const propTypes = {
 
 const GeneralDocs = ({ match }) => {
   const {
-    params: { docName = 'general' },
+    params: { docName = 'introduction' },
   } = match
 
   return (

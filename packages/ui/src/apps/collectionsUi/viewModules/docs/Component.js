@@ -28,7 +28,12 @@ class Docs extends Component {
               <Redirect
                 exact
                 from={match.url}
-                to={`${match.url}/${currentVersion}/general`}
+                to={`${match.url}/${currentVersion}/introduction`}
+              />
+              <Redirect
+                exact
+                from={`${match.url}/${currentVersion}/general`}
+                to={`${match.url}/${currentVersion}/introduction`}
               />
 
               <Route component={GeneralDocs} exact path={`${match.url}`} />
