@@ -57,6 +57,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     initialFilterValues: PropTypes.object,
     initialItemId: PropTypes.string,
     isPicker: PropTypes.bool,
+    itemId: PropTypes.string,
     managerScope: PropTypes.string.isRequired,
     navigateCreate: PropTypes.func.isRequired,
     navigateEdit: PropTypes.func.isRequired,
@@ -80,6 +81,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     initialFilterValues: {},
     initialItemId: undefined,
     isPicker: false,
+    itemId: undefined,
     sortOrder: [],
     treeEnabled: false,
     treeItemFetchOptions: {
@@ -130,13 +132,14 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         focusedItemId,
         initialFilterValues,
         initialItemId,
+        itemId,
         navigateFilter,
         isPicker,
         setFocusedItemId,
       } = props
 
-      if (!focusedItemId && initialItemId) {
-        setFocusedItemId(initialItemId)
+      if (!focusedItemId && (itemId || initialItemId)) {
+        setFocusedItemId(itemId || initialItemId)
       }
 
       if (initialFilterValues && isPicker) {

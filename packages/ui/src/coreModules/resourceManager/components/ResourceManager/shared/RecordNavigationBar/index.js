@@ -76,11 +76,16 @@ const RecordNavigationBar = ({
   totalNumberOfRecords,
 }) => {
   const [sliderRowNumber, setSliderRowNumber] = useState(null)
-
   const isShowingAll = numberOfListItems === totalNumberOfRecords
-  const sliderValue = disableRecordNavigation
-    ? ''
-    : sliderRowNumber || currentRowNumber || ''
+
+  let sliderValue
+  if (disableRecordNavigation) {
+    sliderValue = ''
+  } else if (sliderRowNumber !== null) {
+    sliderValue = sliderRowNumber
+  } else {
+    sliderValue = currentRowNumber || ''
+  }
 
   return (
     <Grid padded textAlign="left" verticalAlign="middle">
@@ -112,8 +117,17 @@ const RecordNavigationBar = ({
               fluid
               max={numberOfListItems}
               min={numberOfListItems && 1}
+              onBlur={() => {
+                setSliderRowNumber(null)
+              }}
               onChange={event => {
-                handleFocusRow(event.target.value)
+                const { value } = event.target
+                if (value) {
+                  handleFocusRow(value)
+                  setSliderRowNumber(null)
+                } else {
+                  setSliderRowNumber('')
+                }
               }}
               size="small"
               style={{ width: '6.5em' }}

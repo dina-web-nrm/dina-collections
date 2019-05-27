@@ -69,7 +69,11 @@ const TableView = props => {
           width={width}
         />
       </RowLayout.Row>
-      <RowLayout.Row id="tableScrollContainer" style={tableBodyStyle}>
+      <RowLayout.Row
+        dataTestId="tableScrollContainer"
+        id="tableScrollContainer"
+        style={tableBodyStyle}
+      >
         {tableListItems.length > 0 ? (
           <InfinityTableBody
             {...pick(props, [
