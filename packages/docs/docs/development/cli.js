@@ -78,24 +78,40 @@ Right now it is supported with 4 different server roles: production, stage, test
     },
     'build:docker:backend': {
       description: 'Used by ci to build a docker image for the backend package',
+      env: {
+        TRAVIS_BUILD_NUMBER: 'A build number provided by travis',
+      },
       group: 'build',
       short: 'Build backend docker',
+      usage: 'TRAVIS_BUILD_NUMBER=123 yarn build:docker:backend',
     },
     'build:docker:migrations': {
       description:
         'Used by ci to build a docker image for the migrations package',
+      env: {
+        TRAVIS_BUILD_NUMBER: 'A build number provided by travis',
+      },
       group: 'build',
       short: 'Build migrations docker',
+      usage: 'TRAVIS_BUILD_NUMBER=123 yarn build:docker:migrations',
     },
     'build:docker:style': {
       description: 'Used by ci to build a docker image for the style package',
+      env: {
+        TRAVIS_BUILD_NUMBER: 'A build number provided by travis',
+      },
       group: 'build',
       short: 'Build style docker',
+      usage: 'TRAVIS_BUILD_NUMBER=123 yarn build:docker:style',
     },
     'build:docker:ui': {
       description: 'Used by ci to build a docker image for the ui package',
+      env: {
+        TRAVIS_BUILD_NUMBER: 'A build number provided by travis',
+      },
       group: 'build',
       short: 'Build ui docker',
+      usage: 'TRAVIS_BUILD_NUMBER=123 yarn build:docker:ui',
     },
     'build:docs': {
       description: 'Will build the static files for the doc package',
