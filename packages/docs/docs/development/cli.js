@@ -129,7 +129,7 @@ Right now it is supported with 4 different server roles: production, stage, test
       group: 'build',
       short: 'Build markdown',
     },
-    'build:markdown:cli': {
+    'build:markdown:cli-docs': {
       description: 'Will create this cli documentation',
       group: 'build',
       short: 'Create cli documentation',
