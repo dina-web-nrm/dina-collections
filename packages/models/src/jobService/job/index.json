@@ -1,6 +1,7 @@
 {
   "additionalProperties": false,
   "description": "A job model that should be further specified",
+  "x-internal": true,
   "type": "object",
   "properties": {
     "id": {
