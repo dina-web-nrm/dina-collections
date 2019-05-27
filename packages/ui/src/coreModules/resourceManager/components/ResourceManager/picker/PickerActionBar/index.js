@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
-import { createInjectItemTitle } from 'coreModules/resourceManager/higherOrderComponents'
 import { Button, Grid, Header } from 'semantic-ui-react'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
+import { createInjectItemTitle } from '../../shared/higherOrderComponents'
+
+const mapStateToProps = (state, { treeItemFetchOptions }) => {
+  return {
+    ...treeItemFetchOptions, // passed into createGetNestedItemById
+  }
+}
 
 const propTypes = {
   excludeRootNode: PropTypes.bool.isRequired,
@@ -73,6 +80,7 @@ PickerActionBar.propTypes = propTypes
 PickerActionBar.defaultProps = defaultProps
 
 export default compose(
+  connect(mapStateToProps),
   createGetNestedItemById({
     refresh: false,
   }),

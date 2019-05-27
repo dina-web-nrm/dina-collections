@@ -18,7 +18,7 @@ export default () =>
       cy.getByTestId('formTabMenuItem').click()
       cy.getByTestId('deleteButton').click()
       cy.getByTestId('confirmDeleteButton').click()
-      cy.getByText('The specimen was deleted')
+      cy.getByText('The record was deleted')
       cy.url()
         .should('include', 'mainColumn=table')
         .should('not.include', 'edit')

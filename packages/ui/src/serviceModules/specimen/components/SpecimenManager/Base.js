@@ -129,12 +129,7 @@ const defaultProps = {
 class SpecimenManager extends Component {
   constructor(props) {
     super(props)
-    this.handleInteraction = this.handleInteraction.bind(this)
     this.transformOutput = this.transformOutput.bind(this)
-  }
-
-  handleInteraction(type, data = {}) {
-    this.props.onNavigation(type, data)
   }
 
   transformOutput(formData) {
@@ -162,8 +157,6 @@ class SpecimenManager extends Component {
         enableTableColumnSorting
         initialFilterValues={initialFilterValues}
         ItemTitle={ItemTitle}
-        onInteraction={this.handleInteraction}
-        onSubmitCreateForm={this.handleSubmitCreateForm}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={renderCreateForm}
         renderEditForm={renderEditForm}

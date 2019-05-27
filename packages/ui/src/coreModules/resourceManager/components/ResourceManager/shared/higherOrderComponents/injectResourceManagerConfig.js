@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useConfig } from 'coreModules/resourceManager/contexts/resourceManagerConfig'
+import { useConfig } from '../contexts/resourceManagerConfig'
 
 const injectResourceManagerConfig = ComposedComponent => {
   const ResourceManagerConfigInjector = props => {

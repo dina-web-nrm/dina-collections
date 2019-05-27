@@ -18,17 +18,21 @@ import {
   createFocusRow,
   injectFocusedItemId,
   injectResourceManagerConfig,
-} from 'coreModules/resourceManager/higherOrderComponents'
+} from '../../shared/higherOrderComponents'
 import {
   buildList,
   getBottomUpLineage,
   getHighestCollapsedAncestorId,
-} from 'coreModules/resourceManager/utilities'
+} from '../../shared/utilities'
 
 const { get } = keyObjectGlobalSelectors
 
-const mapStateToProps = (state, { managerScope, resource }) => {
+const mapStateToProps = (
+  state,
+  { managerScope, resource, treeItemFetchOptions }
+) => {
   return {
+    ...treeItemFetchOptions, // passed into createBatchFetchItems
     currentRowNumber: resourceManagerSelectors.getCurrentTreeRowNumber(state, {
       managerScope,
     }),
@@ -63,14 +67,10 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
 
 const propTypes = {
   baseTreeFilter: PropTypes.object,
-  currentRowNumber: PropTypes.number.isRequired,
-  fetchItemById: PropTypes.func.isRequired,
   focusedItemId: PropTypes.string,
   getMany: PropTypes.func.isRequired,
   itemsObject: PropTypes.object.isRequired,
-  ItemTitle: PropTypes.func,
   managerScope: PropTypes.string.isRequired,
-  onClickRow: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   setFocusedItemId: PropTypes.func.isRequired,
   setTreeBaseItems: PropTypes.func.isRequired,
@@ -83,7 +83,10 @@ const propTypes = {
     }).isRequired
   ),
   treeExpandedIds: PropTypes.objectOf(PropTypes.bool.isRequired),
-  treeItemFetchOptions: PropTypes.object,
+  treeItemFetchOptions: PropTypes.shape({
+    include: PropTypes.array,
+    relationships: PropTypes.array,
+  }).isRequired,
   treeListItems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -95,15 +98,13 @@ const propTypes = {
 const defaultProps = {
   baseTreeFilter: {},
   focusedItemId: undefined,
-  ItemTitle: undefined,
   sortOrder: [],
   treeBaseItems: [],
   treeExpandedIds: {},
-  treeItemFetchOptions: { include: [], relationships: ['children', 'parent'] },
   treeListItems: [],
 }
 
-const createTreeModuleWrapper = () => ComposedComponent => {
+const createTreeWrapper = () => ComposedComponent => {
   class TreeModuleWrapper extends Component {
     constructor(props) {
       super(props)
@@ -288,21 +289,7 @@ const createTreeModuleWrapper = () => ComposedComponent => {
     }
 
     render() {
-      const {
-        currentRowNumber,
-        fetchItemById,
-        focusedItemId,
-        treeItemFetchOptions,
-        ItemTitle,
-        managerScope,
-        onClickRow,
-        resource,
-        treeExpandedIds,
-        treeListItems,
-        itemsObject,
-        setTreeListItems,
-        treeBaseItems,
-      } = this.props
+      const { managerScope } = this.props
 
       return (
         <React.Fragment>
@@ -311,24 +298,12 @@ const createTreeModuleWrapper = () => ComposedComponent => {
             shortcuts={this.shortcuts}
           />
           <ComposedComponent
+            {...this.props}
             buildList={buildList}
-            currentRowNumber={currentRowNumber}
             expandAncestorsForItemId={this.expandAncestorsForItemId}
-            fetchItemById={fetchItemById}
             fetchTreeBase={this.fetchTreeBase}
-            focusedItemId={focusedItemId}
-            itemsObject={itemsObject}
-            ItemTitle={ItemTitle}
-            managerScope={managerScope}
-            onClickRow={onClickRow}
             onShowAllRecords={this.handleShowAllRecords}
             onToggleRow={this.handleToggleRow}
-            resource={resource}
-            setTreeListItems={setTreeListItems}
-            treeBaseItems={treeBaseItems}
-            treeExpandedIds={treeExpandedIds}
-            treeItemFetchOptions={treeItemFetchOptions}
-            treeListItems={treeListItems}
           />
         </React.Fragment>
       )
@@ -355,4 +330,4 @@ const createTreeModuleWrapper = () => ComposedComponent => {
   )(TreeModuleWrapper)
 }
 
-export default createTreeModuleWrapper
+export default createTreeWrapper

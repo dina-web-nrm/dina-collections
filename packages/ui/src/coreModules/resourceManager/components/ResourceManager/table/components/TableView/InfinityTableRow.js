@@ -4,8 +4,11 @@ import { compose } from 'redux'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
+import createLog from 'utilities/log'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
+
+const log = createLog('resourceManager:TableView:InfinityTableRow')
 
 const propTypes = {
   fetchItemById: PropTypes.func.isRequired,
@@ -35,6 +38,7 @@ const InfinityTableRow = ({
   tableColumnsToShow,
   width,
 }) => {
+  log.render()
   if (itemId !== undefined) {
     fetchItemById(itemId)
   }

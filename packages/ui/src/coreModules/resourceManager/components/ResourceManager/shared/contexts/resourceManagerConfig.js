@@ -12,50 +12,63 @@ const useConfig = () => {
   return context
 }
 
+const injectResourceManagerConfig = ComposedComponent => {
+  const ResourceManagerConfigInjector = props => {
+    const configContext = useConfig()
+
+    return <ComposedComponent {...props} {...configContext} />
+  }
+
+  return ResourceManagerConfigInjector
+}
+
 const propTypes = {
-  baseTreeFilter: PropTypes.object,
-  buildEditItemHeaders: PropTypes.func,
+  baseTreeFilter: PropTypes.object.isRequired,
+  buildEditItemHeaders: PropTypes.func.isRequired,
   buildFilterQuery: PropTypes.func.isRequired,
+  createGetNestedItemHocInput: PropTypes.object.isRequired,
   enableTableColumnSorting: PropTypes.bool.isRequired,
   excludeRootNode: PropTypes.bool.isRequired,
-  initialFilterValues: PropTypes.object,
+  fetchResourceCount: PropTypes.func.isRequired,
+  initialFilterValues: PropTypes.object.isRequired,
   initialItemId: PropTypes.string,
   managerScope: PropTypes.string.isRequired,
-  onSubmitCreateForm: PropTypes.func,
+  renderCreateForm: PropTypes.func.isRequired,
+  renderEditForm: PropTypes.func.isRequired,
+  renderFilterForm: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   searchResource: PropTypes.string.isRequired,
-  sortOrder: PropTypes.array,
-  tableBatchFetchOptions: PropTypes.object,
+  sortOrder: PropTypes.array.isRequired,
+  tableBatchFetchOptions: PropTypes.object.isRequired,
   tableColumnSpecifications: PropTypes.array.isRequired,
+  transformOutput: PropTypes.func.isRequired,
   treeEnabled: PropTypes.bool.isRequired,
-  treeItemFetchOptions: PropTypes.object,
+  treeItemFetchOptions: PropTypes.object.isRequired,
 }
 const defaultProps = {
-  baseTreeFilter: undefined,
-  buildEditItemHeaders: undefined,
-  initialFilterValues: undefined,
   initialItemId: undefined,
-  onSubmitCreateForm: undefined,
-  sortOrder: undefined,
-  tableBatchFetchOptions: undefined,
-  treeItemFetchOptions: undefined,
 }
 
 const ResourceManagerConfigProvider = ({
   baseTreeFilter,
   buildEditItemHeaders,
   buildFilterQuery,
+  createGetNestedItemHocInput,
   enableTableColumnSorting,
   excludeRootNode,
+  fetchResourceCount,
   initialFilterValues,
   initialItemId,
   managerScope,
-  onSubmitCreateForm,
+  renderCreateForm,
+  renderEditForm,
+  renderFilterForm,
   resource,
   searchResource,
   sortOrder,
   tableBatchFetchOptions,
   tableColumnSpecifications,
+  transformOutput,
   treeEnabled,
   treeItemFetchOptions,
   ...rest
@@ -70,17 +83,22 @@ const ResourceManagerConfigProvider = ({
       baseTreeFilter,
       buildEditItemHeaders,
       buildFilterQuery,
+      createGetNestedItemHocInput,
       enableTableColumnSorting,
       excludeRootNode,
+      fetchResourceCount,
       initialFilterValues,
       initialItemId,
       managerScope,
-      onSubmitCreateForm,
+      renderCreateForm,
+      renderEditForm,
+      renderFilterForm,
       resource,
       searchResource,
       sortOrder,
       tableBatchFetchOptions,
       tableColumnSpecifications,
+      transformOutput,
       treeEnabled,
       treeItemFetchOptions,
     }
@@ -89,17 +107,22 @@ const ResourceManagerConfigProvider = ({
     baseTreeFilter,
     buildEditItemHeaders,
     buildFilterQuery,
+    createGetNestedItemHocInput,
     enableTableColumnSorting,
     excludeRootNode,
+    fetchResourceCount,
     initialFilterValues,
     initialItemId,
     managerScope,
-    onSubmitCreateForm,
+    renderCreateForm,
+    renderEditForm,
+    renderFilterForm,
     resource,
     searchResource,
     sortOrder,
     tableBatchFetchOptions,
     tableColumnSpecifications,
+    transformOutput,
     treeEnabled,
     treeItemFetchOptions,
   ])
@@ -112,4 +135,4 @@ const ResourceManagerConfigProvider = ({
 ResourceManagerConfigProvider.propTypes = propTypes
 ResourceManagerConfigProvider.defaultProps = defaultProps
 
-export { ResourceManagerConfigProvider, useConfig }
+export { injectResourceManagerConfig, ResourceManagerConfigProvider, useConfig }

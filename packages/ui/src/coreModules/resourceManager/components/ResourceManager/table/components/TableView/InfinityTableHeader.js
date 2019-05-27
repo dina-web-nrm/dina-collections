@@ -2,8 +2,11 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Header, Icon } from 'semantic-ui-react'
 
+import createLog from 'utilities/log'
 import { Translate } from 'coreModules/i18n/components'
 import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
+
+const log = createLog('resourceManager:TableView:InfinityTableHeader')
 
 const propTypes = {
   enableTableColumnSorting: PropTypes.bool.isRequired,
@@ -96,6 +99,7 @@ class InfinityTableHeader extends PureComponent {
   }
 
   render() {
+    log.render()
     const {
       height,
       scrollLeft,

@@ -4,10 +4,10 @@ import { compose } from 'redux'
 import ReactList from 'react-list'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 
-import { useEffectScroll } from 'coreModules/resourceManager/hooks'
+import { useEffectScroll } from 'coreModules/resourceManager/components/ResourceManager/shared/hooks'
 import { emToPixels } from 'coreModules/layout/utilities'
 import ListItem from './ListItem'
-import createTreeModuleWrapper from '../../higherOrderComponents/createTreeModuleWrapper'
+import createTreeWrapper from '../../higherOrderComponents/createTreeWrapper'
 
 const propTypes = {
   buildList: PropTypes.func.isRequired,
@@ -173,4 +173,4 @@ const TreeView = ({
 TreeView.defaultProps = defaultProps
 TreeView.propTypes = propTypes
 
-export default compose(createTreeModuleWrapper())(TreeView)
+export default compose(createTreeWrapper())(TreeView)

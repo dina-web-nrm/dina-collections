@@ -12,7 +12,7 @@ const getCurrentTableRowNumber = createSelector(
         })
       : -1
 
-    return focusedIndex === -1 ? 1 : focusedIndex + 1
+    return focusedIndex === -1 ? undefined : focusedIndex + 1
   }
 )
 
@@ -26,7 +26,7 @@ const getCurrentTreeRowNumber = createSelector(
         })
       : -1
 
-    return focusedIndex === -1 ? 1 : focusedIndex + 1
+    return focusedIndex === -1 ? undefined : focusedIndex + 1
   }
 )
 

@@ -5,7 +5,6 @@ import { pick } from 'lodash'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
-import createFormModuleWrapper from '../../higherOrderComponents/createFormModuleWrapper'
 import createCreateItemWrapper from '../../higherOrderComponents/createCreateItemWrapper'
 import ActionBar from '../ActionBar'
 
@@ -27,19 +26,7 @@ const CreateItemColumn = props => {
         })}
       </RowLayout.Row>
       <RowLayout.Row height={emToPixels(4.625)}>
-        <ActionBar
-          {...pick(props, [
-            'filterResourceCount',
-            'form',
-            'formName',
-            'navigateEdit',
-            'onCancel',
-            'onSubmit',
-            'resource',
-            'setFocusedItemId',
-            'transformOutput',
-          ])}
-        />
+        <ActionBar {...pick(props, ['formName', 'onCancel', 'onSubmit'])} />
       </RowLayout.Row>
     </RowLayout>
   )
@@ -47,7 +34,4 @@ const CreateItemColumn = props => {
 
 CreateItemColumn.propTypes = propTypes
 
-export default compose(
-  createFormModuleWrapper(),
-  createCreateItemWrapper()
-)(CreateItemColumn)
+export default compose(createCreateItemWrapper())(CreateItemColumn)

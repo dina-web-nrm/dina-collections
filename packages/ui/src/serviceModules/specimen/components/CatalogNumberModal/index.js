@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { isSubmitting, reset } from 'redux-form'
+import { isSubmitting, isValid, reset } from 'redux-form'
 import { Button, Grid, Modal } from 'semantic-ui-react'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
@@ -30,6 +30,7 @@ const ModuleTranslate = createModuleTranslate('specimen')
 const mapStateToProps = (state, { formName }) => {
   return {
     submitting: isSubmitting(formName)(state),
+    valid: isValid(formName)(state),
   }
 }
 const mapDispatchToProps = {

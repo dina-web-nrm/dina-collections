@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { pick } from 'lodash'
 
-import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
-import createFormModuleWrapper from '../../higherOrderComponents/createFormModuleWrapper'
 import createEditItemWrapper from '../../higherOrderComponents/createEditItemWrapper'
 import ActionBar from '../ActionBar'
 
@@ -45,20 +43,30 @@ const EditItemColumn = props => {
   const { itemHeader, itemSubHeader } = buildEditItemHeaders(nestedItem)
 
   const itemIdRef = useRef(null)
+  const focusedItemIdRef = useRef(null)
 
   useEffect(() => {
     // reconcile differences in itemId from query and focusedItemId from state
-    // if this is the first render then use itemId (e.g. when using browser back
-    // after deleting resource).
-    if (focusedItemId !== itemId) {
-      if (!itemIdRef.current) {
-        setFocusedItemId(itemId)
-      } else if (focusedItemId) {
-        navigateEdit(focusedItemId)
-      }
+    // if we get an itemId that has changed and is different from focusedItemId
+    // then set it as the focusedItemId
+    // else if we get a focusedItemId that has changed and is different from the
+    // itemId, then navigate to the new focusedItemId
+
+    const previousItemId = itemIdRef.current
+    const previousFocusedItemId = focusedItemIdRef.current
+
+    if (itemId && focusedItemId !== itemId && itemId !== previousItemId) {
+      setFocusedItemId(itemId)
+    } else if (
+      focusedItemId &&
+      focusedItemId !== itemId &&
+      focusedItemId !== previousFocusedItemId
+    ) {
+      navigateEdit(focusedItemId)
     }
 
     itemIdRef.current = itemId
+    focusedItemIdRef.current = focusedItemId
   }, [focusedItemId, itemId, navigateEdit, setFocusedItemId])
 
   return (
@@ -73,24 +81,13 @@ const EditItemColumn = props => {
       <RowLayout.Row height={emToPixels(4.625)}>
         <ActionBar
           {...pick(props, [
-            'fetchOneItemById',
-            'fetchRelationshipsBeforeDelete',
-            'filterResourceCount',
-            'form',
             'formName',
-            'itemId',
             'loadingDelete',
             'nestedItem',
             'onDelete',
-            'onInteraction',
             'onSubmit',
             'onUndoChanges',
-            'relationshipsToCheckBeforeDelete',
-            'resource',
-            'transformOutput',
           ])}
-          itemHeader={itemHeader}
-          itemSubHeader={itemSubHeader}
         />
       </RowLayout.Row>
     </RowLayout>
@@ -100,8 +97,4 @@ const EditItemColumn = props => {
 EditItemColumn.defaultProps = defaultProps
 EditItemColumn.propTypes = propTypes
 
-export default compose(
-  createFormModuleWrapper(),
-  createGetNestedItemById(),
-  createEditItemWrapper()
-)(EditItemColumn)
+export default compose(createEditItemWrapper())(EditItemColumn)

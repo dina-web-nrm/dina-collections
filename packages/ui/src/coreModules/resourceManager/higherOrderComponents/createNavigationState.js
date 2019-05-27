@@ -1,8 +1,6 @@
-/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { ResourceManagerNavigationProvider } from '../contexts/resourceManagerNavigation'
 import {
   CLOSE_FILTER,
   CLOSE_ITEM_VIEW,
@@ -45,6 +43,7 @@ const createResourceUrlState = () => ComposedComponent => {
       this.handleNavigation = this.handleNavigation.bind(this)
       this.navigateCreate = this.navigateCreate.bind(this)
       this.navigateEdit = this.navigateEdit.bind(this)
+      this.navigateFilter = this.navigateFilter.bind(this)
       this.navigateFormSection = this.navigateFormSection.bind(this)
       this.navigateTable = this.navigateTable.bind(this)
       this.navigateTableSettings = this.navigateTableSettings.bind(this)
@@ -223,33 +222,30 @@ const createResourceUrlState = () => ComposedComponent => {
         sectionId,
       } = state
 
-      const navigationProps = {
-        cancelCreate: this.cancelCreate,
-        closeFilter: this.closeFilter,
-        createItemActive: !isPicker && mainColumn === 'create',
-        editItemActive: !isPicker && mainColumn === 'edit',
-        filterActive: filterColumn === 'filter',
-        itemId,
-        navigateCreate: this.navigateCreate,
-        navigateEdit: this.navigateEdit,
-        navigateFilter: this.navigateFilter,
-        navigateFormSection: this.navigateFormSection,
-        navigateTable: this.navigateTable,
-        navigateTableSettings: this.navigateTableSettings,
-        navigateTree: this.navigateTree,
-        onNavigation: this.handleNavigation,
-        sectionId,
-        tableActive: mainColumn === 'table',
-        tableSettingsActive: mainColumn === 'tableSettings',
-        toggleFilter: this.toggleFilter,
-        treeActive: mainColumn === 'tree',
-        treeEnabled,
-      }
-
       return (
-        <ResourceManagerNavigationProvider {...navigationProps}>
-          <ComposedComponent {...this.props} {...navigationProps} />
-        </ResourceManagerNavigationProvider>
+        <ComposedComponent
+          {...this.props}
+          cancelCreate={this.cancelCreate}
+          closeFilter={this.closeFilter}
+          createItemActive={!isPicker && mainColumn === 'create'}
+          editItemActive={!isPicker && mainColumn === 'edit'}
+          filterActive={filterColumn === 'filter'}
+          itemId={itemId}
+          navigateCreate={this.navigateCreate}
+          navigateEdit={this.navigateEdit}
+          navigateFilter={this.navigateFilter}
+          navigateFormSection={this.navigateFormSection}
+          navigateTable={this.navigateTable}
+          navigateTableSettings={this.navigateTableSettings}
+          navigateTree={this.navigateTree}
+          onNavigation={this.handleNavigation}
+          sectionId={sectionId}
+          tableActive={mainColumn === 'table'}
+          tableSettingsActive={mainColumn === 'tableSettings'}
+          toggleFilter={this.toggleFilter}
+          treeActive={mainColumn === 'tree'}
+          treeEnabled={treeEnabled}
+        />
       )
     }
   }

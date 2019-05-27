@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 
 import resourceManagerSelectors from 'coreModules/resourceManager/globalSelectors'
+import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/resourceManager/keyObjectModule'
 import {
   createFocusRow,
   injectFocusedItemId,
   injectResourceManagerConfig,
   injectResourceManagerNavigation,
-} from 'coreModules/resourceManager/higherOrderComponents'
-import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/resourceManager/keyObjectModule'
+} from '../../shared/higherOrderComponents'
 
 const { get } = keyObjectGlobalSelectors
 
-const createFormModuleWrapper = () => ComposedComponent => {
+const createFormWrapper = () => ComposedComponent => {
   class FormModuleWrapper extends Component {
     render() {
       return <ComposedComponent {...this.props} />
@@ -30,4 +30,4 @@ const createFormModuleWrapper = () => ComposedComponent => {
   )(FormModuleWrapper)
 }
 
-export default createFormModuleWrapper
+export default createFormWrapper

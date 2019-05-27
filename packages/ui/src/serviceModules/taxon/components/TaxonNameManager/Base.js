@@ -39,15 +39,10 @@ const defaultProps = {
 class TaxonNameManager extends Component {
   constructor(props) {
     super(props)
-    this.handleInteraction = this.handleInteraction.bind(this)
     this.buildEditItemHeaders = this.buildEditItemHeaders.bind(this)
     this.renderCreateForm = this.renderCreateForm.bind(this)
     this.renderEditForm = this.renderEditForm.bind(this)
     this.renderFilterForm = this.renderFilterForm.bind(this)
-  }
-
-  handleInteraction(type, data = {}) {
-    this.props.onNavigation(type, data)
   }
 
   buildEditItemHeaders(nestedItem) {
@@ -65,13 +60,7 @@ class TaxonNameManager extends Component {
 
   renderEditForm(props = {}) {
     const { itemId } = this.props
-    return (
-      <EditForm
-        {...props}
-        itemId={itemId}
-        onInteraction={this.handleInteraction}
-      />
-    )
+    return <EditForm {...props} itemId={itemId} />
   }
   renderCreateForm(props = {}) {
     return <CreateForm {...props} onInteraction={this.handleInteraction} />
@@ -89,7 +78,6 @@ class TaxonNameManager extends Component {
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         filterResourceCount={filterResourceCount}
-        onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}

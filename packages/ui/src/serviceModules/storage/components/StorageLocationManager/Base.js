@@ -87,7 +87,6 @@ class StorageLocationManager extends Component {
     super(props)
     this.getChildren = this.getChildren.bind(this)
     this.getSpecimens = this.getSpecimens.bind(this)
-    this.handleInteraction = this.handleInteraction.bind(this)
     this.fetchRelationshipsBeforeDelete = this.fetchRelationshipsBeforeDelete.bind(
       this
     )
@@ -129,10 +128,6 @@ class StorageLocationManager extends Component {
     })
   }
 
-  handleInteraction(type, data = {}) {
-    this.props.onNavigation(type, data)
-  }
-
   fetchRelationshipsBeforeDelete() {
     return Promise.all([this.getChildren(), this.getSpecimens()]).then(
       ([children, specimens]) => {
@@ -146,13 +141,7 @@ class StorageLocationManager extends Component {
 
   renderEditForm(props = {}) {
     const { itemId } = this.props
-    return (
-      <EditForm
-        {...props}
-        itemId={itemId}
-        onInteraction={this.handleInteraction}
-      />
-    )
+    return <EditForm {...props} itemId={itemId} />
   }
   renderCreateForm(props = {}) {
     return <CreateForm {...props} onInteraction={this.handleInteraction} />
@@ -172,7 +161,6 @@ class StorageLocationManager extends Component {
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         fetchRelationshipsBeforeDelete={this.fetchRelationshipsBeforeDelete}
         ItemTitle={ItemTitle}
-        onInteraction={this.handleInteraction}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}

@@ -2,15 +2,17 @@ import React, { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { pick } from 'lodash'
-
+import createLog from 'utilities/log'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { NoResultsFound } from 'coreModules/search/components/'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 
-import createTableModuleWrapper from '../../higherOrderComponents/createTableModuleWrapper'
+import createTableWrapper from '../../higherOrderComponents/createTableWrapper'
 import InfinityTableBody from './InfinityTableBody'
 import InfinityTableHeader from './InfinityTableHeader'
+
+const log = createLog('resourceManager:TableView')
 
 const tableHeaderStyle = {
   borderBottom: '1px solid #b5b5b5',
@@ -34,6 +36,7 @@ const propTypes = {
 }
 
 const TableView = props => {
+  log.render()
   const {
     availableHeight,
     fetchTableItems,
@@ -69,7 +72,11 @@ const TableView = props => {
           width={width}
         />
       </RowLayout.Row>
-      <RowLayout.Row id="tableScrollContainer" style={tableBodyStyle}>
+      <RowLayout.Row
+        dataTestId="tableScrollContainer"
+        id="tableScrollContainer"
+        style={tableBodyStyle}
+      >
         {tableListItems.length > 0 ? (
           <InfinityTableBody
             {...pick(props, [
@@ -97,6 +104,6 @@ const TableView = props => {
 TableView.propTypes = propTypes
 
 export default compose(
-  createTableModuleWrapper(),
+  createTableWrapper(),
   injectWindowHeight
 )(TableView)

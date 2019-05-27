@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useNavigation } from 'coreModules/resourceManager/contexts/resourceManagerNavigation'
+import { useNavigation } from '../contexts/resourceManagerNavigation'
 
 const injectResourceManagerNavigation = ComposedComponent => {
   const ResourceManagerNavigationInjector = props => {

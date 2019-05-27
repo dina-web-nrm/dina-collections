@@ -1,34 +1,23 @@
-export default function buildFilterQuery({ excludeRootNode, values = {} }={}) {
+export default function buildFilterQuery({ formValues = {} } = {}) {
   const and = []
 
-  if (excludeRootNode) {
+  if (formValues.name) {
     and.push({
       filter: {
-        filterFunction: 'excludeRootNode',
+        filterFunction: 'searchName',
         input: {
-          value: true,
+          value: formValues.name,
         },
       },
     })
   }
 
-  if (values.name) {
+  if (formValues.group) {
     and.push({
       filter: {
-        filterFunction: 'nameSearch',
+        filterFunction: 'searchLevel',
         input: {
-          value: values.name,
-        },
-      },
-    })
-  }
-
-  if (values.group) {
-    and.push({
-      filter: {
-        filterFunction: 'group',
-        input: {
-          value: values.group,
+          value: formValues.group,
         },
       },
     })
@@ -39,6 +28,6 @@ export default function buildFilterQuery({ excludeRootNode, values = {} }={}) {
   }
 
   return {
-    and,
+    query: { and },
   }
 }

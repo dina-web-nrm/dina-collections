@@ -8,10 +8,8 @@ import { Button, Form, Grid, Header, Icon, Message } from 'semantic-ui-react'
 import createLog from 'utilities/log'
 import { Checkbox, Field } from 'coreModules/form/components'
 import { Translate } from 'coreModules/i18n/components'
-import { useNavigation } from 'coreModules/resourceManager/contexts/resourceManagerNavigation'
-import { injectResourceManagerConfig } from 'coreModules/resourceManager/higherOrderComponents'
-import { updateUserPreference as updateUserPreferenceAC } from 'coreModules/user/actionCreators'
-import userSelectors from 'coreModules/user/globalSelectors'
+import { useNavigation } from '../../../shared/contexts/resourceManagerNavigation'
+import createTableWrapper from '../../higherOrderComponents/createTableWrapper'
 
 const log = createLog('resourceManager:TableSettings')
 
@@ -32,85 +30,67 @@ const transformFormValuesToColumnNames = formValues => {
   }, [])
 }
 
-const mapStateToProps = (state, { form, searchResource }) => {
-  const userPreferences = userSelectors.getUserPreferences(state)
-  const savedTableColumnNames =
-    (userPreferences &&
-      userPreferences[`${searchResource}TableColumnsToShow`]) ||
-    undefined
-
+const mapStateToProps = (state, { form }) => {
   return {
     formValues: getFormValues(form)(state),
-    savedTableColumnNames,
   }
 }
-const mapDispatchToProps = { updateUserPreference: updateUserPreferenceAC }
 
 const propTypes = {
+  allTableColumnFieldPaths: PropTypes.arrayOf(PropTypes.string.isRequired)
+    .isRequired,
   change: PropTypes.func.isRequired,
   error: PropTypes.string,
   formValues: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
   initialize: PropTypes.func.isRequired,
+  onSaveTableColumnsToShow: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  savedTableColumnNames: PropTypes.arrayOf(PropTypes.string.isRequired),
-  searchResource: PropTypes.string.isRequired,
   submitting: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  updateUserPreference: PropTypes.func.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 }
 const defaultProps = {
   error: undefined,
   formValues: undefined,
-  savedTableColumnNames: undefined,
 }
 
 const ResultTableSettings = ({
+  allTableColumnFieldPaths,
   change,
   error,
   formValues,
   handleSubmit,
   initialize,
+  onSaveTableColumnsToShow: handleSaveTableColumnsToShow,
   pristine,
-  savedTableColumnNames,
-  searchResource,
   submitting,
   tableColumnSpecifications,
-  updateUserPreference,
+  tableColumnsToShow,
 }) => {
   log.render()
 
   const { navigateTable } = useNavigation()
 
-  const allColumnNames = useMemo(
-    () => tableColumnSpecifications.map(({ fieldPath }) => fieldPath),
-    [tableColumnSpecifications]
-  )
-  const columnNames = savedTableColumnNames || allColumnNames
-
   const someColumnSelected = useMemo(() => {
     return Object.values(formValues || {}).some(Boolean)
   }, [formValues])
 
-  useEffect(() => {
-    if (Array.isArray(columnNames)) {
-      initialize(transformColumnNamesToFormValues(columnNames))
-    }
-  }, [initialize, columnNames])
-
-  const handleCancel = () => {
-    navigateTable()
-  }
+  const handleCancel = () => navigateTable()
 
   const handleSetAll = value => {
-    allColumnNames.forEach(name => {
-      change(name, value)
+    allTableColumnFieldPaths.forEach(fieldPath => {
+      change(fieldPath, value)
     })
   }
+
+  useEffect(() => {
+    initialize(transformColumnNamesToFormValues(tableColumnsToShow))
+  }, [initialize, tableColumnsToShow])
 
   return (
     <div className="ui fluid dina background" style={{ padding: '20px' }}>
@@ -170,8 +150,7 @@ const ResultTableSettings = ({
                 data-testid="saveButton"
                 disabled={!someColumnSelected || pristine || submitting}
                 onClick={handleSubmit((formData = {}) => {
-                  return updateUserPreference(
-                    `${searchResource}TableColumnsToShow`,
+                  return handleSaveTableColumnsToShow(
                     transformFormValuesToColumnNames(formData)
                   )
                     .then(() => {
@@ -208,12 +187,9 @@ ResultTableSettings.propTypes = propTypes
 ResultTableSettings.defaultProps = defaultProps
 
 export default compose(
-  injectResourceManagerConfig,
+  createTableWrapper(),
   reduxForm({
     form: 'tableSettingsForm',
   }),
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  connect(mapStateToProps)
 )(ResultTableSettings)

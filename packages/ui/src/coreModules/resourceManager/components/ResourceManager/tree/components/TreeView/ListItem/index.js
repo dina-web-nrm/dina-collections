@@ -5,7 +5,7 @@ import { Dimmer, Grid, Icon, Loader } from 'semantic-ui-react'
 
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
-import { createInjectItemTitle } from 'coreModules/resourceManager/higherOrderComponents'
+import { createInjectItemTitle } from '../../../../shared/higherOrderComponents'
 
 const propTypes = {
   indentation: PropTypes.number,

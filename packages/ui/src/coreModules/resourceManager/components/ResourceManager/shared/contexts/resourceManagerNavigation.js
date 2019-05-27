@@ -12,6 +12,16 @@ const useNavigation = () => {
   return context
 }
 
+const injectResourceManagerNavigation = ComposedComponent => {
+  const ResourceManagerNavigationInjector = props => {
+    const navigationContext = useNavigation()
+
+    return <ComposedComponent {...props} {...navigationContext} />
+  }
+
+  return ResourceManagerNavigationInjector
+}
+
 const propTypes = {
   cancelCreate: PropTypes.func.isRequired,
   createItemActive: PropTypes.bool.isRequired,
@@ -104,4 +114,8 @@ const ResourceManagerNavigationProvider = ({
 ResourceManagerNavigationProvider.propTypes = propTypes
 ResourceManagerNavigationProvider.defaultProps = defaultProps
 
-export { ResourceManagerNavigationProvider, useNavigation }
+export {
+  injectResourceManagerNavigation,
+  ResourceManagerNavigationProvider,
+  useNavigation,
+}

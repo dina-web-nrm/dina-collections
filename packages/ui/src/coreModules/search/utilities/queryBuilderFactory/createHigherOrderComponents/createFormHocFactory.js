@@ -8,18 +8,15 @@ export default function createFormHocFactory({ formName, selectors }) {
   const createFormHoc = () => ComposedComponent => {
     const propTypes = {
       formValues: PropTypes.object,
-      initialValues: PropTypes.object,
     }
 
     const defaultProps = {
       formValues: {},
-      initialValues: {},
     }
 
     const mapStateToProps = state => {
       return {
         formValues: selectors.getFormSelector(state),
-        initialValues: selectors.getFormInitialValuesSelector(state),
       }
     }
 
@@ -29,25 +26,7 @@ export default function createFormHocFactory({ formName, selectors }) {
         this.buildQuery = this.buildQuery.bind(this)
       }
 
-      buildQuery({ ignoreFilters = false, useInitialFilters = false } = {}) {
-        const { formValues, initialValues } = this.props
-
-        if (ignoreFilters) {
-          return buildQuery({
-            formName,
-            formValues: {},
-            getSubQueries: selectors.getSubQueries,
-          })
-        }
-
-        if (useInitialFilters) {
-          return buildQuery({
-            formName,
-            formValues: initialValues,
-            getSubQueries: selectors.getSubQueries,
-          })
-        }
-
+      buildQuery({ formValues = this.props.formValues } = {}) {
         return buildQuery({
           formName,
           formValues,

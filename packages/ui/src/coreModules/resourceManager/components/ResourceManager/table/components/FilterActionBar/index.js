@@ -6,14 +6,14 @@ import { getFormValues, initialize, isInvalid, isPristine } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
+import createTableWrapper from '../../higherOrderComponents/createTableWrapper'
 
-const mapStateToProps = (state, { searchResource }) => {
-  const formName = `${searchResource}Filter`
+const mapStateToProps = (state, { filterFormName }) => {
   return {
-    formName,
-    formValues: getFormValues(formName)(state),
-    invalid: isInvalid(formName)(state),
-    pristine: isPristine(formName)(state),
+    formName: filterFormName,
+    formValues: getFormValues(filterFormName)(state),
+    invalid: isInvalid(filterFormName)(state),
+    pristine: isPristine(filterFormName)(state),
   }
 }
 const mapDispatchToProps = { initializeFilter: initialize }
@@ -23,7 +23,7 @@ const propTypes = {
   formName: PropTypes.string.isRequired,
   formValues: PropTypes.object,
   hasAppliedFilter: PropTypes.bool.isRequired,
-  initialFilterValues: PropTypes.object,
+  initialFilterValues: PropTypes.object.isRequired,
   initializeFilter: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   isPicker: PropTypes.bool,
@@ -33,7 +33,6 @@ const propTypes = {
 }
 const defaultProps = {
   formValues: {},
-  initialFilterValues: {},
   isPicker: false,
 }
 
@@ -174,6 +173,7 @@ BottomBar.propTypes = propTypes
 BottomBar.defaultProps = defaultProps
 
 export default compose(
+  createTableWrapper(),
   connect(
     mapStateToProps,
     mapDispatchToProps

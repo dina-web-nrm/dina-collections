@@ -59,7 +59,6 @@ const treeItemFetchOptions = {
 
 const propTypes = {
   itemId: PropTypes.string,
-  onNavigation: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -69,14 +68,9 @@ const defaultProps = {
 class LocalityManager extends Component {
   constructor(props) {
     super(props)
-    this.handleInteraction = this.handleInteraction.bind(this)
     this.renderCreateForm = this.renderCreateForm.bind(this)
     this.renderEditForm = this.renderEditForm.bind(this)
     this.renderFilterForm = this.renderFilterForm.bind(this)
-  }
-
-  handleInteraction(type, data = {}) {
-    this.props.onNavigation(type, data)
   }
 
   renderEditForm(props = {}) {
@@ -108,7 +102,6 @@ class LocalityManager extends Component {
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         excludeRootNode
         ItemTitle={ItemTitle}
-        onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}

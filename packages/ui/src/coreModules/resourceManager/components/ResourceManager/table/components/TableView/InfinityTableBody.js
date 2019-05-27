@@ -4,10 +4,13 @@ import PropTypes from 'prop-types'
 import ReactList from 'react-list'
 import { pick } from 'lodash'
 
+import createLog from 'utilities/log'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
-import { useEffectScroll } from 'coreModules/resourceManager/hooks'
+import { useEffectScroll } from '../../../shared/hooks'
 
 import InfinityTableRow from './InfinityTableRow'
+
+const log = createLog('resourceManager:table:TableView:InfinityTableBody')
 
 const itemsRenderer = (items, ref) => {
   return (
@@ -33,6 +36,7 @@ const propTypes = {
 }
 
 const InfinityTable = props => {
+  log.render()
   const {
     currentRowNumber,
     tableBatchFetchOptions: { include, resolveRelationships, relationships },

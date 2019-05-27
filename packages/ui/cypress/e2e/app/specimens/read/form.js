@@ -1,9 +1,7 @@
 export default () =>
   describe('form content', () => {
     beforeEach(() => {
-      cy.visit(
-        '/app/specimens/mammals?mainColumn=edit&itemId=1&sectionId=0'
-      )
+      cy.visit('/app/specimens/mammals?mainColumn=edit&itemId=1&sectionId=0')
       // wait until section rendered
       cy.get('[data-testid="basicInformation"]', { log: false, timeout: 60000 })
     })

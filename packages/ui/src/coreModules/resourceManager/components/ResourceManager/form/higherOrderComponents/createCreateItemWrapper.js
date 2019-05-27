@@ -12,6 +12,7 @@ import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
+import createFormWrapper from './createFormWrapper'
 
 const mapStateToProps = (state, { resource }) => {
   const formName = `${resource}Create`
@@ -110,6 +111,7 @@ const createCreateItemWrapper = () => ComposedComponent => {
   CreateItemWrapper.defaultProps = defaultProps
 
   return compose(
+    createFormWrapper(),
     createGetResourceCount(),
     connect(
       mapStateToProps,
