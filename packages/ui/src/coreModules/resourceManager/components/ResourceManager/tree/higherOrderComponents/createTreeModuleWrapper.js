@@ -83,6 +83,10 @@ const propTypes = {
     }).isRequired
   ),
   treeExpandedIds: PropTypes.objectOf(PropTypes.bool.isRequired),
+  treeItemFetchOptions: PropTypes.shape({
+    include: PropTypes.array,
+    relationships: PropTypes.array,
+  }).isRequired,
   treeListItems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,

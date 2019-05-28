@@ -135,7 +135,6 @@ class TaxonManager extends Component {
         buildEditItemHeaders={this.buildEditItemHeaders}
         buildFilterQuery={buildFilterQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
-        treeItemFetchOptions={treeItemFetchOptions}
         ItemTitle={ItemTitle}
         onInteraction={this.handleInteraction}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
@@ -146,6 +145,7 @@ class TaxonManager extends Component {
         tableBatchFetchOptions={tableBatchFetchOptions}
         tableColumnSpecifications={tableColumnSpecifications}
         treeEnabled
+        treeItemFetchOptions={treeItemFetchOptions}
       />
     )
   }
