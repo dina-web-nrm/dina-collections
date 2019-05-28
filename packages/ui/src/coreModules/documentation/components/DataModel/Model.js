@@ -23,13 +23,14 @@ const Model = ({ model, version, specification }) => {
       {model.description && (
         <MarkdownToHtmlAsync markdown={model.description} />
       )}
-
-      <PropertyOverview
-        model={model}
-        properties={properties}
-        specification={specification}
-        version={version}
-      />
+      {properties && properties.length ? (
+        <PropertyOverview
+          model={model}
+          properties={properties}
+          specification={specification}
+          version={version}
+        />
+      ) : null}
     </Segment>
   )
 }

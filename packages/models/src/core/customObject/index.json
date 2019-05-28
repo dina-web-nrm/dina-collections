@@ -1,5 +1,6 @@
 {
   "additionalProperties": true,
+  "x-internal": true,
   "description": "A model to be used until proper concept is defined",
   "type": "object"
 }

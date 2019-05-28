@@ -3,7 +3,7 @@ const normalizeProperty = ({ normalize, property, injectedNormalizeModel }) => {
     return property
   }
 
-  let normalizedProperty = {
+  const normalizedProperty = {
     ...property,
   }
 
@@ -22,18 +22,6 @@ const normalizeProperty = ({ normalize, property, injectedNormalizeModel }) => {
         normalize,
         property: normalizedProperty.items,
       }),
-    }
-  }
-
-  if (
-    normalize &&
-    property.$ref &&
-    property['x-reference-type'] &&
-    property['x-reference-type'] === 'external'
-  ) {
-    normalizedProperty = {
-      ...property,
-      $ref: '__ROOT__externalModelReference',
     }
   }
 

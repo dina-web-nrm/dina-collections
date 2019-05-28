@@ -8,12 +8,9 @@ import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { NavigationSidebar } from 'coreModules/layout/components'
 
 import createModelLink from '../utilities/createModelLink'
-import getAvailableSchemaVersions from '../utilities/getAvailableSchemaVersions'
 
 const specification = schemaInterface.getOpenApiSpec()
 const { schemas } = specification.components
-
-const availableVersions = getAvailableSchemaVersions()
 
 const models = Object.keys(schemas)
   .map(key => {
@@ -61,15 +58,6 @@ class Nav extends Component {
       }
     })
 
-    const versionNavItems = availableVersions.map(availableVersion => {
-      return {
-        exact: false,
-        name: availableVersion,
-        path: `/dataModelDocs/${availableVersion}`,
-        translate: false,
-      }
-    })
-
     const modelCategories = models
       .map(model => {
         return {
@@ -95,11 +83,6 @@ class Nav extends Component {
       name: 'overview',
     }
 
-    const versionItemsGroup = {
-      items: versionNavItems,
-      name: 'versions',
-    }
-
     const modelItemGroups = Object.keys(modelCategories).map(category => {
       return {
         items: modelCategories[category],
@@ -108,11 +91,7 @@ class Nav extends Component {
       }
     })
 
-    const navigationItems = [
-      markdownNavItemsGroup,
-      versionItemsGroup,
-      ...modelItemGroups,
-    ]
+    const navigationItems = [markdownNavItemsGroup, ...modelItemGroups]
 
     return (
       <NavigationSidebar

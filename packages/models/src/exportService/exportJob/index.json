@@ -1,6 +1,7 @@
 {
   "additionalProperties": false,
   "description": "A model keeping track of exports",
+  "x-internal": true,
   "type": "object",
   "properties": {
     "id": {
