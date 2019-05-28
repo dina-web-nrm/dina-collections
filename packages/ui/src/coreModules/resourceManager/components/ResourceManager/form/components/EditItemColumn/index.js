@@ -44,6 +44,7 @@ const EditItemColumn = props => {
   const { itemHeader, itemSubHeader } = buildEditItemHeaders(nestedItem)
 
   const itemIdRef = useRef(null)
+  const focusedItemIdRef = useRef(null)
 
   useEffect(() => {
     // reconcile differences in itemId from query and focusedItemId from state
@@ -52,12 +53,13 @@ const EditItemColumn = props => {
     if (focusedItemId !== itemId) {
       if (!itemIdRef.current) {
         setFocusedItemId(itemId)
-      } else if (focusedItemId) {
+      } else if (focusedItemIdRef.current !== focusedItemId) {
         navigateEdit(focusedItemId)
       }
     }
 
     itemIdRef.current = itemId
+    focusedItemIdRef.current = focusedItemId
   }, [focusedItemId, itemId, navigateEdit, setFocusedItemId])
 
   return (
