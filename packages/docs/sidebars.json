@@ -28,6 +28,7 @@
       "packages/ui/index"
     ],
     "Development": [
+      "development/cli",
       "development/contributing",
       "development/configuration/env",
       "development/testing",

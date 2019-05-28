@@ -2,6 +2,7 @@
   "scripts": {
     "build": "docusaurus-build",
     "examples": "docusaurus-examples",
+    "build:markdown:cli": "node ../scripts/src/js/scriptDocs --packageJsonPath=../../package.json --build=true --inputPath=./docs/development/cli.js --outputPath=./docs/development/cli.md && prettier ./docs/development/cli.md --write",
     "interpolateFiles": "node ../scripts/src/js/interpolateFiles -p packages/docs/docs/**/*.md",
     "interpolateFiles:remove": "node ../scripts/src/js/interpolateFiles -p packages/docs/docs/**/*.md -r true",
     "lint": "yarn lint:js && yarn lint:md",
