@@ -6,9 +6,26 @@ const {
   createRegisterResourceActivityHook,
 } = require('../../../../historyService/serviceInteractions')
 
+const {
+  createIndexJob,
+  rebuildInProgress,
+} = require('../../../serviceInteractions')
+
+const {
+  createIndexHook,
+  createUpdateDescendantsPostHook,
+} = require('../../../../../lib/data/hooks')
+
+const indexHook = createIndexHook({
+  createIndexJob,
+  rebuildInProgress,
+  resource: 'searchTaxon',
+})
+
 const { removeTaxonFromTaxonNames } = require('../../../serviceInteractions')
 
 exports.create = [
+  indexHook,
   createRegisterResourceActivityHook({
     action: 'create',
     service: 'taxonomyService',
@@ -16,6 +33,13 @@ exports.create = [
 ]
 
 exports.update = [
+  indexHook,
+  createUpdateDescendantsPostHook({
+    createIndexJob,
+    limit: 50,
+    srcResource: 'taxon',
+    targetSearchResource: 'searchTaxon',
+  }),
   createRegisterResourceActivityHook({
     action: 'update',
     service: 'taxonomyService',
@@ -26,6 +50,13 @@ exports.update = [
 ]
 
 exports.updateInternalRelationship = [
+  indexHook,
+  createUpdateDescendantsPostHook({
+    createIndexJob,
+    limit: 50,
+    srcResource: 'taxon',
+    targetSearchResource: 'searchTaxon',
+  }),
   createRegisterResourceActivityHook({
     action: 'update',
     getIdFromPath: true,
