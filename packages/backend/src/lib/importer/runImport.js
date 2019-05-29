@@ -115,6 +115,8 @@ module.exports = function runImport({
         'searchPlaceRebuildView',
         'searchAgentRebuildView',
         'searchStorageLocationRebuildView',
+        'searchTaxonRebuildView',
+        'searchTaxonNameRebuildView',
       ]
 
       return promiseForEach(indexOperations, operationId => {
