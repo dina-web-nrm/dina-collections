@@ -5,6 +5,11 @@ const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFir
 
 const log = createLog('services/taxonomyService/serviceInteractions')
 
+const {
+  createRebuildInProgress,
+  createCreateIndexJob,
+} = require('../../../lib/data/serviceInteractions')
+
 const findAndClearTaxonRelationship = ({
   relationshipKey,
   serviceInteractor,
@@ -102,3 +107,20 @@ exports.removeRelatedTaxonFromTaxonNames = ({ request, serviceInteractor }) => {
     }),
   ])
 }
+
+exports.searchTaxonRebuildInProgress = createRebuildInProgress({
+  operationId: 'searchTaxonGetViewMeta',
+})
+
+exports.searchTaxonCreateIndexJob = createCreateIndexJob({
+  rebuildViewOperationId: 'searchTaxonRebuildView',
+  updateViewOperationId: 'searchTaxonUpdateView',
+})
+
+exports.searchTaxonNameRebuildInProgress = createRebuildInProgress({
+  operationId: 'searchTaxonNameGetViewMeta',
+})
+exports.searchTaxonNameCreateIndexJob = createCreateIndexJob({
+  rebuildViewOperationId: 'searchTaxonNameRebuildView',
+  updateViewOperationId: 'searchTaxonNameUpdateView',
+})
