@@ -20382,6 +20382,7 @@
       "notDefinedModel": {
         "additionalProperties": true,
         "description": "A model to be used until proper concept is defined",
+        "x-internal": true,
         "properties": {},
         "x-category": "core",
         "x-modelType": "model",
@@ -21244,6 +21245,7 @@
       "dataModelMigrationLog": {
         "additionalProperties": false,
         "description": "A job model that keep tracks of schema migrations",
+        "x-internal": true,
         "type": "object",
         "properties": {
           "id": {
