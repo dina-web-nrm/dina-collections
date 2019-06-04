@@ -11,4 +11,7 @@ while getopts f: option
 
 $FULL_PATH/elasticsearch-import-index.sh -f $FILE_PATH -n searchspecimen
 $FULL_PATH/elasticsearch-import-index.sh -f $FILE_PATH -n searchplace
-
+$FULL_PATH/elasticsearch-import-index.sh -f $FILE_PATH -n searchagent
+$FULL_PATH/elasticsearch-import-index.sh -f $FILE_PATH -n searchstoragelocation
+$FULL_PATH/elasticsearch-import-index.sh -f $FILE_PATH -n searchtaxon
+$FULL_PATH/elasticsearch-import-index.sh -f $FILE_PATH -n searchtaxonname
