@@ -1131,16 +1131,9 @@
             "schema": {
               "items": {
                 "enum": [
-                  "attributes.abbreviation",
-                  "attributes.additionalName",
-                  "attributes.agentType",
-                  "attributes.alsoKnownAs",
-                  "attributes.disambiguatingDescription",
-                  "attributes.familyName",
-                  "attributes.fullName",
-                  "attributes.givenName",
                   "id",
-                  "attributes.remarks"
+                  "attributes.fullName",
+                  "attributes.agentType"
                 ],
                 "type": "string"
               },
@@ -1155,16 +1148,9 @@
             "schema": {
               "items": {
                 "enum": [
-                  "attributes.abbreviation",
-                  "attributes.additionalName",
-                  "attributes.agentType",
-                  "attributes.alsoKnownAs",
-                  "attributes.disambiguatingDescription",
-                  "attributes.familyName",
-                  "attributes.fullName",
-                  "attributes.givenName",
                   "id",
-                  "attributes.remarks"
+                  "attributes.fullName",
+                  "attributes.agentType"
                 ],
                 "type": "string"
               },
@@ -1330,7 +1316,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***abbreviation*** <br/> Search attributes.searchOnly.abbreviation <br/> <br/>  ***additionalName*** <br/> Search attributes.searchOnly.additionalName <br/> <br/>  ***agentType*** <br/> Search attributes.searchOnly.agentType <br/> <br/>  ***alsoKnownAs*** <br/> Search attributes.searchOnly.alsoKnownAs <br/> <br/>  ***disambiguatingDescription*** <br/> Search attributes.searchOnly.disambiguatingDescription <br/> <br/>  ***familyName*** <br/> Search attributes.searchOnly.familyName <br/> <br/>  ***fullName*** <br/> Search attributes.searchOnly.fullName <br/> <br/>  ***givenName*** <br/> Search attributes.searchOnly.givenName <br/> <br/>  ***remarks*** <br/> Search attributes.searchOnly.remarks <br/>\n\n  \n  <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchType*** <br/> Search attributes.searchOnly.searchType <br/>\n\n  \n  <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -1411,8 +1397,8 @@
           },
           {
             "in": "query",
-            "name": "filter[abbreviation]",
-            "description": "Search attributes.searchOnly.abbreviation",
+            "name": "filter[searchName]",
+            "description": "Search attributes.searchOnly.searchName",
             "required": false,
             "schema": {
               "type": "string"
@@ -1420,71 +1406,8 @@
           },
           {
             "in": "query",
-            "name": "filter[additionalName]",
-            "description": "Search attributes.searchOnly.additionalName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[agentType]",
-            "description": "Search attributes.searchOnly.agentType",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[alsoKnownAs]",
-            "description": "Search attributes.searchOnly.alsoKnownAs",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[disambiguatingDescription]",
-            "description": "Search attributes.searchOnly.disambiguatingDescription",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[familyName]",
-            "description": "Search attributes.searchOnly.familyName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[fullName]",
-            "description": "Search attributes.searchOnly.fullName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[givenName]",
-            "description": "Search attributes.searchOnly.givenName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[remarks]",
-            "description": "Search attributes.searchOnly.remarks",
+            "name": "filter[searchType]",
+            "description": "Search attributes.searchOnly.searchType",
             "required": false,
             "schema": {
               "type": "string"
@@ -1516,16 +1439,9 @@
             "schema": {
               "items": {
                 "enum": [
-                  "attributes.abbreviation",
-                  "attributes.additionalName",
-                  "attributes.agentType",
-                  "attributes.alsoKnownAs",
-                  "attributes.disambiguatingDescription",
-                  "attributes.familyName",
-                  "attributes.fullName",
-                  "attributes.givenName",
                   "id",
-                  "attributes.remarks"
+                  "attributes.fullName",
+                  "attributes.agentType"
                 ],
                 "type": "string"
               },
@@ -1540,16 +1456,9 @@
             "schema": {
               "items": {
                 "enum": [
-                  "attributes.abbreviation",
-                  "attributes.additionalName",
-                  "attributes.agentType",
-                  "attributes.alsoKnownAs",
-                  "attributes.disambiguatingDescription",
-                  "attributes.familyName",
-                  "attributes.fullName",
-                  "attributes.givenName",
                   "id",
-                  "attributes.remarks"
+                  "attributes.fullName",
+                  "attributes.agentType"
                 ],
                 "type": "string"
               },
@@ -1565,26 +1474,12 @@
               "items": {
                 "enum": [
                   "relevance",
-                  "attributes.abbreviation:asc",
-                  "attributes.abbreviation:desc",
-                  "attributes.additionalName:asc",
-                  "attributes.additionalName:desc",
-                  "attributes.agentType:asc",
-                  "attributes.agentType:desc",
-                  "attributes.alsoKnownAs:asc",
-                  "attributes.alsoKnownAs:desc",
-                  "attributes.disambiguatingDescription:asc",
-                  "attributes.disambiguatingDescription:desc",
-                  "attributes.familyName:asc",
-                  "attributes.familyName:desc",
-                  "attributes.fullName:asc",
-                  "attributes.fullName:desc",
-                  "attributes.givenName:asc",
-                  "attributes.givenName:desc",
                   "id:asc",
                   "id:desc",
-                  "attributes.remarks:asc",
-                  "attributes.remarks:desc"
+                  "attributes.fullName:asc",
+                  "attributes.fullName:desc",
+                  "attributes.agentType:asc",
+                  "attributes.agentType:desc"
                 ],
                 "type": "string"
               },
@@ -10721,7 +10616,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***ancestorIds*** <br/> Match for attributes.searchOnly.ancestorIds <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchContinent*** <br/> Search attributes.searchOnly.searchContinent <br/> <br/>  ***searchCountry*** <br/> Search attributes.searchOnly.searchCountry <br/> <br/>  ***searchDistrict*** <br/> Search attributes.searchOnly.searchDistrict <br/> <br/>  ***searchProvince*** <br/> Search attributes.searchOnly.searchProvince <br/>\n\n  \n  <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchContinent*** <br/> Search attributes.searchOnly.searchContinent <br/> <br/>  ***searchCountry*** <br/> Search attributes.searchOnly.searchCountry <br/> <br/>  ***searchDistrict*** <br/> Search attributes.searchOnly.searchDistrict <br/> <br/>  ***searchProvince*** <br/> Search attributes.searchOnly.searchProvince <br/>\n\n  \n  <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -10798,15 +10693,6 @@
                 "type": "string"
               },
               "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[ancestorIds]",
-            "description": "Match for attributes.searchOnly.ancestorIds",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -17984,7 +17870,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***ancestorIds*** <br/> Match for attributes.searchOnly.ancestorIds <br/> <br/>  ***searchCabinet*** <br/> Search attributes.searchOnly.searchCabinet <br/> <br/>  ***searchInstitution*** <br/> Search attributes.searchOnly.searchInstitution <br/> <br/>  ***searchMountingWall*** <br/> Search attributes.searchOnly.searchMountingWall <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchRoom*** <br/> Search attributes.searchOnly.searchRoom <br/> <br/>  ***searchShelf*** <br/> Search attributes.searchOnly.searchShelf <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/>\n\n  \n  <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchCabinet*** <br/> Search attributes.searchOnly.searchCabinet <br/> <br/>  ***searchInstitution*** <br/> Search attributes.searchOnly.searchInstitution <br/> <br/>  ***searchMountingWall*** <br/> Search attributes.searchOnly.searchMountingWall <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchRoom*** <br/> Search attributes.searchOnly.searchRoom <br/> <br/>  ***searchShelf*** <br/> Search attributes.searchOnly.searchShelf <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/>\n\n  \n  <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -18061,15 +17947,6 @@
                 "type": "string"
               },
               "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[ancestorIds]",
-            "description": "Match for attributes.searchOnly.ancestorIds",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -18512,1514 +18389,6 @@
         "summary": "Get view meta for resource searchStorageLocation",
         "tags": [
           "storageService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxa/{id}": {
-      "get": {
-        "operationId": "searchTaxonGetOne",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "searchTaxon id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "includeDeactivated",
-            "description": "Will include deactivated items",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "excludeFields",
-            "description": "When provided specified fields will be excluded (applied after include)",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "attributes.acceptedName",
-                  "attributes.acceptedNameRank",
-                  "attributes.familyAcceptedName",
-                  "attributes.genusAcceptedName",
-                  "id",
-                  "attributes.orderAcceptedName",
-                  "attributes.searchOnlyFields.relatedResources",
-                  "attributes.speciesAcceptedName",
-                  "attributes.subspeciesAcceptedName",
-                  "attributes.synonyms",
-                  "attributes.vernacularNames"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "includeFields",
-            "description": "When provided only specified fields will be returned in response",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "attributes.acceptedName",
-                  "attributes.acceptedNameRank",
-                  "attributes.familyAcceptedName",
-                  "attributes.genusAcceptedName",
-                  "id",
-                  "attributes.orderAcceptedName",
-                  "attributes.searchOnlyFields.relatedResources",
-                  "attributes.speciesAcceptedName",
-                  "attributes.subspeciesAcceptedName",
-                  "attributes.synonyms",
-                  "attributes.vernacularNames"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonGetOneResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find searchTaxon by id",
-        "tags": [
-          "taxonomyService"
-        ]
-      },
-      "delete": {
-        "operationId": "searchTaxonDel",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "searchTaxon id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonDelResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Deletes searchTaxon",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxa/actions/query": {
-      "post": {
-        "operationId": "searchTaxonQuery",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/searchTaxonQueryRequest"
-              }
-            }
-          },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchAcceptedName*** <br/> Search attributes.searchOnly.searchAcceptedName <br/> <br/>  ***searchAcceptedNameRank*** <br/> Search attributes.searchOnly.searchAcceptedNameRank <br/> <br/>  ***ancestorIds*** <br/> Match for attributes.searchOnly.ancestorIds <br/> <br/>  ***searchFamilyAcceptedName*** <br/> Search attributes.searchOnly.searchFamilyAcceptedName <br/> <br/>  ***searchGenumsAcceptedName*** <br/> Search attributes.searchOnly.searchGenumsAcceptedName <br/> <br/>  ***searchOrderAcceptedName*** <br/> Search attributes.searchOnly.searchOrderAcceptedName <br/> <br/>  ***relatedResources*** <br/> Filter based on relatedResources <br/> <br/>  ***searchSpeciesAcceptedName*** <br/> Search attributes.searchOnly.searchSpeciesAcceptedName <br/> <br/>  ***searchSubspeciesAcceptedName*** <br/> Search attributes.searchOnly.searchSubspeciesAcceptedName <br/> <br/>  ***searchSynonyms*** <br/> Search attributes.searchOnly.searchSynonyms <br/> <br/>  ***searchVernacularNames*** <br/> Search attributes.searchOnly.searchVernacularNames <br/>\n\n  \n  <br/>\n\n  "
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonQueryResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Query searchTaxon",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxa": {
-      "get": {
-        "operationId": "searchTaxonGetMany",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "includeDeactivated",
-            "description": "Will include deactivated items",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[id]",
-            "description": "Filter by id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchAcceptedName]",
-            "description": "Search attributes.searchOnly.searchAcceptedName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchAcceptedNameRank]",
-            "description": "Search attributes.searchOnly.searchAcceptedNameRank",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[ancestorIds]",
-            "description": "Match for attributes.searchOnly.ancestorIds",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchFamilyAcceptedName]",
-            "description": "Search attributes.searchOnly.searchFamilyAcceptedName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchGenumsAcceptedName]",
-            "description": "Search attributes.searchOnly.searchGenumsAcceptedName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchOrderAcceptedName]",
-            "description": "Search attributes.searchOnly.searchOrderAcceptedName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[relatedResources]",
-            "description": "Filter based on relatedResources",
-            "required": false,
-            "schema": {
-              "type": "object"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchSpeciesAcceptedName]",
-            "description": "Search attributes.searchOnly.searchSpeciesAcceptedName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchSubspeciesAcceptedName]",
-            "description": "Search attributes.searchOnly.searchSubspeciesAcceptedName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchSynonyms]",
-            "description": "Search attributes.searchOnly.searchSynonyms",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchVernacularNames]",
-            "description": "Search attributes.searchOnly.searchVernacularNames",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "excludeFields",
-            "description": "When provided specified fields will be excluded (applied after include)",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "attributes.acceptedName",
-                  "attributes.acceptedNameRank",
-                  "attributes.familyAcceptedName",
-                  "attributes.genusAcceptedName",
-                  "id",
-                  "attributes.orderAcceptedName",
-                  "attributes.searchOnlyFields.relatedResources",
-                  "attributes.speciesAcceptedName",
-                  "attributes.subspeciesAcceptedName",
-                  "attributes.synonyms",
-                  "attributes.vernacularNames"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "includeFields",
-            "description": "When provided only specified fields will be returned in response",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "attributes.acceptedName",
-                  "attributes.acceptedNameRank",
-                  "attributes.familyAcceptedName",
-                  "attributes.genusAcceptedName",
-                  "id",
-                  "attributes.orderAcceptedName",
-                  "attributes.searchOnlyFields.relatedResources",
-                  "attributes.speciesAcceptedName",
-                  "attributes.subspeciesAcceptedName",
-                  "attributes.synonyms",
-                  "attributes.vernacularNames"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "sort",
-            "description": "Sort by one or more of available fields",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "relevance",
-                  "attributes.acceptedName:asc",
-                  "attributes.acceptedName:desc",
-                  "attributes.acceptedNameRank:asc",
-                  "attributes.acceptedNameRank:desc",
-                  "attributes.familyAcceptedName:asc",
-                  "attributes.familyAcceptedName:desc",
-                  "attributes.genusAcceptedName:asc",
-                  "attributes.genusAcceptedName:desc",
-                  "id:asc",
-                  "id:desc",
-                  "attributes.orderAcceptedName:asc",
-                  "attributes.orderAcceptedName:desc",
-                  "attributes.speciesAcceptedName:asc",
-                  "attributes.speciesAcceptedName:desc",
-                  "attributes.subspeciesAcceptedName:asc",
-                  "attributes.subspeciesAcceptedName:desc",
-                  "attributes.synonyms:asc",
-                  "attributes.synonyms:desc",
-                  "attributes.vernacularNames:asc",
-                  "attributes.vernacularNames:desc"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonGetManyResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find searchTaxa",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxa/actions/emptyView": {
-      "post": {
-        "operationId": "searchTaxonEmptyView",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonEmptyViewResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Empty view for resource searchTaxon",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxa/actions/updateView": {
-      "post": {
-        "operationId": "searchTaxonUpdateView",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "consolidateJobs",
-            "description": "Will consolidate jobs in postHook",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/searchTaxonUpdateViewRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonUpdateViewResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Rebuild view for resource searchTaxon",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxa/actions/rebuildView": {
-      "post": {
-        "operationId": "searchTaxonRebuildView",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "consolidateJobs",
-            "description": "Will consolidate jobs in postHook",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "force",
-            "description": "Will rebuild view even if last rebuild ended with error",
-            "schema": {
-              "default": true,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonRebuildViewResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Rebuild view for resource searchTaxon",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxa/meta/viewMeta": {
-      "get": {
-        "operationId": "searchTaxonGetViewMeta",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonGetViewMetaResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Get view meta for resource searchTaxon",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxonNames/{id}": {
-      "get": {
-        "operationId": "searchTaxonNameGetOne",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "searchTaxonName id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "includeDeactivated",
-            "description": "Will include deactivated items",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "excludeFields",
-            "description": "When provided specified fields will be excluded (applied after include)",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "id",
-                  "attributes.rank",
-                  "attributes.rubinNumber",
-                  "attributes.scientificName"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "includeFields",
-            "description": "When provided only specified fields will be returned in response",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "id",
-                  "attributes.rank",
-                  "attributes.rubinNumber",
-                  "attributes.scientificName"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameGetOneResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find searchTaxonName by id",
-        "tags": [
-          "taxonomyService"
-        ]
-      },
-      "delete": {
-        "operationId": "searchTaxonNameDel",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "searchTaxonName id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameDelResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Deletes searchTaxonName",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxonNames/actions/query": {
-      "post": {
-        "operationId": "searchTaxonNameQuery",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/searchTaxonNameQueryRequest"
-              }
-            }
-          },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchRank*** <br/> Search attributes.searchOnly.searchRank <br/> <br/>  ***rubinNumber*** <br/> Search attributes.searchOnly.rubinNumber <br/> <br/>  ***searchScientificName*** <br/> Search attributes.searchOnly.searchScientificName <br/>\n\n  \n  <br/>\n\n  "
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameQueryResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Query searchTaxonName",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxonNames": {
-      "get": {
-        "operationId": "searchTaxonNameGetMany",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "includeDeactivated",
-            "description": "Will include deactivated items",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[id]",
-            "description": "Filter by id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchRank]",
-            "description": "Search attributes.searchOnly.searchRank",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[rubinNumber]",
-            "description": "Search attributes.searchOnly.rubinNumber",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[searchScientificName]",
-            "description": "Search attributes.searchOnly.searchScientificName",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "excludeFields",
-            "description": "When provided specified fields will be excluded (applied after include)",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "id",
-                  "attributes.rank",
-                  "attributes.rubinNumber",
-                  "attributes.scientificName"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "includeFields",
-            "description": "When provided only specified fields will be returned in response",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "id",
-                  "attributes.rank",
-                  "attributes.rubinNumber",
-                  "attributes.scientificName"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "sort",
-            "description": "Sort by one or more of available fields",
-            "required": false,
-            "schema": {
-              "items": {
-                "enum": [
-                  "relevance",
-                  "id:asc",
-                  "id:desc",
-                  "attributes.rank:asc",
-                  "attributes.rank:desc",
-                  "attributes.rubinNumber:asc",
-                  "attributes.rubinNumber:desc",
-                  "attributes.scientificName:asc",
-                  "attributes.scientificName:desc"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameGetManyResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find searchTaxonNames",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxonNames/actions/emptyView": {
-      "post": {
-        "operationId": "searchTaxonNameEmptyView",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameEmptyViewResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Empty view for resource searchTaxonName",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxonNames/actions/updateView": {
-      "post": {
-        "operationId": "searchTaxonNameUpdateView",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "consolidateJobs",
-            "description": "Will consolidate jobs in postHook",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/searchTaxonNameUpdateViewRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameUpdateViewResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Rebuild view for resource searchTaxonName",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxonNames/actions/rebuildView": {
-      "post": {
-        "operationId": "searchTaxonNameRebuildView",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "consolidateJobs",
-            "description": "Will consolidate jobs in postHook",
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "force",
-            "description": "Will rebuild view even if last rebuild ended with error",
-            "schema": {
-              "default": true,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameRebuildViewResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Rebuild view for resource searchTaxonName",
-        "tags": [
-          "taxonomyService"
-        ]
-      }
-    },
-    "/api/taxonomy/v01/searchTaxonNames/meta/viewMeta": {
-      "get": {
-        "operationId": "searchTaxonNameGetViewMeta",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/searchTaxonNameGetViewMetaResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Get view meta for resource searchTaxonName",
-        "tags": [
-          "taxonomyService"
         ]
       }
     },
@@ -23307,10 +21676,10 @@
             "x-summary": ""
           }
         },
-        "description": "# user\n\nA model representing a user of the collection management system with a username and password.\nCan be associated with a normalizedAgent. Used for authentication and authorization.\n",
         "x-category": "authService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "agent": {
         "additionalProperties": false,
@@ -23341,7 +21710,6 @@
       },
       "customObject": {
         "additionalProperties": true,
-        "x-internal": true,
         "description": "A model to be used until proper concept is defined",
         "type": "object",
         "properties": {},
@@ -23424,9 +21792,30 @@
         "x-modelType": "model",
         "x-summary": ""
       },
+      "externalModelReference": {
+        "additionalProperties": false,
+        "description": "A reference to a model owned by another service",
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "lid": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "type": {
+            "type": "string",
+            "x-summary": ""
+          }
+        },
+        "x-category": "core",
+        "x-modelType": "model",
+        "x-summary": ""
+      },
       "id": {
         "additionalProperties": false,
-        "description": "# id\n\nResource identifier that in combination with a resource [type](/dataModelDocs/0.4.2-0.3.6/models/type) identify a [single unique resource.](https://jsonapi.org/format/#document-resource-object-identification)\n",
+        "description": "An identifier id",
         "type": "string",
         "properties": {},
         "x-category": "core",
@@ -23443,7 +21832,7 @@
       },
       "lid": {
         "additionalProperties": false,
-        "description": "# lid\n\nInternal local identifier lid (local id). Should be a uuid\n",
+        "description": "A local identifier lid (local id). Should be a uuid",
         "type": "string",
         "properties": {},
         "x-category": "core",
@@ -23453,7 +21842,6 @@
       "notDefinedModel": {
         "additionalProperties": true,
         "description": "A model to be used until proper concept is defined",
-        "x-internal": true,
         "properties": {},
         "x-category": "core",
         "x-modelType": "model",
@@ -23609,10 +21997,10 @@
       "readOnly": {
         "additionalProperties": true,
         "properties": {},
-        "description": "# readOnly\n\nA custom object that can have any properties.\n",
         "x-category": "core",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "translatedString": {
         "additionalProperties": false,
@@ -23626,14 +22014,14 @@
             "x-summary": ""
           }
         },
-        "description": "# translatedString\n\nAn object with keys for translations in different languages\n",
         "x-category": "core",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "type": {
         "additionalProperties": false,
-        "description": "# type\n\nType is used to describe resource objects that share common attributes and\nrelationships. In combination with a resource [id](/dataModelDocs/0.4.2-0.3.6/models/id) it identifies a [single unique resource.](https://jsonapi.org/format/#document-resource-object-identification)\n",
+        "description": "Resource type",
         "type": "string",
         "properties": {},
         "x-category": "core",
@@ -23849,7 +22237,7 @@
             "x-summary": ""
           }
         },
-        "description": "# identifierType\n\nThe kind of [identifier](/dataModelDocs/0.4.2-0.3.6/models/identifier/), for example \"catalog number\".\n\n\n### Definition\n\nThe kind of identifier.\n\n\n### Examples\n\n* \"catalog number\"\n* \"old skeleton number\"\n\n\n### Notes\n\nSome kinds of identifiers, like \"catalog number\", are predefined for the whole system whereas other are custom types defined for the collection (e.g. \"old skeleton number\").\n\n\n### See also\n\n[identifier](/dataModelDocs/0.4.2-0.3.6/models/identifier/)",
+        "description": "# identifierType\n\nThe kind of [identifier](/docs/0.4.2-0.3.5/models/identifier/), for example \"catalog number\".\n\n\n### Definition\n\nThe kind of identifier.\n\n\n### Examples\n\n* \"catalog number\"\n* \"old skeleton number\"\n\n\n### Notes\n\nSome kinds of identifiers, like \"catalog number\", are predefined for the whole system whereas other are custom types defined for the collection (e.g. \"old skeleton number\").\n\n\n### See also\n\n[identifier](/docs/0.4.2-0.3.5/models/identifier/)",
         "x-category": "curatedListService",
         "x-modelType": "model",
         "x-summary": "The kind of identifier."
@@ -23884,7 +22272,7 @@
             "x-summary": ""
           }
         },
-        "description": "# preparationType\n\nThe kind of [physicalObject](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/) or [collectionItem](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/), for example \"study skin\", \"dried plant\", or \"microscope slide\".\n\n\n### Definition\n\nThe kind of [physicalObject](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/) or [collectionItem](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/).\n\n\n### Examples\n\n* Herbarium sheet (for a [physicalObject](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/))\n* A herbarium sheet with two [collectionItems](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/), a plant and an microscope slide attached to the sheet: preparationTypes are \"microscope slide\" and \"dried plant\"\n\n\n### Notes\n\nThe preparationType is defined within the context of the collection. In future we may want to tag preparation types with different properties, so that they can be understood outside the collection.",
+        "description": "# preparationType\n\nThe kind of [physicalObject](/docs/0.4.2-0.3.5/models/physicalObject/) or [collectionItem](/docs/0.4.2-0.3.5/models/collectionItem/), for example \"study skin\", \"dried plant\", or \"microscope slide\".\n\n\n### Definition\n\nThe kind of [physicalObject](/docs/0.4.2-0.3.5/models/physicalObject/) or [collectionItem](/docs/0.4.2-0.3.5/models/collectionItem/).\n\n\n### Examples\n\n* Herbarium sheet (for a [physicalObject](/docs/0.4.2-0.3.5/models/physicalObject/))\n* A herbarium sheet with two [collectionItems](/docs/0.4.2-0.3.5/models/collectionItem/), a plant and an microscope slide attached to the sheet: preparationTypes are \"microscope slide\" and \"dried plant\"\n\n\n### Notes\n\nThe preparationType is defined within the context of the collection. In future we may want to tag preparation types with different properties, so that they can be understood outside the collection.",
         "x-category": "curatedListService",
         "x-modelType": "model",
         "x-summary": "The kind of physicalUnit or collectionItem."
@@ -24001,7 +22389,6 @@
       "exportJob": {
         "additionalProperties": false,
         "description": "A model keeping track of exports",
-        "x-internal": true,
         "type": "object",
         "properties": {
           "id": {
@@ -24076,7 +22463,7 @@
       },
       "resourceActivity": {
         "additionalProperties": false,
-        "description": "# resourceActivity\n\nResource activity is an internal model describes how a resource changes over\ntime\n",
+        "description": "Representing resourceActivity",
         "type": "object",
         "properties": {
           "id": {
@@ -24216,7 +22603,6 @@
       "job": {
         "additionalProperties": false,
         "description": "A job model that should be further specified",
-        "x-internal": true,
         "type": "object",
         "properties": {
           "id": {
@@ -24316,7 +22702,6 @@
       "dataModelMigrationLog": {
         "additionalProperties": false,
         "description": "A job model that keep tracks of schema migrations",
-        "x-internal": true,
         "type": "object",
         "properties": {
           "id": {
@@ -24440,7 +22825,7 @@
             "x-summary": ""
           }
         },
-        "description": "# place\n\nA defined place that has a name and is reusable, for example a country or a lake.\n\n\n### Definition\n\nA defined location with known, fixed extension in space.\n\n\n### Examples\n\n* A named location for a Malaise trap within an insect inventory project.\n\n\n### Notes\n\nPlaces can have relations to other places.\n\nNew name suggestion: \"location\" (motivation: \"place\" is usually understood as something less defined, or perhaps more informal).\n\n\n### See also\n\n[locationInformation](/dataModelDocs/0.4.2-0.3.6/models/locationInformation/)",
+        "description": "# place\n\nA defined place that has a name and is reusable, for example a country or a lake.\n\n\n### Definition\n\nA defined location with known, fixed extension in space.\n\n\n### Examples\n\n* A named location for a Malaise trap within an insect inventory project.\n\n\n### Notes\n\nPlaces can have relations to other places.\n\nNew name suggestion: \"location\" (motivation: \"place\" is usually understood as something less defined, or perhaps more informal).\n\n\n### See also\n\n[locationInformation](/docs/0.4.2-0.3.5/models/locationInformation/)",
         "x-category": "placeService",
         "x-modelType": "model",
         "x-summary": "A defined location with known, fixed extension in space."
@@ -24526,7 +22911,7 @@
             "x-summary": ""
           }
         },
-        "description": "# collectingInformation\n\nInformation about the collecting activity, like for example the name of a collector or the collecting method.\n\n\n### Definition\n\nInformation pertaining to the activity of collecting of some material.\n\n\n### Examples\n\nThe collecting method (e.g., the kind of trap) used for collecting some material.\n\n\n### Notes\n\nThe purpose of this term is to keep information that is specific for the collecting activity, for example collectors, collecting method, field number etc. The general description of the collecting event, like its time and location, should be recorded under [event](/dataModelDocs/0.4.2-0.3.6/models/event/).\n\n\n### See also\n\n[event](/dataModelDocs/0.4.2-0.3.6/models/event/)",
+        "description": "# collectingInformation\n\nInformation about the collecting activity, like for example the name of a collector or the collecting method.\n\n\n### Definition\n\nInformation pertaining to the activity of collecting of some material.\n\n\n### Examples\n\nThe collecting method (e.g., the kind of trap) used for collecting some material.\n\n\n### Notes\n\nThe purpose of this term is to keep information that is specific for the collecting activity, for example collectors, collecting method, field number etc. The general description of the collecting event, like its time and location, should be recorded under [event](/docs/0.4.2-0.3.5/models/event/).\n\n\n### See also\n\n[event](/docs/0.4.2-0.3.5/models/event/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "Information about a collecting activity."
@@ -24583,7 +22968,7 @@
             "x-summary": ""
           }
         },
-        "description": "# collectionItem\n\nThe smallest recognized \"thing\" in the collection. This is usually a physical object but could also be a part of a physical object. For example, a moss and a lichen growing on the same piece of bark may be considered as two collection items.\n\n\n### Definition\n\nThe smallest recognized \"thing\" in the collection. This may be a physical object or part of a physical object.\n\n\n### Examples\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark recognized as two collection items.\n\n\n### Notes\n\nThis term represents a fundamental unit in the management of the collection. The term is permissive on what to include in a collection item, just to make the model able to fit different use cases.\n\n\n### See also\n\n[physicalObject](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/)",
+        "description": "# collectionItem\n\nThe smallest recognized \"thing\" in the collection. This is usually a physical object but could also be a part of a physical object. For example, a moss and a lichen growing on the same piece of bark may be considered as two collection items.\n\n\n### Definition\n\nThe smallest recognized \"thing\" in the collection. This may be a physical object or part of a physical object.\n\n\n### Examples\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark recognized as two collection items.\n\n\n### Notes\n\nThis term represents a fundamental unit in the management of the collection. The term is permissive on what to include in a collection item, just to make the model able to fit different use cases.\n\n\n### See also\n\n[physicalObject](/docs/0.4.2-0.3.5/models/physicalObject/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "The smallest recognized \"thing\" in the collection."
@@ -24617,7 +23002,7 @@
             "x-summary": ""
           }
         },
-        "description": "# curatorialAssessment\n\nAssessment of an object in the collection, more specifically its condition and whether it is present at its storage location or not.\n\n\n### Definition\n\nAssessment of the physical condition of a [physical object](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/) and/or whether it is present at its normal storageLocation or not.\n\n\n### Examples\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n\n\n### See also\n\n[physicalObject](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/)",
+        "description": "# curatorialAssessment\n\nAssessment of an object in the collection, more specifically its condition and whether it is present at its storage location or not.\n\n\n### Definition\n\nAssessment of the physical condition of a [physical object](/docs/0.4.2-0.3.5/models/physicalObject/) and/or whether it is present at its normal storageLocation or not.\n\n\n### Examples\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n\n\n### See also\n\n[physicalObject](/docs/0.4.2-0.3.5/models/physicalObject/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "Assessment of an object in the collection."
@@ -24664,7 +23049,7 @@
             "x-summary": ""
           }
         },
-        "description": "# deathInformation\n\nInformation about the death of an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/). Typical information involves the cause of death.\n\n\n### Definition\nInformation pertaining to the death circumstances of an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the death of one or more individuals, for example a cause of the death. The general description of the death event, like its time and location, should be recorded under [event](/dataModelDocs/0.4.2-0.3.6/models/event/).\n\n\n### See also\n\n[event](/dataModelDocs/0.4.2-0.3.6/models/event/)",
+        "description": "# deathInformation\n\nInformation about the death of an [individual](/docs/0.4.2-0.3.5/models/individual/). Typical information involves the cause of death.\n\n\n### Definition\nInformation pertaining to the death circumstances of an [individual](/docs/0.4.2-0.3.5/models/individual/).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the death of one or more individuals, for example a cause of the death. The general description of the death event, like its time and location, should be recorded under [event](/docs/0.4.2-0.3.5/models/event/).\n\n\n### See also\n\n[event](/docs/0.4.2-0.3.5/models/event/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "Information about the death of an individual."
@@ -24700,7 +23085,7 @@
             "x-summary": ""
           }
         },
-        "description": "# determination\n\nA determination is a statement about an [individual's](/dataModelDocs/0.4.2-0.3.6/models/individual/) taxon and/or type status, made by a person at a certain date. The outcome of a determination is usually a taxon name.\n\n\n### Definition\n\nThe act of making a statement about an [individual's](/dataModelDocs/0.4.2-0.3.6/models/individual/) taxon and/or type status, which is not itself a type status designation.\n\n\n### Examples\n\n\"Phoca hispida, det. by NN, 1957\"\n\n\n### Notes\n\nA *type status designation* is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is a nomenclatural act made through a publication and strictly regulated by a nomenclatural code. The type status designation is the primary source of a specimen's type status and should not be recorded as a determination. This is sometimes called \"verified type status\".\n\nA *type status identification* on the other hand is a secondary source for the type status, and is typically written on a label that is attached to a specimen. For a type status identification (as opposed to type status designation) it is fine to record any type status, even ones that are not sanctioned by the nomenclatural codes (e.g. \"topotype\" or \"allotype\"). Because of the similarities between type status identifications and taxonomic identifications, both are here treated as determinations. In fact, if a taxon name is included in the type status identification, it may also be considered as an implicit taxonomic identification.\n\nThe outcome of the determination is in most cases a *taxon name* (that may be either scientific or vernacular). What *taxon* (i.e. taxon concept) the person intended with the determination is often difficult or even impossible to know, and has little relevance for collection management. It is usually sufficient to match the taxon name from the latest determination to the taxon concepts in the local classification currently used for the collection.\n\n\n### See also\n\n[taxonInformation](/dataModelDocs/0.4.2-0.3.6/models/taxonInformation/), [individual.typeStatus](/dataModelDocs/0.4.2-0.3.6/models/individual/typeStatus)",
+        "description": "# determination\n\nA determination is a statement about an [individual's](/docs/0.4.2-0.3.5/models/individual/) taxon and/or type status, made by a person at a certain date. The outcome of a determination is usually a taxon name.\n\n\n### Definition\n\nThe act of making a statement about an [individual's](/docs/0.4.2-0.3.5/models/individual/) taxon and/or type status, which is not itself a type status designation.\n\n\n### Examples\n\n\"Phoca hispida, det. by NN, 1957\"\n\n\n### Notes\n\nA *type status designation* is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is a nomenclatural act made through a publication and strictly regulated by a nomenclatural code. The type status designation is the primary source of a specimen's type status and should not be recorded as a determination. This is sometimes called \"verified type status\".\n\nA *type status identification* on the other hand is a secondary source for the type status, and is typically written on a label that is attached to a specimen. For a type status identification (as opposed to type status designation) it is fine to record any type status, even ones that are not sanctioned by the nomenclatural codes (e.g. \"topotype\" or \"allotype\"). Because of the similarities between type status identifications and taxonomic identifications, both are here treated as determinations. In fact, if a taxon name is included in the type status identification, it may also be considered as an implicit taxonomic identification.\n\nThe outcome of the determination is in most cases a *taxon name* (that may be either scientific or vernacular). What *taxon* (i.e. taxon concept) the person intended with the determination is often difficult or even impossible to know, and has little relevance for collection management. It is usually sufficient to match the taxon name from the latest determination to the taxon concepts in the local classification currently used for the collection.\n\n\n### See also\n\n[taxonInformation](/docs/0.4.2-0.3.5/models/taxonInformation/), [individual.typeStatus](/docs/0.4.2-0.3.5/models/individual/typeStatus)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "A statement about an individual's taxon and/or type status."
@@ -24726,7 +23111,7 @@
             "x-summary": ""
           }
         },
-        "description": "# Event\n\nAn activity or occurrence at a time and location, for example the collecting of some material.\n\n\n### Definition\n\nAn activity or occurrence at a particular time and location.\n\n\n### Examples\n\nAn event involving the collecting of some material.\n\n\n### Notes\n\nIf it is uncertain whether two specimens were collected at the same event (e.g., if they have different information sources), the information should be recorded as two separate events.\n\nAn event may have collecting- and death information.\n\n\n### See also\n\n[collectingInformation](/dataModelDocs/0.4.2-0.3.6/models/collectingInformation/), [deathInformation](/dataModelDocs/0.4.2-0.3.6/models/deathInformation/), [originInformation](/dataModelDocs/0.4.2-0.3.6/models/originInformation/)",
+        "description": "# Event\n\nAn activity or occurrence at a time and location, for example the collecting of some material.\n\n\n### Definition\n\nAn activity or occurrence at a particular time and location.\n\n\n### Examples\n\nAn event involving the collecting of some material.\n\n\n### Notes\n\nIf it is uncertain whether two specimens were collected at the same event (e.g., if they have different information sources), the information should be recorded as two separate events.\n\nAn event may have collecting- and death information.\n\n\n### See also\n\n[collectingInformation](/docs/0.4.2-0.3.5/models/collectingInformation/), [deathInformation](/docs/0.4.2-0.3.5/models/deathInformation/), [originInformation](/docs/0.4.2-0.3.5/models/originInformation/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "An activity or occurrence at a time and location."
@@ -24771,7 +23156,7 @@
             "x-summary": ""
           }
         },
-        "description": "# featureObservation\n\nAn observation of some property, for example a measurement by a person or a machine at a particular time.\n\n\n### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine).\n\n\n### Examples\n\n* When a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n* A curator observes the color of a specimen.\n\n\n### Notes\n\nThis term is currently used for features for an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/). [Taxonomic determinations](/dataModelDocs/0.4.2-0.3.6/models/determination/) is currently not included, although it might be in the future. [CuratorialAssessments](/dataModelDocs/0.4.2-0.3.6/models/curatorialAssessment/) apply to [collectionItems](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/) and are consequently treated as a separate concept.\n\n\n### See also\n\n[featureType](/dataModelDocs/0.4.2-0.3.6/models/featureType/), [curatorialAssessment](/dataModelDocs/0.4.2-0.3.6/models/curatorialAssessment/), [determination](/dataModelDocs/0.4.2-0.3.6/models/determination/)\n\n\n### Relation to other standards\n\n* DarwinCore: not assessed\n* ABCD:  not assessed",
+        "description": "# featureObservation\n\nAn observation of some property, for example a measurement by a person or a machine at a particular time.\n\n\n### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine).\n\n\n### Examples\n\n* When a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n* A curator observes the color of a specimen.\n\n\n### Notes\n\nThis term is currently used for features for an [individual](/docs/0.4.2-0.3.5/models/individual/). [Taxonomic determinations](/docs/0.4.2-0.3.5/models/determination/) is currently not included, although it might be in the future. [CuratorialAssessments](/docs/0.4.2-0.3.5/models/curatorialAssessment/) apply to [collectionItems](/docs/0.4.2-0.3.5/models/collectionItem/) and are consequently treated as a separate concept.\n\n\n### See also\n\n[featureType](/docs/0.4.2-0.3.5/models/featureType/), [curatorialAssessment](/docs/0.4.2-0.3.5/models/curatorialAssessment/), [determination](/docs/0.4.2-0.3.5/models/determination/)\n\n\n### Relation to other standards\n\n* DarwinCore: not assessed\n* ABCD:  not assessed",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "The data measured or noticed for some property by an agent."
@@ -24808,7 +23193,7 @@
             "x-summary": ""
           }
         },
-        "description": "# identifier\n\nA string or number that identifies something, for example a [physical object](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/), an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/) or an [event](/dataModelDocs/0.4.2-0.3.6/models/event/). The catalog number is an example of an identifier for a specimen.\n\n\n### Definition\n\nA name that identifies (that is, labels the identity of) something.\n\n\n### Examples\n\n* The catalog number \"12345\"\n* The external taxon name id \"9488-1\" (http://www.ipni.org/ipni/idPlantNameSearch.do?id=9488-1)\n* Part of a [physicaObject](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/) (i.e. a [collectionItem](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/)) labeled \"a\"\n\n\n### Notes\n\nIdentifiers are used for different purposes, for example for connecting information with an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/) or for identifying a specimen. This term is used both for keeping record of official identifiers (like catalog numbers) and unofficial ones (like those for example found on handwritten labels attached to a specimen, or sometimes even written directly on the object).\n\n\n### See also\n\n[identifierType](/dataModelDocs/0.4.2-0.3.6/models/identifierType/)",
+        "description": "# identifier\n\nA string or number that identifies something, for example a [physical object](/docs/0.4.2-0.3.5/models/physicalObject/), an [individual](/docs/0.4.2-0.3.5/models/individual/) or an [event](/docs/0.4.2-0.3.5/models/event/). The catalog number is an example of an identifier for a specimen.\n\n\n### Definition\n\nA name that identifies (that is, labels the identity of) something.\n\n\n### Examples\n\n* The catalog number \"12345\"\n* The external taxon name id \"9488-1\" (http://www.ipni.org/ipni/idPlantNameSearch.do?id=9488-1)\n* Part of a [physicaObject](/docs/0.4.2-0.3.5/models/physicalObject/) (i.e. a [collectionItem](/docs/0.4.2-0.3.5/models/collectionItem/)) labeled \"a\"\n\n\n### Notes\n\nIdentifiers are used for different purposes, for example for connecting information with an [individual](/docs/0.4.2-0.3.5/models/individual/) or for identifying a specimen. This term is used both for keeping record of official identifiers (like catalog numbers) and unofficial ones (like those for example found on handwritten labels attached to a specimen, or sometimes even written directly on the object).\n\n\n### See also\n\n[identifierType](/docs/0.4.2-0.3.5/models/identifierType/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "A string or number that identifies something."
@@ -25009,7 +23394,7 @@
             "x-summary": ""
           }
         },
-        "description": "# originInformation\n\nInformation about the physical or genetic origin of an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/). This could for example be information on where an individual previously lived. The information may be associated with an [event](/dataModelDocs/0.4.2-0.3.6/models/event/).\n\n\n### Defintion\nInformation pertaining to the origin of an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/).\n\n\n### Example\n\nAn [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/) may have more than one [event](/dataModelDocs/0.4.2-0.3.6/models/event/) connected with origin information. For example: a lion first lived in Africa (origin event 1), then was placed in a Zoo in Europe (origin event 2), and finally escaped into the wild (origin event 3) where it was later killed and collected (death and collecting event).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the origin of [individuals](/dataModelDocs/0.4.2-0.3.6/models/individual/). This could involve both the genetic and the physical origin. This term concerns the origin of individuals, not the provenance of specimens. The general description of the origin event, like its time and location, should be recorded under [event](/dataModelDocs/0.4.2-0.3.6/models/event/).\n\n\n### See also\n\n[event](/dataModelDocs/0.4.2-0.3.6/models/event/)",
+        "description": "# originInformation\n\nInformation about the physical or genetic origin of an [individual](/docs/0.4.2-0.3.5/models/individual/). This could for example be information on where an individual previously lived. The information may be associated with an [event](/docs/0.4.2-0.3.5/models/event/).\n\n\n### Defintion\nInformation pertaining to the origin of an [individual](/docs/0.4.2-0.3.5/models/individual/).\n\n\n### Example\n\nAn [individual](/docs/0.4.2-0.3.5/models/individual/) may have more than one [event](/docs/0.4.2-0.3.5/models/event/) connected with origin information. For example: a lion first lived in Africa (origin event 1), then was placed in a Zoo in Europe (origin event 2), and finally escaped into the wild (origin event 3) where it was later killed and collected (death and collecting event).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the origin of [individuals](/docs/0.4.2-0.3.5/models/individual/). This could involve both the genetic and the physical origin. This term concerns the origin of individuals, not the provenance of specimens. The general description of the origin event, like its time and location, should be recorded under [event](/docs/0.4.2-0.3.5/models/event/).\n\n\n### See also\n\n[event](/docs/0.4.2-0.3.5/models/event/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "Information about the origin of an individual."
@@ -25045,159 +23430,11 @@
       },
       "searchSpecimen": {
         "additionalProperties": true,
-        "properties": {
-          "collectingEventCollectors": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "x-summary": ""
-          },
-          "collectingEventCountry": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "collectingEventDistrict": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "collectingEventEndDate": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "collectingEventInterpretedLocality": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "collectingEventLocality": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "collectingEventProvince": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "collectingEventStartDate": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "deathInformationDeath": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "featureAge": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "featureAgeStage": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "featureBodyLength": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "featureCompleteBodyWeight": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "featureCondition": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "featureSex": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "featureTotalLength": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "identifiersCatalogNumber": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "identifiersOtherIdentifiers": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "idNumeric": {
-            "type": "number",
-            "x-summary": ""
-          },
-          "originInformationLocality": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "physicalObjectStorageLocationGroups": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "physicalUnitOtherPreparation": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "physicalUnitSkeleton": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "physicalUnitSkin": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "physicalUnitWetPreparation": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "recordEventCataloged": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "recordEventLastModified": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "recordEventRegistered": {
-            "type": "array",
-            "x-summary": ""
-          },
-          "searchOnlyFields": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "tags": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "taxonomyCuratorialName": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "taxonomyFamily": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "taxonomyGenus": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "taxonomyRank": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "taxonomySpecies": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "taxonomySubspecies": {
-            "type": "string",
-            "x-summary": ""
-          }
-        },
-        "description": "# searchSpecimen\n\nA flattened representation of a specimen with associated data. Used for searching, table representation and exporting\n",
+        "properties": {},
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "specimen": {
         "additionalProperties": false,
@@ -25258,7 +23495,6 @@
       "stageSpecimen": {
         "additionalProperties": true,
         "properties": {},
-        "x-internal": true,
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "",
@@ -25299,7 +23535,7 @@
             "x-summary": ""
           }
         },
-        "description": "# taxonInformation\n\nInformation about an [individual's](/dataModelDocs/0.4.2-0.3.6/models/individual/) taxon, for example its accepted name according to the local classification. This term can also hold other taxon names which are not part of a [determination](/dataModelDocs/0.4.2-0.3.6/models/determination/).\n\n\n### Definition\n\nInformation about the taxon to which an [individual](/dataModelDocs/0.4.2-0.3.6/models/individual/) is currently assigned according to the local classification, or other names that has been associated with the individual that do not qualify as [determinations](/dataModelDocs/0.4.2-0.3.6/models/determination/).\n\n\n### Examples\n\n\"Pusa hispida\" is the accepted name for a taxon in the local classification, and \"Phoca hispida\" one of its synonyms. Consequently, \"Pusa hispida\" should be the locally accepted name (curatorial name) for a specimen that has been determined as \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this concept is:\n\n1. to keep information of the currently accepted name for an individual, and\n2. to accommodate taxon-related legacy data that do not fit into taxon in the taxonomyService or into determination.\n\nThe data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.\n\nImagine for example that the text on a determination label reads \"not taxon x\", while the name \"taxon x\" has been recorded as the name for the specimen in an old system (this could happen in collections where taxonomy is tightly connected to storage and it is important to just record some name). Without other information, it would be impossible to know that \"taxon x\" was derived from the text \"not taxon x\". Since you cannot be sure of where the information comes from, there would be no way to correct the erroneous determination record.\n\nAnother case is when a name at a different rank, let say a family, has been recorded from a determination to a subfamily written on the label, without saying anything about how the transformation was done. There can also be undocumented taxonomic interpretations at the same level, like when an original determination to \"Phoca hispida\" is recorded as just \"Pusa hispida\".\n\n\n### See also\n\n[determination](/dataModelDocs/0.4.2-0.3.6/models/determination/), [taxon](/dataModelDocs/0.4.2-0.3.6/models/taxon/)",
+        "description": "# taxonInformation\n\nInformation about an [individual's](/docs/0.4.2-0.3.5/models/individual/) taxon, for example its accepted name according to the local classification. This term can also hold other taxon names which are not part of a [determination](/docs/0.4.2-0.3.5/models/determination/).\n\n\n### Definition\n\nInformation about the taxon to which an [individual](/docs/0.4.2-0.3.5/models/individual/) is currently assigned according to the local classification, or other names that has been associated with the individual that do not qualify as [determinations](/docs/0.4.2-0.3.5/models/determination/).\n\n\n### Examples\n\n\"Pusa hispida\" is the accepted name for a taxon in the local classification, and \"Phoca hispida\" one of its synonyms. Consequently, \"Pusa hispida\" should be the locally accepted name (curatorial name) for a specimen that has been determined as \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this concept is:\n\n1. to keep information of the currently accepted name for an individual, and\n2. to accommodate taxon-related legacy data that do not fit into taxon in the taxonomyService or into determination.\n\nThe data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.\n\nImagine for example that the text on a determination label reads \"not taxon x\", while the name \"taxon x\" has been recorded as the name for the specimen in an old system (this could happen in collections where taxonomy is tightly connected to storage and it is important to just record some name). Without other information, it would be impossible to know that \"taxon x\" was derived from the text \"not taxon x\". Since you cannot be sure of where the information comes from, there would be no way to correct the erroneous determination record.\n\nAnother case is when a name at a different rank, let say a family, has been recorded from a determination to a subfamily written on the label, without saying anything about how the transformation was done. There can also be undocumented taxonomic interpretations at the same level, like when an original determination to \"Phoca hispida\" is recorded as just \"Pusa hispida\".\n\n\n### See also\n\n[determination](/docs/0.4.2-0.3.5/models/determination/), [taxon](/docs/0.4.2-0.3.5/models/taxon/)",
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": "Information about the taxon to which an individual is assigned."
@@ -25340,7 +23576,7 @@
             "x-summary": ""
           }
         },
-        "description": "# physicalObject\n\nThe smallest recognized physical \"thing\" in the collection. Typical examples are a skin preparation and a herbarium sheet. A physical object represents one or more [collectionItems](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/).\n\n\n### Definition\n\nThe smallest recognized physical \"thing\" in the collection.\n\n\n### Examples\n\n* A herbarium sheet with three plants mounted on it (possibly three collection items)\n* A mounted skin of a squirrel (one [collectionItem](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/))\n* A jar with two fishes (possibly two [collectionItems](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/))\n* A tree branch with two birds mounted on it (possibly two [collectionItems](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/))\n\n\n### Notes\n\nThe physical object is the physical thing that you do something with when you manage your collection. This could for example be the thing stored on the shelf, sent on loan or received from a donator. Physical objects change over time. Imagine for example a jar of 5 fishes first treated as one physical object \"A\". In response to a loan request, a new physical object \"B\" is created with one of the fishes and sent to the borrower. When the loan is returned, the fish is put back into the original container (\"A\"), thereby ending the existence of object \"B\".\n\n\n### See also\n\n[collectionItem](/dataModelDocs/0.4.2-0.3.6/models/collectionItem/)",
+        "description": "# physicalObject\n\nThe smallest recognized physical \"thing\" in the collection. Typical examples are a skin preparation and a herbarium sheet. A physical object represents one or more [collectionItems](/docs/0.4.2-0.3.5/models/collectionItem/).\n\n\n### Definition\n\nThe smallest recognized physical \"thing\" in the collection.\n\n\n### Examples\n\n* A herbarium sheet with three plants mounted on it (possibly three collection items)\n* A mounted skin of a squirrel (one [collectionItem](/docs/0.4.2-0.3.5/models/collectionItem/))\n* A jar with two fishes (possibly two [collectionItems](/docs/0.4.2-0.3.5/models/collectionItem/))\n* A tree branch with two birds mounted on it (possibly two [collectionItems](/docs/0.4.2-0.3.5/models/collectionItem/))\n\n\n### Notes\n\nThe physical object is the physical thing that you do something with when you manage your collection. This could for example be the thing stored on the shelf, sent on loan or received from a donator. Physical objects change over time. Imagine for example a jar of 5 fishes first treated as one physical object \"A\". In response to a loan request, a new physical object \"B\" is created with one of the fishes and sent to the borrower. When the loan is returned, the fish is put back into the original container (\"A\"), thereby ending the existence of object \"B\".\n\n\n### See also\n\n[collectionItem](/docs/0.4.2-0.3.5/models/collectionItem/)",
         "x-category": "storageService",
         "x-modelType": "model",
         "x-summary": "The smallest recognized physical \"thing\" in the collection."
@@ -25394,26 +23630,10 @@
             "x-summary": ""
           }
         },
-        "description": "# storageLocation\n\nA space for storing [physicalObjects](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/) in a collection.\n\n\n### Definition\n\nA dedicated space, at any level in a hierarchy, for storing one or more [physicalObjects](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/) in a collection.\n\n\n### Examples\n\n* \"room 123\"\n* \"Swedish Coleoptera\"\n* \"the bone room\"\n\n\n### Notes\n\nA storage location is usually a fixed space (like a room, shelf or cabinet) but could also be a \"floating location\". This latter kind is especially common when objects are sorted by taxonomy. Instead of having a fixed physical position are floating storage locations placed in relation to other storage locations nearby. For example, the objects representing the genus *Phoca* may be placed after those of *Pagophilus*, but before those of *Pusa*. Storage locations may be arranged in a hierarchy, irrespective of whether they have fixed positions or not.\n\n\n### See also\n\n[physicalObject](/dataModelDocs/0.4.2-0.3.6/models/physicalObject/)",
+        "description": "# storageLocation\n\nA space for storing [physicalObjects](/docs/0.4.2-0.3.5/models/physicalObject/) in a collection.\n\n\n### Definition\n\nA dedicated space, at any level in a hierarchy, for storing one or more [physicalObjects](/docs/0.4.2-0.3.5/models/physicalObject/) in a collection.\n\n\n### Examples\n\n* \"room 123\"\n* \"Swedish Coleoptera\"\n* \"the bone room\"\n\n\n### Notes\n\nA storage location is usually a fixed space (like a room, shelf or cabinet) but could also be a \"floating location\". This latter kind is especially common when objects are sorted by taxonomy. Instead of having a fixed physical position are floating storage locations placed in relation to other storage locations nearby. For example, the objects representing the genus *Phoca* may be placed after those of *Pagophilus*, but before those of *Pusa*. Storage locations may be arranged in a hierarchy, irrespective of whether they have fixed positions or not.\n\n\n### See also\n\n[physicalObject](/docs/0.4.2-0.3.5/models/physicalObject/)",
         "x-category": "storageService",
         "x-modelType": "model",
         "x-summary": "A dedicated space for storing physical objects."
-      },
-      "searchTaxon": {
-        "additionalProperties": true,
-        "properties": {},
-        "x-category": "taxonomyService",
-        "x-modelType": "model",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonName": {
-        "additionalProperties": true,
-        "properties": {},
-        "x-category": "taxonomyService",
-        "x-modelType": "model",
-        "x-summary": "",
-        "description": ""
       },
       "taxon": {
         "additionalProperties": false,
@@ -25436,7 +23656,7 @@
             "x-summary": ""
           }
         },
-        "description": "# taxon\n\nA taxonomic group of any rank, such as a species or family, or class used to keep information about a locally used taxon concept.\n\n\n### Definition\n\nA taxonomic group of any rank, such as a species, family, or class.\n\n\n### Examples\n\nThe species that includes the type specimen for the name \"Pusa hispida\", which may also be referred to by the synonym \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this term is to keep information about locally used taxon concepts. These concepts do not have to be used elsewhere. The local classification is the combination of all the names and their relations. In the local classification, each taxon has an accepted taxon name at same rank as the taxon (more precisely, the taxon gets its rank from the accepted name). The accepted name may have synonyms at any rank.\n\n\n### See also\n\n[determination](/dataModelDocs/0.4.2-0.3.6/models/determination/), [taxonInformation](/dataModelDocs/0.4.2-0.3.6/models/taxonInformation/)",
+        "description": "# taxon\n\nA taxonomic group of any rank, such as a species or family, or class used to keep information about a locally used taxon concept.\n\n\n### Definition\n\nA taxonomic group of any rank, such as a species, family, or class.\n\n\n### Examples\n\nThe species that includes the type specimen for the name \"Pusa hispida\", which may also be referred to by the synonym \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this term is to keep information about locally used taxon concepts. These concepts do not have to be used elsewhere. The local classification is the combination of all the names and their relations. In the local classification, each taxon has an accepted taxon name at same rank as the taxon (more precisely, the taxon gets its rank from the accepted name). The accepted name may have synonyms at any rank.\n\n\n### See also\n\n[determination](/docs/0.4.2-0.3.5/models/determination/), [taxonInformation](/docs/0.4.2-0.3.5/models/taxonInformation/)",
         "x-category": "taxonomyService",
         "x-modelType": "model",
         "x-summary": "A taxonomic group of any rank, such as a species or family."
@@ -25487,7 +23707,7 @@
             "x-summary": ""
           }
         },
-        "description": "# taxonName\n\nA name of a taxon (at any rank) that may be either a scientific name or a vernacular name.\n\n\n### Definition\n\nA scientific or vernacular name of a [taxon](/dataModelDocs/0.4.2-0.3.6/models/taxon/) at any rank.\n\n\n### Examples\n\n* \"Phoca hispida\" (species)\n* \"Phocidae\" (family)\n\n\n### Notes\n\nScientific names do not have to be validly published according to a nomenclatural code. It is for example often desirable to use informal names for managing taxonomic groups that are poorly known. For the purpose of collection management, one often want to be pragmatic regarding the use of taxon names.\n\nA taxon name may or may not be associated with a [taxon](/dataModelDocs/0.4.2-0.3.6/models/taxon/).\n\n\n### See also\n\n[taxon](/dataModelDocs/0.4.2-0.3.6/models/taxon/), [taxonInformation](/dataModelDocs/0.4.2-0.3.6/models/taxonInformation/)",
+        "description": "# taxonName\n\nA name of a taxon (at any rank) that may be either a scientific name or a vernacular name.\n\n\n### Definition\n\nA scientific or vernacular name of a [taxon](/docs/0.4.2-0.3.5/models/taxon/) at any rank.\n\n\n### Examples\n\n* \"Phoca hispida\" (species)\n* \"Phocidae\" (family)\n\n\n### Notes\n\nScientific names do not have to be validly published according to a nomenclatural code. It is for example often desirable to use informal names for managing taxonomic groups that are poorly known. For the purpose of collection management, one often want to be pragmatic regarding the use of taxon names.\n\nA taxon name may or may not be associated with a [taxon](/docs/0.4.2-0.3.5/models/taxon/).\n\n\n### See also\n\n[taxon](/docs/0.4.2-0.3.5/models/taxon/), [taxonInformation](/docs/0.4.2-0.3.5/models/taxonInformation/)",
         "x-category": "taxonomyService",
         "x-modelType": "model",
         "x-summary": "A scientific or vernacular name of a taxon."
@@ -26003,16 +24223,9 @@
                     "description": "When provided specified fields will be excluded (applied after include)",
                     "items": {
                       "enum": [
-                        "attributes.abbreviation",
-                        "attributes.additionalName",
-                        "attributes.agentType",
-                        "attributes.alsoKnownAs",
-                        "attributes.disambiguatingDescription",
-                        "attributes.familyName",
-                        "attributes.fullName",
-                        "attributes.givenName",
                         "id",
-                        "attributes.remarks"
+                        "attributes.fullName",
+                        "attributes.agentType"
                       ],
                       "type": "string"
                     },
@@ -26022,16 +24235,9 @@
                     "description": "When provided only specified fields will be returned in response",
                     "items": {
                       "enum": [
-                        "attributes.abbreviation",
-                        "attributes.additionalName",
-                        "attributes.agentType",
-                        "attributes.alsoKnownAs",
-                        "attributes.disambiguatingDescription",
-                        "attributes.familyName",
-                        "attributes.fullName",
-                        "attributes.givenName",
                         "id",
-                        "attributes.remarks"
+                        "attributes.fullName",
+                        "attributes.agentType"
                       ],
                       "type": "string"
                     },
@@ -26070,26 +24276,12 @@
                     "items": {
                       "enum": [
                         "relevance",
-                        "attributes.abbreviation:asc",
-                        "attributes.abbreviation:desc",
-                        "attributes.additionalName:asc",
-                        "attributes.additionalName:desc",
-                        "attributes.agentType:asc",
-                        "attributes.agentType:desc",
-                        "attributes.alsoKnownAs:asc",
-                        "attributes.alsoKnownAs:desc",
-                        "attributes.disambiguatingDescription:asc",
-                        "attributes.disambiguatingDescription:desc",
-                        "attributes.familyName:asc",
-                        "attributes.familyName:desc",
-                        "attributes.fullName:asc",
-                        "attributes.fullName:desc",
-                        "attributes.givenName:asc",
-                        "attributes.givenName:desc",
                         "id:asc",
                         "id:desc",
-                        "attributes.remarks:asc",
-                        "attributes.remarks:desc"
+                        "attributes.fullName:asc",
+                        "attributes.fullName:desc",
+                        "attributes.agentType:asc",
+                        "attributes.agentType:desc"
                       ],
                       "type": "string"
                     },
@@ -32081,332 +30273,6 @@
         "description": ""
       },
       "searchStorageLocationUpdateViewRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "example": "1234"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "enum": [
-                      "customObject"
-                    ],
-                    "type": "string"
-                  },
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  }
-                }
-              }
-            ],
-            "x-summary": ""
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonQueryRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "queryBody",
-                "enum": [
-                  "queryBody"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "properties": {
-                  "aggregations": {
-                    "items": {
-                      "$ref": "#/components/schemas/queryAggregation"
-                    },
-                    "type": "array"
-                  },
-                  "excludeFields": {
-                    "description": "When provided specified fields will be excluded (applied after include)",
-                    "items": {
-                      "enum": [
-                        "attributes.acceptedName",
-                        "attributes.acceptedNameRank",
-                        "attributes.familyAcceptedName",
-                        "attributes.genusAcceptedName",
-                        "id",
-                        "attributes.orderAcceptedName",
-                        "attributes.searchOnlyFields.relatedResources",
-                        "attributes.speciesAcceptedName",
-                        "attributes.subspeciesAcceptedName",
-                        "attributes.synonyms",
-                        "attributes.vernacularNames"
-                      ],
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "includeFields": {
-                    "description": "When provided only specified fields will be returned in response",
-                    "items": {
-                      "enum": [
-                        "attributes.acceptedName",
-                        "attributes.acceptedNameRank",
-                        "attributes.familyAcceptedName",
-                        "attributes.genusAcceptedName",
-                        "id",
-                        "attributes.orderAcceptedName",
-                        "attributes.searchOnlyFields.relatedResources",
-                        "attributes.speciesAcceptedName",
-                        "attributes.subspeciesAcceptedName",
-                        "attributes.synonyms",
-                        "attributes.vernacularNames"
-                      ],
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "includeDeactivated": {
-                    "description": "Will include deactivated items",
-                    "default": false,
-                    "type": "boolean"
-                  },
-                  "limit": {
-                    "description": "Limit the result",
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "offset": {
-                    "description": "Offset the result",
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "query": {
-                    "$ref": "#/components/schemas/queryRoot"
-                  },
-                  "scroll": {
-                    "default": false,
-                    "example": false,
-                    "description": "If true elastic search scroll will be used",
-                    "type": "boolean"
-                  },
-                  "scrollId": {
-                    "description": "Elastic search scroll id",
-                    "type": "string"
-                  },
-                  "sort": {
-                    "description": "When provided response will be sorted",
-                    "items": {
-                      "enum": [
-                        "relevance",
-                        "attributes.acceptedName:asc",
-                        "attributes.acceptedName:desc",
-                        "attributes.acceptedNameRank:asc",
-                        "attributes.acceptedNameRank:desc",
-                        "attributes.familyAcceptedName:asc",
-                        "attributes.familyAcceptedName:desc",
-                        "attributes.genusAcceptedName:asc",
-                        "attributes.genusAcceptedName:desc",
-                        "id:asc",
-                        "id:desc",
-                        "attributes.orderAcceptedName:asc",
-                        "attributes.orderAcceptedName:desc",
-                        "attributes.speciesAcceptedName:asc",
-                        "attributes.speciesAcceptedName:desc",
-                        "attributes.subspeciesAcceptedName:asc",
-                        "attributes.subspeciesAcceptedName:desc",
-                        "attributes.synonyms:asc",
-                        "attributes.synonyms:desc",
-                        "attributes.vernacularNames:asc",
-                        "attributes.vernacularNames:desc"
-                      ],
-                      "type": "string"
-                    },
-                    "type": "array"
-                  }
-                }
-              }
-            },
-            "x-summary": ""
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonUpdateViewRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "example": "1234"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "enum": [
-                      "customObject"
-                    ],
-                    "type": "string"
-                  },
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  }
-                }
-              }
-            ],
-            "x-summary": ""
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameQueryRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "queryBody",
-                "enum": [
-                  "queryBody"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "properties": {
-                  "aggregations": {
-                    "items": {
-                      "$ref": "#/components/schemas/queryAggregation"
-                    },
-                    "type": "array"
-                  },
-                  "excludeFields": {
-                    "description": "When provided specified fields will be excluded (applied after include)",
-                    "items": {
-                      "enum": [
-                        "id",
-                        "attributes.rank",
-                        "attributes.rubinNumber",
-                        "attributes.scientificName"
-                      ],
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "includeFields": {
-                    "description": "When provided only specified fields will be returned in response",
-                    "items": {
-                      "enum": [
-                        "id",
-                        "attributes.rank",
-                        "attributes.rubinNumber",
-                        "attributes.scientificName"
-                      ],
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "includeDeactivated": {
-                    "description": "Will include deactivated items",
-                    "default": false,
-                    "type": "boolean"
-                  },
-                  "limit": {
-                    "description": "Limit the result",
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "offset": {
-                    "description": "Offset the result",
-                    "minimum": 0,
-                    "type": "integer"
-                  },
-                  "query": {
-                    "$ref": "#/components/schemas/queryRoot"
-                  },
-                  "scroll": {
-                    "default": false,
-                    "example": false,
-                    "description": "If true elastic search scroll will be used",
-                    "type": "boolean"
-                  },
-                  "scrollId": {
-                    "description": "Elastic search scroll id",
-                    "type": "string"
-                  },
-                  "sort": {
-                    "description": "When provided response will be sorted",
-                    "items": {
-                      "enum": [
-                        "relevance",
-                        "id:asc",
-                        "id:desc",
-                        "attributes.rank:asc",
-                        "attributes.rank:desc",
-                        "attributes.rubinNumber:asc",
-                        "attributes.rubinNumber:desc",
-                        "attributes.scientificName:asc",
-                        "attributes.scientificName:desc"
-                      ],
-                      "type": "string"
-                    },
-                    "type": "array"
-                  }
-                }
-              }
-            },
-            "x-summary": ""
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameUpdateViewRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -50362,850 +48228,6 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/storage/v01/searchStorageLocations/meta/viewMeta",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonGetOneResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/searchTaxon"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "searchTaxon",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonQueryResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/customObject"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "customObject",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array",
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/query",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonDelResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/searchTaxon"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "searchTaxon",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonGetManyResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/searchTaxon"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "searchTaxon",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array",
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonEmptyViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/emptyView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonUpdateViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/updateView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonRebuildViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/rebuildView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonGetViewMetaResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxa/meta/viewMeta",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameGetOneResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/searchTaxonName"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "searchTaxonName",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameQueryResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/customObject"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "customObject",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array",
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/query",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameDelResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/searchTaxonName"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "searchTaxonName",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameGetManyResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/searchTaxonName"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "searchTaxonName",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array",
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameEmptyViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/emptyView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameUpdateViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/updateView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameRebuildViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/rebuildView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "searchTaxonNameGetViewMetaResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/meta/viewMeta",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
