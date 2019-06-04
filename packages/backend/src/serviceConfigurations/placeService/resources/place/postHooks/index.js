@@ -63,6 +63,7 @@ exports.updateInternalRelationship = [
 ]
 
 exports.del = [
+  indexHook,
   createRegisterResourceActivityHook({
     action: 'delete',
     service: 'placeService',
