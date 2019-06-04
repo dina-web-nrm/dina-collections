@@ -74,7 +74,7 @@
     "test:unit:write": "WRITE_TEST_RESULT=true TEST_UNIT=true jest --env=node --forceExit"
   },
   "engines": {
-    "node": "10.15.1",
+    "node": "10.x",
     "yarn": "1.10.1"
   }
 }
