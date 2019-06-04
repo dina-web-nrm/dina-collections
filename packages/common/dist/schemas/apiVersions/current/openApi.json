@@ -1090,6 +1090,794 @@
         ]
       }
     },
+    "/api/agent/v01/searchAgents/{id}": {
+      "get": {
+        "operationId": "searchAgentGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchAgent id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.abbreviation",
+                  "attributes.additionalName",
+                  "attributes.agentType",
+                  "attributes.alsoKnownAs",
+                  "attributes.disambiguatingDescription",
+                  "attributes.familyName",
+                  "attributes.fullName",
+                  "attributes.givenName",
+                  "id",
+                  "attributes.remarks"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.abbreviation",
+                  "attributes.additionalName",
+                  "attributes.agentType",
+                  "attributes.alsoKnownAs",
+                  "attributes.disambiguatingDescription",
+                  "attributes.familyName",
+                  "attributes.fullName",
+                  "attributes.givenName",
+                  "id",
+                  "attributes.remarks"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchAgent by id",
+        "tags": [
+          "agentService"
+        ]
+      },
+      "delete": {
+        "operationId": "searchAgentDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchAgent id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentDelResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes searchAgent",
+        "tags": [
+          "agentService"
+        ]
+      }
+    },
+    "/api/agent/v01/searchAgents/actions/query": {
+      "post": {
+        "operationId": "searchAgentQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchAgentQueryRequest"
+              }
+            }
+          },
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***abbreviation*** <br/> Search attributes.searchOnly.abbreviation <br/> <br/>  ***additionalName*** <br/> Search attributes.searchOnly.additionalName <br/> <br/>  ***agentType*** <br/> Search attributes.searchOnly.agentType <br/> <br/>  ***alsoKnownAs*** <br/> Search attributes.searchOnly.alsoKnownAs <br/> <br/>  ***disambiguatingDescription*** <br/> Search attributes.searchOnly.disambiguatingDescription <br/> <br/>  ***familyName*** <br/> Search attributes.searchOnly.familyName <br/> <br/>  ***fullName*** <br/> Search attributes.searchOnly.fullName <br/> <br/>  ***givenName*** <br/> Search attributes.searchOnly.givenName <br/> <br/>  ***remarks*** <br/> Search attributes.searchOnly.remarks <br/>\n\n  \n  <br/>\n\n  "
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentQueryResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchAgent",
+        "tags": [
+          "agentService"
+        ]
+      }
+    },
+    "/api/agent/v01/searchAgents": {
+      "get": {
+        "operationId": "searchAgentGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[abbreviation]",
+            "description": "Search attributes.searchOnly.abbreviation",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[additionalName]",
+            "description": "Search attributes.searchOnly.additionalName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[agentType]",
+            "description": "Search attributes.searchOnly.agentType",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[alsoKnownAs]",
+            "description": "Search attributes.searchOnly.alsoKnownAs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[disambiguatingDescription]",
+            "description": "Search attributes.searchOnly.disambiguatingDescription",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[familyName]",
+            "description": "Search attributes.searchOnly.familyName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[fullName]",
+            "description": "Search attributes.searchOnly.fullName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[givenName]",
+            "description": "Search attributes.searchOnly.givenName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[remarks]",
+            "description": "Search attributes.searchOnly.remarks",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.abbreviation",
+                  "attributes.additionalName",
+                  "attributes.agentType",
+                  "attributes.alsoKnownAs",
+                  "attributes.disambiguatingDescription",
+                  "attributes.familyName",
+                  "attributes.fullName",
+                  "attributes.givenName",
+                  "id",
+                  "attributes.remarks"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.abbreviation",
+                  "attributes.additionalName",
+                  "attributes.agentType",
+                  "attributes.alsoKnownAs",
+                  "attributes.disambiguatingDescription",
+                  "attributes.familyName",
+                  "attributes.fullName",
+                  "attributes.givenName",
+                  "id",
+                  "attributes.remarks"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance",
+                  "attributes.abbreviation:asc",
+                  "attributes.abbreviation:desc",
+                  "attributes.additionalName:asc",
+                  "attributes.additionalName:desc",
+                  "attributes.agentType:asc",
+                  "attributes.agentType:desc",
+                  "attributes.alsoKnownAs:asc",
+                  "attributes.alsoKnownAs:desc",
+                  "attributes.disambiguatingDescription:asc",
+                  "attributes.disambiguatingDescription:desc",
+                  "attributes.familyName:asc",
+                  "attributes.familyName:desc",
+                  "attributes.fullName:asc",
+                  "attributes.fullName:desc",
+                  "attributes.givenName:asc",
+                  "attributes.givenName:desc",
+                  "id:asc",
+                  "id:desc",
+                  "attributes.remarks:asc",
+                  "attributes.remarks:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentGetManyResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchAgents",
+        "tags": [
+          "agentService"
+        ]
+      }
+    },
+    "/api/agent/v01/searchAgents/actions/emptyView": {
+      "post": {
+        "operationId": "searchAgentEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentEmptyViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource searchAgent",
+        "tags": [
+          "agentService"
+        ]
+      }
+    },
+    "/api/agent/v01/searchAgents/actions/updateView": {
+      "post": {
+        "operationId": "searchAgentUpdateView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchAgentUpdateViewRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentUpdateViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchAgent",
+        "tags": [
+          "agentService"
+        ]
+      }
+    },
+    "/api/agent/v01/searchAgents/actions/rebuildView": {
+      "post": {
+        "operationId": "searchAgentRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "force",
+            "description": "Will rebuild view even if last rebuild ended with error",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentRebuildViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchAgent",
+        "tags": [
+          "agentService"
+        ]
+      }
+    },
+    "/api/agent/v01/searchAgents/meta/viewMeta": {
+      "get": {
+        "operationId": "searchAgentGetViewMeta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchAgentGetViewMetaResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get view meta for resource searchAgent",
+        "tags": [
+          "agentService"
+        ]
+      }
+    },
     "/auth/realms/dina/protocol/openid-connect/token": {
       "post": {
         "operationId": "loginUser",
@@ -16960,6 +17748,2281 @@
         ]
       }
     },
+    "/api/storage/v01/searchStorageLocations/{id}": {
+      "get": {
+        "operationId": "searchStorageLocationGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchStorageLocation id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchStorageLocation by id",
+        "tags": [
+          "storageService"
+        ]
+      },
+      "delete": {
+        "operationId": "searchStorageLocationDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchStorageLocation id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationDelResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/query": {
+      "post": {
+        "operationId": "searchStorageLocationQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchStorageLocationQueryRequest"
+              }
+            }
+          },
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***ancestorIds*** <br/> Match for attributes.searchOnly.ancestorIds <br/> <br/>  ***searchCabinet*** <br/> Search attributes.searchOnly.searchCabinet <br/> <br/>  ***searchInstitution*** <br/> Search attributes.searchOnly.searchInstitution <br/> <br/>  ***searchMountingWall*** <br/> Search attributes.searchOnly.searchMountingWall <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchRoom*** <br/> Search attributes.searchOnly.searchRoom <br/> <br/>  ***searchShelf*** <br/> Search attributes.searchOnly.searchShelf <br/> <br/>  ***searchLevel*** <br/> Search attributes.searchOnly.searchLevel <br/>\n\n  \n  <br/>\n\n  "
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationQueryResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations": {
+      "get": {
+        "operationId": "searchStorageLocationGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ancestorIds]",
+            "description": "Match for attributes.searchOnly.ancestorIds",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchCabinet]",
+            "description": "Search attributes.searchOnly.searchCabinet",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchInstitution]",
+            "description": "Search attributes.searchOnly.searchInstitution",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchMountingWall]",
+            "description": "Search attributes.searchOnly.searchMountingWall",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchName]",
+            "description": "Search attributes.searchOnly.searchName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchRoom]",
+            "description": "Search attributes.searchOnly.searchRoom",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchShelf]",
+            "description": "Search attributes.searchOnly.searchShelf",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchLevel]",
+            "description": "Search attributes.searchOnly.searchLevel",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.cabinet",
+                  "attributes.institution",
+                  "attributes.mountingWall",
+                  "attributes.name",
+                  "attributes.room",
+                  "attributes.shelf",
+                  "attributes.level"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance",
+                  "id:asc",
+                  "id:desc",
+                  "attributes.cabinet:asc",
+                  "attributes.cabinet:desc",
+                  "attributes.institution:asc",
+                  "attributes.institution:desc",
+                  "attributes.mountingWall:asc",
+                  "attributes.mountingWall:desc",
+                  "attributes.name:asc",
+                  "attributes.name:desc",
+                  "attributes.room:asc",
+                  "attributes.room:desc",
+                  "attributes.shelf:asc",
+                  "attributes.shelf:desc",
+                  "attributes.level:asc",
+                  "attributes.level:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationGetManyResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchStorageLocations",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/emptyView": {
+      "post": {
+        "operationId": "searchStorageLocationEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationEmptyViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/updateView": {
+      "post": {
+        "operationId": "searchStorageLocationUpdateView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchStorageLocationUpdateViewRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationUpdateViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/actions/rebuildView": {
+      "post": {
+        "operationId": "searchStorageLocationRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "force",
+            "description": "Will rebuild view even if last rebuild ended with error",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationRebuildViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/storage/v01/searchStorageLocations/meta/viewMeta": {
+      "get": {
+        "operationId": "searchStorageLocationGetViewMeta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchStorageLocationGetViewMetaResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get view meta for resource searchStorageLocation",
+        "tags": [
+          "storageService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxa/{id}": {
+      "get": {
+        "operationId": "searchTaxonGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchTaxon id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.acceptedName",
+                  "attributes.acceptedNameRank",
+                  "attributes.familyAcceptedName",
+                  "attributes.genusAcceptedName",
+                  "id",
+                  "attributes.orderAcceptedName",
+                  "attributes.searchOnlyFields.relatedResources",
+                  "attributes.speciesAcceptedName",
+                  "attributes.subspeciesAcceptedName",
+                  "attributes.synonyms",
+                  "attributes.vernacularNames"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.acceptedName",
+                  "attributes.acceptedNameRank",
+                  "attributes.familyAcceptedName",
+                  "attributes.genusAcceptedName",
+                  "id",
+                  "attributes.orderAcceptedName",
+                  "attributes.searchOnlyFields.relatedResources",
+                  "attributes.speciesAcceptedName",
+                  "attributes.subspeciesAcceptedName",
+                  "attributes.synonyms",
+                  "attributes.vernacularNames"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchTaxon by id",
+        "tags": [
+          "taxonomyService"
+        ]
+      },
+      "delete": {
+        "operationId": "searchTaxonDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchTaxon id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonDelResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes searchTaxon",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxa/actions/query": {
+      "post": {
+        "operationId": "searchTaxonQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchTaxonQueryRequest"
+              }
+            }
+          },
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchAcceptedName*** <br/> Search attributes.searchOnly.searchAcceptedName <br/> <br/>  ***searchAcceptedNameRank*** <br/> Search attributes.searchOnly.searchAcceptedNameRank <br/> <br/>  ***ancestorIds*** <br/> Match for attributes.searchOnly.ancestorIds <br/> <br/>  ***searchFamilyAcceptedName*** <br/> Search attributes.searchOnly.searchFamilyAcceptedName <br/> <br/>  ***searchGenumsAcceptedName*** <br/> Search attributes.searchOnly.searchGenumsAcceptedName <br/> <br/>  ***searchOrderAcceptedName*** <br/> Search attributes.searchOnly.searchOrderAcceptedName <br/> <br/>  ***relatedResources*** <br/> Filter based on relatedResources <br/> <br/>  ***searchSpeciesAcceptedName*** <br/> Search attributes.searchOnly.searchSpeciesAcceptedName <br/> <br/>  ***searchSubspeciesAcceptedName*** <br/> Search attributes.searchOnly.searchSubspeciesAcceptedName <br/> <br/>  ***searchSynonyms*** <br/> Search attributes.searchOnly.searchSynonyms <br/> <br/>  ***searchVernacularNames*** <br/> Search attributes.searchOnly.searchVernacularNames <br/>\n\n  \n  <br/>\n\n  "
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonQueryResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchTaxon",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxa": {
+      "get": {
+        "operationId": "searchTaxonGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchAcceptedName]",
+            "description": "Search attributes.searchOnly.searchAcceptedName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchAcceptedNameRank]",
+            "description": "Search attributes.searchOnly.searchAcceptedNameRank",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ancestorIds]",
+            "description": "Match for attributes.searchOnly.ancestorIds",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchFamilyAcceptedName]",
+            "description": "Search attributes.searchOnly.searchFamilyAcceptedName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchGenumsAcceptedName]",
+            "description": "Search attributes.searchOnly.searchGenumsAcceptedName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchOrderAcceptedName]",
+            "description": "Search attributes.searchOnly.searchOrderAcceptedName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[relatedResources]",
+            "description": "Filter based on relatedResources",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchSpeciesAcceptedName]",
+            "description": "Search attributes.searchOnly.searchSpeciesAcceptedName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchSubspeciesAcceptedName]",
+            "description": "Search attributes.searchOnly.searchSubspeciesAcceptedName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchSynonyms]",
+            "description": "Search attributes.searchOnly.searchSynonyms",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchVernacularNames]",
+            "description": "Search attributes.searchOnly.searchVernacularNames",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.acceptedName",
+                  "attributes.acceptedNameRank",
+                  "attributes.familyAcceptedName",
+                  "attributes.genusAcceptedName",
+                  "id",
+                  "attributes.orderAcceptedName",
+                  "attributes.searchOnlyFields.relatedResources",
+                  "attributes.speciesAcceptedName",
+                  "attributes.subspeciesAcceptedName",
+                  "attributes.synonyms",
+                  "attributes.vernacularNames"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.acceptedName",
+                  "attributes.acceptedNameRank",
+                  "attributes.familyAcceptedName",
+                  "attributes.genusAcceptedName",
+                  "id",
+                  "attributes.orderAcceptedName",
+                  "attributes.searchOnlyFields.relatedResources",
+                  "attributes.speciesAcceptedName",
+                  "attributes.subspeciesAcceptedName",
+                  "attributes.synonyms",
+                  "attributes.vernacularNames"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance",
+                  "attributes.acceptedName:asc",
+                  "attributes.acceptedName:desc",
+                  "attributes.acceptedNameRank:asc",
+                  "attributes.acceptedNameRank:desc",
+                  "attributes.familyAcceptedName:asc",
+                  "attributes.familyAcceptedName:desc",
+                  "attributes.genusAcceptedName:asc",
+                  "attributes.genusAcceptedName:desc",
+                  "id:asc",
+                  "id:desc",
+                  "attributes.orderAcceptedName:asc",
+                  "attributes.orderAcceptedName:desc",
+                  "attributes.speciesAcceptedName:asc",
+                  "attributes.speciesAcceptedName:desc",
+                  "attributes.subspeciesAcceptedName:asc",
+                  "attributes.subspeciesAcceptedName:desc",
+                  "attributes.synonyms:asc",
+                  "attributes.synonyms:desc",
+                  "attributes.vernacularNames:asc",
+                  "attributes.vernacularNames:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonGetManyResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchTaxa",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxa/actions/emptyView": {
+      "post": {
+        "operationId": "searchTaxonEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonEmptyViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource searchTaxon",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxa/actions/updateView": {
+      "post": {
+        "operationId": "searchTaxonUpdateView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchTaxonUpdateViewRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonUpdateViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchTaxon",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxa/actions/rebuildView": {
+      "post": {
+        "operationId": "searchTaxonRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "force",
+            "description": "Will rebuild view even if last rebuild ended with error",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonRebuildViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchTaxon",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxa/meta/viewMeta": {
+      "get": {
+        "operationId": "searchTaxonGetViewMeta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonGetViewMetaResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get view meta for resource searchTaxon",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxonNames/{id}": {
+      "get": {
+        "operationId": "searchTaxonNameGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchTaxonName id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.rank",
+                  "attributes.rubinNumber",
+                  "attributes.scientificName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.rank",
+                  "attributes.rubinNumber",
+                  "attributes.scientificName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchTaxonName by id",
+        "tags": [
+          "taxonomyService"
+        ]
+      },
+      "delete": {
+        "operationId": "searchTaxonNameDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchTaxonName id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameDelResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes searchTaxonName",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxonNames/actions/query": {
+      "post": {
+        "operationId": "searchTaxonNameQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchTaxonNameQueryRequest"
+              }
+            }
+          },
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchRank*** <br/> Search attributes.searchOnly.searchRank <br/> <br/>  ***rubinNumber*** <br/> Search attributes.searchOnly.rubinNumber <br/> <br/>  ***searchScientificName*** <br/> Search attributes.searchOnly.searchScientificName <br/>\n\n  \n  <br/>\n\n  "
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameQueryResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchTaxonName",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxonNames": {
+      "get": {
+        "operationId": "searchTaxonNameGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "includeDeactivated",
+            "description": "Will include deactivated items",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchRank]",
+            "description": "Search attributes.searchOnly.searchRank",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[rubinNumber]",
+            "description": "Search attributes.searchOnly.rubinNumber",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchScientificName]",
+            "description": "Search attributes.searchOnly.searchScientificName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.rank",
+                  "attributes.rubinNumber",
+                  "attributes.scientificName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.rank",
+                  "attributes.rubinNumber",
+                  "attributes.scientificName"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "relevance",
+                  "id:asc",
+                  "id:desc",
+                  "attributes.rank:asc",
+                  "attributes.rank:desc",
+                  "attributes.rubinNumber:asc",
+                  "attributes.rubinNumber:desc",
+                  "attributes.scientificName:asc",
+                  "attributes.scientificName:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameGetManyResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchTaxonNames",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxonNames/actions/emptyView": {
+      "post": {
+        "operationId": "searchTaxonNameEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameEmptyViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource searchTaxonName",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxonNames/actions/updateView": {
+      "post": {
+        "operationId": "searchTaxonNameUpdateView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchTaxonNameUpdateViewRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameUpdateViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchTaxonName",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxonNames/actions/rebuildView": {
+      "post": {
+        "operationId": "searchTaxonNameRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "consolidateJobs",
+            "description": "Will consolidate jobs in postHook",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "force",
+            "description": "Will rebuild view even if last rebuild ended with error",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameRebuildViewResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource searchTaxonName",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
+    "/api/taxonomy/v01/searchTaxonNames/meta/viewMeta": {
+      "get": {
+        "operationId": "searchTaxonNameGetViewMeta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchTaxonNameGetViewMetaResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get view meta for resource searchTaxonName",
+        "tags": [
+          "taxonomyService"
+        ]
+      }
+    },
     "/api/taxonomy/v01/taxa": {
       "post": {
         "operationId": "taxonCreate",
@@ -20220,6 +23283,14 @@
         "x-summary": "",
         "description": ""
       },
+      "searchAgent": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "agentService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
       "user": {
         "additionalProperties": false,
         "properties": {
@@ -22274,6 +25345,14 @@
         "x-modelType": "model",
         "x-summary": "The smallest recognized physical \"thing\" in the collection."
       },
+      "searchStorageLocation": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "storageService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
       "storageLocation": {
         "additionalProperties": false,
         "properties": {
@@ -22319,6 +25398,22 @@
         "x-category": "storageService",
         "x-modelType": "model",
         "x-summary": "A dedicated space for storing physical objects."
+      },
+      "searchTaxon": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "taxonomyService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonName": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "taxonomyService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
       },
       "taxon": {
         "additionalProperties": false,
@@ -22864,6 +25959,180 @@
                       "user"
                     ],
                     "type": "string"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "queryBody",
+                "enum": [
+                  "queryBody"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "properties": {
+                  "aggregations": {
+                    "items": {
+                      "$ref": "#/components/schemas/queryAggregation"
+                    },
+                    "type": "array"
+                  },
+                  "excludeFields": {
+                    "description": "When provided specified fields will be excluded (applied after include)",
+                    "items": {
+                      "enum": [
+                        "attributes.abbreviation",
+                        "attributes.additionalName",
+                        "attributes.agentType",
+                        "attributes.alsoKnownAs",
+                        "attributes.disambiguatingDescription",
+                        "attributes.familyName",
+                        "attributes.fullName",
+                        "attributes.givenName",
+                        "id",
+                        "attributes.remarks"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeFields": {
+                    "description": "When provided only specified fields will be returned in response",
+                    "items": {
+                      "enum": [
+                        "attributes.abbreviation",
+                        "attributes.additionalName",
+                        "attributes.agentType",
+                        "attributes.alsoKnownAs",
+                        "attributes.disambiguatingDescription",
+                        "attributes.familyName",
+                        "attributes.fullName",
+                        "attributes.givenName",
+                        "id",
+                        "attributes.remarks"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeDeactivated": {
+                    "description": "Will include deactivated items",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "limit": {
+                    "description": "Limit the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "description": "Offset the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "query": {
+                    "$ref": "#/components/schemas/queryRoot"
+                  },
+                  "scroll": {
+                    "default": false,
+                    "example": false,
+                    "description": "If true elastic search scroll will be used",
+                    "type": "boolean"
+                  },
+                  "scrollId": {
+                    "description": "Elastic search scroll id",
+                    "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance",
+                        "attributes.abbreviation:asc",
+                        "attributes.abbreviation:desc",
+                        "attributes.additionalName:asc",
+                        "attributes.additionalName:desc",
+                        "attributes.agentType:asc",
+                        "attributes.agentType:desc",
+                        "attributes.alsoKnownAs:asc",
+                        "attributes.alsoKnownAs:desc",
+                        "attributes.disambiguatingDescription:asc",
+                        "attributes.disambiguatingDescription:desc",
+                        "attributes.familyName:asc",
+                        "attributes.familyName:desc",
+                        "attributes.fullName:asc",
+                        "attributes.fullName:desc",
+                        "attributes.givenName:asc",
+                        "attributes.givenName:desc",
+                        "id:asc",
+                        "id:desc",
+                        "attributes.remarks:asc",
+                        "attributes.remarks:desc"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentUpdateViewRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
                   }
                 }
               }
@@ -28684,6 +31953,498 @@
         "x-summary": "",
         "description": ""
       },
+      "searchStorageLocationQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "queryBody",
+                "enum": [
+                  "queryBody"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "properties": {
+                  "aggregations": {
+                    "items": {
+                      "$ref": "#/components/schemas/queryAggregation"
+                    },
+                    "type": "array"
+                  },
+                  "excludeFields": {
+                    "description": "When provided specified fields will be excluded (applied after include)",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.cabinet",
+                        "attributes.institution",
+                        "attributes.mountingWall",
+                        "attributes.name",
+                        "attributes.room",
+                        "attributes.shelf",
+                        "attributes.level"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeFields": {
+                    "description": "When provided only specified fields will be returned in response",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.cabinet",
+                        "attributes.institution",
+                        "attributes.mountingWall",
+                        "attributes.name",
+                        "attributes.room",
+                        "attributes.shelf",
+                        "attributes.level"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeDeactivated": {
+                    "description": "Will include deactivated items",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "limit": {
+                    "description": "Limit the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "description": "Offset the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "query": {
+                    "$ref": "#/components/schemas/queryRoot"
+                  },
+                  "scroll": {
+                    "default": false,
+                    "example": false,
+                    "description": "If true elastic search scroll will be used",
+                    "type": "boolean"
+                  },
+                  "scrollId": {
+                    "description": "Elastic search scroll id",
+                    "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance",
+                        "id:asc",
+                        "id:desc",
+                        "attributes.cabinet:asc",
+                        "attributes.cabinet:desc",
+                        "attributes.institution:asc",
+                        "attributes.institution:desc",
+                        "attributes.mountingWall:asc",
+                        "attributes.mountingWall:desc",
+                        "attributes.name:asc",
+                        "attributes.name:desc",
+                        "attributes.room:asc",
+                        "attributes.room:desc",
+                        "attributes.shelf:asc",
+                        "attributes.shelf:desc",
+                        "attributes.level:asc",
+                        "attributes.level:desc"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationUpdateViewRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "queryBody",
+                "enum": [
+                  "queryBody"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "properties": {
+                  "aggregations": {
+                    "items": {
+                      "$ref": "#/components/schemas/queryAggregation"
+                    },
+                    "type": "array"
+                  },
+                  "excludeFields": {
+                    "description": "When provided specified fields will be excluded (applied after include)",
+                    "items": {
+                      "enum": [
+                        "attributes.acceptedName",
+                        "attributes.acceptedNameRank",
+                        "attributes.familyAcceptedName",
+                        "attributes.genusAcceptedName",
+                        "id",
+                        "attributes.orderAcceptedName",
+                        "attributes.searchOnlyFields.relatedResources",
+                        "attributes.speciesAcceptedName",
+                        "attributes.subspeciesAcceptedName",
+                        "attributes.synonyms",
+                        "attributes.vernacularNames"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeFields": {
+                    "description": "When provided only specified fields will be returned in response",
+                    "items": {
+                      "enum": [
+                        "attributes.acceptedName",
+                        "attributes.acceptedNameRank",
+                        "attributes.familyAcceptedName",
+                        "attributes.genusAcceptedName",
+                        "id",
+                        "attributes.orderAcceptedName",
+                        "attributes.searchOnlyFields.relatedResources",
+                        "attributes.speciesAcceptedName",
+                        "attributes.subspeciesAcceptedName",
+                        "attributes.synonyms",
+                        "attributes.vernacularNames"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeDeactivated": {
+                    "description": "Will include deactivated items",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "limit": {
+                    "description": "Limit the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "description": "Offset the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "query": {
+                    "$ref": "#/components/schemas/queryRoot"
+                  },
+                  "scroll": {
+                    "default": false,
+                    "example": false,
+                    "description": "If true elastic search scroll will be used",
+                    "type": "boolean"
+                  },
+                  "scrollId": {
+                    "description": "Elastic search scroll id",
+                    "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance",
+                        "attributes.acceptedName:asc",
+                        "attributes.acceptedName:desc",
+                        "attributes.acceptedNameRank:asc",
+                        "attributes.acceptedNameRank:desc",
+                        "attributes.familyAcceptedName:asc",
+                        "attributes.familyAcceptedName:desc",
+                        "attributes.genusAcceptedName:asc",
+                        "attributes.genusAcceptedName:desc",
+                        "id:asc",
+                        "id:desc",
+                        "attributes.orderAcceptedName:asc",
+                        "attributes.orderAcceptedName:desc",
+                        "attributes.speciesAcceptedName:asc",
+                        "attributes.speciesAcceptedName:desc",
+                        "attributes.subspeciesAcceptedName:asc",
+                        "attributes.subspeciesAcceptedName:desc",
+                        "attributes.synonyms:asc",
+                        "attributes.synonyms:desc",
+                        "attributes.vernacularNames:asc",
+                        "attributes.vernacularNames:desc"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonUpdateViewRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "queryBody",
+                "enum": [
+                  "queryBody"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "properties": {
+                  "aggregations": {
+                    "items": {
+                      "$ref": "#/components/schemas/queryAggregation"
+                    },
+                    "type": "array"
+                  },
+                  "excludeFields": {
+                    "description": "When provided specified fields will be excluded (applied after include)",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.rank",
+                        "attributes.rubinNumber",
+                        "attributes.scientificName"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeFields": {
+                    "description": "When provided only specified fields will be returned in response",
+                    "items": {
+                      "enum": [
+                        "id",
+                        "attributes.rank",
+                        "attributes.rubinNumber",
+                        "attributes.scientificName"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "includeDeactivated": {
+                    "description": "Will include deactivated items",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "limit": {
+                    "description": "Limit the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "description": "Offset the result",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "query": {
+                    "$ref": "#/components/schemas/queryRoot"
+                  },
+                  "scroll": {
+                    "default": false,
+                    "example": false,
+                    "description": "If true elastic search scroll will be used",
+                    "type": "boolean"
+                  },
+                  "scrollId": {
+                    "description": "Elastic search scroll id",
+                    "type": "string"
+                  },
+                  "sort": {
+                    "description": "When provided response will be sorted",
+                    "items": {
+                      "enum": [
+                        "relevance",
+                        "id:asc",
+                        "id:desc",
+                        "attributes.rank:asc",
+                        "attributes.rank:desc",
+                        "attributes.rubinNumber:asc",
+                        "attributes.rubinNumber:desc",
+                        "attributes.scientificName:asc",
+                        "attributes.scientificName:desc"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameUpdateViewRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
       "taxonCreateRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -31174,6 +34935,428 @@
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchAgent"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchAgent",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents/actions/query",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchAgent"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchAgent",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/searchAgent"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "searchAgent",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentUpdateViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents/actions/updateView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchAgentGetViewMetaResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/agent/v01/searchAgents/meta/viewMeta",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
         "x-summary": "",
         "description": ""
       },
@@ -45771,6 +49954,1272 @@
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchStorageLocation"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchStorageLocation",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/query",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchStorageLocation"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchStorageLocation",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/searchStorageLocation"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "searchStorageLocation",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationUpdateViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/updateView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchStorageLocationGetViewMetaResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/searchStorageLocations/meta/viewMeta",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchTaxon"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchTaxon",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/query",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchTaxon"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchTaxon",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/searchTaxon"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "searchTaxon",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonUpdateViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/updateView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonGetViewMetaResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxa/meta/viewMeta",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchTaxonName"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchTaxonName",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/query",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/searchTaxonName"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "searchTaxonName",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/searchTaxonName"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "searchTaxonName",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameUpdateViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/updateView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "searchTaxonNameGetViewMetaResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/taxonomy/v01/searchTaxonNames/meta/viewMeta",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
         "x-summary": "",
         "description": ""
       },
