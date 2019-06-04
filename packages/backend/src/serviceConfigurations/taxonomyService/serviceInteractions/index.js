@@ -5,6 +5,16 @@ const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFir
 
 const log = createLog('services/taxonomyService/serviceInteractions')
 
+const {
+  createUpdateRelatedSearchResourcePostHook,
+} = require('../../../lib/data/hooks')
+
+const {
+  createCreateIndexJob,
+  createRebuildInProgress,
+  createUpdateRelatedSearchResource,
+} = require('../../../lib/data/serviceInteractions')
+
 const findAndClearTaxonRelationship = ({
   relationshipKey,
   serviceInteractor,
@@ -101,4 +111,34 @@ exports.removeRelatedTaxonFromTaxonNames = ({ request, serviceInteractor }) => {
       taxonNameId,
     }),
   ])
+}
+
+exports.searchTaxonRebuildInProgress = createRebuildInProgress({
+  operationId: 'searchTaxonGetViewMeta',
+})
+
+exports.searchTaxonCreateIndexJob = createCreateIndexJob({
+  rebuildViewOperationId: 'searchTaxonRebuildView',
+  updateViewOperationId: 'searchTaxonUpdateView',
+})
+
+exports.searchTaxonNameRebuildInProgress = createRebuildInProgress({
+  operationId: 'searchTaxonNameGetViewMeta',
+})
+exports.searchTaxonNameCreateIndexJob = createCreateIndexJob({
+  rebuildViewOperationId: 'searchTaxonNameRebuildView',
+  updateViewOperationId: 'searchTaxonNameUpdateView',
+})
+
+exports.updateRelatedSearchTaxonResource = createUpdateRelatedSearchResource({
+  createIndexJob: exports.createIndexJob,
+  limit: 50,
+  targetSearchResource: 'searchTaxon',
+})
+
+exports.createUpdateRelatedSearchTaxonPostHook = ({ srcResource }) => {
+  return createUpdateRelatedSearchResourcePostHook({
+    srcResource,
+    updateRelatedSearchResource: exports.updateRelatedSearchTaxonResource,
+  })
 }
