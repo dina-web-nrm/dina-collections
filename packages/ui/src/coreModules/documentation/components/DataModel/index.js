@@ -6,7 +6,7 @@ import extractModelFromSpecification from '../../utilities/extractModelFromSpeci
 import Model from './Model'
 import Property from './Property'
 
-const specification = schemaInterface.getOpenApiSpec()
+const specification = schemaInterface.getNormalizedModels()
 
 const propTypes = {
   match: PropTypes.shape({

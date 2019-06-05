@@ -9,13 +9,12 @@ import { NavigationSidebar } from 'coreModules/layout/components'
 
 import createModelLink from '../utilities/createModelLink'
 
-const specification = schemaInterface.getOpenApiSpec()
-const { schemas } = specification.components
+const specification = schemaInterface.getNormalizedModels()
 
-const models = Object.keys(schemas)
+const models = Object.keys(specification)
   .map(key => {
     return {
-      ...schemas[key],
+      ...specification[key],
       key,
     }
   })

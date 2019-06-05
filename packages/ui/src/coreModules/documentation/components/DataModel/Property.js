@@ -18,6 +18,7 @@ const Property = ({ model, property, version }) => {
 
   return (
     <Segment basic id={id}>
+      <h1>{property.key}</h1>
       {property.description && (
         <MarkdownToHtmlAsync markdown={property.description} />
       )}
