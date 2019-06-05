@@ -22011,7 +22011,7 @@
             "x-summary": ""
           },
           "deathInformationDeath": {
-            "type": "string",
+            "type": "array",
             "x-summary": ""
           },
           "featureAge": {
@@ -22055,7 +22055,7 @@
             "x-summary": ""
           },
           "originInformationLocality": {
-            "type": "string",
+            "type": "array",
             "x-summary": ""
           },
           "physicalObjectStorageLocationGroups": {
