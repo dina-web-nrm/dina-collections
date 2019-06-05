@@ -99,6 +99,7 @@ export default () =>
       cy.getByText('Mus musculoides')
 
       cy.getInputByParentTestId('currentTableRowInput')
+        .should('have.value', '3')
         .clear()
         .type('16')
       cy.getByText('500001')
