@@ -99,6 +99,7 @@ export default () =>
       cy.getByText('Mus musculoides')
 
       cy.getInputByParentTestId('currentTableRowInput')
+        .should('have.value', '3')
         .clear()
         .type('1')
         // need to use type command twice as using type('16') causes an
