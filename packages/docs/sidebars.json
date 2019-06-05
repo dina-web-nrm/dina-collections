@@ -32,7 +32,10 @@
       "development/contributing",
       "development/configuration/env",
       "development/testing",
-      "development/pipeline"
+      "development/pipeline",
+      "development/version",
+      "development/release",
+      "development/deploy"
     ]
   }
 }

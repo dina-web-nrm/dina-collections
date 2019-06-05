@@ -17,6 +17,7 @@ elif [ $VERSION_TYPE = "pre-release"  ]; then
   git push origin master && git push origin $GIT_TAG
 elif [ $VERSION_TYPE = "test-release"  ]; then
   git push origin $GIT_TAG
+  git reset --hard HEAD^
 else
   echo "Unknown VERSION_TYPE"
   exit 1

@@ -411,11 +411,13 @@ Right now it is supported with 4 different server roles: production, stage, test
     },
     'remote:deploy': {
       args: {
+        '-m':
+          'If the -m flag is provided migrations will be performed with [migrate:latest](#migrate-latest) after the deploy',
         ...tagArg,
         ...serverArg,
       },
       description:
-        'Deploy a release with specified tag to specified server. Note that if the data model have changed (a new minor version) you should either run the migrations with [remote:migrate:latest](#remote-migrate-latest) and rebuild the search indices [remote:build:elastic-indices](#remote-build-elastic-indices) or reimport data with e.g. [remote:import:data:json](#remote-import-data–json). Note that the last option will throw away current data. Using docker-compose up -d. Inspect deploy logs of e.g. api with `yarn remote:log -s <SERVER> --service=api`',
+        'Deploy a release with specified tag to specified server. Note that if the data model have changed (a new minor version) you should run the migrations by providing the -m flag. Using docker-compose up -d. Inspect deploy logs of e.g. api with `yarn remote:log -s <SERVER> --service=api`',
       group: 'remote-services',
       short: 'Deploy a release to a remote server',
       usage: 'yarn remote:deploy -s <SERVER> -t <TAG>',
@@ -533,7 +535,7 @@ Right now it is supported with 4 different server roles: production, stage, test
         ...serverArg,
       },
       description:
-        'Same as [migrate:latest](#migrate-latest) but on the remote server',
+        'Same as [migrate:latest](#migrate-latest) but  with the difference that this script will also rebuild search indices with [remote:build:elastic-indices](remote-build-elastic-indices)',
       group: 'remote-services',
       short: 'Migrate to latest on specified server',
       usage: 'yarn remote:migrate:latest -s <SERVER> -t <TAG>',
