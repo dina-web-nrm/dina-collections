@@ -11,16 +11,27 @@ import getPropertyIsAnyOf from '../../utilities/getPropertyIsAnyOf'
 import getPropertySummary from '../../utilities/getPropertySummary'
 
 const propTypes = {
+  isRelationships: PropTypes.bool,
   model: PropTypes.object.isRequired,
   properties: PropTypes.array.isRequired,
   specification: PropTypes.object.isRequired,
   version: PropTypes.string.isRequired,
 }
 
-const PropertyOverview = ({ properties, model, version, specification }) => {
+const defaultProps = {
+  isRelationships: false,
+}
+
+const PropertyOverview = ({
+  isRelationships,
+  model,
+  properties,
+  specification,
+  version,
+}) => {
   return (
     <Segment color="green" style={{ marginTop: '40px' }}>
-      <h2>Properties</h2>
+      <h2>{isRelationships ? 'Relationships' : 'Properties'}</h2>
       <Table celled>
         <Table.Header>
           <Table.Row>
@@ -74,6 +85,7 @@ const PropertyOverview = ({ properties, model, version, specification }) => {
   )
 }
 
+PropertyOverview.defaultProps = defaultProps
 PropertyOverview.propTypes = propTypes
 
 export default PropertyOverview
