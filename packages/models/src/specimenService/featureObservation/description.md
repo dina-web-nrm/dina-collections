@@ -27,9 +27,3 @@ This term is currently used for features for an [individual](__DOCLINK__individu
 ### See also
 
 [featureType](__DOCLINK__featureType/), [curatorialAssessment](__DOCLINK__curatorialAssessment/), [determination](__DOCLINK__determination/)
-
-
-### Relation to other standards
-
-* DarwinCore: not assessed
-* ABCD:  not assessed

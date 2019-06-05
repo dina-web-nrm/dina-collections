@@ -1,6 +1,6 @@
 # place
 
-A defined place that has a name and is reusable, for example a country or a lake.
+A defined location that has a name and is reusable, for example a country or a lake.
 
 
 ## Short description
