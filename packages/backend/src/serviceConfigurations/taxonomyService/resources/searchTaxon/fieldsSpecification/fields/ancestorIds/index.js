@@ -11,13 +11,17 @@ const {
 const fieldPath = 'attributes.searchOnly.ancestorIds'
 const matchFilterName = 'ancestorIds'
 
-const transformation = ({ migrator, target, locals }) => {
+const transformation = ({ locals, migrator, src, target }) => {
   migrator.setValue({
     obj: target,
     path: fieldPath,
-    value: locals.acceptedTaxonNameLineage.map(taxonName => {
-      return taxonName.relationships.acceptedToTaxon.data.id
-    }),
+    value: locals.acceptedTaxonNameLineage
+      .map(taxonName => {
+        return taxonName.relationships.acceptedToTaxon.data.id
+      })
+      .filter(id => {
+        return id !== src.id
+      }),
   })
 }
 
