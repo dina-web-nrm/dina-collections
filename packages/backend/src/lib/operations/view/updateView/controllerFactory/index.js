@@ -14,6 +14,7 @@ module.exports = function updateView(options) {
       preTransformationFunction = defaultPreTransformationFunction,
       resolveRelations,
       resourceCacheMap,
+      srcRelationships,
       srcResource,
       transformationFunctions,
       warmViews,
@@ -62,6 +63,7 @@ module.exports = function updateView(options) {
       mapFunction,
       model,
       serviceInteractor,
+      srcRelationships,
       srcResource,
       warmViews,
     }).then(() => {

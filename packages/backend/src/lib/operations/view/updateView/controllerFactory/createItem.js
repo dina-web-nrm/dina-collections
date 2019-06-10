@@ -2,17 +2,28 @@ module.exports = function createItem({
   id,
   mapFunction,
   serviceInteractor,
+  srcRelationships,
   srcResource,
 }) {
+  let queryParams
+
+  if (srcRelationships) {
+    queryParams = {
+      relationships: srcRelationships,
+    }
+  } else {
+    queryParams = {
+      relationships: ['all'],
+    }
+  }
+
   return serviceInteractor
     .getOne({
       request: {
         pathParams: {
           id,
         },
-        queryParams: {
-          relationships: ['all'],
-        },
+        queryParams,
       },
 
       resource: srcResource,
