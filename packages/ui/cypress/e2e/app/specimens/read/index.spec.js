@@ -6,7 +6,7 @@ import table from './table'
 describe('Specimens read operations', () => {
   before(() => {
     cy.resetDevelopmentSqlDb()
-    cy.resetElasticSpecimenIndex()
+    cy.resetSearchSpecimenIndex()
   })
 
   form()
