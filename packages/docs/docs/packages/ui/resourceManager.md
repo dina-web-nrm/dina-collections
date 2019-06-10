@@ -27,12 +27,12 @@ resources, as well as improving the structure and readability of the code.
 ## Usage
 
 To create a new resource manager, import the `ResourceManager` component from
-[components/ResourceManager](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/index.js)
+[components/ResourceManager](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/index.js)
 and pass in the props you need to configure it as required. The configuration
 props are listed in the
-[resourceManagerConfig](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/shared/contexts/resourceManagerConfig.js)
+[resourceManagerConfig](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/shared/contexts/resourceManagerConfig.js)
 context, and in the
-[createResourceManagerWrapper](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/shared/higherOrderComponents/createResourceManagerWrapper.js),
+[createResourceManagerWrapper](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/shared/higherOrderComponents/createResourceManagerWrapper.js),
 you can see which default values are used for the configuration props that are
 optional. For example it is required to provide a specification of the table
 columns and the render methods for the different forms (create, edit, filter).
@@ -40,21 +40,21 @@ columns and the render methods for the different forms (create, edit, filter).
 Then, if you want to use it in a viewModule, you will want to use the query
 params in the URL for navigation, so export a version of the ResourceManager
 that is enhanced by the
-[createQueryState](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/higherOrderComponents/createQueryState.js)
+[createQueryState](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/higherOrderComponents/createQueryState.js)
 and
-[createNavigationState](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/higherOrderComponents/createNavigationState.js)
+[createNavigationState](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/higherOrderComponents/createNavigationState.js)
 higher order components.
 
 If you want to be able to use it in a picker, you need to use a local state for
 navigation (since it opens in a modal and should not navigate away from the
 underlying view), so export a version that uses
-[createLocalState](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/higherOrderComponents/createLocalState.js)
+[createLocalState](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/higherOrderComponents/createLocalState.js)
 instead of createQueryState.
 
 ### Example
 
 Inspect the
-[LocalityManager](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/serviceModules/locality/components/LocalityManager)
+[LocalityManager](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/serviceModules/locality/components/LocalityManager)
 folder for an example of how to use the resourceManager abstractions.
 
 | File/folder                  | Description                                                                                                    |
@@ -68,16 +68,16 @@ folder for an example of how to use the resourceManager abstractions.
 | filter                       | Form component and function for building filter query from form values                                         |
 
 In the viewModule
-[manageLocalities](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/apps/collectionsUi/viewModules/manageLocalities/Component.js)
+[manageLocalities](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/apps/collectionsUi/viewModules/manageLocalities/Component.js)
 you can see how the query-based LocalityManager is used and in
-[LocalityDropdownPickerSearch](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/serviceModules/locality/components/LocalityDropdownPickerSearch/index.js)
+[LocalityDropdownPickerSearch](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/serviceModules/locality/components/LocalityDropdownPickerSearch/index.js)
 you can see an example of creating a picker the local state-based
 LocalityManager.
 
 ## Structure
 
 The
-[index-file in components/ResourceManager](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/index.js)
+[index-file in components/ResourceManager](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/components/ResourceManager/index.js)
 is the top-level component and it renders the RowLayout. The top and bottom rows
 are only rendered if it is a [picker](#picker), whereas the middle row always
 renders the [MainColumn](#columns), which in its turn renders different content
@@ -148,13 +148,13 @@ convenience when using class components, there are also associated
 value as a prop to the composed component.
 
 The
-[resourceManagerConfig](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/contexts/resourceManagerConfig.js)
+[resourceManagerConfig](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/contexts/resourceManagerConfig.js)
 is used to provide the ResourceManager configuration props. Those will not
 (should not!) change during the ResourceManager's component lifecycle, which
 means consuming the config context will not cause any unnecessary rerendering.
 
 The
-[resourceManagerNavigation](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/contexts/resourceManagerNavigation.js)
+[resourceManagerNavigation](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/contexts/resourceManagerNavigation.js)
 is used to provide the ResourceManager navigation methods. Those will not change
 during the ResourceManager's component lifecycle, which means consuming the
 navigation context will not cause any unnecessary rerendering.
@@ -204,7 +204,7 @@ The table fetches the IDs of all the items that match the current filter and
 then fetches the attributes for the items that are currently visible in the
 table (which is an infinity-scrolling list) through the `fetchItemById` method
 provided by the
-[createBatchFetchItems](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/crud/higherOrderComponents/createBatchFetchItems.js)
+[createBatchFetchItems](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/crud/higherOrderComponents/createBatchFetchItems.js)
 HOC, using the provided `tableBatchFetchOptions`.
 
 ### tree
@@ -217,5 +217,5 @@ their child nodes).
 
 The tree fetches the root node first and when a node is expanded it fetches the
 children items to that node through the `fetchItemById` method provided by the
-[createBatchFetchItems](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/crud/higherOrderComponents/createBatchFetchItems.js)
+[createBatchFetchItems](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/coreModules/crud/higherOrderComponents/createBatchFetchItems.js)
 HOC, using the provided`treeItemFetchOptions`.

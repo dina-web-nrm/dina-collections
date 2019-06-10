@@ -30,7 +30,7 @@ keep the code clean and faster CI builds facilitates that.
 ### Build configuration
 
 The configuration of the CI builds is in
-[.travis.yml](https://github.com/DINA-Web/dina-collections/blob/master/.travis.yml)
+[.travis.yml](https://github.com/dina-web-nrm/dina-collections/blob/master/.travis.yml)
 in the repository root. Presently we have the following build stages.
 
 ```yaml
@@ -58,9 +58,9 @@ any job fails.
 
 Here are examples of real builds on Travis for:
 
-- [Push to feature branch](https://travis-ci.org/DINA-Web/dina-collections/builds/514668028)
-- [Merge into master](https://travis-ci.org/DINA-Web/dina-collections/builds/514690822)
-- [New tag](https://travis-ci.org/DINA-Web/dina-collections/builds/515082657)
+- [Push to feature branch](https://travis-ci.org/dina-web-nrm/dina-collections/builds/514668028)
+- [Merge into master](https://travis-ci.org/dina-web-nrm/dina-collections/builds/514690822)
+- [New tag](https://travis-ci.org/dina-web-nrm/dina-collections/builds/515082657)
 
 The run time is sometimes longer than the critical path, because Travis limits
 how many jobs a repository can have running concurrently, meaning that when two
@@ -77,7 +77,7 @@ job has two main parts: install and script, but the
 configured in more detail.
 
 In the scripts package there are various
-[scripts prefixed with `ci-`](https://github.com/DINA-Web/dina-collections/tree/master/packages/scripts/src/bash)
+[scripts prefixed with `ci-`](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/scripts/src/bash)
 that are applied in different parts of the job lifecycle. In `.travis.yml` we
 specify those scripts, some of them are applied to all jobs and some are
 specific to certain jobs. Then we configure each job with environment variables
@@ -95,7 +95,7 @@ We use three different kinds of tags:
 
 The `rc` and `test` scripts check that the version provided includes "rc" or
 "test" and those tags are ignored in the
-[CHANGELOG](https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md),
+[CHANGELOG](https://github.com/dina-web-nrm/dina-collections/blob/master/CHANGELOG.md),
 except when a release candidate is the latest tag.
 
 Release candidates are used to make intermediate deploys to the stage server for

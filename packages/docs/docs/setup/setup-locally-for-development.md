@@ -42,7 +42,7 @@ nvm alias default v10.15.1
 ### Clone the repository
 
 ```bash
-git clone https://github.com/DINA-Web/dina-collections.git
+git clone https://github.com/dina-web-nrm/dina-collections.git
 ```
 
 ### Move into directory
