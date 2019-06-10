@@ -27,16 +27,20 @@ const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
   isPicker: PropTypes.bool.isRequired,
+  itemId: PropTypes.string,
   recordNavigationHeight: PropTypes.number,
   recordOptionsHeight: PropTypes.number,
+  sectionId: PropTypes.string,
   tableActive: PropTypes.bool.isRequired,
   tableSettingsActive: PropTypes.bool.isRequired,
   treeActive: PropTypes.bool.isRequired,
 }
 
 const defaultProps = {
+  itemId: undefined,
   recordNavigationHeight: emToPixels(4.25),
   recordOptionsHeight: emToPixels(3.5625),
+  sectionId: undefined,
 }
 
 const MainColumn = ({
@@ -44,8 +48,10 @@ const MainColumn = ({
   createItemActive,
   editItemActive,
   isPicker,
+  itemId,
   recordNavigationHeight,
   recordOptionsHeight,
+  sectionId,
   tableActive,
   tableSettingsActive,
   treeActive,
@@ -71,7 +77,13 @@ const MainColumn = ({
         height={`${recordOptionsHeight}px`}
         style={recordOptionsBarRowStyle}
       >
-        <ResultOptionsBar itemEnabled={!isPicker} />
+        <ResultOptionsBar
+          createItemActive={createItemActive}
+          editItemActive={editItemActive}
+          itemEnabled={!isPicker}
+          tableActive={tableActive}
+          treeActive={treeActive}
+        />
       </RowLayout.Row>
       {tableActive && (
         <RowLayout.Row style={overflowAuto}>
@@ -90,12 +102,19 @@ const MainColumn = ({
       )}
       {createItemActive && (
         <RowLayout.Row style={overflowAuto}>
-          <CreateItemColumn availableHeight={bottomRowHeight} />
+          <CreateItemColumn
+            availableHeight={bottomRowHeight}
+            sectionId={sectionId}
+          />
         </RowLayout.Row>
       )}
       {editItemActive && (
         <RowLayout.Row style={overflowAuto}>
-          <EditItemColumn availableHeight={bottomRowHeight} />
+          <EditItemColumn
+            availableHeight={bottomRowHeight}
+            itemId={itemId}
+            sectionId={sectionId}
+          />
         </RowLayout.Row>
       )}
     </RowLayout>
