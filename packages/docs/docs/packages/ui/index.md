@@ -59,19 +59,19 @@ to pass through at any given time, so that the UI is not unnecessarily slow to
 update.
 
 Since some modules will always, or almost always, be needed, an app can define
-[`initialModules`](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/apps/collectionsUi/initialModules.js)
+[`initialModules`](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/apps/collectionsUi/initialModules.js)
 that will always be included in the initial load for any route.
 
 An app is essentially a nested list of routes with corresponding `viewModules`.
 Each app is defined in `src/apps` and must render the React UI to an element in
 the
-[`index.html`](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/public/index.html).
+[`index.html`](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/public/index.html).
 
 ## `apps`
 
 Currently there is only one app, called `collectionsUi`. The rendering of
 `collectionsUi` is done in its
-[`main.js`](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/apps/collectionsUi/main.js),
+[`main.js`](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/apps/collectionsUi/main.js),
 where the top-level routes are defined:
 
 ```jsx
@@ -112,7 +112,7 @@ viewModules can then specify further nested routes, as for example `App` does.
 ## `coreModules`
 
 A coreModule can have the following
-[exports](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/test/testModules/moduleSchema.json).
+[exports](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/test/testModules/moduleSchema.json).
 Currently we have the following coreModules.
 
 | Name              | Description                                                                                                                                                                                                              |
@@ -143,7 +143,7 @@ Some of the modules have additional documentation below.
 ## `serviceModules`
 
 A serviceModule can have the following
-[exports](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/test/testModules/moduleSchema.json).
+[exports](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/test/testModules/moduleSchema.json).
 Currently we have the following serviceModules.
 
 | Name        | Related resources                                                                                                             |
@@ -158,7 +158,7 @@ Currently we have the following serviceModules.
 ## `viewModules`
 
 A viewModule can have the following
-[exports](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/test/testModules/viewModuleSchema.json).
+[exports](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui/src/test/testModules/viewModuleSchema.json).
 
 The current viewModules in collectionsUi are:
 

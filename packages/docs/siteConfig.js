@@ -43,7 +43,7 @@ const siteConfig = {
   onPageNav: 'separate',
   organizationName: 'DINA',
   projectName: 'DINA',
-  repoUrl: 'https://github.com/DINA-Web/dina-collections',
+  repoUrl: 'https://github.com/dina-web-nrm/dina-collections',
   // Add custom scripts here that would be placed in <script> tags.
   scripts: ['https://buttons.github.io/buttons.js'],
   tagline: 'DINA Collections Documentation',

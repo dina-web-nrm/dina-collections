@@ -45,7 +45,7 @@ const config = {
       readKey('REACT_APP_EXTERNAL_URL_DOCS', 'https://dina-docs.nrm.se')
     ),
     githubDina: 'https://github.com/DINA-Web',
-    githubRepo: 'https://github.com/DINA-Web/dina-collections',
+    githubRepo: 'https://github.com/dina-web-nrm/dina-collections',
     style: readWindowKey(
       'REACT_APP_EXTERNAL_URL_STYLE',
       readKey('REACT_APP_EXTERNAL_URL_STYLE', 'https://dina-style.nrm.se')
