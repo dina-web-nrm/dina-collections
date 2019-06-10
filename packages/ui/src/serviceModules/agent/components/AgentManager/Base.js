@@ -26,7 +26,7 @@ const createGetNestedItemHocInput = {
 
 const relationshipsToCheckBeforeDelete = ['specimens']
 
-const sortOrder = ['attributes.name:asc']
+const sortOrder = ['attributes.fullName:asc']
 
 const buildEditItemHeaders = nestedItem => {
   if (!nestedItem) {
