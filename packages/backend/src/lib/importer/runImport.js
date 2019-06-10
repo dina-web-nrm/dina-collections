@@ -113,7 +113,7 @@ module.exports = function runImport({
       const indexOperations = [
         'searchSpecimenRebuildView',
         'searchPlaceRebuildView',
-        'searchAgentRebuildView',
+        'searchNormalizedAgentRebuildView',
         'searchStorageLocationRebuildView',
         'searchTaxonRebuildView',
         'searchTaxonNameRebuildView',
