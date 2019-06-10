@@ -7,7 +7,7 @@ sidebar_label: Repository structure
 > TODO: Add more info about the packages
 
 Here we describe the structure of the
-[DINA Collections](https://github.com/DINA-Web/dina-collections) repository.
+[DINA Collections](https://github.com/dina-web-nrm/dina-collections) repository.
 
 The repo is a monorepo, because it makes it easy to manage dependencies between
 different packages and versions: At any given time the repo's packages have to
@@ -67,38 +67,38 @@ Dockerfile.
 | scripts    |              | Contains scripts in bash and JavaScript                                                                                                                      |
 | ui         | ui           | Contains code for the ui service                                                                                                                             |
 
-### [Backend](https://github.com/DINA-Web/dina-collections/tree/master/packages/backend)
+### [Backend](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/backend)
 
-[File tree](https://github.com/DINA-Web/dina-collections/blob/master/packages/backend/tree.md)
+[File tree](https://github.com/dina-web-nrm/dina-collections/blob/master/packages/backend/tree.md)
 
 The backend includes different API services, with each service owning its own
 data SQL schema needs. There are also different types of workers that do
 different jobs. The api image is used both to start the API services and
 workers.
 
-### [Common](https://github.com/DINA-Web/dina-collections/tree/master/packages/common)
+### [Common](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/common)
 
-[File tree](https://github.com/DINA-Web/dina-collections/blob/master/packages/common/tree.md)
+[File tree](https://github.com/dina-web-nrm/dina-collections/blob/master/packages/common/tree.md)
 
-### [Style](https://github.com/DINA-Web/dina-collections/tree/master/packages/style)
+### [Style](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/style)
 
-### [Docs](https://github.com/DINA-Web/dina-collections/tree/master/packages/docs)
+### [Docs](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/docs)
 
-### [Keycloak](https://github.com/DINA-Web/dina-collections/tree/master/packages/keycloak)
+### [Keycloak](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/keycloak)
 
-### [Migrations](https://github.com/DINA-Web/dina-collections/tree/master/packages/migrations)
+### [Migrations](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/migrations)
 
 The migrations package imports the backend package and collects the SQL schema
 requirements from the services. The migrations container is used to initiate
 import of data and rebuilds of the search index, as well as database migrations.
 
-### [Models](https://github.com/DINA-Web/dina-collections/tree/master/packages/models)
+### [Models](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/models)
 
-### [Proxy](https://github.com/DINA-Web/dina-collections/tree/master/packages/proxy)
+### [Proxy](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/proxy)
 
 The proxy is mounted as a docker volume.
 
-### [Scripts](https://github.com/DINA-Web/dina-collections/tree/master/packages/scripts)
+### [Scripts](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/scripts)
 
 The scripts package could be considered the backend of the CLI. Some of the
 areas that the scripts cover are:
@@ -109,6 +109,6 @@ areas that the scripts cover are:
 
 All scripts should be executed from the root folder.
 
-### [Ui](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui)
+### [Ui](https://github.com/dina-web-nrm/dina-collections/tree/master/packages/ui)
 
-[File tree](https://github.com/DINA-Web/dina-collections/blob/master/packages/ui/tree.md)
+[File tree](https://github.com/dina-web-nrm/dina-collections/blob/master/packages/ui/tree.md)
