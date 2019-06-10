@@ -154,19 +154,22 @@ const TreeView = ({
         onClickRow={onClickRow}
         onToggleRow={onToggleRow}
         resource={resource}
+        rowNumber={index + 1}
         {...treeItemFetchOptions}
       />
     )
   }
 
   return (
-    <ReactList
-      itemRenderer={itemRenderer}
-      itemsRenderer={itemsRenderer}
-      length={treeListItems.length}
-      ref={list}
-      type="uniform"
-    />
+    <div data-testid="tree">
+      <ReactList
+        itemRenderer={itemRenderer}
+        itemsRenderer={itemsRenderer}
+        length={treeListItems.length}
+        ref={list}
+        type="uniform"
+      />
+    </div>
   )
 }
 
