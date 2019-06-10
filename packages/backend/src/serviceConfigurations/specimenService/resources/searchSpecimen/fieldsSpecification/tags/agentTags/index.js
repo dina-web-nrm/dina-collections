@@ -19,7 +19,7 @@ const key = 'agentTags'
 const resource = 'agentTag'
 const tagValueAggregationName = 'aggregateAgentTagValues'
 const tagTypeAggregationName = 'aggregateAgentTagTypes'
-const searchFilterName = 'searchAgentTags'
+const searchFilterName = 'searchNormalizedAgentTags'
 const matchFilterName = 'matchAgentTags'
 
 const delimiter = 'ddaadd'

@@ -2,7 +2,7 @@ import createMultipleSearchTagsSpecification from 'coreModules/search/utilities/
 
 export default createMultipleSearchTagsSpecification({
   matchFilterFunctionName: 'matchAgentTags',
-  searchFilterFunctionName: 'searchAgentTags',
+  searchFilterFunctionName: 'searchNormalizedAgentTags',
   sectionName: 'agent',
   tagTypeAggregationFunctionName: 'aggregateAgentTagTypes',
   tagValuesAggregationFunctionName: 'aggregateAgentTagValues',

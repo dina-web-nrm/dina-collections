@@ -20,7 +20,7 @@ const {
 
 const aggregationSpecification = require('./aggregationSpecification')
 
-const resource = 'searchAgent'
+const resource = 'searchNormalizedAgent'
 
 const sortableFields = extractSortableFields({ fieldsSpecification })
 const selectableFields = extractSelectableFields({ fieldsSpecification })
@@ -28,7 +28,7 @@ const selectableFields = extractSelectableFields({ fieldsSpecification })
 module.exports = {
   model: {
     mappingSpecification,
-    name: 'searchAgent',
+    name: 'searchNormalizedAgent',
     rebuildStrategy: 'swap',
     type: 'elasticsearchDocumentModel',
   },
