@@ -1090,14 +1090,14 @@
         ]
       }
     },
-    "/api/agent/v01/searchAgents/{id}": {
+    "/api/agent/v01/searchNormalizedAgents/{id}": {
       "get": {
-        "operationId": "searchAgentGetOne",
+        "operationId": "searchNormalizedAgentGetOne",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "searchAgent id",
+            "description": "searchNormalizedAgent id",
             "example": "1",
             "required": true,
             "schema": {
@@ -1194,7 +1194,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentGetOneResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentGetOneResponse"
                 }
               }
             },
@@ -1236,18 +1236,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find searchAgent by id",
+        "summary": "Find searchNormalizedAgent by id",
         "tags": [
           "agentService"
         ]
       },
       "delete": {
-        "operationId": "searchAgentDel",
+        "operationId": "searchNormalizedAgentDel",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "searchAgent id",
+            "description": "searchNormalizedAgent id",
             "example": "1",
             "required": true,
             "schema": {
@@ -1260,7 +1260,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentDelResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentDelResponse"
                 }
               }
             },
@@ -1312,21 +1312,21 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Deletes searchAgent",
+        "summary": "Deletes searchNormalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/searchAgents/actions/query": {
+    "/api/agent/v01/searchNormalizedAgents/actions/query": {
       "post": {
-        "operationId": "searchAgentQuery",
+        "operationId": "searchNormalizedAgentQuery",
         "parameters": [],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/searchAgentQueryRequest"
+                "$ref": "#/components/schemas/searchNormalizedAgentQueryRequest"
               }
             }
           },
@@ -1337,7 +1337,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentQueryResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentQueryResponse"
                 }
               }
             },
@@ -1369,15 +1369,15 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Query searchAgent",
+        "summary": "Query searchNormalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/searchAgents": {
+    "/api/agent/v01/searchNormalizedAgents": {
       "get": {
-        "operationId": "searchAgentGetMany",
+        "operationId": "searchNormalizedAgentGetMany",
         "parameters": [
           {
             "in": "query",
@@ -1614,7 +1614,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentGetManyResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentGetManyResponse"
                 }
               }
             },
@@ -1646,22 +1646,22 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find searchAgents",
+        "summary": "Find searchNormalizedAgents",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/searchAgents/actions/emptyView": {
+    "/api/agent/v01/searchNormalizedAgents/actions/emptyView": {
       "post": {
-        "operationId": "searchAgentEmptyView",
+        "operationId": "searchNormalizedAgentEmptyView",
         "parameters": [],
         "responses": {
           "200": {
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentEmptyViewResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentEmptyViewResponse"
                 }
               }
             },
@@ -1693,15 +1693,15 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Empty view for resource searchAgent",
+        "summary": "Empty view for resource searchNormalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/searchAgents/actions/updateView": {
+    "/api/agent/v01/searchNormalizedAgents/actions/updateView": {
       "post": {
-        "operationId": "searchAgentUpdateView",
+        "operationId": "searchNormalizedAgentUpdateView",
         "parameters": [
           {
             "in": "query",
@@ -1717,7 +1717,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/searchAgentUpdateViewRequest"
+                "$ref": "#/components/schemas/searchNormalizedAgentUpdateViewRequest"
               }
             }
           },
@@ -1728,7 +1728,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentUpdateViewResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentUpdateViewResponse"
                 }
               }
             },
@@ -1760,15 +1760,15 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Rebuild view for resource searchAgent",
+        "summary": "Rebuild view for resource searchNormalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/searchAgents/actions/rebuildView": {
+    "/api/agent/v01/searchNormalizedAgents/actions/rebuildView": {
       "post": {
-        "operationId": "searchAgentRebuildView",
+        "operationId": "searchNormalizedAgentRebuildView",
         "parameters": [
           {
             "in": "query",
@@ -1803,7 +1803,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentRebuildViewResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentRebuildViewResponse"
                 }
               }
             },
@@ -1835,22 +1835,22 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Rebuild view for resource searchAgent",
+        "summary": "Rebuild view for resource searchNormalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/searchAgents/meta/viewMeta": {
+    "/api/agent/v01/searchNormalizedAgents/meta/viewMeta": {
       "get": {
-        "operationId": "searchAgentGetViewMeta",
+        "operationId": "searchNormalizedAgentGetViewMeta",
         "parameters": [],
         "responses": {
           "200": {
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/searchAgentGetViewMetaResponse"
+                  "$ref": "#/components/schemas/searchNormalizedAgentGetViewMetaResponse"
                 }
               }
             },
@@ -1872,7 +1872,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Get view meta for resource searchAgent",
+        "summary": "Get view meta for resource searchNormalizedAgent",
         "tags": [
           "agentService"
         ]
@@ -12148,7 +12148,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***rangeAge*** <br/> Match for attributes.searchOnlyFields.searchAge <br/> <br/>  ***searchDates*** <br/> Search date <br/> <br/>  ***matchRemarksSrcField*** <br/> Match for attributes.searchOnlyFields.remarksObject.srcFields <br/> <br/>  ***searchRemarks*** <br/> Query string search <br/> <br/>  ***relatedResources*** <br/> Filter based on relatedResources <br/> <br/>  ***matchAgentTags*** <br/> Search attributes.tags.agentTags <br/> <br/>  ***searchAgentTags*** <br/> Search attributes.tags.agentTags <br/> <br/>  ***matchAppearanceTags*** <br/> Search attributes.tags.appearanceTags <br/> <br/>  ***searchAppearanceTags*** <br/> Search attributes.tags.appearanceTags <br/> <br/>  ***matchAgeStageTags*** <br/> Search attributes.tags.ageStageTags <br/> <br/>  ***searchAgeStageTags*** <br/> Search attributes.tags.ageStageTags <br/> <br/>  ***matchBoneTags*** <br/> Search attributes.tags.boneTags <br/> <br/>  ***searchBoneTags*** <br/> Search attributes.tags.boneTags <br/> <br/>  ***matchConditionTags*** <br/> Search attributes.tags.conditionTags <br/> <br/>  ***searchConditionTags*** <br/> Search attributes.tags.conditionTags <br/> <br/>  ***matchDateTags*** <br/> Search attributes.tags.dateTags <br/> <br/>  ***searchDateTags*** <br/> Search attributes.tags.dateTags <br/> <br/>  ***matchIdentifierTags*** <br/> Search attributes.tags.identifierTags <br/> <br/>  ***searchIdentifierTags*** <br/> Search attributes.tags.identifierTags <br/> <br/>  ***matchLengthTags*** <br/> Match for attributes.tags.lengthTags <br/> <br/>  ***rangeLength*** <br/> Match for attributes.tags.lengthTags <br/> <br/>  ***matchLocationTags*** <br/> Search attributes.tags.locationTags <br/> <br/>  ***searchLocationTags*** <br/> Search attributes.tags.locationTags <br/> <br/>  ***matchOtherPreparationTags*** <br/> Search attributes.tags.otherPreparationTags <br/> <br/>  ***searchOtherPreparationTags*** <br/> Search attributes.tags.otherPreparationTags <br/> <br/>  ***matchHigherGeographyTags*** <br/> Search attributes.tags.higherGeographyTags <br/> <br/>  ***searchHigherGeographyTags*** <br/> Search attributes.tags.higherGeographyTags <br/> <br/>  ***matchSelectiveBreedingTags*** <br/> Search attributes.tags.selectiveBreedingTags <br/> <br/>  ***searchSelectiveBreedingTags*** <br/> Search attributes.tags.selectiveBreedingTags <br/> <br/>  ***matchSexTags*** <br/> Search attributes.tags.sexTags <br/> <br/>  ***searchSexTags*** <br/> Search attributes.tags.sexTags <br/> <br/>  ***matchSkeletonTags*** <br/> Search attributes.tags.skeletonTags <br/> <br/>  ***searchSkeletonTags*** <br/> Search attributes.tags.skeletonTags <br/> <br/>  ***matchSkinTags*** <br/> Search attributes.tags.skinTags <br/> <br/>  ***searchSkinTags*** <br/> Search attributes.tags.skinTags <br/> <br/>  ***matchStorageLocationTags*** <br/> Search attributes.tags.storageLocationTags <br/> <br/>  ***searchStorageLocationTags*** <br/> Search attributes.tags.storageLocationTags <br/> <br/>  ***matchTaxonomyTags*** <br/> Search attributes.tags.taxonomyTags <br/> <br/>  ***searchTaxonomyTags*** <br/> Search attributes.tags.taxonomyTags <br/> <br/>  ***matchWeightTags*** <br/> Match for attributes.tags.weightTags <br/> <br/>  ***rangeWeight*** <br/> Match for attributes.tags.weightTags <br/> <br/>  ***matchWetPreparationTags*** <br/> Search attributes.tags.wetPreparationTags <br/> <br/>  ***searchWetPreparationTags*** <br/> Search attributes.tags.wetPreparationTags <br/> <br/>  ***matchPhysicalObjectStorageLocationGroups*** <br/> Match for attributes.physicalObjectStorageLocationGroups <br/> <br/>  ***matchCuratorialTaxonRank*** <br/> Match for attributes.taxonomyRank <br/>\n\n  \n  <br/>\n\n  \n**Available aggregation functions:**\n***\n<br/>\n\n ***aggregateRemarkSrcFields*** <br/> Aggregation for: attributes.searchOnlyFields.remarksObject.srcFields <br/> <br/>  ***aggregateRemarksTextPreview*** <br/> Text preview aggregation for: remarkTags <br/> <br/>  ***aggregateAgentTagTypes*** <br/> Aggregation for: attributes.tags.agentTags <br/> <br/>  ***aggregateAgentTagValues*** <br/> Aggregation for: attributes.tags.agentTags <br/> <br/>  ***aggregateAppearanceTags*** <br/> Aggregation for: attributes.tags.appearanceTags <br/> <br/>  ***aggregateAgeStageTags*** <br/> Aggregation for: attributes.tags.ageStageTags <br/> <br/>  ***aggregateBoneTags*** <br/> Aggregation for: attributes.tags.boneTags <br/> <br/>  ***aggregateConditionTags*** <br/> Aggregation for: attributes.tags.conditionTags <br/> <br/>  ***aggregateDateTags*** <br/> Aggregation for: attributes.tags.dateTags <br/> <br/>  ***aggregateIdentifierTagTypes*** <br/> Aggregation for: attributes.tags.identifierTags <br/> <br/>  ***aggregateIdentifierTagValues*** <br/> Aggregation for: attributes.tags.identifierTags <br/> <br/>  ***aggregateLengthTags*** <br/> Aggregation for: attributes.tags.lengthTags <br/> <br/>  ***aggregateLocationTagTypes*** <br/> Aggregation for: attributes.tags.locationTags <br/> <br/>  ***aggregateLocationTagValues*** <br/> Aggregation for: attributes.tags.locationTags <br/> <br/>  ***aggregateOtherPreparationTags*** <br/> Aggregation for: attributes.tags.otherPreparationTags <br/> <br/>  ***aggregateHigherGeographyTagTypes*** <br/> Aggregation for: attributes.tags.higherGeographyTags <br/> <br/>  ***aggregateHigherGeographyTagValues*** <br/> Aggregation for: attributes.tags.higherGeographyTags <br/> <br/>  ***aggregateSelectiveBreedingTags*** <br/> Aggregation for: attributes.tags.selectiveBreedingTags <br/> <br/>  ***aggregateSexTags*** <br/> Aggregation for: attributes.tags.sexTags <br/> <br/>  ***aggregateSkeletonTags*** <br/> Aggregation for: attributes.tags.skeletonTags <br/> <br/>  ***aggregateSkinTags*** <br/> Aggregation for: attributes.tags.skinTags <br/> <br/>  ***aggregateStorageLocationTagTypes*** <br/> Aggregation for: attributes.tags.storageLocationTags <br/> <br/>  ***aggregateStorageLocationTagValues*** <br/> Aggregation for: attributes.tags.storageLocationTags <br/> <br/>  ***aggregateTaxonomyTagTypes*** <br/> Aggregation for: attributes.tags.taxonomyTags <br/> <br/>  ***aggregateTaxonomyTagValues*** <br/> Aggregation for: attributes.tags.taxonomyTags <br/> <br/>  ***aggregateWeightTags*** <br/> Aggregation for: attributes.tags.weightTags <br/> <br/>  ***aggregateWetPreparationTags*** <br/> Aggregation for: attributes.tags.wetPreparationTags <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***rangeAge*** <br/> Match for attributes.searchOnlyFields.searchAge <br/> <br/>  ***searchDates*** <br/> Search date <br/> <br/>  ***matchRemarksSrcField*** <br/> Match for attributes.searchOnlyFields.remarksObject.srcFields <br/> <br/>  ***searchRemarks*** <br/> Query string search <br/> <br/>  ***relatedResources*** <br/> Filter based on relatedResources <br/> <br/>  ***matchAgentTags*** <br/> Search attributes.tags.agentTags <br/> <br/>  ***searchNormalizedAgentTags*** <br/> Search attributes.tags.agentTags <br/> <br/>  ***matchAppearanceTags*** <br/> Search attributes.tags.appearanceTags <br/> <br/>  ***searchAppearanceTags*** <br/> Search attributes.tags.appearanceTags <br/> <br/>  ***matchAgeStageTags*** <br/> Search attributes.tags.ageStageTags <br/> <br/>  ***searchAgeStageTags*** <br/> Search attributes.tags.ageStageTags <br/> <br/>  ***matchBoneTags*** <br/> Search attributes.tags.boneTags <br/> <br/>  ***searchBoneTags*** <br/> Search attributes.tags.boneTags <br/> <br/>  ***matchConditionTags*** <br/> Search attributes.tags.conditionTags <br/> <br/>  ***searchConditionTags*** <br/> Search attributes.tags.conditionTags <br/> <br/>  ***matchDateTags*** <br/> Search attributes.tags.dateTags <br/> <br/>  ***searchDateTags*** <br/> Search attributes.tags.dateTags <br/> <br/>  ***matchIdentifierTags*** <br/> Search attributes.tags.identifierTags <br/> <br/>  ***searchIdentifierTags*** <br/> Search attributes.tags.identifierTags <br/> <br/>  ***matchLengthTags*** <br/> Match for attributes.tags.lengthTags <br/> <br/>  ***rangeLength*** <br/> Match for attributes.tags.lengthTags <br/> <br/>  ***matchLocationTags*** <br/> Search attributes.tags.locationTags <br/> <br/>  ***searchLocationTags*** <br/> Search attributes.tags.locationTags <br/> <br/>  ***matchOtherPreparationTags*** <br/> Search attributes.tags.otherPreparationTags <br/> <br/>  ***searchOtherPreparationTags*** <br/> Search attributes.tags.otherPreparationTags <br/> <br/>  ***matchHigherGeographyTags*** <br/> Search attributes.tags.higherGeographyTags <br/> <br/>  ***searchHigherGeographyTags*** <br/> Search attributes.tags.higherGeographyTags <br/> <br/>  ***matchSelectiveBreedingTags*** <br/> Search attributes.tags.selectiveBreedingTags <br/> <br/>  ***searchSelectiveBreedingTags*** <br/> Search attributes.tags.selectiveBreedingTags <br/> <br/>  ***matchSexTags*** <br/> Search attributes.tags.sexTags <br/> <br/>  ***searchSexTags*** <br/> Search attributes.tags.sexTags <br/> <br/>  ***matchSkeletonTags*** <br/> Search attributes.tags.skeletonTags <br/> <br/>  ***searchSkeletonTags*** <br/> Search attributes.tags.skeletonTags <br/> <br/>  ***matchSkinTags*** <br/> Search attributes.tags.skinTags <br/> <br/>  ***searchSkinTags*** <br/> Search attributes.tags.skinTags <br/> <br/>  ***matchStorageLocationTags*** <br/> Search attributes.tags.storageLocationTags <br/> <br/>  ***searchStorageLocationTags*** <br/> Search attributes.tags.storageLocationTags <br/> <br/>  ***matchTaxonomyTags*** <br/> Search attributes.tags.taxonomyTags <br/> <br/>  ***searchTaxonomyTags*** <br/> Search attributes.tags.taxonomyTags <br/> <br/>  ***matchWeightTags*** <br/> Match for attributes.tags.weightTags <br/> <br/>  ***rangeWeight*** <br/> Match for attributes.tags.weightTags <br/> <br/>  ***matchWetPreparationTags*** <br/> Search attributes.tags.wetPreparationTags <br/> <br/>  ***searchWetPreparationTags*** <br/> Search attributes.tags.wetPreparationTags <br/> <br/>  ***matchPhysicalObjectStorageLocationGroups*** <br/> Match for attributes.physicalObjectStorageLocationGroups <br/> <br/>  ***matchCuratorialTaxonRank*** <br/> Match for attributes.taxonomyRank <br/>\n\n  \n  <br/>\n\n  \n**Available aggregation functions:**\n***\n<br/>\n\n ***aggregateRemarkSrcFields*** <br/> Aggregation for: attributes.searchOnlyFields.remarksObject.srcFields <br/> <br/>  ***aggregateRemarksTextPreview*** <br/> Text preview aggregation for: remarkTags <br/> <br/>  ***aggregateAgentTagTypes*** <br/> Aggregation for: attributes.tags.agentTags <br/> <br/>  ***aggregateAgentTagValues*** <br/> Aggregation for: attributes.tags.agentTags <br/> <br/>  ***aggregateAppearanceTags*** <br/> Aggregation for: attributes.tags.appearanceTags <br/> <br/>  ***aggregateAgeStageTags*** <br/> Aggregation for: attributes.tags.ageStageTags <br/> <br/>  ***aggregateBoneTags*** <br/> Aggregation for: attributes.tags.boneTags <br/> <br/>  ***aggregateConditionTags*** <br/> Aggregation for: attributes.tags.conditionTags <br/> <br/>  ***aggregateDateTags*** <br/> Aggregation for: attributes.tags.dateTags <br/> <br/>  ***aggregateIdentifierTagTypes*** <br/> Aggregation for: attributes.tags.identifierTags <br/> <br/>  ***aggregateIdentifierTagValues*** <br/> Aggregation for: attributes.tags.identifierTags <br/> <br/>  ***aggregateLengthTags*** <br/> Aggregation for: attributes.tags.lengthTags <br/> <br/>  ***aggregateLocationTagTypes*** <br/> Aggregation for: attributes.tags.locationTags <br/> <br/>  ***aggregateLocationTagValues*** <br/> Aggregation for: attributes.tags.locationTags <br/> <br/>  ***aggregateOtherPreparationTags*** <br/> Aggregation for: attributes.tags.otherPreparationTags <br/> <br/>  ***aggregateHigherGeographyTagTypes*** <br/> Aggregation for: attributes.tags.higherGeographyTags <br/> <br/>  ***aggregateHigherGeographyTagValues*** <br/> Aggregation for: attributes.tags.higherGeographyTags <br/> <br/>  ***aggregateSelectiveBreedingTags*** <br/> Aggregation for: attributes.tags.selectiveBreedingTags <br/> <br/>  ***aggregateSexTags*** <br/> Aggregation for: attributes.tags.sexTags <br/> <br/>  ***aggregateSkeletonTags*** <br/> Aggregation for: attributes.tags.skeletonTags <br/> <br/>  ***aggregateSkinTags*** <br/> Aggregation for: attributes.tags.skinTags <br/> <br/>  ***aggregateStorageLocationTagTypes*** <br/> Aggregation for: attributes.tags.storageLocationTags <br/> <br/>  ***aggregateStorageLocationTagValues*** <br/> Aggregation for: attributes.tags.storageLocationTags <br/> <br/>  ***aggregateTaxonomyTagTypes*** <br/> Aggregation for: attributes.tags.taxonomyTags <br/> <br/>  ***aggregateTaxonomyTagValues*** <br/> Aggregation for: attributes.tags.taxonomyTags <br/> <br/>  ***aggregateWeightTags*** <br/> Aggregation for: attributes.tags.weightTags <br/> <br/>  ***aggregateWetPreparationTags*** <br/> Aggregation for: attributes.tags.wetPreparationTags <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -12283,7 +12283,7 @@
           },
           {
             "in": "query",
-            "name": "filter[searchAgentTags]",
+            "name": "filter[searchNormalizedAgentTags]",
             "description": "Search attributes.tags.agentTags",
             "required": false,
             "schema": {
@@ -23283,7 +23283,7 @@
         "x-modelType": "model",
         "x-summary": "An association of an agent to an organization."
       },
-      "searchAgent": {
+      "searchNormalizedAgent": {
         "additionalProperties": true,
         "properties": {},
         "x-category": "agentService",
@@ -25969,7 +25969,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentQueryRequest": {
+      "searchNormalizedAgentQueryRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -26104,7 +26104,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentUpdateViewRequest": {
+      "searchNormalizedAgentUpdateViewRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -34938,7 +34938,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentGetOneResponse": {
+      "searchNormalizedAgentGetOneResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -34947,14 +34947,14 @@
                 "additionalProperties": false,
                 "properties": {
                   "attributes": {
-                    "$ref": "#/components/schemas/searchAgent"
+                    "$ref": "#/components/schemas/searchNormalizedAgent"
                   },
                   "id": {
                     "example": "1234",
                     "type": "string"
                   },
                   "type": {
-                    "default": "searchAgent",
+                    "default": "searchNormalizedAgent",
                     "type": "string"
                   }
                 },
@@ -34973,7 +34973,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents/{id}",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -34992,7 +34992,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentQueryResponse": {
+      "searchNormalizedAgentQueryResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -35024,7 +35024,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents/actions/query",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/query",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -35043,7 +35043,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentDelResponse": {
+      "searchNormalizedAgentDelResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -35052,14 +35052,14 @@
                 "additionalProperties": false,
                 "properties": {
                   "attributes": {
-                    "$ref": "#/components/schemas/searchAgent"
+                    "$ref": "#/components/schemas/searchNormalizedAgent"
                   },
                   "id": {
                     "example": "1234",
                     "type": "string"
                   },
                   "type": {
-                    "default": "searchAgent",
+                    "default": "searchNormalizedAgent",
                     "type": "string"
                   }
                 },
@@ -35078,7 +35078,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents/{id}",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -35097,7 +35097,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentGetManyResponse": {
+      "searchNormalizedAgentGetManyResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -35106,14 +35106,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/searchAgent"
+                  "$ref": "#/components/schemas/searchNormalizedAgent"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "searchAgent",
+                  "default": "searchNormalizedAgent",
                   "type": "string"
                 }
               },
@@ -35129,7 +35129,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -35148,7 +35148,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentEmptyViewResponse": {
+      "searchNormalizedAgentEmptyViewResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -35183,7 +35183,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents/actions/emptyView",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/emptyView",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -35201,7 +35201,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentUpdateViewResponse": {
+      "searchNormalizedAgentUpdateViewResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -35236,7 +35236,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents/actions/updateView",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/updateView",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -35254,7 +35254,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentRebuildViewResponse": {
+      "searchNormalizedAgentRebuildViewResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -35289,7 +35289,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents/actions/rebuildView",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/rebuildView",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -35307,7 +35307,7 @@
         "x-summary": "",
         "description": ""
       },
-      "searchAgentGetViewMetaResponse": {
+      "searchNormalizedAgentGetViewMetaResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -35342,7 +35342,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/searchAgents/meta/viewMeta",
+                "example": "https://domain/api/agent/v01/searchNormalizedAgents/meta/viewMeta",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
