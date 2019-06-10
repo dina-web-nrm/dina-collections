@@ -9,7 +9,6 @@ import createLog from 'utilities/log'
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
-import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import updateUserPreferenceAC from 'coreModules/user/actionCreators/updateUserPreference'
 import userSelectors from 'coreModules/user/globalSelectors'
 
@@ -121,14 +120,6 @@ const createTableWrapper = () => ComposedComponent => {
         this
       )
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
-
-      this.shortcuts = [
-        {
-          command: 'f',
-          description: 'Show/hide filters',
-          onPress: props.toggleFilter,
-        },
-      ]
     }
 
     getSearchInProgress() {
@@ -224,24 +215,17 @@ const createTableWrapper = () => ComposedComponent => {
 
     render() {
       log.render()
-      const { managerScope } = this.props
 
       return (
-        <React.Fragment>
-          <KeyboardShortcuts
-            activeInLayer={managerScope}
-            shortcuts={this.shortcuts}
-          />
-          <ComposedComponent
-            {...this.props}
-            fetchTableItems={this.fetchTableItems}
-            getTableWidth={getTableWidth}
-            onSaveTableColumnsToShow={this.handleSaveTableColumnsToShow}
-            onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
-            onShowAllRecords={this.handleShowAllRecords}
-            onToggleRow={this.handleToggleRow}
-          />
-        </React.Fragment>
+        <ComposedComponent
+          {...this.props}
+          fetchTableItems={this.fetchTableItems}
+          getTableWidth={getTableWidth}
+          onSaveTableColumnsToShow={this.handleSaveTableColumnsToShow}
+          onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
+          onShowAllRecords={this.handleShowAllRecords}
+          onToggleRow={this.handleToggleRow}
+        />
       )
     }
   }
