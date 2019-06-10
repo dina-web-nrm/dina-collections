@@ -16,7 +16,7 @@ const { createIndexHook } = require('../../../../../lib/data/hooks')
 const indexHook = createIndexHook({
   createIndexJob,
   rebuildInProgress,
-  resource: 'searchAgent',
+  resource: 'searchNormalizedAgent',
 })
 
 exports.create = [
