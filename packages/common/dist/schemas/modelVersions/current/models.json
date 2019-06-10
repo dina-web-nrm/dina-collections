@@ -169,14 +169,14 @@
     "description": "",
     "id": "role"
   },
-  "searchAgent": {
+  "searchNormalizedAgent": {
     "additionalProperties": true,
     "properties": {},
     "x-category": "agentService",
     "x-modelType": "model",
     "x-summary": "",
     "description": "",
-    "id": "searchAgent"
+    "id": "searchNormalizedAgent"
   },
   "user": {
     "additionalProperties": false,
@@ -3746,7 +3746,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentGetOneResponse": {
+  "searchNormalizedAgentGetOneResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3755,14 +3755,14 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "searchAgent"
+                "$ref": "searchNormalizedAgent"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "searchAgent",
+                "default": "searchNormalizedAgent",
                 "type": "string"
               }
             },
@@ -3781,7 +3781,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents/{id}",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3800,7 +3800,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentQueryResponse": {
+  "searchNormalizedAgentQueryResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3832,7 +3832,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents/actions/query",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/query",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3851,7 +3851,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentDelResponse": {
+  "searchNormalizedAgentDelResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3860,14 +3860,14 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "searchAgent"
+                "$ref": "searchNormalizedAgent"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "searchAgent",
+                "default": "searchNormalizedAgent",
                 "type": "string"
               }
             },
@@ -3886,7 +3886,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents/{id}",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3905,7 +3905,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentGetManyResponse": {
+  "searchNormalizedAgentGetManyResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3914,14 +3914,14 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "searchAgent"
+              "$ref": "searchNormalizedAgent"
             },
             "id": {
               "example": "1234",
               "type": "string"
             },
             "type": {
-              "default": "searchAgent",
+              "default": "searchNormalizedAgent",
               "type": "string"
             }
           },
@@ -3937,7 +3937,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3956,7 +3956,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentEmptyViewResponse": {
+  "searchNormalizedAgentEmptyViewResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3991,7 +3991,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents/actions/emptyView",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/emptyView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -4009,7 +4009,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentUpdateViewResponse": {
+  "searchNormalizedAgentUpdateViewResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -4044,7 +4044,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents/actions/updateView",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/updateView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -4062,7 +4062,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentRebuildViewResponse": {
+  "searchNormalizedAgentRebuildViewResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -4097,7 +4097,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents/actions/rebuildView",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents/actions/rebuildView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -4115,7 +4115,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentGetViewMetaResponse": {
+  "searchNormalizedAgentGetViewMetaResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -4150,7 +4150,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/searchAgents/meta/viewMeta",
+            "example": "https://domain/api/agent/v01/searchNormalizedAgents/meta/viewMeta",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -24351,7 +24351,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentQueryRequest": {
+  "searchNormalizedAgentQueryRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -24385,9 +24385,16 @@
                 "description": "When provided specified fields will be excluded (applied after include)",
                 "items": {
                   "enum": [
-                    "id",
+                    "attributes.abbreviation",
+                    "attributes.additionalName",
+                    "attributes.agentType",
+                    "attributes.alsoKnownAs",
+                    "attributes.disambiguatingDescription",
+                    "attributes.familyName",
                     "attributes.fullName",
-                    "attributes.agentType"
+                    "attributes.givenName",
+                    "id",
+                    "attributes.remarks"
                   ],
                   "type": "string"
                 },
@@ -24397,9 +24404,16 @@
                 "description": "When provided only specified fields will be returned in response",
                 "items": {
                   "enum": [
-                    "id",
+                    "attributes.abbreviation",
+                    "attributes.additionalName",
+                    "attributes.agentType",
+                    "attributes.alsoKnownAs",
+                    "attributes.disambiguatingDescription",
+                    "attributes.familyName",
                     "attributes.fullName",
-                    "attributes.agentType"
+                    "attributes.givenName",
+                    "id",
+                    "attributes.remarks"
                   ],
                   "type": "string"
                 },
@@ -24438,12 +24452,26 @@
                 "items": {
                   "enum": [
                     "relevance",
-                    "id:asc",
-                    "id:desc",
+                    "attributes.abbreviation:asc",
+                    "attributes.abbreviation:desc",
+                    "attributes.additionalName:asc",
+                    "attributes.additionalName:desc",
+                    "attributes.agentType:asc",
+                    "attributes.agentType:desc",
+                    "attributes.alsoKnownAs:asc",
+                    "attributes.alsoKnownAs:desc",
+                    "attributes.disambiguatingDescription:asc",
+                    "attributes.disambiguatingDescription:desc",
+                    "attributes.familyName:asc",
+                    "attributes.familyName:desc",
                     "attributes.fullName:asc",
                     "attributes.fullName:desc",
-                    "attributes.agentType:asc",
-                    "attributes.agentType:desc"
+                    "attributes.givenName:asc",
+                    "attributes.givenName:desc",
+                    "id:asc",
+                    "id:desc",
+                    "attributes.remarks:asc",
+                    "attributes.remarks:desc"
                   ],
                   "type": "string"
                 },
@@ -24458,7 +24486,7 @@
     "x-summary": "",
     "description": ""
   },
-  "searchAgentUpdateViewRequest": {
+  "searchNormalizedAgentUpdateViewRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
