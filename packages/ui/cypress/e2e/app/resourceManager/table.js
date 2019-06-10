@@ -1,5 +1,9 @@
 export default () =>
   describe('table', () => {
+    before(() => {
+      cy.resetSearchSpecimenIndex()
+    })
+
     beforeEach(() => {
       cy.visit('/app/specimens/mammals')
       cy.get('[data-testid="infinityTableHeader"', {
