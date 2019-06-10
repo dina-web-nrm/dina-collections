@@ -239,6 +239,22 @@ const config = {
         },
       ],
     },
+    searchNormalizedAgent: {
+      operations: [
+        {
+          operationId: 'searchNormalizedAgentGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'searchNormalizedAgentGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'searchNormalizedAgentQuery',
+          type: 'query',
+        },
+      ],
+    },
     searchPlace: {
       operations: [
         {
@@ -267,6 +283,54 @@ const config = {
         },
         {
           operationId: 'searchSpecimenQuery',
+          type: 'query',
+        },
+      ],
+    },
+    searchStorageLocation: {
+      operations: [
+        {
+          operationId: 'searchStorageLocationGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'searchStorageLocationGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'searchStorageLocationQuery',
+          type: 'query',
+        },
+      ],
+    },
+    searchTaxon: {
+      operations: [
+        {
+          operationId: 'searchTaxonGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'searchTaxonGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'searchTaxonQuery',
+          type: 'query',
+        },
+      ],
+    },
+    searchTaxonName: {
+      operations: [
+        {
+          operationId: 'searchTaxonNameGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'searchTaxonNameGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'searchTaxonNameQuery',
           type: 'query',
         },
       ],
