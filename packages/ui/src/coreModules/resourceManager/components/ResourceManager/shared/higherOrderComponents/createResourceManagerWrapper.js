@@ -80,6 +80,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     sortOrder: PropTypes.array,
     tableBatchFetchOptions: PropTypes.object,
     tableColumnSpecifications: PropTypes.array.isRequired,
+    toggleFilter: PropTypes.func.isRequired,
     transformOutput: PropTypes.func,
     treeEnabled: PropTypes.bool,
     treeItemFetchOptions: PropTypes.object,
@@ -115,6 +116,14 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.selectCurrentRow = this.selectCurrentRow.bind(this)
 
       this.shortcuts = [
+        {
+          command: 'f',
+          description: 'Show/hide filters',
+          onPress: event => {
+            event.preventDefault()
+            props.toggleFilter()
+          },
+        },
         {
           command: 'n t',
           description: 'Open table view',
