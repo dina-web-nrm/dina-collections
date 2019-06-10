@@ -114,7 +114,6 @@ const createTableWrapper = () => ComposedComponent => {
       super(props)
       this.fetchTableItems = this.fetchTableItems.bind(this)
       this.getSearchInProgress = this.getSearchInProgress.bind(this)
-      this.handleOpenFocusedItem = this.handleOpenFocusedItem.bind(this)
       this.handleSaveTableColumnsToShow = this.handleSaveTableColumnsToShow.bind(
         this
       )
@@ -125,11 +124,6 @@ const createTableWrapper = () => ComposedComponent => {
 
       this.shortcuts = [
         {
-          command: 'space',
-          description: 'Open focused record',
-          onPress: this.handleOpenFocusedItem,
-        },
-        {
           command: 'f',
           description: 'Show/hide filters',
           onPress: props.toggleFilter,
@@ -139,14 +133,6 @@ const createTableWrapper = () => ComposedComponent => {
 
     getSearchInProgress() {
       return this.props.searchInProgress
-    }
-
-    handleOpenFocusedItem() {
-      const { focusedItemId, navigateEdit } = this.props
-
-      if (focusedItemId) {
-        navigateEdit(focusedItemId)
-      }
     }
 
     handleSaveTableColumnsToShow(columnsToShow) {
