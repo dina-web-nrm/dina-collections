@@ -1,3 +1,4 @@
+import table from './table'
 import tree from './tree'
 
 describe('resourceManager', () => {
@@ -5,5 +6,6 @@ describe('resourceManager', () => {
     cy.resetDevelopmentSqlDb()
   })
 
+  table()
   tree()
 })
