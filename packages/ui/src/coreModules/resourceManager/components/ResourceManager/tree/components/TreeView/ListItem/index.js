@@ -18,6 +18,7 @@ const propTypes = {
   level: PropTypes.number,
   onClickRow: PropTypes.func.isRequired,
   onToggleRow: PropTypes.func.isRequired,
+  rowNumber: PropTypes.number.isRequired,
 }
 
 const defaultProps = {
@@ -43,6 +44,7 @@ class ListItem extends Component {
       item,
       onClickRow,
       onToggleRow,
+      rowNumber,
     } = this.props
     const itemLoaded = !!item
 
@@ -77,6 +79,8 @@ class ListItem extends Component {
 
     return (
       <Grid.Row
+        data-isfocused={isFocused ? 'yes' : 'no'}
+        data-testid={`treeRow${rowNumber}`}
         onClick={event => {
           event.preventDefault()
           onClickRow(itemId)
@@ -104,7 +108,12 @@ class ListItem extends Component {
           }}
           textAlign="right"
         >
-          {isExpandable && <Icon name={triangleIcon} />}
+          {isExpandable && (
+            <Icon
+              data-testid={isExpanded ? 'collapseIcon' : 'expandIcon'}
+              name={triangleIcon}
+            />
+          )}
         </Grid.Column>
 
         <Grid.Column key="name" style={{ width: 500 }} textAlign="left">
