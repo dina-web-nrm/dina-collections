@@ -24,10 +24,6 @@ const injectResourceManagerNavigation = ComposedComponent => {
 
 const propTypes = {
   cancelCreate: PropTypes.func.isRequired,
-  createItemActive: PropTypes.bool.isRequired,
-  editItemActive: PropTypes.bool.isRequired,
-  filterActive: PropTypes.bool.isRequired,
-  itemId: PropTypes.string,
   navigateCreate: PropTypes.func.isRequired,
   navigateEdit: PropTypes.func.isRequired,
   navigateFormSection: PropTypes.func.isRequired,
@@ -35,23 +31,12 @@ const propTypes = {
   navigateTableSettings: PropTypes.func.isRequired,
   navigateTree: PropTypes.func.isRequired,
   onNavigation: PropTypes.func.isRequired,
-  sectionId: PropTypes.string,
-  tableActive: PropTypes.bool.isRequired,
-  tableSettingsActive: PropTypes.bool.isRequired,
   toggleFilter: PropTypes.func.isRequired,
-  treeActive: PropTypes.bool.isRequired,
 }
-const defaultProps = {
-  itemId: undefined,
-  sectionId: undefined,
-}
+const defaultProps = {}
 
 const ResourceManagerNavigationProvider = ({
   cancelCreate,
-  createItemActive,
-  editItemActive,
-  filterActive,
-  itemId,
   navigateCreate,
   navigateEdit,
   navigateFormSection,
@@ -59,20 +44,12 @@ const ResourceManagerNavigationProvider = ({
   navigateTableSettings,
   navigateTree,
   onNavigation,
-  sectionId,
-  tableActive,
-  tableSettingsActive,
   toggleFilter,
-  treeActive,
   ...rest
 }) => {
   const contextValue = useMemo(() => {
     return {
       cancelCreate,
-      createItemActive,
-      editItemActive,
-      filterActive,
-      itemId,
       navigateCreate,
       navigateEdit,
       navigateFormSection,
@@ -80,18 +57,10 @@ const ResourceManagerNavigationProvider = ({
       navigateTableSettings,
       navigateTree,
       onNavigation,
-      sectionId,
-      tableActive,
-      tableSettingsActive,
       toggleFilter,
-      treeActive,
     }
   }, [
     cancelCreate,
-    createItemActive,
-    editItemActive,
-    filterActive,
-    itemId,
     navigateCreate,
     navigateEdit,
     navigateFormSection,
@@ -99,11 +68,7 @@ const ResourceManagerNavigationProvider = ({
     navigateTableSettings,
     navigateTree,
     onNavigation,
-    sectionId,
-    tableActive,
-    tableSettingsActive,
     toggleFilter,
-    treeActive,
   ])
 
   return (
