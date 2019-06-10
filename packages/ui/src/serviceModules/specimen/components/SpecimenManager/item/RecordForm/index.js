@@ -22,7 +22,7 @@ const recordActionBarHeight = emToPixels(4.625)
 
 const getAllowTransition = location =>
   location.pathname.includes('app/specimens/mammals') &&
-  location.pathname.includes('mainColumn=edit')
+  location.search.includes('mainColumn=edit')
 
 const mapDispatchToProps = {
   changeFormValue: change,
