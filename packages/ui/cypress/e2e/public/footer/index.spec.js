@@ -38,7 +38,7 @@ describe('Footer', () => {
       'https://github.com/DINA-Web'
     )
     cy.getByTestId('footerDinaCollectionsGithub').shouldHaveHref(
-      'https://github.com/DINA-Web/dina-collections'
+      'https://github.com/dina-web-nrm/dina-collections'
     )
     cy.getByTestId('footerDinaDeveloperDocs').shouldHaveHref('docs', {
       exact: false,
