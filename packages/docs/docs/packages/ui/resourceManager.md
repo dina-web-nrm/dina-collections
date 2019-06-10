@@ -155,10 +155,9 @@ means consuming the config context will not cause any unnecessary rerendering.
 
 The
 [resourceManagerNavigation](https://github.com/DINA-Web/dina-collections/tree/master/packages/ui/src/coreModules/resourceManager/contexts/resourceManagerNavigation.js)
-is used to provide the ResourceManager navigation methods and values. When the
-navigation state changes it will usually mean a change of view or a change of
-the data that hydrates a view, so consuming this context in the
-form/table/tree-wrapper HOCs will generally not lead to unnecessary rerendering.
+is used to provide the ResourceManager navigation methods. Those will not change
+during the ResourceManager's component lifecycle, which means consuming the
+navigation context will not cause any unnecessary rerendering.
 
 #### higherOrderComponents
 
