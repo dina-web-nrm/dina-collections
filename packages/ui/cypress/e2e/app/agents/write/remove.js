@@ -2,6 +2,7 @@ export default () =>
   describe('delete', () => {
     before(() => {
       cy.resetDevelopmentSqlDb()
+      cy.resetSearchNormalizedAgentIndex()
     })
 
     beforeEach(() => {
