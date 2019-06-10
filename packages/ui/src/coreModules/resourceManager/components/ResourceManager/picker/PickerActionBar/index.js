@@ -7,9 +7,9 @@ import { Button, Grid, Header } from 'semantic-ui-react'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { createInjectItemTitle } from '../../shared/higherOrderComponents'
 
-const mapStateToProps = (state, { treeItemFetchOptions }) => {
+const mapStateToProps = (state, { createGetNestedItemHocInput }) => {
   return {
-    ...treeItemFetchOptions, // passed into createGetNestedItemById
+    ...createGetNestedItemHocInput, // passed into createGetNestedItemById
   }
 }
 
