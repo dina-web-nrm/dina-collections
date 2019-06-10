@@ -1,7 +1,7 @@
 const execCmd = require('common/src/execCmd')
 const ensureNodeEnv = require('common/src/env/ensureNodeEnv')
 
-function resetElasticSpecimenIndex() {
+function resetSearchSpecimenIndex() {
   ensureNodeEnv(['development', 'test'])
   return execCmd({
     cmd:
@@ -9,4 +9,4 @@ function resetElasticSpecimenIndex() {
   })
 }
 
-module.exports = resetElasticSpecimenIndex
+module.exports = resetSearchSpecimenIndex
