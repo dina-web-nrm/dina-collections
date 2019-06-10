@@ -6,10 +6,10 @@ Cypress.Commands.add('resetDevelopmentSqlDb', () => {
   )
 })
 
-Cypress.Commands.add('resetElasticSpecimenIndex', () => {
-  cy.log('Resetting elasticsearch specimen index')
+Cypress.Commands.add('resetSearchSpecimenIndex', () => {
+  cy.log('Resetting elasticsearch searchspecimen index')
   return cy.exec(
-    'cd ../../ && ./packages/scripts/src/bash/elasticsearch-import-indices.sh -f ./data/sample.index',
+    'cd ../../ && ./packages/scripts/src/bash/elasticsearch-import-indices.sh -f ./data/sample.index -n searchspecimen',
     { log: false }
   )
 })

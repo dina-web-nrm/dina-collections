@@ -2,7 +2,7 @@ export default () =>
   describe('create', () => {
     before(() => {
       cy.resetDevelopmentSqlDb()
-      cy.resetElasticSpecimenIndex()
+      cy.resetSearchSpecimenIndex()
     })
 
     beforeEach(() => {

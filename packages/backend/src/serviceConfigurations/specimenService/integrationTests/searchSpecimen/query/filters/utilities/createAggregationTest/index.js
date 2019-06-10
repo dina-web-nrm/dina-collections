@@ -3,7 +3,7 @@ const {
   hook,
 } = require('common/src/testUtilities/envBackendApiSampleData')
 const waitForApiRestart = require('../../../../../../../../utilities/test/waitForApiRestart')
-const resetElasticSpecimenIndex = require('../../../../../../../../utilities/test/db/resetElasticSpecimenIndex')
+const resetSearchSpecimenIndex = require('../../../../../../../../utilities/test/db/resetSearchSpecimenIndex')
 const runTests = require('./runTests')
 
 module.exports = function createAggregationTest({
@@ -46,7 +46,7 @@ module.exports = function createAggregationTest({
   apiSampleDescribe(description, () => {
     hook(beforeAll, () => {
       return waitForApiRestart().then(() => {
-        return resetElasticSpecimenIndex()
+        return resetSearchSpecimenIndex()
       })
     })
     runTests({ filterType, resource, testSpecification })

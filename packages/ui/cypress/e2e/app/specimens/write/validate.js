@@ -4,7 +4,7 @@ export default () =>
 
     before(() => {
       cy.resetDevelopmentSqlDb()
-      cy.resetElasticSpecimenIndex()
+      cy.resetSearchSpecimenIndex()
       cy.log('Create new specimen for tests')
       cy.visit('/app/specimens/mammals?mainColumn=create&sectionId=0')
       cy.getByTestId('createAutomaticNumber').click()
