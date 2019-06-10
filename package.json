@@ -1,6 +1,6 @@
 {
   "name": "dina-collections",
-  "version": "0.20.0",
+  "version": "0.20.0-test-rm7",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "build:trees:ui": "cd ./packages/ui && yarn build:trees",
     "build:ui": "cd ./packages/ui && yarn build",
     "build:version-info": "node ./packages/scripts/src/js/buildAndCommitVersionInfo.js",
-    "cli:docs":"node ./packages/scripts/src/js/scriptDocs --packageJsonPath=./package.json --inputPath=./packages/docs/docs/development/cli.js",
+    "cli:docs": "node ./packages/scripts/src/js/scriptDocs --packageJsonPath=./package.json --inputPath=./packages/docs/docs/development/cli.js",
     "delete-test-tags": "./packages/scripts/src/bash/delete-test-tags",
     "exec:local": "node ./packages/scripts/src/js/localExec.js",
     "exec:production": "node ./packages/scripts/src/js/remoteExecProduction.js",
