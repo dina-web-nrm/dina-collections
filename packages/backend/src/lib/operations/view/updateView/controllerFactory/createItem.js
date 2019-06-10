@@ -7,7 +7,7 @@ module.exports = function createItem({
 }) {
   let queryParams
 
-  if (srcRelationships && srcRelationships.length) {
+  if (srcRelationships) {
     queryParams = {
       relationships: srcRelationships,
     }
