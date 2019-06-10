@@ -72,8 +72,9 @@ const ResultOptionsBar = ({
       {treeEnabled && (
         <Menu.Item
           active={treeActive}
+          data-testid="treeTabMenuItem"
           link
-          name="form"
+          name="tree"
           onClick={() => handleTreeTabClick()}
         >
           <Icon name="sitemap" />
