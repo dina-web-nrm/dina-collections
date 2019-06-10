@@ -1,5 +1,9 @@
 export default () =>
   describe('table', () => {
+    before(() => {
+      cy.resetSearchSpecimenIndex()
+    })
+
     beforeEach(() => {
       cy.visit('/app/specimens/mammals')
       cy.get('[data-testid="infinityTableHeader"', {
@@ -8,7 +12,16 @@ export default () =>
       })
     })
 
-    it('scrolls to load more specimens, sorts table and keeps focus between form and table', () => {
+    it(`
+      has expected first specimen and checks that last is not visible yet;
+      switches between form and tab;
+      scrolls to bottom of table and loads last specimen;
+      switches again between form and tab;
+      sorts on catalog number and checks 500001 is now on top;
+      sorts again and checks 500001 is now on bottom;
+      sorts on taxon name;
+      scrolls table header horizontally;
+    `, () => {
       cy.log('Check first specimen and that the last is not visible')
       cy.get(
         '[data-testid="infinityTable"] [data-testid="infinityTableRow1"]'
