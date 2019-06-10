@@ -24,7 +24,7 @@ then
 fi
 
 
-echo "Importing specimen search index to index $INDEX_NAME"
+echo "Importing search index to index $INDEX_NAME"
 
 
 INDEX_PATH="$FILE_BASE_PATH.$INDEX_NAME"
