@@ -1,5 +1,5 @@
 export default () =>
-  describe('form content', () => {
+  describe.only('form content', () => {
     beforeEach(() => {
       cy.visit('/app/agents?filterColumn=&itemId=2&mainColumn=edit')
     })
