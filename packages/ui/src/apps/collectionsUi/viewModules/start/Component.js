@@ -125,7 +125,7 @@ class Start extends Component {
             {version}{' '}
             <a
               data-testid="start-changelog-link"
-              href="https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md"
+              href="https://github.com/dina-web-nrm/dina-collections/blob/master/CHANGELOG.md"
               rel="noopener noreferrer"
               target="_blank"
             >

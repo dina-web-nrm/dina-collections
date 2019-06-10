@@ -89,7 +89,7 @@ class Footer extends React.Component {
               aria-label="Star this project on GitHub"
               className="github-button"
               data-count-aria-label="# stargazers on GitHub"
-              data-count-href="DINA-Web/dina-collections/stargazers"
+              data-count-href="dina-web-nrm/dina-collections/stargazers"
               data-icon="octicon-star"
               data-show-count="true"
               href={this.props.config.repoUrl}
