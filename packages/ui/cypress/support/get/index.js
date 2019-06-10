@@ -55,6 +55,14 @@ Cypress.Commands.add('getInputByParentTestId', (testId, options) => {
   return cy.get(`[data-testid="${testId}"] input`, options)
 })
 
+Cypress.Commands.add('getTreeListItemRowByText', (text, options) => {
+  cy.log('getTreeListItemRowByText')
+  return cy
+    .getByText(text, options)
+    .parent({ log: false })
+    .parent({ log: false })
+})
+
 Cypress.Commands.add(
   'queryMultipleSearchDropdownOptionByText',
   (text, options) => {
