@@ -1,4 +1,4 @@
-const validateSearchAgent = require('./validateSearchAgent')
+const validateSearchAgent = require('./validateSearchNormalizedAgent')
 const fieldsSpecification = require('../fieldsSpecification')
 const extractTransformations = require('../../../../../lib/data/fields/utilities/extractTransformationFunctions')
 

@@ -9,7 +9,7 @@ const validate = obj => {
   })(obj)
 }
 
-module.exports = function validateSearchAgent({
+module.exports = function validateSearchNormalizedAgent({
   globalIndex,
   target,
   reporter,

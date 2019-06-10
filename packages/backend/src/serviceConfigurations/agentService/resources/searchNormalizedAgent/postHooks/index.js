@@ -6,8 +6,8 @@ const {
 
 const consolidateJobsPostHook = createConsolidateJobsPostHook({
   createIndexJob,
-  rebuildViewOperationId: 'searchAgentRebuildView',
-  updateViewOperationId: 'searchAgentUpdateView',
+  rebuildViewOperationId: 'searchNormalizedAgentRebuildView',
+  updateViewOperationId: 'searchNormalizedAgentUpdateView',
 })
 
 exports.rebuildView = [consolidateJobsPostHook]
