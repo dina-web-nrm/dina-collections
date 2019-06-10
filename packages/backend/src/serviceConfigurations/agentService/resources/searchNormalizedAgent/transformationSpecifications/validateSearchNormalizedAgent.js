@@ -3,13 +3,13 @@ const createNormalizedValidator = require('common/src/jsonSchema/createNormalize
 
 const validate = obj => {
   return createNormalizedValidator({
-    model: 'searchAgent',
+    model: 'searchNormalizedAgent',
     throwError: false,
     type: 'config',
   })(obj)
 }
 
-module.exports = function validateSearchAgent({
+module.exports = function validateSearchNormalizedAgent({
   globalIndex,
   target,
   reporter,
