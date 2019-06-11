@@ -1,4 +1,4 @@
-export default function buildFilterQuery({ values }) {
+export default function buildFilterQuery({ formValues = {} } = {}) {
   const and = [
     {
       filter: {
@@ -10,34 +10,34 @@ export default function buildFilterQuery({ values }) {
     },
   ]
 
-  if (values.name) {
+  if (formValues.name) {
     and.push({
       filter: {
         filterFunction: 'nameSearch',
         input: {
-          value: values.name,
+          value: formValues.name,
         },
       },
     })
   }
 
-  if (values.rank) {
+  if (formValues.rank) {
     and.push({
       filter: {
         filterFunction: 'rank',
         input: {
-          value: values.rank,
+          value: formValues.rank,
         },
       },
     })
   }
 
-  if (values.rubinNumber) {
+  if (formValues.rubinNumber) {
     and.push({
       filter: {
         filterFunction: 'rubinNumber',
         input: {
-          value: values.rubinNumber,
+          value: formValues.rubinNumber,
         },
       },
     })
