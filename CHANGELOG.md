@@ -2,7 +2,20 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.21.0-rc](https://github.com/dina-web-nrm/dina-collections/compare/v0.20.0...v0.21.0-rc)
+
+- Anton/implement elastic rm resources [`#532`](https://github.com/dina-web-nrm/dina-collections/pull/532)
+- Anton/release docs [`#529`](https://github.com/dina-web-nrm/dina-collections/pull/529)
+- Fix search specimen dm issues [`#535`](https://github.com/dina-web-nrm/dina-collections/pull/535)
+- Improve data model docs [`#534`](https://github.com/dina-web-nrm/dina-collections/pull/534)
+- Fix docker node version issue [`#533`](https://github.com/dina-web-nrm/dina-collections/pull/533)
+- Remove internal models from dm [`#531`](https://github.com/dina-web-nrm/dina-collections/pull/531)
+- Clean up data model [`#528`](https://github.com/dina-web-nrm/dina-collections/pull/528)
+- Add cli documentation [`#527`](https://github.com/dina-web-nrm/dina-collections/pull/527)
+
 #### [v0.20.0](https://github.com/dina-web-nrm/dina-collections/compare/v0.19.0...v0.20.0)
+
+> 27 May 2019
 
 - Add data model images [`#526`](https://github.com/dina-web-nrm/dina-collections/pull/526)
 - Add tree functionallity to elastic [`#525`](https://github.com/dina-web-nrm/dina-collections/pull/525)
