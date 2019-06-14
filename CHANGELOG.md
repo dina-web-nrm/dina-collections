@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.22.1](https://github.com/dina-web-nrm/dina-collections/compare/v0.22.0...v0.22.1)
+
+- Fix update agent bug [`#538`](https://github.com/dina-web-nrm/dina-collections/pull/538)
+- Fix general data model docs link [`#541`](https://github.com/dina-web-nrm/dina-collections/pull/541)
+
 #### [v0.22.0](https://github.com/dina-web-nrm/dina-collections/compare/v0.20.0...v0.22.0)
+
+> 14 June 2019
 
 - Fix data model documentation formatting issues [`#539`](https://github.com/dina-web-nrm/dina-collections/pull/539)
 - Update data model documentation [`#537`](https://github.com/dina-web-nrm/dina-collections/pull/537)
