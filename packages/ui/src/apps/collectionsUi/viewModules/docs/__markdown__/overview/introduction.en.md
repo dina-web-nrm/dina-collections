@@ -15,17 +15,16 @@ clear how they should be be used.
 
 ## Services overview
 
+[service overview picture](/images/servicesOverview.pdf)
+
 The system is built around a number of services which are briefly described
 here.
-
-[service overview picture](/images/servicesOverview.pdf)
 
 ### agentService
 
 Service with information about people, groups and organizations.
 
-Example models: [affiliation](__DOCLINK__affiliation),
-[normalizedAgent](__DOCLINK__individual), [role](__DOCLINK__role)
+Example models: [affiliation](__DOCLINK__affiliation), [normalizedAgent](__DOCLINK__individual), [role](__DOCLINK__role)
 
 ### authService
 
@@ -37,9 +36,7 @@ Example models: [user](__DOCLINK__user)
 
 Service for keeping controlled vocabularies.
 
-Example models: [causeOfDeathType](__DOCLINK__causeOfDeathType),
-[identifierType](__DOCLINK__identifierType),
-[selectableValue](__DOCLINK__selectableValues)
+Example models: [causeOfDeathType](__DOCLINK__causeOfDeathType), [identifierType](__DOCLINK__identifierType), [selectableValue](__DOCLINK__selectableValues)
 
 ### historyService
 
@@ -57,15 +54,17 @@ Example models: [catalogNumber](__DOCLINK__catalogNumber)
 
 Service for keeping track of changes to the data model.
 
-Example models: [dataModelMigrationLog]((**DOCLINK**dataModelMigrationLog)
+Example models: [dataModelMigrationLog](__DOCLINK__dataModelMigrationLog)
 
 ### placeService
 
 Service with information about defined places and geographic areas.
 
-Example models: [place]((**DOCLINK**place)
+Example models: [place](__DOCLINK__place)
 
 ### specimenService
+
+[specimen service overview picture](/images/specimenServiceOverview.pdf)
 
 Service that holds most of the information about specimens.
 
@@ -80,19 +79,13 @@ which means that each specimen corresponds to one individual. A future
 collection may use a different configuration with for example _collectionItem_
 or _event_ as the root.
 
-Example models: [acquisition](__DOCLINK__acquisition),
-[collectionItem](__DOCLINK__collectionItem),
-[determination](__DOCLINK__determination), [individual]((**DOCLINK**individual),
-[specimen](__DOCLINK__specimen)
-
-[specimen service overview picture](/images/specimenServiceOverview.pdf)
+Example models: [acquisition](__DOCLINK__acquisition), [collectionItem](__DOCLINK__collectionItem), [determination](__DOCLINK__determination), [individual](__DOCLINK__individual), [specimen](__DOCLINK__specimen)
 
 ### storageService
 
 Service with information about physical objects and where they are stored.
 
-Example models: [physicalObject](__DOCLINK__physicalObject),
-[storageLocation](__DOCLINK__storageLocation)
+Example models: [physicalObject](__DOCLINK__physicalObject), [storageLocation](__DOCLINK__storageLocation)
 
 ### taxonomyService
 

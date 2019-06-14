@@ -7,10 +7,10 @@
         "x-summary": ""
       }
     },
+    "description": "# affiliation\n\nAn organization that a [normalizedAgent](/dataModelDocs/0.4.2/models/normalizedAgent/) has a connection to (through some [role](/dataModelDocs/0.4.2/models/role/)).\n\n\n### Definition\n\nAn organization that an [normalizedAgent](/dataModelDocs/0.4.2/models/normalizedAgent/) has a connection to.\n\n\n### Examples\n\nA curator at the Swedish Museum of Natural History (where curator is the [role](/dataModelDocs/0.4.2/models/role/) and the museum is the affiliaton).\n\n### See also\n\n[role](/dataModelDocs/0.4.2/models/role/)",
     "x-category": "agentService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "An organization that an agent has a connection to.",
     "id": "affiliation"
   },
   "normalizedAgent": {
@@ -141,7 +141,7 @@
         "x-summary": ""
       }
     },
-    "description": "# normalizedAgent\n\nA person, named group of people or organization.\n\n\n### Definition\n\nA person, named group of people or organization.",
+    "description": "# normalizedAgent\n\nA person, named group of people or organization. Can be associated with a [user](/dataModelDocs/0.4.2/models/user/) and one or more [agents](/dataModelDocs/0.4.2/models/agent/).\n\n\n### Definition\n\nA person, named group of people or organization.\n\n\n### See also\n\n[agent](/dataModelDocs/0.4.2/models/agent/), [user](/dataModelDocs/0.4.2/models/user/)",
     "x-category": "agentService",
     "x-modelType": "model",
     "x-summary": "A person, named group of people or organization.",
@@ -163,10 +163,10 @@
         "x-summary": ""
       }
     },
+    "description": "# role\n\nAn association of a [normalizedAgent](/dataModelDocs/0.4.2/models/normalizedAgent/) with some organization (the [affiliaton](/dataModelDocs/0.4.2/models/affiliaton/)).\n\n\n### Definition\n\nAn association of an [normalizedAgent](/dataModelDocs/0.4.2/models/normalizedAgent/) with an organization.\n\n\n### Examples\n\nA curator at the Swedish Museum of Natural History (where curator is the role and the museum is the [affiliaton](/dataModelDocs/0.4.2/models/affiliaton/)).",
     "x-category": "agentService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "An association of an agent to an organization.",
     "id": "role"
   },
   "searchAgent": {
@@ -201,7 +201,7 @@
         "x-summary": ""
       }
     },
-    "description": "# user\n\nA model representing a user of the collection management system with a username and password.\nCan be associated with a normalizedAgent. Used for authentication and authorization.\n",
+    "description": "# user\n\nA user of the collection management system with a username and password. Can be associated with a [normalizedAgent](/dataModelDocs/0.4.2/models/normalizedAgent/). Used for authentication and authorization.\n",
     "x-category": "authService",
     "x-modelType": "model",
     "x-summary": "",
@@ -229,10 +229,10 @@
         "x-summary": ""
       }
     },
+    "description": "# agent\n\nInformation about a person, named group of people or organization.\n\n\n### Definition\n\nInformation about a person, named group of people or organization.\n\n\n### Examples\n\nA person named \"J. Doe\" can be recorded as a verbatim name “J. Doe”, standardized as “Doe, J.” and possibly connected to a known [normalizedAgent](/dataModelDocs/0.4.2/models/normalizedAgent/) “Doe, Joe”.",
     "x-category": "core",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "Information about a person, named group of people or organization.",
     "id": "agent"
   },
   "customObject": {
@@ -248,7 +248,7 @@
   },
   "datePart": {
     "additionalProperties": false,
-    "description": "A date part",
+    "description": "# datePart\n\nA reference to a particular day represented within a calendar system.\n\n### Notes\n\nThe name is a bit problematic for two reasons:\n\n* It is possible to store a full date, not just a partial date as the name implies\n* It is possible to store a full timestamp (not just year, month and day)",
     "properties": {
       "timestamp": {
         "description": "A date in standard format. TBA",
@@ -282,12 +282,12 @@
     },
     "x-category": "core",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "A reference to a day within a calendar system.",
     "id": "datePart"
   },
   "dateRange": {
     "additionalProperties": false,
-    "description": "A date range",
+    "description": "# dateRange\n\nThe start and end dates of a period and all the dates in between.\n\n### Notes\n\nA date range can be used to describe the temporal extension of an event (e.g. the exact start and end dates of a field trip) or to describe the uncertainty about the timing of an event (e.g. a collecting event that took place some time between the years 1800 and 1810).",
     "properties": {
       "dateText": {
         "type": "string",
@@ -320,12 +320,12 @@
     },
     "x-category": "core",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "A range between two dates.",
     "id": "dateRange"
   },
   "id": {
     "additionalProperties": false,
-    "description": "# id\n\nResource identifier that in combination with a resource [type](/dataModelDocs/0.4.2/models/type) identify a [single unique resource.](https://jsonapi.org/format/#document-resource-object-identification)\n",
+    "description": "# id\n\nA resource identifier that in combination with a resource [type](/dataModelDocs/0.4.2/models/type) identify a single unique resource. Resource identifiers are used in many places throughout the system. This concept is important for the functioning of the system, but less so for understanding the data model at a higher level.\n\nFor more information, see the [JSON:API documentation](https://jsonapi.org/format/#document-resource-object-identification).\n",
     "type": "string",
     "properties": {},
     "x-category": "core",
@@ -336,7 +336,7 @@
   "legacyData": {
     "additionalProperties": true,
     "properties": {},
-    "description": "# legacyData\n\nCustom data from a previous system that do not fit elsewhere in the data model.\n\n\n### Definition\n\nData from a previous system which do not have a proper destination elsewhere in the data model.\n\n\n### Examples\n\n* An invalid collecting date, for example 2019-02-30.\n* Mixed content that for some reason was not cleaned up prior to import into the system.\n\n\n### Notes\n\nLegacy data is treated as read-only data. It can be in any JSON format, but is normally added as an onordered list of name–value pairs.",
+    "description": "# legacyData\n\nCustom data from a previous system that do not fit elsewhere in the data model.\n\n\n### Definition\n\nData from a previous system which do not have a proper destination elsewhere in the data model.\n\n\n### Examples\n\n* An invalid collecting date, for example 2019-02-30.\n* Mixed content that for some reason was not cleaned up prior to import into the system.\n\n\n### Notes\n\nLegacy data is treated as read-only data. It can be in any JSON format, but is normally added as an unordered list of name–value pairs.",
     "x-category": "core",
     "x-modelType": "model",
     "x-summary": "Custom data that do not fit elsewhere in the data model.",
@@ -344,7 +344,7 @@
   },
   "lid": {
     "additionalProperties": false,
-    "description": "# lid\n\nInternal local identifier lid (local id). Should be a uuid\n",
+    "description": "# lid\n\nA local identifier (Local ID) used internally by the system. This identifier should (inspite of what the name suggests) have the format of a Universally unique identifier (UUID).\n",
     "type": "string",
     "properties": {},
     "x-category": "core",
@@ -364,7 +364,7 @@
   },
   "polygon": {
     "additionalProperties": false,
-    "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
+    "description": "# polygon\n\nA list of points enclosing a geographic area.\n\n\n### Definition\n\nA list of points where the last point is the same as the first, so that  the points encloses a geographic area.",
     "properties": {
       "vertices": {
         "type": "array",
@@ -374,12 +374,12 @@
     },
     "x-category": "core",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "A list of points enclosing a geographic area.",
     "id": "polygon"
   },
   "position": {
     "additionalProperties": false,
-    "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
+    "description": "# position\n\nA point on the surface of the Earth.\n\n### Definition\n\nA point on the surface of the Earth.\n\n\n### Notes\n\nCould perhaps be renamed \"point\".",
     "properties": {
       "latitude": {
         "type": "string",
@@ -409,7 +409,7 @@
     },
     "x-category": "core",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "A point on the surface of the Earth.",
     "id": "position"
   },
   "queryAggregation": {
@@ -520,7 +520,7 @@
   "readOnly": {
     "additionalProperties": true,
     "properties": {},
-    "description": "# readOnly\n\nA custom object that can have any properties.\n",
+    "description": "# readOnly\n\nA generic structure for storing custom data. Used in different parts of the system for keeping data that do not have a predefined destination. The data must be in JSON format.\n\n\n## Short description\n\nA generic structure for storing custom data.\n",
     "x-category": "core",
     "x-modelType": "model",
     "x-summary": "",
@@ -538,7 +538,7 @@
         "x-summary": ""
       }
     },
-    "description": "# translatedString\n\nAn object with keys for translations in different languages\n",
+    "description": "# translatedString\n\nA structure that is used in several places in the system to handle text in different languages.\n",
     "x-category": "core",
     "x-modelType": "model",
     "x-summary": "",
@@ -546,7 +546,7 @@
   },
   "type": {
     "additionalProperties": false,
-    "description": "# type\n\nType is used to describe resource objects that share common attributes and\nrelationships. In combination with a resource [id](/dataModelDocs/0.4.2/models/id) it identifies a [single unique resource.](https://jsonapi.org/format/#document-resource-object-identification)\n",
+    "description": "# type\n\nType is used to describe resource objects that share common attributes and relationships. In combination with a resource [id](/dataModelDocs/0.4.2/models/id) it identifies a single unique resource. This concept is important for the functioning of the system, but less so for understanding the data model at a higher level.\n\nFor more information, see the [JSON:API documentation](https://jsonapi.org/format/#document-resource-object-identification).\n",
     "type": "string",
     "properties": {},
     "x-category": "core",
@@ -556,7 +556,7 @@
   },
   "verticalPosition": {
     "additionalProperties": false,
-    "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
+    "description": "# verticalPosition\n\nThe height of a point relative to some reference surface, such as mean sea level, a geoid, or an ellipsoid.\n\n\n### Definition\n\nThe height of a point relative to some reference surface, such as mean sea level, a geoid, or an ellipsoid.",
     "properties": {
       "maximumDepthInMeters": {
         "type": "integer",
@@ -587,7 +587,7 @@
     ],
     "x-category": "core",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "The height of a point relative to some reference surface.",
     "id": "verticalPosition"
   },
   "causeOfDeathType": {
@@ -615,10 +615,10 @@
         "x-summary": ""
       }
     },
+    "description": "# causeOfDeathType\n\nA standardized description of the cause of death, used in [deathInformation](/dataModelDocs/0.4.2/models/deathInformation/).\n\n### Definition\n\nA standardized description of the cause of death.\n\n\n### Examples\n\n* Hunt, Short\n* Hunt, trap\n* Disease\n\n\n### See also\n\n[deathInformation](/dataModelDocs/0.4.2/models/deathInformation/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "A standardized description of the cause of death.",
     "id": "causeOfDeathType"
   },
   "customTaxonNameType": {
@@ -646,10 +646,10 @@
         "x-summary": ""
       }
     },
+    "description": "# customTaxonNameType\n\nThe kind of [customTaxonName](/dataModelDocs/0.4.2/models/customTaxonName/).\n\n### Definition\n\nThe kind of [customTaxonName](/dataModelDocs/0.4.2/models/customTaxonName/).\n\n\n### Examples\n\n* Label name\n* Old local name\n\n\n### See also\n\n[customTaxonName](/dataModelDocs/0.4.2/models/customTaxonName/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "The kind of customTaxonName.",
     "id": "customTaxonNameType"
   },
   "establishmentMeansType": {
@@ -677,10 +677,10 @@
         "x-summary": ""
       }
     },
+    "description": "# establishmentMeansType\n\nThe kind of [establishmentMeans](/dataModelDocs/0.4.2/models/establishmentMeans/).\n\n### Definition\n\nThe kind of [establishmentMeans](/dataModelDocs/0.4.2/models/establishmentMeans/).\n\n\n### Examples\n\n* Introduced\n* Native\n* Naturalised\n\n\n### See also\n\n[establishmentMeans](/dataModelDocs/0.4.2/models/establishmentMeans/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "The kind of establishmentMeans.",
     "id": "establishmentMeansType"
   },
   "featureType": {
@@ -737,10 +737,10 @@
         "x-summary": ""
       }
     },
-    "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
+    "description": "# featureType\n\nThe kind of [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n### Definition\n\nThe kind of [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n\n### Examples\n\n* Age in years\n* Developmental stage\n* Complete body weight\n* Skinned weight\n\n\n### See also\n\n[featureObservation](/dataModelDocs/0.4.2/models/featureObservation/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
+    "x-summary": "The kind of featureObservation.",
     "id": "featureType"
   },
   "identifierType": {
@@ -830,10 +830,10 @@
         "x-summary": ""
       }
     },
+    "description": "# selectableMethod\n\nA method that can be selected for a [featureType](/dataModelDocs/0.4.2/models/featureType/) in a [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n\n### Definition\n\nA method that can be selected for a [featureType](/dataModelDocs/0.4.2/models/featureType/) in a [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n\n### Examples\nFor a featureType \"age\", the selectableMethod could be \"known age\" or \"sectioned teeth\".\n\n\n### See also\n\n[featureObservation](/dataModelDocs/0.4.2/models/featureObservation/), [featureType](/dataModelDocs/0.4.2/models/featureType/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "A method that can be selected for a featureType in a featureObservation.",
     "id": "selectableMethod"
   },
   "selectableUnit": {
@@ -856,10 +856,10 @@
         "x-summary": ""
       }
     },
+    "description": "# selectableUnit\n\nA unit that can be selected for a [featureType](/dataModelDocs/0.4.2/models/featureType/) in a [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n\n### Definition\n\nA unit that can be selected for a [featureType](/dataModelDocs/0.4.2/models/featureType/) in a [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n\n### Examples\nFor a featureType \"skinned weight\", the selectableUnit could be \"kg\" or \"g\".\n\n\n### See also\n\n[featureObservation](/dataModelDocs/0.4.2/models/featureObservation/)\n[featureType](/dataModelDocs/0.4.2/models/featureType/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "A unit that can be selected for a featureType in a featureObservation.",
     "id": "selectableUnit"
   },
   "selectableValue": {
@@ -882,10 +882,10 @@
         "x-summary": ""
       }
     },
+    "description": "# selectableValue\n\nA value that can be selected for a [featureType](/dataModelDocs/0.4.2/models/featureType/) in a [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n\n### Definition\n\nA value that can be selected for a [featureType](/dataModelDocs/0.4.2/models/featureType/) in a [featureObservation](/dataModelDocs/0.4.2/models/featureObservation/).\n\n\n### Examples\nFor a featureType \"sex\", the selectableValue could be \"female\" or \"male\".\n\n\n### See also\n\n[featureObservation](/dataModelDocs/0.4.2/models/featureObservation/), [featureType](/dataModelDocs/0.4.2/models/featureType/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "A value that can be selected for a featureType in a featureObservation.",
     "id": "selectableValue"
   },
   "typeSpecimenType": {
@@ -917,10 +917,10 @@
         "x-summary": ""
       }
     },
+    "description": "# typeSpecimenType\n\nThe nomenclatural type status of a [specimen](/dataModelDocs/0.4.2/models/specimen/), used together with a typified name in  [taxonInformation](/dataModelDocs/0.4.2/models/taxonInformation/).\n\n### Definition\n\nThe nomenclatural type status of a specimen.\n\n\n### Examples\n\n* Holotype\n* Lectotype\n* Syntype\n\n\n### See also\n\n[taxonInformation](/dataModelDocs/0.4.2/models/taxonInformation/)",
     "x-category": "curatedListService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "The nomenclatural type status of a specimen.",
     "id": "typeSpecimenType"
   },
   "exportJob": {
@@ -1002,7 +1002,7 @@
   },
   "resourceActivity": {
     "additionalProperties": false,
-    "description": "# resourceActivity\n\nResource activity is an internal model describes how a resource changes over\ntime\n",
+    "description": "# resourceActivity\n\nResource activity is internally used to describe how a resource changes over time.\n",
     "type": "object",
     "properties": {
       "id": {
@@ -1423,7 +1423,7 @@
         "x-summary": ""
       }
     },
-    "description": "# place\n\nA defined place that has a name and is reusable, for example a country or a lake.\n\n\n### Definition\n\nA defined location with known, fixed extension in space.\n\n\n### Examples\n\n* A named location for a Malaise trap within an insect inventory project.\n\n\n### Notes\n\nPlaces can have relations to other places.\n\nNew name suggestion: \"location\" (motivation: \"place\" is usually understood as something less defined, or perhaps more informal).\n\n\n### See also\n\n[locationInformation](/dataModelDocs/0.4.2/models/locationInformation/)",
+    "description": "# place\n\nA defined location that has a name and is reusable, for example a country or a lake.\n\n\n### Definition\n\nA defined location with known, fixed extension in space.\n\n\n### Examples\n\n* A named location for a Malaise trap within an insect inventory project.\n\n\n### Notes\n\nPlaces can have relations to other places.\n\nNew name suggestion: \"location\" (motivation: \"place\" is usually understood as something less defined, or perhaps more informal).\n\n\n### See also\n\n[locationInformation](/dataModelDocs/0.4.2/models/locationInformation/)",
     "x-category": "placeService",
     "x-modelType": "model",
     "x-summary": "A defined location with known, fixed extension in space.",
@@ -1634,10 +1634,10 @@
         "x-summary": ""
       }
     },
+    "description": "# customTaxonName\n\nA name that associated with an [individual](/dataModelDocs/0.4.2/models/individual/) that do not qualify as a [determination](/dataModelDocs/0.4.2/models/determination/) or a formally assigned [taxon](/dataModelDocs/0.4.2/models/taxon/).\n\n\n### Defintion\n\nA name that associated with an [individual](/dataModelDocs/0.4.2/models/individual/) that do not qualify as a [determination](/dataModelDocs/0.4.2/models/determination/) or a formally assigned [taxon](/dataModelDocs/0.4.2/models/taxon/).\n\n### Examples\n\nA name on a label without any associated information.",
     "x-category": "specimenService",
     "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
+    "x-summary": "A name that associated with an individual that do not qualify as a determination or a formally assigned taxon.",
     "id": "customTaxonName"
   },
   "deathInformation": {
@@ -1660,7 +1660,7 @@
         "x-summary": ""
       }
     },
-    "description": "# deathInformation\n\nInformation about the death of an [individual](/dataModelDocs/0.4.2/models/individual/). Typical information involves the cause of death.\n\n\n### Definition\nInformation pertaining to the death circumstances of an [individual](/dataModelDocs/0.4.2/models/individual/).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the death of one or more individuals, for example a cause of the death. The general description of the death event, like its time and location, should be recorded under [event](/dataModelDocs/0.4.2/models/event/).\n\n\n### See also\n\n[event](/dataModelDocs/0.4.2/models/event/)",
+    "description": "# deathInformation\n\nInformation about the death of an [individual](/dataModelDocs/0.4.2/models/individual/). Typical information involves the cause of death.\n\n\n### Definition\nInformation pertaining to the death circumstances of an [individual](/dataModelDocs/0.4.2/models/individual/).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the death of one or more organisms, for example a cause of the death. The general description of the death event, like its time and location, should be recorded under [event](/dataModelDocs/0.4.2/models/event/).\n\n\n### See also\n\n[event](/dataModelDocs/0.4.2/models/event/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "Information about the death of an individual.",
@@ -1724,7 +1724,7 @@
         "x-summary": ""
       }
     },
-    "description": "# Event\n\nAn activity or occurrence at a time and location, for example the collecting of some material.\n\n\n### Definition\n\nAn activity or occurrence at a particular time and location.\n\n\n### Examples\n\nAn event involving the collecting of some material.\n\n\n### Notes\n\nIf it is uncertain whether two specimens were collected at the same event (e.g., if they have different information sources), the information should be recorded as two separate events.\n\nAn event may have collecting- and death information.\n\n\n### See also\n\n[collectingInformation](/dataModelDocs/0.4.2/models/collectingInformation/), [deathInformation](/dataModelDocs/0.4.2/models/deathInformation/), [originInformation](/dataModelDocs/0.4.2/models/originInformation/)",
+    "description": "# Event\n\nAn activity or occurrence at a time and location, for example the collecting of some material.\n\n\n### Definition\n\nAn activity or occurrence at a particular time and location.\n\n\n### Examples\n\nAn event involving the collecting of some material.\n\n\n### Notes\n\nIf it is uncertain whether two specimens were collected at the same event (e.g., if they have different information sources), the information should be recorded as two separate events.\n\nAn event may have collecting- and death information.\n\nThe DINA Collections user interface may constrain the number of events associated with an [individual](/dataModelDocs/0.4.2/models/individual/).\n\n\n### See also\n\n[collectingInformation](/dataModelDocs/0.4.2/models/collectingInformation/), [deathInformation](/dataModelDocs/0.4.2/models/deathInformation/), [originInformation](/dataModelDocs/0.4.2/models/originInformation/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "An activity or occurrence at a time and location.",
@@ -1770,7 +1770,7 @@
         "x-summary": ""
       }
     },
-    "description": "# featureObservation\n\nAn observation of some property, for example a measurement by a person or a machine at a particular time.\n\n\n### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine).\n\n\n### Examples\n\n* When a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n* A curator observes the color of a specimen.\n\n\n### Notes\n\nThis term is currently used for features for an [individual](/dataModelDocs/0.4.2/models/individual/). [Taxonomic determinations](/dataModelDocs/0.4.2/models/determination/) is currently not included, although it might be in the future. [CuratorialAssessments](/dataModelDocs/0.4.2/models/curatorialAssessment/) apply to [collectionItems](/dataModelDocs/0.4.2/models/collectionItem/) and are consequently treated as a separate concept.\n\n\n### See also\n\n[featureType](/dataModelDocs/0.4.2/models/featureType/), [curatorialAssessment](/dataModelDocs/0.4.2/models/curatorialAssessment/), [determination](/dataModelDocs/0.4.2/models/determination/)\n\n\n### Relation to other standards\n\n* DarwinCore: not assessed\n* ABCD:  not assessed",
+    "description": "# featureObservation\n\nAn observation of some property, for example a measurement by a person or a machine at a particular time.\n\n\n### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine).\n\n\n### Examples\n\n* When a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n* A curator observes the color of a specimen.\n\n\n### Notes\n\nThis term is currently used for features for an [individual](/dataModelDocs/0.4.2/models/individual/). [Taxonomic determinations](/dataModelDocs/0.4.2/models/determination/) is currently not included, although it might be in the future. [CuratorialAssessments](/dataModelDocs/0.4.2/models/curatorialAssessment/) apply to [collectionItems](/dataModelDocs/0.4.2/models/collectionItem/) and are consequently treated as a separate concept.\n\n\n### See also\n\n[featureType](/dataModelDocs/0.4.2/models/featureType/), [curatorialAssessment](/dataModelDocs/0.4.2/models/curatorialAssessment/), [determination](/dataModelDocs/0.4.2/models/determination/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "The data measured or noticed for some property by an agent.",
@@ -1816,7 +1816,7 @@
   },
   "individual": {
     "additionalProperties": false,
-    "description": "# individual\n\nOne or more specimens sharing a common history and individual characteristics, for example an organism, a group of organisms or a piece of mineral.\n\n\n## Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n\n### Examples\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon. The group of fishes may be treated as the individual.\n* A cluster of ammonite fossils in the same piece of rock.\n* A piece of mineral.\n\n\n### Notes\n\nIndividual is understood in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis term has two purposes:\n\n1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).\n2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.\n\nYou should recognize new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should recognize two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you may have to recognize even more individuals.\n\n\n### Relation to other standards\n\n* DarwinCore: [Organism](http://rs.tdwg.org/dwc/terms/Organism)\n* ABCD: not assessed\n",
+    "description": "# individual\n\nOne or more specimens sharing a common history and individual characteristics, for example an organism, a group of organisms or a piece of mineral.\n\n\n## Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n\n### Examples\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon. The group of fishes may be treated as the individual.\n* A cluster of ammonite fossils in the same piece of rock.\n* A piece of mineral.\n\n\n### Notes\n\nIndividual is understood in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis term has two purposes:\n\n1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).\n2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.\n\nYou should recognize new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should recognize two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you may have to recognize even more individuals.\n\nNew name suggestion: “operationalIndividual” (motivation: \"individual\" leads one to believe that it is a single organism, which it may not be).\n\n\n### Relation to other standards\n\n* DarwinCore: [Organism](http://rs.tdwg.org/dwc/terms/Organism)\n",
     "properties": {
       "remarks": {
         "type": "string",
@@ -2207,7 +2207,7 @@
   },
   "specimen": {
     "additionalProperties": false,
-    "description": "# specimen\n\nThe \"things\" registered under the same catalog number.\n\n\n### Defintion\n\nThe \"things\" registered under the same catalog number.\n\n\n### Examples\n\n* A skin and a skeleton from the same squirrel recognized as one specimen. Hence, the specimen corresponds to an individual.\n* A skin and a skeleton from the same squirrel recognized as two separate specimens. Hence, specimen corresponds to a physical object.",
+    "description": "# specimen\n\nThe \"things\" registered under the same catalog number.\n\n\n### Defintion\n\nThe \"things\" registered under the same catalog number.\n\n\n### Notes\n\nThis is a flexible concept that can be used differently depending on the collection type or the collection's cataloging practices. The purpose is to support different kinds of collections that would otherwise be difficult to fit within the same system. For example, a specimen may in some collections correspond to a single physical object, whereas other collections may treat multiple physical objects from the same gathering event or the same individual as one specimen.\n\n\n### Examples\n\n* A skin and a skeleton from the same squirrel recognized as one specimen. Hence, the specimen corresponds to an individual.\n* A skin and a skeleton from the same squirrel recognized as two separate specimens. Hence, specimen corresponds to a physical object.",
     "x-format": true,
     "x-normalize": false,
     "properties": {
@@ -2314,7 +2314,7 @@
         "x-summary": ""
       }
     },
-    "description": "# taxonInformation\n\nInformation about an [individual's](/dataModelDocs/0.4.2/models/individual/) taxon, for example its accepted name according to the local classification. This term can also hold other taxon names which are not part of a [determination](/dataModelDocs/0.4.2/models/determination/).\n\n\n### Definition\n\nInformation about the taxon to which an [individual](/dataModelDocs/0.4.2/models/individual/) is currently assigned according to the local classification, or other names that has been associated with the individual that do not qualify as [determinations](/dataModelDocs/0.4.2/models/determination/).\n\n\n### Examples\n\n\"Pusa hispida\" is the accepted name for a taxon in the local classification, and \"Phoca hispida\" one of its synonyms. Consequently, \"Pusa hispida\" should be the locally accepted name (curatorial name) for a specimen that has been determined as \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this concept is:\n\n1. to keep information of the currently accepted name for an individual, and\n2. to accommodate taxon-related legacy data that do not fit into taxon in the taxonomyService or into determination.\n\nThe data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.\n\nImagine for example that the text on a determination label reads \"not taxon x\", while the name \"taxon x\" has been recorded as the name for the specimen in an old system (this could happen in collections where taxonomy is tightly connected to storage and it is important to just record some name). Without other information, it would be impossible to know that \"taxon x\" was derived from the text \"not taxon x\". Since you cannot be sure of where the information comes from, there would be no way to correct the erroneous determination record.\n\nAnother case is when a name at a different rank, let say a family, has been recorded from a determination to a subfamily written on the label, without saying anything about how the transformation was done. There can also be undocumented taxonomic interpretations at the same level, like when an original determination to \"Phoca hispida\" is recorded as just \"Pusa hispida\".\n\n\n### See also\n\n[determination](/dataModelDocs/0.4.2/models/determination/), [taxon](/dataModelDocs/0.4.2/models/taxon/)",
+    "description": "# taxonInformation\n\nInformation about an [individual's](/dataModelDocs/0.4.2/models/individual/) taxon, for example its accepted name according to the local classification. This term can also hold other taxon names which are not part of a [determination](/dataModelDocs/0.4.2/models/determination/). For the moment is type information also included here.\n\n\n### Definition\n\nInformation about the taxon to which an [individual](/dataModelDocs/0.4.2/models/individual/) is currently assigned according to the local classification, or other names that has been associated with the individual that do not qualify as [determinations](/dataModelDocs/0.4.2/models/determination/).\n\n\n### Examples\n\n\"Pusa hispida\" is the accepted name for a taxon in the local classification, and \"Phoca hispida\" one of its synonyms. Consequently, \"Pusa hispida\" should be the locally accepted name (curatorial name) for a specimen that has been determined as \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this concept is:\n\n* To keep information of the currently accepted name for an individual\n* To keep information that is specific to type specimens (e.g. type status, typified name)\n* To accommodate taxon-related legacy data that do not fit into taxon in the taxonomyService or into determination\n\nThe data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.\n\nImagine for example that the text on a determination label reads \"not taxon x\", while the name \"taxon x\" has been recorded as the name for the specimen in an old system (this can happen in collections where taxonomy is tightly connected to storage, and it is important to just record some name). Without other information, it would be impossible to know that \"taxon x\" was derived from the text \"not taxon x\". Since you cannot be sure of where the information comes from, there would be no way to correct the erroneous determination record.\n\nAnother case is when a name at a different rank, let say a family, has been recorded from a determination to a subfamily written on a label, without saying anything about how the transformation was done. There can also be undocumented taxonomic interpretations at the same level, like when an original determination to \"Phoca hispida\" is recorded as just \"Pusa hispida\".\n\nFor the moment is type information included as part of this model. In future, one may want to recognize this as a separate concept.\n\n\n### See also\n\n[determination](/dataModelDocs/0.4.2/models/determination/), [taxon](/dataModelDocs/0.4.2/models/taxon/)",
     "x-category": "specimenService",
     "x-modelType": "model",
     "x-summary": "Information about the taxon to which an individual is assigned.",
@@ -24385,9 +24385,16 @@
                 "description": "When provided specified fields will be excluded (applied after include)",
                 "items": {
                   "enum": [
-                    "id",
+                    "attributes.abbreviation",
+                    "attributes.additionalName",
+                    "attributes.agentType",
+                    "attributes.alsoKnownAs",
+                    "attributes.disambiguatingDescription",
+                    "attributes.familyName",
                     "attributes.fullName",
-                    "attributes.agentType"
+                    "attributes.givenName",
+                    "id",
+                    "attributes.remarks"
                   ],
                   "type": "string"
                 },
@@ -24397,9 +24404,16 @@
                 "description": "When provided only specified fields will be returned in response",
                 "items": {
                   "enum": [
-                    "id",
+                    "attributes.abbreviation",
+                    "attributes.additionalName",
+                    "attributes.agentType",
+                    "attributes.alsoKnownAs",
+                    "attributes.disambiguatingDescription",
+                    "attributes.familyName",
                     "attributes.fullName",
-                    "attributes.agentType"
+                    "attributes.givenName",
+                    "id",
+                    "attributes.remarks"
                   ],
                   "type": "string"
                 },
@@ -24438,12 +24452,26 @@
                 "items": {
                   "enum": [
                     "relevance",
-                    "id:asc",
-                    "id:desc",
+                    "attributes.abbreviation:asc",
+                    "attributes.abbreviation:desc",
+                    "attributes.additionalName:asc",
+                    "attributes.additionalName:desc",
+                    "attributes.agentType:asc",
+                    "attributes.agentType:desc",
+                    "attributes.alsoKnownAs:asc",
+                    "attributes.alsoKnownAs:desc",
+                    "attributes.disambiguatingDescription:asc",
+                    "attributes.disambiguatingDescription:desc",
+                    "attributes.familyName:asc",
+                    "attributes.familyName:desc",
                     "attributes.fullName:asc",
                     "attributes.fullName:desc",
-                    "attributes.agentType:asc",
-                    "attributes.agentType:desc"
+                    "attributes.givenName:asc",
+                    "attributes.givenName:desc",
+                    "id:asc",
+                    "id:desc",
+                    "attributes.remarks:asc",
+                    "attributes.remarks:desc"
                   ],
                   "type": "string"
                 },
