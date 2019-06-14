@@ -34,7 +34,7 @@ exports.update = [
     service: 'agentService',
   }),
   createUpdateRelatedSearchSpecimensPostHook({
-    resource: 'normalizedAgent',
+    srcResource: 'normalizedAgent',
   }),
 ]
 
