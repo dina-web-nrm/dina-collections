@@ -1,4 +1,15 @@
 {
   "additionalProperties": true,
-  "properties": {}
+  "properties": {
+    "acceptedName": { "type": "string" },
+    "acceptedNameRank": { "type": "string" },
+    "class": { "type": "string" },
+    "family": { "type": "string" },
+    "genus": { "type": "string" },
+    "order": { "type": "string" },
+    "species": { "type": "string" },
+    "subspecies": { "type": "string" },
+    "synonyms": { "type": "array" },
+    "vernacularNames": { "type": "array" }
+  }
 }
