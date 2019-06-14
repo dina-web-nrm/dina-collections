@@ -21,5 +21,4 @@ Data from a previous system which do not have a proper destination elsewhere in 
 
 ### Notes
 
-Legacy data is treated as read-only data. It can be in any JSON format, but is normally added as an onordered list of name–value pairs.
-
+Legacy data is treated as read-only data. It can be in any JSON format, but is normally added as an unordered list of name–value pairs.

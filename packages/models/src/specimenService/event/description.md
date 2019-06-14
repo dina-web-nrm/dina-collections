@@ -24,6 +24,8 @@ If it is uncertain whether two specimens were collected at the same event (e.g.,
 
 An event may have collecting- and death information.
 
+The DINA Collections user interface may constrain the number of events associated with an [individual](__DOCLINK__individual/).
+
 
 ### See also
 

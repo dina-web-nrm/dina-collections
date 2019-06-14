@@ -1,3 +1,3 @@
 # translatedString
 
-An object with keys for translations in different languages
+A structure that is used in several places in the system to handle text in different languages.
