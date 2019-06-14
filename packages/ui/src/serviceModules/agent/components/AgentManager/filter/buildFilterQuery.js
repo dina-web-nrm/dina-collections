@@ -4,7 +4,7 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   if (formValues.fullName) {
     and.push({
       filter: {
-        filterFunction: 'fullNameSearch',
+        filterFunction: 'fullName',
         input: {
           value: formValues.fullName,
         },
@@ -15,7 +15,7 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   if (formValues.agentType) {
     and.push({
       filter: {
-        filterFunction: 'matchAgentType',
+        filterFunction: 'agentType',
         input: {
           value: formValues.agentType,
         },
@@ -28,6 +28,6 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   }
 
   return {
-    and,
+    query: { and },
   }
 }
