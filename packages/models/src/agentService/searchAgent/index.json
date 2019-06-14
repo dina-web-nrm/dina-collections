@@ -1,4 +1,14 @@
 {
   "additionalProperties": true,
-  "properties": {}
+  "properties": {
+    "abbreviation": { "type": "string" },
+    "additionalName": { "type": "string" },
+    "agentType": { "type": "string" },
+    "alsoKnownAs": { "type": "string" },
+    "disambiguationDescription": { "type": "string" },
+    "familyName": { "type": "string" },
+    "fullName": { "type": "string" },
+    "givenName": { "type": "string" },
+    "remarks": { "type": "string" }
+  }
 }
