@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.22.0-rc](https://github.com/dina-web-nrm/dina-collections/compare/v0.20.0...v0.22.0-rc)
+#### [v0.22.0](https://github.com/dina-web-nrm/dina-collections/compare/v0.20.0...v0.22.0)
 
+- Fix data model documentation formatting issues [`#539`](https://github.com/dina-web-nrm/dina-collections/pull/539)
 - Update data model documentation [`#537`](https://github.com/dina-web-nrm/dina-collections/pull/537)
 - Anton/implement elastic rm resources [`#532`](https://github.com/dina-web-nrm/dina-collections/pull/532)
 - Anton/release docs [`#529`](https://github.com/dina-web-nrm/dina-collections/pull/529)
