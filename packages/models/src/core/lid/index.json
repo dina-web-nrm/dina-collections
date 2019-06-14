@@ -1,5 +1,5 @@
 {
   "additionalProperties": false,
-  "description": "A local identifier lid (local id). Should be a uuid",
+  "description": "A local identifier (Local ID) in the form of a UUID.",
   "type": "string"
 }

@@ -1,4 +1,3 @@
 # resourceActivity
 
-Resource activity is an internal model describes how a resource changes over
-time
+Resource activity is internally used to describe how a resource changes over time.

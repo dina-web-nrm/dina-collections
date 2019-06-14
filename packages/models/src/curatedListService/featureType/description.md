@@ -1,7 +1,25 @@
+# featureType
+
+The kind of [featureObservation](__DOCLINK__featureObservation/).
+
+## Short description
+
+The kind of featureObservation.
+
+
 ### Definition
 
-The type of FeatureObservation. Will likely be a currated list
+The kind of [featureObservation](__DOCLINK__featureObservation/).
 
-### Example(s)
 
-Sex
+### Examples
+
+* Age in years
+* Developmental stage
+* Complete body weight
+* Skinned weight
+
+
+### See also
+
+[featureObservation](__DOCLINK__featureObservation/)
