@@ -3,7 +3,7 @@ const DEFAULT_FS = require('fs')
 const { renderMarkdownToHtml } = require('../../utilities/markdown')
 
 const currentVersion = 'current'
-const documentLink = `/docs/${currentVersion}/models/`
+const documentLink = `/dataModelDocs/${currentVersion}/models/`
 const markdownLanguageRegex = /^([A-Za-z0-9-_]+)\.([a-z]+)\.md$/
 
 const parseFileName = fileName => {
