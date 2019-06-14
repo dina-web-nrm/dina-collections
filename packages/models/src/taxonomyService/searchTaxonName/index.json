@@ -1,4 +1,8 @@
 {
   "additionalProperties": true,
-  "properties": {}
+  "properties": {
+    "rank": { "type": "string" },
+    "rubinNumber": { "type": "string" },
+    "scientificName": { "type": "string" }
+  }
 }
