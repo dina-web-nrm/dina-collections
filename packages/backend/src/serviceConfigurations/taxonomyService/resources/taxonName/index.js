@@ -19,6 +19,7 @@ const {
   create: createPostHooks,
   del: delPostHooks,
   update: updatePostHooks,
+  updateTaxonRelationship: updateTaxonRelationshipPostHooks,
 } = require('./postHooks')
 
 module.exports = {
@@ -97,6 +98,7 @@ module.exports = {
       type: 'importDataFromFile',
     },
     {
+      postHooks: updateTaxonRelationshipPostHooks,
       preHooks: acceptedToTaxonPreHooks,
       relationKey: 'acceptedToTaxon',
       type: 'updateRelationship',
@@ -106,6 +108,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      postHooks: updateTaxonRelationshipPostHooks,
       preHooks: synonymToTaxonPreHooks,
       relationKey: 'synonymToTaxon',
       type: 'updateRelationship',
@@ -115,6 +118,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      postHooks: updateTaxonRelationshipPostHooks,
       relationKey: 'vernacularToTaxon',
       type: 'updateRelationship',
     },
