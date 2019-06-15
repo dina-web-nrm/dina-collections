@@ -1,5 +1,11 @@
 const createRankField = require('./createRankField')
 
+exports.classField = createRankField({
+  fieldName: 'classAcceptedName',
+  rank: 'class',
+  searchName: 'searchClassAcceptedName',
+})
+
 exports.order = createRankField({
   fieldName: 'orderAcceptedName',
   rank: 'order',
