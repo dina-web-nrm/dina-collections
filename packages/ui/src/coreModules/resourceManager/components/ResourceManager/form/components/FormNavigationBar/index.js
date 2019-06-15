@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
-import createTableWrapper from '../../higherOrderComponents/createTableWrapper'
+import createTableWrapper from '../../../table/higherOrderComponents/createTableWrapper'
 import RecordNavigationBar from '../../../shared/components/RecordNavigationBar'
 
 const propTypes = {
+  createItemActive: PropTypes.bool.isRequired,
   currentRowNumber: PropTypes.number,
+  fetchTableItems: PropTypes.func.isRequired,
   getHasNextRow: PropTypes.func.isRequired,
   getHasPreviousRow: PropTypes.func.isRequired,
   navigateCreate: PropTypes.func.isRequired,
@@ -22,8 +24,10 @@ const defaultProps = {
   resourceCount: undefined,
 }
 
-const TableNavigationBar = ({
+const FormNavigationBar = ({
+  createItemActive,
   currentRowNumber,
+  fetchTableItems,
   getHasNextRow,
   getHasPreviousRow,
   navigateCreate,
@@ -36,9 +40,15 @@ const TableNavigationBar = ({
 }) => {
   const numberOfListItems = tableListItems.length
 
+  useEffect(() => {
+    fetchTableItems()
+  }, [fetchTableItems])
+
   return (
     <RecordNavigationBar
       currentRowNumber={currentRowNumber}
+      disableCreate={createItemActive}
+      disableRecordNavigation={createItemActive}
       getHasNextRow={getHasNextRow}
       getHasPreviousRow={getHasPreviousRow}
       navigateCreate={navigateCreate}
@@ -52,7 +62,7 @@ const TableNavigationBar = ({
   )
 }
 
-TableNavigationBar.propTypes = propTypes
-TableNavigationBar.defaultProps = defaultProps
+FormNavigationBar.propTypes = propTypes
+FormNavigationBar.defaultProps = defaultProps
 
-export default compose(createTableWrapper())(TableNavigationBar)
+export default compose(createTableWrapper())(FormNavigationBar)
