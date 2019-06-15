@@ -7,9 +7,9 @@ const {
   createStringSearchMapping,
 } = require('../../../../../../../lib/data/mappings/factories')
 
-const fieldPath = 'attributes.scientificName'
-const searchFilterName = 'searchScientificName'
-const searchFieldPath = 'attributes.searchOnly.searchScientificName'
+const fieldPath = 'attributes.name'
+const searchFilterName = 'searchName'
+const searchFieldPath = 'attributes.searchOnly.searchName'
 
 const transformation = ({ migrator, src, target }) => {
   const type = migrator.getValue({
