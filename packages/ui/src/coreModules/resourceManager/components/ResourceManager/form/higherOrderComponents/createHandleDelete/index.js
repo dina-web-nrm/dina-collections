@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
 
 const propTypes = {
   createNotification: PropTypes.func.isRequired,
-  currentRowNumber: PropTypes.number.isRequired,
+  currentRowNumber: PropTypes.number,
   del: PropTypes.func.isRequired,
   fetchRelationshipsBeforeDelete: PropTypes.func,
   fetchResourceCount: PropTypes.func.isRequired,
@@ -35,6 +35,7 @@ const propTypes = {
   setFocusItemIdWhenLoaded: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  currentRowNumber: undefined,
   fetchRelationshipsBeforeDelete: undefined,
   itemHeader: undefined,
   itemId: undefined,
@@ -146,7 +147,7 @@ const createHandleDelete = () => ComposedComponent => {
         const nextRowItemId = getItemIdFromRowNumber(currentRowNumber + 1)
         const previousRowItemId = getItemIdFromRowNumber(currentRowNumber - 1)
         setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
-        
+
         fetchResourceCount()
         navigateTable()
       })

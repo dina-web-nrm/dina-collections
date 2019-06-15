@@ -7,7 +7,7 @@ import RecordNavigationBar from '../../../shared/components/RecordNavigationBar'
 
 const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
-  currentRowNumber: PropTypes.number.isRequired,
+  currentRowNumber: PropTypes.number,
   editItemActive: PropTypes.bool.isRequired,
   fetchTableItems: PropTypes.func.isRequired,
   getHasNextRow: PropTypes.func.isRequired,
@@ -21,6 +21,7 @@ const propTypes = {
   tableListItems: PropTypes.array.isRequired,
 }
 const defaultProps = {
+  currentRowNumber: undefined,
   resourceCount: undefined,
 }
 
