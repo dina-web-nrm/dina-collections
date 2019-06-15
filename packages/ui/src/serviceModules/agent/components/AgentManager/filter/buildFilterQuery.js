@@ -12,6 +12,17 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
     })
   }
 
+  if (formValues.abbreviation) {
+    and.push({
+      filter: {
+        filterFunction: 'abbreviation',
+        input: {
+          value: formValues.abbreviation,
+        },
+      },
+    })
+  }
+
   if (formValues.agentType) {
     and.push({
       filter: {
