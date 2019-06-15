@@ -10,7 +10,9 @@ export default () =>
         cy.get('[data-testid=tree] .row').should('have.length', 1)
 
         cy.getByTestId('expandIcon').click()
-        cy.get('[data-testid=tree] .row').should('have.length', 4)
+        cy.get('[data-testid=tree] .row').should('have.length', 5)
+
+        cy.getByText('Europe').click()
       })
     })
   })
