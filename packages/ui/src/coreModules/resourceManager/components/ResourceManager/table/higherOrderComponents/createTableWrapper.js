@@ -178,7 +178,7 @@ const createTableWrapper = () => ComposedComponent => {
         if (ignoreFilters) {
           filterValues = {}
         } else if (useInitialFilters) {
-          filterValues = initialFilterValues
+          filterValues = initialFilterValues || {}
         }
 
         const { query } = buildFilterQuery({
