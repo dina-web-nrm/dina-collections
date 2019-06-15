@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { destroy } from 'redux-form'
 
 import createLog from 'utilities/log'
 import capitalizeFirstLetter from 'common/src/stringFormatters/capitalizeFirstLetter'
@@ -39,6 +40,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     return {
       filterColumnWidth: isPicker ? emToPixels(16) : emToPixels(25),
+      filterFormName: `${searchResource}Filter`,
       layer: managerScope,
       managerScope,
       rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
@@ -49,6 +51,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   const mapDispatchToProps = {
     clearNestedCache: crudActionCreators.clearNestedCache,
     clearResourceState: keyObjectActionCreators.del[':managerScope'],
+    destroyForm: destroy,
   }
 
   const propTypes = {
@@ -58,8 +61,10 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     clearNestedCache: PropTypes.func.isRequired,
     clearResourceState: PropTypes.func.isRequired,
     createGetNestedItemHocInput: PropTypes.object.isRequired,
+    destroyForm: PropTypes.func.isRequired,
     enableTableColumnSorting: PropTypes.bool,
     excludeRootNode: PropTypes.bool,
+    filterFormName: PropTypes.string.isRequired,
     focusedItemId: PropTypes.string,
     initialFilterValues: PropTypes.object,
     initialItemId: PropTypes.string,
@@ -70,6 +75,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     navigateEdit: PropTypes.func.isRequired,
     navigateFilter: PropTypes.func.isRequired,
     navigateTable: PropTypes.func.isRequired,
+    navigateTree: PropTypes.func.isRequired,
     renderCreateForm: PropTypes.func.isRequired,
     renderEditForm: PropTypes.func.isRequired,
     renderFilterForm: PropTypes.func.isRequired,
@@ -160,16 +166,23 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         initialItemId,
         itemId,
         navigateFilter,
+        navigateTree,
         isPicker,
         setFocusedItemId,
+        treeEnabled,
       } = props
 
-      if (!focusedItemId && (itemId || initialItemId)) {
-        setFocusedItemId(itemId || initialItemId)
+      if (isPicker && initialFilterValues) {
+        navigateFilter()
       }
 
-      if (initialFilterValues && isPicker) {
-        navigateFilter()
+      if (!focusedItemId && (itemId || initialItemId)) {
+        const newFocusedItemId = itemId || initialItemId
+        setFocusedItemId(newFocusedItemId)
+
+        if (isPicker && newFocusedItemId === initialItemId && treeEnabled) {
+          navigateTree()
+        }
       }
 
       clearNestedCache({
@@ -178,7 +191,12 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     }
 
     componentWillUnmount() {
-      const { managerScope } = this.props
+      const { destroyForm, filterFormName, isPicker, managerScope } = this.props
+
+      if (isPicker) {
+        destroyForm(filterFormName)
+      }
+
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),
       })
