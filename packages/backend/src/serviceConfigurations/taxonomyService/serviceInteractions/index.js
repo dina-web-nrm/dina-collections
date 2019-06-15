@@ -142,3 +142,40 @@ exports.createUpdateRelatedSearchTaxonPostHook = ({ srcResource }) => {
     updateRelatedSearchResource: exports.updateRelatedSearchTaxonResource,
   })
 }
+
+exports.updateRelatedSearchTaxonView = ({ request, serviceInteractor }) => {
+  const taxonId = objectPath.get(request, 'body.data.id')
+
+  if (!taxonId) {
+    return null
+  }
+
+  return serviceInteractor
+    .updateView({
+      request: {
+        body: {
+          data: {
+            attributes: {
+              ids: [taxonId],
+            },
+          },
+        },
+      },
+      resource: 'searchTaxon',
+    })
+    .then(() => {
+      return exports
+        .searchTaxonRebuildInProgress({ serviceInteractor })
+        .then(inProgress => {
+          if (!inProgress) {
+            return null
+          }
+          return exports.searchTaxonCreateIndexJob({
+            consolidateJobs: false,
+            ids: [taxonId],
+            priority: 1,
+            serviceInteractor,
+          })
+        })
+    })
+}
