@@ -131,7 +131,7 @@ exports.searchTaxonNameCreateIndexJob = createCreateIndexJob({
 })
 
 exports.updateRelatedSearchTaxonResource = createUpdateRelatedSearchResource({
-  createIndexJob: exports.createIndexJob,
+  createIndexJob: exports.searchTaxonCreateIndexJob,
   limit: 50,
   targetSearchResource: 'searchTaxon',
 })
