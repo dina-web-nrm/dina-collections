@@ -30,7 +30,7 @@ const propTypes = {
   enableTableColumnSorting: PropTypes.bool.isRequired,
   excludeRootNode: PropTypes.bool.isRequired,
   fetchResourceCount: PropTypes.func.isRequired,
-  initialFilterValues: PropTypes.object.isRequired,
+  initialFilterValues: PropTypes.object,
   initialItemId: PropTypes.string,
   managerScope: PropTypes.string.isRequired,
   renderCreateForm: PropTypes.func.isRequired,
@@ -46,6 +46,7 @@ const propTypes = {
   treeItemFetchOptions: PropTypes.object.isRequired,
 }
 const defaultProps = {
+  initialFilterValues: undefined,
   initialItemId: undefined,
 }
 
