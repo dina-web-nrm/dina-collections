@@ -28,13 +28,14 @@ const createFocusRow = ({
   }
 
   const propTypes = {
-    currentRowNumber: PropTypes.number.isRequired,
+    currentRowNumber: PropTypes.number,
     focusedItemId: PropTypes.string,
     items: PropTypes.array,
     managerScope: PropTypes.string.isRequired,
     setFocusedItemId: PropTypes.func.isRequired,
   }
   const defaultProps = {
+    currentRowNumber: undefined,
     focusedItemId: undefined,
     items: [],
   }

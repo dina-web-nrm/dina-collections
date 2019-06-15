@@ -11,7 +11,7 @@ import createTreeWrapper from '../../higherOrderComponents/createTreeWrapper'
 
 const propTypes = {
   buildList: PropTypes.func.isRequired,
-  currentRowNumber: PropTypes.number.isRequired,
+  currentRowNumber: PropTypes.number,
   expandAncestorsForItemId: PropTypes.func.isRequired,
   fetchItemById: PropTypes.func.isRequired,
   fetchTreeBase: PropTypes.func.isRequired,
@@ -40,6 +40,7 @@ const propTypes = {
 }
 
 const defaultProps = {
+  currentRowNumber: undefined,
   focusedItemId: undefined,
   ItemTitle: undefined,
   treeListItems: [],
