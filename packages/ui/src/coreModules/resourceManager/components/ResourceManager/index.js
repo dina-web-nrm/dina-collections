@@ -31,14 +31,11 @@ const filterColumnStyle = {
 }
 
 const propTypes = {
-  availableHeight: PropTypes.number.isRequired,
-  columnHeight: PropTypes.number.isRequired,
   filterActive: PropTypes.bool.isRequired,
   filterColumnWidth: PropTypes.number.isRequired,
   focusedItemId: PropTypes.string,
   isPicker: PropTypes.bool.isRequired,
   managerScope: PropTypes.string.isRequired,
-  pickerHeaderHeight: PropTypes.number.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired,
   rightSidebarWidth: PropTypes.number.isRequired,
   treeItemFetchOptions: PropTypes.object.isRequired,
