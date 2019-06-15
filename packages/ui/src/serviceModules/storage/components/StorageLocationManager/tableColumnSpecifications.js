@@ -1,21 +1,3 @@
-import React from 'react'
-
-const findParentWithSpecificGroup = (item, group) => {
-  if (!item) {
-    return null
-  }
-
-  if (item.group === group) {
-    return item
-  }
-
-  if (!(item && item.parent)) {
-    return null
-  }
-
-  return findParentWithSpecificGroup(item.parent, group)
-}
-
 const tableColumnSpecifications = [
   {
     fieldPath: 'name',
@@ -23,79 +5,27 @@ const tableColumnSpecifications = [
     width: 350,
   },
   {
-    fieldPath: 'group',
+    fieldPath: 'level',
     label: 'modules.storage.fieldLabels.group',
     width: 250,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'room')
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'room',
     label: 'modules.storage.fieldLabels.room',
     width: 250,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'mountingWall')
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'mountingWall',
     label: 'modules.storage.fieldLabels.mountingWall',
     width: 250,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'cabinet')
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'cabinet',
     label: 'modules.storage.fieldLabels.cabinet',
     width: 250,
   },
   {
-    buildText: ({ value }) => {
-      const parent = findParentWithSpecificGroup(value, 'shelf')
-      if (!parent) {
-        return ''
-      }
-      if (parent.deactivatedAt) {
-        return (
-          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
-        )
-      }
-
-      return parent.name
-    },
-    fieldPath: '',
+    fieldPath: 'shelf',
     label: 'modules.storage.fieldLabels.shelf',
     width: 250,
   },
