@@ -34,13 +34,11 @@ const { get } = keyObjectGlobalSelectors
 
 const mapStateToProps = (
   state,
-  { allTableColumnFieldPaths, managerScope, searchResource }
+  { allTableColumnFieldPaths, filterFormName, managerScope, searchResource }
 ) => {
   const resource = searchResource
-  const filterFormName = `${searchResource}Filter`
 
   return {
-    filterFormName,
     filterFormValues: getFormValues(filterFormName)(state),
     hasAppliedFilter: get[':managerScope.hasAppliedFilter'](state, {
       managerScope,
