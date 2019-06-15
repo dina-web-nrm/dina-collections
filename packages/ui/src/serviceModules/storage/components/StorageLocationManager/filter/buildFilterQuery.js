@@ -4,7 +4,7 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   if (formValues.name) {
     and.push({
       filter: {
-        filterFunction: 'nameSearch',
+        filterFunction: 'searchName',
         input: {
           value: formValues.name,
         },
@@ -15,7 +15,7 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   if (formValues.group) {
     and.push({
       filter: {
-        filterFunction: 'group',
+        filterFunction: 'searchLevel',
         input: {
           value: formValues.group,
         },
@@ -28,6 +28,6 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   }
 
   return {
-    and,
+    query: { and },
   }
 }
