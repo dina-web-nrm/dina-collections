@@ -87,7 +87,7 @@ class BottomBar extends PureComponent {
       setHasAppliedFilter,
     } = this.props
     setHasAppliedFilter(false, { managerScope })
-    initializeFilter(formName, initialFilterValues)
+    initializeFilter(formName, initialFilterValues || {})
   }
 
   handleReset(event) {

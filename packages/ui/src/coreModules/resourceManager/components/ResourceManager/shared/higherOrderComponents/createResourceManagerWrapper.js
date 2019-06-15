@@ -93,7 +93,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     enableTableColumnSorting: false,
     excludeRootNode: false,
     focusedItemId: undefined,
-    initialFilterValues: {},
+    initialFilterValues: undefined,
     initialItemId: undefined,
     isPicker: false,
     itemId: undefined,
