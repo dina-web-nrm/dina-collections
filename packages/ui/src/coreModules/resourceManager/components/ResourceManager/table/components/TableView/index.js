@@ -24,6 +24,9 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   fetchTableItems: PropTypes.func.isRequired,
   getTableWidth: PropTypes.func.isRequired,
+  initialFilterValues: PropTypes.object,
+  initialItemId: PropTypes.string,
+  isPicker: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.arrayOf(
     PropTypes.shape({
       fieldPath: PropTypes.string.isRequired,
@@ -34,6 +37,10 @@ const propTypes = {
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   tableListItems: PropTypes.array.isRequired,
 }
+const defaultProps = {
+  initialFilterValues: undefined,
+  initialItemId: undefined,
+}
 
 const TableView = props => {
   log.render()
@@ -41,6 +48,9 @@ const TableView = props => {
     availableHeight,
     fetchTableItems,
     getTableWidth,
+    initialFilterValues,
+    initialItemId,
+    isPicker,
     tableColumnSpecifications,
     tableColumnsToShow,
     tableListItems,
@@ -54,8 +64,10 @@ const TableView = props => {
   }, [getTableWidth, tableColumnSpecifications, tableColumnsToShow])
 
   useEffect(() => {
-    fetchTableItems()
-  }, [fetchTableItems])
+    fetchTableItems({
+      useInitialFilters: !!(isPicker && initialFilterValues && !initialItemId),
+    })
+  }, [fetchTableItems, initialFilterValues, initialItemId, isPicker])
 
   return (
     <RowLayout availableHeight={availableHeight}>
@@ -102,6 +114,7 @@ const TableView = props => {
 }
 
 TableView.propTypes = propTypes
+TableView.defaultProps = defaultProps
 
 export default compose(
   createTableWrapper(),
