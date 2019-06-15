@@ -7,6 +7,7 @@ import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import CreateItemColumn from '../../form/components/CreateItemColumn'
 import EditItemColumn from '../../form/components/EditItemColumn'
+import FormNavigationBar from '../../form/components/FormNavigationBar'
 import ResultOptionsBar from '../../shared/components/ResultOptionsBar'
 import TableNavigationBar from '../../table/components/TableNavigationBar'
 import TableSettings from '../../table/components/TableSettings'
@@ -63,18 +64,23 @@ const MainColumn = ({
 
   return (
     <RowLayout availableHeight={availableHeight}>
-      {!isPicker && treeActive && (
-        <RowLayout.Row height={`${recordNavigationHeight}px`}>
-          <TreeNavigationBar />
+      {!isPicker && (createItemActive || editItemActive) && (
+        <RowLayout.Row height={recordNavigationHeight}>
+          <FormNavigationBar createItemActive={createItemActive} />
         </RowLayout.Row>
       )}
-      {!isPicker && !treeActive && (
-        <RowLayout.Row height={`${recordNavigationHeight}px`}>
+      {!isPicker && tableActive && (
+        <RowLayout.Row height={recordNavigationHeight}>
           <TableNavigationBar />
         </RowLayout.Row>
       )}
+      {!isPicker && treeActive && (
+        <RowLayout.Row height={recordNavigationHeight}>
+          <TreeNavigationBar />
+        </RowLayout.Row>
+      )}
       <RowLayout.Row
-        height={`${recordOptionsHeight}px`}
+        height={recordOptionsHeight}
         style={recordOptionsBarRowStyle}
       >
         <ResultOptionsBar
