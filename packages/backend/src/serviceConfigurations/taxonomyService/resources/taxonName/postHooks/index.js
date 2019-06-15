@@ -7,16 +7,16 @@ const {
 } = require('../../../../historyService/serviceInteractions')
 
 const {
-  createIndexJob,
-  rebuildInProgress,
+  searchTaxonNameCreateIndexJob,
+  searchTaxonNameRebuildInProgress,
   createUpdateRelatedSearchTaxonPostHook,
 } = require('../../../serviceInteractions')
 
 const { createIndexHook } = require('../../../../../lib/data/hooks')
 
 const indexHook = createIndexHook({
-  createIndexJob,
-  rebuildInProgress,
+  createIndexJob: searchTaxonNameCreateIndexJob,
+  rebuildInProgress: searchTaxonNameRebuildInProgress,
   resource: 'searchTaxonName',
 })
 

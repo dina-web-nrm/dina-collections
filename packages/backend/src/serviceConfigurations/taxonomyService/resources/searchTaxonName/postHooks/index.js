@@ -1,11 +1,13 @@
-const { createIndexJob } = require('../../../serviceInteractions')
+const {
+  searchTaxonNameCreateIndexJob,
+} = require('../../../serviceInteractions')
 
 const {
   createConsolidateJobsPostHook,
 } = require('../../../../../lib/data/hooks')
 
 const consolidateJobsPostHook = createConsolidateJobsPostHook({
-  createIndexJob,
+  createIndexJob: searchTaxonNameCreateIndexJob,
   rebuildViewOperationId: 'searchTaxonNameRebuildView',
   updateViewOperationId: 'searchTaxonNameUpdateView',
 })
