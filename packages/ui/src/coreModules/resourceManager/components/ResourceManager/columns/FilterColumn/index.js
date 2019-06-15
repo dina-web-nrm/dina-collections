@@ -13,12 +13,14 @@ const overflowAuto = { overflow: 'auto' }
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   initialFilterValues: PropTypes.object.isRequired,
+  isPicker: PropTypes.bool.isRequired,
   renderFilterForm: PropTypes.func.isRequired,
 }
 
 const FilterColumn = ({
   availableHeight,
   initialFilterValues,
+  isPicker,
   renderFilterForm,
 }) => {
   return (
@@ -30,7 +32,7 @@ const FilterColumn = ({
         {renderFilterForm({ initialValues: initialFilterValues })}
       </RowLayout.Row>
       <RowLayout.Row height={emToPixels(4.625)}>
-        <FilterActionBar />
+        <FilterActionBar isPicker={isPicker} />
       </RowLayout.Row>
     </RowLayout>
   )

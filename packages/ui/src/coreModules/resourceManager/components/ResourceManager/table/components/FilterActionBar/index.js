@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { getFormValues, initialize, isInvalid, isPristine } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
+import { isEmpty } from 'lodash'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import createTableWrapper from '../../higherOrderComponents/createTableWrapper'
@@ -23,7 +24,7 @@ const propTypes = {
   formName: PropTypes.string.isRequired,
   formValues: PropTypes.object,
   hasAppliedFilter: PropTypes.bool.isRequired,
-  initialFilterValues: PropTypes.object.isRequired,
+  initialFilterValues: PropTypes.object,
   initializeFilter: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   isPicker: PropTypes.bool,
@@ -33,6 +34,7 @@ const propTypes = {
 }
 const defaultProps = {
   formValues: {},
+  initialFilterValues: undefined,
   isPicker: false,
 }
 
@@ -87,7 +89,7 @@ class BottomBar extends PureComponent {
       setHasAppliedFilter,
     } = this.props
     setHasAppliedFilter(false, { managerScope })
-    initializeFilter(formName, initialFilterValues || {})
+    initializeFilter(formName, initialFilterValues || {})
   }
 
   handleReset(event) {
@@ -134,7 +136,13 @@ class BottomBar extends PureComponent {
   }
 
   render() {
-    const { hasAppliedFilter, invalid, isPicker, pristine } = this.props
+    const {
+      formValues,
+      hasAppliedFilter,
+      invalid,
+      isPicker,
+      pristine,
+    } = this.props
 
     return (
       <React.Fragment>
@@ -155,7 +163,7 @@ class BottomBar extends PureComponent {
             <Button
               basic
               data-testid="clearAllFiltersButton"
-              disabled={pristine && !isPicker}
+              disabled={isPicker ? isEmpty(formValues) : pristine}
               onClick={isPicker ? this.handleReset : this.handleClearFilters}
               size={isPicker ? 'small' : 'large'}
               style={{ float: 'right' }}
