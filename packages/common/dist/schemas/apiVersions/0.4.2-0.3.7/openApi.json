@@ -19382,9 +19382,10 @@
               "items": {
                 "enum": [
                   "id",
+                  "attributes.name",
                   "attributes.rank",
                   "attributes.rubinNumber",
-                  "attributes.scientificName"
+                  "attributes.taxonNameType"
                 ],
                 "type": "string"
               },
@@ -19400,9 +19401,10 @@
               "items": {
                 "enum": [
                   "id",
+                  "attributes.name",
                   "attributes.rank",
                   "attributes.rubinNumber",
-                  "attributes.scientificName"
+                  "attributes.taxonNameType"
                 ],
                 "type": "string"
               },
@@ -19568,7 +19570,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchRank*** <br/> Search attributes.searchOnly.searchRank <br/> <br/>  ***rubinNumber*** <br/> Search attributes.searchOnly.rubinNumber <br/> <br/>  ***searchScientificName*** <br/> Search attributes.searchOnly.searchScientificName <br/>\n\n  \n  <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***searchName*** <br/> Search attributes.searchOnly.searchName <br/> <br/>  ***searchRank*** <br/> Search attributes.searchOnly.searchRank <br/> <br/>  ***searchRubinNumber*** <br/> Search attributes.searchOnly.searchRubinNumber <br/> <br/>  ***searchTaxonNameType*** <br/> Search attributes.searchOnly.searchTaxonNameType <br/>\n\n  \n  <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -19649,6 +19651,15 @@
           },
           {
             "in": "query",
+            "name": "filter[searchName]",
+            "description": "Search attributes.searchOnly.searchName",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[searchRank]",
             "description": "Search attributes.searchOnly.searchRank",
             "required": false,
@@ -19658,8 +19669,8 @@
           },
           {
             "in": "query",
-            "name": "filter[rubinNumber]",
-            "description": "Search attributes.searchOnly.rubinNumber",
+            "name": "filter[searchRubinNumber]",
+            "description": "Search attributes.searchOnly.searchRubinNumber",
             "required": false,
             "schema": {
               "type": "string"
@@ -19667,8 +19678,8 @@
           },
           {
             "in": "query",
-            "name": "filter[searchScientificName]",
-            "description": "Search attributes.searchOnly.searchScientificName",
+            "name": "filter[searchTaxonNameType]",
+            "description": "Search attributes.searchOnly.searchTaxonNameType",
             "required": false,
             "schema": {
               "type": "string"
@@ -19701,9 +19712,10 @@
               "items": {
                 "enum": [
                   "id",
+                  "attributes.name",
                   "attributes.rank",
                   "attributes.rubinNumber",
-                  "attributes.scientificName"
+                  "attributes.taxonNameType"
                 ],
                 "type": "string"
               },
@@ -19719,9 +19731,10 @@
               "items": {
                 "enum": [
                   "id",
+                  "attributes.name",
                   "attributes.rank",
                   "attributes.rubinNumber",
-                  "attributes.scientificName"
+                  "attributes.taxonNameType"
                 ],
                 "type": "string"
               },
@@ -19739,12 +19752,12 @@
                   "relevance",
                   "id:asc",
                   "id:desc",
+                  "attributes.name:asc",
+                  "attributes.name:desc",
                   "attributes.rank:asc",
                   "attributes.rank:desc",
                   "attributes.rubinNumber:asc",
-                  "attributes.rubinNumber:desc",
-                  "attributes.scientificName:asc",
-                  "attributes.scientificName:desc"
+                  "attributes.rubinNumber:desc"
                 ],
                 "type": "string"
               },
@@ -32349,9 +32362,10 @@
                     "items": {
                       "enum": [
                         "id",
+                        "attributes.name",
                         "attributes.rank",
                         "attributes.rubinNumber",
-                        "attributes.scientificName"
+                        "attributes.taxonNameType"
                       ],
                       "type": "string"
                     },
@@ -32362,9 +32376,10 @@
                     "items": {
                       "enum": [
                         "id",
+                        "attributes.name",
                         "attributes.rank",
                         "attributes.rubinNumber",
-                        "attributes.scientificName"
+                        "attributes.taxonNameType"
                       ],
                       "type": "string"
                     },
@@ -32405,12 +32420,12 @@
                         "relevance",
                         "id:asc",
                         "id:desc",
+                        "attributes.name:asc",
+                        "attributes.name:desc",
                         "attributes.rank:asc",
                         "attributes.rank:desc",
                         "attributes.rubinNumber:asc",
-                        "attributes.rubinNumber:desc",
-                        "attributes.scientificName:asc",
-                        "attributes.scientificName:desc"
+                        "attributes.rubinNumber:desc"
                       ],
                       "type": "string"
                     },
