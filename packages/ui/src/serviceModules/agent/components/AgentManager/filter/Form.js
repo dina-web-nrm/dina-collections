@@ -48,6 +48,18 @@ export class BaseForm extends Component {
                 <Grid.Column width={16}>
                   <FieldWrapper
                     autoComplete="off"
+                    component={Input}
+                    enableHelpNotifications={false}
+                    label="Abbreviation"
+                    model="agent"
+                    module="agent"
+                    name="abbreviation"
+                    type="text"
+                  />
+                </Grid.Column>
+                <Grid.Column width={16}>
+                  <FieldWrapper
+                    autoComplete="off"
                     component={DropdownSearch}
                     enableHelpNotifications={false}
                     fluid
