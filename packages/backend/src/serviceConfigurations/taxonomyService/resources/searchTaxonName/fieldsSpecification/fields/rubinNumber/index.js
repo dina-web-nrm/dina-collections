@@ -8,8 +8,8 @@ const {
 } = require('../../../../../../../lib/data/mappings/factories')
 
 const fieldPath = 'attributes.rubinNumber'
-const searchFilterName = 'rubinNumber'
-const searchFieldPath = 'attributes.searchOnly.rubinNumber'
+const searchFilterName = 'searchRubinNumber'
+const searchFieldPath = 'attributes.searchOnly.searchRubinNumber'
 
 const transformation = ({ migrator, src, target }) => {
   const type = migrator.getValue({
