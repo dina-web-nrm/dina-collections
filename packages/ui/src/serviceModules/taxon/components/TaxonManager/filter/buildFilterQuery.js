@@ -4,7 +4,7 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   if (formValues.name) {
     and.push({
       filter: {
-        filterFunction: 'nameSearch',
+        filterFunction: 'searchAcceptedName',
         input: {
           value: formValues.name,
         },
@@ -15,7 +15,7 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   if (formValues.rank) {
     and.push({
       filter: {
-        filterFunction: 'nameRank',
+        filterFunction: 'searchAcceptedNameRank',
         input: {
           value: formValues.rank,
         },
@@ -26,7 +26,7 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   if (formValues.vernacularName) {
     and.push({
       filter: {
-        filterFunction: 'vernacularNameSearch',
+        filterFunction: 'searchVernacularNames',
         input: {
           value: formValues.vernacularName,
         },
@@ -39,6 +39,6 @@ export default function buildFilterQuery({ formValues = {} } = {}) {
   }
 
   return {
-    and,
+    query: { and },
   }
 }
