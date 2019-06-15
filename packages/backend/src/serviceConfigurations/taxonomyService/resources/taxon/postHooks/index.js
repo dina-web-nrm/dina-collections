@@ -65,6 +65,7 @@ exports.updateInternalRelationship = [
 ]
 
 exports.updateExternalRelationship = [
+  indexHook,
   createRegisterResourceActivityHook({
     action: 'update',
     getIdFromBody: true,

@@ -147,6 +147,7 @@ module.exports = {
         relationKey: 'acceptedToTaxon',
         resource: 'taxonName',
       }),
+      postHooks: updateExternalRelationshipPostHooks,
       relationKey: 'acceptedTaxonName',
       type: 'updateRelationship',
     },
