@@ -159,8 +159,6 @@ const createTableWrapper = () => ComposedComponent => {
         buildFilterQuery,
         enableTableColumnSorting,
         filterFormValues,
-        focusedItemId,
-        focusItemIdWhenLoaded,
         initialFilterValues,
         managerScope,
         search,
@@ -198,6 +196,8 @@ const createTableWrapper = () => ComposedComponent => {
           setTableListItems(items, { managerScope })
 
           const firstItemId = objectPath.get(items, '0.id')
+
+          const { focusedItemId, focusItemIdWhenLoaded } = this.props
 
           if (focusItemIdWhenLoaded) {
             setFocusedItemId(focusItemIdWhenLoaded)
