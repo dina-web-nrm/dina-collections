@@ -5,7 +5,7 @@ export default () =>
     })
 
     describe('starting in tree', () => {
-      it.only('does', () => {
+      it('does', () => {
         cy.visit('/app/localities?mainColumn=tree')
         cy.get('[data-testid=tree] .row').should('have.length', 1)
 
