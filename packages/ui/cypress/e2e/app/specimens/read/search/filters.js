@@ -270,9 +270,14 @@ export default () =>
       })
     })
 
-    it(`searches with non-matching free-text; with matching free text; with
-    indexed value; with combined filters; with specific rank under specific
-    taxon; and modifies filter and re-applies search`, () => {
+    it(`
+      searches with non-matching free-text; 
+      with matching free text; 
+      with indexed value; 
+      with combined filters; 
+      with specific rank under specific taxon; 
+      and modifies filter and re-applies search
+    `, () => {
       cy.log('test non-matching free-text')
       cy.getByTestId('filterColumn').within(() => {
         cy.getByText('Agent').click()
