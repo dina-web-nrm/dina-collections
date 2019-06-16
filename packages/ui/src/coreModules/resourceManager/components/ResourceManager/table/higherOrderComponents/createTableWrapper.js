@@ -199,6 +199,11 @@ const createTableWrapper = () => ComposedComponent => {
 
           const firstItemId = objectPath.get(items, '0.id')
 
+          const {
+            focusedItemId,
+            focusItemIdWhenLoaded,
+          } = this.props
+
           if (focusItemIdWhenLoaded) {
             setFocusedItemId(focusItemIdWhenLoaded)
             setFocusItemIdWhenLoaded(null)
