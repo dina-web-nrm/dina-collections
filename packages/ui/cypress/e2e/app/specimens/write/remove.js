@@ -13,7 +13,10 @@ export default () =>
       })
     })
 
-    it('deletes record', () => {
+    it(`
+      deletes the last record in table and focuses the previous;
+      deletes the first record in table and focuses the next;
+    `, () => {
       cy.log('deletes the last record in table and focuses the previous')
       cy.get('[data-testid="tableScrollContainer"]')
         .as('table')

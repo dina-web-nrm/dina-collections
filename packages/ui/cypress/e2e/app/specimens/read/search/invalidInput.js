@@ -1,7 +1,12 @@
 export default () =>
   describe('invalid input', () => {
-    it(`returns no result for: collecting date invalid year; collecting date only
-    searching for months; negative or zero max age/length/weight; age/length/weight between zero to zero`, () => {
+    it(`
+      returns no result for: 
+      collecting date invalid year,
+      collecting date only searching for months,
+      negative or zero max age/length/weight,
+      age/length/weight between zero to zero
+    `, () => {
       cy.getByTestId('filterColumn').within(() => {
         cy.getByText('Collecting date').click()
       })
