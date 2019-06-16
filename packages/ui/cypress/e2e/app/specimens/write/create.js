@@ -13,7 +13,17 @@ export default () =>
       })
     })
 
-    it('creates records, validates catalog number and focuses new record in table', () => {
+    it(`
+      creates with automatic number;
+      creates with 6-digit manual number;
+      ensures error on 7 digits;
+      ensures error cleared when going back to 6 digits;
+      ensures error on non-digit;
+      creates with 8-digit number;
+      ensures new record focused and scrolled to in table;
+      ensures error on creating with same number;
+      ensures possible to cancel after trying to creating with same number;
+    `, () => {
       cy.log('create with automatic number')
       cy.getByText('New record').click()
       cy.getByTestId('createAutomaticNumber').click()

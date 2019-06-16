@@ -6,7 +6,12 @@ export default () =>
       cy.get('[data-testid="basicInformation"]', { log: false, timeout: 60000 })
     })
 
-    it('has record history and help texts and form step navigation', () => {
+    it(`
+      opens and closes help text in sidebar;
+      opens and closes help text in modal on modal;
+      opens another inline help text;
+      has working form step navigation;
+    `, () => {
       cy.getByText('Record history')
       cy.getByText('Created by Admin', { exact: false })
       cy.getByTestId('sourceDataLink').shouldHaveHref(
