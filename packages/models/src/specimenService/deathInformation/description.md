@@ -9,6 +9,7 @@ Information about the death of an individual.
 
 
 ### Definition
+
 Information pertaining to the death circumstances of an [individual](__DOCLINK__individual/).
 
 
@@ -19,4 +20,4 @@ The purpose of this term is to keep information that has to do with the death of
 
 ### See also
 
-[event](__DOCLINK__event/)
+[event](__DOCLINK__event/), [individual](__DOCLINK__individual/)

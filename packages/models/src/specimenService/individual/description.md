@@ -27,7 +27,7 @@ This term has two purposes:
 
 You should recognize new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should recognize two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you may have to recognize even more individuals.
 
-New name suggestion: “operationalIndividual” (motivation: "individual" leads one to believe that it is a single organism, which it may not be).
+New name suggestion: “operationalIndividual” (motivation: "individual" leads one to believe that it is a single organism, which may not be the case).
 
 
 ### Relation to other standards

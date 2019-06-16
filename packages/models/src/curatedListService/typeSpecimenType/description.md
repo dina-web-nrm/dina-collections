@@ -1,6 +1,6 @@
 # typeSpecimenType
 
-The nomenclatural type status of a [specimen](__DOCLINK__specimen/), used together with a typified name in  [taxonInformation](__DOCLINK__taxonInformation/).
+The nomenclatural type status of a [specimen](__DOCLINK__specimen/), used together with a typified name in [taxonInformation](__DOCLINK__taxonInformation/).
 
 ## Short description
 

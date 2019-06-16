@@ -20,7 +20,7 @@ The species that includes the type specimen for the name "Pusa hispida", which m
 
 ### Notes
 
-The purpose of this term is to keep information about locally used taxon concepts. These concepts do not have to be used elsewhere. The local classification is the combination of all the names and their relations. In the local classification, each taxon has an accepted taxon name at same rank as the taxon (more precisely, the taxon gets its rank from the accepted name). The accepted name may have synonyms at any rank.
+The purpose of this term is to keep information about locally used taxon concepts. These concepts do not have to be used by others. The local classification is the combination of all the names and their relations. In the local classification, each taxon has an accepted taxon name at the same rank as the taxon (more precisely, the taxon gets its rank from the accepted name). The accepted name may have synonyms at any rank.
 
 
 ### See also

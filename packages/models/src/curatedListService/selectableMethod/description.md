@@ -14,6 +14,7 @@ A method that can be selected for a [featureType](__DOCLINK__featureType/) in a 
 
 
 ### Examples
+
 For a featureType "age", the selectableMethod could be "known age" or "sectioned teeth".
 
 

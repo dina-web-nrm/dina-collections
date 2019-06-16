@@ -19,5 +19,4 @@ For a featureType "skinned weight", the selectableUnit could be "kg" or "g".
 
 ### See also
 
-[featureObservation](__DOCLINK__featureObservation/)
-[featureType](__DOCLINK__featureType/)
+[featureObservation](__DOCLINK__featureObservation/), [featureType](__DOCLINK__featureType/)

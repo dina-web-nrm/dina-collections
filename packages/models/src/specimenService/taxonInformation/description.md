@@ -23,7 +23,7 @@ Information about the taxon to which an [individual](__DOCLINK__individual/) is 
 The purpose of this concept is:
 
 * To keep information of the currently accepted name for an individual
-* To keep information that is specific to type specimens (e.g. type status, typified name)
+* To keep information that is specific to type specimens (e.g. type status and typified name)
 * To accommodate taxon-related legacy data that do not fit into taxon in the taxonomyService or into determination
 
 The data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.

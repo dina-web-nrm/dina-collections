@@ -24,7 +24,7 @@ This term is for keeping general information about a location, for example geogr
 
 More specifically, the purpose of the term is:
 
-1. to keep information about a location that is specific for an event (e.g., transcribed information about the location),
-2. to keep information regarding the uncertainty about a location,
-3. to describe how a location relates to some other place ("3 km NW of"), and
-4. to document the source for some information (so that interpretations can be traced).
+1. To keep information about a location that is specific for an event (e.g., transcribed information about the location)
+2. To keep information regarding the uncertainty about a location
+3. To describe how a location relates to some other place ("3 km NW of")
+4. To document the source for some information (so that interpretations can be traced)
