@@ -34,6 +34,7 @@ const propTypes = {
   initialFilterValues: PropTypes.object,
   initialItemId: PropTypes.string,
   isPicker: PropTypes.bool.isRequired,
+  ItemTitle: PropTypes.func,
   managerScope: PropTypes.string.isRequired,
   renderCreateForm: PropTypes.func.isRequired,
   renderEditForm: PropTypes.func.isRequired,
@@ -50,6 +51,7 @@ const propTypes = {
 const defaultProps = {
   initialFilterValues: undefined,
   initialItemId: undefined,
+  ItemTitle: undefined,
 }
 
 const ResourceManagerConfigProvider = ({
@@ -64,6 +66,7 @@ const ResourceManagerConfigProvider = ({
   initialFilterValues,
   initialItemId,
   isPicker,
+  ItemTitle,
   managerScope,
   renderCreateForm,
   renderEditForm,
@@ -96,6 +99,7 @@ const ResourceManagerConfigProvider = ({
       initialFilterValues,
       initialItemId,
       isPicker,
+      ItemTitle,
       managerScope,
       renderCreateForm,
       renderEditForm,
@@ -122,6 +126,7 @@ const ResourceManagerConfigProvider = ({
     initialFilterValues,
     initialItemId,
     isPicker,
+    ItemTitle,
     managerScope,
     renderCreateForm,
     renderEditForm,
