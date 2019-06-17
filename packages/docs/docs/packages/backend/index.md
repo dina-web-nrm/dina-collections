@@ -30,6 +30,8 @@ Edits between this comment and import-file-end will be replaced when interpolate
 ├── Dockerfile
 ├── LICENCE
 ├── README.md
+├── jest.config.js
+├── jest.setup.js
 ├── nodemon.json
 ├── package.json
 ├── src
@@ -38,7 +40,6 @@ Edits between this comment and import-file-end will be replaced when interpolate
 │   ├── lib
 │   ├── scripts
 │   ├── serviceConfigurations
-│   ├── tests
 │   ├── tree.md
 │   └── utilities
 ├── tree.md
