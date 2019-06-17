@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Dimmer, Grid, Icon, Loader } from 'semantic-ui-react'
 
-import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createInjectItemTitle } from '../../../../shared/higherOrderComponents'
 
@@ -128,7 +128,7 @@ ListItem.propTypes = propTypes
 ListItem.defaultProps = defaultProps
 
 export default compose(
-  createGetItemById({
+  createGetNestedItemById({
     refresh: false,
     shouldFetch: false,
   }),
