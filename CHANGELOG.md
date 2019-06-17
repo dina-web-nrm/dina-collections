@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.22.2-rc1](https://github.com/dina-web-nrm/dina-collections/compare/v0.22.1...v0.22.2-rc1)
+#### [v0.22.2-rc2](https://github.com/dina-web-nrm/dina-collections/compare/v0.22.1...v0.22.2-rc2)
 
+- Rebuild models [`#545`](https://github.com/dina-web-nrm/dina-collections/pull/545)
 - Update data model documentation [`#544`](https://github.com/dina-web-nrm/dina-collections/pull/544)
 - Restart containers at reboot [`#536`](https://github.com/dina-web-nrm/dina-collections/pull/536)
 - Add search properties for documents [`#543`](https://github.com/dina-web-nrm/dina-collections/pull/543)
