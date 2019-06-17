@@ -118,10 +118,10 @@ Right now it is supported with 4 different server roles: production, stage, test
       group: 'build',
       short: 'Build docs package',
     },
-    'build:index-specimen:json': {
-      description: 'Will build the elasticsearch specimen index',
+    'build:elastic-indices': {
+      description: 'Will build the elasticsearch indices',
       group: 'build',
-      short: 'Build specimen elasticsearch index',
+      short: 'Build elasticsearch indices',
     },
     'build:markdown': {
       description:
