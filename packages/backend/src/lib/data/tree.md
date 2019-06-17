@@ -11,11 +11,21 @@
 │   ├── sharedFilters
 │   └── utilities
 ├── hooks
-│   └── sharedHooks
+│   ├── createConsolidateJobsPostHook.js
+│   ├── createIndexHook.js
+│   ├── createUpdateDescendantsPostHook.js
+│   ├── createUpdateRelatedSearchResourcePostHook.js
+│   ├── ensureNoCircularAncestorsPreHook.js
+│   └── index.js
 ├── interceptors
 │   └── sharedInterceptors
 ├── mappings
 │   └── factories
+├── serviceInteractions
+│   ├── createCreateIndexJob.js
+│   ├── createRebuildInProgress.js
+│   ├── createUpdateRelatedSearchResource.js
+│   └── index.js
 ├── sort
 │   ├── schemas
 │   └── utilities

@@ -93,10 +93,13 @@
 │   ├── components
 │   │   ├── CatalogNumberModal
 │   │   │   └── index.js
-│   │   ├── MammalManager
-│   │   │   ├── FilterColumn
-│   │   │   ├── MainColumn
-│   │   │   └── index.js
+│   │   ├── SpecimenManager
+│   │   │   ├── Base.js
+│   │   │   ├── ItemTitle.js
+│   │   │   ├── Query.js
+│   │   │   ├── filter
+│   │   │   ├── item
+│   │   │   └── tableColumnSpecifications.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── endpoints.js
@@ -140,12 +143,6 @@
 │   ├── schemas.js
 │   └── translations.json
 ├── taxon
-│   ├── actionCreators
-│   │   ├── index.js
-│   │   └── updateTaxonNameSearchQuery
-│   │       ├── index.js
-│   │       └── index.test.js
-│   ├── actionTypes.js
 │   ├── components
 │   │   ├── AcceptedTaxonNameDropdownPickerSearch
 │   │   │   └── index.js
@@ -191,21 +188,10 @@
 │   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
-│   ├── globalSelectors.js
-│   ├── globalSelectors.test.js
 │   ├── index.js
-│   ├── middleware.js
-│   ├── reducer
-│   │   ├── index.js
-│   │   └── lookup
-│   │       ├── index.js
-│   │       └── index.test.js
 │   ├── schemas.js
-│   ├── selectors.js
-│   ├── selectors.test.js
 │   ├── translations.json
-│   ├── utilities.js
-│   └── utilities.test.js
+│   └── utilities.js
 └── tree.md
 
 ```

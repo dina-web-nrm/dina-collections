@@ -25,6 +25,7 @@
 │   ├── index.js
 │   ├── testConfig.js
 │   └── tree.md
+├── controllers
 ├── data
 │   ├── aggregations
 │   ├── fields
@@ -32,6 +33,7 @@
 │   ├── hooks
 │   ├── interceptors
 │   ├── mappings
+│   ├── serviceInteractions
 │   ├── sort
 │   ├── transformations
 │   └── tree.md
@@ -68,6 +70,7 @@
 │   ├── factories.js
 │   ├── inMemory
 │   ├── index.js
+│   ├── schemas
 │   ├── sequelize
 │   ├── tests
 │   ├── tree.md
@@ -79,16 +82,17 @@
 │   ├── import
 │   ├── index.js
 │   ├── job
+│   ├── schemas
 │   ├── tree.md
 │   ├── utilities
 │   └── view
 ├── serviceConfigurationManager
 │   ├── createServiceSpecifications
-│   ├── getCustomControllerFactories.js
-│   ├── getModelSpecifications.js
-│   ├── getOperationSpecifications.js
+│   ├── getters
 │   ├── index.js
-│   └── tree.md
+│   ├── schemas
+│   ├── tree.md
+│   └── utilities
 ├── serviceInteractor
 │   ├── cache.js
 │   ├── callController.js

@@ -5,9 +5,10 @@
 ├── build
 │   ├── asset-manifest.json
 │   ├── favicon.ico
+│   ├── images
 │   ├── index.html
 │   ├── manifest.json
-│   ├── precache-manifest.887c683d3108d9552a5c2d9f7033837b.js
+│   ├── precache-manifest.ea44364f86ed5b310da4c2514e5e72ec.js
 │   ├── service-worker.js
 │   └── static
 ├── coverage
@@ -24,10 +25,12 @@
 │   ├── support
 │   └── videos
 ├── cypress.json
+├── jsconfig.json
 ├── nginx.conf
 ├── package.json
 ├── public
 │   ├── favicon.ico
+│   ├── images
 │   ├── index.html
 │   └── manifest.json
 ├── src

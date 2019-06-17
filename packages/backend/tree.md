@@ -2,6 +2,8 @@
 ├── Dockerfile
 ├── LICENCE
 ├── README.md
+├── jest.config.js
+├── jest.setup.js
 ├── nodemon.json
 ├── package.json
 ├── src
@@ -10,7 +12,6 @@
 │   ├── lib
 │   ├── scripts
 │   ├── serviceConfigurations
-│   ├── tests
 │   ├── tree.md
 │   └── utilities
 ├── tree.md

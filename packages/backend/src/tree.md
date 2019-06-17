@@ -14,6 +14,7 @@
 │   ├── auth
 │   ├── bootstrap
 │   ├── config
+│   ├── controllers
 │   ├── data
 │   ├── dataStores
 │   ├── errorLogger
@@ -40,16 +41,12 @@
 │   ├── jobService
 │   ├── migrationService
 │   ├── placeService
-│   ├── searchService
 │   ├── specimenService
 │   ├── statusService
 │   ├── storageService
 │   ├── taxonomyService
 │   ├── tests
 │   └── tree.md
-├── tests
-│   ├── testCoreCrudRequests
-│   └── testStructure
 ├── tree.md
 └── utilities
     ├── log

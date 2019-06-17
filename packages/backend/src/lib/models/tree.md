@@ -12,13 +12,13 @@
 │   ├── documentModel
 │   └── viewDocumentModel
 ├── index.js
+├── schemas
+│   └── modelConfiguration.js
 ├── sequelize
 │   ├── documentModel
-│   ├── normalizedDocumentModel
 │   ├── sharedMethods
 │   ├── simpleSqlModel
-│   ├── utilities
-│   └── viewDocumentModel
+│   └── utilities
 ├── tests
 │   ├── createModelTests
 │   ├── methodTests
