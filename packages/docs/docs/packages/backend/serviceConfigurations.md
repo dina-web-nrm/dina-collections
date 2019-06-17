@@ -106,7 +106,9 @@ module.exports = {
   },
   required: ['basePath', 'name', 'info', 'resources'],
 }
+
 ```
+
 
 <!--- import-file-end -->
 
@@ -148,7 +150,9 @@ module.exports = {
   },
   required: ['operations'],
 }
+
 ```
+
 
 <!--- import-file-end -->
 
@@ -191,7 +195,9 @@ module.exports = {
   },
   required: ['type'],
 }
+
 ```
+
 
 <!--- import-file-end -->
 
@@ -269,7 +275,9 @@ module.exports = {
   },
   required: [],
 }
+
 ```
+
 
 <!--- import-file-end -->
 

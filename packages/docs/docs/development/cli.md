@@ -101,7 +101,7 @@ script works inspect the src.
 - [build:docker:style](#build-docker-style)
 - [build:docker:ui](#build-docker-ui)
 - [build:docs](#build-docs)
-- [build:index-specimen:json](#build-index-specimen-json)
+- [build:elastic-indices](#build-elastic-indices)
 - [build:markdown](#build-markdown)
 - [build:markdown:cli-docs](#build-markdown-cli-docs)
 - [build:semantic-ui](#build-semantic-ui)
@@ -1406,22 +1406,22 @@ Will build the static files for the doc package
 cd ./packages/docs && yarn build
 ```
 
-<a name="build-index-specimen-json" />
+<a name="build-elastic-indices" />
 
-### build:index-specimen:json
+### build:elastic-indices
 
-Build specimen elasticsearch index
+Build elasticsearch indices
 
-`yarn build:index-specimen:json`
+`yarn build:elastic-indices`
 
 #### Description
 
-Will build the elasticsearch specimen index
+Will build the elasticsearch indices
 
 #### src
 
 ```bash
-yarn start:dbs && cd ./packages/migrations && yarn elasticsearch:development:rebuild-index:specimen-search
+yarn start:dbs && cd ./packages/migrations && yarn elasticsearch:development:rebuild-indices
 ```
 
 <a name="build-markdown" />
@@ -1440,7 +1440,7 @@ files.
 #### src
 
 ```bash
-yarn build:trees && cd ./packages/docs && yarn interpolateFiles && yarn build:markdown:cli-docs
+yarn build:trees && cd ./packages/docs && yarn interpolateFiles && yarn build:markdown:cli
 ```
 
 <a name="build-markdown-cli-docs" />
@@ -1751,20 +1751,17 @@ Deploy a release to a remote server
 #### Description
 
 Deploy a release with specified tag to specified server. Note that if the data
-model have changed (a new minor version) you should either run the migrations
-with [remote:migrate:latest](#remote-migrate-latest) and rebuild the search
-indices [remote:build:elastic-indices](#remote-build-elastic-indices) or
-reimport data with e.g. [remote:import:data:json](#remote-import-data–json).
-Note that the last option will throw away current data. Using docker-compose up
--d. Inspect deploy logs of e.g. api with
-`yarn remote:log -s <SERVER> --service=api`
+model have changed (a new minor version) you should run the migrations by
+providing the -m flag. Using docker-compose up -d. Inspect deploy logs of e.g.
+api with `yarn remote:log -s <SERVER> --service=api`
 
 #### Args
 
-| Flag | Description                                                       |
-| ---- | ----------------------------------------------------------------- |
-| -t   | `<TAG>` ex `v0.19.0`                                              |
-| -s   | `<SERVER>` name of server. one of [production, stage, test, demo] |
+| Flag | Description                                                                                                     |
+| ---- | --------------------------------------------------------------------------------------------------------------- |
+| -m   | If the -m flag is provided migrations will be performed with [migrate:latest](#migrate-latest) after the deploy |
+| -t   | `<TAG>` ex `v0.19.0`                                                                                            |
+| -s   | `<SERVER>` name of server. one of [production, stage, test, demo]                                               |
 
 #### src
 
@@ -2039,7 +2036,9 @@ Migrate to latest on specified server
 
 #### Description
 
-Same as [migrate:latest](#migrate-latest) but on the remote server
+Same as [migrate:latest](#migrate-latest) but with the difference that this
+script will also rebuild search indices with
+[remote:build:elastic-indices](remote-build-elastic-indices)
 
 #### Args
 

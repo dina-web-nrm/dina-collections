@@ -92,6 +92,7 @@ SLACK_WARNING_WEBHOOK=url
 VIRTUAL_HOST=local-api.dina-web.net
 ```
 
+
 <!--- import-file-end -->
 
 ## .elasticsearch
@@ -108,6 +109,7 @@ Edits between this comment and import-file-end will be replaced when interpolate
 ```bash
 
 ```
+
 
 <!--- import-file-end -->
 
@@ -171,6 +173,7 @@ VIRTUAL_HOST=local-docs.dina-web.net
 
 ```
 
+
 <!--- import-file-end -->
 
 ## .mysql
@@ -201,6 +204,7 @@ MYSQL_PASSWORD=password
 
 ```
 
+
 <!--- import-file-end -->
 
 ## .pgadmin
@@ -222,6 +226,7 @@ PGADMIN_DEFAULT_EMAIL=user@domain.com
 PGADMIN_DEFAULT_PASSWORD=SuperSecret
 
 ```
+
 
 <!--- import-file-end -->
 
@@ -253,6 +258,7 @@ POSTGRES_PASSWORD=mysecretpassword
 # Later only DB_NAME should be used but for now this also needs to be set
 POSTGRES_DB=postgres
 ```
+
 
 <!--- import-file-end -->
 
@@ -312,9 +318,10 @@ DEMO_SERVER_REPO_ROOT=/home/dina/repos/dina-collections
 
 
 # The local server host
-# Should be set to 127.0.0.1
+# Should be set to 127.0.0.1 
 LOCAL_SERVER_HOST=127.0.0.1
 ```
+
 
 <!--- import-file-end -->
 
@@ -338,6 +345,7 @@ NGINX_PORT=80
 # See: https://github.com/jwilder/nginx-proxy
 VIRTUAL_HOST=local-style.dina-web.net
 ```
+
 
 <!--- import-file-end -->
 
@@ -371,11 +379,6 @@ NGINX_AUTH_BASE_URL=http://keycloak:8080
 # but hardcoded to 3000
 NGINX_PORT=80
 
-# Needed for the frontend to be able to resolve
-# modules based on non relative imports
-# should not be changed
-NODE_PATH=src/
-
 # When set to true ui will not authenticate the user
 # Should only be set to true in development
 REACT_APP_DISABLE_AUTH=false
@@ -395,5 +398,6 @@ VIRTUAL_HOST=local-ui.dina-web.net
 
 
 ```
+
 
 <!--- import-file-end -->
