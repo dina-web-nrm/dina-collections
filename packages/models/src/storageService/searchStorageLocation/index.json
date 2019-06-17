@@ -1,4 +1,11 @@
 {
   "additionalProperties": true,
-  "properties": {}
+  "properties": {
+    "cabinet": { "type": "string" },
+    "mountingWall": { "type": "string" },
+    "name": { "type": "string" },
+    "room": { "type": "string" },
+    "shelf": { "type": "string" },
+    "storageLevel": { "type": "string" }
+  }
 }

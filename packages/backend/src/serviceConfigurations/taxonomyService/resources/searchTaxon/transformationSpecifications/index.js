@@ -1,3 +1,4 @@
+const validateSearchTaxon = require('./validateSearchTaxon')
 const fieldsSpecification = require('../fieldsSpecification')
 const extractTransformations = require('../../../../../lib/data/fields/utilities/extractTransformationFunctions')
 
@@ -6,7 +7,7 @@ const fieldTransformations = extractTransformations({
   format: 'array',
 })
 
-const transformationFunctions = fieldTransformations
+const transformationFunctions = [...fieldTransformations, validateSearchTaxon]
 
 exports.updateView = {
   description: 'Transforming data from taxon',

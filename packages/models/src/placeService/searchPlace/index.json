@@ -1,4 +1,11 @@
 {
   "additionalProperties": true,
-  "properties": {}
+  "properties": {
+    "continent": { "type": "string" },
+    "country": { "type": "string" },
+    "district": { "type": "string" },
+    "name": { "type": "string" },
+    "level": { "type": "string" },
+    "province": { "type": "string" }
+  }
 }
