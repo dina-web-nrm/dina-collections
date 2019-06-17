@@ -371,11 +371,6 @@ NGINX_AUTH_BASE_URL=http://keycloak:8080
 # but hardcoded to 3000
 NGINX_PORT=80
 
-# Needed for the frontend to be able to resolve
-# modules based on non relative imports
-# should not be changed
-NODE_PATH=src/
-
 # When set to true ui will not authenticate the user
 # Should only be set to true in development
 REACT_APP_DISABLE_AUTH=false
