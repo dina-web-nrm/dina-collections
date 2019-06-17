@@ -10,12 +10,12 @@ Information about a collecting activity.
 
 ### Definition
 
-Information pertaining to the activity of collecting of some material.
+Information pertaining to the activity of collecting some material.
 
 
 ### Examples
 
-The collecting method (e.g., the kind of trap) used for collecting some material.
+The collecting method (e.g., the kind of trap) used for collecting the material.
 
 
 ### Notes

@@ -21,7 +21,7 @@ The data measured, collected, perceived or noticed for some property by an agent
 
 ### Notes
 
-This term is currently used for features for an [individual](__DOCLINK__individual/). [Taxonomic determinations](__DOCLINK__determination/) is currently not included, although it might be in the future. [CuratorialAssessments](__DOCLINK__curatorialAssessment/) apply to [collectionItems](__DOCLINK__collectionItem/) and are consequently treated as a separate concept.
+This term is currently used for features for an [individual](__DOCLINK__individual/). [Taxonomic determinations](__DOCLINK__determination/) is currently not included, although it might be in future. [CuratorialAssessments](__DOCLINK__curatorialAssessment/) apply to [collectionItems](__DOCLINK__collectionItem/) and are consequently treated as a separate concept.
 
 
 ### See also

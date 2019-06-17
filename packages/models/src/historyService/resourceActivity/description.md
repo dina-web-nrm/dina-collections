@@ -1,3 +1,3 @@
 # resourceActivity
 
-Resource activity is internally used to describe how a resource changes over time.
+Resource activity is used internally to describe how a resource changes over time.

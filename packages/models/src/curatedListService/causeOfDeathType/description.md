@@ -14,7 +14,7 @@ A standardized description of the cause of death.
 
 ### Examples
 
-* Hunt, Short
+* Hunt, Shot
 * Hunt, trap
 * Disease
 
