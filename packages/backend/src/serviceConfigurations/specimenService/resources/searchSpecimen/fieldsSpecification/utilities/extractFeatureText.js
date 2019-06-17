@@ -17,7 +17,7 @@ module.exports = function extractFeatureText({
   })
 
   if (!featureObservations) {
-    return null
+    return []
   }
   const featureValues = []
   featureObservations.forEach(featureObservation => {
