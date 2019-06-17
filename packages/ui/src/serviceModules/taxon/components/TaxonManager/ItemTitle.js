@@ -6,7 +6,8 @@ const propTypes = {
 }
 
 const ItemTitle = ({ nestedItem }) => {
-  const { acceptedTaxonName } = nestedItem
+  const { acceptedTaxonName } = nestedItem || {}
+
   if (!acceptedTaxonName) {
     return ''
   }
