@@ -1,3 +1,4 @@
+const validateSearchSpecimen = require('./validateSearchSpecimen')
 const fieldsSpecification = require('../fieldsSpecification')
 const extractTransformations = require('../../../../../lib/data/fields/utilities/extractTransformationFunctions')
 
@@ -6,7 +7,10 @@ const fieldTransformations = extractTransformations({
   format: 'array',
 })
 
-const transformationFunctions = fieldTransformations
+const transformationFunctions = [
+  ...fieldTransformations,
+  validateSearchSpecimen,
+]
 
 const cacheResourcesSpecifications = require('../../../cacheResourcesSpecifications')
 
