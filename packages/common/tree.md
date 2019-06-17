@@ -2,7 +2,6 @@
 ├── README.md
 ├── dist
 │   ├── components
-│   ├── openApi.json
 │   ├── repoVersionInfo.json
 │   ├── schemas
 │   ├── semantic.css
@@ -28,24 +27,26 @@
 │   ├── endpointFactory
 │   ├── env
 │   ├── error
+│   ├── execCmd
+│   ├── findRootPath
 │   ├── formatObject
-│   ├── fs
 │   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── log
 │   ├── migrator
 │   ├── openApiClient
+│   ├── promiseForEach
 │   ├── reporter
 │   ├── schemaBuilder
 │   ├── schemaInterface
 │   ├── scripts
 │   ├── search
-│   ├── sortMethods
 │   ├── storage
 │   ├── stringFormatters
 │   ├── testUtilities
 │   └── tree.md
 ├── tree.md
+├── yarn-error.log
 └── yarn.lock
 
 ```
