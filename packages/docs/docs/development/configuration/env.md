@@ -312,7 +312,7 @@ DEMO_SERVER_REPO_ROOT=/home/dina/repos/dina-collections
 
 
 # The local server host
-# Should be set to 127.0.0.1
+# Should be set to 127.0.0.1 
 LOCAL_SERVER_HOST=127.0.0.1
 ```
 
@@ -370,11 +370,6 @@ NGINX_AUTH_BASE_URL=http://keycloak:8080
 # When not running in docker this is not used
 # but hardcoded to 3000
 NGINX_PORT=80
-
-# Needed for the frontend to be able to resolve
-# modules based on non relative imports
-# should not be changed
-NODE_PATH=src/
 
 # When set to true ui will not authenticate the user
 # Should only be set to true in development
