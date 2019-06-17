@@ -9,6 +9,7 @@ services:
       - ./env/.backend
     command:
       pm2-runtime start /etc/packages/api/src/apps/api/index.js
+    restart: always
     depends_on:
       - postgres
       - elasticsearch
@@ -19,6 +20,7 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
     container_name: elasticsearch
+    restart: always
     volumes:
       - es_data:/usr/share/elasticsearch/data
     env_file:
@@ -33,6 +35,7 @@ services:
   keycloak:
     image: jboss/keycloak:4.5.0.Final
     container_name: keycloak
+    restart: always
     # Username & password to use the database
     env_file: ./env/.keycloak
 
@@ -50,6 +53,7 @@ services:
   mysql:
     image: mysql:5.7
     container_name: keycloak-mysql
+    restart: always
     env_file: ./env/.mysql
     volumes:
       - mysql-keycloak-accounts:/var/lib/mysql
@@ -73,6 +77,7 @@ services:
     ports:
       - 80:80
       - 443:443
+    restart: always
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs:/etc/nginx/certs
@@ -85,6 +90,7 @@ services:
   style:
     image: 'dina/dina-semantic-ui-docs:${TAG}'
     container_name: dina-semantic-ui-docs
+    restart: always
     expose:
       - '80'
     env_file:
@@ -97,6 +103,7 @@ services:
   ui:
     image: 'dina/dina-collections-ui:${TAG}'
     container_name: dina-collections-ui
+    restart: always
     expose:
       - '80'
     env_file:
@@ -113,6 +120,7 @@ services:
   docs:
     image: 'dina/dina-collections-docs:${TAG}'
     container_name: dina-collections-docs
+    restart: always
     expose:
       - '80'
     env_file:
@@ -125,6 +133,7 @@ services:
   baseWorker:
     image: 'dina/dina-collections-api:${TAG}'
     container_name: dina-base-worker
+    restart: always
     env_file:
       - ./env/.backend
     environment:
@@ -141,6 +150,7 @@ services:
   searchIndexWorker:
     image: 'dina/dina-collections-api:${TAG}'
     container_name: dina-search-index-worker
+    restart: always
     env_file:
       - ./env/.backend
     environment:
