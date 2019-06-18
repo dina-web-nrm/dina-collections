@@ -327,389 +327,6 @@
     "x-summary": "",
     "id": "user"
   },
-  "agent": {
-    "additionalProperties": false,
-    "properties": {
-      "normalized": {
-        "$ref": "normalizedAgent",
-        "x-summary": ""
-      },
-      "textI": {
-        "description": "Interpreted text",
-        "type": "string",
-        "x-summary": ""
-      },
-      "textV": {
-        "description": "Verbatim text",
-        "type": "string",
-        "x-summary": ""
-      },
-      "remarks": {
-        "type": "string",
-        "x-summary": ""
-      }
-    },
-    "description": "# agent\n\nInformation about a person, named group of people or organization.\n\n\n### Definition\n\nInformation about a person, named group of people or organization.\n\n\n### Examples\n\nA person named \"J. Doe\" can be recorded as a verbatim name “J. Doe”, standardized as “Doe, J.” and possibly connected to a known [normalizedAgent](/dataModelDocs/0.4.3/models/normalizedAgent/) “Doe, Joe”.",
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "Information about a person, named group of people or organization.",
-    "id": "agent"
-  },
-  "customObject": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "description": "A model to be used until proper concept is defined",
-    "type": "object",
-    "properties": {},
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "customObject"
-  },
-  "datePart": {
-    "additionalProperties": false,
-    "description": "# datePart\n\nA reference to a particular day represented within a calendar system.\n\n### Notes\n\nThe name is a bit problematic for two reasons:\n\n* It is possible to store a full date, not just a partial date as the name implies\n* It is possible to store a full timestamp (not just year, month and day)",
-    "properties": {
-      "timestamp": {
-        "description": "A date in standard format. TBA",
-        "format": "date-time",
-        "type": "string",
-        "x-summary": ""
-      },
-      "interpretedTimestamp": {
-        "description": "A date in standard format, derived from day, month year.",
-        "format": "date-time",
-        "type": "string",
-        "x-summary": ""
-      },
-      "dateText": {
-        "type": "string",
-        "example": "Before 1800",
-        "x-summary": ""
-      },
-      "day": {
-        "type": "integer",
-        "x-summary": ""
-      },
-      "month": {
-        "type": "integer",
-        "x-summary": ""
-      },
-      "year": {
-        "type": "integer",
-        "x-summary": ""
-      }
-    },
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "A reference to a day within a calendar system.",
-    "id": "datePart"
-  },
-  "dateRange": {
-    "additionalProperties": false,
-    "description": "# dateRange\n\nThe start and end dates of a period and all the dates in between.\n\n### Notes\n\nA date range can be used to describe the temporal extension of an event (e.g. the exact start and end dates of a field trip) or to describe the uncertainty about the timing of an event (e.g. a collecting event that took place some time between the years 1800 and 1810).",
-    "properties": {
-      "dateText": {
-        "type": "string",
-        "example": "Before 1800",
-        "x-summary": ""
-      },
-      "dateType": {
-        "type": "string",
-        "enum": [
-          "latest",
-          "openRange",
-          "range",
-          "single"
-        ],
-        "x-summary": ""
-      },
-      "remarks": {
-        "type": "string",
-        "example": "Some remarks",
-        "x-summary": ""
-      },
-      "startDate": {
-        "$ref": "datePart",
-        "x-summary": ""
-      },
-      "endDate": {
-        "$ref": "datePart",
-        "x-summary": ""
-      }
-    },
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "A range between two dates.",
-    "id": "dateRange"
-  },
-  "id": {
-    "additionalProperties": false,
-    "description": "# id\n\nA resource identifier that in combination with a resource [type](/dataModelDocs/0.4.3/models/type) identifies a single unique resource. Resource identifiers are used in many places throughout the system. This concept is important for the functioning of the system, but less so for understanding the data model at a higher level.\n\nFor more information, see the [JSON:API documentation](https://jsonapi.org/format/#document-resource-object-identification).\n",
-    "type": "string",
-    "properties": {},
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "id"
-  },
-  "legacyData": {
-    "additionalProperties": true,
-    "properties": {},
-    "description": "# legacyData\n\nCustom data from a previous system that do not fit elsewhere in the data model.\n\n\n### Definition\n\nData from a previous system which do not have a proper destination elsewhere in the data model.\n\n\n### Examples\n\n* An invalid collecting date, for example 2019-02-30.\n* Mixed content that for some reason was not cleaned up prior to import into the system.\n\n\n### Notes\n\nLegacy data is treated as read-only data. It can be in any JSON format, but is normally added as an unordered list of name–value pairs.",
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "Custom data that do not fit elsewhere in the data model.",
-    "id": "legacyData"
-  },
-  "lid": {
-    "additionalProperties": false,
-    "description": "# lid\n\nA local identifier (Local ID) used internally by the system. This identifier should (inspite of what the name suggests) have the format of a Universally unique identifier (UUID).\n",
-    "type": "string",
-    "properties": {},
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "lid"
-  },
-  "notDefinedModel": {
-    "additionalProperties": true,
-    "description": "A model to be used until proper concept is defined",
-    "x-internal": true,
-    "properties": {},
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "notDefinedModel"
-  },
-  "polygon": {
-    "additionalProperties": false,
-    "description": "# polygon\n\nA list of points enclosing a geographic area.\n\n\n### Definition\n\nA list of points where the last point is the same as the first, so that the points encloses a geographic area.",
-    "properties": {
-      "vertices": {
-        "type": "array",
-        "description": "Corners of the polygon in sane format",
-        "x-summary": ""
-      }
-    },
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "A list of points enclosing a geographic area.",
-    "id": "polygon"
-  },
-  "position": {
-    "additionalProperties": false,
-    "description": "# position\n\nA point on the surface of the Earth.\n\n### Definition\n\nA point on the surface of the Earth.\n\n\n### Notes\n\nCould perhaps be renamed \"point\".",
-    "properties": {
-      "latitude": {
-        "type": "string",
-        "description": "Latitude or northing. Prefixed with minus for coordinates on southern hemisphere.",
-        "x-summary": ""
-      },
-      "longitude": {
-        "type": "string",
-        "description": "Longitude or easting. Prefixed with minus for coordinates on western hemisphere.",
-        "x-summary": ""
-      },
-      "geodeticDatum": {
-        "type": "string",
-        "description": "Geodetic datum wip",
-        "x-summary": ""
-      },
-      "uncertaintyInMeters": {
-        "type": "integer",
-        "description": "Coordinate uncertainty in meters",
-        "x-summary": ""
-      },
-      "referenceSystem": {
-        "type": "string",
-        "description": "TBA",
-        "x-summary": ""
-      }
-    },
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "A point on the surface of the Earth.",
-    "id": "position"
-  },
-  "queryAggregation": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "properties": {
-      "aggregationFunction": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "options": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "queryAggregation"
-  },
-  "queryAnd": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "items": {
-      "$ref": "queryNode"
-    },
-    "type": "array",
-    "properties": {},
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "queryAnd"
-  },
-  "queryFilter": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "properties": {},
-    "type": "object",
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "queryFilter"
-  },
-  "queryNode": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "properties": {
-      "and": {
-        "$ref": "queryAnd",
-        "x-summary": ""
-      },
-      "or": {
-        "$ref": "queryOr",
-        "x-summary": ""
-      },
-      "filter": {
-        "$ref": "queryFilter",
-        "x-summary": ""
-      }
-    },
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "queryNode"
-  },
-  "queryOr": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "items": {
-      "$ref": "queryNode"
-    },
-    "type": "array",
-    "properties": {},
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "queryOr"
-  },
-  "queryRoot": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "properties": {
-      "and": {
-        "$ref": "queryAnd",
-        "x-summary": ""
-      },
-      "or": {
-        "$ref": "queryOr",
-        "x-summary": ""
-      },
-      "filter": {
-        "$ref": "queryFilter",
-        "x-summary": ""
-      }
-    },
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "queryRoot"
-  },
-  "readOnly": {
-    "additionalProperties": true,
-    "properties": {},
-    "description": "# readOnly\n\nA generic structure for storing custom data. Used in different parts of the system for keeping data that do not have a predefined destination. The data must be in JSON format.\n\n\n## Short description\n\nA generic structure for storing custom data.\n",
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "readOnly"
-  },
-  "translatedString": {
-    "additionalProperties": false,
-    "properties": {
-      "en": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "sv": {
-        "type": "string",
-        "x-summary": ""
-      }
-    },
-    "description": "# translatedString\n\nA structure that is used in several places in the system to handle text in different languages.\n",
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "translatedString"
-  },
-  "type": {
-    "additionalProperties": false,
-    "description": "# type\n\nType is used to describe resource objects that share common attributes and relationships. In combination with a resource [id](/dataModelDocs/0.4.3/models/id) it identifies a single unique resource. This concept is important for the functioning of the system, but less so for understanding the data model at a higher level.\n\nFor more information, see the [JSON:API documentation](https://jsonapi.org/format/#document-resource-object-identification).\n",
-    "type": "string",
-    "properties": {},
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "type"
-  },
-  "verticalPosition": {
-    "additionalProperties": false,
-    "description": "# verticalPosition\n\nThe height of a point relative to some reference surface, such as mean sea level, a geoid, or an ellipsoid.\n\n\n### Definition\n\nThe height of a point relative to some reference surface, such as mean sea level, a geoid, or an ellipsoid.",
-    "properties": {
-      "maximumDepthInMeters": {
-        "type": "integer",
-        "description": "Max depth (m)",
-        "x-summary": ""
-      },
-      "maximumElevationInMeters": {
-        "type": "integer",
-        "description": "Max elevation (m)",
-        "x-summary": ""
-      },
-      "minimumDepthInMeters": {
-        "type": "integer",
-        "description": "Min depth (m)",
-        "x-summary": ""
-      },
-      "minimumElevationInMeters": {
-        "type": "integer",
-        "description": "Min elevation (m)",
-        "x-summary": ""
-      }
-    },
-    "x-required": [
-      "name",
-      "id",
-      "description",
-      "type"
-    ],
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "The height of a point relative to some reference surface.",
-    "id": "verticalPosition"
-  },
   "causeOfDeathType": {
     "additionalProperties": false,
     "properties": {
@@ -1779,6 +1396,389 @@
     "x-modelType": "model",
     "x-summary": "",
     "id": "searchPlace"
+  },
+  "agent": {
+    "additionalProperties": false,
+    "properties": {
+      "normalized": {
+        "$ref": "normalizedAgent",
+        "x-summary": ""
+      },
+      "textI": {
+        "description": "Interpreted text",
+        "type": "string",
+        "x-summary": ""
+      },
+      "textV": {
+        "description": "Verbatim text",
+        "type": "string",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "description": "# agent\n\nInformation about a person, named group of people or organization.\n\n\n### Definition\n\nInformation about a person, named group of people or organization.\n\n\n### Examples\n\nA person named \"J. Doe\" can be recorded as a verbatim name “J. Doe”, standardized as “Doe, J.” and possibly connected to a known [normalizedAgent](/dataModelDocs/0.4.3/models/normalizedAgent/) “Doe, Joe”.",
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "Information about a person, named group of people or organization.",
+    "id": "agent"
+  },
+  "customObject": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "description": "A model to be used until proper concept is defined",
+    "type": "object",
+    "properties": {},
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "customObject"
+  },
+  "datePart": {
+    "additionalProperties": false,
+    "description": "# datePart\n\nA reference to a particular day represented within a calendar system.\n\n### Notes\n\nThe name is a bit problematic for two reasons:\n\n* It is possible to store a full date, not just a partial date as the name implies\n* It is possible to store a full timestamp (not just year, month and day)",
+    "properties": {
+      "timestamp": {
+        "description": "A date in standard format. TBA",
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "interpretedTimestamp": {
+        "description": "A date in standard format, derived from day, month year.",
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "dateText": {
+        "type": "string",
+        "example": "Before 1800",
+        "x-summary": ""
+      },
+      "day": {
+        "type": "integer",
+        "x-summary": ""
+      },
+      "month": {
+        "type": "integer",
+        "x-summary": ""
+      },
+      "year": {
+        "type": "integer",
+        "x-summary": ""
+      }
+    },
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "A reference to a day within a calendar system.",
+    "id": "datePart"
+  },
+  "dateRange": {
+    "additionalProperties": false,
+    "description": "# dateRange\n\nThe start and end dates of a period and all the dates in between.\n\n### Notes\n\nA date range can be used to describe the temporal extension of an event (e.g. the exact start and end dates of a field trip) or to describe the uncertainty about the timing of an event (e.g. a collecting event that took place some time between the years 1800 and 1810).",
+    "properties": {
+      "dateText": {
+        "type": "string",
+        "example": "Before 1800",
+        "x-summary": ""
+      },
+      "dateType": {
+        "type": "string",
+        "enum": [
+          "latest",
+          "openRange",
+          "range",
+          "single"
+        ],
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
+        "example": "Some remarks",
+        "x-summary": ""
+      },
+      "startDate": {
+        "$ref": "datePart",
+        "x-summary": ""
+      },
+      "endDate": {
+        "$ref": "datePart",
+        "x-summary": ""
+      }
+    },
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "A range between two dates.",
+    "id": "dateRange"
+  },
+  "id": {
+    "additionalProperties": false,
+    "description": "# id\n\nA resource identifier that in combination with a resource [type](/dataModelDocs/0.4.3/models/type) identifies a single unique resource. Resource identifiers are used in many places throughout the system. This concept is important for the functioning of the system, but less so for understanding the data model at a higher level.\n\nFor more information, see the [JSON:API documentation](https://jsonapi.org/format/#document-resource-object-identification).\n",
+    "type": "string",
+    "properties": {},
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "id"
+  },
+  "legacyData": {
+    "additionalProperties": true,
+    "properties": {},
+    "description": "# legacyData\n\nCustom data from a previous system that do not fit elsewhere in the data model.\n\n\n### Definition\n\nData from a previous system which do not have a proper destination elsewhere in the data model.\n\n\n### Examples\n\n* An invalid collecting date, for example 2019-02-30.\n* Mixed content that for some reason was not cleaned up prior to import into the system.\n\n\n### Notes\n\nLegacy data is treated as read-only data. It can be in any JSON format, but is normally added as an unordered list of name–value pairs.",
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "Custom data that do not fit elsewhere in the data model.",
+    "id": "legacyData"
+  },
+  "lid": {
+    "additionalProperties": false,
+    "description": "# lid\n\nA local identifier (Local ID) used internally by the system. This identifier should (inspite of what the name suggests) have the format of a Universally unique identifier (UUID).\n",
+    "type": "string",
+    "properties": {},
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "lid"
+  },
+  "notDefinedModel": {
+    "additionalProperties": true,
+    "description": "A model to be used until proper concept is defined",
+    "x-internal": true,
+    "properties": {},
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "notDefinedModel"
+  },
+  "polygon": {
+    "additionalProperties": false,
+    "description": "# polygon\n\nA list of points enclosing a geographic area.\n\n\n### Definition\n\nA list of points where the last point is the same as the first, so that the points encloses a geographic area.",
+    "properties": {
+      "vertices": {
+        "type": "array",
+        "description": "Corners of the polygon in sane format",
+        "x-summary": ""
+      }
+    },
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "A list of points enclosing a geographic area.",
+    "id": "polygon"
+  },
+  "position": {
+    "additionalProperties": false,
+    "description": "# position\n\nA point on the surface of the Earth.\n\n### Definition\n\nA point on the surface of the Earth.\n\n\n### Notes\n\nCould perhaps be renamed \"point\".",
+    "properties": {
+      "latitude": {
+        "type": "string",
+        "description": "Latitude or northing. Prefixed with minus for coordinates on southern hemisphere.",
+        "x-summary": ""
+      },
+      "longitude": {
+        "type": "string",
+        "description": "Longitude or easting. Prefixed with minus for coordinates on western hemisphere.",
+        "x-summary": ""
+      },
+      "geodeticDatum": {
+        "type": "string",
+        "description": "Geodetic datum wip",
+        "x-summary": ""
+      },
+      "uncertaintyInMeters": {
+        "type": "integer",
+        "description": "Coordinate uncertainty in meters",
+        "x-summary": ""
+      },
+      "referenceSystem": {
+        "type": "string",
+        "description": "TBA",
+        "x-summary": ""
+      }
+    },
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "A point on the surface of the Earth.",
+    "id": "position"
+  },
+  "queryAggregation": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "aggregationFunction": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "options": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryAggregation"
+  },
+  "queryAnd": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "items": {
+      "$ref": "queryNode"
+    },
+    "type": "array",
+    "properties": {},
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryAnd"
+  },
+  "queryFilter": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "type": "object",
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryFilter"
+  },
+  "queryNode": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "and": {
+        "$ref": "queryAnd",
+        "x-summary": ""
+      },
+      "or": {
+        "$ref": "queryOr",
+        "x-summary": ""
+      },
+      "filter": {
+        "$ref": "queryFilter",
+        "x-summary": ""
+      }
+    },
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryNode"
+  },
+  "queryOr": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "items": {
+      "$ref": "queryNode"
+    },
+    "type": "array",
+    "properties": {},
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryOr"
+  },
+  "queryRoot": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "and": {
+        "$ref": "queryAnd",
+        "x-summary": ""
+      },
+      "or": {
+        "$ref": "queryOr",
+        "x-summary": ""
+      },
+      "filter": {
+        "$ref": "queryFilter",
+        "x-summary": ""
+      }
+    },
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryRoot"
+  },
+  "readOnly": {
+    "additionalProperties": true,
+    "properties": {},
+    "description": "# readOnly\n\nA generic structure for storing custom data. Used in different parts of the system for keeping data that do not have a predefined destination. The data must be in JSON format.\n\n\n## Short description\n\nA generic structure for storing custom data.\n",
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "readOnly"
+  },
+  "translatedString": {
+    "additionalProperties": false,
+    "properties": {
+      "en": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "sv": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "description": "# translatedString\n\nA structure that is used in several places in the system to handle text in different languages.\n",
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "translatedString"
+  },
+  "type": {
+    "additionalProperties": false,
+    "description": "# type\n\nType is used to describe resource objects that share common attributes and relationships. In combination with a resource [id](/dataModelDocs/0.4.3/models/id) it identifies a single unique resource. This concept is important for the functioning of the system, but less so for understanding the data model at a higher level.\n\nFor more information, see the [JSON:API documentation](https://jsonapi.org/format/#document-resource-object-identification).\n",
+    "type": "string",
+    "properties": {},
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "type"
+  },
+  "verticalPosition": {
+    "additionalProperties": false,
+    "description": "# verticalPosition\n\nThe height of a point relative to some reference surface, such as mean sea level, a geoid, or an ellipsoid.\n\n\n### Definition\n\nThe height of a point relative to some reference surface, such as mean sea level, a geoid, or an ellipsoid.",
+    "properties": {
+      "maximumDepthInMeters": {
+        "type": "integer",
+        "description": "Max depth (m)",
+        "x-summary": ""
+      },
+      "maximumElevationInMeters": {
+        "type": "integer",
+        "description": "Max elevation (m)",
+        "x-summary": ""
+      },
+      "minimumDepthInMeters": {
+        "type": "integer",
+        "description": "Min depth (m)",
+        "x-summary": ""
+      },
+      "minimumElevationInMeters": {
+        "type": "integer",
+        "description": "Min elevation (m)",
+        "x-summary": ""
+      }
+    },
+    "x-required": [
+      "name",
+      "id",
+      "description",
+      "type"
+    ],
+    "x-category": "reusableModels",
+    "x-modelType": "model",
+    "x-summary": "The height of a point relative to some reference surface.",
+    "id": "verticalPosition"
   },
   "acquisition": {
     "additionalProperties": false,
