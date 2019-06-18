@@ -8,6 +8,7 @@ yarn-error.log*
 # Editor settings
 .vscode/
 
+.env
 env/.*
 data/.*.json
 data/.index*
