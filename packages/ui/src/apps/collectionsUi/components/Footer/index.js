@@ -2,6 +2,7 @@ import config from 'config'
 import React from 'react'
 import { Container, Grid, Header, Icon, List, Segment } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
+import { UserManualLink } from 'coreModules/commonUi/components'
 
 const { externalUrls } = config
 
@@ -36,6 +37,12 @@ export default () => {
             <Grid.Column width={4}>
               <Header as="h4" content="Documentation" inverted />
               <List data-testid="footerDocument" inverted link size={size}>
+                <List.Item>
+                  <List.Content>
+                    <Icon name="external" />
+                    <UserManualLink />
+                  </List.Content>
+                </List.Item>
                 <List.Item>
                   <List.Content>
                     <Icon name="database" />

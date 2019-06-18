@@ -9,10 +9,10 @@ const propTypes = {
 
 function HelpTextNotification({ displayType, ...rest }) {
   if (displayType === 'fixed') {
-    return <Modal {...rest} />
+    return <Modal displayLinkToUserManual {...rest} />
   }
   if (displayType === 'inline') {
-    return <Inline {...rest} />
+    return <Inline displayLinkToUserManual {...rest} />
   }
   return null
 }
