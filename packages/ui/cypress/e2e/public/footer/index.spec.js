@@ -16,7 +16,7 @@ describe('Footer', () => {
   it('has expected number of links', () => {
     const links = [
       { expectedLength: 2, id: 'footerSite' },
-      { expectedLength: 2, id: 'footerDocument' },
+      { expectedLength: 3, id: 'footerDocument' },
       { expectedLength: 5, id: 'footerDeveloper' },
     ]
 
@@ -33,6 +33,17 @@ describe('Footer', () => {
     cy.getByTestId('footerDinaWiki').shouldHaveHref('wiki', {
       exact: false,
     })
+    cy.getByTestId('userManualLink').shouldHaveHref(
+      '/images/DINA Collections User Manual',
+      {
+        exact: false,
+      }
+    )
+
+    cy.getByTestId('userManualLink').shouldHaveHref('.pdf', {
+      exact: false,
+    })
+
     cy.getByTestId('footerDocumentDataModel').shouldHaveHref('/dataModelDocs')
     cy.getByTestId('footerDinaWebGithub').shouldHaveHref(
       'https://github.com/DINA-Web'
