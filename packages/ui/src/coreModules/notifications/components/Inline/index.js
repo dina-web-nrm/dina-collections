@@ -57,7 +57,13 @@ class InlineWrapper extends Component {
       }
       case 'body': {
         const { extractedProps } = extractProps({
-          keys: ['description', 'descriptionKey', 'linkTextKey', 'linkTo'],
+          keys: [
+            'description',
+            'descriptionKey',
+            'displayLinkToUserManual',
+            'linkTextKey',
+            'linkTo',
+          ],
           props: this.props,
         })
 

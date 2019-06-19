@@ -1,18 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
-
+import { UserManualLink } from 'coreModules/commonUi/components'
 import { Translate } from 'coreModules/i18n/components'
 
 const propTypes = {
   description: PropTypes.node,
   descriptionKey: PropTypes.string,
+  displayLinkToUserManual: PropTypes.bool,
   linkTextKey: PropTypes.string,
   linkTo: PropTypes.string,
 }
 const defaultProps = {
   description: undefined,
   descriptionKey: undefined,
+  displayLinkToUserManual: false,
   linkTextKey: undefined,
   linkTo: undefined,
 }
@@ -22,6 +24,7 @@ const InlineNotificationBody = ({
   descriptionKey,
   linkTextKey,
   linkTo,
+  displayLinkToUserManual,
 }) => {
   return (
     <Grid padded>
@@ -32,6 +35,7 @@ const InlineNotificationBody = ({
             <Translate capitalize textKey={descriptionKey} />
           </p>
         )}
+        {displayLinkToUserManual && <UserManualLink />}
         {false && // temporary disable links
           linkTextKey &&
           linkTo && (

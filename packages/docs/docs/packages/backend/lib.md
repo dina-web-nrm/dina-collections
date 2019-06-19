@@ -250,7 +250,7 @@ It exposes methods corresponding to different operation types that combined with
 a resource will make it possible to interact with an API endpoint with
 corresponding operationId. For example, calling the serviceInteractor.getOne
 with the resource taxonName will call the endpoint with the operationId
-[taxonGetOne](api/docs#/taxonomyService/taxonGetOne). The parameters for the
+[taxonGetOne](/api/docs#/taxonomyService/taxonGetOne). The parameters for the
 request like body, pathParams and queryParams can be provided as an object.
 Below follows an example:
 
@@ -274,14 +274,14 @@ through a rest call.
 Bellow follow some of the available methods (the CRUD methods). To see all
 available methods inspect the source code:
 
-| function | example resource | example operation id                                         |
-| -------- | ---------------- | ------------------------------------------------------------ |
-| create   | specimen         | [specimenCreate](api/docs#/specimenService/specimenCreate)   |
-| del      | specimen         | [specimenDel](api/docs#/specimenService/specimenDel)         |
-| getMany  | specimen         | [specimenGetMany](api/docs#/specimenService/specimenGetMany) |
-| getOne   | specimen         | [specimenGetOne](api/docs#/specimenService/specimenGetOne)   |
-| query    | specimen         | [specimenQuery](api/docs#/specimenService/specimenQuery)     |
-| update   | specimen         | [specimenUpdate](api/docs#/specimenService/specimenUpdate)   |
+| function | example resource | example operation id                                          |
+| -------- | ---------------- | ------------------------------------------------------------- |
+| create   | specimen         | [specimenCreate](/api/docs#/specimenService/specimenCreate)   |
+| del      | specimen         | [specimenDel](/api/docs#/specimenService/specimenDel)         |
+| getMany  | specimen         | [specimenGetMany](/api/docs#/specimenService/specimenGetMany) |
+| getOne   | specimen         | [specimenGetOne](/api/docs#/specimenService/specimenGetOne)   |
+| query    | specimen         | [specimenQuery](/api/docs#/specimenService/specimenQuery)     |
+| update   | specimen         | [specimenUpdate](/api/docs#/specimenService/specimenUpdate)   |
 
 #### call and detachedCall
 

@@ -6,6 +6,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { Sidebar, Icon, Menu } from 'semantic-ui-react'
 import logoutActionCreator from 'coreModules/user/actionCreators/logout'
 import { createModuleTranslate } from 'coreModules/i18n/components'
+import { UserManualLink } from 'coreModules/commonUi/components'
 
 import SidebarNavItem from './SidebarNavItem'
 import SidebarNavItemGroup from './SidebarNavItemGroup'
@@ -94,6 +95,12 @@ export const NavigationSidebar = ({
           <ModuleTranslate capitalize textKey="Navbar.logout" />
         </Menu.Item>
       )}
+
+      <UserManualLink
+        className="item"
+        style={{ textAlign: 'left' }}
+        text="Manual"
+      />
     </Sidebar>
   )
 }

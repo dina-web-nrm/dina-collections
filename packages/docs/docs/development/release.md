@@ -39,6 +39,7 @@ version number.
 > 2. Prepare a new version for the user manual if new features are added in the
 >    release
 > 3. Potentially inform users of the upcoming release
+> 4. Ensure data model documentation is updated. Both markdown and images.
 
 ## Create a release candidate version
 

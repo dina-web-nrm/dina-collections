@@ -1,6 +1,7 @@
 #!/bin/sh -
 # ./packages/scripts/src/bash/docker-deploy.sh  -t 4.5.2
 FULL_PATH=$(dirname "$0")
+START_DIRECTORY=$PWD
 
 while getopts t:m: option
  do
@@ -26,6 +27,8 @@ $FULL_PATH/git-checkout-tag.sh -t $TAG
 
 # uses local images if they exist, otherwise fetches the images from hub.docker.com
 TAG=$TAG docker-compose up -d
+
+echo "TAG=$TAG" > .env
 
 
 if [ -z "$MIGRATE" ]
