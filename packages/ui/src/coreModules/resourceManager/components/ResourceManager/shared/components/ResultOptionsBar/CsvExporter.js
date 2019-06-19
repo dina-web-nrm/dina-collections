@@ -210,7 +210,7 @@ export class CsvExporter extends Component {
     let modalContent
     if (exportStatus === 'failed') {
       modalContent = (
-        <div>
+        <div data-testid="exportFailedMessage">
           Something went wrong{' '}
           <Button content="Close" onClick={this.handleClose} type="button" />
         </div>
@@ -221,6 +221,7 @@ export class CsvExporter extends Component {
       modalContent = (
         <div>
           <Button
+            data-testid="downloadButton"
             onClick={event => {
               this.props.downloadFile({ fileName, fileUrl })
               this.handleClose(event)
@@ -237,7 +238,12 @@ export class CsvExporter extends Component {
     if (exportStatus === 'exporting') {
       modalContent = (
         <div>
-          <Button disabled loading type="button">
+          <Button
+            data-testid="downloadLoadingButton"
+            disabled
+            loading
+            type="button"
+          >
             Download
           </Button>
 
@@ -274,6 +280,7 @@ export class CsvExporter extends Component {
               !exportModal && (
                 <Button
                   content="Export result to CSV"
+                  data-testid="exportToCsvButton"
                   onClick={event => this.handleExportToCsv(event)}
                   type="button"
                 />
@@ -282,7 +289,7 @@ export class CsvExporter extends Component {
             on="click"
             position="bottom right"
             trigger={
-              <Menu.Item link>
+              <Menu.Item data-testid="shareMenuItem" link>
                 <Icon name="share" style={{ cursor: 'pointer' }} />
               </Menu.Item>
             }
