@@ -1,7 +1,7 @@
 import table from './table'
 import tree from './tree'
 
-describe('resourceManager', () => {
+describe('resourceManager: shared', () => {
   before(() => {
     cy.resetDevelopmentSqlDb()
   })
