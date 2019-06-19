@@ -32,7 +32,7 @@
     "legacyData": {
       "$ref": "legacyData"
     },
-    "readOnly": {
+    "srcData": {
       "$ref": "readOnly"
     },
     "individual": {

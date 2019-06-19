@@ -22,7 +22,7 @@
     "typifiedName": {
       "type": "string"
     },
-    "readOnly": {
+    "srcData": {
       "$ref": "readOnly"
     }
   }
