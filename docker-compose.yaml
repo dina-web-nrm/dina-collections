@@ -138,6 +138,7 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=simple
+      - WORKER_ACTIVE=true
     command:
       pm2-runtime start /etc/packages/api/src/apps/worker/index.js
     depends_on:
@@ -155,6 +156,7 @@ services:
       - ./env/.backend
     environment:
       - WORKER_ROLE=search-index
+      - WORKER_ACTIVE=true
     command:
       pm2-runtime start /etc/packages/api/src/apps/worker/index.js
     depends_on:
