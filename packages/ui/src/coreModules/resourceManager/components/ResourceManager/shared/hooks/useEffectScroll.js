@@ -21,9 +21,12 @@ const useEffectScroll = ({ currentRowNumber, list }) => {
     }
 
     if (list.current && currentRowNumber) {
-      const [firstVisibleRow] = list.current.getVisibleRange()
+      const [firstVisibleRow, lastVisibleRow] = list.current.getVisibleRange()
 
-      if (firstVisibleRow === undefined) {
+      if (
+        firstVisibleRow === undefined ||
+        (firstVisibleRow === 0 && lastVisibleRow === 0)
+      ) {
         setTimeout(() => scroll())
       } else {
         scroll()
