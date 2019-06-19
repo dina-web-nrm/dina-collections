@@ -2,7 +2,12 @@ export default () =>
   describe('edit', () => {
     before(() => {
       cy.resetDevelopmentSqlDb()
+      cy.resetSearchNormalizedAgentIndex()
+      cy.resetSearchPlaceIndex()
       cy.resetSearchSpecimenIndex()
+      cy.resetSearchStorageLocationIndex()
+      cy.resetSearchTaxonIndex()
+      cy.resetSearchTaxonNameIndex()
     })
 
     describe('general', () => {
