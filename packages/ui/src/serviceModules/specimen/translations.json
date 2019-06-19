@@ -347,8 +347,8 @@
       "remarks": {
         "en": "Remarks"
       },
-      "readOnly": {
-        "en": "Read only"
+      "srcData": {
+        "en": "Source data"
       }
     },
     "features": {
@@ -520,8 +520,8 @@
       "remarks": {
         "en": "Locality remarks"
       },
-      "readOnly": {
-        "en": "Read only"
+      "srcData": {
+        "en": "Source data"
       },
       "georeferenceSourcesText": {
         "en": "Georeference sources"
@@ -612,16 +612,16 @@
       "remarks": {
         "en": "remarks"
       },
-      "readOnly": {
-        "en": "Read only"
+      "srcData": {
+        "en": "Source data"
       }
     },
     "taxonInformation": {
       "curatorialTaxon": {
         "en": "Taxon name"
       },
-      "readOnly": {
-        "en": "Read only"
+      "srcData": {
+        "en": "Source data"
       },
       "taxonRemarks": {
         "en": "Taxon remarks"

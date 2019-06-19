@@ -11,7 +11,7 @@
     "telephone": { "en": "phone" },
     "email": { "en": "Email" },
     "postalAddress": { "en": "Postal address" },
-    "readOnly": { "en": "Read only" },
+    "srcData": { "en": "Source data" },
     "title": {
       "en": "title",
       "sv": ""
