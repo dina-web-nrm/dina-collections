@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v0.24.0-rc](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc)
+
+- Refactor and improve resource manager & add more e2e tests [`#530`](https://github.com/dina-web-nrm/dina-collections/pull/530)
+- Activate worker in worker containers [`#548`](https://github.com/dina-web-nrm/dina-collections/pull/548)
+- Data model and docs updates [`#546`](https://github.com/dina-web-nrm/dina-collections/pull/546)
+
 #### [v0.23.0](https://github.com/dina-web-nrm/dina-collections/compare/v0.22.1...v0.23.0)
+
+> 17 June 2019
 
 - Rebuild models [`#545`](https://github.com/dina-web-nrm/dina-collections/pull/545)
 - Update data model documentation [`#544`](https://github.com/dina-web-nrm/dina-collections/pull/544)
