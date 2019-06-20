@@ -28,6 +28,8 @@ $FULL_PATH/git-checkout-tag.sh -t $TAG
 # uses local images if they exist, otherwise fetches the images from hub.docker.com
 TAG=$TAG docker-compose up -d
 
+umask 002
+
 echo "TAG=$TAG" > .env
 
 
