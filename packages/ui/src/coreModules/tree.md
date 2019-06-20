@@ -355,6 +355,7 @@
 │   │   │   ├── Header
 │   │   │   └── index.js
 │   │   ├── ColumnLayout
+│   │   │   ├── Column.js
 │   │   │   └── index.js
 │   │   ├── InformationSidebar
 │   │   │   └── index.js
@@ -363,6 +364,7 @@
 │   │   │   ├── SidebarNavItemGroup.js
 │   │   │   └── index.js
 │   │   ├── RowLayout
+│   │   │   ├── Row.js
 │   │   │   └── index.js
 │   │   ├── TopMenu
 │   │   │   ├── UserMenu.js
@@ -415,34 +417,28 @@
 │       ├── index.js
 │       └── testNotificationSpecification.js
 ├── resourceManager
-│   ├── actionCreators
-│   │   └── index.js
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── ResourceManager
-│   │   │   ├── FilterColumn
-│   │   │   ├── MainColumn
+│   │   │   ├── columns
+│   │   │   ├── form
 │   │   │   ├── index.js
-│   │   │   └── picker
+│   │   │   ├── picker
+│   │   │   ├── shared
+│   │   │   ├── table
+│   │   │   └── tree
 │   │   └── index.js
 │   ├── constants.js
+│   ├── globalSelectors.js
 │   ├── higherOrderComponents
-│   │   ├── createInjectItemTitle
-│   │   │   ├── DefaultItemTitle.js
-│   │   │   └── index.js
 │   │   ├── createLocalState.js
 │   │   ├── createNavigationState.js
 │   │   ├── createPickerWrapper.js
 │   │   ├── createQueryState.js
-│   │   ├── createResourceManagerWrapper.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── keyObjectModule.js
-│   ├── translations.json
-│   └── utilities
-│       ├── buildList.js
-│       ├── getTableWidth.js
-│       └── index.js
+│   └── translations.json
 ├── routing
 │   ├── constants.js
 │   ├── higherOrderComponents

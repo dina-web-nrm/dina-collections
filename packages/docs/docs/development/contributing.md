@@ -69,7 +69,7 @@ When creating a pull request, edit the name of the pull request to be suitable
 for the changelog, because that is where it will end up. There is no specific
 maximum length requirement, but use the imperative mood (as with commits). Look
 at the
-[CHANGELOG](https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md)
+[CHANGELOG](https://github.com/dina-web-nrm/dina-collections/blob/master/CHANGELOG.md)
 for examples.
 
 If a pull request is not ready for review, or needs a significant retake after

@@ -7,12 +7,13 @@ const acceptedNameRank = require('./fields/acceptedNameRank')
 const vernacularNames = require('./fields/vernacularNames')
 const synonyms = require('./fields/synonyms')
 const {
+  classField,
   order,
   family,
   genus,
   species,
   subspecies,
-} = require('./fields/linageAcceptedNames')
+} = require('./fields/lineageAcceptedNames')
 
 module.exports = {
   decorators: [acceptedTaxonNameLineage],
@@ -20,6 +21,7 @@ module.exports = {
     acceptedName,
     acceptedNameRank,
     ancestorIds,
+    classField,
     family,
     genus,
     id,

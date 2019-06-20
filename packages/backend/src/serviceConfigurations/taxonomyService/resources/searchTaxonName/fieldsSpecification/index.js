@@ -1,8 +1,9 @@
 const id = require('./fields/id')
+const name = require('./fields/name')
 const rank = require('./fields/rank')
 const rubinNumber = require('./fields/rubinNumber')
-const scientificName = require('./fields/scientificName')
+const taxonNameType = require('./fields/taxonNameType')
 
 module.exports = {
-  fields: [id, rank, rubinNumber, scientificName],
+  fields: [id, name, rank, rubinNumber, taxonNameType],
 }

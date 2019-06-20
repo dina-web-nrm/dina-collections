@@ -53,6 +53,11 @@
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   └── translations.json
+│       ├── manageSpecimens
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   └── index.js
 │       ├── manageStorageLocations
 │       │   ├── Async.js
 │       │   ├── Component.js
@@ -88,11 +93,6 @@
 │       │   ├── index.js
 │       │   └── translations.json
 │       ├── sourceData
-│       │   ├── Async.js
-│       │   ├── Component.js
-│       │   ├── constants.js
-│       │   └── index.js
-│       ├── specimensMammals
 │       │   ├── Async.js
 │       │   ├── Component.js
 │       │   ├── constants.js

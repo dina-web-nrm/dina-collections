@@ -2,7 +2,8 @@
 ├── createIntegrations.js
 ├── factories
 │   ├── index.js
-│   └── keycloakAdmin
+│   ├── keycloakAdmin
+│   └── slack.js
 ├── index.js
 └── tree.md
 

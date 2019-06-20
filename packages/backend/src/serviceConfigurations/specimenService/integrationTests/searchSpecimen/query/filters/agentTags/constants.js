@@ -1,5 +1,5 @@
 const fieldPath = 'attributes.tags.agentTags'
-const filterFunction = 'searchAgentTags'
+const filterFunction = 'searchNormalizedAgentTags'
 const resource = 'agentTag'
 const typeAggregationFunction = 'aggregateAgentTagTypes'
 const valueAggregationFunction = 'aggregateAgentTagValues'

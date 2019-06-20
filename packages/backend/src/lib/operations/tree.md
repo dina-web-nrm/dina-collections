@@ -10,7 +10,6 @@
 │   ├── getRelationship
 │   ├── index.js
 │   ├── query
-│   ├── schemas
 │   ├── update
 │   ├── updateRelationship
 │   ├── utilities
@@ -18,15 +17,15 @@
 ├── factories.js
 ├── import
 │   ├── importDataFromFile
-│   ├── index.js
-│   └── schemas
+│   └── index.js
 ├── index.js
 ├── job
 │   ├── index.js
-│   ├── schemas
 │   ├── setJobFailed
 │   ├── setJobSuccess
 │   └── startJob
+├── schemas
+│   └── operationConfigurations
 ├── tree.md
 ├── utilities
 │   ├── applyHooks
@@ -41,7 +40,6 @@
     ├── getViewMeta
     ├── index.js
     ├── rebuildView
-    ├── schemas
     ├── updateView
     └── utilities
 

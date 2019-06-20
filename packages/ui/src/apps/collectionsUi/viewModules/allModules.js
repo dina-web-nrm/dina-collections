@@ -1,11 +1,11 @@
 import * as app from './app'
 import * as dataViewer from './dataViewer'
 import * as docs from './docs'
-import * as specimensMammals from './specimensMammals'
 import * as home from './home'
 import * as login from './login'
 import * as manageAgents from './manageAgents'
 import * as manageLocalities from './manageLocalities'
+import * as manageSpecimens from './manageSpecimens'
 import * as manageStorageLocations from './manageStorageLocations'
 import * as manageTaxonomy from './manageTaxonomy'
 import * as manageTaxonNames from './manageTaxonNames'
@@ -21,10 +21,10 @@ const modules = [
   start,
   app,
   dataViewer,
-  specimensMammals,
   home,
   manageAgents,
   manageLocalities,
+  manageSpecimens,
   manageStorageLocations,
   manageTaxonomy,
   manageTaxonNames,

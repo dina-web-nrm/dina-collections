@@ -6,19 +6,25 @@
 │   │   └── index.js
 │   ├── resources
 │   │   ├── index.js
-│   │   └── normalizedAgent
-│   │       ├── exampleRequests
+│   │   ├── normalizedAgent
+│   │   │   ├── exampleRequests
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── migrations
+│   │   │   ├── postHooks
+│   │   │   ├── preHooks
+│   │   │   └── transformationSpecifications
+│   │   └── searchNormalizedAgent
+│   │       ├── aggregationSpecification
+│   │       ├── fieldsSpecification
 │   │       ├── filterSpecifications
 │   │       ├── index.js
-│   │       ├── migrations
+│   │       ├── mappingSpecification
 │   │       ├── postHooks
-│   │       ├── preHooks
 │   │       └── transformationSpecifications
 │   └── serviceInteractions
 │       └── index.js
 ├── authService
-│   ├── controllers
-│   │   └── index.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
@@ -159,20 +165,31 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   └── resources
-│       ├── index.js
-│       └── place
-│           ├── exampleRequests
-│           ├── filterSpecifications
-│           ├── index.js
-│           ├── migrations
-│           ├── postHooks
-│           ├── preHooks
-│           └── transformationSpecifications
+│   ├── resources
+│   │   ├── index.js
+│   │   ├── place
+│   │   │   ├── exampleRequests
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── migrations
+│   │   │   ├── postHooks
+│   │   │   ├── preHooks
+│   │   │   └── transformationSpecifications
+│   │   └── searchPlace
+│   │       ├── aggregationSpecification
+│   │       ├── fieldsSpecification
+│   │       ├── filterSpecifications
+│   │       ├── index.js
+│   │       ├── mappingSpecification
+│   │       ├── postHooks
+│   │       └── transformationSpecifications
+│   └── serviceInteractions
+│       └── index.js
 ├── specimenService
 │   ├── cacheResourcesSpecifications.js
 │   ├── index.js
 │   ├── info
+│   │   ├── description.md
 │   │   └── index.js
 │   ├── integrationTests
 │   │   ├── __snapshots__
@@ -184,35 +201,28 @@
 │   ├── resources
 │   │   ├── cacheResources.js
 │   │   ├── index.js
-│   │   └── searchSpecimen
-│   │       ├── aggregationSpecification
-│   │       ├── fieldsSpecification
+│   │   ├── searchSpecimen
+│   │   │   ├── aggregationSpecification
+│   │   │   ├── fieldsSpecification
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── mappingSpecification
+│   │   │   ├── postHooks
+│   │   │   └── transformationSpecifications
+│   │   └── specimen
+│   │       ├── controllers
+│   │       ├── e2e
+│   │       ├── exampleRequests
 │   │       ├── filterSpecifications
 │   │       ├── index.js
-│   │       ├── mappingSpecification
+│   │       ├── migrations
 │   │       ├── postHooks
-│   │       └── transformationSpecifications
+│   │       ├── preHooks
+│   │       ├── testData
+│   │       ├── transformationSpecifications
+│   │       └── utilities
 │   └── serviceInteractions
 │       └── index.js
-├── specimenService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   └── resources
-│       ├── index.js
-│       └── specimen
-│           ├── controllers
-│           ├── e2e
-│           ├── exampleRequests
-│           ├── filterSpecifications
-│           ├── index.js
-│           ├── migrations
-│           ├── postHooks
-│           ├── preHooks
-│           ├── testData
-│           ├── transformationSpecifications
-│           └── utilities
 ├── statusService
 │   ├── controllers
 │   │   ├── getStatus.js
@@ -230,22 +240,32 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   └── resources
-│       ├── index.js
-│       ├── physicalObject
-│       │   ├── exampleRequests
-│       │   ├── filterSpecifications
-│       │   ├── index.js
-│       │   ├── migrations
-│       │   └── postHooks
-│       └── storageLocation
-│           ├── exampleRequests
-│           ├── filterSpecifications
-│           ├── index.js
-│           ├── migrations
-│           ├── postHooks
-│           ├── preHooks
-│           └── transformationSpecifications
+│   ├── resources
+│   │   ├── index.js
+│   │   ├── physicalObject
+│   │   │   ├── exampleRequests
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── migrations
+│   │   │   └── postHooks
+│   │   ├── searchStorageLocation
+│   │   │   ├── aggregationSpecification
+│   │   │   ├── fieldsSpecification
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── mappingSpecification
+│   │   │   ├── postHooks
+│   │   │   └── transformationSpecifications
+│   │   └── storageLocation
+│   │       ├── exampleRequests
+│   │       ├── filterSpecifications
+│   │       ├── index.js
+│   │       ├── migrations
+│   │       ├── postHooks
+│   │       ├── preHooks
+│   │       └── transformationSpecifications
+│   └── serviceInteractions
+│       └── index.js
 ├── taxonomyService
 │   ├── index.js
 │   ├── info
@@ -253,6 +273,22 @@
 │   │   └── index.js
 │   ├── resources
 │   │   ├── index.js
+│   │   ├── searchTaxon
+│   │   │   ├── aggregationSpecification
+│   │   │   ├── fieldsSpecification
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── mappingSpecification
+│   │   │   ├── postHooks
+│   │   │   └── transformationSpecifications
+│   │   ├── searchTaxonName
+│   │   │   ├── aggregationSpecification
+│   │   │   ├── fieldsSpecification
+│   │   │   ├── filterSpecifications
+│   │   │   ├── index.js
+│   │   │   ├── mappingSpecification
+│   │   │   ├── postHooks
+│   │   │   └── transformationSpecifications
 │   │   ├── taxon
 │   │   │   ├── exampleRequests
 │   │   │   ├── filterSpecifications
@@ -272,7 +308,7 @@
 │   └── serviceInteractions
 │       └── index.js
 ├── tests
-│   └── testServiceConfigurations.test.js
+│   └── serviceConfigurations.test.js
 └── tree.md
 
 ```

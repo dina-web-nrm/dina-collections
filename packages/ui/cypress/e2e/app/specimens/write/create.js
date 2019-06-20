@@ -2,7 +2,7 @@ export default () =>
   describe('create', () => {
     before(() => {
       cy.resetDevelopmentSqlDb()
-      cy.resetElasticSpecimenIndex()
+      cy.resetSearchSpecimenIndex()
     })
 
     beforeEach(() => {
@@ -13,11 +13,21 @@ export default () =>
       })
     })
 
-    it('creates records, validates catalog number and focuses new record in table', () => {
+    it(`
+      creates with automatic number;
+      creates with 6-digit manual number;
+      ensures error on 7 digits;
+      ensures error cleared when going back to 6 digits;
+      ensures error on non-digit;
+      creates with 8-digit number;
+      ensures new record focused and scrolled to in table;
+      ensures error on creating with same number;
+      ensures possible to cancel after trying to creating with same number;
+    `, () => {
       cy.log('create with automatic number')
       cy.getByText('New record').click()
       cy.getByTestId('createAutomaticNumber').click()
-      cy.url().should('include', '/edit/')
+      cy.url().should('include', 'mainColumn=edit')
       cy.getByTestId('formSectionNavigationHeader')
         .invoke('text')
         .should('include', 'Ma20')
@@ -30,7 +40,7 @@ export default () =>
         .as('catalogNumberInput')
         .type('123456')
       cy.getByTestId('useThisNumber').click()
-      cy.url().should('include', '/edit/')
+      cy.url().should('include', 'mainColumn=edit')
       cy.getByTestId('formSectionNavigationHeader')
         .invoke('text')
         .should('equal', '123456')
@@ -65,7 +75,7 @@ export default () =>
         .clear()
         .type('12345678')
       cy.getByTestId('useThisNumber').click()
-      cy.url().should('include', '/edit/')
+      cy.url().should('include', 'mainColumn=edit')
       cy.getByTestId('formSectionNavigationHeader')
         .invoke('text')
         .should('equal', '12345678')
@@ -88,8 +98,8 @@ export default () =>
       cy.log(
         'ensure possible to cancel after trying to creating with same number'
       )
-      cy.url().should('include', '/create')
+      cy.url().should('include', 'mainColumn=create')
       cy.getByTestId('cancel').click()
-      cy.url().should('not.include', '/create')
+      cy.url().should('not.include', 'mainColumn=create')
     })
   })

@@ -3,13 +3,13 @@ const {
   hook,
 } = require('common/src/testUtilities/envBackendApiSampleData')
 const waitForApiRestart = require('../../../utilities/test/waitForApiRestart')
-const resetElasticSpecimenIndex = require('../../../utilities/test/db/resetElasticSpecimenIndex')
+const resetSearchSpecimenIndex = require('../../../utilities/test/db/resetSearchSpecimenIndex')
 const { makeTestCall } = require('../../../utilities/test/testApiClient')
 
 apiSampleDescribe(`sample data`, () => {
   hook(beforeAll, () => {
     return waitForApiRestart().then(() => {
-      return resetElasticSpecimenIndex()
+      return resetSearchSpecimenIndex()
     })
   })
 

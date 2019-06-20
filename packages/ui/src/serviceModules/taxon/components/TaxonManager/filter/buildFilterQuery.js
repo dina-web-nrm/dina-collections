@@ -1,34 +1,34 @@
-export default function buildFilterQuery({ values }) {
+export default function buildFilterQuery({ formValues = {} } = {}) {
   const and = []
 
-  if (values.name) {
+  if (formValues.name) {
     and.push({
       filter: {
-        filterFunction: 'nameSearch',
+        filterFunction: 'searchAcceptedName',
         input: {
-          value: values.name,
+          value: formValues.name,
         },
       },
     })
   }
 
-  if (values.rank) {
+  if (formValues.rank) {
     and.push({
       filter: {
-        filterFunction: 'nameRank',
+        filterFunction: 'searchAcceptedNameRank',
         input: {
-          value: values.rank,
+          value: formValues.rank,
         },
       },
     })
   }
 
-  if (values.vernacularName) {
+  if (formValues.vernacularName) {
     and.push({
       filter: {
-        filterFunction: 'vernacularNameSearch',
+        filterFunction: 'searchVernacularNames',
         input: {
-          value: values.vernacularName,
+          value: formValues.vernacularName,
         },
       },
     })
@@ -39,6 +39,6 @@ export default function buildFilterQuery({ values }) {
   }
 
   return {
-    and,
+    query: { and },
   }
 }

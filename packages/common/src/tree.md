@@ -152,12 +152,24 @@
 │       │   └── index.js
 │       ├── dbValidator.js
 │       └── formValidator.js
+├── execCmd
+│   ├── createFullCmd.js
+│   ├── createFullCmd.test.js
+│   ├── execCmd.test.js
+│   └── index.js
+├── findRootPath
+│   ├── index.js
+│   └── index.test.js
 ├── formatObject
+│   ├── __snapshots__
+│   │   ├── coreToNestedSync.test.js.snap
+│   │   └── nestedToCoreSync.test.js.snap
 │   ├── coreToNested.js
 │   ├── coreToNested.test.js
 │   ├── coreToNestedSync.js
 │   ├── coreToNestedSync.test.js
 │   ├── index.js
+│   ├── index.test.js
 │   ├── nestedToCore.js
 │   ├── nestedToCore.test.js
 │   ├── nestedToCoreSync.js
@@ -201,22 +213,12 @@
 │       ├── getNextWalkPath.js
 │       ├── getNextWalkPath.test.js
 │       ├── testData
-│       │   ├── apiFormatPhysicalObject.js
-│       │   ├── apiFormatSpecimen.js
-│       │   ├── denormalizedSpecimen.js
-│       │   ├── denormalizedSpecimenWithLids.js
-│       │   ├── nestedPhysicalObjectWithRelationships.js
-│       │   └── normalizedSpecimenWithNewPhysicalObject.js
+│       │   ├── corePhysicalObject.js
+│       │   ├── coreSpecimen.js
+│       │   ├── nestedPhysicalObject.js
+│       │   └── nestedSpecimen.js
 │       ├── walkObject.js
 │       └── walkObject.test.js
-├── fs
-│   ├── execCmd
-│   │   ├── createFullCmd.js
-│   │   ├── createFullCmd.test.js
-│   │   ├── execCmd.test.js
-│   │   └── index.js
-│   ├── findRootPath.js
-│   └── findRootPath.test.js
 ├── jsonApiClient
 │   ├── get
 │   │   ├── createIncludeJobs.js
@@ -291,6 +293,8 @@
 │   ├── index.js
 │   └── utilities
 │       └── createOpenApiMockClient.js
+├── promiseForEach
+│   └── index.js
 ├── reporter
 │   └── index.js
 ├── schemaBuilder
@@ -312,6 +316,8 @@
 │   │       ├── createModel.js
 │   │       ├── interpolate.js
 │   │       ├── normalizeModel.js
+│   │       ├── setupRefs.js
+│   │       ├── setupRelationships.js
 │   │       └── splitDescription.js
 │   ├── buildModels.js
 │   ├── buildOpenApi.js
@@ -322,9 +328,9 @@
 │   │   │   ├── openApi.json
 │   │   │   └── swagger.json
 │   │   └── testImports.test.js
-│   ├── e2e.spec.js
 │   ├── ensureVersionLocked.js
 │   ├── lockVersion.js
+│   ├── openApi.spec.js
 │   ├── read
 │   │   ├── index.js
 │   │   ├── readApis.js
@@ -336,6 +342,7 @@
 │   │   ├── readSecurity.js
 │   │   ├── readServers.js
 │   │   └── utilities
+│   │       ├── mergeModelsAndModelConfigurations.js
 │   │       ├── readJsonFromDirectory.js
 │   │       ├── readParameterFromJsonFile.js
 │   │       └── readParameterFromMarkdownFile.js
@@ -396,12 +403,6 @@
 │           ├── index.js
 │           ├── mapFunctions
 │           └── testData
-├── sortMethods
-│   ├── createSortAlphabeticallyByProperty
-│   │   ├── index.js
-│   │   └── index.test.js
-│   ├── index.js
-│   └── index.test.js
 ├── storage
 │   └── extractNameWithFirstLevelParent.js
 ├── stringFormatters

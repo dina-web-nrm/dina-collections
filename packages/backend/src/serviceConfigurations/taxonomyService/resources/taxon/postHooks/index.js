@@ -7,8 +7,8 @@ const {
 } = require('../../../../historyService/serviceInteractions')
 
 const {
-  createIndexJob,
-  rebuildInProgress,
+  searchTaxonCreateIndexJob,
+  searchTaxonRebuildInProgress,
 } = require('../../../serviceInteractions')
 
 const {
@@ -17,8 +17,8 @@ const {
 } = require('../../../../../lib/data/hooks')
 
 const indexHook = createIndexHook({
-  createIndexJob,
-  rebuildInProgress,
+  createIndexJob: searchTaxonCreateIndexJob,
+  rebuildInProgress: searchTaxonRebuildInProgress,
   resource: 'searchTaxon',
 })
 
@@ -35,7 +35,7 @@ exports.create = [
 exports.update = [
   indexHook,
   createUpdateDescendantsPostHook({
-    createIndexJob,
+    createIndexJob: searchTaxonCreateIndexJob,
     limit: 50,
     srcResource: 'taxon',
     targetSearchResource: 'searchTaxon',
@@ -52,7 +52,7 @@ exports.update = [
 exports.updateInternalRelationship = [
   indexHook,
   createUpdateDescendantsPostHook({
-    createIndexJob,
+    createIndexJob: searchTaxonCreateIndexJob,
     limit: 50,
     srcResource: 'taxon',
     targetSearchResource: 'searchTaxon',
@@ -65,6 +65,7 @@ exports.updateInternalRelationship = [
 ]
 
 exports.updateExternalRelationship = [
+  indexHook,
   createRegisterResourceActivityHook({
     action: 'update',
     getIdFromBody: true,

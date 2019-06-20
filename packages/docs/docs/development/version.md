@@ -90,7 +90,7 @@ Version examples with corresponding tag in parentheses:
 | 0.18.2 (v0.18.2) | 0.19.0-rc (v0.18.2)   | 0.18.3-rc (v0.18.3-rc)   |
 
 As for the release version the script will update root package.json, update the
-[CHANGELOG](https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md),
+[CHANGELOG](https://github.com/dina-web-nrm/dina-collections/blob/master/CHANGELOG.md),
 create a corresponding git tag and push the git tag. Then ci will run the tests
 and build images and push the images to docker hub. Even if the changelog is
 updated the upcoming release version will remove the rc from the changelog.

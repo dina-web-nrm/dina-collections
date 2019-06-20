@@ -1,23 +1,34 @@
-export default function buildFilterQuery({ values = {} }) {
+export default function buildFilterQuery({ formValues = {} } = {}) {
   const and = []
 
-  if (values.fullName) {
+  if (formValues.fullName) {
     and.push({
       filter: {
-        filterFunction: 'fullNameSearch',
+        filterFunction: 'fullName',
         input: {
-          value: values.fullName,
+          value: formValues.fullName,
         },
       },
     })
   }
 
-  if (values.agentType) {
+  if (formValues.abbreviation) {
     and.push({
       filter: {
-        filterFunction: 'matchAgentType',
+        filterFunction: 'abbreviation',
         input: {
-          value: values.agentType,
+          value: formValues.abbreviation,
+        },
+      },
+    })
+  }
+
+  if (formValues.agentType) {
+    and.push({
+      filter: {
+        filterFunction: 'agentType',
+        input: {
+          value: formValues.agentType,
         },
       },
     })
@@ -28,6 +39,6 @@ export default function buildFilterQuery({ values = {} }) {
   }
 
   return {
-    and,
+    query: { and },
   }
 }

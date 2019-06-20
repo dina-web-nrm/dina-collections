@@ -7,16 +7,17 @@ const {
 } = require('../../../../historyService/serviceInteractions')
 
 const {
-  createIndexJob,
-  rebuildInProgress,
   createUpdateRelatedSearchTaxonPostHook,
+  searchTaxonNameCreateIndexJob,
+  searchTaxonNameRebuildInProgress,
+  updateRelatedSearchTaxonView,
 } = require('../../../serviceInteractions')
 
 const { createIndexHook } = require('../../../../../lib/data/hooks')
 
 const indexHook = createIndexHook({
-  createIndexJob,
-  rebuildInProgress,
+  createIndexJob: searchTaxonNameCreateIndexJob,
+  rebuildInProgress: searchTaxonNameRebuildInProgress,
   resource: 'searchTaxonName',
 })
 
@@ -41,6 +42,8 @@ exports.update = [
     srcResource: 'taxonName',
   }),
 ]
+
+exports.updateTaxonRelationship = [updateRelatedSearchTaxonView]
 
 exports.del = [
   createRegisterResourceActivityHook({

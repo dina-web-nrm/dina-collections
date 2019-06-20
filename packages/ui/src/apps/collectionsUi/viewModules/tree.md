@@ -16,8 +16,7 @@
 │   ├── __markdown__
 │   │   ├── index.json
 │   │   └── overview
-│   │       ├── general.en.md
-│   │       └── test.en.md
+│   │       └── introduction.en.md
 │   ├── constants.js
 │   └── index.js
 ├── home
@@ -51,6 +50,11 @@
 │   ├── constants.js
 │   ├── index.js
 │   └── translations.json
+├── manageSpecimens
+│   ├── Async.js
+│   ├── Component.js
+│   ├── constants.js
+│   └── index.js
 ├── manageStorageLocations
 │   ├── Async.js
 │   ├── Component.js
@@ -86,11 +90,6 @@
 │   ├── index.js
 │   └── translations.json
 ├── sourceData
-│   ├── Async.js
-│   ├── Component.js
-│   ├── constants.js
-│   └── index.js
-├── specimensMammals
 │   ├── Async.js
 │   ├── Component.js
 │   ├── constants.js

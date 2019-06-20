@@ -32,9 +32,9 @@ exports.findMatchingAgents = function findMatchingAgents({
 }
 
 exports.rebuildInProgress = createRebuildInProgress({
-  operationId: 'searchAgentGetViewMeta',
+  operationId: 'searchNormalizedAgentGetViewMeta',
 })
 exports.createIndexJob = createCreateIndexJob({
-  rebuildViewOperationId: 'searchAgentRebuildView',
-  updateViewOperationId: 'searchAgentUpdateView',
+  rebuildViewOperationId: 'searchNormalizedAgentRebuildView',
+  updateViewOperationId: 'searchNormalizedAgentUpdateView',
 })

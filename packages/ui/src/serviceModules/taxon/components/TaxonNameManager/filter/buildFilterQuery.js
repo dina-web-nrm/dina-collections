@@ -1,8 +1,8 @@
-export default function buildFilterQuery({ values }) {
+export default function buildFilterQuery({ formValues = {} } = {}) {
   const and = [
     {
       filter: {
-        filterFunction: 'taxonNameType',
+        filterFunction: 'searchTaxonNameType',
         input: {
           value: 'scientific',
         },
@@ -10,34 +10,34 @@ export default function buildFilterQuery({ values }) {
     },
   ]
 
-  if (values.name) {
+  if (formValues.name) {
     and.push({
       filter: {
-        filterFunction: 'nameSearch',
+        filterFunction: 'searchName',
         input: {
-          value: values.name,
+          value: formValues.name,
         },
       },
     })
   }
 
-  if (values.rank) {
+  if (formValues.rank) {
     and.push({
       filter: {
-        filterFunction: 'rank',
+        filterFunction: 'searchRank',
         input: {
-          value: values.rank,
+          value: formValues.rank,
         },
       },
     })
   }
 
-  if (values.rubinNumber) {
+  if (formValues.rubinNumber) {
     and.push({
       filter: {
-        filterFunction: 'rubinNumber',
+        filterFunction: 'searchRubinNumber',
         input: {
-          value: values.rubinNumber,
+          value: formValues.rubinNumber,
         },
       },
     })
@@ -48,6 +48,6 @@ export default function buildFilterQuery({ values }) {
   }
 
   return {
-    and,
+    query: { and },
   }
 }

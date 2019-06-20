@@ -1,7 +1,7 @@
 describe(`Specimens table settings`, () => {
   beforeEach(() => {
     cy.login()
-    cy.goToRoute('/app/specimens/mammals/search')
+    cy.goToRoute('/app/specimens/mammals?mainColumn=table')
     cy.get('[data-testid="infinityTableHeader"', {
       log: false,
       timeout: 60000,
@@ -17,9 +17,7 @@ describe(`Specimens table settings`, () => {
     cy.getByTestId('settingsMenuItem').click()
 
     cy.log('check all columns selected')
-    cy.get('input[type="checkbox"]')
-      .should('have.length', 32)
-      .should('have.attr', 'checked')
+    cy.get('.checked.checkbox').should('have.length', 32)
 
     cy.log('deselect all and check save button disabled')
     cy.getByTestId('deselectAllButton').click()

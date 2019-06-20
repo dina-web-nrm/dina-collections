@@ -8,7 +8,7 @@ import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
 import { AGENT_TYPE_OPTIONS } from '../../../constants'
 
-export const FORM_NAME = 'normalizedAgentFilter'
+export const FORM_NAME = 'searchNormalizedAgentFilter'
 
 const log = createLog('modules:agent:BaseForm')
 
@@ -42,6 +42,18 @@ export class BaseForm extends Component {
                     model="agent"
                     module="agent"
                     name="fullName"
+                    type="text"
+                  />
+                </Grid.Column>
+                <Grid.Column width={16}>
+                  <FieldWrapper
+                    autoComplete="off"
+                    component={Input}
+                    enableHelpNotifications={false}
+                    label="Abbreviation"
+                    model="agent"
+                    module="agent"
+                    name="abbreviation"
                     type="text"
                   />
                 </Grid.Column>

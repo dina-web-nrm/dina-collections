@@ -32,7 +32,7 @@ describe('Start', () => {
 
       cy.getByTestId('start-changelog-link')
         .shouldHaveHref(
-          'https://github.com/DINA-Web/dina-collections/blob/master/CHANGELOG.md'
+          'https://github.com/dina-web-nrm/dina-collections/blob/master/CHANGELOG.md'
         )
         .shouldHaveTargetBlank()
     })

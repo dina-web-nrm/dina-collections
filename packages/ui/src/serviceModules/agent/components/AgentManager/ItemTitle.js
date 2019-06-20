@@ -2,11 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const propTypes = {
-  nestedItem: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
 }
 
-const ItemTitle = ({ nestedItem }) => {
-  const { agentType, fullName } = nestedItem
+const ItemTitle = ({ item = {} }) => {
+  const {
+    attributes: { agentType, fullName },
+  } = item
+
   if (!fullName) {
     return ''
   }

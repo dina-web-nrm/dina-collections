@@ -10,11 +10,11 @@ export default () =>
 
     it('switch between form and table tab', () => {
       cy.log('checks that switching between form and table tabs works')
-      cy.getByText('John Doe')
+      cy.getByText('Anders Sparrman') // wait for first agent in table
       cy.getByTestId('formTabMenuItem').click()
       cy.getByTestId('formSectionNavigationHeader').should(
         'contain',
-        'John Doe'
+        'Anders Sparrman'
       )
       cy.getByTestId('formSectionNavigationSubheader').should(
         'contain',
@@ -34,5 +34,13 @@ export default () =>
         'Person'
       )
       cy.getByTestId('tableTabMenuItem').click()
+
+      cy.log('uses keyboard shortcut to open form')
+      cy.getByText('John Doe').click()
+      cy.get('body').type(' ')
+      cy.getByTestId('formSectionNavigationHeader').should(
+        'contain',
+        'John Doe'
+      )
     })
   })

@@ -21,8 +21,8 @@ const propTypes = {
     }),
   ]),
   onClose: PropTypes.func.isRequired,
-  onInteraction: PropTypes.func.isRequired,
   onPickerButtonClick: PropTypes.func.isRequired,
+  onPickItem: PropTypes.func.isRequired,
   pathToIdInValue: PropTypes.string.isRequired,
   pathToTextInValue: PropTypes.string.isRequired,
   pickerActive: PropTypes.bool.isRequired,
@@ -47,7 +47,7 @@ export class AgentDropdownPickerSearch extends Component {
     const {
       fieldValue,
       onClose,
-      onInteraction,
+      onPickItem,
       onPickerButtonClick,
       pathToIdInValue,
       pathToTextInValue,
@@ -69,7 +69,8 @@ export class AgentDropdownPickerSearch extends Component {
               initialFilterValues={initialFilterValues}
               initialItemId={objectPath.get(fieldValue, pathToIdInValue)}
               isPicker
-              onInteraction={onInteraction}
+              onClose={onClose}
+              onPickItem={onPickItem}
               pickerTitle="Pick agent"
               treeEnabled={false}
             />

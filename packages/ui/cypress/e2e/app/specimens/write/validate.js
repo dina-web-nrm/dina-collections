@@ -4,16 +4,15 @@ export default () =>
 
     before(() => {
       cy.resetDevelopmentSqlDb()
-      cy.resetElasticSpecimenIndex()
+      cy.resetSearchSpecimenIndex()
       cy.log('Create new specimen for tests')
-      cy.visit('/app/specimens/mammals/create/sections/0')
+      cy.visit('/app/specimens/mammals?mainColumn=create&sectionId=0')
       cy.getByTestId('createAutomaticNumber').click()
       cy.url()
-        .should('include', '/edit/')
+        .should('include', 'mainColumn=edit')
         .then(url => {
-          const urlParts = url.split('/')
-          const specimenIdIndex = urlParts.findIndex(str => str === 'edit')
-          newSpecimenId = urlParts[specimenIdIndex - 1]
+          const itemIdPart = url.split('itemId=')[1]
+          newSpecimenId = itemIdPart.split('&')[0] // eslint-disable-line prefer-destructuring
         })
     })
 
@@ -25,7 +24,9 @@ export default () =>
     })
 
     it('validates coordinates format', () => {
-      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/2`)
+      cy.visit(
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=2`
+      )
       cy.get('[data-testid="localityOrigin"]', {
         log: false,
         timeout: 60000,
@@ -92,7 +93,9 @@ export default () =>
     })
 
     it('validates storage location required for physical object', () => {
-      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/4`)
+      cy.visit(
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=4`
+      )
       cy.get('[data-testid="physicalObjects"]', {
         log: false,
         timeout: 60000,
@@ -129,7 +132,9 @@ export default () =>
     })
 
     it('validates collecting date input', () => {
-      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/3`)
+      cy.visit(
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=3`
+      )
       cy.get('[data-testid="collectingDeath"]', {
         log: false,
         timeout: 60000,
@@ -215,7 +220,9 @@ export default () =>
     })
 
     it('sets and validates catalog card date in current year', () => {
-      cy.visit(`/app/specimens/mammals/${newSpecimenId}/edit/sections/0`)
+      cy.visit(
+        `/app/specimens/mammals?mainColumn=edit&itemId=${newSpecimenId}&sectionId=0`
+      )
       cy.get('[data-testid="basicInformation"]', {
         log: false,
         timeout: 60000,
