@@ -40,7 +40,6 @@ module.exports = function createModel({
       cleanedModel.example = examples.primary
     }
   }
-
   Object.keys(cleanedModel.properties).forEach(property => {
     const { summary, description } = splitDescription(
       cleanedModel.properties[property].description,
@@ -48,13 +47,19 @@ module.exports = function createModel({
     )
 
     cleanedModel.properties[property].description = description
-    cleanedModel.properties[property]['x-summary'] = summary
+    cleanedModel.properties[property]['x-summary'] = cleanedModel.properties[
+      property
+    ]['x-summary']
+      ? cleanedModel.properties[property]['x-summary']
+      : summary
   })
 
   const { summary, description } = splitDescription(cleanedModel.description)
 
   cleanedModel.description = description
-  cleanedModel['x-summary'] = summary
+  cleanedModel['x-summary'] = cleanedModel['x-summary']
+    ? cleanedModel['x-summary']
+    : summary
   cleanedModel = interpolate(cleanedModel, '__DOCLINK__', documentLink)
 
   return setupRefs({
