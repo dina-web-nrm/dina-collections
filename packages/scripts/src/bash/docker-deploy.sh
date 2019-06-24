@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 # ./packages/scripts/src/bash/docker-deploy.sh  -t 4.5.2
 FULL_PATH=$(dirname "$0")
 START_DIRECTORY=$PWD

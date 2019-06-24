@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 #./packages/scripts/src/bash/ci-before-script.sh
 set -v
 echo "$(date +'%T') start ci-before-script"
