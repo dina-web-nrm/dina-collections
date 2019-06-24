@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 FULL_PATH=$(dirname "$0")
 
 $FULL_PATH/compare-services.sh

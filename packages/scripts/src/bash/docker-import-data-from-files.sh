@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 # ./packages/scripts/src/bash/docker-import-data-from-files.sh  -t 4.5.2
 
 while getopts t: option

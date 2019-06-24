@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # https://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
 # ./packages/scripts/src/bash/ensure-master-is-clean.sh
 

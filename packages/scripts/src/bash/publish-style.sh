@@ -1,4 +1,4 @@
-#!/bin/sh -
+#!/bin/bash -
 # OBS:login with docker-hub credentials, set in ~/.docker/config
 # failsafe: check if that tag/version has already been published before pushing?
 # ./packages/scripts/src/bash/publish-docker.sh  -t 4.5.2
