@@ -46,17 +46,17 @@ export default () =>
       })
     })
 
-    describe('affiliations', () => {
-      it('adds and removes affiliation', () => {
+    describe('roles', () => {
+      it('adds and removes role', () => {
         cy.quickQueryByTestId('accordion').should('not.exist')
 
-        cy.getByText('Add affiliation').click()
+        cy.getByText('Add role').click()
         cy.get('[data-testid=accordion] .title').should('have.length', 1)
         cy.get('[data-testid=accordion] .content').should('have.length', 1)
 
         cy.getByTestId('activeAccordionContent').within(() => {
-          cy.getInputByLabelText('Affiliation/position').type('Staff')
-          cy.getInputByLabelText('Affiliation').type('some affiliation text')
+          cy.getInputByLabelText('Role/position').type('Staff')
+          cy.getInputByLabelText('Organization').type('some organization text')
           cy.getByTestId('startDatePart').within(() => {
             cy.getInputByLabelText('Year').type('2001')
             cy.getInputByLabelText('Month').type('2')
@@ -74,10 +74,10 @@ export default () =>
         cy.get('[data-testid=accordion] .title').should('have.length', 1)
         cy.get('[data-testid=accordion] .content').should('have.length', 1)
 
-        cy.log('remove affiliation')
+        cy.log('remove role')
         cy.get('[data-testid=accordion] .title').click()
         cy.getByTestId('activeAccordionContent').within(() => {
-          cy.getByText('Delete affiliation').click()
+          cy.getByText('Delete role').click()
         })
         cy.getByTestId('popupConfirmButton').click()
         cy.getByTestId('saveButton')
