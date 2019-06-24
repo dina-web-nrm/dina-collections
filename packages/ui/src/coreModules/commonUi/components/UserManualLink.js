@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Icon } from 'semantic-ui-react'
 
 const propTypes = {
   dataTestId: PropTypes.string,
+  showIcon: PropTypes.bool,
   text: PropTypes.string,
 }
 
 const defaultProps = {
   dataTestId: 'userManualLink',
+  showIcon: false,
   text: 'User manual',
 }
 
-const UserManualLink = ({ dataTestId, text, ...rest }) => {
+const UserManualLink = ({ dataTestId, showIcon, text, ...rest }) => {
   return (
     <a
       {...rest}
@@ -20,6 +23,12 @@ const UserManualLink = ({ dataTestId, text, ...rest }) => {
       target="_blank"
     >
       {text}
+      {showIcon && (
+        <span>
+          {' '}
+          <Icon name="external" style={{ display: 'inline' }} />
+        </span>
+      )}
     </a>
   )
 }

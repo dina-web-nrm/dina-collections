@@ -98,8 +98,12 @@ export const NavigationSidebar = ({
 
       <UserManualLink
         className="item"
-        style={{ textAlign: 'left' }}
-        text="Manual"
+        showIcon
+        style={{
+          borderTop: '3px solid #d4d4d5',
+          color: '#d4d4d5',
+          textAlign: 'left',
+        }}
       />
     </Sidebar>
   )
