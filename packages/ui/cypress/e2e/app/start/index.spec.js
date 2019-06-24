@@ -19,7 +19,7 @@ describe('Start', () => {
       )
 
       cy.getByTestId('start-register-mammal').shouldHaveHref(
-        '/app/specimens/mammals/create/sections/0'
+        '/app/specimens/mammals?mainColumn=create&sectionId=0'
       )
 
       cy.getByTestId('start-find-mammals').shouldHaveHref(
