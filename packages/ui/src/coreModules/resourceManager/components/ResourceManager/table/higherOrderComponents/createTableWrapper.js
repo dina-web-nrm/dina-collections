@@ -202,8 +202,16 @@ const createTableWrapper = () => ComposedComponent => {
           if (focusItemIdWhenLoaded) {
             setFocusedItemId(focusItemIdWhenLoaded)
             setFocusItemIdWhenLoaded(null)
-          } else if (!focusedItemId && firstItemId) {
+          } else if (firstItemId && !focusedItemId) {
             setFocusedItemId(firstItemId)
+          } else if (firstItemId && focusedItemId) {
+            const focusedItemInItems = items.find(
+              item => item.id === focusedItemId
+            )
+
+            if (!focusedItemInItems) {
+              setFocusedItemId(firstItemId)
+            }
           }
 
           return items

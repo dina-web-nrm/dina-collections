@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
 })
 
 const propTypes = {
+  buildEditItemHeaders: PropTypes.func.isRequired,
   createNotification: PropTypes.func.isRequired,
   currentRowNumber: PropTypes.number,
   del: PropTypes.func.isRequired,
@@ -28,6 +29,7 @@ const propTypes = {
   itemId: PropTypes.string,
   itemSubHeader: PropTypes.string,
   navigateTable: PropTypes.func.isRequired,
+  nestedItem: PropTypes.object.isRequired,
   onInteraction: PropTypes.func,
   relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
   resource: PropTypes.string.isRequired,
@@ -137,6 +139,7 @@ const createHandleDelete = () => ComposedComponent => {
       return del({ id: itemId }).then(() => {
         const notification = {
           componentProps: {
+            description: 'Please wait while the table is updated...',
             header: 'The record was deleted',
           },
           ttl: 3000,
@@ -149,7 +152,9 @@ const createHandleDelete = () => ComposedComponent => {
         setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
 
         fetchResourceCount()
-        navigateTable()
+        setTimeout(() => {
+          navigateTable()
+        }, 2000)
       })
     }
 
@@ -162,8 +167,10 @@ const createHandleDelete = () => ComposedComponent => {
     }
 
     render() {
-      const { itemHeader, itemSubHeader } = this.props
+      const { buildEditItemHeaders, nestedItem } = this.props
       const { loadingDelete, open, relationships } = this.state
+
+      const { itemHeader, itemSubHeader } = buildEditItemHeaders(nestedItem)
 
       return (
         <React.Fragment>

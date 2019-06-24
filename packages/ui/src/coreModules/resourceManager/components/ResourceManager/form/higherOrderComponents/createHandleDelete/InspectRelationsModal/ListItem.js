@@ -14,7 +14,7 @@ const getHref = ({ id, resource }) => {
       return `/app/localities?itemId=${id}&mainColumn=edit`
     }
     case 'specimen': {
-      return `/app/specimens/mammals/${id}/edit/sections/0`
+      return `/app/specimens/mammals?itemId=${id}&mainColumn=edit&sectionId=0`
     }
     case 'storageLocation': {
       return `/app/storageLocations?itemId=${id}&mainColumn=edit`

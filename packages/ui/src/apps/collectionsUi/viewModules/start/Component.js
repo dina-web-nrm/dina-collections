@@ -62,7 +62,7 @@ class Start extends Component {
 
             <NavLink
               data-testid="start-register-mammal"
-              to="/app/specimens/mammals/create/sections/0"
+              to="/app/specimens/mammals?mainColumn=create&sectionId=0"
             >
               <Button primary size="huge" type="button">
                 <Icon name="plus" />
