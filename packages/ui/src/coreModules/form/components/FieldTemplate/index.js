@@ -134,6 +134,8 @@ const FieldTemplate = ({
 
   const displayWarning = touched && !!warning
 
+  const { form } = meta
+
   useEffect(() => {
     if (deleteIfEmpty && isEmpty(fieldValue)) {
       const updatedParentFieldValue = immutablePath.del(
@@ -145,11 +147,19 @@ const FieldTemplate = ({
       // console.log('updatedParentFieldValue', updatedParentFieldValue)
       // console.log('childPath', childPath)
 
-      change(meta.form, parentPath, updatedParentFieldValue)
+      change(form, parentPath, updatedParentFieldValue)
 
       // console.log('hook triggered')
     }
-  }, [deleteIfEmpty, fieldValue])
+  }, [
+    change,
+    childPath,
+    deleteIfEmpty,
+    fieldValue,
+    form,
+    parentFieldValue,
+    parentPath,
+  ])
 
   return (
     <Form.Field
