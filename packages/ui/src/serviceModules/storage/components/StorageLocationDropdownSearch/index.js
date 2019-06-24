@@ -19,6 +19,7 @@ class StorageLocationDropdownSearch extends Component {
     return (
       <DropdownSearch
         {...rest}
+        deleteIfEmpty
         extractText={extractNameWithFirstLevelParent}
         include={include}
         nestItems
