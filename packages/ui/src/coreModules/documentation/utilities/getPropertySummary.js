@@ -29,7 +29,7 @@ export default function getPropertySummary({
       })
 
     if (refModel && refModel['x-summary']) {
-      summary = refModel['x-summary']
+      summary = summary || refModel['x-summary']
     }
   }
 
