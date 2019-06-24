@@ -13,6 +13,7 @@ const propTypes = {
 const SingleDate = ({ input, meta, module, ...rest }) => {
   return (
     <RangeDate
+      deleteIfEmpty
       displayDateTypeRadios={false}
       displayLabel
       displaySubLabels
