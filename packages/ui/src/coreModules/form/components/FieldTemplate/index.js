@@ -1,16 +1,61 @@
-import React from 'react'
+import { isEmpty } from 'lodash'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import objectPath from 'object-path'
+import immutablePath from 'object-path-immutable'
 import { Form } from 'semantic-ui-react'
+import { change as changeAc, getFormValues } from 'redux-form'
+
 import FieldError from './FieldError'
 import FieldLabel from './FieldLabel'
 import injectParameterKey from '../../higherOrderComponents/injectParameterKey'
 
+const mapStateToProps = (
+  state,
+  { deleteIfEmpty, meta: { form } = {}, name }
+) => {
+  if (!deleteIfEmpty) {
+    return {}
+  }
+
+  const nameParts = name.split('.')
+
+  const nameIsId = nameParts[nameParts.length - 1] === 'id'
+
+  const parentPath = nameParts.slice(0, nameIsId ? -2 : -1).join('.')
+
+  const childPath = nameParts[nameParts.length - 1]
+
+  const formValueSelector = getFormValues(form)
+  const formValues = formValueSelector(state)
+  const parentFieldValue = objectPath.get(formValues, parentPath)
+
+  const fieldValue = objectPath.get(formValues, name)
+  return {
+    childPath,
+    fieldValue,
+    formValues,
+    parentFieldValue,
+    parentPath,
+  }
+}
+
+const mapDispatchToProps = {
+  change: changeAc,
+}
+
 export const propTypes = {
+  change: PropTypes.func.isRequired,
+  childPath: PropTypes.string,
   children: PropTypes.node,
+  deleteIfEmpty: PropTypes.bool,
   displayError: PropTypes.bool,
   displayLabel: PropTypes.bool,
   enableHelpNotifications: PropTypes.bool,
   errorStyle: PropTypes.object,
+  fieldValue: PropTypes.any,
   float: PropTypes.string,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -24,16 +69,21 @@ export const propTypes = {
   module: PropTypes.string,
   name: PropTypes.string,
   parameterKey: PropTypes.string,
+  parentFieldValue: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  parentPath: PropTypes.string,
   required: PropTypes.bool,
   style: PropTypes.object,
   subLabel: PropTypes.bool,
 }
 export const defaultProps = {
+  childPath: undefined,
   children: undefined,
+  deleteIfEmpty: false,
   displayError: undefined,
   displayLabel: true,
   enableHelpNotifications: true,
   errorStyle: undefined,
+  fieldValue: undefined,
   float: undefined,
   helpNotificationProps: undefined,
   helpText: undefined,
@@ -44,6 +94,8 @@ export const defaultProps = {
   module: undefined,
   name: undefined,
   parameterKey: undefined,
+  parentFieldValue: undefined,
+  parentPath: undefined,
   required: false,
   style: {},
   subLabel: undefined,
@@ -53,6 +105,7 @@ export const fieldTemplatePropKeys = Object.keys(propTypes)
 
 const FieldTemplate = ({
   children,
+  deleteIfEmpty,
   displayError: displayErrorInput,
   displayLabel,
   enableHelpNotifications,
@@ -60,6 +113,7 @@ const FieldTemplate = ({
   float,
   helpNotificationProps,
   helpText,
+  fieldValue,
   label,
   labelKey,
   meta,
@@ -69,12 +123,33 @@ const FieldTemplate = ({
   required,
   style,
   subLabel,
+  change,
+  parentFieldValue,
+  parentPath,
+  childPath,
 }) => {
   const { error, touched, warning } = meta
   const displayError =
     displayErrorInput !== undefined ? displayErrorInput : touched && !!error
 
   const displayWarning = touched && !!warning
+
+  useEffect(() => {
+    if (deleteIfEmpty && isEmpty(fieldValue)) {
+      const updatedParentFieldValue = immutablePath.del(
+        parentFieldValue,
+        childPath
+      )
+      // console.log('name', name)
+      // console.log('parentFieldValue', parentFieldValue)
+      // console.log('updatedParentFieldValue', updatedParentFieldValue)
+      // console.log('childPath', childPath)
+
+      change(meta.form, parentPath, updatedParentFieldValue)
+
+      // console.log('hook triggered')
+    }
+  }, [deleteIfEmpty, fieldValue])
 
   return (
     <Form.Field
@@ -125,4 +200,10 @@ const FieldTemplate = ({
 FieldTemplate.propTypes = propTypes
 FieldTemplate.defaultProps = defaultProps
 
-export default injectParameterKey(FieldTemplate)
+export default compose(
+  injectParameterKey,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(FieldTemplate)

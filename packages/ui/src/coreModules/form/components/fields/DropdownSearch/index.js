@@ -69,7 +69,7 @@ function Select(props) {
 
   const displayAsButton = !!(leftButton || rightButton)
   return (
-    <FieldTemplate {...fieldTemplateProps} name={input.name}>
+    <FieldTemplate {...fieldTemplateProps} deleteIfEmpty name={input.name}>
       {displayAsButton ? (
         <Button.Group style={{ width: '100%' }}>
           {leftButton}

@@ -16,6 +16,7 @@ class SexFilterForm extends PureComponent {
         <Grid.Column width={16}>
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
+            deleteIfEmpty
             displayCount
             enableHelpNotifications={false}
             label=""
