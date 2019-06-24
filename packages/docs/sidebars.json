@@ -1,8 +1,6 @@
 {
   "docs": {
-    "Introduction": [
-      "index"
-    ],
+    "Introduction": ["index"],
     "Setup": [
       "setup/setup-locally-for-development",
       "setup/setup-locally-with-docker",
@@ -30,10 +28,7 @@
       {
         "type": "subcategory",
         "label": "UI",
-        "ids": [
-          "packages/ui/index",
-          "packages/ui/resourceManager"
-        ]
+        "ids": ["packages/ui/index", "packages/ui/resourceManager"]
       }
     ],
     "Development": [
@@ -41,7 +36,7 @@
       "development/contributing",
       "development/configuration/env",
       "development/testing",
-      "development/pipeline",
+      "development/ci",
       "development/version",
       "development/release",
       "development/deploy"

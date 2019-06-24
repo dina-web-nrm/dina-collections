@@ -1,7 +1,7 @@
 ---
-id: pipeline
-title: CI and deployment pipeline
-sidebar_label: CI and deployment
+id: ci
+title: Continuous integration
+sidebar_label: Continuous integration
 ---
 
 We are working with continuous integration (CI) to test code changes. We deploy
@@ -82,39 +82,3 @@ that are applied in different parts of the job lifecycle. In `.travis.yml` we
 specify those scripts, some of them are applied to all jobs and some are
 specific to certain jobs. Then we configure each job with environment variables
 to determine what part of each script runs for that job.
-
-## Delivery and deployment
-
-We use three different kinds of tags:
-
-| Tag type          | Example       | CLI                    |
-| ----------------- | ------------- | ---------------------- |
-| release           | v0.18.0       | `yarn version:release` |
-| release candidate | v0.18.0-rc1   | `yarn version:rc`      |
-| test              | v0.18.0-test1 | `yarn version:test`    |
-
-The `rc` and `test` scripts check that the version provided includes "rc" or
-"test" and those tags are ignored in the
-[CHANGELOG](https://github.com/dina-web-nrm/dina-collections/blob/master/CHANGELOG.md),
-except when a release candidate is the latest tag.
-
-Release candidates are used to make intermediate deploys to the stage server for
-QA. Test tags can be used at any time during development and are typically
-tested on the test server.
-
-Release versions are first deployed to stage and after manual QA it is deployed
-to production.
-
-When deploying to a remote environment first the relevant git tag should be
-checked out, in case it includes some changes to the scripts that are executed
-on the server. The `remote:*` scripts require the parameters `-s` for
-environment (test, stage, production, demo) and `-t` for tag.
-
-```bash
-yarn remote:git:checkout-tag -s stage -t v0.18.0
-yarn remote:deploy -s stage -t v0.18.0
-```
-
-> TODO: Change to run checkout-tag as part of deploy script
->
-> TODO: Add information about data migration
