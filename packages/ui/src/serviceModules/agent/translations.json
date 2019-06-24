@@ -46,13 +46,13 @@
     },
     "affiliation": {
       "name": {
-        "en": "affiliation",
+        "en": "organization",
         "sv": ""
       }
     },
     "roles": {
       "name": {
-        "en": "Affiliation/position",
+        "en": "Role/position",
         "sv": ""
       }
     },
@@ -104,10 +104,6 @@
     },
     "roles": {
       "en": "roles",
-      "sv": ""
-    },
-    "affiliations": {
-      "en": "affiliations",
       "sv": ""
     },
     "legacyData": {
@@ -192,13 +188,13 @@
     },
     "roles": {
       "name": {
-        "en": "Role or position for the agent in relation to an affiliation.",
+        "en": "Role or position for the agent in relation to an organization.",
         "sv": ""
       }
     },
     "affiliation": {
       "name": {
-        "en": "Name or description of the affiliation. Normally some kind of organization.",
+        "en": "Name or description of the organization to which the person is affiliated.",
         "sv": ""
       }
     },
@@ -261,7 +257,7 @@
   },
   "other": {
     "addAgentRole": {
-      "en": "Add affiliation",
+      "en": "Add role",
       "sv": ""
     },
     "createdBy": {
@@ -273,7 +269,7 @@
       "sv": ""
     },
     "removeThisAgentRole": {
-      "en": "Delete this affiliation?"
+      "en": "Delete this role?"
     }
   },
   "agent": {
@@ -308,8 +304,8 @@
     "en": "To date",
     "sv": "Till datum"
   },
-  "affiliation": {
-    "en": "Affiliation",
+  "organization": {
+    "en": "Organization",
     "sv": ""
   },
   "save": {
@@ -325,7 +321,7 @@
     "sv": "Återställ"
   },
   "remove": {
-    "en": "Delete affiliation",
+    "en": "Delete role",
     "sv": "Ta bort"
   },
   "delete": {
