@@ -93,6 +93,7 @@ class AgentDropdownSearch extends Component {
 
     return (
       <DropdownSearch
+        deleteIfEmpty
         pathToIdInValue="normalized.id"
         pathToTextInValue="textI"
         {...rest}

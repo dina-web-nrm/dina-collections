@@ -22,6 +22,7 @@ class TaxonDropdownSearch extends Component {
     return (
       <DropdownSearch
         {...rest}
+        deleteIfEmpty
         extractText={extractText}
         include={include}
         nestItems
