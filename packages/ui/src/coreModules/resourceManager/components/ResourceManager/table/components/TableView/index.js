@@ -2,6 +2,8 @@ import React, { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { pick } from 'lodash'
+import { Dimmer, Grid, Loader } from 'semantic-ui-react'
+
 import createLog from 'utilities/log'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
@@ -27,6 +29,7 @@ const propTypes = {
   initialFilterValues: PropTypes.object,
   initialItemId: PropTypes.string,
   isPicker: PropTypes.bool.isRequired,
+  searchInProgress: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.arrayOf(
     PropTypes.shape({
       fieldPath: PropTypes.string.isRequired,
@@ -51,6 +54,7 @@ const TableView = props => {
     initialFilterValues,
     initialItemId,
     isPicker,
+    searchInProgress,
     tableColumnSpecifications,
     tableColumnsToShow,
     tableListItems,
@@ -89,7 +93,7 @@ const TableView = props => {
         id="tableScrollContainer"
         style={tableBodyStyle}
       >
-        {tableListItems.length > 0 ? (
+        {tableListItems.length > 0 && (
           <InfinityTableBody
             {...pick(props, [
               'currentRowNumber',
@@ -105,9 +109,19 @@ const TableView = props => {
             ])}
             width={width}
           />
-        ) : (
-          <NoResultsFound />
         )}
+        {!tableListItems.length && searchInProgress && (
+          <Grid padded>
+            <Grid.Row style={{ height: emToPixels(3.5) }}>
+              <Grid.Column style={{ paddingTop: 60, width: 150 }}>
+                <Dimmer active inverted>
+                  <Loader content="Loading" inverted />
+                </Dimmer>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        )}
+        {!tableListItems.length && !searchInProgress && <NoResultsFound />}
       </RowLayout.Row>
     </RowLayout>
   )
