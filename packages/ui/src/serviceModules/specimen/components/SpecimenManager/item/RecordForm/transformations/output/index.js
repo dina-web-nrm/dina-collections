@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash'
 
 import transformFeatureObservations from './transformFeatureObservations'
 import transformOriginInformation from './transformOriginInformation'
+import transformDeathInformation from './transformDeathInformation'
 
 export default function transformOutput({
   establishmentMeansTypes,
@@ -65,6 +66,12 @@ export default function transformOutput({
     if (transformedSpecimen.individual.originInformation.length === 0) {
       delete transformedSpecimen.individual.originInformation
     }
+  }
+
+  if (transformedSpecimen.individual.deathInformation) {
+    transformedSpecimen.individual.deathInformation = transformDeathInformation(
+      transformedSpecimen.individual.deathInformation
+    )
   }
 
   if (
