@@ -8,7 +8,9 @@ import TranslatedHeader from '../TranslatedHeader'
 import EventRow from './EventRow'
 
 const mapStateToProps = (_, { resourceActivities }) => {
-  if (!resourceActivities || !resourceActivities.length) {
+  const filteredResourceActivities = (resourceActivities || []).filter(Boolean)
+
+  if (!filteredResourceActivities.length) {
     return {}
   }
 
