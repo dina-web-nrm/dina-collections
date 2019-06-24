@@ -137,6 +137,7 @@ const createHandleDelete = () => ComposedComponent => {
       return del({ id: itemId }).then(() => {
         const notification = {
           componentProps: {
+            description: 'Please wait while the table is updated...',
             header: 'The record was deleted',
           },
           ttl: 3000,
@@ -149,7 +150,9 @@ const createHandleDelete = () => ComposedComponent => {
         setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
 
         fetchResourceCount()
-        navigateTable()
+        setTimeout(() => {
+          navigateTable()
+        }, 2000)
       })
     }
 
