@@ -27,16 +27,16 @@ export default () =>
       cy.getByElementName('abbreviation').type('abbreviation')
       cy.quickQueryByText('Add name details').should('not.exist')
 
-      cy.log('adds affiliation')
+      cy.log('adds role')
       cy.quickQueryByTestId('accordion').should('not.exist')
-      cy.getByText('Add affiliation').click()
+      cy.getByText('Add role').click()
       cy.getByTestId('accordion')
         .children()
         .should('have.length', 2)
 
       cy.getByTestId('activeAccordionContent').within(() => {
-        cy.getInputByLabelText('Affiliation/position').type('Staff')
-        cy.getInputByLabelText('Affiliation').type('some affiliation text')
+        cy.getInputByLabelText('Role/position').type('Staff')
+        cy.getInputByLabelText('Organization').type('some organization text')
         cy.getByTestId('startDatePart').within(() => {
           cy.getInputByLabelText('Year').type('2001')
           cy.getInputByLabelText('Month').type('2')

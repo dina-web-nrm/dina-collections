@@ -3,7 +3,7 @@ const parts = [
     componentName: 'TranslatedHeader',
     componentProps: {
       as: 'h3',
-      textKey: 'headers.affiliations',
+      textKey: 'headers.roles',
     },
   },
   {
