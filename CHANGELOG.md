@@ -2,8 +2,10 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.24.0-rc](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc)
+#### [v0.24.0-rc2](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc2)
 
+- Improve UI and fix bugs [`#550`](https://github.com/dina-web-nrm/dina-collections/pull/550)
+- Fix env file permission when deploying [`#549`](https://github.com/dina-web-nrm/dina-collections/pull/549)
 - Refactor and improve resource manager & add more e2e tests [`#530`](https://github.com/dina-web-nrm/dina-collections/pull/530)
 - Activate worker in worker containers [`#548`](https://github.com/dina-web-nrm/dina-collections/pull/548)
 - Data model and docs updates [`#546`](https://github.com/dina-web-nrm/dina-collections/pull/546)
