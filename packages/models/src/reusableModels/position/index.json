@@ -11,16 +11,14 @@
       "description": "Longitude or easting. Prefixed with minus for coordinates on western hemisphere."
     },
     "geodeticDatum": {
-      "type": "string",
-      "description": "Geodetic datum wip"
+      "type": "string"
     },
     "uncertaintyInMeters": {
       "type": "integer",
       "description": "Coordinate uncertainty in meters"
     },
     "referenceSystem": {
-      "type": "string",
-      "description": "TBA"
+      "type": "string"
     }
   }
 }

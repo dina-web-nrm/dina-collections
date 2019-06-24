@@ -1161,7 +1161,6 @@
     "description": "# datePart\n\nA reference to a particular day represented within a calendar system.\n\n### Notes\n\nThe name is a bit problematic for two reasons:\n\n* It is possible to store a full date, not just a partial date as the name implies\n* It is possible to store a full timestamp (not just year, month and day)",
     "properties": {
       "timestamp": {
-        "description": "A date in standard format. TBA",
         "format": "date-time",
         "type": "string",
         "x-summary": ""
@@ -1303,7 +1302,6 @@
       },
       "geodeticDatum": {
         "type": "string",
-        "description": "Geodetic datum wip",
         "x-summary": ""
       },
       "uncertaintyInMeters": {
@@ -1313,7 +1311,6 @@
       },
       "referenceSystem": {
         "type": "string",
-        "description": "TBA",
         "x-summary": ""
       }
     },
@@ -2008,7 +2005,6 @@
       },
       "localityI": {
         "type": "string",
-        "description": "TBA",
         "x-summary": ""
       },
       "localityV": {
