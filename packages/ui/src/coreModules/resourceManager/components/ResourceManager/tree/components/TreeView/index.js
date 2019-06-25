@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import ReactList from 'react-list'
@@ -74,6 +74,7 @@ const TreeView = ({
   treeListItems,
 }) => {
   const list = useRef(null)
+  const [treeIsLoading, setTreeIsLoading] = useState(true)
 
   const itemsObjectRef = useRef(null)
   const treeBaseItemsRef = useRef(null)
@@ -123,7 +124,17 @@ const TreeView = ({
   ])
 
   const itemRenderer = index => {
-    if (!(treeListItems && treeListItems.length)) {
+    const focusedIndex = currentRowNumber - 1
+    const { isExpandable, id: itemId, level, loading } =
+      treeListItems[index] || {}
+    const isExpanded = itemId && !!treeExpandedIds[itemId]
+    const isFocused = index === focusedIndex
+
+    if (focusedItemId === itemId && !loading) {
+      setTreeIsLoading(false)
+    }
+
+    if (treeIsLoading && index === 0) {
       return (
         <Grid key={`index-${index}`} padded>
           <Grid.Row style={{ height: emToPixels(3.5) }}>
@@ -137,10 +148,9 @@ const TreeView = ({
       )
     }
 
-    const focusedIndex = currentRowNumber - 1
-    const { isExpandable, id: itemId, level } = treeListItems[index] || {}
-    const isExpanded = itemId && !!treeExpandedIds[itemId]
-    const isFocused = index === focusedIndex
+    if (treeIsLoading && index > 0) {
+      return null
+    }
 
     return (
       <ListItem
