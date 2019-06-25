@@ -42,7 +42,7 @@ const FormNavigationBar = ({
 
   useEffect(() => {
     fetchTableItems()
-  }, [fetchTableItems])
+  }, [createItemActive, fetchTableItems])
 
   return (
     <RecordNavigationBar
