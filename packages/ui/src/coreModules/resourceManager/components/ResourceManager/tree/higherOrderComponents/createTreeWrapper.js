@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import isEqual from 'fast-deep-equal'
 import objectPath from 'object-path'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
@@ -219,7 +218,6 @@ const createTreeWrapper = () => ComposedComponent => {
         setFocusedItemId,
         setTreeBaseItems,
         sortOrder,
-        treeBaseItems,
       } = this.props
 
       return getMany({
@@ -230,13 +228,9 @@ const createTreeWrapper = () => ComposedComponent => {
           sort: sortOrder,
         },
       }).then(items => {
-        const cleanedItems = items.map(({ attributes, ...rest }) => rest)
+        setTreeBaseItems(items, { managerScope })
 
-        if (!isEqual(cleanedItems, treeBaseItems)) {
-          setTreeBaseItems(cleanedItems, { managerScope })
-        }
-
-        const firstItemId = objectPath.get(cleanedItems, '0.id')
+        const firstItemId = objectPath.get(items, '0.id')
 
         if (!focusedItemId && firstItemId) {
           setFocusedItemId(firstItemId)
