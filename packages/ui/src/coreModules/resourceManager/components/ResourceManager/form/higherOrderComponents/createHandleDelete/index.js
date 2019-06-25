@@ -197,9 +197,7 @@ const createHandleDelete = () => ComposedComponent => {
         setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
 
         fetchResourceCount()
-        setTimeout(() => {
-          navigateTable()
-        }, 2000)
+        navigateTable()
       })
     }
 
