@@ -118,6 +118,7 @@ const createTableWrapper = () => ComposedComponent => {
         this
       )
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
+      this.updateTableFocus = this.updateTableFocus.bind(this)
     }
 
     getSearchInProgress() {
@@ -163,8 +164,6 @@ const createTableWrapper = () => ComposedComponent => {
         managerScope,
         search,
         setTableListItems,
-        setFocusedItemId,
-        setFocusItemIdWhenLoaded,
         sortOrder: defaultSortOrder,
         tableColumnsToSort,
       } = this.props
@@ -195,28 +194,33 @@ const createTableWrapper = () => ComposedComponent => {
         }).then(items => {
           setTableListItems(items, { managerScope })
 
-          const firstItemId = objectPath.get(items, '0.id')
-
-          const { focusedItemId, focusItemIdWhenLoaded } = this.props
-
-          if (focusItemIdWhenLoaded) {
-            setFocusedItemId(focusItemIdWhenLoaded)
-            setFocusItemIdWhenLoaded(null)
-          } else if (firstItemId && !focusedItemId) {
-            setFocusedItemId(firstItemId)
-          } else if (firstItemId && focusedItemId) {
-            const focusedItemInItems = items.find(
-              item => item.id === focusedItemId
-            )
-
-            if (!focusedItemInItems) {
-              setFocusedItemId(firstItemId)
-            }
-          }
-
           return items
         })
       })
+    }
+
+    updateTableFocus(items) {
+      const {
+        focusedItemId,
+        focusItemIdWhenLoaded,
+        setFocusedItemId,
+        setFocusItemIdWhenLoaded,
+      } = this.props
+
+      const firstItemId = objectPath.get(items, '0.id')
+
+      if (focusItemIdWhenLoaded) {
+        setFocusedItemId(focusItemIdWhenLoaded)
+        setFocusItemIdWhenLoaded(null)
+      } else if (firstItemId && !focusedItemId) {
+        setFocusedItemId(firstItemId)
+      } else if (firstItemId && focusedItemId) {
+        const focusedItemInItems = items.find(item => item.id === focusedItemId)
+
+        if (!focusedItemInItems) {
+          setFocusedItemId(firstItemId)
+        }
+      }
     }
 
     render() {
@@ -231,6 +235,7 @@ const createTableWrapper = () => ComposedComponent => {
           onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
           onShowAllRecords={this.handleShowAllRecords}
           onToggleRow={this.handleToggleRow}
+          updateTableFocus={this.updateTableFocus}
         />
       )
     }

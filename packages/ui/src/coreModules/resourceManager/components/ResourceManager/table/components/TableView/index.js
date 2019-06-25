@@ -39,6 +39,7 @@ const propTypes = {
   ).isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   tableListItems: PropTypes.array.isRequired,
+  updateTableFocus: PropTypes.func.isRequired,
 }
 const defaultProps = {
   initialFilterValues: undefined,
@@ -58,6 +59,7 @@ const TableView = props => {
     tableColumnSpecifications,
     tableColumnsToShow,
     tableListItems,
+    updateTableFocus,
   } = props
 
   const width = useMemo(() => {
@@ -72,6 +74,10 @@ const TableView = props => {
       useInitialFilters: !!(isPicker && initialFilterValues && !initialItemId),
     })
   }, [fetchTableItems, initialFilterValues, initialItemId, isPicker])
+
+  useEffect(() => {
+    updateTableFocus(tableListItems)
+  }, [tableListItems, updateTableFocus])
 
   return (
     <RowLayout availableHeight={availableHeight}>
