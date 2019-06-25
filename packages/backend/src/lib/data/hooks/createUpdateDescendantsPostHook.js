@@ -8,8 +8,17 @@ module.exports = function createUpdateDescendantsPostHook({
   srcResource,
   limit,
 }) {
-  return function updateDescendantsPostHook({ item, serviceInteractor }) {
-    const { id: updatedSrcId } = item
+  return function updateDescendantsPostHook({
+    item,
+    request,
+    serviceInteractor,
+  }) {
+    let updatedSrcId = request.pathParams.id
+
+    if (!updatedSrcId) {
+      updatedSrcId = item.id
+    }
+
     log.debug(
       `updateDescendantsPostHook for src: ${srcResource} -> ${updatedSrcId} and target ${targetSearchResource}`
     )
@@ -41,10 +50,18 @@ module.exports = function createUpdateDescendantsPostHook({
       .then(res => {
         const { data } = res
 
-        return createIndexJob({
-          ids: data.map(({ id }) => {
+        const ids = [
+          updatedSrcId,
+          ...data.map(({ id }) => {
             return id
           }),
+        ]
+        if (item.id !== updatedSrcId) {
+          ids.push(item.id)
+        }
+
+        return createIndexJob({
+          ids,
           limit,
           serviceInteractor,
         })
