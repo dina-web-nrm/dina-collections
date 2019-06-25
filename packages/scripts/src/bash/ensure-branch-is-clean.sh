@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ./packages/scripts/src/bash/ensure-branch-is-clean.sh
 
 if !([ -z "$(git status --untracked-files=no --porcelain)" ]); then

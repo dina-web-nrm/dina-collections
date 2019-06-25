@@ -80,6 +80,7 @@ export default function createFieldHocFactory({
           <ComposedComponent
             {...this.props}
             buildLocalAggregationQuery={this.buildLocalAggregationQuery}
+            deleteIfEmpty
             otherFieldFilters={otherFieldFilters}
           />
         )

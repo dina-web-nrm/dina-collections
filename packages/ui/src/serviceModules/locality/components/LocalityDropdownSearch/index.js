@@ -32,6 +32,7 @@ class LocalityDropdownSearch extends Component {
     return (
       <DropdownSearch
         {...rest}
+        deleteIfEmpty
         excludeRootNode={excludeRootNode}
         extractText={extractText}
         include={include}

@@ -248,6 +248,7 @@ class DateRange extends Component {
     return (
       <FieldTemplate
         {...fieldTemplateProps}
+        deleteIfEmpty
         displayError={hasError}
         enableHelpNotifications={enableHelpNotifications}
         errorStyle={

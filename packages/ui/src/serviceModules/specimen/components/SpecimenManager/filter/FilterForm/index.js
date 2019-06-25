@@ -24,7 +24,7 @@ const getFormInitialValues = getFormInitialValuesFactory(
 const items = [
   { name: 'identifier' },
   { doDeepEqualInitialValuesComparison: true, name: 'taxonomy' },
-  { name: 'locality' },
+  { doDeepEqualInitialValuesComparison: true, name: 'locality' },
   { name: 'datePeriod' },
   { name: 'agent' },
   { name: 'physicalObject' },

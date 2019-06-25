@@ -55,6 +55,7 @@ class TaxonNameDropdownSearch extends Component {
       <DropdownSearch
         {...rest}
         baseFilter={baseFilter}
+        deleteIfEmpty
         resource="taxonName"
         type="dropdown-search-resource"
       />
