@@ -169,7 +169,7 @@ const createTableWrapper = () => ComposedComponent => {
         `${resource}TableColumnsToSort`,
         columnsToSort
       ).then(() => {
-        return this.fetchTableItems()
+        return this.fetchTableItems({ force: true })
       })
     }
 
