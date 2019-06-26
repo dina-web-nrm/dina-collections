@@ -119,10 +119,26 @@ const createTableWrapper = () => ComposedComponent => {
       )
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
       this.updateTableFocus = this.updateTableFocus.bind(this)
+      this.addIdToTableListItems = this.addIdToTableListItems.bind(this)
     }
 
     getSearchInProgress() {
       return this.props.searchInProgress
+    }
+
+    addIdToTableListItems(id) {
+      const {
+        managerScope,
+        setHasAppliedFilter,
+        setTableListItems,
+        tableListItems,
+      } = this.props
+
+      setTableListItems([...tableListItems, { id, type: 'customObject' }], {
+        managerScope,
+      })
+
+      setHasAppliedFilter(false, { managerScope })
     }
 
     handleSaveTableColumnsToShow(columnsToShow) {
@@ -229,6 +245,7 @@ const createTableWrapper = () => ComposedComponent => {
       return (
         <ComposedComponent
           {...this.props}
+          addIdToTableListItems={this.addIdToTableListItems}
           fetchTableItems={this.fetchTableItems}
           getTableWidth={getTableWidth}
           onSaveTableColumnsToShow={this.handleSaveTableColumnsToShow}
