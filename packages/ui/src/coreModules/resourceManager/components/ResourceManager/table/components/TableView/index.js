@@ -39,6 +39,7 @@ const propTypes = {
   ).isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   tableListItems: PropTypes.array.isRequired,
+  updateTableFocus: PropTypes.func.isRequired,
 }
 const defaultProps = {
   initialFilterValues: undefined,
@@ -58,6 +59,7 @@ const TableView = props => {
     tableColumnSpecifications,
     tableColumnsToShow,
     tableListItems,
+    updateTableFocus,
   } = props
 
   const width = useMemo(() => {
@@ -72,6 +74,10 @@ const TableView = props => {
       useInitialFilters: !!(isPicker && initialFilterValues && !initialItemId),
     })
   }, [fetchTableItems, initialFilterValues, initialItemId, isPicker])
+
+  useEffect(() => {
+    updateTableFocus(tableListItems)
+  }, [tableListItems, updateTableFocus])
 
   return (
     <RowLayout availableHeight={availableHeight}>
@@ -93,7 +99,19 @@ const TableView = props => {
         id="tableScrollContainer"
         style={tableBodyStyle}
       >
-        {tableListItems.length > 0 && (
+        {searchInProgress && (
+          <Grid padded>
+            <Grid.Row style={{ height: emToPixels(3.5) }}>
+              <Grid.Column style={{ paddingTop: 60, width: 150 }}>
+                <Dimmer active inverted>
+                  <Loader content="Loading" inverted />
+                </Dimmer>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        )}
+        {!searchInProgress && !tableListItems.length && <NoResultsFound />}
+        {!searchInProgress && tableListItems.length > 0 && (
           <InfinityTableBody
             {...pick(props, [
               'currentRowNumber',
@@ -110,18 +128,6 @@ const TableView = props => {
             width={width}
           />
         )}
-        {!tableListItems.length && searchInProgress && (
-          <Grid padded>
-            <Grid.Row style={{ height: emToPixels(3.5) }}>
-              <Grid.Column style={{ paddingTop: 60, width: 150 }}>
-                <Dimmer active inverted>
-                  <Loader content="Loading" inverted />
-                </Dimmer>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        )}
-        {!tableListItems.length && !searchInProgress && <NoResultsFound />}
       </RowLayout.Row>
     </RowLayout>
   )

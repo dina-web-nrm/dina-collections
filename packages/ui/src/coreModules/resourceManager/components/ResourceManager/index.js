@@ -114,12 +114,12 @@ const ResourceManager = props => {
         <RowLayout.Row height={PICKER_ACTION_BAR_HEIGHT}>
           <PickerActionBar
             {...pick(props, [
+              'createGetNestedItemHocInput',
               'excludeRootNode',
               'ItemTitle',
               'managerScope',
               'onPickItem',
               'resource',
-              'treeItemFetchOptions',
             ])}
             itemId={focusedItemId}
             namespace={`${managerScope}Title`}

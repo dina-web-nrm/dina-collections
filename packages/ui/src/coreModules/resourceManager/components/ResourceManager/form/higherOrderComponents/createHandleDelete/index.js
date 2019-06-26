@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
+import objectPath from 'object-path'
 
 import { createGetResourceCount } from 'coreModules/crud/higherOrderComponents'
 import { createNotification as createNotificationActionCreator } from 'coreModules/notifications/actionCreators'
@@ -13,6 +14,8 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
   createNotification: (...args) =>
     dispatch(createNotificationActionCreator(...args)),
   del: (...args) => dispatch(crudActionCreators[resource].del(...args)),
+  getManySpecimen: (...args) =>
+    dispatch(crudActionCreators.specimen.getMany(...args)),
   getOne: (...args) => dispatch(crudActionCreators[resource].getOne(...args)),
 })
 
@@ -24,6 +27,7 @@ const propTypes = {
   fetchRelationshipsBeforeDelete: PropTypes.func,
   fetchResourceCount: PropTypes.func.isRequired,
   getItemIdFromRowNumber: PropTypes.func.isRequired,
+  getManySpecimen: PropTypes.func.isRequired,
   getOne: PropTypes.func.isRequired,
   itemHeader: PropTypes.string,
   itemId: PropTypes.string,
@@ -68,8 +72,10 @@ const createHandleDelete = () => ComposedComponent => {
     handleDelete() {
       const {
         getOne,
+        getManySpecimen,
         fetchRelationshipsBeforeDelete,
         itemId,
+        resource,
         relationshipsToCheckBeforeDelete,
       } = this.props
 
@@ -83,10 +89,49 @@ const createHandleDelete = () => ComposedComponent => {
 
       return getOne({
         id: itemId,
+        include: relationshipsToCheckBeforeDelete,
         includeDeactivated: false,
         relationships: relationshipsToCheckBeforeDelete,
       }).then(res => {
         const { relationships } = res || {}
+
+        if (resource === 'storageLocation') {
+          const physicalObjects = objectPath.get(
+            relationships,
+            'physicalObjects.data'
+          )
+
+          if (physicalObjects && physicalObjects.length) {
+            const physicalObjectIds = physicalObjects.map(({ id }) => id)
+
+            return getManySpecimen({
+              queryParams: {
+                filter: {
+                  physicalObjectIds,
+                },
+              },
+            }).then(specimens => {
+              const cleanedSpecimens = specimens.map(({ id }) => {
+                return {
+                  id,
+                  type: 'specimen',
+                }
+              })
+
+              const modifiedRelationships = {
+                ...relationships,
+                specimens: {
+                  data: cleanedSpecimens,
+                },
+              }
+
+              delete modifiedRelationships.physicalObjects
+
+              return this.deleteItemOrShowRelationships(modifiedRelationships)
+            })
+          }
+        }
+
         return this.deleteItemOrShowRelationships(relationships)
       })
     }
@@ -152,9 +197,7 @@ const createHandleDelete = () => ComposedComponent => {
         setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
 
         fetchResourceCount()
-        setTimeout(() => {
-          navigateTable()
-        }, 2000)
+        navigateTable()
       })
     }
 

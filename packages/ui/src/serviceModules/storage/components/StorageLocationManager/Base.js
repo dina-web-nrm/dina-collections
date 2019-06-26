@@ -29,6 +29,8 @@ const createGetNestedItemHocInput = {
   resource,
 }
 
+const relationshipsToCheckBeforeDelete = ['children', 'physicalObjects']
+
 const buildEditItemHeaders = nestedItem => {
   if (!nestedItem) {
     return {}
@@ -161,6 +163,7 @@ class StorageLocationManager extends Component {
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         fetchRelationshipsBeforeDelete={this.fetchRelationshipsBeforeDelete}
         ItemTitle={ItemTitle}
+        relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
         renderCreateForm={this.renderCreateForm}
         renderEditForm={this.renderEditForm}
         renderFilterForm={this.renderFilterForm}
