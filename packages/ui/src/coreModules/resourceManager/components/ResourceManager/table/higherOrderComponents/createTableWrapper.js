@@ -176,7 +176,7 @@ const createTableWrapper = () => ComposedComponent => {
         setHasAppliedFilter(false, { managerScope })
       }
 
-      return this.fetchTableItems({ ignoreFilters: true })
+      return this.fetchTableItems({ force: true, ignoreFilters: true })
     }
 
     fetchTableItems({ ignoreFilters, useInitialFilters, force } = {}) {
