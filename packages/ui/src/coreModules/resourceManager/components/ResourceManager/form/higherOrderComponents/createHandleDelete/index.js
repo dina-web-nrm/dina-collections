@@ -90,7 +90,6 @@ const createHandleDelete = () => ComposedComponent => {
 
       return getOne({
         id: itemId,
-        include: relationshipsToCheckBeforeDelete,
         includeDeactivated: false,
         relationships: relationshipsToCheckBeforeDelete,
       }).then(res => {
