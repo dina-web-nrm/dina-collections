@@ -75,7 +75,7 @@
     "title": {
       "type": "string"
     },
-    "readOnly": {
+    "srcData": {
       "$ref": "readOnly"
     },
     "x-relationships": {

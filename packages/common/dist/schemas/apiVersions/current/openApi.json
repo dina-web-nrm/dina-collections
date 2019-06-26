@@ -23280,7 +23280,7 @@
             "type": "string",
             "x-summary": ""
           },
-          "readOnly": {
+          "srcData": {
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
           }
@@ -24976,7 +24976,7 @@
             },
             "x-summary": ""
           },
-          "readOnly": {
+          "srcData": {
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
           },
@@ -25048,7 +25048,7 @@
             "description": "Notes on the locality",
             "x-summary": ""
           },
-          "readOnly": {
+          "srcData": {
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
           }
@@ -25328,7 +25328,7 @@
             "$ref": "#/components/schemas/legacyData",
             "x-summary": ""
           },
-          "readOnly": {
+          "srcData": {
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
           },
@@ -25380,7 +25380,7 @@
             "type": "string",
             "x-summary": ""
           },
-          "readOnly": {
+          "srcData": {
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
           }

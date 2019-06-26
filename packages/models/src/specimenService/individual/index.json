@@ -62,7 +62,7 @@
         "$ref": "recordHistoryEvent"
       }
     },
-    "readOnly": {
+    "srcData": {
       "$ref": "readOnly"
     },
     "version": {

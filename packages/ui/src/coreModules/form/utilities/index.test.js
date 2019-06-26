@@ -62,15 +62,15 @@ describe('coreModules/form/utilities', () => {
         createLabelKey({
           context: 'fieldLabels',
           module: 'specimen',
-          parameterKey: 'readOnly',
+          parameterKey: 'srcData',
         })
-      ).toEqual('modules.specimen.fieldLabels.readOnly')
+      ).toEqual('modules.specimen.fieldLabels.srcData')
     })
     it('return undefined when module is missing', () => {
       expect(
         createLabelKey({
           context: 'fieldLabels',
-          parameterKey: 'readOnly',
+          parameterKey: 'srcData',
         })
       ).toEqual(undefined)
     })
