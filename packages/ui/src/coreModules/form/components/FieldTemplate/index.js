@@ -14,24 +14,23 @@ import injectParameterKey from '../../higherOrderComponents/injectParameterKey'
 
 const mapStateToProps = (
   state,
-  { deleteIfEmpty, meta: { form } = {}, name }
+  { deleteIfEmpty, deleteParentIfEmpty, meta: { form } = {}, name }
 ) => {
-  if (!deleteIfEmpty) {
+  if (!deleteIfEmpty && !deleteParentIfEmpty) {
     return {}
   }
 
   const nameParts = name.split('.')
-
-  const parentPath = nameParts.slice(0, -1).join('.')
-
-  const childPath = nameParts[nameParts.length - 1]
+  const indexWhereToSplitName = deleteParentIfEmpty ? -2 : -1
+  const parentPath = nameParts.slice(0, indexWhereToSplitName).join('.')
+  const childPath = nameParts[nameParts.length + indexWhereToSplitName]
 
   const formValueSelector = getFormValues(form)
   const formValues = formValueSelector(state)
   const parentFieldValue = objectPath.get(formValues, parentPath)
-
   const fieldValue = objectPath.get(formValues, name)
   const fieldValueIsEmpty = isEmpty(fieldValue)
+
   return {
     childPath,
     fieldValueIsEmpty,
@@ -49,6 +48,7 @@ export const propTypes = {
   childPath: PropTypes.string,
   children: PropTypes.node,
   deleteIfEmpty: PropTypes.bool,
+  deleteParentIfEmpty: PropTypes.bool,
   displayError: PropTypes.bool,
   displayLabel: PropTypes.bool,
   enableHelpNotifications: PropTypes.bool,
@@ -77,6 +77,7 @@ export const defaultProps = {
   childPath: undefined,
   children: undefined,
   deleteIfEmpty: false,
+  deleteParentIfEmpty: false,
   displayError: undefined,
   displayLabel: true,
   enableHelpNotifications: true,
@@ -106,6 +107,7 @@ const FieldTemplate = ({
   childPath,
   children,
   deleteIfEmpty,
+  deleteParentIfEmpty,
   displayError: displayErrorInput,
   displayLabel,
   enableHelpNotifications,
@@ -138,7 +140,7 @@ const FieldTemplate = ({
 
   useEffect(() => {
     if (
-      deleteIfEmpty &&
+      (deleteIfEmpty || deleteParentIfEmpty) &&
       fieldValueIsEmpty &&
       fieldValueIsEmptyRef.current === false
     ) {
