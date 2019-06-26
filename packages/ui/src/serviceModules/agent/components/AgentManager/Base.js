@@ -39,6 +39,16 @@ const buildEditItemHeaders = nestedItem => {
   }
 }
 
+const renderCreateForm = (props = {}) => {
+  return <CreateForm {...props} />
+}
+const renderEditForm = (props = {}) => {
+  return <EditForm {...props} />
+}
+const renderFilterForm = (props = {}) => {
+  return <FilterForm {...props} />
+}
+
 const mapDispatchToProps = {
   getAgent: crudActionCreators.normalizedAgent.getOne,
 }
@@ -54,25 +64,6 @@ const defaultProps = {
 }
 
 class AgentManager extends Component {
-  constructor(props) {
-    super(props)
-    this.renderCreateForm = this.renderCreateForm.bind(this)
-    this.renderEditForm = this.renderEditForm.bind(this)
-    this.renderFilterForm = this.renderFilterForm.bind(this)
-  }
-
-  renderEditForm(props = {}) {
-    const { itemId } = this.props
-    return <EditForm {...props} itemId={itemId} />
-  }
-  renderCreateForm(props = {}) {
-    return <CreateForm {...props} onInteraction={this.handleInteraction} />
-  }
-
-  renderFilterForm(props = {}) {
-    return <FilterForm {...props} onInteraction={this.handleInteraction} />
-  }
-
   render() {
     return (
       <ResourceManager
@@ -82,9 +73,9 @@ class AgentManager extends Component {
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         ItemTitle={ItemTitle}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
-        renderCreateForm={this.renderCreateForm}
-        renderEditForm={this.renderEditForm}
-        renderFilterForm={this.renderFilterForm}
+        renderCreateForm={renderCreateForm}
+        renderEditForm={renderEditForm}
+        renderFilterForm={renderFilterForm}
         resource={resource}
         sortOrder={sortOrder}
         tableColumnSpecifications={tableColumnSpecifications}

@@ -57,6 +57,16 @@ const treeItemFetchOptions = {
   resolveRelationships: ['place'],
 }
 
+const renderCreateForm = (props = {}) => {
+  return <CreateForm {...props} />
+}
+const renderEditForm = (props = {}) => {
+  return <EditForm {...props} />
+}
+const renderFilterForm = (props = {}) => {
+  return <FilterForm {...props} />
+}
+
 const propTypes = {
   itemId: PropTypes.string,
 }
@@ -66,32 +76,6 @@ const defaultProps = {
 }
 
 class LocalityManager extends Component {
-  constructor(props) {
-    super(props)
-    this.renderCreateForm = this.renderCreateForm.bind(this)
-    this.renderEditForm = this.renderEditForm.bind(this)
-    this.renderFilterForm = this.renderFilterForm.bind(this)
-  }
-
-  renderEditForm(props = {}) {
-    const { itemId } = this.props
-
-    return (
-      <EditForm
-        {...props}
-        itemId={itemId}
-        onInteraction={this.handleInteraction}
-      />
-    )
-  }
-  renderCreateForm(props = {}) {
-    return <CreateForm {...props} onInteraction={this.handleInteraction} />
-  }
-
-  renderFilterForm(props = {}) {
-    return <FilterForm {...props} onInteraction={this.handleInteraction} />
-  }
-
   render() {
     return (
       <ResourceManager
@@ -103,9 +87,9 @@ class LocalityManager extends Component {
         excludeRootNode
         ItemTitle={ItemTitle}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
-        renderCreateForm={this.renderCreateForm}
-        renderEditForm={this.renderEditForm}
-        renderFilterForm={this.renderFilterForm}
+        renderCreateForm={renderCreateForm}
+        renderEditForm={renderEditForm}
+        renderFilterForm={renderFilterForm}
         resource="place"
         sortOrder={sortOrder}
         tableBatchFetchOptions={tableBatchFetchOptions}

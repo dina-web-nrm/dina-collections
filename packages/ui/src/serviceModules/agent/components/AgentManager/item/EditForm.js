@@ -34,7 +34,6 @@ export const include = ['resourceActivities']
 
 const propTypes = {
   nestedItem: PropTypes.object,
-  onInteraction: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -48,7 +47,7 @@ export class Edit extends PureComponent {
   }
 
   render() {
-    const { nestedItem, onInteraction, ...rest } = this.props
+    const { nestedItem, ...rest } = this.props
 
     if (!nestedItem) {
       return null
@@ -66,9 +65,7 @@ export class Edit extends PureComponent {
         initialValues={nestedItem}
         onClose={event => {
           event.preventDefault()
-          onInteraction('FORM_CANCEL')
         }}
-        onInteraction={onInteraction}
         resourceActivities={resourceActivities}
       />
     )

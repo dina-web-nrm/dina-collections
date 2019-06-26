@@ -33,7 +33,6 @@ const propTypes = {
   itemSubHeader: PropTypes.node,
   moduleName: PropTypes.string.isRequired,
   navigateFormSection: PropTypes.func.isRequired,
-  onInteraction: PropTypes.func,
   passthroughProps: PropTypes.arrayOf(PropTypes.string.isRequired),
   push: PropTypes.func.isRequired,
   sectionId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -49,7 +48,6 @@ const propTypes = {
 const defaultProps = {
   customParts: undefined,
   itemSubHeader: undefined,
-  onInteraction: undefined,
   passthroughProps: ['resourceActivities'],
   sectionId: undefined,
   showSectionsInNavigation: false,

@@ -12,7 +12,6 @@ const propTypes = {
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
   nestedItem: PropTypes.object,
-  onInteraction: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -21,7 +20,7 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const { nestedItem, onInteraction, ...rest } = this.props
+    const { nestedItem, ...rest } = this.props
 
     if (!nestedItem) {
       return null
@@ -50,9 +49,7 @@ export class Edit extends PureComponent {
         nestedTaxonName={nestedItem}
         onClose={event => {
           event.preventDefault()
-          onInteraction('FORM_CANCEL')
         }}
-        onInteraction={onInteraction}
         passthroughProps={passthroughProps}
         resourceActivities={resourceActivities}
       />

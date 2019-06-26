@@ -1,27 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  CLOSE_FILTER,
-  CLOSE_ITEM_VIEW,
-  CREATE_SUCCESS,
-  CREATE_CANCEL,
-  DEL_SUCCESS,
-  ITEM_SELECT,
-  NAVIGATE_CREATE,
-  NAVIGATE_FILTER,
-  NAVIGATE_FORM_SECTION,
-  NAVIGATE_TABLE,
-  NAVIGATE_TABLE_SETTINGS,
-  NAVIGATE_TREE,
-} from '../constants'
-
 const createResourceUrlState = () => ComposedComponent => {
   const propTypes = {
     clearState: PropTypes.func.isRequired,
     goBack: PropTypes.func,
     isPicker: PropTypes.bool,
-    onInteraction: PropTypes.func,
     state: PropTypes.object.isRequired,
     treeEnabled: PropTypes.bool,
     updateState: PropTypes.func.isRequired,
@@ -30,7 +14,6 @@ const createResourceUrlState = () => ComposedComponent => {
   const defaultProps = {
     goBack: undefined,
     isPicker: false,
-    onInteraction: undefined,
     treeEnabled: false,
   }
 
@@ -40,7 +23,6 @@ const createResourceUrlState = () => ComposedComponent => {
       this.cancelCreate = this.cancelCreate.bind(this)
       this.closeFilter = this.closeFilter.bind(this)
       this.closeItemView = this.closeItemView.bind(this)
-      this.handleNavigation = this.handleNavigation.bind(this)
       this.navigateCreate = this.navigateCreate.bind(this)
       this.navigateEdit = this.navigateEdit.bind(this)
       this.navigateFilter = this.navigateFilter.bind(this)
@@ -49,69 +31,6 @@ const createResourceUrlState = () => ComposedComponent => {
       this.navigateTableSettings = this.navigateTableSettings.bind(this)
       this.navigateTree = this.navigateTree.bind(this)
       this.toggleFilter = this.toggleFilter.bind(this)
-    }
-
-    handleNavigation(type, data = {}) {
-      switch (type) {
-        case CLOSE_FILTER: {
-          this.closeFilter()
-          break
-        }
-        case CLOSE_ITEM_VIEW: {
-          this.closeItemView()
-          break
-        }
-        case CREATE_SUCCESS: {
-          const { itemId } = data
-          this.navigateEdit(itemId)
-          break
-        }
-        case CREATE_CANCEL: {
-          this.cancelCreate()
-          break
-        }
-        case DEL_SUCCESS: {
-          this.navigateTable()
-          break
-        }
-        case ITEM_SELECT: {
-          const { itemId } = data
-          this.navigateEdit(itemId)
-          break
-        }
-        case NAVIGATE_CREATE: {
-          this.navigateCreate()
-          break
-        }
-        case NAVIGATE_FORM_SECTION: {
-          const { sectionId } = data
-          this.navigateFormSection(sectionId)
-          break
-        }
-        case NAVIGATE_TABLE: {
-          this.navigateTable()
-          break
-        }
-        case NAVIGATE_TABLE_SETTINGS: {
-          this.navigateTableSettings()
-          break
-        }
-        case NAVIGATE_FILTER: {
-          this.navigateFilter()
-          break
-        }
-        case NAVIGATE_TREE: {
-          this.navigateTree()
-          break
-        }
-        default: {
-          break
-        }
-      }
-
-      if (this.props.onInteraction) {
-        this.props.onInteraction(type, data)
-      }
     }
 
     cancelCreate() {
@@ -238,7 +157,6 @@ const createResourceUrlState = () => ComposedComponent => {
           navigateTable={this.navigateTable}
           navigateTableSettings={this.navigateTableSettings}
           navigateTree={this.navigateTree}
-          onNavigation={this.handleNavigation}
           sectionId={sectionId}
           tableActive={mainColumn === 'table'}
           tableSettingsActive={mainColumn === 'tableSettings'}

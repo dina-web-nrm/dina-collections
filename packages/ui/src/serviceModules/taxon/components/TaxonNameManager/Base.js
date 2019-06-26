@@ -24,6 +24,16 @@ const relationshipsToCheckBeforeDelete = ['acceptedToTaxon', 'synonymToTaxon']
 
 const sortOrder = ['attributes.name:asc']
 
+const renderCreateForm = (props = {}) => {
+  return <CreateForm {...props} />
+}
+const renderEditForm = (props = {}) => {
+  return <EditForm {...props} />
+}
+const renderFilterForm = (props = {}) => {
+  return <FilterForm {...props} />
+}
+
 const propTypes = {
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
@@ -40,9 +50,6 @@ class TaxonNameManager extends Component {
   constructor(props) {
     super(props)
     this.buildEditItemHeaders = this.buildEditItemHeaders.bind(this)
-    this.renderCreateForm = this.renderCreateForm.bind(this)
-    this.renderEditForm = this.renderEditForm.bind(this)
-    this.renderFilterForm = this.renderFilterForm.bind(this)
   }
 
   buildEditItemHeaders(nestedItem) {
@@ -58,18 +65,6 @@ class TaxonNameManager extends Component {
     }
   }
 
-  renderEditForm(props = {}) {
-    const { itemId } = this.props
-    return <EditForm {...props} itemId={itemId} />
-  }
-  renderCreateForm(props = {}) {
-    return <CreateForm {...props} onInteraction={this.handleInteraction} />
-  }
-
-  renderFilterForm(props = {}) {
-    return <FilterForm {...props} onInteraction={this.handleInteraction} />
-  }
-
   render() {
     return (
       <ResourceManager
@@ -79,9 +74,9 @@ class TaxonNameManager extends Component {
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         filterResourceCount={filterResourceCount}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
-        renderCreateForm={this.renderCreateForm}
-        renderEditForm={this.renderEditForm}
-        renderFilterForm={this.renderFilterForm}
+        renderCreateForm={renderCreateForm}
+        renderEditForm={renderEditForm}
+        renderFilterForm={renderFilterForm}
         resource={resource}
         sortOrder={sortOrder}
         tableColumnSpecifications={tableColumnSpecifications}

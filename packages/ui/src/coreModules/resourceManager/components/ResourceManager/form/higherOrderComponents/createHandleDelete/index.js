@@ -34,7 +34,6 @@ const propTypes = {
   itemSubHeader: PropTypes.string,
   navigateTable: PropTypes.func.isRequired,
   nestedItem: PropTypes.object.isRequired,
-  onInteraction: PropTypes.func,
   relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
   removeIdFromTableListItems: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
@@ -47,7 +46,6 @@ const defaultProps = {
   itemHeader: undefined,
   itemId: undefined,
   itemSubHeader: undefined,
-  onInteraction: undefined,
   relationshipsToCheckBeforeDelete: [],
 }
 
