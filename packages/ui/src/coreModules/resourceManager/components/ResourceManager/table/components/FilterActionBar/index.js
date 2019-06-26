@@ -106,7 +106,7 @@ class BottomBar extends PureComponent {
     setHasAppliedFilter(false, { managerScope })
     initializeFilter(formName, {})
 
-    return fetchTableItems({ ignoreFilters: true }).then(() => {
+    return fetchTableItems({ force: true, ignoreFilters: true }).then(() => {
       setHasAppliedFilter(true, { managerScope })
       this.setState({ loading: false })
     })
@@ -124,7 +124,7 @@ class BottomBar extends PureComponent {
     // https://github.com/dina-web-nrm/dina-collections/pull/493
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        return fetchTableItems()
+        return fetchTableItems({ force: true })
           .then(() => {
             this.setState({ loading: false })
             setHasAppliedFilter(true, { managerScope })
