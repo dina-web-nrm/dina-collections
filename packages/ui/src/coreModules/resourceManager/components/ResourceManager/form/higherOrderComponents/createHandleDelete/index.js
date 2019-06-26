@@ -145,6 +145,7 @@ const createHandleDelete = () => ComposedComponent => {
         getItemIdFromRowNumber,
         itemId,
         navigateTable,
+        removeIdFromTableListItems,
         setFocusItemIdWhenLoaded,
       } = this.props
 
@@ -197,6 +198,7 @@ const createHandleDelete = () => ComposedComponent => {
         setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
 
         fetchResourceCount()
+        removeIdFromTableListItems(itemId)
         navigateTable()
       })
     }
