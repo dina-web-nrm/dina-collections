@@ -38,6 +38,11 @@ const mapStateToProps = (
 ) => {
   const resource = searchResource
 
+  const tableListItems = get[':managerScope.tableListItems'](state, {
+    managerScope,
+  })
+
+  const tableListItemsFetched = tableListItems !== undefined
   return {
     filterFormValues: getFormValues(filterFormName)(state),
     hasAppliedFilter: get[':managerScope.hasAppliedFilter'](state, {
@@ -54,9 +59,8 @@ const mapStateToProps = (
       state,
       { resource }
     ),
-    tableListItems: get[':managerScope.tableListItems'](state, {
-      managerScope,
-    }),
+    tableListItems,
+    tableListItemsFetched,
   }
 }
 
@@ -91,6 +95,7 @@ const propTypes = {
   tableColumnsToShow: PropTypes.array.isRequired,
   tableColumnsToSort: PropTypes.array,
   tableListItems: PropTypes.array,
+  tableListItemsFetched: PropTypes.bool.isRequired,
   toggleFilter: PropTypes.func.isRequired,
   updateUserPreference: PropTypes.func.isRequired,
 }
@@ -174,7 +179,7 @@ const createTableWrapper = () => ComposedComponent => {
       return this.fetchTableItems({ ignoreFilters: true })
     }
 
-    fetchTableItems({ ignoreFilters, useInitialFilters } = {}) {
+    fetchTableItems({ ignoreFilters, useInitialFilters, force } = {}) {
       const {
         buildFilterQuery,
         enableTableColumnSorting,
@@ -185,7 +190,15 @@ const createTableWrapper = () => ComposedComponent => {
         setTableListItems,
         sortOrder: defaultSortOrder,
         tableColumnsToSort,
+        tableListItemsFetched,
       } = this.props
+      if (tableListItemsFetched && !force) {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(null)
+          }, 0)
+        })
+      }
 
       return waitForOtherSearchesToFinish(this.getSearchInProgress).then(() => {
         let filterValues = filterFormValues
