@@ -128,6 +128,10 @@ const createTableWrapper = () => ComposedComponent => {
       this.removeIdFromTableListItems = this.removeIdFromTableListItems.bind(
         this
       )
+
+      this.state = {
+        fetchingTableItems: false,
+      }
     }
 
     getSearchInProgress() {
@@ -192,6 +196,7 @@ const createTableWrapper = () => ComposedComponent => {
         tableColumnsToSort,
         tableListItemsFetched,
       } = this.props
+
       if (tableListItemsFetched && !force) {
         return new Promise(resolve => {
           setTimeout(() => {
@@ -200,6 +205,7 @@ const createTableWrapper = () => ComposedComponent => {
         })
       }
 
+      this.setState({ fetchingTableItems: true })
       return waitForOtherSearchesToFinish(this.getSearchInProgress).then(() => {
         let filterValues = filterFormValues
         if (ignoreFilters) {
@@ -225,6 +231,7 @@ const createTableWrapper = () => ComposedComponent => {
           useScroll: false,
         }).then(items => {
           setTableListItems(items, { managerScope })
+          this.setState({ fetchingTableItems: false })
 
           return items
         })
@@ -274,11 +281,13 @@ const createTableWrapper = () => ComposedComponent => {
 
     render() {
       log.render()
+      const { fetchingTableItems } = this.state
 
       return (
         <ComposedComponent
           {...this.props}
           addIdToTableListItems={this.addIdToTableListItems}
+          fetchingTableItems={fetchingTableItems}
           fetchTableItems={this.fetchTableItems}
           getTableWidth={getTableWidth}
           onSaveTableColumnsToShow={this.handleSaveTableColumnsToShow}
