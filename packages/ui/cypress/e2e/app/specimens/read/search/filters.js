@@ -185,7 +185,6 @@ export default () =>
       )
       if (!skipClearFilters) {
         cy.getByTestId('clearAllFiltersButton').click()
-        cy.wait(500)
       }
     }
 
