@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
@@ -102,47 +102,23 @@ export const defaultProps = {
 
 export const fieldTemplatePropKeys = Object.keys(propTypes)
 
-const FieldTemplate = ({
-  change,
-  childPath,
-  children,
-  deleteIfEmpty,
-  deleteParentIfEmpty,
-  displayError: displayErrorInput,
-  displayLabel,
-  enableHelpNotifications,
-  errorStyle,
-  fieldValueIsEmpty,
-  float,
-  helpNotificationProps,
-  helpText,
-  label,
-  labelKey,
-  meta,
-  module,
-  name,
-  parameterKey,
-  parentFieldValue,
-  parentPath,
-  required,
-  style,
-  subLabel,
-}) => {
-  const fieldValueIsEmptyRef = useRef(null)
+class FieldTemplate extends Component {
+  componentDidUpdate(prevProps) {
+    const {
+      change,
+      childPath,
+      deleteIfEmpty,
+      deleteParentIfEmpty,
+      fieldValueIsEmpty,
+      meta: { form },
+      parentFieldValue,
+      parentPath,
+    } = this.props
 
-  const { error, touched, warning } = meta
-  const displayError =
-    displayErrorInput !== undefined ? displayErrorInput : touched && !!error
-
-  const displayWarning = touched && !!warning
-
-  const { form } = meta
-
-  useEffect(() => {
     if (
       (deleteIfEmpty || deleteParentIfEmpty) &&
       fieldValueIsEmpty &&
-      fieldValueIsEmptyRef.current === false
+      prevProps.fieldValueIsEmpty === false
     ) {
       const updatedParentFieldValue = immutablePath.del(
         parentFieldValue,
@@ -151,63 +127,80 @@ const FieldTemplate = ({
 
       change(form, parentPath, updatedParentFieldValue)
     }
+  }
 
-    fieldValueIsEmptyRef.current = fieldValueIsEmpty
-  }, [
-    change,
-    childPath,
-    deleteIfEmpty,
-    deleteParentIfEmpty,
-    fieldValueIsEmpty,
-    form,
-    parentFieldValue,
-    parentPath,
-  ])
+  render() {
+    const {
+      children,
+      displayError: displayErrorInput,
+      displayLabel,
+      enableHelpNotifications,
+      errorStyle,
+      float,
+      helpNotificationProps,
+      helpText,
+      label,
+      labelKey,
+      meta,
+      module,
+      name,
+      parameterKey,
+      required,
+      style,
+      subLabel,
+    } = this.props
 
-  return (
-    <Form.Field
-      error={!!displayError}
-      required={required}
-      style={{
-        float,
-        position: 'relative',
-        width: float ? '100%' : undefined,
-        ...style,
-      }}
-    >
-      {displayLabel && (
-        <FieldLabel
-          enableHelpNotifications={enableHelpNotifications}
-          helpNotificationProps={helpNotificationProps}
-          helpText={helpText}
-          htmlFor={name}
-          label={label}
-          labelKey={labelKey}
-          module={module}
-          parameterKey={parameterKey}
-          required={required}
-          subLabel={subLabel}
-        />
-      )}
-      {children}
-      {!displayError && displayWarning && (
-        <FieldError
-          error={warning}
-          module={module}
-          parameterKey={parameterKey}
-          warning
-        />
-      )}
-      {displayError && (
-        <FieldError
-          error={error}
-          module={module}
-          parameterKey={parameterKey}
-          style={errorStyle}
-        />
-      )}
-    </Form.Field>
-  )
+    const { error, touched, warning } = meta
+    const displayError =
+      displayErrorInput !== undefined ? displayErrorInput : touched && !!error
+
+    const displayWarning = touched && !!warning
+
+    return (
+      <Form.Field
+        error={!!displayError}
+        required={required}
+        style={{
+          float,
+          position: 'relative',
+          width: float ? '100%' : undefined,
+          ...style,
+        }}
+      >
+        {displayLabel && (
+          <FieldLabel
+            enableHelpNotifications={enableHelpNotifications}
+            helpNotificationProps={helpNotificationProps}
+            helpText={helpText}
+            htmlFor={name}
+            label={label}
+            labelKey={labelKey}
+            module={module}
+            parameterKey={parameterKey}
+            required={required}
+            subLabel={subLabel}
+          />
+        )}
+        {children}
+        {!displayError && displayWarning && (
+          <FieldError
+            error={warning}
+            module={module}
+            parameterKey={parameterKey}
+            warning
+          />
+        )}
+        {displayError && (
+          <FieldError
+            error={error}
+            module={module}
+            parameterKey={parameterKey}
+            style={errorStyle}
+          />
+        )}
+      </Form.Field>
+    )
+  }
 }
 
 FieldTemplate.propTypes = propTypes
