@@ -31,6 +31,7 @@ const mapDispatchToProps = (dispatch, { resource }) => ({
 })
 
 const propTypes = {
+  addIdToTableListItems: PropTypes.func.isRequired,
   cancelCreate: PropTypes.func.isRequired,
   create: PropTypes.func.isRequired,
   fetchResourceCount: PropTypes.func.isRequired,
@@ -60,6 +61,7 @@ const createCreateItemWrapper = () => ComposedComponent => {
       event.preventDefault()
 
       const {
+        addIdToTableListItems,
         create,
         fetchResourceCount,
         formName,
@@ -82,7 +84,7 @@ const createCreateItemWrapper = () => ComposedComponent => {
           navigateEdit(id)
           fetchResourceCount()
           stopSubmit(formName)
-
+          addIdToTableListItems(id)
           return res
         })
         .catch(handleReduxFormSubmitError)
@@ -93,7 +95,6 @@ const createCreateItemWrapper = () => ComposedComponent => {
 
     render() {
       const { cancelCreate, formName } = this.props
-
       return (
         <ComposedComponent
           {...this.props}
