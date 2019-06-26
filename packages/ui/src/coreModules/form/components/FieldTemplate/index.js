@@ -157,6 +157,7 @@ const FieldTemplate = ({
     change,
     childPath,
     deleteIfEmpty,
+    deleteParentIfEmpty,
     fieldValueIsEmpty,
     form,
     parentFieldValue,
