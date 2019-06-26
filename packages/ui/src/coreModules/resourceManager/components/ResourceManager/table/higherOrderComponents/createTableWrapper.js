@@ -120,6 +120,9 @@ const createTableWrapper = () => ComposedComponent => {
       this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
       this.updateTableFocus = this.updateTableFocus.bind(this)
       this.addIdToTableListItems = this.addIdToTableListItems.bind(this)
+      this.removeIdFromTableListItems = this.removeIdFromTableListItems.bind(
+        this
+      )
     }
 
     getSearchInProgress() {
@@ -215,6 +218,23 @@ const createTableWrapper = () => ComposedComponent => {
       })
     }
 
+    removeIdFromTableListItems(idToRemove) {
+      const {
+        managerScope,
+        setHasAppliedFilter,
+        setTableListItems,
+        tableListItems,
+      } = this.props
+
+      setTableListItems(
+        tableListItems.filter(({ id }) => {
+          return id !== idToRemove
+        }),
+        { managerScope }
+      )
+      setHasAppliedFilter(false, { managerScope })
+    }
+
     updateTableFocus(items) {
       const {
         focusedItemId,
@@ -252,6 +272,7 @@ const createTableWrapper = () => ComposedComponent => {
           onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
           onShowAllRecords={this.handleShowAllRecords}
           onToggleRow={this.handleToggleRow}
+          removeIdFromTableListItems={this.removeIdFromTableListItems}
           updateTableFocus={this.updateTableFocus}
         />
       )
