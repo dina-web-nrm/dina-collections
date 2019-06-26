@@ -8,6 +8,9 @@ const parts = [
   },
   {
     componentName: 'TogglableTaxonDropdownPickerSearch',
+    componentProps: {
+      deleteParentIfEmpty: true,
+    },
     name: 'individual.taxonInformation.curatorialTaxon.id',
     wrapInField: true,
   },

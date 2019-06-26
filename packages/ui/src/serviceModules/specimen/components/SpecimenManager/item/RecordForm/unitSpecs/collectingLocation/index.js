@@ -28,6 +28,7 @@ const parts = [
     componentName: 'LocalityDropdownPickerSearch',
     componentProps: {
       columnProps: { width: 11 },
+      deleteParentIfEmpty: true,
     },
     name:
       'individual.collectingInformation.0.event.locationInformation.places.0.id',
