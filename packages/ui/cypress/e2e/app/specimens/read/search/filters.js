@@ -126,11 +126,6 @@ const checkboxTests = [
     name: 'physicalObject.otherPreparation',
   },
   {
-    expectedRecords: 4,
-    label: 'unspecified other preparation',
-    name: 'physicalObject.otherPreparation',
-  },
-  {
     expectedRecords: 2,
     label: 'juvenile',
     name: 'ageAndStage.stages',
