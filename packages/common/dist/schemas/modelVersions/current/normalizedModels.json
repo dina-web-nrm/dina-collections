@@ -118,7 +118,7 @@
         "type": "string",
         "x-summary": ""
       },
-      "readOnly": {
+      "srcData": {
         "$ref": "readOnly",
         "x-summary": ""
       },
@@ -2250,7 +2250,7 @@
         },
         "x-summary": ""
       },
-      "readOnly": {
+      "srcData": {
         "$ref": "readOnly",
         "x-summary": ""
       },
@@ -2323,7 +2323,7 @@
         "description": "Notes on the locality",
         "x-summary": ""
       },
-      "readOnly": {
+      "srcData": {
         "$ref": "readOnly",
         "x-summary": ""
       }
@@ -2607,7 +2607,7 @@
         "$ref": "legacyData",
         "x-summary": ""
       },
-      "readOnly": {
+      "srcData": {
         "$ref": "readOnly",
         "x-summary": ""
       },
@@ -2987,7 +2987,7 @@
         "type": "string",
         "x-summary": ""
       },
-      "readOnly": {
+      "srcData": {
         "$ref": "readOnly",
         "x-summary": ""
       }
