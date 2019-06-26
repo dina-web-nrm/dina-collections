@@ -36,6 +36,7 @@ const propTypes = {
   nestedItem: PropTypes.object.isRequired,
   onInteraction: PropTypes.func,
   relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
+  removeIdFromTableListItems: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   setFocusedItemId: PropTypes.func.isRequired,
   setFocusItemIdWhenLoaded: PropTypes.func.isRequired,
