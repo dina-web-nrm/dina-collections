@@ -12,6 +12,7 @@ const {
     ':managerScope',
     ':managerScope.focusItemIdWhenLoaded',
     ':managerScope.focusedItemId',
+    ':managerScope.idsAddedToBucket',
     ':managerScope.hasAppliedFilter',
     ':managerScope.showAll',
     ':managerScope.tableListItems',

@@ -42,12 +42,17 @@ const mapStateToProps = (
     managerScope,
   })
 
+  const idsAddedToBucket = get[':managerScope.idsAddedToBucket'](state, {
+    managerScope,
+  })
+
   const tableListItemsFetched = tableListItems !== undefined
   return {
     filterFormValues: getFormValues(filterFormName)(state),
     hasAppliedFilter: get[':managerScope.hasAppliedFilter'](state, {
       managerScope,
     }),
+    idsAddedToBucket,
     resource,
     searchInProgress: searchSelectors.get[':resource.searchInProgress'](state, {
       resource,
@@ -67,6 +72,9 @@ const mapStateToProps = (
 const mapDispatchToProps = {
   setHasAppliedFilter:
     keyObjectActionCreators.set[':managerScope.hasAppliedFilter'],
+  setIdsAddedToBucket:
+    keyObjectActionCreators.set[':managerScope.idsAddedToBucket'],
+
   setTableListItems:
     keyObjectActionCreators.set[':managerScope.tableListItems'],
   updateUserPreference: updateUserPreferenceAC,
@@ -80,6 +88,7 @@ const propTypes = {
   focusedItemId: PropTypes.string,
   focusItemIdWhenLoaded: PropTypes.string,
   hasAppliedFilter: PropTypes.bool,
+  idsAddedToBucket: PropTypes.array,
   initialFilterValues: PropTypes.object.isRequired,
   managerScope: PropTypes.string.isRequired,
   navigateEdit: PropTypes.func.isRequired,
@@ -89,6 +98,7 @@ const propTypes = {
   setFocusedItemId: PropTypes.func.isRequired,
   setFocusItemIdWhenLoaded: PropTypes.func.isRequired,
   setHasAppliedFilter: PropTypes.func.isRequired,
+  setIdsAddedToBucket: PropTypes.func.isRequired,
   setTableListItems: PropTypes.func.isRequired,
   sortOrder: PropTypes.array,
   tableBatchFetchOptions: PropTypes.object.isRequired,
@@ -104,6 +114,7 @@ const defaultProps = {
   focusedItemId: undefined,
   focusItemIdWhenLoaded: undefined,
   hasAppliedFilter: true,
+  idsAddedToBucket: [],
   searchInProgress: false,
   sortOrder: [],
   tableColumnsToSort: [],
@@ -140,13 +151,19 @@ const createTableWrapper = () => ComposedComponent => {
 
     addIdToTableListItems(id) {
       const {
+        idsAddedToBucket,
         managerScope,
         setHasAppliedFilter,
+        setIdsAddedToBucket,
         setTableListItems,
         tableListItems,
       } = this.props
 
       setTableListItems([...tableListItems, { id, type: 'customObject' }], {
+        managerScope,
+      })
+
+      setIdsAddedToBucket([...idsAddedToBucket, id], {
         managerScope,
       })
 
@@ -169,7 +186,7 @@ const createTableWrapper = () => ComposedComponent => {
         `${resource}TableColumnsToSort`,
         columnsToSort
       ).then(() => {
-        return this.fetchTableItems()
+        return this.fetchTableItems({ force: true, includeItemsInBucket: true })
       })
     }
 
@@ -183,14 +200,21 @@ const createTableWrapper = () => ComposedComponent => {
       return this.fetchTableItems({ force: true, ignoreFilters: true })
     }
 
-    fetchTableItems({ ignoreFilters, useInitialFilters, force } = {}) {
+    fetchTableItems({
+      ignoreFilters,
+      useInitialFilters,
+      force,
+      includeItemsInBucket = false,
+    } = {}) {
       const {
         buildFilterQuery,
         enableTableColumnSorting,
         filterFormValues,
+        idsAddedToBucket,
         initialFilterValues,
         managerScope,
         search,
+        setIdsAddedToBucket,
         setTableListItems,
         sortOrder: defaultSortOrder,
         tableColumnsToSort,
@@ -218,6 +242,30 @@ const createTableWrapper = () => ComposedComponent => {
           formValues: filterValues,
         })
 
+        let patchedQuery = query
+
+        if (idsAddedToBucket.length) {
+          if (includeItemsInBucket) {
+            patchedQuery = {
+              or: [
+                patchedQuery,
+                {
+                  filter: {
+                    filterFunction: 'ids',
+                    input: {
+                      value: idsAddedToBucket,
+                    },
+                  },
+                },
+              ],
+            }
+          } else {
+            setIdsAddedToBucket([], {
+              managerScope,
+            })
+          }
+        }
+
         const userSortOrder =
           enableTableColumnSorting &&
           tableColumnsToSort.length > 0 &&
@@ -226,7 +274,7 @@ const createTableWrapper = () => ComposedComponent => {
           })
 
         return search({
-          query,
+          query: patchedQuery,
           sort: userSortOrder || defaultSortOrder,
           useScroll: false,
         }).then(items => {
@@ -240,8 +288,10 @@ const createTableWrapper = () => ComposedComponent => {
 
     removeIdFromTableListItems(idToRemove) {
       const {
+        idsAddedToBucket,
         managerScope,
         setHasAppliedFilter,
+        setIdsAddedToBucket,
         setTableListItems,
         tableListItems,
       } = this.props
@@ -252,6 +302,16 @@ const createTableWrapper = () => ComposedComponent => {
         }),
         { managerScope }
       )
+
+      setIdsAddedToBucket(
+        idsAddedToBucket.filter(id => {
+          return id !== idToRemove
+        }),
+        {
+          managerScope,
+        }
+      )
+
       setHasAppliedFilter(false, { managerScope })
     }
 
