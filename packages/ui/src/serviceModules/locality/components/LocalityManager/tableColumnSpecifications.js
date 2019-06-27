@@ -7,7 +7,7 @@ const tableColumnSpecifications = [
   {
     fieldPath: 'level',
     label: 'modules.locality.fieldLabels.place.group',
-    width: 180,
+    width: 200,
   },
   {
     fieldPath: 'continent',

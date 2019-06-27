@@ -155,7 +155,6 @@ class SpecimenManager extends Component {
         buildFilterQuery={buildQuery}
         createGetNestedItemHocInput={createGetNestedItemHocInput}
         csvExportEnabled
-        enableTableColumnSorting
         initialFilterValues={initialFilterValues}
         ItemTitle={ItemTitle}
         relationshipsToCheckBeforeDelete={relationshipsToCheckBeforeDelete}
