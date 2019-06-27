@@ -6,8 +6,8 @@ const labelsFor = [
   'taxonomy.tagValues',
   'locality.higherGeography.tagValues',
   'locality.localities.tagValues',
-  'collectingInformation.establishmentMeansType',
-  'originInformation.isResultOfSelectiveBreeding',
+  'locality.collectingInformation.establishmentMeansType',
+  'locality.originInformation.isResultOfSelectiveBreeding',
   'datePeriod.date.startDate',
   'datePeriod.date.endDate',
   'agent.tagValues',
@@ -98,12 +98,12 @@ const checkboxTests = [
   {
     expectedRecords: 15,
     label: 'wild and native (collecting)',
-    name: 'collectingInformation.establishmentMeansType',
+    name: 'locality.collectingInformation.establishmentMeansType',
   },
   {
     expectedRecords: 1,
     label: 'no',
-    name: 'originInformation.isResultOfSelectiveBreeding',
+    name: 'locality.originInformation.isResultOfSelectiveBreeding',
   },
   {
     expectedRecords: 4,

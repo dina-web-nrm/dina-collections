@@ -7,7 +7,7 @@ const tableColumnSpecifications = [
   {
     fieldPath: 'disambiguatingDescription',
     label: 'modules.agent.fieldLabels.disambiguatingDescription',
-    width: 250,
+    width: 270,
   },
   {
     fieldPath: 'givenName',

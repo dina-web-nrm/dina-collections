@@ -9,7 +9,6 @@ import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
 const log = createLog('resourceManager:TableView:InfinityTableHeader')
 
 const propTypes = {
-  enableTableColumnSorting: PropTypes.bool.isRequired,
   height: PropTypes.number.isRequired,
   onSaveTableColumnsToSort: PropTypes.func.isRequired,
   scrollLeft: PropTypes.number,
@@ -48,9 +47,9 @@ class InfinityTableHeader extends PureComponent {
   }
 
   renderColumnHeader({ fieldPath, index, label, width }) {
-    const { enableTableColumnSorting, tableColumnsToSort } = this.props
+    const { tableColumnsToSort } = this.props
 
-    if (enableTableColumnSorting && tableColumnsToSort) {
+    if (tableColumnsToSort) {
       const sortedColumn = tableColumnsToSort.find(
         column => column.fieldPath === fieldPath
       )
@@ -83,11 +82,7 @@ class InfinityTableHeader extends PureComponent {
       <Grid.Column key={fieldPath || index} style={{ width }}>
         <Header
           data-testid={`infinityTableHeader-${fieldPath || index}`}
-          onClick={
-            enableTableColumnSorting
-              ? event => this.handleClickSorting(event, fieldPath, 'asc')
-              : undefined
-          }
+          onClick={event => this.handleClickSorting(event, fieldPath, 'asc')}
           size="small"
         >
           <Header.Content>

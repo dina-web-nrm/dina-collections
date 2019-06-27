@@ -3,23 +3,27 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Button, Icon, Menu, Modal, Popup } from 'semantic-ui-react'
-import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
+import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/resourceManager/keyObjectModule'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import downloadFileActionCreator from 'coreModules/api/actionCreators/downloadFile'
 import userSelectors from 'coreModules/user/globalSelectors'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { FormModal } from 'coreModules/form/components'
 
-const mapStateToProps = (state, { resource }) => {
+const { get } = keyObjectGlobalSelectors
+
+const mapStateToProps = (state, { managerScope, resource }) => {
   const userPreferences = userSelectors.getUserPreferences(state)
 
+  const tableListItems = get[':managerScope.tableListItems'](state, {
+    managerScope,
+  })
+
   return {
-    searchResult: searchSelectors.get[':resource.searchState'](state, {
-      resource,
-    }),
     selectedTableColumnFieldPaths:
       (userPreferences && userPreferences[`${resource}TableColumnsToShow`]) ||
       undefined,
+    tableListItems,
   }
 }
 
@@ -37,7 +41,6 @@ const propTypes = {
   pollInterval: PropTypes.number,
   pollLimit: PropTypes.number,
   resource: PropTypes.string.isRequired,
-  searchResult: PropTypes.object,
   selectedTableColumnFieldPaths: PropTypes.array,
   tableColumnSpecifications: PropTypes.arrayOf(
     PropTypes.shape({
@@ -45,6 +48,7 @@ const propTypes = {
       label: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
+  tableListItems: PropTypes.array,
 }
 
 const defaultProps = {
@@ -52,6 +56,7 @@ const defaultProps = {
   pollLimit: 100,
   searchResult: undefined,
   selectedTableColumnFieldPaths: undefined,
+  tableListItems: [],
 }
 
 export class CsvExporter extends Component {
@@ -121,11 +126,11 @@ export class CsvExporter extends Component {
 
   exportToCsv() {
     const {
-      selectedTableColumnFieldPaths,
-      resource,
-      searchResult = {},
-      tableColumnSpecifications,
       i18n,
+      resource,
+      selectedTableColumnFieldPaths,
+      tableColumnSpecifications,
+      tableListItems,
     } = this.props
 
     const exportFields = tableColumnSpecifications
@@ -155,8 +160,8 @@ export class CsvExporter extends Component {
       label: 'Id',
     })
 
-    const exportIds = (searchResult.items || []).map(item => {
-      return item.id
+    const exportIds = (tableListItems || []).map(({ id }) => {
+      return id
     })
     return this.props
       .createExportInfo({

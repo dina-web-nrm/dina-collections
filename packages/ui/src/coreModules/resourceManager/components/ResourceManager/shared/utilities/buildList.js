@@ -22,20 +22,24 @@ export default function buildList({
 
       if (expandedIds[id]) {
         if (children) {
-          const mappedChildren = children.map(({ id: childId }) => {
-            const child = allItemsObject[childId]
+          const mappedChildren = children
+            .sort(({ id: idA }, { id: idB }) => {
+              return Number(idA) - Number(idB)
+            })
+            .map(({ id: childId }) => {
+              const child = allItemsObject[childId]
 
-            if (child && child.relationships && child.relationships.children) {
-              return child
-            }
+              fetchItemById(childId)
 
-            fetchItemById(childId)
+              if (objectPath.get(child, 'relationships.children')) {
+                return child
+              }
 
-            return {
-              id: childId,
-              loading: true,
-            }
-          })
+              return {
+                id: childId,
+                loading: true,
+              }
+            })
 
           walk({ items: mappedChildren, level: level + 1 })
         }

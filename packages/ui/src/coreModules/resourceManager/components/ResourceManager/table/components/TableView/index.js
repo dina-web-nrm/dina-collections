@@ -84,7 +84,6 @@ const TableView = props => {
       <RowLayout.Row height={emToPixels(3.5)} style={tableHeaderStyle}>
         <InfinityTableHeader
           {...pick(props, [
-            'enableTableColumnSorting',
             'onSaveTableColumnsToSort',
             'tableColumnSpecifications',
             'tableColumnsToShow',
