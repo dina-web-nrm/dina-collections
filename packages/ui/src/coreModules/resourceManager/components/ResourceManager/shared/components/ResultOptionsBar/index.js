@@ -17,6 +17,7 @@ const propTypes = {
   editItemActive: PropTypes.bool.isRequired,
   focusedItemId: PropTypes.string,
   itemEnabled: PropTypes.bool.isRequired,
+  managerScope: PropTypes.string.isRequired,
   navigateEdit: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   navigateTable: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
@@ -42,14 +43,15 @@ const ResultOptionsBar = ({
   editItemActive,
   focusedItemId,
   itemEnabled,
+  managerScope,
   navigateEdit: handleFormTabClick,
   navigateTable: handleTableTabClick,
   navigateTableSettings: handleTableSettingsClick,
-  toggleFilter: handleToggleFilter,
   navigateTree: handleTreeTabClick,
   searchResource,
   tableActive,
   tableColumnSpecifications,
+  toggleFilter: handleToggleFilter,
   treeActive,
   treeEnabled,
 }) => {
@@ -101,6 +103,7 @@ const ResultOptionsBar = ({
         <Menu.Menu className="icon secondary  ui" position="right">
           {tableActive && (
             <CsvExporter
+              managerScope={managerScope}
               resource={searchResource}
               tableColumnSpecifications={tableColumnSpecifications}
             />
