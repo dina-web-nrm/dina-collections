@@ -2,8 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.24.0-rc2](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc2)
+#### [v0.24.0-rc3](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc3)
 
+- Use a bucket concept in resource manager [`#556`](https://github.com/dina-web-nrm/dina-collections/pull/556)
+- Fix taxon dropdown cleanup behaviour [`#555`](https://github.com/dina-web-nrm/dina-collections/pull/555)
+- Rename readOnly to srcData [`#547`](https://github.com/dina-web-nrm/dina-collections/pull/547)
+- Fix various bugs [`#554`](https://github.com/dina-web-nrm/dina-collections/pull/554)
+- Fix filter checkmark and unsaved changes issue & places lacking continent [`#553`](https://github.com/dina-web-nrm/dina-collections/pull/553)
+- Remove "wip" and "TBA" in data model documentation [`#552`](https://github.com/dina-web-nrm/dina-collections/pull/552)
+- Change label and help text for affiliation [`#551`](https://github.com/dina-web-nrm/dina-collections/pull/551)
 - Improve UI and fix bugs [`#550`](https://github.com/dina-web-nrm/dina-collections/pull/550)
 - Fix env file permission when deploying [`#549`](https://github.com/dina-web-nrm/dina-collections/pull/549)
 - Refactor and improve resource manager & add more e2e tests [`#530`](https://github.com/dina-web-nrm/dina-collections/pull/530)
