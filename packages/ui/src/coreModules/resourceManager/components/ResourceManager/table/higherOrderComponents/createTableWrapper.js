@@ -37,17 +37,18 @@ const mapStateToProps = (
   { allTableColumnFieldPaths, filterFormName, managerScope, searchResource }
 ) => {
   const resource = searchResource
-
-  const tableListItems = get[':managerScope.tableListItems'](state, {
-    managerScope,
-  })
-
   const idsAddedToBucket = get[':managerScope.idsAddedToBucket'](state, {
     managerScope,
   })
-
+  const tableListItems = get[':managerScope.tableListItems'](state, {
+    managerScope,
+  })
   const tableListItemsFetched = tableListItems !== undefined
+
   return {
+    fetchingTableItems: get[':managerScope.fetchingTableItems'](state, {
+      managerScope,
+    }),
     filterFormValues: getFormValues(filterFormName)(state),
     hasAppliedFilter: get[':managerScope.hasAppliedFilter'](state, {
       managerScope,
@@ -70,6 +71,8 @@ const mapStateToProps = (
 }
 
 const mapDispatchToProps = {
+  setFetchingTableItems:
+    keyObjectActionCreators.set[':managerScope.fetchingTableItems'],
   setHasAppliedFilter:
     keyObjectActionCreators.set[':managerScope.hasAppliedFilter'],
   setIdsAddedToBucket:
@@ -82,6 +85,7 @@ const mapDispatchToProps = {
 
 const propTypes = {
   buildFilterQuery: PropTypes.func.isRequired,
+  fetchingTableItems: PropTypes.bool,
   filterFormName: PropTypes.string.isRequired,
   filterFormValues: PropTypes.object,
   focusedItemId: PropTypes.string,
@@ -94,6 +98,7 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   searchInProgress: PropTypes.bool,
+  setFetchingTableItems: PropTypes.func.isRequired,
   setFocusedItemId: PropTypes.func.isRequired,
   setFocusItemIdWhenLoaded: PropTypes.func.isRequired,
   setHasAppliedFilter: PropTypes.func.isRequired,
@@ -109,6 +114,7 @@ const propTypes = {
   updateUserPreference: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  fetchingTableItems: false,
   filterFormValues: {},
   focusedItemId: undefined,
   focusItemIdWhenLoaded: undefined,
@@ -138,10 +144,6 @@ const createTableWrapper = () => ComposedComponent => {
       this.removeIdFromTableListItems = this.removeIdFromTableListItems.bind(
         this
       )
-
-      this.state = {
-        fetchingTableItems: false,
-      }
     }
 
     getSearchInProgress() {
@@ -212,6 +214,7 @@ const createTableWrapper = () => ComposedComponent => {
         initialFilterValues,
         managerScope,
         search,
+        setFetchingTableItems,
         setIdsAddedToBucket,
         setTableListItems,
         sortOrder: defaultSortOrder,
@@ -227,7 +230,8 @@ const createTableWrapper = () => ComposedComponent => {
         })
       }
 
-      this.setState({ fetchingTableItems: true })
+      setFetchingTableItems(true, { managerScope })
+
       return waitForOtherSearchesToFinish(this.getSearchInProgress).then(() => {
         let filterValues = filterFormValues
         if (ignoreFilters) {
@@ -276,7 +280,7 @@ const createTableWrapper = () => ComposedComponent => {
           useScroll: false,
         }).then(items => {
           setTableListItems(items, { managerScope })
-          this.setState({ fetchingTableItems: false })
+          setFetchingTableItems(false, { managerScope })
 
           return items
         })
@@ -338,7 +342,7 @@ const createTableWrapper = () => ComposedComponent => {
 
     render() {
       log.render()
-      const { fetchingTableItems } = this.state
+      const { fetchingTableItems } = this.props
 
       return (
         <ComposedComponent
