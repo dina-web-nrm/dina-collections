@@ -2,8 +2,10 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.24.0-rc5](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc5)
+#### [v0.24.0-rc6](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc6)
 
+- Add script docs and fix premature form validation error [`#561`](https://github.com/dina-web-nrm/dina-collections/pull/561)
+- Restrict scripts usage on demo and production [`#559`](https://github.com/dina-web-nrm/dina-collections/pull/559)
 - Various improvements and bug fixes [`#558`](https://github.com/dina-web-nrm/dina-collections/pull/558)
 - Use a bucket concept in resource manager [`#556`](https://github.com/dina-web-nrm/dina-collections/pull/556)
 - Fix taxon dropdown cleanup behaviour [`#555`](https://github.com/dina-web-nrm/dina-collections/pull/555)
