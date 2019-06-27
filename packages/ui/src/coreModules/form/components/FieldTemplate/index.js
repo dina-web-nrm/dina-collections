@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+/* eslint-disable react/no-unused-prop-types */
+
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { isEmpty } from 'lodash'
 import objectPath from 'object-path'
-import immutablePath from 'object-path-immutable'
 import { Form } from 'semantic-ui-react'
 import { change as changeAc, getFormValues } from 'redux-form'
 
@@ -103,16 +104,12 @@ export const defaultProps = {
 export const fieldTemplatePropKeys = Object.keys(propTypes)
 
 const FieldTemplate = ({
-  change,
-  childPath,
   children,
-  deleteIfEmpty,
-  deleteParentIfEmpty,
   displayError: displayErrorInput,
   displayLabel,
   enableHelpNotifications,
   errorStyle,
-  fieldValueIsEmpty,
+
   float,
   helpNotificationProps,
   helpText,
@@ -122,47 +119,16 @@ const FieldTemplate = ({
   module,
   name,
   parameterKey,
-  parentFieldValue,
-  parentPath,
+
   required,
   style,
   subLabel,
 }) => {
-  const fieldValueIsEmptyRef = useRef(null)
-
   const { error, touched, warning } = meta
   const displayError =
     displayErrorInput !== undefined ? displayErrorInput : touched && !!error
 
   const displayWarning = touched && !!warning
-
-  const { form } = meta
-
-  useEffect(() => {
-    if (
-      (deleteIfEmpty || deleteParentIfEmpty) &&
-      fieldValueIsEmpty &&
-      fieldValueIsEmptyRef.current === false
-    ) {
-      const updatedParentFieldValue = immutablePath.del(
-        parentFieldValue,
-        childPath
-      )
-
-      change(form, parentPath, updatedParentFieldValue)
-    }
-
-    fieldValueIsEmptyRef.current = fieldValueIsEmpty
-  }, [
-    change,
-    childPath,
-    deleteIfEmpty,
-    deleteParentIfEmpty,
-    fieldValueIsEmpty,
-    form,
-    parentFieldValue,
-    parentPath,
-  ])
 
   return (
     <Form.Field
