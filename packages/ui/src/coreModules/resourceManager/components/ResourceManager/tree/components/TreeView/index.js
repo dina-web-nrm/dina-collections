@@ -12,7 +12,7 @@ import createTreeWrapper from '../../higherOrderComponents/createTreeWrapper'
 const propTypes = {
   buildList: PropTypes.func.isRequired,
   currentRowNumber: PropTypes.number,
-  expandAncestorsForItemId: PropTypes.func.isRequired,
+  expandAncestors: PropTypes.func.isRequired,
   fetchItemById: PropTypes.func.isRequired,
   fetchTreeBase: PropTypes.func.isRequired,
   focusedItemId: PropTypes.string,
@@ -57,7 +57,7 @@ const itemsRenderer = (items, ref) => {
 const TreeView = ({
   buildList,
   currentRowNumber,
-  expandAncestorsForItemId,
+  expandAncestors,
   fetchItemById,
   fetchTreeBase,
   focusedItemId,
@@ -85,10 +85,8 @@ const TreeView = ({
   }, [fetchTreeBase])
 
   useEffect(() => {
-    if (focusedItemId) {
-      expandAncestorsForItemId(focusedItemId)
-    }
-  }, [expandAncestorsForItemId, focusedItemId])
+    expandAncestors()
+  }, [expandAncestors])
 
   useEffectScroll({ currentRowNumber, list })
 
