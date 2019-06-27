@@ -23,6 +23,9 @@ export default function buildList({
       if (expandedIds[id]) {
         if (children) {
           const mappedChildren = children
+            .sort(({ id: idA }, { id: idB }) => {
+              return Number(idA) - Number(idB)
+            })
             .map(({ id: childId }) => {
               const child = allItemsObject[childId]
 
