@@ -29,7 +29,8 @@
         "type": "subcategory",
         "label": "UI",
         "ids": ["packages/ui/index", "packages/ui/resourceManager"]
-      }
+      },
+      "packages/scripts/index"
     ],
     "Development": [
       "development/cli",
