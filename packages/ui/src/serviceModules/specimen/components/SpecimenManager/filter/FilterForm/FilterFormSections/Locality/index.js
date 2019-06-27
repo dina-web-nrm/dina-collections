@@ -61,7 +61,7 @@ class LocalityFilterForm extends PureComponent {
             displayCount
             enableHelpNotifications={false}
             label="Appearance"
-            name="collectingInformation.establishmentMeansType"
+            name="locality.collectingInformation.establishmentMeansType"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -71,7 +71,7 @@ class LocalityFilterForm extends PureComponent {
             displayCount
             enableHelpNotifications={false}
             label="Selective breeding"
-            name="originInformation.isResultOfSelectiveBreeding"
+            name="locality.originInformation.isResultOfSelectiveBreeding"
             resource="searchSpecimen"
           />
         </Grid.Column>

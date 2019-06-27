@@ -59,7 +59,11 @@ const relationshipsToCheckBeforeDelete = []
 
 const initialFilterValues = {
   length: { rangeType: 'total-length', rangeUnit: 'unspecified' },
-  locality: { higherGeography: {} },
+  locality: {
+    collectingInformation: {},
+    higherGeography: {},
+    originInformation: {},
+  },
   remarks: { srcField: ANY },
   storage: { tagType: ANY },
   taxonomy: { tagType: ANY },

@@ -21,14 +21,14 @@ const higherGeographySpecifications = createMultipleSearchTagsSpecification({
 
 const appearanceCheckboxSpecification = createCheckboxSpecification({
   aggregationFunctionName: 'aggregateAppearanceTags',
-  fieldName: 'collectingInformation.establishmentMeansType',
+  fieldName: 'locality.collectingInformation.establishmentMeansType',
   matchFilterFunctionName: 'matchAppearanceTags',
   sectionName: 'locality.appearance',
 })
 
 const selectiveBreedingCheckboxSpecification = createCheckboxSpecification({
   aggregationFunctionName: 'aggregateSelectiveBreedingTags',
-  fieldName: 'originInformation.isResultOfSelectiveBreeding',
+  fieldName: 'locality.originInformation.isResultOfSelectiveBreeding',
   matchFilterFunctionName: 'matchSelectiveBreedingTags',
   sectionName: 'locality.selectiveBreeding',
 })
