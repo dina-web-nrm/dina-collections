@@ -109,7 +109,7 @@ const createTreeWrapper = () => ComposedComponent => {
       super(props)
       this.fetchAncestorIds = this.fetchAncestorIds.bind(this)
       this.fetchTreeBase = this.fetchTreeBase.bind(this)
-      this.expandAncestorsForItemId = this.expandAncestorsForItemId.bind(this)
+      this.expandAncestors = this.expandAncestors.bind(this)
       this.handleToggleRow = this.handleToggleRow.bind(this)
       this.handleCollapseCurrentRow = this.handleCollapseCurrentRow.bind(this)
       this.handleExpandCurrentRow = this.handleExpandCurrentRow.bind(this)
@@ -145,51 +145,26 @@ const createTreeWrapper = () => ComposedComponent => {
       setTreeExpandedIds(updatedExpandedIds, { managerScope })
     }
 
-    expandAncestorsForItemId(itemId) {
-      const {
-        getMany,
-        managerScope,
-        setTreeExpandedIds,
-        sortOrder,
-        treeItemFetchOptions,
-      } = this.props
+    expandAncestors() {
+      const { focusedItemId, managerScope, setTreeExpandedIds } = this.props
 
-      return this.fetchAncestorIds(itemId).then(ancestorIds => {
-        const anyNewToExpand = ancestorIds.reduce((newToExpand, id) => {
-          if (newToExpand) {
-            return newToExpand
-          }
-
-          return this.props.treeExpandedIds[id] !== true
-        }, false)
-
-        if (anyNewToExpand) {
-          return getMany({
-            queryParams: {
-              filter: {
-                ids: ancestorIds,
-              },
-              include: treeItemFetchOptions.include,
-              relationships: treeItemFetchOptions.relationships,
-              sort: sortOrder,
+      if (focusedItemId) {
+        return this.fetchAncestorIds(focusedItemId).then(ancestorIds => {
+          const updatedExpandedIds = ancestorIds.reduce(
+            (obj, id) => {
+              return {
+                ...obj,
+                [id]: true,
+              }
             },
-          }).then(() => {
-            const updatedExpandedIds = ancestorIds.reduce(
-              (obj, id) => {
-                return {
-                  ...obj,
-                  [id]: true,
-                }
-              },
-              { ...this.props.treeExpandedIds }
-            )
+            { ...this.props.treeExpandedIds }
+          )
 
-            setTreeExpandedIds(updatedExpandedIds, { managerScope })
-          })
-        }
+          setTreeExpandedIds(updatedExpandedIds, { managerScope })
+        })
+      }
 
-        return null
-      })
+      return null
     }
 
     fetchAncestorIds(itemId) {
@@ -294,7 +269,7 @@ const createTreeWrapper = () => ComposedComponent => {
           <ComposedComponent
             {...this.props}
             buildList={buildList}
-            expandAncestorsForItemId={this.expandAncestorsForItemId}
+            expandAncestors={this.expandAncestors}
             fetchTreeBase={this.fetchTreeBase}
             onShowAllRecords={this.handleShowAllRecords}
             onToggleRow={this.handleToggleRow}
