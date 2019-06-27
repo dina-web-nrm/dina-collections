@@ -2,8 +2,9 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.24.0-rc3](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc3)
+#### [v0.24.0-rc5](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc5)
 
+- Various improvements and bug fixes [`#558`](https://github.com/dina-web-nrm/dina-collections/pull/558)
 - Use a bucket concept in resource manager [`#556`](https://github.com/dina-web-nrm/dina-collections/pull/556)
 - Fix taxon dropdown cleanup behaviour [`#555`](https://github.com/dina-web-nrm/dina-collections/pull/555)
 - Rename readOnly to srcData [`#547`](https://github.com/dina-web-nrm/dina-collections/pull/547)
