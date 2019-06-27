@@ -62,7 +62,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     clearResourceState: PropTypes.func.isRequired,
     createGetNestedItemHocInput: PropTypes.object.isRequired,
     destroyForm: PropTypes.func.isRequired,
-    enableTableColumnSorting: PropTypes.bool,
     excludeRootNode: PropTypes.bool,
     filterFormName: PropTypes.string.isRequired,
     focusedItemId: PropTypes.string,
@@ -98,7 +97,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   const defaultProps = {
     baseTreeFilter: {},
     buildEditItemHeaders: defaultBuildEditItemHeaders,
-    enableTableColumnSorting: false,
     excludeRootNode: false,
     focusedItemId: undefined,
     initialFilterValues: undefined,

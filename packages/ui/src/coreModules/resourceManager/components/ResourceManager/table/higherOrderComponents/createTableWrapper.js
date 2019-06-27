@@ -82,7 +82,6 @@ const mapDispatchToProps = {
 
 const propTypes = {
   buildFilterQuery: PropTypes.func.isRequired,
-  enableTableColumnSorting: PropTypes.bool.isRequired,
   filterFormName: PropTypes.string.isRequired,
   filterFormValues: PropTypes.object,
   focusedItemId: PropTypes.string,
@@ -208,7 +207,6 @@ const createTableWrapper = () => ComposedComponent => {
     } = {}) {
       const {
         buildFilterQuery,
-        enableTableColumnSorting,
         filterFormValues,
         idsAddedToBucket,
         initialFilterValues,
@@ -267,7 +265,6 @@ const createTableWrapper = () => ComposedComponent => {
         }
 
         const userSortOrder =
-          enableTableColumnSorting &&
           tableColumnsToSort.length > 0 &&
           tableColumnsToSort.map(({ fieldPath, sort: order }) => {
             return `attributes.${fieldPath}:${order}`
