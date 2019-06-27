@@ -4,6 +4,14 @@ const serverArg = {
   '-s': '`<SERVER>` name of server. one of [production, stage, test, demo]',
 }
 
+const nonProdServerArg = {
+  '-s': '`<SERVER>` name of server. one of [stage, test, demo]',
+}
+
+const nonDemoServerArg = {
+  '-s': '`<SERVER>` name of server. one of [production, stage, test]',
+}
+
 const tagArg = {
   '-t': '`<TAG>` ex `v0.19.0`',
 }
@@ -472,10 +480,10 @@ Right now it is supported with 4 different server roles: production, stage, test
     'remote:import:data:json': {
       args: {
         ...tagArg,
-        ...serverArg,
+        ...nonProdServerArg,
       },
       description:
-        'Import data unpacked with [remote:unpack:zip](#remote-unpack-zip). Using docker-compose.data.yaml -> import. Inspects its logs with `yarn remote:log -s <SERVER> --service=import`',
+        'Import data unpacked with [remote:unpack:zip](#remote-unpack-zip). Using docker-compose.data.yaml -> import. Inspects its logs with `yarn remote:log -s <SERVER> --service=import`. Note that this is not available for the production server. For the production server instead use `./packages/scripts/src/bash/docker-import-data-from-files.sh -t <TAG>` on the server.',
       group: 'remote-services',
       short: 'Import data from json files on server',
       usage: 'yarn remote:import:data:json -s <SERVER> -t <TAG>',
@@ -483,10 +491,10 @@ Right now it is supported with 4 different server roles: production, stage, test
     'remote:import:data:sample': {
       args: {
         ...tagArg,
-        ...serverArg,
+        ...nonProdServerArg,
       },
       description:
-        'Importing data from sample files on the server. Using docker-compose.data.yaml -> import. Inspects its logs with `yarn remote:log -s <SERVER> --service=import`',
+        'Importing data from sample files on the server. Using docker-compose.data.yaml -> import. Inspects its logs with `yarn remote:log -s <SERVER> --service=import`. Note that this is not available for the production server. For the production server instead use `./packages/scripts/src/bash/docker-import-data-from-sample.sh -t <TAG>` on the server.',
       group: 'remote-services',
       short: 'Import sample data on remote server',
       usage: 'yarn remote:import:data:sample -s <SERVER> -t <TAG>',
@@ -583,10 +591,10 @@ Right now it is supported with 4 different server roles: production, stage, test
     },
     'remote:upload:data:zip': {
       args: {
-        ...serverArg,
+        ...nonDemoServerArg,
       },
       description:
-        'Will upload zip file created with [build:data:zip](#build-data-zip)',
+        'Will upload zip file created with [build:data:zip](#build-data-zip). Its not allowed to upload data to the demo server. Instead use the sample data',
       group: 'remote-services',
       short: 'Upload zip file to server',
       usage: 'yarn remote:upload:data:zip -s <SERVER>',

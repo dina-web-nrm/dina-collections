@@ -1906,19 +1906,22 @@ Import data from json files on server
 
 Import data unpacked with [remote:unpack:zip](#remote-unpack-zip). Using
 docker-compose.data.yaml -> import. Inspects its logs with
-`yarn remote:log -s <SERVER> --service=import`
+`yarn remote:log -s <SERVER> --service=import`. Note that this is not available
+for the production server. For the production server instead use
+`./packages/scripts/src/bash/docker-import-data-from-files.sh -t <TAG>` on the
+server.
 
 #### Args
 
-| Flag | Description                                                       |
-| ---- | ----------------------------------------------------------------- |
-| -t   | `<TAG>` ex `v0.19.0`                                              |
-| -s   | `<SERVER>` name of server. one of [production, stage, test, demo] |
+| Flag | Description                                           |
+| ---- | ----------------------------------------------------- |
+| -t   | `<TAG>` ex `v0.19.0`                                  |
+| -s   | `<SERVER>` name of server. one of [stage, test, demo] |
 
 #### src
 
 ```bash
-node ./packages/scripts/src/js/exec.js docker-import-data-from-files.sh
+node ./packages/scripts/src/js/execNonProd.js docker-import-data-from-files.sh
 ```
 
 <a name="remote-import-data-sample" />
@@ -1932,19 +1935,23 @@ Import sample data on remote server
 #### Description
 
 Importing data from sample files on the server. Using docker-compose.data.yaml
--> import. Inspects its logs with `yarn remote:log -s <SERVER> --service=import`
+-> import. Inspects its logs with
+`yarn remote:log -s <SERVER> --service=import`. Note that this is not available
+for the production server. For the production server instead use
+`./packages/scripts/src/bash/docker-import-data-from-sample.sh -t <TAG>` on the
+server.
 
 #### Args
 
-| Flag | Description                                                       |
-| ---- | ----------------------------------------------------------------- |
-| -t   | `<TAG>` ex `v0.19.0`                                              |
-| -s   | `<SERVER>` name of server. one of [production, stage, test, demo] |
+| Flag | Description                                           |
+| ---- | ----------------------------------------------------- |
+| -t   | `<TAG>` ex `v0.19.0`                                  |
+| -s   | `<SERVER>` name of server. one of [stage, test, demo] |
 
 #### src
 
 ```bash
-node ./packages/scripts/src/js/exec.js docker-import-data-from-sample.sh
+node ./packages/scripts/src/js/execNonProd.js docker-import-data-from-sample.sh
 ```
 
 <a name="remote-import-data-sql" />
@@ -2159,13 +2166,14 @@ Upload zip file to server
 
 #### Description
 
-Will upload zip file created with [build:data:zip](#build-data-zip)
+Will upload zip file created with [build:data:zip](#build-data-zip). Its not
+allowed to upload data to the demo server. Instead use the sample data
 
 #### Args
 
-| Flag | Description                                                       |
-| ---- | ----------------------------------------------------------------- |
-| -s   | `<SERVER>` name of server. one of [production, stage, test, demo] |
+| Flag | Description                                                 |
+| ---- | ----------------------------------------------------------- |
+| -s   | `<SERVER>` name of server. one of [production, stage, test] |
 
 #### src
 

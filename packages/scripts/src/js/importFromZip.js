@@ -8,6 +8,12 @@ const serverName = captureServerNameFromArgs()
 const relativeDataZipFolderPath = 'data'
 const relativeDataZipFileName = 'data.zip'
 
+if (serverName === 'production') {
+  throw new Error(
+    'Not allowed to run from remote for server production. Run from server instead.'
+  )
+}
+
 return promptContinue({
   message: `This will unpack [REPO]/data/data.zip on server: ${serverName} and start an import. Note that current data json files will be discarded`,
 }).then(() => {
