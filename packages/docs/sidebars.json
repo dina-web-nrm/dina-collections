@@ -24,6 +24,7 @@
         ]
       },
       "packages/common/index",
+      "packages/scripts/index",
       "packages/style/index",
       {
         "type": "subcategory",
