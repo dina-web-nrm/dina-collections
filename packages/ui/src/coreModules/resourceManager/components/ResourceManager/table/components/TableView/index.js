@@ -24,12 +24,12 @@ const tableBodyStyle = { overflow: 'auto' }
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  fetchingTableItems: PropTypes.bool.isRequired,
   fetchTableItems: PropTypes.func.isRequired,
   getTableWidth: PropTypes.func.isRequired,
   initialFilterValues: PropTypes.object,
   initialItemId: PropTypes.string,
   isPicker: PropTypes.bool.isRequired,
-  searchInProgress: PropTypes.bool.isRequired,
   tableColumnSpecifications: PropTypes.arrayOf(
     PropTypes.shape({
       fieldPath: PropTypes.string.isRequired,
@@ -50,12 +50,12 @@ const TableView = props => {
   log.render()
   const {
     availableHeight,
+    fetchingTableItems,
     fetchTableItems,
     getTableWidth,
     initialFilterValues,
     initialItemId,
     isPicker,
-    searchInProgress,
     tableColumnSpecifications,
     tableColumnsToShow,
     tableListItems,
@@ -99,7 +99,7 @@ const TableView = props => {
         id="tableScrollContainer"
         style={tableBodyStyle}
       >
-        {searchInProgress && (
+        {fetchingTableItems && (
           <Grid padded>
             <Grid.Row style={{ height: emToPixels(3.5) }}>
               <Grid.Column style={{ paddingTop: 60, width: 150 }}>
@@ -110,8 +110,8 @@ const TableView = props => {
             </Grid.Row>
           </Grid>
         )}
-        {!searchInProgress && !tableListItems.length && <NoResultsFound />}
-        {!searchInProgress && tableListItems.length > 0 && (
+        {!fetchingTableItems && !tableListItems.length && <NoResultsFound />}
+        {!fetchingTableItems && tableListItems.length > 0 && (
           <InfinityTableBody
             {...pick(props, [
               'currentRowNumber',

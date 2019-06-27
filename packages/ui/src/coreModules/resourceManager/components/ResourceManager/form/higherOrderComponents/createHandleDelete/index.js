@@ -36,6 +36,7 @@ const propTypes = {
   nestedItem: PropTypes.object.isRequired,
   onInteraction: PropTypes.func,
   relationshipsToCheckBeforeDelete: PropTypes.arrayOf(PropTypes.string),
+  removeIdFromTableListItems: PropTypes.func.isRequired,
   resource: PropTypes.string.isRequired,
   setFocusedItemId: PropTypes.func.isRequired,
   setFocusItemIdWhenLoaded: PropTypes.func.isRequired,
@@ -89,7 +90,6 @@ const createHandleDelete = () => ComposedComponent => {
 
       return getOne({
         id: itemId,
-        include: relationshipsToCheckBeforeDelete,
         includeDeactivated: false,
         relationships: relationshipsToCheckBeforeDelete,
       }).then(res => {
@@ -145,6 +145,7 @@ const createHandleDelete = () => ComposedComponent => {
         getItemIdFromRowNumber,
         itemId,
         navigateTable,
+        removeIdFromTableListItems,
         setFocusItemIdWhenLoaded,
       } = this.props
 
@@ -197,6 +198,7 @@ const createHandleDelete = () => ComposedComponent => {
         setFocusItemIdWhenLoaded(nextRowItemId || previousRowItemId || '')
 
         fetchResourceCount()
+        removeIdFromTableListItems(itemId)
         navigateTable()
       })
     }

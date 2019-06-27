@@ -3,6 +3,7 @@ import { compose } from 'redux'
 
 import resourceManagerSelectors from 'coreModules/resourceManager/globalSelectors'
 import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/resourceManager/keyObjectModule'
+import createTableWrapper from '../../table/higherOrderComponents/createTableWrapper'
 import {
   createFocusRow,
   injectFocusedItemId,
@@ -20,6 +21,7 @@ const createFormWrapper = () => ComposedComponent => {
   }
 
   return compose(
+    createTableWrapper(),
     injectResourceManagerConfig,
     injectResourceManagerNavigation,
     injectFocusedItemId,

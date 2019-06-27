@@ -21,6 +21,7 @@ export default () =>
         .click()
         .shouldFinishLoading()
       cy.errorClassShouldNotExist()
+      cy.wait(3000) // eslint-disable-line cypress/no-unnecessary-waiting
     })
 
     it('validates coordinates format', () => {
