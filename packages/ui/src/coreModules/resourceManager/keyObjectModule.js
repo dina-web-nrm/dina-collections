@@ -10,6 +10,7 @@ const {
   actionPrefix: 'RESOURCE_MANAGER',
   keys: [
     ':managerScope',
+    ':managerScope.fetchingTableItems',
     ':managerScope.focusItemIdWhenLoaded',
     ':managerScope.focusedItemId',
     ':managerScope.idsAddedToBucket',
