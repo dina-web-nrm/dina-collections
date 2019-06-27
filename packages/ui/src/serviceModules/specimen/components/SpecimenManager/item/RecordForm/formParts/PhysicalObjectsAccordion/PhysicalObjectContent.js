@@ -59,15 +59,18 @@ class PhysicalObjectContent extends Component {
   constructor(props) {
     super(props)
     this.handleRemove = this.handleRemove.bind(this)
+    this.touchOnUnmount = true
   }
 
   componentWillUnmount() {
-    // trigger validation even if the field has not been touched, because it is
-    // easy to miss (hard to find) this otherwise
-    this.props.touch(
-      this.props.formName,
-      this.props.getPath('physicalObject.storageLocation.id')
-    )
+    if (this.touchOnUnmount) {
+      // trigger validation even if the field has not been touched, because it is
+      // easy to miss (hard to find) this otherwise
+      this.props.touch(
+        this.props.formName,
+        this.props.getPath('physicalObject.storageLocation.id')
+      )
+    }
   }
 
   handleRemove() {
@@ -79,6 +82,7 @@ class PhysicalObjectContent extends Component {
     } = this.props
 
     handleSetInactive(index)
+    this.touchOnUnmount = false
     removeArrayFieldByIndex(getTranslationPath(), index)
   }
 
