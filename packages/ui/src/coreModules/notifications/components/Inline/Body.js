@@ -35,7 +35,7 @@ const InlineNotificationBody = ({
             <Translate capitalize textKey={descriptionKey} />
           </p>
         )}
-        {displayLinkToUserManual && <UserManualLink />}
+        {displayLinkToUserManual && <UserManualLink showIcon />}
         {false && // temporary disable links
           linkTextKey &&
           linkTo && (
