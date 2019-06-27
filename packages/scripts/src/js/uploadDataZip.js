@@ -17,6 +17,9 @@ return promptContinue({
   message: `This will upload [REPO]/data/data.zip to server: ${serverName}`,
 })
   .then(() => {
+    if (serverName === 'demo') {
+      throw new Error('Not allowed to upload data to demo')
+    }
     return remoteExecCmd({
       cmd: `rm ${relativeDataZipFilePath}`,
       serverName,
