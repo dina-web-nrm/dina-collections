@@ -1,6 +1,6 @@
 {
   "name": "dina-collections",
-  "version": "0.24.0",
+  "version": "0.24.0-test-docker-cred",
   "description": "",
   "main": "index.js",
   "scripts": {
