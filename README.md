@@ -13,7 +13,7 @@ a region, or a large institution.
 
 Read more:
 
-- [Docs](/packages/docs/docs)
+- [Docs](https://dina-demo-docs.nrm.se/docs/)
 - [Changelog](CHANGELOG.md)
 - [Contributing guidelines](CONTRIBUTING.md)
 
