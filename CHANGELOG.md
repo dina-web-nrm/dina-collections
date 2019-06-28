@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v0.24.0-rc6](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0-rc6)
+#### [v0.24.0](https://github.com/dina-web-nrm/dina-collections/compare/v0.23.0...v0.24.0)
 
 - Add script docs and fix premature form validation error [`#561`](https://github.com/dina-web-nrm/dina-collections/pull/561)
 - Restrict scripts usage on demo and production [`#559`](https://github.com/dina-web-nrm/dina-collections/pull/559)
