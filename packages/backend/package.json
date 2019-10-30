@@ -27,7 +27,7 @@
     "pg": "^7.4.3",
     "reselect": "^3.0.1",
     "response-time": "^2.3.2",
-    "sequelize": "^4.38.0",
+    "sequelize": "^5.15.1",
     "slack-node": "^0.1.8",
     "swagger-ui-dist": "3.20.6",
     "uuid": "^3.2.1"
