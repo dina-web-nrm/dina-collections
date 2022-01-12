@@ -45,7 +45,7 @@
     "http-proxy-middleware": "^0.19.1",
     "json-schema-faker": "^0.4.4",
     "lodash": "^4.17.11",
-    "markdown-it": "^8.4.0",
+    "markdown-it": "^12.3.2",
     "memoize-one": "^4.0.0",
     "moment": "^2.22.0",
     "mousetrap": "^1.6.2",
