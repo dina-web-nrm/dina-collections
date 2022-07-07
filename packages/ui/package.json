@@ -47,7 +47,7 @@
     "lodash": "^4.17.11",
     "markdown-it": "^8.4.0",
     "memoize-one": "^4.0.0",
-    "moment": "^2.22.0",
+    "moment": "^2.29.4",
     "mousetrap": "^1.6.2",
     "object-path": "^0.11.4",
     "object-path-immutable": "^1.0.1",
